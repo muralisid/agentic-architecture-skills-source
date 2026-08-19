@@ -48,7 +48,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 3. Layer research (pilot: R03 Integration fabric) | Complete: all 14 tracks published |
 | 4. Synthesis + techniques library | Synthesis complete: master target state, concerns matrix, memory pipelines, economics, sovereignty, identity and security, learning loops. Techniques library open and growing |
 | 5. Roadmap framework | Published: nine-factor roadmap generator and the use-case portfolio framework |
-| 6. Blueprints | Not started |
+| 6. Blueprints | Published: 7 department and 4 vertical blueprints |
 | 7. Vendor analysis | Not started |
 | 8. Publication | Not started |
 
