@@ -68,4 +68,10 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Calibrated oversight.** The evidenced shape of trust progression: as operators gain experience they grant broader standing permission AND intervene more often, rather than supervising less. Oversight capacity is designed for prevention and legibility, not interception, and verification is made cheap by construction.
 
+**Oversight-capacity gate.** The precondition on A4 and above in the A x L model: capacity calculated from the fan-out relation with wait time included, expressed as a burst rate rather than a daily or hourly average, instrumented in production, and resting on verification that is cheap by construction. Added because no credible human-to-agent supervision ratio has ever been published.
+
+**The seven planes.** The planes of the agentic system built across the enterprise estate, distinct from the 14 layers of the estate itself: execution, action, knowledge, control, improvement, evidence, and human. Enforcement lives in the control plane, never in the execution plane, and the evidence plane is fed by collection the agent cannot influence.
+
+**Cost per resolved outcome.** The decision-level unit in the economics model: run cost divided by resolution rate, plus supervision minutes at a loaded rate, plus the failure rate multiplied by the cost of a wrong outcome. Distinct from cost per run, which is the unit platforms meter.
+
 **Evals.** Systematic, versioned tests of agent quality, safety, grounding, and regressions: golden datasets, scenario tests, adversarial prompts, LLM-as-judge with human review. A production gate, not an afterthought.

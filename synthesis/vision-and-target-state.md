@@ -10,7 +10,11 @@ Some years ago I stood on the floor of a Schweppes bottling plant. The line ran 
 
 There were still people on the floor, and watching what they did was the education. They cleared jams and restacked bottles when the line got stuck. They watched quality signals and decided when to intervene. They reconfigured the line between products and formats. They maintained the machines. Nobody lifted a bottle; everybody was accountable for the bottles.
 
-The claim of this guide is that knowledge work is heading to the same shape, and that the architecture which gets an enterprise there safely can be described, layer by layer. The plan will live in systems of record. Agents will execute it. A smaller number of people will set intent, watch quality, handle exceptions, reconfigure, and maintain, and they will hold all of the accountability.
+The claim of this guide is that knowledge work is heading to the same shape, and that the architecture which gets an enterprise there safely can be described, layer by layer. The plan will live in systems of record. Agents will execute it. People will set intent, watch quality, handle exceptions, reconfigure, and maintain, and they will hold all of the accountability.
+
+**The metaphor was tested, and it holds in one direction only.** The shape of that residual work is well evidenced: supervise, adjust, maintain, expand, improve are exactly the tasks the human-factors literature identified in 1983 and has found stable ever since. The rate is not evidenced, and the guide does not claim it. Two corrections came out of the research and are stated here rather than buried in a track: the widely circulated claim that a famous automated electronics plant runs 128 robots with nine workers is wrong, since the primary reporting says several dozen workers per shift; and the best-documented agentic deployment in knowledge work had agent-eligible conversations under 10% of volume, of which the agent completed 35% without a human taking over.
+
+So the honest version of the metaphor is not "fewer humans" but **different humans, doing different work, under a different failure model**. That is the version this guide defends. Which humans become what differs by function: operations work moves toward exception handling and supervision, knowledge work moves toward design and curation of what agents execute, and client-facing work stays human because the thing being sold is a relationship. The full test, including the finding that no credible human-to-agent supervision ratio has ever been published, is in research/R13-operating-model/findings.md.
 
 ## What "agentic enterprise" means
 
@@ -48,7 +52,7 @@ What this guide recommends, and why it differs: start where iteration is cheap a
 
 This guide is a growing library: layer-by-layer architecture tracks across the enterprise landscape, a techniques library with economics, contested-choice verdicts argued from evidence both ways, maturity and readiness models, department and vertical blueprints, and vendor analysis against a neutral question bank. Every recommendation must beat the simplest credible alternative on evidence and enterprise economics. Vendor-published numbers are labeled as such. Where the authors take a position ahead of the evidence, the text says so, as it does twice in this chapter.
 
-It is not a vendor pitch, and it is not hype amplification. The bottling plant did not become lights-out by believing in robots. It got there by engineering, measurement, and a floor crew that never stopped being accountable.
+It is not a vendor pitch, and it is not hype amplification. That bottling plant did not automate its floor by believing in robots. It got there by engineering, measurement, and a floor crew that never stopped being accountable.
 
 ## Sources
 
