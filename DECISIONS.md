@@ -1,0 +1,15 @@
+# Decision log
+
+Format: ID, date, decision, rationale. Newest last. Decisions are revisited only with a new entry superseding the old one.
+
+| ID | Date | Decision | Rationale |
+|---|---|---|---|
+| D001 | 2026-08-19 | Research corpus lives in this dedicated public repo | Clean separation from the maintainer's personal site; public from day one so others can contribute; becomes the content source for the published site |
+| D002 | 2026-08-19 | Publish as a dedicated docs site on Vercel; primary candidate Fumadocs (Next.js), fallback Astro Starlight after a 1-day spike | Keeps the maintainer's familiar Next + MDX + Vercel workflow while adding sidebar navigation, TOC, search, and hierarchical routing that a reference guide needs |
+| D003 | 2026-08-19 | Featured verticals: Utilities & Energy, Banking & Financial Services, Manufacturing & Supply Chain, Public Sector | Maintainer domain depth (utilities), richest regulatory material (BFSI), the literal factory analogy (manufacturing), underserved audience (public sector) |
+| D004 | 2026-08-19 | Layer research runs pilot-first; pilot track is R03 Integration Fabric | R03 has the richest current state (SOA/API/EDI), the most concrete agentic change (MCP, gateways, agent-to-agent), and touches vendors, economics, and security, so it exercises the full template before fan-out |
+| D005 | 2026-08-19 | Dual license: CC BY-SA 4.0 for content, MIT for code | Content stays open and attributable with share-alike protection; site code stays maximally reusable |
+| D006 | 2026-08-19 | Working protocol: every phase and track passes a maintainer POV step and a technical challenge round before finalization | The repo serves readers, free of vendor bias and author bias; research supplies evidence, the maintainer supplies technical challenge, only what survives both is published |
+| D007 | 2026-08-19 | Cross-cutting concern register (C1 to C10) is mandatory in every track's findings | Identity, observability, traceability, grounding, impersonation, sovereignty, privacy, safety, cost, and resilience must be addressed (or justified N/A) at every layer, not in one chapter |
+| D008 | 2026-08-19 | Challenged Defaults is a mandatory section in every track; first named debate is graph databases vs topic modelling with contextual embeddings as the retriever | Anti-buzz mechanism: recommendations must beat the simplest credible alternative on evidence and economics |
+| D009 | 2026-08-19 | Third-party IP is not committed: extracted structure notes and citations only, with permission status flagged | The practitioner reference deck requires author permission before attribution or publication; vendor slides and unpublished drafts are referenced, not redistributed |
