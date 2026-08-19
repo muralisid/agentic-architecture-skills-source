@@ -74,4 +74,8 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Cost per resolved outcome.** The decision-level unit in the economics model: run cost divided by resolution rate, plus supervision minutes at a loaded rate, plus the failure rate multiplied by the cost of a wrong outcome. Distinct from cost per run, which is the unit platforms meter.
 
+**Make-it-evaluable queue.** Where a valuable use case goes when a domain expert cannot yet write pass-or-fail tasks for it. The funded work is defining success (writing the tasks, measuring the human baseline, finding the real failures), not building the agent. The highest-return spend in an immature programme.
+
+**Portfolio supervision constraint.** Oversight capacity applied across the whole approved use-case set rather than per workload, because workloads are approved individually and supervised collectively.
+
 **Evals.** Systematic, versioned tests of agent quality, safety, grounding, and regressions: golden datasets, scenario tests, adversarial prompts, LLM-as-judge with human review. A production gate, not an afterthought.
