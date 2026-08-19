@@ -62,4 +62,10 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Wrap, do not reinvent.** Agents reach enterprise systems through tool servers that wrap already-governed APIs, carrying the caller's identity so entitlement, validation, and audit stay where they already work. The tool layer is a wrapper, not a second policy engine.
 
+**Solitary versus coordinated work.** The variable that predicts whether an assistant delivers measured value. Individually provisioned AI reliably improves solitary work such as email, and reliably fails to change coordinated work such as meetings and shared documents, because changing those requires agreeing new norms with colleagues. Deployment decisions should follow this distinction rather than the horizontal-versus-specialised framing.
+
+**Containment versus resolution.** In customer-facing deployments, containment counts conversations that never reached a human, whether or not the customer was helped; resolution counts problems actually solved. Every documented reversal of an AI-first service programme set a containment or headcount target. The guide's position: target resolution and let containment be an outcome.
+
+**Calibrated oversight.** The evidenced shape of trust progression: as operators gain experience they grant broader standing permission AND intervene more often, rather than supervising less. Oversight capacity is designed for prevention and legibility, not interception, and verification is made cheap by construction.
+
 **Evals.** Systematic, versioned tests of agent quality, safety, grounding, and regressions: golden datasets, scenario tests, adversarial prompts, LLM-as-judge with human review. A production gate, not an afterthought.
