@@ -46,7 +46,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 1. Vision and target state | Baseline published: vision essay and the A x L maturity model |
 | 2. Current state and maturity references | Baseline published: size-by-gravity archetype grid and light/heavy readiness assessment |
 | 3. Layer research (pilot: R03 Integration fabric) | Complete: all 14 tracks published |
-| 4. Synthesis + techniques library | First two technique entries published early (multi-view embeddings; knowledge-graph contested choice) |
+| 4. Synthesis + techniques library | Synthesis complete: master target state, concerns matrix, memory pipelines, economics, sovereignty, identity and security, learning loops. Techniques library open and growing |
 | 5. Roadmap framework | Not started |
 | 6. Blueprints | Not started |
 | 7. Vendor analysis | Not started |
