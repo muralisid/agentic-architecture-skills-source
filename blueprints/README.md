@@ -1,14 +1,26 @@
 # Blueprints
 
-Target-state blueprints produced in Phase 6, using a scenario-activation format: a concrete scenario, the agent team design, which architecture layers activate (directly vs supporting), the controls involved, and the economics.
+Target-state blueprints in a scenario-activation format: a concrete scenario, the agent team design with A x L positions, which of the seven planes activate, the controls, the economics, the honest limits, and the metrics. Template: [_TEMPLATE.md](_TEMPLATE.md).
 
-## Horizontal departments (`departments/`)
+Every blueprint carries a mandatory **honest limits** section. A blueprint without one has not been researched.
 
-sales, customer-service, marketing, finance, hr, it-engineering, supply-chain
+## Departments
 
-## Verticals (`verticals/`)
+| Blueprint | The call it makes |
+|---|---|
+| [it-and-service-desk.md](departments/it-and-service-desk.md) | Where production agents actually concentrate. Access provisioning is a deterministic zone, and auto-closure is containment wearing a different name |
+| [customer-service.md](departments/customer-service.md) | Every documented reversal set a containment or headcount target. Target resolution; agent-assist is the highest-return and least-demoed application |
+| [finance.md](departments/finance.md) | Two deterministic zones in one department. Numeric analysis is a documented weak spot, so numbers route through the semantic layer |
+| [hr.md](departments/hr.md) | Annex III on one side of the department and the clearest win on the other. Merely formal human participation is not sufficient |
+| [sales.md](departments/sales.md) | The budget concentration is real. The unglamorous account-research and CRM-hygiene agents are the wins; autonomous outbound is not recommended |
+| [marketing.md](departments/marketing.md) | Labelling is a pipeline capability, not a policy. Review capacity is the constraint that grows |
+| [supply-chain.md](departments/supply-chain.md) | Idempotency and compensation on every action. Stops at the planning layer, because the shop floor is an OT boundary |
 
-- `utilities/`: EAM, the SCADA/OT boundary, field force
-- `bfsi/`: banking and financial services scenarios
-- `manufacturing/`: the literal bottling plant plus WMS and supply chain
-- `public-sector/`: case management, citizen services, sovereignty-first architectures
+## Verticals
+
+| Blueprint | The call it makes |
+|---|---|
+| [utilities-and-energy.md](verticals/utilities-and-energy.md) | Agents on the information path, not the control path. Three of four candidate applications are good ideas; switching order generation is the one every vendor demonstrates |
+| [banking-and-financial-services.md](verticals/banking-and-financial-services.md) | Where the deterministic boundary was proved rather than argued. The cost of a wrong outcome is a regulatory finding, and it dominates the model |
+| [manufacturing-and-supply-chain.md](verticals/manufacturing-and-supply-chain.md) | The founding metaphor tested at its own source. Different humans, doing different work, under a different failure model |
+| [public-sector.md](verticals/public-sector.md) | The citizen cannot choose another provider, which makes containment metrics actively harmful. Sovereignty-first by procurement as much as by law |
