@@ -1,0 +1,18 @@
+# R14: Agent data engineering & memory pipelines
+
+Status: not started. Scope below is the v0 inventory; it is finalized at track kickoff with maintainer POV questions before research begins (see CLAUDE.md working protocol).
+
+## Scope inventory (v0)
+
+- **Ingestion and preparation**: connectors, parsing and OCR, chunking strategy, metadata enrichment (entities, ownership, freshness), PII handling and consent at ingestion
+- **Purpose-driven curation**: use-case-scoped corpora, multi-view/multi-card embedding design, LLM-guided taxonomy with classical topic modelling on embeddings, SME-in-the-loop curation workflows, knowledge hub editorial process
+- **Memory feeding**: promotion policies into entity and cross-domain memory tiers, TTL and refresh, ACL propagation into indexes, index lifecycle and re-embedding operations
+- **Economics and quality**: retrieval quality evaluation per view (recall and precision), embedding-vs-LLM cost engineering, data contracts with source owners
+
+## Challenged-default candidates
+
+Full-corpus LLM processing vs LLM-guided curation with deterministic machinery (the founding technique of this track); one universal index vs use-case-scoped multi-view indexes. Each track proposes its final list at kickoff.
+
+## Files
+
+`brief.md`, `findings.md`, `vendors.md`, `sources.md` are created from `../_TEMPLATE/` at kickoff.

@@ -1,0 +1,63 @@
+# The Agentic Enterprise Architecture Guide
+
+An open, vendor-neutral reference for the architecture of the agentic enterprise: what an enterprise looks like when every department and every role works with and manages a set of AI agents, agents perform the routine work, and humans set intent, supervise, and handle exceptions.
+
+The mental model comes from a modern bottling plant: the floor runs without humans doing the physical work, while a few skilled people guide the line and step in when bottles stack wrong or a machine jams. Knowledge work is heading to the same shape. This repository researches, challenges, and documents how to get there responsibly, layer by layer of the enterprise landscape.
+
+## What this repository produces
+
+A complete published guide (docs site, built from this repo) covering:
+
+1. **Vision and target state**: an autonomy maturity model (A0 to A5) and a layered master architecture
+2. **Current state baselines**: enterprise archetypes and maturity readiness assessments (data, security)
+3. **14 research tracks**: one per enterprise landscape layer, from infrastructure to operating model
+4. **Production techniques library**: use-case-driven data curation and cost engineering patterns with real economics
+5. **Roadmap framework**: checklist-governed; your answers on economics, sovereignty, risk, and audience produce your roadmap variant
+6. **Vendor analysis**: a neutral question bank, a vendor-by-layer coverage matrix, and adoption pathways by vendor gravity
+7. **Blueprints**: department and vertical target states (utilities & energy, banking & financial services, manufacturing & supply chain, public sector)
+
+## Editorial stance
+
+- **Evidence over buzz.** Nothing is recommended on adoption momentum or vendor narrative. Every recommended component must beat the simplest credible alternative on technical merit and enterprise economics (the "simplest credible alternative test").
+- **Challenged defaults.** Every research track names the hyped or default choices at its layer and analyzes them honestly against cheaper, simpler alternatives.
+- **Deterministic boundaries.** Security, identity, and access control are always deterministic; probabilistic reasoning runs inside them, never instead of them.
+- **Sources are dated and flagged.** Vendor-published numbers are labeled as such. Volatile facts carry as-of dates and sit on a re-verification list.
+
+## Repository map
+
+| Path | Contents |
+|---|---|
+| `research/` | The 14 layer tracks (R01 to R14), each with brief, findings, vendor map, and sources |
+| `synthesis/` | Cross-layer artifacts: maturity model, economics model, sovereignty matrix, concerns-by-layers matrix, memory-pipeline architecture, master target state |
+| `techniques/` | Production-tested patterns with token-economics math |
+| `frameworks/` | Roadmap checklist, readiness assessments, vendor question bank |
+| `blueprints/` | Department and vertical target-state blueprints |
+| `knowledge/` | Captured practitioner knowledge (structured interviews), citable like any source |
+| `inputs/` | Raw canonical inputs (unvetted research material, not guide content) |
+| `site/` | The docs site (added in the publication phase) |
+| `GLOSSARY.md` | Canonical definitions used across the guide |
+| `DECISIONS.md` | Program decision log |
+
+## Status
+
+| Phase | State |
+|---|---|
+| 0. Scaffolding | In progress |
+| 1. Vision and target state | Kickoff (see open PRs) |
+| 2. Current state and maturity references | Not started |
+| 3. Layer research (pilot: R03 Integration fabric) | Not started |
+| 4. Synthesis + techniques library | Not started |
+| 5. Roadmap framework | Not started |
+| 6. Blueprints | Not started |
+| 7. Vendor analysis | Not started |
+| 8. Publication | Not started |
+
+## Contributing
+
+Contributions are welcome once tracks open. Read [CONTRIBUTING.md](CONTRIBUTING.md); the source-hygiene rules there are the review bar for every pull request. All PRs are reviewed and merged by the maintainer.
+
+Maintainer: [@muralisidfn7](https://github.com/muralisidfn7)
+
+## License
+
+Dual licensed: content (markdown, research, guide text) under [CC BY-SA 4.0](LICENSE-CONTENT.md); code (site, scripts) under [MIT](LICENSE).
