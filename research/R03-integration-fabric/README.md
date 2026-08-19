@@ -1,6 +1,6 @@
 # R03: Integration fabric
 
-Status: not started. Scope below is the v0 inventory; it is finalized at track kickoff with maintainer POV questions before research begins (see CLAUDE.md working protocol).
+Status: complete (published 2026-08-19). Scope was finalized at kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.
 
 ## Scope inventory (v0)
 

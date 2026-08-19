@@ -16,7 +16,7 @@ Pilot first, then batches with a review gate after each:
 
 | Batch | Tracks | Status |
 |---|---|---|
-| Pilot | R03 Integration fabric | Not started |
+| Pilot | R03 Integration fabric | Complete (published 2026-08-19); template validated |
 | A (foundation) | R01 Infrastructure, R02 Data platform, R14 Agent data engineering | Not started |
 | B (control) | R10 Security & identity, R11 Governance & sovereignty, R12 Observability & FinOps | Not started |
 | C (core estate) | R04 Systems of record, R05 LoB & OT, R06 Intelligence & learning | Not started |
