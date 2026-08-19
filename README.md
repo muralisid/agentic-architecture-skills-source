@@ -35,7 +35,9 @@ A complete published guide (docs site, built from this repo) covering:
 | `vendors/` | The vendor hub: coverage matrix, profiles, adoption pathways |
 | `knowledge/` | Captured practitioner knowledge (structured interviews), citable like any source |
 | `inputs/` | Raw canonical inputs (unvetted research material, not guide content) |
-| `site/` | The docs site (added in the publication phase) |
+| `site/` | The docs site. Generated from the markdown above; the repo stays the source of truth |
+| `CHANGELOG.md` | Published revisions, including positions research changed |
+| `RE-VERIFICATION.md` | Volatile facts and when to re-check them |
 | `GLOSSARY.md` | Canonical definitions used across the guide |
 | `DECISIONS.md` | Program decision log |
 
@@ -51,11 +53,21 @@ A complete published guide (docs site, built from this repo) covering:
 | 5. Roadmap framework | Published: nine-factor roadmap generator and the use-case portfolio framework |
 | 6. Blueprints | Published: 7 department and 4 vertical blueprints |
 | 7. Vendor analysis | Published: question bank, scorecard, coverage matrix, 10 profiles, adoption pathways |
-| 8. Publication | Not started |
+| 8. Publication | Site built and verified: Fumadocs on Next.js, ready to deploy on Vercel with root directory `site` |
 
 ## Contributing
 
 Contributions are welcome once tracks open. Read [CONTRIBUTING.md](CONTRIBUTING.md); the source-hygiene rules there are the review bar for every pull request. All PRs are reviewed and merged by the maintainer.
+
+## Reading this as a website
+
+The corpus renders as a documentation site with search, navigation and per-page source links. Run it locally:
+
+```bash
+cd site && npm install && npm run dev
+```
+
+Deploy on Vercel by importing this repository with the root directory set to `site`. See [site/README.md](site/README.md).
 
 Maintainer: [@muralisidfn7](https://github.com/muralisidfn7)
 
