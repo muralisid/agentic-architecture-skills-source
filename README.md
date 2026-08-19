@@ -8,7 +8,7 @@ The mental model comes from a modern bottling plant: the floor runs without huma
 
 A complete published guide (docs site, built from this repo) covering:
 
-1. **Vision and target state**: an autonomy maturity model (A0 to A5) and a layered master architecture
+1. **Vision and target state**: the Autonomy-Learning maturity model (A x L) and a layered master architecture
 2. **Current state baselines**: enterprise archetypes and maturity readiness assessments (data, security)
 3. **14 research tracks**: one per enterprise landscape layer, from infrastructure to operating model
 4. **Production techniques library**: use-case-driven data curation and cost engineering patterns with real economics
@@ -45,7 +45,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 0. Scaffolding | Complete |
 | 1. Vision and target state | Baseline published: vision essay and the A x L maturity model |
 | 2. Current state and maturity references | Baseline published: size-by-gravity archetype grid and light/heavy readiness assessment |
-| 3. Layer research (pilot: R03 Integration fabric) | Pilot published; template validated; batches next |
+| 3. Layer research (pilot: R03 Integration fabric) | Pilot + Batch A published (4 of 14 tracks); Batch B next |
 | 4. Synthesis + techniques library | First two technique entries published early (multi-view embeddings; knowledge-graph contested choice) |
 | 5. Roadmap framework | Not started |
 | 6. Blueprints | Not started |
