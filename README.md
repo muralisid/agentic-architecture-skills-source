@@ -42,11 +42,11 @@ A complete published guide (docs site, built from this repo) covering:
 
 | Phase | State |
 |---|---|
-| 0. Scaffolding | In progress |
-| 1. Vision and target state | Kickoff (see open PRs) |
+| 0. Scaffolding | Complete |
+| 1. Vision and target state | Baseline published: vision essay and the A x L maturity model |
 | 2. Current state and maturity references | Not started |
 | 3. Layer research (pilot: R03 Integration fabric) | Not started |
-| 4. Synthesis + techniques library | Not started |
+| 4. Synthesis + techniques library | First two technique entries published early (multi-view embeddings; knowledge-graph contested choice) |
 | 5. Roadmap framework | Not started |
 | 6. Blueprints | Not started |
 | 7. Vendor analysis | Not started |
