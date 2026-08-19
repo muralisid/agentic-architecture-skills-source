@@ -1,6 +1,6 @@
 # Interview 02: the multi-card embeddings case study
 
-Status: questions posted 2026-08-19; answers pending.
+Status: captured conversationally 2026-08-19; answers synthesized into the published baseline chapters. Full capture held privately per the working protocol.
 Purpose: capture the flagship production technique for the techniques library in enough detail to reconstruct the mechanism and the economics. Feeds `techniques/multi-view-embeddings.md` and the R02/R14 challenged-defaults debate (graph databases vs embeddings-and-topic-modelling retrievers).
 
 ## Questions

@@ -1,6 +1,6 @@
 # Interview 01: founding POV
 
-Status: questions posted 2026-08-19; answers pending.
+Status: captured conversationally 2026-08-19; answers synthesized into the published baseline chapters. Full capture held privately per the working protocol.
 Purpose: capture the maintainer's vision, definitional tests, and priorities before the Phase 1 essay is written. Answers are recorded verbatim (lightly edited) and cited by findings.
 
 ## Questions
