@@ -32,7 +32,7 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Two-estate problem.** An enterprise's own gateway can only govern the metered estate (API traffic it proxies). Licensed platforms (Copilot, Agentforce, Frontier) run outside it. Architecture, audit, and cost control must span both estates.
 
-**Deterministic boundary principle.** Identity, entitlements, access control, and audit are always enforced by deterministic systems outside the model. Probabilistic reasoning runs inside those boundaries, never instead of them.
+**Deterministic boundary principle (models may inform, never decide).** Identity, entitlements, access control, and audit are always enforced by deterministic systems outside the model. In the four zones where consequences are irreversible (access control, movement of money, safety actuation, formal regulatory records), the decision rule is deterministic over verifiable credentials and policies; model outputs are advisory inputs. Probabilistic signals inside those zones are normal and useful; probabilistic decisions are not. See research/R10-security-and-identity/findings.md.
 
 **Curation before context.** Data is prepared for agents per purpose and use case. The LLM guides (taxonomy, topics, judgment) while cheaper deterministic machinery executes at scale (embeddings, topic modelling, classifiers). Production-grade agents stand on curated data, not raw corpora pushed through the model.
 
@@ -47,5 +47,13 @@ Canonical definitions used across the guide. Terms are defined once here and use
 **Agent washing.** Marketing existing automation or chat products as "agents" without autonomous tool-using behavior. Named by analysts as widespread; a reason the vendor question bank exists.
 
 **Sponsor / Owner.** The accountability pattern for agents: a required business Sponsor accountable for the agent's purpose and lifecycle, and a technical Owner managing configuration and credentials.
+
+**Capability-surface gating.** Controls are chosen by what an agent can actually do, not by its product category. Execution isolation follows code, browsing, and computer use; presence controls follow mailboxes, meeting seats, and directory visibility; the assessment is repeated on every tool grant, because agents accrete capability over time.
+
+**Evidence floor / Article-12-grade instrumentation.** The guide's two-level compliance posture. An evidence floor applies to every production agent: registry entry, retained action logs, named oversight, and provenance-carrying grounding. Article-12-grade instrumentation (EU AI Act logging depth, oversight capture, technical documentation) applies to the tier that could plausibly classify high-risk. Proportionality replaces blanket compliance.
+
+**Provenance-carrying grounding.** Retrieval that stores source chunks and identifiers alongside embeddings so every answer is citable to its sources by construction. The guide's position: the highest-leverage single component of an evidence architecture, necessary but not sufficient for audit evidence.
+
+**Budget envelope (agent).** Sponsor-owned spending allowance for an agent, with unit-economics targets, hard per-run caps, and variance alerting. Deliberately not framed as a salary: agent consumption is volatile, so the control is an envelope with alarms rather than a fixed cost.
 
 **Evals.** Systematic, versioned tests of agent quality, safety, grounding, and regressions: golden datasets, scenario tests, adversarial prompts, LLM-as-judge with human review. A production gate, not an afterthought.
