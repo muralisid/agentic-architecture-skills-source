@@ -47,7 +47,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 2. Current state and maturity references | Baseline published: size-by-gravity archetype grid and light/heavy readiness assessment |
 | 3. Layer research (pilot: R03 Integration fabric) | Complete: all 14 tracks published |
 | 4. Synthesis + techniques library | Synthesis complete: master target state, concerns matrix, memory pipelines, economics, sovereignty, identity and security, learning loops. Techniques library open and growing |
-| 5. Roadmap framework | Not started |
+| 5. Roadmap framework | Published: nine-factor roadmap generator and the use-case portfolio framework |
 | 6. Blueprints | Not started |
 | 7. Vendor analysis | Not started |
 | 8. Publication | Not started |

@@ -1,10 +1,13 @@
 # Frameworks
 
-Decision frameworks the guide provides to readers. Produced in Phases 2, 5, and 7.
+Decision frameworks the guide provides to readers.
 
-Planned artifacts:
+| Framework | Phase | What it decides |
+|---|---|---|
+| [readiness-assessments.md](readiness-assessments.md) | 2 | Where you are, across six dimensions, in light or heavy mode; readiness caps the autonomy any workload should attempt |
+| [use-case-portfolio.md](use-case-portfolio.md) | 5 | Which use cases get budget this quarter. Evaluability is a gate, not a score, and supervision capacity is a portfolio-level constraint |
+| [roadmap-checklist.md](roadmap-checklist.md) | 5 | Your roadmap, generated from nine factor answers over a six-stage spine with entry and exit gates and no calendar |
+| `vendor-question-bank.md` | 7 | The neutral questions every vendor must answer (identity model, memory governance and portability, pricing transparency, eval tooling, guardrail determinism, sovereignty options, interop, lock-in surfaces, roadmap stability, ecosystem) |
+| `vendor-scorecard.md` | 7 | Scoring method over the question bank |
 
-- `readiness-assessments.md` (Phase 2): agent-readiness self-assessment mapped to established maturity frameworks (data: DAMA-DMBOK, EDM Council DCAM; security: NIST CSF 2.0, CIS Controls, ISO 27001/27701, CISA Zero Trust Maturity Model; AI-specific: NIST AI RMF, OWASP agentic guidance). States, per maturity level, what agent adoption is safe at which layer and what must be fixed first
-- `roadmap-checklist.md` (Phase 5): the checklist-governed roadmap framework; answers on audience, archetype, regulatory intensity, sovereignty, risk appetite, data readiness, vendor gravity, build capacity, and cost preference map to named roadmap variants
-- `vendor-question-bank.md` (Phase 7): the neutral questions every vendor must answer (identity model, memory governance and portability, pricing transparency, eval tooling, guardrail determinism, sovereignty options, interop, lock-in surfaces, roadmap stability, ecosystem)
-- `vendor-scorecard.md` (Phase 7): scoring method over the question bank
+Run them in order: assess, prioritise, sequence. Platform and vendor choice come last, because the winning use cases determine which platform question is even worth asking.
