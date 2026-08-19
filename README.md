@@ -32,6 +32,7 @@ A complete published guide (docs site, built from this repo) covering:
 | `techniques/` | Production-tested patterns with token-economics math |
 | `frameworks/` | Roadmap checklist, readiness assessments, vendor question bank |
 | `blueprints/` | Department and vertical target-state blueprints |
+| `vendors/` | The vendor hub: coverage matrix, profiles, adoption pathways |
 | `knowledge/` | Captured practitioner knowledge (structured interviews), citable like any source |
 | `inputs/` | Raw canonical inputs (unvetted research material, not guide content) |
 | `site/` | The docs site (added in the publication phase) |
@@ -49,7 +50,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 4. Synthesis + techniques library | Synthesis complete: master target state, concerns matrix, memory pipelines, economics, sovereignty, identity and security, learning loops. Techniques library open and growing |
 | 5. Roadmap framework | Published: nine-factor roadmap generator and the use-case portfolio framework |
 | 6. Blueprints | Published: 7 department and 4 vertical blueprints |
-| 7. Vendor analysis | Not started |
+| 7. Vendor analysis | Published: question bank, scorecard, coverage matrix, 10 profiles, adoption pathways |
 | 8. Publication | Not started |
 
 ## Contributing
