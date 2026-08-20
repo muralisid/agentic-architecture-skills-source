@@ -16,10 +16,9 @@ Two failures push teams toward this technique.
 
 1. **The LLM designs; it does not execute.** For the use case at hand, an LLM proposes a taxonomy of semantic views (for example: the problem discussed, the identity of the speaker, the intent expressed) and the vocabulary that defines each. A human curates and hardens the taxonomy. This design step is the alignment mechanism: views must match the questions the system will be asked.
 2. **Each item gets multiple cards.** For every content item, short purpose-specific texts (cards) are built per view, from extracted signals plus a snippet of the source. Each card is embedded separately with a small encoder, in one batched pass. The result is several vectors per item, each meaning one thing.
-3. **A cheap gate filters the corpus.** A composite cosine score against small sets of anchor phrases (domain, objective, intent) acts as a multi-prototype classifier: a high-recall pre-filter costing embedding arithmetic, not LLM tokens. Items below threshold are quarantined, not deleted.
+3. **A cheap pre-filter reduces the corpus.** Before any expensive step, an embedding-space filter removes items that are out of scope for the use case. The point is that the filter costs embedding arithmetic rather than LLM tokens, so it can run over the whole corpus.
 4. **Structure is discovered, then named.** Survivors are clustered; density clustering over reduced embeddings handles unknown cluster counts and noise. An LLM then names and consolidates topics working from keyword lists, never from raw documents, so LLM cost scales with the number of topics, not the number of items.
 5. **Retrieval reads the right cards.** Queries search the card subset matching their purpose; scores can combine across cards. Lexical search (BM25) rides alongside for identifiers and exact phrases, fused by reciprocal rank.
-6. **New items assign before anything re-clusters.** Incoming content is first assigned to existing clusters by similarity; discovery runs only on the unassigned residue, keeping structure stable as the corpus grows.
 
 ## Worked example
 
@@ -52,14 +51,13 @@ The cost advantage is a scaling law, not a one-off saving: O(N) embeddings plus 
 
 1. **Taxonomy-query misalignment.** Views nobody queries add storage without recall; queried aspects without a view reproduce the muddy-vector problem. The LLM-designs-human-curates step is the control.
 2. **Encoder-domain mismatch.** Small general encoders can lose separability on specialized jargon. Test first: label a small stratified sample and measure the gate's discrimination (AUC); swap or adapt the encoder if the margin is weak.
-3. **Long documents.** Snippet truncation that works for short posts is invalid for long documents; cards must be built from extracted spans and overlapping sub-chunks.
-4. **ACL leakage through derived artifacts.** Topic labels, centroids, and summaries derived from restricted documents can leak across permission boundaries; derivation must be permission-partitioned or filtered. This constraint barely exists in public social data and is mandatory in the enterprise.
-5. **Diversity without a guard.** Deliberately including low-similarity results helps coverage-driven, multi-answer questions and shows no benefit on simple factual QA (DIVA, NAACL 2025; ARAGOG, 2024); the most damaging additions are topically adjacent passages that do not answer (The Distracting Effect, ACL 2025). Scope diversity to the query classes it serves, and measure it with coverage-aware metrics (alpha-nDCG, sub-question coverage), which plain recall cannot see.
-6. **Index bloat.** Multiple vectors per item multiply storage; coarse purpose-views are the compromise between one muddy vector and per-token late interaction, whose storage runs 10-30x dense retrieval (ColBERT family critiques).
+3. **Long documents.** A card-building recipe tuned on short items does not transfer to long documents. Evaluate the chunking approach per corpus rather than carrying one recipe across both.
+4. **Permission leakage through derived artifacts.** Anything derived from restricted documents inherits their access constraints. This barely exists in public social data and is mandatory in the enterprise; the general treatment is in the data-engineering track.
+5. **Index bloat.** Multiple vectors per item multiply storage; coarse purpose-views are the compromise between one muddy vector and per-token late interaction, whose storage runs 10-30x dense retrieval (ColBERT family critiques).
 
 ## Transfer status and conditions
 
-Validated in the social media domain; conditionally valid for large enterprise corpora on analysis, with five testable conditions before commitment: measured gate separability on the target domain; a query-aligned view taxonomy; span-based card extraction for long documents; lexical hybrid for identifiers; and ACL-aware derivation of all artifacts. Empirical enterprise validation is future work.
+Validated in the social media domain; conditionally valid for large enterprise corpora on analysis. The conditions that matter before committing are a view taxonomy aligned to the questions the system will actually be asked, an encoder that separates your domain's language, and a lexical hybrid for identifiers. Empirical enterprise validation is future work.
 
 ## References
 
@@ -70,6 +68,5 @@ Validated in the social media domain; conditionally valid for large enterprise c
 - Anthropic, Contextual Retrieval, Sep 2024. https://www.anthropic.com/news/contextual-retrieval [vendor]
 - Multi-View Document Representation Learning, ACL 2022. https://aclanthology.org/2022.acl-long.414/ ; MADRAL, KDD 2022 ; Dense X Retrieval, EMNLP 2024. https://arxiv.org/abs/2312.06648
 - Weller et al., When do Generative Query and Document Expansions Fail?, EACL 2024. https://arxiv.org/abs/2309.08541
-- DIVA, NAACL 2025. https://aclanthology.org/2025.naacl-long.56/ ; ARAGOG, arXiv Apr 2024. https://arxiv.org/abs/2404.01037 ; The Distracting Effect, ACL 2025. https://arxiv.org/abs/2505.06914
 - TREX, arXiv Mar 2025. https://arxiv.org/abs/2503.02922 ; BERTopic, 2022. https://maartengr.github.io/BERTopic/
 - ColBERTv2, NAACL 2022. https://arxiv.org/abs/2112.01488
