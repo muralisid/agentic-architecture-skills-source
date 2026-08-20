@@ -14,7 +14,7 @@ export interface WallChartProps {
 export function WallChart({
   src = '/diagrams/target-state.svg',
   title = 'The agentic enterprise, on one page',
-  caption = 'Fourteen layers with their control point and key mechanisms, grouped into the seven planes. The ten cross-cutting concerns run as columns across every layer, marked where each layer owns or enforces them. The four deterministic zones sit underneath as boundaries no model decision crosses.',
+  caption = 'Fourteen layers with their control point, key mechanisms, and the products that serve them, grouped into the seven planes. The ten cross-cutting concerns run as columns across every layer, marked where each layer owns or enforces them, with their own product categories below. The four deterministic zones sit underneath as boundaries no model decision crosses. Products are named for orientation as of August 2026: representative, not exhaustive, and not endorsements.',
 }: WallChartProps) {
   return (
     <figure className="not-prose my-8 w-full max-w-none rounded-2xl border bg-fd-background p-4 shadow-sm sm:p-6 xl:-mx-12 xl:w-[calc(100%+6rem)] print:break-inside-avoid print:shadow-none">
@@ -47,7 +47,7 @@ export function WallChart({
         tabIndex={0}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={title} className="block h-auto w-[1940px] max-w-none" />
+        <img src={src} alt={title} className="block h-auto w-[2270px] max-w-none" />
       </div>
 
       <figcaption className="mt-4 text-sm leading-6 text-fd-muted-foreground">

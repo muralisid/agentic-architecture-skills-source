@@ -27,46 +27,60 @@ const PLANES = {
 const LAYERS = [
   { code: 'R01', name: 'Infrastructure and compute', plane: 'execution',
     control: 'Capability-tiered isolation and egress allowlists',
-    mech: ['microVM sandboxes', 'Workload identity (ID2 floor)', 'Durable, resumable sessions'] },
+    mech: ['microVM sandboxes', 'Workload identity (ID2 floor)', 'Durable, resumable sessions'],
+    prod: ["Runtimes: Bedrock AgentCore, Vertex Agent Engine, Foundry", "Sandboxes: E2B, Daytona, Modal, K8s Agent Sandbox", "Durability: Temporal, Restate, DBOS, Inngest"] },
   { code: 'R07', name: 'Agent platform', plane: 'execution',
     control: 'Harness caps and eval-gated registry promotion',
-    mech: ['Explicit termination', 'Artifacts-as-state', 'Separate verification path'] },
+    mech: ['Explicit termination', 'Artifacts-as-state', 'Separate verification path'],
+    prod: ["Frameworks: LangGraph, OpenAI + Claude Agent SDKs, MS Agent Framework", "Runtimes: AgentCore, Vertex Agent Engine, Foundry", "Portable: Agent Skills, A2A"] },
   { code: 'R03', name: 'Integration fabric', plane: 'action',
     control: 'One gateway is the single enforcement point',
-    mech: ['MCP tool contract', 'Token exchange, OBO', 'Idempotency and receipts'] },
+    mech: ['MCP tool contract', 'Token exchange, OBO', 'Idempotency and receipts'],
+    prod: ["APIM: Kong, Apigee, Azure APIM, AWS API Gateway, WSO2, Tyk", "Dedicated MCP: agentgateway, IBM ContextForge, Docker MCP Gateway", "Registry: Azure API Center (private-registry pattern)"] },
   { code: 'R04', name: 'Systems of record', plane: 'action',
     control: 'Entitlement stays in the record system',
-    mech: ['Run-as-user', 'Consequence-class write gates', 'Eval gate on vendor releases'] },
+    mech: ['Run-as-user', 'Consequence-class write gates', 'Eval gate on vendor releases'],
+    prod: ["Salesforce Agentforce, ServiceNow AI Agents + Action Fabric", "Workday Illuminate + ASoR, Oracle Fusion AI Agents", "SAP Joule (embedded-only), MS Agent 365 (governance plane)"] },
   { code: 'R05', name: 'Line of business and OT', plane: 'action',
     control: 'Information path only; operator holds authority',
-    mech: ['Validation loop before display', 'Alert channel, not alarms', 'Tested revert-to-manual'] },
+    mech: ['Validation loop before display', 'Alert channel, not alarms', 'Tested revert-to-manual'],
+    prod: ["Honeywell Alarm Guidance, Yokogawa FKDPP (RL, not LLM)", "IBM Maximo agents, SAP asset and service agents", "NREL eGridGPT (reference architecture, not a product)"] },
   { code: 'R02', name: 'Data platform', plane: 'knowledge',
     control: 'Fail-close ACL pre-filter inside the query',
-    mech: ['Permission crawl into index', 'Semantic contracts', 'CDC-fed freshness'] },
+    mech: ['Permission crawl into index', 'Semantic contracts', 'CDC-fed freshness'],
+    prod: ["Substrate: pgvector, pgvectorscale, S3 Vectors, Pinecone, Qdrant", "Semantics: dbt Semantic Layer, Cube, Snowflake, Databricks, OSI", "Permission-aware: Glean, Azure AI Search ACLs, Amazon Q, SpiceDB"] },
   { code: 'R14', name: 'Agent data engineering', plane: 'knowledge',
     control: 'Provenance at parse time; erasure cascades',
-    mech: ['Version-stamped embeddings', 'Memory write quarantine', 'Deleted-vector exclusion sets'] },
+    mech: ['Version-stamped embeddings', 'Memory write quarantine', 'Deleted-vector exclusion sets'],
+    prod: ["Parsing: Docling, LlamaParse, Unstructured", "Memory: Mem0, Zep, Letta, AgentCore Memory, Vertex Memory Bank", "Freshness: Debezium, Flink CDC, Tableflow"] },
   { code: 'R10', name: 'Security and identity', plane: 'control',
     control: 'Deterministic PDP on every consequential action',
-    mech: ['JIT least privilege', 'Short-lived credentials', 'Guardrails advisory only'] },
+    mech: ['JIT least privilege', 'Short-lived credentials', 'Guardrails advisory only'],
+    prod: ["Identity: Entra Agent ID, Okta for AI Agents, CyberArk, SailPoint", "Policy: Cedar, OPA/Rego, OpenFGA, SpiceDB, FIDES", "NHI and AIDR: Astrix, Oasis, Entro; Zenity, Noma, WitnessAI"] },
   { code: 'R11', name: 'Governance, risk, sovereignty', plane: 'control',
     control: 'Registry, evidence tier, kill switch before autonomy',
-    mech: ['Autonomy risk tiers', 'Evidence floor and Article-12 tier', 'Classification-routed deployment'] },
+    mech: ['Autonomy risk tiers', 'Evidence floor and Article-12 tier', 'Classification-routed deployment'],
+    prod: ["ServiceNow AI Control Tower, Microsoft Purview for Agents", "OneTrust, Credo AI, Holistic AI, IBM watsonx.governance", "Standards: ISO 42001, 42005, 42006"] },
   { code: 'R06', name: 'Intelligence and learning', plane: 'improvement',
     control: 'Counterexample-gated promotion with a demotion path',
-    mech: ['Expert-owned eval bar', 'Calibrated, pinned judges', 'Optimizer and evaluator decoupled'] },
+    mech: ['Expert-owned eval bar', 'Calibrated, pinned judges', 'Optimizer and evaluator decoupled'],
+    prod: ["Flywheel: NVIDIA Data Flywheel, Databricks Agent Bricks + Judge Builder", "Evals: LangSmith, Braintrust, Arize Phoenix", "Adaptation: OpenAI RFT, on-policy distillation"] },
   { code: 'R12', name: 'Observability and FinOps', plane: 'evidence',
     control: 'Collection outside the agent; hard budget caps',
-    mech: ['Session, model, tool spans', 'Schema translation layer', 'Shadow, canary, full'] },
+    mech: ['Session, model, tool spans', 'Schema translation layer', 'Shadow, canary, full'],
+    prod: ["APM: Datadog, New Relic, Dynatrace, Grafana, Elastic", "Eval-native: LangSmith, Braintrust, Langfuse (OSS)", "Standards: OTel GenAI (not stable), FOCUS 1.3"] },
   { code: 'R08', name: 'Productivity and collaboration', plane: 'human',
     control: 'Access identity default; presence by exception',
-    mech: ['Service principal + sponsor', 'Presence by capability surface', 'Shadow-usage telemetry'] },
+    mech: ['Service principal + sponsor', 'Presence by capability surface', 'Shadow-usage telemetry'],
+    prod: ["M365 Copilot + Agent 365, Google Workspace Gemini", "Teams Facilitator, Slack agents", "Notetakers: Otter, Granola and similar"] },
   { code: 'R09', name: 'Experience and channels', plane: 'human',
     control: 'Separate edge on the shared control plane',
-    mech: ['Disclosure at first contact', 'Escalation to a staffed queue', 'Resolution, not containment'] },
+    mech: ['Disclosure at first contact', 'Escalation to a staffed queue', 'Resolution, not containment'],
+    prod: ["CCaaS platforms; Intercom Fin, Zendesk, Sierra", "Suite-embedded service agents", "Commerce protocols: ACP, UCP, AP2"] },
   { code: 'R13', name: 'Supervision and oversight', plane: 'human',
     control: 'Burst-rate oversight capacity, never a daily average',
-    mech: ['Fan-out incl. wait time', 'Escalation mix by trigger', 'Alarms on alarms'] },
+    mech: ['Fan-out incl. wait time', 'Escalation mix by trigger', 'Alarms on alarms'],
+    prod: ["Entra ID Governance (agent sponsors)", "Workday Agent System of Record", "ServiceNow AI Control Tower (kill switches)"] },
 ];
 
 const CONCERNS = [
@@ -82,6 +96,19 @@ const CONCERNS = [
   { id: 'C10', label: 'Resilience', owns: ['R01'], enforces: ['R03', 'R12', 'R05', 'R02'] },
 ];
 
+const CONCERN_PRODUCTS = [
+  ['C1  Identity and access', 'Entra Agent ID, Okta for AI Agents, CyberArk, SailPoint, SPIFFE/WIMSE'],
+  ['C2  Observability', 'Datadog, New Relic, Dynatrace, LangSmith, Braintrust, Langfuse'],
+  ['C3  Traceability and audit', 'Microsoft Purview, OneTrust, Credo AI, IBM watsonx.governance'],
+  ['C4  Grounding', 'Glean, Azure AI Search ACLs, Amazon Q, dbt Semantic Layer, Cube'],
+  ['C5  Impersonation', 'Disclosure and content-marking tooling; thin market, mostly platform features'],
+  ['C6  Sovereignty', 'AWS European Sovereign Cloud, Google Distributed Cloud, sovereign regions'],
+  ['C7  Privacy', 'OneTrust, Purview, erasure and DSAR tooling reaching derived artifacts'],
+  ['C8  Safety and oversight', 'ServiceNow AI Control Tower; guardrail products, advisory only'],
+  ['C9  Cost accountability', 'LiteLLM budgets, Agent 365 billing policies, FOCUS 1.3, Tokenomics'],
+  ['C10  Resilience', 'Temporal, Restate, DBOS, Inngest; degraded-mode design is yours'],
+];
+
 const ZONES = [
   ['Access and entitlements', 'Rule over verified identity; risk scores advise'],
   ['Movement of money', 'Scoped, revocable mandates; fraud models advise'],
@@ -92,19 +119,22 @@ const ZONES = [
 // Geometry
 const M = 44;
 const HEADER_H = 176;
-const ROW_H = 74;
+const ROW_H = 80;
 const PLANE_W = 142;
 const CODE_W = 74;
-const NAME_W = 268;
-const CTRL_W = 396;
-const MECH_W = 452;
+const NAME_W = 252;
+const CTRL_W = 360;
+const MECH_W = 404;
+const PROD_W = 430;
 const CONCERN_W = 52;
 const CONCERN_HEAD_H = 196;
-const GRID_X = M + PLANE_W + CODE_W + NAME_W + CTRL_W + MECH_W;
+const GRID_X = M + PLANE_W + CODE_W + NAME_W + CTRL_W + MECH_W + PROD_W;
 const GRID_W = CONCERN_W * CONCERNS.length;
 const ROWS_Y = M + HEADER_H + CONCERN_HEAD_H;
 const ROWS_H = ROW_H * LAYERS.length;
-const ZONE_Y = ROWS_Y + ROWS_H + 56;
+const CPROD_Y = ROWS_Y + ROWS_H + 44;
+const CPROD_H = 150;
+const ZONE_Y = CPROD_Y + CPROD_H + 34;
 const ZONE_H = 118;
 const W = GRID_X + GRID_W + M;
 const H = ZONE_Y + ZONE_H + 96;
@@ -121,6 +151,8 @@ p(`<rect width="${W}" height="${H}" fill="#ffffff"/>`);
 // Header
 p(`<text x="${M}" y="${M + 42}" font-size="40" font-weight="700" fill="#0f172a">The agentic enterprise, on one page</text>`);
 p(`<text x="${M}" y="${M + 76}" font-size="18" fill="#475569">Fourteen layers of estate. Seven planes of agent system across them. Ten concerns through every layer. Four boundaries no model decision crosses.</text>`);
+p(`<text x="${W - M}" y="${M + 42}" font-size="12.5" fill="#94a3b8" text-anchor="end">Products named for orientation as of August 2026. Representative, not exhaustive,</text>`);
+p(`<text x="${W - M}" y="${M + 60}" font-size="12.5" fill="#94a3b8" text-anchor="end">and not endorsements. Vendor capability claims are vendor-published.</text>`);
 
 const rules = [
   ['Rule 1', 'Enforcement lives in the control plane, never in the execution plane. An instruction in a prompt is a preference; the same rule at a gateway is a control.'],
@@ -140,6 +172,7 @@ const cols = [
   [M + PLANE_W, 'LAYER'],
   [M + PLANE_W + CODE_W + NAME_W, 'CONTROL POINT'],
   [M + PLANE_W + CODE_W + NAME_W + CTRL_W, 'KEY MECHANISMS'],
+  [M + PLANE_W + CODE_W + NAME_W + CTRL_W + MECH_W, 'REPRESENTATIVE PRODUCTS, AUG 2026'],
 ];
 cols.forEach(([x, label]) => p(`<text x="${x}" y="${headY}" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">${label}</text>`));
 p(`<text x="${GRID_X}" y="${ROWS_Y - CONCERN_HEAD_H + 16}" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">CROSS-CUTTING CONCERNS, THROUGH EVERY LAYER</text>`);
@@ -191,6 +224,10 @@ LAYERS.forEach((layer, i) => {
   p(`<text x="${xCode + 18}" y="${y + 43}" font-size="15" font-weight="700" fill="${hue}">${layer.code}</text>`);
   p(`<text x="${xName}" y="${y + 43}" font-size="17" font-weight="600" fill="#0f172a">${esc(layer.name)}</text>`);
   p(`<text x="${xCtrl}" y="${y + 39}" font-size="14.5" fill="#0f172a">${esc(layer.control)}</text>`);
+  const xProd = xMech + MECH_W;
+  (layer.prod ?? []).forEach((pr, j) => {
+    p(`<text x="${xProd}" y="${y + 21 + j * 16}" font-size="12" fill="#64748b">${esc(pr)}</text>`);
+  });
   layer.mech.forEach((m, j) => {
     const mx = xMech;
     const my = y + 18 + j * 15.5;
@@ -216,6 +253,22 @@ LAYERS.forEach((layer, i) => {
     }
   });
 });
+
+// Products that serve the cross-cutting concerns
+p(`<rect x="${M}" y="${CPROD_Y}" width="${W - 2 * M}" height="${CPROD_H}" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>`);
+p(`<text x="${M + 24}" y="${CPROD_Y + 30}" font-size="16" font-weight="700" fill="#0f172a">Products serving the cross-cutting concerns</text>`);
+p(`<text x="${M + 24}" y="${CPROD_Y + 50}" font-size="12.5" fill="#64748b">Concerns are properties, not products. These are the categories that carry them; the enforcement point still sits where the matrix above says it does.</text>`);
+{
+  const colW = (W - 2 * M - 48) / 2;
+  CONCERN_PRODUCTS.forEach(([name, prods], i) => {
+    const col = i % 2;
+    const row = Math.floor(i / 2);
+    const cx = M + 24 + col * colW;
+    const cy = CPROD_Y + 74 + row * 19;
+    p(`<text x="${cx}" y="${cy}" font-size="12" font-weight="700" fill="#334155">${esc(name)}</text>`);
+    p(`<text x="${cx + 168}" y="${cy}" font-size="12" fill="#64748b">${esc(prods)}</text>`);
+  });
+}
 
 // Deterministic zones
 p(`<rect x="${M}" y="${ZONE_Y}" width="${W - 2 * M}" height="${ZONE_H}" rx="12" fill="#0f172a"/>`);
