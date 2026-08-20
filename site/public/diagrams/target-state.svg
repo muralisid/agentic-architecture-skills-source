@@ -1,0 +1,529 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1940 1722" width="1940" height="1722" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-labelledby="wallTitle wallDesc">
+<title id="wallTitle">The agentic enterprise target-state architecture on one page</title>
+<desc id="wallDesc">Fourteen enterprise layers grouped into seven planes. Each layer shows its control point and three key mechanisms. Ten cross-cutting concerns run as columns across every layer, marked where each layer owns or enforces them. Four deterministic zones sit underneath as boundaries that no model decision crosses.</desc>
+<rect width="1940" height="1722" fill="#ffffff"/>
+<text x="44" y="86" font-size="40" font-weight="700" fill="#0f172a">The agentic enterprise, on one page</text>
+<text x="44" y="120" font-size="18" fill="#475569">Fourteen layers of estate. Seven planes of agent system across them. Ten concerns through every layer. Four boundaries no model decision crosses.</text>
+<rect x="44" y="140" width="58" height="26" rx="6" fill="#0f172a"/>
+<text x="73" y="158" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Rule 1</text>
+<text x="114" y="158" font-size="15" fill="#0f172a">Enforcement lives in the control plane, never in the execution plane. An instruction in a prompt is a preference; the same rule at a gateway is a control.</text>
+<rect x="44" y="178" width="58" height="26" rx="6" fill="#0f172a"/>
+<text x="73" y="196" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Rule 2</text>
+<text x="114" y="196" font-size="15" fill="#0f172a">The evidence plane is fed by collection the agent cannot influence. Anything an agent reports about itself is testimony, not evidence.</text>
+<text x="44" y="400" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">PLANE</text>
+<text x="186" y="400" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">LAYER</text>
+<text x="528" y="400" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">CONTROL POINT</text>
+<text x="924" y="400" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">KEY MECHANISMS</text>
+<text x="1376" y="236" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">CROSS-CUTTING CONCERNS, THROUGH EVERY LAYER</text>
+<text transform="translate(1402 386) rotate(-90)" font-size="13" fill="#334155">Identity and access</text>
+<text transform="translate(1417 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C1</text>
+<text transform="translate(1454 386) rotate(-90)" font-size="13" fill="#334155">Observability</text>
+<text transform="translate(1469 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C2</text>
+<text transform="translate(1506 386) rotate(-90)" font-size="13" fill="#334155">Traceability and audit</text>
+<text transform="translate(1521 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C3</text>
+<text transform="translate(1558 386) rotate(-90)" font-size="13" fill="#334155">Grounding</text>
+<text transform="translate(1573 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C4</text>
+<text transform="translate(1610 386) rotate(-90)" font-size="13" fill="#334155">Impersonation</text>
+<text transform="translate(1625 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C5</text>
+<text transform="translate(1662 386) rotate(-90)" font-size="13" fill="#334155">Sovereignty</text>
+<text transform="translate(1677 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C6</text>
+<text transform="translate(1714 386) rotate(-90)" font-size="13" fill="#334155">Privacy</text>
+<text transform="translate(1729 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C7</text>
+<text transform="translate(1766 386) rotate(-90)" font-size="13" fill="#334155">Safety and oversight</text>
+<text transform="translate(1781 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C8</text>
+<text transform="translate(1818 386) rotate(-90)" font-size="13" fill="#334155">Cost accountability</text>
+<text transform="translate(1833 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C9</text>
+<text transform="translate(1870 386) rotate(-90)" font-size="13" fill="#334155">Resilience</text>
+<text transform="translate(1885 386) rotate(-90)" font-size="11" font-weight="700" fill="#94a3b8">C10</text>
+<rect x="44" y="419" width="128" height="142" rx="10" fill="#8b5cf6" fill-opacity="0.10" stroke="#8b5cf6" stroke-opacity="0.45"/>
+<text x="60" y="444" font-size="17" font-weight="700" fill="#8b5cf6">Execution</text>
+<text x="60" y="466" font-size="12" fill="#64748b">Where agent</text>
+<text x="60" y="481" font-size="12" fill="#64748b">work runs</text>
+<rect x="44" y="567" width="128" height="216" rx="10" fill="#3b82f6" fill-opacity="0.10" stroke="#3b82f6" stroke-opacity="0.45"/>
+<text x="60" y="592" font-size="17" font-weight="700" fill="#3b82f6">Action</text>
+<text x="60" y="614" font-size="12" fill="#64748b">How agents</text>
+<text x="60" y="629" font-size="12" fill="#64748b">reach systems</text>
+<rect x="44" y="789" width="128" height="142" rx="10" fill="#14b8a6" fill-opacity="0.10" stroke="#14b8a6" stroke-opacity="0.45"/>
+<text x="60" y="814" font-size="17" font-weight="700" fill="#14b8a6">Knowledge</text>
+<text x="60" y="836" font-size="12" fill="#64748b">What agents</text>
+<text x="60" y="851" font-size="12" fill="#64748b">know</text>
+<rect x="44" y="937" width="128" height="142" rx="10" fill="#64748b" fill-opacity="0.10" stroke="#64748b" stroke-opacity="0.45"/>
+<text x="60" y="962" font-size="17" font-weight="700" fill="#64748b">Control</text>
+<text x="60" y="984" font-size="12" fill="#64748b">What is allowed</text>
+<rect x="44" y="1085" width="128" height="68" rx="10" fill="#a855f7" fill-opacity="0.10" stroke="#a855f7" stroke-opacity="0.45"/>
+<text x="60" y="1110" font-size="17" font-weight="700" fill="#a855f7">Improvement</text>
+<text x="60" y="1132" font-size="12" fill="#64748b">How behaviour</text>
+<text x="60" y="1147" font-size="12" fill="#64748b">changes</text>
+<rect x="44" y="1159" width="128" height="68" rx="10" fill="#0ea5e9" fill-opacity="0.10" stroke="#0ea5e9" stroke-opacity="0.45"/>
+<text x="60" y="1184" font-size="17" font-weight="700" fill="#0ea5e9">Evidence</text>
+<text x="60" y="1206" font-size="12" fill="#64748b">What you can</text>
+<text x="60" y="1221" font-size="12" fill="#64748b">prove</text>
+<rect x="44" y="1233" width="128" height="216" rx="10" fill="#f59e0b" fill-opacity="0.10" stroke="#f59e0b" stroke-opacity="0.45"/>
+<text x="60" y="1258" font-size="17" font-weight="700" fill="#f59e0b">Human</text>
+<text x="60" y="1280" font-size="12" fill="#64748b">Who decides and</text>
+<text x="60" y="1295" font-size="12" fill="#64748b">answers</text>
+<rect x="186" y="419" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="419" width="5" height="68" rx="2.5" fill="#8b5cf6"/>
+<text x="204" y="459" font-size="15" font-weight="700" fill="#8b5cf6">R01</text>
+<text x="260" y="459" font-size="17" font-weight="600" fill="#0f172a">Infrastructure and compute</text>
+<text x="528" y="455" font-size="14.5" fill="#0f172a">Capability-tiered isolation and egress allowlists</text>
+<circle cx="928" cy="430" r="2.6" fill="#8b5cf6" fill-opacity="0.75"/>
+<text x="938" y="434" font-size="12.5" fill="#475569">microVM sandboxes</text>
+<circle cx="928" cy="445.5" r="2.6" fill="#8b5cf6" fill-opacity="0.75"/>
+<text x="938" y="449.5" font-size="12.5" fill="#475569">Workload identity (ID2 floor)</text>
+<circle cx="928" cy="461" r="2.6" fill="#8b5cf6" fill-opacity="0.75"/>
+<text x="938" y="465" font-size="12.5" fill="#475569">Durable, resumable sessions</text>
+<rect x="1376" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="453" r="8" fill="none" stroke="#8b5cf6" stroke-width="2.4"/>
+<rect x="1428" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="453" r="8" fill="none" stroke="#8b5cf6" stroke-width="2.4"/>
+<rect x="1480" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="453" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="453" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="453" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="453" r="8" fill="none" stroke="#8b5cf6" stroke-width="2.4"/>
+<rect x="1688" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="453" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="453" r="8" fill="none" stroke="#8b5cf6" stroke-width="2.4"/>
+<rect x="1792" y="419" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="453" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="419" width="48" height="68" rx="7" fill="#8b5cf6" fill-opacity="0.18" stroke="#8b5cf6" stroke-opacity="0.6"/>
+<circle cx="1868" cy="453" r="9" fill="#8b5cf6"/>
+<text x="1868" y="457.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="186" y="493" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="493" width="5" height="68" rx="2.5" fill="#8b5cf6"/>
+<text x="204" y="533" font-size="15" font-weight="700" fill="#8b5cf6">R07</text>
+<text x="260" y="533" font-size="17" font-weight="600" fill="#0f172a">Agent platform</text>
+<text x="528" y="529" font-size="14.5" fill="#0f172a">Harness caps and eval-gated registry promotion</text>
+<circle cx="928" cy="504" r="2.6" fill="#8b5cf6" fill-opacity="0.75"/>
+<text x="938" y="508" font-size="12.5" fill="#475569">Explicit termination</text>
+<circle cx="928" cy="519.5" r="2.6" fill="#8b5cf6" fill-opacity="0.75"/>
+<text x="938" y="523.5" font-size="12.5" fill="#475569">Artifacts-as-state</text>
+<circle cx="928" cy="535" r="2.6" fill="#8b5cf6" fill-opacity="0.75"/>
+<text x="938" y="539" font-size="12.5" fill="#475569">Separate verification path</text>
+<rect x="1376" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="527" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="527" r="8" fill="none" stroke="#8b5cf6" stroke-width="2.4"/>
+<rect x="1480" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="527" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="527" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="527" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="527" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="527" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="527" r="8" fill="none" stroke="#8b5cf6" stroke-width="2.4"/>
+<rect x="1792" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="527" r="8" fill="none" stroke="#8b5cf6" stroke-width="2.4"/>
+<rect x="1844" y="493" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="527" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="567" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="567" width="5" height="68" rx="2.5" fill="#3b82f6"/>
+<text x="204" y="607" font-size="15" font-weight="700" fill="#3b82f6">R03</text>
+<text x="260" y="607" font-size="17" font-weight="600" fill="#0f172a">Integration fabric</text>
+<text x="528" y="603" font-size="14.5" fill="#0f172a">One gateway is the single enforcement point</text>
+<circle cx="928" cy="578" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="582" font-size="12.5" fill="#475569">MCP tool contract</text>
+<circle cx="928" cy="593.5" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="597.5" font-size="12.5" fill="#475569">Token exchange, OBO</text>
+<circle cx="928" cy="609" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="613" font-size="12.5" fill="#475569">Idempotency and receipts</text>
+<rect x="1376" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="601" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1428" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="601" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1480" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="601" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="601" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="601" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1636" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="601" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1688" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="601" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="601" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1792" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="601" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1844" y="567" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="601" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="186" y="641" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="641" width="5" height="68" rx="2.5" fill="#3b82f6"/>
+<text x="204" y="681" font-size="15" font-weight="700" fill="#3b82f6">R04</text>
+<text x="260" y="681" font-size="17" font-weight="600" fill="#0f172a">Systems of record</text>
+<text x="528" y="677" font-size="14.5" fill="#0f172a">Entitlement stays in the record system</text>
+<circle cx="928" cy="652" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="656" font-size="12.5" fill="#475569">Run-as-user</text>
+<circle cx="928" cy="667.5" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="671.5" font-size="12.5" fill="#475569">Consequence-class write gates</text>
+<circle cx="928" cy="683" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="687" font-size="12.5" fill="#475569">Eval gate on vendor releases</text>
+<rect x="1376" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="675" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1428" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="675" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="675" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1532" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="675" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="675" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="675" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="675" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="675" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="675" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1844" y="641" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="675" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="715" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="715" width="5" height="68" rx="2.5" fill="#3b82f6"/>
+<text x="204" y="755" font-size="15" font-weight="700" fill="#3b82f6">R05</text>
+<text x="260" y="755" font-size="17" font-weight="600" fill="#0f172a">Line of business and OT</text>
+<text x="528" y="751" font-size="14.5" fill="#0f172a">Information path only; operator holds authority</text>
+<circle cx="928" cy="726" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="730" font-size="12.5" fill="#475569">Validation loop before display</text>
+<circle cx="928" cy="741.5" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="745.5" font-size="12.5" fill="#475569">Alert channel, not alarms</text>
+<circle cx="928" cy="757" r="2.6" fill="#3b82f6" fill-opacity="0.75"/>
+<text x="938" y="761" font-size="12.5" fill="#475569">Tested revert-to-manual</text>
+<rect x="1376" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="749" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="749" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="749" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="749" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1584" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="749" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="749" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="749" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="749" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="1792" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="749" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="715" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="749" r="8" fill="none" stroke="#3b82f6" stroke-width="2.4"/>
+<rect x="186" y="789" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="789" width="5" height="68" rx="2.5" fill="#14b8a6"/>
+<text x="204" y="829" font-size="15" font-weight="700" fill="#14b8a6">R02</text>
+<text x="260" y="829" font-size="17" font-weight="600" fill="#0f172a">Data platform</text>
+<text x="528" y="825" font-size="14.5" fill="#0f172a">Fail-close ACL pre-filter inside the query</text>
+<circle cx="928" cy="800" r="2.6" fill="#14b8a6" fill-opacity="0.75"/>
+<text x="938" y="804" font-size="12.5" fill="#475569">Permission crawl into index</text>
+<circle cx="928" cy="815.5" r="2.6" fill="#14b8a6" fill-opacity="0.75"/>
+<text x="938" y="819.5" font-size="12.5" fill="#475569">Semantic contracts</text>
+<circle cx="928" cy="831" r="2.6" fill="#14b8a6" fill-opacity="0.75"/>
+<text x="938" y="835" font-size="12.5" fill="#475569">CDC-fed freshness</text>
+<rect x="1376" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="823" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="823" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="823" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="789" width="48" height="68" rx="7" fill="#14b8a6" fill-opacity="0.18" stroke="#14b8a6" stroke-opacity="0.6"/>
+<circle cx="1556" cy="823" r="9" fill="#14b8a6"/>
+<text x="1556" y="827.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1584" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="823" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="823" r="8" fill="none" stroke="#14b8a6" stroke-width="2.4"/>
+<rect x="1688" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="823" r="8" fill="none" stroke="#14b8a6" stroke-width="2.4"/>
+<rect x="1740" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="823" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="823" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="789" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="823" r="8" fill="none" stroke="#14b8a6" stroke-width="2.4"/>
+<rect x="186" y="863" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="863" width="5" height="68" rx="2.5" fill="#14b8a6"/>
+<text x="204" y="903" font-size="15" font-weight="700" fill="#14b8a6">R14</text>
+<text x="260" y="903" font-size="17" font-weight="600" fill="#0f172a">Agent data engineering</text>
+<text x="528" y="899" font-size="14.5" fill="#0f172a">Provenance at parse time; erasure cascades</text>
+<circle cx="928" cy="874" r="2.6" fill="#14b8a6" fill-opacity="0.75"/>
+<text x="938" y="878" font-size="12.5" fill="#475569">Version-stamped embeddings</text>
+<circle cx="928" cy="889.5" r="2.6" fill="#14b8a6" fill-opacity="0.75"/>
+<text x="938" y="893.5" font-size="12.5" fill="#475569">Memory write quarantine</text>
+<circle cx="928" cy="905" r="2.6" fill="#14b8a6" fill-opacity="0.75"/>
+<text x="938" y="909" font-size="12.5" fill="#475569">Deleted-vector exclusion sets</text>
+<rect x="1376" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="897" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="897" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="897" r="8" fill="none" stroke="#14b8a6" stroke-width="2.4"/>
+<rect x="1532" y="863" width="48" height="68" rx="7" fill="#14b8a6" fill-opacity="0.18" stroke="#14b8a6" stroke-opacity="0.6"/>
+<circle cx="1556" cy="897" r="9" fill="#14b8a6"/>
+<text x="1556" y="901.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1584" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="897" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="897" r="8" fill="none" stroke="#14b8a6" stroke-width="2.4"/>
+<rect x="1688" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="897" r="8" fill="none" stroke="#14b8a6" stroke-width="2.4"/>
+<rect x="1740" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="897" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="897" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="863" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="897" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="937" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="937" width="5" height="68" rx="2.5" fill="#64748b"/>
+<text x="204" y="977" font-size="15" font-weight="700" fill="#64748b">R10</text>
+<text x="260" y="977" font-size="17" font-weight="600" fill="#0f172a">Security and identity</text>
+<text x="528" y="973" font-size="14.5" fill="#0f172a">Deterministic PDP on every consequential action</text>
+<circle cx="928" cy="948" r="2.6" fill="#64748b" fill-opacity="0.75"/>
+<text x="938" y="952" font-size="12.5" fill="#475569">JIT least privilege</text>
+<circle cx="928" cy="963.5" r="2.6" fill="#64748b" fill-opacity="0.75"/>
+<text x="938" y="967.5" font-size="12.5" fill="#475569">Short-lived credentials</text>
+<circle cx="928" cy="979" r="2.6" fill="#64748b" fill-opacity="0.75"/>
+<text x="938" y="983" font-size="12.5" fill="#475569">Guardrails advisory only</text>
+<rect x="1376" y="937" width="48" height="68" rx="7" fill="#64748b" fill-opacity="0.18" stroke="#64748b" stroke-opacity="0.6"/>
+<circle cx="1400" cy="971" r="9" fill="#64748b"/>
+<text x="1400" y="975.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1428" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="937" width="48" height="68" rx="7" fill="#64748b" fill-opacity="0.18" stroke="#64748b" stroke-opacity="0.6"/>
+<circle cx="1608" cy="971" r="9" fill="#64748b"/>
+<text x="1608" y="975.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1636" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="937" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="971" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="1011" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="1011" width="5" height="68" rx="2.5" fill="#64748b"/>
+<text x="204" y="1051" font-size="15" font-weight="700" fill="#64748b">R11</text>
+<text x="260" y="1051" font-size="17" font-weight="600" fill="#0f172a">Governance, risk, sovereignty</text>
+<text x="528" y="1047" font-size="14.5" fill="#0f172a">Registry, evidence tier, kill switch before autonomy</text>
+<circle cx="928" cy="1022" r="2.6" fill="#64748b" fill-opacity="0.75"/>
+<text x="938" y="1026" font-size="12.5" fill="#475569">Autonomy risk tiers</text>
+<circle cx="928" cy="1037.5" r="2.6" fill="#64748b" fill-opacity="0.75"/>
+<text x="938" y="1041.5" font-size="12.5" fill="#475569">Evidence floor and Article-12 tier</text>
+<circle cx="928" cy="1053" r="2.6" fill="#64748b" fill-opacity="0.75"/>
+<text x="938" y="1057" font-size="12.5" fill="#475569">Classification-routed deployment</text>
+<rect x="1376" y="1011" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="1045" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="1011" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="1045" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="1011" width="48" height="68" rx="7" fill="#64748b" fill-opacity="0.18" stroke="#64748b" stroke-opacity="0.6"/>
+<circle cx="1504" cy="1045" r="9" fill="#64748b"/>
+<text x="1504" y="1049.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1532" y="1011" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="1045" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="1011" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="1045" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="1011" width="48" height="68" rx="7" fill="#64748b" fill-opacity="0.18" stroke="#64748b" stroke-opacity="0.6"/>
+<circle cx="1660" cy="1045" r="9" fill="#64748b"/>
+<text x="1660" y="1049.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1688" y="1011" width="48" height="68" rx="7" fill="#64748b" fill-opacity="0.18" stroke="#64748b" stroke-opacity="0.6"/>
+<circle cx="1712" cy="1045" r="9" fill="#64748b"/>
+<text x="1712" y="1049.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1740" y="1011" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="1045" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="1011" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="1045" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="1011" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="1045" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="1085" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="1085" width="5" height="68" rx="2.5" fill="#a855f7"/>
+<text x="204" y="1125" font-size="15" font-weight="700" fill="#a855f7">R06</text>
+<text x="260" y="1125" font-size="17" font-weight="600" fill="#0f172a">Intelligence and learning</text>
+<text x="528" y="1121" font-size="14.5" fill="#0f172a">Counterexample-gated promotion with a demotion path</text>
+<circle cx="928" cy="1096" r="2.6" fill="#a855f7" fill-opacity="0.75"/>
+<text x="938" y="1100" font-size="12.5" fill="#475569">Expert-owned eval bar</text>
+<circle cx="928" cy="1111.5" r="2.6" fill="#a855f7" fill-opacity="0.75"/>
+<text x="938" y="1115.5" font-size="12.5" fill="#475569">Calibrated, pinned judges</text>
+<circle cx="928" cy="1127" r="2.6" fill="#a855f7" fill-opacity="0.75"/>
+<text x="938" y="1131" font-size="12.5" fill="#475569">Optimizer and evaluator decoupled</text>
+<rect x="1376" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="1119" r="8" fill="none" stroke="#a855f7" stroke-width="2.4"/>
+<rect x="1584" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="1085" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="1119" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="1159" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="1159" width="5" height="68" rx="2.5" fill="#0ea5e9"/>
+<text x="204" y="1199" font-size="15" font-weight="700" fill="#0ea5e9">R12</text>
+<text x="260" y="1199" font-size="17" font-weight="600" fill="#0f172a">Observability and FinOps</text>
+<text x="528" y="1195" font-size="14.5" fill="#0f172a">Collection outside the agent; hard budget caps</text>
+<circle cx="928" cy="1170" r="2.6" fill="#0ea5e9" fill-opacity="0.75"/>
+<text x="938" y="1174" font-size="12.5" fill="#475569">Session, model, tool spans</text>
+<circle cx="928" cy="1185.5" r="2.6" fill="#0ea5e9" fill-opacity="0.75"/>
+<text x="938" y="1189.5" font-size="12.5" fill="#475569">Schema translation layer</text>
+<circle cx="928" cy="1201" r="2.6" fill="#0ea5e9" fill-opacity="0.75"/>
+<text x="938" y="1205" font-size="12.5" fill="#475569">Shadow, canary, full</text>
+<rect x="1376" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="1193" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="1159" width="48" height="68" rx="7" fill="#0ea5e9" fill-opacity="0.18" stroke="#0ea5e9" stroke-opacity="0.6"/>
+<circle cx="1452" cy="1193" r="9" fill="#0ea5e9"/>
+<text x="1452" y="1197.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1480" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="1193" r="8" fill="none" stroke="#0ea5e9" stroke-width="2.4"/>
+<rect x="1532" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="1193" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="1193" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="1193" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="1193" r="8" fill="none" stroke="#0ea5e9" stroke-width="2.4"/>
+<rect x="1740" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="1193" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="1159" width="48" height="68" rx="7" fill="#0ea5e9" fill-opacity="0.18" stroke="#0ea5e9" stroke-opacity="0.6"/>
+<circle cx="1816" cy="1193" r="9" fill="#0ea5e9"/>
+<text x="1816" y="1197.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1844" y="1159" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="1193" r="8" fill="none" stroke="#0ea5e9" stroke-width="2.4"/>
+<rect x="186" y="1233" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="1233" width="5" height="68" rx="2.5" fill="#f59e0b"/>
+<text x="204" y="1273" font-size="15" font-weight="700" fill="#f59e0b">R08</text>
+<text x="260" y="1273" font-size="17" font-weight="600" fill="#0f172a">Productivity and collaboration</text>
+<text x="528" y="1269" font-size="14.5" fill="#0f172a">Access identity default; presence by exception</text>
+<circle cx="928" cy="1244" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1248" font-size="12.5" fill="#475569">Service principal + sponsor</text>
+<circle cx="928" cy="1259.5" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1263.5" font-size="12.5" fill="#475569">Presence by capability surface</text>
+<circle cx="928" cy="1275" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1279" font-size="12.5" fill="#475569">Shadow-usage telemetry</text>
+<rect x="1376" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="1267" r="8" fill="none" stroke="#f59e0b" stroke-width="2.4"/>
+<rect x="1636" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="1233" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="1267" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="1307" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="1307" width="5" height="68" rx="2.5" fill="#f59e0b"/>
+<text x="204" y="1347" font-size="15" font-weight="700" fill="#f59e0b">R09</text>
+<text x="260" y="1347" font-size="17" font-weight="600" fill="#0f172a">Experience and channels</text>
+<text x="528" y="1343" font-size="14.5" fill="#0f172a">Separate edge on the shared control plane</text>
+<circle cx="928" cy="1318" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1322" font-size="12.5" fill="#475569">Disclosure at first contact</text>
+<circle cx="928" cy="1333.5" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1337.5" font-size="12.5" fill="#475569">Escalation to a staffed queue</text>
+<circle cx="928" cy="1349" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1353" font-size="12.5" fill="#475569">Resolution, not containment</text>
+<rect x="1376" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="1480" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="1341" r="8" fill="none" stroke="#f59e0b" stroke-width="2.4"/>
+<rect x="1584" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="1341" r="8" fill="none" stroke="#f59e0b" stroke-width="2.4"/>
+<rect x="1636" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1764" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="1792" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="1307" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="1341" r="2.2" fill="#cbd5e1"/>
+<rect x="186" y="1381" width="1180" height="68" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="186" y="1381" width="5" height="68" rx="2.5" fill="#f59e0b"/>
+<text x="204" y="1421" font-size="15" font-weight="700" fill="#f59e0b">R13</text>
+<text x="260" y="1421" font-size="17" font-weight="600" fill="#0f172a">Supervision and oversight</text>
+<text x="528" y="1417" font-size="14.5" fill="#0f172a">Burst-rate oversight capacity, never a daily average</text>
+<circle cx="928" cy="1392" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1396" font-size="12.5" fill="#475569">Fan-out incl. wait time</text>
+<circle cx="928" cy="1407.5" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1411.5" font-size="12.5" fill="#475569">Escalation mix by trigger</text>
+<circle cx="928" cy="1423" r="2.6" fill="#f59e0b" fill-opacity="0.75"/>
+<text x="938" y="1427" font-size="12.5" fill="#475569">Alarms on alarms</text>
+<rect x="1376" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1400" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="1428" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1452" cy="1415" r="8" fill="none" stroke="#f59e0b" stroke-width="2.4"/>
+<rect x="1480" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1504" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="1532" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1556" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="1584" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1608" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="1636" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1660" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="1688" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1712" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="1740" y="1381" width="48" height="68" rx="7" fill="#f59e0b" fill-opacity="0.18" stroke="#f59e0b" stroke-opacity="0.6"/>
+<circle cx="1764" cy="1415" r="9" fill="#f59e0b"/>
+<text x="1764" y="1419.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<rect x="1792" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1816" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="1844" y="1381" width="48" height="68" rx="7" fill="#f8fafc" fill-opacity="1" stroke="#e2e8f0" stroke-opacity="1"/>
+<circle cx="1868" cy="1415" r="2.2" fill="#cbd5e1"/>
+<rect x="44" y="1508" width="1852" height="118" rx="12" fill="#0f172a"/>
+<text x="68" y="1540" font-size="17" font-weight="700" fill="#ffffff">Four deterministic zones. Models may inform, never decide.</text>
+<text x="68" y="1562" font-size="13.5" fill="#94a3b8">These hold under every layer above. Three of the four already run machine-learning signals inside them; the decision rule stays deterministic.</text>
+<text x="68" y="1592" font-size="14" font-weight="700" fill="#f8fafc">Access and entitlements</text>
+<text x="68" y="1611" font-size="11.5" fill="#94a3b8">Rule over verified identity; risk scores advise</text>
+<text x="519" y="1592" font-size="14" font-weight="700" fill="#f8fafc">Movement of money</text>
+<text x="519" y="1611" font-size="11.5" fill="#94a3b8">Scoped, revocable mandates; fraud models advise</text>
+<text x="970" y="1592" font-size="14" font-weight="700" fill="#f8fafc">Safety actuation</text>
+<text x="970" y="1611" font-size="11.5" fill="#94a3b8">Standards exclude ML from the function itself</text>
+<text x="1421" y="1592" font-size="14" font-weight="700" fill="#f8fafc">Formal regulatory records</text>
+<text x="1421" y="1611" font-size="11.5" fill="#94a3b8">Drafting permitted; attestation is human</text>
+<circle cx="52" cy="1656" r="9" fill="#334155"/>
+<text x="52" y="1660.5" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">O</text>
+<text x="70" y="1660" font-size="13.5" fill="#334155">Owns the concern: defines the requirement and holds accountability</text>
+<circle cx="512" cy="1656" r="8" fill="none" stroke="#334155" stroke-width="2.4"/>
+<text x="530" y="1660" font-size="13.5" fill="#334155">Enforces it: where a violation is actually stopped</text>
+<circle cx="916" cy="1656" r="2.2" fill="#cbd5e1"/>
+<text x="930" y="1660" font-size="13.5" fill="#334155">Inherits it: must carry the property through without weakening it</text>
+<text x="1896" y="1660" font-size="12.5" fill="#94a3b8" text-anchor="end">Inheritance is where most defects live, because it fails silently.</text>
+</svg>

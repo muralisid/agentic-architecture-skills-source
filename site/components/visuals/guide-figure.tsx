@@ -28,14 +28,24 @@ function FigureSources({ figure }: { figure: FigureManifestEntry }) {
   );
 }
 
+// Types whose layout is genuinely wider than a content column. Everything else
+// reflows, so offering a "larger view" would just render the same thing twice.
+// Almost every figure in the guide is an authors' synthesis of the research, so
+// badging that adds no signal. The badge is reserved for the statuses that
+// change how a reader should treat the diagram.
+const DEFAULT_EVIDENCE = new Set(['author-position', 'conceptual-guide']);
+
+const WIDE_TYPES = new Set(['matrix', 'architecture', 'map', 'swimlane']);
+
 export function GuideFigure({
   id,
   className,
   fullWidth = false,
   showSources = true,
-  zoomable = true,
+  zoomable,
 }: GuideFigureProps) {
   const figure = getFigure(id);
+  const showLargerView = zoomable ?? WIDE_TYPES.has(figure.type);
   const titleId = `figure-${figure.id}-title`;
   const takeawayId = `figure-${figure.id}-takeaway`;
   const descriptionId = `figure-${figure.id}-description`;
@@ -62,7 +72,9 @@ export function GuideFigure({
           <h2 id={titleId} className="mb-0 mt-1 text-lg font-semibold tracking-tight sm:text-xl">{figure.title}</h2>
           <p id={takeawayId} className="mb-0 mt-2 text-sm leading-6 text-fd-muted-foreground">{figure.takeaway}</p>
         </div>
-        <EvidenceBadge status={figure.evidenceStatus} compact />
+        {DEFAULT_EVIDENCE.has(figure.evidenceStatus) ? null : (
+          <EvidenceBadge status={figure.evidenceStatus} compact />
+        )}
       </header>
 
       <DiagramRenderer figure={figure} />
@@ -75,8 +87,9 @@ export function GuideFigure({
         </p>
       ) : null}
 
+      {showLargerView ? (
       <div data-figure-controls className="mt-4 flex flex-col gap-2 border-t pt-4 print:hidden">
-        {zoomable ? (
+        {showLargerView ? (
           <details className="group rounded-lg border bg-fd-card">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-xs font-medium marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring [&::-webkit-details-marker]:hidden">
               Open a larger view
@@ -94,16 +107,8 @@ export function GuideFigure({
             </div>
           </details>
         ) : null}
-        {figure.longDescription ? (
-          <details className="group rounded-lg border bg-fd-card">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-xs font-medium marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring [&::-webkit-details-marker]:hidden">
-              Read the diagram description
-              <span className="text-base motion-safe:transition-transform group-open:rotate-45" aria-hidden="true">+</span>
-            </summary>
-            <p className="m-0 border-t px-3 py-3 text-xs leading-5 text-fd-muted-foreground">{figure.longDescription}</p>
-          </details>
-        ) : null}
       </div>
+      ) : null}
 
       {showSources ? <div className="mt-4"><FigureSources figure={figure} /></div> : null}
     </figure>

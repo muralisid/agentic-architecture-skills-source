@@ -6,6 +6,7 @@ import {
   GlossaryTerm,
   GuideFigure,
   PrincipleCard,
+  WallChart,
   ZoomableDiagram,
 } from '@/components/visuals';
 
@@ -17,6 +18,7 @@ export function getMDXComponents(components?: MDXComponents) {
     GlossaryTerm,
     GuideFigure,
     PrincipleCard,
+    WallChart,
     ZoomableDiagram,
     ...components,
   } satisfies MDXComponents;
