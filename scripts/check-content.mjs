@@ -43,7 +43,52 @@ for (const rel of files) {
   }
 }
 
+// Claims the guide refuses to publish: verified wrong, untraceable, or
+// extrapolations their own source communities reject. Build-failing.
+const DENY_LIST = [
+  '128 robots',
+  '88:1',
+  '6 alarms per hour',
+  'entry-level hiring down 80',
+  '75% of API gateway vendors',
+  '60% of agentic analytics projects',
+];
+const RATIO_PATTERN = /\b\d+\s*(?:agents?\s+per\s+(?:supervisor|reviewer|operator|person)|:\s*1\s+agent-to-(?:operator|supervisor))/i;
+// Scoped to product pages: the research corpus quotes these figures in order
+// to debunk them, which is legitimate; product pages state refusals without
+// repeating the numbers.
+const denyHits = [];
+for (const rel of files) {
+  if (!rel.startsWith('product/')) continue;
+  const text = await readFile(path.join(repoDir, rel), 'utf8');
+  for (const term of DENY_LIST) {
+    if (text.toLowerCase().includes(term.toLowerCase())) denyHits.push(`${rel}: "${term}"`);
+  }
+  if (RATIO_PATTERN.test(text)) denyHits.push(`${rel}: numeric supervision ratio`);
+}
+
+// Every deep layer page carries the five mandatory sections.
+const REQUIRED_H2 = ['## Target state', '## Mechanisms', '## Design decisions', '## Cross-cutting concerns', '## Evidence and limits'];
+const templateMisses = [];
+for (const rel of files) {
+  if (!/^product\/layers\/r\d{2}-/.test(rel)) continue;
+  const text = await readFile(path.join(repoDir, rel), 'utf8');
+  for (const h of REQUIRED_H2) {
+    if (!text.includes(h)) templateMisses.push(`${rel}: missing "${h}"`);
+  }
+}
+
 let failed = false;
+if (denyHits.length) {
+  failed = true;
+  console.error(`FAIL deny-listed claims (${denyHits.length}):`);
+  denyHits.forEach((l) => console.error('  ' + l));
+}
+if (templateMisses.length) {
+  failed = true;
+  console.error(`FAIL layer-page template (${templateMisses.length}):`);
+  templateMisses.forEach((l) => console.error('  ' + l));
+}
 if (emDash.length) {
   failed = true;
   console.error(`FAIL em dashes (${emDash.length}):`);

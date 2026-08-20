@@ -3,31 +3,31 @@ import { appName, repoUrl, sourceRepositoryPublic } from '@/lib/shared';
 import { DiagramRenderer } from '@/components/visuals/diagram-renderer';
 import { getFigure } from '@/lib/figure-manifest';
 
-const industries = [
-  { title: 'Utilities and energy', href: '/industries/utilities-and-energy', body: 'Agents on the information path, operators holding every decision.' },
-  { title: 'Banking and financial services', href: '/industries/banking-and-financial-services', body: 'Decision-ready files everywhere; payments, credit, and filings stay deterministic.' },
-  { title: 'Manufacturing and supply chain', href: '/industries/manufacturing-and-supply-chain', body: 'Exceptions worked overnight, the OT boundary absolute.' },
-  { title: 'Public sector', href: '/industries/public-sector', body: 'Cases arriving decision-ready, every decision explainable on appeal.' },
+const spine = [
+  { title: 'The four deterministic zones', href: '/architecture/deterministic-zones', body: 'Access, money, safety actuation, formal records: where model output stays advisory, and the standards that say so.' },
+  { title: 'The identity and delegation chain', href: '/architecture/identity-chain', body: 'Workload identity, token exchange, run-as-user: how every action stays attributable to the human who asked.' },
+  { title: 'Enforcement outside the model', href: '/architecture/enforcement', body: 'Gateway, policy decision point, promoted policy-as-code, and the measured limits of guardrails.' },
+  { title: 'The data-to-memory pipeline', href: '/architecture/data-to-memory', body: 'Parse, chunk, embed, index, retrieve, cite: provenance intact and erasure that cascades.' },
+  { title: 'The learning flywheel', href: '/architecture/learning-flywheel', body: 'Gated promotion, calibrated judges, staged rollout, and the demotion path most pipelines lack.' },
+  { title: 'The autonomy contract', href: '/architecture/autonomy-contract', body: 'A x L with a controls column that is the contract, readiness gates, and an oversight gate as a burst rate.' },
 ];
 
-const departments = [
-  { title: 'IT and service desk', href: '/departments/it-and-service-desk' },
-  { title: 'Customer service', href: '/departments/customer-service' },
-  { title: 'Finance', href: '/departments/finance' },
-  { title: 'HR', href: '/departments/hr' },
-  { title: 'Sales', href: '/departments/sales' },
-  { title: 'Marketing', href: '/departments/marketing' },
-  { title: 'Supply chain', href: '/departments/supply-chain' },
-];
-
-const answers = [
-  { title: 'How many agents can one person supervise?', href: '/answers/how-many-agents-can-one-person-supervise' },
-  { title: 'What must an agent never decide?', href: '/answers/what-an-agent-must-never-decide' },
-  { title: 'Who pays for the loop?', href: '/answers/who-pays-for-the-loop' },
-  { title: 'Which use cases first?', href: '/answers/which-use-cases-first' },
-  { title: 'The maturity ladder', href: '/answers/the-maturity-ladder' },
-  { title: 'The target architecture', href: '/answers/the-target-architecture' },
-];
+const layers = [
+  ['R01', 'Infrastructure and compute', '/layers/r01-infrastructure'],
+  ['R02', 'Data platform', '/layers/r02-data-platform'],
+  ['R03', 'Integration fabric', '/layers/r03-integration-fabric'],
+  ['R04', 'Systems of record', '/layers/r04-systems-of-record'],
+  ['R05', 'Line of business and OT', '/layers/r05-lob-and-ot'],
+  ['R06', 'Intelligence and learning', '/layers/r06-intelligence-and-learning'],
+  ['R07', 'Agent platform', '/layers/r07-agent-platform'],
+  ['R08', 'Productivity and collaboration', '/layers/r08-productivity-and-collaboration'],
+  ['R09', 'Experience and channels', '/layers/r09-experience-and-channels'],
+  ['R10', 'Security and identity', '/layers/r10-security-and-identity'],
+  ['R11', 'Governance, risk and sovereignty', '/layers/r11-governance-risk-sovereignty'],
+  ['R12', 'Observability and FinOps', '/layers/r12-observability-and-finops'],
+  ['R13', 'Supervision and oversight', '/layers/r13-operating-model'],
+  ['R14', 'Agent data engineering', '/layers/r14-agent-data-engineering'],
+] as const;
 
 export default function HomePage() {
   const hero = getFigure('seven-plane-architecture');
@@ -35,23 +35,23 @@ export default function HomePage() {
   return (
     <main className="flex flex-1 flex-col">
       <section className="mx-auto w-full max-w-5xl px-6 pt-16 pb-10">
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Employees and agents. One team.
+        <p className="text-sm font-medium text-fd-muted-foreground">Target-state architecture for the agentic enterprise</p>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+          Seven planes across fourteen layers.
         </h1>
         <p className="mt-4 max-w-3xl text-lg text-fd-muted-foreground">
-          Agents run the routine work; your people decide, supervise, and handle what matters. This
-          is buildable today, and your plan is already written: pick your industry and walk away
-          with the architecture, the first use cases, and the steps.
+          The components, protocols, control points, and contested choices, with the evidence behind each and
+          the refusals stated plainly. Written for architects who want the design, not the pitch.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <Link
-            href="/industries"
-            className="rounded-lg bg-fd-primary px-5 py-2.5 text-sm font-medium text-fd-primary-foreground"
-          >
-            Pick your industry
+          <Link href="/architecture" className="rounded-lg bg-fd-primary px-5 py-2.5 text-sm font-medium text-fd-primary-foreground">
+            The target-state architecture
           </Link>
-          <Link href="/departments" className="rounded-lg border px-5 py-2.5 text-sm font-medium">
-            Or start with a department
+          <Link href="/layers" className="rounded-lg border px-5 py-2.5 text-sm font-medium">
+            Go layer by layer
+          </Link>
+          <Link href="/decisions" className="rounded-lg border px-5 py-2.5 text-sm font-medium">
+            24 decisions with verdicts
           </Link>
         </div>
       </section>
@@ -64,58 +64,63 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto w-full max-w-5xl px-6 pb-12">
-        <h2 className="text-xl font-semibold">Your industry, done for you</h2>
+        <h2 className="text-xl font-semibold">The cross-layer spine</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          {industries.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-xl border p-5 transition-colors hover:bg-fd-accent"
-            >
-              <h3 className="font-medium">{item.title}</h3>
-              <p className="mt-1.5 mb-0 text-sm text-fd-muted-foreground">{item.body}</p>
+          {spine.map((s) => (
+            <Link key={s.href} href={s.href} className="rounded-xl border p-5 transition-colors hover:bg-fd-accent">
+              <h3 className="font-medium">{s.title}</h3>
+              <p className="mt-1.5 mb-0 text-sm text-fd-muted-foreground">{s.body}</p>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-5xl px-6 pb-12">
-        <h2 className="text-xl font-semibold">Or your department</h2>
-        <div className="mt-4 flex flex-wrap gap-2.5">
-          {departments.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full border px-4 py-2 text-sm font-medium transition-colors hover:bg-fd-accent"
-            >
-              {item.title}
+        <h2 className="text-xl font-semibold">The fourteen layers</h2>
+        <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {layers.map(([code, name, href]) => (
+            <Link key={href} href={href} className="flex items-baseline gap-2.5 rounded-lg border px-4 py-3 text-sm transition-colors hover:bg-fd-accent">
+              <span className="font-mono text-xs text-fd-muted-foreground">{code}</span>
+              <span className="font-medium">{name}</span>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-5xl px-6 pb-16">
-        <h2 className="text-xl font-semibold">The questions everyone reaches</h2>
-        <ul className="mt-4 grid list-none gap-2 p-0 sm:grid-cols-2">
-          {answers.map((item) => (
-            <li key={item.href} className="m-0">
-              <Link href={item.href} className="text-sm font-medium underline-offset-4 hover:underline">
-                {item.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <h2 className="text-xl font-semibold">How this is written</h2>
+        <div className="mt-4 grid gap-6 sm:grid-cols-3">
+          <div>
+            <h3 className="font-medium">Evidence status on every claim</h3>
+            <p className="mt-1.5 text-sm text-fd-muted-foreground">
+              Vendor-published figures are labelled. Author positions are labelled. Unverified claims are excluded
+              and the exclusion is stated.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium">Verdicts, not surveys</h3>
+            <p className="mt-1.5 text-sm text-fd-muted-foreground">
+              Every contested choice ends in a decision with the discriminator that decides your case, and what
+              would change it.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-medium">Gaps published as gaps</h3>
+            <p className="mt-1.5 text-sm text-fd-muted-foreground">
+              Six cross-cutting concerns have no complete answer anywhere. They are listed with their status
+              rather than papered over.
+            </p>
+          </div>
+        </div>
       </section>
 
       <footer className="border-t">
         <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 px-6 py-8 text-sm text-fd-muted-foreground">
           <span>{appName}</span>
           <span className="flex flex-wrap gap-4">
-            <Link href="/vendors" className="hover:text-fd-foreground">Vendors</Link>
-            <Link href="/library" className="hover:text-fd-foreground">The research behind this site</Link>
-            {sourceRepositoryPublic ? (
-              <a href={repoUrl} className="hover:text-fd-foreground">Repository</a>
-            ) : null}
+            <Link href="/architecture/concern-matrix" className="hover:text-fd-foreground">Concern matrix</Link>
+            <Link href="/library" className="hover:text-fd-foreground">Research library</Link>
+            {sourceRepositoryPublic ? <a href={repoUrl} className="hover:text-fd-foreground">Repository</a> : null}
           </span>
         </div>
       </footer>

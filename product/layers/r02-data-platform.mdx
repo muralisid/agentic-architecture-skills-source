@@ -1,0 +1,83 @@
+---
+title: "Data platform"
+description: "Grounding as a governed product: permission-aware indexes with pre-filtered retrieval, semantic contracts where stakes demand determinism, and freshness proportional to decision cadence."
+hero_figure: "layer-02-hero"
+---
+
+## Target state
+
+Grounding is a governed product, not a side effect of a lake. Data agents ground on is well modelled, with governed semantics wherever stakes demand deterministic answers. Indexes are permission-aware and retrieval is pre-filtered on the caller's live identity. Freshness is fed by change-data-capture and sized to decision cadence rather than to fashion. Provenance runs from every answer back to its source span. Catalogs supply ownership, lineage, and definitions as agent context, not as a portal humans visit. Embeddings are treated as recoverable data carrying their sources' classification, and derived artifacts inherit the strictest classification among them.
+
+<GuideFigure id="layer-02-hero" fullWidth />
+
+| Component | Responsibility | Control it hosts | Where it runs |
+|---|---|---|---|
+| Permission crawler | Pull source ACLs into index metadata | Fail-close on sync error | Alongside each connector |
+| Governed index | Serve retrieval with permissions inside the query | Pre-filter on live caller identity | Existing search or vector substrate |
+| Semantic layer | Answer high-stakes numerics deterministically or refuse | Semantic contract; refusal over improvisation | Warehouse or semantic product |
+| CDC pipeline | Keep indexes fresh at decision cadence | Freshness lag as a monitored SLO | Existing streaming or batch estate |
+| Catalog and lineage | Supply ownership, definitions, and lineage as context | Definition authority | Existing catalog |
+| Provenance store | Bind every claim to its source span | Citability by construction | With the index |
+
+## Mechanisms
+
+### ACL-aware retrieval is deterministic security applied to grounding
+
+The shipped pattern: crawl source permissions into index metadata and pre-filter **inside** the vector query on the caller's live identity. Document-level directory ACLs are native on the major search platforms; connector-crawled permission maps ship with fail-close behaviour on errors; and relationship-based engines of the Zanzibar class pre-compute authorized objects for the hard cases. **Post-filtering is the anti-pattern**: it leaks result counts and starves the result set. Four named failure modes survive a correct implementation and must be designed for: permission-sync lag (revocation takes effect at crawl cadence, not at click), group-membership drift, ACL-less documents defaulting to public, and inherited oversharing, where agents amplify a decade of accumulated permission sprawl. Vendor-published estimates put roughly 16% of business-critical data in an overshared state; the mitigation shipped by one major vendor is a scoped-search allowlist that its own documentation calls a stopgap. Hygiene precedes retrieval: no retrieval layer fixes wrong ACLs.
+
+### Embeddings are recoverable data
+
+Exact reconstruction of short inputs from their embeddings has been demonstrated at 92% (vec2text, EMNLP 2023, reproduced 2025). The architectural consequence is not optional: vectors inherit the source's classification, ACLs, residency, and privacy obligations, erasure cascades into vectors and every derived artifact, and this is the reasoning behind the named risk in the OWASP application list. Treat an index as a copy of the data, because that is what it is.
+
+### Semantic contracts convert silent errors into refusals
+
+For high-stakes numeric questions, the value of a governed semantic layer is not accuracy points, it is failure-mode conversion: a wrong number becomes a refusal or a deterministic answer. Ontology-checked querying moved accuracy from 54% to 72% while producing explicit "I do not know" responses on about 8% of questions, which is the property that matters. A vendor paired benchmark reports 98 to 100% via a semantic layer on modelled scope against 84 to 90% for text-to-SQL, at 72.7% coverage of the full question set [vendor]; a semantic-document approach added 17 to 23 points across three frontier models [vendor]. The honest counter-camp reaches comparable accuracy through disciplined data modelling alone and argues that good modelling **is** the semantic layer. The floor everyone should know: on the hardest public text-to-SQL benchmark, frontier models score in the single digits to low twenties, against above 90% on its predecessor.
+
+### The retrieval substrate ladder
+
+Rungs with thresholds, because "which vector database" is the wrong first question. Brute force below roughly 100K vectors. Postgres with pgvector to roughly 1 to 10M (sub-20ms at 1M with above 95% recall; build pain appears around 2M, partitioning becomes necessary past 5M). Scale-out Postgres extensions to roughly 50M, with published comparisons showing large p95 and QPS advantages at 99% recall against a managed peer at lower cost [vendor]. Dedicated or managed engines earn the top rung for extreme scale, heavy write rates, or filter-heavy multi-tenancy, where at 100M vectors with 20%-selectivity filters the Postgres p99 runs several times a purpose-built engine's. Two operational cautions that decide real migrations: index builds consume tens of gigabytes of RAM for hours, and filtered search has recall cliffs. Object-store vector storage reaching general availability at up to 90% lower cost [vendor] tilts the economics toward more, smaller, purpose-scoped indexes rather than one large one.
+
+### Freshness is a cost decision, not a virtue
+
+Change-data-capture feeding incremental indexing delivers minutes-level freshness at close to batch cost. A documented like-for-like requirement priced at about $400 per month as a five-minute batch against about $7,600 per month as streaming; streaming commonly runs an order of magnitude above batch. Streaming is earned by decision cadence: fraud, operational triage, inventory. The failure mechanism to design against is specific: similarity ranking ignores time, so a deprecated document outranks its current replacement unless freshness or validity is part of the ranking.
+
+### Re-embedding is the hidden line item
+
+Model upgrades force full-corpus re-embeds, and the reference costs run from hours on multi-GPU hardware to four figures through an API. The operational discipline: version-stamp every vector, run blue/green index migrations, evaluate embedding models quarterly, and migrate only for eval gains above a stated threshold (5% is the working figure). Cross-model conversion published at roughly 100x cheaper than re-embedding is worth testing before any large migration. Re-embed changed chunks continuously and keep a periodic full re-index as the recovery baseline.
+
+## Design decisions
+
+- **Semantic-layer product vs governed views** ([CD-8](/decisions#cd-8)): per use case, chosen by failure mode rather than accuracy points; the binding variable is curated business context.
+- **Dedicated vector database vs the simplest substrate** ([CD-9](/decisions#cd-9)): climb the ladder; prefer platform-bundled vector where the corpus already lives, because governance and ACL inheritance come free.
+- **Data mesh vs governed central substrate** ([CD-10](/decisions#cd-10)): mesh ideas on a governed substrate; every shipped ACL-sync architecture assumes a governed central index.
+- **Real-time vs batch grounding** ([CD-12](/decisions#cd-12)): CDC is the default; streaming is earned by decision cadence.
+- **One universal index vs use-case-scoped** ([CD-11](/decisions#cd-11)): two layers, resolved on [R14](/layers/r14-agent-data-engineering).
+
+## Cross-cutting concerns
+
+| # | Concern | Treatment at this layer |
+|---|---|---|
+| C1 | Identity and access | ACLs crawled into index metadata; pre-filtered retrieval on live identity; relationship-based pre-computation; fail-close on sync errors |
+| C2 | Observability | Retrieval traces, permission-sync lag metrics, freshness telemetry per index |
+| C3 | Traceability and audit | Answer-to-source-span provenance; embedding model version stamps; lineage carried into agent context |
+| C4 | Grounding | The layer's whole purpose: curated context, semantic contracts, refusal over improvisation |
+| C5 | Impersonation | Source authenticity via connector provenance; no unattributed corpora in grounding |
+| C6 | Sovereignty | Indexes and embeddings carry source residency; region-scoped indexes; derived artifacts inherit the strictest classification |
+| C7 | Privacy | Embeddings treated as personal data where sources are; erasure cascades to vectors and derived artifacts; minimization at index scope |
+| C8 | Safety and oversight | High-stakes numeric answers gated by semantic contracts; refusal behaviour monitored |
+| C9 | Cost | Re-embedding and index costs per corpus; freshness cost against decision cadence |
+| C10 | Resilience | Blue/green index migrations; degraded-mode retrieval; periodic full re-index as the recovery baseline |
+
+## Evidence and limits
+
+The vec2text reconstruction result, the ontology-checked accuracy figures, and the substrate benchmarks are peer-reviewed or reproducible; the semantic-layer coverage comparisons and the substrate performance claims are vendor-published and flagged as such. The oversharing percentage is secondary-sourced and carried with that status. Two refusals: a widely circulated projection that a majority of agentic analytics projects relying solely on tool protocols will fail by 2028 is secondhand with no located primary, and this guide excludes it; and the substrate ladder's rung thresholds are working figures from published benchmarks, not guarantees for your corpus, so measure before you migrate. Re-verify quarterly: platform vector general-availability states, semantic interchange specification adoption, and embedding model releases that would trigger a re-embed decision.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Data platform findings](/library/layers/r02-data-platform/findings)
+- [Research brief](/library/layers/r02-data-platform/brief)
+- [Vendor landscape](/library/layers/r02-data-platform/vendors)
+- [Sources](/library/layers/r02-data-platform/sources)
+
+</details>

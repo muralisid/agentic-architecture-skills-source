@@ -179,7 +179,7 @@ const defineFigure = (
 
 const foundationalFigures: FigureManifestEntry[] = [
   defineFigure({
-    id: 'guide-decision-journey', category: 'foundation', page: '/docs', placement: 'Five-minute visual primer', sourceHeading: 'The recommended journey',
+    id: 'guide-decision-journey', category: 'foundation', page: '/architecture', placement: 'Five-minute visual primer', sourceHeading: 'The recommended journey',
     title: 'From intent to an investable agent programme', takeaway: 'Make the enterprise decisions in order; compare vendors last.',
     caption: 'Each step produces the input required by the next step.',
     alt: 'Eight-step journey from the enterprise vision through archetype, readiness, use-case portfolio, roadmap, architecture, blueprint, and vendor evaluation.',
@@ -197,7 +197,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'layers-planes-crosswalk', category: 'foundation', page: '/docs/architecture', placement: 'Architecture orientation', sourceHeading: 'Architecture chapters',
+    id: 'layers-planes-crosswalk', category: 'foundation', page: '/architecture', placement: 'Architecture orientation', sourceHeading: 'Architecture chapters',
     title: 'Fourteen estate layers, seven agent-system planes', takeaway: 'Layers describe what the enterprise owns; planes describe how governed agent work operates across it.',
     caption: 'A layer can contribute to more than one plane; the planes cut across the estate rather than containing its layers.',
     alt: 'Crosswalk matrix showing fourteen enduring enterprise layers down the rows and seven agent-system planes across the columns, with several layers contributing to multiple planes.',
@@ -229,7 +229,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     },
   }),
   defineFigure({
-    id: 'factory-to-knowledge-work', category: 'foundation', page: '/docs/architecture/vision-and-target-state', placement: 'Opening story', sourceHeading: 'The factory floor',
+    id: 'factory-to-knowledge-work', category: 'foundation', page: '/architecture', placement: 'Opening story', sourceHeading: 'The factory floor',
     title: 'The factory metaphor, used carefully', takeaway: 'The defensible analogy is changed human work and a different failure model, not a headcount forecast.',
     caption: 'People set intent, supervise quality, resolve exceptions, reconfigure the system, and remain accountable.',
     alt: 'Two-column storyboard comparing an automated bottling line with agent-supported knowledge work and highlighting the same residual human responsibilities.',
@@ -241,7 +241,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ], note: 'This visual makes no claim about workforce size or adoption speed.' },
   }),
   defineFigure({
-    id: 'governed-agent-operating-loop', category: 'foundation', page: '/docs/architecture/vision-and-target-state', placement: 'Definition of an agentic enterprise', sourceHeading: 'What "agentic enterprise" means',
+    id: 'governed-agent-operating-loop', category: 'foundation', page: '/architecture', placement: 'Definition of an agentic enterprise', sourceHeading: 'What "agentic enterprise" means',
     title: 'The governed agent operating loop', takeaway: 'Agent work is useful only when intent, policy, evidence, and improvement close the loop.',
     caption: 'Probabilistic execution sits inside deterministic permissions and an accountable human operating model.',
     alt: 'Circular operating loop from human intent to agent planning, policy-gated action, evidence capture, evaluation, and governed improvement.',
@@ -257,7 +257,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'four-deterministic-zones', category: 'foundation', page: '/docs/architecture/vision-and-target-state', placement: 'What stays human', sourceHeading: 'What stays human',
+    id: 'four-deterministic-zones', category: 'foundation', page: '/architecture/deterministic-zones', placement: 'What stays human', sourceHeading: 'What stays human',
     title: 'Four deterministic decision zones', takeaway: 'Models may prepare evidence, but the final authorization remains outside the model.',
     caption: 'Access, money, safety actuation, and formal records require deterministic enforcement.',
     alt: 'Four guarded zones for access control, movement of money, safety actuation, and formal regulatory records surrounding a probabilistic reasoning area.',
@@ -272,7 +272,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'autonomy-learning-matrix', category: 'foundation', page: '/docs/architecture/maturity-model', placement: 'Model overview', sourceHeading: 'Why another maturity model',
+    id: 'autonomy-learning-matrix', category: 'foundation', page: '/architecture/autonomy-contract', placement: 'Model overview', sourceHeading: 'Why another maturity model',
     title: 'The A×L maturity matrix', takeaway: 'Autonomy and learning are independent; higher is not automatically better.',
     caption: 'Choose the cell that is justified for a workload rather than treating the top-right as a destination.',
     alt: 'Six autonomy levels A0 through A5 crossed with four learning levels L0 through L3, with governed scaling emphasized in the middle of the matrix.',
@@ -285,7 +285,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'oversight-burst-capacity', category: 'foundation', page: '/docs/architecture/maturity-model', placement: 'A4 oversight gate', sourceHeading: 'The oversight-capacity gate on A4 and above',
+    id: 'oversight-burst-capacity', category: 'foundation', page: '/architecture/autonomy-contract', placement: 'A4 oversight gate', sourceHeading: 'The oversight-capacity gate on A4 and above',
     title: 'Design oversight for bursts, not averages', takeaway: 'Exception demand is uneven, so safe autonomy depends on recoverable surge capacity.',
     caption: 'The diagram deliberately avoids inventing a universal agents-per-supervisor ratio.',
     alt: 'Timeline of low routine exception demand interrupted by a correlated incident burst that exceeds ordinary human review capacity and triggers degraded mode.',
@@ -300,7 +300,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ], note: 'Measure arrival shape, handling time, and recoverability for each workload.' },
   }),
   defineFigure({
-    id: 'enterprise-archetype-grid', category: 'foundation', page: '/docs/architecture/archetype-grid', placement: 'Archetype selection', sourceHeading: 'Two axes, not three personas',
+    id: 'enterprise-archetype-grid', category: 'foundation', page: '/architecture', placement: 'Archetype selection', sourceHeading: 'Two axes, not three personas',
     title: 'Enterprise archetypes by size and vendor gravity', takeaway: 'Size and regulatory intensity predict the estate; incumbent vendor gravity shapes the starting shortlist and integration surface, not the outcome.',
     caption: 'The four worked cells are examples on two axes. Apply a cell per operating unit when one enterprise spans several contexts.',
     alt: 'Archetype matrix crossing size and regulatory intensity with incumbent vendor gravity for four worked cells: two large-enterprise patterns, mid-market, and digital native.',
@@ -314,7 +314,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'seven-plane-architecture', category: 'foundation', page: '/docs/architecture/master-target-state', placement: 'Common frame', sourceHeading: 'The common frame: seven planes',
+    id: 'seven-plane-architecture', category: 'foundation', page: '/architecture', placement: 'Common frame', sourceHeading: 'The common frame: seven planes',
     title: 'The seven-plane target architecture', takeaway: 'Enforcement and evidence must remain outside the agent’s influence.',
     caption: 'The same seven planes apply to every archetype; their contents and operating ownership differ.',
     alt: 'Seven horizontal architecture planes for execution, action, knowledge, control, improvement, evidence, and human accountability, connected by policy and trace flows.',
@@ -337,7 +337,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'three-target-architectures', category: 'foundation', page: '/docs/architecture/master-target-state', placement: 'Architecture comparison', sourceHeading: 'Why there are three architectures and not one',
+    id: 'three-target-architectures', category: 'foundation', page: '/architecture', placement: 'Architecture comparison', sourceHeading: 'Why there are three architectures and not one',
     title: 'One frame, three target architectures', takeaway: 'Use the same plane model but adapt ownership and controls to the enterprise’s real operating capacity.',
     caption: 'A global regulated enterprise, mid-market organisation, and digital native should not build the same control-plane implementation.',
     alt: 'Three side-by-side target architectures comparing global regulated, mid-market, and digital-native enterprises across defining constraint, control ownership, and primary gap.',
@@ -350,7 +350,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'concerns-layer-heatmap', category: 'foundation', page: '/docs/architecture/concerns-by-layers-matrix', placement: 'Matrix overview', sourceHeading: 'What this page is for',
+    id: 'concerns-layer-heatmap', category: 'foundation', page: '/architecture/concern-matrix', placement: 'Matrix overview', sourceHeading: 'What this page is for',
     title: 'Cross-cutting concerns need named homes', takeaway: 'A concern that appears everywhere but is owned nowhere becomes a gap.',
     caption: 'The full accessible table remains the source of record beneath this orientation view.',
     alt: 'Heatmap concept showing identity, provenance, cost, evaluation, sovereignty, reversibility, and human oversight crossing all fourteen enterprise layers.',
@@ -367,7 +367,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'memory-obligation-tiers', category: 'foundation', page: '/docs/architecture/memory-pipeline-architecture', placement: 'Memory tiers', sourceHeading: 'Five tiers, and what actually feeds each',
+    id: 'memory-obligation-tiers', category: 'foundation', page: '/architecture/data-to-memory', placement: 'Memory tiers', sourceHeading: 'Five tiers, and what actually feeds each',
     title: 'Memory persistence increases obligation', takeaway: 'More durable memory is not more intelligence; it is more ownership, consent, retention, and erasure work.',
     caption: 'The M1–M5 namespace keeps memory distinct from learning maturity.',
     alt: 'Five-tier memory stack from thread and retrieved knowledge through session, entity, and cross-domain memory, with obligations increasing as persistence rises.',
@@ -382,7 +382,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'data-to-memory-pipeline', category: 'foundation', page: '/docs/architecture/memory-pipeline-architecture', placement: 'End-to-end pipeline', sourceHeading: 'The pipeline, stage by stage',
+    id: 'data-to-memory-pipeline', category: 'foundation', page: '/architecture/data-to-memory', placement: 'End-to-end pipeline', sourceHeading: 'The pipeline, stage by stage',
     title: 'From source data to governed memory', takeaway: 'Permission, provenance, and classification travel with content from ingestion onward.',
     caption: 'Promotion to durable memory is gated; derived artifacts inherit the strictest source classification.',
     alt: 'Nine-stage data-to-memory pipeline covering source intake, permission capture, parsing, classification, curation, indexing, retrieval, promotion, and erasure propagation.',
@@ -401,7 +401,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'cost-per-resolved-outcome', category: 'foundation', page: '/docs/architecture/economics-model', placement: 'Economic unit', sourceHeading: 'Level 2: cost per resolved outcome',
+    id: 'cost-per-resolved-outcome', category: 'foundation', page: '/layers/r12-observability-and-finops', placement: 'Economic unit', sourceHeading: 'Level 2: cost per resolved outcome',
     title: 'Measure cost per resolved outcome', takeaway: 'A cheap model call can still produce an expensive business outcome when loops, retries, and human recovery are ignored.',
     caption: 'The economic boundary includes execution, tools, retries, review, correction, and unresolved demand.',
     alt: 'Cost flow combining model and tool runs, retries, human review, correction, and repeat demand into one cost-per-resolved-outcome measure.',
@@ -416,7 +416,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'sovereignty-spectrum-router', category: 'foundation', page: '/docs/architecture/sovereignty-matrix', placement: 'Sovereignty routing', sourceHeading: 'The deployment spectrum',
+    id: 'sovereignty-spectrum-router', category: 'foundation', page: '/layers/r11-governance-risk-sovereignty', placement: 'Sovereignty routing', sourceHeading: 'The deployment spectrum',
     title: 'Route workloads by sovereignty need', takeaway: 'Sovereignty is a workload constraint, not an enterprise maturity score.',
     caption: 'The SV0–SV4 namespace separates sovereignty from roadmap stages.',
     alt: 'Five-step sovereignty spectrum from a managed API with no locality guarantee to air-gapped isolated execution, selected by a workload-classification router.',
@@ -431,7 +431,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ], note: 'Classification and legal obligations select the tier; higher is not inherently better.' },
   }),
   defineFigure({
-    id: 'identity-delegation-chain', category: 'foundation', page: '/docs/architecture/identity-security-model', placement: 'Delegation model', sourceHeading: 'The delegation chain',
+    id: 'identity-delegation-chain', category: 'foundation', page: '/architecture/identity-chain', placement: 'Delegation model', sourceHeading: 'The delegation chain',
     title: 'Identity follows the delegation chain', takeaway: 'Every consequential action must identify the agent, requesting person, sponsor, and granted scope.',
     caption: 'Entitlement decisions stay in the authoritative identity or record system.',
     alt: 'Delegation chain from accountable sponsor and requesting user through an individually registered agent identity to policy enforcement and the system of record.',
@@ -447,7 +447,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'memory-learning-flywheel', category: 'foundation', page: '/docs/architecture/learning-loops-map', placement: 'Learning overview', sourceHeading: 'Two loops, and they must be governed separately',
+    id: 'memory-learning-flywheel', category: 'foundation', page: '/architecture/learning-flywheel', placement: 'Learning overview', sourceHeading: 'Two loops, and they must be governed separately',
     title: 'Memory serves work; learning changes future work', takeaway: 'Do not let online memory updates silently become offline policy changes.',
     caption: 'Learning promotion passes through evaluation, approval, staged release, and a demotion path.',
     alt: 'Two connected loops separating online memory used during work from an offline learning loop that evaluates and promotes changes into governed enforcement.',
@@ -459,7 +459,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'framework-decision-sequence', category: 'foundation', page: '/docs/frameworks', placement: 'Framework overview', sourceHeading: 'Decision sequence',
+    id: 'framework-decision-sequence', category: 'foundation', page: '/decisions', placement: 'Framework overview', sourceHeading: 'Decision sequence',
     title: 'The framework sequence', takeaway: 'Readiness and portfolio choices are inputs to the roadmap, not optional companion exercises.',
     caption: 'The sequence prevents platform selection from leading the programme.',
     alt: 'Decision sequence from enterprise archetype to readiness profile, use-case gates, staged roadmap, target architecture, blueprint, and vendor evaluation.',
@@ -476,7 +476,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'readiness-six-dimension-profile', category: 'foundation', page: '/docs/frameworks/readiness-assessments', placement: 'Assessment overview', sourceHeading: 'The six dimensions',
+    id: 'readiness-six-dimension-profile', category: 'foundation', page: '/architecture/autonomy-contract', placement: 'Assessment overview', sourceHeading: 'The six dimensions',
     title: 'Readiness is a profile, not a total score', takeaway: 'The weakest relevant dimension constrains the workload’s autonomy ceiling.',
     caption: 'Keep the six dimensions visible instead of averaging away a critical gap.',
     alt: 'Six-part readiness profile covering data, integration, identity, operations, governance and value, and workforce without collapsing the dimensions into one score.',
@@ -492,7 +492,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'use-case-three-gate-funnel', category: 'foundation', page: '/docs/frameworks/use-case-portfolio', placement: 'Admission model', sourceHeading: 'The three admission gates',
+    id: 'use-case-three-gate-funnel', category: 'foundation', page: '/decisions', placement: 'Admission model', sourceHeading: 'The three admission gates',
     title: 'Three gates before funding', takeaway: 'A compelling demo is not enough; the use case must be evaluable, keep model judgment outside deterministic zones, and have a governable grounding corpus.',
     caption: 'A failed gate sends the use case to definition, redesign, or grounding preparation rather than into weighted scoring.',
     alt: 'Three-stage admission funnel testing evaluability, deterministic-zone boundaries, and grounding readiness before a use case enters the funded portfolio.',
@@ -506,7 +506,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'roadmap-six-stages', category: 'foundation', page: '/docs/frameworks/roadmap-checklist', placement: 'Roadmap generator', sourceHeading: 'The spine',
+    id: 'roadmap-six-stages', category: 'foundation', page: '/architecture/autonomy-contract', placement: 'Roadmap generator', sourceHeading: 'The spine',
     title: 'A capability-gated roadmap', takeaway: 'Advance when evidence gates pass, not because a calendar date arrives.',
     caption: 'Nine workload and enterprise modifiers shape the work inside each stage.',
     alt: 'Six-stage agentic-enterprise roadmap from Ground and First value through Platform, Scale, Autonomy, and Extend, with evidence gates between stages.',
@@ -522,7 +522,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'vendor-disqualifier-score-flow', category: 'foundation', page: '/docs/frameworks/vendor-scorecard', placement: 'Evaluation overview', sourceHeading: 'The rule that makes this work',
+    id: 'vendor-disqualifier-score-flow', category: 'foundation', page: '/decisions', placement: 'Evaluation overview', sourceHeading: 'The rule that makes this work',
     title: 'Disqualify before you score', takeaway: 'A polished feature score cannot compensate for a missing mandatory control.',
     caption: 'Score only vendors that pass workload-specific evidence, identity, data, and exit requirements.',
     alt: 'Vendor evaluation flow applying mandatory disqualifiers for evidence, identity, data control, interoperability, and exit before any weighted scoring.',
@@ -538,7 +538,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'blueprint-anatomy', category: 'foundation', page: '/docs/blueprints', placement: 'Blueprint overview', sourceHeading: 'How to read every blueprint',
+    id: 'blueprint-anatomy', category: 'foundation', page: '/layers', placement: 'Blueprint overview', sourceHeading: 'How to read every blueprint',
     title: 'How to read every blueprint', takeaway: 'A blueprint connects one operating scenario to agents, deterministic controls, accountable people, evidence, economics, and honest limits.',
     caption: 'The same anatomy makes department and industry blueprints comparable.',
     alt: 'Blueprint anatomy flowing from scenario and desired outcome through agent and human swimlanes, deterministic gates, evidence, economics, metrics, and honest limits.',
@@ -586,7 +586,7 @@ const layers: LayerDefinition[] = [
 const allLayerItems: VisualItem[] = layers.map((layer) => ({ label: layer.title, detail: layer.id.toUpperCase() }));
 
 const layerFigures = layers.flatMap((layer, index): FigureManifestEntry[] => {
-  const page = `/docs/layers/${layer.id}/findings`;
+  const page = `/layers/${layer.id}`;
   const source = guideSource(`${layer.title} findings`, page);
   const prefix = `layer-${String(index + 1).padStart(2, '0')}`;
   return [
@@ -625,124 +625,356 @@ const layerFigures = layers.flatMap((layer, index): FigureManifestEntry[] => {
   ];
 });
 
-interface BlueprintDefinition {
-  id: string;
+
+// ---------------------------------------------------------------------------
+// Deep layer heroes: one target-state architecture figure per layer page.
+// Authored from the research tracks and sprint evidence; ids layer-NN-hero.
+// ---------------------------------------------------------------------------
+interface HeroDef {
+  layer: string;
+  n: string;
   title: string;
-  group: 'departments' | 'verticals';
-  trigger: string;
-  prepare: string;
-  authorize: string;
-  record: string;
-  human: string;
-  control: string;
-  metrics: [string, string, string];
-  honestLimit: string;
+  takeaway: string;
+  caption: string;
+  alt: string;
+  nodes: VisualNode[];
+  edges: VisualEdge[];
+  note?: string;
 }
 
-const blueprints: BlueprintDefinition[] = [
-  { id: 'it-and-service-desk', title: 'IT and service desk', group: 'departments', trigger: 'A user reports an incident or requests access.', prepare: 'Agent gathers device, service, history, and policy evidence.', authorize: 'Identity and service-management rules decide entitlement or change.', record: 'System records the action, evidence, and recovery path.', human: 'Handle ambiguous incidents, major outages, and exceptions.', control: 'Entitlement decisions remain in identity systems.', metrics: ['Resolved without reopen', 'Mean time to restore', 'Unsafe action rate'], honestLimit: 'An agent does not grant itself or a user an entitlement.' },
-  { id: 'customer-service', title: 'Customer service', group: 'departments', trigger: 'A customer asks for help across a supported channel.', prepare: 'Agent resolves identity, intent, policy, and case history.', authorize: 'Policy gates refunds, commitments, and sensitive account changes.', record: 'CRM receives the resolution, evidence, and follow-up obligation.', human: 'Own relationship repair, ambiguity, and consequential exceptions.', control: 'Measure durable resolution rather than containment alone.', metrics: ['Resolved outcome', 'Repeat contact', 'Escalation quality'], honestLimit: 'A contained conversation is not necessarily a resolved customer need.' },
-  { id: 'finance', title: 'Finance', group: 'departments', trigger: 'A close, reconciliation, payment, or analysis task becomes due.', prepare: 'Agent assembles ledger evidence, variances, and proposed entries.', authorize: 'Mandates, segregation of duties, and accountable humans approve commitments.', record: 'ERP records the authorized entry with provenance.', human: 'Own judgment, attestation, materiality, and fiduciary accountability.', control: 'Models prepare; mandates and accountable humans authorize.', metrics: ['Close cycle time', 'Exception accuracy', 'Unauthorized commitment rate'], honestLimit: 'A model output is never a payment mandate or formal attestation.' },
-  { id: 'hr', title: 'Human resources', group: 'departments', trigger: 'An employee requests service or a people process reaches a decision point.', prepare: 'Agent gathers policy, case context, and permitted employee data.', authorize: 'HR policy and accountable people decide employment consequences.', record: 'HRIS stores the authorized outcome and consultation evidence.', human: 'Own employment judgment, empathy, appeal, and sensitive exceptions.', control: 'Employment judgments remain evidence-led and human-accountable.', metrics: ['Service resolution', 'Policy consistency', 'Appeal overturn rate'], honestLimit: 'Repetitive service can automate; consequential employment judgment cannot be delegated to a model.' },
-  { id: 'sales', title: 'Sales', group: 'departments', trigger: 'A lead, opportunity, renewal, or account signal requires action.', prepare: 'Agent researches context and proposes next-best actions.', authorize: 'Pricing, legal terms, and commercial mandates gate commitments.', record: 'Structured CRM fields update before narrative summaries.', human: 'Own relationships, negotiation, promises, and strategic judgment.', control: 'Structured system-of-record updates precede narrative writes.', metrics: ['Qualified progression', 'Forecast accuracy', 'Commitment exception rate'], honestLimit: 'An agent may prepare a commitment but cannot create authority it was not given.' },
-  { id: 'marketing', title: 'Marketing', group: 'departments', trigger: 'A campaign brief or audience need enters the content workflow.', prepare: 'Agent generates variants grounded in brand and product truth.', authorize: 'Brand, legal, channel, and claim review gates publication.', record: 'Approved asset, sources, audience, and performance are retained.', human: 'Own creative direction, claims, cultural judgment, and approval capacity.', control: 'Generation capacity must not exceed review capacity.', metrics: ['Approved-throughput', 'Claim correction rate', 'Review queue age'], honestLimit: 'More generated content is not more marketing value when the review system is saturated.' },
-  { id: 'supply-chain', title: 'Supply chain', group: 'departments', trigger: 'Demand, inventory, supplier, or logistics conditions deviate.', prepare: 'Agent assembles forecasts, constraints, and recovery options.', authorize: 'Planning rules and accountable operators gate commitments and writes.', record: 'Planning and execution systems capture the chosen action.', human: 'Own trade-offs under scarcity, supplier relationships, and disruption command.', control: 'Every consequential action needs idempotency, compensation, and degraded mode.', metrics: ['Service level', 'Recovery time', 'Compensation success'], honestLimit: 'An agent cannot assume a write succeeded or that a physical-world action is reversible.' },
-  { id: 'utilities-and-energy', title: 'Utilities and energy', group: 'verticals', trigger: 'Operational telemetry or planning identifies a grid or asset condition.', prepare: 'Agent assembles context and proposes an advisory response.', authorize: 'Validated rules or simulation mediate output before operator use.', record: 'Operational evidence and operator decisions are retained independently.', human: 'Own safety, switching authority, emergency judgment, and recovery.', control: 'Raw model output never appears as a configured alarm or direct actuation.', metrics: ['Advisory precision', 'Operator intervention', 'Safety-rule violation'], honestLimit: 'Agents stay advisory unless a separately validated deterministic controller owns the actuation.' },
-  { id: 'banking-and-financial-services', title: 'Banking and financial services', group: 'verticals', trigger: 'A customer, payment, credit, or compliance workflow needs evidence.', prepare: 'Agent assembles records, explanations, and recommended handling.', authorize: 'Payment rails, credit policy, mandates, and accountable officers decide.', record: 'Authoritative systems retain decision evidence and adverse-action reasons.', human: 'Own fiduciary judgment, exceptions, appeals, and formal attestations.', control: 'Agents assemble evidence; payments, credit, and attestations remain deterministic.', metrics: ['Resolution quality', 'Adverse-decision evidence', 'Unauthorized action rate'], honestLimit: 'Probabilistic output is not a banking authorization or regulatory attestation.' },
-  { id: 'manufacturing-and-supply-chain', title: 'Manufacturing', group: 'verticals', trigger: 'Production, quality, maintenance, or material flow deviates.', prepare: 'Agent connects work order, sensor, quality, and maintenance context.', authorize: 'Safety systems and accountable operators validate changes.', record: 'MES, quality, and maintenance systems retain the action trail.', human: 'Clear exceptions, protect quality, reconfigure, and maintain.', control: 'The metaphor describes residual work, not a headcount or timing forecast.', metrics: ['First-pass yield', 'Recovery time', 'Unsafe recommendation rate'], honestLimit: 'No visual or claim should imply a universal automation rate or workforce reduction.' },
-  { id: 'public-sector', title: 'Public sector', group: 'verticals', trigger: 'A resident request, eligibility case, inspection, or policy workflow begins.', prepare: 'Agent assembles permitted evidence and explains applicable rules.', authorize: 'Statute, policy, and accountable officials decide consequential outcomes.', record: 'The case file preserves evidence, reasons, notices, and appeal state.', human: 'Own public authority, discretion, fairness, accessibility, and appeal.', control: 'Evidence available to the decision-maker remains available on appeal.', metrics: ['Time to lawful resolution', 'Appeal overturn rate', 'Evidence completeness'], honestLimit: 'An agent cannot exercise public authority or hide evidence behind an inaccessible model trace.' },
+const heroDefs: HeroDef[] = [
+  { layer: 'r01-infrastructure', n: '01', title: 'Execution infrastructure: sandboxed, egress-controlled, durable',
+    takeaway: 'Act-capable work runs in microVM-class sandboxes behind allowlisting egress proxies, on event-logged resumable sessions, under a first-class workload identity.',
+    caption: 'Isolation is tiered by capability set, not product category; serving is classification-routed.',
+    alt: 'Execution infrastructure with agent runtime, microVM sandbox, egress proxy, durable session log, workload identity issuance, and classification-routed model serving.',
+    nodes: [
+      { id: 'runtime', label: 'Agent runtime', detail: 'Managed or platform-provided, per-session isolation', kind: 'agent' },
+      { id: 'sandbox', label: 'microVM sandbox', detail: 'Code, browsing, computer use; session memory sanitized on termination', kind: 'control' },
+      { id: 'egress', label: 'Egress proxy', detail: 'Domain allowlists; metadata endpoints and private ranges blocked', kind: 'control' },
+      { id: 'session', label: 'Durable session', detail: 'Event-logged, snapshot/restore, hibernate-and-wake', kind: 'system' },
+      { id: 'identity', label: 'Workload identity', detail: 'Directory, WIMSE/SPIFFE, or XAA-based; ID2 floor', kind: 'evidence' },
+      { id: 'serving', label: 'Model serving', detail: 'Metered by default; sovereign or self-hosted by classification', kind: 'system' },
+    ],
+    edges: [
+      { from: 'runtime', to: 'sandbox', label: 'act-capable work' },
+      { from: 'sandbox', to: 'egress', label: 'all network egress' },
+      { from: 'runtime', to: 'session', label: 'event log' },
+      { from: 'identity', to: 'runtime', label: 'issued per agent' },
+      { from: 'runtime', to: 'serving', label: 'classification-routed' },
+    ],
+    note: 'Gate on capability set (private data, untrusted content, external communication), re-evaluated on every tool grant.' },
+  { layer: 'r02-data-platform', n: '02', title: 'Grounding as a governed product',
+    takeaway: 'Permissions crawl into index metadata and retrieval is pre-filtered on the caller\'s live identity; post-filtering is the anti-pattern.',
+    caption: 'Fail-close on permission-sync errors; provenance runs from answer back to source span.',
+    alt: 'ACL-aware grounding pipeline from source systems through permission crawl into index metadata, pre-filtered retrieval on live identity, and span-level provenance, with fail-close branch.',
+    nodes: [
+      { id: 'sources', label: 'Source systems', detail: 'Documents, records, events with native ACLs', kind: 'system' },
+      { id: 'crawl', label: 'Permission crawl', detail: 'ACLs into index metadata; ReBAC pre-computation', kind: 'control' },
+      { id: 'index', label: 'Governed index', detail: 'Version-stamped vectors; purpose-scoped where stakes demand', kind: 'evidence' },
+      { id: 'retrieval', label: 'Pre-filtered retrieval', detail: 'Caller\'s live identity inside the query', kind: 'control' },
+      { id: 'semantics', label: 'Semantic contract', detail: 'Deterministic answers or refusal for high-stakes numerics', kind: 'control' },
+      { id: 'agent', label: 'Agent context', detail: 'Answer with span-level source provenance', kind: 'agent' },
+    ],
+    edges: [
+      { from: 'sources', to: 'crawl' },
+      { from: 'crawl', to: 'index', label: 'fail-close on sync error' },
+      { from: 'index', to: 'retrieval' },
+      { from: 'retrieval', to: 'agent' },
+      { from: 'semantics', to: 'agent', label: 'numeric questions' },
+    ],
+    note: 'Embeddings are recoverable text; vectors inherit source classification and erasure obligations.' },
+  { layer: 'r03-integration-fabric', n: '03', title: 'The governed tool plane',
+    takeaway: 'No direct model-to-server connections: one gateway enforces allowlists, identity exchange, credential injection, description integrity, and audit on every tool call.',
+    caption: 'The enforcement plane of the agentic enterprise.',
+    alt: 'Tool-plane architecture from agent through gateway enforcement stages to MCP server, governed API, and system of record, with SIEM audit tap.',
+    nodes: [
+      { id: 'agent', label: 'Agent', detail: 'Holds no credentials', kind: 'agent' },
+      { id: 'gateway', label: 'MCP gateway', detail: 'Allowlist, RFC 8693 token exchange, credential injection, description-integrity check, classification routing, rate limits', kind: 'control' },
+      { id: 'server', label: 'MCP server', detail: 'Curated catalog entry; version-pinned', kind: 'system' },
+      { id: 'api', label: 'Governed API', detail: 'Entitlement, validation, audit already enforced', kind: 'system' },
+      { id: 'record', label: 'System of record', kind: 'system' },
+      { id: 'siem', label: 'SIEM', detail: 'Action-granular audit', kind: 'evidence' },
+    ],
+    edges: [
+      { from: 'agent', to: 'gateway', label: 'every tool call' },
+      { from: 'gateway', to: 'server' },
+      { from: 'server', to: 'api' },
+      { from: 'api', to: 'record' },
+      { from: 'gateway', to: 'siem', label: 'audit tap' },
+    ],
+    note: 'The gateway enforces the arriving auth standards (EMA/XAA, ID-JAG); it does not replace them.' },
+  { layer: 'r04-systems-of-record', n: '04', title: 'Wrap, do not reinvent',
+    takeaway: 'Agents act as the requesting user through wrapped governed APIs; entitlement stays in the record system and audit attributes to the human.',
+    caption: 'Embedded and external agents converge on the same permission plane.',
+    alt: 'Two agent paths, embedded and external, converging on the record system\'s own CRUD, field-level security, and sharing-rule enforcement, with audit attributed to the requesting user.',
+    nodes: [
+      { id: 'embedded', label: 'Embedded agent', detail: 'Vendor-hosted, same permission plane', kind: 'agent' },
+      { id: 'external', label: 'External agent', detail: 'Through the gateway, run-as-user', kind: 'agent' },
+      { id: 'perms', label: 'Permission plane', detail: 'CRUD, field-level security, sharing rules', kind: 'control' },
+      { id: 'gate', label: 'Consequence-class write gate', detail: 'Native approval machinery; relaxed by demonstrated reliability', kind: 'control' },
+      { id: 'record', label: 'Record', kind: 'system' },
+      { id: 'audit', label: 'Audit log', detail: 'Attributed to the human identity', kind: 'evidence' },
+    ],
+    edges: [
+      { from: 'embedded', to: 'perms' },
+      { from: 'external', to: 'perms' },
+      { from: 'perms', to: 'gate' },
+      { from: 'gate', to: 'record' },
+      { from: 'record', to: 'audit' },
+    ],
+    note: 'Embedded agents do not pause by default; the human checkpoint is wired by you, not the platform.' },
+  { layer: 'r05-lob-and-ot', n: '05', title: 'The validation loop: information path, never control path',
+    takeaway: 'Raw model output is never displayed: candidates are validated against a digital twin or rules, filtered, and shown in the alert channel; the operator decides.',
+    caption: 'The model proposes and physics disposes; the safety instrumented system is untouched.',
+    alt: 'Control-room validation loop from alarm stream through agent proposal, digital-twin validation, filtering, alert-channel display, and operator decision, with the safety system separate.',
+    nodes: [
+      { id: 'stream', label: 'Alarm and event stream', kind: 'system' },
+      { id: 'agent', label: 'Agent', detail: 'Assembles context, proposes candidates', kind: 'agent' },
+      { id: 'twin', label: 'Digital twin / rules', detail: 'Simulate and filter candidates', kind: 'control' },
+      { id: 'alert', label: 'Alert channel', detail: 'EEMUA alert, distinct from configured alarms', kind: 'evidence' },
+      { id: 'operator', label: 'Operator', detail: 'Holds all decision authority; tested revert-to-manual', kind: 'human' },
+      { id: 'sis', label: 'Safety instrumented system', detail: 'Untouched; ML excluded by IEC 61511', kind: 'risk' },
+    ],
+    edges: [
+      { from: 'stream', to: 'agent' },
+      { from: 'agent', to: 'twin', label: 'raw output never displayed' },
+      { from: 'twin', to: 'alert', label: 'surviving options only' },
+      { from: 'alert', to: 'operator' },
+    ],
+    note: 'Unidirectional or brokered read paths by consequence class; agent output is never an independent protection layer.' },
+  { layer: 'r06-intelligence-and-learning', n: '06', title: 'The governed flywheel',
+    takeaway: 'Production traces and eval datasets share a data layer; promotion is gated on counterexample survival and eval regression, and promoted rules land outside the model.',
+    caption: 'The optimizer and the evaluator stay decoupled; every promoted artifact has a demotion path.',
+    alt: 'Learning flywheel from production traces through shared eval data layer, judged evaluation, counterexample-gated promotion into out-of-model policy enforcement, with rollback and demotion paths.',
+    nodes: [
+      { id: 'traces', label: 'Production traces', kind: 'system' },
+      { id: 'datasets', label: 'Shared eval data layer', detail: 'Failing online scores auto-promote traces', kind: 'evidence' },
+      { id: 'judge', label: 'Calibrated judges', detail: 'Version-pinned, human-calibrated, decoupled from the optimizer', kind: 'control' },
+      { id: 'gate', label: 'Promotion gate', detail: 'Counterexample survival + eval regression + human approval', kind: 'control' },
+      { id: 'policy', label: 'Policy-as-code layer', detail: 'Outside the model; versioned; rollback', kind: 'control' },
+      { id: 'agent', label: 'Agent behavior', kind: 'agent' },
+    ],
+    edges: [
+      { from: 'traces', to: 'datasets' },
+      { from: 'datasets', to: 'judge' },
+      { from: 'judge', to: 'gate' },
+      { from: 'gate', to: 'policy', label: 'promoted artifacts' },
+      { from: 'policy', to: 'agent', label: 'enforced' },
+      { from: 'agent', to: 'traces' },
+    ],
+    note: 'Roughly a quarter of written policy statements are statically enforceable; the rest stay judged behavior.' },
+  { layer: 'r07-agent-platform', n: '07', title: 'Buy the runtime, build the harness',
+    takeaway: 'The harness owns context assembly, explicit multi-condition termination, artifacts-as-state, separate verification, and budgets; the managed runtime owns isolation and durability.',
+    caption: 'The harness is the lock-in and the differentiator; the runtime is becoming the portable substrate.',
+    alt: 'Agent platform architecture separating the enterprise-owned harness (context, termination, verification, budgets, artifacts-as-state) from the managed runtime (isolation, durable sessions), with the registry gating promotion.',
+    nodes: [
+      { id: 'harness', label: 'Harness', detail: 'Context assembly and reset, iteration and wall-clock caps, per-run budgets', kind: 'agent' },
+      { id: 'verify', label: 'Verification path', detail: 'Separate agent or process; self-assessment distrusted', kind: 'control' },
+      { id: 'artifacts', label: 'Artifacts-as-state', detail: 'Inspectable state outside the context window', kind: 'evidence' },
+      { id: 'runtime', label: 'Managed runtime', detail: 'Isolation, durable execution, hibernate-and-wake', kind: 'system' },
+      { id: 'registry', label: 'Registry', detail: 'Eval-gated promotion; staleness demotes; search returns PUBLISHED only', kind: 'control' },
+      { id: 'router', label: 'Routing tiers', detail: 'Deterministic pre-router, light models, frontier synthesis', kind: 'system' },
+    ],
+    edges: [
+      { from: 'harness', to: 'runtime', label: 'runs on' },
+      { from: 'harness', to: 'verify' },
+      { from: 'harness', to: 'artifacts' },
+      { from: 'registry', to: 'harness', label: 'gates promotion' },
+      { from: 'harness', to: 'router', label: 'model calls' },
+    ],
+    note: 'Approval rules are held in the harness and enforced at the gateway.' },
+  { layer: 'r08-productivity-and-collaboration', n: '08', title: 'Access identity by default, presence by exception',
+    takeaway: 'The agent identity is a service principal with the sponsor attribute; the user account carrying mailbox and meeting presence is a separate, optional, revocable grant.',
+    caption: 'Nameability is not presence; five capability surfaces define the presence tier.',
+    alt: 'Collaboration identity architecture from mandatory agent service principal with sponsor field, through optional one-to-one user account, to the five presence capability surfaces, with conditional-access-targetable connector permissions.',
+    nodes: [
+      { id: 'principal', label: 'Agent service principal', detail: 'Mandatory; sponsor attribute; non-revocable creation right, capped', kind: 'agent' },
+      { id: 'connector', label: 'Connector permissions', detail: 'Surfaced as API permissions; conditional-access targetable', kind: 'control' },
+      { id: 'account', label: 'Optional user account', detail: 'Separate 1:1 child object; admin-granted, revocable', kind: 'control' },
+      { id: 'surfaces', label: 'Presence surfaces', detail: 'Mailbox, calendar, licence, HR system, meeting roster', kind: 'risk' },
+      { id: 'mention', label: 'Nameability', detail: '@mentionable without a user account', kind: 'evidence' },
+    ],
+    edges: [
+      { from: 'principal', to: 'connector' },
+      { from: 'principal', to: 'account', label: 'only when acting as a user' },
+      { from: 'account', to: 'surfaces' },
+      { from: 'principal', to: 'mention' },
+    ],
+    note: 'Sponsor accountability is an access-identity attribute; presence is a deliberate, revocable decision.' },
+  { layer: 'r09-experience-and-channels', n: '09', title: 'A separate edge on a shared control plane',
+    takeaway: 'Channels, disclosure, adversarial hardening, and the legal-evidence layer are edge-specific; knowledge, identity, tools, evals, and observability are shared, and duplicating them is a defect.',
+    caption: 'The separation is justified by legal attribution, not technology.',
+    alt: 'Customer experience architecture with the channel edge (telephony, disclosure, guardrails, legal evidence) distinct from the shared control plane (knowledge corpus, identity, tool layer, evaluation, observability, model access).',
+    nodes: [
+      { id: 'channels', label: 'Channel edge', detail: 'Web, voice, telephony; barge-in and latency budgets', kind: 'system' },
+      { id: 'disclosure', label: 'Disclosure and consent', detail: 'At first interaction; Article 50 live', kind: 'control' },
+      { id: 'guard', label: 'Adversarial hardening', detail: 'Anonymous users; public injection surface', kind: 'risk' },
+      { id: 'evidence', label: 'Legal evidence layer', detail: 'Verbatim records; statements bind the company', kind: 'evidence' },
+      { id: 'plane', label: 'Shared control plane', detail: 'Knowledge, identity, tools, evals, observability, models', kind: 'control' },
+      { id: 'human', label: 'Staffed escalation queue', detail: 'Working-state transfer; never manufactured containment', kind: 'human' },
+    ],
+    edges: [
+      { from: 'channels', to: 'plane' },
+      { from: 'disclosure', to: 'channels' },
+      { from: 'guard', to: 'channels' },
+      { from: 'channels', to: 'evidence', label: 'every conversation' },
+      { from: 'channels', to: 'human', label: 'escalation' },
+    ] },
+  { layer: 'r10-security-and-identity', n: '10', title: 'The deterministic authorization chain',
+    takeaway: 'Every consequential action passes a policy decision point the agent cannot bypass; guardrails are an advisory side tap, never the boundary.',
+    caption: 'JIT elevation over a minimal baseline, short-lived credentials, revocation as a drilled path.',
+    alt: 'Authorization chain from registered agent identity through just-in-time elevation and the gateway to a policy decision point and the tool, with guardrails as an advisory side channel and verification stages in parallel.',
+    nodes: [
+      { id: 'identity', label: 'Agent identity', detail: 'Registered, least-privileged, short-lived, named owner and risk tier', kind: 'agent' },
+      { id: 'jit', label: 'JIT elevation', detail: 'RFC 9396 rich authorization; automatic drop-back', kind: 'control' },
+      { id: 'pdp', label: 'Policy decision point', detail: 'Cedar-class sub-millisecond or OPA; the agent cannot bypass it', kind: 'control' },
+      { id: 'tool', label: 'Tool / action', kind: 'system' },
+      { id: 'guardrail', label: 'Guardrails', detail: 'Advisory: measured evasion 72-77%', kind: 'risk' },
+      { id: 'ifc', label: 'Information-flow control', detail: 'Deterministic; plus formal output verification where warranted', kind: 'control' },
+    ],
+    edges: [
+      { from: 'identity', to: 'jit' },
+      { from: 'jit', to: 'pdp' },
+      { from: 'pdp', to: 'tool', label: 'allow, deny, limit, stop' },
+      { from: 'guardrail', to: 'pdp', label: 'advisory signal only' },
+      { from: 'ifc', to: 'tool', label: 'parallel verification' },
+    ],
+    note: 'Fail closed when the policy engine fails; time-to-revoke is a measured metric.' },
+  { layer: 'r11-governance-risk-sovereignty', n: '11', title: 'The registry-centred evidence machine',
+    takeaway: 'The agent registry is the compliance inventory; evidence posture is two-tiered, and deployment is classification-routed for sovereignty.',
+    caption: 'Evidence floor for every production agent; Article-12-grade instrumentation for the plausibly high-risk tier.',
+    alt: 'Governance topology with the agent registry as hub feeding risk tiering, two-tier evidence capture, kill switch, classification-routed deployment, and board reporting.',
+    nodes: [
+      { id: 'registry', label: 'Agent registry', detail: 'Owner, purpose, risk tier, tools and credentials, model and prompt versions', kind: 'control' },
+      { id: 'tiers', label: 'Risk tiers', detail: 'Observe / Advise / Act-with-approval / Autonomous', kind: 'control' },
+      { id: 'floor', label: 'Evidence floor', detail: 'Per-action logs retained, named oversight, provenance-carrying grounding', kind: 'evidence' },
+      { id: 'art12', label: 'Article-12-grade tier', detail: 'For plausibly high-risk workloads', kind: 'evidence' },
+      { id: 'kill', label: 'Kill switch', detail: 'Wired before autonomy expands', kind: 'risk' },
+      { id: 'routing', label: 'Classification-routed deployment', detail: 'Data class selects region and estate', kind: 'system' },
+    ],
+    edges: [
+      { from: 'registry', to: 'tiers' },
+      { from: 'tiers', to: 'floor' },
+      { from: 'tiers', to: 'art12', label: 'plausible high-risk' },
+      { from: 'registry', to: 'kill' },
+      { from: 'registry', to: 'routing' },
+    ] },
+  { layer: 'r12-observability-and-finops', n: '12', title: 'Traces the agent cannot forge',
+    takeaway: 'Every agent is traced end to end on a translation layer over unstable conventions; budgets are enforced deterministically, and telemetry collection sits outside the agent\'s control.',
+    caption: 'Session, model-call, and tool-call spans keyed to agent identity and cost.',
+    alt: 'Observability architecture from agent execution through out-of-band collection, a schema translation layer, trace storage with cost attribution, budget enforcement returning errors on exhaustion, and the change-gate pipeline.',
+    nodes: [
+      { id: 'agent', label: 'Agent execution', kind: 'agent' },
+      { id: 'collect', label: 'Out-of-band collection', detail: 'Agents cannot forge their own traces', kind: 'control' },
+      { id: 'translate', label: 'Translation layer', detail: 'Conventions unstable; avoid deep SDK coupling', kind: 'system' },
+      { id: 'traces', label: 'Traces + cost', detail: 'Session, model, tool spans keyed to agent identity', kind: 'evidence' },
+      { id: 'budget', label: 'Budget enforcement', detail: 'Hierarchical caps; 429 on exhaustion; fail to human queues', kind: 'control' },
+      { id: 'gates', label: 'Change gates', detail: 'Shadow, 1-5% canary, full; judges calibrated', kind: 'control' },
+    ],
+    edges: [
+      { from: 'agent', to: 'collect' },
+      { from: 'collect', to: 'translate' },
+      { from: 'translate', to: 'traces' },
+      { from: 'budget', to: 'agent', label: 'caps per run' },
+      { from: 'traces', to: 'gates', label: 'gate evidence' },
+    ],
+    note: 'An observability outage must not blind the kill switch.' },
+  { layer: 'r13-operating-model', n: '13', title: 'Supervision as a queueing system',
+    takeaway: 'Supervisory capacity is neglect time over interaction time plus wait time; load is budgeted as a burst rate per ten minutes, never a daily average.',
+    caption: 'Alarms on alarms: an algorithmic monitor flags elevated-risk sessions before the human looks.',
+    alt: 'Supervision architecture from agent fleet through algorithmic monitoring and the escalation queue to the supervisor, with wait time explicit in the capacity model and telemetry feeding back.',
+    nodes: [
+      { id: 'fleet', label: 'Agent fleet', kind: 'agent' },
+      { id: 'monitor', label: 'Algorithmic monitor', detail: 'Flags elevated-risk sessions; alarms on alarms', kind: 'control' },
+      { id: 'queue', label: 'Escalation queue', detail: 'Wait time is the binding term', kind: 'system' },
+      { id: 'supervisor', label: 'Supervisor', detail: 'Capacity = NT / (IT + WT) + 1', kind: 'human' },
+      { id: 'telemetry', label: 'Supervision telemetry', detail: 'Intervention rate, escalation mix by trigger, wait per item', kind: 'evidence' },
+    ],
+    edges: [
+      { from: 'fleet', to: 'monitor' },
+      { from: 'monitor', to: 'queue' },
+      { from: 'queue', to: 'supervisor' },
+      { from: 'supervisor', to: 'telemetry' },
+      { from: 'telemetry', to: 'monitor', label: 'tunes flagging' },
+    ],
+    note: 'No credible published human-to-agent supervision ratio exists; burst bands replace ratios.' },
+  { layer: 'r14-agent-data-engineering', n: '14', title: 'The curation pipeline with provenance end to end',
+    takeaway: 'Layout-aware parsing attaches provenance at page and cell level; it survives chunking, versioned embedding, permission-carrying indexing, and retrieval into every cited answer.',
+    caption: 'Side rails: CDC freshness, memory-write quarantine, erasure cascade with exclusion sets, blue/green re-embeds.',
+    alt: 'Agent data engineering pipeline from source through layout-aware parsing with provenance, contextual chunking, versioned embedding, permission-carrying index, pre-filtered retrieval, to span-cited answers, with freshness, quarantine, and erasure rails.',
+    nodes: [
+      { id: 'source', label: 'Source', detail: 'Owned corpus; authenticity at ingestion', kind: 'system' },
+      { id: 'parse', label: 'Layout-aware parse', detail: 'Provenance at page and cell level', kind: 'control' },
+      { id: 'chunk', label: 'Chunk + enrich', detail: 'Per-corpus evaluated; contextual enrichment', kind: 'system' },
+      { id: 'embed', label: 'Versioned embeddings', detail: 'Blue/green migration; drift monitored', kind: 'system' },
+      { id: 'index', label: 'Permission-carrying index', detail: 'ACLs in metadata; erasure exclusion sets', kind: 'control' },
+      { id: 'memory', label: 'Memory tiers', detail: 'Writes quarantined before durable promotion', kind: 'evidence' },
+      { id: 'answer', label: 'Cited answer', detail: 'Span-level lineage to source', kind: 'agent' },
+    ],
+    edges: [
+      { from: 'source', to: 'parse' },
+      { from: 'parse', to: 'chunk' },
+      { from: 'chunk', to: 'embed' },
+      { from: 'embed', to: 'index' },
+      { from: 'index', to: 'answer', label: 'pre-filtered retrieval' },
+      { from: 'memory', to: 'index', label: 'promoted writes only' },
+    ],
+    note: 'Derived artifacts inherit the strictest source classification; deletion cascades or it did not happen.' },
 ];
 
-const blueprintFigures = blueprints.flatMap((blueprint): FigureManifestEntry[] => {
-  const page = `/docs/blueprints/${blueprint.group}/${blueprint.id}`;
-  const source = guideSource(`${blueprint.title} blueprint`, page);
-  const prefix = `blueprint-${blueprint.id}`;
-  return [
-    defineFigure({
-      id: `${prefix}-scenario`, category: 'blueprint', page, placement: 'Scenario opening', sourceHeading: '1. The scenario',
-      title: `${blueprint.title}: one resolved-outcome journey`, takeaway: blueprint.control,
-      caption: `The storyboard starts with a real trigger and ends only when the authoritative record and recovery path are complete.`,
-      alt: `Four-step ${blueprint.title.toLowerCase()} scenario from work trigger through agent preparation and deterministic authorization to an evidenced system-of-record outcome.`,
-      type: 'storyboard', evidenceStatus: 'author-position', dataBearing: false, sources: [source],
-      data: { stages: [
-        { label: 'Trigger', detail: blueprint.trigger, kind: 'human' },
-        { label: 'Prepare', detail: blueprint.prepare, kind: 'agent' },
-        { label: 'Authorize', detail: blueprint.authorize, kind: 'control', gate: blueprint.control },
-        { label: 'Record and resolve', detail: blueprint.record, kind: 'system' },
-      ] },
-    }),
-    defineFigure({
-      id: `${prefix}-swimlane`, category: 'blueprint', page, placement: 'Roles and controls', sourceHeading: '2. Agent team design',
-      title: `${blueprint.title}: human, agent, control, and system lanes`, takeaway: `Routine preparation can move to agents while accountability and deterministic authorization stay explicit.`,
-      caption: blueprint.honestLimit,
-      alt: `Four-lane ${blueprint.title.toLowerCase()} workflow separating accountable human work, agent preparation, deterministic control decisions, and authoritative system recording.`,
-      type: 'swimlane', evidenceStatus: 'author-position', dataBearing: false, sources: [source],
-      data: { lanes: [
-        { label: 'Human', kind: 'human', steps: [blueprint.human] },
-        { label: 'Agent', kind: 'agent', steps: [blueprint.prepare] },
-        { label: 'Control', kind: 'control', steps: [blueprint.control, blueprint.authorize] },
-        { label: 'System', kind: 'system', steps: [blueprint.record] },
-      ] },
-    }),
-    defineFigure({
-      id: `${prefix}-hero-architecture`, category: 'blueprint', page: `/${blueprint.group === 'verticals' ? 'industries' : 'departments'}/${blueprint.id}`, placement: 'Page hero', sourceHeading: 'Hero',
-      title: `${blueprint.title}: the target architecture`, takeaway: `Agents prepare and execute the routine; deterministic controls authorize; people decide, handle exceptions, and stay accountable.`,
-      caption: blueprint.control,
-      alt: `Target architecture for ${blueprint.title.toLowerCase()}: work arrives, agents prepare with evidence, a deterministic control layer authorizes, systems of record capture the outcome, and accountable people supervise and handle exceptions throughout.`,
-      type: 'architecture', evidenceStatus: 'author-position', dataBearing: false, sources: [source],
-      data: {
-        nodes: [
-          { id: 'work', label: 'Work arrives', detail: blueprint.trigger, kind: 'human' },
-          { id: 'agents', label: 'Agents prepare and execute', detail: blueprint.prepare, kind: 'agent' },
-          { id: 'controls', label: 'Deterministic controls', detail: blueprint.authorize, kind: 'control' },
-          { id: 'records', label: 'Systems of record', detail: blueprint.record, kind: 'system' },
-          { id: 'people', label: 'People decide and supervise', detail: blueprint.human, kind: 'human' },
-          { id: 'evidence', label: 'Evidence', detail: 'Every action attributable and reviewable.', kind: 'evidence' },
-        ],
-        edges: [
-          { from: 'work', to: 'agents' },
-          { from: 'agents', to: 'controls', label: 'propose' },
-          { from: 'controls', to: 'records', label: 'authorized actions' },
-          { from: 'people', to: 'controls', label: 'approve exceptions' },
-          { from: 'agents', to: 'people', label: 'escalate' },
-          { from: 'records', to: 'evidence' },
-        ],
-        note: blueprint.honestLimit,
-      },
-    }),
-    defineFigure({
-      id: `${prefix}-metrics-limits`, category: 'blueprint', page, placement: 'Measures and honest limits', sourceHeading: '6. Honest limits',
-      title: `${blueprint.title}: measure the outcome and the boundary`, takeaway: blueprint.honestLimit,
-      caption: `Track quality and control failure alongside speed or volume.`,
-      alt: `Metric panel for the ${blueprint.title.toLowerCase()} blueprint showing three outcome and control measures alongside a prominent honest-limit boundary.`,
-      type: 'scorecard', evidenceStatus: 'author-position', dataBearing: false, sources: [source],
-      data: { metrics: blueprint.metrics.map((metric) => ({ label: metric, value: 'Measure', direction: 'balanced' as const })), note: `Honest limit: ${blueprint.honestLimit}` },
-    }),
-  ];
-});
+// The architecture renderer labels each row with node.group; without it every
+// component reads "Plane", which is only correct for the seven-plane figure.
+const HERO_ROLE_LABEL: Record<string, string> = {
+  agent: 'Agent',
+  control: 'Control',
+  system: 'System',
+  evidence: 'Evidence',
+  human: 'Human',
+  risk: 'Boundary',
+};
+
+const layerHeroFigures: FigureManifestEntry[] = heroDefs.map((hero) => defineFigure({
+  id: `layer-${hero.n}-hero`,
+  category: 'layer',
+  page: `/layers/${hero.layer}`,
+  placement: 'Target-state hero',
+  title: hero.title,
+  takeaway: hero.takeaway,
+  caption: hero.caption,
+  alt: hero.alt,
+  type: 'architecture',
+  evidenceStatus: 'author-position',
+  dataBearing: false,
+  sources: [guideSource(`${hero.layer} findings`, `/library/layers/${hero.layer}/findings`)],
+  data: {
+    nodes: hero.nodes.map((node) => ({ ...node, group: node.group ?? HERO_ROLE_LABEL[node.kind ?? 'system'] ?? 'Component' })),
+    edges: hero.edges,
+    ...(hero.note ? { note: hero.note } : {}),
+  },
+}));
 
 const supportingFigures: FigureManifestEntry[] = [
-  defineFigure({ id: 'vendor-coverage-matrix', category: 'support', page: '/vendors', placement: 'Coverage at a glance', sourceHeading: 'The matrix', title: 'Who genuinely covers which layer', takeaway: 'Nobody covers all fourteen layers; the gaps in your candidate\'s row are your integration work.', caption: 'Core means the layer is the product. Real is genuine capability off-centre. Adjacent touches it through another product. Claimed is marketing the research could not substantiate.', alt: 'Matrix of vendor groups against the fourteen enterprise layers, marking core, real, adjacent, and claimed coverage, with independents owning the newest disciplines.', type: 'matrix', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Vendor coverage matrix', '/library/vendors/coverage-matrix')], data: { rows: ['Hyperscalers', 'Microsoft estate', 'Salesforce', 'ServiceNow', 'SAP', 'Independents'], axisColumns: ['Infra', 'Data', 'Integration', 'Records', 'LoB and OT', 'Agent platform', 'Identity', 'Governance', 'Observability', 'Operating model'], cells: [ { row: 'Hyperscalers', column: 'Infra', label: 'Core' }, { row: 'Microsoft estate', column: 'Identity', label: 'Core' }, { row: 'Salesforce', column: 'Records', label: 'Core', detail: 'Customer records' }, { row: 'ServiceNow', column: 'Governance', label: 'Core', detail: 'Control tower' }, { row: 'SAP', column: 'Records', label: 'Core', detail: 'Embedded only' }, { row: 'Independents', column: 'Observability', label: 'Core' }, { row: 'Independents', column: 'Operating model', label: 'Thin', detail: 'Almost no product surface from anyone' } ], note: 'Full matrix with all fourteen layers and the consolidation record: the vendor research library.' } }),
-  defineFigure({ id: 'support-accountability-enforcement', category: 'support', page: '/docs/architecture/identity-security-model', placement: 'Misconception explainer', sourceHeading: 'One sentence', title: 'Accountability is not enforcement', takeaway: 'A named sponsor answers for purpose and outcomes; a deterministic control prevents or permits the action.', caption: 'Both are necessary and neither substitutes for the other.', alt: 'Side-by-side distinction between human accountability for purpose and outcomes and technical enforcement of permissions at the action boundary.', type: 'comparison', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Identity and security model', '/docs/architecture/identity-security-model')], data: { columns: [{ label: 'Accountability', items: ['Named human sponsor', 'Purpose and outcome ownership', 'Exception and appeal responsibility'], kind: 'human' }, { label: 'Enforcement', items: ['Deterministic policy decision', 'Permission at the gateway', 'Allow, deny, limit, or stop'], kind: 'control' }] } }),
-  defineFigure({ id: 'support-licensed-metered-estates', category: 'support', page: '/docs/architecture/master-target-state', placement: 'Global enterprise architecture', sourceHeading: 'Architecture A: Global regulated enterprise', title: 'Licensed and metered agent estates', takeaway: 'One gateway cannot govern agents that run inside a vendor’s licensed control plane.', caption: 'Use tenant policy and telemetry extraction for the licensed estate; direct gateway enforcement for the metered estate.', alt: 'Two-estate architecture comparing licensed suite agents governed through tenant policy with metered agents governed through an enterprise gateway and shared evidence plane.', type: 'comparison', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Master target-state architecture', '/docs/architecture/master-target-state')], data: { columns: [{ label: 'Licensed estate', items: ['Vendor execution plane', 'Tenant policy', 'Telemetry extraction', 'Limited gateway visibility'], kind: 'system' }, { label: 'Metered estate', items: ['Enterprise runtime', 'Gateway enforcement', 'Per-run budgets', 'Full action trace'], kind: 'control' }] } }),
-  defineFigure({ id: 'support-derived-erasure-tree', category: 'support', page: '/docs/architecture/memory-pipeline-architecture', placement: 'Erasure obligations', sourceHeading: 'Governance that has to be designed, not inherited', title: 'Deletion must reach every derivative', takeaway: 'Deleting a source record is incomplete when its vectors, memories, traces, or eval cases remain.', caption: 'Derived artifacts inherit the strictest source classification and erasure obligation.', alt: 'Family tree from a classified source record to chunks, embeddings, memories, traces, and evaluation datasets, all connected to one cascading erasure request.', type: 'map', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Memory pipeline architecture', '/docs/architecture/memory-pipeline-architecture')], data: { nodes: [{ id: 'source', label: 'Source record', kind: 'system', emphasis: true }, { id: 'chunk', label: 'Parsed chunks', kind: 'evidence' }, { id: 'vector', label: 'Embeddings', kind: 'evidence' }, { id: 'memory', label: 'Durable memory', kind: 'agent' }, { id: 'trace', label: 'Traces', kind: 'evidence' }, { id: 'eval', label: 'Eval datasets', kind: 'control' }], edges: [{ from: 'source', to: 'chunk', kind: 'evidence' }, { from: 'chunk', to: 'vector', kind: 'evidence' }, { from: 'vector', to: 'memory', kind: 'evidence' }, { from: 'source', to: 'trace', kind: 'evidence' }, { from: 'trace', to: 'eval', kind: 'evidence' }] } }),
-  defineFigure({ id: 'support-containment-resolution', category: 'support', page: '/docs/blueprints/departments/customer-service', placement: 'Metric misconception', sourceHeading: '7. Metrics', title: 'Containment is not resolution', takeaway: 'A conversation can end without the customer’s underlying need being resolved.', caption: 'Measure repeat contact, reopened cases, corrections, and durable completion.', alt: 'Comparison showing a contained conversation ending at channel closure while a resolved outcome continues through fulfilled need, correct record, and no avoidable repeat contact.', type: 'comparison', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Customer-service blueprint', '/docs/blueprints/departments/customer-service')], data: { columns: [{ label: 'Contained', items: ['Conversation ended', 'No immediate handoff', 'Underlying obligation may remain'], kind: 'risk' }, { label: 'Resolved', items: ['Need fulfilled correctly', 'Authoritative record updated', 'No avoidable repeat contact'], kind: 'evidence' }] } }),
-  defineFigure({ id: 'support-solitary-coordinated-work', category: 'support', page: '/docs/layers/r08-productivity-and-collaboration/findings', placement: 'Work-pattern distinction', sourceHeading: '2. What changes with agents', title: 'Solitary assistance and coordinated work are different investments', takeaway: 'Personal productivity can improve without changing a team’s shared workflow.', caption: 'Coordinated work needs redesigned handoffs, ownership, shared context, and outcome measurement.', alt: 'Two-column comparison of solitary assistant tasks inside one person’s workflow and coordinated multi-person work requiring redesigned handoffs and shared accountability.', type: 'comparison', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Productivity and collaboration findings', '/docs/layers/r08-productivity-and-collaboration/findings')], data: { columns: [{ label: 'Solitary work', items: ['Draft, summarize, search', 'Individual context', 'Immediate local benefit'], kind: 'agent' }, { label: 'Coordinated work', items: ['Handoffs and dependencies', 'Shared state and ownership', 'Process-level outcome'], kind: 'human' }] } }),
-  defineFigure({ id: 'support-evidence-strength-gradient', category: 'support', page: '/docs', placement: 'Evidence legend', sourceHeading: 'How to read the evidence layer', title: 'Read claims by evidence strength', takeaway: 'A vendor report, field experiment, prototype, and author position should never look equivalent.', caption: 'Badges expose the status; linked sources carry the detail and limitations.', alt: 'Evidence-strength gradient distinguishing primary standards, independently measured research, vendor-reported results, prototypes, author positions, and open evidence gaps.', type: 'spectrum', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Guide methodology', '/docs')], data: { stages: [{ label: 'Primary source', detail: 'Standard, law, or first-party technical record.', kind: 'evidence' }, { label: 'Independent measure', detail: 'Externally conducted evaluation or experiment.', kind: 'evidence' }, { label: 'Vendor report', detail: 'Useful but interested evidence.', kind: 'system' }, { label: 'Prototype', detail: 'Early result with limited external validity.', kind: 'agent' }, { label: 'Author position', detail: 'Explicit practitioner judgment.', kind: 'human' }, { label: 'Open gap', detail: 'No credible published precedent.', kind: 'risk' }] } }),
-  defineFigure({ id: 'support-single-multi-agent', category: 'support', page: '/docs/layers/r07-agent-platform/findings', placement: 'Architecture choice', sourceHeading: 'Challenged defaults', title: 'Add agents only when coordination earns its cost', takeaway: 'A multi-agent topology should beat a simpler single-agent design at equal compute and evaluation conditions.', caption: 'Compare quality, latency, cost, failure modes, and recovery, not topology novelty.', alt: 'Controlled comparison between one agent with tools and several coordinating agents under equal compute, evaluated on quality, latency, cost, and recoverability.', type: 'comparison', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Agent-platform findings', '/docs/layers/r07-agent-platform/findings')], data: { columns: [{ label: 'Single agent', items: ['Fewer coordination failures', 'Simpler evidence trail', 'Default credible alternative'], kind: 'agent' }, { label: 'Multiple agents', items: ['Useful for separable expertise', 'Coordination and token overhead', 'Must win under equal conditions'], kind: 'risk' }] } }),
-  defineFigure({ id: 'support-platform-choice', category: 'support', page: '/docs/architecture/master-target-state', placement: 'Platform decision', sourceHeading: 'What this page does not decide', title: 'Choose a platform from data and permission gravity', takeaway: 'The best platform is the one that can safely reach the workload’s governed knowledge and actions.', caption: 'Start with archetype, data location, permissions, operating capacity, and exit constraints.', alt: 'Platform-choice flow routing from enterprise archetype and workload data through permission and operating-capacity checks to vendor rails, enterprise platform, or custom primitives.', type: 'flow', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Master target-state architecture', '/docs/architecture/master-target-state')], data: { stages: [{ label: 'Archetype', detail: 'Structural constraints.', kind: 'system' }, { label: 'Data gravity', detail: 'Where governed context lives.', kind: 'evidence' }, { label: 'Permission model', detail: 'Where authority is decided.', kind: 'control' }, { label: 'Operating capacity', detail: 'What the team can run.', kind: 'human' }, { label: 'Platform posture', detail: 'Rails, platform, or primitives.', kind: 'agent' }, { label: 'Exit test', detail: 'Artifacts and evidence remain portable.', kind: 'risk' }] } }),
-  defineFigure({ id: 'support-promotion-demotion', category: 'support', page: '/docs/architecture/learning-loops-map', placement: 'Governed learning', sourceHeading: 'The promotion gate, corrected by evidence', title: 'Every promotion needs a demotion path', takeaway: 'A learned change is not production-ready until it survives counterexamples and can be rolled back.', caption: 'The optimizer must not grade its own work.', alt: 'Governed learning storyboard from observed failure through candidate change, independent evaluation, staged promotion, monitoring, and rapid demotion on regression.', type: 'loop', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Learning loops map', '/docs/architecture/learning-loops-map')], data: { stages: [{ label: 'Observe', detail: 'Capture failure outside agent control.', kind: 'evidence' }, { label: 'Propose', detail: 'Create a candidate fact, rule, or behavior.', kind: 'agent' }, { label: 'Evaluate', detail: 'Independent pinned judge plus counterexamples.', kind: 'control' }, { label: 'Stage', detail: 'Limited rollout with comparison.', kind: 'system' }, { label: 'Promote', detail: 'Move to governed enforcement.', kind: 'control' }, { label: 'Demote', detail: 'Rollback on regression or drift.', kind: 'risk' }] } }),
-  defineFigure({ id: 'support-research-changed', category: 'support', page: '/docs/decisions', placement: 'Decision history', sourceHeading: 'Recorded decisions', title: 'What changed after research', takeaway: 'The guide earns trust by showing where evidence narrowed, revised, or contradicted an initial position.', caption: 'Publish concise decision cards, not the raw private workbench.', alt: 'Five-step research decision card moving from initial assumption through evidence and contradiction to revised recommendation and current evidence status.', type: 'flow', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Decision log', '/docs/decisions')], data: { stages: [{ label: 'Assumption', detail: 'State the starting belief.', kind: 'human' }, { label: 'Evidence', detail: 'Show what was tested.', kind: 'evidence' }, { label: 'Change', detail: 'Name the contradiction or narrowing.', kind: 'risk' }, { label: 'Recommendation', detail: 'Publish the revised position.', kind: 'control' }, { label: 'Status', detail: 'Label confidence and review date.', kind: 'evidence' }] } }),
-  defineFigure({ id: 'support-glossary-concept-map', category: 'support', page: '/docs/glossary', placement: 'Glossary opening', sourceHeading: 'Canonical terms', title: 'The guide’s concepts in one map', takeaway: 'Agents connect intent to governed action by using identity, knowledge, memory, controls, evidence, and learning.', caption: 'Use the glossary for definitions; use the map to understand relationships.', alt: 'Concept map linking human intent, agent autonomy, identity, knowledge retrieval, memory, tools, deterministic controls, evidence, outcomes, and governed learning.', type: 'map', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Glossary', '/docs/glossary')], data: { nodes: [{ id: 'intent', label: 'Intent', kind: 'human' }, { id: 'agent', label: 'Agent', kind: 'agent' }, { id: 'identity', label: 'Identity', kind: 'control' }, { id: 'knowledge', label: 'Knowledge', kind: 'evidence' }, { id: 'memory', label: 'Memory', kind: 'agent' }, { id: 'tools', label: 'Tools', kind: 'system' }, { id: 'control', label: 'Controls', kind: 'control' }, { id: 'outcome', label: 'Outcome', kind: 'system' }, { id: 'evidence', label: 'Evidence', kind: 'evidence' }, { id: 'learning', label: 'Learning', kind: 'agent' }], edges: [{ from: 'intent', to: 'agent', kind: 'action' }, { from: 'identity', to: 'control', kind: 'action' }, { from: 'knowledge', to: 'agent', kind: 'evidence' }, { from: 'memory', to: 'agent', kind: 'advisory' }, { from: 'agent', to: 'tools', kind: 'advisory' }, { from: 'control', to: 'tools', kind: 'action' }, { from: 'tools', to: 'outcome', kind: 'action' }, { from: 'outcome', to: 'evidence', kind: 'evidence' }, { from: 'evidence', to: 'learning', kind: 'feedback' }] } }),
-  defineFigure({ id: 'support-myth-correction-gallery', category: 'support', page: '/docs', placement: 'Visual primer close', sourceHeading: 'Your five-minute checkpoint', title: 'Five myths the guide corrects', takeaway: 'Agent maturity is not maximum autonomy, maximum memory, maximum sovereignty, maximum containment, or a vendor purchase.', caption: 'Each correction links to the architecture or framework that makes the distinction operational.', alt: 'Five paired myth-and-correction cards covering autonomy, memory, sovereignty, containment, and vendor-led transformation.', type: 'comparison', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Guide introduction', '/docs')], data: { columns: [{ label: 'Myth', items: ['Higher autonomy is always better', 'More memory means more intelligence', 'Higher sovereignty is more mature', 'Containment equals resolution', 'Choose the vendor first'], kind: 'risk' }, { label: 'Correction', items: ['Use the justified A×L cell', 'Persistence increases obligation', 'Classification selects the tier', 'Measure the durable outcome', 'Decide, design, then evaluate'], kind: 'evidence' }] } }),
-  defineFigure({ id: 'support-graph-vector-decision', category: 'support', page: '/docs/techniques/when-a-knowledge-graph-earns-its-keep', placement: 'Decision visual', sourceHeading: 'The wrong question, and the right one', title: 'When a knowledge graph earns its keep', takeaway: 'Use a graph only when explicit relationships and multi-hop traversal outperform a simpler retrieval baseline on the real workload.', caption: 'Start with the simplest credible vector or structured-search baseline, then require measurable quality or control gains before adding graph operations.', alt: 'Decision flow testing whether a workload needs explicit relationships, multi-hop traversal, explainable paths, and measurable improvement over vector retrieval before choosing a knowledge graph.', type: 'flow', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('When a knowledge graph earns its keep', '/docs/techniques/when-a-knowledge-graph-earns-its-keep')], data: { stages: [{ label: 'Define the question', detail: 'Name the resolved outcome and evaluation set.', kind: 'human' }, { label: 'Test the baseline', detail: 'Run vector or structured retrieval first.', kind: 'system', gate: 'Baseline quality' }, { label: 'Need explicit paths?', detail: 'Check multi-hop, relationship, and explanation needs.', kind: 'evidence' }, { label: 'Measure the gain', detail: 'Compare quality, latency, cost, and operations.', kind: 'control', gate: 'Material advantage' }, { label: 'Choose deliberately', detail: 'Keep the baseline or fund graph ownership.', kind: 'agent' }] } }),
-  defineFigure({ id: 'support-multi-view-publication-boundary', category: 'support', page: '/docs/techniques', placement: 'Publication boundary', sourceHeading: 'Publication status', title: 'Multi-view embeddings: what is and is not published', takeaway: 'The guide may discuss the concept and bounded evidence without exposing a held mechanism or implying unverified generalization.', caption: 'The implementation mechanism remains publication-held until explicit release and broader-domain validation.', alt: 'Publication-boundary comparison separating safe discussion of the multi-view embedding concept and social-domain evidence from held implementation details and unverified cross-domain claims.', type: 'comparison', evidenceStatus: 'preprint-or-prototype', dataBearing: false, sources: [guideSource('Techniques library', '/docs/techniques')], data: { columns: [{ label: 'Published boundary', items: ['Concept-level description', 'Evidence limited to the studied social domain', 'Limitations and review status', 'No implementation recipe'], kind: 'evidence' }, { label: 'Held or unverified', items: ['Mechanism details remain withheld', 'No claim of enterprise-wide generalization', 'No production recommendation from one domain', 'Release requires explicit approval'], kind: 'risk' }], note: 'Do not infer or reconstruct the held mechanism from this visual.' } }),
+  defineFigure({ id: 'vendor-coverage-matrix', category: 'support', page: '/decisions', placement: 'Coverage at a glance', sourceHeading: 'The matrix', title: 'Who genuinely covers which layer', takeaway: 'Nobody covers all fourteen layers; the gaps in your candidate\'s row are your integration work.', caption: 'Core means the layer is the product. Real is genuine capability off-centre. Adjacent touches it through another product. Claimed is marketing the research could not substantiate.', alt: 'Matrix of vendor groups against the fourteen enterprise layers, marking core, real, adjacent, and claimed coverage, with independents owning the newest disciplines.', type: 'matrix', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Vendor coverage matrix', '/library/vendors/coverage-matrix')], data: { rows: ['Hyperscalers', 'Microsoft estate', 'Salesforce', 'ServiceNow', 'SAP', 'Independents'], axisColumns: ['Infra', 'Data', 'Integration', 'Records', 'LoB and OT', 'Agent platform', 'Identity', 'Governance', 'Observability', 'Operating model'], cells: [ { row: 'Hyperscalers', column: 'Infra', label: 'Core' }, { row: 'Microsoft estate', column: 'Identity', label: 'Core' }, { row: 'Salesforce', column: 'Records', label: 'Core', detail: 'Customer records' }, { row: 'ServiceNow', column: 'Governance', label: 'Core', detail: 'Control tower' }, { row: 'SAP', column: 'Records', label: 'Core', detail: 'Embedded only' }, { row: 'Independents', column: 'Observability', label: 'Core' }, { row: 'Independents', column: 'Operating model', label: 'Thin', detail: 'Almost no product surface from anyone' } ], note: 'Full matrix with all fourteen layers and the consolidation record: the vendor research library.' } }),
+  defineFigure({ id: 'support-accountability-enforcement', category: 'support', page: '/architecture/identity-chain', placement: 'Misconception explainer', sourceHeading: 'One sentence', title: 'Accountability is not enforcement', takeaway: 'A named sponsor answers for purpose and outcomes; a deterministic control prevents or permits the action.', caption: 'Both are necessary and neither substitutes for the other.', alt: 'Side-by-side distinction between human accountability for purpose and outcomes and technical enforcement of permissions at the action boundary.', type: 'comparison', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Identity and security model', '/docs/architecture/identity-security-model')], data: { columns: [{ label: 'Accountability', items: ['Named human sponsor', 'Purpose and outcome ownership', 'Exception and appeal responsibility'], kind: 'human' }, { label: 'Enforcement', items: ['Deterministic policy decision', 'Permission at the gateway', 'Allow, deny, limit, or stop'], kind: 'control' }] } }),
+  defineFigure({ id: 'support-licensed-metered-estates', category: 'support', page: '/architecture', placement: 'Global enterprise architecture', sourceHeading: 'Architecture A: Global regulated enterprise', title: 'Licensed and metered agent estates', takeaway: 'One gateway cannot govern agents that run inside a vendor’s licensed control plane.', caption: 'Use tenant policy and telemetry extraction for the licensed estate; direct gateway enforcement for the metered estate.', alt: 'Two-estate architecture comparing licensed suite agents governed through tenant policy with metered agents governed through an enterprise gateway and shared evidence plane.', type: 'comparison', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Master target-state architecture', '/docs/architecture/master-target-state')], data: { columns: [{ label: 'Licensed estate', items: ['Vendor execution plane', 'Tenant policy', 'Telemetry extraction', 'Limited gateway visibility'], kind: 'system' }, { label: 'Metered estate', items: ['Enterprise runtime', 'Gateway enforcement', 'Per-run budgets', 'Full action trace'], kind: 'control' }] } }),
+  defineFigure({ id: 'support-derived-erasure-tree', category: 'support', page: '/architecture/data-to-memory', placement: 'Erasure obligations', sourceHeading: 'Governance that has to be designed, not inherited', title: 'Deletion must reach every derivative', takeaway: 'Deleting a source record is incomplete when its vectors, memories, traces, or eval cases remain.', caption: 'Derived artifacts inherit the strictest source classification and erasure obligation.', alt: 'Family tree from a classified source record to chunks, embeddings, memories, traces, and evaluation datasets, all connected to one cascading erasure request.', type: 'map', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Memory pipeline architecture', '/docs/architecture/memory-pipeline-architecture')], data: { nodes: [{ id: 'source', label: 'Source record', kind: 'system', emphasis: true }, { id: 'chunk', label: 'Parsed chunks', kind: 'evidence' }, { id: 'vector', label: 'Embeddings', kind: 'evidence' }, { id: 'memory', label: 'Durable memory', kind: 'agent' }, { id: 'trace', label: 'Traces', kind: 'evidence' }, { id: 'eval', label: 'Eval datasets', kind: 'control' }], edges: [{ from: 'source', to: 'chunk', kind: 'evidence' }, { from: 'chunk', to: 'vector', kind: 'evidence' }, { from: 'vector', to: 'memory', kind: 'evidence' }, { from: 'source', to: 'trace', kind: 'evidence' }, { from: 'trace', to: 'eval', kind: 'evidence' }] } }),
+  defineFigure({ id: 'support-containment-resolution', category: 'support', page: '/layers/r09-experience-and-channels', placement: 'Metric misconception', sourceHeading: '7. Metrics', title: 'Containment is not resolution', takeaway: 'A conversation can end without the customer’s underlying need being resolved.', caption: 'Measure repeat contact, reopened cases, corrections, and durable completion.', alt: 'Comparison showing a contained conversation ending at channel closure while a resolved outcome continues through fulfilled need, correct record, and no avoidable repeat contact.', type: 'comparison', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Customer-service blueprint', '/docs/blueprints/departments/customer-service')], data: { columns: [{ label: 'Contained', items: ['Conversation ended', 'No immediate handoff', 'Underlying obligation may remain'], kind: 'risk' }, { label: 'Resolved', items: ['Need fulfilled correctly', 'Authoritative record updated', 'No avoidable repeat contact'], kind: 'evidence' }] } }),
+  defineFigure({ id: 'support-solitary-coordinated-work', category: 'support', page: '/layers/r08-productivity-and-collaboration', placement: 'Work-pattern distinction', sourceHeading: '2. What changes with agents', title: 'Solitary assistance and coordinated work are different investments', takeaway: 'Personal productivity can improve without changing a team’s shared workflow.', caption: 'Coordinated work needs redesigned handoffs, ownership, shared context, and outcome measurement.', alt: 'Two-column comparison of solitary assistant tasks inside one person’s workflow and coordinated multi-person work requiring redesigned handoffs and shared accountability.', type: 'comparison', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Productivity and collaboration findings', '/docs/layers/r08-productivity-and-collaboration/findings')], data: { columns: [{ label: 'Solitary work', items: ['Draft, summarize, search', 'Individual context', 'Immediate local benefit'], kind: 'agent' }, { label: 'Coordinated work', items: ['Handoffs and dependencies', 'Shared state and ownership', 'Process-level outcome'], kind: 'human' }] } }),
+  defineFigure({ id: 'support-evidence-strength-gradient', category: 'support', page: '/architecture', placement: 'Evidence legend', sourceHeading: 'How to read the evidence layer', title: 'Read claims by evidence strength', takeaway: 'A vendor report, field experiment, prototype, and author position should never look equivalent.', caption: 'Badges expose the status; linked sources carry the detail and limitations.', alt: 'Evidence-strength gradient distinguishing primary standards, independently measured research, vendor-reported results, prototypes, author positions, and open evidence gaps.', type: 'spectrum', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Guide methodology', '/docs')], data: { stages: [{ label: 'Primary source', detail: 'Standard, law, or first-party technical record.', kind: 'evidence' }, { label: 'Independent measure', detail: 'Externally conducted evaluation or experiment.', kind: 'evidence' }, { label: 'Vendor report', detail: 'Useful but interested evidence.', kind: 'system' }, { label: 'Prototype', detail: 'Early result with limited external validity.', kind: 'agent' }, { label: 'Author position', detail: 'Explicit practitioner judgment.', kind: 'human' }, { label: 'Open gap', detail: 'No credible published precedent.', kind: 'risk' }] } }),
+  defineFigure({ id: 'support-single-multi-agent', category: 'support', page: '/layers/r07-agent-platform', placement: 'Architecture choice', sourceHeading: 'Challenged defaults', title: 'Add agents only when coordination earns its cost', takeaway: 'A multi-agent topology should beat a simpler single-agent design at equal compute and evaluation conditions.', caption: 'Compare quality, latency, cost, failure modes, and recovery, not topology novelty.', alt: 'Controlled comparison between one agent with tools and several coordinating agents under equal compute, evaluated on quality, latency, cost, and recoverability.', type: 'comparison', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Agent-platform findings', '/docs/layers/r07-agent-platform/findings')], data: { columns: [{ label: 'Single agent', items: ['Fewer coordination failures', 'Simpler evidence trail', 'Default credible alternative'], kind: 'agent' }, { label: 'Multiple agents', items: ['Useful for separable expertise', 'Coordination and token overhead', 'Must win under equal conditions'], kind: 'risk' }] } }),
+  defineFigure({ id: 'support-platform-choice', category: 'support', page: '/architecture', placement: 'Platform decision', sourceHeading: 'What this page does not decide', title: 'Choose a platform from data and permission gravity', takeaway: 'The best platform is the one that can safely reach the workload’s governed knowledge and actions.', caption: 'Start with archetype, data location, permissions, operating capacity, and exit constraints.', alt: 'Platform-choice flow routing from enterprise archetype and workload data through permission and operating-capacity checks to vendor rails, enterprise platform, or custom primitives.', type: 'flow', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Master target-state architecture', '/docs/architecture/master-target-state')], data: { stages: [{ label: 'Archetype', detail: 'Structural constraints.', kind: 'system' }, { label: 'Data gravity', detail: 'Where governed context lives.', kind: 'evidence' }, { label: 'Permission model', detail: 'Where authority is decided.', kind: 'control' }, { label: 'Operating capacity', detail: 'What the team can run.', kind: 'human' }, { label: 'Platform posture', detail: 'Rails, platform, or primitives.', kind: 'agent' }, { label: 'Exit test', detail: 'Artifacts and evidence remain portable.', kind: 'risk' }] } }),
+  defineFigure({ id: 'support-promotion-demotion', category: 'support', page: '/architecture/learning-flywheel', placement: 'Governed learning', sourceHeading: 'The promotion gate, corrected by evidence', title: 'Every promotion needs a demotion path', takeaway: 'A learned change is not production-ready until it survives counterexamples and can be rolled back.', caption: 'The optimizer must not grade its own work.', alt: 'Governed learning storyboard from observed failure through candidate change, independent evaluation, staged promotion, monitoring, and rapid demotion on regression.', type: 'loop', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Learning loops map', '/docs/architecture/learning-loops-map')], data: { stages: [{ label: 'Observe', detail: 'Capture failure outside agent control.', kind: 'evidence' }, { label: 'Propose', detail: 'Create a candidate fact, rule, or behavior.', kind: 'agent' }, { label: 'Evaluate', detail: 'Independent pinned judge plus counterexamples.', kind: 'control' }, { label: 'Stage', detail: 'Limited rollout with comparison.', kind: 'system' }, { label: 'Promote', detail: 'Move to governed enforcement.', kind: 'control' }, { label: 'Demote', detail: 'Rollback on regression or drift.', kind: 'risk' }] } }),
+  defineFigure({ id: 'support-research-changed', category: 'support', page: '/decisions', placement: 'Decision history', sourceHeading: 'Recorded decisions', title: 'What changed after research', takeaway: 'The guide earns trust by showing where evidence narrowed, revised, or contradicted an initial position.', caption: 'Publish concise decision cards, not the raw private workbench.', alt: 'Five-step research decision card moving from initial assumption through evidence and contradiction to revised recommendation and current evidence status.', type: 'flow', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Decision log', '/docs/decisions')], data: { stages: [{ label: 'Assumption', detail: 'State the starting belief.', kind: 'human' }, { label: 'Evidence', detail: 'Show what was tested.', kind: 'evidence' }, { label: 'Change', detail: 'Name the contradiction or narrowing.', kind: 'risk' }, { label: 'Recommendation', detail: 'Publish the revised position.', kind: 'control' }, { label: 'Status', detail: 'Label confidence and review date.', kind: 'evidence' }] } }),
+  defineFigure({ id: 'support-glossary-concept-map', category: 'support', page: '/architecture', placement: 'Glossary opening', sourceHeading: 'Canonical terms', title: 'The guide’s concepts in one map', takeaway: 'Agents connect intent to governed action by using identity, knowledge, memory, controls, evidence, and learning.', caption: 'Use the glossary for definitions; use the map to understand relationships.', alt: 'Concept map linking human intent, agent autonomy, identity, knowledge retrieval, memory, tools, deterministic controls, evidence, outcomes, and governed learning.', type: 'map', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Glossary', '/docs/glossary')], data: { nodes: [{ id: 'intent', label: 'Intent', kind: 'human' }, { id: 'agent', label: 'Agent', kind: 'agent' }, { id: 'identity', label: 'Identity', kind: 'control' }, { id: 'knowledge', label: 'Knowledge', kind: 'evidence' }, { id: 'memory', label: 'Memory', kind: 'agent' }, { id: 'tools', label: 'Tools', kind: 'system' }, { id: 'control', label: 'Controls', kind: 'control' }, { id: 'outcome', label: 'Outcome', kind: 'system' }, { id: 'evidence', label: 'Evidence', kind: 'evidence' }, { id: 'learning', label: 'Learning', kind: 'agent' }], edges: [{ from: 'intent', to: 'agent', kind: 'action' }, { from: 'identity', to: 'control', kind: 'action' }, { from: 'knowledge', to: 'agent', kind: 'evidence' }, { from: 'memory', to: 'agent', kind: 'advisory' }, { from: 'agent', to: 'tools', kind: 'advisory' }, { from: 'control', to: 'tools', kind: 'action' }, { from: 'tools', to: 'outcome', kind: 'action' }, { from: 'outcome', to: 'evidence', kind: 'evidence' }, { from: 'evidence', to: 'learning', kind: 'feedback' }] } }),
+  defineFigure({ id: 'support-myth-correction-gallery', category: 'support', page: '/architecture', placement: 'Visual primer close', sourceHeading: 'Your five-minute checkpoint', title: 'Five myths the guide corrects', takeaway: 'Agent maturity is not maximum autonomy, maximum memory, maximum sovereignty, maximum containment, or a vendor purchase.', caption: 'Each correction links to the architecture or framework that makes the distinction operational.', alt: 'Five paired myth-and-correction cards covering autonomy, memory, sovereignty, containment, and vendor-led transformation.', type: 'comparison', evidenceStatus: 'conceptual-guide', dataBearing: false, sources: [guideSource('Guide introduction', '/docs')], data: { columns: [{ label: 'Myth', items: ['Higher autonomy is always better', 'More memory means more intelligence', 'Higher sovereignty is more mature', 'Containment equals resolution', 'Choose the vendor first'], kind: 'risk' }, { label: 'Correction', items: ['Use the justified A×L cell', 'Persistence increases obligation', 'Classification selects the tier', 'Measure the durable outcome', 'Decide, design, then evaluate'], kind: 'evidence' }] } }),
+  defineFigure({ id: 'support-graph-vector-decision', category: 'support', page: '/decisions', placement: 'Decision visual', sourceHeading: 'The wrong question, and the right one', title: 'When a knowledge graph earns its keep', takeaway: 'Use a graph only when explicit relationships and multi-hop traversal outperform a simpler retrieval baseline on the real workload.', caption: 'Start with the simplest credible vector or structured-search baseline, then require measurable quality or control gains before adding graph operations.', alt: 'Decision flow testing whether a workload needs explicit relationships, multi-hop traversal, explainable paths, and measurable improvement over vector retrieval before choosing a knowledge graph.', type: 'flow', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('When a knowledge graph earns its keep', '/docs/techniques/when-a-knowledge-graph-earns-its-keep')], data: { stages: [{ label: 'Define the question', detail: 'Name the resolved outcome and evaluation set.', kind: 'human' }, { label: 'Test the baseline', detail: 'Run vector or structured retrieval first.', kind: 'system', gate: 'Baseline quality' }, { label: 'Need explicit paths?', detail: 'Check multi-hop, relationship, and explanation needs.', kind: 'evidence' }, { label: 'Measure the gain', detail: 'Compare quality, latency, cost, and operations.', kind: 'control', gate: 'Material advantage' }, { label: 'Choose deliberately', detail: 'Keep the baseline or fund graph ownership.', kind: 'agent' }] } }),
+  defineFigure({ id: 'support-multi-view-publication-boundary', category: 'support', page: '/layers/r14-agent-data-engineering', placement: 'Publication boundary', sourceHeading: 'Publication status', title: 'Multi-view embeddings: what is and is not published', takeaway: 'The guide may discuss the concept and bounded evidence without exposing a held mechanism or implying unverified generalization.', caption: 'The implementation mechanism remains publication-held until explicit release and broader-domain validation.', alt: 'Publication-boundary comparison separating safe discussion of the multi-view embedding concept and social-domain evidence from held implementation details and unverified cross-domain claims.', type: 'comparison', evidenceStatus: 'preprint-or-prototype', dataBearing: false, sources: [guideSource('Techniques library', '/docs/techniques')], data: { columns: [{ label: 'Published boundary', items: ['Concept-level description', 'Evidence limited to the studied social domain', 'Limitations and review status', 'No implementation recipe'], kind: 'evidence' }, { label: 'Held or unverified', items: ['Mechanism details remain withheld', 'No claim of enterprise-wide generalization', 'No production recommendation from one domain', 'Release requires explicit approval'], kind: 'risk' }], note: 'Do not infer or reconstruct the held mechanism from this visual.' } }),
 ];
 
 export const figureManifest: readonly FigureManifestEntry[] = [
   ...foundationalFigures,
   ...layerFigures,
-  ...blueprintFigures,
+  ...layerHeroFigures,
   ...supportingFigures,
 ];
 
@@ -772,7 +1004,6 @@ export function figuresForPage(pathOrSlug: string): readonly FigureManifestEntry
 export const figureManifestStats = Object.freeze({
   total: figureManifest.length,
   foundation: foundationalFigures.length,
-  layer: layerFigures.length,
-  blueprint: blueprintFigures.length,
+  layer: layerFigures.length + layerHeroFigures.length,
   support: supportingFigures.length,
 });

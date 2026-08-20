@@ -1,0 +1,40 @@
+---
+title: "The four deterministic zones"
+description: "Where model output is advisory forever: access, money, safety actuation, and formal records, each with the standards that say so."
+hero_figure: "four-deterministic-zones"
+---
+
+## The principle
+
+**Models may inform, never decide.** In four zones the decision is made by deterministic rules over verifiable credentials and policies, and model output enters only as an advisory signal. This is not caution ahead of the technology; three of the four zones already run machine-learning signals inside them today, with the decision rule staying deterministic. The boundary sits on the decision, not on the presence of a model.
+
+<GuideFigure id="four-deterministic-zones" fullWidth />
+
+## Zone by zone
+
+**Access control and entitlements.** Authorization is a rule over verified identity, evaluated at a policy decision point the agent cannot bypass. Identity platforms feed machine-learned risk scores into deterministic conditional access; the score informs, the policy decides. The full engine detail (Cedar-class sub-millisecond evaluation, richer-join engines, information-flow control) is on [the enforcement page](/architecture/enforcement).
+
+**Movement of money.** Payments execute against scoped, revocable mandates. The convergent proof arrived in 2025 and 2026, when three networks built agentic payment stacks independently and landed on the same shape: issuer-anchored delegation tokens scoped by amount, merchant, and category (Visa Trusted Agent Protocol); agentic tokens bound to agent, merchant, and consent, revocable in real time (Mastercard Agent Pay); cryptographically signed W3C Verifiable Credential mandates carrying hard constraints (Google AP2, 60+ partners). Card networks already score every transaction with machine learning; authorization stays rule-bound. Same shape, new rails.
+
+**Safety actuation.** The only zone where standards exclude machine learning from the function itself: IEC 61511 for safety instrumented systems, ISO/IEC TR 5469:2024 for AI in functional safety. Agents advise operators through validated presentation layers ([the R05 validation loop](/layers/r05-lob-and-ot)); they do not touch the protection layer, and agent output is never credited as an independent protection layer.
+
+**Formal regulatory records.** Records regimes (FINRA 24-09, ESMA 2024 guidance) mandate accountability and immutable records, not deterministic generation. Drafting with a model is permitted; attestation is a named human act. The cautionary tale is public: AI-generated content reaching a government deliverable cost a professional-services firm a refund and its reputation for care.
+
+## The caveat that keeps this honest
+
+Deterministic authorization bounds the blast radius. It does not protect intent formation. One of the three payment protocols was red-teamed successfully with prompt injection operating entirely **within** mandate bounds: the mandate held, and the agent still bought the wrong thing. Upstream injection defence and human confirmation of intent remain necessary with perfect gates in place. No gate substitutes for them.
+
+## Design consequences
+
+- Put the zone list in writing for your business and have risk sign it; every layer page assumes it exists.
+- A use case whose value depends on a model deciding inside a zone is reshaped (model informs, rule decides) or rejected. This kills a class of demo that could never ship.
+- Everything outside the zones is negotiable and should be negotiated ambitiously; the zones are what let your regulator and your board say yes to the rest.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Security and identity findings](/library/layers/r10-security-and-identity/findings)
+- [The identity and security model](/library/architecture/identity-security-model)
+- [Line of business and OT findings](/library/layers/r05-lob-and-ot/findings)
+
+</details>

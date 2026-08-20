@@ -1,0 +1,42 @@
+---
+title: "The data-to-memory pipeline"
+description: "From source to cited answer with provenance intact: the pipeline that decides whether your agents are grounded or guessing."
+hero_figure: "data-to-memory-pipeline"
+---
+
+## The pipeline
+
+<GuideFigure id="data-to-memory-pipeline" fullWidth />
+
+Nine stages, each with a measured failure mode; the deep treatment is on [R02](/layers/r02-data-platform) and [R14](/layers/r14-agent-data-engineering). The architectural spine:
+
+1. **Parse with provenance.** Layout-aware parsing attaches page- and cell-level provenance at parse time. Even the best parsers lose at least 14% of retrieval performance against ground-truth structure, so fidelity is spot-checked forever.
+2. **Chunk per corpus, enrich contextually.** No universal recipe survives evaluation; contextual enrichment is the best-evidenced upgrade (49% fewer retrieval failures, 67% with reranking [vendor]).
+3. **Embed versioned.** Every vector carries its model version; upgrades run blue/green with migration only above a stated eval gain, because a full re-embed costs hours on serious hardware or four figures via API.
+4. **Index with permissions inside.** Source ACLs crawl into index metadata; retrieval is pre-filtered on the caller's live identity; sync errors fail closed. Post-filtering is the anti-pattern: it leaks counts and starves results.
+5. **Retrieve with refusal available.** Semantic contracts gate high-stakes numerics into deterministic answers or refusals, converting silent wrong answers into visible ones.
+6. **Cite by construction.** Answers carry span-level lineage to sources, which is also the highest-leverage single component of the evidence posture ([R11](/layers/r11-governance-risk-sovereignty)).
+7. **Write memory through quarantine.** Durable memory writes carry provenance and sit in quarantine until promoted; poisoning under 0.1% of a store has achieved over 80% attack success, and query-only injection has hit 98.2%.
+8. **Refresh by CDC.** Change-data-capture keeps indexes minutes-fresh at near batch cost; streaming is earned by decision cadence, not defaulted (a documented case ran $400 versus $7,600 per month for the same stated requirement).
+9. **Erase in cascade.** Deletion reaches raw stores, vectors, memories, traces, and derived artifacts, with deleted-vector exclusion sets consulted before approximate-nearest-neighbour queries, and deletion exposed as an audited operation.
+
+## The two rules that make it governance, not plumbing
+
+**Embeddings are recoverable data.** Exact reconstruction of short inputs from embeddings has been demonstrated at 92%, so vectors inherit their sources' classification, ACLs, residency, and erasure obligations in full. Derived artifacts inherit the strictest classification among their sources.
+
+**The open gap, stated rather than papered over:** many-to-one derived artifacts (cross-document summaries, extracted memories) have no complete published permissions solution. Current practice stamps the intersection of source permissions and re-derives on ACL change. Emerging, practitioner-grade, and flagged as such.
+
+## Memory tiers
+
+Working context is engineering; durable memory is a record. The line sits where persistence crosses a session boundary: from there, ownership, consent, retention, and erasure obligations attach, and promotion into durable tiers is a gated act, never an accumulation.
+
+<GuideFigure id="memory-obligation-tiers" fullWidth />
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The memory-pipeline architecture](/library/architecture/memory-pipeline-architecture)
+- [Agent data engineering findings](/library/layers/r14-agent-data-engineering/findings)
+- [Data platform findings](/library/layers/r02-data-platform/findings)
+
+</details>

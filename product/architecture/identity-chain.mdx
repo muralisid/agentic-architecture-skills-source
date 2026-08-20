@@ -1,0 +1,40 @@
+---
+title: "The identity and delegation chain"
+description: "From workload identity through token exchange to run-as-user: how an agent's every action stays attributable to the human who asked."
+hero_figure: "identity-delegation-chain"
+---
+
+## The chain
+
+An agent acts as the person who asked, and that assertion must survive every hop:
+
+<GuideFigure id="identity-delegation-chain" fullWidth />
+
+**Hop 1: the agent's own identity (ID2 floor).** Every agent is a first-class principal: registered, least-privileged, short-lived credentials, named sponsor, risk tier. Shared human credentials are the ID1 anti-pattern, and the baseline is bad: non-human identities outnumber humans roughly 100 to 1, and 97% are over-privileged. Three workload-identity families are in production: directory-based (Entra Agent ID class), standards-track (IETF WIMSE, with SPIFFE running for agents in production at scale), and OAuth-extension based (Cross App Access, adopted as MCP's Enterprise Managed Authorization with 25+ ISVs by mid-2026).
+
+**Hop 2: delegation at the gateway.** The caller's identity is exchanged, not copied: token exchange per RFC 8693, on-behalf-of flows, XAA-as-EMA, and the IETF ID-JAG draft as it lands. Credentials are injected at execution time by the gateway; agents never hold secrets. Just-in-time elevation over a minimal baseline (OAuth RAR, RFC 9396, for single-action grants) with automatic drop-back.
+
+**Hop 3: run-as-user in the record system.** The tool layer is a wrapper, not a second policy engine. The record system's own CRUD, field-level security, and sharing rules stay in force, and its audit log attributes the action to the human identity. Vendor parity statements now make this explicit: if the user cannot do it in the platform, their agent cannot do it through the tool server.
+
+**Hop 4: constrained identities at the edges.** In OT, the agent is a security principal with least privilege, unnamed assets are not routable, and access is severable in seconds. Sub-agents inherit a narrowed scope, never a widened one, with purpose binding travelling along the delegation.
+
+## Sponsor at access identity, presence by exception
+
+The accountable-human sponsor is an attribute of the agent's access identity, not a reward for giving it a mailbox. Platform architectures carry the sponsor field on the service principal itself, and agents are nameable and mentionable in collaboration surfaces without any user account. Presence (mailbox, calendar seat, licence consumption, HR-system participation, meeting roster) is a separate, optional, admin-granted, revocable 1:1 account, decided per capability surface for a small set of durable agents. Nameability is not presence.
+
+<GuideFigure id="support-accountability-enforcement" />
+
+Accountability is also not enforcement: a named sponsor answers for purpose and outcomes; a deterministic control permits or prevents the action. A phished employee's prompt asking an agent to exfiltrate credentials succeeded in 24 of 25 attempts in testing; the name on the agent stopped nothing. Both are necessary; neither substitutes.
+
+## Operational floor
+
+Time-to-revoke one agent's credentials is a drilled, measured number. Kill switches exist at the identity plane as well as the runtime, gateway, and harness, because each covers what the others cannot. Policy engines fail closed. Only a minority of enterprises have a formal agent identity strategy; the chain above is what one looks like.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The identity and security model](/library/architecture/identity-security-model)
+- [Security and identity findings](/library/layers/r10-security-and-identity/findings)
+- [Productivity and collaboration findings](/library/layers/r08-productivity-and-collaboration/findings)
+
+</details>

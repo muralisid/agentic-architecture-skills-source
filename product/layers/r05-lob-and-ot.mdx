@@ -1,0 +1,90 @@
+---
+title: "Line of business and OT"
+description: "Agents on the information path, not the control path: digital-twin validation before display, alert-channel output, operator decision authority, and a human-gated write path to the asset register."
+hero_figure: "layer-05-hero"
+---
+
+## Target state
+
+This is the layer where agents meet physics. Agents sit on the information path, never the control path: they watch alarm and event streams with context the operator cannot hold in working memory, reconcile asset data across systems that disagree, and retrieve matched history for the crew in front of the work. Everything that reaches an operator passes a validated presentation layer: candidate actions are simulated against a digital twin or rule set, the raw model response is never displayed, only filtered options appear, and the operator decides. Agent output lives in the alert channel, visually distinct from configured alarms, and is never credited as a protection layer. Asset data quality runs as a governed flywheel with a human-gated write path to the register. Sanitized OT data flows outbound to separate secured AI systems; segmentation is preserved and revert-to-manual is documented and tested. Control authority stays with humans and deterministic systems; any exception is a separately engineered decision with its own safety case.
+
+<GuideFigure id="layer-05-hero" fullWidth />
+
+| Component | Responsibility | Control it hosts | Where it runs |
+|---|---|---|---|
+| Validation loop | Simulate candidate actions against a digital twin or rule set before display | Raw model output never shown; only filtered, safe options reach the operator | Control-room estate, beside the EMS/DMS |
+| Alert channel | Carry agent output to the operator | EEMUA 191 Ed.4 alert/prompt taxonomy; visually distinct from configured alarms; never a protection layer | Alarm management system and HMI |
+| OT read broker | Mediated read of historian, unified namespace, or OPC UA gateway data | Per-agent identity, least privilege, inline inspection, operator-custodied logging, tested kill switch | IT/OT DMZ |
+| Unidirectional path | Outbound sanitized OT data wherever agent output could influence control | Physical enforcement of segmentation; push-only | OT boundary (data diode or push architecture) |
+| Local model runtime | Open-weight models with no public network access | Sovereignty: control-system data never leaves the perimeter | Operator perimeter, on premises |
+| Asset write-back gate | Human-gated change requests into the asset master | Provenance on every proposed correction; change management at CIP-010 and ISO 55001 grade | EAM estate |
+| Revert-to-manual path | Documented fallback to manual or deterministic control | Tested time-to-revert; ability to disable AI features | Control system estate |
+
+## Mechanisms
+
+### The validation loop
+
+The most important architectural idea in the published work is a negative decision: the raw LLM response is never displayed. NREL's eGridGPT control-room reference architecture (**NREL/TP-5D00-87440, May 2024**, reviewed by CAISO and ERCOT staff) runs candidate actions through a **digital-twin simulation (RTAG)**, filters unsafe candidates, and displays only surviving options; the operator decides. The model proposes and physics disposes. Build this loop before building the suggestion, because the suggestion half already ships: Honeywell's Alarm Guidance, developed with Chevron, shipped **1 October 2024**, and the Experion Operations Assistant pilot at TotalEnergies Port Arthur (**November 2025**) gave operators **12 minutes of notice** on pressure disturbances [vendor]. Evidence: national-lab technical report plus dated vendor releases.
+
+### The OT boundary: four principles
+
+Nine cyber agencies (CISA, NSA AISC, FBI, ASD ACSC, CCCS, BSI, and the NCSCs of the UK, Netherlands, and New Zealand) published **"Principles for the Secure Integration of AI in Operational Technology" on 3 December 2025**, explicitly scoping AI agents: maintain the ability to **revert to manual or deterministic control**; prefer **push-based or unidirectional architectures** that preserve OT segmentation; send **sanitized OT data outbound** to separate secured AI systems rather than embedding models in safety-critical loops; require **SBOMs for AI components and the ability to disable AI features**. The stance sentence is that AI should augment, not autonomously control, safety-critical actions. Ofgem's Ethical AI guidance v2 (13 May 2026) adds the cyber-physical warning: clause 6.12 names inappropriate shutdowns with cascading effect, and 6.13 recommends functional-safety-style wraparound guardrails and operator training to spot maloperation. Evidence: the joint publication date and clause numbers above; verbatim wording of the joint guidance is pending re-verification (see Evidence and limits).
+
+### Standards positioning: no AI part, full existing scope
+
+**IEC 62443 has no AI part**; the working posture is zones and conduits with the agent as a new actor class. **NERC CIP has no AI standard**: CIP-015-1 internal network security monitoring (FERC approved **26 June 2025**, effective **2 September 2025**, compliance **1 October 2028**) prescribes no AI requirements. The binding machinery is the existing **CIP-004/005/007/010/011/013** set, and it captures agents by scope, not by name: a compliance agent that touches BES Cyber System Information becomes **CIP-011 in scope itself**, its model and configuration become a **CIP-010 change-managed baseline**, and inside the ESP the CIP-005 and CIP-007 requirements apply. That scope capture is one reason the published control-room work runs open-weight models locally with no public network access. Evidence: standard approval and compliance dates; the NREL deployment posture.
+
+### The alert channel
+
+**EEMUA 191 Edition 4 (November 2024)** formalizes an alarm/alert/prompt taxonomy: an alert is information the operator "does not need to respond to, but can if they are able", and that channel, visually distinct from configured alarms, is the legitimate home for agent output. Two reasons agent output can never be credited as an independent protection layer: the **Highly Managed Alarm** category (aligned with IEC 62682:2022) requires a defined proof-test method and frequency, which a probabilistic output cannot satisfy; and alarms sit in administrative controls in the risk hierarchy, a position adding an agent does not change. Load benchmarks the channel must respect: at most **1 alarm per operator per 10 minutes** in steady state (about 150 per day) and at most **10 in the first 10 minutes** of a major upset. Edition 4 contains no AI content and ISA has only floated AI for a future ISA-18.2 revision, so agent output is neither blessed nor barred; the taxonomy is simply the fit. The consequence anchor: **BP-Husky Toledo, 20 September 2022, 3,712 alarms in 12 hours**, two fatalities, roughly **$597M** in damage (CSB final report, June 2024).
+
+### Two human-factors failure modes
+
+**Automation bias**: decision support at or above roughly 85% accuracy reduces operator verification behavior by **40-60%** (decision-support literature), so acceptance rate is a double-edged metric and verification rate must be watched beside it. NERC (November 2024) states the operator should have final input on AI/ML-generated actions and warns against building on a mindset that treats humans as hazards. Ofgem Ethical AI v2 (13 May 2026), updated explicitly for agentic systems: clause 4.16 requires human oversight designed in from the earliest stage, considering both overconfidence and lack of trust, and 4.12 requires failure-mode analysis to cover loss of skill base and overreporting of positive outcomes. Ofgem does not mandate human-in-the-loop (its regime is outcomes-based and proportionate), so the human-authority line here is engineering policy, not regulatory prohibition. **Aperture narrowing**: operators integrate shift handover, sounds, vibrations, smells, and site conditions; a retrieval agent that presents one confident matched history crowds that out and can anchor a crew on the last accident. Evidence: the verification-reduction figure and the regulator clause numbers above.
+
+### The bounded closed-loop counterexample
+
+"Control always stays human" is a policy position, not an industry fact. Yokogawa's **FKDPP** reinforcement-learning agent holds direct closed-loop control at two named plants: ENEOS Materials (**840-hour trial January-February 2022, permanently adopted March 2023, 40% steam and CO2 reduction** [vendor]) and the Aramco Fadhili gas plant acid gas removal unit (**phased commissioning October 2024-April 2025**, announced October 2025, **10-15% amine and steam reduction** [vendor]). What earned that authority: **bounded RL with a small action space** on a well-understood unit operation, trained against a high-fidelity simulator and never the live plant, formally evaluated before commissioning, phased in, and running on the regulatory control layer with the **independent safety instrumented system untouched**. It is not an LLM. The precise position this guide takes, the authors' position consistent with the joint guidance: control authority stays human for LLM-based agents, and closed-loop AI control is a separate engineering discipline with its own safety case.
+
+### The measured economic result
+
+One measured result exists in the published record, and it is a data task: eGridGPT converted EMS node-breaker models to bus-branch planning models **in under a minute**, against multiple weeks of regional-entity staff time, and the converted case matched the actual EMS state-estimation case closely enough to satisfy **NERC MOD-033**. NERC's stated direction is that AI may go beyond identifying anomalies to recommending or correcting models. That is the economics of this layer: weeks of specialist time collapsing to minutes with the specialist still checking, valued in avoided truck rolls, deferred replacement, and engineering hours rather than tokens. Standards hooks for the flywheel: **ISO 55013:2024** (data as an asset) with ISO 55001:2024 clause 7.6. The data constraint drives collectives: EPRI puts roughly **95% of utility data** behind cybersecurity and customer-privacy walls, hence its Open Power AI Consortium (March 2025) and FoSMo (National Grid and Keen AI with SPEN, SSEN-T, UKPN, ENWL; Ofgem SIF Alpha, June 2026, **GBP 355,985** awarded, a claimed GBP 22.6M five-year benefit from 2027, projected and unrealized [vendor]).
+
+## Design decisions
+
+- **Where the control point lives** ([CD-18](/decisions#cd-18)): historian/UNS-mediated read vs direct OT integration is really a control-point question, and consequence class decides it. Enforcement sits outside the model, because agent behavior is the output of a model its inputs can manipulate, which makes behavior the wrong foundation for an OT security control (Zentera, July 2026 [vendor]). If any output can reach or influence a control action: unidirectional architecture plus a documented, tested path back to manual or deterministic control. If output is confined to alerts, recommendations, and data-quality findings: a brokered read path with per-agent identity, least privilege, inline inspection, operator-custodied logging, and a tested kill switch is defensible. Transport choice (historian, unified namespace, OPC UA gateway) is downstream of that question.
+- **Pattern A, SCADA alert intelligence**: supported with two corrections; the suggestion half already ships, so the validation loop is the part worth designing, and the human-control line holds for LLM-based agents specifically.
+- **Pattern B, compliance verification agent**: demoted to a design proposal with no published precedent; 2% sector adoption, no named utility customer in the compliance-automation market, the industry conversation runs toward auditing the AI, and the agent becomes CIP-scoped itself.
+- **Pattern C, contextual safety coach**: kept as a design pattern with no published production precedent; the nearest work (BuildSafe, June 2026, best BERTScore F1 0.7747) is a benchmark study whose authors decline outcome claims, and the automation-bias and aperture cautions apply with force.
+- **Pattern D, asset data quality flywheel**: kept, strongest of the four, the only one with a measured result; the write-back gate, not the reconciliation, is the architectural decision (asset master changes propagate into rate base, ISO 55001 conformity evidence, and regulatory reporting), and the capture half is an operating-model and incentive change, not an AI capability.
+
+## Cross-cutting concerns
+
+| # | Concern | Treatment at this layer |
+|---|---|---|
+| C1 | Identity and access | Per-agent identity as a security principal with least privilege; unnamed OT assets not routable; access severable in seconds |
+| C2 | Observability | Operator-custodied session logging, not vendor-held; recommendation acceptance and override telemetry |
+| C3 | Traceability and audit | Every displayed option attributed to its source (agent or operator), timestamped; provenance on proposed data corrections |
+| C4 | Grounding | Historian and register data with lineage; digital-twin validation before display; freshness bounded by process dynamics |
+| C5 | Impersonation | Agent output confined to the alert and prompt channel, visually distinct from configured alarms |
+| C6 | Sovereignty | Control-system data typically may not leave the perimeter; local open-weight deployment is the published pattern |
+| C7 | Privacy | Field-workforce data (location, performance) carries worker protections |
+| C8 | Safety and oversight | Agent output is never an independent protection layer; operator holds decision authority; revert-to-manual tested |
+| C9 | Cost | Value measured in specialist hours, avoided truck rolls, and deferred replacement, not tokens |
+| C10 | Resilience | Degraded-connectivity behavior specified for field agents; agent failure must not degrade the control system |
+
+## Evidence and limits
+
+The incident record at this layer is a process-safety case, not a CVE: BP-Husky Toledo, 20 September 2022, with the CSB final report of June 2024 identifying the alarm flood as a contributing factor. Adoption figures are survey-based (NERC, November 2024, n=47): switching-order generation 1.08/5 (lowest of 17 use cases), log entries 1.35, compliance reports 1.41, equipment-failure prediction 1.76, 30% with active bans on public AI tools, 88% rejecting the job-loss fear, 72% seeing open legal and ethical questions. Vendor-published and flagged above: the 12-minute disturbance notice, both FKDPP reduction figures, the FoSMo benefit claim, and the Zentera control-point argument. The joint OT guidance wording is carried from secondary coverage because the primary page returned access errors at retrieval; treat exact phrasing as unverified pending the source PDF. The human-authority line for LLM-based agents is the authors' position, not a regulatory requirement: Ofgem does not mandate human-in-the-loop, and no FERC guidance on AI agents in utility operations exists (FERC's 2025-26 AI activity treats AI as load).
+
+Refusals: circulating figures for an autonomous Ford MES deployment trace to content farms and are excluded; Equinor's reported $130M 2025 AI saving is traditional ML on roughly 700 rotating machines, not agents, and is excluded as agent evidence; Siemens Industrial Copilot generates IEC 61131-3 code in TIA Portal but does not deploy autonomously and no human-approval protocol is published. No published production alarm-triage deployment exists in an electric utility control room, and no agent holds autonomous control authority at any named water utility. AMLAS, the assurance methodology Ofgem points to alongside ISO/IEC 23894, ISO/IEC 42001, and the NIST AI RMF, was built for conventional ML, not LLMs. Re-verify: the joint-guidance primary text, ISA-18.2 revision status, CIP-015-1 compliance milestones (October 2028), and the DESNZ independent review (final report due Summer 2026).
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Line of business and OT findings](/library/layers/r05-lob-and-ot/findings)
+- [Research brief](/library/layers/r05-lob-and-ot/brief)
+- [Vendor landscape](/library/layers/r05-lob-and-ot/vendors)
+- [Sources](/library/layers/r05-lob-and-ot/sources)
+
+</details>

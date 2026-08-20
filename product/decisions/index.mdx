@@ -1,0 +1,155 @@
+---
+title: "The decision catalog"
+description: "Twenty-four contested technology choices, each with a verdict, its discriminator, and what would change it."
+---
+
+Every hyped or default technology choice the research contested, resolved by evidence and economics rather than adoption momentum. Each record: the question, the verdict, the discriminator that decides your case, and the register status in the research vocabulary (converged, supported with reframe, split, conditionally approved, position). This catalog records technology decisions; the program's own decision log is at [/library/decisions](/library/decisions).
+
+| ID | Question | Verdict in one line |
+|---|---|---|
+| [CD-1](#cd-1) | Graph database vs embedding retrieval | Routed hybrid, vector-first; a graph only for deterministic traversal |
+| [CD-2](#cd-2) | Dedicated MCP gateway vs extend API management | Extend the incumbent by default; dedicated is conditional |
+| [CD-3](#cd-3) | Replace RPA vs coexist | Coexist, supervised; replacement earned per workload |
+| [CD-4](#cd-4) | Agent-to-agent protocols now | Not yet for most; selective for cross-organisation federation |
+| [CD-5](#cd-5) | Modernize the ESB first vs bypass | Strangle, do not wait; govern before you wrap |
+| [CD-6](#cd-6) | Self-hosted GPU estate vs metered APIs | Metered by default; open-weight via API is the cost path |
+| [CD-7](#cd-7) | Kubernetes everywhere vs managed runtimes | Split by layer: K8s for self-hosted serving, managed runtimes for orchestration |
+| [CD-8](#cd-8) | Semantic-layer product vs governed views | Per use case, chosen by failure mode, not accuracy points |
+| [CD-9](#cd-9) | Dedicated vector database vs simplest substrate | Climb the ladder; dedicated is the top rung, not the default |
+| [CD-10](#cd-10) | Data mesh vs governed central substrate | Mesh ideas on a governed substrate |
+| [CD-11](#cd-11) | One universal index vs use-case-scoped | Two layers: permission-aware universal for discovery, scoped for high stakes |
+| [CD-12](#cd-12) | Real-time vs batch grounding | CDC is the default; streaming is earned |
+| [CD-13](#cd-13) | Dedicated AI security platforms vs SIEM extension | Platform absorption is the market answer; baselining stays unsolved |
+| [CD-14](#cd-14) | Broad vs narrow AI Act classification | Neither: a risk-tiered evidence posture |
+| [CD-15](#cd-15) | APM extension vs dedicated LLM observability | The question dissolved; choose on OTel-nativeness, eval depth, self-hosting |
+| [CD-16](#cd-16) | Guardrail products vs deterministic gates | Gates own the boundary; guardrails are advisory wherever they run |
+| [CD-17](#cd-17) | Embedded vendor agents vs external through APIs | Decided by authority boundary; nobody has measured the head-to-head |
+| [CD-18](#cd-18) | Brokered OT read paths vs unidirectional | Consequence class decides; transport is downstream of the control point |
+| [CD-19](#cd-19) | Fine-tuning vs prompt-and-context engineering | An ordering, not a side: optimize, then distill, then RFT behind a hard grader |
+| [CD-20](#cd-20) | AI-first vs human-first service | Wrong axis: containment-as-target is the failure; resolution-as-target is the design |
+| [CD-21](#cd-21) | Multi-agent orchestration vs a single good loop | Parallel breadth only; tokens explain most of the famous gains |
+| [CD-22](#cd-22) | Agents as workforce vs agents as tools | Keep the accountability, drop the personnel metaphor |
+| [CD-23](#cd-23) | One universal assistant vs many specialised agents | Wrong axis: solitary vs coordinated work is the predictive variable |
+| [CD-24](#cd-24) | Separate customer-facing stack vs shared platform | Separate lane and edge, shared control plane; the justification is legal |
+
+## The records
+
+<a id="cd-1" />
+
+### CD-1. Graph database vs embedding retrieval
+**Verdict: routed hybrid, vector-first.** Canonical raw and event store; lexical search plus contextual dense embeddings, with multiple purpose-specific views where content is aspect-rich; reranking over candidates; topics as versioned, regenerable navigation metadata. Add a selective, provenance-linked graph only for deterministic relationship traversal: lineage, dependency and impact, authorization paths, temporal validity, transactional shared state. Edge hygiene if you do: every generated edge carries a source-span ID, extraction model and version, confidence, and a validity interval. The measured spreads justify routing rather than picking a side: graph-augmented retrieval wins multi-hop benchmarks while costing an order of magnitude more to build, and dense-plus-graph beat either alone. Rejected outright: graph-only memory, vector-only without lexical and raw sources, topic summaries as source of truth, fine-tuned weights as factual memory. Status: converged. Owner: [R14](/layers/r14-agent-data-engineering), [R02](/layers/r02-data-platform).
+
+<a id="cd-2" />
+
+### CD-2. Dedicated MCP gateway vs extending API management
+**Verdict: extend the incumbent by default.** The 2026-07-28 MCP spec was deliberately redesigned to be routable and authorizable by ordinary HTTP gateways, and every incumbent shipped support within a year. Choose dedicated for agent-specific controls incumbents do not model well: tool-description diffing and poisoning scans, multi-runtime federation, elicitation mediation. Status: conditionally approved, converging. Owner: [R03](/layers/r03-integration-fabric).
+
+<a id="cd-3" />
+
+### CD-3. Replace RPA vs coexist
+**Verdict: coexist, supervised.** Bots stay the deterministic execution layer for API-less systems; agents reason and handle exceptions above them. Replacement is earned per workload when a governed API arrives, never declared estate-wide. Status: converged. Owner: [R03](/layers/r03-integration-fabric).
+
+<a id="cd-4" />
+
+### CD-4. Agent-to-agent protocols now
+**Verdict: not yet for most.** The standard consolidated and stabilised, but published milestones are organisation counts rather than production evidence, and teams approximate coordination with tool-protocol primitives. Adopt selectively for cross-organisation agent federation, where nothing else fits. Status: position, re-verify quarterly. Owner: [R03](/layers/r03-integration-fabric).
+
+<a id="cd-5" />
+
+### CD-5. Modernize the ESB first vs bypass
+**Verdict: strangle, do not wait; govern before you wrap.** 74% of modernization programs fail to complete, and incumbent gateways expose governed APIs as tools with zero backend change. The discipline: govern the specific API paths agents will use before exposing them, and let each strangler increment retire real load. Status: converged. Owner: [R03](/layers/r03-integration-fabric).
+
+<a id="cd-6" />
+
+### CD-6. Self-hosted GPU estate vs metered APIs
+**Verdict: metered by default; the cost path is open-weight via metered APIs, not self-hosting.** Break-even for self-hosting sits at sustained nine-figure token volumes per month per workload at high utilization, with 1.3-2x operations multipliers; at 10% utilization, cost per token rises roughly tenfold; against budget open-weight API pricing, break-even recedes to billions of tokens per month. Self-hosting earns its place for air-gap and classification, not for generic residency. Status: refined by evidence. Owner: [R01](/layers/r01-infrastructure).
+
+<a id="cd-7" />
+
+### CD-7. Kubernetes everywhere vs managed agent runtimes
+**Verdict: split by layer.** Model serving belongs on Kubernetes only if you self-host at all; agent orchestration belongs on managed runtimes with per-session isolation and durability. The lock-in is symmetric: managed runtimes are proprietary control planes, and the portability camp sells its own ecosystem. Status: position with strong support. Owner: [R01](/layers/r01-infrastructure), [R07](/layers/r07-agent-platform).
+
+<a id="cd-8" />
+
+### CD-8. Semantic-layer product vs governed views
+**Verdict: per use case, chosen by failure mode.** The load-bearing property is failure-mode conversion: governed semantics turn silent wrong answers into refusals or deterministic answers. Benchmarks show large gains on modeled scope with partial coverage, while a disciplined counter-camp reaches comparable accuracy through data modeling alone; the binding variable is curated business context, and the product is its most governable packaging. Status: split, both camps published. Owner: [R02](/layers/r02-data-platform).
+
+<a id="cd-9" />
+
+### CD-9. Dedicated vector database vs the simplest substrate
+**Verdict: climb the ladder.** Brute force below ~100K vectors; pgvector to the low millions (sub-20ms at 1M with >95% recall, build pain from ~2M, partitioning at 5M+); scale-out Postgres extensions to ~50M; dedicated engines for extreme scale, heavy write rates, or filter-heavy multi-tenancy, where the p99 gap becomes real. Platform-bundled vector is table stakes: prefer it where the corpus already lives, because governance and ACL inheritance come free. Vendor viability belongs in selection. Status: converged. Owner: [R02](/layers/r02-data-platform).
+
+<a id="cd-10" />
+
+### CD-10. Data mesh vs governed central substrate
+**Verdict: mesh ideas on a governed substrate.** Every shipped ACL-sync architecture assumes a governed central index; pure mesh multiplies permission sync, definitional consistency, and freshness monitoring, which are exactly what agents punish. Keep domain ownership as an operating idea; keep the substrate governed and central. Status: converged. Owner: [R02](/layers/r02-data-platform).
+
+<a id="cd-11" />
+
+### CD-11. One universal index vs use-case-scoped
+**Verdict: two layers.** A permission-aware universal index for discovery and cross-silo questions, plus purpose-scoped curated indexes (or scoped routing over the universal one) for high-stakes tasks. The trade is formalized as coverage versus trust, and even the largest universal-index vendors shipped scoping controls as mitigation. Status: converged. Owner: [R14](/layers/r14-agent-data-engineering).
+
+<a id="cd-12" />
+
+### CD-12. Real-time vs batch grounding
+**Verdict: CDC is the default; streaming is earned.** Change-data-capture delivers minutes-level freshness at near batch cost; a documented like-for-like ran $400 against $7,600 per month. Streaming is justified by decision cadence (fraud, operational triage), not by default. Status: converged. Owner: [R02](/layers/r02-data-platform).
+
+<a id="cd-13" />
+
+### CD-13. Dedicated AI security platforms vs SIEM extension
+**Verdict: the market resolved toward platform absorption; buy accordingly, but absorption is not parity.** Six AI-security acquisitions in roughly fourteen months plus two non-human-identity deals moved the capability inside platforms. The honest gap: behavioural baselining of agents remains unsolved in mainstream SIEMs, and guardian agents persist as a distinct runtime category. Status: refined. Owner: [R10](/layers/r10-security-and-identity).
+
+<a id="cd-14" />
+
+### CD-14. Broad vs narrow AI Act classification
+**Verdict: neither pole; a risk-tiered evidence posture.** The de jure current tilted narrow (deferrals), the interpretive current tilts broad (draft classification tests, the multi-purpose presumption), and enforcement capacity is thin. Run an evidence floor for every production agent and Article-12-grade instrumentation for the plausibly high-risk tier. Re-verify at every regulatory milestone. Status: position, dated. Owner: [R11](/layers/r11-governance-risk-sovereignty).
+
+<a id="cd-15" />
+
+### CD-15. APM extension vs dedicated LLM observability
+**Verdict: the question dissolved.** The category merged; choose on the real fault lines: OTel-native pipeline versus proprietary SDK (both need a translation layer while the conventions stay unstable), eval-loop depth versus infrastructure correlation, and self-hosting. Most enterprises land on the APM incumbent plus one eval-capable tool. Status: dissolved by consolidation. Owner: [R12](/layers/r12-observability-and-finops).
+
+<a id="cd-16" />
+
+### CD-16. Guardrail products vs deterministic gates
+**Verdict: deterministic gates own the authorization boundary; guardrails are advisory wherever they run.** Measured evasion against major commercial guardrails runs roughly 72-77%, up to 100% in some configurations, and the one measured 0% bypass cost 16.22% false positives and ~1.5s latency; policy engines decide in under a millisecond. Status: converged. Owner: [R10](/layers/r10-security-and-identity).
+
+<a id="cd-17" />
+
+### CD-17. Embedded vendor agents vs external agents through governed APIs
+**Verdict: decided by authority boundary, and nobody has measured the head-to-head.** Inside one system, both paths now enforce identical permissions (stated parity), so choose on model control, the cost meter, and the customization ceiling. Across systems, no vendor's permission plane is authoritative and entity resolution binds, so external orchestration is a requirement rather than a preference. Generic benchmarks show up to fiftyfold cost variation at similar accuracy; the harness matters more than the badge. Status: reframed. Owner: [R04](/layers/r04-systems-of-record).
+
+<a id="cd-18" />
+
+### CD-18. Brokered OT read paths vs unidirectional architectures
+**Verdict: consequence class decides the control point; transport is downstream.** If any output can reach or influence a control action: unidirectional or push-based architectures plus a documented path back to manual or deterministic control. If output is confined to alerts, recommendations, and data-quality findings: a brokered read path with per-agent identity, least privilege, inline inspection, operator-custodied logging, and a tested isolation plan is defensible. Status: converged across camps. Owner: [R05](/layers/r05-lob-and-ot).
+
+<a id="cd-19" />
+
+### CD-19. Fine-tuning and RFT vs prompt-and-context engineering
+**Verdict: an ordering, not a side.** Optimize context and prompts against a locked eval suite first (measured wins at up to 35x fewer rollouts than RL); distill when latency or unit cost forces it; use reinforcement fine-tuning only when a programmable, hard-to-game grader exists and the prompt-optimized ceiling is demonstrably flat. RFT is the wrong tool for format and tone. Counter-evidence kept honestly: a fine-tuned small model has beaten a prompt-engineered frontier model decisively on cost and accuracy in narrow classification. Status: refined. Owner: [R06](/layers/r06-intelligence-and-learning).
+
+<a id="cd-20" />
+
+### CD-20. AI-first vs human-first service
+**Verdict: the axis is wrong; the target is what fails.** Every documented reversal of an AI-first programme set a containment or headcount target. Target resolution, instrument repeat contact beside it, and let containment be an outcome. Status: reframed. Owner: [R09](/layers/r09-experience-and-channels).
+
+<a id="cd-21" />
+
+### CD-21. Multi-agent orchestration vs a single good loop
+**Verdict: parallel breadth only, and hold compute constant before believing any comparison.** The famous orchestrator-worker win was bought with roughly 15x the tokens, and token usage alone explains most of the variance on related benchmarks; at constant reasoning tokens, single agents match or beat multi-agent systems on multi-hop reasoning. Pay the multiplier only when strands are independent and read-heavy, the information exceeds one context window, the accuracy bar exceeds single-pass, and the value clears the cost. Status: supported with reframe. Owner: [R07](/layers/r07-agent-platform).
+
+<a id="cd-22" />
+
+### CD-22. Agents as workforce vs agents as tools
+**Verdict: keep the accountability, drop the personnel metaphor.** The accountability substance is productised (named sponsor on the identity, automatic transfer, scoped expiring credentials); the flagship attempt to give agents employee records was withdrawn within days, and the strongest field deployment achieves per-agent accountability with no org-chart presence. Status: refined. Owner: [R13](/layers/r13-operating-model).
+
+<a id="cd-23" />
+
+### CD-23. One universal assistant vs many specialised agents
+**Verdict: the axis is wrong; solitary versus coordinated work is the predictive variable.** Individually provisioned AI reliably improves solitary work and reliably fails to change coordinated work, because coordination requires agreeing new norms. The evidenced third answer is a long tail of narrow agents built by employees inside the horizontal platform. Status: reframed. Owner: [R08](/layers/r08-productivity-and-collaboration).
+
+<a id="cd-24" />
+
+### CD-24. Separate customer-facing stack vs shared platform
+**Verdict: separate lane and separate edge on a shared control plane, justified by legal exposure rather than technology.** Edge-specific: channels and telephony, disclosure mechanics, adversarial hardening, the legal-evidence layer. Shared, and duplicating them is a defect: knowledge corpus, identity, tool layer, evals, observability, model access. Honest caveat: no published case measures either choice. Status: position with legal anchors. Owner: [R09](/layers/r09-experience-and-channels).

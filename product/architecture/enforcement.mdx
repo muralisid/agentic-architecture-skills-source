@@ -1,0 +1,45 @@
+---
+title: "Enforcement outside the model"
+description: "Behaviour is the wrong foundation for a control: where enforcement actually lives, what it costs, and the measured limits of everything softer."
+---
+
+## The premise
+
+An agent's behaviour is the output of a model that its inputs can manipulate, which makes behaviour the wrong foundation for a control. Token-uniform processing means command and data cannot be separated by training alone; without architectural mediation, authorization becomes an exploit-discovery problem. EchoLeak (CVE-2025-32711, CVSS 9.3) proved the class: zero-click exfiltration through a retrieval agent, conducted entirely in natural-language space. So enforcement lives outside the model, in three tiers.
+
+## Tier 1: the gateway
+
+Every tool call passes it: allowlist, identity exchange, credential injection, description-integrity check, rate limit, audit tap. Approval rules may be held in the harness, because only the harness sees the whole loop; they are enforced at the gateway, because only the gateway cannot be talked out of them. Full detail on [the R03 page](/layers/r03-integration-fabric).
+
+## Tier 2: the policy decision point
+
+A deterministic PDP in the tool-call path, evaluated on every consequential action. Two engine families with a real trade: Cedar-class engines are sub-millisecond and formally verified but stateless; OPA-class engines handle richer joins. Complements where the workload warrants: deterministic information-flow control (FIDES, shipped in a major agent framework, scored zero policy-violating injections on the AgentDojo benchmark against 20 to 152 without it) and formal output verification (Automated Reasoning checks, GA August 2025 [vendor]).
+
+The cost argument is decisive on its own: policy-engine evaluation runs sub-millisecond to low-millisecond; an LLM-based guardrail call runs around 1.5 seconds. Three orders of magnitude, on every action, forever.
+
+## Tier 3: promoted rules, landed outside the model
+
+Learned behaviour graduates into enforcement only through the flywheel gate (counterexample survival, eval regression, human approval), and the promoted artifact lands in policy-as-code, versioned and deployed independently. A rule the model merely reads is still a soft rule. The ceiling is measured: statement-level analysis of real agent instruction files found roughly a quarter statically enforceable as written, with 74% depending on context that cannot be predefined; and formal work shows deterministic gates enforce strictly less than edit automata, so renewal properties stay out of reach. The ceiling is why tiers 1 and 2 exist.
+
+## What guardrails are for
+
+Guardrails are the advisory layer, never the boundary. Measured evasion against major commercial guardrails: roughly 72%, 77%, and 72.5% across three named products, up to 100% in some configurations; the only measured 0% bypass came at 16.22% false positives and ~1.5s latency; and guardrail-triggered denial of service is itself exploitable. They retain genuine value for content policy, PII detection, and telemetry, where a miss is tolerable, and their block-rate is monitored in both directions: spikes signal attack, drops signal misconfiguration.
+
+## The map
+
+| What | Where enforced | Where it is not |
+|---|---|---|
+| Tool access, credentials | Gateway | Prompt instructions |
+| Consequential-action authorization | PDP in the tool-call path | Model judgment, guardrails |
+| Promoted behavioural rules | Policy-as-code, out of model | Instruction files the model reads |
+| Iteration, cost, wall-clock | Harness caps + platform hard caps (429 on exhaustion) | Model self-restraint |
+| Content policy, PII screening | Guardrails, advisory | Anything consequential |
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Security and identity findings](/library/layers/r10-security-and-identity/findings)
+- [Intelligence and learning findings](/library/layers/r06-intelligence-and-learning/findings)
+- [Integration fabric findings](/library/layers/r03-integration-fabric/findings)
+
+</details>

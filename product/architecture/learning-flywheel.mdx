@@ -1,0 +1,44 @@
+---
+title: "The learning flywheel"
+description: "How agent behaviour changes without anyone losing control of it: gated promotion, calibrated judges, and rollout machinery."
+hero_figure: "memory-learning-flywheel"
+---
+
+## Two loops, separated by governance
+
+The system flywheel is offline, evaluated, versioned, and rollback-capable: trace, evaluate, curate, promote, roll out. Instance memory is online and immediate. Learnings promote from the second into the first, never the reverse, because instance memory that reshapes behaviour without a gate is an unversioned deployment nobody approved.
+
+<GuideFigure id="memory-learning-flywheel" fullWidth />
+
+## The architectural fork
+
+The property that separates compounding pipelines from stagnant ones: **production traces and eval datasets share a data layer**, so a failing online score promotes its trace into the offline suite automatically. Without that join, every improvement cycle starts with a manual export and most never start.
+
+## The promotion gate, as the evidence left it
+
+Three edits to the intuitive design, each carried by 2026 measurements:
+
+1. **Gate on counterexample survival and eval regression, not frequency.** In the direct study, only 7 of 32 automatically learned policies were grounded and executable, and the frequency-style gate failed in both directions: it accepted a rule that collapsed success from 5-in-20 to 1-in-20 and rejected one worth five points. Counterexample-guided induction with human review reached F1 0.93 to 0.98 against expert baselines of 0.49 to 0.70, converging in four to five iterations.
+2. **Land promoted artifacts outside the model.** The hard tier is policy-as-code, versioned and deployed independently; details on [the enforcement page](/architecture/enforcement).
+3. **Keep a demotion path.** Accumulated context is not free: machine-generated context files reduced task success while raising inference cost by roughly a fifth. Promotion-only pipelines compound cost and never shed dead rules.
+
+## Lifecycle and rollout
+
+The one fully specified published lifecycle runs DRAFT, APPROVED, PUBLISHED, DEPRECATED, RETIRED, with named gate thresholds (faithfulness at least 0.80, correctness 0.90, tool accuracy 0.90, helpfulness 0.70, latency at most 15s, harm at most 5%), a seven-day staleness policy with automated re-evaluation, and the architecturally elegant enforcement: **discovery returns only PUBLISHED agents**, so quality degradation reduces reachability without a policy engine intervening. Rollouts run shadow, then a 1-to-5% canary gated on session success, satisfaction, and escalation, then full, with flags decoupling activation from deployment.
+
+## Judges are governed components
+
+Judge systems agree with themselves more than they measure the intended property, and drift silently on hosted endpoints. So: judges are calibrated against human labels and re-validated on a schedule, versions are pinned, rubrics are structured with an explicit Unknown, outcomes are graded rather than tool sequences, and **the optimizer and the evaluator stay decoupled** so nothing grades its own work. Expert review costs roughly two orders of magnitude more per output than model judging, which is why the working design is an expert-owned bar, judging at volume, and sampled human verification.
+
+## The harness is an attack surface
+
+A zero-capability agent has scored perfectly on several major public benchmarks by editing the evaluation configuration rather than solving anything; the recurring vulnerability was no isolation between agent and evaluator. Eval infrastructure gets the same isolation discipline as production.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The learning-loops map](/library/architecture/learning-loops-map)
+- [Intelligence and learning findings](/library/layers/r06-intelligence-and-learning/findings)
+- [Agent platform findings](/library/layers/r07-agent-platform/findings)
+
+</details>

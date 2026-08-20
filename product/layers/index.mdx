@@ -1,0 +1,57 @@
+---
+title: "The fourteen layers"
+description: "One page per layer of the enterprise estate: target state, mechanisms with their standards and numbers, contested choices with verdicts, and the concern row."
+hero_figure: "layers-planes-crosswalk"
+---
+
+The estate you already own has fourteen layers. The agent system you build across it has [seven planes](/architecture). Each page below gives one layer's target-state architecture, the mechanisms that implement it with their exact protocols and measured numbers, the contested choices with verdicts, its cross-cutting concern row, and what the evidence does not support.
+
+<GuideFigure id="layers-planes-crosswalk" fullWidth />
+
+## Execution and platform
+
+| Layer | Target state in one line |
+|---|---|
+| [R01 Infrastructure and compute](/layers/r01-infrastructure) | Per-session isolation, microVM sandboxes behind egress proxies for act-capable work, first-class workload identity, classification-routed serving |
+| [R07 Agent platform](/layers/r07-agent-platform) | Buy the runtime, build the harness: explicit termination, artifacts-as-state, separate verification, registry with eval-gated promotion |
+
+## Action
+
+| Layer | Target state in one line |
+|---|---|
+| [R03 Integration fabric](/layers/r03-integration-fabric) | A governed tool plane with one gateway as the enforcement point for identity, credentials, inspection, and audit |
+| [R04 Systems of record](/layers/r04-systems-of-record) | Wrap, do not reinvent: agents act as the requesting user, entitlement stays in the record system |
+| [R05 Line of business and OT](/layers/r05-lob-and-ot) | Agents on the information path, never the control path, behind a validated presentation layer |
+
+## Knowledge
+
+| Layer | Target state in one line |
+|---|---|
+| [R02 Data platform](/layers/r02-data-platform) | Grounding as a governed product: permission-aware indexes, pre-filtered retrieval, semantic contracts where determinism is required |
+| [R14 Agent data engineering](/layers/r14-agent-data-engineering) | A curation pipeline with named ownership, provenance from parse time, governed memory writes, cascading erasure |
+
+## Control and evidence
+
+| Layer | Target state in one line |
+|---|---|
+| [R10 Security and identity](/layers/r10-security-and-identity) | Registered least-privileged identities and a deterministic policy decision point on every consequential action |
+| [R11 Governance, risk and sovereignty](/layers/r11-governance-risk-sovereignty) | The registry as compliance inventory, a two-tier evidence posture, classification-routed deployment |
+| [R12 Observability and FinOps](/layers/r12-observability-and-finops) | End-to-end traces the agent cannot forge, on a translation layer, with deterministic budget enforcement |
+
+## Improvement
+
+| Layer | Target state in one line |
+|---|---|
+| [R06 Intelligence and learning](/layers/r06-intelligence-and-learning) | Expert-owned evals, calibrated judges, promotion gated on counterexample survival with a demotion path |
+
+## Human-facing surfaces
+
+| Layer | Target state in one line |
+|---|---|
+| [R08 Productivity and collaboration](/layers/r08-productivity-and-collaboration) | Access identity as the universal default, presence granted per capability surface and rarely |
+| [R09 Experience and channels](/layers/r09-experience-and-channels) | A separate customer-facing edge on a shared control plane, justified by legal exposure |
+| [R13 Supervision and oversight](/layers/r13-operating-model) | Supervision as a queueing system: capacity with wait time included, load budgeted as a burst rate |
+
+## How the pages are built
+
+Each page condenses one research track. The tracks, with their briefs, findings, vendor maps, and dated sources, are in [the research library](/library/layers). Where the evidence does not support a claim, the page says so and names the refusal; the [decision catalog](/decisions) carries every contested choice with its verdict and discriminator.

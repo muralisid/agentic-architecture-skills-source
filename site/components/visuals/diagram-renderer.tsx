@@ -396,17 +396,22 @@ function TopologyMapDiagram({ figure, interactive = true }: { figure: FigureMani
 function ArchitectureDiagram({ figure }: { figure: FigureManifestEntry }) {
   const nodes = figure.data.nodes ?? [];
   const edges = figure.data.edges ?? [];
+  // The seven-plane figure describes planes; layer diagrams describe the
+  // components inside one layer, so the row and flow labels follow the figure.
+  const isPlaneFigure = figure.category === 'foundation';
+  const rowNoun = isPlaneFigure ? 'Plane' : 'Component';
+  const flowsLabel = isPlaneFigure ? 'Cross-plane flows' : 'Flows';
 
   return (
     <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(15rem,0.42fr)]">
-      <ol className="m-0 list-none space-y-2 p-0" aria-label="Architecture planes">
+      <ol className="m-0 list-none space-y-2 p-0" aria-label={isPlaneFigure ? 'Architecture planes' : 'Architecture components'}>
         {nodes.map((node, index) => (
           <li key={node.id} className="grid min-w-0 grid-cols-[2.5rem_1fr] gap-2 sm:grid-cols-[2.5rem_7rem_1fr]">
-            <span className="flex items-center justify-center rounded-lg border bg-fd-background text-[0.6875rem] font-semibold text-fd-muted-foreground" aria-label={`Plane ${index + 1}`}>
+            <span className="flex items-center justify-center rounded-lg border bg-fd-background text-[0.6875rem] font-semibold text-fd-muted-foreground" aria-label={`${rowNoun} ${index + 1}`}>
               {String(index + 1).padStart(2, '0')}
             </span>
             <span className="hidden items-center rounded-lg border bg-fd-muted/35 px-3 text-[0.6875rem] font-semibold uppercase tracking-wider text-fd-muted-foreground sm:flex">
-              {node.group ?? 'Plane'}
+              {node.group ?? rowNoun}
             </span>
             <section className={cn('min-w-0 rounded-lg border px-4 py-3', nodeClass(node.kind), node.emphasis && 'ring-2 ring-current/40')}>
               {node.group ? <p className="m-0 text-[0.6875rem] font-semibold uppercase tracking-wider opacity-60 sm:hidden">{node.group}</p> : null}
@@ -417,8 +422,8 @@ function ArchitectureDiagram({ figure }: { figure: FigureManifestEntry }) {
         ))}
       </ol>
       {edges.length ? (
-        <aside className="rounded-xl border bg-fd-background p-3" aria-label="Cross-plane flows">
-          <p className="m-0 text-[0.6875rem] font-semibold uppercase tracking-wider text-fd-muted-foreground">Cross-plane flows</p>
+        <aside className="rounded-xl border bg-fd-background p-3" aria-label={flowsLabel}>
+          <p className="m-0 text-[0.6875rem] font-semibold uppercase tracking-wider text-fd-muted-foreground">{flowsLabel}</p>
           <ul className="mb-0 mt-3 space-y-2 pl-0 text-xs" role="list">
             {edges.map((edge, index) => {
               const from = nodes.find((node) => node.id === edge.from)?.label ?? edge.from;

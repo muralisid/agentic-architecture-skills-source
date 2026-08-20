@@ -1,0 +1,59 @@
+---
+title: "The concern matrix"
+description: "Ten cross-cutting concerns against fourteen layers: who owns each, who enforces it, and the six gaps with no complete answer anywhere."
+hero_figure: "concerns-layer-heatmap"
+---
+
+## How to read it
+
+Every layer page closes with its own C1-C10 row; this page is the cross-layer view. The distinction that matters: **owned** (the layer defines the requirement and holds accountability), **enforced** (where a violation is actually stopped, frequently a different layer), and **inherited** (the layer must carry the property through without weakening it, which is where most defects live, because inheritance fails silently). The register applies at every autonomy level and tightens as A rises.
+
+<GuideFigure id="concerns-layer-heatmap" fullWidth />
+
+## Owned and enforced
+
+| # | Concern | Owned at | Enforced at | The failure when this is wrong |
+|---|---|---|---|---|
+| C1 | Identity and access | [R10](/layers/r10-security-and-identity) | [R03](/layers/r03-integration-fabric) gateway, [R04](/layers/r04-systems-of-record) entitlement, [R01](/layers/r01-infrastructure) workload identity | Identity asserted but never checked at the point of action |
+| C2 | Observability | [R12](/layers/r12-observability-and-finops) | Emitted by every layer, aggregated at R12 | The licensed estate emits into its own console and coverage only looks complete |
+| C3 | Traceability and audit | [R11](/layers/r11-governance-risk-sovereignty) | [R12](/layers/r12-observability-and-finops) collection, [R14](/layers/r14-agent-data-engineering) parse-time provenance | Evidence reconstructed after the incident instead of produced as a byproduct |
+| C4 | Grounding | [R02](/layers/r02-data-platform), [R14](/layers/r14-agent-data-engineering) | [R09](/layers/r09-experience-and-channels) hardest external bar, [R05](/layers/r05-lob-and-ot) twin validation | Answering over weak evidence instead of refusing |
+| C5 | Impersonation and authenticity | [R10](/layers/r10-security-and-identity) | [R03](/layers/r03-integration-fabric) server identity, [R08](/layers/r08-productivity-and-collaboration)/[R09](/layers/r09-experience-and-channels) disclosure | Agent-to-human trust exploitation, named in the current threat taxonomies |
+| C6 | Sovereignty and residency | [R11](/layers/r11-governance-risk-sovereignty) | [R01](/layers/r01-infrastructure) serving, [R02](/layers/r02-data-platform)/[R14](/layers/r14-agent-data-engineering) indexes, [R03](/layers/r03-integration-fabric) routing | Residency held at the source and broken by an embedding, a trace, or a session artifact |
+| C7 | Privacy | [R11](/layers/r11-governance-risk-sovereignty) | [R14](/layers/r14-agent-data-engineering) erasure cascade, [R02](/layers/r02-data-platform) index scope, [R12](/layers/r12-observability-and-finops) trace redaction | Deletion succeeds in the record and fails in the vectors, memories, and telemetry |
+| C8 | Safety and oversight | [R13](/layers/r13-operating-model) | [R03](/layers/r03-integration-fabric) gateway kill, [R07](/layers/r07-agent-platform) harness caps, [R05](/layers/r05-lob-and-ot) operator authority | Oversight on the org chart but not in the workload |
+| C9 | Cost | [R12](/layers/r12-observability-and-finops) | [R07](/layers/r07-agent-platform) per-run budgets, [R03](/layers/r03-integration-fabric) rate limits | Spend attributed to a platform rather than a sponsor; supervision labour absent from the case |
+| C10 | Resilience | [R01](/layers/r01-infrastructure) | Every layer's degraded mode; [R12](/layers/r12-observability-and-finops) budget-exhaustion behaviour | Fallbacks designed per layer and never tested end to end |
+
+## Seven invariants
+
+Each surfaced independently in three or more layers, which is why they are invariants rather than recommendations:
+
+1. **Derived artifacts inherit the strictest classification of their sources.** Chunks, embeddings, session artifacts, traces, and fine-tuned weights included.
+2. **Erasure cascades or it did not happen**: vectors, memories, traces, telemetry, eval datasets, derived artifacts.
+3. **Every layer degrades to a human queue**, and containment is never manufactured through queue unavailability.
+4. **Telemetry is collected outside the agent's control.** Self-report is testimony, not evidence.
+5. **The kill switch is multi-point** (runtime, gateway, harness, identity plane), and an observability outage must not blind it.
+6. **Enforcement is deterministic and outside the model.** Held in the harness, enforced at the gateway or PDP.
+7. **Provenance travels inside the artifact**, attached at parse time; provenance stored alongside is out of sync when it matters.
+
+## The open gaps
+
+Published as unsolved because a matrix without holes would be the least credible artifact in this guide:
+
+| Gap | Layer | Status, August 2026 |
+|---|---|---|
+| Permissions on many-to-one derived artifacts | R14 | No complete published solution; intersection-stamping is the emerging practice |
+| Behavioural baselining for agents in the SOC | R10 | Unsolved; agent behaviour is legitimately variable, so both human and workload baselining methods misfire |
+| Multi-agent incident reporting | R11 | No frame exists for who reports what when several agents contribute to one incident |
+| Error budgets for agent quality | R12 | No published enterprise analog; an open pattern, not a practice |
+| Human-to-agent supervision ratio | R13 | No credible published figure from any source |
+| Embedded versus external agent outcomes | R04 | No published head-to-head measurement on identical tasks |
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The concerns-by-layers matrix](/library/architecture/concerns-by-layers-matrix)
+- [All fourteen research tracks](/library/layers)
+
+</details>

@@ -1,0 +1,85 @@
+---
+title: "Observability and FinOps"
+description: "The measurement plane: every agent traced end to end on standards-based telemetry behind a translation layer, every change gated by calibrated evals and canaries, every budget enforced deterministically inside a sponsor-owned envelope."
+hero_figure: "layer-12-hero"
+---
+
+## Target state
+
+Agents are traced actors with unit economics, not services with uptime. Every agent is traced end to end (session, model calls, tool calls, cost) on standards-based vocabulary, behind a translation layer because the vocabulary itself is still moving. Offline and online evals with calibrated judges gate every behavior change through staged rollouts. Every agent runs inside a sponsor-owned budget envelope backed by deterministic hard caps and anomaly alerting. Quality SLOs (session success, containment, escalation) are tracked per release. The licensed estate and the metered estate report into one cost and usage view. Budget exhaustion fails to human queues, and an observability outage never blinds the kill switch. This layer is the measurement plane of the agentic enterprise and the raw material of its learning flywheel.
+
+<GuideFigure id="layer-12-hero" fullWidth />
+
+| Component | Responsibility | Control it hosts | Where it runs |
+|---|---|---|---|
+| Instrumentation + translation layer | Emit session, model-call, tool-call spans on OTel GenAI vocabulary; isolate backends from schema churn | Schema mapping; redaction at capture; classification tagging | Agent runtimes and harnesses, SDK plus collector |
+| Trace backend | Store and correlate traces as ops data, evidence, and eval raw material | Access control on prompt-bearing traces; retention, integrity, residency | APM estate or eval-capable platform |
+| Eval service | Offline and online evals; judge pool with calibration sets | Change gates; judge-calibration currency; dataset curation from traces | CI plus production sampling |
+| Rollout controller | Shadow, canary, full rollout of agent changes | Canary gates (session success, satisfaction, escalation); flags decoupling activation from deployment | Delivery pipeline and runtime flags |
+| Budget enforcement | Deterministic spend control per invocation and per principal | Hard caps (iterations, timeout, tokens); hierarchical budgets returning 429; fail-to-human-queue | LLM gateway and agent harness |
+| FinOps plane | Metering, showback maturing to chargeback, anomaly detection | Sponsor envelopes; FOCUS-based allocation; variance alerts | Cloud cost tooling plus FinOps practice |
+| Two-estate bridge | One usage and cost view across licensed and metered estates | Visibility-lag tracking; gap register for licensed analytics APIs | Vendor admin and analytics APIs feeding the FinOps plane |
+
+## Mechanisms
+
+### The telemetry contract is not stable
+
+OpenTelemetry GenAI semantic conventions are the right vocabulary and not yet a stable one: as of August 2026 every GenAI convention remains in **Development status**, and the whole set was moved out of the main semantic-conventions repository (**v1.42.0, June 12, 2026**) into a dedicated **open-telemetry/semantic-conventions-genai** repository that had **no tagged release** by mid-July. Agent spans and MCP conventions exist (v1.39 era) and are what to emit; **OpenInference and OpenLLMetry still compete** as instrumentation schemes. The architectural consequence is standing: instrument as if the schema will change, keep a **translation layer** as an explicit boundary between instrumentation and backend, and avoid deep coupling to any proprietary SDK you may want to leave. "Just extend APM on standard telemetry" carries schema-churn risk; the translation layer is what makes either path survivable.
+
+### Trace topology and its obligations
+
+The trace is a **session span** containing **model-call spans** and **tool-call spans**, with tokens and cost attributed on every span and the whole tree **keyed to the agent's identity**; that key is what makes per-agent cost attribution and the audit trail possible. Traces are dual-classified the moment they exist: prompt- and output-bearing spans are **evidence** for the [governance layer](/layers/r11-governance-risk-sovereignty) and **personal data** under the [erasure mechanics](/layers/r14-agent-data-engineering), so retention, redaction, and residency rules ride the pipeline and telemetry inherits the source classification of what it captured. Collection sits **outside the agent's control**: agents cannot forge or suppress their own traces, which is what makes telemetry usable as evidence. One resilience rule is non-negotiable: an **observability outage must not blind the kill switch**; the stop path never depends on the measurement path.
+
+### Budget enforcement, deterministic
+
+Budget enforcement is a deterministic control, not a model behavior, and it ships in three tiers. Per-invocation hard caps on the harness: AgentCore's **maxIterations (default 75)**, **timeout (default 3600 seconds)**, and **maxTokens**, all carrying cost-allocation tags [vendor]. Gateway-level **hierarchical budgets** per key, user, team, and organization that **return 429 on exhaustion** (LiteLLM, the dominant open-source pattern). Control-plane billing policies: Agent 365 **Agent Billing Policies** with budget limits and threshold alerts (November 2025), Agentforce **Digital Wallet** drilling to agent, action, and channel at **$0.10 per action** [vendor pricing], **Copilot Credits at $0.01** [vendor pricing]. Above the caps sit the sponsor envelope and anomaly detection. Budget-exhaustion behavior is defined before autonomy is granted: the agent **fails to a human queue**, it does not silently retry.
+
+### The change gate
+
+No agent behavior change reaches full traffic ungated. The published pattern (arXiv 2606.08867, the 100M-user support-agent deployment): offline evals, then **shadow** traffic, then a **1-5% canary gated on session success, satisfaction (tNPS), and escalation rate**, then full rollout, with **feature flags decoupling activation from deployment** so rollback is a flag flip, not a redeploy. Escalation carries a published healthy band of **5-15%**, tracked per release alongside session success and containment. Guardrail metrics alert in both directions: a **block-rate spike signals attack, a block-rate drop signals misconfiguration** (Bedrock Guardrails CloudWatch metrics [vendor]). The pattern's weight got priced: OpenAI bought Statsig, a flags-and-experimentation company, for **$1.1B** (September 2025). One honest gap: no published enterprise error-budget analog for agent quality SLOs exists; this guide carries it as an open pattern.
+
+### Judge governance
+
+Online evals mostly mean LLM judges, and the judges need governance of their own. The 2025-2026 reliability findings: judge models **agree with themselves more than they measure the right thing** (arXiv 2606.19544), run overconfident (arXiv 2508.06225), and **drift silently on hosted endpoints** when the underlying model is updated without notice. The discipline is a loop: production traces feed eval datasets, judges score them, **human-labelled calibration sets** check the judges, and calibration is re-validated on a schedule (GoDaddy published this workflow, November 2025). The adoption gap is the risk: **89%** of agent teams have some observability, **52%** run evals at all, **37.3%** run them online (LangChain, December 2025 [vendor]).
+
+### Failure signatures and the cost numbers
+
+The signature failures are runaway loops and retry storms. The incident record: a self-reported **$1.3M incident burning 603B tokens** in a multi-agent loop (May 2026, medium confidence), and a **$47K** agent-to-agent ping-pong loop (vendor blog, low confidence, unverified). The systemic figure behind them: **60% of LLM call errors are rate-limit driven** (Datadog telemetry [vendor]), so retry storms are an ecosystem-wide operations problem, not an anecdote. Consumption is structurally volatile: **tokens per request doubled year over year at the median and quadrupled for heavy users** [vendor telemetry], which is why spend can rise while unit prices fall and why **cost per outcome**, not raw spend, is the number to manage. Outcome anchors exist: **$0.99 to $2.00 per automated resolution** [vendor pricing] against a **$6-12** human-handled comparator; where outcomes are not priced, action and credit metering supplies the unit. The ownership numbers say who is exposed: **52% report no clear AI cost owner, an estimated 26% of AI spend is wasted, 72% saw an unexpected spike** in the past year (Harness 2026 [vendor survey]); **98% of FinOps practitioners now manage AI spend, up from 63%** a year earlier (State of FinOps 2026).
+
+### Bridging the two estates
+
+Cost and usage live in two estates, the licensed (per-seat copilots) and the metered (token- and action-priced agents), and the target is one view. The licensed side exposes analytics APIs with documented gaps: Microsoft Graph Copilot usage APIs (GA October 2025) **omit unlicensed Copilot Chat activity and refresh on a roughly 48-hour lag**; Salesforce Digital Wallet reports near real time; Anthropic ships an **Admin Usage and Cost API plus an Enterprise Analytics API**; agents-console products bridge third-party agents into the same pane [vendor]. On allocation, **shared-model cost splitting is the acknowledged hard problem**; **FOCUS 1.3 split-cost allocation** is the spec-side answer, with the Tokenomics Foundation collaborating on token-cost normalization. The estates are also merging organizationally: **90% of FinOps teams now manage SaaS spend** as well.
+
+## Design decisions
+
+- **Extend APM with OTel GenAI vs dedicated LLM observability** ([CD-15](/decisions#cd-15)): the question dissolved; in twelve months the specialists were largely absorbed (Dynatrace agreed to acquire Arize for $915M, announced August 13, 2026, not closed at research time; ClickHouse acquired Langfuse, January 2026, MIT license retained; Cisco folded Galileo into Splunk, May 2026; CoreWeave took Weights & Biases, 2025; LangSmith and Braintrust remain independent). Choose on the surviving fault lines: **OTel-native pipeline vs proprietary SDK** (either path needs the translation layer), **eval-loop depth vs infrastructure correlation**, and **self-hosting requirements** (the open-source option now belongs to a database vendor but keeps its license). Most enterprises land on the APM incumbent for correlation plus one eval-capable tool for the loop; the merged-category trend suggests even that seam closes.
+- **Per-agent cost ownership**: a **sponsor-owned budget envelope** per agent with unit-economics targets and variance alerting; showback first, maturing to chargeback where allocation is clean; central funding retained for the shared platform layer. "Salary-like" is deliberately rejected: consumption is too volatile for a fixed-line analogy. The Sponsor construct is productized (identity platforms carry a literal sponsor role with auto-transfer on departure; workforce systems took per-agent budgeting GA in February 2026 with thin shipped mechanics and no named customer; control planes ship billing policies), but no enterprise has published running per-agent budgets in production as of August 2026: recommended design, not established practice.
+
+## Cross-cutting concerns
+
+| # | Concern | Treatment at this layer |
+|---|---|---|
+| C1 | Identity and access | Trace access controlled (traces contain prompts and data); per-agent cost attribution keyed to agent identity |
+| C2 | Observability | The layer itself; coverage metrics; two-estate bridging |
+| C3 | Traceability and audit | Traces as evidence artifacts; retention and integrity; span-level answer-to-source linkage |
+| C4 | Grounding | Eval datasets curated from production traces; judge calibration against human labels |
+| C5 | Impersonation | Telemetry authenticity: collection outside the agent's control; agents cannot forge their own traces |
+| C6 | Sovereignty | Telemetry residency inherits source classification; backend locality in scope |
+| C7 | Privacy | Prompt and output redaction in traces; erasure cascades include telemetry |
+| C8 | Safety and oversight | Canary gates with human review; guardrail alerts in both directions; kill-switch integration |
+| C9 | Cost | The layer's core: envelopes, caps, showback to chargeback, anomaly detection, cost per outcome |
+| C10 | Resilience | Budget-exhaustion behavior defined (fail to human queues); observability outage does not blind the kill switch |
+
+## Evidence and limits
+
+The incident record here is cost incidents, not CVEs, and it is graded: the $1.3M/603B-token loop is self-reported (May 2026, medium confidence); the $47K A2A loop traces only to a vendor blog (low confidence, unverified) and stays flagged until a primary source exists. Survey and telemetry figures are vendor-published and marked so throughout (LangChain, Harness, Datadog); the Harness cost figures are paired with FinOps Foundation State of FinOps data for neutrality, and every pricing anchor ($0.10 per action, $0.01 credits, $0.99-2.00 per resolution) is a vendor list price. The sponsor-owned envelope is the authors' recommended design, not established practice, and the error-budget analog for agent quality has no published enterprise example. One refusal: a spring 2026 funding round attributed to the open-source tracing project circulates on content-farm sites; it contradicts the verified January 2026 acquisition, and this guide excludes it and treats that class of aggregator source as unreliable generally. Re-verify quarterly: the semantic-conventions-genai repository's first tagged release and stability status (the single most important item on this layer), the Dynatrace-Arize close and the fate of the Phoenix open-source project, the shipped depth of workforce-system agent budgeting, and agents-console GA states.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Observability and FinOps findings](/library/layers/r12-observability-and-finops/findings)
+- [Research brief](/library/layers/r12-observability-and-finops/brief)
+- [Vendor landscape](/library/layers/r12-observability-and-finops/vendors)
+- [Sources](/library/layers/r12-observability-and-finops/sources)
+
+</details>

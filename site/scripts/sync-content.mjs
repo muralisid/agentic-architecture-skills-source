@@ -377,26 +377,17 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['industries', 'departments', 'answers', 'vendors'],
+    pages: ['architecture', 'layers', 'decisions'],
   },
-  industries: {
-    title: 'Industries',
-    description: 'Complete transformation kits. Pick yours.',
-    pages: ['index', 'utilities-and-energy', 'banking-and-financial-services', 'manufacturing-and-supply-chain', 'public-sector'],
+  architecture: {
+    title: 'Architecture',
+    description: 'The cross-layer design of the agentic enterprise.',
+    pages: ['index', 'deterministic-zones', 'identity-chain', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
   },
-  departments: {
-    title: 'Departments',
-    description: 'Playbooks for the seven functions where agents land first.',
-    pages: ['index', 'it-and-service-desk', 'customer-service', 'finance', 'hr', 'sales', 'marketing', 'supply-chain'],
-  },
-  answers: {
-    title: 'Answers',
-    description: 'One question, one screen.',
-    pages: ['index', 'the-target-architecture', 'how-many-agents-can-one-person-supervise', 'what-an-agent-must-never-decide', 'who-pays-for-the-loop', 'which-use-cases-first', 'the-maturity-ladder'],
-  },
-  vendors: {
-    title: 'Vendors',
-    pages: ['index', 'the-30-vendor-questions'],
+  layers: {
+    title: 'Layers',
+    description: 'The fourteen enterprise layers, each with its target state, mechanisms, and decisions.',
+    pages: ['index', ...Object.keys(LAYER_TITLES)],
   },
   library: {
     title: 'Research library',

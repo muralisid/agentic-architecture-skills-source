@@ -1,0 +1,59 @@
+---
+title: "The autonomy contract"
+description: "A x L with a controls column that is the contract, readiness gates that cap safe autonomy, and an oversight gate expressed as a burst rate."
+hero_figure: "autonomy-learning-matrix"
+---
+
+## Two axes, applied per workload
+
+**Autonomy** (who executes, what the human holds): A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, A5 governed lights-out. **Learning** (whether and under what control the agent improves): L0 fixed policy, L1 curated learning, L2 governed learning (the flywheel), L3 continuous learning inside guardrails. They move independently; every workload sits somewhere on the grid deliberately, and movement is earned and reversible.
+
+<GuideFigure id="autonomy-learning-matrix" fullWidth />
+
+## The controls column is the contract
+
+| Level | Human role | Required controls |
+|---|---|---|
+| A2 | Review every output | Task scoping, output review, audit |
+| A3 | Approve irreversible actions, handle exceptions | Approval gates, evals, budgets, kill switch |
+| A4 | Manage exception queues, supervise | Eval-gated change, concern register enforced, supervisor dashboards, designed oversight capacity |
+| A5 | Set policy, own accountability, audit outcomes | Proven eval maturity, continuous assurance, regulator-ready evidence, oversight capacity measured in production |
+
+Three rules connect the axes. **A4 and above require L2 or better**: at that level reliability must be improvable, not merely observable. **A4 and above require proven oversight capacity**: a level you cannot supervise is a level you have not reached. And **without a learning loop you have a fixed-policy agent, not a teammate**; fixed policy is the right choice for many workloads, named honestly.
+
+## Readiness gates autonomy
+
+Six dimensions, each scored 0 to 3 (absent, ad hoc, managed, operated): data readiness (including ACL-aware retrievability), integration readiness (governed API coverage, tool exposure, event availability), identity readiness (first-class principals, on-behalf-of flows, secrets never held by agents), operational discipline (observability, offline and online evals, incident practice), governance and value discipline (intake with kill criteria, per-run cost visibility, the two-estate view), and operating capacity. The profile governs, never the total:
+
+<GuideFigure id="readiness-six-dimension-profile" fullWidth />
+
+| Profile | Safe ceiling |
+|---|---|
+| Any dimension at 0 for the target workload | A1 only |
+| Data and integration at 2+, others at 1+ | A2 |
+| Data, integration, identity, and operations at 2+ | A3 |
+| All six at 2+, operations and governance at 3 | A4, and L2 governed learning is required |
+| All six at 3, plus regulator-ready evidence | A5 candidacy, per domain only |
+
+Identity gaps cap autonomy without blocking starts; a workload can begin at A1 while the chain is built.
+
+## The oversight gate, as a burst rate
+
+No credible published human-to-agent supervision ratio exists from any source; the vendor that coined the metric has published no number in two annual editions. What transfers instead is queueing arithmetic and alarm-management standards:
+
+<GuideFigure id="oversight-burst-capacity" fullWidth />
+
+- Capacity follows the fan-out relation: neglect time over interaction time **plus wait time**. Ignoring wait time overstates capacity by up to 67%, and by 36% even in exception-based designs.
+- Budgets are set as burst rates per ten minutes, never daily averages; the alarm-management standards hold that a per-ten-minute rate cannot validly be converted to a longer window, and removed their per-day metric because averaging destroys its meaning. A daily-average target will be met on the dashboard and violated in every burst.
+- Expect calibrated oversight, not a ratchet: with experience, standing permission broadens **and** intervention rates rise. In measured deployments, auto-approval roughly doubled while interrupt rates nearly doubled alongside it. Rising interventions with expanding autonomy is the system working; falling interventions with expanding autonomy is the thing to investigate.
+
+Instrument per [R13](/layers/r13-operating-model): intervention rate and trend, escalation mix by trigger, wait time per item, verification cost per review, periodic blind checks against self-report.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The maturity model](/library/architecture/maturity-model)
+- [Readiness assessments](/library/frameworks/readiness-assessments)
+- [Operating model findings](/library/layers/r13-operating-model/findings)
+
+</details>

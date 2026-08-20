@@ -1,0 +1,84 @@
+---
+title: "Systems of record"
+description: "Systems of record keep their authority: agents reach them through MCP servers wrapping governed APIs, running as the requesting identity, with writes gated by consequence class and relaxed by demonstrated reliability."
+hero_figure: "layer-04-hero"
+---
+
+## Target state
+
+Systems of record keep their authority. Agents reach them through MCP servers that wrap the APIs those systems already publish, running as the requesting identity, never as a service account. Writes are gated by consequence class and relaxed by demonstrated reliability, using the record system's own approval machinery. Cross-system workflows run on an external orchestrator, because no single vendor's permission plane is authoritative across systems and entity resolution is the binding constraint. Every embedded agent has an eval suite that gates the vendor's releases and a documented answer to what happens when the vendor changes the model underneath it. Platform choice follows where the record and its permission model live, not use-case category.
+
+<GuideFigure id="layer-04-hero" fullWidth />
+
+| Component | Responsibility | Control it hosts | Where it runs |
+|---|---|---|---|
+| Vendor MCP servers | Expose record APIs as tools carrying the caller's identity | Permission parity with the human path: CRUD, field-level security, sharing rules | Salesforce hosted MCP, ServiceNow MCP Server, Workday Agent-Ready Tools, Oracle Fusion 26A |
+| Record permission plane | Entitlement, validation, approval routing | The same controls the human UI hits; audit attributed to the human identity | Inside each system of record, unchanged |
+| Write gates | Pause consequential writes for approval | Explicitly wired human checkpoints; override-rate telemetry that earns autonomy | The record system's workflow engine (Salesforce Flow, Oracle approval routing) |
+| Agent governance registry | Agent identity, ownership, lifecycle | Agent System User accounts, assigned agent owners, per-agent audit | Workday ASoR and Agent Passport; Microsoft Agent 365 as a cross-stack seat |
+| External orchestrator | Cross-system workflows | Entity resolution, cross-system approval composition | Your integration estate, through the [R03 gateway](/layers/r03-integration-fabric) |
+| Vendor-release eval suite | Gate embedded-agent releases | Go/no-go on behavior regression | Your CI, run against every vendor release |
+
+## Mechanisms
+
+### Wrap, do not reinvent
+
+The MCP layer is a wrapper that carries the caller's identity into the API that already enforces entitlement, validation, and audit; it is not a new policy engine. ERP, CRM, HRIS, and ITSM carry decades of access control, approval routing, and audit, and an agent tool layer that reimplements any of it has added a second, weaker copy of a solved problem. Concretely: **run tool calls as the authenticated user** rather than a service account, **keep field-level security and sharing rules in force**, gate consequential writes with the record system's own approval machinery, and **log to the user, not to the agent**. Write access follows a trust progression, not a policy switch: like a new colleague, the agent is reviewed on everything at first and the gate relaxes as evidence accumulates, the [autonomy contract](/architecture/autonomy-contract) applied to a single permission. The evidence for the pattern is that every shipped vendor path below implements exactly it.
+
+### The two-path permission plane
+
+The load-bearing change of H1 2026: **the permission plane became reachable two ways**, and four of five SoR vendors state parity explicitly. Salesforce (Headless 360 at TDX, April 15 2026; hosted MCP GA on Enterprise and above, July 14 2026): "If you can't do it in Salesforce, your agent can't do it through the MCP server"; actions run as the authenticated user with the same CRUD, field-level security, and sharing rules, and audit-log to that user. ServiceNow (Action Fabric, May 5 2026): MCP Server GA inside every Now Assist and AI-native SKU, opening workflows, playbooks, and approval chains to third-party agents, naming Claude, Copilot, and homegrown builds explicitly. Workday (Agent-Ready Tools and Agent Passport, June 2 2026): external agents inherit its security and delegation model, business-process controls, and audit trail; the **Agent System of Record**, GA February 2026, gives agents Agent System User accounts and assigned owners the way workers get managers. Oracle ships MCP and A2A in Fusion 26A, with published agents discoverable and callable over A2A by 26C. This collapses the 2025 assumption that embedded means governed and external means ungoverned. What still differs is model control, the cost meter, and the customization ceiling (Salesforce hard limits: 20 active agents per org, 15 topics per agent, 15 actions per topic, 60-second action timeout; unverified against the official limits document).
+
+### The no-pause-by-default trap
+
+**An embedded agent does not pause by default.** Salesforce agents execute on configuration and context without stopping for approval unless a human checkpoint is explicitly wired in through Flow. Oracle is the counterpoint: approval routing is a first-class primitive that can confirm whether a user or an agent holds authority for an action and route it accordingly. ServiceNow markets autonomy (L1 IT desk GA, "91% of cases without reassignment" [vendor]) with human-in-the-loop reserved for security containment. The gate is your job, not the platform's: wire the checkpoint per consequence class and instrument the override rate, because a falling override rate is the evidence that earns autonomy.
+
+### The upgrade problem
+
+**A model name is not a version**: behavior has changed under unchanged model identifiers, and vendors retire model versions on their own schedules. No vendor at this layer publishes a model-change notification SLA or a customer-controlled pin for its first-party agents, and no vendor-published behavior-regression change-management practice exists. Where the platform supports bringing your own model, **you regain the pin**, a concrete and non-obvious argument for BYO-model even when the vendor's default model is better today. Either way, keep an eval suite that runs against every vendor release and treats a failing run as a release blocker.
+
+### Entity resolution binds cross-system work
+
+Grounding across systems breaks on **entity resolution, not retrieval**: the same customer is a different identifier in the CRM, the product database, the marketing platform, and the ticketing system, and an agent querying three at once has no reliable way to know they describe one entity. BI semantic layers do not transfer; they were built for analysts asking aggregate questions, while agents need to resolve entities, follow relationships, and take actions across systems. Because no vendor's permission plane is authoritative outside its own records and A2A is not production-grade for cross-vendor negotiation, cross-system workflows run on an external orchestrator with entity resolution as a named component, not an assumed capability.
+
+### Meter math
+
+Four meters price the same activity, none of them a seat; all figures are [vendor] list pricing. **Per action with a token step function**: a Salesforce standard action is 20 Flex Credits, about $0.10, covering up to 10,000 tokens, so an operation spending 20,001 tokens bills 60 credits ($0.30), three steps rather than two; verbose grounding silently multiplies cost. An alternative Salesforce meter runs about $2 per 24-hour conversation, and Flex Credits fund grounding, acting, and BYO-model calls from one pool, above a Data 360 Starter floor near $60k per year. **Per AI unit**: SAP sells prepaid pools at roughly 200 actions per Advanced FUE, overage $0.08 to $0.18 per action. **Per assist**: ServiceNow prices a small agentic action at 25 assists and a large one at 150, with pool sizes and overage rates not publicly disclosed, a procurement problem its own community guidance flags; roughly half of its new ACV is now non-seat. **Included**: Oracle ships 22 Fusion agents at no extra cost in 26B. The fifth line is the governance plane, a separate seat in one stack (Microsoft Agent 365, $15 per user per month) and free in another, so a total-cost comparison that prices actions without governance is wrong by a variable amount. Deloitte projects 40% of enterprise SaaS spend on usage, agent, or outcome pricing by 2030.
+
+### The incident taxonomy, kept separate
+
+**No published incident shows an embedded system-of-record agent corrupting financial or HR records at scale.** The incidents that exist are a different class, and this guide does not conflate them. Platform vulnerabilities: **ForcedLeak** (CVSS 9.4, patched September 8 2025), indirect injection through Salesforce Web-to-Lead exfiltrating CRM data to an expired allowlisted domain bought for about $5; ServiceNow **BodySnatcher** (CVE-2025-12420, CVSS 9.3, patched October 30 2025), unauthenticated impersonation; the **AppOmni second-order injection** through Now Assist agent-to-agent discovery, where agents ran with the privilege of the initiating user and the root cause was three shipped default settings. A separate class again: coding agents deleting development databases (Replit, July 2025; PocketOS, April 2026). The taxonomy matters because the platform-vulnerability record argues for patch cadence and default hardening, while the record-corruption scenario that dominates write-access debates has, so far, no published instance.
+
+## Design decisions
+
+- **Embedded vendor agents vs external agents through governed APIs** ([CD-17](/decisions#cd-17)): decide by authority boundary, and know that nobody has measured this. No published head-to-head of an embedded against an external agent on the same CRM or ERP task exists, from vendors, analysts, or practitioners; generic benchmarks show up to fiftyfold cost variation ($0.10 to $5.00 per task) at similar accuracy, so the harness matters more than the badge. When the workflow's authority boundary sits inside one system, both paths enforce identical permissions: choose on model control, meter, and ceiling. When it crosses systems, external orchestration is a requirement, not a preference.
+- **The SAP closed path**, a named constraint rather than a choice: API Policy v4/2026 §2.2.2 forbids autonomous agent API sequences outside SAP pathways, enforced since June 9 2026; "For agentic use cases, A2A via Joule is the only way." Two analyst firms criticized the position publicly in May 2026, one advising CIOs to freeze multiyear third-party AI deals dependent on SAP data and to negotiate 2027 price ceilings. Plan SAP-held records as a distinct integration class with its own path and pricing exposure.
+
+## Cross-cutting concerns
+
+| # | Concern | Treatment at this layer |
+|---|---|---|
+| C1 | Identity and access | Agents act as the requesting user through wrapped APIs; entitlement stays in the record system; no service-account agents |
+| C2 | Observability | Action-level telemetry from both the agent platform and the record system's audit log; override rates tracked per workflow |
+| C3 | Traceability and audit | Native audit logs attribute to the human identity; answer-to-record provenance; approval decisions retained |
+| C4 | Grounding | Entity resolution across systems; definition ownership; record freshness |
+| C5 | Impersonation | Run-as-user rather than shared credentials; agent identity distinct from human identity in the directory |
+| C6 | Sovereignty | Record residency extends to agent memory, logs, and derived indexes; vendor retention and export terms are procurement items |
+| C7 | Privacy | HR and customer records carry worker-information and consent duties; agent memory inherits them |
+| C8 | Safety and oversight | Consequence-class gating for writes; explicit approval wiring, since embedded agents do not pause by default |
+| C9 | Cost | Per-action meters with token step functions; grounding competes with acting for one pool; governance plane priced separately |
+| C10 | Resilience | Eval suites gating vendor releases; a documented answer for silent model changes; degraded mode to human queues |
+
+## Evidence and limits
+
+Incidents above carry CVE, CVSS, and patch dates where published. Meter figures are [vendor] list pricing and move; re-verify before procurement. Adoption context behind CD-17: Salesforce reports Agentforce ARR of $800M in Q4 FY26 and $1.2B in Q1 FY27 [vendor], while paid adoption near 6% of an installed base around 150k is derived, not disclosed; an analyst forecast has fewer than 15% of firms turning on the agentic features in their automation suites in 2026; the claim that 3% of Joule customers run in production traces to a single origin, is unverified, and this guide does not rely on it. The Salesforce agent limits await verification against the official limits document. Three absences are findings in their own right: no published head-to-head measurement of embedded versus external agents on identical tasks; no published migration of a production agent estate between SoR platforms, so portability claims are untested and lock-in concentrates in configuration, not data (one major platform auto-deletes agent memory after 28 days of inactivity with no documented export path); no vendor-published behavior-regression change-management practice for embedded agents. The wrap-do-not-reinvent spine and the write-access trust progression are the authors' position, strongly supported by the vendor parity statements. Re-verify quarterly: meter rates and pool disclosures, SAP enforcement posture, A2A production readiness.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Systems of record findings](/library/layers/r04-systems-of-record/findings)
+- [Research brief](/library/layers/r04-systems-of-record/brief)
+- [Vendor landscape](/library/layers/r04-systems-of-record/vendors)
+- [Sources](/library/layers/r04-systems-of-record/sources)
+
+</details>
