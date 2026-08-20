@@ -34,16 +34,20 @@ Set `NEXT_PUBLIC_SITE_URL` to the production URL so canonical links, Open Graph 
 
 Sidebar navigation and breadcrumbs, full-text search (Orama, built at compile time), per-page Open Graph images, `llms.txt` and `llms-full.txt` for machine consumption, per-page markdown export, a sitemap, and dark mode.
 
+## Live
+
+https://agentic-enterprise-ten.vercel.app
+
 ## Automatic deployment
 
-`.github/workflows/deploy.yml` deploys on every push to `main`, after two gates:
+Vercel's Git integration builds and deploys on every push to `main`. Two gates run inside that build, so the protection travels with the deployment rather than living only in CI:
 
 1. `scripts/check-content.mjs`: no em dashes in guide content, no broken internal links.
 2. `scripts/boundary-scan.mjs`: no reserved terms from the private publication blocklist, which is supplied as the `BOUNDARY_BLOCKLIST` repository secret and never committed. A scan that cannot run fails the build rather than passing it.
 
-**Production is opt-in.** Until the repository variable `PUBLISH_PRODUCTION` is set to `true`, every push deploys as a Vercel preview instead of going live. Set it when the guide is cleared to publish.
+The publication hold always applies. The blocklist scan runs only when `BOUNDARY_BLOCKLIST` is set in the Vercel project's environment variables; without it the build warns and continues. Set it to make the boundary strict on every deploy.
 
-Required repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `BOUNDARY_BLOCKLIST`.
+`.github/workflows/guard.yml` runs the same two checks on pull requests, where the blocklist comes from the `BOUNDARY_BLOCKLIST` repository secret and a missing secret fails the check.
 
 Run either gate locally:
 

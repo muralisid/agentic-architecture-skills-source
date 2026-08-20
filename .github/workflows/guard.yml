@@ -1,0 +1,39 @@
+name: Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    name: Content and boundary checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Content checks (em dashes, internal links)
+        run: node scripts/check-content.mjs
+
+      # The blocklist is private and is never committed. It is supplied as a secret.
+      # A scan that cannot run is a failure, not a pass.
+      - name: Publication hold and boundary scan
+        env:
+          BOUNDARY_BLOCKLIST: ${{ secrets.BOUNDARY_BLOCKLIST }}
+        run: |
+          if [ -z "$BOUNDARY_BLOCKLIST" ]; then
+            echo "::error::BOUNDARY_BLOCKLIST secret is not set. Refusing to deploy without a boundary scan."
+            exit 1
+          fi
+          printf '%s' "$BOUNDARY_BLOCKLIST" > "$RUNNER_TEMP/blocklist.txt"
+          BLOCKLIST="$RUNNER_TEMP/blocklist.txt" node scripts/boundary-scan.mjs
+          rm -f "$RUNNER_TEMP/blocklist.txt"

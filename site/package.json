@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "sync": "node scripts/sync-content.mjs",
-    "build": "npm run sync && next build",
+    "build": "npm run guard && npm run sync && next build",
     "dev": "npm run sync && next dev",
     "start": "next start",
-    "types:check": "next typegen && tsc --noEmit"
+    "types:check": "next typegen && tsc --noEmit",
+    "guard": "node scripts/prebuild-guard.mjs"
   },
   "dependencies": {
     "cnfast": "^0.1.0",
