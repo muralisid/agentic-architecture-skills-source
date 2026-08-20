@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Manufacturing and Supply Chain blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Manufacturing operations lead"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Manufacturing and Supply Chain."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "4 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/verticals/public-sector"
+---
+
 # Vertical Blueprint: Manufacturing and Supply Chain
 
 As of August 2026. Phase 6. The literal bottling plant.

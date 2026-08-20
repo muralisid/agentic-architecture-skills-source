@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the observability and FinOps findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Operations and FinOps lead","Research and assurance lead"]
+decision_or_output: "Confirm which observability and FinOps claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r12-observability-and-finops/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r13-operating-model"
+---
+
 # R12 Observability & FinOps: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

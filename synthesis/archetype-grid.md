@@ -1,3 +1,13 @@
+---
+reader_summary: "Identify which enterprise archetype best matches your scale, data gravity, vendor gravity, and operating capacity before copying someone else's architecture."
+audience: ["CIO/CTO", "Enterprise architect"]
+decision_or_output: "Select a primary archetype and record the architectural defaults and watchouts it implies."
+prerequisites: ["/docs/architecture/vision-and-target-state"]
+reading_time: "6 minutes"
+evidence_status: "Author synthesis grounded in adoption and architecture evidence; archetypes are decision aids, not measured market segments."
+next: "/docs/frameworks/readiness-assessments"
+---
+
 # Enterprise Archetypes: The Size-by-Gravity Grid
 
 As of August 2026. Phase 2 deliverable: the personas every later chapter references.

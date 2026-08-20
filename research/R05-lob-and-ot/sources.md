@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the line-of-business systems and operational technology findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Line-of-business and OT lead","Research and assurance lead"]
+decision_or_output: "Confirm which line-of-business systems and operational technology claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r05-lob-and-ot/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r06-intelligence-and-learning"
+---
+
 # R05 Line-of-Business and Operational Technology: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

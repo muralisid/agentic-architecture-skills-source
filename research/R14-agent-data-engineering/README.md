@@ -1,3 +1,13 @@
+---
+reader_summary: "Understand how agent data engineering and memory changes in an agentic enterprise and choose the evidence page that matches your decision."
+audience: ["CIO/CTO","Enterprise architect","Data and AI engineering lead"]
+decision_or_output: "Choose which agent data engineering and memory question to resolve, then continue to the scoped brief."
+prerequisites: ["/docs/design"]
+reading_time: "2 minutes"
+evidence_status: "Layer orientation: detailed claims and evidence are carried by the linked findings and source register."
+next: "/docs/layers/r14-agent-data-engineering/brief"
+---
+
 # R14: Agent data engineering & memory pipelines
 
 Status: complete (published 2026-08-19). Scope finalized at Batch A kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.

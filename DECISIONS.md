@@ -1,4 +1,16 @@
+---
+reader_summary: "Review the architecture decisions, the evidence that changed them, and the alternatives that were rejected."
+audience: ["CIO/CTO","Enterprise architect","Guide contributor"]
+decision_or_output: "Confirm the rationale and current status of a guide-level architecture decision before reusing it."
+prerequisites: ["/docs/about-evidence"]
+reading_time: "9 minutes"
+evidence_status: "Decision log: entries distinguish decisions, rationale, evidence changes, and unresolved questions."
+next: "/docs/re-verification"
+---
+
 # Decision log
+
+## Recorded decisions
 
 Format: ID, date, decision, rationale. Newest last. Decisions are revisited only with a new entry superseding the old one.
 
@@ -22,7 +34,7 @@ Format: ID, date, decision, rationale. Newest last. Decisions are revisited only
 | D016 | 2026-08-19 | Platform choice at the systems-of-record layer is governed by where the record and its permission model live, not by use-case category; agents reach records through tool servers wrapping governed APIs, and write access follows a trust progression rather than a policy switch | Four of five major vendors shipped external-agent paths with stated permission parity in H1 2026, collapsing the assumption that embedded means governed and external does not; the remaining differences are model control, cost meter, and customization ceiling |
 | D017 | 2026-08-19 | Practitioner patterns are published with their evidence status stated individually, including "design proposal, no published precedent" where that is the honest finding | Testing the four utilities patterns produced a split verdict: one has a measured result, one has shipped analogues, and two have no published production precedent anywhere; publishing them uniformly would have misrepresented all four |
 | D018 | 2026-08-19 | Rule promotion gates on counterexample survival and eval regression rather than frequency, lands promoted artifacts outside the model, and requires a demotion path | 2026 research inverted the assumption that generation is easy and promotion is the control point: only a fifth of automatically learned policies were usable and automated gates erred in both directions, while roughly three quarters of policy statements depend on context that cannot be predefined |
-| D019 | 2026-08-19 | Identity levels are assigned by capability surface, with the accountable-human sponsor recorded at access-identity level rather than presence level | The platform architecture already carries a sponsor attribute on the agent identity itself, and agents are nameable and mentionable in collaboration surfaces without a user account, so requiring a mailbox to obtain accountability inverts the control |
+| D019 | 2026-08-19 | Identity tiers are assigned by capability surface, with the accountable-human sponsor recorded at ID2 access identity rather than ID3 presence identity | The platform architecture already carries a sponsor attribute on the agent identity itself, and agents are nameable and mentionable in collaboration surfaces without a user account, so requiring a mailbox to obtain accountability inverts the control |
 | D020 | 2026-08-19 | Customer-facing agents get a separate lane and a separate edge on a shared control plane, justified by legal exposure rather than by technology | Customer-facing failures are legally attributable, contractually binding and publicly visible while internal failures are contained; duplicating knowledge, identity, tools, evaluation and observability across the two is a defect rather than a safeguard |
 | D021 | 2026-08-19 | The founding metaphor is defended on the shape of the residual work, never on a headcount ratio or a timeline, and the widely circulated lights-out crew figure is corrected in the text | The residual task set has been stable in the human-factors literature since 1983, but the canonical automated-plant figure is misquoted in secondary sources, no supervision ratio for agents has ever been published, and the strongest administrative-data study finds task reorganisation rather than crew reduction |
 | D022 | 2026-08-19 | A4 and above carry an oversight-capacity gate expressed as a burst rate, added as a precondition on the autonomy axis rather than as a third axis | No credible human-to-agent supervision ratio has ever been published, so an autonomy ladder that assumes one rests on nothing; modelling oversight as a separate axis would imply enterprises can trade autonomy against oversight, which is the trade the gate exists to forbid |
@@ -36,4 +48,4 @@ Format: ID, date, decision, rationale. Newest last. Decisions are revisited only
 | D030 | 2026-08-19 | The vendor scorecard runs disqualifiers before scores, and publishes a section profile rather than a total | A weighted total lets a vendor compensate for an unacceptable answer with strength elsewhere, which is how platforms with no enforcement boundary win evaluations on ecosystem depth |
 | D031 | 2026-08-19 | Where the research cannot establish a vendor's answers to the question bank, the profile states the gap rather than inferring answers from adjacent products, even where that leaves a prominent vendor with the thinnest profile in the hub | The hub's value is that its claims are checkable; inferring an enterprise platform's identity, memory and metering posture from a published SDK would make the hub's least-sourced section indistinguishable from its best-sourced one |
 | D032 | 2026-08-19 | The site is a generated view of the repository markdown rather than a separate content tree, with `site/content/docs` git-ignored | Two copies of the corpus would diverge on the first correction; generation keeps the repository the single source of truth (D001) and makes the site's link graph, titles and ordering derivable rather than maintained |
-
+| D033 | 2026-08-20 | D001's public-repository assumption is suspended while publication-held paths remain tracked; the canonical repository stays private and the site publishes only the generated public view | A site filter cannot remove a mechanism from public Git history. The repository can become public only after the hold is released, or a separate publishable-only mirror with no shared history is created |

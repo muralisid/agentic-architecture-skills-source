@@ -1,3 +1,13 @@
+---
+reader_summary: "Choose a knowledge graph only when relationship traversal, explainability, and maintenance economics beat a simpler retrieval design."
+audience: ["Enterprise architect", "Data architect", "AI platform lead"]
+decision_or_output: "Record a graph-versus-retrieval decision with workload evidence, operating cost, and exit criteria."
+prerequisites: ["/docs/techniques"]
+reading_time: "10 minutes"
+evidence_status: "Contested-choice synthesis; dated evidence and maintainer positions are distinguished inline."
+next: "/docs/reference"
+---
+
 # When a Knowledge Graph Earns Its Keep: Graph Databases vs Embedding Retrievers
 
 As of August 2026. A contested-choice study: the claimed value, the simplest credible alternative, the evidence both ways, and the economics.

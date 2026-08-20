@@ -1,3 +1,13 @@
+---
+reader_summary: "Assess Microsoft against the guide's architecture, control, evidence, economics, and exit requirements."
+audience: ["CIO/CTO","Enterprise architect","Procurement and vendor-management lead"]
+decision_or_output: "Decide whether Microsoft merits workload-specific due diligence, and record evidence gaps and exit risks."
+prerequisites: ["/docs/frameworks/vendor-question-bank","/docs/frameworks/vendor-scorecard"]
+reading_time: "3 minutes"
+evidence_status: "Time-sensitive vendor profile: vendor-published claims are labelled and require current contractual verification."
+next: "/docs/vendors/profiles/salesforce"
+---
+
 # Vendor Profile: Microsoft
 
 As of August 2026. Answers to the question bank where the research establishes them. Vendor-published facts flagged; product facts on the quarterly re-verification list.
@@ -10,7 +20,7 @@ The widest genuine footprint in the guide's coverage matrix. Four surfaces matte
 
 ## How it answers the bank
 
-**Identity (A).** The strongest answers in the market. Agent identities became mandatory on the collaboration surfaces from July 2026 [vendor], the identity architecture encodes the access-versus-presence split directly, and the sponsor construct is productised in Entra ID Governance with automatic transfer and access expiry [vendor]. This is the product that made the guide's D019 revision necessary: the sponsor attribute exists at access-identity level, so presence is not required to obtain accountability.
+**Identity (A).** The strongest answers in the market. Agent identities became mandatory on the collaboration surfaces from July 2026 [vendor], the identity architecture encodes the access-versus-presence split directly, and the sponsor construct is productised in Entra ID Governance with automatic transfer and access expiry [vendor]. This is the product that made the guide's D019 revision necessary: the sponsor attribute exists at ID2 access identity, so ID3 presence is not required to obtain accountability.
 
 **Determinism (B).** Deterministic information-flow control shipped in Agent Framework, with published results of zero policy-violating injections on a standard benchmark against 20 to 152 without it. That is a genuinely differentiated answer to B2.
 

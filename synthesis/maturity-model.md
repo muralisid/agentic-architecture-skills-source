@@ -1,3 +1,13 @@
+---
+reader_summary: "Place each workload on separate autonomy and learning axes, then use oversight capacity and evidence to decide whether it may advance."
+audience: ["CIO/CTO", "Enterprise architect", "Risk and operations lead"]
+decision_or_output: "Assign a current and next safe A x L position to one workload, with the evidence required for promotion."
+prerequisites: ["/docs/architecture/vision-and-target-state"]
+reading_time: "9 minutes"
+evidence_status: "Author model built on published autonomy ladders and human-factors evidence; thresholds and unresolved supervision ratios are stated explicitly."
+next: "/docs/architecture/archetype-grid"
+---
+
 # The Autonomy-Learning Maturity Model (A x L)
 
 As of August 2026.

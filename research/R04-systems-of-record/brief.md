@@ -1,3 +1,13 @@
+---
+reader_summary: "Review the scope, decision questions, and challenged defaults for systems of record before using the findings."
+audience: ["Enterprise architect","Enterprise applications lead","Research and assurance lead"]
+decision_or_output: "Confirm the in-scope systems of record decisions and the questions the evidence must answer."
+prerequisites: ["/docs/layers/r04-systems-of-record"]
+reading_time: "2 minutes"
+evidence_status: "Research scope and question set; this page does not itself establish the final architecture position."
+next: "/docs/layers/r04-systems-of-record/findings"
+---
+
 # R04 Core Systems of Record: research brief
 
 Status: complete; published 2026-08-19

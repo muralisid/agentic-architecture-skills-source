@@ -1,3 +1,13 @@
+---
+reader_summary: "Assess six workload-specific prerequisites for safe agent delivery in a lightweight or regulated-enterprise mode, without hiding weak dimensions inside a total score."
+audience: ["CIO/CTO", "Enterprise architect", "Transformation lead", "Risk and security lead"]
+decision_or_output: "Produce a six-value readiness profile and the maximum autonomy level the target workload should attempt next."
+prerequisites: ["/docs/architecture/archetype-grid"]
+reading_time: "14 minutes"
+evidence_status: "Evidence-informed author framework; source data and framework mappings are labelled, and the scoring method is a practitioner design rather than a validated benchmark."
+next: "/docs/frameworks/use-case-portfolio"
+---
+
 # Agent Readiness Assessment: Light and Heavy Modes
 
 As of August 2026. Phase 2 deliverable; feeds the Phase 5 roadmap checklist as its readiness input.
@@ -44,7 +54,61 @@ The assessment connects directly to the A x L maturity model: readiness caps the
 
 ## Light mode (mid-market)
 
-Twenty-four questions, four per dimension, each answerable yes/partly/no by an IT leader without a consultancy. Examples (full instrument in the appendix at publication): "Can you name the system of record and the data owner for the top three entities your first agent would act on?"; "Do the systems that agent would touch have governed APIs today, or would it need screen automation?"; "If an agent misbehaved at 2 a.m., does anyone get paged, and can anyone turn it off?"; "Who is the named human accountable for the agent's work and its learning?". Scoring maps directly to the gate table. No framework knowledge assumed; each dimension notes which attestation (SOC 2, ISO 27001) a buyer may eventually demand and what evidence to keep.
+Twenty-four questions, four per dimension, each answerable **yes**, **partly**, or **no** by an IT leader and the workload owner without a consultancy. Answer for one target workload, not for the enterprise in general. A policy counts only when the team can show that it operates in the target scope.
+
+### The complete 24-question instrument
+
+#### Data readiness
+
+1. Can you name the system of record and accountable data owner for each entity this agent will use or change?
+2. Are material quality issues measured, visible, and assigned for remediation?
+3. Do source permissions propagate into indexes, caches, traces, and other derived artifacts?
+4. Can a purpose-scoped corpus be assembled, refreshed, and erased within the funding period?
+
+#### Integration readiness
+
+5. Do required systems expose governed APIs rather than depend on screen automation?
+6. Does a tool gateway enforce allowlists, runtime credential injection, and audit?
+7. Does the requesting human's identity survive every hop through on-behalf-of or equivalent delegation?
+8. Are events, idempotency, retry, and compensation available for long-running or consequential actions?
+
+#### Identity readiness
+
+9. Does every production agent have an ID2 first-class identity and named business sponsor?
+10. Are credentials short-lived, injected at execution, and never stored by the agent?
+11. Are permissions task-scoped and reviewed whenever tools or capabilities change?
+12. Has revocation or a kill switch been exercised end to end?
+
+#### Operational discipline
+
+13. Does a domain SME own twenty to fifty pass-or-fail eval tasks and a human baseline?
+14. Are traces and action logs collected outside the agent's control?
+15. Is an incident owner alerted after hours, with a tested escalation path?
+16. Are drift, cost, supervision load, and rollback measured or drilled in production?
+
+#### Governance and value discipline
+
+17. Does intake define a resolved outcome, its value, and kill criteria before funding?
+18. Are deterministic zones identified, with decisions enforced outside the model?
+19. Are risk and classification tier, retention, and evidence duties set before launch?
+20. Is cost per resolved outcome measured including supervision and wrong-outcome cost, with a budget envelope?
+
+#### Workforce and operating model
+
+21. Are the business sponsor, technical owner, corpus owner, and supervisor named?
+22. Does the affected team know which exceptions stay human and where escalation goes?
+23. Is burst supervision capacity calculated across the whole approved portfolio?
+24. Are role, skill, works-council where relevant, and unassisted-practice impacts planned?
+
+### Scoring the light instrument
+
+- **Yes = 3:** the capability operates in the target workload's scope and current evidence can be shown.
+- **Partly = 1:** some capability, plan, or evidence exists, but coverage or testing is incomplete.
+- **No = 0:** the capability is absent or no current evidence can be shown.
+- For each dimension, add its four answers, divide by four, and round down. This produces a dimension score from 0 to 3.
+- Report the six scores as a profile in this order: data, integration, identity, operations, governance and value, workforce. Do not add them into a grand total; the gate table uses the shape of the profile.
+
+This conservative mapping makes a collection of untested plans score lower than one operating control. Keep the evidence used for each **yes**: ownership records, quality reports, API inventories, access reviews, revocation drills, eval suites, trace samples, incident exercises, intake decisions, cost reports, and role assignments. Those artifacts can later support buyer attestations or the heavy assessment.
 
 ## Heavy mode (regulated enterprise)
 
@@ -60,6 +124,23 @@ The same six dimensions, each mapped to the framework the organization already o
 | Workforce and operating model | Existing operating-model and works-council processes; no formal framework claims |
 
 Honest gaps stated in the instrument: CISA ZTMM adoption outside US federal government is unmeasured; DAMA-DMBOK adoption has never been surveyed; the circulating NIST AI RMF adoption percentages could not be verified to a primary source. Heavy mode cites frameworks it can evidence and labels vocabulary borrowings as such.
+
+## Fictional worked example: Northstar Components
+
+> **Teaching example only, not a benchmark.** Northstar Components is fictional. Its answers show how to calculate and interpret a profile; they are not typical scores for a mid-market manufacturer.
+
+Northstar assesses an internal maintenance-work-order assistant. It records these answers in question order:
+
+| Dimension | Answers | Calculation | Score |
+|---|---|---:|---:|
+| Data | Yes, Yes, Partly, Partly | floor((3 + 3 + 1 + 1) / 4) | 2 |
+| Integration | Yes, Partly, Yes, Partly | floor((3 + 1 + 3 + 1) / 4) | 2 |
+| Identity | Yes, Partly, Partly, No | floor((3 + 1 + 1 + 0) / 4) | 1 |
+| Operations | Partly, Yes, Partly, No | floor((1 + 3 + 1 + 0) / 4) | 1 |
+| Governance and value | Yes, Yes, Partly, Partly | floor((3 + 3 + 1 + 1) / 4) | 2 |
+| Workforce | Yes, Partly, Partly, No | floor((3 + 1 + 1 + 0) / 4) | 1 |
+
+The output is the profile **2, 2, 1, 1, 2, 1**, not a total of 9. From the autonomy gate table, Northstar can attempt an A2 delegated task. It should fund the missing ID2 controls, rollback drill, after-hours response, supervision-capacity calculation, and workforce plan before asking for A3. A single polished data score cannot compensate for those weaker dimensions.
 
 ## What this assessment deliberately is not
 

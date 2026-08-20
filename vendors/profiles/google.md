@@ -1,3 +1,13 @@
+---
+reader_summary: "Assess Google against the guide's architecture, control, evidence, economics, and exit requirements."
+audience: ["CIO/CTO","Enterprise architect","Procurement and vendor-management lead"]
+decision_or_output: "Decide whether Google merits workload-specific due diligence, and record evidence gaps and exit risks."
+prerequisites: ["/docs/frameworks/vendor-question-bank","/docs/frameworks/vendor-scorecard"]
+reading_time: "2 minutes"
+evidence_status: "Time-sensitive vendor profile: vendor-published claims are labelled and require current contractual verification."
+next: "/docs/vendors/profiles/anthropic"
+---
+
 # Vendor Profile: Google
 
 As of August 2026. Vendor-published facts flagged; product facts on the quarterly re-verification list.

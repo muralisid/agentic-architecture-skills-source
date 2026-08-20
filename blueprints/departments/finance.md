@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Finance blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Finance leader"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Finance."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "3 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/departments/hr"
+---
+
 # Department Blueprint: Finance
 
 As of August 2026. Phase 6. Two of the four deterministic zones live in this department.

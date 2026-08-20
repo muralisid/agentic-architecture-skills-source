@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for intelligence and learning to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","AI engineering and model-risk lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for intelligence and learning."
+prerequisites: ["/docs/layers/r06-intelligence-and-learning/brief"]
+reading_time: "10 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r06-intelligence-and-learning/vendors"
+---
+
 # R06 Intelligence and Learning: findings
 
 As of August 2026. Every claim sourced in sources.md; [vendor] flags inline.

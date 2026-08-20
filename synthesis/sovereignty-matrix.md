@@ -1,3 +1,13 @@
+---
+reader_summary: "Route each workload and every derived artifact to the least restrictive deployment posture its classification and jurisdiction permit."
+audience: ["CIO/CTO", "Enterprise architect", "Security architect"]
+decision_or_output: "Assign a sovereignty tier to each workload and define the routing and derived-artifact controls that enforce it."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "7 minutes"
+evidence_status: "Time-sensitive regulatory synthesis; dated claims require quarterly re-verification and unresolved questions are stated explicitly."
+next: "/docs/architecture/identity-security-model"
+---
+
 # The Sovereignty Decision Matrix
 
 As of August 2026. Phase 4 synthesis, drawn from R11 governance, R01 infrastructure, R03 integration fabric, and the residency findings in R02, R14, R10 and R12.
@@ -14,13 +24,13 @@ The expensive error is not choosing the wrong point on the spectrum. It is routi
 
 | Tier | What it means | What it costs you | When it is the right answer |
 |---|---|---|---|
-| S0 Managed API, no locality guarantee | Frontier models on the provider's default footprint | Nothing structural | Public and internal-unclassified data with no residency term in the contract |
-| S1 Managed API, region-pinned | Provider commitment to a region for processing and retention | Modest premium, narrower model availability | Most regulated internal work. This tier absorbs far more requirements than it is given credit for |
-| S2 Managed sovereign offering | Provider operating under a sovereignty framework, often with local entity, local operations staff and contractual controls | Higher cost, slower feature arrival | Public-sector procurement and regulated data where a framework names the requirement |
-| S3 Self-hosted open-weight in your own tenancy | You run the serving stack | Real engineering cost, capacity planning, model currency burden | Data classification that forbids processing outside your control; OT and control-system data |
-| S4 Air-gapped or on-premises isolated | No egress path at all | The highest cost in the model, and permanent | Classified environments and control-system perimeters where the network boundary is the control |
+| SV0 Managed API, no locality guarantee | Frontier models on the provider's default footprint | Nothing structural | Public and internal-unclassified data with no residency term in the contract |
+| SV1 Managed API, region-pinned | Provider commitment to a region for processing and retention | Modest premium, narrower model availability | Most regulated internal work. This tier absorbs far more requirements than it is given credit for |
+| SV2 Managed sovereign offering | Provider operating under a sovereignty framework, often with local entity, local operations staff and contractual controls | Higher cost, slower feature arrival | Public-sector procurement and regulated data where a framework names the requirement |
+| SV3 Self-hosted open-weight in your own tenancy | You run the serving stack | Real engineering cost, capacity planning, model currency burden | Data classification that forbids processing outside your control; OT and control-system data |
+| SV4 Air-gapped or on-premises isolated | No egress path at all | The highest cost in the model, and permanent | Classified environments and control-system perimeters where the network boundary is the control |
 
-**The economics caveat, stated as R01 states it.** There is no peer-reviewed unit-economics comparison of self-hosted serving against metered APIs. Figures in circulation carry heavy caveats. The guide's position is that S3 and S4 are chosen for a classification or perimeter trigger, not for a cost argument, because the cost argument cannot currently be made from evidence.
+**The economics caveat, stated as R01 states it.** There is no peer-reviewed unit-economics comparison of self-hosted serving against metered APIs. Figures in circulation carry heavy caveats. The guide's position is that SV3 and SV4 are chosen for a classification or perimeter trigger, not for a cost argument, because the cost argument cannot currently be made from evidence.
 
 ## Classification-routed deployment
 
@@ -28,11 +38,11 @@ Routing is decided at the gateway on data classification, not on user preference
 
 | Classification | Default tier | Escalation trigger |
 |---|---|---|
-| Public | S0 | None |
-| Internal | S1 | Contractual residency term with a customer |
-| Confidential, personal data | S1 or S2 | Jurisdiction with a data-localisation rule, or a sectoral regulator naming a framework |
-| Regulated, sector-specific | S2 | Framework requires local entity or local operations personnel |
-| Control-system and safety-related | S3 or S4 | Always. The perimeter is the control |
+| Public | SV0 | None |
+| Internal | SV1 | Contractual residency term with a customer |
+| Confidential, personal data | SV1 or SV2 | Jurisdiction with a data-localisation rule, or a sectoral regulator naming a framework |
+| Regulated, sector-specific | SV2 | Framework requires local entity or local operations personnel |
+| Control-system and safety-related | SV3 or SV4 | Always. The perimeter is the control |
 
 ## What triggers escalation, as of August 2026
 
@@ -61,9 +71,9 @@ The operational consequences:
 
 ## Per-archetype posture
 
-- **Global regulated enterprise.** Runs the full routing table, usually across S1 to S3, with S4 only where a control-system perimeter demands it. The hard work is not the routing decision; it is proving that derived artifacts followed it.
-- **Mid-market.** Should live at S0 and S1 and treat any requirement for S2 or above as a signal to decline the workload or buy it as a service. Building sovereign infrastructure without a platform team is how this archetype spends its entire agent budget on plumbing.
-- **Digital native.** Typically S0 by default and discovers S1 or S2 at the first regulated customer. The cheap early move is making classification routing a gateway capability from the start, even when everything routes to S0 today.
+- **Global regulated enterprise.** Runs the full routing table, usually across SV1 to SV3, with SV4 only where a control-system perimeter demands it. The hard work is not the routing decision; it is proving that derived artifacts followed it.
+- **Mid-market.** Should live at SV0 and SV1 and treat any requirement for SV2 or above as a signal to decline the workload or buy it as a service. Building sovereign infrastructure without a platform team is how this archetype spends its entire agent budget on plumbing.
+- **Digital native.** Typically SV0 by default and discovers SV1 or SV2 at the first regulated customer. The cheap early move is making classification routing a gateway capability from the start, even when everything routes to SV0 today.
 
 ## What this page does not resolve
 

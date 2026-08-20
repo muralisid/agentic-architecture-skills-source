@@ -1,3 +1,13 @@
+---
+reader_summary: "Contribute research, corrections, techniques, and blueprints while preserving the guide evidence standard."
+audience: ["Guide contributor","Researcher","Enterprise practitioner"]
+decision_or_output: "Choose the correct contribution path and prepare the evidence and review material it requires."
+prerequisites: ["/docs/about-evidence"]
+reading_time: "2 minutes"
+evidence_status: "Repository contribution policy and review requirements."
+next: "/docs"
+---
+
 # Contributing
 
 Thank you for helping build a vendor-neutral, evidence-led reference for agentic enterprise architecture. Contributions of research, corrections, production techniques, and vendor intelligence are all welcome.

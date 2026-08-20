@@ -1,3 +1,13 @@
+---
+reader_summary: "Understand how observability and FinOps changes in an agentic enterprise and choose the evidence page that matches your decision."
+audience: ["CIO/CTO","Enterprise architect","Operations and FinOps lead"]
+decision_or_output: "Choose which observability and FinOps question to resolve, then continue to the scoped brief."
+prerequisites: ["/docs/design"]
+reading_time: "2 minutes"
+evidence_status: "Layer orientation: detailed claims and evidence are carried by the linked findings and source register."
+next: "/docs/layers/r12-observability-and-finops/brief"
+---
+
 # R12: Observability & FinOps
 
 Status: complete (published 2026-08-19). Scope finalized at Batch B kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.

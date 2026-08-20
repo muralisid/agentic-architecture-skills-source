@@ -1,3 +1,13 @@
+---
+reader_summary: "Explore the fourteen enduring enterprise layers and choose the layer whose decision or evidence you need."
+audience: ["CIO/CTO","Enterprise architect","Domain architecture lead"]
+decision_or_output: "Select a layer and follow its scope, findings, vendor landscape, and source trail in order."
+prerequisites: ["/docs/design"]
+reading_time: "2 minutes"
+evidence_status: "Reader index for the layer research corpus; evidence status is stated on each layer page."
+next: "/docs/layers/r01-infrastructure"
+---
+
 # Research tracks
 
 One track per enterprise landscape layer, plus one capability track (R14). Each track directory contains:

@@ -1,3 +1,13 @@
+---
+reader_summary: "Compare governance, risk, and sovereignty vendors against the capabilities and evidence this layer actually requires."
+audience: ["Enterprise architect","Risk and compliance lead","Procurement and vendor-management lead"]
+decision_or_output: "Produce an evidence request and shortlist for governance, risk, and sovereignty; market presence alone is not sufficient."
+prerequisites: ["/docs/layers/r11-governance-risk-sovereignty/findings","/docs/frameworks/vendor-question-bank"]
+reading_time: "2 minutes"
+evidence_status: "Time-sensitive vendor landscape: verify current capabilities, availability, and terms with primary evidence."
+next: "/docs/layers/r11-governance-risk-sovereignty/sources"
+---
+
 # R11 Governance, Risk & Sovereignty: vendor map
 
 As of 2026-08-19. Vendor capability claims are vendor-published unless third-party sourced. Re-verify quarterly.

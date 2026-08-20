@@ -1,3 +1,13 @@
+---
+reader_summary: "Locate where each cross-cutting concern is created, enforced, observed, and still unsolved across the fourteen enterprise layers."
+audience: ["Enterprise architect", "Security architect", "Platform lead"]
+decision_or_output: "Assign a primary enforcement owner and evidence source for every concern relevant to the target workload."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "9 minutes"
+evidence_status: "Cross-track synthesis with unresolved concerns published as unresolved."
+next: "/docs/architecture/memory-pipeline-architecture"
+---
+
 # The Concerns-by-Layers Matrix
 
 As of August 2026. Phase 4 synthesis, rolled up from the mandatory cross-cutting concerns section in all 14 research tracks.

@@ -1,3 +1,13 @@
+---
+reader_summary: "Design the identity, delegation, and deterministic authorization chain that keeps consequential agent actions governable."
+audience: ["CIO/CTO", "Enterprise architect", "Security architect"]
+decision_or_output: "Set the minimum production identity level and the enforcement boundary for each agent capability."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "8 minutes"
+evidence_status: "Evidence-informed architecture: standards, primary research, vendor capabilities, and open gaps are labelled inline."
+next: "/docs/architecture/learning-loops-map"
+---
+
 # The Identity and Security Model
 
 As of August 2026. Phase 4 synthesis, drawn from R10 security and identity, with enforcement points from R03, R04, R07 and R01, and disclosure duties from R08, R09 and R11.
@@ -14,11 +24,11 @@ The taxonomy has been revised twice by research, and both revisions matter.
 
 | Level | What it is | Verdict |
 |---|---|---|
-| L1 Credential-only | Shared keys and service accounts. No per-agent identity | The anti-pattern. Ungoverned by construction, and the state most enterprises are actually in |
-| L2 Access identity | A first-class IAM principal with task-scoped permissions, short-lived credentials, audit, **and a named accountable sponsor** | The floor for anything in production |
-| L3 Presence identity | Organisational presence: directory entry, mailbox, calendar seat, manager, licences | A collaboration-ergonomics choice with a real security cost, not an accountability upgrade |
+| ID1 Credential-only | Shared keys and service accounts. No per-agent identity | The anti-pattern. Ungoverned by construction, and the state most enterprises are actually in |
+| ID2 Access identity | A first-class IAM principal with task-scoped permissions, short-lived credentials, audit, **and a named accountable sponsor** | The floor for anything in production |
+| ID3 Presence identity | Organisational presence: directory entry, mailbox, calendar seat, manager, licences | A collaboration-ergonomics choice with a real security cost, not an accountability upgrade |
 
-**Revision one: the sponsor belongs at L2, not L3.** Identity platforms carry a sponsor attribute on the agent identity itself, and agents are nameable and mentionable in collaboration surfaces without a user account. Requiring a mailbox in order to obtain accountability inverts the control: it grants the phishing and discoverability surface in exchange for a property that was already available one level down. Recorded as D019.
+**Revision one: the sponsor belongs at ID2, not ID3.** Identity platforms carry a sponsor attribute on the agent identity itself, and agents are nameable and mentionable in collaboration surfaces without a user account. Requiring a mailbox in order to obtain accountability inverts the control: it grants the phishing and discoverability surface in exchange for a property that was already available one level down. Recorded as D019.
 
 **Revision two: levels are assigned by capability surface, not by platform enrollment.** Per-user rather than per-agent licensing removed the cost brake that used to make presence identity self-limiting, so registration in a control plane no longer indicates exposure. What creates exposure is concrete: a mailbox, a meeting seat, directory visibility, code execution, browsing, computer use. The assessment is repeated on every tool grant, because agents accrete capability over time and nothing re-runs the risk assessment when they do. Recorded as D015.
 
@@ -30,7 +40,7 @@ An agent acts as the human who asked, and that assertion must survive every hop.
 
 ```
 human identity
-  -> agent identity (L2, sponsor recorded)
+  -> agent identity (ID2, sponsor recorded)
     -> token exchange / on-behalf-of at the gateway
       -> tool server wrapping a governed API
         -> the record system's own entitlement check
@@ -81,8 +91,8 @@ Agent activity flows to the security operations centre as an extension of the ex
 
 ## Per-archetype floor
 
-- **Global regulated enterprise.** L2 for every production agent, capability-surface gating operated as a process rather than a policy document, and the deterministic gate on every consequential action. L3 granted per capability with written justification.
-- **Mid-market.** L2 through the productivity vendor's agent identity, which is genuinely sufficient here. The realistic risk is L1 by accident: shared API keys in an automation nobody registered.
+- **Global regulated enterprise.** ID2 for every production agent, capability-surface gating operated as a process rather than a policy document, and the deterministic gate on every consequential action. ID3 granted per capability with written justification.
+- **Mid-market.** ID2 through the productivity vendor's agent identity, which is genuinely sufficient here. The realistic risk is ID1 by accident: shared API keys in an automation nobody registered.
 - **Digital native.** Capability is present, the registry is the gap. The specific early move is a policy decision point in the tool-call path before the estate grows past the point where retrofitting it means touching every integration.
 
 ## Sources

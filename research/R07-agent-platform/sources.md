@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the agent platform findings and identify claims that need re-verification."
+audience: ["Enterprise architect","AI platform lead","Research and assurance lead"]
+decision_or_output: "Confirm which agent platform claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r07-agent-platform/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r08-productivity-and-collaboration"
+---
+
 # R07 Agent Platform: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

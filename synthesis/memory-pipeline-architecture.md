@@ -1,3 +1,13 @@
+---
+reader_summary: "Trace how enterprise content becomes permission-aware context and how durable memory acquires ownership, retention, consent, and erasure obligations."
+audience: ["Enterprise architect", "Data architect", "CIO/CTO"]
+decision_or_output: "Choose the memory tier and governance obligations for each workload, then define the curation pipeline that feeds it."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "7 minutes"
+evidence_status: "Evidence-informed architecture with measured retrieval findings and clearly identified open governance gaps."
+next: "/docs/architecture/economics-model"
+---
+
 # The Memory-Pipeline Architecture
 
 As of August 2026. Phase 4 synthesis, drawn primarily from R14 agent data engineering and R02 data platform, with governance from R11 and R10.
@@ -16,13 +26,13 @@ The tiers grade persistence. Governance tightens as persistence rises, because o
 
 | Tier | What it holds | Fed by | Lifetime | Governance weight |
 |---|---|---|---|---|
-| L1 Thread | The current conversation or run | The interaction itself | The run | Engineering discipline: compaction, tool-result clearing, structured notes |
-| L2 Retrieved knowledge | Evidence assembled for the current turn | The curation pipeline below | The turn | Permission-aware retrieval; provenance on every span |
-| L3 Session | State across a working session or long-running task | Session artifacts and durable execution state | Hours to days | Residency and classification inheritance; bounded retention |
-| L4 Entity memory | Durable profiles of customers, assets, cases, employees | Promoted learnings plus governed source syncs | Months to years | Consent, retention, erasure, ownership. Real regulatory weight |
-| L5 Cross-domain memory | Organisational knowledge spanning functions | Curation proposals promoted through the flywheel | Indefinite | Everything L4 carries, plus the widest poisoning blast radius |
+| M1 Thread | The current conversation or run | The interaction itself | The run | Engineering discipline: compaction, tool-result clearing, structured notes |
+| M2 Retrieved knowledge | Evidence assembled for the current turn | The curation pipeline below | The turn | Permission-aware retrieval; provenance on every span |
+| M3 Session | State across a working session or long-running task | Session artifacts and durable execution state | Hours to days | Residency and classification inheritance; bounded retention |
+| M4 Entity memory | Durable profiles of customers, assets, cases, employees | Promoted learnings plus governed source syncs | Months to years | Consent, retention, erasure, ownership. Real regulatory weight |
+| M5 Cross-domain memory | Organisational knowledge spanning functions | Curation proposals promoted through the flywheel | Indefinite | Everything M4 carries, plus the widest poisoning blast radius |
 
-The architectural line runs between L3 and L4. Everything at L3 and below is transient enough to be treated as engineering. Everything at L4 and above is a record, and a record has an owner, a retention schedule and an erasure obligation whether or not anyone designed one.
+The architectural line runs between M3 and M4. Everything at M3 and below is transient enough to be treated as engineering. Everything at M4 and above is a record, and a record has an owner, a retention schedule and an erasure obligation whether or not anyone designed one.
 
 ## The pipeline, stage by stage
 
@@ -44,7 +54,7 @@ Each stage has a published failure mode. They are given here because the stages 
 
 **8. Write back under governance.** Memory writes carry provenance and land in quarantine before promotion. The exposure is quantified: poisoning under 0.1% of a memory or knowledge base achieved over 80% attack success, and query-only memory injection reached 98.2% success. Memory poisoning is named first-class in the current agentic failure-mode taxonomy.
 
-**9. Promote through the flywheel, or not at all.** Movement into L4 and L5 is a gated promotion, never an accumulation. The gate is the one established in R06: counterexample survival and eval regression rather than frequency, the promoted artifact landing outside the model, and a demotion path that is actually exercised.
+**9. Promote through the flywheel, or not at all.** Movement into M4 and M5 is a gated promotion, never an accumulation. The gate is the one established in R06: counterexample survival and eval regression rather than frequency, the promoted artifact landing outside the model, and a demotion path that is actually exercised.
 
 ## Purpose-scoped curation is what makes this affordable
 
@@ -52,7 +62,7 @@ The unit of curation is the use case, not the source system. This is the single 
 
 Two consequences follow. First, curation labour is sized to the risk of the use case: automated with calibrated judges and sampled audits where volume demands it, human where liability demands it, always under a named accountable owner. Second, object-store vector pricing has tilted the economics toward many small purpose-scoped indexes rather than one enterprise index, which happens to be the same direction the accuracy evidence points.
 
-The multi-view embedding technique in the techniques library is one worked instance of purpose-scoped curation: representing the same content through several semantic perspectives, indexed separately, so precision and recall are tuned per question type at embedding cost rather than at model cost. It is published as a pattern with its evidence status stated, validated in a social media domain and proposed as applicable elsewhere.
+Multi-view embedding is one proposed instance of purpose-scoped curation: representing the same content through several semantic perspectives, indexed separately, so precision and recall can be tuned per question type at embedding cost rather than at model cost. The public guide currently names the concept only. Its mechanism-level implementation guide remains under publication hold; do not treat this paragraph as a production recipe or as evidence that the technique generalizes beyond its documented domain.
 
 ## Governance that has to be designed, not inherited
 

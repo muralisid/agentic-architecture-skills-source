@@ -1,3 +1,13 @@
+---
+reader_summary: "Review the scope, decision questions, and challenged defaults for experience and channels before using the findings."
+audience: ["Enterprise architect","Customer experience lead","Research and assurance lead"]
+decision_or_output: "Confirm the in-scope experience and channels decisions and the questions the evidence must answer."
+prerequisites: ["/docs/layers/r09-experience-and-channels"]
+reading_time: "2 minutes"
+evidence_status: "Research scope and question set; this page does not itself establish the final architecture position."
+next: "/docs/layers/r09-experience-and-channels/findings"
+---
+
 # R09 Experience and Channels: research brief
 
 Status: complete; published 2026-08-19

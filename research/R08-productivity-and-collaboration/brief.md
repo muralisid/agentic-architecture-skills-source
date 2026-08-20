@@ -1,3 +1,13 @@
+---
+reader_summary: "Review the scope, decision questions, and challenged defaults for productivity and collaboration before using the findings."
+audience: ["Enterprise architect","Digital workplace lead","Research and assurance lead"]
+decision_or_output: "Confirm the in-scope productivity and collaboration decisions and the questions the evidence must answer."
+prerequisites: ["/docs/layers/r08-productivity-and-collaboration"]
+reading_time: "2 minutes"
+evidence_status: "Research scope and question set; this page does not itself establish the final architecture position."
+next: "/docs/layers/r08-productivity-and-collaboration/findings"
+---
+
 # R08 Productivity and Collaboration: research brief
 
 Status: complete; published 2026-08-19

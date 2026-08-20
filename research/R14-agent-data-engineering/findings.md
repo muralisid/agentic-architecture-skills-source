@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for agent data engineering and memory to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","Data and AI engineering lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for agent data engineering and memory."
+prerequisites: ["/docs/layers/r14-agent-data-engineering/brief"]
+reading_time: "7 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r14-agent-data-engineering/vendors"
+---
+
 # R14 Agent Data Engineering & Memory Pipelines: findings
 
 As of August 2026. Every claim sourced in sources.md; [vendor] flags inline.
@@ -54,7 +64,7 @@ Retrieval quality per corpus (with coverage-aware metrics where diversity matter
 
 ### 13. Data readiness and curation
 
-This track *is* the guide's curation-before-context principle as an engineering discipline; the multi-view embeddings technique entry carries the flagship pattern, validated in the social media domain and applicable to other domains.
+This track *is* the guide's curation-before-context principle as an engineering discipline. Multi-view embedding is named only as a publication-held candidate pattern: its mechanism-level entry remains excluded from the public guide. The documented validation is limited to a social-media domain, and transfer to other domains is an unverified hypothesis rather than a published recommendation.
 
 ### Challenged defaults
 

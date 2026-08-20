@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the systems of record findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Enterprise applications lead","Research and assurance lead"]
+decision_or_output: "Confirm which systems of record claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r04-systems-of-record/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r05-lob-and-ot"
+---
+
 # R04 Core Systems of Record: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

@@ -1,3 +1,13 @@
+---
+reader_summary: "See how seven agent-system planes operate across the fourteen enduring layers of the enterprise estate."
+audience: ["Enterprise architect", "CIO/CTO", "Platform lead"]
+decision_or_output: "Choose a target architecture posture and assign ownership for each plane without replacing governed systems of record."
+prerequisites: ["/docs/frameworks/roadmap-checklist"]
+reading_time: "10 minutes"
+evidence_status: "Cross-track synthesis; evidence, author positions, and open implementation gaps are identified in linked chapters."
+next: "/docs/architecture/concerns-by-layers-matrix"
+---
+
 # Master Target-State Architecture
 
 As of August 2026. Phase 4 synthesis, informed by all 14 research tracks.

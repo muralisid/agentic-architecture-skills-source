@@ -1,6 +1,18 @@
+---
+reader_summary: "Move from the guide's target-state vision to the decisions, planes, controls, memory, economics, sovereignty, identity, and learning architecture that make it operable."
+audience: ["CIO/CTO", "Enterprise architect"]
+decision_or_output: "Choose the synthesis chapter that answers your current enterprise decision."
+prerequisites: ["/docs"]
+reading_time: "4 minutes"
+evidence_status: "Each synthesis chapter distinguishes sourced findings, vendor-reported evidence, author positions, and unresolved gaps."
+next: "/docs/architecture/vision-and-target-state"
+---
+
 # Synthesis
 
 Cross-layer artifacts. Phase 1 produced the vision and the maturity model; Phase 4 produced the rest, after all 14 layer research tracks completed.
+
+## Architecture chapters
 
 These are the guide's core chapters. Read in this order.
 

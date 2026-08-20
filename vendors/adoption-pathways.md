@@ -1,3 +1,13 @@
+---
+reader_summary: "Choose an embedded, independent, or mixed adoption path from data gravity, permissions, control ownership, and exit cost."
+audience: ["CIO/CTO","Enterprise architect","Procurement and vendor-management lead"]
+decision_or_output: "Select the adoption path that fits the target architecture before comparing individual vendor profiles."
+prerequisites: ["/docs/vendors/coverage-matrix"]
+reading_time: "3 minutes"
+evidence_status: "Author synthesis grounded in the guide architecture and dated vendor capabilities."
+next: "/docs/vendors/profiles/microsoft"
+---
+
 # Adoption Pathways by Vendor Gravity
 
 As of August 2026. Phase 7. How four differently-shaped enterprises should realistically approach selection and sequencing.

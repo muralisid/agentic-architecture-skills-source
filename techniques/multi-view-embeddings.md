@@ -1,3 +1,13 @@
+---
+reader_summary: "Use purpose-specific embedding views when one pooled vector cannot represent the distinct questions asked of aspect-rich content."
+audience: ["Enterprise architect","Data architect","AI platform lead"]
+decision_or_output: "Decide whether a workload justifies multi-view retrieval, then record its taxonomy, evaluation gate, economics, and transfer limits."
+prerequisites: ["/docs/techniques"]
+reading_time: "12 minutes"
+evidence_status: "Mechanism-level pattern validated in one social-media domain; enterprise transfer remains conditional and requires workload-specific evidence."
+next: "/docs/techniques/when-a-knowledge-graph-earns-its-keep"
+---
+
 # Multi-View Embeddings with LLM-Guided Taxonomy
 
 As of August 2026. Format per the techniques library: problem, mechanism, worked example, economics, when to use, failure modes, references.

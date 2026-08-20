@@ -1,3 +1,13 @@
+---
+reader_summary: "See the target operating model in plain language: agents execute routine knowledge work inside deterministic boundaries while people retain intent, judgment, and accountability."
+audience: ["CIO/CTO", "Enterprise architect"]
+decision_or_output: "Agree the target state, the work that remains human, and the safest place to begin."
+prerequisites: []
+reading_time: "8 minutes"
+evidence_status: "Mixed evidence: independent research, primary sources, vendor-reported examples, and author positions are labelled inline."
+next: "/docs/architecture/archetype-grid"
+---
+
 # The Agentic Enterprise: Vision and Target State
 
 As of August 2026. Claims marked as the authors' position are labeled in the text; all other claims carry their sources inline or in the source list.
@@ -24,9 +34,9 @@ The industry has converged on a minimal definition of an agent: a model autonomo
 
 **Without a learning loop, you have a fixed-policy agent, not a teammate.** This is the authors' position, stated as such: a fixed-policy agent is still an agent by every mainstream definition, and fixed policies are the right choice for many workloads. But an enterprise of fixed-policy agents is an automated enterprise, not an agentic one. The difference shows up in the operating model: you configure automation, but you manage a teammate, and managing presupposes that the thing you manage can improve. Learning here is broader than model training: improving heuristics, adding facts to ground truth, and promoting judged behavior into rules all count. The maturity model chapter makes learning an explicit axis, which, in our survey of existing autonomy and maturity models, no prior model does.
 
-## The test: earned trust under named accountability
+## A useful design pattern: earned trust under named accountability
 
-How do you recognize a genuinely agentic enterprise when you walk into one? Not by counting chatbots. The test is a trust progression under named human accountability:
+Counting chatbots does not reveal whether an enterprise is operating agents safely. A useful, evidence-informed design pattern is a trust progression under named human accountability. It is not a universal classification test: no comparative study yet shows that every successful agentic enterprise follows this exact pattern.
 
 - Every agent operates under its own identity, with a named human accountable for its purpose, its work, and its learning. This pattern is no longer aspirational; it is productized: agent identity platforms now require a business Sponsor per agent and model agents reporting to managers (Microsoft Entra Agent ID documentation, Apr 2026 [vendor]; ServiceNow AI Control Tower, May 2025 [vendor]; Workday Agent System of Record, Feb 2025 [vendor]), and at least one major bank runs digital employees with logins and human managers in production (BNY, reported Jul-Oct 2025).
 - Autonomy is earned per behavior, not granted per agent: it expands with demonstrated reliability, and contracts when reliability fails (Anthropic trust framework, Aug 2025, and human-agent teaming guidance, Jun 2026 [vendor]).
@@ -46,7 +56,7 @@ These are two different questions, and the guide keeps them separate.
 
 What the market does first, by weight of evidence: software engineering, IT operations and service desk, knowledge management, and customer service are the functions where production agents concentrate (McKinsey State of AI, Nov 2025; Menlo Ventures, Nov 2025; LangChain State of Agent Engineering, Dec 2025; Gartner CIO poll, May 2025). Production agents skew internal: roughly half focus on internal administration versus a quarter customer-facing in Gartner's poll. Sales and marketing absorb outsized budgets while ranking mid-pack for production agents; one contested-methodology study frames that budget concentration as the signature misallocation of the current wave (MIT NANDA, Aug 2025).
 
-What this guide recommends, and why it differs: start where iteration is cheap and evaluation is objective; use internal employee workflows deliberately to build the foundational platform (identity, memory, evals, governance) before extending to risk-heavier domains; and treat customer-facing agents as a separate investment lane with a different stack. The analyst world now institutionalizes that last claim by running separate platform evaluations for customer-service and employee-service conversational AI (Forrester Waves, Q2 and Q3 2026). The recommended path is the authors' practitioner judgment about what succeeds, rather than a description of what is most attempted; the roadmap chapter carries the full framework, including use-case portfolio selection, which decides more than any platform choice does.
+What this guide recommends, and why it differs: start where iteration is cheap and evaluation is objective; use internal employee workflows deliberately to build the foundational platform (identity, memory, evals, governance) before extending to risk-heavier domains; and treat customer-facing agents as a separate investment lane with its own channel edge and failure controls on a shared control plane. Separate analyst evaluations for customer-service and employee-service conversational AI support treating the experiences as distinct (Forrester Waves, Q2 and Q3 2026), but they do not justify duplicating identity, policy, evidence, evaluation, or observability. The recommended path is the authors' practitioner judgment about what succeeds, rather than a description of what is most attempted; the roadmap chapter carries the full framework, including use-case portfolio selection, which decides more than any platform choice does.
 
 ## What this guide is, and is not
 

@@ -1,3 +1,13 @@
+---
+reader_summary: "Use neutral questions and disqualifiers before reading vendor profiles, then compare coverage and adoption paths against the architecture."
+audience: ["CIO/CTO","Enterprise architect","Procurement and vendor-management lead"]
+decision_or_output: "Start a vendor evaluation with evidence requests and disqualifiers rather than a product shortlist."
+prerequisites: ["/docs/frameworks/roadmap-checklist","/docs/architecture/master-target-state"]
+reading_time: "3 minutes"
+evidence_status: "Vendor-research index; profiles and market facts are time-sensitive and require primary-source verification."
+next: "/docs/frameworks/vendor-question-bank"
+---
+
 # The Vendor Hub
 
 As of August 2026. Phase 7. Built from the vendor map in each of the 14 research tracks, scored against a bank of questions written before any profile.
@@ -22,7 +32,7 @@ The question bank was written and published **before** the profiles, which is th
 
 | Profile | The one thing to know |
 |---|---|
-| [Microsoft](profiles/microsoft.md) | The strongest identity answers in the market, and the product that made this guide move the sponsor attribute to access-identity level |
+| [Microsoft](profiles/microsoft.md) | The strongest identity answers in the market, and the product that made this guide move the sponsor attribute to ID2 access identity |
 | [Salesforce](profiles/salesforce.md) | Permission parity between embedded and external paths is stated. Agents do not pause before consequential actions by default |
 | [ServiceNow](profiles/servicenow.md) | The most credible cross-estate governance product in the research, which is also a strategic dependency at the layer you wanted neutral |
 | [SAP](profiles/sap.md) | Embedded-only by policy. That is an architecture constraint on your whole estate, not a product limitation |

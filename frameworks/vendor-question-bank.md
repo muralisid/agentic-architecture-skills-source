@@ -1,3 +1,13 @@
+---
+reader_summary: "Ask capability and evidence questions before reviewing vendors so product narratives cannot define the evaluation."
+audience: ["CIO/CTO", "Enterprise architect", "Procurement and risk lead"]
+decision_or_output: "Create a workload-specific evidence request and identify disqualifying gaps before scoring products."
+prerequisites: ["/docs/blueprints", "/docs/frameworks/roadmap-checklist"]
+reading_time: "11 minutes"
+evidence_status: "Vendor-neutral author framework; answers require current vendor evidence and contractual verification."
+next: "/docs/frameworks/vendor-scorecard"
+---
+
 # The Vendor Question Bank
 
 As of August 2026. Phase 7. Thirty questions, each with what a good answer contains and what a bad answer sounds like.

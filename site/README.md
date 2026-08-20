@@ -42,10 +42,10 @@ https://agentic-enterprise-ten.vercel.app
 
 Vercel's Git integration builds and deploys on every push to `main`. Two gates run inside that build, so the protection travels with the deployment rather than living only in CI:
 
-1. `scripts/check-content.mjs`: no em dashes in guide content, no broken internal links.
-2. `scripts/boundary-scan.mjs`: no reserved terms from the private publication blocklist, which is supplied as the `BOUNDARY_BLOCKLIST` repository secret and never committed. A scan that cannot run fails the build rather than passing it.
+1. `scripts/check-content.mjs`: no em dashes in guide content, no broken internal links. This runs through `npm run validate` on every production build.
+2. `scripts/boundary-scan.mjs`: no reserved terms from the private publication blocklist, which is supplied as the `BOUNDARY_BLOCKLIST` environment variable and never committed. A missing, empty, or malformed list fails every CI or hosted build.
 
-The publication hold always applies. The blocklist scan runs only when `BOUNDARY_BLOCKLIST` is set in the Vercel project's environment variables; without it the build warns and continues. Set it to make the boundary strict on every deploy.
+The publication hold always applies. A local build without `BOUNDARY_BLOCKLIST` warns because contributors may not possess the private list. CI and hosted builds refuse to continue without a valid list containing at least one HARD term.
 
 `.github/workflows/guard.yml` runs the same two checks on pull requests, where the blocklist comes from the `BOUNDARY_BLOCKLIST` repository secret and a missing secret fails the check.
 

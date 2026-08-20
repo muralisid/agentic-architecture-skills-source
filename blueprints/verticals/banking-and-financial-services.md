@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Banking and Financial Services blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Banking architecture and risk lead"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Banking and Financial Services."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "4 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/verticals/manufacturing-and-supply-chain"
+---
+
 # Vertical Blueprint: Banking and Financial Services
 
 As of August 2026. Phase 6. The richest regulatory material in the guide, and the vertical where the deterministic boundary was proved rather than argued.

@@ -1,4 +1,16 @@
+---
+reader_summary: "Choose a department or industry blueprint and adapt its workflow, controls, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Business and domain lead"]
+decision_or_output: "Select the blueprint closest to the target workflow and record where local evidence or control requirements differ."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "2 minutes"
+evidence_status: "Blueprint index: each scenario distinguishes evidence, author positions, and honest limits."
+next: "/docs/blueprints/departments/it-and-service-desk"
+---
+
 # Blueprints
+
+## How to read every blueprint
 
 Target-state blueprints in a scenario-activation format: a concrete scenario, the agent team design with A x L positions, which of the seven planes activate, the controls, the economics, the honest limits, and the metrics. Template: [_TEMPLATE.md](_TEMPLATE.md).
 

@@ -1,3 +1,13 @@
+---
+reader_summary: "Compare line-of-business systems and operational technology vendors against the capabilities and evidence this layer actually requires."
+audience: ["Enterprise architect","Line-of-business and OT lead","Procurement and vendor-management lead"]
+decision_or_output: "Produce an evidence request and shortlist for line-of-business systems and operational technology; market presence alone is not sufficient."
+prerequisites: ["/docs/layers/r05-lob-and-ot/findings","/docs/frameworks/vendor-question-bank"]
+reading_time: "2 minutes"
+evidence_status: "Time-sensitive vendor landscape: verify current capabilities, availability, and terms with primary evidence."
+next: "/docs/layers/r05-lob-and-ot/sources"
+---
+
 # R05 Line-of-Business and Operational Technology: vendor map
 
 As of 2026-08-19. Vendor capability claims are vendor-published unless third-party sourced. Re-verify quarterly.

@@ -1,3 +1,13 @@
+---
+reader_summary: "Use production patterns only when their mechanism, economics, limits, and evidence match the workload in front of you."
+audience: ["Enterprise architect", "Platform engineer", "Data and AI lead"]
+decision_or_output: "Choose a production technique after comparing it with the simplest credible alternative."
+prerequisites: ["/docs/design"]
+reading_time: "3 minutes"
+evidence_status: "Mixed: each published technique states its own evidence status; planned and held entries are not implementation guidance."
+next: "/docs/techniques/when-a-knowledge-graph-earns-its-keep"
+---
+
 # Production techniques library
 
 Use-case-driven data curation and cost-engineering techniques that make agents survive production. One file per technique. The library is open-ended: submissions welcome via the technique-submission issue template, held to the same format.
@@ -12,12 +22,8 @@ Use-case-driven data curation and cost-engineering techniques that make agents s
 6. **Failure modes and limits**
 7. **References**: dated sources; maintainer knowledge cited from `knowledge/`
 
-## Planned initial entries
+## Publication status
 
-- Multi-view (multi-card) embeddings with LLM-guided topic modelling (flagship entry, from the maintainer's production experience)
-- When a knowledge graph earns its keep: graph databases vs embeddings-and-topic-modelling retrievers, an honest contested-choice study
-- Corrective RAG cascade and relevance evaluation before answering
-- Compaction, tool-result clearing, and structured note-taking
-- Distillation flywheel: fine-tuned small models replacing large routers
-- Semantic and prompt caching
-- Deterministic routing tiers: skill selector, classifier, LLM router, fallback
+- **Published:** [When a knowledge graph earns its keep](when-a-knowledge-graph-earns-its-keep.md), a contested-choice study comparing graph databases with embedding retrievers.
+- **Concept named; mechanism held:** Multi-view (multi-card) embeddings with LLM-guided topic modelling. The public guide contains only a concept-level definition. The mechanism-level entry is excluded from the site under the publication hold, so it must not be treated as an available implementation guide.
+- **Planned, not yet guidance:** Corrective RAG cascades; compaction and structured note-taking; distillation flywheels; semantic and prompt caching; deterministic routing tiers.

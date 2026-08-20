@@ -1,6 +1,18 @@
+---
+reader_summary: "Assess readiness, admit fundable use cases, compose the roadmap, and evaluate vendors in that order."
+audience: ["CIO/CTO", "Enterprise architect", "Transformation lead"]
+decision_or_output: "Follow the decision sequence without buying a platform before choosing and proving the workloads."
+prerequisites: ["/docs/architecture/archetype-grid"]
+reading_time: "3 minutes"
+evidence_status: "Frameworks are author-designed from the guide's cited evidence; fictional examples are labelled and are not benchmarks."
+next: "/docs/frameworks/readiness-assessments"
+---
+
 # Frameworks
 
 Decision frameworks the guide provides to readers.
+
+## Decision sequence
 
 | Framework | Phase | What it decides |
 |---|---|---|

@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the integration fabric findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Integration architecture lead","Research and assurance lead"]
+decision_or_output: "Confirm which integration fabric claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r03-integration-fabric/findings"]
+reading_time: "3 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r04-systems-of-record"
+---
+
 # R03 Integration Fabric: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

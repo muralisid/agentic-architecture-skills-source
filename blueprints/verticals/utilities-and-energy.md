@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Utilities and Energy blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Utilities operations lead"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Utilities and Energy."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "5 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/verticals/banking-and-financial-services"
+---
+
 # Vertical Blueprint: Utilities and Energy
 
 As of August 2026. Phase 6. The vertical where agents meet physics, and the one where this guide is most willing to say no.

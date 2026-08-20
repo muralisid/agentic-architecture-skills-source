@@ -1,3 +1,13 @@
+---
+reader_summary: "Review material changes to the guide, including corrections that may affect an earlier decision."
+audience: ["All guide readers","Guide contributor"]
+decision_or_output: "Determine whether a guide change requires an architecture, roadmap, or evidence review."
+prerequisites: ["/docs/about-evidence"]
+reading_time: "2 minutes"
+evidence_status: "Maintainer change record linked to the repository history."
+next: "/docs/contributing"
+---
+
 # Changelog
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.

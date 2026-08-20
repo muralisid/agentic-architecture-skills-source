@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for the integration fabric to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","Integration architecture lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for the integration fabric."
+prerequisites: ["/docs/layers/r03-integration-fabric/brief"]
+reading_time: "10 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r03-integration-fabric/vendors"
+---
+
 # R03 Integration Fabric: findings
 
 As of August 2026. Pilot track: this format calibrates all remaining tracks. Every claim sourced in sources.md; [vendor] flags inline.
@@ -43,7 +53,7 @@ The failure modes that matter: injection through tool results and descriptions; 
 
 The gateway pattern: no direct model-to-server connections; server allowlisting; credential injection at execution time so agents never hold secrets; per-tool RBAC on the caller's identity (OAuth token exchange per RFC 8693; on-behalf-of flows; the arriving standards, Okta's Cross App Access adopted as MCP's Enterprise Managed Authorization extension, and the IETF ID-JAG draft, make the gateway their enforcement point, not their replacement); tool-description integrity checks (diff and re-approve on change); SIEM-bound audit at action granularity. Two honest caveats: the registry is preview and explicitly not a trust signal; and the gateway layer is itself attackable (a hosting-layer path traversal leaked tokens controlling 3,000+ servers, Oct 2025), so the gateway needs its own hardening story, not a halo.
 
-Identity level: Level 2 (first-class IAM principal) is the floor for any agent touching this layer; deterministic entitlement enforcement stays outside the model, per the guide's standing principle.
+Identity tier: ID2 (first-class IAM principal) is the floor for any agent touching this layer; deterministic entitlement enforcement stays outside the model, per the guide's standing principle.
 
 ## 8. Sovereignty
 
@@ -95,7 +105,7 @@ Tool schemas are data contracts; their quality decides agent groundedness at thi
 
 | # | Concern | Treatment at this layer |
 |---|---|---|
-| C1 | Identity & access | Level 2 identity floor; OAuth token exchange and on-behalf-of; EMA/XAA and ID-JAG enforced at the gateway; per-tool RBAC; credentials injected at execution, never held by agents |
+| C1 | Identity & access | ID2 identity floor; OAuth token exchange and on-behalf-of; EMA/XAA and ID-JAG enforced at the gateway; per-tool RBAC; credentials injected at execution, never held by agents |
 | C2 | Observability | Gateway emits per-tool-call traces (caller, tool, decision, latency, tokens); shadow-server discovery telemetry |
 | C3 | Traceability & audit | Action-granular, SIEM-bound audit at the gateway; description-version history; who-approved-what for gated actions |
 | C4 | Grounding in reality | Tool results are the grounding source: schema quality, provenance tagging, freshness of exposed data |

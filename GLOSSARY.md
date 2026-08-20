@@ -1,4 +1,16 @@
+---
+reader_summary: "Use the guide's canonical vocabulary for autonomy, identity, memory, controls, economics, and enterprise operations."
+audience: ["CIO/CTO", "Enterprise architect", "All guide readers"]
+decision_or_output: "Resolve terminology before comparing architectures, assessments, or vendor claims."
+prerequisites: []
+reading_time: "12 minutes"
+evidence_status: "Definitions summarize the guide; author-defined terms and evidence limitations are identified in their linked chapters."
+next: "/docs"
+---
+
 # Glossary
+
+## Canonical terms
 
 Canonical definitions used across the guide. Terms are defined once here and used consistently everywhere. Additions and corrections via PR.
 
@@ -6,7 +18,7 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Workflow.** Orchestration of models and tools through predefined code paths. Cheaper, lower variance, and preferred wherever the task allows (see Deterministic by default).
 
-**Agentic enterprise.** An enterprise where routine knowledge work executes through governed agents while humans set intent, supervise, manage exceptions, and hold accountability. The recognition test is a trust progression: agents operate under their own identity with a named accountable human, and autonomy expands with demonstrated reliability. Formalized by the Autonomy-Learning maturity model (A x L).
+**Agentic enterprise.** An enterprise where routine knowledge work executes through governed agents while humans set intent, supervise, manage exceptions, and hold accountability. A useful evidence-informed design pattern is a trust progression: agents operate under their own identity with a named accountable human, and autonomy expands with demonstrated reliability. This is not a universal classification test. The Autonomy-Learning maturity model (A x L) makes the progression explicit per workload.
 
 **Autonomy-Learning maturity model (A x L).** The guide's two-axis model, applied per workload. Autonomy A0 to A5: A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, A5 governed lights-out. Learning L0 to L3: L0 fixed policy, L1 curated learning, L2 governed learning (the flywheel), L3 continuous learning inside guardrails. The learning axis is this guide's contribution; A4 and above should require L2 or better. See synthesis/maturity-model.md.
 
@@ -14,11 +26,11 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Harness.** The engineering shell around the model: context assembly, tool routing, termination conditions, budgets, checkpoints, recovery.
 
-**Agent identity, Level 1/2/3.** Level 1: credential-only (shared keys, service accounts); ungoverned, the anti-pattern. Level 2: first-class IAM principal with task-scoped permissions and audit (access identity). Level 3: organizational presence (directory entry, mailbox, calendar, manager, licenses) (presence identity).
+**Agent identity (ID1 to ID3).** ID1: credential-only (shared keys, service accounts); ungoverned, the anti-pattern. ID2: first-class IAM principal with task-scoped permissions, audit, and a named accountable sponsor (access identity). ID3: organizational presence (directory entry, mailbox, calendar, manager, licenses) (presence identity).
 
-**Access identity vs presence identity.** Access identity lets an agent act on systems under governance (Level 2). Presence identity makes the agent addressable as a colleague: email, meetings, org chart (Level 3). The trade-off is collaboration ergonomics vs attack and compliance surface.
+**Access identity vs presence identity.** Access identity lets an agent act on systems under governance (ID2). Presence identity makes the agent addressable as a colleague: email, meetings, org chart (ID3). The trade-off is collaboration ergonomics vs attack and compliance surface.
 
-**Memory tiers (L1 to L5).** L1 thread (current conversation), L2 retrieved knowledge (evidence for the current turn), L3 session, L4 entity memory (long-term profiles of customers, assets, cases), L5 cross-domain organizational memory. Higher tiers carry ownership, consent, retention, and erasure obligations.
+**Memory tiers (M1 to M5).** M1 thread (current conversation), M2 retrieved knowledge (evidence for the current turn), M3 session, M4 entity memory (long-term profiles of customers, assets, cases), M5 cross-domain organizational memory. Higher tiers carry ownership, consent, retention, and erasure obligations.
 
 **Memory planes.** Working context (engineering discipline), the agent's persistent store (governance-heavy), and organizational memory (shared substrate). Distinct from memory tiers, which grade persistence within stores.
 
@@ -36,7 +48,11 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Curation before context.** Data is prepared for agents per purpose and use case. The LLM guides (taxonomy, topics, judgment) while cheaper deterministic machinery executes at scale (embeddings, topic modelling, classifiers). Production-grade agents stand on curated data, not raw corpora pushed through the model.
 
-**Multi-view (multi-card) embeddings.** Representing the same content through several semantic perspectives (for example problem, entity, intent, trend views), each indexed separately, to improve retrieval precision and recall per question type at embedding cost rather than LLM cost.
+**Multi-view (multi-card) embeddings.** A proposed pattern that represents the same content through several semantic perspectives (for example problem, entity, intent, trend views), each indexed separately, to tune retrieval per question type. The public guide currently names the concept only; the mechanism-level implementation guide remains under publication hold and is not available as a production recipe.
+
+**Sovereignty tiers (SV0 to SV4).** Deployment postures selected per workload and classification: SV0 managed API without a locality guarantee; SV1 region-pinned managed API; SV2 managed sovereign offering; SV3 self-hosted open-weight model in the enterprise tenancy; SV4 air-gapped or isolated on premises. A higher number is a stricter deployment constraint, not greater maturity.
+
+**Roadmap stages (Stage 0 to Stage 5).** The guide's delivery sequence: Stage 0 Ground, Stage 1 First value, Stage 2 Platform, Stage 3 Scale, Stage 4 Autonomy, and Stage 5 Extend. A stage is exited by evidence, not by elapsed time.
 
 **MCP (Model Context Protocol).** The open standard for connecting agents to tools and data. An MCP gateway governs tool access (RBAC, allowlists, credential injection, audit); distinct from an LLM gateway, which governs model calls (routing, caching, budgets).
 

@@ -1,6 +1,25 @@
+---
+reader_summary: "Check which volatile legal, product, price, standards, and market claims require a fresh source before use."
+audience: ["Enterprise architect","Risk and assurance lead","Guide contributor"]
+decision_or_output: "Identify claims that must be re-verified before they support a current architecture or procurement decision."
+prerequisites: ["/docs/about-evidence"]
+reading_time: "3 minutes"
+evidence_status: "Freshness register: each item records why it is volatile and when it should be checked again."
+next: "/docs/changelog"
+---
+
 # The Re-verification List
 
 Volatile facts carry an as-of date of August 2026. This list is reviewed quarterly, and every item names what to check and where the claim is used. Staleness is the main threat to a reference guide in this category.
+
+---
+
+## Completed for the August 2026 release
+
+| Item | Result | Primary source |
+|---|---|---|
+| Joint agentic-AI cyber guidance date | Verified as May 1, 2026 on the CISA release bulletin and Australian Cyber Security Centre publication page | https://content.govdelivery.com/accounts/USDHSCISA/bulletins/41544ff; https://www.cyber.gov.au/business-government/secure-design/artificial-intelligence/careful-adoption-of-agentic-ai-services |
+| FINRA AI recordkeeping language | RN 24-09 preserves existing technology-neutral obligations and creates no new interpretation. RN 25-07, published April 14, 2025, asks for comment on AI-generated communications and recordkeeping; it is not a final interpretation | https://www.finra.org/rules-guidance/notices/24-09; https://www.finra.org/rules-guidance/notices/25-07 |
 
 ---
 

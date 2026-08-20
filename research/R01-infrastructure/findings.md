@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for infrastructure and compute to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","Infrastructure and platform lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for infrastructure and compute."
+prerequisites: ["/docs/layers/r01-infrastructure/brief"]
+reading_time: "8 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r01-infrastructure/vendors"
+---
+
 # R01 Infrastructure & Compute: findings
 
 As of August 2026. Every claim sourced in sources.md; [vendor] flags inline.
@@ -34,7 +44,7 @@ The incident record defines the risks: an agent deleted a production database du
 
 **Networking**: all sandbox and agent egress through allowlisting proxies; block cloud metadata endpoints and private ranges from sandboxes (Unit 42 guidance); private connectivity to model providers exists on all hyperscalers (PrivateLink-class) but is opt-in, never default.
 
-**Workload identity**: agents need first-class compute identity: directory-based (Entra Agent ID class), standards-track (IETF WIMSE architecture covers AI agents; SPIFFE in production for agents at Block), and OAuth-extension based (Cross App Access, adopted as MCP's Enterprise Managed Authorization). Identity Level 2 is the floor; shared human credentials for agents, still common, are the anti-pattern.
+**Workload identity**: agents need first-class compute identity: directory-based (Entra Agent ID class), standards-track (IETF WIMSE architecture covers AI agents; SPIFFE in production for agents at Block), and OAuth-extension based (Cross App Access, adopted as MCP's Enterprise Managed Authorization). ID2 is the floor; shared human credentials for agents, still common, are the ID1 anti-pattern.
 
 ### 8. Sovereignty
 
@@ -70,7 +80,7 @@ This layer contributes session event logs and sandbox artifacts to grounding and
 
 | # | Concern | Treatment at this layer |
 |---|---|---|
-| C1 | Identity & access | First-class workload identity per agent (directory, WIMSE/SPIFFE, or OAuth-extension based); no shared human credentials; Level 2 floor |
+| C1 | Identity & access | First-class workload identity per agent (directory, WIMSE/SPIFFE, or OAuth-extension based); no shared human credentials; ID2 floor |
 | C2 | Observability | Session traces, sandbox lifecycle events, egress logs; idle-time and utilization telemetry |
 | C3 | Traceability & audit | Event-logged sessions; sandbox snapshots as forensic artifacts; egress decisions logged |
 | C4 | Grounding in reality | Sandbox and session artifacts carry provenance for anything promoted to grounding |

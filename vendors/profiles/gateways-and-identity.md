@@ -1,3 +1,13 @@
+---
+reader_summary: "Assess Gateways, Identity and Access against the guide's architecture, control, evidence, economics, and exit requirements."
+audience: ["CIO/CTO","Enterprise architect","Procurement and vendor-management lead"]
+decision_or_output: "Decide whether Gateways, Identity and Access merits workload-specific due diligence, and record evidence gaps and exit risks."
+prerequisites: ["/docs/frameworks/vendor-question-bank","/docs/frameworks/vendor-scorecard"]
+reading_time: "3 minutes"
+evidence_status: "Time-sensitive vendor profile: vendor-published claims are labelled and require current contractual verification."
+next: "/docs/vendors/profiles/evals-and-observability"
+---
+
 # Category Profile: Gateways, Identity and Access
 
 As of August 2026. The independent layer between your agents and everything they touch. Vendor-published facts flagged.

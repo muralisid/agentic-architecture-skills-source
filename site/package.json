@@ -4,11 +4,16 @@
   "private": true,
   "scripts": {
     "sync": "node scripts/sync-content.mjs",
-    "build": "npm run guard && npm run sync && next build",
+    "build": "npm run guard && npm run sync && npm run figures:export && npm run validate && next build",
     "dev": "npm run sync && next dev",
     "start": "next start",
     "types:check": "next typegen && tsc --noEmit",
-    "guard": "node scripts/prebuild-guard.mjs"
+    "guard": "node scripts/prebuild-guard.mjs",
+    "figures:export": "node scripts/export-figures.mjs",
+    "validate": "npm run validate:content && npm run validate:guide && npm run validate:figures",
+    "validate:content": "node ../scripts/check-content.mjs",
+    "validate:guide": "node scripts/validate-guide.mjs",
+    "validate:figures": "node scripts/validate-figures.mjs"
   },
   "dependencies": {
     "cnfast": "^0.1.0",

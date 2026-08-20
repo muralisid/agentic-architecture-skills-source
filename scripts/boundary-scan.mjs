@@ -25,16 +25,34 @@ const raw = await readFile(blocklistPath, 'utf8');
 const hard = [];
 const warn = [];
 let bucket = null;
+let parseError = false;
 for (const line of raw.split('\n')) {
   const s = line.trim();
   if (!s || s.startsWith('#')) continue;
   if (s === '[HARD]') { bucket = hard; continue; }
   if (s === '[WARN]') { bucket = warn; continue; }
-  if (bucket) bucket.push(s.toLowerCase());
+  if (s.startsWith('[') || !bucket) {
+    parseError = true;
+    continue;
+  }
+  bucket.push(s.toLowerCase());
+}
+if (parseError || hard.length === 0) {
+  console.error('boundary-scan: blocklist is malformed or contains no HARD terms. Refusing to pass an empty scan.');
+  process.exit(1);
 }
 
-const SKIP_DIRS = new Set(['.git', 'node_modules', '.next', 'inputs']);
-const EXTS = new Set(['.md', '.mdx', '.ts', '.tsx', '.mjs', '.js', '.json', '.yml', '.yaml']);
+const holdRegister = await readFile(path.join(repoDir, 'PUBLICATION-HOLD.md'), 'utf8');
+const heldMatch = holdRegister.match(/^## Held\s*\n([\s\S]*?)(?=^##\s)/m);
+if (!heldMatch || !/^\|\s*Path\s*\|\s*Reason\s*\|\s*Released when\s*\|\s*$/m.test(heldMatch[1])) {
+  console.error('boundary-scan: publication hold register has no valid Held table. Refusing to scan an ambiguous surface.');
+  process.exit(1);
+}
+const heldSection = heldMatch[1];
+const heldPaths = new Set([...heldSection.matchAll(/^\|\s*`([^`]+)`\s*\|/gm)].map((match) => match[1].trim()));
+
+const SKIP_DIRS = new Set(['.git', 'node_modules', '.next', 'inputs', 'knowledge']);
+const EXTS = new Set(['.md', '.mdx', '.ts', '.tsx', '.mjs', '.js', '.json', '.yml', '.yaml', '.svg']);
 
 async function collect(dir, acc = []) {
   for (const e of await readdir(path.join(repoDir, dir), { withFileTypes: true })) {
@@ -42,7 +60,7 @@ async function collect(dir, acc = []) {
     if (e.isDirectory()) {
       if (SKIP_DIRS.has(e.name)) continue;
       await collect(rel, acc);
-    } else if (EXTS.has(path.extname(e.name))) acc.push(rel);
+    } else if (EXTS.has(path.extname(e.name)) && !heldPaths.has(rel.replace(/^\.\//, ''))) acc.push(rel);
   }
   return acc;
 }

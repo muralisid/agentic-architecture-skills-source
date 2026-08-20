@@ -1,3 +1,13 @@
+---
+reader_summary: "Run non-negotiable disqualifiers before weighted scoring, then compare only products that can support the target workload safely."
+audience: ["CIO/CTO", "Enterprise architect", "Procurement and risk lead"]
+decision_or_output: "Produce an auditable shortlist with disqualifiers, evidence quality, weights, and exit risk visible."
+prerequisites: ["/docs/frameworks/vendor-question-bank"]
+reading_time: "9 minutes"
+evidence_status: "Author evaluation method; vendor scores are time-sensitive and require primary evidence plus contractual confirmation."
+next: "/docs/vendors"
+---
+
 # The Vendor Scorecard
 
 As of August 2026. Phase 7. How to score the question bank without letting a total hide a disqualifier.

@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Marketing blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Marketing leader"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Marketing."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "3 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/departments/supply-chain"
+---
+
 # Department Blueprint: Marketing
 
 As of August 2026. Phase 6. High agent adoption, high disclosure exposure, and a homogenisation question nobody has settled.

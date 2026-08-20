@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { appShortName, gitConfig } from './shared';
+import { appShortName, repoUrl, sourceRepositoryPublic } from './shared';
 
 export function baseOptions(): BaseLayoutProps {
   return {
@@ -7,12 +7,13 @@ export function baseOptions(): BaseLayoutProps {
       title: appShortName,
     },
     links: [
-      { text: 'Architecture', url: '/docs/architecture' },
-      { text: 'Layers', url: '/docs/layers' },
-      { text: 'Frameworks', url: '/docs/frameworks' },
-      { text: 'Blueprints', url: '/docs/blueprints' },
-      { text: 'Vendors', url: '/docs/vendors' },
+      { text: 'Start', url: '/docs' },
+      { text: 'Decide', url: '/docs/decide' },
+      { text: 'Design', url: '/docs/design' },
+      { text: 'Apply', url: '/docs/apply' },
+      { text: 'Reference', url: '/docs/reference' },
+      { text: 'About / Evidence', url: '/docs/about-evidence' },
     ],
-    githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
+    ...(sourceRepositoryPublic ? { githubUrl: repoUrl } : {}),
   };
 }

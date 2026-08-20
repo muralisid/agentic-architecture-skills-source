@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for security and identity to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","Security and identity lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for security and identity."
+prerequisites: ["/docs/layers/r10-security-and-identity/brief"]
+reading_time: "8 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r10-security-and-identity/vendors"
+---
+
 # R10 Security & Identity: findings
 
 As of August 2026. Every claim sourced in sources.md; [vendor] flags inline.
@@ -10,11 +20,11 @@ Enterprise security meets agents unprepared on identity and over-instrumented on
 
 ### 2. What changes with agents
 
-The threat landscape acquired its own canon in a single year: OWASP's Top 10 for Agentic Applications (Dec 2025: goal hijack, tool misuse, identity and privilege abuse, supply chain, unexpected code execution, memory poisoning, insecure inter-agent communication, cascading failures, human-trust exploitation, rogue agents); MITRE ATLAS grew fourteen agent-focused techniques (Oct 2025) on its way to 84 techniques and 42 case studies; Microsoft's failure-mode taxonomy v2 (Jun 2026) counts 99 MCP-related CVEs in 2025 alone; and six national cyber agencies published joint adoption guidance naming five risk categories (Apr-May 2026; exact date to verify against cisa.gov). Identity becomes the perimeter: every control in this track hangs off the agent having a first-class, least-privileged, short-lived identity.
+The threat landscape acquired its own canon in a single year: OWASP's Top 10 for Agentic Applications (Dec 2025: goal hijack, tool misuse, identity and privilege abuse, supply chain, unexpected code execution, memory poisoning, insecure inter-agent communication, cascading failures, human-trust exploitation, rogue agents); MITRE ATLAS grew fourteen agent-focused techniques (Oct 2025) on its way to 84 techniques and 42 case studies; Microsoft's failure-mode taxonomy v2 (Jun 2026) counts 99 MCP-related CVEs in 2025 alone; and six national cyber agencies published joint adoption guidance naming five risk categories on May 1, 2026. Identity becomes the perimeter: every control in this track hangs off the agent having a first-class, least-privileged, short-lived identity.
 
 ### 3. Introduction options and sequencing
 
-Identity first: register every agent with an owner and risk tier (Level 2 floor), eliminate shared credentials, adopt just-in-time elevation over a minimal baseline with automatic drop-back (the published least-privilege pattern for agents). Then wire agent telemetry into the SIEM and rebuild the runbooks (see 7). Guardrails and content filters come last, as an advisory layer, never as the boundary.
+Identity first: register every agent with an owner and risk tier (ID2 floor), eliminate shared credentials, adopt just-in-time elevation over a minimal baseline with automatic drop-back (the published least-privilege pattern for agents). Then wire agent telemetry into the SIEM and rebuild the runbooks (see 7). Guardrails and content filters come last, as an advisory layer, never as the boundary.
 
 ### 4. Economics
 
@@ -30,7 +40,7 @@ The reference incidents: EchoLeak (CVE-2025-32711, CVSS 9.3), a zero-click exfil
 
 ### 7. Security and determinism: models may inform, never decide
 
-This track carries the guide's deterministic-boundary principle in its final, evidence-hardened form. **Decisions in the four zones (access control, money movement, safety actuation, regulatory records) are made by deterministic rules over verifiable credentials and policies; model outputs are advisory inputs.** Three of the four zones already run probabilistic signals inside them, and that is fine: identity platforms feed ML risk scores into deterministic Conditional Access; card networks score every transaction with ML while authorization stays rule-bound; filings are drafted with AI and attested deterministically. The convergent proof is the 2025-2026 agentic payment stack, built independently by Visa (Trusted Agent Protocol: issuer-anchored delegation tokens scoped by amount, merchant, category), Mastercard (Agent Pay: agentic tokens bound to agent, merchant, and consent, revocable in real time), and Google with 60+ partners (AP2: cryptographically signed Verifiable Credential mandates carrying hard constraints): all are deterministic authorization consuming probabilistic signals. Safety actuation is the one zone where standards exclude ML from the function itself (IEC 61511; ISO/IEC TR 5469:2024). Records regimes mandate accountability and immutable records, not deterministic generation (FINRA 24-09; ESMA 2024; the Deloitte Australia refund is the cautionary tale).
+This track carries the guide's deterministic-boundary principle in its final, evidence-hardened form. **Decisions in the four zones (access control, money movement, safety actuation, regulatory records) are made by deterministic rules over verifiable credentials and policies; model outputs are advisory inputs.** Three of the four zones already run probabilistic signals inside them, and that is fine: identity platforms feed ML risk scores into deterministic Conditional Access; card networks score every transaction with ML while authorization stays rule-bound; filings are drafted with AI and attested deterministically. The convergent proof is the 2025-2026 agentic payment stack, built independently by Visa (Trusted Agent Protocol: issuer-anchored delegation tokens scoped by amount, merchant, category), Mastercard (Agent Pay: agentic tokens bound to agent, merchant, and consent, revocable in real time), and Google with 60+ partners (AP2: cryptographically signed Verifiable Credential mandates carrying hard constraints): all are deterministic authorization consuming probabilistic signals. Safety actuation is the one zone where standards exclude ML from the function itself (IEC 61511; ISO/IEC TR 5469:2024). Records regimes mandate accountability and retained communications, not deterministic generation. FINRA 24-09 says existing technology-neutral obligations continue to apply and creates no new interpretation; FINRA 25-07, published April 14, 2025, asks for comment on AI-generated communication and recordkeeping rather than settling a new interpretation. ESMA 2024 and the Deloitte Australia refund supply adjacent evidence.
 
 Two implementation consequences. First, the authorization boundary is policy-as-code in the tool-call path: a policy decision point (Cedar-class sub-millisecond engines, formally verified; OPA/Rego for richer joins) the agent cannot bypass, complemented where warranted by deterministic information-flow control (Microsoft's FIDES shipped in Agent Framework: zero policy-violating injections on AgentDojo versus 20-152 without) and formal output verification (Bedrock Automated Reasoning checks, GA Aug 2025 [vendor]). Second, probabilistic guardrails are the advisory layer, not the boundary: measured evasion reaches 72-77% against major commercial guardrails and up to 100% in some configurations, and guardrail-triggered denial of service is itself exploitable. They retain real value for content policy, PII detection, and telemetry, where misses are tolerable.
 
@@ -54,7 +64,7 @@ Inventory and register agents; kill shared credentials; JIT least privilege; SIE
 
 ### 12. Metrics
 
-Agent identity coverage (no shared credentials); percentage of consequential actions behind a deterministic PDP; time-to-revoke an agent credential; agent-specific SOC detections and mean time to respond; guardrail false-positive cost; presence-surface inventory (which agents hold which L3 capabilities and why).
+Agent identity coverage (no shared credentials); percentage of consequential actions behind a deterministic PDP; time-to-revoke an agent credential; agent-specific SOC detections and mean time to respond; guardrail false-positive cost; presence-surface inventory (which agents hold which ID3 capabilities and why).
 
 ### 13. Data readiness and curation
 
@@ -84,6 +94,5 @@ Detection content, policy-as-code, and runbooks are curated corpora with owners,
 ### Open questions
 
 - SIEM behavioral baselining for agents: unsolved; re-check post-RSAC 2027.
-- CISA joint-guidance publication date and FINRA RN 25-07 records interpretation: verify against primary sources before publication.
 
 ---

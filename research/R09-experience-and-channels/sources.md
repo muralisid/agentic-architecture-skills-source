@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the experience and channels findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Customer experience lead","Research and assurance lead"]
+decision_or_output: "Confirm which experience and channels claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r09-experience-and-channels/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r10-security-and-identity"
+---
+
 # R09 Experience and Channels: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

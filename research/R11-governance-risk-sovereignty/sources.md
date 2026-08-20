@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the governance, risk, and sovereignty findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Risk and compliance lead","Research and assurance lead"]
+decision_or_output: "Confirm which governance, risk, and sovereignty claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r11-governance-risk-sovereignty/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r12-observability-and-finops"
+---
+
 # R11 Governance, Risk & Sovereignty: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

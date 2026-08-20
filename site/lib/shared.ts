@@ -13,3 +13,4 @@ export const gitConfig = {
 };
 
 export const repoUrl = `https://github.com/${gitConfig.user}/${gitConfig.repo}`;
+export const sourceRepositoryPublic = process.env.SOURCE_REPOSITORY_PUBLIC === 'true';

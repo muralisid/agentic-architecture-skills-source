@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the data platform findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Data platform lead","Research and assurance lead"]
+decision_or_output: "Confirm which data platform claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r02-data-platform/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r03-integration-fabric"
+---
+
 # R02 Data Platform: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

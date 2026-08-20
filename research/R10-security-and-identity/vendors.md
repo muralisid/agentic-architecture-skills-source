@@ -1,3 +1,13 @@
+---
+reader_summary: "Compare security and identity vendors against the capabilities and evidence this layer actually requires."
+audience: ["Enterprise architect","Security and identity lead","Procurement and vendor-management lead"]
+decision_or_output: "Produce an evidence request and shortlist for security and identity; market presence alone is not sufficient."
+prerequisites: ["/docs/layers/r10-security-and-identity/findings","/docs/frameworks/vendor-question-bank"]
+reading_time: "2 minutes"
+evidence_status: "Time-sensitive vendor landscape: verify current capabilities, availability, and terms with primary evidence."
+next: "/docs/layers/r10-security-and-identity/sources"
+---
+
 # R10 Security & Identity: vendor map
 
 As of 2026-08-19. Vendor capability claims are vendor-published unless third-party sourced. Re-verify quarterly.

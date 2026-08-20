@@ -1,3 +1,13 @@
+---
+reader_summary: "Assess Evaluation and Observability against the guide's architecture, control, evidence, economics, and exit requirements."
+audience: ["CIO/CTO","Enterprise architect","Procurement and vendor-management lead"]
+decision_or_output: "Decide whether Evaluation and Observability merits workload-specific due diligence, and record evidence gaps and exit risks."
+prerequisites: ["/docs/frameworks/vendor-question-bank","/docs/frameworks/vendor-scorecard"]
+reading_time: "3 minutes"
+evidence_status: "Time-sensitive vendor profile: vendor-published claims are labelled and require current contractual verification."
+next: "/docs/about-evidence"
+---
+
 # Category Profile: Evaluation and Observability
 
 As of August 2026. The category that consolidated hardest in twelve months. Vendor-published facts flagged.

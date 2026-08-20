@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for systems of record to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","Enterprise applications lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for systems of record."
+prerequisites: ["/docs/layers/r04-systems-of-record/brief"]
+reading_time: "10 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r04-systems-of-record/vendors"
+---
+
 # R04 Core Systems of Record: findings
 
 As of August 2026. Every claim sourced in sources.md; [vendor] flags inline.

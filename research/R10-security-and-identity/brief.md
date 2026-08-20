@@ -1,3 +1,13 @@
+---
+reader_summary: "Review the scope, decision questions, and challenged defaults for security and identity before using the findings."
+audience: ["Enterprise architect","Security and identity lead","Research and assurance lead"]
+decision_or_output: "Confirm the in-scope security and identity decisions and the questions the evidence must answer."
+prerequisites: ["/docs/layers/r10-security-and-identity"]
+reading_time: "2 minutes"
+evidence_status: "Research scope and question set; this page does not itself establish the final architecture position."
+next: "/docs/layers/r10-security-and-identity/findings"
+---
+
 # R10 Security & Identity: research brief
 
 Status: complete; published 2026-08-19

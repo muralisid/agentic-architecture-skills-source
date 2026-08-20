@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Public Sector blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Public-sector digital-services lead"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Public Sector."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "4 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/frameworks/vendor-question-bank"
+---
+
 # Vertical Blueprint: Public Sector
 
 As of August 2026. Phase 6. Sovereignty-first, and the vertical where "the citizen cannot choose another provider" changes the design.
@@ -27,7 +37,7 @@ Control (**direct**), Evidence (**direct**: appealability makes the evidence pla
 - **Access to essential public services is Annex III high-risk** under the EU AI Act, deferred to 2 December 2027. Classification work starts now; standards lead times run beyond twelve months.
 - **Every decision must be explainable to the person it affects and defensible on appeal.** That is a stronger requirement than auditability, and it constrains architecture: the evidence shown to the officer must be the evidence in the file.
 - Merely formal human participation is not sufficient. An officer who confirms a recommendation has not decided; design the review so a different answer is reachable.
-- Sovereignty routing at tier S2 or above is normal here, and procurement frameworks increasingly name it. The proposed EU Cloud and AI Development Act introduces a four-level cloud sovereignty framework tied to public procurement.
+- Sovereignty routing at tier SV2 or above is normal here, and procurement frameworks increasingly name it. The proposed EU Cloud and AI Development Act introduces a four-level cloud sovereignty framework tied to public procurement.
 - Statutory retention is deterministic and long. Agent memory, traces and derived artifacts inherit it, which is a retention obligation most agent platforms were not designed for.
 - Accessibility duties apply to citizen-facing agents as they do to any other public digital service.
 

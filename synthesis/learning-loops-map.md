@@ -1,3 +1,13 @@
+---
+reader_summary: "Separate immediate instance memory from the governed offline flywheel that evaluates, promotes, demotes, and rolls back durable improvements."
+audience: ["Enterprise architect", "AI platform lead", "Risk and operations lead"]
+decision_or_output: "Define what may learn online, what must promote offline, who owns the eval bar, and how rollback works."
+prerequisites: ["/docs/architecture/identity-security-model"]
+reading_time: "7 minutes"
+evidence_status: "Cross-track synthesis with author-defined maturity rules and linked empirical support."
+next: "/docs/blueprints"
+---
+
 # The Learning-Loops Map
 
 As of August 2026. Phase 4 synthesis, drawn from R06 intelligence and learning, R14 memory pipelines, R12 observability, and the learning axis of the maturity model.

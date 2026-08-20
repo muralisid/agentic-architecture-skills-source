@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Customer Service blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Customer-service lead"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Customer Service."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "4 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/departments/finance"
+---
+
 # Department Blueprint: Customer Service
 
 As of August 2026. Phase 6. The most publicly visible agent deployment, and the most reversible.

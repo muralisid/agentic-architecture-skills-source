@@ -1,3 +1,13 @@
+---
+reader_summary: "Compare agent data engineering and memory vendors against the capabilities and evidence this layer actually requires."
+audience: ["Enterprise architect","Data and AI engineering lead","Procurement and vendor-management lead"]
+decision_or_output: "Produce an evidence request and shortlist for agent data engineering and memory; market presence alone is not sufficient."
+prerequisites: ["/docs/layers/r14-agent-data-engineering/findings","/docs/frameworks/vendor-question-bank"]
+reading_time: "2 minutes"
+evidence_status: "Time-sensitive vendor landscape: verify current capabilities, availability, and terms with primary evidence."
+next: "/docs/layers/r14-agent-data-engineering/sources"
+---
+
 # R14 Agent Data Engineering & Memory Pipelines: vendor map
 
 As of 2026-08-19. Vendor capability claims are vendor-published unless third-party sourced. Re-verify quarterly.

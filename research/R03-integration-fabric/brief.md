@@ -1,3 +1,13 @@
+---
+reader_summary: "Review the scope, decision questions, and challenged defaults for the integration fabric before using the findings."
+audience: ["Enterprise architect","Integration architecture lead","Research and assurance lead"]
+decision_or_output: "Confirm the in-scope the integration fabric decisions and the questions the evidence must answer."
+prerequisites: ["/docs/layers/r03-integration-fabric"]
+reading_time: "2 minutes"
+evidence_status: "Research scope and question set; this page does not itself establish the final architecture position."
+next: "/docs/layers/r03-integration-fabric/findings"
+---
+
 # R03 Integration Fabric: research brief
 
 Pilot track: this brief calibrated the template all remaining tracks follow.

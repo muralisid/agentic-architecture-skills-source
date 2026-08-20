@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the agent data engineering and memory findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Data and AI engineering lead","Research and assurance lead"]
+decision_or_output: "Confirm which agent data engineering and memory claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r14-agent-data-engineering/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/techniques"
+---
+
 # R14 Agent Data Engineering & Memory Pipelines: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

@@ -1,3 +1,13 @@
+---
+reader_summary: "Compare the integration fabric vendors against the capabilities and evidence this layer actually requires."
+audience: ["Enterprise architect","Integration architecture lead","Procurement and vendor-management lead"]
+decision_or_output: "Produce an evidence request and shortlist for the integration fabric; market presence alone is not sufficient."
+prerequisites: ["/docs/layers/r03-integration-fabric/findings","/docs/frameworks/vendor-question-bank"]
+reading_time: "4 minutes"
+evidence_status: "Time-sensitive vendor landscape: verify current capabilities, availability, and terms with primary evidence."
+next: "/docs/layers/r03-integration-fabric/sources"
+---
+
 # R03 Integration Fabric: vendor map
 
 As of 2026-08-19. All vendor capability claims are vendor-published unless a third-party source appears in sources.md. Maturity states carry dates; this layer converges fast, re-verify quarterly.

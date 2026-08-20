@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for observability and FinOps to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","Operations and FinOps lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for observability and FinOps."
+prerequisites: ["/docs/layers/r12-observability-and-finops/brief"]
+reading_time: "7 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r12-observability-and-finops/vendors"
+---
+
 # R12 Observability & FinOps: findings
 
 As of August 2026. Every claim sourced in sources.md; [vendor] flags inline.

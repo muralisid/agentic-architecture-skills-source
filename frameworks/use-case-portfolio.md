@@ -1,3 +1,13 @@
+---
+reader_summary: "Choose which agent use cases deserve funding by gating for evaluability, deterministic safety, and grounding before comparing outcome economics."
+audience: ["CIO/CTO", "Enterprise architect", "Portfolio and transformation lead"]
+decision_or_output: "Produce a quarterly admit, make-evaluable, redesign-or-reject, or prepare-grounding decision for every candidate use case."
+prerequisites: ["/docs/frameworks/readiness-assessments"]
+reading_time: "10 minutes"
+evidence_status: "Evidence-informed author framework; cited findings support the gates, while weights and example values remain enterprise-specific."
+next: "/docs/frameworks/roadmap-checklist"
+---
+
 # The Use-Case Portfolio Framework
 
 As of August 2026. Phase 5 deliverable. Which use cases get budget this quarter, and which do not.
@@ -67,9 +77,30 @@ Stopping is a normal outcome and should be reported as one. Roughly three quarte
 
 Run the portfolio quarterly. Re-rank every quarter with measured rather than estimated inputs: after one cycle you have real cost per resolved outcome and real supervision load, and the second ranking is worth considerably more than the first. Keep the make-it-evaluable queue funded continuously; it is the pipeline that feeds every later quarter.
 
-## Worked shape, not a worked example
+## Fictional worked example: Northstar's first portfolio round
 
-The guide does not publish a scored example portfolio, because a plausible-looking table of invented numbers would be read as evidence. The inputs above are all measurable in a single cycle, and the framework is designed to be run on your own numbers from the first quarter.
+> **Teaching example only, not a benchmark.** Northstar Components and every value below are fictional. The numbers demonstrate the arithmetic and decision sequence; they must not be used as expected costs, benefits, thresholds, or industry comparisons.
+
+Northstar considers three candidates. It applies the gates before calculating priority:
+
+| Candidate | Evaluability | Deterministic-zone check | Grounding | Admission decision |
+|---|---|---|---|---|
+| Supplier-invoice exception evidence pack | Pass: 35 pass/fail cases from prior exceptions | Pass after redesign: the model assembles evidence; ERP rules and an authorized person decide payment | Pass: procurement corpus has an owner | Score it |
+| Maintenance work-order assistant | Pass: 28 historical diagnostic tasks | Pass: recommendations are advisory and cannot actuate equipment | Pass: manuals and asset history can be purpose-scoped | Score it |
+| Customer-renewal negotiation agent | Fail: the team cannot yet define a reliable success baseline beyond revenue | Unchecked | Unchecked | Fund the make-it-evaluable work, not the agent |
+
+Only the first two reach the score:
+
+| Candidate | Fictional value per resolved outcome | Outcomes per quarter | Fictional cost per resolved outcome | Reversibility | Priority index |
+|---|---:|---:|---:|---:|---:|
+| Supplier-invoice exception evidence pack | 45 | 1,200 | 12 | 0.90 | 4,050 |
+| Maintenance work-order assistant | 180 | 220 | 35 | 0.80 | 905 |
+
+For the invoice case, `(45 x 1,200 / 12) x 0.90 = 4,050`. The index is for ranking Northstar's candidates; it has no meaning across enterprises unless the currency, measurement period, and treatment of labour and failure costs are identical.
+
+Northstar then applies the portfolio constraints rather than funding the top row automatically. The invoice case exercises the control and evidence planes; the maintenance case exercises the knowledge and action planes. Peak review demand for both is tested against the same staffed supervision pool. The invoice case is funded first, the maintenance case remains next in sequence, and the renewal idea receives a small definition budget to create real eval tasks and a baseline.
+
+The invoice case also receives kill criteria at approval: stop if the eval target is missed during the funding period, measured cost per resolved exception fails to converge toward the approved trajectory, peak review demand exceeds staffed capacity, or corpus ownership lapses. These are fictional decision mechanics, not recommended numeric thresholds.
 
 ## Sources
 

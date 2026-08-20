@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the Sales blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","Sales leader"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Sales."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "3 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/departments/marketing"
+---
+
 # Department Blueprint: Sales
 
 As of August 2026. Phase 6. The department that absorbs the most budget and ranks mid-pack for production agents.

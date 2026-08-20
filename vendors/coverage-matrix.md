@@ -1,3 +1,13 @@
+---
+reader_summary: "See which enterprise layers each vendor category claims to cover and where independent capability remains necessary."
+audience: ["CIO/CTO","Enterprise architect","Procurement and vendor-management lead"]
+decision_or_output: "Identify coverage gaps and the vendor profiles that require workload-specific verification."
+prerequisites: ["/docs/frameworks/vendor-question-bank","/docs/frameworks/vendor-scorecard"]
+reading_time: "5 minutes"
+evidence_status: "Time-sensitive coverage synthesis based on dated vendor evidence; breadth does not establish workload fit."
+next: "/docs/vendors/adoption-pathways"
+---
+
 # The Vendor-by-Layer Coverage Matrix
 
 As of August 2026. Phase 7, built from the vendor map in each of the 14 research tracks. Every vendor claim here is vendor-published unless a third-party source is named, and product facts carry an as-of date of August 2026.

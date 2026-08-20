@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the operating model findings and identify claims that need re-verification."
+audience: ["Enterprise architect","Operating-model and workforce lead","Research and assurance lead"]
+decision_or_output: "Confirm which operating model claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r13-operating-model/findings"]
+reading_time: "3 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r14-agent-data-engineering"
+---
+
 # R13 Operating Model and Organization: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

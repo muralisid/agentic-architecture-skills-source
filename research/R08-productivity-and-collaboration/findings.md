@@ -1,3 +1,13 @@
+---
+reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for productivity and collaboration to make architecture decisions."
+audience: ["CIO/CTO","Enterprise architect","Digital workplace lead"]
+decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for productivity and collaboration."
+prerequisites: ["/docs/layers/r08-productivity-and-collaboration/brief"]
+reading_time: "10 minutes"
+evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
+next: "/docs/layers/r08-productivity-and-collaboration/vendors"
+---
+
 # R08 Productivity and Collaboration: findings
 
 As of August 2026. Every claim sourced in sources.md; [vendor] flags inline.
@@ -42,7 +52,7 @@ Two mechanisms decide whether collaboration agents improve or ossify work. First
 
 ### 7. Security and determinism
 
-The identity model in this surface is the practical expression of the guide's level distinction, and the vendor's own architecture encodes it: the agent identity is a service principal, while the user account carrying a mailbox and meeting presence is a **separate, optional child object** created only where the agent must act as a user. The permission asymmetry is deliberate: creating agent identities uses a permission granted automatically and not revocable, while creating the user account requires an administrator grant that can be revoked. As of July 2026, new agents must have agent identities with no opt-out, and no user account is created automatically. Level 2 is mandatory; level 3 is a decision.
+The identity model in this surface is the practical expression of the guide's ID1 to ID3 distinction, and the vendor's own architecture encodes it: the agent identity is a service principal, while the user account carrying a mailbox and meeting presence is a **separate, optional child object** created only where the agent must act as a user. The permission asymmetry is deliberate: creating agent identities uses a permission granted automatically and not revocable, while creating the user account requires an administrator grant that can be revoked. As of July 2026, new agents must have agent identities with no opt-out, and no user account is created automatically. ID2 is mandatory; ID3 is a decision.
 
 Consent is the live compliance failure. A survey of 500 workers found a third had encountered an AI notetaker, and among those, only about a third were always asked permission while a quarter reported the bot simply appearing. Two US class actions over meeting recording are active as of this month, one filed three weeks ago, with statutory damages claimed per violation.
 
@@ -64,7 +74,7 @@ Roll out for the email-shaped wins; instrument actual usage rather than licence 
 
 ### 12. Metrics
 
-Actions per active user per day, not licences issued; task-level time and quality by work type, since the sign varies; consent-capture rate for recorded meetings; share of agents at each identity level with a justification for every presence grant; shadow-usage indicators (personal-account traffic, sensitive-data events); and, where idea diversity matters, a diversity measure alongside quality.
+Actions per active user per day, not licences issued; task-level time and quality by work type, since the sign varies; consent-capture rate for recorded meetings; share of agents at each ID1 to ID3 identity tier with a justification for every presence grant; shadow-usage indicators (personal-account traffic, sensitive-data events); and, where idea diversity matters, a diversity measure alongside quality.
 
 ### 13. Data readiness and curation
 
@@ -76,7 +86,7 @@ Collaboration content is the grounding corpus here, and it inherits every permis
 
 There is a third answer with more deployment evidence than either camp argues for. Give a horizontal assistant with a building surface to everyone and you get a long tail of narrow, specialised agents built by employees inside the horizontal platform: one organisation generated roughly 15,000 of them after a company-wide rollout. That is neither one assistant nor a curated portfolio, and it is what actually happens.
 
-**On presence identity, from this surface.** The guide's position that presence is reserved for a few durable teammates is supported, and two refinements follow from the collaboration evidence. First, **the accountable-human attribute belongs at access-identity level, not presence level**: the platform already carries a sponsor field on the agent identity itself, so requiring a mailbox to obtain accountability is backwards. Second, **nameability is not presence**: agents are named, mentionable, and visible in chat surfaces without a user account, so the presence tier should be defined by mailbox, calendar, licence consumption, HR-system participation, and a meeting-roster seat.
+**On presence identity, from this surface.** The guide's position that presence is reserved for a few durable teammates is supported, and two refinements follow from the collaboration evidence. First, **the accountable-human attribute belongs at ID2 access identity, not ID3 presence identity**: the platform already carries a sponsor field on the agent identity itself, so requiring a mailbox to obtain accountability is backwards. Second, **nameability is not presence**: agents are named, mentionable, and visible in chat surfaces without a user account, so the presence tier should be defined by mailbox, calendar, licence consumption, HR-system participation, and a meeting-roster seat.
 
 The strongest argument against presence is not governance cost. It is that presence does not buy the thing it appears to buy. The only controlled study manipulating whether AI was invoked or ambient found the architecture did not substantially redistribute trust; accountability stayed anchored to the human. And the only study measuring what an AI participant does to human-to-human relations found the AI was the most talkative and self-cohesive member of every team while carrying the least new information, with human teammates showing lower responsivity toward one another and reporting lower belonging and status.
 

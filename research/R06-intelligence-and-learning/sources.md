@@ -1,3 +1,13 @@
+---
+reader_summary: "Verify the dated evidence behind the intelligence and learning findings and identify claims that need re-verification."
+audience: ["Enterprise architect","AI engineering and model-risk lead","Research and assurance lead"]
+decision_or_output: "Confirm which intelligence and learning claims are current and strong enough to support the decision."
+prerequisites: ["/docs/layers/r06-intelligence-and-learning/findings"]
+reading_time: "2 minutes"
+evidence_status: "Dated source register with vendor-published material identified where applicable."
+next: "/docs/layers/r07-agent-platform"
+---
+
 # R06 Intelligence and Learning: sources
 
 All accessed 2026-08-19. [vendor] marks vendor-published claims about the publisher's own market.

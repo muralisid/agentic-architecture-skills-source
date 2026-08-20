@@ -36,6 +36,12 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
+        <a
+          href="#main-content"
+          className="fixed left-3 top-3 z-[100] -translate-y-24 rounded-md bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-transform focus:translate-y-0"
+        >
+          Skip to main content
+        </a>
         <RootProvider>{children}</RootProvider>
       </body>
     </html>

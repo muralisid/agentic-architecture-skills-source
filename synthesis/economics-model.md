@@ -1,3 +1,13 @@
+---
+reader_summary: "Translate token and run costs into the decision unit that matters: cost per resolved outcome, including supervision and failure."
+audience: ["CIO/CTO", "Enterprise architect", "FinOps and portfolio lead"]
+decision_or_output: "Define the unit economics, budget envelope, and stop conditions for a workload."
+prerequisites: ["/docs/architecture/memory-pipeline-architecture"]
+reading_time: "8 minutes"
+evidence_status: "Evidence-informed economic model; volatile prices and vendor-reported multipliers are dated and should be re-verified."
+next: "/docs/architecture/sovereignty-matrix"
+---
+
 # The Economics Model
 
 As of August 2026. Phase 4 synthesis. Two levels: what the invoice measures, and what the decision requires.

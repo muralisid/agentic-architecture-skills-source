@@ -1,3 +1,13 @@
+---
+reader_summary: "Adapt the IT and Service Desk blueprint: target workflow, agent and human roles, deterministic gates, economics, metrics, and honest limits."
+audience: ["CIO/CTO","Enterprise architect","IT and service-management lead"]
+decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for IT and Service Desk."
+prerequisites: ["/docs/architecture/master-target-state"]
+reading_time: "4 minutes"
+evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+next: "/docs/blueprints/departments/customer-service"
+---
+
 # Department Blueprint: IT and Service Desk
 
 As of August 2026. Phase 6. Internal-facing, and the department where production agents actually concentrate.
