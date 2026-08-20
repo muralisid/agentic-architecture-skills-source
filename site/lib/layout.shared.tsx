@@ -7,12 +7,10 @@ export function baseOptions(): BaseLayoutProps {
       title: appShortName,
     },
     links: [
-      { text: 'Start', url: '/docs' },
-      { text: 'Decide', url: '/docs/decide' },
-      { text: 'Design', url: '/docs/design' },
-      { text: 'Apply', url: '/docs/apply' },
-      { text: 'Reference', url: '/docs/reference' },
-      { text: 'About / Evidence', url: '/docs/about-evidence' },
+      { text: 'Industries', url: '/industries' },
+      { text: 'Departments', url: '/departments' },
+      { text: 'Answers', url: '/answers' },
+      { text: 'Vendors', url: '/vendors' },
     ],
     ...(sourceRepositoryPublic ? { githubUrl: repoUrl } : {}),
   };

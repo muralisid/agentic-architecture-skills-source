@@ -8,7 +8,6 @@ import {
   PrincipleCard,
   ZoomableDiagram,
 } from '@/components/visuals';
-import { PortfolioWorksheet, ReadinessWorksheet, RoadmapWorksheet } from '@/components/worksheets';
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
@@ -19,9 +18,6 @@ export function getMDXComponents(components?: MDXComponents) {
     GuideFigure,
     PrincipleCard,
     ZoomableDiagram,
-    PortfolioWorksheet,
-    ReadinessWorksheet,
-    RoadmapWorksheet,
     ...components,
   } satisfies MDXComponents;
 }

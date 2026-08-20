@@ -17,7 +17,7 @@ async function collect(dir, acc = []) {
     if (e.isDirectory()) {
       if (SKIP_DIRS.has(e.name)) continue;
       await collect(rel, acc);
-    } else if (e.name.endsWith('.md')) acc.push(rel);
+    } else if (e.name.endsWith('.md') || e.name.endsWith('.mdx')) acc.push(rel);
   }
   return acc;
 }
@@ -34,6 +34,10 @@ for (const rel of files) {
   for (const m of text.matchAll(/\[([^\]]+)\]\(([^)]+)\)/g)) {
     const href = m[2];
     if (/^(https?:|#|mailto:)/.test(href)) continue;
+    // Site-absolute routes (product pages) are validated against the full
+    // route map by site/scripts/sync-content.mjs, which fails the build on
+    // unknown routes; this scan checks only file-relative links.
+    if (href.startsWith('/')) continue;
     const target = path.join(repoDir, path.posix.dirname(rel), href.split('#')[0]);
     if (!existsSync(target)) brokenLinks.push(`${rel} -> ${href}`);
   }

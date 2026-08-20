@@ -1,0 +1,81 @@
+---
+title: "Banking and financial services"
+description: "Turn a bank into an agentic enterprise: the architecture, the first three use cases, and the plan, done for you."
+hero_figure: "blueprint-banking-and-financial-services-hero-architecture"
+video: ""
+---
+
+## Tuesday, 8:30, the financial crime floor
+
+The team's stand-up is short because the queue is already triaged. Overnight, the investigation agent assembled the context for forty-one alerts: transaction history, counterparties, past dispositions on similar patterns, and a drafted narrative for each, with every claim linked to its source record. The analysts spend the day deciding, not gathering. Two floors up, a credit officer opens a file that arrived complete: statements parsed, covenants extracted, exceptions flagged, evidence paginated. In servicing, the agent resolved last night's routine password-and-balance traffic inside the customers' own entitlements and escalated the eleven conversations that needed a person, with working state attached, to a queue with humans actually in it. Nothing here decided a payment, a credit, or a filing. Everything here is deployable now.
+
+Here is the whole plan to get there.
+
+<GuideFigure id="blueprint-banking-and-financial-services-hero-architecture" fullWidth />
+
+## Start with these three use cases
+
+1. **Financial crime alert preparation.** The agent assembles evidence, retrieves history, drafts the narrative, and proposes a disposition; the analyst decides. First because alert volume is high, the labels are real, failures are contained, and the analyst's time is your scarcest compliance resource.
+2. **Credit file assembly.** Gather, validate, and structure the evidence a credit decision requires. Second because the value is measured in officer hours and cycle time, and the agent never touches the decision itself.
+3. **Customer servicing on the narrow set.** Handle the well-instrumented, recoverable intents end to end inside the customer's own scope, with escalation wired to a real queue before launch. Third because it is customer-facing, so it inherits the heaviest control set and deserves to follow, not lead.
+
+Deliberately absent: anything that authorizes a payment, sets a credit decision, or files with a regulator. Those are deterministic zones; agents prepare, rules and accountable people decide.
+
+## The plan, step by step
+
+1. **Write down your deterministic zones** and get risk to sign the one-pager: payments, credit decisions, regulatory records, and access control are decided by rules over verifiable credentials, never by model output. Done when the page exists and is signed.
+2. **Stand up agent identity inside your existing IAM.** Each agent is a first-class principal with a named sponsor, short-lived credentials, and scoped access. Done when your identity team can revoke one agent in under a minute.
+3. **Ship alert preparation to one investigation team.** Measure analyst minutes per alert and quality-assurance failure rate together. Done when a month of both exists and QA has not degraded.
+4. **Ship credit file assembly for one product line.** Officer reviews everything; override rate is your health signal, and near-zero overrides mean rubber-stamping, not accuracy. Done when overrides are measured and materially above zero.
+5. **Put your model risk team in charge of agent evals.** They already govern models; agents are models with tools. Done when agent changes ship through the same gated process as model changes.
+6. **Ship servicing on five intents.** Disclosure on, escalation staffed, resolution measured rather than containment, repeat-contact tracked beside it. Done when resolution and repeat-contact move the right way for a quarter.
+7. **Expand by evidence.** More alert types, more product lines, more intents, each behind the same gates.
+
+## Worked example: the 03:00 structuring alert
+
+A pattern trips an alert at 03:00. By 08:30 the agent has assembled the account's twelve-month flow picture, matched the pattern against four past cases from your own dispositions, pulled the counterparty registry data, drafted a narrative with each claim cited to its record, and proposed "escalate to SAR review" with its reasoning visible. The analyst reads for six minutes, disagrees on one point, corrects it, and files the escalation. The correction is captured and becomes eval data. The agent never touched the account, moved no money, and filed nothing; it made a decision-ready file, and the human made the decision.
+
+<GuideFigure id="blueprint-banking-and-financial-services-swimlane" />
+
+## Your agent roster
+
+| Agent | What it does | Autonomy |
+|---|---|---|
+| Investigation agent | Assembles alert evidence, drafts narratives, proposes dispositions | Prepares only; analyst decides |
+| Credit file agent | Gathers and structures decision evidence | Prepares only; officer decides |
+| Servicing agent | Resolves narrow customer intents within the customer's own scope | Executes reversible actions; escalates the rest |
+| Payment exception agent | Investigates failed payments, proposes remediation | Remediation executes only through mandate-bound authorization |
+| Reporting draft agent | Drafts narrative against governed numbers | Drafts only; attestation is human |
+
+## Buy this, build that
+
+Take identity and the governance plane from your Microsoft estate if you have one; the sponsor and revocation machinery is genuinely there. Keep the investigation and credit corpora in-house, curated and owned, because they are made of your records. For servicing, outcome-priced vendors exist at roughly one to two dollars per automated resolution against a six-to-twelve dollar human comparator; take the price, but write resolution, not containment, into the contract's definition of done.
+
+## What stays human
+
+Every payment authorization, every credit decision, every attestation, every SAR filing, and every conversation where a customer is vulnerable. The deterministic boundary is not a limitation to engineer around; it is the reason the regulator lets you do the rest.
+
+## The economics
+
+Count analyst minutes per alert, officer hours per file, cost per resolved servicing contact including repeat contacts, and evidence-pack completeness. The term that dominates in this industry is the cost of a wrong outcome, which arrives as a regulatory finding. A business case that omits it is not conservative; it is wrong.
+
+## Watchouts
+
+- Deterministic authorization does not protect intent formation: one agentic payment protocol was red-teamed successfully by prompt injection operating entirely within mandate bounds. Injection defense and human confirmation of intent stay mandatory.
+- No published production case exists of an agent holding autonomous credit or payment authority in a regulated bank. Nobody credible is doing the thing the demos imply.
+- Credit and creditworthiness assessment is high-risk under the EU AI Act with obligations from 2 December 2027; the deferral moves the deadline, not the classification work.
+- When several agents contribute to one incident, no regulation or standard yet says who reports what. Design your incident process as if you will have to answer that question, because you will.
+
+<GuideFigure id="blueprint-banking-and-financial-services-metrics-limits" />
+
+[Download the architecture diagram (SVG)](/figures/blueprint-banking-and-financial-services-hero-architecture.svg)
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services)
+- [Security and identity findings](/library/layers/r10-security-and-identity/findings)
+- [Governance, risk and sovereignty findings](/library/layers/r11-governance-risk-sovereignty/findings)
+- [The economics model](/library/architecture/economics-model)
+
+</details>

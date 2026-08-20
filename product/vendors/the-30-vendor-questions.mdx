@@ -1,0 +1,69 @@
+---
+title: "The 30 vendor questions"
+description: "Ask these before the demo. Good answers are specific and checkable; bad answers redirect to roadmap, a customer story, or an adjacent feature."
+video: ""
+---
+
+A demo answers "can it do the thing." These answer "what happens when it does the thing at scale, in your estate, under your obligations, for three years." Take them into the meeting; require the answers in writing; date every answer, because product facts in this market change quarterly.
+
+<GuideFigure id="vendor-disqualifier-score-flow" />
+
+Six of these are disqualifiers where they apply: shared credentials for production agents, model output deciding in a deterministic zone, approval that exists only as prompt instruction, permissions that do not reach the index, deletion that does not cascade, and no enforceable spend cap. A vendor failing one of those in your scope is not a weaker candidate; it is not a candidate.
+
+## Identity and access
+
+1. Does each agent get a first-class identity, or does it run on a shared credential?
+2. Is there an accountable-human sponsor attribute, and what happens when that person leaves?
+3. Does the agent act as the requesting user, and does the downstream audit log show the human identity?
+4. Where is the entitlement decision made? (Right answer: in the system of record.)
+5. What can this agent do without a further grant: code, browsing, mailbox, meetings, directory presence?
+6. Are credentials short-lived, with zero standing privilege and a stated revocation latency?
+
+## Determinism and control
+
+7. Which decisions does the model make, and which do deterministic rules make? (The single most revealing question.)
+8. Can I enforce an approval gate the agent cannot bypass, outside the model?
+9. Does the agent pause before consequential actions by default? (At least one major platform's agents do not.)
+10. Where are the kill switches, how many, and what is the stop latency?
+11. Are your guardrails advisory or enforcing, and what is your measured evasion rate? (Honest answers say advisory.)
+
+## Memory and data
+
+12. What memory persists beyond a session, exactly?
+13. Can I export my agents' memory, in what format, and has a named customer done it?
+14. Do source permissions propagate into embeddings and derived artifacts, with retrieval filtered on the caller's live identity?
+15. When a user is deleted, what happens to vectors, memories, traces, and eval data, and how fast?
+16. Does every answer carry provenance to source spans?
+17. What happens on model upgrade: who pays for re-embedding and how is the index swapped?
+
+## Economics
+
+18. What exactly is the meter: tokens, actions, credits, seats, resolutions?
+19. What is the loop multiplier for agentic work versus chat on your platform?
+20. Can I set hard per-run and per-agent caps, and what happens at the cap? (Right answer: fail to a human queue.)
+21. Can cost be attributed to an individual agent and its sponsor?
+22. If pricing is per-user, what stops agent proliferation?
+
+## Evaluation and change
+
+23. Is there a path from production traces to eval datasets without manual export?
+24. Can domain experts build evals without writing code?
+25. When you change the underlying model, how do I know, and how do I test before production?
+26. Can I roll back an agent version, and has a customer done it?
+
+## Interoperability and exit
+
+27. Do you support the open tool and agent protocols, as client, server, or both, and which versions?
+28. If I leave, what comes with me: prompts, skills, evals, memory, traces, tool definitions?
+29. Which parts of my configuration are expressible outside your product? (A claim of no lock-in signals the vendor has not thought about it.)
+30. What have you deprecated in the last twenty-four months, and what notice did customers get? (The most predictive question in the set.)
+
+When a vendor slide claims "only we connect these six systems," run it through questions 27, 4, 14, 18, and 28. The claim is usually true and almost never the point: every one of those systems has a governed API, and the real questions are identity, permissions, cost, and exit.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The full question bank with per-question calibrations](/library/frameworks/vendor-question-bank)
+- [The scorecard method](/library/frameworks/vendor-scorecard)
+
+</details>

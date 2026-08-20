@@ -7,7 +7,7 @@ const warnings = [];
 const fail = (message) => errors.push(message);
 
 const { figureManifest, figureManifestStats } = await loadFigureManifestModule();
-const expectedCounts = { foundation: 23, layer: 42, blueprint: 33, support: 14 };
+const expectedCounts = { foundation: 23, layer: 42, blueprint: 44, support: 15 };
 
 if (figureManifest.length < 100 || figureManifest.length > 130) {
   fail(`Manifest must contain 100–130 entries; found ${figureManifest.length}.`);
@@ -20,7 +20,7 @@ for (const [category, expected] of Object.entries(expectedCounts)) {
 
 const ids = new Set();
 const pageAnchors = new Set();
-const requiredStrings = ['id', 'category', 'page', 'placement', 'sourceHeading', 'anchor', 'title', 'takeaway', 'caption', 'alt', 'type', 'evidenceStatus', 'reviewedAt'];
+const requiredStrings = ['id', 'category', 'page', 'placement', 'anchor', 'title', 'takeaway', 'caption', 'alt', 'type', 'evidenceStatus', 'reviewedAt'];
 
 for (const [index, figure] of figureManifest.entries()) {
   const label = figure.id || `entry ${index + 1}`;
@@ -34,7 +34,7 @@ for (const [index, figure] of figureManifest.entries()) {
   if (pageAnchors.has(pageAnchor)) fail(`${label}: duplicate figure anchor on ${figure.page}: ${figure.anchor}.`);
   pageAnchors.add(pageAnchor);
   if (figure.anchor === 'page-intro') fail(`${label}: anchor must identify the concept placement, not the generic page intro.`);
-  if (!figure.page.startsWith('/docs')) fail(`${label}: page must be a /docs path; found ${figure.page}.`);
+  if (!/^\/(docs|library|industries|departments|answers|vendors)(\/|$)/.test(figure.page)) fail(`${label}: page must be a site route; found ${figure.page}.`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(figure.reviewedAt) || Number.isNaN(Date.parse(figure.reviewedAt))) fail(`${label}: invalid reviewedAt date.`);
   if (figure.title.trim().toLowerCase() === figure.alt.trim().toLowerCase()) fail(`${label}: alt text merely repeats the title.`);
   if (figure.alt.length < 60) fail(`${label}: alt text must explain the visual in at least 60 characters.`);

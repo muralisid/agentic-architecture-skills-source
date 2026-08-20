@@ -5,14 +5,8 @@ import { defineDocs } from 'fumadocs-mdx/macro';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 
 const readerPageSchema = pageSchema.extend({
-  reader_summary: pageSchema.shape.title.optional(),
-  audience: pageSchema.shape.title.array().optional(),
-  decision_or_output: pageSchema.shape.title.optional(),
-  prerequisites: pageSchema.shape.title.array().optional(),
-  reading_time: pageSchema.shape.title.optional(),
-  evidence_status: pageSchema.shape.title.optional(),
-  next: pageSchema.shape.title.optional(),
-  figures: pageSchema.shape.title.array().optional(),
+  video: pageSchema.shape.title.optional(),
+  hero_figure: pageSchema.shape.title.optional(),
 });
 
 const docs = defineDocs({

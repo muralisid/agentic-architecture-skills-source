@@ -1,0 +1,81 @@
+---
+title: "Manufacturing and supply chain"
+description: "Turn a manufacturer into an agentic enterprise: the architecture, the first three use cases, and the plan, done for you."
+hero_figure: "blueprint-manufacturing-and-supply-chain-hero-architecture"
+video: ""
+---
+
+## Thursday, 6:40, the morning meeting
+
+Production, quality, and maintenance stand around one screen. The maintenance agent opens: two condition alerts overnight, both correlated with work history and parts availability, one proposed for Saturday's window with the crew and parts already checked, one watch-listed with the reasoning shown. The quality agent follows: last night's deviation on line 3 is assembled into a case file, with batch records, process data, and the two closest historical deviations attached, root-cause hypothesis ranked and waiting for the engineer. The supply exception agent reports nine POs chased overnight, three quantity changes executed inside its thresholds, one commercial-term change queued for a human. The changeover to the new format starts at 9:00 with the procedure, last run's issues, and current line state already on the team's tablets. Twenty minutes, decisions made, everyone to the floor. All of it deployable now.
+
+Here is the whole plan to get there.
+
+<GuideFigure id="blueprint-manufacturing-and-supply-chain-hero-architecture" fullWidth />
+
+## Start with these three use cases
+
+1. **Maintenance planning.** Correlate condition data, work history, and backlog; propose and schedule. First because a wrong proposal costs a rescheduled job, the data is already yours, and unplanned downtime is your most expensive failure.
+2. **Supply and order exceptions.** Investigate shorts, lates, and allocation conflicts across ERP, WMS, and supplier channels; disposition the routine within thresholds; queue the consequential. Second because exception volume is where planner hours go, and idempotent, compensated actions make it safe to automate the boring half.
+3. **Quality deviation preparation.** Assemble the evidence for each deviation and propose root cause; quality decides and releases. Third because it compounds: every well-recorded investigation makes the next one faster.
+
+Deliberately absent: autonomous production control. No named factory anywhere has published an MES agent taking autonomous production action with measured outcomes, and the figures circulating in this space trace to content farms.
+
+## The plan, step by step
+
+1. **Fix the master data owners first.** Assets, BOMs, suppliers: one named owner each. Done when disagreement counts are measured and falling.
+2. **Wire idempotency and compensation on every write path** an agent will touch. A duplicated PO is a real cost. Done when the duplicate-action rate is provably zero in test.
+3. **Ship maintenance planning against one line.** Proposals only, planner approves. Done when schedule adherence and emergency-work ratio improve for a quarter.
+4. **Ship exception handling with thresholds.** Quantity and date changes below the line flow; commercial terms never do. Done when the planner's exception queue halves and rework does not rise.
+5. **Ship deviation preparation.** Done when investigation cycle time falls with first-pass quality unchanged.
+6. **Keep the OT boundary absolute.** Agents live on the information path; the control path belongs to deterministic systems and the safety standards that govern them. Done is permanent: revert-to-manual drilled, agent output visually distinct from control alerts, and no agent addressable from the control network.
+7. **Then scale across lines and sites,** one notch of autonomy at a time, led by the intervention data.
+
+## Worked example: the short shipment that was not a crisis
+
+A supplier shorts a critical component at 22:00. The exception agent sees the ASN mismatch, checks stock across both warehouses, finds four days of cover, checks the production schedule, sees the affected order is not due for six, drafts the supplier chase, books the delta into next week's delivery inside its quantity threshold, and closes the exception with the full trail recorded. The planner reads it at 6:40 as a done item, not a problem. The one that was a problem, a short with two days of cover against a three-day lead time, is at the top of the queue with three recovery options costed. The agent executed the reversible; the human decides the trade-off.
+
+<GuideFigure id="blueprint-manufacturing-and-supply-chain-swimlane" />
+
+## Your agent roster
+
+| Agent | What it does | Autonomy |
+|---|---|---|
+| Maintenance planning agent | Correlates condition, history, backlog; proposes and schedules | Proposes; planner approves |
+| Supply exception agent | Investigates and dispositions exceptions across systems | Executes within thresholds; escalates terms |
+| Quality investigation agent | Assembles deviation evidence, proposes root cause | Prepares; quality releases |
+| Changeover assistant | Procedure, last-run issues, and line state at the point of work | Read-only |
+| Document agent | Extracts and validates shipping, customs, compliance documents | Executes with spot-check sampling |
+
+## Buy this, build that
+
+Your industrial vendors (EAM, historian, MES) ship advisory agents that are genuinely advisory; take those where they touch their own data. Build the cross-system exception layer yourself, because it spans ERP, WMS, and suppliers, and no single vendor owns that seam. Treat any claim of autonomous production agents as a request for a named factory reference with measured outcomes; as of August 2026 there is none.
+
+## What stays human
+
+Everything on the control path. Safety-instrumented functions exclude machine learning by standard, and this guide agrees with the standard. Release decisions in regulated production. Trade-offs under scarcity. And the residual work the whole plan is built around: supervise, adjust, maintain, expand, improve.
+
+## The economics
+
+Count unplanned downtime, changeover minutes, first-pass yield, planner hours recovered, and emergency-work ratio. The direction is supported by physical automation at scale: one major logistics operator passed a million robots with packages per employee up more than twentyfold over a decade. What that evidence supports is the shape of the work changing; it does not support a headcount ratio or a timeline, and this page will not sell you one.
+
+## Watchouts
+
+- The famous lights-out plant runs several dozen workers per shift, not the nine the internet says. Fourteen years on, no plant of that kind runs fully dark at scale. Plan for different work, not empty floors.
+- No named-factory MES agent case with measured outcomes exists. Be the first carefully or be second cheaply; both are respectable.
+- Parsing quality caps the document agent: even the best parsers lose at least 14% against ground-truth structure. Spot-check by sampling, forever.
+- Master data decays faster than agents improve. The owner in step 1 is the whole game.
+
+<GuideFigure id="blueprint-manufacturing-and-supply-chain-metrics-limits" />
+
+[Download the architecture diagram (SVG)](/figures/blueprint-manufacturing-and-supply-chain-hero-architecture.svg)
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Manufacturing blueprint](/library/blueprints/verticals/manufacturing-and-supply-chain)
+- [Line of business and OT findings](/library/layers/r05-lob-and-ot/findings)
+- [Integration fabric findings](/library/layers/r03-integration-fabric/findings)
+- [Operating model findings](/library/layers/r13-operating-model/findings)
+
+</details>

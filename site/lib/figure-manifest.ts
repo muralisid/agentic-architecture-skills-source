@@ -113,7 +113,8 @@ export interface FigureManifestEntry {
   category: FigureCategory;
   page: string;
   placement: string;
-  sourceHeading: string;
+  /** Provenance note only; no build step matches it against document headings. */
+  sourceHeading?: string;
   anchor?: string;
   title: string;
   takeaway: string;
@@ -684,6 +685,32 @@ const blueprintFigures = blueprints.flatMap((blueprint): FigureManifestEntry[] =
       ] },
     }),
     defineFigure({
+      id: `${prefix}-hero-architecture`, category: 'blueprint', page: `/${blueprint.group === 'verticals' ? 'industries' : 'departments'}/${blueprint.id}`, placement: 'Page hero', sourceHeading: 'Hero',
+      title: `${blueprint.title}: the target architecture`, takeaway: `Agents prepare and execute the routine; deterministic controls authorize; people decide, handle exceptions, and stay accountable.`,
+      caption: blueprint.control,
+      alt: `Target architecture for ${blueprint.title.toLowerCase()}: work arrives, agents prepare with evidence, a deterministic control layer authorizes, systems of record capture the outcome, and accountable people supervise and handle exceptions throughout.`,
+      type: 'architecture', evidenceStatus: 'author-position', dataBearing: false, sources: [source],
+      data: {
+        nodes: [
+          { id: 'work', label: 'Work arrives', detail: blueprint.trigger, kind: 'human' },
+          { id: 'agents', label: 'Agents prepare and execute', detail: blueprint.prepare, kind: 'agent' },
+          { id: 'controls', label: 'Deterministic controls', detail: blueprint.authorize, kind: 'control' },
+          { id: 'records', label: 'Systems of record', detail: blueprint.record, kind: 'system' },
+          { id: 'people', label: 'People decide and supervise', detail: blueprint.human, kind: 'human' },
+          { id: 'evidence', label: 'Evidence', detail: 'Every action attributable and reviewable.', kind: 'evidence' },
+        ],
+        edges: [
+          { from: 'work', to: 'agents' },
+          { from: 'agents', to: 'controls', label: 'propose' },
+          { from: 'controls', to: 'records', label: 'authorized actions' },
+          { from: 'people', to: 'controls', label: 'approve exceptions' },
+          { from: 'agents', to: 'people', label: 'escalate' },
+          { from: 'records', to: 'evidence' },
+        ],
+        note: blueprint.honestLimit,
+      },
+    }),
+    defineFigure({
       id: `${prefix}-metrics-limits`, category: 'blueprint', page, placement: 'Measures and honest limits', sourceHeading: '6. Honest limits',
       title: `${blueprint.title}: measure the outcome and the boundary`, takeaway: blueprint.honestLimit,
       caption: `Track quality and control failure alongside speed or volume.`,
@@ -695,6 +722,7 @@ const blueprintFigures = blueprints.flatMap((blueprint): FigureManifestEntry[] =
 });
 
 const supportingFigures: FigureManifestEntry[] = [
+  defineFigure({ id: 'vendor-coverage-matrix', category: 'support', page: '/vendors', placement: 'Coverage at a glance', sourceHeading: 'The matrix', title: 'Who genuinely covers which layer', takeaway: 'Nobody covers all fourteen layers; the gaps in your candidate\'s row are your integration work.', caption: 'Core means the layer is the product. Real is genuine capability off-centre. Adjacent touches it through another product. Claimed is marketing the research could not substantiate.', alt: 'Matrix of vendor groups against the fourteen enterprise layers, marking core, real, adjacent, and claimed coverage, with independents owning the newest disciplines.', type: 'matrix', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Vendor coverage matrix', '/library/vendors/coverage-matrix')], data: { rows: ['Hyperscalers', 'Microsoft estate', 'Salesforce', 'ServiceNow', 'SAP', 'Independents'], axisColumns: ['Infra', 'Data', 'Integration', 'Records', 'LoB and OT', 'Agent platform', 'Identity', 'Governance', 'Observability', 'Operating model'], cells: [ { row: 'Hyperscalers', column: 'Infra', label: 'Core' }, { row: 'Microsoft estate', column: 'Identity', label: 'Core' }, { row: 'Salesforce', column: 'Records', label: 'Core', detail: 'Customer records' }, { row: 'ServiceNow', column: 'Governance', label: 'Core', detail: 'Control tower' }, { row: 'SAP', column: 'Records', label: 'Core', detail: 'Embedded only' }, { row: 'Independents', column: 'Observability', label: 'Core' }, { row: 'Independents', column: 'Operating model', label: 'Thin', detail: 'Almost no product surface from anyone' } ], note: 'Full matrix with all fourteen layers and the consolidation record: the vendor research library.' } }),
   defineFigure({ id: 'support-accountability-enforcement', category: 'support', page: '/docs/architecture/identity-security-model', placement: 'Misconception explainer', sourceHeading: 'One sentence', title: 'Accountability is not enforcement', takeaway: 'A named sponsor answers for purpose and outcomes; a deterministic control prevents or permits the action.', caption: 'Both are necessary and neither substitutes for the other.', alt: 'Side-by-side distinction between human accountability for purpose and outcomes and technical enforcement of permissions at the action boundary.', type: 'comparison', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Identity and security model', '/docs/architecture/identity-security-model')], data: { columns: [{ label: 'Accountability', items: ['Named human sponsor', 'Purpose and outcome ownership', 'Exception and appeal responsibility'], kind: 'human' }, { label: 'Enforcement', items: ['Deterministic policy decision', 'Permission at the gateway', 'Allow, deny, limit, or stop'], kind: 'control' }] } }),
   defineFigure({ id: 'support-licensed-metered-estates', category: 'support', page: '/docs/architecture/master-target-state', placement: 'Global enterprise architecture', sourceHeading: 'Architecture A: Global regulated enterprise', title: 'Licensed and metered agent estates', takeaway: 'One gateway cannot govern agents that run inside a vendor’s licensed control plane.', caption: 'Use tenant policy and telemetry extraction for the licensed estate; direct gateway enforcement for the metered estate.', alt: 'Two-estate architecture comparing licensed suite agents governed through tenant policy with metered agents governed through an enterprise gateway and shared evidence plane.', type: 'comparison', evidenceStatus: 'author-position', dataBearing: false, sources: [guideSource('Master target-state architecture', '/docs/architecture/master-target-state')], data: { columns: [{ label: 'Licensed estate', items: ['Vendor execution plane', 'Tenant policy', 'Telemetry extraction', 'Limited gateway visibility'], kind: 'system' }, { label: 'Metered estate', items: ['Enterprise runtime', 'Gateway enforcement', 'Per-run budgets', 'Full action trace'], kind: 'control' }] } }),
   defineFigure({ id: 'support-derived-erasure-tree', category: 'support', page: '/docs/architecture/memory-pipeline-architecture', placement: 'Erasure obligations', sourceHeading: 'Governance that has to be designed, not inherited', title: 'Deletion must reach every derivative', takeaway: 'Deleting a source record is incomplete when its vectors, memories, traces, or eval cases remain.', caption: 'Derived artifacts inherit the strictest source classification and erasure obligation.', alt: 'Family tree from a classified source record to chunks, embeddings, memories, traces, and evaluation datasets, all connected to one cascading erasure request.', type: 'map', evidenceStatus: 'mixed-evidence', dataBearing: false, sources: [guideSource('Memory pipeline architecture', '/docs/architecture/memory-pipeline-architecture')], data: { nodes: [{ id: 'source', label: 'Source record', kind: 'system', emphasis: true }, { id: 'chunk', label: 'Parsed chunks', kind: 'evidence' }, { id: 'vector', label: 'Embeddings', kind: 'evidence' }, { id: 'memory', label: 'Durable memory', kind: 'agent' }, { id: 'trace', label: 'Traces', kind: 'evidence' }, { id: 'eval', label: 'Eval datasets', kind: 'control' }], edges: [{ from: 'source', to: 'chunk', kind: 'evidence' }, { from: 'chunk', to: 'vector', kind: 'evidence' }, { from: 'vector', to: 'memory', kind: 'evidence' }, { from: 'source', to: 'trace', kind: 'evidence' }, { from: 'trace', to: 'eval', kind: 'evidence' }] } }),

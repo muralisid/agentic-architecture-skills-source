@@ -11,6 +11,14 @@ const config = {
   turbopack: {
     root: siteRoot,
   },
+  async redirects() {
+    return [
+      // The first-day site lived under /docs; the corpus mirror now lives under /library.
+      { source: '/docs/:path*', destination: '/library/:path*', permanent: false },
+      // The interactive worksheets were removed by design decision.
+      { source: '/tools/:path*', destination: '/', permanent: false },
+    ];
+  },
 };
 
 export default withMDX(config);

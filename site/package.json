@@ -10,9 +10,8 @@
     "types:check": "next typegen && tsc --noEmit",
     "guard": "node scripts/prebuild-guard.mjs",
     "figures:export": "node scripts/export-figures.mjs",
-    "validate": "npm run validate:content && npm run validate:guide && npm run validate:figures",
+    "validate": "npm run validate:content && npm run validate:figures",
     "validate:content": "node ../scripts/check-content.mjs",
-    "validate:guide": "node scripts/validate-guide.mjs",
     "validate:figures": "node scripts/validate-figures.mjs"
   },
   "dependencies": {

@@ -1,0 +1,72 @@
+---
+title: "Supply chain"
+description: "Turn supply chain operations agentic where planners lose their hours: two use cases, the plan, and a worked example."
+hero_figure: "blueprint-supply-chain-hero-architecture"
+video: ""
+---
+
+## Friday, 7:30, the planning huddle
+
+The exception board is short. Overnight the agent investigated every short shipment, late PO, and allocation conflict: evidence gathered across ERP, WMS, and supplier portals, the routine half dispositioned inside its thresholds with idempotent, compensated writes, the consequential half queued with recovery options costed. Supplier chases went out in the night and three confirmations already came back. The document agent cleared yesterday's customs pack with two flags for human eyes. Planners spend the morning on trade-offs under scarcity, which is the job they were hired for. All of it deployable now.
+
+Here is the whole plan.
+
+<GuideFigure id="blueprint-supply-chain-hero-architecture" fullWidth />
+
+## Start with these two use cases
+
+1. **Exception investigation and disposition.** Shorts, lates, conflicts, worked to evidence-backed dispositions; routine executes inside thresholds, consequential queues for a human. First because exceptions are where planner hours go, and thresholds make the safe half automatable.
+2. **Supplier communication.** Chase, confirm, reconcile across email and portals, disclosed and logged. Second because cycle time is measurable and the blast radius is a follow-up email.
+
+Deliberately absent: shop-floor actuation. The warehouse and production floor carry the OT boundary; agents work the information path.
+
+## The plan, step by step
+
+1. **Name the master-data owners**: items, suppliers, BOMs. Done when disagreement counts fall monthly.
+2. **Wire idempotency and compensation on every write path.** A duplicated PO is real money. Done when duplicate-action rate is provably zero under retry storms in test.
+3. **Set the thresholds in the system, not the prompt**: quantity and date changes below the line flow; commercial terms never. Done when the ERP enforces them.
+4. **Ship exception handling on one category.** Done when the planner queue halves with rework flat.
+5. **Ship supplier chases with disclosure.** Done when response cycle time falls.
+6. **Add document extraction with sampled review,** because a customs error is a compliance event. Done when sampling is standing, not initial.
+
+## Worked example: the allocation conflict
+
+Two orders compete for the same lot. The agent assembles both orders' promise dates, margins, customer tiers, and the recovery options: split with air freight on the delta, slip order B three days, or pull forward next week's receipt. Each option carries its cost. The planner picks in two minutes at 7:35, the agent executes the chosen writes with compensation armed, and the decision trail records who chose what against which options. The agent did the archaeology; the human made the trade-off; the system can undo the write if the receipt does not land.
+
+<GuideFigure id="blueprint-supply-chain-swimlane" />
+
+## Your agent roster
+
+| Agent | What it does | Autonomy |
+|---|---|---|
+| Exception agent | Investigates and dispositions across systems | Executes within thresholds; escalates terms |
+| Supplier communication agent | Chases, confirms, reconciles | Executes routine comms; disclosed |
+| Planning analysis agent | Explains variance and demand disagreement | Explains only |
+| Document agent | Extracts and validates trade documents | Executes with sampled review |
+
+## What stays human
+
+Trade-offs under scarcity, supplier relationships, disruption command, and anything commercial. And the floor: agents on the information path, not the control path.
+
+## The economics
+
+Exception clear rate with rework, planner hours recovered, duplicate-action rate at zero, supplier response cycle time, parsing fidelity spot-checks. The compounding term is upstream: every exception whose root cause is recorded improves the master data everything else grounds on.
+
+## Watchouts
+
+- No named-factory autonomous production agent exists with measured outcomes; keep this playbook at the planning layer and be suspicious of anyone who says otherwise.
+- Parsing quality caps document work: even the best parsers lose at least 14% against ground truth. Sample forever.
+- An agent cannot assume a write succeeded or that the physical world is reversible; compensation is architecture, not error handling.
+
+<GuideFigure id="blueprint-supply-chain-metrics-limits" />
+
+[Download the architecture diagram (SVG)](/figures/blueprint-supply-chain-hero-architecture.svg)
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Supply chain blueprint](/library/blueprints/departments/supply-chain)
+- [Integration fabric findings](/library/layers/r03-integration-fabric/findings)
+- [Line of business and OT findings](/library/layers/r05-lob-and-ot/findings)
+
+</details>
