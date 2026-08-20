@@ -14,6 +14,21 @@ const outDir = path.join(siteDir, 'content', 'docs');
 const REPO = 'https://github.com/muralisidfn7/agentic-enterprise';
 const BRANCH = 'main';
 
+// Files under publication hold are part of the repo but excluded from the site.
+// See PUBLICATION-HOLD.md at the repo root for why each one is held.
+async function readHold() {
+  const held = new Set();
+  try {
+    const text = await readFile(path.join(repoDir, 'PUBLICATION-HOLD.md'), 'utf8');
+    const heldSection = text.split('## Deliberately not held')[0];
+    for (const m of heldSection.matchAll(/^\|\s*`([^`]+)`\s*\|/gm)) held.add(m[1].trim());
+  } catch {
+    // No register means nothing is held.
+  }
+  return held;
+}
+const HELD = await readHold();
+
 // Repo-relative source path -> site doc slug (no extension, relative to content/docs).
 function slugFor(rel) {
   const parts = rel.split('/');
@@ -122,6 +137,7 @@ function esc(s) {
 const files = (await collect('.')).map((f) => f.replace(/^\.\//, ''));
 const map = new Map(); // repo-relative path -> slug
 for (const rel of files) {
+  if (HELD.has(rel)) continue;
   const slug = slugFor(rel);
   if (slug) map.set(rel, slug);
 }
@@ -137,6 +153,7 @@ function rewriteLink(sourceRel, href) {
   const [pathPart, hash = ''] = href.split('#');
   const resolved = path.posix.normalize(path.posix.join(path.posix.dirname(sourceRel), pathPart));
   const clean = resolved.replace(/^\.\//, '');
+  if (HELD.has(clean)) return null; // held: drop the link, keep the words
   if (map.has(clean)) return routeFor(map.get(clean)) + (hash ? '#' + hash : '');
   // Directory link, e.g. profiles/
   const asIndex = path.posix.join(clean.replace(/\/$/, ''), 'README.md');
@@ -169,7 +186,10 @@ for (const [rel, slug] of map) {
   let body = raw.replace(/^#\s+.*\n/, ''); // title moves into frontmatter
   if (descriptionLine) body = body.replace(descriptionLine + '\n', ''); // and so does the standfirst
   body = body.replace(/^\s*---\s*\n/, ''); // drop the rule that separated them
-  body = body.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, href) => `[${text}](${rewriteLink(rel, href)})`);
+  body = body.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, href) => {
+    const target = rewriteLink(rel, href);
+    return target === null ? text : `[${text}](${target})`;
+  });
   body = linkifyBarePaths(rel, body);
   body = body.trimStart();
 
