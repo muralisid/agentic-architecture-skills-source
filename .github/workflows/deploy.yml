@@ -1,0 +1,100 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    name: Content and boundary checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Content checks (em dashes, internal links)
+        run: node scripts/check-content.mjs
+
+      # The blocklist is private and is never committed. It is supplied as a secret.
+      # A scan that cannot run is a failure, not a pass.
+      - name: Publication boundary scan
+        env:
+          BOUNDARY_BLOCKLIST: ${{ secrets.BOUNDARY_BLOCKLIST }}
+        run: |
+          if [ -z "$BOUNDARY_BLOCKLIST" ]; then
+            echo "::error::BOUNDARY_BLOCKLIST secret is not set. Refusing to deploy without a boundary scan."
+            exit 1
+          fi
+          printf '%s' "$BOUNDARY_BLOCKLIST" > "$RUNNER_TEMP/blocklist.txt"
+          BLOCKLIST="$RUNNER_TEMP/blocklist.txt" node scripts/boundary-scan.mjs
+          rm -f "$RUNNER_TEMP/blocklist.txt"
+
+  deploy:
+    name: Build and deploy
+    needs: guard
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ (github.ref == 'refs/heads/main' && vars.PUBLISH_PRODUCTION == 'true') && 'production' || 'preview' }}
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      # Production is opt-in. Until the repository variable PUBLISH_PRODUCTION is
+      # set to true, every push deploys as a preview instead of going live.
+      - name: Resolve target
+        id: target
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ] && [ "${{ vars.PUBLISH_PRODUCTION }}" = "true" ]; then
+            echo "flag=--prod" >> "$GITHUB_OUTPUT"
+            echo "env=production" >> "$GITHUB_OUTPUT"
+          else
+            echo "flag=" >> "$GITHUB_OUTPUT"
+            echo "env=preview" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Deploying to ${{ github.ref }} as $( [ "${{ vars.PUBLISH_PRODUCTION }}" = "true" ] && echo production || echo preview )"
+
+      - name: Pull Vercel environment
+        working-directory: site
+        run: vercel pull --yes --environment=${{ steps.target.outputs.env }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build
+        working-directory: site
+        run: vercel build ${{ steps.target.outputs.flag }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy
+        id: deploy
+        working-directory: site
+        run: |
+          url=$(vercel deploy --prebuilt ${{ steps.target.outputs.flag }} --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed: $url"
+
+      - name: Summary
+        run: |
+          {
+            echo "### Deployed"
+            echo ""
+            echo "- Target: **${{ steps.target.outputs.env }}**"
+            echo "- URL: ${{ steps.deploy.outputs.url }}"
+            if [ "${{ steps.target.outputs.env }}" != "production" ]; then
+              echo ""
+              echo "Production is gated. Set the repository variable \`PUBLISH_PRODUCTION\` to \`true\` to promote pushes to main."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

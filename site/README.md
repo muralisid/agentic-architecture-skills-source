@@ -33,3 +33,21 @@ Set `NEXT_PUBLIC_SITE_URL` to the production URL so canonical links, Open Graph 
 ## What the site provides beyond the repository
 
 Sidebar navigation and breadcrumbs, full-text search (Orama, built at compile time), per-page Open Graph images, `llms.txt` and `llms-full.txt` for machine consumption, per-page markdown export, a sitemap, and dark mode.
+
+## Automatic deployment
+
+`.github/workflows/deploy.yml` deploys on every push to `main`, after two gates:
+
+1. `scripts/check-content.mjs`: no em dashes in guide content, no broken internal links.
+2. `scripts/boundary-scan.mjs`: no reserved terms from the private publication blocklist, which is supplied as the `BOUNDARY_BLOCKLIST` repository secret and never committed. A scan that cannot run fails the build rather than passing it.
+
+**Production is opt-in.** Until the repository variable `PUBLISH_PRODUCTION` is set to `true`, every push deploys as a Vercel preview instead of going live. Set it when the guide is cleared to publish.
+
+Required repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `BOUNDARY_BLOCKLIST`.
+
+Run either gate locally:
+
+```bash
+node scripts/check-content.mjs
+BLOCKLIST=/path/to/blocklist.txt node scripts/boundary-scan.mjs
+```
