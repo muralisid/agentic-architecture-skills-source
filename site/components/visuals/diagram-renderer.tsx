@@ -45,18 +45,20 @@ function nodeClass(kind?: VisualNodeKind) {
   return kindClasses[kind ?? 'neutral'];
 }
 
-function StageDiagram({ figure, interactive = true }: { figure: FigureManifestEntry; interactive?: boolean }) {
+function StageDiagram({ figure }: { figure: FigureManifestEntry }) {
   const stages = figure.data.stages ?? [];
   const isLoop = figure.type === 'loop';
 
+  const singleRow = stages.length <= 4;
+
   return (
-    <div
-      className="rounded-md sm:overflow-x-auto sm:snap-x focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring print:overflow-visible"
-      role={interactive ? 'region' : undefined}
-      aria-label={interactive ? `Scrollable sequence for ${figure.title}` : undefined}
-      tabIndex={interactive ? 0 : undefined}
-    >
-      <ol className="grid grid-flow-row gap-3 px-1 pb-3 pt-1 sm:auto-cols-[minmax(11rem,1fr)] sm:grid-flow-col print:grid-flow-row print:grid-cols-3">
+    <div className="rounded-md print:overflow-visible">
+      <ol
+        className={cn(
+          'grid grid-flow-row gap-3 px-1 pb-3 pt-1 print:grid-flow-row print:grid-cols-3',
+          singleRow ? 'sm:grid-flow-col sm:auto-cols-fr' : 'sm:grid-cols-2 lg:grid-cols-3',
+        )}
+      >
         {stages.map((stage, index) => (
           <li key={`${stage.label}-${index}`} className="relative min-w-0 snap-start">
             <div className={cn('h-full rounded-xl border p-4 shadow-sm', nodeClass(stage.kind))}>
@@ -73,7 +75,7 @@ function StageDiagram({ figure, interactive = true }: { figure: FigureManifestEn
                 </p>
               ) : null}
             </div>
-            {index < stages.length - 1 ? (
+            {singleRow && index < stages.length - 1 ? (
               <span className="pointer-events-none absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-sm font-semibold text-fd-muted-foreground sm:block" aria-hidden="true">
                 →
               </span>
@@ -179,27 +181,22 @@ function TimelineDiagram({ figure }: { figure: FigureManifestEntry }) {
   );
 }
 
-function SpectrumDiagram({ figure, interactive = true }: { figure: FigureManifestEntry; interactive?: boolean }) {
+function SpectrumDiagram({ figure }: { figure: FigureManifestEntry }) {
   const stages = figure.data.stages ?? [];
 
   return (
-    <div
-      className="max-w-full overflow-x-auto rounded-md pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring"
-      role={interactive ? 'region' : undefined}
-      aria-label={interactive ? `Scrollable spectrum for ${figure.title}` : undefined}
-      tabIndex={interactive ? 0 : undefined}
-    >
-      <div className="min-w-[44rem] print:min-w-0">
-        <div className="flex items-center justify-between gap-4 px-1 text-[0.6875rem] font-semibold uppercase tracking-wider text-fd-muted-foreground">
+    <div className="max-w-full rounded-md pb-2">
+      <div>
+        <div className="hidden items-center justify-between gap-4 px-1 text-[0.6875rem] font-semibold uppercase tracking-wider text-fd-muted-foreground sm:flex">
           <span>Start of range</span>
           <span>End of range</span>
         </div>
-        <div className="relative mx-4 mt-3 h-2 rounded-full bg-fd-muted" aria-hidden="true">
+        <div className="relative mx-4 mt-3 hidden h-2 rounded-full bg-fd-muted sm:block" aria-hidden="true">
           <div className="absolute inset-y-0 left-0 w-1/3 rounded-full bg-teal-500/65" />
           <div className="absolute inset-y-0 left-1/3 w-1/3 bg-violet-500/60" />
           <div className="absolute inset-y-0 right-0 w-1/3 rounded-full bg-rose-500/60" />
         </div>
-        <ol className="m-0 mt-[-0.625rem] grid list-none auto-cols-[minmax(8.5rem,1fr)] grid-flow-col gap-2 p-0 print:grid-flow-row print:grid-cols-3">
+        <ol className="m-0 mt-2 grid list-none grid-flow-row gap-2 p-0 sm:mt-[-0.625rem] sm:auto-cols-fr sm:grid-flow-col print:grid-flow-row print:grid-cols-3">
           {stages.map((stage, index) => (
             <li key={`${stage.label}-${index}`} className="relative min-w-0 pt-0">
               <span className={cn('relative z-10 mx-auto flex size-5 items-center justify-center rounded-full border-2 border-fd-background text-[0.625rem] font-semibold shadow-sm', nodeClass(stage.kind))} aria-hidden="true">
@@ -324,7 +321,7 @@ function LoopDiagram({ figure }: { figure: FigureManifestEntry }) {
   );
 }
 
-function TopologyMapDiagram({ figure, interactive = true }: { figure: FigureManifestEntry; interactive?: boolean }) {
+function TopologyMapDiagram({ figure }: { figure: FigureManifestEntry }) {
   const nodes = figure.data.nodes ?? [];
   const edges = figure.data.edges ?? [];
   const columns = nodes.length > 6 ? 5 : 3;
@@ -341,17 +338,11 @@ function TopologyMapDiagram({ figure, interactive = true }: { figure: FigureMani
     x: margin + (index % columns) * (nodeWidth + gapX),
     y: margin + Math.floor(index / columns) * (nodeHeight + gapY),
   }));
-  const markerId = `map-arrow-${figure.id}-${interactive ? 'main' : 'zoom'}`;
+  const markerId = `map-arrow-${figure.id}`;
 
   return (
-    <div
-      data-semantic="topology-map"
-      className="max-w-full overflow-x-auto rounded-xl border bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring"
-      role={interactive ? 'region' : undefined}
-      aria-label={interactive ? `Scrollable topology map for ${figure.title}` : undefined}
-      tabIndex={interactive ? 0 : undefined}
-    >
-      <svg viewBox={`0 0 ${width} ${height}`} className="h-auto min-w-[42rem] w-full" aria-hidden="true" focusable="false">
+    <div data-semantic="topology-map" className="max-w-full rounded-xl border bg-white">
+      <svg viewBox={`0 0 ${width} ${height}`} className="h-auto w-full" aria-hidden="true" focusable="false">
         <defs>
           <marker id={markerId} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
@@ -470,35 +461,32 @@ function ColumnsDiagram({ figure }: { figure: FigureManifestEntry }) {
   );
 }
 
-function MatrixDiagram({ figure, interactive = true }: { figure: FigureManifestEntry; interactive?: boolean }) {
+function MatrixDiagram({ figure }: { figure: FigureManifestEntry }) {
   const rows = figure.data.rows ?? [];
   const columns = figure.data.axisColumns ?? [];
   const cells = figure.data.cells ?? [];
+  const cellFor = (row: string, column: string) =>
+    cells.find((candidate) => candidate.row === row && candidate.column === column);
 
   return (
-    <div
-      className="overflow-x-auto rounded-xl border bg-fd-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring"
-      role={interactive ? 'region' : undefined}
-      aria-label={interactive ? `Scrollable matrix for ${figure.title}` : undefined}
-      tabIndex={interactive ? 0 : undefined}
-    >
-      <table className="m-0 min-w-[42rem] border-collapse text-left text-xs">
+    <div className="rounded-xl border bg-fd-background">
+      <table className="m-0 hidden w-full table-fixed border-collapse text-left text-xs sm:table print:table">
         <thead>
           <tr className="bg-fd-muted/55">
-            <th className="border-b border-r px-3 py-3 font-semibold" scope="col">Dimension</th>
+            <th className="w-[18%] break-words border-b border-r px-3 py-3 font-semibold" scope="col">Dimension</th>
             {columns.map((column) => (
-              <th key={column} className="border-b border-r px-3 py-3 font-semibold last:border-r-0" scope="col">{column}</th>
+              <th key={column} className="break-words border-b border-r px-2 py-3 font-semibold last:border-r-0" scope="col">{column}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
             <tr key={row}>
-              <th className="border-b border-r bg-fd-muted/25 px-3 py-3 font-medium last:border-b-0" scope="row">{row}</th>
+              <th className="break-words border-b border-r bg-fd-muted/25 px-3 py-3 font-medium last:border-b-0" scope="row">{row}</th>
               {columns.map((column) => {
-                const cell = cells.find((candidate) => candidate.row === row && candidate.column === column);
+                const cell = cellFor(row, column);
                 return (
-                  <td key={`${row}-${column}`} className={cn('border-b border-r px-3 py-3 align-top last:border-r-0', cell?.emphasis && 'bg-teal-500/10')}>
+                  <td key={`${row}-${column}`} className={cn('break-words border-b border-r px-2 py-3 align-top last:border-r-0', cell?.emphasis && 'bg-teal-500/10')}>
                     {cell ? (
                       <>
                         <span className="font-medium">{cell.label}</span>
@@ -514,6 +502,28 @@ function MatrixDiagram({ figure, interactive = true }: { figure: FigureManifestE
           ))}
         </tbody>
       </table>
+      <div className="divide-y sm:hidden print:hidden">
+        {rows.map((row) => (
+          <div key={row} className="p-3">
+            <p className="m-0 text-xs font-semibold">{row}</p>
+            <ul className="m-0 mt-2 list-none space-y-1.5 p-0 text-xs leading-5">
+              {columns.map((column) => {
+                const cell = cellFor(row, column);
+                if (!cell) return null;
+                return (
+                  <li key={`${row}-${column}`} className="flex flex-wrap gap-x-2">
+                    <span className="font-medium text-fd-muted-foreground">{column}:</span>
+                    <span className={cn(cell.emphasis && 'font-semibold')}>
+                      {cell.label}
+                      {cell.detail ? ` (${cell.detail})` : ''}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -624,17 +634,17 @@ export function DiagramRenderer({ figure, className, labelled = true }: DiagramR
   let content;
 
   if (figure.type === 'loop') content = <LoopDiagram figure={figure} />;
-  else if (figure.type === 'map' && figure.data.nodes?.length && figure.data.edges?.length) content = <TopologyMapDiagram figure={figure} interactive={labelled} />;
+  else if (figure.type === 'map' && figure.data.nodes?.length && figure.data.edges?.length) content = <TopologyMapDiagram figure={figure} />;
   else if (figure.data.lanes?.length) content = <SwimlaneDiagram figure={figure} />;
-  else if (figure.data.rows?.length && figure.data.axisColumns?.length) content = <MatrixDiagram figure={figure} interactive={labelled} />;
+  else if (figure.data.rows?.length && figure.data.axisColumns?.length) content = <MatrixDiagram figure={figure} />;
   else if (figure.type === 'comparison' && figure.data.columns?.length) content = <ColumnsDiagram figure={figure} />;
   else if (figure.type === 'architecture' && figure.data.nodes?.length) content = <ArchitectureDiagram figure={figure} />;
   else if (figure.type === 'funnel' && figure.data.stages?.length) content = <FunnelDiagram figure={figure} />;
   else if (figure.type === 'timeline' && figure.data.stages?.length) content = <TimelineDiagram figure={figure} />;
-  else if (figure.type === 'spectrum' && figure.data.stages?.length) content = <SpectrumDiagram figure={figure} interactive={labelled} />;
+  else if (figure.type === 'spectrum' && figure.data.stages?.length) content = <SpectrumDiagram figure={figure} />;
   else if (figure.type === 'stack' && figure.data.stages?.length) content = <StackDiagram figure={figure} />;
   else if (figure.data.columns?.length) content = <ColumnsDiagram figure={figure} />;
-  else if (figure.data.stages?.length) content = <StageDiagram figure={figure} interactive={labelled} />;
+  else if (figure.data.stages?.length) content = <StageDiagram figure={figure} />;
   else if (figure.data.metrics?.length) content = <MetricsDiagram figure={figure} />;
   else if (figure.data.nodes?.length) content = <NodesDiagram figure={figure} />;
   else content = <ItemsDiagram figure={figure} />;

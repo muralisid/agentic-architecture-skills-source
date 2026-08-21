@@ -16,6 +16,28 @@ html > body[data-scroll-locked] {
   outline-offset: 3px;
 }
 
+/* Articles never scroll horizontally: tables and code wrap to the container instead. */
+.prose table {
+  max-width: 100%;
+}
+
+.prose th,
+.prose td {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.prose :is(th, td):first-child {
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.prose pre,
+.prose pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 [data-visual-concept] {
   margin-block: 2.5rem;
 }
