@@ -1,30 +1,40 @@
 ---
 title: "The autonomy contract"
 icon: "SlidersHorizontal"
-description: "A x L with a controls column that is the contract, readiness gates that cap safe autonomy, and an oversight gate expressed as a burst rate."
+description: "How much an agent may do on its own, how it may learn, and the controls, readiness checks, and oversight capacity that earn each step up."
 hero_figure: "autonomy-learning-matrix"
 ---
 
+<PlainTerms>
+Every task an agent takes on sits at a chosen level of independence, from a person doing the work with help to the agent running unattended under policy. This page sets out those levels, the controls each one requires, the readiness a company must show before moving up, and how much human supervision each level really needs. The one thing to remember: a level you cannot supervise is a level you have not reached.
+</PlainTerms>
+
 ## Two axes, applied per workload
 
-**Autonomy** (who executes, what the human holds): A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, A5 governed lights-out. **Learning** (whether and under what control the agent improves): L0 fixed policy, L1 curated learning, L2 governed learning (the flywheel), L3 continuous learning inside guardrails. They move independently; every workload sits somewhere on the grid deliberately, and movement is earned and reversible.
+**In short:** Each piece of work gets two settings, how independent the agent is and whether it may learn, both chosen on purpose and reversible.
+
+The first axis is the <Term k="autonomy level">autonomy level</Term>: who executes the work, and what the human keeps hold of. Its levels are A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, and A5 governed lights-out. The second axis is the <Term k="learning level">learning level</Term>: whether the agent improves, and under what control. Its levels are L0 fixed policy, L1 curated learning, L2 governed learning (the <Term k="flywheel">learning flywheel</Term>), and L3 continuous learning inside <Term k="guardrails">guardrails</Term>. The two axes move independently. Every workload sits somewhere on the grid deliberately, and movement is earned and reversible.
 
 <GuideFigure id="autonomy-learning-matrix" fullWidth />
 
 ## The controls column is the contract
 
+**In short:** Each step up in independence comes with a fixed list of controls, and that list, not the level name, is the agreement.
+
 | Level | Human role | Required controls |
 |---|---|---|
 | A2 | Review every output | Task scoping, output review, audit |
 | A3 | Approve irreversible actions, handle exceptions | Approval gates, evals, budgets, kill switch |
-| A4 | Manage exception queues, supervise | Eval-gated change, concern register enforced, supervisor dashboards, designed oversight capacity |
+| A4 | Manage exception queues, supervise | Eval-gated change, cross-cutting concern register enforced, supervisor dashboards, designed oversight capacity |
 | A5 | Set policy, own accountability, audit outcomes | Proven eval maturity, continuous assurance, regulator-ready evidence, oversight capacity measured in production |
 
-Three rules connect the axes. **A4 and above require L2 or better**: at that level reliability must be improvable, not merely observable. **A4 and above require proven oversight capacity**: a level you cannot supervise is a level you have not reached. And **without a learning loop you have a fixed-policy agent, not a teammate**; fixed policy is the right choice for many workloads, named honestly.
+Three rules connect the axes. **A4 and above require L2 or better.** At that level reliability must be improvable, not merely observable. **A4 and above require proven oversight capacity.** A level you cannot supervise is a level you have not reached. **Without a learning loop you have a fixed-policy agent, not a teammate.** Fixed policy is the right choice for many workloads, as long as it is named honestly.
 
 ## Readiness gates autonomy
 
-Six dimensions, each scored 0 to 3 (absent, ad hoc, managed, operated): data readiness (including ACL-aware retrievability), integration readiness (governed API coverage, tool exposure, event availability), identity readiness (first-class principals, on-behalf-of flows, secrets never held by agents), operational discipline (observability, offline and online evals, incident practice), governance and value discipline (intake with kill criteria, per-run cost visibility, the two-estate view), and operating capacity. The profile governs, never the total:
+**In short:** Six areas of readiness are each scored from 0 to 3, and the weakest area, not the total, decides how much autonomy is safe.
+
+Six dimensions are each scored from 0 to 3: absent, ad hoc, managed, operated. Data readiness includes <Term k="acl">ACL-aware retrievability</Term>, meaning retrieval that respects each person's access rights. Integration readiness covers governed <Term k="api">API</Term> coverage (application programming interfaces, the defined ways software talks to software), <Term k="tool">tool</Term> exposure, and event availability. Identity readiness covers agents as first-class principals, <Term k="on-behalf-of">on-behalf-of</Term> flows in which the agent acts with the requesting person's permissions, and secrets never held by agents. Operational discipline covers <Term k="observability">observability</Term>, offline and online <Term k="evals">evals</Term>, and incident practice. Governance and value discipline covers intake with kill criteria (agreed conditions for stopping), per-run cost visibility, and the <Term k="two estates">two-estate view</Term>. The two estates are agents behind your own <Term k="gateway">gateway</Term> and agents inside vendor products. The sixth dimension is operating capacity. The profile governs, never the total:
 
 <GuideFigure id="readiness-six-dimension-profile" fullWidth />
 
@@ -36,19 +46,21 @@ Six dimensions, each scored 0 to 3 (absent, ad hoc, managed, operated): data rea
 | All six at 2+, operations and governance at 3 | A4, and L2 governed learning is required |
 | All six at 3, plus regulator-ready evidence | A5 candidacy, per domain only |
 
-Identity gaps cap autonomy without blocking starts; a workload can begin at A1 while the chain is built.
+Identity gaps cap autonomy without blocking a start. A workload can begin at A1 while the identity chain is built.
 
 ## The oversight gate, as a burst rate
 
-No credible published human-to-agent supervision ratio exists from any source; the vendor that coined the metric has published no number in two annual editions. What transfers instead is queueing arithmetic and alarm-management standards:
+**In short:** No credible supervision ratio is published, so oversight capacity comes from queueing maths, budgeted per ten minutes, never daily.
+
+No credible published human-to-agent supervision ratio exists from any source. The vendor that coined the metric has published no number in two annual editions. What transfers instead is queueing arithmetic and alarm-management standards:
 
 <GuideFigure id="oversight-burst-capacity" fullWidth />
 
-- Capacity follows the fan-out relation: neglect time over interaction time **plus wait time**. Ignoring wait time overstates capacity by up to 67%, and by 36% even in exception-based designs.
-- Budgets are set as burst rates per ten minutes, never daily averages; the alarm-management standards hold that a per-ten-minute rate cannot validly be converted to a longer window, and removed their per-day metric because averaging destroys its meaning. A daily-average target will be met on the dashboard and violated in every burst.
-- Expect calibrated oversight, not a ratchet: with experience, standing permission broadens **and** intervention rates rise. In measured deployments, auto-approval roughly doubled while interrupt rates nearly doubled alongside it. Rising interventions with expanding autonomy is the system working; falling interventions with expanding autonomy is the thing to investigate.
+- **Capacity follows the fan-out relation.** <Term k="fan-out">Fan-out</Term> is how many agents one supervisor can watch at once. It equals neglect time (how long an agent can safely run unattended) divided by interaction time (how long a person needs per intervention) **plus wait time**. Leaving wait time out overstates capacity by up to 67 percent, and by 36 percent even in exception-only designs.
+- **Budgets are burst rates, never daily averages.** Oversight budgets are set as <Term k="burst rate">burst rates</Term> per ten minutes (demand at its busiest, not averaged), never as daily averages. The alarm-management standards hold that a per-ten-minute rate cannot validly be converted to a longer window. They removed their per-day metric because averaging destroys its meaning. A daily-average target will be met on the dashboard and violated in every burst.
+- **Expect calibrated oversight, not a ratchet.** <Term k="calibrated oversight">Calibrated oversight</Term> means that with experience, standing permission broadens **and** intervention rates rise. In measured deployments, auto-approval roughly doubled while interrupt rates nearly doubled alongside it. Rising interventions with expanding autonomy is the system working. Falling interventions with expanding autonomy is the thing to investigate.
 
-Instrument per [R13](/layers/r13-operating-model): intervention rate and trend, escalation mix by trigger, wait time per item, verification cost per review, periodic blind checks against self-report.
+Measure these, as [R13](/layers/r13-operating-model), the operating model layer, sets out. Track the intervention rate and its trend, the mix of escalations by trigger, wait time per item, and verification cost per review. Add periodic blind checks against self-reported figures.
 
 <details>
 <summary>The research behind this page</summary>

@@ -1,76 +1,94 @@
 ---
 title: "Integration fabric"
 icon: "Cable"
-description: "The governed tool plane: MCP as the tool contract, one gateway as the enforcement point for identity, credentials, inspection, and audit."
+description: "How agents reach company systems: one standard way to connect, one gateway every request passes through, and the rules, credentials, and audit trail enforced there."
 hero_figure: "layer-03-hero"
 ---
 
+<PlainTerms>
+This page covers how <Term k="agent">agents</Term> connect to the systems they work with. Every request an agent makes passes through one <Term k="gateway">gateway</Term>, like a turnstile, where it is checked, given the right credentials for that moment, and recorded. <Term k="tools">Tools</Term> come from an approved internal list, not from the public internet. The one thing to remember: the gateway is where the rules are enforced, so it is the part to get right first.
+</PlainTerms>
+
 ## Target state
 
-A governed tool plane. MCP is the tool contract. A gateway, dedicated or extended from your API management layer, is the single enforcement point for identity, allowlists, credentials, inspection, and audit. Tools come from a curated internal catalog, because the public registry is discovery, not trust. Events are the trigger fabric for ambient agents. RPA remains the supervised deterministic execution layer where APIs do not reach. The legacy core is strangled behind governed APIs, not awaited. This layer is the enforcement plane of the agentic enterprise.
+**In short:** One standard connects agents to tools, one gateway enforces every rule, and old core systems are wrapped rather than waited for.
+
+The target is a governed tool <Term k="plane">plane</Term>. The <Term k="mcp">Model Context Protocol (MCP)</Term>, an open standard for connecting agents to tools and data, is the tool contract. A gateway, either dedicated or extended from your <Term k="api">API</Term> (application programming interface) management layer, is the single enforcement point. It enforces <Term k="identity">identity</Term>, allowlists, credentials, inspection, and audit. Tools come from a <Term k="curated">curated</Term> internal catalog, because the public registry is for discovery, not for trust. Business events are the trigger fabric for ambient agents, the agents that wait for something to happen rather than for a person to ask. <Term k="rpa">Robotic process automation (RPA)</Term>, the older screen-clicking bots, remains the supervised <Term k="deterministic">deterministic</Term> execution layer where APIs do not reach. The legacy core is wrapped behind governed APIs and retired piece by piece (the "strangler" pattern), not awaited. This <Term k="layer">layer</Term> is the enforcement plane of the agentic enterprise.
 
 <GuideFigure id="layer-03-hero" fullWidth />
 
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
-| MCP gateway | Route, authorize, inject, inspect, audit every tool call | Allowlists, token exchange, credential injection, description integrity, rate limits, classification routing | Your API management estate or a dedicated proxy |
+| MCP gateway | Route, authorise, inject, inspect, audit every tool call | Allowlists, token exchange, credential injection, description integrity, rate limits, classification routing | Your API management estate or a dedicated proxy |
 | MCP servers | Expose governed APIs as tools | Tool schemas and annotations (readOnly, destructive, idempotent) | Curated internal catalog, version-pinned |
 | Private registry | Which servers exist and are approved | Allowlist source of truth; the public registry never is | API-catalog tooling you already run |
-| Event backbone | Trigger ambient agents on business events | Subscription authorization | Existing streaming estate |
+| Event backbone | Trigger ambient agents on business events | Subscription authorisation | Existing streaming estate |
 | RPA estate | Deterministic execution where no API exists | Supervised runs; agents reason above, bots execute below | Existing RPA platform |
-| Strangler API layer | Governed access to the legacy core | Entitlement and validation at the API, before wrapping | Incumbent gateway over CICS-class systems |
+| Strangler API layer | Governed access to the legacy core | Entitlement and validation at the API, before wrapping | Incumbent gateway over CICS-class mainframe systems |
 
 ## Mechanisms
 
 ### The MCP contract, by version
 
-Version lineage matters because gateway capability tracks it: **2024-11-05** (initial), **2025-03-26** (OAuth 2.1, Streamable HTTP, tool annotations), **2025-06-18** (resource servers per RFC 8707, elicitation), **2025-11-25** (OIDC discovery), **2026-07-28** (a stateless core with header-based routing designed so gateways can route and authorize without parsing bodies, a formal extensions framework including Enterprise Managed Authorization, a deprecation policy, native caching of list results, and the multi-round-trip `input_required` flow). Governance moved to the Agentic AI Foundation under the Linux Foundation on 9 December 2025, which is what makes long-term gateway investment against this contract defensible.
+**In short:** The connection standard has changed fast, and what a gateway can enforce depends on which version it speaks.
+
+Version lineage matters because gateway capability tracks it. Version **2024-11-05** was the initial release. Version **2025-03-26** added OAuth 2.1 (the open authorisation standard), Streamable HTTP (a transport over the standard web protocol), and tool annotations. Version **2025-06-18** added resource servers per the RFC 8707 standard, and elicitation, a structured way for a tool to ask the user for input mid-task. Version **2025-11-25** added OpenID Connect (OIDC) discovery. Version **2026-07-28** brought a stateless core with header-based routing, designed so gateways can route and authorise without parsing request bodies. It also added a formal extensions framework (including Enterprise Managed Authorization), a deprecation policy, native caching of list results, and the multi-round-trip `input_required` flow. Governance of the standard moved to the Agentic AI Foundation, under the Linux Foundation, on 9 December 2025. That is what makes long-term gateway investment against this contract defensible.
 
 ### The gateway, itemized
 
-No direct model-to-server connections, ever. The gateway enforces: server allowlisting; **credential injection at execution time**, so agents never hold secrets; per-tool RBAC on the caller's identity; **token exchange per RFC 8693** and on-behalf-of flows; **Cross App Access (XAA), adopted as MCP's Enterprise Managed Authorization**, and the IETF **ID-JAG** draft as they arrive; **tool-description integrity checks** that diff and force re-approval on change, because descriptions are prompt surface; SIEM-bound audit at action granularity; classification-based routing. Standing rule: the gateway is the enforcement point for the arriving auth standards, not their replacement.
+**In short:** Every tool call goes through the gateway, which checks the caller, supplies the credentials, inspects the tool, and records the action.
+
+No direct model-to-server connections, ever. The gateway enforces a fixed list. Server allowlisting. **Credential injection at execution time**, so agents never hold secrets. Per-tool role-based access control (RBAC) on the caller's identity. **Token exchange per the RFC 8693 standard** and <Term k="on-behalf-of">on-behalf-of</Term> flows, so the agent acts with the permissions of the person who asked rather than its own. **Cross App Access (XAA), adopted as MCP's Enterprise Managed Authorization (EMA)**, and the Internet Engineering Task Force (IETF) **ID-JAG** draft, an identity assertion authorisation grant, as they arrive. **Tool-description integrity checks** that diff each description and force re-approval on change, because descriptions are <Term k="prompt">prompt</Term> surface: the model reads them as instructions. Audit at the granularity of each action, bound to the <Term k="siem">SIEM</Term> (security information and event management, the security team's central event system). <Term k="classification">Classification</Term>-based routing. Standing rule: the gateway enforces the arriving authorisation standards; it does not replace them.
 
 ### Safe-action primitives
 
-Read-only by default. Tool annotations (readOnly, destructive, idempotent) drive gating. Every mutating tool carries an idempotency key and returns a receipt, and compensation is defined before shipping, not after the first duplicate. Approvals use elicitation and the 2026-07-28 `input_required` flow, which makes them gateway-mediable rather than harness-trapped. Timeouts, circuit breakers, idempotent retries with receipts, retry-storm alerts, rate limits as budget controls, and graceful degradation to human queues complete the set.
+**In short:** Tools are read-only unless marked otherwise, every change can be repeated or undone safely, and approvals go through the gateway.
+
+Read-only by default. Tool annotations drive gating: readOnly, destructive, and idempotent (safe to repeat without a second effect). Every tool that changes something carries an idempotency key, so a repeated call does not repeat the change, and returns a receipt. Compensation, the undo step, is defined before shipping, not after the first duplicate. Approvals use elicitation and the `input_required` flow from the 2026-07-28 version. That lets the gateway mediate approvals instead of trapping them inside each agent's <Term k="harness">harness</Term> (the engineering shell around the model). The set is completed by timeouts, circuit breakers (automatic cut-offs for failing dependencies), idempotent retries with receipts, and retry-storm alerts. Rate limits serve as <Term k="budget">budget</Term> controls, and graceful <Term k="degraded mode">degradation</Term> to human queues closes the list.
 
 ### Why gateway-first: the attack record
 
-Tool poisoning was demonstrated in April 2025 and benchmarked at up to 72.8% attack success with under 3% refusal across 20 models (MCPTox). The wild caught up fast: the postmark-mcp supply-chain backdoor (September 2025, roughly 300 organisations), CVE-2025-6514 at CVSS 9.6 with 437k downloads, the MCP Inspector vulnerability (CVE-2025-49596), the Asana cross-tenant leak (June 2025), the Supabase exfiltration chain through a support ticket (July 2025), and the Smithery hosting-layer path traversal that leaked tokens controlling more than 3,000 servers (October 2025). That last one carries the lesson: the gateway needs its own hardening story, not a halo.
+**In short:** Attacks on tool connections are already happening, so the gateway comes first and must itself be hardened.
+
+Tool poisoning (malicious instructions hidden in a tool's description) was demonstrated in April 2025. The MCPTox <Term k="benchmark">benchmark</Term> measured up to 72.8 percent attack success, with under 3 percent refusal, across 20 models. Real attacks followed fast. The postmark-mcp supply-chain backdoor (malicious code slipped into a software package, September 2025) reached roughly 300 organisations. Vulnerability record CVE-2025-6514 (Common Vulnerabilities and Exposures) scored 9.6 on the Common Vulnerability Scoring System (CVSS) and had 437,000 downloads. The MCP Inspector vulnerability is CVE-2025-49596. Asana had a cross-tenant leak, where one customer's data became visible to another (June 2025). Supabase had an exfiltration chain (data theft) that ran through a support ticket (July 2025). The Smithery hosting-layer path traversal flaw leaked tokens controlling more than 3,000 servers (October 2025). That last one carries the lesson. The gateway needs its own hardening story, not a halo.
 
 ### Catalog and registry posture
 
-The public MCP registry is preview-quality at roughly 2,000 entries and is explicitly not a trust signal. Run a private registry as the allowlist source of truth. Tool descriptions are curated, versioned, and integrity-checked like code; new tools and changed descriptions pass evals before exposure.
+**In short:** Keep your own approved list of tools; the public directory is for finding things, not for trusting them.
+
+The public MCP registry is preview-quality, at roughly 2,000 entries, and is explicitly not a trust signal. Run a private registry as the allowlist source of truth. Tool descriptions are curated, versioned, and integrity-checked like code. New tools and changed descriptions pass <Term k="evals">evals</Term> (test runs with known right answers) before they are exposed.
 
 ### Events, RPA, and the legacy core
 
-The event backbone is the trigger fabric for ambient agents: a business event on the stream beats polling in both latency and cost. RPA stays as supervised deterministic execution for API-less systems, with agents reasoning above it, and replacement earned per workload rather than declared. For the legacy core: 87% of surveyed mainframe shops run CICS, averaging 30,000 transactions per second at peak, and 74% of modernization programs fail to complete. So strangle, do not wait: incumbent gateways expose governed APIs as tools with zero backend change. The discipline is to govern the specific API paths agents will use before exposing them, and to let each strangler increment retire real load.
+**In short:** Let business events wake agents, keep old bots where no interface exists, and wrap the legacy core rather than wait.
+
+The event backbone is the trigger fabric for ambient agents. A business event on the stream beats polling (asking repeatedly whether anything has changed) on both <Term k="latency">latency</Term> and cost. RPA stays as supervised deterministic execution for systems with no API. Agents reason above it; bots execute below. Replacement is earned per workload, not declared. For the legacy core, 87 percent of surveyed mainframe shops run CICS (IBM's Customer Information Control System), averaging 30,000 transactions per second at peak. And 74 percent of modernisation programmes fail to complete. So wrap and retire, do not wait. Incumbent gateways expose governed APIs as tools with zero backend change. The discipline: govern the specific API paths agents will use before exposing them, and let each increment of the wrap retire real load.
 
 ## Design decisions
 
-- **Dedicated MCP gateway vs extending API management** ([CD-2](/decisions#cd-2)): extend the incumbent by default; the 2026-07-28 spec was deliberately redesigned to be routable by ordinary HTTP gateways, and every incumbent shipped support within a year. Choose dedicated for agent-specific controls the incumbents do not model well: tool-description diffing and poisoning scans, multi-runtime federation, elicitation mediation.
-- **RPA replace vs coexist** ([CD-3](/decisions#cd-3)): coexist, supervised; replacement earned per workload.
-- **Agent-to-agent protocols now vs plain APIs** ([CD-4](/decisions#cd-4)): not yet for most; the standard stabilised but published milestones are organisation counts, not production evidence. Adopt selectively for cross-organisation federation.
-- **Modernize the ESB first vs bypass** ([CD-5](/decisions#cd-5)): strangle, do not wait; govern before you wrap.
+- **Dedicated MCP gateway vs extending API management** ([CD-2](/decisions#cd-2)): extend the incumbent by default. The 2026-07-28 specification was deliberately redesigned to be routable by ordinary HTTP gateways, and every incumbent shipped support within a year. Choose a dedicated gateway for the agent-specific controls the incumbents do not model well. Those are tool-description diffing and poisoning scans, multi-runtime federation, and elicitation mediation.
+- **RPA replace vs coexist** ([CD-3](/decisions#cd-3)): coexist, supervised. Replacement is earned per workload.
+- **Agent-to-agent protocols now vs plain APIs** ([CD-4](/decisions#cd-4)): not yet for most. The standard has stabilised, but its published milestones are counts of organisations, not production evidence. Adopt selectively for federation across organisations.
+- **Modernize the ESB first vs bypass** ([CD-5](/decisions#cd-5)): wrap and retire the <Term k="esb">enterprise service bus (ESB)</Term> rather than wait. It is the old central integration hub. Govern before you wrap.
 
 ## Cross-cutting concerns
 
 | # | Concern | Treatment at this layer |
 |---|---|---|
-| C1 | Identity and access | ID2 identity floor; token exchange and on-behalf-of; EMA/XAA and ID-JAG enforced at the gateway; per-tool RBAC; credentials injected at execution |
+| C1 | Identity and access | ID2 identity floor (one first-class identity per agent); token exchange and on-behalf-of; EMA/XAA and ID-JAG enforced at the gateway; per-tool RBAC; credentials injected at execution |
 | C2 | Observability | Per-tool-call traces (caller, tool, decision, latency, tokens); shadow-server discovery telemetry |
 | C3 | Traceability and audit | Action-granular, SIEM-bound audit; description-version history; who approved what |
 | C4 | Grounding | Tool results are grounding: schema quality, provenance tagging, freshness |
 | C5 | Impersonation | Server identity verified against the allowlist; signed and pinned versions; caller identity asserted end to end |
 | C6 | Sovereignty | Classification-based routing at the gateway; server hosting locality in scope |
-| C7 | Privacy | Minimization at the tool schema; DLP on tool results; consent context propagated |
+| C7 | Privacy | Minimisation at the tool schema; data loss prevention (DLP) on tool results; consent context propagated |
 | C8 | Safety and oversight | Read-only defaults; destructive-hint gating; elicitation and `input_required` approvals; gateway kill switch |
 | C9 | Cost | Per-tool and per-agent metering; rate limits as budgets; retry-storm alerts |
 | C10 | Resilience | Timeouts, circuit breakers, idempotent retries with receipts; degradation to human queues |
 
 ## Evidence and limits
 
-Incidents above are dated with CVE and CVSS where they exist. Estate figures are survey-based and carried with that status: under half of enterprise APIs are managed, 27% of APIs are ungoverned, under 40% of organisations enforce central API governance, and 19% of CISOs claim full API visibility. One refusal: the claim that 75 percent of API gateway vendors will ship MCP features by end of 2026 circulates widely, its primary source could not be located, and this guide excludes it. Re-verify quarterly: MCP registry maturity, EMA/ID-JAG standardisation progress, gateway vendor capability against the 2026-07-28 spec.
+Incidents above are dated with CVE and CVSS identifiers where they exist. Estate figures are survey-based and carried with that status. Under half of enterprise APIs are managed. Some 27 percent of APIs are ungoverned. Under 40 percent of organisations enforce central API governance. And 19 percent of chief information security officers (CISOs) claim full API visibility. One refusal: a widely circulated projection puts a precise share on the API gateway vendors that will ship MCP features by the end of 2026. Its primary source could not be located, and this guide excludes the figure. Re-verify quarterly: MCP registry maturity, EMA and ID-JAG standardisation progress, and gateway vendor capability against the 2026-07-28 specification.
 
 <details>
 <summary>The research behind this page</summary>

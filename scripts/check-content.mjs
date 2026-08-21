@@ -51,7 +51,9 @@ const DENY_LIST = [
   '6 alarms per hour',
   'entry-level hiring down 80',
   '75% of API gateway vendors',
+  '75 percent of API gateway vendors',
   '60% of agentic analytics projects',
+  '60 percent of agentic analytics projects',
 ];
 const RATIO_PATTERN = /\b\d+\s*(?:agents?\s+per\s+(?:supervisor|reviewer|operator|person)|:\s*1\s+agent-to-(?:operator|supervisor))/i;
 // Scoped to product pages: the research corpus quotes these figures in order

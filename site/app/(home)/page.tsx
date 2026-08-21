@@ -4,12 +4,12 @@ import { DiagramRenderer } from '@/components/visuals/diagram-renderer';
 import { getFigure } from '@/lib/figure-manifest';
 
 const spine = [
-  { title: 'The four deterministic zones', href: '/architecture/deterministic-zones', body: 'Access, money, safety actuation, formal records: where model output stays advisory, and the standards that say so.' },
-  { title: 'The identity and delegation chain', href: '/architecture/identity-chain', body: 'Workload identity, token exchange, run-as-user: how every action stays attributable to the human who asked.' },
-  { title: 'Enforcement outside the model', href: '/architecture/enforcement', body: 'Gateway, policy decision point, promoted policy-as-code, and the measured limits of guardrails.' },
-  { title: 'The data-to-memory pipeline', href: '/architecture/data-to-memory', body: 'Parse, chunk, embed, index, retrieve, cite: provenance intact and erasure that cascades.' },
-  { title: 'The learning flywheel', href: '/architecture/learning-flywheel', body: 'Gated promotion, calibrated judges, staged rollout, and the demotion path most pipelines lack.' },
-  { title: 'The autonomy contract', href: '/architecture/autonomy-contract', body: 'A x L with a controls column that is the contract, readiness gates, and an oversight gate as a burst rate.' },
+  { title: 'The four deterministic zones', href: '/architecture/deterministic-zones', body: 'Four places where a model may advise but never decide: access, money, physical safety, and official records. What sits in each, and how to build the boundary.' },
+  { title: 'The identity and delegation chain', href: '/architecture/identity-chain', body: 'How every agent action stays traceable to the person who asked for it, from the agent\'s own identity through to the business system it touches.' },
+  { title: 'Enforcement outside the model', href: '/architecture/enforcement', body: 'Why the rules that stop an agent live outside the model, in a gateway and a policy engine, and why AI filters alone are not enough.' },
+  { title: 'The data-to-memory pipeline', href: '/architecture/data-to-memory', body: 'How company information reaches an agent: prepared, indexed, permission-checked, cited back to its source, and deleted everywhere when it must be.' },
+  { title: 'The learning flywheel', href: '/architecture/learning-flywheel', body: 'How agents get better over time without anyone losing control: every change is tested, approved, rolled out in stages, and can be pulled back.' },
+  { title: 'The autonomy contract', href: '/architecture/autonomy-contract', body: 'How much an agent may do on its own, decided per task, with the controls each level requires and the checks that must pass before autonomy rises.' },
 ];
 
 const layers = [
@@ -41,7 +41,8 @@ export default function HomePage() {
         </h1>
         <p className="mt-4 max-w-3xl text-lg text-fd-muted-foreground">
           The components, protocols, control points, and contested choices, with the evidence behind each and
-          the refusals stated plainly. Written for architects who want the design, not the pitch.
+          the refusals stated plainly. Built for the architects who will design it, and written so that everyone
+          who will live with it can follow: every page opens in plain terms, and every technical word explains itself.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link href="/architecture" className="rounded-lg bg-fd-primary px-5 py-2.5 text-sm font-medium text-fd-primary-foreground">
@@ -52,6 +53,9 @@ export default function HomePage() {
           </Link>
           <Link href="/decisions" className="rounded-lg border px-5 py-2.5 text-sm font-medium">
             24 decisions with verdicts
+          </Link>
+          <Link href="/architecture/plain-words" className="rounded-lg border px-5 py-2.5 text-sm font-medium">
+            Plain words: the glossary
           </Link>
         </div>
       </section>

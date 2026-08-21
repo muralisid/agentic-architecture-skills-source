@@ -5,22 +5,28 @@ description: "Seven planes across fourteen layers, two binding rules, and the tw
 hero_figure: "seven-plane-architecture"
 ---
 
+<PlainTerms>
+This page is the one-page map of how a company runs AI agents safely at scale. It shows the parts of your business that agents touch, the new capabilities you build around them, and where the controls and the evidence live. The thing to remember: an instruction written to an AI model is a request, while a rule checked by a separate system is a control.
+</PlainTerms>
+
 ## The whole thing, on one page
 
-Everything below is in this diagram: the fourteen layers with the control point, key mechanisms, and market products for each, the seven planes that group them, the ten cross-cutting concerns as columns marking who owns and who enforces each plus the products that serve them, and the four deterministic zones underneath. Products are named for orientation as of August 2026, representative rather than exhaustive, and are not endorsements. If you read one artifact from this guide, read this one.
+Everything below is in this diagram. It shows the <Term k="fourteen layers">fourteen layers</Term>, each with its control point, key mechanisms, and market products. It shows the <Term k="seven planes">seven planes</Term> that group them. It shows the ten <Term k="cross-cutting concerns">cross-cutting concerns</Term> as columns, marking who owns and who enforces each, plus the products that serve them. Underneath sit the <Term k="deterministic zones">four deterministic zones</Term>, where a model may advise but never decide. Products are named for orientation as of August 2026; they are representative rather than exhaustive, and they are not endorsements. If you read one artifact from this guide, read this one.
 
 <WallChart />
 
 ## The shape
 
-An agentic enterprise is fourteen layers of estate with a seven-plane agent system built across them. The layers are what you already own: infrastructure, data, integration, records, line-of-business systems, and the rest. The planes are what you build: **Execution** (where agent work runs), **Action** (how agents reach your systems), **Knowledge** (what agents know), **Control** (what is allowed), **Improvement** (how behaviour changes), **Evidence** (what you can prove afterward), **Human** (who decides and answers for it).
+**In short:** Agents are built across the systems you already own, with seven new groups of capability around them. Two rules hold: an agent never enforces its own rules and never keeps its own evidence.
+
+An agentic enterprise is fourteen layers of estate with a seven-plane <Term k="agent">agent</Term> system built across them. The layers are what you already own: infrastructure, data, integration, records, line-of-business systems, and the rest. The planes are what you build. There are seven. **Execution** is where agent work runs. **Action** is how agents reach your systems. **Knowledge** is what agents know. **Control** is what is allowed. **Improvement** is how behaviour changes. **Evidence** is what you can prove afterward. **Human** is who decides and answers for it.
 
 <GuideFigure id="seven-plane-architecture" fullWidth />
 
 Two rules bind the planes, and they are the two most often violated:
 
-1. **Enforcement lives in the control plane, never in the execution plane.** An instruction in a prompt is a preference. The same rule evaluated at a gateway or policy decision point is a control. Every layer page names where its enforcement actually sits.
-2. **The evidence plane is fed by collection the agent cannot influence.** Anything an agent reports about itself is testimony. Traces, decisions, and provenance are collected out of band.
+1. **Enforcement lives in the control plane, never in the execution plane.** An instruction in a <Term k="prompt">prompt</Term> is a preference. The same rule becomes a control when a <Term k="gateway">gateway</Term> or a <Term k="policy decision point">policy decision point</Term> checks it. A gateway is the single door every agent request passes through; a policy decision point is the component that says yes or no to each action. Every layer page names where its enforcement actually sits.
+2. **The evidence plane is fed by collection the agent cannot influence.** Anything an agent reports about itself is testimony, not evidence. <Term k="traces">Traces</Term> (the step-by-step log of each run), decisions, and <Term k="provenance">provenance</Term> (where each piece of information came from) are collected by a separate channel the agent cannot touch.
 
 ## The crosswalk
 
@@ -29,7 +35,7 @@ Two rules bind the planes, and they are the two most often violated:
 | Plane | Built primarily from | Deep pages |
 |---|---|---|
 | Execution | Sandboxes, runtimes, durable sessions, model serving | [R01](/layers/r01-infrastructure), [R07](/layers/r07-agent-platform) |
-| Action | Tool gateway, wrapped governed APIs, OT boundary | [R03](/layers/r03-integration-fabric), [R04](/layers/r04-systems-of-record), [R05](/layers/r05-lob-and-ot) |
+| Action | Tool gateway, wrapped governed APIs (application programming interfaces), OT (operational technology) boundary | [R03](/layers/r03-integration-fabric), [R04](/layers/r04-systems-of-record), [R05](/layers/r05-lob-and-ot) |
 | Knowledge | Governed indexes, curation pipelines, memory tiers | [R02](/layers/r02-data-platform), [R14](/layers/r14-agent-data-engineering) |
 | Control | Identity, policy decision points, registry, budgets | [R10](/layers/r10-security-and-identity), [R11](/layers/r11-governance-risk-sovereignty), [R07](/layers/r07-agent-platform) |
 | Improvement | Evals, judges, promotion gates, staged rollout | [R06](/layers/r06-intelligence-and-learning), [R12](/layers/r12-observability-and-finops) |
@@ -38,19 +44,23 @@ Two rules bind the planes, and they are the two most often violated:
 
 ## The two-estate reality
 
-Every design must survive the fact that agent work runs in two estates. The **metered estate** flows through your own gateways: fully governable, budget-enforced, traced on your terms. The **licensed estate** (suite copilots, embedded record-system agents) runs on vendor control planes your gateway never sees: governable only through tenant policy and telemetry extraction, with documented API gaps. Architectures that assume one gateway governs everything are the most common structural error at enterprise scale. Costing that prices agent actions without pricing the governance plane is wrong by a variable amount, because governance is a separate per-user SKU in one stack and free in another [vendor pricing].
+**In short:** Some agents run through systems you control, where you can see and govern everything. Others run inside vendor products, where you govern only what the vendor's settings allow, so every design has to work for both.
+
+Agent work runs in <Term k="two estates">two estates</Term>, and every design must survive that fact. The **metered estate** flows through your own gateways. It is fully governable, budget-enforced, and traced on your terms. The **licensed estate** (suite copilots, agents embedded in record systems) runs on vendor control planes your gateway never sees. You can govern it only through tenant policy settings and by extracting <Term k="telemetry">telemetry</Term>, the activity measurements the vendor's system emits. The vendor interfaces (<Term k="apis">APIs</Term>) for doing so have documented gaps. Architectures that assume one gateway governs everything are the most common structural error at enterprise scale. A cost model that prices agent actions but not the governance plane is wrong by a variable amount. Governance is a separately priced per-user item (a SKU, or stock-keeping unit) in one vendor stack and free in another [vendor pricing].
 
 <GuideFigure id="support-licensed-metered-estates" fullWidth />
 
 ## Three builds of the same planes
 
+**In short:** Large regulated enterprises, mid-sized companies, and digital-native companies build the same seven planes in different ways. The diagram shows what each one builds, rents, or still has to add.
+
 <GuideFigure id="three-target-architectures" fullWidth />
 
-A globally regulated enterprise runs both estates and doubles nothing else: same knowledge plane, same registry, same evidence machinery, two enforcement surfaces. A mid-market estate rents the control plane from its productivity vendor and builds only the knowledge plane, which vendors do not curate for you. A digital-native estate has the execution and action planes early and must add control and evidence before autonomy rises, which is what the [autonomy contract](/architecture/autonomy-contract) enforces.
+A globally regulated enterprise runs both estates and doubles nothing else: same knowledge plane, same <Term k="registry">registry</Term>, same evidence machinery, two enforcement surfaces. A mid-market estate rents the control plane from its productivity vendor and builds only the knowledge plane, which vendors do not curate for you. A digital-native estate has the execution and action planes early. It must add control and evidence before <Term k="autonomy">autonomy</Term> rises, which is what the [autonomy contract](/architecture/autonomy-contract) enforces.
 
 ## Where to go deep
 
-The cross-layer mechanics live in the six spine pages: [the four deterministic zones](/architecture/deterministic-zones), [the identity and delegation chain](/architecture/identity-chain), [enforcement outside the model](/architecture/enforcement), [the data-to-memory pipeline](/architecture/data-to-memory), [the learning flywheel](/architecture/learning-flywheel), and [the autonomy contract](/architecture/autonomy-contract). The full [concern matrix](/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every contested technology choice has a verdict in [the decision catalog](/decisions).
+The cross-layer mechanics live in six spine pages. They are [the four deterministic zones](/architecture/deterministic-zones), [the identity and delegation chain](/architecture/identity-chain), [enforcement outside the model](/architecture/enforcement), [the data-to-memory pipeline](/architecture/data-to-memory), [the learning flywheel](/architecture/learning-flywheel), and [the autonomy contract](/architecture/autonomy-contract). The full [concern matrix](/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every <Term k="challenged default">contested technology choice</Term> has a verdict in [the decision catalog](/decisions).
 
 <details>
 <summary>The research behind this page</summary>

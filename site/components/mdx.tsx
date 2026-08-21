@@ -3,6 +3,7 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 import type { MDXComponents } from 'mdx/types';
 import { H2WithIcon, H3WithIcon } from '@/components/mdx/heading-icon';
 import { ResponsiveTable } from '@/components/mdx/responsive-table';
+import { Glossary, PlainTerms, Term } from '@/components/mdx/term';
 import { I, IconChip } from '@/components/mdx/icons';
 import {
   ComparisonFigure,
@@ -22,12 +23,15 @@ export function getMDXComponents(components?: MDXComponents) {
     ComparisonFigure,
     EvidenceBadge,
     GlossaryTerm,
+    Glossary,
     GuideFigure,
     I,
     IconChip,
+    PlainTerms,
     PrincipleCard,
     Step,
     Steps,
+    Term,
     WallChart,
     ...components,
   } satisfies MDXComponents;
