@@ -1,7 +1,7 @@
 import { getFigure } from '@/lib/figure-manifest';
 import { GuideFigure, type GuideFigureProps } from './guide-figure';
 
-export type ComparisonFigureProps = Omit<GuideFigureProps, 'zoomable'>;
+export type ComparisonFigureProps = GuideFigureProps;
 
 /** Renders a manifest figure and guards accidental use with non-comparison data. */
 export function ComparisonFigure(props: ComparisonFigureProps) {
@@ -9,5 +9,5 @@ export function ComparisonFigure(props: ComparisonFigureProps) {
   if (!figure.data.columns?.length) {
     throw new Error(`ComparisonFigure requires column data; "${props.id}" has type "${figure.type}".`);
   }
-  return <GuideFigure {...props} zoomable={false} />;
+  return <GuideFigure {...props} />;
 }

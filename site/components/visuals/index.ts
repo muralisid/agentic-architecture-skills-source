@@ -4,5 +4,4 @@ export { EvidenceBadge, evidenceLabels, type EvidenceBadgeProps } from './eviden
 export { GlossaryTerm, type GlossaryTermProps } from './glossary-term';
 export { GuideFigure, type GuideFigureProps } from './guide-figure';
 export { PrincipleCard, type PrincipleCardProps } from './principle-card';
-export { ZoomableDiagram, type ZoomableDiagramProps } from './zoomable-diagram';
 export { WallChart } from './wall-chart';

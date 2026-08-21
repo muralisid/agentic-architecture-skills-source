@@ -160,6 +160,23 @@ const LAYER_TITLES = {
   'r14-agent-data-engineering': 'Agent data engineering',
 };
 
+const LAYER_ICONS = {
+  'r01-infrastructure': 'Server',
+  'r02-data-platform': 'Database',
+  'r03-integration-fabric': 'Cable',
+  'r04-systems-of-record': 'Archive',
+  'r05-lob-and-ot': 'Factory',
+  'r06-intelligence-and-learning': 'Lightbulb',
+  'r07-agent-platform': 'Bot',
+  'r08-productivity-and-collaboration': 'Users',
+  'r09-experience-and-channels': 'MessageSquare',
+  'r10-security-and-identity': 'Lock',
+  'r11-governance-risk-sovereignty': 'Landmark',
+  'r12-observability-and-finops': 'Activity',
+  'r13-operating-model': 'Eye',
+  'r14-agent-data-engineering': 'Funnel',
+};
+
 const CHILD_PAGE_TITLES = {
   findings: 'Findings',
   brief: 'Research brief',
@@ -381,33 +398,39 @@ const metas = {
   },
   architecture: {
     title: 'Architecture',
+    icon: 'Compass',
     description: 'The cross-layer design of the agentic enterprise.',
     pages: ['index', 'deterministic-zones', 'identity-chain', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
   },
   layers: {
     title: 'Layers',
+    icon: 'Layers',
     description: 'The fourteen enterprise layers, each with its target state, mechanisms, and decisions.',
     pages: ['index', ...Object.keys(LAYER_TITLES)],
   },
   library: {
     title: 'Research library',
+    icon: 'BookMarked',
     root: true,
     pages: ['architecture', 'layers', 'techniques', 'frameworks', 'blueprints', 'vendors', 'glossary', 'decisions', 're-verification', 'changelog', 'contributing'],
   },
   'library/architecture': {
     title: 'Architecture',
+    icon: 'Compass',
     pages: ['index', 'vision-and-target-state', 'maturity-model', 'archetype-grid', 'master-target-state', 'concerns-by-layers-matrix', 'memory-pipeline-architecture', 'economics-model', 'sovereignty-matrix', 'identity-security-model', 'learning-loops-map'],
   },
   'library/layers': {
     title: 'Layer research',
+    icon: 'Layers',
     pages: ['index', ...Object.keys(LAYER_TITLES)],
   },
-  'library/techniques': { title: 'Techniques', pages: ['index', '...'] },
+  'library/techniques': { title: 'Techniques', icon: 'Wrench', pages: ['index', '...'] },
   'library/frameworks': {
     title: 'Frameworks',
+    icon: 'ClipboardList',
     pages: ['index', 'readiness-assessments', 'use-case-portfolio', 'roadmap-checklist', 'vendor-question-bank', 'vendor-scorecard'],
   },
-  'library/blueprints': { title: 'Blueprints', pages: ['index', 'departments', 'verticals'] },
+  'library/blueprints': { title: 'Blueprints', icon: 'Building2', pages: ['index', 'departments', 'verticals'] },
   'library/blueprints/departments': {
     title: 'Departments',
     pages: ['it-and-service-desk', 'customer-service', 'finance', 'hr', 'sales', 'marketing', 'supply-chain'],
@@ -418,6 +441,7 @@ const metas = {
   },
   'library/vendors': {
     title: 'Vendor research',
+    icon: 'Store',
     pages: ['index', 'coverage-matrix', 'adoption-pathways', 'profiles'],
   },
   'library/vendors/profiles': {
@@ -429,6 +453,7 @@ const metas = {
 for (const track of Object.keys(LAYER_TITLES)) {
   metas[`library/layers/${track}`] = {
     title: LAYER_TITLES[track],
+    icon: LAYER_ICONS[track],
     pages: ['index', 'findings', 'brief', 'vendors', 'sources'],
   };
 }

@@ -8,7 +8,6 @@ export interface GuideFigureProps {
   className?: string;
   fullWidth?: boolean;
   showSources?: boolean;
-  zoomable?: boolean;
 }
 
 function FigureSources({ figure }: { figure: FigureManifestEntry }) {
@@ -42,10 +41,8 @@ export function GuideFigure({
   className,
   fullWidth = false,
   showSources = true,
-  zoomable,
 }: GuideFigureProps) {
   const figure = getFigure(id);
-  const showLargerView = zoomable ?? WIDE_TYPES.has(figure.type);
   const titleId = `figure-${figure.id}-title`;
   const takeawayId = `figure-${figure.id}-takeaway`;
   const descriptionId = `figure-${figure.id}-description`;
@@ -85,29 +82,6 @@ export function GuideFigure({
         <p id={descriptionId} data-figure-long-description className="sr-only print:not-sr-only print:mt-3 print:block print:text-xs print:leading-5 print:text-slate-700">
           <strong>Diagram description:</strong> {figure.longDescription}
         </p>
-      ) : null}
-
-      {showLargerView ? (
-      <div data-figure-controls className="mt-4 flex flex-col gap-2 border-t pt-4 print:hidden">
-        {showLargerView ? (
-          <details className="group rounded-lg border bg-fd-card">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2 text-xs font-medium marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring [&::-webkit-details-marker]:hidden">
-              Open a larger view
-              <span className="text-base motion-safe:transition-transform group-open:rotate-45" aria-hidden="true">+</span>
-            </summary>
-            <div className="border-t p-3 sm:p-5">
-              <div
-                className="max-h-[75vh] max-w-full overflow-auto overscroll-contain rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring"
-                role="region"
-                aria-label={`Scrollable larger view of ${figure.title}`}
-                tabIndex={0}
-              >
-                <DiagramRenderer figure={figure} labelled={false} className="min-w-[42rem] bg-fd-background" />
-              </div>
-            </div>
-          </details>
-        ) : null}
-      </div>
       ) : null}
 
       {showSources ? <div className="mt-4"><FigureSources figure={figure} /></div> : null}

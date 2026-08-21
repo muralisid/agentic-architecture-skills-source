@@ -13,15 +13,68 @@ import { fileURLToPath } from 'node:url';
 const siteDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const outPath = path.join(siteDir, 'public', 'diagrams', 'target-state.svg');
 
+
+// Minimal 24x24 monoline icons (stroke-based), keyed by name.
+const ICONS = {
+  cpu: ['<rect x="5" y="5" width="14" height="14" rx="2"/>', '<rect x="9.5" y="9.5" width="5" height="5"/>', '<path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>'],
+  zap: ['<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>'],
+  book: ['<path d="M12 6c-2-1.6-4.7-2-8-2v14c3.3 0 6 .4 8 2 2-1.6 4.7-2 8-2V4c-3.3 0-6 .4-8 2z"/>', '<path d="M12 6v14"/>'],
+  sliders: ['<path d="M4 6h16M4 12h16M4 18h16"/>', '<circle cx="9" cy="6" r="2.2"/>', '<circle cx="15" cy="12" r="2.2"/>', '<circle cx="7" cy="18" r="2.2"/>'],
+  refresh: ['<path d="M20 11a8 8 0 0 0-14.9-3M4 13a8 8 0 0 0 14.9 3"/>', '<path d="M20 4v4h-4M4 20v-4h4"/>'],
+  clipboard: ['<rect x="6" y="4" width="12" height="17" rx="2"/>', '<path d="M9 4a3 3 0 0 1 6 0"/>', '<path d="m9 13 2 2 4-4"/>'],
+  user: ['<circle cx="12" cy="8" r="3.6"/>', '<path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"/>'],
+  server: ['<rect x="3" y="4" width="18" height="7" rx="2"/>', '<rect x="3" y="13" width="18" height="7" rx="2"/>', '<path d="M7 7.5h.01M7 16.5h.01"/>'],
+  database: ['<ellipse cx="12" cy="5.5" rx="8" ry="3"/>', '<path d="M4 5.5V12c0 1.7 3.6 3 8 3s8-1.3 8-3V5.5"/>', '<path d="M4 12v6.5c0 1.7 3.6 3 8 3s8-1.3 8-3V12"/>'],
+  cable: ['<path d="M8 3v4M16 17v4"/>', '<rect x="5.5" y="7" width="5" height="5" rx="1"/>', '<rect x="13.5" y="12" width="5" height="5" rx="1"/>', '<path d="M8 12v2a3 3 0 0 0 3 3h2.5M16 12v-2a3 3 0 0 0-3-3h-2.5"/>'],
+  archive: ['<rect x="3" y="4" width="18" height="5" rx="1"/>', '<path d="M5 9v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/>', '<path d="M10 13h4"/>'],
+  factory: ['<path d="M3 21V9l6 4V9l6 4V4h6v17z"/>', '<path d="M8 17h.01M13 17h.01M17 17h.01"/>'],
+  bulb: ['<path d="M9 18h6M10 21h4"/>', '<path d="M12 3a6 6 0 0 0-3.5 10.8c.9.7 1.5 1.3 1.5 2.2h4c0-.9.6-1.5 1.5-2.2A6 6 0 0 0 12 3z"/>'],
+  bot: ['<rect x="5" y="8" width="14" height="11" rx="3"/>', '<path d="M12 8V4M9 4h6"/>', '<path d="M9 13h.01M15 13h.01"/>', '<path d="M2 12v4M22 12v4"/>'],
+  users: ['<circle cx="9" cy="8" r="3.2"/>', '<path d="M3 20c1-3 3.2-4.5 6-4.5s5 1.5 6 4.5"/>', '<circle cx="16.5" cy="9" r="2.6"/>', '<path d="M16 15.6c2.3.2 4 1.5 5 4.4"/>'],
+  message: ['<path d="M4 5h16v11H9l-5 4z"/>'],
+  lock: ['<rect x="5" y="11" width="14" height="9" rx="2"/>', '<path d="M8 11V8a4 4 0 0 1 8 0v3"/>'],
+  landmark: ['<path d="M3 9l9-5 9 5"/>', '<path d="M5 9v8M9.5 9v8M14.5 9v8M19 9v8"/>', '<path d="M3 19h18M3 21h18"/>'],
+  activity: ['<path d="M3 12h4l2.5-6 4.5 12 2.5-6H21"/>'],
+  eye: ['<path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/>', '<circle cx="12" cy="12" r="2.8"/>'],
+  funnel: ['<path d="M3 4h18l-7 8v6l-4 2v-8z"/>'],
+  shield: ['<path d="M12 3 5 6v5c0 4.5 2.8 7.9 7 10 4.2-2.1 7-5.5 7-10V6z"/>', '<path d="m9 11.5 2 2 4-4"/>'],
+};
+
+function drawIcon(name, x, y, size, color, strokeWidth = 1.9) {
+  const parts = ICONS[name];
+  if (!parts) return '';
+  const s = size / 24;
+  return `<g transform="translate(${x} ${y}) scale(${s})" fill="none" stroke="${color}" stroke-width="${strokeWidth / s}" stroke-linecap="round" stroke-linejoin="round">${parts.join('')}</g>`;
+}
+
+// Monogram for a product name: first letters of up to two words.
+function monogram(name) {
+  const words = name.replace(/[()]/g, '').split(/[\s/+-]+/).filter((w) => /[A-Za-z0-9]/.test(w));
+  if (!words.length) return '?';
+  if (words.length === 1) return words[0].slice(0, 2);
+  return (words[0][0] + words[1][0]).toUpperCase();
+}
+
+// Approximate text width at a given font size (sans, average glyph ~0.54em).
+function textW(s, size) {
+  return s.length * size * 0.54;
+}
+
 // Palette matches the site's semantic figure colours.
 const PLANES = {
-  execution: { label: 'Execution', hue: '#8b5cf6', note: 'Where agent work runs' },
-  action: { label: 'Action', hue: '#3b82f6', note: 'How agents reach systems' },
-  knowledge: { label: 'Knowledge', hue: '#14b8a6', note: 'What agents know' },
-  control: { label: 'Control', hue: '#64748b', note: 'What is allowed' },
-  improvement: { label: 'Improvement', hue: '#a855f7', note: 'How behaviour changes' },
-  evidence: { label: 'Evidence', hue: '#0ea5e9', note: 'What you can prove' },
-  human: { label: 'Human', hue: '#f59e0b', note: 'Who decides and answers' },
+  execution: { label: 'Execution', hue: '#8b5cf6', note: 'Where agent work runs', icon: 'cpu' },
+  action: { label: 'Action', hue: '#3b82f6', note: 'How agents reach systems', icon: 'zap' },
+  knowledge: { label: 'Knowledge', hue: '#14b8a6', note: 'What agents know', icon: 'book' },
+  control: { label: 'Control', hue: '#64748b', note: 'What is allowed', icon: 'sliders' },
+  improvement: { label: 'Improvement', hue: '#a855f7', note: 'How behaviour changes', icon: 'refresh' },
+  evidence: { label: 'Evidence', hue: '#0ea5e9', note: 'What you can prove', icon: 'clipboard' },
+  human: { label: 'Human', hue: '#f59e0b', note: 'Who decides and answers', icon: 'user' },
+};
+
+const LAYER_ICONS = {
+  R01: 'server', R02: 'database', R03: 'cable', R04: 'archive', R05: 'factory',
+  R06: 'bulb', R07: 'bot', R08: 'users', R09: 'message', R10: 'lock',
+  R11: 'landmark', R12: 'activity', R13: 'eye', R14: 'funnel',
 };
 
 const LAYERS = [
@@ -48,7 +101,7 @@ const LAYERS = [
   { code: 'R02', name: 'Data platform', plane: 'knowledge',
     control: 'Fail-close ACL pre-filter inside the query',
     mech: ['Permission crawl into index', 'Semantic contracts', 'CDC-fed freshness'],
-    prod: ["Substrate: pgvector, pgvectorscale, S3 Vectors, Pinecone, Qdrant", "Semantics: dbt Semantic Layer, Cube, Snowflake, Databricks, OSI", "Permission-aware: Glean, Azure AI Search ACLs, Amazon Q, SpiceDB"] },
+    prod: ["Substrate: pgvector, pgvectorscale, S3 Vectors, Pinecone, Qdrant", "Semantics: dbt Semantic Layer, Cube, Snowflake, Databricks, OSI", "ACL-aware: Glean, Azure AI Search ACLs, Amazon Q, SpiceDB"] },
   { code: 'R14', name: 'Agent data engineering', plane: 'knowledge',
     control: 'Provenance at parse time; erasure cascades',
     mech: ['Version-stamped embeddings', 'Memory write quarantine', 'Deleted-vector exclusion sets'],
@@ -119,16 +172,13 @@ const ZONES = [
 // Geometry
 const M = 44;
 const HEADER_H = 176;
-const ROW_H = 80;
+const ROW_H = 122;
 const PLANE_W = 142;
-const CODE_W = 74;
-const NAME_W = 252;
-const CTRL_W = 360;
-const MECH_W = 404;
-const PROD_W = 430;
+const LAYER_W = 610;
+const CM_W = 560;
 const CONCERN_W = 52;
 const CONCERN_HEAD_H = 196;
-const GRID_X = M + PLANE_W + CODE_W + NAME_W + CTRL_W + MECH_W + PROD_W;
+const GRID_X = M + PLANE_W + LAYER_W + CM_W;
 const GRID_W = CONCERN_W * CONCERNS.length;
 const ROWS_Y = M + HEADER_H + CONCERN_HEAD_H;
 const ROWS_H = ROW_H * LAYERS.length;
@@ -169,10 +219,8 @@ rules.forEach(([tag, text], i) => {
 const headY = ROWS_Y - 16;
 const cols = [
   [M, 'PLANE'],
-  [M + PLANE_W, 'LAYER'],
-  [M + PLANE_W + CODE_W + NAME_W, 'CONTROL POINT'],
-  [M + PLANE_W + CODE_W + NAME_W + CTRL_W, 'KEY MECHANISMS'],
-  [M + PLANE_W + CODE_W + NAME_W + CTRL_W + MECH_W, 'REPRESENTATIVE PRODUCTS, AUG 2026'],
+  [M + PLANE_W, 'LAYER AND REPRESENTATIVE PRODUCTS, AUG 2026'],
+  [M + PLANE_W + LAYER_W, 'CONTROL POINT AND KEY MECHANISMS'],
 ];
 cols.forEach(([x, label]) => p(`<text x="${x}" y="${headY}" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">${label}</text>`));
 p(`<text x="${GRID_X}" y="${ROWS_Y - CONCERN_HEAD_H + 16}" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">CROSS-CUTTING CONCERNS, THROUGH EVERY LAYER</text>`);
@@ -198,41 +246,65 @@ while (idx < LAYERS.length) {
 planeGroups.forEach(({ plane, start, count }) => {
   const y = ROWS_Y + start * ROW_H;
   const h = count * ROW_H;
-  const { label, hue, note } = PLANES[plane];
+  const { label, hue, note, icon } = PLANES[plane];
   p(`<rect x="${M}" y="${y + 3}" width="${PLANE_W - 14}" height="${h - 6}" rx="10" fill="${hue}" fill-opacity="0.10" stroke="${hue}" stroke-opacity="0.45"/>`);
-  p(`<text x="${M + 16}" y="${y + 28}" font-size="17" font-weight="700" fill="${hue}">${label}</text>`);
+  p(drawIcon(icon, M + 16, y + 16, 24, hue));
+  p(`<text x="${M + 16}" y="${y + 62}" font-size="17" font-weight="700" fill="${hue}">${label}</text>`);
   const words = note.split(' ');
   let line = '', ln = 0;
   words.forEach((w) => {
-    if ((line + ' ' + w).trim().length > 15) { p(`<text x="${M + 16}" y="${y + 50 + ln * 15}" font-size="12" fill="#64748b">${esc(line.trim())}</text>`); line = w; ln++; }
+    if ((line + ' ' + w).trim().length > 15) { p(`<text x="${M + 16}" y="${y + 82 + ln * 15}" font-size="12" fill="#64748b">${esc(line.trim())}</text>`); line = w; ln++; }
     else line += ' ' + w;
   });
-  if (line.trim()) p(`<text x="${M + 16}" y="${y + 50 + ln * 15}" font-size="12" fill="#64748b">${esc(line.trim())}</text>`);
+  if (line.trim()) p(`<text x="${M + 16}" y="${y + 82 + ln * 15}" font-size="12" fill="#64748b">${esc(line.trim())}</text>`);
 });
 
 // Layer rows
 LAYERS.forEach((layer, i) => {
   const y = ROWS_Y + i * ROW_H;
   const hue = PLANES[layer.plane].hue;
-  const xCode = M + PLANE_W;
-  const xName = xCode + CODE_W;
-  const xCtrl = xName + NAME_W;
-  const xMech = xCtrl + CTRL_W;
+  const xLayer = M + PLANE_W;
+  const xCM = xLayer + LAYER_W;
 
-  p(`<rect x="${xCode}" y="${y + 3}" width="${GRID_X - xCode - 10}" height="${ROW_H - 6}" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>`);
-  p(`<rect x="${xCode}" y="${y + 3}" width="5" height="${ROW_H - 6}" rx="2.5" fill="${hue}"/>`);
-  p(`<text x="${xCode + 18}" y="${y + 43}" font-size="15" font-weight="700" fill="${hue}">${layer.code}</text>`);
-  p(`<text x="${xName}" y="${y + 43}" font-size="17" font-weight="600" fill="#0f172a">${esc(layer.name)}</text>`);
-  p(`<text x="${xCtrl}" y="${y + 39}" font-size="14.5" fill="#0f172a">${esc(layer.control)}</text>`);
-  const xProd = xMech + MECH_W;
-  (layer.prod ?? []).forEach((pr, j) => {
-    p(`<text x="${xProd}" y="${y + 21 + j * 16}" font-size="12" fill="#64748b">${esc(pr)}</text>`);
+  p(`<rect x="${xLayer}" y="${y + 3}" width="${GRID_X - xLayer - 10}" height="${ROW_H - 6}" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>`);
+  p(`<rect x="${xLayer}" y="${y + 3}" width="5" height="${ROW_H - 6}" rx="2.5" fill="${hue}"/>`);
+
+  // Line 1: layer icon, code, name.
+  p(`<rect x="${xLayer + 16}" y="${y + 12}" width="30" height="30" rx="8" fill="${hue}" fill-opacity="0.12"/>`);
+  p(drawIcon(LAYER_ICONS[layer.code], xLayer + 20, y + 15, 22, hue));
+  p(`<text x="${xLayer + 56}" y="${y + 27}" font-size="13" font-weight="700" fill="${hue}">${layer.code}</text>`);
+  p(`<text x="${xLayer + 56}" y="${y + 33}" font-size="0"> </text>`);
+  p(`<text x="${xLayer + 94}" y="${y + 33}" font-size="17.5" font-weight="600" fill="#0f172a">${esc(layer.name)}</text>`);
+
+  // Below the name: the market products as monogram chips, one line per category.
+  const chipRows = layer.prod ?? [];
+  chipRows.forEach((line, j) => {
+    const [cat, rest] = line.split(/:\s(.+)/);
+    const items = (rest ?? cat).split(/,\s(?![^(]*\))/).map((s) => s.trim()).filter(Boolean);
+    const rowY = y + 50 + j * 22;
+    p(`<text x="${xLayer + 20}" y="${rowY + 12}" font-size="10.5" font-weight="700" letter-spacing="0.6" fill="#94a3b8">${esc((rest ? cat : '').toUpperCase())}</text>`);
+    let cx = rest ? xLayer + 118 : xLayer + 20;
+    const maxX = xLayer + LAYER_W - 24;
+    let hidden = 0;
+    items.forEach((name) => {
+      const w = 24 + textW(name, 11) + 10;
+      if (cx + w > maxX) { hidden++; return; }
+      p(`<rect x="${cx}" y="${rowY}" width="${w}" height="17" rx="8.5" fill="#ffffff" stroke="#e2e8f0"/>`);
+      p(`<rect x="${cx + 3}" y="${rowY + 2.5}" width="12" height="12" rx="4" fill="${hue}" fill-opacity="0.16"/>`);
+      p(`<text x="${cx + 9}" y="${rowY + 11.5}" font-size="7" font-weight="700" fill="${hue}" text-anchor="middle">${esc(monogram(name))}</text>`);
+      p(`<text x="${cx + 19}" y="${rowY + 12.5}" font-size="11" fill="#334155">${esc(name)}</text>`);
+      cx += w + 6;
+    });
+    if (hidden > 0) p(`<text x="${cx + 2}" y="${rowY + 12.5}" font-size="10.5" fill="#94a3b8">+${hidden}</text>`);
   });
+
+  // Combined control point and mechanisms.
+  p(drawIcon('shield', xCM, y + 15, 15, hue, 2.1));
+  p(`<text x="${xCM + 21}" y="${y + 27}" font-size="14" font-weight="600" fill="#0f172a">${esc(layer.control)}</text>`);
   layer.mech.forEach((m, j) => {
-    const mx = xMech;
-    const my = y + 18 + j * 15.5;
-    p(`<circle cx="${mx + 4}" cy="${my - 4}" r="2.6" fill="${hue}" fill-opacity="0.75"/>`);
-    p(`<text x="${mx + 14}" y="${my}" font-size="12.5" fill="#475569">${esc(m)}</text>`);
+    const my = y + 51 + j * 21;
+    p(`<circle cx="${xCM + 6}" cy="${my - 4}" r="2.6" fill="${hue}" fill-opacity="0.75"/>`);
+    p(`<text x="${xCM + 16}" y="${my}" font-size="12.5" fill="#475569">${esc(m)}</text>`);
   });
 
   // Concern matrix cells

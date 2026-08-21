@@ -7,7 +7,6 @@ import {
   GuideFigure,
   PrincipleCard,
   WallChart,
-  ZoomableDiagram,
 } from '@/components/visuals';
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -19,7 +18,6 @@ export function getMDXComponents(components?: MDXComponents) {
     GuideFigure,
     PrincipleCard,
     WallChart,
-    ZoomableDiagram,
     ...components,
   } satisfies MDXComponents;
 }

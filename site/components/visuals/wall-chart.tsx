@@ -40,18 +40,19 @@ export function WallChart({
         </div>
       </header>
 
-      <div
-        className="overflow-auto overscroll-contain rounded-lg border bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring"
-        role="region"
-        aria-label={`${title}, scrollable diagram`}
-        tabIndex={0}
+      <a
+        href={src}
+        target="_blank"
+        rel="noreferrer"
+        className="block overflow-hidden rounded-lg border bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring"
+        aria-label={`${title}. Opens the full-size diagram in a new tab.`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={title} className="block h-auto w-[2270px] max-w-none" />
-      </div>
+        <img src={src} alt={title} className="block h-auto w-full" />
+      </a>
 
       <figcaption className="mt-4 text-sm leading-6 text-fd-muted-foreground">
-        {caption} <span className="print:hidden">Scroll the panel, or open it full size.</span>
+        {caption} <span className="print:hidden">Click the diagram to open it full size.</span>
       </figcaption>
     </figure>
   );
