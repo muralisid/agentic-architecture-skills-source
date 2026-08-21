@@ -459,6 +459,26 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
+    id: 'learning-promotion-pipeline', category: 'foundation', page: '/architecture/learning-flywheel', placement: 'Lifecycle and rollout',
+    title: 'From trace to rollout, gated at every step', takeaway: 'A learning reaches production only through evaluation, versioning, and staged release, and it can always come back out.',
+    caption: 'The promotion pipeline: evidence in, counterexample-gated, versioned outside the model, released in stages, demotable on staleness.',
+    alt: 'Seven stages from captured trace through eval case, counterexample gate, versioning outside the model, shadow, canary, and full rollout with an armed demotion path.',
+    type: 'flow', evidenceStatus: 'mixed-evidence', dataBearing: false,
+    sources: [
+      guideSource('Learning loops map', '/docs/architecture/learning-loops-map'),
+      guideSource('Intelligence and learning findings', '/docs/layers/r06-intelligence-and-learning/findings'),
+    ],
+    data: { stages: [
+      { label: 'Trace captured', detail: 'A production run lands in the shared trace and eval data layer.', kind: 'agent' },
+      { label: 'Eval case built', detail: 'A failing online score promotes its own trace into the offline suite.', kind: 'evidence' },
+      { label: 'Counterexample gate', detail: 'The candidate survives the counterexample suite with no eval regression; frequency alone never promotes.', kind: 'control', gate: 'Human review before approval' },
+      { label: 'Versioned outside the model', detail: 'The approved artifact lands as policy-as-code or a pinned version, deployable and rollback-capable.', kind: 'control' },
+      { label: 'Shadow', detail: 'Runs beside production, observed, with no effect on outcomes.', kind: 'neutral' },
+      { label: 'Canary', detail: '1 to 5 percent of traffic, gated on session success, satisfaction, and escalation.', kind: 'neutral', gate: 'Flags decouple activation from deployment' },
+      { label: 'Full, demotion armed', detail: 'Seven-day staleness re-evaluation; a failing score demotes the artifact while its eval case stays.', kind: 'evidence' },
+    ] },
+  }),
+  defineFigure({
     id: 'framework-decision-sequence', category: 'foundation', page: '/decisions', placement: 'Framework overview', sourceHeading: 'Decision sequence',
     title: 'The framework sequence', takeaway: 'Readiness and portfolio choices are inputs to the roadmap, not optional companion exercises.',
     caption: 'The sequence prevents platform selection from leading the programme.',

@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type {
   FigureManifestEntry,
   VisualEdgeKind,
@@ -274,22 +275,28 @@ function LoopDiagram({ figure }: { figure: FigureManifestEntry }) {
 
   if (columns.length) {
     return (
-      <div data-semantic="loop" className="relative mx-auto max-w-4xl rounded-[2rem] border-2 border-dashed border-sky-600/45 p-4 sm:p-7">
-        <span data-loop-path="closed" className="absolute inset-x-0 top-1/2 border-t-2 border-dashed border-sky-600/45" aria-hidden="true" />
-        <div className="relative grid gap-12 sm:grid-cols-2 sm:gap-20">
+      <div data-semantic="loop" className="relative mx-auto max-w-4xl rounded-[2rem] border-2 border-dashed border-sky-600/45 p-4 sm:p-8">
+        <div className="grid items-stretch gap-4 sm:grid-cols-[1fr_auto_1fr] sm:gap-5">
           {columns.map((column, index) => (
-            <section key={column.label} className={cn('relative z-10 rounded-2xl border p-4 shadow-sm', nodeClass(column.kind))}>
-              <p className="m-0 text-sm font-semibold">{column.label}</p>
-              <ol className="mb-0 mt-3 space-y-2 pl-5 text-xs leading-5">
-                {column.items.map((item) => <li key={item}>{item}</li>)}
-              </ol>
-              <span className="absolute -right-11 top-1/2 hidden -translate-y-1/2 text-2xl font-semibold text-sky-700 sm:block" aria-hidden="true">
-                {index === 0 ? '→' : '↶'}
-              </span>
-            </section>
+            <Fragment key={column.label}>
+              {index > 0 ? (
+                <div className="flex items-center justify-center gap-3 text-xl font-semibold sm:flex-col sm:gap-2" aria-hidden="true">
+                  <span className="text-sky-700 sm:hidden">↓</span>
+                  <span className="text-sky-700/55 sm:hidden">↑</span>
+                  <span className="hidden text-sky-700 sm:block">→</span>
+                  <span className="hidden text-sky-700/55 sm:block">←</span>
+                </div>
+              ) : null}
+              <section className={cn('rounded-2xl border p-5 shadow-sm', nodeClass(column.kind))}>
+                <p className="m-0 text-sm font-semibold">{column.label}</p>
+                <ol className="mb-0 mt-3 space-y-2 pl-5 text-xs leading-5">
+                  {column.items.map((item) => <li key={item}>{item}</li>)}
+                </ol>
+              </section>
+            </Fragment>
           ))}
         </div>
-        <p className="relative z-10 mx-auto mb-0 mt-5 w-fit rounded-full border bg-fd-background px-4 py-2 text-center text-xs font-semibold text-sky-900 dark:text-sky-100">
+        <p className="mx-auto mb-0 mt-6 w-fit rounded-full border bg-fd-background px-4 py-2 text-center text-xs font-semibold text-sky-900 dark:text-sky-100">
           <span aria-hidden="true">↻ </span>Memory evidence and judged learning feed the next governed cycle
         </p>
       </div>

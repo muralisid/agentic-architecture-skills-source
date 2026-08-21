@@ -27,6 +27,8 @@ Three edits to the intuitive design, each carried by 2026 measurements:
 
 The one fully specified published lifecycle runs DRAFT, APPROVED, PUBLISHED, DEPRECATED, RETIRED, with named gate thresholds (faithfulness at least 0.80, correctness 0.90, tool accuracy 0.90, helpfulness 0.70, latency at most 15s, harm at most 5%), a seven-day staleness policy with automated re-evaluation, and the architecturally elegant enforcement: **discovery returns only PUBLISHED agents**, so quality degradation reduces reachability without a policy engine intervening. Rollouts run shadow, then a 1-to-5% canary gated on session success, satisfaction, and escalation, then full, with flags decoupling activation from deployment.
 
+<GuideFigure id="learning-promotion-pipeline" fullWidth />
+
 ## Judges are governed components
 
 Judge systems agree with themselves more than they measure the intended property, and drift silently on hosted endpoints. So: judges are calibrated against human labels and re-validated on a schedule, versions are pinned, rubrics are structured with an explicit Unknown, outcomes are graded rather than tool sequences, and **the optimizer and the evaluator stay decoupled** so nothing grades its own work. Expert review costs roughly two orders of magnitude more per output than model judging, which is why the working design is an expert-owned bar, judging at volume, and sampled human verification.
