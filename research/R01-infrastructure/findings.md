@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for infrastructure and compute to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Infrastructure and platform lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for infrastructure and compute."
-prerequisites: ["/docs/layers/r01-infrastructure/brief"]
+prerequisites: ["/docs/layers/r01-infrastructure"]
 reading_time: "8 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r01-infrastructure/vendors"
+next: "/docs/layers/r01-infrastructure/sources"
 ---
 
 # R01 Infrastructure & Compute: findings

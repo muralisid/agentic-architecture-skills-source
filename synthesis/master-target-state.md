@@ -2,7 +2,7 @@
 reader_summary: "See how seven agent-system planes operate across the fourteen enduring layers of the enterprise estate."
 audience: ["Enterprise architect", "CIO/CTO", "Platform lead"]
 decision_or_output: "Choose a target architecture posture and assign ownership for each plane without replacing governed systems of record."
-prerequisites: ["/docs/frameworks/roadmap-checklist"]
+prerequisites: ["/docs/architecture/autonomy-contract"]
 reading_time: "10 minutes"
 evidence_status: "Cross-track synthesis; evidence, author positions, and open implementation gaps are identified in linked chapters."
 next: "/docs/architecture/concerns-by-layers-matrix"
@@ -121,7 +121,7 @@ Every architecture above includes a knowledge plane, and the plane is not a stor
 
 ## What this page does not decide
 
-Platform choice, vendor selection and the specific sequencing of use cases. Those follow from the roadmap checklist (Phase 5) and the vendor question bank (Phase 7), and they follow rather than lead: the use-case portfolio decides more than the platform does.
+Platform choice, vendor selection and the specific sequencing of use cases. Those follow from the use-case portfolio framework and the layer pages' own verdicts, and they follow rather than lead: the use-case portfolio decides more than the platform does.
 
 ## Sources
 

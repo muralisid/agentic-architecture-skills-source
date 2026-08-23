@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for security and identity to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Security and identity lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for security and identity."
-prerequisites: ["/docs/layers/r10-security-and-identity/brief"]
+prerequisites: ["/docs/layers/r10-security-and-identity"]
 reading_time: "8 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r10-security-and-identity/vendors"
+next: "/docs/layers/r10-security-and-identity/sources"
 ---
 
 # R10 Security & Identity: findings

@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for the integration fabric to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Integration architecture lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for the integration fabric."
-prerequisites: ["/docs/layers/r03-integration-fabric/brief"]
+prerequisites: ["/docs/layers/r03-integration-fabric"]
 reading_time: "10 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r03-integration-fabric/vendors"
+next: "/docs/layers/r03-integration-fabric/sources"
 ---
 
 # R03 Integration Fabric: findings
@@ -61,7 +61,7 @@ Every tool call is a potential jurisdictional event: the gateway is where data-c
 
 ## 9. Vendor landscape
 
-Summary here; the full map is in vendors.md. Three converging camps: dedicated MCP gateways (open source under neutral governance, plus commercial entrants), API management incumbents adding MCP capability within a single year, and iPaaS/RPA platforms pivoting agentic. Agent-washing watch: "MCP support" claims without an authentication story, and relabeled orchestration marketed as agents (Gartner flags agent washing broadly, estimating only ~130 of thousands of claimed agentic vendors are real).
+Three converging camps: dedicated MCP gateways (open source under neutral governance, plus commercial entrants), API management incumbents adding MCP capability within a single year, and iPaaS/RPA platforms pivoting agentic. Agent-washing watch: "MCP support" claims without an authentication story, and relabeled orchestration marketed as agents (Gartner flags agent washing broadly, estimating only ~130 of thousands of claimed agentic vendors are real).
 
 ## 10. Target state
 

@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for experience and channels to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Customer experience lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for experience and channels."
-prerequisites: ["/docs/layers/r09-experience-and-channels/brief"]
+prerequisites: ["/docs/layers/r09-experience-and-channels"]
 reading_time: "10 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r09-experience-and-channels/vendors"
+next: "/docs/layers/r09-experience-and-channels/sources"
 ---
 
 # R09 Experience and Channels: findings

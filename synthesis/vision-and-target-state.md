@@ -60,7 +60,7 @@ What this guide recommends, and why it differs: start where iteration is cheap a
 
 ## What this guide is, and is not
 
-This guide is a growing library: layer-by-layer architecture tracks across the enterprise landscape, a techniques library with economics, contested-choice verdicts argued from evidence both ways, maturity and readiness models, department and vertical blueprints, and vendor analysis against a neutral question bank. Every recommendation must beat the simplest credible alternative on evidence and enterprise economics. Vendor-published numbers are labeled as such. Where the authors take a position ahead of the evidence, the text says so, as it does twice in this chapter.
+This guide is a growing library: layer-by-layer architecture tracks across the enterprise landscape, a techniques library with economics, contested-choice verdicts argued from evidence both ways, maturity and readiness models, and department and vertical blueprints. Every recommendation must beat the simplest credible alternative on evidence and enterprise economics. Vendor-published numbers are labeled as such. Where the authors take a position ahead of the evidence, the text says so, as it does twice in this chapter.
 
 It is not a vendor pitch, and it is not hype amplification. That bottling plant did not automate its floor by believing in robots. It got there by engineering, measurement, and a floor crew that never stopped being accountable.
 

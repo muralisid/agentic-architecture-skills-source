@@ -28,7 +28,7 @@ Every pull request is reviewed against these acceptance criteria (they are the r
 - **Corrections**: factual errors, stale product facts, broken sources. Fastest to merge.
 - **Research gaps**: evidence that a track missed something material. Open an issue first.
 - **Production techniques**: patterns you have run in production, with economics (before/after cost, scale, failure modes). These go to `techniques/` using the format in that directory's README.
-- **Vendor intelligence**: additions to a track's `vendors.md` with sources.
+- **Product corrections**: a renamed, withdrawn or superseded product on the one-page wall chart, with a primary source and a date.
 - **Challenges**: disagree with a published conclusion? Open an issue with your evidence. Contested points get additional research; disagreements resolve on technical reality and economics.
 
 ## Workflow

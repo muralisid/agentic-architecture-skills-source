@@ -5,7 +5,7 @@ decision_or_output: "Produce a quarterly admit, make-evaluable, redesign-or-reje
 prerequisites: ["/docs/frameworks/readiness-assessments"]
 reading_time: "10 minutes"
 evidence_status: "Evidence-informed author framework; cited findings support the gates, while weights and example values remain enterprise-specific."
-next: "/docs/frameworks/roadmap-checklist"
+next: "/docs/architecture/autonomy-contract"
 ---
 
 # The Use-Case Portfolio Framework

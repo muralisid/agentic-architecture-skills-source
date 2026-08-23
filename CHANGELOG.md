@@ -12,6 +12,14 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-08-23 (second release)
+
+**Renamed.** The guide is now Agentic Architecture Skills, published at www.agenticarchitectureskills.com, with two tracks: the agentic enterprise, and software built for agents to consume (D036). The previous deployment host redirects permanently.
+
+**Archived (D038).** The vendor hub (index, coverage matrix, adoption pathways and ten profiles), the per-layer vendor tables, the roadmap checklist, the vendor question bank, the vendor scorecard and the fourteen research briefs are no longer published. They remain in the repository under `archive/`, unmaintained, with the reasoning recorded there. Roughly 18,000 words of material that dated within a quarter left the site. The one-page wall chart still names representative products and is now re-verified every two months. The roadmap checklist's spine and gates are absorbed by the first-agent pages; the evaluation questions that mattered survive in the decision catalog.
+
+**Positions unchanged by the pruning.** No verdict, finding or source moved. Every claim on the layer pages still carries its own dated evidence.
+
 ## 2026-08-23
 
 **Published.** A research section (`/research`, nine pages) documenting the multi-card retrieval experiments: five rounds on public corpora between 2026-08-19 and 2026-08-22, with human relevance judgements where they exist, seeded and replicated on a second machine. The section carries the experiments, the adversarial review and the five headline reversals, the approach the evidence supports, and the reading list behind it. The site's visual design was aligned with the maintainer's marketing site (warm paper surfaces, serif display headings, an ember accent, a floating pill header and a full footer).

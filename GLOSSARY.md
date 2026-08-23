@@ -60,7 +60,7 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Challenged default.** A technology treated as the obvious choice at some layer (often by hype), which this guide re-examines against the simplest credible alternative on evidence and economics.
 
-**Agent washing.** Marketing existing automation or chat products as "agents" without autonomous tool-using behavior. Named by analysts as widespread; a reason the vendor question bank exists.
+**Agent washing.** Marketing existing automation or chat products as "agents" without autonomous tool-using behavior. Named by analysts as widespread; the reason every claim on this site carries its evidence status.
 
 **Sponsor / Owner.** The accountability pattern for agents: a required business Sponsor accountable for the agent's purpose and lifecycle, and a technical Owner managing configuration and credentials.
 

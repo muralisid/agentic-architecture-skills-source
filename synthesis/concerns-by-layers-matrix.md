@@ -93,4 +93,4 @@ Published honestly, because a matrix with no holes in it would be the least cred
 
 ## How this matrix is used
 
-Phase 5's roadmap checklist keys its gates to these rows: a roadmap variant may not promote a workload past A3 with an unaddressed concern in the enforcement column. Phase 6's blueprints instantiate the columns per department and vertical. Phase 7's vendor question bank asks vendors to answer the rows, which is a more revealing question than asking what a product does.
+The autonomy contract keys its gates to these rows: a workload may not promote past A3 with an unaddressed concern in the enforcement column. The blueprints instantiate the columns per department and vertical. The decision catalog asks vendors to answer the rows, which is a more revealing question than asking what a product does.

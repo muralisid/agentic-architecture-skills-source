@@ -15,7 +15,6 @@ A complete published guide (docs site, built from this repo) covering:
 3. **14 research tracks**: one per enterprise landscape layer, from infrastructure to operating model
 4. **Production techniques library**: use-case-driven data curation and cost engineering patterns with real economics
 5. **Roadmap framework**: checklist-governed; your answers on economics, sovereignty, risk, and audience produce your roadmap variant
-6. **Vendor analysis**: a neutral question bank, a vendor-by-layer coverage matrix, and adoption pathways by vendor gravity
 7. **Blueprints**: department and vertical target states (utilities & energy, banking & financial services, manufacturing & supply chain, public sector)
 
 ## Editorial stance
@@ -29,15 +28,15 @@ A complete published guide (docs site, built from this repo) covering:
 
 | Path | Contents |
 |---|---|
-| `research/` | The 14 layer tracks (R01 to R14), each with brief, findings, vendor map, and sources |
+| `research/` | The 14 layer tracks (R01 to R14), each with findings and dated sources |
 | `synthesis/` | Cross-layer artifacts: maturity model, economics model, sovereignty matrix, concerns-by-layers matrix, memory-pipeline architecture, master target state |
 | `techniques/` | Production-tested patterns with token-economics math |
-| `frameworks/` | Roadmap checklist, readiness assessments, vendor question bank |
+| `frameworks/` | The readiness assessments and the use-case portfolio framework |
 | `blueprints/` | Department and vertical target-state blueprints |
-| `vendors/` | The vendor hub: coverage matrix, profiles, adoption pathways |
 | `knowledge/` | Captured practitioner knowledge (structured interviews), citable like any source |
 | `inputs/` | Raw canonical inputs (unvetted research material, not guide content) |
-| `product/` | The authored site pages: the architecture, the fourteen layers, the decision catalog, and the research section documenting the retrieval experiments |
+| `product/` | The authored site pages: the architecture, the fourteen layers, the decision catalog, and the research section |
+| `archive/` | Material no longer published: the vendor hub, the per-layer vendor tables, the methodology instruments and the research briefs. Kept, not maintained |
 | `site/` | The docs site. Generated from the markdown above; the repo stays the source of truth |
 | `CHANGELOG.md` | Published revisions, including positions research changed |
 | `RE-VERIFICATION.md` | Volatile facts and when to re-check them |
@@ -55,7 +54,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 4. Synthesis + techniques library | Synthesis complete: master target state, concerns matrix, memory pipelines, economics, sovereignty, identity and security, learning loops. Techniques library open and growing |
 | 5. Roadmap framework | Published: nine-factor roadmap generator and the use-case portfolio framework |
 | 6. Blueprints | Published: 7 department and 4 vertical blueprints |
-| 7. Vendor analysis | Published: question bank, scorecard, coverage matrix, 10 profiles, adoption pathways |
+| 7. Vendor analysis | Archived 2026-08-23 (D038): product facts date within a quarter, so the one-page wall chart carries product orientation and is re-verified every two months |
 | 8. Publication | Site built and verified: Fumadocs on Next.js, ready to deploy on Vercel with root directory `site` |
 | 9. Research section | Written 2026-08-23: the multi-card retrieval experiments (five rounds, public corpora, negative results included) and the recommended approach, at `/research` |
 

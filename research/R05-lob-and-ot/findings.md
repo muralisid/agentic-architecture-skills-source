@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for line-of-business systems and operational technology to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Line-of-business and OT lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for line-of-business systems and operational technology."
-prerequisites: ["/docs/layers/r05-lob-and-ot/brief"]
+prerequisites: ["/docs/layers/r05-lob-and-ot"]
 reading_time: "12 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r05-lob-and-ot/vendors"
+next: "/docs/layers/r05-lob-and-ot/sources"
 ---
 
 # R05 Line-of-Business and Operational Technology: findings

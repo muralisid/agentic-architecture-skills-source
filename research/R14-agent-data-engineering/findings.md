@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for agent data engineering and memory to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Data and AI engineering lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for agent data engineering and memory."
-prerequisites: ["/docs/layers/r14-agent-data-engineering/brief"]
+prerequisites: ["/docs/layers/r14-agent-data-engineering"]
 reading_time: "7 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r14-agent-data-engineering/vendors"
+next: "/docs/layers/r14-agent-data-engineering/sources"
 ---
 
 # R14 Agent Data Engineering & Memory Pipelines: findings

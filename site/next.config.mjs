@@ -39,8 +39,19 @@ const config = {
       { source: '/industries', destination: '/library/blueprints', permanent: false },
       { source: '/departments/:slug', destination: '/library/blueprints/departments/:slug', permanent: false },
       { source: '/departments', destination: '/library/blueprints', permanent: false },
-      { source: '/vendors/the-30-vendor-questions', destination: '/library/frameworks/vendor-question-bank', permanent: false },
-      { source: '/vendors', destination: '/library/vendors', permanent: false },
+      // Vendor research and the methodology instruments were archived (D038).
+      // The wall chart on the architecture page carries product orientation now,
+      // and the decision catalog carries the evaluation questions that mattered.
+      { source: '/vendors/the-30-vendor-questions', destination: '/decisions', permanent: false },
+      { source: '/vendors/:path*', destination: '/architecture', permanent: false },
+      { source: '/vendors', destination: '/architecture', permanent: false },
+      { source: '/library/vendors/:path*', destination: '/architecture', permanent: false },
+      { source: '/library/vendors', destination: '/architecture', permanent: false },
+      { source: '/library/frameworks/roadmap-checklist', destination: '/architecture/autonomy-contract', permanent: false },
+      { source: '/library/frameworks/vendor-question-bank', destination: '/decisions', permanent: false },
+      { source: '/library/frameworks/vendor-scorecard', destination: '/decisions', permanent: false },
+      { source: '/library/layers/:track/brief', destination: '/library/layers/:track', permanent: false },
+      { source: '/library/layers/:track/vendors', destination: '/layers/:track', permanent: false },
     ];
   },
 };

@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for productivity and collaboration to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Digital workplace lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for productivity and collaboration."
-prerequisites: ["/docs/layers/r08-productivity-and-collaboration/brief"]
+prerequisites: ["/docs/layers/r08-productivity-and-collaboration"]
 reading_time: "10 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r08-productivity-and-collaboration/vendors"
+next: "/docs/layers/r08-productivity-and-collaboration/sources"
 ---
 
 # R08 Productivity and Collaboration: findings

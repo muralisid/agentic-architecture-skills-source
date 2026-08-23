@@ -5,12 +5,12 @@ decision_or_output: "Choose which systems of record question to resolve, then co
 prerequisites: ["/docs/design"]
 reading_time: "2 minutes"
 evidence_status: "Layer orientation: detailed claims and evidence are carried by the linked findings and source register."
-next: "/docs/layers/r04-systems-of-record/brief"
+next: "/docs/layers/r04-systems-of-record/findings"
 ---
 
 # R04: Core systems of record
 
-Status: complete (published 2026-08-19). Scope finalized at Batch C kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.
+Status: complete (published 2026-08-19). Scope finalized at Batch C kickoff with maintainer POV; see findings.md and sources.md.
 
 ## Scope inventory (v0)
 
@@ -25,4 +25,4 @@ Embedded suite agents vs independent agents through APIs; per-suite agent ecosys
 
 ## Files
 
-`brief.md`, `findings.md`, `vendors.md`, `sources.md` are created from `../_TEMPLATE/` at kickoff.
+`findings.md` and `sources.md` carry this track's research. The scoping brief and the vendor map were archived on 2026-08-23 (see `archive/`, decision D038).
