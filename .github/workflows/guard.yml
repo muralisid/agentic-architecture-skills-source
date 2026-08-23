@@ -37,3 +37,88 @@ jobs:
           printf '%s' "$BOUNDARY_BLOCKLIST" > "$RUNNER_TEMP/blocklist.txt"
           BLOCKLIST="$RUNNER_TEMP/blocklist.txt" node scripts/boundary-scan.mjs
           rm -f "$RUNNER_TEMP/blocklist.txt"
+
+  publish-skills:
+    name: Publish the skill bundles
+    needs: guard
+    # Only from main, and only after the boundary scan has passed. The skills
+    # repository is public, so nothing reaches it that the scan has not cleared.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history: each bundle's version is the date of its newest input.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install
+        working-directory: site
+        run: npm ci
+
+      - name: Build the export
+        working-directory: site
+        run: |
+          npm run sync
+          node scripts/build-skills.mjs --export
+          node scripts/validate-skills.mjs
+
+      # The export contains generated Markdown that the earlier scan never saw,
+      # so it is scanned again before it leaves this repository.
+      - name: Boundary scan over the export
+        env:
+          BOUNDARY_BLOCKLIST: ${{ secrets.BOUNDARY_BLOCKLIST }}
+        run: |
+          if [ -z "$BOUNDARY_BLOCKLIST" ]; then
+            echo "::error::BOUNDARY_BLOCKLIST secret is not set. Refusing to publish without a boundary scan."
+            exit 1
+          fi
+          printf '%s' "$BOUNDARY_BLOCKLIST" > "$RUNNER_TEMP/blocklist.txt"
+          BLOCKLIST="$RUNNER_TEMP/blocklist.txt" node scripts/boundary-scan.mjs
+          rm -f "$RUNNER_TEMP/blocklist.txt"
+
+      - name: Check the publishing key is configured
+        id: key
+        env:
+          SKILLS_DEPLOY_KEY: ${{ secrets.SKILLS_DEPLOY_KEY }}
+        run: |
+          if [ -z "$SKILLS_DEPLOY_KEY" ]; then
+            echo "::notice::SKILLS_DEPLOY_KEY is not set, so the bundles were built and validated but not published."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out the public skills repository
+        if: steps.key.outputs.ready == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: muralisidfn7/agentic-architecture-skills
+          ssh-key: ${{ secrets.SKILLS_DEPLOY_KEY }}
+          path: public-skills
+
+      - name: Publish
+        if: steps.key.outputs.ready == 'true'
+        run: |
+          rsync -a --delete --exclude '.git' site/skills-export/ public-skills/
+          cd public-skills
+          if git diff --quiet && git diff --staged --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "No change to publish."
+            exit 0
+          fi
+          version=$(node -e "console.log(require('./.claude-plugin/plugin.json').version)")
+          git add -A
+          git -c user.name="Murali Sid" -c user.email="murali@fn7.io" \
+            commit -m "Publish skills ${version} from ${GITHUB_SHA:0:7}"
+          if git rev-parse "v${version}" >/dev/null 2>&1; then
+            echo "Tag v${version} exists; publishing without a new tag."
+            git push origin HEAD:main
+          else
+            git tag "v${version}"
+            git push origin HEAD:main --tags
+          fi
