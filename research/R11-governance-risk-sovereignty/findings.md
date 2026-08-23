@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for governance, risk, and sovereignty to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Risk and compliance lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for governance, risk, and sovereignty."
-prerequisites: ["/docs/layers/r11-governance-risk-sovereignty/brief"]
+prerequisites: ["/docs/layers/r11-governance-risk-sovereignty"]
 reading_time: "8 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r11-governance-risk-sovereignty/vendors"
+next: "/docs/layers/r11-governance-risk-sovereignty/sources"
 ---
 
 # R11 Governance, Risk & Sovereignty: findings

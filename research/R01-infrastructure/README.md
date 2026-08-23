@@ -5,12 +5,12 @@ decision_or_output: "Choose which infrastructure and compute question to resolve
 prerequisites: ["/docs/design"]
 reading_time: "2 minutes"
 evidence_status: "Layer orientation: detailed claims and evidence are carried by the linked findings and source register."
-next: "/docs/layers/r01-infrastructure/brief"
+next: "/docs/layers/r01-infrastructure/findings"
 ---
 
 # R01: Infrastructure & compute
 
-Status: complete (published 2026-08-19). Scope finalized at Batch A kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.
+Status: complete (published 2026-08-19). Scope finalized at Batch A kickoff with maintainer POV; see findings.md and sources.md.
 
 ## Scope inventory (v0)
 
@@ -27,4 +27,4 @@ Self-hosted GPU estates vs metered APIs; dedicated agent-sandbox products vs har
 
 ## Files
 
-`brief.md`, `findings.md`, `vendors.md`, `sources.md` are created from `../_TEMPLATE/` at kickoff.
+`findings.md` and `sources.md` carry this track's research. The scoping brief and the vendor map were archived on 2026-08-23 (see `archive/`, decision D038).

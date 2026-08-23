@@ -5,7 +5,7 @@ decision_or_output: "Record the target workflow, accountable roles, deterministi
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "4 minutes"
 evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
-next: "/docs/frameworks/vendor-question-bank"
+next: "/docs/decisions"
 ---
 
 # Vertical Blueprint: Public Sector

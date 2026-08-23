@@ -1,16 +1,34 @@
-export const appName = 'The Agentic Enterprise Architecture Guide';
-export const appShortName = 'Agentic Enterprise';
-export const appDescription =
-  'Employees and agents, one team, running your enterprise. Pick your industry and walk away with the architecture, the use cases, and the plan, done for you.';
+import {
+  siteName,
+  siteShortName,
+  siteDescription,
+  siteUrl as configuredSiteUrl,
+  legacyHosts as configuredLegacyHosts,
+  sourceRepo,
+  skillsRepo,
+  wallChartAsOf as configuredWallChartAsOf,
+} from './site.config.mjs';
+
+export const appName = siteName;
+export const appShortName = siteShortName;
+export const appDescription = siteDescription;
+export const siteUrl = configuredSiteUrl;
+export const legacyHosts = configuredLegacyHosts;
+export const wallChartAsOf = configuredWallChartAsOf;
+
 export const docsRoute = '/';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';
 
-export const gitConfig = {
-  user: 'muralisidfn7',
-  repo: 'agentic-enterprise',
-  branch: 'main',
-};
-
-export const repoUrl = `https://github.com/${gitConfig.user}/${gitConfig.repo}`;
+/** The canonical content repository. Links to it render only when it is public. */
+export const gitConfig = sourceRepo;
+export const repoUrl = `https://github.com/${sourceRepo.user}/${sourceRepo.repo}`;
 export const sourceRepositoryPublic = process.env.SOURCE_REPOSITORY_PUBLIC === 'true';
+
+/** The public repository that carries the generated skill bundles. Always public. */
+export const skillsRepoSlug = `${skillsRepo.user}/${skillsRepo.repo}`;
+export const skillsRepoUrl = `https://github.com/${skillsRepoSlug}`;
+
+/** Where agents discover the published skills. */
+export const skillsIndexPath = '/.well-known/agent-skills/index.json';
+export const skillsIndexUrl = `${siteUrl}${skillsIndexPath}`;

@@ -13,7 +13,7 @@ Sources: see sources.md (every claim below carries a dated link there)
 ## 7. Security and determinism
 ## 8. Sovereignty
 ## 9. Vendor landscape
-(Summary here; the full map lives in vendors.md)
+(Summary here; name the categories and the control point, not individual products)
 ## 10. Target state
 ## 11. Migration path
 ## 12. Metrics

@@ -15,7 +15,6 @@ One track per enterprise landscape layer, plus one capability track (R14). Each 
 - `README.md`: the track's v0 scope inventory (finalized at kickoff with maintainer POV)
 - `brief.md`: the finalized scope and the standard 13 questions applied to this layer
 - `findings.md`: the answers, closing with the mandatory Cross-Cutting Concerns (C1 to C10) and Challenged Defaults sections
-- `vendors.md`: the layer's vendor map (categories, representative players, embedded vs independent, pricing regime, maturity)
 - `sources.md`: dated source list
 
 Skeletons live in `_TEMPLATE/`. A track is complete only when all template sections are filled or explicitly marked N/A with justification.

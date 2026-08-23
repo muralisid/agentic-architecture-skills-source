@@ -12,6 +12,10 @@ const { rewrite: rewriteSuffix } = rewritePath(
 );
 
 export default function proxy(request: NextRequest) {
+  // Well-known paths are served as static files, including SKILL.md. Without
+  // this the `.md` rewrite below would send them into the docs markdown route.
+  if (request.nextUrl.pathname.startsWith('/.well-known/')) return NextResponse.next();
+
   const result = rewriteSuffix(request.nextUrl.pathname);
   if (result) {
     return NextResponse.rewrite(new URL(result, request.nextUrl));

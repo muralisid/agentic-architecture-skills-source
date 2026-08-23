@@ -26,3 +26,6 @@ yarn-error.log*
 next-env.d.ts
 content/docs/
 public/figures/
+public/.well-known/
+skills-export/
+lib/skills-catalogue.json

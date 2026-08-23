@@ -8,14 +8,15 @@ import { copyFile, mkdir, readFile, readdir, realpath, rm, stat, writeFile } fro
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sourceRepo } from '../lib/site.config.mjs';
 
 const siteDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const repoDir = path.dirname(siteDir);
 const outDir = path.join(siteDir, 'content', 'docs');
 const productDir = path.join(repoDir, 'product');
 
-const REPO = 'https://github.com/muralisidfn7/agentic-enterprise';
-const BRANCH = 'main';
+const REPO = `https://github.com/${sourceRepo.user}/${sourceRepo.repo}`;
+const BRANCH = sourceRepo.branch;
 const REPO_PUBLIC = process.env.SOURCE_REPOSITORY_PUBLIC === 'true';
 
 // Files under publication hold are part of the repo but excluded from the site.
@@ -65,6 +66,8 @@ function slugFor(rel) {
     if (parts.length === 2) return base === 'README' ? 'layers/index' : null;
     const track = parts[1].toLowerCase();
     if (track === '_template') return null;
+    // Briefs and vendor tables were archived (D038); findings and sources remain.
+    if (base === 'brief' || base === 'vendors') return null;
     return base === 'README' ? `layers/${track}/index` : `layers/${track}/${base}`;
   }
   if (parts[0] === 'techniques') {
@@ -78,10 +81,6 @@ function slugFor(rel) {
     if (parts.length === 2) return base === 'README' ? 'blueprints/index' : `blueprints/${base}`;
     return `blueprints/${parts[1]}/${base}`;
   }
-  if (parts[0] === 'vendors') {
-    if (parts.length === 2) return base === 'README' ? 'vendors/index' : `vendors/${base}`;
-    return `vendors/${parts[1]}/${base}`;
-  }
   return null;
 }
 
@@ -89,7 +88,7 @@ async function collect(dir, acc = []) {
   for (const entry of await readdir(path.join(repoDir, dir), { withFileTypes: true })) {
     const rel = path.posix.join(dir, entry.name);
     if (entry.isDirectory()) {
-      if (['node_modules', '.git', 'site', 'inputs', 'knowledge', '.github', 'product', 'scripts', 'figures'].includes(entry.name)) continue;
+      if (['node_modules', '.git', 'site', 'inputs', 'knowledge', '.github', 'product', 'scripts', 'figures', 'archive', 'skills', 'routines'].includes(entry.name)) continue;
       await collect(rel, acc);
     } else if (entry.name.endsWith('.md')) {
       acc.push(rel);
@@ -137,7 +136,6 @@ const INDEX_TITLES = {
   'techniques/index': 'Techniques',
   'frameworks/index': 'Frameworks',
   'blueprints/index': 'Blueprints',
-  'vendors/index': 'Vendor research',
 };
 
 const LAYER_TITLES = {
@@ -176,8 +174,6 @@ const LAYER_ICONS = {
 
 const CHILD_PAGE_TITLES = {
   findings: 'Findings',
-  brief: 'Research brief',
-  vendors: 'Vendor landscape',
   sources: 'Sources',
 };
 
@@ -274,7 +270,7 @@ async function rewriteImages(sourceRel, body) {
 
 // Bare repo paths mentioned in prose, e.g. "research/R13-operating-model/findings.md".
 function linkifyBarePaths(sourceRel, body) {
-  return body.replace(/(^|[\s(])((?:research|synthesis|techniques|frameworks|blueprints|vendors)\/[A-Za-z0-9._\-/]+\.md)/g,
+  return body.replace(/(^|[\s(])((?:research|synthesis|techniques|frameworks|blueprints)\/[A-Za-z0-9._\-/]+\.md)/g,
     (whole, lead, p) => {
       if (!map.has(p)) return whole;
       return `${lead}[${p}](${routeFor(map.get(p))})`;
@@ -330,9 +326,8 @@ Every product page on this site is a condensation of this library. Claims carry 
 - [Architecture](/library/architecture): the cross-layer chapters, from the vision to the learning loops.
 - [The 14 enterprise layers](/library/layers): one research track per layer of the estate.
 - [Techniques](/library/techniques): production patterns with their economics.
-- [Frameworks](/library/frameworks): the readiness, portfolio, roadmap, and vendor instruments the product pages apply for you.
+- [Frameworks](/library/frameworks): the readiness assessment and the use-case portfolio the product pages apply for you.
 - [Blueprints](/library/blueprints): the department and vertical studies behind the kits.
-- [Vendor research](/library/vendors): coverage, pathways, and profiles.
 - [Glossary](/library/glossary), [decision log](/library/decisions), [re-verification list](/library/re-verification), [changelog](/library/changelog).
 `);
 written++;
@@ -361,6 +356,8 @@ function assertProductPage(rel, text) {
   for (const m of text.matchAll(/\[[^\]]*\]\((\/[^)\s#]*)(?:#[^)]*)?\)/g)) {
     const href = m[1].replace(/\/$/, '') || '/';
     if (href === '/' || href.startsWith('/figures/')) continue;
+    // Generated artifacts the skills pages point at, not pages in the tree.
+    if (href.startsWith('/.well-known/') || href.startsWith('/diagrams/')) continue;
     if (productRoutes.has(href) || libraryRoutes.has(href)) continue;
     throw new Error(`product/${rel} links to unknown route ${href}. Product links must resolve to a product page, a library page, or /figures/.`);
   }
@@ -405,6 +402,13 @@ const metas = {
     description: 'The fourteen enterprise layers, each with its target state, mechanisms, and decisions.',
     pages: ['index', ...Object.keys(LAYER_TITLES)],
   },
+  skills: {
+    title: 'Skills',
+    icon: 'Download',
+    root: true,
+    description: 'Install the guide into your own agent.',
+    pages: ['index', 'install', 'how-skills-are-built'],
+  },
   research: {
     title: 'Research',
     icon: 'FlaskConical',
@@ -425,7 +429,7 @@ const metas = {
     title: 'Research library',
     icon: 'BookMarked',
     root: true,
-    pages: ['architecture', 'layers', 'techniques', 'frameworks', 'blueprints', 'vendors', 'glossary', 'decisions', 're-verification', 'changelog', 'contributing'],
+    pages: ['architecture', 'layers', 'techniques', 'frameworks', 'blueprints', 'glossary', 'decisions', 're-verification', 'changelog', 'contributing'],
   },
   'library/architecture': {
     title: 'Architecture',
@@ -441,7 +445,7 @@ const metas = {
   'library/frameworks': {
     title: 'Frameworks',
     icon: 'ClipboardList',
-    pages: ['index', 'readiness-assessments', 'use-case-portfolio', 'roadmap-checklist', 'vendor-question-bank', 'vendor-scorecard'],
+    pages: ['index', 'readiness-assessments', 'use-case-portfolio'],
   },
   'library/blueprints': { title: 'Blueprints', icon: 'Building2', pages: ['index', 'departments', 'verticals'] },
   'library/blueprints/departments': {
@@ -452,22 +456,13 @@ const metas = {
     title: 'Verticals',
     pages: ['utilities-and-energy', 'banking-and-financial-services', 'manufacturing-and-supply-chain', 'public-sector'],
   },
-  'library/vendors': {
-    title: 'Vendor research',
-    icon: 'Store',
-    pages: ['index', 'coverage-matrix', 'adoption-pathways', 'profiles'],
-  },
-  'library/vendors/profiles': {
-    title: 'Profiles',
-    pages: ['microsoft', 'salesforce', 'servicenow', 'sap', 'aws', 'google', 'anthropic', 'openai', 'gateways-and-identity', 'evals-and-observability'],
-  },
 };
 
 for (const track of Object.keys(LAYER_TITLES)) {
   metas[`library/layers/${track}`] = {
     title: LAYER_TITLES[track],
     icon: LAYER_ICONS[track],
-    pages: ['index', 'findings', 'brief', 'vendors', 'sources'],
+    pages: ['index', 'findings', 'sources'],
   };
 }
 

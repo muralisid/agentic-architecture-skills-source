@@ -51,7 +51,7 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 |---|---|
 | All vendor pricing and packaging | Product facts in this market change quarterly. Outcome pricing, per-action metering and governance-plane pricing are all list prices as of mid-2026 |
 | The vendor coverage matrix | Consolidation is active in security, identity and observability. A coverage matrix is a dated artifact |
-| GA states and product names in every `vendors.md` | Names and availability move faster than capability |
+| Product names on the one-page wall chart | Names and availability move faster than capability. Re-verified every two months against primary sources; the per-layer vendor tables were archived on 2026-08-23 rather than maintained at that rate |
 | Vendor question-bank answers collected from suppliers | An answer more than two quarters old is a hypothesis, not a fact |
 
 ## Items deliberately not on this list

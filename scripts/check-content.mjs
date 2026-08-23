@@ -9,7 +9,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repoDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'site', 'inputs', '.github']);
+// `archive/` holds unpublished material whose relative links point at files that
+// moved with it; `skills/` holds SKILL.md bodies whose links resolve only inside a
+// generated bundle (validated by site/scripts/validate-skills.mjs instead).
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'site', 'inputs', '.github', 'archive', 'skills', 'routines']);
 
 async function collect(dir, acc = []) {
   for (const e of await readdir(path.join(repoDir, dir), { withFileTypes: true })) {

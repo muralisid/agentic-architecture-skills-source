@@ -5,6 +5,8 @@ import { H2WithIcon, H3WithIcon } from '@/components/mdx/heading-icon';
 import { ResponsiveTable } from '@/components/mdx/responsive-table';
 import { Glossary, PlainTerms, Term } from '@/components/mdx/term';
 import { I, IconChip } from '@/components/mdx/icons';
+import { SkillsCatalog, SkillsStrip } from '@/components/skills/skills-catalog';
+import { CopyLine } from '@/components/skills/copy-line';
 import {
   ComparisonFigure,
   EvidenceBadge,
@@ -30,8 +32,11 @@ export function getMDXComponents(components?: MDXComponents) {
     I,
     IconChip,
     PlainTerms,
+    CopyLine,
     PrincipleCard,
     ResultChart,
+    SkillsCatalog,
+    SkillsStrip,
     StatTiles,
     Step,
     Steps,

@@ -5,12 +5,12 @@ decision_or_output: "Choose which experience and channels question to resolve, t
 prerequisites: ["/docs/design"]
 reading_time: "2 minutes"
 evidence_status: "Layer orientation: detailed claims and evidence are carried by the linked findings and source register."
-next: "/docs/layers/r09-experience-and-channels/brief"
+next: "/docs/layers/r09-experience-and-channels/findings"
 ---
 
 # R09: Experience & channels
 
-Status: complete (published 2026-08-19). Scope finalized at Batch D kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.
+Status: complete (published 2026-08-19). Scope finalized at Batch D kickoff with maintainer POV; see findings.md and sources.md.
 
 ## Scope inventory (v0)
 
@@ -25,4 +25,4 @@ Full conversational front doors vs scoped task agents; CCaaS vendor AI vs bring-
 
 ## Files
 
-`brief.md`, `findings.md`, `vendors.md`, `sources.md` are created from `../_TEMPLATE/` at kickoff.
+`findings.md` and `sources.md` carry this track's research. The scoping brief and the vendor map were archived on 2026-08-23 (see `archive/`, decision D038).

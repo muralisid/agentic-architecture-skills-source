@@ -9,7 +9,7 @@ You are free to:
 
 Under the following terms:
 
-- **Attribution**: you must give appropriate credit ("The Agentic Enterprise Architecture Guide, Murali Sid and contributors"), provide a link to this repository, and indicate if changes were made
+- **Attribution**: you must give appropriate credit ("Agentic Architecture Skills, Murali Sid and contributors"), provide a link to this repository, and indicate if changes were made
 - **ShareAlike**: if you remix, transform, or build upon the material, you must distribute your contributions under the same license
 
 Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode

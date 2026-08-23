@@ -5,12 +5,12 @@ decision_or_output: "Choose which governance, risk, and sovereignty question to 
 prerequisites: ["/docs/design"]
 reading_time: "2 minutes"
 evidence_status: "Layer orientation: detailed claims and evidence are carried by the linked findings and source register."
-next: "/docs/layers/r11-governance-risk-sovereignty/brief"
+next: "/docs/layers/r11-governance-risk-sovereignty/findings"
 ---
 
 # R11: Governance, risk & sovereignty
 
-Status: complete (published 2026-08-19). Scope finalized at Batch B kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.
+Status: complete (published 2026-08-19). Scope finalized at Batch B kickoff with maintainer POV; see findings.md and sources.md.
 
 ## Scope inventory (v0)
 
@@ -25,4 +25,4 @@ AI governance platforms vs extending GRC tooling; sovereign cloud offerings vs r
 
 ## Files
 
-`brief.md`, `findings.md`, `vendors.md`, `sources.md` are created from `../_TEMPLATE/` at kickoff.
+`findings.md` and `sources.md` carry this track's research. The scoping brief and the vendor map were archived on 2026-08-23 (see `archive/`, decision D038).

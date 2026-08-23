@@ -46,7 +46,7 @@ Estate: best-of-breed SaaS, strong engineering culture, high API coverage, weak 
 
 ## How the grid is used
 
-Every later chapter writes against these cells: current-state baselines, roadmap variants (Phase 5 keys its named roadmaps to cells), readiness modes (light for cell 3, heavy for cell 1), and vendor adoption pathways (Phase 7). Where a real enterprise spans cells (a regulated group with a digital-native subsidiary), treat the cells per operating unit.
+Every later chapter writes against these cells: current-state baselines, the path from a first agent to the target state, and readiness modes (light for cell 3, heavy for cell 1). Where a real enterprise spans cells (a regulated group with a digital-native subsidiary), treat the cells per operating unit.
 
 ## Sources
 

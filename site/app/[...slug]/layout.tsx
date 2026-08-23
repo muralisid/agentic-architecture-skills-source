@@ -2,7 +2,7 @@ import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
 import { docsBaseOptions } from '@/lib/layout.shared';
 import { Wordmark } from '@/components/site/wordmark';
-import { BookMarked, Compass, FlaskConical, Layers, Scale } from 'lucide-react';
+import { BookMarked, Compass, Download, FlaskConical, Layers, Scale } from 'lucide-react';
 
 export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
   return (
@@ -29,6 +29,12 @@ export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
           description: '25 contested choices, resolved',
           url: '/decisions',
           icon: <Scale />,
+        },
+        {
+          title: 'Skills',
+          description: 'Install the guide into your agent',
+          url: '/skills',
+          icon: <Download />,
         },
         {
           title: 'Research',

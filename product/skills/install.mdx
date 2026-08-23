@@ -1,0 +1,71 @@
+---
+title: "Installing the skills"
+icon: "Terminal"
+description: "One section per agent: Claude Code, claude.ai, Codex and ChatGPT, Cursor, Gemini CLI, GitHub Copilot, and installing by hand. All of them install the same bundles."
+---
+
+<PlainTerms>
+Agent Skills are a shared format, so the same folder works in most agents; what differs is where each one looks for it and how it is installed. This page gives the command or the steps for each, and a way to check afterwards that the agent can actually see the skill. The one thing to remember: the fastest route for almost everyone is the single `npx skills add` command at the top.
+</PlainTerms>
+
+## The one command
+
+<CopyLine command="npx skills add muralisidfn7/agentic-architecture-skills" />
+
+It detects the agents installed on the machine and writes the skills where each expects them. Add `--skill <name>` for one skill, `--global` to install for your user rather than the current project, and `--copy` if you would rather have real files than symlinks.
+
+To install from this site instead of from the repository, which uses the discovery index:
+
+<CopyLine command="npx skills add https://www.agenticarchitectureskills.com" />
+
+## Claude Code
+
+The whole catalogue is also a plugin, which keeps it updatable in one step:
+
+<CopyLine command="claude plugin marketplace add muralisidfn7/agentic-architecture-skills" />
+<CopyLine command="claude plugin install agentic-architecture-skills@agentic-architecture-skills" />
+
+Skills installed this way are namespaced, so they never collide with your own. To install without the plugin, put a bundle in `~/.claude/skills/<name>/` for yourself or `.claude/skills/<name>/` inside a project. Claude Code watches those directories, so a new skill is available without a restart.
+
+Check it worked by asking for something the skill covers, for example: review this architecture against the deterministic zones.
+
+## claude.ai and Claude Desktop
+
+Download a `.zip` from [the catalogue](/skills) and upload it under Settings, in the features section that manages skills. Uploaded skills stay with your account. Note that a skill uploaded here does not appear in Claude Code or the API: those are three separate installs of the same file.
+
+## Codex and ChatGPT
+
+Codex reads `.agents/skills/` in the working directory and up to the repository root, and `~/.agents/skills/` for your user. The `npx skills add` command writes both. Codex can also install directly from a repository with its own skill installer, naming this repository and the skill you want.
+
+## Cursor
+
+Cursor reads `.agents/skills/` and `.cursor/skills/` in a project, and the same two under your home directory. It also reads `.claude/skills/`, so a Claude Code install is picked up as well.
+
+## Gemini CLI
+
+Gemini CLI reads `~/.gemini/skills/` and `~/.agents/skills/` for a user, and `.gemini/skills/` or `.agents/skills/` in a workspace. It can install from a git URL directly, or link a local directory.
+
+## GitHub Copilot
+
+Copilot reads `.github/skills`, `.claude/skills` and `.agents/skills` in a project, and `~/.copilot/skills` or `~/.agents/skills` for a user. With a recent GitHub CLI:
+
+<CopyLine command="gh skill install muralisidfn7/agentic-architecture-skills review-agent-architecture" />
+
+## By hand, anywhere
+
+Download and unzip a bundle from [the catalogue](/skills), then copy the folder into your agent's skills directory. `~/.agents/skills/` is the location most agents now honour. The folder name has to stay the same as the skill's name, because that is how the format identifies it.
+
+## Checking an install
+
+Ask the agent something the skill's description covers and see whether it reaches for it. If it does not, three things are worth checking: the folder name matches the skill name, the `SKILL.md` is at the top of the folder rather than one level down, and the agent was restarted if it does not watch its skills directory.
+
+## Keeping them current
+
+`npx skills add` again updates in place, and the Claude Code plugin updates when its version changes. Each bundle records the date of its newest input, and the site's [re-verification list](/library/re-verification) says which underlying facts are volatile and when they are next checked.
+
+<details>
+<summary>A note on these instructions</summary>
+
+Menu names and directory conventions in this space change often. These steps were verified in August 2026 and sit on the re-verification list. Where an agent's own documentation disagrees with this page, follow the agent's documentation: it will be newer.
+
+</details>

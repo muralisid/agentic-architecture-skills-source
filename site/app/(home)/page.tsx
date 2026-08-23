@@ -14,6 +14,9 @@ import { appName } from '@/lib/shared';
 import { DiagramRenderer } from '@/components/visuals/diagram-renderer';
 import { getFigure } from '@/lib/figure-manifest';
 import { StatTiles } from '@/components/visuals/result-chart';
+import { SkillsStrip } from '@/components/skills/skills-catalog';
+import { CopyLine } from '@/components/skills/copy-line';
+import { installCommands, skillCount } from '@/lib/skills';
 import { SiteFooter } from '@/components/site/site-footer';
 import { Eyebrow, FeatureCard, PillLink, SectionDecor, SectionHeading } from '@/components/site/section';
 
@@ -115,8 +118,8 @@ export default function HomePage() {
             <PillLink href="/layers" variant="outline">
               Go layer by layer
             </PillLink>
-            <PillLink href="/research" variant="soft" arrow>
-              What the experiments showed
+            <PillLink href="/skills" variant="soft" arrow>
+              Install it into your agent
             </PillLink>
           </div>
           <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-fd-muted-foreground">
@@ -136,8 +139,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The spine */}
+      {/* The skills */}
       <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-24">
+        <SectionDecor circles="tr" dots="bl" />
+        <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
+          <SectionHeading
+            eyebrow="Read it, or install it"
+            title={
+              <>
+                {skillCount()} skills your agent can <span className="italic text-ember">use directly.</span>
+              </>
+            }
+            sub="Every section of this site is published as an Agent Skill: a folder your agent reads, carrying the architecture, the decisions and the measured evidence with the sources intact. One command installs the catalogue into Claude Code, Codex, Cursor, Gemini CLI or Copilot."
+          />
+          <div className="mx-auto mt-8 max-w-2xl">
+            <CopyLine command={installCommands.everything} />
+          </div>
+          <div className="mt-10">
+            <SkillsStrip limit={6} />
+          </div>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <PillLink href="/skills">The full catalogue</PillLink>
+            <PillLink href="/skills/install" variant="outline">
+              Per-agent instructions
+            </PillLink>
+          </div>
+        </div>
+      </section>
+
+      {/* The spine */}
+      <section className="relative overflow-hidden py-20 md:py-24">
         <SectionDecor circles="bl" dots="none" />
         <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
           <SectionHeading
@@ -160,7 +191,7 @@ export default function HomePage() {
       </section>
 
       {/* The layers */}
-      <section className="relative overflow-hidden py-20 md:py-24">
+      <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-24">
         <SectionDecor circles="tr" dots="tl" />
         <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
           <SectionHeading

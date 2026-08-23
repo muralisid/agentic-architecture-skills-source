@@ -5,12 +5,12 @@ decision_or_output: "Choose which the agent platform question to resolve, then c
 prerequisites: ["/docs/design"]
 reading_time: "2 minutes"
 evidence_status: "Layer orientation: detailed claims and evidence are carried by the linked findings and source register."
-next: "/docs/layers/r07-agent-platform/brief"
+next: "/docs/layers/r07-agent-platform/findings"
 ---
 
 # R07: Agent platform
 
-Status: complete (published 2026-08-19). Scope finalized at Batch D kickoff with maintainer POV; see brief.md, findings.md, vendors.md, sources.md.
+Status: complete (published 2026-08-19). Scope finalized at Batch D kickoff with maintainer POV; see findings.md and sources.md.
 
 ## Scope inventory (v0)
 
@@ -25,4 +25,4 @@ Multi-agent frameworks vs a single well-built loop; managed coworker platforms v
 
 ## Files
 
-`brief.md`, `findings.md`, `vendors.md`, `sources.md` are created from `../_TEMPLATE/` at kickoff.
+`findings.md` and `sources.md` carry this track's research. The scoping brief and the vendor map were archived on 2026-08-23 (see `archive/`, decision D038).

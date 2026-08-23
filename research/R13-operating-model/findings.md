@@ -2,10 +2,10 @@
 reader_summary: "Use the evidence, target state, sequencing, economics, and open gaps for the operating model to make architecture decisions."
 audience: ["CIO/CTO","Enterprise architect","Operating-model and workforce lead"]
 decision_or_output: "Record the target-state posture, sequencing priority, and unresolved risk for the operating model."
-prerequisites: ["/docs/layers/r13-operating-model/brief"]
+prerequisites: ["/docs/layers/r13-operating-model"]
 reading_time: "18 minutes"
 evidence_status: "Dated evidence synthesis: vendor-published findings, author positions, and unresolved gaps are identified inline."
-next: "/docs/layers/r13-operating-model/vendors"
+next: "/docs/layers/r13-operating-model/sources"
 ---
 
 # R13 Operating Model and Organization: findings

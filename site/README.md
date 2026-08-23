@@ -1,6 +1,6 @@
-# The guide site
+# The site
 
-A [Fumadocs](https://fumadocs.dev) documentation site (Next.js, deployed on Vercel) that renders the guide corpus.
+A [Fumadocs](https://fumadocs.dev) documentation site (Next.js, deployed on Vercel) that renders the guide corpus and publishes it as installable Agent Skills.
 
 ## How content gets here
 
@@ -28,7 +28,7 @@ npm run build   # syncs content, then builds
 
 Import the repository and set **Root Directory** to `site`. Framework preset is Next.js; the default build command runs the sync step first.
 
-Set `NEXT_PUBLIC_SITE_URL` to the production URL so canonical links, Open Graph images, `sitemap.xml` and `robots.txt` resolve correctly.
+Set `NEXT_PUBLIC_SITE_URL` to `https://www.agenticarchitectureskills.com` so canonical links, Open Graph images, `sitemap.xml`, `robots.txt` and the skill manifests resolve correctly. Names, hosts and repositories all come from `lib/site.config.mjs`; change them there, not in the pages.
 
 ## What the site provides beyond the repository
 
@@ -36,7 +36,22 @@ Sidebar navigation and breadcrumbs, full-text search (Orama, built at compile ti
 
 ## Live
 
-https://agentic-enterprise-ten.vercel.app
+https://www.agenticarchitectureskills.com
+
+The previous deployment host redirects to it permanently.
+
+## The skill bundles
+
+`npm run skills:build` generates the published Agent Skills from `skills/catalog.json` and the hand-written `skills/<name>/SKILL.md` bodies, writing:
+
+- `public/.well-known/agent-skills/` : the discovery index, one `.zip` per skill, and a browsable `SKILL.md` beside each
+- `lib/skills-catalogue.json` : what the site's catalogue page renders
+
+Both are generated and git-ignored. `npm run skills:export` additionally writes `skills-export/`, the tree published to the public repository, including the plugin and marketplace files.
+
+Bundles are byte-reproducible: the archive writer fixes entry order, timestamps, attributes and compression, so the same content always produces the same sha256 digest. `npm run validate:skills` checks the written output against the Agent Skills specification and confirms every digest matches its bundle.
+
+To publish to `muralisidfn7/agentic-architecture-skills`, the guard workflow needs one repository secret, `SKILLS_DEPLOY_KEY`: the private half of a deploy key with write access on that repository. Without it the workflow still builds and validates the bundles, and simply reports that it did not publish.
 
 ## Automatic deployment
 
