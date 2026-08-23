@@ -17,8 +17,6 @@ npx skills add muralisidfn7/agentic-architecture-skills
 # one skill only
 npx skills add muralisidfn7/agentic-architecture-skills --skill review-agent-architecture
 
-# from the site's discovery endpoint instead
-npx skills add https://www.agenticarchitectureskills.com
 
 # GitHub CLI (gh 2.90 or newer)
 gh skill install muralisidfn7/agentic-architecture-skills review-agent-architecture
@@ -39,7 +37,7 @@ Agents that support discovery can also read the index directly:
 https://www.agenticarchitectureskills.com/.well-known/agent-skills/index.json
 ```
 
-Every entry carries a `sha256` digest of the bundle it points at, so a download can be verified before it is trusted.
+Every entry carries a `sha256` digest of the bundle it points at, so a download can be verified before it is trusted. Note that `npx skills add <domain>` does not currently reach that index: tested at CLI version 1.5.23 in August 2026, a bare domain is downloaded directly rather than probed. Install from this repository instead.
 
 ## This repository is generated
 
