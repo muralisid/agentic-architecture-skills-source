@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { source } from '@/lib/source';
+import { siteUrl } from '@/lib/shared';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://agentic-enterprise-ten.vercel.app';
 
 export const revalidate = false;
 

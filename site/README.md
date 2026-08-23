@@ -1,6 +1,6 @@
-# The guide site
+# The site
 
-A [Fumadocs](https://fumadocs.dev) documentation site (Next.js, deployed on Vercel) that renders the guide corpus.
+A [Fumadocs](https://fumadocs.dev) documentation site (Next.js, deployed on Vercel) that renders the guide corpus and publishes it as installable Agent Skills.
 
 ## How content gets here
 
@@ -28,7 +28,7 @@ npm run build   # syncs content, then builds
 
 Import the repository and set **Root Directory** to `site`. Framework preset is Next.js; the default build command runs the sync step first.
 
-Set `NEXT_PUBLIC_SITE_URL` to the production URL so canonical links, Open Graph images, `sitemap.xml` and `robots.txt` resolve correctly.
+Set `NEXT_PUBLIC_SITE_URL` to `https://www.agenticarchitectureskills.com` so canonical links, Open Graph images, `sitemap.xml`, `robots.txt` and the skill manifests resolve correctly. Names, hosts and repositories all come from `lib/site.config.mjs`; change them there, not in the pages.
 
 ## What the site provides beyond the repository
 
@@ -36,7 +36,9 @@ Sidebar navigation and breadcrumbs, full-text search (Orama, built at compile ti
 
 ## Live
 
-https://agentic-enterprise-ten.vercel.app
+https://www.agenticarchitectureskills.com
+
+The previous deployment host redirects to it permanently.
 
 ## Automatic deployment
 

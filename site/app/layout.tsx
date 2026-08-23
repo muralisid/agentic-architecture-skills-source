@@ -2,7 +2,7 @@ import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { Newsreader, Sora } from 'next/font/google';
 import type { Metadata } from 'next';
-import { appName, appDescription } from '@/lib/shared';
+import { appName, appDescription, siteUrl } from '@/lib/shared';
 
 // Body in Sora, display headings in Newsreader: the same pairing as the fn7
 // marketing site, so the guide reads as part of the same family.
@@ -20,7 +20,6 @@ const newsreader = Newsreader({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://agentic-enterprise-ten.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

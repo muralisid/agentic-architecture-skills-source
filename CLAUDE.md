@@ -4,7 +4,7 @@ This file governs AI-assisted sessions and human contributors alike.
 
 ## What this repo is
 
-The research corpus and content source for the Agentic Enterprise Architecture Guide, a public, vendor-neutral reference. See README.md for the map and DECISIONS.md for the decision log. The full program plan lives with the maintainer; the phase status table in README.md is the public view.
+The research corpus and content source for Agentic Architecture Skills (formerly The Agentic Enterprise Architecture Guide), a public, vendor-neutral reference published at agenticarchitectureskills.com and distributed as installable Agent Skills. See README.md for the map and DECISIONS.md for the decision log. The full program plan lives with the maintainer; the phase status table in README.md is the public view.
 
 ## Writing style (hard rules)
 

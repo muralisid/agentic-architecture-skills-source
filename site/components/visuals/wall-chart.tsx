@@ -5,6 +5,8 @@
  * scripts/build-wall-chart.mjs, shown in a pan container because it is wider
  * than any content column and is meant to be zoomed, printed, and taken away.
  */
+import { wallChartAsOf } from '@/lib/shared';
+
 export interface WallChartProps {
   src?: string;
   title?: string;
@@ -14,7 +16,9 @@ export interface WallChartProps {
 export function WallChart({
   src = '/diagrams/target-state.svg',
   title = 'The agentic enterprise, on one page',
-  caption = 'Fourteen layers with their control point, key mechanisms, and the products that serve them, grouped into the seven planes. The ten cross-cutting concerns run as columns across every layer, marked where each layer owns or enforces them, with their own product categories below. The four deterministic zones sit underneath as boundaries no model decision crosses. Products are named for orientation as of August 2026: representative, not exhaustive, and not endorsements.',
+  caption = 'Fourteen layers with their control point, key mechanisms, and the products that serve them, grouped into the seven planes. The ten cross-cutting concerns run as columns across every layer, marked where each layer owns or enforces them, with their own product categories below. The four deterministic zones sit underneath as boundaries no model decision crosses. Products are named for orientation as of ' +
+    wallChartAsOf +
+    ': representative, not exhaustive, and not endorsements.',
 }: WallChartProps) {
   return (
     <figure className="not-prose my-8 w-full max-w-none rounded-2xl border bg-fd-background p-4 shadow-sm sm:p-6 xl:-mx-12 xl:w-[calc(100%+6rem)] print:break-inside-avoid print:shadow-none">

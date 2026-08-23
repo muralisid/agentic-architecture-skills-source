@@ -1,4 +1,6 @@
-# The Agentic Enterprise Architecture Guide
+# Agentic Architecture Skills
+
+The content source for [agenticarchitectureskills.com](https://www.agenticarchitectureskills.com): an open, vendor-neutral reference for the architecture of the agentic enterprise, and for software built to be consumed by agents. The site publishes its content as installable Agent Skills.
 
 An open, vendor-neutral reference for the architecture of the agentic enterprise: what an enterprise looks like when every department and every role works with and manages a set of AI agents, agents perform the routine work, and humans set intent, supervise, and handle exceptions.
 

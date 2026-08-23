@@ -8,14 +8,15 @@ import { copyFile, mkdir, readFile, readdir, realpath, rm, stat, writeFile } fro
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sourceRepo } from '../lib/site.config.mjs';
 
 const siteDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const repoDir = path.dirname(siteDir);
 const outDir = path.join(siteDir, 'content', 'docs');
 const productDir = path.join(repoDir, 'product');
 
-const REPO = 'https://github.com/muralisidfn7/agentic-enterprise';
-const BRANCH = 'main';
+const REPO = `https://github.com/${sourceRepo.user}/${sourceRepo.repo}`;
+const BRANCH = sourceRepo.branch;
 const REPO_PUBLIC = process.env.SOURCE_REPOSITORY_PUBLIC === 'true';
 
 // Files under publication hold are part of the repo but excluded from the site.

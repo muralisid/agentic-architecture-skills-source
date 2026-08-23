@@ -1,5 +1,6 @@
 import { createMDX } from 'fumadocs-mdx/next';
 import { fileURLToPath } from 'node:url';
+import { legacyHosts, siteUrl } from './lib/site.config.mjs';
 
 const withMDX = createMDX();
 const siteRoot = fileURLToPath(new URL('.', import.meta.url));
@@ -13,6 +14,14 @@ const config = {
   },
   async redirects() {
     return [
+      // The site moved to its own domain. Everything on the old deployment host
+      // keeps working and lands on the same path at the new one.
+      ...legacyHosts.map((host) => ({
+        source: '/:path*',
+        has: [{ type: 'host', value: host }],
+        destination: `${siteUrl}/:path*`,
+        permanent: true,
+      })),
       // The first-day site lived under /docs; the corpus mirror now lives under /library.
       { source: '/docs/:path*', destination: '/library/:path*', permanent: false },
       // The interactive worksheets were removed by design decision.

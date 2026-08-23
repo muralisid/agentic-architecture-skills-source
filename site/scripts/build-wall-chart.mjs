@@ -1,3 +1,4 @@
+import { wallChartAsOf } from '../lib/site.config.mjs';
 // Generates the single-picture target-state wall chart.
 // One SVG that carries all fourteen layers, their control point and key
 // mechanisms, the seven planes that group them, the ten cross-cutting concerns
@@ -201,7 +202,7 @@ p(`<rect width="${W}" height="${H}" fill="#ffffff"/>`);
 // Header
 p(`<text x="${M}" y="${M + 42}" font-size="40" font-weight="700" fill="#0f172a">The agentic enterprise, on one page</text>`);
 p(`<text x="${M}" y="${M + 76}" font-size="18" fill="#475569">Fourteen layers of estate. Seven planes of agent system across them. Ten concerns through every layer. Four boundaries no model decision crosses.</text>`);
-p(`<text x="${W - M}" y="${M + 42}" font-size="12.5" fill="#94a3b8" text-anchor="end">Products named for orientation as of August 2026. Representative, not exhaustive,</text>`);
+p(`<text x="${W - M}" y="${M + 42}" font-size="12.5" fill="#94a3b8" text-anchor="end">Products named for orientation as of ${wallChartAsOf}. Representative, not exhaustive,</text>`);
 p(`<text x="${W - M}" y="${M + 60}" font-size="12.5" fill="#94a3b8" text-anchor="end">and not endorsements. Vendor capability claims are vendor-published.</text>`);
 
 const rules = [
@@ -219,7 +220,7 @@ rules.forEach(([tag, text], i) => {
 const headY = ROWS_Y - 16;
 const cols = [
   [M, 'PLANE'],
-  [M + PLANE_W, 'LAYER AND REPRESENTATIVE PRODUCTS, AUG 2026'],
+  [M + PLANE_W, `LAYER AND REPRESENTATIVE PRODUCTS, ${wallChartAsOf.toUpperCase()}`],
   [M + PLANE_W + LAYER_W, 'CONTROL POINT AND KEY MECHANISMS'],
 ];
 cols.forEach(([x, label]) => p(`<text x="${x}" y="${headY}" font-size="12" font-weight="700" letter-spacing="1.6" fill="#64748b">${label}</text>`));
