@@ -57,6 +57,13 @@ const config = {
         })),
       // The first-day site lived under /docs; the corpus mirror now lives under /library.
       { source: '/docs/:path*', destination: '/library/:path*', permanent: false },
+      // The research section became the patterns section: the experiments are
+      // the evidence for a pattern rather than the point in themselves.
+      { source: '/research/recommended-approach', destination: '/patterns', permanent: false },
+      { source: '/research/method-and-reversals', destination: '/patterns/how-to-test-a-context-design', permanent: false },
+      { source: '/research/objective-conditioning', destination: '/patterns/why-not-to-condition-on-the-objective', permanent: false },
+      { source: '/research/:path*', destination: '/patterns/:path*', permanent: false },
+      { source: '/research', destination: '/patterns', permanent: false },
       // A person who opens the discovery directory wants the catalogue.
       { source: '/.well-known/agent-skills', destination: '/skills', permanent: false },
       { source: '/.well-known/skills', destination: '/skills', permanent: false },

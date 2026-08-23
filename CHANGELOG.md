@@ -26,6 +26,8 @@ Revisions to the published guide. Newest first. Volatile facts also sit on the [
 
 **Published.** A research section (`/research`, nine pages) documenting the multi-card retrieval experiments: five rounds on public corpora between 2026-08-19 and 2026-08-22, with human relevance judgements where they exist, seeded and replicated on a second machine. The section carries the experiments, the adversarial review and the five headline reversals, the approach the evidence supports, and the reading list behind it. The site's visual design was aligned with the maintainer's marketing site (warm paper surfaces, serif display headings, an ember accent, a floating pill header and a full footer).
 
+**Research became patterns (D039).** The research section is now a pattern catalogue at `/patterns`: nine named patterns for giving an agent the right context, each stating what to do, what it buys, when it does not apply, and the measurement behind it. The experiment pages remain as the evidence for each pattern. Two were retitled to say what they are for: the objective-conditioning rounds became "Why the view taxonomy comes from the corpus, not the goal", and the method page became "How to test a context design". The `/research` routes redirect. The skill that carried the experiments is now `design-agent-context` and leads with the patterns.
+
 **Publication hold released (D035).** The maintainer decided not to pursue patent protection for the multi-card retrieval mechanisms. The held technique entry is published with a status note that the research pages supersede it, and the hold register stays in place, empty, as the build's mechanism.
 
 **Positions revised by research.**

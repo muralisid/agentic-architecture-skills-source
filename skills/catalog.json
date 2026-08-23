@@ -7,11 +7,26 @@
       "track": "both",
       "order": 10,
       "references": [
-        { "route": "/architecture", "as": "target-state-architecture.md" },
-        { "route": "/architecture/concern-matrix", "as": "cross-cutting-concerns.md" },
-        { "route": "/architecture/deterministic-zones", "as": "deterministic-zones.md" },
-        { "route": "/architecture/enforcement", "as": "enforcement.md" },
-        { "route": "/decisions", "as": "decision-catalog.md" }
+        {
+          "route": "/architecture",
+          "as": "target-state-architecture.md"
+        },
+        {
+          "route": "/architecture/concern-matrix",
+          "as": "cross-cutting-concerns.md"
+        },
+        {
+          "route": "/architecture/deterministic-zones",
+          "as": "deterministic-zones.md"
+        },
+        {
+          "route": "/architecture/enforcement",
+          "as": "enforcement.md"
+        },
+        {
+          "route": "/decisions",
+          "as": "decision-catalog.md"
+        }
       ]
     },
     {
@@ -20,10 +35,22 @@
       "track": "both",
       "order": 20,
       "references": [
-        { "route": "/architecture/deterministic-zones", "as": "deterministic-zones.md" },
-        { "route": "/architecture/enforcement", "as": "enforcement.md" },
-        { "route": "/architecture/identity-chain", "as": "identity-and-delegation.md" },
-        { "route": "/layers/r10-security-and-identity", "as": "security-and-identity.md" }
+        {
+          "route": "/architecture/deterministic-zones",
+          "as": "deterministic-zones.md"
+        },
+        {
+          "route": "/architecture/enforcement",
+          "as": "enforcement.md"
+        },
+        {
+          "route": "/architecture/identity-chain",
+          "as": "identity-and-delegation.md"
+        },
+        {
+          "route": "/layers/r10-security-and-identity",
+          "as": "security-and-identity.md"
+        }
       ]
     },
     {
@@ -32,11 +59,22 @@
       "track": "enterprise",
       "order": 30,
       "references": [
-        { "route": "/library/frameworks/readiness-assessments", "as": "readiness-assessment.md" },
-        { "route": "/architecture/autonomy-contract", "as": "autonomy-contract.md" },
-        { "route": "/library/architecture/archetype-grid", "as": "enterprise-archetypes.md" }
+        {
+          "route": "/library/frameworks/readiness-assessments",
+          "as": "readiness-assessment.md"
+        },
+        {
+          "route": "/architecture/autonomy-contract",
+          "as": "autonomy-contract.md"
+        },
+        {
+          "route": "/library/architecture/archetype-grid",
+          "as": "enterprise-archetypes.md"
+        }
       ],
-      "scripts": ["score_readiness.py"]
+      "scripts": [
+        "score_readiness.py"
+      ]
     },
     {
       "name": "choose-first-agent-use-cases",
@@ -44,12 +82,30 @@
       "track": "enterprise",
       "order": 40,
       "references": [
-        { "route": "/library/frameworks/use-case-portfolio", "as": "use-case-portfolio.md" },
-        { "route": "/architecture/deterministic-zones", "as": "deterministic-zones.md" },
-        { "route": "/architecture/autonomy-contract", "as": "autonomy-contract.md" },
-        { "route": "/library/blueprints/departments/it-and-service-desk", "as": "blueprint-it-service-desk.md" },
-        { "route": "/library/blueprints/departments/customer-service", "as": "blueprint-customer-service.md" },
-        { "route": "/library/blueprints/departments/finance", "as": "blueprint-finance.md" }
+        {
+          "route": "/library/frameworks/use-case-portfolio",
+          "as": "use-case-portfolio.md"
+        },
+        {
+          "route": "/architecture/deterministic-zones",
+          "as": "deterministic-zones.md"
+        },
+        {
+          "route": "/architecture/autonomy-contract",
+          "as": "autonomy-contract.md"
+        },
+        {
+          "route": "/library/blueprints/departments/it-and-service-desk",
+          "as": "blueprint-it-service-desk.md"
+        },
+        {
+          "route": "/library/blueprints/departments/customer-service",
+          "as": "blueprint-customer-service.md"
+        },
+        {
+          "route": "/library/blueprints/departments/finance",
+          "as": "blueprint-finance.md"
+        }
       ]
     },
     {
@@ -58,10 +114,22 @@
       "track": "enterprise",
       "order": 50,
       "references": [
-        { "route": "/layers/r03-integration-fabric", "as": "integration-fabric.md" },
-        { "route": "/architecture/enforcement", "as": "enforcement.md" },
-        { "route": "/architecture/identity-chain", "as": "identity-and-delegation.md" },
-        { "route": "/layers/r04-systems-of-record", "as": "systems-of-record.md" }
+        {
+          "route": "/layers/r03-integration-fabric",
+          "as": "integration-fabric.md"
+        },
+        {
+          "route": "/architecture/enforcement",
+          "as": "enforcement.md"
+        },
+        {
+          "route": "/architecture/identity-chain",
+          "as": "identity-and-delegation.md"
+        },
+        {
+          "route": "/layers/r04-systems-of-record",
+          "as": "systems-of-record.md"
+        }
       ]
     },
     {
@@ -70,10 +138,22 @@
       "track": "both",
       "order": 60,
       "references": [
-        { "route": "/architecture/data-to-memory", "as": "data-to-memory-pipeline.md" },
-        { "route": "/layers/r14-agent-data-engineering", "as": "agent-data-engineering.md" },
-        { "route": "/layers/r02-data-platform", "as": "data-platform.md" },
-        { "route": "/research/recommended-approach", "as": "retrieval-recommended-approach.md" }
+        {
+          "route": "/architecture/data-to-memory",
+          "as": "data-to-memory-pipeline.md"
+        },
+        {
+          "route": "/layers/r14-agent-data-engineering",
+          "as": "agent-data-engineering.md"
+        },
+        {
+          "route": "/layers/r02-data-platform",
+          "as": "data-platform.md"
+        },
+        {
+          "route": "/patterns",
+          "as": "retrieval-recommended-approach.md"
+        }
       ]
     },
     {
@@ -82,10 +162,22 @@
       "track": "both",
       "order": 70,
       "references": [
-        { "route": "/architecture/learning-flywheel", "as": "learning-flywheel.md" },
-        { "route": "/layers/r06-intelligence-and-learning", "as": "intelligence-and-learning.md" },
-        { "route": "/layers/r12-observability-and-finops", "as": "observability-and-finops.md" },
-        { "route": "/layers/r11-governance-risk-sovereignty", "as": "governance-and-evidence.md" }
+        {
+          "route": "/architecture/learning-flywheel",
+          "as": "learning-flywheel.md"
+        },
+        {
+          "route": "/layers/r06-intelligence-and-learning",
+          "as": "intelligence-and-learning.md"
+        },
+        {
+          "route": "/layers/r12-observability-and-finops",
+          "as": "observability-and-finops.md"
+        },
+        {
+          "route": "/layers/r11-governance-risk-sovereignty",
+          "as": "governance-and-evidence.md"
+        }
       ]
     },
     {
@@ -94,10 +186,22 @@
       "track": "enterprise",
       "order": 80,
       "references": [
-        { "route": "/layers/r13-operating-model", "as": "supervision-and-oversight.md" },
-        { "route": "/library/architecture/economics-model", "as": "economics-model.md" },
-        { "route": "/architecture/autonomy-contract", "as": "autonomy-contract.md" },
-        { "route": "/layers/r12-observability-and-finops", "as": "observability-and-finops.md" }
+        {
+          "route": "/layers/r13-operating-model",
+          "as": "supervision-and-oversight.md"
+        },
+        {
+          "route": "/library/architecture/economics-model",
+          "as": "economics-model.md"
+        },
+        {
+          "route": "/architecture/autonomy-contract",
+          "as": "autonomy-contract.md"
+        },
+        {
+          "route": "/layers/r12-observability-and-finops",
+          "as": "observability-and-finops.md"
+        }
       ]
     },
     {
@@ -106,18 +210,54 @@
       "track": "enterprise",
       "order": 200,
       "references": [
-        { "route": "/architecture", "as": "01-target-state-architecture.md" },
-        { "route": "/architecture/plain-words", "as": "02-plain-words-glossary.md" },
-        { "route": "/architecture/deterministic-zones", "as": "03-deterministic-zones.md" },
-        { "route": "/architecture/identity-chain", "as": "04-identity-and-delegation.md" },
-        { "route": "/architecture/enforcement", "as": "05-enforcement.md" },
-        { "route": "/architecture/data-to-memory", "as": "06-data-to-memory.md" },
-        { "route": "/architecture/learning-flywheel", "as": "07-learning-flywheel.md" },
-        { "route": "/architecture/autonomy-contract", "as": "08-autonomy-contract.md" },
-        { "route": "/architecture/concern-matrix", "as": "09-concern-matrix.md" },
-        { "route": "/library/architecture/master-target-state", "as": "10-master-target-state.md" },
-        { "route": "/library/architecture/maturity-model", "as": "11-maturity-model.md" },
-        { "route": "/library/architecture/vision-and-target-state", "as": "12-vision.md" }
+        {
+          "route": "/architecture",
+          "as": "01-target-state-architecture.md"
+        },
+        {
+          "route": "/architecture/plain-words",
+          "as": "02-plain-words-glossary.md"
+        },
+        {
+          "route": "/architecture/deterministic-zones",
+          "as": "03-deterministic-zones.md"
+        },
+        {
+          "route": "/architecture/identity-chain",
+          "as": "04-identity-and-delegation.md"
+        },
+        {
+          "route": "/architecture/enforcement",
+          "as": "05-enforcement.md"
+        },
+        {
+          "route": "/architecture/data-to-memory",
+          "as": "06-data-to-memory.md"
+        },
+        {
+          "route": "/architecture/learning-flywheel",
+          "as": "07-learning-flywheel.md"
+        },
+        {
+          "route": "/architecture/autonomy-contract",
+          "as": "08-autonomy-contract.md"
+        },
+        {
+          "route": "/architecture/concern-matrix",
+          "as": "09-concern-matrix.md"
+        },
+        {
+          "route": "/library/architecture/master-target-state",
+          "as": "10-master-target-state.md"
+        },
+        {
+          "route": "/library/architecture/maturity-model",
+          "as": "11-maturity-model.md"
+        },
+        {
+          "route": "/library/architecture/vision-and-target-state",
+          "as": "12-vision.md"
+        }
       ]
     },
     {
@@ -126,21 +266,66 @@
       "track": "enterprise",
       "order": 210,
       "references": [
-        { "route": "/layers", "as": "00-the-fourteen-layers.md" },
-        { "route": "/layers/r01-infrastructure", "as": "r01-infrastructure.md" },
-        { "route": "/layers/r02-data-platform", "as": "r02-data-platform.md" },
-        { "route": "/layers/r03-integration-fabric", "as": "r03-integration-fabric.md" },
-        { "route": "/layers/r04-systems-of-record", "as": "r04-systems-of-record.md" },
-        { "route": "/layers/r05-lob-and-ot", "as": "r05-lob-and-ot.md" },
-        { "route": "/layers/r06-intelligence-and-learning", "as": "r06-intelligence-and-learning.md" },
-        { "route": "/layers/r07-agent-platform", "as": "r07-agent-platform.md" },
-        { "route": "/layers/r08-productivity-and-collaboration", "as": "r08-productivity-and-collaboration.md" },
-        { "route": "/layers/r09-experience-and-channels", "as": "r09-experience-and-channels.md" },
-        { "route": "/layers/r10-security-and-identity", "as": "r10-security-and-identity.md" },
-        { "route": "/layers/r11-governance-risk-sovereignty", "as": "r11-governance-risk-sovereignty.md" },
-        { "route": "/layers/r12-observability-and-finops", "as": "r12-observability-and-finops.md" },
-        { "route": "/layers/r13-operating-model", "as": "r13-operating-model.md" },
-        { "route": "/layers/r14-agent-data-engineering", "as": "r14-agent-data-engineering.md" }
+        {
+          "route": "/layers",
+          "as": "00-the-fourteen-layers.md"
+        },
+        {
+          "route": "/layers/r01-infrastructure",
+          "as": "r01-infrastructure.md"
+        },
+        {
+          "route": "/layers/r02-data-platform",
+          "as": "r02-data-platform.md"
+        },
+        {
+          "route": "/layers/r03-integration-fabric",
+          "as": "r03-integration-fabric.md"
+        },
+        {
+          "route": "/layers/r04-systems-of-record",
+          "as": "r04-systems-of-record.md"
+        },
+        {
+          "route": "/layers/r05-lob-and-ot",
+          "as": "r05-lob-and-ot.md"
+        },
+        {
+          "route": "/layers/r06-intelligence-and-learning",
+          "as": "r06-intelligence-and-learning.md"
+        },
+        {
+          "route": "/layers/r07-agent-platform",
+          "as": "r07-agent-platform.md"
+        },
+        {
+          "route": "/layers/r08-productivity-and-collaboration",
+          "as": "r08-productivity-and-collaboration.md"
+        },
+        {
+          "route": "/layers/r09-experience-and-channels",
+          "as": "r09-experience-and-channels.md"
+        },
+        {
+          "route": "/layers/r10-security-and-identity",
+          "as": "r10-security-and-identity.md"
+        },
+        {
+          "route": "/layers/r11-governance-risk-sovereignty",
+          "as": "r11-governance-risk-sovereignty.md"
+        },
+        {
+          "route": "/layers/r12-observability-and-finops",
+          "as": "r12-observability-and-finops.md"
+        },
+        {
+          "route": "/layers/r13-operating-model",
+          "as": "r13-operating-model.md"
+        },
+        {
+          "route": "/layers/r14-agent-data-engineering",
+          "as": "r14-agent-data-engineering.md"
+        }
       ]
     },
     {
@@ -149,29 +334,70 @@
       "track": "both",
       "order": 220,
       "references": [
-        { "route": "/decisions", "as": "decision-catalog.md" },
-        { "route": "/library/decisions", "as": "programme-decision-log.md" },
-        { "route": "/library/changelog", "as": "changelog.md" },
-        { "route": "/library/re-verification", "as": "re-verification-list.md" }
+        {
+          "route": "/decisions",
+          "as": "decision-catalog.md"
+        },
+        {
+          "route": "/library/decisions",
+          "as": "programme-decision-log.md"
+        },
+        {
+          "route": "/library/changelog",
+          "as": "changelog.md"
+        },
+        {
+          "route": "/library/re-verification",
+          "as": "re-verification-list.md"
+        }
       ]
     },
     {
-      "name": "multi-vector-retrieval-research",
-      "kind": "reference",
+      "name": "design-agent-context",
+      "kind": "task",
       "track": "both",
-      "order": 230,
+      "order": 65,
       "references": [
-        { "route": "/research", "as": "00-overview.md" },
-        { "route": "/research/recommended-approach", "as": "01-recommended-approach.md" },
-        { "route": "/research/aspect-dilution", "as": "02-aspect-dilution.md" },
-        { "route": "/research/real-prose", "as": "03-real-prose.md" },
-        { "route": "/research/gate-and-economics", "as": "04-gate-and-economics.md" },
-        { "route": "/research/diversity-and-consumer", "as": "05-diversity-and-consumer.md" },
-        { "route": "/research/objective-conditioning", "as": "06-objective-conditioning.md" },
-        { "route": "/research/method-and-reversals", "as": "07-method-and-reversals.md" },
-        { "route": "/research/reading-list", "as": "08-reading-list.md" },
-        { "route": "/library/techniques/multi-view-embeddings", "as": "09-technique-multi-view-embeddings.md" },
-        { "route": "/library/techniques/when-a-knowledge-graph-earns-its-keep", "as": "10-technique-knowledge-graphs.md" }
+        {
+          "route": "/patterns",
+          "as": "01-the-patterns.md"
+        },
+        {
+          "route": "/patterns/aspect-dilution",
+          "as": "02-aspect-dilution.md"
+        },
+        {
+          "route": "/patterns/real-prose",
+          "as": "03-real-prose.md"
+        },
+        {
+          "route": "/patterns/gate-and-economics",
+          "as": "04-gate-and-economics.md"
+        },
+        {
+          "route": "/patterns/diversity-and-consumer",
+          "as": "05-diversity-and-consumer.md"
+        },
+        {
+          "route": "/patterns/why-not-to-condition-on-the-objective",
+          "as": "06-why-not-to-condition-on-the-objective.md"
+        },
+        {
+          "route": "/patterns/how-to-test-a-context-design",
+          "as": "07-how-to-test-a-context-design.md"
+        },
+        {
+          "route": "/patterns/reading-list",
+          "as": "08-reading-list.md"
+        },
+        {
+          "route": "/library/techniques/multi-view-embeddings",
+          "as": "09-technique-multi-view-embeddings.md"
+        },
+        {
+          "route": "/library/techniques/when-a-knowledge-graph-earns-its-keep",
+          "as": "10-technique-knowledge-graphs.md"
+        }
       ]
     }
   ]

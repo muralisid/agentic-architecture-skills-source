@@ -388,7 +388,7 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'layers', 'decisions', 'research'],
+    pages: ['architecture', 'layers', 'decisions', 'patterns'],
   },
   architecture: {
     title: 'Architecture',
@@ -409,19 +409,18 @@ const metas = {
     description: 'Install the guide into your own agent.',
     pages: ['index', 'install', 'how-skills-are-built'],
   },
-  research: {
-    title: 'Research',
-    icon: 'FlaskConical',
-    description: 'The multi-card retrieval experiments: what held, what did not, and the approach the evidence supports.',
+  patterns: {
+    title: 'Patterns',
+    icon: 'Shapes',
+    description: 'Patterns for giving an agent the right context, each with the evidence behind it.',
     pages: [
       'index',
       'aspect-dilution',
       'real-prose',
+      'why-not-to-condition-on-the-objective',
       'gate-and-economics',
       'diversity-and-consumer',
-      'objective-conditioning',
-      'method-and-reversals',
-      'recommended-approach',
+      'how-to-test-a-context-design',
       'reading-list',
     ],
   },
