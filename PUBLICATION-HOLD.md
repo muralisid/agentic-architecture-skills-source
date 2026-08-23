@@ -1,18 +1,13 @@
 # Publication hold
 
-Files listed here are part of the guide and are **not published to the site or a public source repository** until the condition against each is met. The site build skips them and renders links to them as plain text.
+Files listed in the Held table are part of the guide and are **not published to the site or a public source repository** until the condition against each is met. The site build skips them and renders links to them as plain text. The register stays in place as the mechanism: the site build, the boundary scan, and the CI guard all read it.
 
-This exists because a patent provisional is pending. The general rule it enforces: nothing describing the reserved retrieval mechanisms becomes public before the filing receipt exists.
-
-While any row remains under Held, the canonical repository must remain private and `SOURCE_REPOSITORY_PUBLIC` must stay unset. A site filter cannot retract a tracked file from public Git history. This hold temporarily supersedes D001's public-repository assumption. If a public source mirror is needed sooner, generate it from the publishable set into a separate repository with no shared history.
-
-Visibility check recorded 20 August 2026: GitHub reported `muralisidfn7/agentic-enterprise` as `PRIVATE`. Re-check before every release because repository visibility is external state.
+**Status, 23 August 2026: the register is empty.** The hold existed because a patent provisional was pending. On 2026-08-23 the maintainer decided not to pursue patent protection for the multi-card retrieval mechanisms, after five rounds of experiments found no supported technical effect beyond the corpus-derived representation that prior art already covers (see the site's research section). The previously held technique entry is published, carrying a status note that the research pages supersede it. D033's suspension of the public-repository assumption ends with this release; making the canonical repository public is the maintainer's own action.
 
 ## Held
 
 | Path | Reason | Released when |
 |---|---|---|
-| `techniques/multi-view-embeddings.md` | The only file in the corpus carrying mechanism-level detail of the multi-card retrieval pattern. | The provisional filing receipt is recorded in the private program state. |
 
 ## Deliberately not held, with reasons
 
@@ -41,3 +36,9 @@ If you want these stripped too, add them here and the build will drop them; but 
 7. Commit. The deploy pipeline publishes it.
 
 Until those steps are complete, the held file is ordinary private repository content and the generated site is the only public evidence view.
+
+## Release record
+
+| Path | Held from | Released | Decision |
+|---|---|---|---|
+| `techniques/multi-view-embeddings.md` | 2026-08-20 | 2026-08-23 | Maintainer decision: no patent filing; the experiments are published as the research section and supersede the entry |

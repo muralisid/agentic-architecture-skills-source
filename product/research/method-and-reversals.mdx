@@ -1,0 +1,72 @@
+---
+title: "How the programme was run, and how it caught its own errors"
+icon: "SearchCheck"
+description: "Three arms per experiment, a matched control, a ladder of corpora, decision rules fixed before results were read, an adversarial review that rejected the first sprint, and a second-machine replication that found two harness defects. Every headline reversed at least once; the causes are more useful than the results."
+---
+
+<PlainTerms>
+Experiments that confirm what their authors hoped for are cheap to produce and worthless to rely on. This page describes the discipline used to make the results on the other pages hard to fool: a control arm that always gets the same budget as the method, corpora of increasing realism, rules written down before any number was read, a reviewer whose job was to break the results, and a rerun on a second computer. It also lists, without softening, the five times a headline turned out to be wrong and what caught it. The one thing to remember: a control that is not matched is not a control, and a measurement that cannot come out negative is not a measurement.
+</PlainTerms>
+
+## The design
+
+**In short:** Separate what more vectors buy from what purposes buy, and make the corpus able to disagree.
+
+Every experiment carries three arms: one pooled vector; the same text cut into blind fixed-size windows, with the width chosen so that windows per document match cards per document; and the same text split by purpose. The gap between the first two is capacity. The gap between the last two is the hypothesis. Matching the number of units per document between the chunk and card arms is what makes the comparison mean anything, and getting that wrong was the single largest error in the programme.
+
+The corpora form a ladder of realism: a synthetic corpus where the number of aspects is a dial and relevance comes from the generative process; LIMIT, a published stress test with a perfect free decomposition; SciFact, real abstracts with human judgements; Enron, real corporate email; and FollowIR, real news with two sets of human judgements per query. The point of the ladder is that a technique which only works on the top rung is an artefact of the test.
+
+Measurement is paired. Every delta is a per-query paired difference with a 95 percent bootstrap interval, a two-sided <Term k="paired permutation test">paired permutation p-value</Term>, Holm step-down correction wherever several comparisons run together, and wins, ties, and losses recorded beside it. The statistical core was checked by the adversarial reviewer against textbook definitions over 2,000 randomised comparisons; nDCG, recall, MRR, reciprocal rank fusion, alpha-nDCG and subtopic recall all match their standard definitions on hand-worked cases, and maximal marginal relevance at lambda 1 reduces exactly to relevance ranking.
+
+## Rules before results
+
+**In short:** Rounds 1 to 4 were preregistered with frozen decision rules; round 5 replaced the ceremony with rules fixed in code and verdicts required across seeds.
+
+The dynamic rounds were run against a frozen preregistration: hypotheses, decision rules, the fallback when a baseline could not load, and a stopping rule, all written before implementation. Round 4's rule read, in substance, that if business context plus schema metadata did not beat the corpus sample alone, the conditioning claim did not survive at any level and the programme would stop pursuing it. It did not beat it; the programme stopped.
+
+For round 5 the maintainer waived preregistration and directed the programme to run to a conclusion. The cost of that choice was named at the time: without a frozen rule set, a positive result is weaker against the objection that four architectures were tried until one worked. Rigour was held in the form that survives without the ceremony: each experiment's decision rules were fixed in code before any number was read, every synthetic verdict was computed across several topic-model seeds and reported as a fraction rather than from one run, and every arm was reported, including the arms that beat the method. This is recorded so a future reader knows which discipline applied to which result.
+
+## The adversarial review
+
+**In short:** The first sprint was rejected at 1.5 out of 5 by a reviewer who re-ran the experiments rather than reading the code, and was right on every fatal finding.
+
+An adversarial reviewer was run against the benchmark repository at the end of the first sprint with one instruction: try to reject. The reviewer found that the benefit attributed to purpose-aligned cards was, on the evidence then in the repository, mostly the benefit of having more embeddings per document, and that three of the four experiments had construction defects that made their headline numbers wrong. The review is the most valuable single artifact the programme produced, and it is the best argument for the process. Two of its findings the programme had found independently in the same hours; four it had missed, and those were the ones that mattered most.
+
+| Reported first | What was wrong | How it was caught |
+|---|---|---|
+| Cards beat chunks nine to one on LIMIT | The chunk control had 4 units per document against the cards' 44 | The reviewer re-ran it with matched counts; nDCG@10 was a smooth function of units per document |
+| Aspect dilution followed the theory on synthetic data | The "cards" were the exact passages the queries were generated from, so the experiment could not have come out negative; and 81 percent of true positives were unlabelled because filler sentences realised real facts | The reviewer read the generator |
+| Multi-card was catastrophic on SciFact (−0.193) | The card builder kept only the top two spans per aspect, so cards held 44.6 percent of each document against the chunks' 100 percent | The text coverage was measured after the result looked too extreme |
+| Diversity coverage was nearly free | An integer-division bug gave 2 distractors per task instead of 40, so nothing could be lost and every relevance metric sat at its ceiling | The reviewer |
+| The consumer interaction was significant | One judge, from the same family as the generator | A cross-family judge, at the maintainer's suggestion |
+
+Two patterns run through all five. **A control that is not matched is not a control**: three of the five came from an arm that was quietly weaker than its comparison (fewer units, less text, no distractors), so the comparison measured the handicap rather than the hypothesis. **A measurement that cannot be wrong is usually not measuring**: the first synthetic experiment could not have produced a negative result because the cards were the ground truth, and the first coverage metric fired on shared vocabulary, so outputs "covered" 4.3 sub-topics from selections containing 1.8, which is arithmetically impossible and is exactly the check that caught it. The question to ask of any experiment is what result would falsify it; if there is none, the experiment is decoration.
+
+What held up under the same review: the statistical machinery, the absence of any test-set leakage (anchors never see queries or judgements), and the chunk windows covering 100 percent of tokens, so the control was never disadvantaged in that way.
+
+## The second machine
+
+**In short:** Rerunning everything on a different processor architecture found two harness defects and showed which results are robust to the machine.
+
+The committed results were produced on an Intel Mac. Rebuilding the embeddings cache on an Apple Silicon Mac, with every reproducible experiment re-run from its recorded invocation and every regenerated file compared with the committed one, surfaced two defects. The sentence-encoder library selected the Apple GPU by default, and under the pinned framework version that path returned vectors differing from the CPU's by up to 0.19 (mean cosine 0.993), shifted one pooled baseline by 0.13, and once hung permanently inside a device-to-host copy; the embedding cache key carried no device, so GPU vectors would have silently served every later CPU run. The fix makes the CPU the default and the GPU an explicit opt-in. Separately, the hash seed was written into the environment after the interpreter had started, where it could not take effect, and one experiment sampled its training queries from a set's iteration order; every process therefore showed the designer a different sample, and each run designed a different taxonomy. The fix sorts the set and re-executes the entrypoint with the seed fixed. The committed numbers for that experiment are one random draw; the disposition held on every draw.
+
+With both fixes, the pure encoder and retrieval experiments reproduced byte-for-byte across architectures (LIMIT, the anchor sensitivity run, both SciFact runs, the round-1 ladder and cross-over, and the two additional consumer judges; 26 committed files). The dilution, diversity and gate experiments reproduced to floating-point precision (largest difference 4.8e-8; the gate's ROC-AUC moved from 0.933 to 0.936). Everything downstream of dimensionality reduction and density clustering diverged: the topic models differed, so the designer prompts differed, which forced 27 live design calls costing about one US cent in total, and the economics exponents moved again (the finding that they are a clustering artefact, observed a second time). The round-3 cross-over, which depends on those topic models, did not replicate; round 4, the sampler, and the ladder's null all did. One committed pooled baseline on SciFact under a second encoder was found to be wrong on the Intel machine (0.550 against 0.6875 here and 0.689 on the model card), which marks that machine's long-text encodings under that encoder as suspect; the result that depended on it had already been recorded as unusable.
+
+## What would falsify the remaining claims
+
+**In short:** Each claim that survived names the result that would overturn it.
+
+- *Several vectors beat one on aspect-rich material.* A real corpus with aspect-targeted queries and human judgements where matched chunks do not beat the pooled vector.
+- *Purpose alignment helps when the taxonomy matches the query distribution.* A real aspect-targeted corpus where hand-written or model-designed cards fail to beat matched chunks; the synthetic +0.188 is the only positive so far.
+- *A constant-factor saving of roughly two hundred times.* A cost model that prices encoder compute and the different deliverables honestly and finds the ratio below ten.
+- *The harvest is on the efficient frontier.* A corpus with natural sub-topic labels where MMR or a DPP reaches the harvest's coverage at equal or lower relevance cost.
+- *Harvesting reduces unsupported content.* A replication with a different generator where the effect disappears.
+
+<details>
+<summary>The research behind this page</summary>
+
+- The adversarial review of Sprint R1 against the benchmark repository at commit 1cec616, 2026-08-20, and its same-day economics addendum.
+- The programme's findings summary and worklog entries of 2026-08-20 to 2026-08-22, including the second-machine replication record.
+- Benchmark repository `results/replication-arm`, commit 92c18cb, 2026-08-22: the regenerated results that differ from the committed tree.
+
+</details>

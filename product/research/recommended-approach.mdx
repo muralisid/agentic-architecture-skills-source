@@ -1,0 +1,116 @@
+---
+title: "The recommended approach"
+icon: "ListChecks"
+description: "Corpus-first multi-vector retrieval: embed once, keep keyword search in the loop, treat purpose views as an upgrade that must beat matched chunks on your own queries, let a model design and name but never read everything, and never condition the index on the objective. Each recommendation with the measurement and the published work behind it."
+---
+
+<PlainTerms>
+This page turns the experiments into a design you can build. Each recommendation states what to do, the number from the experiments that supports it, and the published research that agrees. Where the evidence says the simpler method is better, the recommendation is the simpler method. The one thing to remember: start from several vectors per document and keyword search, add purpose views only where your own queries show they help, and spend the model on designing and naming rather than on reading every document.
+</PlainTerms>
+
+<PrincipleCard eyebrow="Verdict" title="Corpus-first multi-vector retrieval, with matched controls" kind="evidence">
+Never index aspect-rich documents as one vector. Start with blind chunks at matched capacity, fuse with keyword search, and promote purpose views only where they beat the chunks on the workload's own queries. Derive any view taxonomy from the corpus, never from the objective. Where the objective must shape retrieval, use a retriever trained to follow instructions. Let a model design the taxonomy and name the topics; let classical machinery embed, gate, cluster, and rank. Diversify inside a gated pool with the operator that fits the workload, guarded against distractors. Measure with coverage-aware metrics, across seeds, against a control with the same budget.
+</PrincipleCard>
+
+## The recommendations, with the evidence
+
+**In short:** Nine decisions, each anchored to a measurement on these pages and to published work.
+
+<Steps>
+<Step>
+### Never index aspect-rich documents as one vector
+
+A <Term k="pooled embedding">pooled vector</Term> of a document with several <Term k="aspect">aspects</Term> is an average of all of them. On the controlled corpus the pooled index fell from 0.815 to 0.294 nDCG@10 as aspects grew from one to ten, while any multi-vector representation held above 0.63; on LIMIT the pooled vector scored 0.314 against 0.924 for fine blind windows and 0.988 for per-attribute cards ([aspect dilution](/research/aspect-dilution)). Published work agrees from both sides: the representational ceiling of a single vector is proven and visibly hit by state-of-the-art embedders (Weller et al., arXiv:2508.21038, 2025), and multi-vector families from late interaction (ColBERT, SIGIR 2020) to multi-view document representation (ACL 2022) exist because of it.
+</Step>
+<Step>
+### Start with matched-capacity chunks, and make purpose views earn their place
+
+Most of the multi-vector benefit is capacity. A blind three-word window recovered 0.610 of the 0.674 that purpose cards gained on LIMIT; on human-judged SciFact, purpose cards scored −0.032 below <Term k="matched control">matched chunks</Term> with a hand-written taxonomy and −0.042 with a model-designed one ([real prose](/research/real-prose)). Purpose views won only where queries targeted one aspect and the anchors described the aspects well: +0.188 at ten aspects, with 25 percent fewer embeddings. The decision rule: evaluate purpose cards against chunks matched on units per document, on your own query set, and ship cards only on a measured win. This is consistent with the granularity literature, where propositions and content-aware sections help some workloads and not others (Dense X Retrieval, EMNLP 2024; MC-indexing, EMNLP Findings 2024), and with the finding that derived-text indexing can hurt strong retrievers (Weller et al., EACL 2024).
+</Step>
+<Step>
+### Keep keyword search in the loop, fused by rank
+
+<Term k="bm25">BM25</Term> scored 0.997 on LIMIT against 0.314 for the pooled dense vector, because the queries name an exact attribute; on SciFact the <Term k="hybrid retrieval">hybrid</Term> of cards and BM25 was the best arm at 0.685, +0.040 over the pooled vector (p=0.012), on a corpus full of gene names, drug names, and measured quantities. Reciprocal rank fusion costs nothing, is invariant to the order of its inputs, and covers identifiers and quotations that dense retrieval misses. This is the settled practitioner position and the guide's existing verdict on [graph databases against embedding retrieval](/decisions#cd-1).
+</Step>
+<Step>
+### Derive any view taxonomy from the corpus, never from the objective
+
+Showing the designer a stratified sample of the corpus was worth +0.224 over generic views; adding the research objective cost −0.068; adding business context cost −0.047 and schema metadata −0.068 on a workload spanning six departments; on real human-judged news, objective-selected views were the worst arm, about 0.06 below a corpus-derived view set ([objective conditioning](/research/objective-conditioning)). The useful signal is the corpus, which is what published taxonomy-design systems condition on: TnT-LLM derives a label taxonomy from corpus samples and distils it into lightweight classifiers (KDD 2024), GraphRAG's auto-tuning generates its extraction schema from roughly a one percent corpus sample (Microsoft Research, 2024, vendor), and CAMI selects an index portfolio from the corpus under a cost budget (2026). None conditions on what the user is trying to find out, and the experiments here show why.
+</Step>
+<Step>
+### Where the objective must shape retrieval, use an instruction-following retriever
+
+Card re-selection did not follow the instruction at all on FollowIR (p-MRR about zero), while even an untrained encoder with the instruction prepended was the best arm on News21 (0.416 against 0.33 for every card arm). Retrievers trained to follow instructions produce a different vector for the same text under a different instruction (INSTRUCTOR, ACL Findings 2023; FollowIR, EMNLP 2024; Promptriever, ICLR 2025), and recent work materialises per-instruction views without re-encoding the corpus (GSTransform, 2025). They subsume the execution layer of objective-conditioned views at lower cost, and they are the baseline any such proposal must beat.
+</Step>
+<Step>
+### Spend the model on designing and naming, not on reading everything
+
+At comparable topic granularity the two-pass design, embeddings over everything and generative calls per discovered topic, costs roughly two hundred times less than sending every document to a model ([gate and economics](/research/gate-and-economics)). The saving is a constant factor, not a scaling law, and it excludes encoder compute and compares different deliverables; state both when quoting it. The published economics point the same way: taxonomy-then-classifiers matched a frontier model used directly as the classifier (0.658 against 0.655 accuracy, TnT-LLM, KDD 2024); a vector shortlist plus a small model ran at about one hundredth the per-document cost of direct frontier classification at higher accuracy (0.81 against 0.76, Databricks, Jul 2026, vendor); small models taught by large ones can beat their teachers at execution (Distilling Step-by-Step, ACL Findings 2023); and a model that synthesises extraction functions from a sample cuts token cost by two orders of magnitude (EVAPORATE, VLDB 2023). Use established topic-modelling machinery rather than home-grown variants: density clustering over reduced embeddings with outlier reduction and topic merging, with the model naming and consolidating topics from keyword lists (BERTopic, 2022; TopicGPT, NAACL 2024).
+</Step>
+<Step>
+### Build the gate as a quarantine with a recall target, and train a classifier when you have labels
+
+The embedding-space <Term k="relevance gate">gate</Term> discriminated at ROC-AUC 0.933, but at recall 0.95 it discarded a third of the corpus and at 0.99 an eighth; it contributes a linear factor of one to two, bought with recall. Set it by recall, quarantine rather than delete, and do not attribute the order-of-magnitude saving to it. Fitting anchor weights earned 0.002, while logistic regression on the same embeddings reached 0.995: when a labelled sample exists, a supervised classifier on the raw vectors is the better gate, and a sample of a few thousand labelled items is cheap.
+</Step>
+<Step>
+### Diversify inside a gated pool, with the operator that fits the workload, guarded against distractors
+
+Within a gated pool, harvesting the least similar 40 percent bought +0.315 sub-topic coverage for −0.046 relevance where MMR at lambda 0.3 paid −0.098 for the same coverage and a DPP paid −0.128 for slightly more, with distractor rates of 0.236, 0.285 and 0.328 respectively; harvesting also reduced unsupported content in generated summaries by 0.067 (p=0.0018) ([diversity](/research/diversity-and-consumer)). Diversity helps coverage-driven, multi-answer questions and adds nothing on single-answer factual lookup (DIVA, NAACL 2025; ARAGOG, 2024), and topically adjacent answerless passages are the most damaging additions (the Distracting Effect, ACL 2025), which is why the pool has to be gated first and the distractor rate measured. Choose the operator per workload on measured coverage, not per consumer: the claim that a model reader wants more diversity than a human reader has no evidence that survives a cross-family judge.
+</Step>
+<Step>
+### Measure with coverage-aware metrics, across seeds, against a matched control
+
+Plain recall cannot see diversity and a mismatched control cannot see anything. Use <Term k="ndcg">nDCG@10</Term> with paired tests for relevance, <Term k="coverage metrics">alpha-nDCG or sub-topic recall</Term> for coverage (Clarke et al., SIGIR 2008; sub-question coverage, 2024), fix the decision rules before reading results, require headlines to hold across seeds and machines, and report every arm. Five headline reversals in this programme came from skipping one of those ([method](/research/method-and-reversals)).
+</Step>
+</Steps>
+
+## The evidence table
+
+| Recommendation | Measured here | Published support |
+|---|---|---|
+| Several vectors per document | Pooled 0.815 to 0.294 as aspects rise; LIMIT pooled 0.314 against 0.924 to 0.988 multi-vector | Weller et al. 2025 (LIMIT); ColBERT 2020; Multi-View Document Representation, ACL 2022 |
+| Matched chunks first, purpose views on a measured win | Blind window recovers 0.610 of 0.674; SciFact cards −0.032 and −0.042 below chunks; synthetic cards +0.188 when queries target aspects | Dense X Retrieval 2024; MC-indexing 2024; Weller et al., EACL 2024 |
+| Keyword search fused by rank | LIMIT BM25 0.997; SciFact hybrid 0.685, the best arm | Standard hybrid practice; the guide's CD-1 verdict |
+| Taxonomy from the corpus, not the objective | Corpus sample +0.224; objective −0.068; context −0.047; metadata −0.068; FollowIR objective-selected views worst by 0.06 | TnT-LLM 2024; GraphRAG auto-tuning 2024 (vendor); CAMI 2026 |
+| Instruction-following retriever when the objective matters | Card re-selection p-MRR about zero; instruction-prepended encoder best on News21 | INSTRUCTOR 2023; FollowIR 2024; Promptriever 2025; GSTransform 2025 |
+| Model designs and names; classical machinery executes | About 200 times cheaper at comparable granularity; no scaling law | TnT-LLM 2024; Databricks 2026 (vendor); Distilling Step-by-Step 2023; EVAPORATE 2023; BERTopic 2022 |
+| Gate as quarantine; classifier when labelled | ROC-AUC 0.933; discards 33.7 percent at recall 0.95; logistic regression 0.995 | The adversarial review's null control |
+| Diversify in a gated pool, guard distractors, choose per workload | Harvest +0.315 coverage for −0.046 relevance; distractor rates 0.236 to 0.328; unsupported content −0.067 | MMR 1998; DPP 2022; DIVA 2025; Distracting Effect 2025; Powerless Noise 2026 |
+| Coverage-aware metrics, seeds, matched controls | Five reversals, each caught by one of these | alpha-nDCG 2008; sub-question coverage 2024; BEIR 2021 |
+
+## The reference pipeline
+
+**In short:** Embed once, index several ways, route by query type, and let new documents join existing topics before anything re-clusters.
+
+1. **Parse and chunk per corpus**, as the [data-to-memory pipeline](/architecture/data-to-memory) already requires; evaluate the chunking against the corpus's own questions.
+2. **Embed once** with a versioned encoder. Cache by content and by device, because a GPU path produced different vectors from the CPU path in this programme.
+3. **Index three ways**: a keyword index; the chunk vectors; and, only for workloads where the evaluation in step 7 shows a win, purpose-view vectors built from a corpus-derived taxonomy. Views are named, versioned metadata, regenerable from the chunks.
+4. **Gate by recall** into per-purpose pools, quarantining the rest. Train a classifier on the embeddings as soon as a labelled sample exists.
+5. **Discover topics once**, unseeded, with density clustering and outlier reduction; have a model name and merge them from keyword lists. Topics are navigation metadata, not the source of truth, as the [knowledge-graph study](/library/techniques/when-a-knowledge-graph-earns-its-keep) sets out.
+6. **Retrieve by query type**: keyword and dense fused by rank for identifiers and exact phrases; dense (chunks, or views where they earned their place) for semantic questions; an instruction-following retriever where the stated objective changes what is relevant.
+7. **Select inside the gated pool** with the diversification operator the workload's coverage metric favours, with a distractor guard; pass a relevance head plus a diversified tail.
+8. **Assign new documents to existing topics** by similarity; re-run discovery only on the unassigned residue, on a cadence set by drift monitoring.
+9. **Evaluate continuously** against a matched chunk control on the workload's own queries; retire views that stop winning.
+
+## What this programme no longer claims
+
+- That purpose alignment rather than capacity explains the multi-vector benefit.
+- That the cost advantage of the two-pass design widens with corpus size.
+- That the gate is where the saving comes from.
+- That the right amount of diversity depends on whether a model or a person consumes the results.
+- That conditioning the view design on the objective, the business context, the schema, or a late selection step produces a better index.
+
+## Limits of this evidence
+
+The encoders were small (all-MiniLM-L6-v2 throughout; e5-small-v2 in one unsound arm), the corpora ran to 20,000 documents, everything was in English, the selection budget was ten, and no production data was used. Prices are as of 2026-08-19 and encoder compute was priced at zero. A larger instruction-tuned encoder would strengthen the negative on objective conditioning, not weaken it. The positive findings would change if a real aspect-targeted corpus with human judgements showed matched chunks failing to beat a pooled vector, or purpose views failing to beat matched chunks where queries clearly target aspects; the programme has not yet run such a corpus, and it is the obvious next experiment.
+
+<EvidenceBadge status="independently-measured" /> Measurements on public corpora, seeded and replicated; published support cited with dates, vendor-published numbers labelled.
+
+<details>
+<summary>The research behind this page</summary>
+
+- The experiment pages in this section and the benchmark repository, commit 92c18cb, 2026-08-22.
+- [The papers behind the recommendation](/research/reading-list), with what each showed and how the results here relate to it.
+- [Agent data engineering](/layers/r14-agent-data-engineering) and [the data-to-memory pipeline](/architecture/data-to-memory), where this sits in the target architecture; [CD-25](/decisions#cd-25) records the decision.
+
+</details>

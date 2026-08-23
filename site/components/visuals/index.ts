@@ -5,3 +5,4 @@ export { GlossaryTerm, type GlossaryTermProps } from './glossary-term';
 export { GuideFigure, type GuideFigureProps } from './guide-figure';
 export { PrincipleCard, type PrincipleCardProps } from './principle-card';
 export { WallChart } from './wall-chart';
+export { ResultChart, StatTiles, type ResultChartProps, type StatTileItem } from './result-chart';

@@ -35,6 +35,7 @@ A complete published guide (docs site, built from this repo) covering:
 | `vendors/` | The vendor hub: coverage matrix, profiles, adoption pathways |
 | `knowledge/` | Captured practitioner knowledge (structured interviews), citable like any source |
 | `inputs/` | Raw canonical inputs (unvetted research material, not guide content) |
+| `product/` | The authored site pages: the architecture, the fourteen layers, the decision catalog, and the research section documenting the retrieval experiments |
 | `site/` | The docs site. Generated from the markdown above; the repo stays the source of truth |
 | `CHANGELOG.md` | Published revisions, including positions research changed |
 | `RE-VERIFICATION.md` | Volatile facts and when to re-check them |
@@ -54,6 +55,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 6. Blueprints | Published: 7 department and 4 vertical blueprints |
 | 7. Vendor analysis | Published: question bank, scorecard, coverage matrix, 10 profiles, adoption pathways |
 | 8. Publication | Site built and verified: Fumadocs on Next.js, ready to deploy on Vercel with root directory `site` |
+| 9. Research section | Written 2026-08-23: the multi-card retrieval experiments (five rounds, public corpora, negative results included) and the recommended approach, at `/research` |
 
 ## Contributing
 

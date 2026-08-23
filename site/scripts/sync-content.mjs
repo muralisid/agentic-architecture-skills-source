@@ -35,13 +35,10 @@ async function readHold() {
   }
   const heldSection = heldMatch[1];
   for (const m of heldSection.matchAll(/^\|\s*`([^`]+)`\s*\|/gm)) held.add(m[1].trim());
-  const controlledRelease = 'techniques/multi-view-embeddings.md';
-  if (!held.has(controlledRelease) && !REPO_PUBLIC) {
-    throw new Error(
-      `${controlledRelease} is no longer held, but SOURCE_REPOSITORY_PUBLIC is not true; ` +
-      'refusing to treat an unconfirmed register edit as publication approval.',
-    );
-  }
+  // The register was emptied on 2026-08-23 by the maintainer's decision not to
+  // pursue patent protection (PUBLICATION-HOLD.md, release record). The earlier
+  // check that refused an unconfirmed release of the technique entry is gone
+  // with it; SOURCE_REPOSITORY_PUBLIC now only controls the source links.
   return held;
 }
 const HELD = await readHold();
@@ -394,7 +391,7 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'layers', 'decisions'],
+    pages: ['architecture', 'layers', 'decisions', 'research'],
   },
   architecture: {
     title: 'Architecture',
@@ -407,6 +404,22 @@ const metas = {
     icon: 'Layers',
     description: 'The fourteen enterprise layers, each with its target state, mechanisms, and decisions.',
     pages: ['index', ...Object.keys(LAYER_TITLES)],
+  },
+  research: {
+    title: 'Research',
+    icon: 'FlaskConical',
+    description: 'The multi-card retrieval experiments: what held, what did not, and the approach the evidence supports.',
+    pages: [
+      'index',
+      'aspect-dilution',
+      'real-prose',
+      'gate-and-economics',
+      'diversity-and-consumer',
+      'objective-conditioning',
+      'method-and-reversals',
+      'recommended-approach',
+      'reading-list',
+    ],
   },
   library: {
     title: 'Research library',

@@ -1,0 +1,120 @@
+---
+title: "Aspect dilution: several vectors beat one, and why"
+icon: "Layers"
+description: "A document about several things gets one embedding that is an average of all of them. The measurement of that loss, the control that separates more vectors from better-aligned vectors, and the stress test that shows how much of the gain is capacity."
+---
+
+<PlainTerms>
+Imagine a library where every book gets one index card that tries to say everything about the book in one line. Ask about one chapter and the card only half matches. This page measures how much is lost as a document covers more topics, and what is recovered by writing several cards per book. It then asks the harder question: is the recovery because there are more cards, or because each card is about one purpose? The one thing to remember: more cards recover most of the loss by themselves; purpose-shaped cards add a real but conditional extra.
+</PlainTerms>
+
+## The claim and the confound
+
+**In short:** Cards have to beat an equally large set of blind chunks, not just the single vector, or the experiment measures capacity rather than the idea.
+
+Giving a document several cards means giving it several embeddings. Cutting the same document into arbitrary windows also means several embeddings. If cards beat a single <Term k="pooled embedding">pooled vector</Term>, that proves nothing about purposes, because chunks would beat it too. Every experiment therefore carries three arms.
+
+| Arm | What it is | What it isolates |
+|---|---|---|
+| Pooled | One embedding of the whole document | The baseline everyone uses |
+| Matched chunks | The same text cut into fixed word windows, with the window width chosen so that chunks per document match cards per document | Capacity alone, no semantics |
+| Purpose cards | The same text split by purpose, each card embedded separately, scored by the maximum over cards | Capacity plus alignment |
+
+The encoder is the same in every arm (all-MiniLM-L6-v2, a small general-purpose sentence encoder), everything is scored at document level, and the <Term k="matched control">control is matched</Term> on units per document.
+
+## Aspect dilution on a controlled corpus
+
+**In short:** As a document grows from one aspect to ten, the pooled index falls from 0.815 to 0.294 nDCG@10; any multi-vector representation holds it above 0.63.
+
+Each synthetic document concatenates k passages drawn from k of ten unrelated topic pools (legal, logistics, finance, engineering, personnel, marketing, facilities, research, security, procurement). Every passage realises one fact, a query asks about one fact in wording that shares no template with the passages, and every document carrying a passage that realises the queried fact is relevant. Relevance therefore comes from the generative process rather than from an assumption that one document is the answer; relevance sets grow from 3.7 documents per query at k=1 to 33 at k=10. Five hundred documents and two hundred queries per setting.
+
+<ResultChart
+  kind="lines"
+  title="Retrieval as the number of aspects per document grows"
+  subtitle="nDCG@10 on the synthetic corpus, 200 queries per setting, seed 13. At k=1 all arms are the same document, which the measurement confirms."
+  categories={['1', '2', '3', '4', '5', '7', '10']}
+  xValues={[1, 2, 3, 4, 5, 7, 10]}
+  xLabel="Aspects per document (k)"
+  yLabel="nDCG@10"
+  min={0.2}
+  max={0.9}
+  series={[
+    { name: 'Pooled, one vector', color: 'slate', values: [0.815, 0.485, 0.394, 0.355, 0.377, 0.356, 0.294] },
+    { name: 'Matched blind chunks', color: 'gray', values: [0.832, 0.738, 0.677, 0.657, 0.638, 0.676, 0.633] },
+    { name: 'Purpose cards, template anchors', color: 'aqua', values: [0.799, 0.734, 0.684, 0.678, 0.702, 0.731, 0.742] },
+    { name: 'Purpose cards, hand-written anchors', color: 'ember', values: [null, null, 0.694, null, 0.742, 0.774, 0.803] },
+  ]}
+  caption="The pooled index collapses and does not recover. Splitting the document, by any method, holds retrieval up. The purpose cards pull away from the matched chunks from k=5 onward, and the hand-written anchors (a practitioner's topical description of each aspect, carrying none of the generator's phrasing) do better than the anchors rendered from the generator's own templates."
+  source="Benchmark repository, results/e0_dilution/metrics.json and results/e1_anchor_sensitivity/metrics.json, commit 92c18cb (2026-08-22). Reproduced on a second machine to within 5e-8."
+/>
+
+Against the matched chunk control, cards built from hand-written anchors score +0.023 at k=3 (p=0.12, not significant), +0.099 at k=5, +0.098 at k=7, and +0.188 at k=10 (95 percent interval +0.152 to +0.225, p=0.0001, 135 wins to 34 losses), while using 9.8 units per document against the control's 13.0, which is 25 percent fewer embeddings. The earlier template-anchor version of the same experiment gave +0.109 at k=10. The reason the cruder anchors do better is intuitive once seen: a topical description is a better prototype for an aspect than one rendered sentence carrying one specific fact.
+
+The mechanism behaves as the theory says it should. The mean cosine similarity between a query and its target document's best card stays flat across k (0.476 at k=1, 0.466 at k=10), while the pooled vector's similarity decays monotonically from 0.476 to 0.225. Treating the pooled vector as the normalised mean of k near-orthogonal aspect vectors predicts a decay of one over the square root of k; the measured ratio follows k to the power −0.32, above the prediction at every k. Aspects drawn from natural language are not orthogonal, since all the passages share register and syntax, and encoder similarities occupy a narrow cone that compresses differences. The orthogonality argument is an upper bound on dilution, not a prediction the data confirm.
+
+| k | Pooled similarity | Best-card similarity | Measured ratio | Predicted ratio |
+|---|---|---|---|---|
+| 1 | 0.476 | 0.476 | 1.00 | 1.00 |
+| 2 | 0.368 | 0.475 | 0.77 | 0.71 |
+| 5 | 0.292 | 0.482 | 0.61 | 0.45 |
+| 10 | 0.225 | 0.466 | 0.48 | 0.32 |
+
+## Capacity or alignment? The LIMIT test
+
+**In short:** On a benchmark built to break single-vector retrieval, purpose cards recover almost everything, but so does a fine enough blind window. Most of the benefit is capacity.
+
+LIMIT is constructed to expose the representational ceiling of single-vector retrieval: for a fixed embedding dimension, some combinations of documents can never be returned together as a top-k result by any single-vector index, a bound that state-of-the-art embedders visibly hit (Weller, Boratko, Naim, Lee, arXiv:2508.21038, Aug 2025). Each document names a person and lists the things they like; each query asks who likes one specific thing. The small variant has 46 documents with 44 attributes each and 1,000 queries. The task looks trivial and defeats dense retrievers, and it hands over an unambiguous aspect decomposition for free: one card per attribute.
+
+<ResultChart
+  kind="bars"
+  title="LIMIT-small: five systems, one encoder"
+  subtitle="nDCG@10 over 1,000 queries. Every delta against the pooled vector is significant at p=0.0001 after Holm correction."
+  categories={['BM25 keyword search', 'Dense, pooled', 'Dense, 30-word chunks (4 per document)', 'Dense, per-attribute cards (44 per document)', 'Cards fused with BM25']}
+  series={[{ name: 'nDCG@10', values: [0.997, 0.314, 0.390, 0.988, 0.997] }]}
+  emphasis={['Dense, per-attribute cards (44 per document)']}
+  min={0}
+  max={1}
+  ticks={[0, 0.25, 0.5, 0.75, 1]}
+  caption="Keyword search wins outright, because LIMIT queries name an exact attribute. The pooled dense vector fails; per-attribute cards recover it; the hybrid matches BM25. The 30-word chunk arm here is not a matched control: it has 4 units per document against the cards' 44."
+  source="Benchmark repository, results/e1_limit/metrics.json, commit 92c18cb (2026-08-22). Byte-identical on a second machine."
+/>
+
+The first reading of this table attributed the 0.674 gain to alignment, because 30-word chunks gained only 0.076. An adversarial re-run, described on the [method page](/research/method-and-reversals), varied only the chunk granularity and found that nDCG@10 is a smooth function of units per document.
+
+<ResultChart
+  kind="lines"
+  title="Blind windows against units per document"
+  subtitle="The same text, the same encoder, only the window width varied. Cards sit at 44 units per document."
+  categories={['4.0', '10.8', '24.7', '36.8', '44']}
+  xValues={[4, 10.8, 24.7, 36.8, 44]}
+  xLabel="Units per document"
+  yLabel="nDCG@10"
+  min={0.3}
+  max={1}
+  series={[
+    { name: 'Blind sliding windows', color: 'slate', values: [0.390, 0.611, 0.892, 0.924, null] },
+    { name: 'Per-attribute cards', color: 'ember', values: [null, null, null, null, 0.988] },
+  ]}
+  caption="A semantically blind three-word sliding window, with no taxonomy and no anchors, recovers 0.610 of the 0.674 that cards gain. The residual card advantage at matched capacity is +0.064. Dropping the card template and using the bare attribute string beats the framed cards by a further +0.010 (p=0.0001)."
+  source="Adversarial review of the benchmark repository at commit 1cec616, 2026-08-20; reported in the programme's review record."
+/>
+
+Two things follow. Capacity is necessary and explains most of the LIMIT result; the decomposition has to match the query distribution for the remainder to appear. And LIMIT supplies a perfect decomposition for free while its queries are effectively exact-attribute lookups, which is why <Term k="bm25">BM25</Term> wins outright and the <Term k="hybrid retrieval">hybrid</Term> only matches it. Real corpora arrive undecomposed, the taxonomy must be designed and may be misaligned, so the honest reading of the table is an upper bound on what alignment can buy. The storage cost is also a property of the corpus: 44 cards per document here, far above the small constant the pattern implies elsewhere.
+
+## What this establishes
+
+<PrincipleCard eyebrow="Verdict" title="Multi-vector, yes; purpose alignment, conditionally" kind="evidence">
+Several embeddings per document beat one on aspect-rich material, decisively and by any method of splitting. Purpose alignment adds a measurable extra (+0.188 at ten aspects, with fewer embeddings) when queries target one aspect and the anchors describe the aspects well. It adds nothing, and can subtract, when they do not, which is the finding on [real prose](/research/real-prose). The unconditional claim that alignment rather than count explains the gain is withdrawn.
+</PrincipleCard>
+
+<EvidenceBadge status="independently-measured" /> The synthetic and LIMIT results reproduced byte-for-byte or to floating-point precision across two machines and two processor architectures.
+
+<details>
+<summary>The research behind this page</summary>
+
+- Benchmark repository: `results/e0_dilution`, `results/e1_anchor_sensitivity`, `results/e1_limit`, commit 92c18cb, 2026-08-22.
+- Weller, Boratko, Naim, Lee, On the Theoretical Limitations of Embedding-Based Retrieval, arXiv:2508.21038, Aug 2025. https://arxiv.org/abs/2508.21038
+- The adversarial review of Sprint R1, 2026-08-20, whose chunk-granularity re-run produced the second chart.
+- [The papers behind the recommendation](/research/reading-list) for the multi-vector literature this sits in.
+
+</details>
