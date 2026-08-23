@@ -35,13 +35,10 @@ async function readHold() {
   }
   const heldSection = heldMatch[1];
   for (const m of heldSection.matchAll(/^\|\s*`([^`]+)`\s*\|/gm)) held.add(m[1].trim());
-  const controlledRelease = 'techniques/multi-view-embeddings.md';
-  if (!held.has(controlledRelease) && !REPO_PUBLIC) {
-    throw new Error(
-      `${controlledRelease} is no longer held, but SOURCE_REPOSITORY_PUBLIC is not true; ` +
-      'refusing to treat an unconfirmed register edit as publication approval.',
-    );
-  }
+  // The register was emptied on 2026-08-23 by the maintainer's decision not to
+  // pursue patent protection (PUBLICATION-HOLD.md, release record). The earlier
+  // check that refused an unconfirmed release of the technique entry is gone
+  // with it; SOURCE_REPOSITORY_PUBLIC now only controls the source links.
   return held;
 }
 const HELD = await readHold();

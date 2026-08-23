@@ -16,6 +16,8 @@ Revisions to the published guide. Newest first. Volatile facts also sit on the [
 
 **Published.** A research section (`/research`, nine pages) documenting the multi-card retrieval experiments: five rounds on public corpora between 2026-08-19 and 2026-08-22, with human relevance judgements where they exist, seeded and replicated on a second machine. The section carries the experiments, the adversarial review and the five headline reversals, the approach the evidence supports, and the reading list behind it. The site's visual design was aligned with the maintainer's marketing site (warm paper surfaces, serif display headings, an ember accent, a floating pill header and a full footer).
 
+**Publication hold released (D035).** The maintainer decided not to pursue patent protection for the multi-card retrieval mechanisms. The held technique entry is published with a status note that the research pages supersede it, and the hold register stays in place, empty, as the build's mechanism.
+
 **Positions revised by research.**
 
 - Multi-view (multi-card) embeddings moved from "validated in one domain, transfer conditional" to a measured result: several vectors per document beat one decisively; purpose-specific views beat matched fixed-window chunks only where queries target one aspect (+0.188 nDCG@10 at ten aspects) and lose where queries concern whole documents (−0.032 to −0.042 on human-judged scientific abstracts). Recorded as CD-25 and in the glossary, the memory-pipeline chapter, and the R14 findings.
