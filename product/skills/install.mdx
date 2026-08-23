@@ -14,9 +14,13 @@ Agent Skills are a shared format, so the same folder works in most agents; what 
 
 It detects the agents installed on the machine and writes the skills where each expects them. Add `--skill <name>` for one skill, `--global` to install for your user rather than the current project, and `--copy` if you would rather have real files than symlinks.
 
-To install from this site instead of from the repository, which uses the discovery index:
+### Installing from this site's index
 
-<CopyLine command="npx skills add https://www.agenticarchitectureskills.com" />
+This site also publishes a discovery index at [`/.well-known/agent-skills/index.json`](/.well-known/agent-skills/index.json), in the shape the draft discovery convention describes, with a `sha256` digest for every bundle.
+
+Tested against the `skills` CLI at version 1.5.23 in August 2026, `npx skills add https://www.agenticarchitectureskills.com` does not work: given a bare domain the CLI downloads that URL directly rather than probing the endpoint, and then reports that the download is not a skill. Its own error message suggests that command, so the recommendation and the behaviour disagree. Use the repository form above until that is fixed.
+
+The index itself is worth having regardless: it is how an agent that implements discovery finds these skills without being told where they are, and the digests let any client verify a bundle before trusting it.
 
 ## Claude Code
 

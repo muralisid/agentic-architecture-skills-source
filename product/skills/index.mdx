@@ -14,7 +14,7 @@ An Agent Skill is a folder with a short instruction file and the reference mater
 
 That installs the whole catalogue into whichever agents it finds: Claude Code, Codex, Cursor, Gemini CLI, Copilot, and anything else reading the shared `.agents/skills` location. [Per-agent instructions](/skills/install) cover the rest, including claude.ai, the Claude Code plugin, and installing by hand.
 
-Agents that support discovery can read the index directly at [`/.well-known/agent-skills/index.json`](/.well-known/agent-skills/index.json). Every entry carries a `sha256` digest of the bundle it points at, so a download can be checked before it is trusted.
+Agents that support discovery can read the index directly at [`/.well-known/agent-skills/index.json`](/.well-known/agent-skills/index.json). Every entry carries a `sha256` digest of the bundle it points at, so a download can be checked before it is trusted. Installing by domain rather than by repository does not work in the current `skills` CLI; [the install page](/skills/install) has the detail.
 
 ## Task skills
 
