@@ -356,6 +356,8 @@ function assertProductPage(rel, text) {
   for (const m of text.matchAll(/\[[^\]]*\]\((\/[^)\s#]*)(?:#[^)]*)?\)/g)) {
     const href = m[1].replace(/\/$/, '') || '/';
     if (href === '/' || href.startsWith('/figures/')) continue;
+    // Generated artifacts the skills pages point at, not pages in the tree.
+    if (href.startsWith('/.well-known/') || href.startsWith('/diagrams/')) continue;
     if (productRoutes.has(href) || libraryRoutes.has(href)) continue;
     throw new Error(`product/${rel} links to unknown route ${href}. Product links must resolve to a product page, a library page, or /figures/.`);
   }
@@ -399,6 +401,13 @@ const metas = {
     icon: 'Layers',
     description: 'The fourteen enterprise layers, each with its target state, mechanisms, and decisions.',
     pages: ['index', ...Object.keys(LAYER_TITLES)],
+  },
+  skills: {
+    title: 'Skills',
+    icon: 'Download',
+    root: true,
+    description: 'Install the guide into your own agent.',
+    pages: ['index', 'install', 'how-skills-are-built'],
   },
   research: {
     title: 'Research',

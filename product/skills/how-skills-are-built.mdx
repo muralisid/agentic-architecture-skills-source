@@ -1,0 +1,70 @@
+---
+title: "How the skills are built"
+icon: "Cog"
+description: "The bundles are generated from the site's own pages by a build step: how the conversion works, why the archives are byte-reproducible, what the checks enforce, and what the published research says about the limits of skills as a format."
+---
+
+<PlainTerms>
+The skills on this site are not written twice. A build step takes the same pages you read in a browser, converts them to plain Markdown, and packages them with a short instruction file. This page explains that process, because a reference you install is only trustworthy if you can see how it was made. The one thing to remember: the bundles are reproducible, so the same content always produces the same fingerprint, and a fingerprint that changes means the content changed.
+</PlainTerms>
+
+## One source, two outputs
+
+The pages are the source of truth. A skill adds two things to them: an instruction file that says when the material is useful and how to work through it, and a selection of which pages travel together.
+
+The instruction file is hand-written, and deliberately so. Its description is the only text most agents ever read: it is what decides whether the skill is reached for at all, so generating it from a page's summary would be optimising the wrong sentence. What is generated is everything underneath, which means the references cannot drift from the pages they came from.
+
+## The conversion
+
+Pages are written in MDX, so their components carry real content: a figure's underlying data, a chart's numbers, a glossary. Stripping the components would quietly drop the evidence a skill exists to supply, so each one has an explicit rendering:
+
+| On the page | In the bundle |
+|---|---|
+| A diagram | Its title, its takeaway, its caption, a description of what it shows in words, and a link to the SVG |
+| A results chart | A GitHub-flavoured table of the same numbers, plus the caption and the experiment artifact it came from |
+| Stat tiles | A table of measure, value and note |
+| An "in plain terms" opener | A blockquote |
+| A glossary term | Its own words, with the tooltip dropped |
+| The full glossary | Every term and definition, grouped |
+
+A component with no rendering fails the build rather than vanishing from a bundle. That is the property worth having: a new component on a page cannot silently punch a hole in a published skill.
+
+Site-relative links become absolute, so a reference in a bundle can still be followed back to the page it came from, and every reference opens with the URL it was generated from.
+
+## Reproducible archives
+
+The discovery index addresses each bundle by a `sha256` digest. That only means something if the same inputs always produce the same bytes, so the archive writer fixes everything that would otherwise vary: entries are sorted by path, timestamps are pinned rather than taken from the clock, file attributes are fixed, and the compression level is set. Building twice produces identical files.
+
+The practical effect: a digest that changes tells you the content changed. Nothing else can move it.
+
+## What the checks enforce
+
+Before anything is written, and again against what was written, each bundle is checked:
+
+- **Frontmatter within the specification.** Exactly six fields are allowed. Any other field is a hard error when uploading to claude.ai or through the API, so a bundle that works locally could still fail everywhere else. The check refuses it early.
+- **The name matches the folder**, is lowercase with single hyphens, is at most 64 characters, and contains no reserved word.
+- **The description is present, under 1024 characters, and says when to use the skill.** A description that only says what something is will not trigger.
+- **The body is under 500 lines**, with the detail in references rather than in the instruction file.
+- **References are one level deep** and in a readable format, and every bundled file is actually mentioned in the body, because a file nothing opens is weight without value.
+- **No em dashes**, the same style rule the rest of the site follows.
+- **Digests match the bundles** they claim to describe.
+
+## Where they are published
+
+Three places, from one build: the discovery index at [`/.well-known/agent-skills/index.json`](/.well-known/agent-skills/index.json) with a downloadable archive per skill; a public repository laid out the way the installers expect; and a Claude Code plugin marketplace in that same repository. The older `/.well-known/skills/` path serves the same files, because installers written against the earlier draft probe there.
+
+## What the evidence says about skills
+
+The format is worth using and worth being sober about. Published analysis of a large public skill corpus found most skills were single-version and never updated, only about six percent appeared on more than one marketplace, and roughly a quarter raised concerns about the scope of their instructions. Separately, machine-generated context files have been measured to slightly reduce task success while raising cost. Reuse is asserted more often than it is demonstrated.
+
+Three consequences shape how this site publishes them. Bundles are generated from maintained pages rather than written once and abandoned. Each carries the date of its newest input, so staleness is visible. And the instruction files are written by hand and reviewed, because the measured problem with generated context is real.
+
+The deeper treatment, including progressive-disclosure economics and the governance a skill library needs, is on [the agent platform layer](/layers/r07-agent-platform).
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The agent platform layer](/layers/r07-agent-platform): skills as a capability format, progressive disclosure, signing and version pinning, and the measured limits
+- [The catalogue](/skills) and [the install instructions](/skills/install)
+
+</details>

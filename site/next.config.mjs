@@ -12,6 +12,36 @@ const config = {
   turbopack: {
     root: siteRoot,
   },
+  async headers() {
+    return [
+      {
+        // Agents fetch the discovery index cross-origin, so it has to be readable
+        // from any origin, and cached briefly rather than pinned.
+        source: '/.well-known/agent-skills/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET, HEAD, OPTIONS' },
+          { key: 'Cache-Control', value: 'public, max-age=300, stale-while-revalidate=86400' },
+        ],
+      },
+      {
+        source: '/.well-known/skills/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET, HEAD, OPTIONS' },
+          { key: 'Cache-Control', value: 'public, max-age=300, stale-while-revalidate=86400' },
+        ],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      // Installers written against the 0.1.0 draft probe /.well-known/skills.
+      // Serve the same files there rather than redirecting, because some clients
+      // do not follow a redirect on a discovery probe.
+      { source: '/.well-known/skills/:path*', destination: '/.well-known/agent-skills/:path*' },
+    ];
+  },
   async redirects() {
     return [
       // The site moved to its own domain. Everything on the old deployment host
@@ -24,6 +54,9 @@ const config = {
       })),
       // The first-day site lived under /docs; the corpus mirror now lives under /library.
       { source: '/docs/:path*', destination: '/library/:path*', permanent: false },
+      // A person who opens the discovery directory wants the catalogue.
+      { source: '/.well-known/agent-skills', destination: '/skills', permanent: false },
+      { source: '/.well-known/skills', destination: '/skills', permanent: false },
       // The interactive worksheets were removed by design decision.
       { source: '/tools/:path*', destination: '/', permanent: false },
       // The playbook-era product surface was replaced by the technical

@@ -18,6 +18,8 @@ Revisions to the published guide. Newest first. Volatile facts also sit on the [
 
 **Archived (D038).** The vendor hub (index, coverage matrix, adoption pathways and ten profiles), the per-layer vendor tables, the roadmap checklist, the vendor question bank, the vendor scorecard and the fourteen research briefs are no longer published. They remain in the repository under `archive/`, unmaintained, with the reasoning recorded there. Roughly 18,000 words of material that dated within a quarter left the site. The one-page wall chart still names representative products and is now re-verified every two months. The roadmap checklist's spine and gates are absorbed by the first-agent pages; the evaluation questions that mattered survive in the decision catalog.
 
+**Published as Agent Skills (D037).** Twelve skills, generated from the site's own pages: eight named for what an architect is doing (review an architecture, map the deterministic boundaries, assess readiness, choose first use cases, govern tool access, design the knowledge pipeline, build evals and evidence, size supervision and cost) and four carrying a whole section. They install into Claude Code, claude.ai, Codex, Cursor, Gemini CLI and Copilot. A discovery index at `/.well-known/agent-skills/index.json` carries a sha256 digest per bundle, and the bundles are byte-reproducible, so a digest changes only when the content does. The readiness skill ships a scorer that reproduces the published assessment's own rules.
+
 **Positions unchanged by the pruning.** No verdict, finding or source moved. Every claim on the layer pages still carries its own dated evidence.
 
 ## 2026-08-23

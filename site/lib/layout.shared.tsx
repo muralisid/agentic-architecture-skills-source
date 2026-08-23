@@ -6,6 +6,7 @@ export const NAV_LINKS = [
   { text: 'Architecture', url: '/architecture' },
   { text: 'Layers', url: '/layers' },
   { text: 'Decisions', url: '/decisions' },
+  { text: 'Skills', url: '/skills' },
   { text: 'Research', url: '/research' },
   { text: 'Library', url: '/library' },
 ] as const;

@@ -1,0 +1,55 @@
+---
+title: "Install this guide into your agent"
+icon: "Download"
+description: "Every section of this site is published as an Agent Skill: a folder your agent reads, carrying the architecture, the decisions and the measured evidence, with the sources intact."
+---
+
+<PlainTerms>
+An Agent Skill is a folder with a short instruction file and the reference material it needs. Agents load the instruction file only when it is relevant, so a large library costs almost nothing until it is used. Everything on this site is published that way, so instead of reading a page and retyping it into a chat, you can install the material once and let your agent consult it while you work. The one thing to remember: skills here are reference material. None of them asks for credentials, network access, or permission to act on your systems.
+</PlainTerms>
+
+## Install everything
+
+<CopyLine command="npx skills add muralisidfn7/agentic-architecture-skills" />
+
+That installs the whole catalogue into whichever agents it finds: Claude Code, Codex, Cursor, Gemini CLI, Copilot, and anything else reading the shared `.agents/skills` location. [Per-agent instructions](/skills/install) cover the rest, including claude.ai, the Claude Code plugin, and installing by hand.
+
+Agents that support discovery can read the index directly at [`/.well-known/agent-skills/index.json`](/.well-known/agent-skills/index.json). Every entry carries a `sha256` digest of the bundle it points at, so a download can be checked before it is trusted.
+
+## Task skills
+
+**In short:** Named for what an architect is trying to do, each bundling only the pages that decision needs.
+
+<SkillsCatalog kind="task" />
+
+## Reference skills
+
+**In short:** A whole section of the site in one bundle, for when the question is not known in advance.
+
+<SkillsCatalog kind="reference" />
+
+## What is inside a bundle
+
+**In short:** A short instruction file, the pages it draws on as plain Markdown, and occasionally a script.
+
+Each bundle holds `SKILL.md` (the procedure, under 500 lines), `references/` (the pages it needs, converted to plain Markdown with figures described in words, charts as tables, and every link pointing back at the page it came from), and sometimes `scripts/` for work that should be arithmetic rather than judgement. The readiness skill's scorer is the current example: it reproduces the published assessment's own scoring rules, so two people scoring the same answers get the same profile.
+
+Bundles are byte-reproducible. The same content always produces the same digest, so a digest that changes means the content changed, not the build.
+
+## What they will not do
+
+- Act on your systems. There are no tools, no network calls, and no credentials in any bundle.
+- Replace the pages. The material is the same, and every reference names the page it came from, so an agent can cite the source rather than paraphrase it.
+- Stay silently stale. Each bundle carries the date of its newest input, and the pages behind them carry their own evidence status and re-verification dates.
+
+## If a skill is missing
+
+The catalogue grows with the site, and the gaps are deliberate rather than accidental: a skill exists when there are pages behind it worth bundling. If you want one that is not here, [open an issue](https://github.com/muralisidfn7/agentic-architecture-skills) on the skills repository and say what you were trying to do.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [How the skills are built](/skills/how-skills-are-built), including the conversion, the reproducibility and the checks
+- [The agent platform layer](/layers/r07-agent-platform), on skills as a capability format and what the evidence says about their limits
+
+</details>
