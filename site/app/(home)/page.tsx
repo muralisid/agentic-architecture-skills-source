@@ -3,10 +3,10 @@ import {
   ArrowUpRight,
   Cable,
   CheckCircle2,
-  FlaskConical,
   Gauge,
   KeyRound,
   RefreshCw,
+  Shapes,
   ShieldCheck,
   Workflow,
 } from 'lucide-react';
@@ -76,13 +76,13 @@ const layers = [
   ['R14', 'Agent data engineering', '/layers/r14-agent-data-engineering'],
 ] as const;
 
-const trust = ['Every claim dated and sourced', 'Vendor figures labelled', 'Negative results published'] as const;
+const trust = ['Every claim dated and sourced', 'Vendor figures labelled', 'Every arm reported, including the ones that beat us'] as const;
 
-const researchStats = [
-  { value: '0.815 to 0.294', label: 'One vector per document', note: 'nDCG@10 as a document grows from one aspect to ten. The single-vector index collapses.' },
-  { value: '+0.188', label: 'Purpose views, aspect-targeted queries', note: 'Over matched chunks at ten aspects per document, with 25 percent fewer embeddings.' },
-  { value: '−0.032', label: 'Purpose views, whole-document queries', note: 'Below matched chunks on human-judged scientific abstracts. The boundary of the method.' },
-  { value: '0 of 5', label: 'Objective conditioning', note: 'Forms of telling the index the goal that survived testing, including real human-judged data.' },
+const patternStats = [
+  { value: '9', label: 'Patterns, each measured', note: 'From representation to selection to how you tell whether any of it worked on your own corpus.' },
+  { value: '0.815 to 0.294', label: 'What one vector costs', note: 'nDCG@10 as a document grows from one aspect to ten. Several vectors per document hold it above 0.63.' },
+  { value: '+0.224', label: 'Showing the designer the corpus', note: 'Over generic views, when a model designs the taxonomy from a sample of the documents themselves.' },
+  { value: '~200x', label: 'Designing rather than reading', note: 'Cheaper at comparable topic granularity, when the model designs and names and classical machinery touches every document.' },
 ];
 
 export default function HomePage() {
@@ -227,34 +227,35 @@ export default function HomePage() {
         <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
           <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
             <div>
-              <Eyebrow>Tested, not asserted</Eyebrow>
+              <Eyebrow>Patterns, not opinions</Eyebrow>
               <h2 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-fd-foreground md:text-5xl">
-                We ran the experiments. Here is what held<span className="text-ember">.</span>
+                How to give an agent the <span className="italic text-ember">right context.</span>
               </h2>
               <p className="mt-5 text-[16px] leading-[1.7] text-fd-muted-foreground md:text-[17px]">
-                Five rounds on public corpora with human relevance judgements, seeded and reproducible to the byte. The{' '}
-                <span className="mark-wash">multi-vector result held</span>, the purpose-view result held under one
-                condition, and the idea the programme was built to prove{' '}
-                <span className="mark-wash">did not survive</span>. All of it is published, with the reversals.
+                Nine patterns for what reaches an agent's context: how to represent a document so a question finds the
+                part that answers it, how to keep the cost sane, what to pass on, and how to tell whether it worked.
+                Each says <span className="mark-wash">what to do and what it buys</span>, with the measurement behind
+                it from our own experiments and the published work. The catalogue{' '}
+                <span className="mark-wash">grows with each study</span>.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <PillLink href="/research">
-                  <FlaskConical className="size-4" />
-                  Read the findings
+                <PillLink href="/patterns">
+                  <Shapes className="size-4" />
+                  The nine patterns
                 </PillLink>
-                <PillLink href="/research/recommended-approach" variant="outline">
-                  The recommended approach
+                <PillLink href="/patterns/how-to-test-a-context-design" variant="outline">
+                  How to test them on your corpus
                 </PillLink>
               </div>
               <Link
-                href="/research/method-and-reversals"
+                href="/patterns/reading-list"
                 className="mt-5 inline-flex items-center gap-1 text-[14px] font-semibold text-ember-deep hover:text-ember-ink"
               >
-                How we caught our own errors
+                The papers each pattern rests on
                 <ArrowUpRight className="size-4" />
               </Link>
             </div>
-            <StatTiles items={researchStats} columns={2} />
+            <StatTiles items={patternStats} columns={2} />
           </div>
         </div>
       </section>

@@ -11,17 +11,17 @@ const LINK_GROUPS: { category: string; links: { name: string; href: string }[] }
       { name: 'Architecture', href: '/architecture' },
       { name: 'The fourteen layers', href: '/layers' },
       { name: 'Decisions', href: '/decisions' },
-      { name: 'Research', href: '/research' },
+      { name: 'Research', href: '/patterns' },
       { name: 'Plain words', href: '/architecture/plain-words' },
     ],
   },
   {
     category: 'Research',
     links: [
-      { name: 'The experiments', href: '/research' },
-      { name: 'Recommended approach', href: '/research/recommended-approach' },
-      { name: 'Method and reversals', href: '/research/method-and-reversals' },
-      { name: 'Reading list', href: '/research/reading-list' },
+      { name: 'The experiments', href: '/patterns' },
+      { name: 'Recommended approach', href: '/patterns' },
+      { name: 'Method and reversals', href: '/patterns/how-to-test-a-context-design' },
+      { name: 'Reading list', href: '/patterns/reading-list' },
     ],
   },
   {

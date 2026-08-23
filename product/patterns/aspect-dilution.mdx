@@ -79,7 +79,7 @@ LIMIT is constructed to expose the representational ceiling of single-vector ret
   source="Benchmark repository, results/e1_limit/metrics.json, commit 92c18cb (2026-08-22). Byte-identical on a second machine."
 />
 
-The first reading of this table attributed the 0.674 gain to alignment, because 30-word chunks gained only 0.076. An adversarial re-run, described on the [method page](/research/method-and-reversals), varied only the chunk granularity and found that nDCG@10 is a smooth function of units per document.
+The first reading of this table attributed the 0.674 gain to alignment, because 30-word chunks gained only 0.076. An adversarial re-run, described on the [method page](/patterns/how-to-test-a-context-design), varied only the chunk granularity and found that nDCG@10 is a smooth function of units per document.
 
 <ResultChart
   kind="lines"
@@ -104,7 +104,7 @@ Two things follow. Capacity is necessary and explains most of the LIMIT result; 
 ## What this establishes
 
 <PrincipleCard eyebrow="Verdict" title="Multi-vector, yes; purpose alignment, conditionally" kind="evidence">
-Several embeddings per document beat one on aspect-rich material, decisively and by any method of splitting. Purpose alignment adds a measurable extra (+0.188 at ten aspects, with fewer embeddings) when queries target one aspect and the anchors describe the aspects well. It adds nothing, and can subtract, when they do not, which is the finding on [real prose](/research/real-prose). The unconditional claim that alignment rather than count explains the gain is withdrawn.
+Several embeddings per document beat one on aspect-rich material, decisively and by any method of splitting. Purpose alignment adds a measurable extra (+0.188 at ten aspects, with fewer embeddings) when queries target one aspect and the anchors describe the aspects well. It adds nothing, and can subtract, when they do not, which is the finding on [real prose](/patterns/real-prose). The unconditional claim that alignment rather than count explains the gain is withdrawn.
 </PrincipleCard>
 
 <EvidenceBadge status="independently-measured" /> The synthetic and LIMIT results reproduced byte-for-byte or to floating-point precision across two machines and two processor architectures.
@@ -115,6 +115,6 @@ Several embeddings per document beat one on aspect-rich material, decisively and
 - Benchmark repository: `results/e0_dilution`, `results/e1_anchor_sensitivity`, `results/e1_limit`, commit 92c18cb, 2026-08-22.
 - Weller, Boratko, Naim, Lee, On the Theoretical Limitations of Embedding-Based Retrieval, arXiv:2508.21038, Aug 2025. https://arxiv.org/abs/2508.21038
 - The adversarial review of Sprint R1, 2026-08-20, whose chunk-granularity re-run produced the second chart.
-- [The papers behind the recommendation](/research/reading-list) for the multi-vector literature this sits in.
+- [The papers behind the recommendation](/patterns/reading-list) for the multi-vector literature this sits in.
 
 </details>

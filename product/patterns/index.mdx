@@ -1,0 +1,171 @@
+---
+title: "Context patterns for agents"
+icon: "Shapes"
+description: "Nine patterns for giving an agent the right context, each with the measurement that supports it and the published work behind it. Derived from our own experiments on public corpora and from the retrieval literature, and written to be applied rather than admired."
+---
+
+<PlainTerms>
+An agent is only as good as what reaches its context. These are nine patterns for getting the right material in front of it: how to represent documents so a question finds the part that answers it, how to keep the cost sane, how to choose what to pass on, and how to know whether any of it worked. Each pattern says what to do, what it buys you, when it does not apply, and the evidence behind it. The one thing to remember: patterns one to three cover most of the value, and you can adopt them without adopting the rest.
+</PlainTerms>
+
+## The patterns
+
+**In short:** Nine, in the order you would apply them. Each links to the experiment or the paper that supports it.
+
+| # | Pattern | What it buys | Evidence |
+|---|---|---|---|
+| 1 | [Give a document several vectors](#p1) | A question about one aspect finds that aspect instead of an average | [Measured](/patterns/aspect-dilution) |
+| 2 | [Make every representation beat a matched baseline](#p2) | You adopt complexity only where it pays | [Measured](/patterns/real-prose) |
+| 3 | [Keep keyword search in the loop](#p3) | Names, identifiers and quotations stop going missing | [Measured](/patterns/aspect-dilution) |
+| 4 | [Derive the views from the corpus](#p4) | Views that match what the corpus contains, not what you hoped | [Measured](/patterns/why-not-to-condition-on-the-objective) |
+| 5 | [Condition on the instruction at query time](#p5) | The stated goal changes what is relevant, cheaply | Published work |
+| 6 | [Let the model design, let machinery execute](#p6) | Roughly two hundred times less spend at comparable granularity | [Measured](/patterns/gate-and-economics) |
+| 7 | [Gate as a quarantine, not as a saving](#p7) | Off-purpose material set aside without pretending it is the win | [Measured](/patterns/gate-and-economics) |
+| 8 | [Diversify inside a gated pool](#p8) | Coverage of a topic without dragging in near-miss distractors | [Measured](/patterns/diversity-and-consumer) |
+| 9 | [Measure with a matched control](#p9) | You find out which of the above is actually true for you | [Method](/patterns/how-to-test-a-context-design) |
+
+Where a pattern is marked measured, we ran it: five rounds on public corpora, with human relevance judgements where they exist, seeded and reproducible. Where it is marked published work, the evidence is someone else's and is cited. The [reading list](/patterns/reading-list) has about thirty-five papers with what each shows.
+
+---
+
+<a id="p1" />
+
+## 1. Give a document several vectors
+
+**In short:** One embedding per document averages everything the document says; several give a question something specific to match.
+
+A <Term k="pooled embedding">pooled vector</Term> of a document covering several <Term k="aspect">aspects</Term> is approximately the mean of those aspects, so a question about one of them matches weakly. Splitting the document restores the signal. On a controlled corpus the pooled index fell from 0.815 to 0.294 <Term k="ndcg">nDCG@10</Term> as documents grew from one aspect to ten, while any multi-vector representation held above 0.63. On the LIMIT stress test the pooled vector scored 0.314 against 0.988 for per-attribute cards.
+
+**Apply it when** items are aspect-rich: emails that carry a request and a complaint, tickets with a symptom and a workaround, contracts with obligations and termination terms.
+
+**Do not bother when** items are short and single-topic. There is nothing to dilute.
+
+The representational ceiling behind this is proven rather than empirical folklore: for a fixed embedding dimension some result sets are unreachable by any single-vector index (Weller et al., arXiv:2508.21038, 2025). [The measurement](/patterns/aspect-dilution).
+
+<a id="p2" />
+
+## 2. Make every representation beat a matched baseline
+
+**In short:** Most of the multi-vector gain is capacity, so compare against the same number of plain chunks before believing a clever design.
+
+Splitting by purpose and splitting by fixed windows both multiply the number of embeddings. On LIMIT, a semantically blind three-word window recovered 0.610 of the 0.674 that purpose views gained, so most of the benefit was capacity rather than cleverness. On human-judged scientific abstracts, purpose views scored 0.032 to 0.042 *below* matched chunks, because the queries concerned whole findings rather than one aspect.
+
+**The rule:** start with plain chunks at matched capacity. Promote purpose views only where they beat those chunks on your own queries. Where queries do target one aspect, the gain is real: +0.188 at ten aspects per document, with a quarter fewer embeddings.
+
+**Apply it to every representation decision**, not only this one. A control that is not matched measures the handicap rather than the idea. [Where views win and lose](/patterns/real-prose).
+
+<a id="p3" />
+
+## 3. Keep keyword search in the loop
+
+**In short:** Meaning-based search misses exact names, codes and quotations; fusing the two costs nothing.
+
+On LIMIT, where queries name a specific attribute, BM25 scored 0.997 against 0.314 for the pooled dense vector. On SciFact, a corpus full of gene names and measured quantities, fusing cards with BM25 gave the best arm at 0.685. Reciprocal rank fusion is cheap and order-independent.
+
+**Apply it always.** There is no workload where identifiers stop mattering, and the failure mode is silent: a dense-only system returns something plausible instead of the record you named.
+
+<a id="p4" />
+
+## 4. Derive the views from the corpus
+
+**In short:** Show the model a sample of the corpus, not a statement of your goal.
+
+Letting a model design the view taxonomy works, and what you show it decides whether it helps. Showing it a stratified corpus sample was worth +0.224 over generic views. Adding the research objective cost 0.068. Adding business context cost 0.047, and schema metadata a further 0.068, with the harm growing in proportion to the context supplied. On real human-judged news collections, objective-selected views were the worst arm of five, about 0.06 below a corpus-derived set.
+
+The mechanism is visible in the taxonomies themselves. From the corpus, the designer produced six views that followed the data. Given the business narrative, it produced four elegant views organised around the business, which covered the corpus less well. Elegance is not coverage.
+
+**Apply it when** designing any view, facet or label taxonomy over a corpus. [The five rounds behind this](/patterns/why-not-to-condition-on-the-objective).
+
+<a id="p5" />
+
+## 5. Condition on the instruction at query time, not in the index
+
+**In short:** When the goal genuinely changes what is relevant, use a retriever trained to follow instructions rather than rebuilding the index.
+
+Pattern 4 says the objective does not belong in the index design. It still belongs somewhere, because the same document can be relevant to one request and not another. The established place is the query side: retrievers trained so that a stated instruction changes their ranking (INSTRUCTOR, ACL Findings 2023; FollowIR, EMNLP 2024; Promptriever, ICLR 2025), and recent work materialises per-instruction views without re-encoding the corpus (GSTransform, 2025).
+
+Our own measurement supports the division: re-selecting views per instruction did not follow the instruction at all (p-MRR about zero), while even an untrained encoder with the instruction prepended to the query was the best arm on one collection.
+
+**Apply it when** the same corpus serves requests whose relevance genuinely differs, and keep it out of the indexing step.
+
+<a id="p6" />
+
+## 6. Let the model design, let machinery execute
+
+**In short:** Spend the model on designing the taxonomy and naming the topics; let embeddings, clustering and ranking touch every document.
+
+Generative cost attached to the number of discovered topics rather than the number of documents is roughly two hundred times cheaper at comparable topic granularity. State it as a constant factor, not a widening scaling law: at a fixed useful granularity the advantage shrinks with corpus size, and an earlier claim that it widened turned out to be clusters coarsening as the corpus grew.
+
+The published economics agree from several directions: taxonomy-then-classifiers matched a frontier model used directly as the classifier (TnT-LLM, KDD 2024), a vector shortlist plus a small model ran at about one hundredth the per-document cost at higher accuracy (Databricks, Jul 2026 [vendor]), and models synthesising extraction functions from a sample cut token cost by two orders of magnitude (EVAPORATE, VLDB 2023).
+
+**Apply it when** the corpus is larger than your budget for reading it. Use established topic-modelling machinery rather than a home-grown variant. [The measured bill](/patterns/gate-and-economics).
+
+<a id="p7" />
+
+## 7. Gate as a quarantine, not as a saving
+
+**In short:** A cheap first pass is worth building, and it is not where the money is saved.
+
+An embedding-space gate separated on-purpose from off-purpose material at ROC-AUC 0.933. But at the recall a production filter must hold it discarded only a third of the corpus, and at 0.99 recall an eighth: a linear factor of one to two, bought with recall. The order of magnitude comes from pattern 6, not from the filter.
+
+Two refinements the null controls forced: fitting the anchor weights was worth 0.002 over equal weights, and where a labelled sample exists, plain logistic regression on the same embeddings reached 0.995. If you can label a few thousand items, train a classifier instead of tuning anchors.
+
+**Apply it** with a recall target, quarantining rather than deleting.
+
+<a id="p8" />
+
+## 8. Diversify inside a gated pool
+
+**In short:** Coverage is worth buying when a question has several answers, and it must be bought inside a relevance-bounded pool.
+
+Within a gated pool, harvesting the least similar tail bought sub-topic coverage about twice as cheaply as maximal marginal relevance (+0.315 coverage for 0.046 relevance, against MMR's +0.314 for 0.098) and admitted fewer answerless documents than MMR or a determinantal point process. It also reduced unsupported content in generated summaries by 0.067, which was not predicted and needed no judge to measure.
+
+**Apply it when** the question is coverage-driven and has several answers. Diversity adds nothing on single-answer factual lookup, and topically adjacent answerless passages are the most damaging thing you can add (the Distracting Effect, ACL 2025), which is why the pool is gated first and the distractor rate is measured.
+
+**Do not** condition the amount on who reads the results. We tested that and the effect vanished under a judge from a different model family. [The frontier, measured](/patterns/diversity-and-consumer).
+
+<a id="p9" />
+
+## 9. Measure with a matched control
+
+**In short:** The pattern that makes the other eight true for your corpus rather than ours.
+
+Use nDCG@10 with paired tests for relevance and coverage-aware metrics for coverage, because plain recall cannot see diversity. Fix the decision rules before reading any number. Require a headline to hold across seeds and machines. Report every arm, including the ones that beat your method.
+
+This is the pattern we learned the hard way: five headline results in this programme reversed at least once, and every reversal traced to one of two causes. A control that is not matched is not a control. A measurement that cannot come out negative is not measuring. [How to test a context design](/patterns/how-to-test-a-context-design) has the checks and the reversals that produced them.
+
+---
+
+## The reference pipeline
+
+**In short:** The nine patterns assembled into one design.
+
+1. **Parse and chunk per corpus**, evaluated against that corpus's own questions, as the [data-to-memory pipeline](/architecture/data-to-memory) requires.
+2. **Embed once**, versioned, cached by content and by device.
+3. **Index three ways**: keyword; chunk vectors; and purpose views only where pattern 2's evaluation shows a win.
+4. **Gate by recall** into per-purpose pools, training a classifier as soon as a labelled sample exists.
+5. **Discover topics once**, unseeded, with a model naming and merging them from keyword lists.
+6. **Retrieve by query type**: fused keyword and dense for identifiers, dense for semantic questions, an instruction-following retriever where the stated goal changes relevance.
+7. **Select inside the gated pool** with the diversification operator your coverage metric favours, with a distractor guard.
+8. **Assign new documents** to existing topics; re-run discovery only on the residue.
+9. **Evaluate continuously** against a matched control on your own queries, and retire what stops winning.
+
+## What this catalogue will become
+
+These nine come from one programme, on retrieval and context assembly. The intent is to keep adding: patterns from the harness work, worked examples with runnable code, and use-case walkthroughs that show a pattern applied end to end rather than stated. Where a pattern here rests on our measurement, it names the experiment; where it rests on published work, it names the paper. Both kinds will grow.
+
+If a pattern is missing that you needed, that is useful to know: the [skills repository](https://github.com/muralisidfn7/agentic-architecture-skills) takes issues.
+
+## Limits of this evidence
+
+The encoders were small, the corpora ran to twenty thousand documents, everything was in English, and no production data was used. Prices are as of 2026-08-19 and local compute is priced at zero. A larger instruction-tuned encoder would strengthen pattern 5, not weaken it. The obvious next experiment is a real aspect-targeted corpus with human judgements, which would test pattern 1's one positive finding outside synthetic data.
+
+<details>
+<summary>The research behind this page</summary>
+
+- The experiment pages linked from each pattern, and the [reading list](/patterns/reading-list)
+- The benchmark repository, commit 92c18cb, 2026-08-22: one metrics file and one per-query file per experiment
+- [Agent data engineering](/layers/r14-agent-data-engineering) and [the data-to-memory pipeline](/architecture/data-to-memory), where these patterns sit in the architecture
+- [CD-25](/decisions#cd-25) records the decision
+
+</details>

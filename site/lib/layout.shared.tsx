@@ -7,7 +7,7 @@ export const NAV_LINKS = [
   { text: 'Layers', url: '/layers' },
   { text: 'Decisions', url: '/decisions' },
   { text: 'Skills', url: '/skills' },
-  { text: 'Research', url: '/research' },
+  { text: 'Patterns', url: '/patterns' },
   { text: 'Library', url: '/library' },
 ] as const;
 
