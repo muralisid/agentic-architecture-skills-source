@@ -13,14 +13,26 @@ export const siteShortName = 'Architecture Skills';
 export const siteDescription =
   'Architecture skills for the agentic enterprise and for software that agents consume first. Read the guide, or install it into your agent.';
 
-/** Production host. Set NEXT_PUBLIC_SITE_URL in the deployment environment. */
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.agenticarchitectureskills.com').replace(
-  /\/$/,
-  '',
-);
-
 /** Hosts that served the site before the domain moved; redirected permanently. */
 export const legacyHosts = ['agentic-enterprise-ten.vercel.app'];
+
+/** The domain this site is published on, whatever a deployment environment says. */
+export const canonicalUrl = 'https://www.agenticarchitectureskills.com';
+
+const configuredUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? '').trim().replace(/\/$/, '');
+
+/**
+ * The absolute base for every URL the build emits: canonical links, Open Graph,
+ * the sitemap, robots, and the download URLs in the skill discovery index.
+ *
+ * NEXT_PUBLIC_SITE_URL can override it, for a staging host or a rename. It may
+ * not name a host that legacyHosts redirects away from: a stale deployment
+ * variable pointing at the old host would otherwise publish download URLs that
+ * redirect to themselves, and an agent following the index would loop until it
+ * gave up. A host we are redirecting away from can never be the canonical one.
+ */
+export const siteUrl =
+  configuredUrl && !legacyHosts.some((host) => configuredUrl.includes(host)) ? configuredUrl : canonicalUrl;
 
 /** The canonical content repository: this repo. Private unless SOURCE_REPOSITORY_PUBLIC is true. */
 export const sourceRepo = { user: 'muralisidfn7', repo: 'agentic-architecture-skills-source', branch: 'main' };

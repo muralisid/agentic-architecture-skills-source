@@ -46,12 +46,15 @@ const config = {
     return [
       // The site moved to its own domain. Everything on the old deployment host
       // keeps working and lands on the same path at the new one.
-      ...legacyHosts.map((host) => ({
-        source: '/:path*',
-        has: [{ type: 'host', value: host }],
-        destination: `${siteUrl}/:path*`,
-        permanent: true,
-      })),
+      // A host is never redirected to itself, whatever siteUrl resolves to.
+      ...legacyHosts
+        .filter((host) => !siteUrl.includes(host))
+        .map((host) => ({
+          source: '/:path*',
+          has: [{ type: 'host', value: host }],
+          destination: `${siteUrl}/:path*`,
+          permanent: true,
+        })),
       // The first-day site lived under /docs; the corpus mirror now lives under /library.
       { source: '/docs/:path*', destination: '/library/:path*', permanent: false },
       // A person who opens the discovery directory wants the catalogue.
