@@ -1,11 +1,11 @@
 ---
 title: "The decision catalog"
 icon: "Scale"
-description: "Twenty-four technology choices usually made by habit, each with a verdict, the condition that decides your case, and what would change it."
+description: "Twenty-five technology choices usually made by habit, each with a verdict, the condition that decides your case, and what would change it."
 ---
 
 <PlainTerms>
-This page lists twenty-four technology choices that are usually made by habit or by following the crowd, and records what the evidence says about each. It matters because these are the choices that decide cost, risk, and how much of the estate has to be rebuilt later. The one thing to remember: each decision comes with the single condition that would change it, so check that condition against your own situation before following the verdict.
+This page lists twenty-five technology choices that are usually made by habit or by following the crowd, and records what the evidence says about each. It matters because these are the choices that decide cost, risk, and how much of the estate has to be rebuilt later. The one thing to remember: each decision comes with the single condition that would change it, so check that condition against your own situation before following the verdict.
 </PlainTerms>
 
 Each entry is a <Term k="challenged default">challenged default</Term>: a hyped or habitual technology choice the research contested, resolved by evidence and economics rather than adoption momentum. Each record holds the question, the verdict, the discriminator that decides your case, and the register status in the research vocabulary. The statuses are converged, supported with reframe, split, conditionally approved, and position. This catalog records technology decisions; the programme's own decision log is at [/library/decisions](/library/decisions).
@@ -36,6 +36,7 @@ Each entry is a <Term k="challenged default">challenged default</Term>: a hyped 
 | [CD-22](#cd-22) | Agents as workforce vs agents as tools | Keep the accountability, drop the personnel metaphor |
 | [CD-23](#cd-23) | One universal assistant vs many specialised agents | Wrong axis: solitary vs coordinated work is the predictive variable |
 | [CD-24](#cd-24) | Separate customer-facing stack vs shared platform | Separate lane and edge, shared control plane; the justification is legal |
+| [CD-25](#cd-25) | Purpose-specific embedding views vs matched chunking | Chunks first; views only on a measured win; never condition the index on the objective |
 
 ## The records
 
@@ -206,3 +207,10 @@ Each entry is a <Term k="challenged default">challenged default</Term>: a hyped 
 **In short:** Customer-facing agents get their own channels and legal safeguards, but share knowledge, identity, tools, and monitoring with everything else.
 
 **Verdict: separate lane and separate edge on a shared control plane, justified by legal exposure rather than technology.** Edge-specific: channels and telephony, disclosure mechanics, adversarial hardening, and the legal-evidence layer. Shared, and duplicating them is a defect: knowledge corpus, identity, tool layer, evals, observability, and model access. Honest caveat: no published case measures either choice. Status: position with legal anchors. Owner: [R09](/layers/r09-experience-and-channels).
+
+<a id="cd-25" />
+
+### CD-25. Purpose-specific embedding views vs matched chunking
+**In short:** Split documents into several vectors, start with plain chunks, and add purpose-specific views only where your own queries prove they help.
+
+**Verdict: chunks first, views on a measured win, and never condition the index on the objective.** Several <Term k="embedding">embeddings</Term> per document beat one on aspect-rich material (a pooled index fell from 0.815 to 0.294 nDCG@10 as aspects grew from one to ten), but most of that benefit is capacity: a blind sliding window recovered 0.610 of the 0.674 that purpose views gained on the LIMIT stress test, and on human-judged scientific abstracts purpose views scored 0.032 to 0.042 below <Term k="matched control">matched chunks</Term>. Views won only where queries targeted one aspect (+0.188 at ten aspects, with 25 percent fewer embeddings). Conditioning the view design on the objective, the business context, or the schema made retrieval worse in every form tested, including real instruction-following data, where a plain instruction-prepended encoder beat every view arm. The discriminator is the query distribution: aspect-targeted queries over aspect-rich items earn views; whole-document queries do not. Keyword search stays fused in either case. Status: independently measured, five rounds, two machines. Owner: [R14](/layers/r14-agent-data-engineering); the evidence is on the [research pages](/research), and the design is [the recommended approach](/research/recommended-approach).

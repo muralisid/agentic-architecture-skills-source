@@ -1,15 +1,15 @@
 import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
 import { docsBaseOptions } from '@/lib/layout.shared';
-import { appShortName } from '@/lib/shared';
-import { BookMarked, Compass, Layers, Scale } from 'lucide-react';
+import { Wordmark } from '@/components/site/wordmark';
+import { BookMarked, Compass, FlaskConical, Layers, Scale } from 'lucide-react';
 
 export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
   return (
     <DocsLayout
       tree={source.getPageTree()}
       {...docsBaseOptions()}
-      nav={{ title: appShortName, mode: 'top' }}
+      nav={{ title: <Wordmark />, mode: 'top' }}
       tabMode="navbar"
       tabs={[
         {
@@ -26,9 +26,15 @@ export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
         },
         {
           title: 'Decisions',
-          description: '24 contested choices, resolved',
+          description: '25 contested choices, resolved',
           url: '/decisions',
           icon: <Scale />,
+        },
+        {
+          title: 'Research',
+          description: 'The retrieval experiments, with the reversals',
+          url: '/research',
+          icon: <FlaskConical />,
         },
         {
           title: 'Library',

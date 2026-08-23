@@ -12,6 +12,18 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-08-23
+
+**Published.** A research section (`/research`, nine pages) documenting the multi-card retrieval experiments: five rounds on public corpora between 2026-08-19 and 2026-08-22, with human relevance judgements where they exist, seeded and replicated on a second machine. The section carries the experiments, the adversarial review and the five headline reversals, the approach the evidence supports, and the reading list behind it. The site's visual design was aligned with the maintainer's marketing site (warm paper surfaces, serif display headings, an ember accent, a floating pill header and a full footer).
+
+**Positions revised by research.**
+
+- Multi-view (multi-card) embeddings moved from "validated in one domain, transfer conditional" to a measured result: several vectors per document beat one decisively; purpose-specific views beat matched fixed-window chunks only where queries target one aspect (+0.188 nDCG@10 at ten aspects) and lose where queries concern whole documents (−0.032 to −0.042 on human-judged scientific abstracts). Recorded as CD-25 and in the glossary, the memory-pipeline chapter, and the R14 findings.
+- The economics of the two-pass design are stated as a constant-factor saving of roughly two hundred times at comparable topic granularity. The earlier claim that the advantage widens with corpus size was a clustering artefact and is withdrawn.
+- The relevance gate is described as a quarantine contributing a linear factor of one to two, not as the source of the saving.
+
+**Claims investigated and withdrawn**, recorded so they are not repeated: that purpose alignment rather than embedding count explains the multi-vector benefit (a blind three-word window recovers 0.610 of the 0.674 gain on LIMIT); that the right amount of result diversity depends on whether a model or a person reads the results (the measured interaction vanishes under a cross-family judge); and that conditioning the view design on the objective, the business context, the schema, or a late selection step produces a better index (worse in every form tested, including real instruction-following data).
+
 ## 2026-08-19
 
 The guide was researched, written and published on this date. Entries below record what landed and, where research changed a previously published position, what changed and why.

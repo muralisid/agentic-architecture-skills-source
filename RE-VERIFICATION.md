@@ -32,6 +32,7 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 | MCP registry and server trust | Registry status and whether signed and pinned server distribution has matured | R03 findings; gateways and identity profile |
 | EU AI Act enforcement | Article 50 enforcement in practice since 2 August 2026, and any movement on classification guidelines | R11 findings; sovereignty matrix; HR and public sector blueprints |
 | Kubernetes Agent Sandbox | Production readiness | R01 findings |
+| Generative and encoder price table in the economics experiment | Whether the per-token prices as of 2026-08-19 still hold; the cost ratio is recomputed from the editable price table in the benchmark artifact. The constant-factor claim, not the prices, is the position | Research pages: the cheap gate and the bill; the recommended approach |
 | Framework consolidation | Whether the agent framework field has consolidated further, and support states | R07 findings and vendors |
 
 ## Due H1 2027

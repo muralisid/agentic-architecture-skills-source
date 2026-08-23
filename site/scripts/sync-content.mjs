@@ -394,7 +394,7 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'layers', 'decisions'],
+    pages: ['architecture', 'layers', 'decisions', 'research'],
   },
   architecture: {
     title: 'Architecture',
@@ -407,6 +407,22 @@ const metas = {
     icon: 'Layers',
     description: 'The fourteen enterprise layers, each with its target state, mechanisms, and decisions.',
     pages: ['index', ...Object.keys(LAYER_TITLES)],
+  },
+  research: {
+    title: 'Research',
+    icon: 'FlaskConical',
+    description: 'The multi-card retrieval experiments: what held, what did not, and the approach the evidence supports.',
+    pages: [
+      'index',
+      'aspect-dilution',
+      'real-prose',
+      'gate-and-economics',
+      'diversity-and-consumer',
+      'objective-conditioning',
+      'method-and-reversals',
+      'recommended-approach',
+      'reading-list',
+    ],
   },
   library: {
     title: 'Research library',

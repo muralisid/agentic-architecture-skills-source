@@ -25,5 +25,5 @@ Use-case-driven data curation and cost-engineering techniques that make agents s
 ## Publication status
 
 - **Published:** [When a knowledge graph earns its keep](when-a-knowledge-graph-earns-its-keep.md), a contested-choice study comparing graph databases with embedding retrievers.
-- **Concept named; mechanism held:** Multi-view (multi-card) embeddings with LLM-guided topic modelling. The public guide contains only a concept-level definition. The mechanism-level entry is excluded from the site under the publication hold, so it must not be treated as an available implementation guide.
+- **Tested; results published as a research section:** Multi-view (multi-card) embeddings with LLM-guided topic modelling. The pattern was tested in five rounds of experiments on public corpora (2026-08-19 to 2026-08-22); the results, including the negative ones, and the approach the evidence supports are published on the site's research pages (`/research`, with the design at `/research/recommended-approach`). The original mechanism-level technique entry remains excluded from the site under the publication hold; the research pages, not that entry, are the implementation guidance.
 - **Planned, not yet guidance:** Corrective RAG cascades; compaction and structured note-taking; distillation flywheels; semantic and prompt caching; deterministic routing tiers.

@@ -1,20 +1,24 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { appShortName, repoUrl, sourceRepositoryPublic } from './shared';
+import { repoUrl, sourceRepositoryPublic } from './shared';
+import { Wordmark } from '@/components/site/wordmark';
 
-const NAV_LINKS = [
+export const NAV_LINKS = [
   { text: 'Architecture', url: '/architecture' },
   { text: 'Layers', url: '/layers' },
   { text: 'Decisions', url: '/decisions' },
+  { text: 'Research', url: '/research' },
   { text: 'Library', url: '/library' },
-];
+] as const;
 
-/** Landing page: top navbar with the section links. */
+/** Landing page: the floating pill header (components/site/site-header.tsx) reads these. */
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: appShortName,
+      title: <Wordmark />,
+      transparentMode: 'always',
     },
-    links: NAV_LINKS,
+    links: NAV_LINKS.map((link) => ({ ...link })),
+    themeSwitch: { mode: 'light-dark' },
     ...(sourceRepositoryPublic ? { githubUrl: repoUrl } : {}),
   };
 }
@@ -22,6 +26,7 @@ export function baseOptions(): BaseLayoutProps {
 /** Docs surface: sections live in the navbar tabs, so no duplicate flat links. */
 export function docsBaseOptions(): Omit<BaseLayoutProps, 'nav'> {
   return {
+    themeSwitch: { mode: 'light-dark' },
     ...(sourceRepositoryPublic ? { githubUrl: repoUrl } : {}),
   };
 }

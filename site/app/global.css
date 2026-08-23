@@ -2,6 +2,85 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+/* ---------------------------------------------------------------------------
+   Brand tokens. Warm paper surfaces, an ember accent, serif display headings:
+   the visual language of the fn7 marketing site, applied to a reference guide.
+   --------------------------------------------------------------------------- */
+@theme inline {
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, 'Times New Roman', serif;
+
+  --color-ember: #f04a2a;
+  --color-ember-deep: #d9391d;
+  --color-ember-ink: #b02c10;
+  --color-ember-soft: #fff1ec;
+  --color-ember-wash: #ffe9e0;
+  --color-leaf: #19bf6b;
+  --color-leaf-soft: #e4faee;
+  --color-lilac-soft: #f1e6ff;
+  --color-paper: #fbfaf8;
+  --color-paper-2: #f6f4ef;
+}
+
+:root {
+  --color-fd-background: #fbfaf8;
+  --color-fd-foreground: #0f172a;
+  --color-fd-muted: #f3f0ea;
+  --color-fd-muted-foreground: #5b6472;
+  --color-fd-popover: #ffffff;
+  --color-fd-popover-foreground: #0f172a;
+  --color-fd-card: #ffffff;
+  --color-fd-card-foreground: #0f172a;
+  --color-fd-border: #e6e2da;
+  --color-fd-primary: #f04a2a;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-secondary: #f3f0ea;
+  --color-fd-secondary-foreground: #0f172a;
+  --color-fd-accent: #fff1ec;
+  --color-fd-accent-foreground: #b02c10;
+  --color-fd-ring: #f04a2a;
+
+  /* Chart palette, validated with the dataviz six checks on the paper surface. */
+  --viz-ember: #f04a2a;
+  --viz-slate: #2a78d6;
+  --viz-aqua: #1baf7a;
+  --viz-gold: #eda100;
+  --viz-gray: #b9b5ad;
+  --viz-grid: #e6e2da;
+  --viz-surface: #ffffff;
+  --viz-ink: #0f172a;
+  --viz-muted: #6b7280;
+}
+
+.dark {
+  --color-fd-background: #141311;
+  --color-fd-foreground: #f4f1ea;
+  --color-fd-muted: #1f1d19;
+  --color-fd-muted-foreground: #a8a39a;
+  --color-fd-popover: #1b1915;
+  --color-fd-popover-foreground: #f4f1ea;
+  --color-fd-card: #1b1915;
+  --color-fd-card-foreground: #f4f1ea;
+  --color-fd-border: rgba(255, 255, 255, 0.1);
+  --color-fd-primary: #f0603f;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-secondary: #24211c;
+  --color-fd-secondary-foreground: #f4f1ea;
+  --color-fd-accent: rgba(240, 96, 63, 0.14);
+  --color-fd-accent-foreground: #ffb9a6;
+  --color-fd-ring: #f0603f;
+
+  --viz-ember: #f0603f;
+  --viz-slate: #3987e5;
+  --viz-aqua: #199e70;
+  --viz-gold: #c98500;
+  --viz-gray: #5c5852;
+  --viz-grid: #2c2a26;
+  --viz-surface: #1b1915;
+  --viz-ink: #f4f1ea;
+  --viz-muted: #a8a39a;
+}
+
 html {
   scrollbar-gutter: stable;
 }
@@ -11,9 +90,101 @@ html > body[data-scroll-locked] {
   --removed-body-scroll-bar-size: 0px !important;
 }
 
+body {
+  background-color: var(--color-fd-background);
+  color: var(--color-fd-foreground);
+}
+
 :focus-visible {
   outline: 3px solid color-mix(in oklab, var(--color-fd-primary) 72%, transparent);
   outline-offset: 3px;
+}
+
+/* Display headings in the serif; everything from h3 down stays in the sans. */
+h1,
+h2,
+.prose h1,
+.prose h2,
+.font-display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.prose h1 {
+  font-size: 2.25rem;
+  line-height: 1.1;
+}
+
+.prose h2 {
+  font-size: 1.8rem;
+  line-height: 1.15;
+  margin-top: 2.4em;
+}
+
+.prose h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.prose a {
+  text-decoration-color: color-mix(in oklab, var(--color-fd-primary) 45%, transparent);
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-fd-primary);
+}
+
+/* The brand's dot grid (7 x 7 at 12px) and the thin circles that bleed off section edges. */
+.dot-grid {
+  width: 103px;
+  height: 103px;
+  background-image: radial-gradient(circle at 1.5px 1.5px, var(--dot-color, #f04a2a) 1.5px, transparent 0);
+  background-size: 12px 12px;
+  opacity: 0.35;
+}
+
+.decor-circle {
+  border-radius: 9999px;
+  border: 1px solid var(--circle-color, rgba(251, 146, 60, 0.4));
+}
+
+/* A soft white card with the marketing site's shadow and lift on hover. */
+.card-soft {
+  border-radius: 22px;
+  border: 1px solid var(--color-fd-border);
+  background: var(--color-fd-card);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+a.card-soft:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.09);
+  border-color: color-mix(in oklab, var(--color-fd-primary) 30%, var(--color-fd-border));
+}
+
+.dark .card-soft {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Highlighted phrase, as on the marketing site's section copy. */
+.mark-wash {
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
+  background: var(--color-ember-wash);
+  color: var(--color-fd-foreground);
+  font-weight: 600;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.dark .mark-wash {
+  background: rgba(240, 96, 63, 0.2);
 }
 
 /* Articles never scroll horizontally: tables and code wrap to the container instead. */

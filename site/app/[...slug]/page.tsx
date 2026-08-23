@@ -29,16 +29,9 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
       <div className="flex flex-row flex-wrap gap-2 items-center border-b pb-6">
         <MarkdownCopyButton markdownUrl={markdownUrl} />
-        <ViewOptionsPopover
-          markdownUrl={markdownUrl}
-          githubUrl={sourceRepositoryPublic ? repoUrl : undefined}
-        />
+        <ViewOptionsPopover markdownUrl={markdownUrl} githubUrl={sourceRepositoryPublic ? repoUrl : undefined} />
         {heroFigure ? (
-          <a
-            href={`/figures/${heroFigure}.svg`}
-            download
-            className="rounded-lg border px-3 py-1.5 text-sm font-medium"
-          >
+          <a href={`/figures/${heroFigure}.svg`} download className="rounded-full border px-3 py-1.5 text-sm font-medium">
             Download the architecture diagram (SVG)
           </a>
         ) : null}

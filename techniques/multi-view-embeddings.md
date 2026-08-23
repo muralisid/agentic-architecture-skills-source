@@ -4,7 +4,7 @@ audience: ["Enterprise architect","Data architect","AI platform lead"]
 decision_or_output: "Decide whether a workload justifies multi-view retrieval, then record its taxonomy, evaluation gate, economics, and transfer limits."
 prerequisites: ["/docs/techniques"]
 reading_time: "12 minutes"
-evidence_status: "Mechanism-level pattern validated in one social-media domain; enterprise transfer remains conditional and requires workload-specific evidence."
+evidence_status: "Superseded by the measured results on the site's research pages (August 2026): several vectors per document beat one; purpose views beat matched chunks only where queries target one aspect; objective conditioning did not help in any form tested."
 next: "/docs/techniques/when-a-knowledge-graph-earns-its-keep"
 ---
 
@@ -29,6 +29,10 @@ Two failures push teams toward this technique.
 3. **A cheap pre-filter reduces the corpus.** Before any expensive step, an embedding-space filter removes items that are out of scope for the use case. The point is that the filter costs embedding arithmetic rather than LLM tokens, so it can run over the whole corpus.
 4. **Structure is discovered, then named.** Survivors are clustered; density clustering over reduced embeddings handles unknown cluster counts and noise. An LLM then names and consolidates topics working from keyword lists, never from raw documents, so LLM cost scales with the number of topics, not the number of items.
 5. **Retrieval reads the right cards.** Queries search the card subset matching their purpose; scores can combine across cards. Lexical search (BM25) rides alongside for identifiers and exact phrases, fused by reciprocal rank.
+
+## Status, August 2026
+
+This entry predates the experiments. The pattern was tested in five rounds on public corpora between 2026-08-19 and 2026-08-22, and the measured results, including the negative ones, are published on the site's research pages (`/research`), with the design the evidence supports at `/research/recommended-approach`. Where this entry and those pages differ, the research pages are authoritative: the economics are a constant-factor saving rather than a scaling law, purpose alignment is conditional on the query distribution, and conditioning the view taxonomy on the objective is not recommended.
 
 ## Worked example
 

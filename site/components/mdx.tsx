@@ -11,6 +11,8 @@ import {
   GlossaryTerm,
   GuideFigure,
   PrincipleCard,
+  ResultChart,
+  StatTiles,
   WallChart,
 } from '@/components/visuals';
 
@@ -29,6 +31,8 @@ export function getMDXComponents(components?: MDXComponents) {
     IconChip,
     PlainTerms,
     PrincipleCard,
+    ResultChart,
+    StatTiles,
     Step,
     Steps,
     Term,

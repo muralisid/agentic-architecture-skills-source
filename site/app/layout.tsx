@@ -1,11 +1,23 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
-import { Inter } from 'next/font/google';
+import { Newsreader, Sora } from 'next/font/google';
 import type { Metadata } from 'next';
 import { appName, appDescription } from '@/lib/shared';
 
-const inter = Inter({
+// Body in Sora, display headings in Newsreader: the same pairing as the fn7
+// marketing site, so the guide reads as part of the same family.
+const sora = Sora({
   subsets: ['latin'],
+  variable: '--font-sora',
+  display: 'swap',
+});
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-newsreader',
+  display: 'swap',
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://agentic-enterprise-ten.vercel.app';
@@ -34,15 +46,15 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
+    <html lang="en" className={`${sora.variable} ${newsreader.variable} ${sora.className}`} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <a
           href="#main-content"
-          className="fixed left-3 top-3 z-[100] -translate-y-24 rounded-md bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-transform focus:translate-y-0"
+          className="fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-transform focus:translate-y-0"
         >
           Skip to main content
         </a>
-        <RootProvider>{children}</RootProvider>
+        <RootProvider theme={{ defaultTheme: 'light', enableSystem: false }}>{children}</RootProvider>
       </body>
     </html>
   );

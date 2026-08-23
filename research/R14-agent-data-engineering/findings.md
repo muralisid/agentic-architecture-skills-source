@@ -64,7 +64,7 @@ Retrieval quality per corpus (with coverage-aware metrics where diversity matter
 
 ### 13. Data readiness and curation
 
-This track *is* the guide's curation-before-context principle as an engineering discipline. Multi-view embedding is named only as a publication-held candidate pattern: its mechanism-level entry remains excluded from the public guide. The documented validation is limited to a social-media domain, and transfer to other domains is an unverified hypothesis rather than a published recommendation.
+This track *is* the guide's curation-before-context principle as an engineering discipline. Multi-view embedding was tested by the guide in five rounds on public corpora in August 2026; the measured results, including the negative ones, and the design they support are on the site's research pages (`/research`). The production origin of the pattern is a social-media domain; on public enterprise-flavoured and scientific corpora the measured position is that several vectors per document beat one, purpose-specific views beat matched chunks only where queries target one aspect, and conditioning the views on the objective does not help.
 
 ### Challenged defaults
 
