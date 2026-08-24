@@ -418,6 +418,30 @@ for (const rel of productAssets) {
   productAssetRoutes.add(`/figures/${rel}`);
 }
 
+// A figure is stored as WebP, which the page wants and LinkedIn does not
+// reliably render as a share image, so each one also gets a JPEG next to it for
+// lib/share-image.ts to find. sharp arrives with Next rather than as a declared
+// dependency, so a failure here only costs the page its own share image: it
+// falls back to the generated card, and the build carries on.
+const SHARE_SOURCE_EXTENSION = /\.(?:avif|png|webp)$/i;
+const shareSources = productAssets.filter((rel) => SHARE_SOURCE_EXTENSION.test(rel));
+let shareWritten = 0;
+if (shareSources.length) {
+  try {
+    const { default: sharp } = await import('sharp');
+    for (const rel of shareSources) {
+      const outPath = path.join(FIGURE_OUTPUT_DIR, rel.replace(SHARE_SOURCE_EXTENSION, '.jpg'));
+      await sharp(path.join(productDir, rel))
+        .flatten({ background: '#ffffff' })
+        .jpeg({ quality: 82, mozjpeg: true })
+        .toFile(outPath);
+      shareWritten++;
+    }
+  } catch (error) {
+    console.warn(`sync-content: share images skipped (${error.message}). Pages fall back to the generated card.`);
+  }
+}
+
 function assertProductPage(rel, text) {
   // A missing image fails silently in the browser, so it fails the build here
   // instead, the same way a broken link does.
