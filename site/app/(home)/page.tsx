@@ -10,7 +10,7 @@ import {
   ShieldCheck,
   Workflow,
 } from 'lucide-react';
-import { appName } from '@/lib/shared';
+import { appName, author } from '@/lib/shared';
 import { DiagramRenderer } from '@/components/visuals/diagram-renderer';
 import { getFigure } from '@/lib/figure-manifest';
 import { StatTiles } from '@/components/visuals/result-chart';
@@ -18,6 +18,7 @@ import { SkillsStrip } from '@/components/skills/skills-catalog';
 import { CopyLine } from '@/components/skills/copy-line';
 import { installCommands, skillCount } from '@/lib/skills';
 import { SiteFooter } from '@/components/site/site-footer';
+import { Byline } from '@/components/site/byline';
 import { Eyebrow, FeatureCard, PillLink, SectionDecor, SectionHeading } from '@/components/site/section';
 
 const spine = [
@@ -122,7 +123,10 @@ export default function HomePage() {
               Install it into your agent
             </PillLink>
           </div>
-          <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-fd-muted-foreground">
+          <div className="mt-7 flex justify-center">
+            <Byline />
+          </div>
+          <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-fd-muted-foreground">
             {trust.map((item) => (
               <li key={item} className="flex items-center gap-1.5">
                 <CheckCircle2 className="size-4 text-ember" />
@@ -304,7 +308,17 @@ export default function HomePage() {
               25 decisions with verdicts
             </PillLink>
           </div>
-          <p className="mt-5 text-[13px] text-fd-muted-foreground">{appName}</p>
+          <p className="mt-5 text-[13px] text-fd-muted-foreground">
+            {appName}, written by{' '}
+            <a
+              href={author.linkedin}
+              rel="author noopener"
+              target="_blank"
+              className="font-medium text-fd-foreground underline decoration-fd-border underline-offset-4 hover:decoration-ember"
+            >
+              {author.name}
+            </a>
+          </p>
         </div>
       </section>
 

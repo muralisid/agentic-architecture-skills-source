@@ -9,6 +9,7 @@ export const NAV_LINKS = [
   { text: 'Skills', url: '/skills' },
   { text: 'Patterns', url: '/patterns' },
   { text: 'Library', url: '/library' },
+  { text: 'About', url: '/about' },
 ] as const;
 
 /** Landing page: the floating pill header (components/site/site-header.tsx) reads these. */

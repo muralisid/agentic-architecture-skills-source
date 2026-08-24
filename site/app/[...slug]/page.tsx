@@ -11,7 +11,10 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { repoUrl, sourceRepositoryPublic } from '@/lib/shared';
+import { author, repoUrl, siteUrl, sourceRepositoryPublic } from '@/lib/shared';
+import { articleSchema, jsonLd } from '@/lib/structured-data';
+import { Byline } from '@/components/site/byline';
+import { CiteThisPage } from '@/components/site/cite-this-page';
 
 export default async function Page(props: PageProps<'/[...slug]'>) {
   const params = await props.params;
@@ -22,11 +25,33 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
   const markdownUrl = getPageMarkdownUrl(page).url;
   const heroFigure = page.data.hero_figure;
   const video = page.data.video;
+  const section = page.url.split('/')[1];
 
   return (
     <DocsPage id="main-content" toc={page.data.toc} full={page.data.full}>
+      {/* Authorship, dates and licence for this page, for crawlers and for models. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd(
+            articleSchema({
+              title: page.data.title,
+              description: page.data.description,
+              path: page.url,
+              datePublished: page.data.datePublished,
+              dateModified: page.data.dateModified,
+              section,
+            }),
+          ),
+        }}
+      />
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
+      <Byline
+        className="mt-3"
+        datePublished={page.data.datePublished}
+        dateModified={page.data.dateModified}
+      />
       <div className="flex flex-row flex-wrap gap-2 items-center border-b pb-6">
         <MarkdownCopyButton markdownUrl={markdownUrl} />
         <ViewOptionsPopover markdownUrl={markdownUrl} githubUrl={sourceRepositoryPublic ? repoUrl : undefined} />
@@ -55,6 +80,7 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
           })}
         />
       </DocsBody>
+      <CiteThisPage title={page.data.title} path={page.url} dateModified={page.data.dateModified} />
     </DocsPage>
   );
 }
@@ -71,7 +97,17 @@ export async function generateMetadata(props: PageProps<'/[...slug]'>): Promise<
   return {
     title: page.data.title,
     description: page.data.description,
+    authors: [{ name: author.name, url: author.url }],
+    creator: author.name,
+    alternates: { canonical: page.url },
     openGraph: {
+      type: 'article',
+      title: page.data.title,
+      description: page.data.description,
+      url: `${siteUrl}${page.url}`,
+      authors: [author.url],
+      publishedTime: page.data.datePublished,
+      modifiedTime: page.data.dateModified,
       images: getPageImageUrl(page).url,
     },
   };

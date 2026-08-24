@@ -5,7 +5,16 @@ import { Check, Copy } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 /** A shell line with a copy button. The command is the point, so it stays selectable. */
-export function CopyLine({ command, className }: { command: string; className?: string }) {
+export function CopyLine({
+  command,
+  className,
+  prompt = true,
+}: {
+  command: string;
+  className?: string;
+  /** Shell lines show a `$`; prose to copy, such as a citation, does not. */
+  prompt?: boolean;
+}) {
   const [copied, setCopied] = useState(false);
 
   return (
@@ -15,7 +24,7 @@ export function CopyLine({ command, className }: { command: string; className?: 
         className,
       )}
     >
-      <span className="shrink-0 select-none text-fd-muted-foreground">$</span>
+      {prompt ? <span className="shrink-0 select-none text-fd-muted-foreground">$</span> : null}
       <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap text-fd-foreground">{command}</code>
       <button
         type="button"

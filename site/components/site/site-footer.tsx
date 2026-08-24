@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { BookMarked, ArrowUpRight } from 'lucide-react';
-import { appName, repoUrl, sourceRepositoryPublic } from '@/lib/shared';
+import { appName, author, repoUrl, sourceRepositoryPublic } from '@/lib/shared';
 import { Wordmark } from './wordmark';
 import { cn } from '@/lib/cn';
 
@@ -37,6 +37,7 @@ const LINK_GROUPS: { category: string; links: { name: string; href: string }[] }
   {
     category: 'About',
     links: [
+      { name: 'About the author', href: '/about' },
       { name: 'Decision log', href: '/library/decisions' },
       { name: 'Re-verification list', href: '/library/re-verification' },
       { name: 'Changelog', href: '/library/changelog' },

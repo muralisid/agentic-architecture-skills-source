@@ -397,7 +397,13 @@ export function convertPage(source, context) {
     `# ${title}`,
     '',
     ...(description ? [description, ''] : []),
+    // A bundled page travels away from the site, so it carries its own
+    // attribution: whoever reads it should be able to say where it came from
+    // and who wrote it without going back for the original.
+    ...(context.author ? [`Author: ${context.author.name} (${context.author.linkedin})`] : []),
     `Source: ${context.siteUrl}${context.route} (Markdown: ${context.siteUrl}${context.route}.md)`,
+    ...(frontmatter.dateModified ? [`Updated: ${frontmatter.dateModified}`] : []),
+    ...(context.licence ? [`Licence: ${context.licence}`] : []),
     '',
   ].join('\n');
 
