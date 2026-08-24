@@ -115,10 +115,11 @@ jobs:
           git add -A
           git -c user.name="Murali Sid" -c user.email="murali@fn7.io" \
             commit -m "Publish skills ${version} from ${GITHUB_SHA:0:7}"
-          if git rev-parse "v${version}" >/dev/null 2>&1; then
+          # The checkout has no tags, so ask the remote, not the local clone.
+          if git ls-remote --exit-code --tags origin "refs/tags/v${version}" >/dev/null; then
             echo "Tag v${version} exists; publishing without a new tag."
             git push origin HEAD:main
           else
             git tag "v${version}"
-            git push origin HEAD:main --tags
+            git push origin HEAD:main "refs/tags/v${version}"
           fi
