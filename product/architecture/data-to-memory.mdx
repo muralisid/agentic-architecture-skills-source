@@ -9,6 +9,14 @@ hero_figure: "data-to-memory-pipeline"
 An AI agent is only as trustworthy as the information put in front of it. This page follows company data through nine stages, from the original document to an answer that cites its sources, and on into what the agent remembers afterwards. Each stage has a known way of failing, and each failure has a control. The one thing to remember: anything derived from your data carries the same access rules, privacy duties, and deletion duties as the original. That includes the searchable copies agents use and the memories they keep.
 </PlainTerms>
 
+## Why the data-to-memory pipeline needs governance
+
+**WHY:** Retrieval and memory create new copies and derivatives of company data. Permissions can disappear during indexing, provenance can be lost during transformation, poisoned memory can persist beyond the task, and deletion can succeed in the source while leaving vectors, traces or memories behind. These are governance failures, not merely retrieval-quality issues.
+
+**WHAT:** Govern the full nine-stage path from source to answer to memory: **parse with provenance, chunk and enrich, embed with versions, index with permissions, retrieve with refusal, cite by construction, quarantine durable memory, refresh from source changes, and erase in cascade**. Every derived artifact inherits the access, privacy, residency, classification and deletion duties of its sources.
+
+![Visual summary of the governed data-to-memory pipeline](/figures/architecture/data-to-memory.webp)
+
 ## The pipeline
 
 **In short:** Data passes through nine steps on its way to an agent's answer, and every step keeps a record of where the information came from.

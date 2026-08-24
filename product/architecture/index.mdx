@@ -9,6 +9,14 @@ hero_figure: "seven-plane-architecture"
 This page is the one-page map of how a company runs AI agents safely at scale. It shows the parts of your business that agents touch, the new capabilities you build around them, and where the controls and the evidence live. The thing to remember: an instruction written to an AI model is a request, while a rule checked by a separate system is a control.
 </PlainTerms>
 
+## Why this architecture exists
+
+**WHY:** Agents do not live inside one AI model. They reach into identity, data, applications, tools, records, observability, governance and human workflows. If control stays inside the prompt, the agent can influence the rule that is supposed to constrain it. If evidence is collected by the agent itself, the system is asking the actor to certify its own behaviour. And if the design assumes every agent passes through one company gateway, vendor-embedded agents create an immediate blind spot.
+
+**WHAT:** Build the agentic enterprise as **seven planes across the fourteen layers you already own**: Execution, Action, Knowledge, Control, Improvement, Evidence and Human. Bind them with two non-negotiable rules: **enforcement lives outside execution**, and **evidence is collected through a channel the agent cannot influence**. Apply the same architecture to both the metered estate you control and the licensed estate that runs on vendor control planes.
+
+![Visual summary of the target-state architecture](/figures/architecture/index.webp)
+
 ## The whole thing, on one page
 
 Everything below is in this diagram. It shows the <Term k="fourteen layers">fourteen layers</Term>, each with its control point, key mechanisms, and market products. It shows the <Term k="seven planes">seven planes</Term> that group them. It shows the ten <Term k="cross-cutting concerns">cross-cutting concerns</Term> as columns, marking who owns and who enforces each, plus the products that serve them. Underneath sit the <Term k="deterministic zones">four deterministic zones</Term>, where a model may advise but never decide. Products are named for orientation as of August 2026; they are representative rather than exhaustive, and they are not endorsements. If you read one artifact from this guide, read this one.
