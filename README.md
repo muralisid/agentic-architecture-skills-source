@@ -72,7 +72,7 @@ cd site && npm install && npm run dev
 
 Deploy on Vercel by importing this repository with the root directory set to `site`. See [site/README.md](site/README.md).
 
-Maintainer: [@muralisidfn7](https://github.com/muralisidfn7)
+Maintainer: [@muralisid](https://github.com/muralisid)
 
 ## License
 

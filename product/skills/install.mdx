@@ -10,7 +10,7 @@ Agent Skills are a shared format, so the same folder works in most agents; what 
 
 ## The one command
 
-<CopyLine command="npx skills add muralisidfn7/agentic-architecture-skills" />
+<CopyLine command="npx skills add muralisid/agentic-architecture-skills" />
 
 It detects the agents installed on the machine and writes the skills where each expects them. Add `--skill <name>` for one skill, `--global` to install for your user rather than the current project, and `--copy` if you would rather have real files than symlinks.
 
@@ -26,7 +26,7 @@ The index itself is worth having regardless: it is how an agent that implements 
 
 The whole catalogue is also a plugin, which keeps it updatable in one step:
 
-<CopyLine command="claude plugin marketplace add muralisidfn7/agentic-architecture-skills" />
+<CopyLine command="claude plugin marketplace add muralisid/agentic-architecture-skills" />
 <CopyLine command="claude plugin install agentic-architecture-skills@agentic-architecture-skills" />
 
 Skills installed this way are namespaced, so they never collide with your own. To install without the plugin, put a bundle in `~/.claude/skills/<name>/` for yourself or `.claude/skills/<name>/` inside a project. Claude Code watches those directories, so a new skill is available without a restart.
@@ -53,7 +53,7 @@ Gemini CLI reads `~/.gemini/skills/` and `~/.agents/skills/` for a user, and `.g
 
 Copilot reads `.github/skills`, `.claude/skills` and `.agents/skills` in a project, and `~/.copilot/skills` or `~/.agents/skills` for a user. With a recent GitHub CLI:
 
-<CopyLine command="gh skill install muralisidfn7/agentic-architecture-skills review-agent-architecture" />
+<CopyLine command="gh skill install muralisid/agentic-architecture-skills review-agent-architecture" />
 
 ## By hand, anywhere
 

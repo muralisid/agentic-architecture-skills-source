@@ -36,7 +36,7 @@ Every pull request is reviewed against these acceptance criteria (they are the r
 1. For anything larger than a correction, open an issue (templates provided) or start a Discussion first
 2. Fork, branch (`rNN/short-topic` for track work), make your change
 3. Open a PR using the template; complete the checklist honestly
-4. The maintainer (@muralisidfn7) reviews against the bar above and merges
+4. The maintainer (@muralisid) reviews against the bar above and merges
 
 ## What not to submit
 

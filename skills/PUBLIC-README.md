@@ -12,20 +12,20 @@ Pick whichever suits the agent you use. All of them install the same bundles.
 
 ```bash
 # any agent, from this repository
-npx skills add muralisidfn7/agentic-architecture-skills
+npx skills add muralisid/agentic-architecture-skills
 
 # one skill only
-npx skills add muralisidfn7/agentic-architecture-skills --skill review-agent-architecture
+npx skills add muralisid/agentic-architecture-skills --skill review-agent-architecture
 
 
 # GitHub CLI (gh 2.90 or newer)
-gh skill install muralisidfn7/agentic-architecture-skills review-agent-architecture
+gh skill install muralisid/agentic-architecture-skills review-agent-architecture
 ```
 
 For Claude Code, the whole catalogue is also a plugin:
 
 ```bash
-claude plugin marketplace add muralisidfn7/agentic-architecture-skills
+claude plugin marketplace add muralisid/agentic-architecture-skills
 claude plugin install agentic-architecture-skills@agentic-architecture-skills
 ```
 
