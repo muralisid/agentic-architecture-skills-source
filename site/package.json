@@ -6,6 +6,7 @@
     "sync": "node scripts/sync-content.mjs",
     "skills:build": "node scripts/build-skills.mjs",
     "icons": "node scripts/build-icons.mjs",
+    "og:chart": "node scripts/build-og-chart.mjs",
     "skills:export": "node scripts/build-skills.mjs --export",
     "validate:skills": "node scripts/validate-skills.mjs",
     "build": "npm run guard && npm run sync && npm run figures:export && npm run skills:build && npm run validate && npm run guard && next build",

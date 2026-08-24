@@ -13,6 +13,7 @@ import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { author, repoUrl, siteUrl, sourceRepositoryPublic } from '@/lib/shared';
 import { articleSchema, jsonLd } from '@/lib/structured-data';
+import { getProvidedFigure } from '@/lib/share-image';
 import { Byline } from '@/components/site/byline';
 import { CiteThisPage } from '@/components/site/cite-this-page';
 
@@ -94,6 +95,11 @@ export async function generateMetadata(props: PageProps<'/[...slug]'>): Promise<
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
+  // A page that carries its own figure shares that figure; the rest get the
+  // generated card. Twitter is set alongside because it does not inherit the
+  // Open Graph image, and an unset one falls back to the site-wide card.
+  const shareImage = getProvidedFigure(page.slugs) ?? getPageImageUrl(page).url;
+
   return {
     title: page.data.title,
     description: page.data.description,
@@ -108,7 +114,13 @@ export async function generateMetadata(props: PageProps<'/[...slug]'>): Promise<
       authors: [author.url],
       publishedTime: page.data.datePublished,
       modifiedTime: page.data.dateModified,
-      images: getPageImageUrl(page).url,
+      images: shareImage,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.data.title,
+      description: page.data.description,
+      images: shareImage,
     },
   };
 }
