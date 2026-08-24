@@ -11,8 +11,7 @@ import {
   Workflow,
 } from 'lucide-react';
 import { appName, author } from '@/lib/shared';
-import { DiagramRenderer } from '@/components/visuals/diagram-renderer';
-import { getFigure } from '@/lib/figure-manifest';
+import { WallChartPreview } from '@/components/site/wall-chart-preview';
 import { StatTiles } from '@/components/visuals/result-chart';
 import { SkillsStrip } from '@/components/skills/skills-catalog';
 import { CopyLine } from '@/components/skills/copy-line';
@@ -60,23 +59,6 @@ const spine = [
   },
 ];
 
-const layers = [
-  ['R01', 'Infrastructure and compute', '/layers/r01-infrastructure'],
-  ['R02', 'Data platform', '/layers/r02-data-platform'],
-  ['R03', 'Integration fabric', '/layers/r03-integration-fabric'],
-  ['R04', 'Systems of record', '/layers/r04-systems-of-record'],
-  ['R05', 'Line of business and OT', '/layers/r05-lob-and-ot'],
-  ['R06', 'Intelligence and learning', '/layers/r06-intelligence-and-learning'],
-  ['R07', 'Agent platform', '/layers/r07-agent-platform'],
-  ['R08', 'Productivity and collaboration', '/layers/r08-productivity-and-collaboration'],
-  ['R09', 'Experience and channels', '/layers/r09-experience-and-channels'],
-  ['R10', 'Security and identity', '/layers/r10-security-and-identity'],
-  ['R11', 'Governance, risk and sovereignty', '/layers/r11-governance-risk-sovereignty'],
-  ['R12', 'Observability and FinOps', '/layers/r12-observability-and-finops'],
-  ['R13', 'Supervision and oversight', '/layers/r13-operating-model'],
-  ['R14', 'Agent data engineering', '/layers/r14-agent-data-engineering'],
-] as const;
-
 const trust = ['Every claim dated and sourced', 'Vendor figures labelled', 'Every arm reported, including the ones that beat us'] as const;
 
 const patternStats = [
@@ -87,8 +69,6 @@ const patternStats = [
 ];
 
 export default function HomePage() {
-  const hero = getFigure('seven-plane-architecture');
-
   return (
     <main className="flex flex-1 flex-col">
       {/* Hero */}
@@ -107,17 +87,18 @@ export default function HomePage() {
             Target-state architecture for the agentic enterprise
           </p>
           <h1 className="mt-6 font-serif text-[40px] font-medium leading-[1.06] text-fd-foreground sm:text-5xl lg:text-6xl">
-            Seven planes across <span className="italic text-ember">fourteen layers.</span>
+            The agentic enterprise, <span className="italic text-ember">on one page.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-[1.75] text-fd-muted-foreground md:text-[17px]">
-            The components, protocols, control points, and contested choices, with the evidence behind each and the
-            refusals stated plainly. Built for the architects who will design it, and written so that everyone who will
-            live with it can follow: every page opens in plain terms, and every technical word explains itself.
+            One chart carrying the whole target state: the components, the protocols, the control points, and the
+            boundaries a model may not cross. Behind it, the contested choices with verdicts, the evidence for each,
+            and the refusals stated plainly. Built for the architects who will design it, and written so that everyone
+            who will live with it can follow.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <PillLink href="/architecture">The target-state architecture</PillLink>
-            <PillLink href="/layers" variant="outline">
-              Go layer by layer
+            <PillLink href="/architecture">Read the architecture</PillLink>
+            <PillLink href="/decisions" variant="outline">
+              25 decisions with verdicts
             </PillLink>
             <PillLink href="/skills" variant="soft" arrow>
               Install it into your agent
@@ -136,10 +117,7 @@ export default function HomePage() {
           </ul>
         </div>
         <div className="relative mx-auto w-full max-w-6xl px-6 pb-16 md:px-8">
-          <div className="card-soft p-4 sm:p-6">
-            <DiagramRenderer figure={hero} />
-            <p className="mt-3 mb-0 text-sm text-fd-muted-foreground">{hero.takeaway}</p>
-          </div>
+          <WallChartPreview />
         </div>
       </section>
 
@@ -172,7 +150,7 @@ export default function HomePage() {
       </section>
 
       {/* The spine */}
-      <section className="relative overflow-hidden py-20 md:py-24">
+      <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-24">
         <SectionDecor circles="bl" dots="none" />
         <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
           <SectionHeading
@@ -182,7 +160,7 @@ export default function HomePage() {
                 Six things every design must get <span className="italic text-ember">right.</span>
               </>
             }
-            sub="Each one cuts across every layer of the estate. Get these right and the layer-by-layer choices become ordinary engineering."
+            sub="Each one cuts across every layer on the chart. Get these right and the layer-by-layer choices become ordinary engineering."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {spine.map((s) => (
@@ -194,39 +172,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The layers */}
-      <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-24">
-        <SectionDecor circles="tr" dots="tl" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
-          <SectionHeading
-            eyebrow="Layer by layer"
-            title={
-              <>
-                What you already own, and what changes in <span className="italic text-ember">each part.</span>
-              </>
-            }
-            sub="Fourteen deep pages. Each one states the target state, the mechanisms, the contested choices with verdicts, the cross-cutting concerns, and where the evidence runs out."
-          />
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {layers.map(([code, name, href]) => (
-              <Link
-                key={href}
-                href={href}
-                className="group flex items-center gap-3 rounded-full border border-fd-border bg-fd-card px-4 py-3 text-sm shadow-[0_2px_12px_rgba(15,23,42,0.03)] transition-all hover:-translate-y-0.5 hover:border-ember/40 hover:shadow-[0_10px_30px_rgba(15,23,42,0.08)]"
-              >
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ember-soft font-mono text-[11px] font-semibold text-ember-ink dark:bg-fd-accent dark:text-fd-accent-foreground">
-                  {code}
-                </span>
-                <span className="font-medium text-fd-foreground">{name}</span>
-                <ArrowUpRight className="ml-auto size-4 text-fd-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The research */}
-      <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-24">
+      {/* The patterns */}
+      <section className="relative overflow-hidden py-20 md:py-24">
         <SectionDecor circles="both" dots="br" />
         <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
           <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
@@ -298,14 +245,14 @@ export default function HomePage() {
         <div className="relative mx-auto w-full max-w-3xl px-6 text-center">
           <Eyebrow center>Ready when you are</Eyebrow>
           <h2 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-fd-foreground md:text-5xl">
-            Pick your layer.
+            Take the chart.
             <br />
-            <span className="text-ember">Walk away with the design.</span>
+            <span className="text-ember">Then go as deep as you need.</span>
           </h2>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <PillLink href="/architecture">Start with the architecture</PillLink>
-            <PillLink href="/decisions" variant="outline">
-              25 decisions with verdicts
+            <PillLink href="/architecture">Open the one-page architecture</PillLink>
+            <PillLink href="/layers" variant="outline">
+              Go layer by layer
             </PillLink>
           </div>
           <p className="mt-5 text-[13px] text-fd-muted-foreground">

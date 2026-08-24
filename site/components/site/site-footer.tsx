@@ -11,16 +11,17 @@ const LINK_GROUPS: { category: string; links: { name: string; href: string }[] }
       { name: 'Architecture', href: '/architecture' },
       { name: 'The fourteen layers', href: '/layers' },
       { name: 'Decisions', href: '/decisions' },
-      { name: 'Research', href: '/patterns' },
+      { name: 'Patterns', href: '/patterns' },
       { name: 'Plain words', href: '/architecture/plain-words' },
     ],
   },
   {
-    category: 'Research',
+    category: 'Patterns',
     links: [
-      { name: 'The experiments', href: '/patterns' },
-      { name: 'Recommended approach', href: '/patterns' },
-      { name: 'Method and reversals', href: '/patterns/how-to-test-a-context-design' },
+      { name: 'The nine patterns', href: '/patterns' },
+      { name: 'Aspect dilution', href: '/patterns/aspect-dilution' },
+      { name: 'Where views lose', href: '/patterns/real-prose' },
+      { name: 'How to test a design', href: '/patterns/how-to-test-a-context-design' },
       { name: 'Reading list', href: '/patterns/reading-list' },
     ],
   },
@@ -31,7 +32,6 @@ const LINK_GROUPS: { category: string; links: { name: string; href: string }[] }
       { name: 'Techniques', href: '/library/techniques' },
       { name: 'Frameworks', href: '/library/frameworks' },
       { name: 'Blueprints', href: '/library/blueprints' },
-      { name: 'Vendor research', href: '/library/vendors' },
     ],
   },
   {
@@ -89,7 +89,7 @@ export function SiteFooter({ compact = false, className }: { compact?: boolean; 
                 <div>
                   <p className="text-[14px] font-semibold text-fd-foreground">Every claim carries a dated source</p>
                   <p className="text-[13px] text-fd-muted-foreground">
-                    Vendor numbers are labelled, positions are labelled, and the negative results are published too.
+                    Vendor numbers are labelled, positions are labelled, and every measurement names the experiment behind it.
                   </p>
                 </div>
               </div>
@@ -108,10 +108,19 @@ export function SiteFooter({ compact = false, className }: { compact?: boolean; 
           <div className="flex flex-col items-center gap-1 md:items-start">
             <p className="text-[13px] text-fd-muted-foreground">{appName}</p>
             <p className="text-[11px] text-fd-muted-foreground/80">
-              Maintained by{' '}
-              <a href="https://github.com/muralisidfn7" className="underline decoration-fd-border underline-offset-2 hover:text-fd-foreground">
-                Murali Sid
+              Written by{' '}
+              <a
+                href={author.linkedin}
+                rel="author noopener"
+                target="_blank"
+                className="font-medium underline decoration-fd-border underline-offset-2 hover:text-fd-foreground"
+              >
+                {author.name}
               </a>
+              , {author.jobTitle}.{' '}
+              <Link href="/about" className="underline decoration-fd-border underline-offset-2 hover:text-fd-foreground">
+                About
+              </Link>
               . Content CC BY-SA 4.0, code MIT.
             </p>
           </div>
