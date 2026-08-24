@@ -51,7 +51,7 @@ Both are generated and git-ignored. `npm run skills:export` additionally writes 
 
 Bundles are byte-reproducible: the archive writer fixes entry order, timestamps, attributes and compression, so the same content always produces the same sha256 digest. `npm run validate:skills` checks the written output against the Agent Skills specification and confirms every digest matches its bundle.
 
-To publish to `muralisidfn7/agentic-architecture-skills`, the guard workflow needs one repository secret, `SKILLS_DEPLOY_KEY`: the private half of a deploy key with write access on that repository. Without it the workflow still builds and validates the bundles, and simply reports that it did not publish.
+To publish to `muralisid/agentic-architecture-skills`, the guard workflow needs one repository secret, `SKILLS_DEPLOY_KEY`: the private half of a deploy key with write access on that repository. Without it the workflow still builds and validates the bundles, and simply reports that it did not publish.
 
 ## Automatic deployment
 

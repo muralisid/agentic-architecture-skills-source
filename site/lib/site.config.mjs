@@ -35,10 +35,10 @@ export const siteUrl =
   configuredUrl && !legacyHosts.some((host) => configuredUrl.includes(host)) ? configuredUrl : canonicalUrl;
 
 /** The canonical content repository: this repo. Private unless SOURCE_REPOSITORY_PUBLIC is true. */
-export const sourceRepo = { user: 'muralisidfn7', repo: 'agentic-architecture-skills-source', branch: 'main' };
+export const sourceRepo = { user: 'muralisid', repo: 'agentic-architecture-skills-source', branch: 'main' };
 
 /** The public repository the skill bundles are published to, and its install name. */
-export const skillsRepo = { user: 'muralisidfn7', repo: 'agentic-architecture-skills', branch: 'main' };
+export const skillsRepo = { user: 'muralisid', repo: 'agentic-architecture-skills', branch: 'main' };
 
 /**
  * The as-of date on the wall chart's product names. The two-monthly refresh
@@ -61,8 +61,8 @@ export const author = {
   jobTitle: 'Founder and AI Systems Architect',
   url: 'https://linkedin.com/in/muralisid',
   linkedin: 'https://linkedin.com/in/muralisid',
-  github: 'https://github.com/muralisidfn7',
-  sameAs: ['https://linkedin.com/in/muralisid', 'https://github.com/muralisidfn7'],
+  github: 'https://github.com/muralisid',
+  sameAs: ['https://linkedin.com/in/muralisid', 'https://github.com/muralisid'],
   /** The page on this site that describes the author; the entity's home. */
   page: '/about',
   knowsAbout: [

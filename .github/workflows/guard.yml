@@ -98,7 +98,7 @@ jobs:
         if: steps.key.outputs.ready == 'true'
         uses: actions/checkout@v4
         with:
-          repository: muralisidfn7/agentic-architecture-skills
+          repository: muralisid/agentic-architecture-skills
           ssh-key: ${{ secrets.SKILLS_DEPLOY_KEY }}
           path: public-skills
 

@@ -31,6 +31,6 @@ The research corpus and content source for Agentic Architecture Skills (formerly
 
 ## Git workflow
 
-- All changes land via pull request; `main` is protected. The maintainer (@muralisidfn7) reviews and merges.
+- All changes land via pull request; `main` is protected. The maintainer (@muralisid) reviews and merges.
 - Branch naming: `phase-N/short-topic` or `rNN/short-topic` for track work.
 - Third-party IP: do not commit third-party decks, slides, or documents. Store extracted structure notes and citations instead, with permission status flagged. See inputs/README.md.
