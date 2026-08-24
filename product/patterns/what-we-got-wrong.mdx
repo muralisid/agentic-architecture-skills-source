@@ -1,0 +1,76 @@
+---
+title: "What we predicted and what happened"
+icon: "ClipboardCheck"
+description: "The scorecard for every hypothesis this programme tested, including the five that failed. Two claims survived intact, three shrank under measurement, and the most novel one turned out to be a judging artefact. The full record, the code and the per-query results are public."
+---
+
+<PlainTerms>
+Research writing usually shows you the ideas that worked. This page shows all of them, including the ones that did not, because a page that only reports wins gives you no way to judge how careful the wins were. Of the eleven things this programme set out to test, two held up as stated, three turned out to be true but much smaller than claimed, and five failed outright. One useful result was found by accident while looking for something else. Every verdict below links to the data it came from. The one thing to remember: the idea that sounded most impressive is the one that did not survive.
+</PlainTerms>
+
+## The scorecard
+
+**In short:** Eleven predictions, four surviving in some form, five failed, and one accident that outlasted the lot.
+
+| What we predicted | What happened | Verdict |
+|---|---|---|
+| Several embeddings per document beat one blended embedding when documents cover many topics | Held clearly. The blended vector falls from 0.815 to 0.294 as topics accumulate; multi-vector stays above 0.63 | **Confirmed** |
+| The gain comes from framing each embedding around a purpose, not merely from having more of them | Failed. A deliberately mindless three-word window recovers most of the gain, so capacity explains it | **Contradicted** |
+| Purpose framing beats a fair like-for-like control on real prose | Failed. On scientific abstracts the clever version scored 0.635 against plain chunking's 0.667, losing 70 comparisons to 36 | **Contradicted** |
+| Keyword search can be dropped once the embeddings are good | Failed, and not marginally. On queries naming a specific thing, keyword search scored 0.997 against 0.314 | **Contradicted** |
+| A cheap filter separates on-topic from off-topic well enough to be worth building | Held, at 0.933 by the usual measure | **Confirmed** |
+| That filter is where the large cost saving comes from | Failed. Keeping 95 percent of relevant material only discards about a third of the corpus, a saving of one-and-a-bit times | **Contradicted** |
+| Processing per discovered topic rather than per document is a saving that widens with corpus size | Half failed. The widening is not real and was an artefact of our own summaries coarsening. A large constant saving, roughly 200 times, survives | **Partly contradicted** |
+| Harvesting varied results buys topic coverage more cheaply than the standard method | Held. Roughly twice as cheaply, admitting fewer answerless documents | **Confirmed** |
+| How much variety to return depends on whether a model or a person will read the results | Failed. The effect vanished under a judge from a different company | **Not supported** |
+| Designing the categories around your research objective beats deriving them from the corpus | Failed repeatedly, across five rounds and both directions of a crossover test | **Not supported** |
+| Letting a model design the categories beats hand-written ones | No difference, and both stayed below the plain control on real prose | **Not supported** |
+
+## The one that mattered most
+
+**In short:** The most novel claim failed, and the way it failed is worth more than the claim would have been.
+
+The interesting idea was that the right amount of variety in a set of search results depends on who reads it: more variety when a model will summarise them, because models exploit odd clues, and a tighter list for a person, because to a busy reader the extra material is noise.
+
+It measured positive. Then it measured smaller under a more capable judge from the same company. Then it disappeared entirely under a judge from a different company. An effect that shrinks steadily as the grader moves away from the generator's own family is the signature of a model marking its own homework, not a property of the world.
+
+The honest position is that it is not disproved, since all three estimates pointed the same way and sixty tasks cannot settle something this small. But no evidence may be cited for it, and it is not in the pattern catalogue. [The measurement](/patterns/diversity-and-consumer).
+
+## The accident
+
+**In short:** The most durable result was not one we set out to test.
+
+While measuring whether varied results help a model write better summaries, the programme also counted statements in those summaries that the retrieved documents did not support. Harvesting varied results reduced unsupported content, and unlike the finding above, this held under judges from every family tried.
+
+Nobody predicted it. It is now the most defensible single result in the programme, and it points at grounding rather than at relevance, which is not where the work was looking.
+
+## Why publish the failures
+
+**In short:** Because the alternative is asking you to trust us, and the whole point of the exercise was not to.
+
+Five headline results in this programme reversed at least once. Every reversal traced to one of two causes: a control that was not matched, so the comparison measured a handicap rather than an idea, or a measurement that could not have come out negative, which is not a measurement. Those two checks are the transferable part, and they are written up as [how to test a context design](/patterns/how-to-test-a-context-design).
+
+An independent reviewer was pointed at the first sprint with instructions to reject it, and scored it 1.5 out of 5. It was right on every fatal finding. Four of its five findings the programme had missed, and those were the ones that mattered.
+
+## The record
+
+**In short:** The working documents are published as they were written, not tidied up.
+
+- [The programme record](https://github.com/muralisid/multicard-bench/tree/main/docs/programme): the findings summary, the hypothesis register with every verdict, the adversarial review, the frozen preregistration, and both sprint diaries
+- [The benchmark](https://github.com/muralisid/multicard-bench): the code, the committed outputs and the per-query results for twenty experiments, so any number on these pages can be recomputed rather than believed
+
+The sprint diaries are append-only and still contain conclusions later withdrawn. That is deliberate, so the record shows what was believed and when, but it makes them a poor way to learn what is true. The findings summary is the one to read.
+
+## Limits of this evidence
+
+The encoders were small, the corpora ran to twenty thousand documents, everything was in English, and no production data was used. Prices are as of 2026-08-19 and local compute is priced at zero. A larger instruction-tuned encoder would strengthen the query-side conditioning result rather than weaken it. The obvious next experiment is a real aspect-targeted corpus with human judgements, which would test the one positive finding that currently rests on synthetic data.
+
+<details>
+<summary>The research behind this page</summary>
+
+- The hypothesis register and findings summary, published in full at [docs/programme](https://github.com/muralisid/multicard-bench/tree/main/docs/programme)
+- The adversarial review of Sprint R1, commit 1cec616, 2026-08-20
+- Benchmark repository, commit 2b9c6ef, 2026-08-22: one metrics file and one per-query file per experiment
+- [CD-25](/decisions#cd-25) records the decision this evidence supports
+
+</details>
