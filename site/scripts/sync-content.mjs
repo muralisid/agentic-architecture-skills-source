@@ -433,7 +433,7 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'layers', 'decisions', 'patterns', 'about'],
+    pages: ['architecture', 'patterns', 'layers', 'decisions', 'about'],
   },
   architecture: {
     title: 'Architecture',
