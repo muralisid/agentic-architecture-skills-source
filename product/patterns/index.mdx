@@ -8,6 +8,16 @@ description: "Nine patterns for giving an agent the right context, each with the
 An agent is only as good as what reaches its context. These are nine patterns for getting the right material in front of it: how to represent documents so a question finds the part that answers it, how to keep the cost sane, how to choose what to pass on, and how to know whether any of it worked. Each pattern says what to do, what it buys you, when it does not apply, and the evidence behind it. The one thing to remember: patterns one to three cover most of the value, and you can adopt them without adopting the rest.
 </PlainTerms>
 
+## Problem and solution
+
+**Problem:** Agents can only reason over what reaches their context. A single document embedding can blur separate topics, dense retrieval can miss exact names and identifiers, and extra retrieval machinery can add complexity without improving results.
+
+**Solution:** Build the retrieval stack in layers. Start with several representations for aspect-rich documents, compare every clever representation with an equally sized plain-chunk baseline, and keep keyword search alongside dense retrieval. Add corpus-derived views, query-time instruction following, gating, diversity and model-assisted taxonomy design only where measurement shows they help.
+
+**Evidence:** The strongest results are in patterns 1 to 3: multi-vector retrieval prevents aspect dilution, matched controls reveal how much of the gain is simply extra capacity, and keyword search wins decisively on exact-attribute lookup. The later patterns are useful under narrower conditions and should earn their complexity on the target workload.
+
+![Visual overview of the nine context patterns, their problem, solution, pipeline, and evidence.](/figures/patterns/index.png)
+
 ## The patterns
 
 **In short:** Nine, in the order you would apply them. Each links to the experiment or the paper that supports it.
@@ -60,11 +70,11 @@ Splitting by purpose and splitting by fixed windows both multiply the number of 
 
 ## 3. Keep keyword search in the loop
 
-**In short:** Meaning-based search misses exact names, codes and quotations; fusing the two costs nothing.
+**In short:** Meaning-based search misses exact names, codes and quotations; combining dense and keyword retrieval is cheap and removes a silent failure mode.
 
 On LIMIT, where queries name a specific attribute, BM25 scored 0.997 against 0.314 for the pooled dense vector. On SciFact, a corpus full of gene names and measured quantities, fusing cards with BM25 gave the best arm at 0.685. Reciprocal rank fusion is cheap and order-independent.
 
-**Apply it always.** There is no workload where identifiers stop mattering, and the failure mode is silent: a dense-only system returns something plausible instead of the record you named.
+**Default to it unless your own evaluation shows no benefit.** Exact names, identifiers and quotations are common enough that dense-only retrieval creates a silent failure mode: the system can return something plausible instead of the record you named.
 
 <a id="p4" />
 

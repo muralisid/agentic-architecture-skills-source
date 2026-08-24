@@ -387,7 +387,46 @@ const productRoutes = new Set(
 const libraryRoutes = new Set([...map.values()].map((slug) => routeFor(slug)));
 libraryRoutes.add('/library');
 
+// An image that belongs to one product page is stored beside that page, so the
+// repo stays the source of truth for it. The mirror puts it under public/figures
+// at the same relative path, which is why a page refers to it as
+// /figures/<section>/<file>. Only files in a section directory are mirrored,
+// because the top level of public/figures belongs to the generated diagrams.
+const PRODUCT_ASSET_EXTENSION = /\.(?:avif|gif|jpe?g|png|svg|webp)$/i;
+
+async function collectProductAssets(dir, acc = []) {
+  if (!existsSync(path.join(productDir, dir))) return acc;
+  for (const entry of await readdir(path.join(productDir, dir), { withFileTypes: true })) {
+    const rel = path.posix.join(dir, entry.name);
+    if (entry.isDirectory()) await collectProductAssets(rel, acc);
+    else if (PRODUCT_ASSET_EXTENSION.test(entry.name)) acc.push(rel);
+  }
+  return acc;
+}
+
+const productAssets = (await collectProductAssets('.'))
+  .map((f) => f.replace(/^\.\//, ''))
+  .filter((rel) => rel.includes('/'));
+const productAssetRoutes = new Set();
+for (const section of new Set(productAssets.map((rel) => rel.split('/')[0]))) {
+  await rm(path.join(FIGURE_OUTPUT_DIR, section), { recursive: true, force: true });
+}
+for (const rel of productAssets) {
+  const outPath = path.join(FIGURE_OUTPUT_DIR, rel);
+  await mkdir(path.dirname(outPath), { recursive: true });
+  await copyFile(path.join(productDir, rel), outPath);
+  productAssetRoutes.add(`/figures/${rel}`);
+}
+
 function assertProductPage(rel, text) {
+  // A missing image fails silently in the browser, so it fails the build here
+  // instead, the same way a broken link does.
+  for (const m of text.matchAll(/!\[[^\]]*\]\(([^)\s]+)/g)) {
+    const src = m[1];
+    if (/^(https?:|data:)/.test(src)) continue;
+    if (productAssetRoutes.has(src)) continue;
+    throw new Error(`product/${rel} shows image ${src}, which is not a file beside a product page. Store it next to the page and refer to it as /figures/<section>/<file>.`);
+  }
   for (const m of text.matchAll(/\[[^\]]*\]\((\/[^)\s#]*)(?:#[^)]*)?\)/g)) {
     const href = m[1].replace(/\/$/, '') || '/';
     if (href === '/' || href.startsWith('/figures/')) continue;

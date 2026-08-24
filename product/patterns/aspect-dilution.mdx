@@ -8,6 +8,16 @@ description: "A document about several things gets one embedding that is an aver
 Imagine a library where every book gets one index card that tries to say everything about the book in one line. Ask about one chapter and the card only half matches. This page measures how much is lost as a document covers more topics, and what is recovered by writing several cards per book. It then asks the harder question: is the recovery because there are more cards, or because each card is about one purpose? The one thing to remember: more cards recover most of the loss by themselves; purpose-shaped cards add a real but conditional extra.
 </PlainTerms>
 
+## Problem and solution
+
+**Problem:** One embedding has to compress every topic in a document into one point. As documents cover more unrelated aspects, a query about one aspect matches that blended representation less strongly.
+
+**Solution:** Give aspect-rich documents several searchable representations instead of one. Start with plain chunks; use purpose-shaped cards only when they beat an equally large chunk baseline on the real query distribution.
+
+**Evidence:** On the controlled corpus, the pooled representation falls from 0.815 to 0.294 nDCG@10 as documents grow from one aspect to ten, while multi-vector approaches remain above 0.63. On LIMIT, most of the improvement comes from having more searchable units; purpose alignment adds a smaller conditional gain.
+
+![Visual explanation of aspect dilution: one pooled vector loses specificity while multiple searchable units preserve aspects.](/figures/patterns/aspect-dilution.png)
+
 ## The claim and the confound
 
 **In short:** Cards have to beat an equally large set of blind chunks, not just the single vector, or the experiment measures capacity rather than the idea.

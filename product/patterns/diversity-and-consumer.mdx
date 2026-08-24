@@ -8,6 +8,16 @@ description: "Within a gated pool, harvesting the least similar tail buys sub-to
 After a search finds candidates, something has to pick the ten that get passed on. Picking the ten most similar repeats the same point; picking deliberately different ones covers more ground but risks including things that do not answer the question. This page measures that trade for several selection rules, then tests the idea the programme was built around: that a model writing a summary wants more variety than a person reading a brief. The one thing to remember: the selection rule proposed here is an efficient one, and the idea that the rule should change with the reader has no evidence behind it yet.
 </PlainTerms>
 
+## Problem and solution
+
+**Problem:** Pure relevance ranking can return ten near-duplicates; aggressive diversity can cover more sub-topics but admit answerless distractors.
+
+**Solution:** Gate for relevance first, keep a strong relevance head, and spend only part of the tail on deliberately different candidates. Tune the relevance-diversity balance to the workload, not to whether a human or a model will read the result.
+
+**Evidence:** A 40 percent harvest reaches the same measured sub-topic coverage as aggressive MMR while losing about half as much relevance and admitting fewer distractors. The separate claim that machines need more diversity than humans does not survive a cross-family judge and is not supported.
+
+![Visual comparison of relevance-only, MMR, DPP, and harvest policies inside a gated candidate pool.](/figures/patterns/diversity-and-consumer.png)
+
 ## The retrieval half: what each policy delivers
 
 **In short:** Coverage costs relevance. The harvest buys it cheaper than MMR and admits fewer distractors than a DPP.

@@ -8,6 +8,16 @@ description: "On 5,183 human-judged scientific abstracts, purpose cards score be
 The previous page used corpora where documents visibly have separate aspects and questions target one of them. This page uses scientific abstracts judged by people, where a question is usually about the finding as a whole. Here the purpose cards lose to plain chunks, and letting a model design the card taxonomy does not rescue them. The one thing to remember: purpose views are a tool for a particular shape of question, and outside that shape the simpler method is better.
 </PlainTerms>
 
+## Problem and solution
+
+**Problem:** Splitting a document by rhetorical purpose can separate evidence that a real query needs together. A representation that is elegant in theory can therefore lose to ordinary chunks.
+
+**Solution:** Treat purpose views as optional, not as the default. Compare them with matched blind chunks on the actual query set and keep the simpler representation when it wins.
+
+**Evidence:** On 5,183 SciFact abstracts with human relevance judgements, hand-written purpose cards score 0.635 and model-designed cards 0.626, both below matched chunks at 0.667. The best arm is the hybrid with keyword search at 0.685.
+
+![Visual explanation of why purpose views can lose on real prose and why matched blind chunks can preserve nearby evidence.](/figures/patterns/real-prose.png)
+
 ## The honest case
 
 **In short:** Real prose nobody wrote for the experiment, real labels, and queries about whole findings.

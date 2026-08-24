@@ -8,6 +8,16 @@ description: "A first pass built from embeddings alone separates on-purpose from
 A two-pass design runs a cheap filter over everything and spends the expensive model only on what survives, grouped into topics. This page tests both halves: whether the filter actually tells relevant from irrelevant, and how much money the design saves as the corpus grows. The one thing to remember: the filter works but removes less than people assume, and the big saving comes from paying per topic instead of per document, as a fixed multiple rather than a multiple that grows.
 </PlainTerms>
 
+## Problem and solution
+
+**Problem:** Sending every document to an expensive model is costly, but a high-recall first-pass filter cannot safely throw most of the corpus away.
+
+**Solution:** Use a cheap gate as a quarantine layer, then attach generative work to discovered topics rather than to individual documents. If labels exist, prefer a simple supervised classifier over hand-tuned embedding anchors.
+
+**Evidence:** The embedding gate reaches ROC-AUC 0.933, but at about 0.95 recall it discards only a third of the corpus. The large saving comes from topic-level processing: roughly a two-hundred-times constant-factor reduction at comparable granularity, not from a saving that grows with corpus size.
+
+![Visual explanation of the cheap relevance gate and why the major cost saving comes from processing discovered topics.](/figures/patterns/gate-and-economics.png)
+
 ## Does the gate discriminate?
 
 **In short:** Yes. Held-out ROC-AUC 0.933 on corporate email against unrelated Usenet posts, using nothing but embeddings and a handful of anchor phrases.

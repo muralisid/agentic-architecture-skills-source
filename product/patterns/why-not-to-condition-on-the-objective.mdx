@@ -8,6 +8,16 @@ description: "The evidence behind pattern 4. Showing the view designer a sample 
 The promising version of the multi-card idea was that a model could decide which cards to build for a particular goal: different cards for legal discovery than for operations, for example. This page follows that idea through five rounds of testing. Each round fixed a real weakness in the previous one, and each round returned the same answer: views designed from the corpus itself are as good or better, and telling the designer the goal makes things worse. The one thing to remember: the goal is the wrong input for building the index, and a cheaper, established technique already does what this idea was meant to do.
 </PlainTerms>
 
+## Problem and solution
+
+**Problem:** It is tempting to design the index around the user's goal. In these experiments, that makes the taxonomy more elegant around the stated objective but less faithful to what the corpus actually contains.
+
+**Solution:** Build views from a representative corpus sample. If the user's instruction should change relevance, apply that instruction at query time with an instruction-following retriever rather than rebuilding or reselecting the index around the objective.
+
+**Evidence:** Across five forms of objective conditioning, corpus-derived views are as good or better. Adding the objective costs 0.068 nDCG@10 in round 1, added business/schema context hurts monotonically in round 4, and objective-selected views are the worst arm on the real FollowIR collections.
+
+![Visual comparison of corpus-derived views versus objective-conditioned index design.](/figures/patterns/why-not-to-condition-on-the-objective.png)
+
 ## The claim and its five forms
 
 **In short:** Five ways of letting the objective shape the index, five negative results.

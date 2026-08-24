@@ -8,6 +8,16 @@ description: "The evidence behind pattern 9: three arms per experiment, a matche
 Experiments that confirm what their authors hoped for are cheap to produce and worthless to rely on. This page describes the discipline used to make the results on the other pages hard to fool: a control arm that always gets the same budget as the method, corpora of increasing realism, rules written down before any number was read, a reviewer whose job was to break the results, and a rerun on a second computer. It also lists, without softening, the five times a headline turned out to be wrong and what caught it. The one thing to remember: a control that is not matched is not a control, and a measurement that cannot come out negative is not a measurement.
 </PlainTerms>
 
+## Problem and solution
+
+**Problem:** Retrieval experiments are easy to make look positive when the proposed method gets more capacity, more source text, fewer distractors, or a metric that cannot expose failure.
+
+**Solution:** Match the control's budget, make failure possible, fix decision rules before reading results, test on progressively more realistic corpora, ask an adversarial reviewer to break the experiment, and rerun on a second machine.
+
+**Evidence:** Five headline results in this programme reversed at least once. The recurring causes were unmatched controls and measurements that could not meaningfully go negative.
+
+![Visual guide to matched controls, a ladder of corpora, adversarial review, and replication.](/figures/patterns/how-to-test-a-context-design.png)
+
 ## The design
 
 **In short:** Separate what more vectors buy from what purposes buy, and make the corpus able to disagree.
