@@ -27,7 +27,7 @@ The arms are the same as before, all at document level with the same encoder: ke
   max={0.72}
   ticks={[0.55, 0.6, 0.65, 0.7]}
   caption="The cards are the two lowest dense arms. The hybrid is the best arm, which is the keyword component doing real work on a corpus full of gene names, drug names, and measured quantities."
-  source="Benchmark repository, results/e1_scifact_matched/metrics.json and results/e1_llm_taxonomy_scifact/metrics.json, commit 92c18cb (2026-08-22). Byte-identical on a second machine for the hand-written taxonomy; −0.044 against chunks (p=0.004) on the second machine for the model-designed one."
+  source="Benchmark repository, results/e1_scifact_matched/metrics.json and results/e1_llm_taxonomy_scifact/metrics.json, commit 2b9c6ef (2026-08-22). Byte-identical on a second machine for the hand-written taxonomy; −0.044 against chunks (p=0.004) on the second machine for the model-designed one."
 />
 
 Purpose cards score 0.635 against the matched chunks' 0.667: −0.032, 95 percent interval −0.057 to −0.008, p=0.0115, 70 losses to 36 wins with 194 ties. Equalising the embedding budget barely moved the gap, so capacity is not the explanation; the cards are genuinely worse here. Fusing cards with BM25 gives 0.685, +0.040 over the pooled vector (p=0.012), which is the best arm in the table and comes from the lexical side.
@@ -61,7 +61,7 @@ On workloads whose queries concern whole findings rather than aspects, purpose c
 <details>
 <summary>The research behind this page</summary>
 
-- Benchmark repository: `results/e1_scifact_matched`, `results/e1_llm_taxonomy_scifact` (including the designed taxonomy in `llm_taxonomy.json`), commit 92c18cb, 2026-08-22.
+- Benchmark repository: `results/e1_scifact_matched`, `results/e1_llm_taxonomy_scifact` (including the designed taxonomy in `llm_taxonomy.json`), commit 2b9c6ef, 2026-08-22.
 - BEIR, the benchmark family SciFact belongs to: Thakur et al., NeurIPS 2021. https://arxiv.org/abs/2104.08663
 - Weller et al., When do Generative Query and Document Expansions Fail?, EACL 2024, on derived-text indexing hurting strong retrievers. https://arxiv.org/abs/2309.08541
 - [The recommended approach](/patterns) for how this boundary becomes a decision rule.
