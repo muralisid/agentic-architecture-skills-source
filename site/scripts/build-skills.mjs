@@ -25,7 +25,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml';
 
-import { siteUrl, skillsRepo } from '../lib/site.config.mjs';
+import { author, citation, siteUrl, skillsRepo } from '../lib/site.config.mjs';
 import { loadFigureManifestModule, loadGlossaryModule } from './figure-manifest-loader.mjs';
 import { convertPage } from './lib/mdx-to-markdown.mjs';
 import { createZip } from './lib/zip.mjs';
@@ -112,6 +112,8 @@ async function build() {
   const { GLOSSARY } = await loadGlossaryModule();
   const context = {
     siteUrl,
+    author,
+    licence: `${citation.license} (${citation.licenseUrl})`,
     figures: new Map(figureManifest.map((figure) => [figure.id, figure])),
     glossary: GLOSSARY,
   };

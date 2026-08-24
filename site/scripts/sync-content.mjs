@@ -8,6 +8,7 @@ import { copyFile, mkdir, readFile, readdir, realpath, rm, stat, writeFile } fro
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { sourceRepo } from '../lib/site.config.mjs';
 
 const siteDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -43,6 +44,34 @@ async function readHold() {
   return held;
 }
 const HELD = await readHold();
+
+/**
+ * First and last commit dates for a file, used as datePublished and
+ * dateModified in each page's structured data. A search engine and a model both
+ * treat an undated technical page as weaker evidence, and inventing a date
+ * would be worse than omitting one, so these come from the history or not at
+ * all. Cached because a sync touches over a hundred files.
+ */
+const dateCache = new Map();
+function gitDates(rel) {
+  if (dateCache.has(rel)) return dateCache.get(rel);
+  let dates = {};
+  try {
+    const log = execFileSync('git', ['log', '--follow', '--format=%cs', '--', rel], {
+      cwd: repoDir,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+      .trim()
+      .split('\n')
+      .filter(Boolean);
+    if (log.length) dates = { dateModified: log[0], datePublished: log[log.length - 1] };
+  } catch {
+    // Not a repository, or a file git has never seen: leave the dates out.
+  }
+  dateCache.set(rel, dates);
+  return dates;
+}
 
 // ---------------------------------------------------------------------------
 // Library mirror: repo-relative source path -> slug under library/.
@@ -308,7 +337,13 @@ for (const [rel, slug] of map) {
     ? `\n\n---\n\nSource: [\`${rel}\`](${REPO}/blob/${BRANCH}/${rel}) in the guide repository.\n`
     : `\n\n---\n\nSource: \`${rel}\` in the evidence repository behind this site.\n`;
 
-  const frontmatter = `---\ntitle: ${yamlValue(title)}\n${description ? `description: ${yamlValue(description)}\n` : ''}---\n\n`;
+  const { datePublished, dateModified } = gitDates(rel);
+  const frontmatter =
+    `---\ntitle: ${yamlValue(title)}\n` +
+    (description ? `description: ${yamlValue(description)}\n` : '') +
+    (datePublished ? `datePublished: ${yamlValue(datePublished)}\n` : '') +
+    (dateModified ? `dateModified: ${yamlValue(dateModified)}\n` : '') +
+    `---\n\n`;
   const outPath = path.join(outDir, 'library', `${slug}.md`);
   await mkdir(path.dirname(outPath), { recursive: true });
   await writeFile(outPath, frontmatter + body + footer);
@@ -375,9 +410,19 @@ for (const rel of productFiles) {
     throw new Error(`product/${rel} is missing title or description frontmatter.`);
   }
   assertProductPage(rel, text);
+  const { datePublished, dateModified } = gitDates(`product/${rel}`);
+  let withDates = text;
+  if (datePublished && !/^datePublished:/m.test(text)) {
+    const end = text.indexOf('\n---', 4);
+    withDates =
+      text.slice(0, end) +
+      `\ndatePublished: ${yamlValue(datePublished)}` +
+      `\ndateModified: ${yamlValue(dateModified ?? datePublished)}` +
+      text.slice(end);
+  }
   const outPath = path.join(outDir, rel);
   await mkdir(path.dirname(outPath), { recursive: true });
-  await writeFile(outPath, text);
+  await writeFile(outPath, withDates);
   productWritten++;
 }
 
@@ -388,7 +433,7 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'layers', 'decisions', 'patterns'],
+    pages: ['architecture', 'layers', 'decisions', 'patterns', 'about'],
   },
   architecture: {
     title: 'Architecture',

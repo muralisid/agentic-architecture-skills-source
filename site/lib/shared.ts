@@ -1,4 +1,6 @@
 import {
+  author as authorConfig,
+  citation as citationConfig,
   siteName,
   siteShortName,
   siteDescription,
@@ -15,6 +17,8 @@ export const appDescription = siteDescription;
 export const siteUrl = configuredSiteUrl;
 export const legacyHosts = configuredLegacyHosts;
 export const wallChartAsOf = configuredWallChartAsOf;
+export const author = authorConfig;
+export const citation = citationConfig;
 
 export const docsRoute = '/';
 export const docsImageRoute = '/og/docs';

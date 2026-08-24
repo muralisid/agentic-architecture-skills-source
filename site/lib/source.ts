@@ -1,12 +1,15 @@
 import { loader } from 'fumadocs-core/source';
 import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
-import { docsContentRoute, docsImageRoute, docsRoute } from './shared';
+import { appName, author, citation, docsContentRoute, docsImageRoute, docsRoute, siteUrl } from './shared';
 import { defineDocs } from 'fumadocs-mdx/macro';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 
 const readerPageSchema = pageSchema.extend({
   video: pageSchema.shape.title.optional(),
   hero_figure: pageSchema.shape.title.optional(),
+  // Injected by scripts/sync-content.mjs from the source file's git history.
+  datePublished: pageSchema.shape.title.optional(),
+  dateModified: pageSchema.shape.title.optional(),
 });
 
 const docs = defineDocs({
@@ -50,7 +53,23 @@ export function getPageMarkdownUrl(page: (typeof source)['$inferPage']) {
 export async function getLLMText(page: (typeof source)['$inferPage']) {
   const processed = await page.data.getText('processed');
 
-  return `# ${page.data.title} (${page.url})
+  // A machine reader takes this instead of the HTML, so the attribution has to
+  // travel with it: a model that quotes this page should be able to say who
+  // wrote it and when without going back for the rendered version.
+  const lines = [
+    `# ${page.data.title}`,
+    '',
+    ...(page.data.description ? [page.data.description, ''] : []),
+    `Author: ${author.name} (${author.linkedin})`,
+    `Source: ${siteUrl}${page.url}`,
+    ...(page.data.datePublished ? [`Published: ${page.data.datePublished}`] : []),
+    ...(page.data.dateModified ? [`Updated: ${page.data.dateModified}`] : []),
+    `Licence: ${citation.license}, ${citation.licenseUrl}`,
+    `Cite as: ${author.name}. ${page.data.title}. ${appName}. ${siteUrl}${page.url}`,
+    '',
+    '---',
+    '',
+  ];
 
-${processed}`;
+  return `${lines.join('\n')}${processed}`;
 }

@@ -45,3 +45,37 @@ export const skillsRepo = { user: 'muralisidfn7', repo: 'agentic-architecture-sk
  * routine edits this string and nothing else when the products are re-verified.
  */
 export const wallChartAsOf = 'August 2026';
+
+/**
+ * The author, as one entity.
+ *
+ * Every page carries this: in the page metadata, in the structured data, in the
+ * visible byline, in the Markdown an agent reads, and in every published skill
+ * bundle. `sameAs` is what lets a search engine or a model resolve the byline
+ * to a real person rather than treating each mention as a separate string, so
+ * these URLs must stay accurate and must not be reordered casually.
+ */
+export const author = {
+  name: 'Murali Sid',
+  legalName: 'Muralidhar Siddavatam',
+  jobTitle: 'Founder and AI Systems Architect',
+  url: 'https://linkedin.com/in/muralisid',
+  linkedin: 'https://linkedin.com/in/muralisid',
+  github: 'https://github.com/muralisidfn7',
+  sameAs: ['https://linkedin.com/in/muralisid', 'https://github.com/muralisidfn7'],
+  /** The page on this site that describes the author; the entity's home. */
+  page: '/about',
+  knowsAbout: [
+    'Agentic enterprise architecture',
+    'AI agent governance',
+    'Retrieval and context design for AI agents',
+    'Enterprise integration and identity for agents',
+  ],
+};
+
+/** How a citation of this site should read. */
+export const citation = {
+  publisher: siteName,
+  license: 'CC BY-SA 4.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+};

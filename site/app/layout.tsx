@@ -2,7 +2,8 @@ import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { Newsreader, Sora } from 'next/font/google';
 import type { Metadata } from 'next';
-import { appName, appDescription, siteUrl } from '@/lib/shared';
+import { appName, appDescription, author, siteUrl } from '@/lib/shared';
+import { jsonLd, siteGraph } from '@/lib/structured-data';
 
 // Body in Sora, display headings in Newsreader: the same pairing as the fn7
 // marketing site, so the guide reads as part of the same family.
@@ -28,12 +29,19 @@ export const metadata: Metadata = {
     template: `%s | ${appName}`,
   },
   description: appDescription,
+  applicationName: appName,
+  // Authorship on every page, so a crawler never has to infer it.
+  authors: [{ name: author.name, url: author.url }],
+  creator: author.name,
+  publisher: author.name,
+  alternates: { canonical: '/' },
   openGraph: {
     title: appName,
     description: appDescription,
     url: siteUrl,
     siteName: appName,
     type: 'website',
+    locale: 'en',
   },
   twitter: {
     card: 'summary_large_image',
@@ -47,6 +55,11 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={`${sora.variable} ${newsreader.variable} ${sora.className}`} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
+        {/* Who wrote this site, as one entity every page refers back to. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(siteGraph()) }}
+        />
         <a
           href="#main-content"
           className="fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-transform focus:translate-y-0"

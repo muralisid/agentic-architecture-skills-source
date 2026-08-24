@@ -1,6 +1,6 @@
 import { source } from '@/lib/source';
 import { llms } from 'fumadocs-core/source';
-import { siteUrl, skillsIndexUrl, skillsRepoSlug } from '@/lib/shared';
+import { appName, author, citation, siteUrl, skillsIndexUrl, skillsRepoSlug } from '@/lib/shared';
 
 export const revalidate = false;
 
@@ -19,5 +19,15 @@ export function GET() {
     '',
   ].join('\n');
 
-  return new Response(llms(source).index() + skills);
+  const header = [
+    `# ${appName}`,
+    '',
+    `Author: ${author.name}, ${author.jobTitle}. ${author.linkedin}`,
+    `About the author: ${siteUrl}${author.page}`,
+    `Licence: ${citation.license} (${citation.licenseUrl}). Quote freely with attribution to ${author.name}.`,
+    `Cite as: ${author.name}. <page title>. ${appName}. <page url>`,
+    '',
+  ].join('\n');
+
+  return new Response(header + llms(source).index() + skills);
 }
