@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Agentic Architecture Skills">
+  <title>Agentic Architecture Skills</title>
+  <!--
+    Enforcement outside the model, which is the argument the whole site makes:
+    a boundary drawn around a core it contains. Ember is the accent the wordmark
+    puts on its full stop, and it holds its own on a light or a dark tab strip,
+    so the mark needs no background plate. Two heavy shapes and nothing else,
+    because anything finer turns to mush at sixteen pixels.
+  -->
+  <rect x="3" y="3" width="26" height="26" rx="7.5" fill="none" stroke="#f04a2a" stroke-width="4.5"/>
+  <rect x="11.5" y="11.5" width="9" height="9" rx="2.5" fill="#f04a2a"/>
+</svg>
