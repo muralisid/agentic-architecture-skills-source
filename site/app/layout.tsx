@@ -4,6 +4,7 @@ import { Newsreader, Sora } from 'next/font/google';
 import type { Metadata } from 'next';
 import { appName, appDescription, author, siteUrl } from '@/lib/shared';
 import { jsonLd, siteGraph } from '@/lib/structured-data';
+import { ScrollToTop } from '@/components/site/scroll-to-top';
 
 // Body in Sora, display headings in Newsreader: the same pairing as the fn7
 // marketing site, so the guide reads as part of the same family.
@@ -66,7 +67,10 @@ export default function Layout({ children }: LayoutProps<'/'>) {
         >
           Skip to main content
         </a>
-        <RootProvider theme={{ defaultTheme: 'light', enableSystem: false }}>{children}</RootProvider>
+        <RootProvider theme={{ defaultTheme: 'light', enableSystem: false }}>
+          <ScrollToTop />
+          {children}
+        </RootProvider>
       </body>
     </html>
   );
