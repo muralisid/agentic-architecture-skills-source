@@ -35,7 +35,10 @@ export const metadata: Metadata = {
   authors: [{ name: author.name, url: author.url }],
   creator: author.name,
   publisher: author.name,
-  alternates: { canonical: '/' },
+  // The Markdown index was reachable only by guessing the convention, since
+  // nothing linked it. Declaring it as an alternate representation lets a
+  // crawler find it from any page.
+  alternates: { canonical: '/', types: { 'text/markdown': '/llms.txt' } },
   openGraph: {
     title: appName,
     description: appDescription,

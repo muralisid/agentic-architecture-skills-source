@@ -22,6 +22,12 @@ const { rewrite: rewriteSuffix } = rewritePath(`${base}{/*path}.md`, `${docsCont
 /** Paths served as files or by their own route handler, which must pass through untouched. */
 function isReserved(pathname: string) {
   return (
+    // The site root renders a React page rather than MDX, so it has no Markdown
+    // twin. Every docs page has at least one path segment; the root matches the
+    // pattern with none, which sent it to a content route that cannot exist and
+    // turned a perfectly good HTML response into a 404. Markdown-preferring
+    // clients get the HTML page, and the head points them at /llms.txt.
+    pathname === '/' ||
     pathname.startsWith('/.well-known/') ||
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/api/') ||
