@@ -1,4 +1,9 @@
 import { wallChartAsOf } from '../lib/site.config.mjs';
+// SUPERSEDED. The published chart at public/diagrams/target-state.svg is now a
+// designed artefact, not a generated one, and this script would overwrite it.
+// It is out of the build chain and runs only as `npm run diagrams:legacy`,
+// kept because it documents the chart's structure in code.
+//
 // Generates the single-picture target-state wall chart.
 // One SVG that carries all fourteen layers, their control point and key
 // mechanisms, the seven planes that group them, the ten cross-cutting concerns
