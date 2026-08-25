@@ -1,9 +1,13 @@
 import { createMDX } from 'fumadocs-mdx/next';
 import { fileURLToPath } from 'node:url';
-import { legacyHosts, siteUrl } from './lib/site.config.mjs';
+import { contentOrigin, legacyHosts, siteUrl } from './lib/site.config.mjs';
 
 const withMDX = createMDX();
 const siteRoot = fileURLToPath(new URL('.', import.meta.url));
+
+if (!contentOrigin) {
+  console.warn('next.config: CONTENT_ORIGIN is not set, so /content will 404. Set it to the blog origin.');
+}
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -40,6 +44,17 @@ const config = {
       // Serve the same files there rather than redirecting, because some clients
       // do not follow a redirect on a discovery probe.
       { source: '/.well-known/skills/:path*', destination: '/.well-known/agent-skills/:path*' },
+      // The blog is published by a separate system and served under this domain,
+      // so it reads as one site. Both the section root and everything under it
+      // map across, including the upstream's own assets, which it already
+      // serves from /content and which therefore cannot collide with this site.
+      // Omitted when CONTENT_ORIGIN is unset, so a build without it still runs.
+      ...(contentOrigin
+        ? [
+            { source: '/content', destination: `${contentOrigin}/content` },
+            { source: '/content/:path*', destination: `${contentOrigin}/content/:path*` },
+          ]
+        : []),
     ];
   },
   async redirects() {

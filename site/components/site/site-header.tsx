@@ -33,8 +33,9 @@ export function SiteHeader(props: ComponentProps<'header'>) {
         <nav className="hidden items-center gap-5 lg:flex" aria-label="Sections">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.url || pathname.startsWith(`${link.url}/`);
+            const Tag = 'proxied' in link && link.proxied ? 'a' : Link;
             return (
-              <Link
+              <Tag
                 key={link.url}
                 href={link.url}
                 className={cn(
@@ -44,7 +45,7 @@ export function SiteHeader(props: ComponentProps<'header'>) {
               >
                 {link.text}
                 {active && <span className="absolute -bottom-1.5 left-0 h-0.5 w-full rounded-full bg-ember" />}
-              </Link>
+              </Tag>
             );
           })}
         </nav>
@@ -81,16 +82,19 @@ export function SiteHeader(props: ComponentProps<'header'>) {
       {open ? (
         <div className="mx-auto mt-2 w-full max-w-6xl rounded-3xl border border-fd-border bg-fd-card p-3 shadow-lg lg:hidden">
           <nav className="flex flex-col" aria-label="Sections">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.url}
-                href={link.url}
-                onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-2.5 text-sm font-medium text-fd-foreground transition-colors hover:bg-fd-accent"
-              >
-                {link.text}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const Tag = 'proxied' in link && link.proxied ? 'a' : Link;
+              return (
+                <Tag
+                  key={link.url}
+                  href={link.url}
+                  onClick={() => setOpen(false)}
+                  className="rounded-xl px-3 py-2.5 text-sm font-medium text-fd-foreground transition-colors hover:bg-fd-accent"
+                >
+                  {link.text}
+                </Tag>
+              );
+            })}
           </nav>
           <Link
             href="/architecture"

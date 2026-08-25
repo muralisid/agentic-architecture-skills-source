@@ -19,6 +19,26 @@ export const legacyHosts = ['agentic-enterprise-ten.vercel.app'];
 /** The domain this site is published on, whatever a deployment environment says. */
 export const canonicalUrl = 'https://www.agenticarchitectureskills.com';
 
+/**
+ * Where /content is served from, read from the environment.
+ *
+ * The blog is published by a separate system and proxied in under this site's
+ * domain, so readers and search engines see one site rather than two. It is
+ * rewritten rather than redirected for the same reason: a redirect would put
+ * the other host in the address bar and split the domain's authority.
+ *
+ * The host is not written here. It names the publishing system, which the
+ * boundary scan reserves, so it is set as CONTENT_ORIGIN in the deployment
+ * environment and in .env.local for development. It is read at build time and
+ * never reaches the browser: the header link points at the local /content
+ * path, and only the rewrite needs to know the upstream.
+ *
+ * With the variable unset the rewrite is omitted and /content returns 404. The
+ * build says so rather than failing, so a preview without the variable still
+ * builds.
+ */
+export const contentOrigin = process.env.CONTENT_ORIGIN ?? '';
+
 const configuredUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? '').trim().replace(/\/$/, '');
 
 /**
