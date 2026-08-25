@@ -34,6 +34,11 @@ function isReserved(pathname: string) {
     pathname.startsWith('/llms.mdx/') ||
     pathname.startsWith('/figures/') ||
     pathname.startsWith('/diagrams/') ||
+    // The blog is proxied in from another system and has no Markdown twin here.
+    // Without this the negotiation would rewrite it to a content route that does
+    // not exist, and every blog page would 404 for a Markdown-preferring client.
+    pathname === '/content' ||
+    pathname.startsWith('/content/') ||
     pathname === '/llms.txt' ||
     pathname === '/llms-full.txt' ||
     pathname === '/robots.txt' ||

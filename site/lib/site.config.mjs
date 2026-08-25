@@ -19,6 +19,20 @@ export const legacyHosts = ['agentic-enterprise-ten.vercel.app'];
 /** The domain this site is published on, whatever a deployment environment says. */
 export const canonicalUrl = 'https://www.agenticarchitectureskills.com';
 
+/**
+ * Where /content is served from.
+ *
+ * The blog is published by a separate system and proxied in under this site's
+ * domain, so readers and search engines see one site rather than two. It is
+ * rewritten rather than redirected for the same reason: a redirect would put
+ * the other host in the address bar and split the domain's authority.
+ *
+ * The upstream already serves its pages and its assets under /content, so the
+ * path maps across unchanged and nothing at this site's root can collide.
+ * Change the host here and both the rewrite and the header link follow.
+ */
+export const contentOrigin = 'https://content-qvce2clv4jox71shenyzdfm0qvc2-8852319685.scout7.ai';
+
 const configuredUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? '').trim().replace(/\/$/, '');
 
 /**

@@ -1,6 +1,6 @@
 import { createMDX } from 'fumadocs-mdx/next';
 import { fileURLToPath } from 'node:url';
-import { legacyHosts, siteUrl } from './lib/site.config.mjs';
+import { contentOrigin, legacyHosts, siteUrl } from './lib/site.config.mjs';
 
 const withMDX = createMDX();
 const siteRoot = fileURLToPath(new URL('.', import.meta.url));
@@ -40,6 +40,12 @@ const config = {
       // Serve the same files there rather than redirecting, because some clients
       // do not follow a redirect on a discovery probe.
       { source: '/.well-known/skills/:path*', destination: '/.well-known/agent-skills/:path*' },
+      // The blog is published by a separate system and served under this domain,
+      // so it reads as one site. Both the section root and everything under it
+      // map across, including the upstream's own assets, which it already
+      // serves from /content and which therefore cannot collide with this site.
+      { source: '/content', destination: `${contentOrigin}/content` },
+      { source: '/content/:path*', destination: `${contentOrigin}/content/:path*` },
     ];
   },
   async redirects() {
