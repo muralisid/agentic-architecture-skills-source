@@ -1,0 +1,166 @@
+---
+title: "The vendor-neutral Agentic OS"
+icon: "Boxes"
+description: "The term has three incompatible definitions and none of them contains a data layer. This is the version assembled from evidence: five parts, which of them you buy, which you build, and the one thing that binds them."
+---
+
+<PlainTerms>
+"Agentic OS" is being sold as the thing that makes AI agents work at company scale. The phrase means three different things depending on who says it, so two products carrying the label may have almost nothing in common. This page sets out what each version means, then gives a single definition assembled from measured evidence: five parts, one of which you should buy and four of which nobody can sell you. The one thing to remember: the part that decides whether your agents work is how your own information is prepared before an agent ever sees it, and that part is missing from every version of the term in circulation.
+</PlainTerms>
+
+## Why this page exists
+
+**WHY:** Enterprises are being asked to buy a category whose name has no agreed definition. Three communities use the term for three different things at three different levels of the stack, and none of the three includes the layer our own measurements show is decisive. A buyer who cannot tell which definition a vendor means cannot compare two offers, and cannot tell what remains their own work after the purchase.
+
+**WHAT:** Treat an Agentic OS as five parts with separate owners. **Buy the runtime.** **Build the harness, the context layer, the deterministic boundary, and the adaptation ordering.** Bind all five to an <Term k="eval">evaluation</Term> suite you own and build from real failures, because every decision among the five is a comparison and without a locked eval none of them can be made.
+
+## What the term means today
+
+**In short:** A kernel research agenda, a product category, and a personal scripting pattern, all sharing one name.
+
+| Used by | What it means | Level |
+|---|---|---|
+| Systems researchers | Operating systems that adapt their own abstractions and resource management to agent workloads. The [2nd Workshop on Operating Systems Design for AI Agents](https://os-for-agent.github.io/) at SOSP 2026 (29 September 2026, Prague) scopes it as OS abstractions, dynamic sandboxing, semantics-aware scheduling, GPU virtualisation and tool isolation | Kernel and runtime |
+| Platform vendors | A way of organising agents, memory, tools and workflows so they act as a coordinated whole. [MindStudio](https://www.mindstudio.ai/blog/what-is-agentic-operating-system) (24 April 2026) names six layers: model, memory, tool and integration, orchestration, workflow, interface. [Fiserv's agentOS](https://investors.fiserv.com/news-releases/news-release-details/fiserv-launches-agentos-operating-system-agentic-ai-banking) applies the label to a banking product [vendor] | Coordination and product |
+| Individual practitioners | The files, scripts and ledgers that let one model work unattended. [One widely shared guide](https://linas.substack.com/p/claude-fable-5-agentic-os-guide) (10 July 2026) lists nine parts, from a rules file to a rollout plan | Single-operator harness |
+
+These are not competing descriptions of one thing. A GPU scheduling paper and a nine-file scripting pattern share a label and nothing else. Two vendors can both answer yes to "is this an Agentic OS" while shipping unrelated products, and neither is being untruthful. The term carries no information, which is why this page supplies one.
+
+## What all three leave out
+
+**In short:** None of the three contains a data or context layer, and the vendor framing says so explicitly.
+
+The vendor six-layer stack has a memory layer, which is storage for context and history. It does not address data quality method, <Term k="chunking">chunking</Term>, <Term k="embedding">embedding</Term> strategy, or how to evaluate whether <Term k="retrieval">retrieval</Term> is working at all. The workshop scope is resource management, isolation and scheduling, which is a legitimate and different problem. The nine-part harness has no data layer.
+
+Every one of these framings treats context as a surface to configure rather than a design to evaluate. Configuration without a measurement is not a design, and none of the three supplies the instrument.
+
+## The five parts
+
+**In short:** One part is commodity and worth buying. Four are yours, and the fourth is the one nobody sells.
+
+| Part | Who provides it | What it covers |
+|---|---|---|
+| 1. Runtime | **Buy** | Sandbox, session store, identity, <Term k="gateway">gateway</Term>, scheduling, metering, trace collection |
+| 2. <Term k="harness">Harness</Term> | **Build** | Context assembly and reset, termination, state survival, verification, loop limits |
+| 3. Context layer | **Build. Nobody sells it** | Parsing, chunking, versioned embeddings, permission-aware indexing, retrieval that can refuse |
+| 4. Deterministic boundary | **Build** | The decisions a model may inform and never make, and the evidence channel it cannot influence |
+| 5. Adaptation ladder | **Build the ordering** | When to engineer context, when to distil, when to fine-tune |
+
+## 1. The runtime, which you buy
+
+**In short:** Sandboxing, scheduling, identity and metering are genuine engineering and genuinely commodity.
+
+The managed runtimes converged on framework-agnosticism. AWS AgentCore accepts LangChain, the OpenAI Agents SDK, the Claude Agent SDK, Strands, or your own framework; Google's agent platform accepts ADK, LangGraph, LangChain, AG2, LlamaIndex and A2A. A team that builds sandboxing, session storage, identity exchange and spend metering itself has spent budget on undifferentiated plumbing.
+
+One caution on budgets, because the enforcement language is often stronger than the mechanism. Provider features that give a model a token allowance for a task are typically advisory: the model is told how much remains so it can pace itself and finish cleanly. That is useful and it is not a spending cap. A hard limit has to be enforced by something the model does not control.
+
+## 2. The harness, which you build
+
+**In short:** Everything separating a production agent from a demo lives in the harness, and the harness is where the lock-in is.
+
+The harness decides how context is assembled and reset, how termination is judged, how state survives a crash, how work is verified, and how a runaway loop is stopped. This layer is not neutral plumbing. Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions even where terminal success looks the same (arXiv 2607.04528, July 2026), and in retrieval-heavy work the harness choice can outweigh the retrieval architecture itself (arXiv 2605.15184, May 2026). One consequence for anyone reading benchmarks: comparisons run across different harnesses are confounded.
+
+**The portability inversion.** Managed runtimes converged on accepting any framework while harnesses stayed bespoke. So the runtime is becoming the portable substrate and the harness is the lock-in, which is the opposite of how portability is usually discussed. What ports between platforms: prompts, tool definitions, model choice, and skills. What does not: <Term k="orchestration">orchestration</Term> and control flow, state and checkpoint schemas, human-in-the-loop interrupt semantics, and approval models. Put portability investment into a harness abstraction rather than into framework selection.
+
+**Start with one agent.** <Term k="multi-agent">Multi-agent</Term> designs buy parallel breadth and context isolation at a cost multiplier between roughly 1.4 and 20 times. They do not buy reasoning quality per token. On 10,000 SEC filings across 25 field types, five models and four patterns, a hierarchical supervisor-worker pattern reached 0.921 F1 at 1.4 times the cost and was the best point on the cost-accuracy frontier, a reflexive self-correcting pattern reached 0.943 at 2.3 times, and a hybrid captured 89 percent of the accuracy gain at 1.15 times (arXiv 2603.22651, March 2026). The threshold that follows is the only published one: multi-agent is justified when the accuracy requirement exceeds about 0.92 F1. One vendor reports single agents at roughly four times chat token consumption and multi-agent systems at roughly fifteen times, and its own comparison of a solo agent against a planner-generator-evaluator harness on one task reported about twenty times the cost and eighteen times the wall clock [vendor].
+
+The controls belong here too, because the harness is the only place that sees the whole loop: iteration caps, wall-clock limits, cancellation checks between rounds, stop hooks, and approval gates. [The agent platform layer](/layers/r07-agent-platform) carries the detail.
+
+## 3. The context layer, which nobody sells
+
+**In short:** Holding the corpus and the encoder fixed and changing only how documents are represented moves <Term k="ndcg">nDCG@10</Term> from 0.294 to 0.803.
+
+This is the part absent from every definition of the term, and on our measurements it moves answer quality further than anything else on this page. The discipline acquired a name in mid-2025, when Lutke and Karpathy brought "context engineering" into use in June and Anthropic formalised it that September [vendor]. Gartner predicts it appears in 80 percent of AI tools by 2028.
+
+The enterprise starting position is consistent: documents are chunked naively if at all, embeddings are unversioned, memory is whatever the platform defaulted to, permissions stop at the source system, and nobody owns corpus health.
+
+Our own experiments varied exactly one thing, how a document is turned into something searchable, holding corpus, encoder and scoring fixed.
+
+<StatTiles columns={4} items={[
+  { value: '0.815', label: 'One vector, one topic per document', note: 'The baseline everyone starts with, on documents about a single thing.' },
+  { value: '0.294', label: 'Same index, ten topics per document', note: 'The same representation as documents become realistic. Nothing else changed.' },
+  { value: '0.803', label: 'Several vectors per document', note: 'Recovered by representation alone, using fewer embeddings than the matched control.' },
+  { value: '0.997', label: 'Keyword search on exact-name queries', note: 'Against 0.314 for the dense index on the same queries. Dropping keyword search fails silently.' },
+]} />
+
+Two of these deserve emphasis. The fall from 0.815 to 0.294 is neither a model problem nor an orchestration problem. It is what happens when one embedding has to average a document covering several unrelated topics, which is the ordinary condition of enterprise material. The gap between 0.997 and 0.314 appears on queries naming a specific identifier, which is most of what anyone asks a system of record; a <Term k="hybrid retrieval">hybrid</Term> index recovers it and costs almost nothing.
+
+More material is not automatically better. Adding documents can drive accuracy below 40 percent until domain-scoped curation fixes it (arXiv 2606.11350). The discipline that prevents this is on [the data-to-memory pipeline](/architecture/data-to-memory) and in the nine measured [context patterns](/patterns).
+
+**Someone must own each corpus.** Curation labour can be human, automated with sampled audits, or mixed, and it is sized to risk. Accountability cannot be automated away: in *Moffatt v. Air Canada* (British Columbia Civil Resolution Tribunal, 14 February 2024) the company was liable for its chatbot's statements where they contradicted its actual policy.
+
+**And the discipline matters as much as the result.** On real prose our own purpose-shaped representation scored 0.635 against plain chunking's 0.667, so the clever design lost to the simple one and we published that. Any component you adopt, bought or built, has to beat a <Term k="matched control">matched control</Term> on your queries. That test is the missing instrument, and it is described on [how to test a context design](/patterns/how-to-test-a-context-design).
+
+## 4. The deterministic boundary
+
+**In short:** Rules an agent reads are advice. Rules a separate system checks are controls.
+
+Several designs place a rules file in the agent's context and treat it as governance. Instructions and content reach a language model as the same kind of <Term k="token">token</Term>, so the model cannot maintain a reliable separation between the two (Bhattarai and Vu, February 2026). Authorisation that depends on model behaviour is an exploit waiting to be found rather than a control. Four categories of decision belong outside the model entirely, which is the argument on [the four deterministic zones](/architecture/deterministic-zones) and [enforcement outside the model](/architecture/enforcement).
+
+The same reasoning governs evidence. A design that asks an agent to report whether it completed its work asks the actor to certify its own behaviour. <Term k="telemetry">Telemetry</Term> has to be collected through a channel the agent cannot influence, which is one of the two binding rules of [the target-state architecture](/architecture).
+
+## 5. The adaptation ladder
+
+**In short:** Engineered context, distillation and fine-tuning are an ordering, not a choice of camp.
+
+The question of whether to fine-tune, attach adapters, or engineer the context is usually posed as a side to pick. The evidence supports an ordering instead.
+
+**First, optimise context and prompts against a locked eval suite**, because the cheap lever is rarely exhausted. An evolutionary prompt-optimisation method beat a reinforcement-learning baseline by six points on average and up to twenty while using up to 35 times fewer rollouts, with gains from as few as ten training examples (GEPA, arXiv 2507.19457, ICLR 2026). A context-engineering framework that treats context as an evolving playbook improved agent benchmarks by 10.6 points and finance tasks by 8.6 with no weight updates and no labelled supervision (ACE, arXiv 2510.04618, ICLR 2026).
+
+**Then distil, when latency or unit cost forces it.** On-policy <Term k="distillation">distillation</Term> reaches comparable quality at 9 to 30 times lower training compute than scaling supervised fine-tuning, and it uniquely repairs the instruction-following that domain fine-tuning degrades, by distilling from the pre-fine-tune version of the same model as teacher. Distillation is maintenance as much as compression. The break-even case is a narrow workload, high monthly volume, and a locked eval set, with the tension worth naming: a live learning loop keeps rewriting the eval set that the case depends on.
+
+**Then fine-tune, only behind a grader that cannot be gamed.** Reinforcement <Term k="fine-tuning">fine-tuning</Term> shows real gains in specialist domains, with vendor-published customer results including a 39 percent improvement in tax analysis, 12 points over physician baselines, and 20 percent on citation-extraction F1 [vendor]. One head-to-head found a fine-tuned 7B model beat a prompt-engineered frontier model on classification, 88 percent against 31 percent, at roughly a fifteenth of the inference cost. Reach for it only when a programmable, hard-to-game grader exists and the prompt-optimised ceiling is demonstrably real, whose signature is accuracy that climbs during a week of prompt work and then goes flat.
+
+**Three cautions.**
+
+- **Adapters are not a forgetting fix.** LoRA does not prevent catastrophic forgetting. If forgetting is the problem, on-policy distillation is the published repair.
+- **Fine-tuning is the wrong tool for format, tone and style.** Those are context and prompt problems.
+- **When validation reward exceeds the human ceiling, the model has gamed the rubric**, not solved the task. That belongs in any runbook as a <Term k="reward hacking">reward hacking</Term> alarm.
+
+[Intelligence and learning](/layers/r06-intelligence-and-learning) carries the full treatment, and the verdict is recorded in [the decision catalog](/decisions).
+
+## The binding constraint
+
+**In short:** Every decision among the five parts is a comparison, so an eval suite you own is what turns a list of parts into an architecture.
+
+Whether purpose views beat plain chunks, whether multi-agent earns its multiplier, whether a distilled model holds quality, whether a prompt ceiling is real: each is a comparison against a control. An organisation without a locked eval suite cannot answer any of them and will decide on vendor narrative instead. Build it from real failures rather than imagined ones, before the agent rather than after, and have it owned by domain experts. [Building evals and evidence](/layers/r06-intelligence-and-learning) sets out the practice.
+
+## What is settled, and what is not
+
+**In short:** Three things have genuinely converged, one is widely claimed on thin evidence, and the survey data on the category is not encouraging.
+
+**Converged.** <Term k="mcp">The Model Context Protocol</Term> has become the shared language for tool access. The runtime and harness split is the pattern the hyperscalers landed on. And multi-agent failures are design failures rather than model failures: a taxonomy built from 150 traces and validated on more than 1,600 across seven frameworks identifies fourteen failure modes in three categories, and that is its central conclusion.
+
+**Claimed on thin evidence.** The agent-to-agent interoperability protocol has more than 150 participating organisations, a stable 1.0, and landings in the major clouds. Its release claims active production deployments across multiple industries while naming no enterprise user and reporting no outcome. Treat interoperability claims as unproven until someone names a deployment.
+
+**And the survey evidence on the category itself.** A July 2026 survey of more than 100 enterprise leaders found agent orchestration "far and away the most cited" gap and the "most duct-taped category", concluding that no vendor solution consistently works at production scale. A separate survey of 495 enterprises found only 16 percent of deployments qualify as true agents, the rest being fixed-sequence or routing workflows wrapped around a single model call. This is the strongest available answer to "can we just buy one", and it is not our opinion.
+
+## A worked caution: the trust ledger
+
+**In short:** A promotion gate of twenty runs at a 95 percent pass rate admits work that is 78 percent reliable and revokes compliant work most of the time.
+
+Several designs include a trust ledger: a task runs unattended once it has logged enough clean runs, and the permission is withdrawn when quality slips. The published version asks for twenty runs at a 95 percent verified pass rate, which requires nineteen of twenty.
+
+Twenty observations do not support that claim. Nineteen successes out of twenty is consistent with a true pass rate as low as 78.4 percent at the 95 percent one-sided bound, and a perfect twenty of twenty still only establishes 86.1 percent. A task that is truly 90 percent reliable clears the gate 39.2 percent of the time. The revocation half fails in the opposite direction: a genuinely 95 percent reliable task produces at least one failure in a window of twenty 64.2 percent of the time, so the rule withdraws permission from compliant work more often than not. Separating 95 percent from 90 percent with 80 percent power needs roughly two hundred runs.
+
+The gate is too loose to promote on and too tight to keep, and that is a property of the sample size rather than the threshold, so tuning does not fix it. [The autonomy contract](/architecture/autonomy-contract) gates on the controls actually in place instead, and treats run counts as evidence rather than as the test.
+
+<PrincipleCard eyebrow="Verdict" title="One part is a product. The other four are your architecture" kind="evidence">
+An Agentic OS worth the name is five parts: a runtime you buy, and a harness, a context layer, a deterministic boundary and an adaptation ordering that you build, bound by an evaluation suite you own. The three definitions in circulation cover the first and part of the second. The context layer, which our measurements move from 0.294 to 0.803 on one corpus with one encoder, appears in none of them. Buy the plumbing, hold every component to a matched control on your own queries, and treat any product claiming to be the whole of this as describing a coordination layer.
+</PrincipleCard>
+
+<EvidenceBadge status="mixed-evidence" /> The definitions are quoted from dated primary sources and the retrieval figures are our own, reproducible from the published benchmark. Vendor-published figures are flagged. The five-part synthesis is an author position.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [2nd Workshop on Operating Systems Design for AI Agents](https://os-for-agent.github.io/), SOSP 2026, Prague, 29 September 2026, organised by Shanghai Jiao Tong University, UC Santa Cruz, Roblox and Multikernel Technologies.
+- MindStudio, [What Is an Agentic Operating System](https://www.mindstudio.ai/blog/what-is-agentic-operating-system), 24 April 2026, for the six-layer vendor framing. [Fiserv agentOS](https://investors.fiserv.com/news-releases/news-release-details/fiserv-launches-agentos-operating-system-agentic-ai-banking) [vendor]. [Claude Fable 5 Agentic OS guide](https://linas.substack.com/p/claude-fable-5-agentic-os-guide), 10 July 2026.
+- Harness evidence: arXiv 2607.04528 (July 2026) on harness choice changing downstream beliefs; arXiv 2605.15184 (May 2026) on harness outweighing retrieval architecture; arXiv 2603.22651 (March 2026) on the multi-agent cost-accuracy frontier. Full treatment on [the agent platform layer](/layers/r07-agent-platform).
+- Adaptation evidence: GEPA (arXiv 2507.19457, ICLR 2026); ACE (arXiv 2510.04618, ICLR 2026); on-policy distillation (October 2025); reinforcement fine-tuning customer results (May 2025) [vendor]. Recorded as a decision in [the decision catalog](/decisions) and set out on [intelligence and learning](/layers/r06-intelligence-and-learning).
+- Context engineering: named by Lutke and Karpathy in June 2025 and formalised by Anthropic in September 2025 [vendor]; Gartner Innovation Insight (2025) for the 2028 forecast; arXiv 2606.11350 on added documents reducing accuracy; *Moffatt v. Air Canada*, BC Civil Resolution Tribunal, 14 February 2024.
+- Retrieval figures: the benchmark repository at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), commit 2b9c6ef, 2026-08-22, with per-experiment detail on [aspect dilution](/patterns/aspect-dilution) and [real prose](/patterns/real-prose), and the failures on [what we got wrong](/patterns/what-we-got-wrong).
+- Promotion-gate figures: exact binomial calculations on the published rule, with Clopper-Pearson one-sided bounds.
+- Bhattarai and Vu, February 2026, on the inseparability of instructions and content, as cited on [the four deterministic zones](/architecture/deterministic-zones).
+
+</details>

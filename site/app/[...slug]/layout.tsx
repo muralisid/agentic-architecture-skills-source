@@ -2,7 +2,7 @@ import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
 import { docsBaseOptions } from '@/lib/layout.shared';
 import { Wordmark } from '@/components/site/wordmark';
-import { BookMarked, Compass, Download, Layers, Scale, Shapes } from 'lucide-react';
+import { BookMarked, Boxes, Compass, Download, Layers, Scale, Shapes } from 'lucide-react';
 
 export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
   return (
@@ -17,6 +17,12 @@ export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
           description: 'The cross-layer design',
           url: '/architecture',
           icon: <Compass />,
+        },
+        {
+          title: 'Agentic OS',
+          description: 'What it is, and the five parts it takes',
+          url: '/agentic-os',
+          icon: <Boxes />,
         },
         {
           title: 'Layers',

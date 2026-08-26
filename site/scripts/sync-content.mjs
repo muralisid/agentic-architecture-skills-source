@@ -496,13 +496,13 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'patterns', 'layers', 'decisions', 'about'],
+    pages: ['architecture', 'agentic-os', 'patterns', 'layers', 'decisions', 'about'],
   },
   architecture: {
     title: 'Architecture',
     icon: 'Compass',
     description: 'The cross-layer design of the agentic enterprise.',
-    pages: ['index', 'plain-words', 'deterministic-zones', 'identity-chain', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix', 'agentic-os'],
+    pages: ['index', 'plain-words', 'deterministic-zones', 'identity-chain', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
   },
   layers: {
     title: 'Layers',
