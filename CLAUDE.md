@@ -32,6 +32,6 @@ The research corpus and content source for Agentic Architecture Skills (formerly
 ## Git workflow
 
 - Routine content and site work commits directly to `main`. Every push to `main` deploys, so a pull request is for changes that need reading as a whole before they are public, not for ordinary work.
-- **Commits must be authored by a GitHub account with access to the Vercel project, or the deployment is refused.** `murali.sid@gmail.com` resolves to `muralisid`, which has access. `murali@fn7.io` resolves to the separate `muralisidfn7` account, which does not, and Vercel rejects those commits with "Git author must have access to the project" or "Deployment was blocked". This applies to merge commits as well, which take the identity of whoever clicks Merge, so merge from an account that has access.
+- **Commit as `Murali Sid <murali.sid@gmail.com>`, which is the `muralisid` account.** This is the machine's global git identity and no repository overrides it. Vercel refuses to build a commit whose author resolves to any other account, reporting "Git author must have access to the project" or "Deployment was blocked". Merge commits take the identity of whoever clicks Merge, so merge from `muralisid` too.
 - Branch naming when a branch is used: `phase-N/short-topic` or `rNN/short-topic` for track work.
 - Third-party IP: do not commit third-party decks, slides, or documents. Store extracted structure notes and citations instead, with permission status flagged. See inputs/README.md.
