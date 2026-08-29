@@ -14,6 +14,16 @@ When an agent is not good enough there are eight different things you can change
 
 **WHAT:** Treat improvement as two decks. **Deck A changes the system around the model** and is genuinely sequential: exhaust each step before the next is justified. **Deck B changes the model itself** and is not sequential: after the first step you choose by symptom, and several of the options combine rather than replace one another. Everything rests on an <Term k="eval">evaluation</Term> suite you own, because every test below is a measurement.
 
+## The worked example running through these chapters
+
+**In short:** One agent, followed from a first prompt to the top of the ladder, so each step is shown doing real work rather than described in the abstract.
+
+Every chapter applies its step to the same case: a **financial crime investigation agent** at a retail and commercial bank. It assembles the context behind a transaction-monitoring alert, retrieves the customer's history, drafts the narrative, and proposes a disposition. The analyst decides.
+
+The [banking blueprint](/library/blueprints/verticals/banking-and-financial-services) calls this the strongest internal case in the vertical, for three reasons that also make it a good teacher. Alert volume is high, so cost is a real constraint rather than a footnote. The labels are real, because every alert eventually gets a disposition and some become confirmed cases, which means quality can be measured rather than argued about. And the analyst stays the decider, so the agent is assisting rather than acting, which keeps the control question honest.
+
+It also happens to exercise every chapter. The bank has decades of its own written material, which is what makes continued pretraining a genuine option, and its transaction data is a network rather than a document, which is the one situation where the final chapter applies.
+
 ## Deck A: change the system
 
 **In short:** Three steps, in order, and where most organisations should stop.

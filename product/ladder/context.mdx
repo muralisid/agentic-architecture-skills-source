@@ -1,29 +1,77 @@
 ---
 title: "Step 2: Context"
 icon: "Library"
-description: "Changing how documents are represented moved retrieval quality from 0.294 to 0.803 on one corpus with one encoder. This is the step with the most measured evidence behind it, and it has its own catalogue."
+description: "The pipeline from a document to a retrieved answer, why one embedding per document collapses on real material, and the measurement that moved retrieval from 0.294 to 0.803 on one corpus with one encoder."
 ---
 
 <PlainTerms>
-This step is about what reaches the model: which documents, in what form, cut up which way. It is the part of an agent system that the platform market does not sell you, and on our own measurements it moves answer quality further than anything else available. It has a catalogue of its own on this site, so this page states the headline and points you there.
+This step decides what the model gets to see. Documents are cut up, turned into numbers, stored, and searched. Every one of those choices changes the answer, and on our own measurements they change it more than anything else available. This page explains the pipeline, the failure that catches almost everyone, and what it looks like inside a bank. The one thing to remember: a document about several things gets one average summary, and a question about one of those things then matches it only weakly.
 </PlainTerms>
 
-## What it changes
+## The pipeline, in order
 
-How your material is parsed, split, represented and retrieved before an <Term k="agent">agent</Term> ever sees it. The model is untouched.
+**Parse.** Turn the source file into text while keeping its structure. A table that becomes a run-on sentence has lost the relationship between a figure and its label, and no later stage recovers it. Parsing quality sets the ceiling for everything downstream, so it gets spot-checked forever rather than assumed.
 
-## The headline
+**Chunk.** Split into retrievable pieces. Too large and one piece covers several topics. Too small and a piece loses the context that made it meaningful. No single recipe survives across corpora, which is why this is evaluated rather than configured.
 
-Holding the corpus, the encoder and the scoring fixed, and changing only how a document is turned into something searchable, <Term k="ndcg">nDCG@10</Term> moves from **0.294 to 0.803**. The fall to 0.294 is what happens when a single <Term k="embedding">embedding</Term> has to average a document covering several unrelated topics, which is the ordinary condition of enterprise material. On queries naming a specific identifier, keyword search scored 0.997 against 0.314 for the dense index, and a <Term k="hybrid retrieval">hybrid</Term> recovers that for almost nothing.
+**Embed.** Turn each piece into a vector: a list of numbers positioning it in a space where nearby means similar in meaning. Every vector carries the version of the model that produced it, because changing encoder invalidates the whole index.
 
-The discipline matters as much as the numbers. Our own purpose-shaped representation lost to plain <Term k="chunking">chunking</Term> on real prose, 0.635 against 0.667, and we published that. Anything you adopt here has to beat a <Term k="matched control">matched control</Term> on your own queries.
+**Index.** Store the vectors for fast nearest-neighbour search, and store the source's access rights alongside them.
+
+**Retrieve.** Turn the question into a vector the same way, find the nearest pieces, and pass them to the model.
+
+## The failure that catches almost everyone
+
+Embedding a whole document produces roughly the average of everything in it. That is fine when a document is about one thing. Enterprise documents are rarely about one thing.
+
+Picture a customer file holding identity details, two years of transactions, a prior alert and a complaint. One vector for that file sits at the centre of all four topics, and is a close match for none of them. Ask about the complaint and the file is a weak match, because three quarters of its representation is about something else.
+
+We measured it. Growing documents from one topic to ten, holding corpus, encoder and scoring fixed, <Term k="ndcg">nDCG@10</Term> fell from **0.815 to 0.294**. Giving each document several vectors instead of one recovered it to **0.803**. Same corpus, same encoder, only the representation changed.
+
+The mechanism behaves as theory predicts. The similarity between a question and its target document's best individual piece stayed flat as topics accumulated, 0.476 to 0.466, while the pooled vector's similarity decayed from 0.476 to 0.225. The signal was never lost. It was averaged away.
+
+## The correction that matters more than the finding
+
+Splitting a document into several pieces gives it more vectors, and more vectors means more chances to match. So the honest question is not "do several vectors beat one" but "do purpose-shaped pieces beat the same number of arbitrary pieces".
+
+We ran that control, and on real prose our clever version lost: purpose-shaped cards scored 0.635 against plain chunking's 0.667. We published it. The lesson is the method rather than the result. Anything you adopt here has to beat a <Term k="matched control">matched control</Term> at equal capacity on your own queries, or you have measured the extra capacity and called it insight.
+
+## Keyword search is not optional
+
+Meaning-based search is poor at exact strings. On queries naming a specific attribute, keyword search scored **0.997 against 0.314** for the dense index on identical queries. Running both and fusing the rankings costs almost nothing and removes a silent failure: a dense-only system does not return an error when it misses an account number, it returns something plausible instead.
+
+## At the bank
+
+The financial crime agent needs the customer's history. That history is exactly the aspect-rich material above: onboarding and identity, expected activity from the customer's stated business, two years of transactions, prior alerts and their dispositions, correspondence, and any prior report filed.
+
+**One vector per customer file does not work**, for the reason set out above. Each part gets its own representation, and the question decides which is searched.
+
+**Keyword search is doing heavy lifting here**, more than in most domains. Investigations turn on exact strings: account numbers, sort codes, counterparty names, reference fields, sanctions list entries. A near-match on a name is not a match, and getting it wrong in either direction is expensive.
+
+**Permission filtering happens before the search, not after.** The index carries the access rights of each source, and retrieval is filtered on the analyst's live identity before ranking. Filtering afterwards leaks information: result counts alone tell you something exists that you may not see. In a bank this is not a refinement, it is the difference between a compliant system and a reportable incident.
+
+**More is not better.** Adding documents can reduce accuracy until the corpus is scoped: published work shows accuracy falling below 40 percent until domain-scoped curation fixed it (arXiv 2606.11350). The agent that retrieves fifty documents per alert is usually worse than the one that retrieves eight good ones.
+
+**Someone owns the corpus.** Curation labour can be human, automated with sampled audits, or both, but accountability cannot be automated away. In *Moffatt v. Air Canada* (BC Civil Resolution Tribunal, 14 February 2024) the company was liable for its chatbot's statements where they contradicted its actual policy.
 
 ## Where the depth is
 
-[Context patterns for agents](/patterns) carries nine patterns, each with the measurement behind it and the conditions under which it fails. [The data-to-memory pipeline](/architecture/data-to-memory) covers the engineering, and [how to test a context design](/patterns/how-to-test-a-context-design) is the method.
+[Context patterns for agents](/patterns) carries nine patterns, each with its measurement and the conditions under which it fails. [The data-to-memory pipeline](/architecture/data-to-memory) covers the engineering, and [how to test a context design](/patterns/how-to-test-a-context-design) is the method.
 
 ## The test for moving on
 
-**Your representation beats a matched control on your own query distribution, and what still fails is about acting rather than knowing.** An agent that retrieves the right document and then does the wrong thing with it has a [step 3](/ladder/tools-and-the-loop) problem, not a context problem.
+**Your representation beats a matched control on your own queries, and what still fails is about acting rather than knowing.**
 
-<EvidenceBadge status="independently-measured" /> The figures above are our own, reproducible from the published benchmark, and reproduced across two machines and two processor architectures.
+An agent that retrieves the right documents and then draws the wrong conclusion, calls the wrong tool, or stops too early does not have a context problem. That is [step 3](/ladder/tools-and-the-loop).
+
+<EvidenceBadge status="independently-measured" /> The retrieval figures are our own, reproducible from the published benchmark and reproduced across two machines and two processor architectures.
+
+<details>
+<summary>The research behind this page</summary>
+
+- Benchmark repository: [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), with detail on [aspect dilution](/patterns/aspect-dilution), [real prose](/patterns/real-prose) and [what we got wrong](/patterns/what-we-got-wrong).
+- Added documents reducing accuracy until curation: arXiv 2606.11350.
+- *Moffatt v. Air Canada*, BC Civil Resolution Tribunal, 14 February 2024.
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+
+</details>

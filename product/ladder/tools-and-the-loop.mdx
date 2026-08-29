@@ -1,33 +1,74 @@
 ---
 title: "Step 3: Tools and the loop"
 icon: "Repeat"
-description: "The step most often skipped. Holding task, model and environment constant, harness choices change the decisions an agent makes, and in retrieval-heavy work can matter more than the retrieval architecture."
+description: "How an agent loop actually runs, what a harness controls, why the same model in a different harness makes different decisions, and the only published threshold for going multi-agent."
 ---
 
 <PlainTerms>
-This step is about the machinery around the model: what tools it can reach, how its work is checked, when it is stopped, and what happens when it fails. It is the step teams skip on the way from "the context is fine" to "we need to train a model", and the evidence says it is usually the one that was actually missing.
+An agent is not one call to a model. It is a loop: the model asks for something, the system fetches it, the model reads the result and decides what to do next. Everything that governs that loop is the harness, and it is the part teams skip on the way from "the context is fine" to "we need to train a model". The evidence says it is usually the thing that was actually missing.
 </PlainTerms>
 
-## What it changes
+## How the loop actually runs
 
-The <Term k="harness">harness</Term>: how context is assembled and reset between turns, how the loop decides it is finished, how state survives a crash, how output is verified, and what caps prevent a runaway. Also the tools themselves, and whether the agent can reach the systems the task actually requires.
+The model is stateless. Every turn, the whole conversation is sent again, the model replies either with an answer or with a request to use a tool, and if it is a tool request your code executes it and appends the result. Repeat until the model answers or you stop it.
 
-## Why it is not plumbing
+Three consequences follow, and they are the whole of harness design.
 
-Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions, even where terminal success rates look the same (arXiv 2607.04528, July 2026). In retrieval-heavy work, the harness choice can outweigh the retrieval architecture (arXiv 2605.15184, May 2026). One consequence for anyone reading published comparisons: benchmarks run across different harnesses are confounded.
+**The context grows every turn.** Each tool result is appended, so a long investigation fills the <Term k="context window">context window</Term> with old evidence. You must decide what to do about that, and the choice is not neutral. **Compaction** summarises the history, which is lossy and can quietly drop the detail the model needed. **Reset** starts fresh with a stated goal and a short handover, keeping durable state in files or a record rather than in the conversation. Reset is harder to build and generally more reliable, because a summary of a summary degrades while a written record does not.
 
-A second finding worth carrying: multi-agent failures are design failures rather than model failures. A taxonomy built from 150 traces and validated on more than 1,600 across seven frameworks identifies fourteen failure modes in three categories, and that is its central conclusion. Adding a stronger model to a badly designed loop does not fix a badly designed loop.
+**Nothing stops the loop unless you stop it.** A model can call a tool that returns an unhelpful result, decide to try again, and do that indefinitely. Real harnesses cap iterations, cap wall-clock time, check for cancellation between turns, and expose a stop hook. These are not edge cases, they are the normal path.
 
-## One caution on going multi-agent
+**Tools are an interface you are designing.** A tool with a vague description gets called at the wrong times. A tool returning ten thousand tokens of JSON burns the context window that the reasoning needs. Tools are designed for a reader with no memory of your system, because that is what they have.
 
-Splitting work across several agents buys parallel breadth and context isolation at a cost multiplier of roughly 1.4 to 20 times. It does not buy reasoning quality per token. On 10,000 SEC filings across 25 field types, five models and four patterns, a hierarchical supervisor-worker design reached 0.921 F1 at 1.4 times the cost and was the best point on the cost-accuracy frontier, while a hybrid captured 89 percent of the accuracy gain at 1.15 times (arXiv 2603.22651, March 2026). The threshold that follows is the only published one: multi-agent is justified when the accuracy requirement exceeds about 0.92 F1.
+## Why the harness is not plumbing
+
+Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions, even where the final success rate looks the same (arXiv 2607.04528, July 2026). In retrieval-heavy work the harness choice can outweigh the retrieval architecture itself (arXiv 2605.15184, May 2026).
+
+Two things follow. Published benchmark comparisons run across different harnesses are confounded, so a claim that model A beats model B may be a claim about the scaffolding. And your own agent's behaviour is a property of your loop, not only of the model you licensed.
+
+A third finding is worth carrying: multi-agent failures are design failures rather than model failures. A taxonomy built from 150 traces and validated on more than 1,600 across seven frameworks identifies fourteen failure modes in three categories, and that is its central conclusion. A stronger model in a badly designed loop is still a badly designed loop.
+
+## The multi-agent question, with the one published number
+
+Splitting work across several agents buys parallel breadth and context isolation, at a cost multiplier of roughly 1.4 to 20 times. It does not buy reasoning quality per token.
+
+On 10,000 SEC filings across 25 field types, five models and four coordination patterns, a hierarchical supervisor-worker design reached 0.921 F1 at 1.4 times the cost and was the best point on the cost-accuracy frontier. A reflexive self-correcting pattern reached 0.943 at 2.3 times. A hybrid captured 89 percent of the accuracy gain at 1.15 times (arXiv 2603.22651, March 2026).
+
+The threshold that follows is the only published one: **multi-agent is justified when the accuracy requirement exceeds about 0.92 F1.** Below that you are paying a multiplier for something a single well-built loop delivers.
+
+## At the bank
+
+The financial crime agent's loop looks like this. It receives an alert. It calls core banking for the customer profile, the transaction store for the flagged period, the case system for prior alerts, and a screening service for counterparty checks. It reads what comes back, decides whether it needs more, and eventually drafts the narrative and a proposed disposition.
+
+**Tool design decides the cost.** A naive transaction tool returns every field of every transaction in the window, which is tens of thousands of tokens of mostly irrelevant JSON, and the model then reasons badly because the relevant three transactions are buried. The right tool returns a summary by counterparty and a flag for the outliers, with a second tool to pull detail on a specific one. Same data, a fraction of the context, better reasoning.
+
+**Context resets rather than compacts.** A complex investigation can run twenty turns. Compaction risks summarising away the one transaction that mattered, and in a regulated file that is not an acceptable failure. The harness keeps a structured evidence record as it goes, and resets the conversation against that record.
+
+**The loop has hard stops.** An iteration cap, a wall-clock cap, and a cost cap per alert. Without them a single pathological alert can consume the day's budget, and at tens of thousands of alerts a month that is a real operational risk rather than a theoretical one.
+
+**Tool access is where the control lives, not the prompt.** The agent reaches systems through a <Term k="gateway">gateway</Term> that checks, on every call, whether this analyst may see this customer. The agent's own instructions are not the control, because instructions and content reach the model as the same kind of <Term k="token">token</Term> and cannot be reliably separated. This is the argument on [the four deterministic zones](/architecture/deterministic-zones).
+
+**Single agent first.** The bank's disposition proposal does not need 0.92 F1 from the agent, because the analyst decides. So the multiplier is not justified, and the guide's blueprint puts this agent at a single loop with good tools.
 
 ## Where the depth is
 
-[The agent platform layer](/layers/r07-agent-platform) covers the harness, durability, portability and the build-versus-buy split. The harness section of [the vendor-neutral Agentic OS](/agentic-os) covers what a platform gives you here and what stays yours.
+[The agent platform layer](/layers/r07-agent-platform) covers the harness, durability, portability and the build-versus-buy split. The harness section of [the vendor-neutral Agentic OS](/agentic-os) covers what a platform provides here and what stays yours.
 
 ## The test for moving on
 
-**The loop is instrumented, failures are traced to a cause, and what is left is the model not knowing your domain.** If you cannot yet say which step of the loop failed, you are not ready to change the model, because you cannot tell whether the model is at fault.
+**The loop is instrumented, failures are traced to a specific cause, and what remains is the model not knowing your domain.**
 
-<EvidenceBadge status="independently-measured" /> The harness and multi-agent findings above are independent published work, not ours.
+That word "traced" is the gate. If you cannot say which turn failed and why, you cannot know the model is at fault, and every option in Deck B costs more than finding out. At the bank the trace shows, per alert, which tools were called, what they returned, how many turns ran, what the draft claimed and which retrieved evidence each claim came from.
+
+<EvidenceBadge status="independently-measured" /> The harness and multi-agent findings are independent published work, not ours.
+
+<details>
+<summary>The research behind this page</summary>
+
+- Harness choice changing downstream decisions: arXiv 2607.04528, July 2026.
+- Harness outweighing retrieval architecture: arXiv 2605.15184, May 2026.
+- The multi-agent cost-accuracy frontier: arXiv 2603.22651, March 2026.
+- Depth on [the agent platform layer](/layers/r07-agent-platform).
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+
+</details>

@@ -1,29 +1,76 @@
 ---
 title: "Step 1: Instructions"
 icon: "MessageSquare"
-description: "Rewriting the task description is the cheapest change available and the one teams abandon too early. Two things about it are not obvious, and the rest is well covered elsewhere."
+description: "What a prompt is actually made of, why examples work better than adjectives, how automated optimisation beats hand-tuning, and the exact signal that says you have run out of room here."
 ---
 
 <PlainTerms>
-This is prompt writing, and most of what there is to say about it is already common knowledge, so this page is short. Two things are worth stating because they are not obvious: a machine can usually write a better prompt than a person can, and there is a specific signal that tells you when you have genuinely run out of room here rather than merely run out of patience.
+This is prompt writing, and everyone has done some. What most people have not done is treat it as engineering: pinning the output shape so it cannot drift, teaching by example rather than by adjective, and letting a machine search for a better prompt than a person would write. This page covers the mechanics, then applies them to a bank's financial crime agent. The one thing to remember: you have not exhausted this step until a week of concentrated work stops moving a fixed score.
 </PlainTerms>
 
-## What it changes
+## What a prompt is actually made of
 
-The wording of the task, the role, the output format and the examples given inline. Nothing about the model, nothing about your data, nothing about the system around it. It is reversible, costs nothing but attention, and can be changed in production in minutes.
+A prompt is not one blob of text. It has parts, and each does a different job.
 
-## The two things worth knowing
+**The system instruction** sets standing rules: who the agent is, what it may and may not do, how it should behave when unsure. It is the same on every call, which matters for cost, as we will see.
 
-**A search process beats hand-writing.** Automated prompt optimisation treats prompts as something to be searched rather than authored. One published method beat a reinforcement-learning baseline by six points on average and up to twenty, while using up to 35 times fewer rollouts, with gains from as few as ten training examples (GEPA, arXiv 2507.19457, ICLR 2026). Teams that hand-tune prompts and then conclude the model is the limit have usually not run this.
+**The task instruction** describes this specific piece of work.
 
-**Context can be treated as something that accumulates.** Rather than rewriting one prompt, a playbook can be grown and curated across runs. A published framework doing this improved agent benchmarks by 10.6 points and finance tasks by 8.6 with no weight updates and no labelled supervision (ACE, arXiv 2510.04618, ICLR 2026).
+**The examples** show completed instances of the task. This is the highest-leverage part and the most underused. A model infers a pattern from two or three good examples far more reliably than from a paragraph describing the pattern. "Write formally" is an adjective and every model interprets it differently. Three samples of your actual house style are unambiguous.
 
-## What it does not fix
+**The input** is the material for this instance.
 
-Missing knowledge. If the answer is not in the model and not in what you sent it, no wording recovers it. That is [step 2](/ladder/context).
+**The output contract** states the shape you want back, and it should be enforced rather than requested. Modern APIs accept a schema and constrain generation to match it, so the model cannot return prose where you expected fields. Asking politely in the prompt for JSON produces JSON most of the time, which is the worst possible reliability: frequent enough to build on, rare enough to break in production.
+
+## Order matters more than people expect
+
+Put the stable parts first and the varying parts last. Providers cache the unchanging prefix of a prompt, and a cache hit is billed at a fraction of fresh input. Any change anywhere in that prefix invalidates everything after it, so a timestamp near the top of a system instruction quietly destroys the saving on every call.
+
+That single ordering decision is often the difference between an agent that is affordable at volume and one that is not, and it costs nothing to get right.
+
+## Automated optimisation beats hand-tuning
+
+The instinct is to write a prompt, read the failures, and rewrite it. That is a search process run by hand, slowly and with a small sample.
+
+Run it as a search instead. A published method treats prompts as candidates to be mutated and selected: the system reads its own failures, proposes revisions, and keeps a diverse frontier of candidates rather than hill-climbing on one. It beat a reinforcement-learning baseline by six points on average and up to twenty, using up to 35 times fewer rollouts, with gains appearing from as few as ten training examples (GEPA, arXiv 2507.19457, ICLR 2026).
+
+Two things follow. Teams that hand-tune and then conclude the model is the limit have usually not run this, so their ceiling is not the model's ceiling. And ten examples is a low bar, which means this is available long before you have enough data for anything in Deck B.
+
+A related result treats context as something that accumulates: rather than one prompt being rewritten, a playbook is grown and curated across many runs. It improved agent benchmarks by 10.6 points and finance tasks by 8.6, with no weight updates and no labelled supervision (ACE, arXiv 2510.04618, ICLR 2026).
+
+## At the bank
+
+The financial crime agent's first job is to draft the narrative behind an alert: what the customer does, what the flagged transactions were, what makes them unusual, and what the analyst should look at.
+
+The naive prompt is a paragraph asking for a clear summary of the alert. It produces something readable and unusable, because it varies. Sometimes it opens with the customer, sometimes with the transaction. Sometimes it states the typology, sometimes it implies it. An analyst reviewing sixty of these a day cannot skim inconsistent prose, so they read every word, and the agent has saved nothing.
+
+The engineered version does four things:
+
+**Pins the output shape.** Fields, enforced by schema: customer profile summary, expected activity, observed activity, the specific deviation, the matching typology, the recommended next check. The analyst's eye lands in the same place every time.
+
+**Teaches the house voice by example.** Three real narratives, previously written by senior analysts and approved in quality assurance, included in the prompt. Not "write in a professional regulatory tone".
+
+**Forbids the two failure modes explicitly.** No conclusion about whether this is suspicious, because that is the analyst's call and an agent that asserts it invites automation bias. And no fact that is not in the retrieved evidence, with every claim carrying its source.
+
+**Puts the stable parts first.** The system instruction, the typology definitions and the examples never change between alerts, so they sit at the front and stay cached. The alert and the customer file go last. At tens of thousands of alerts a month that ordering is most of the running cost.
+
+## What this step does not fix
+
+Missing knowledge. If the customer's transaction history is not in the context, no instruction recovers it, and a model asked to summarise evidence it cannot see will produce a fluent narrative anyway. That is the failure mode to fear here, and it is a [step 2](/ladder/context) problem.
 
 ## The test for moving on
 
-**Accuracy climbs during a week of concentrated prompt work and then goes flat against a locked <Term k="eval">eval</Term> suite.** Flat is the signal, not frustration. Without a fixed eval you cannot tell the difference between a real ceiling and a bad day, which is why the suite comes first.
+**Accuracy climbs during a week of concentrated prompt work, then goes flat against a locked <Term k="eval">eval</Term> suite.**
 
-<EvidenceBadge status="independently-measured" /> Both results above are peer-reviewed and independent of this guide.
+Flat is the signal. Frustration is not. Without a fixed eval you cannot tell a real ceiling from a bad afternoon, and the difference decides whether you are about to spend a quarter's budget for nothing. At the bank the eval is a frozen set of a few hundred historical alerts with known dispositions, scored on whether the draft narrative contains the facts the analyst actually used.
+
+<EvidenceBadge status="independently-measured" /> Both published results above are peer-reviewed and independent of this guide.
+
+<details>
+<summary>The research behind this page</summary>
+
+- GEPA, reflective prompt evolution, arXiv 2507.19457, ICLR 2026.
+- ACE, context as an evolving playbook, arXiv 2510.04618, ICLR 2026.
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+
+</details>
