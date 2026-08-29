@@ -496,7 +496,7 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'agentic-os', 'patterns', 'layers', 'decisions', 'about'],
+    pages: ['architecture', 'agentic-os', 'ladder', 'patterns', 'layers', 'decisions', 'about'],
   },
   architecture: {
     title: 'Architecture',
@@ -516,6 +516,12 @@ const metas = {
     root: true,
     description: 'Install the guide into your own agent.',
     pages: ['index', 'install', 'how-skills-are-built'],
+  },
+  ladder: {
+    title: 'Intelligence ladder',
+    icon: 'ListOrdered',
+    description: 'Seven rungs from rewriting a prompt to rebuilding a model, and the test for leaving each one.',
+    pages: ['index'],
   },
   patterns: {
     title: 'Patterns',

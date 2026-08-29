@@ -7,7 +7,7 @@ const warnings = [];
 const fail = (message) => errors.push(message);
 
 const { figureManifest, figureManifestStats } = await loadFigureManifestModule();
-const expectedCounts = { foundation: 23, layer: 56, support: 14 };
+const expectedCounts = { foundation: 24, layer: 56, support: 14 };
 
 if (figureManifest.length < 80 || figureManifest.length > 140) {
   fail(`Manifest must contain 80-140 entries; found ${figureManifest.length}.`);
@@ -34,7 +34,7 @@ for (const [index, figure] of figureManifest.entries()) {
   if (pageAnchors.has(pageAnchor)) fail(`${label}: duplicate figure anchor on ${figure.page}: ${figure.anchor}.`);
   pageAnchors.add(pageAnchor);
   if (figure.anchor === 'page-intro') fail(`${label}: anchor must identify the concept placement, not the generic page intro.`);
-  if (!/^\/(docs|library|architecture|layers|decisions)(\/|$)/.test(figure.page)) fail(`${label}: page must be a site route; found ${figure.page}.`);
+  if (!/^\/(docs|library|architecture|agentic-os|ladder|patterns|layers|decisions|skills)(\/|$)/.test(figure.page)) fail(`${label}: page must be a site route; found ${figure.page}.`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(figure.reviewedAt) || Number.isNaN(Date.parse(figure.reviewedAt))) fail(`${label}: invalid reviewedAt date.`);
   if (figure.title.trim().toLowerCase() === figure.alt.trim().toLowerCase()) fail(`${label}: alt text merely repeats the title.`);
   if (figure.alt.length < 60) fail(`${label}: alt text must explain the visual in at least 60 characters.`);

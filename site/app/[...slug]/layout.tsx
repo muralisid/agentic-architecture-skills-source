@@ -2,7 +2,7 @@ import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
 import { docsBaseOptions } from '@/lib/layout.shared';
 import { Wordmark } from '@/components/site/wordmark';
-import { BookMarked, Boxes, Compass, Download, Layers, Scale, Shapes } from 'lucide-react';
+import { BookMarked, Boxes, Compass, Download, Layers, ListOrdered, Scale, Shapes } from 'lucide-react';
 
 export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
   return (
@@ -23,6 +23,12 @@ export default function Layout({ children }: LayoutProps<'/[...slug]'>) {
           description: 'What it is, and the five parts it takes',
           url: '/agentic-os',
           icon: <Boxes />,
+        },
+        {
+          title: 'Ladder',
+          description: 'Seven rungs, and when to climb',
+          url: '/ladder',
+          icon: <ListOrdered />,
         },
         {
           title: 'Layers',
