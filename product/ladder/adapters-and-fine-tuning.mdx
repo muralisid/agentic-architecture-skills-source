@@ -1,0 +1,54 @@
+---
+title: "Adapters and supervised fine-tuning"
+icon: "SlidersHorizontal"
+description: "Teaching a model how to behave, from examples. It fixes format, tone and task behaviour, it does not add knowledge, it causes forgetting, and the managed options narrowed sharply in 2026."
+---
+
+<PlainTerms>
+This is the first change that touches the model itself. You show it a few thousand examples of the task done correctly, and it learns to answer in that shape. It is good at making a model behave consistently and at moving work to a smaller, cheaper model. It is not a way to teach the model facts, which is the single most common misunderstanding about it, and it has a real side effect: models forget things they used to be good at.
+</PlainTerms>
+
+## What it changes
+
+A set of weights, either all of them or a small added set. You supply pairs: an input and the output you wanted. The model learns the mapping.
+
+**Full fine-tuning** updates every weight. It needs the most compute and produces a whole model you must host.
+
+**Parameter-efficient fine-tuning** freezes the original model and trains a small number of added weights instead. LoRA is the common form; QLoRA adds quantisation of the frozen base so a large model can be adapted on modest hardware. The result is a small adapter file rather than a whole model, and adapters can be swapped per task against one shared base.
+
+## What you need before starting
+
+Examples, in the low thousands, that are genuinely representative of the task and correct. A locked <Term k="eval">eval</Term> suite that existed before you started. Somewhere to host the result, or a provider that hosts it for you. Fine-tuning is the point at which you acquire an artifact with a lifecycle: it will need retraining when the base model moves.
+
+## What it fixes, and what it does not
+
+**Fixes:** consistent output format, house tone and style, adherence to a task shape that is hard to describe but easy to demonstrate, and unit cost when a small fine-tuned model can replace a large prompted one on a narrow task. One published head-to-head found a fine-tuned 7B model beating a prompt-engineered frontier model on a classification task, 88 percent against 31 percent, at roughly a fifteenth of the inference cost.
+
+**Does not fix:** missing knowledge. If your model has never seen your product catalogue, examples of answering questions about it teach the answering style, not the catalogue. Knowledge comes from [context](/ladder/context) at query time, or from [continued pretraining](/ladder/continued-pretraining) at training time.
+
+## The side effect: forgetting
+
+Training on your domain degrades capabilities the model used to have. This is catastrophic forgetting and it is real. **Adapters do not prevent it.** The common belief that LoRA sidesteps forgetting because it touches fewer weights does not hold.
+
+The published repair is [distillation](/ladder/distillation): distil from the pre-fine-tune version of the same model as teacher, which restores the instruction-following that domain fine-tuning degraded. If you fine-tune, plan for measuring what got worse, not only what got better.
+
+## The managed options narrowed in 2026
+
+**As of August 2026.** OpenAI is withdrawing self-serve fine-tuning in phases, announced 7 May 2026 on its deprecations page. Organisations that had not previously fine-tuned lost access on 7 May 2026; organisations without fine-tuned inference in the preceding 60 days lost it on 2 July 2026; and remaining active customers can create no new fine-tuning jobs after **6 January 2027**. Inference on existing fine-tuned models continues until the underlying base models are retired.
+
+The practical consequence for most enterprises reading this: that route is already closed to you. Managed fine-tuning remains available through the major cloud platforms and through open-weight models you host or rent, and parameter-efficient methods on open models are unaffected. This is a fast-moving product fact and it is on the re-verification list.
+
+## The test for moving on
+
+**Adapters have closed the format and behaviour gap, and what remains wrong is judgement or knowledge.** If the shape is right and the reasoning is wrong, and you can grade outcomes programmatically, go to [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning). If the shape is right and the model does not understand your domain's language, go to [continued pretraining](/ladder/continued-pretraining).
+
+<EvidenceBadge status="mixed-evidence" /> The deprecation schedule is from OpenAI's own documentation. The cost and accuracy comparison is a single published head-to-head and should be read as one data point, not a general law.
+
+<details>
+<summary>The research behind this page</summary>
+
+- OpenAI deprecations page, "Update to self-serve fine-tuning", announced 7 May 2026, as of August 2026: https://developers.openai.com/api/docs/deprecations
+- Forgetting, and distillation as its repair: on-policy distillation (October 2025), covered on [intelligence and learning](/layers/r06-intelligence-and-learning).
+- The fine-tuned versus prompt-engineered comparison and the adaptation ordering are recorded in [the decision catalog](/decisions).
+
+</details>

@@ -520,8 +520,8 @@ const metas = {
   ladder: {
     title: 'Intelligence ladder',
     icon: 'ListOrdered',
-    description: 'Seven rungs from rewriting a prompt to rebuilding a model, and the test for leaving each one.',
-    pages: ['index'],
+    description: 'Eight ways to make an agent better, in the order worth trying them.',
+    pages: ['index', 'instructions', 'context', 'tools-and-the-loop', 'adapters-and-fine-tuning', 'distillation', 'reinforcement-fine-tuning', 'continued-pretraining', 'custom-pretraining'],
   },
   patterns: {
     title: 'Patterns',

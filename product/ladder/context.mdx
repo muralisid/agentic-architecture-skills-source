@@ -1,0 +1,29 @@
+---
+title: "Step 2: Context"
+icon: "Library"
+description: "Changing how documents are represented moved retrieval quality from 0.294 to 0.803 on one corpus with one encoder. This is the step with the most measured evidence behind it, and it has its own catalogue."
+---
+
+<PlainTerms>
+This step is about what reaches the model: which documents, in what form, cut up which way. It is the part of an agent system that the platform market does not sell you, and on our own measurements it moves answer quality further than anything else available. It has a catalogue of its own on this site, so this page states the headline and points you there.
+</PlainTerms>
+
+## What it changes
+
+How your material is parsed, split, represented and retrieved before an <Term k="agent">agent</Term> ever sees it. The model is untouched.
+
+## The headline
+
+Holding the corpus, the encoder and the scoring fixed, and changing only how a document is turned into something searchable, <Term k="ndcg">nDCG@10</Term> moves from **0.294 to 0.803**. The fall to 0.294 is what happens when a single <Term k="embedding">embedding</Term> has to average a document covering several unrelated topics, which is the ordinary condition of enterprise material. On queries naming a specific identifier, keyword search scored 0.997 against 0.314 for the dense index, and a <Term k="hybrid retrieval">hybrid</Term> recovers that for almost nothing.
+
+The discipline matters as much as the numbers. Our own purpose-shaped representation lost to plain <Term k="chunking">chunking</Term> on real prose, 0.635 against 0.667, and we published that. Anything you adopt here has to beat a <Term k="matched control">matched control</Term> on your own queries.
+
+## Where the depth is
+
+[Context patterns for agents](/patterns) carries nine patterns, each with the measurement behind it and the conditions under which it fails. [The data-to-memory pipeline](/architecture/data-to-memory) covers the engineering, and [how to test a context design](/patterns/how-to-test-a-context-design) is the method.
+
+## The test for moving on
+
+**Your representation beats a matched control on your own query distribution, and what still fails is about acting rather than knowing.** An agent that retrieves the right document and then does the wrong thing with it has a [step 3](/ladder/tools-and-the-loop) problem, not a context problem.
+
+<EvidenceBadge status="independently-measured" /> The figures above are our own, reproducible from the published benchmark, and reproduced across two machines and two processor architectures.

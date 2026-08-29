@@ -1,0 +1,33 @@
+---
+title: "Step 3: Tools and the loop"
+icon: "Repeat"
+description: "The step most often skipped. Holding task, model and environment constant, harness choices change the decisions an agent makes, and in retrieval-heavy work can matter more than the retrieval architecture."
+---
+
+<PlainTerms>
+This step is about the machinery around the model: what tools it can reach, how its work is checked, when it is stopped, and what happens when it fails. It is the step teams skip on the way from "the context is fine" to "we need to train a model", and the evidence says it is usually the one that was actually missing.
+</PlainTerms>
+
+## What it changes
+
+The <Term k="harness">harness</Term>: how context is assembled and reset between turns, how the loop decides it is finished, how state survives a crash, how output is verified, and what caps prevent a runaway. Also the tools themselves, and whether the agent can reach the systems the task actually requires.
+
+## Why it is not plumbing
+
+Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions, even where terminal success rates look the same (arXiv 2607.04528, July 2026). In retrieval-heavy work, the harness choice can outweigh the retrieval architecture (arXiv 2605.15184, May 2026). One consequence for anyone reading published comparisons: benchmarks run across different harnesses are confounded.
+
+A second finding worth carrying: multi-agent failures are design failures rather than model failures. A taxonomy built from 150 traces and validated on more than 1,600 across seven frameworks identifies fourteen failure modes in three categories, and that is its central conclusion. Adding a stronger model to a badly designed loop does not fix a badly designed loop.
+
+## One caution on going multi-agent
+
+Splitting work across several agents buys parallel breadth and context isolation at a cost multiplier of roughly 1.4 to 20 times. It does not buy reasoning quality per token. On 10,000 SEC filings across 25 field types, five models and four patterns, a hierarchical supervisor-worker design reached 0.921 F1 at 1.4 times the cost and was the best point on the cost-accuracy frontier, while a hybrid captured 89 percent of the accuracy gain at 1.15 times (arXiv 2603.22651, March 2026). The threshold that follows is the only published one: multi-agent is justified when the accuracy requirement exceeds about 0.92 F1.
+
+## Where the depth is
+
+[The agent platform layer](/layers/r07-agent-platform) covers the harness, durability, portability and the build-versus-buy split. The harness section of [the vendor-neutral Agentic OS](/agentic-os) covers what a platform gives you here and what stays yours.
+
+## The test for moving on
+
+**The loop is instrumented, failures are traced to a cause, and what is left is the model not knowing your domain.** If you cannot yet say which step of the loop failed, you are not ready to change the model, because you cannot tell whether the model is at fault.
+
+<EvidenceBadge status="independently-measured" /> The harness and multi-agent findings above are independent published work, not ours.

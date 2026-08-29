@@ -1,0 +1,63 @@
+---
+title: "Continued pretraining"
+icon: "BookOpenText"
+description: "Teaching a model your domain from raw text rather than from labelled examples. The option for an organisation with a large proprietary corpus, and the one most often confused with fine-tuning."
+---
+
+<PlainTerms>
+This is how you teach a model your world: its vocabulary, its documents, its notation, the way your industry actually writes. You do not need labelled examples. You need text, a lot of it, and it can be the text you already have. This is the option that suits an organisation sitting on decades of its own material, and it is routinely confused with fine-tuning, which is a different job needing a different kind of data.
+</PlainTerms>
+
+## What it changes
+
+The model continues the training it originally had, predicting the next word, but now over your corpus instead of the open internet. Nobody labels anything. The model comes out reading your domain more fluently than it did.
+
+## The distinction that matters
+
+| | Supervised <Term k="fine-tuning">fine-tuning</Term> | Continued pretraining |
+|---|---|---|
+| Input | Pairs: a question and the wanted answer | Raw text, as it already exists |
+| Volume | Thousands of examples | Billions of <Term k="token">tokens</Term> |
+| Teaches | How to behave | What the domain is |
+| Effort to prepare | High: someone must write the answers | Low: you largely already have it |
+
+The preparation cost is the part that changes the business case. Most enterprises cannot easily produce fifty thousand high-quality labelled pairs, and can readily produce a billion tokens of contracts, tickets, filings, manuals, code or correspondence.
+
+## What you need before starting
+
+A corpus at genuine scale, in the billions of tokens rather than the millions, and the right to train on it. Clarity about what is in it, because the model will absorb whatever is there, including the errors and the material you were not supposed to retain. Access to training infrastructure, either a managed offering or a framework on rented hardware. And an eval suite that measures your domain, not a public benchmark.
+
+The data governance question is sharper here than anywhere else on this ladder. A model trained on your corpus is a derived artifact of it, so classification, residency and deletion obligations reach the resulting weights. [The concern matrix](/architecture/concern-matrix) sets out how that inheritance works.
+
+## What it fixes, and what it does not
+
+**Fixes:** domain vocabulary the base model reads poorly, unusual document structure, proprietary notation and identifiers, industry shorthand, and languages the base model saw little of. If your people can read a document fluently and the model plainly cannot, this is the lever.
+
+**Does not fix:** task behaviour or output format. A model that has read a million contracts still needs telling what you want done with one. That is why the standard pattern is continued pretraining first and then supervised fine-tuning, in that order, rather than a choice between them.
+
+## How much of your budget should go where
+
+One study modelled this directly, allocating a fixed 30 billion token budget between continued pretraining and supervised fine-tuning for 7B-parameter models across health, chemistry and coding. The optimum in every domain put **approximately 99.99 percent of the token budget into continued pretraining** and the remainder into fine-tuning, reporting an 11.6 percent improvement over a state-of-the-art domain-adapted comparison at up to 95 percent less token budget (OpenReview, 8 October 2025).
+
+Read that as a direction rather than a recipe. It was 7B models, three domains and one budget, and the fine-tuning share is small in tokens rather than unimportant. The useful conclusion is the ordering and the proportion: the domain adaptation is the large job, and the task teaching is the small one on top.
+
+## What it costs
+
+Materially more than fine-tuning, because the token volume is thousands of times larger, and the cost scales with corpus size and model size. It also produces the heaviest artifact on this ladder: a base model of your own that must be re-based when the underlying model generation moves, and re-evaluated when your corpus changes.
+
+Forgetting applies here too. Training hard on one domain degrades general capability, and the same repair applies, covered on [distillation](/ladder/distillation).
+
+## The test for moving on
+
+There is rarely anywhere to move on to. Continued pretraining followed by fine-tuning is the end of the road for almost every enterprise. The remaining step, [custom pretraining and architecture](/ladder/custom-pretraining), is for organisations whose data is not text-shaped at all, or who have frontier-lab economics.
+
+<EvidenceBadge status="preprint-or-prototype" /> The budget-allocation finding is a single study on 7B models across three domains, published on OpenReview in October 2025. It is the most direct evidence available on the question and it has not been replicated here.
+
+<details>
+<summary>The research behind this page</summary>
+
+- Modelling Optimal Trade-Off Between Continued Pre-Training and Supervised Fine-Tuning for LLM Domain Adaptation, OpenReview, 8 October 2025: 7B models, health, chemistry and coding, 30B-token budget. https://openreview.net/forum?id=guUUlHPXRw
+- Forgetting and its repair: on-policy distillation (October 2025), on [intelligence and learning](/layers/r06-intelligence-and-learning).
+- Data obligations inherited by derived artifacts: [the concern matrix](/architecture/concern-matrix) and [agent data engineering](/layers/r14-agent-data-engineering).
+
+</details>

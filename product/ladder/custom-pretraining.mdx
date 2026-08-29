@@ -1,0 +1,56 @@
+---
+title: "Custom pretraining and architecture"
+icon: "Cpu"
+description: "Two different things at the top of the market: training a base model of your own, and designing a different kind of model because your data is not text. Written so you can tell them apart and recognise which, if either, you need."
+---
+
+<PlainTerms>
+At the top of the market two very different things get sold with similar language. One is building your own foundation model from scratch. The other is designing a different kind of model because your data is not documents at all, but networks, sequences or signals. The first is a question of economics and almost never the answer. The second is a real engineering discipline that applies to a specific and recognisable situation. This page is written so you can tell which one is in front of you.
+</PlainTerms>
+
+## Path one: training a base model of your own
+
+**What it is:** pretraining a foundation model from scratch, or from an early checkpoint, on a corpus you assemble.
+
+**What it costs:** frontier-laboratory economics, in compute, in specialist staff, and in the time between deciding and having something usable. The model is then yours to evaluate, align, secure, host and replace when the field moves, which it will.
+
+**When it is genuinely the answer:** almost never for an enterprise. The honest cases are organisations whose data is both enormous and unlike public text, or where sovereignty requirements forbid any external model, and who can carry a standing research team. If you are reading this page to work out whether you qualify, you probably do not.
+
+**What usually gets sold as this and is not:** [continued pretraining](/ladder/continued-pretraining) delivers most of what people want from "our own model", from your existing corpus, at a fraction of the cost, and keeps you on an upgrade path. If someone proposes a custom foundation model, the first question is what continued pretraining on the same corpus would achieve.
+
+One published result is worth knowing, with its caveats. Mixing a small fraction of domain data into pretraining from scratch, at 0.1 to 10 percent of tokens, outperformed the standard pipeline of general pretraining followed by fine-tuning across three domains, reducing the tokens needed to reach a given domain performance by up to 1.75 times and improving downstream results by up to 6 percentage points on one mathematics benchmark [vendor]. Note the scope: models from 300M to 3B parameters, a 200B-token budget, and the research is published by a company selling data-curation services. It concerns pretraining from scratch, not continued pretraining, so it argues about how you would run path one rather than whether to take it.
+
+## Path two: designing a different kind of model
+
+This applies when your data is not text-shaped. Networks of accounts, supply chains, telemetry streams, molecular structures, physical topologies. A language model is the wrong object for these, and the discipline involved is not prompt or context work at any scale.
+
+The failure modes here are structural rather than a matter of tuning, and they are the vocabulary to listen for:
+
+| Failure | What it means |
+|---|---|
+| Representation collapse | Learned vectors stop being distinct, so different inputs become indistinguishable |
+| Gradient collapse | The learning signal dies passing back through the layers, so early layers stop learning |
+| Over-smoothing | In a network model, stacking layers averages every node towards the same value, so depth destroys discrimination |
+| Over-squashing | Information from a growing neighbourhood is crushed into a fixed-size vector, so long-range signal is lost |
+| Partitioning and sampling | A graph too large for memory must be cut or sampled, and both change the object being trained on |
+| Distributed convergence | Once training is sharded, single-machine convergence behaviour no longer holds |
+
+Two of these pull against each other, which is the tell for genuine depth: adding layers to relieve over-squashing worsens over-smoothing. Anyone who has really worked here has had to make that trade rather than pick a setting.
+
+**When it is genuinely the answer:** when the thing you are predicting is a property of a structure rather than of a document, and the structure is too large to fit in memory. That is a recognisable situation, and it has little to do with agents.
+
+## How this connects back
+
+Note where this sits. Everything in Deck A and most of Deck B is work done **around a fixed pretrained model**. This page is about **building the model**. They are different disciplines with different staff, and treating one as a continuation of the other is how programmes end up staffed wrongly.
+
+The instinct does transfer, and it is the same instinct this whole ladder is built on: diagnose the structural failure before changing anything, and never on the assumption that a bigger version of what you have will fix it.
+
+<EvidenceBadge status="mixed-evidence" /> The pretraining-mix result is vendor-published research at small model scale and flagged as such. The failure modes in path two are standard, well documented, and not specific to this guide.
+
+<details>
+<summary>The research behind this page</summary>
+
+- The Finetuner's Fallacy, DatologyAI, 18 March 2026 [vendor]: specialised pretraining at 0.1 to 10 percent domain mix, models 300M to 3B, 200B-token budget. https://www.datologyai.com/blog/finetuners-fallacy
+- The alternative to path one for almost all readers is on [continued pretraining](/ladder/continued-pretraining).
+
+</details>

@@ -1,79 +1,81 @@
 ---
 title: "The intelligence ladder"
 icon: "ListOrdered"
-description: "Seven rungs from rewriting a prompt to rebuilding a model, the test that says you have exhausted each one, and the evidence for climbing. Most enterprises never need to leave the bottom three."
+description: "Eight ways to make an agent better, in the order worth trying them. Three change the system around the model, five change the model itself, and the choice among those five is a diagnosis rather than a climb."
 ---
 
 <PlainTerms>
-When an agent is not good enough, there are seven different things you can change, and they are not equally sensible to try. Rewriting the instructions is cheap and often enough. Retraining the model is expensive, slow, and usually fixes the wrong problem. This page puts the seven in order, and gives each one a test that tells you whether you have genuinely run out of room before you spend money on the next. The one thing to remember: almost every organisation that believes it needs to train a model has not yet exhausted the three rungs below that.
+When an agent is not good enough there are eight different things you can change, and they are not equally sensible to try. Rewriting the instructions is cheap and often enough. Retraining a model is expensive, slow, and frequently fixes the wrong problem. The first three changes are about the system around the model, and most organisations should live there. The last five change the model itself, and choosing between them is a matter of working out what is actually broken rather than climbing higher. The one thing to remember: teaching a model to behave differently and teaching it about your business are two different jobs needing two different kinds of data, and confusing them is why most model-training projects disappoint.
 </PlainTerms>
 
 ## Why the order matters
 
-**WHY:** "The model is not good enough" is a conclusion, not a diagnosis. It is reached most often when nobody has measured what is actually failing. The published evidence runs the other way: prompt and context work keeps producing gains that teams assumed were exhausted, and the expensive interventions frequently fix something that was never the problem. Climbing early is not just wasted money. It adds weight, lock-in and a maintenance burden to a system whose real fault is still there underneath.
+**WHY:** "The model is not good enough" is a conclusion, not a diagnosis. It is usually reached when nobody has measured what is failing. The published evidence runs the other way: prompt and context work keeps yielding gains teams assumed were exhausted, and the expensive interventions often fix something that was never the problem. Climbing early is not only wasted money. It adds weight, lock-in and a maintenance burden to a system whose real fault is still sitting there underneath.
 
-**WHAT:** Treat improvement as a ladder with seven rungs and a fixed order. Each rung changes something different, costs more than the one below it, and has an **exit test**: a measurable signal that you have taken it as far as it goes. Do not climb without passing the test. Everything rests on an <Term k="eval">evaluation</Term> suite you own, because every exit test is a measurement.
+**WHAT:** Treat improvement as two decks. **Deck A changes the system around the model** and is genuinely sequential: exhaust each step before the next is justified. **Deck B changes the model itself** and is not sequential: after the first step you choose by symptom, and several of the options combine rather than replace one another. Everything rests on an <Term k="eval">evaluation</Term> suite you own, because every test below is a measurement.
 
-## The seven rungs
+## Deck A: change the system
 
-**In short:** Each rung changes a different thing. The gate on each is the evidence that justifies the next step.
+**In short:** Three steps, in order, and where most organisations should stop.
 
 <GuideFigure id="intelligence-ladder" fullWidth />
 
-| # | Rung | What it changes | Climb when |
+| # | Step | What it changes | Move on when |
 |---|---|---|---|
-| 1 | Instructions | The wording of the task | Accuracy climbs during a week of prompt work, then goes flat against a locked eval |
-| 2 | Context | What reaches the model, and how documents are represented | Your representation beats a <Term k="matched control">matched control</Term>, and what still fails is acting rather than knowing |
-| 3 | Tools and the loop | The system around the model | The loop is instrumented and traced, and the residue is the model not knowing your domain |
-| 4 | Adapters | A small set of extra weights | Adapters close the format and vocabulary gap but leave the judgement gap open |
-| 5 | <Term k="distillation">Distillation</Term> | Which model runs, at the same capability | Not a climb. A move down in cost and latency |
-| 6 | Reinforcement <Term k="fine-tuning">fine-tuning</Term> | Weights, against a grader | You have a programmable grader that cannot be gamed, and a demonstrated ceiling |
-| 7 | Pretraining and re-architecture | The model itself | Essentially never, for an enterprise |
+| 1 | [Instructions](/ladder/instructions) | The wording of the task | Accuracy climbs for a week of prompt work, then goes flat |
+| 2 | [Context](/ladder/context) | What reaches the model, and how documents are represented | Your representation beats a <Term k="matched control">matched control</Term>, and what still fails is acting rather than knowing |
+| 3 | [Tools and the loop](/ladder/tools-and-the-loop) | The system that runs the model | The loop is instrumented and traced, and the residue is the model not knowing your domain |
 
-Two things about this list are worth stating plainly, because both are commonly got wrong.
+Step 3 is the one most often skipped. Teams go from "the context is good and it is still failing" straight to training. The evidence says otherwise: holding task, environment and model constant, harness choices measurably change the decisions an agent makes even where the final success rate looks the same, and in retrieval-heavy work the harness can matter more than the retrieval architecture. Most organisations that believe they need a trained model need better tools and a better loop.
 
-**Rung 3 is the one most often skipped.** Teams go from "the context is good and it is still failing" straight to training. The evidence says otherwise: holding task, environment and model constant, harness choices measurably change the decisions an agent makes even where the final success rate looks the same (arXiv 2607.04528, July 2026), and in retrieval-heavy work the harness can matter more than the retrieval architecture itself (arXiv 2605.15184, May 2026). Most organisations that think they need a trained model need better tools and a better loop.
+## The distinction that decides Deck B
 
-**Rung 5 is not a climb at all.** Distillation buys the same capability from a cheaper, faster model. You reach for it because of unit cost or latency, never because quality is short. It also has a second use that is easy to miss: on-policy distillation repairs the instruction-following that domain fine-tuning degrades, by distilling from the pre-fine-tune version of the same model. If you have climbed to rung 4 or 6 and something got worse, rung 5 is the published repair.
+**In short:** Teaching behaviour and teaching knowledge are different jobs, needing different data, and most disappointment comes from confusing them.
+
+| | Supervised <Term k="fine-tuning">fine-tuning</Term> | Continued pretraining |
+|---|---|---|
+| Learns from | Input and output pairs | Raw text |
+| How much | Thousands of examples | Billions of <Term k="token">tokens</Term> |
+| Changes | How the model **behaves** | What the model **knows**, and how it reads your language |
+| Wrong tool for | Adding knowledge | Fixing format or tone |
+
+An enterprise with a large proprietary corpus has the raw text and often very few labelled pairs. That makes continued pretraining the natural option for a data-rich organisation, and it is why so many fine-tuning projects disappoint: the wrong instrument was chosen for the complaint.
+
+## Deck B: change the model
+
+**In short:** Not a climb. Read the symptom, pick the chapter, and expect to combine more than one.
+
+<GuideFigure id="model-change-diagnosis" fullWidth />
+
+| What is failing | Where to go |
+|---|---|
+| Wrong format, tone, or task behaviour | [Adapters and fine-tuning](/ladder/adapters-and-fine-tuning) |
+| Right quality, too slow or too expensive | [Distillation](/ladder/distillation) |
+| Right format, wrong judgement, and outcomes can be graded | [Reinforcement fine-tuning](/ladder/reinforcement-fine-tuning) |
+| Does not understand your domain's language, documents or notation | [Continued pretraining](/ladder/continued-pretraining) |
+| Your data is not text-shaped: graphs, sequences, signals at scale | [Custom pretraining and architecture](/ladder/custom-pretraining) |
+
+These stack. Continued pretraining followed by supervised fine-tuning is a standard pairing rather than an either-or: the first teaches the domain, the second teaches the task. Distillation is not a climb at all, and can follow any of the others.
 
 ## The rails: an evaluation suite you own
 
-**In short:** Every exit test above is a measurement, so without an eval suite there is no ladder, only opinion.
+**In short:** Every test on this page is a measurement, so without an eval suite there is no ladder, only opinion.
 
 An organisation that cannot measure its agent will climb on anecdote, and anecdote favours whichever intervention is most fashionable. Build the suite from real failures rather than imagined ones, before the agent rather than after, and have it owned by the domain experts who can say what a correct answer looks like.
 
-One hazard belongs here rather than further up: when a validation score exceeds what a careful human achieves on the same task, the system has learned the rubric rather than the job. Treat that as an alarm, not a result.
+One hazard belongs here rather than further up. When a validation score exceeds what a careful person achieves on the same task, the system has learned the rubric rather than the job. Treat that as an alarm, not a result. It is the standard signature of <Term k="reward hacking">reward hacking</Term>, and it matters most on the graded steps in Deck B.
 
-## Where each rung is covered
-
-**In short:** The lower rungs already have depth on this site. The upper rungs are documented from the published literature.
-
-| Rung | Depth |
-|---|---|
-| 1 Instructions | Covered inside rung 2, since prompt and context work are measured together |
-| 2 Context | [Context patterns for agents](/patterns): nine patterns, each with the measurement behind it |
-| 3 Tools and the loop | [The agent platform layer](/layers/r07-agent-platform), and the harness section of [the vendor-neutral Agentic OS](/agentic-os) |
-| 4 to 6 Adapters, distillation, reinforcement | [Intelligence and learning](/layers/r06-intelligence-and-learning), with the verdict recorded in [the decision catalog](/decisions) |
-| 7 Pretraining | Out of scope for this guide, and named so you can recognise when someone is selling it to you |
-
-## What is measured here, and what is not
-
-**In short:** The rungs an enterprise actually lives on are the ones we measured. The rungs above rest on published work, and are labelled as such.
-
-Rung 2 carries our own experiments: same corpus, same encoder, changing only how documents are represented moves <Term k="ndcg">nDCG@10</Term> from 0.294 to 0.803, and our own clever representation lost to plain chunking on real prose, which we published. Rungs 4 to 7 need budget and hardware this programme does not have, so they are documented from the literature with their evidence status marked on each page. That division is deliberate, and stated rather than hidden.
-
-<PrincipleCard eyebrow="The rule" title="Climb only on evidence that the rung below is exhausted" kind="evidence">
-Each rung costs more than the one beneath it in money, time, skill and lock-in. The exit test is what converts "we think the model is the problem" into a measurement. Organisations that skip the test usually arrive at rung 4 or above carrying a fault that rung 2 or rung 3 would have fixed, and now have a trained artifact to maintain as well.
+<PrincipleCard eyebrow="The rule" title="Change the system before you change the model" kind="evidence">
+Deck A is sequential and cheap, and it is where the evidence says most of the available gain still is. Deck B is expensive, adds a trained artifact you must maintain, and is chosen by symptom rather than by ambition. An organisation that skips the tests usually arrives in Deck B carrying a fault that step 2 or step 3 would have fixed, and now has a model to keep as well.
 </PrincipleCard>
 
-<EvidenceBadge status="mixed-evidence" /> The ordering and the lower rungs rest on our own measurements and on published work; the upper rungs are documented from the literature. The ladder itself, as a decision procedure, is an author position.
+<EvidenceBadge status="mixed-evidence" /> Deck A rests partly on our own measurements. Deck B is documented from published work and vendor documentation, with sources and dates on each chapter. The two-deck structure itself is an author position.
 
 <details>
 <summary>The research behind this page</summary>
 
-- Rung 2 measurements: the benchmark repository at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), with per-experiment detail on [aspect dilution](/patterns/aspect-dilution) and [real prose](/patterns/real-prose), and the failures on [what we got wrong](/patterns/what-we-got-wrong).
-- Rung 3: arXiv 2607.04528 (July 2026) on harness choice changing downstream decisions; arXiv 2605.15184 (May 2026) on the harness outweighing retrieval architecture.
-- Rungs 4 to 6: the adaptation ordering set out on [intelligence and learning](/layers/r06-intelligence-and-learning), including evolutionary prompt optimisation (GEPA, arXiv 2507.19457, ICLR 2026), context as an evolving playbook (ACE, arXiv 2510.04618, ICLR 2026), and on-policy distillation (October 2025).
-- The evaluation practice these tests depend on is set out on [intelligence and learning](/layers/r06-intelligence-and-learning).
+- Deck A, step 2 measurements: the benchmark repository at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), with detail on [aspect dilution](/patterns/aspect-dilution) and [real prose](/patterns/real-prose), and the failures on [what we got wrong](/patterns/what-we-got-wrong).
+- Deck A, step 3: arXiv 2607.04528 (July 2026) on harness choice changing downstream decisions; arXiv 2605.15184 (May 2026) on the harness outweighing retrieval architecture. Depth on [the agent platform layer](/layers/r07-agent-platform).
+- The adaptation ordering behind Deck B is recorded in [the decision catalog](/decisions) and set out on [intelligence and learning](/layers/r06-intelligence-and-learning).
 
 </details>

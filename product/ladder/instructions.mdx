@@ -1,0 +1,29 @@
+---
+title: "Step 1: Instructions"
+icon: "MessageSquare"
+description: "Rewriting the task description is the cheapest change available and the one teams abandon too early. Two things about it are not obvious, and the rest is well covered elsewhere."
+---
+
+<PlainTerms>
+This is prompt writing, and most of what there is to say about it is already common knowledge, so this page is short. Two things are worth stating because they are not obvious: a machine can usually write a better prompt than a person can, and there is a specific signal that tells you when you have genuinely run out of room here rather than merely run out of patience.
+</PlainTerms>
+
+## What it changes
+
+The wording of the task, the role, the output format and the examples given inline. Nothing about the model, nothing about your data, nothing about the system around it. It is reversible, costs nothing but attention, and can be changed in production in minutes.
+
+## The two things worth knowing
+
+**A search process beats hand-writing.** Automated prompt optimisation treats prompts as something to be searched rather than authored. One published method beat a reinforcement-learning baseline by six points on average and up to twenty, while using up to 35 times fewer rollouts, with gains from as few as ten training examples (GEPA, arXiv 2507.19457, ICLR 2026). Teams that hand-tune prompts and then conclude the model is the limit have usually not run this.
+
+**Context can be treated as something that accumulates.** Rather than rewriting one prompt, a playbook can be grown and curated across runs. A published framework doing this improved agent benchmarks by 10.6 points and finance tasks by 8.6 with no weight updates and no labelled supervision (ACE, arXiv 2510.04618, ICLR 2026).
+
+## What it does not fix
+
+Missing knowledge. If the answer is not in the model and not in what you sent it, no wording recovers it. That is [step 2](/ladder/context).
+
+## The test for moving on
+
+**Accuracy climbs during a week of concentrated prompt work and then goes flat against a locked <Term k="eval">eval</Term> suite.** Flat is the signal, not frustration. Without a fixed eval you cannot tell the difference between a real ceiling and a bad day, which is why the suite comes first.
+
+<EvidenceBadge status="independently-measured" /> Both results above are peer-reviewed and independent of this guide.

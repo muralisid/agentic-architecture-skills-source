@@ -1,0 +1,38 @@
+---
+title: "Distillation"
+icon: "ArrowDownWideNarrow"
+description: "Not a step up. The same capability from a smaller, cheaper, faster model, and the published repair for the forgetting that domain training causes."
+---
+
+<PlainTerms>
+Everything else on this ladder tries to make an agent better. This one keeps it the same and makes it cheaper. A large model is used to teach a small one, and the small one is what you run. It belongs on the ladder because it is the answer to a real complaint, which is not "this is wrong" but "this is too slow" or "this costs too much". It also has a second use that is easy to miss: it repairs the damage that domain training causes.
+</PlainTerms>
+
+## What it changes
+
+Which model runs in production. A capable teacher model produces outputs, and a smaller student model is trained to reproduce them. You deploy the student.
+
+## What it fixes, and what it does not
+
+**Fixes:** unit cost and latency at roughly the same quality, on a bounded task. **Does not fix:** anything about quality. If the teacher is wrong, the student learns to be wrong faster and more cheaply.
+
+## The second use: repairing forgetting
+
+Training a model on your domain degrades its general instruction-following. On-policy distillation repairs this, by distilling from the **pre-fine-tune version of the same model** as teacher, at 9 to 30 times lower training compute than scaling supervised fine-tuning. That makes distillation maintenance rather than only compression, and it is the reason it sits between [adapters](/ladder/adapters-and-fine-tuning) and the heavier options rather than at the end.
+
+## When it is worth it
+
+A narrow, high-volume workload, where the same shape of request runs constantly, and where a locked eval can prove the student holds quality. The tension worth naming: the business case needs a fixed eval set, and a live learning loop keeps rewriting the eval set. Decide which you are running before you commit.
+
+## The test
+
+There is no climb from here. Distillation is a move sideways and down, and it can follow any of the other options in this deck.
+
+<EvidenceBadge status="mixed-evidence" /> The compute ratio and the forgetting repair come from published work; the economics of any specific case depend on your volume and are not general.
+
+<details>
+<summary>The research behind this page</summary>
+
+- On-policy distillation (October 2025), including the forgetting repair and the training-compute comparison, covered on [intelligence and learning](/layers/r06-intelligence-and-learning).
+
+</details>

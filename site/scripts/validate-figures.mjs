@@ -7,7 +7,7 @@ const warnings = [];
 const fail = (message) => errors.push(message);
 
 const { figureManifest, figureManifestStats } = await loadFigureManifestModule();
-const expectedCounts = { foundation: 24, layer: 56, support: 14 };
+const expectedCounts = { foundation: 25, layer: 56, support: 14 };
 
 if (figureManifest.length < 80 || figureManifest.length > 140) {
   fail(`Manifest must contain 80-140 entries; found ${figureManifest.length}.`);

@@ -1,0 +1,45 @@
+---
+title: "Reinforcement fine-tuning"
+icon: "Target"
+description: "Teaching judgement rather than form, by rewarding outcomes. The entry requirement is a grader that cannot be gamed, which is why most teams should not be here."
+---
+
+<PlainTerms>
+Every other kind of training on this ladder shows the model examples of the right answer. This one does something different: it lets the model try, scores the result, and rewards what scored well. That works when you can write a program that reliably judges whether an answer is right. When you cannot, this method will still produce a confident model, and it will have learned to satisfy your scoring program rather than to do the job.
+</PlainTerms>
+
+## What it changes
+
+Weights, guided by a reward signal instead of by labelled answers. The model generates, a grader scores, and training pushes the model towards higher-scoring behaviour.
+
+## The entry requirement
+
+**A programmable grader that cannot be gamed.** This is the real gate, and it is why most teams should not be here. The grader must be automatic, because training needs thousands of judgements; it must be correct, because the model will optimise exactly what it measures; and it must be hard to satisfy without doing the actual task.
+
+Tasks where this is achievable share a shape: the answer is checkable. Does the code compile and pass the tests. Does the extracted figure match the filing. Does the proposed schedule satisfy every constraint. Tasks where it is not achievable are those where quality is a matter of taste or of judgement no program holds.
+
+## What it fixes, and what it does not
+
+**Fixes:** judgement and reasoning on tasks with checkable outcomes. Vendor-published customer results in specialist domains report double-digit gains, including 39 percent on tax analysis, 12 points over physician baselines, and 20 percent on citation-extraction F1 [vendor].
+
+**Does not fix:** format, tone or style. Those are demonstrable, so they belong to [adapters and fine-tuning](/ladder/adapters-and-fine-tuning). Using a reward signal to teach formatting is the wrong instrument and an expensive one.
+
+## The alarm that belongs in your runbook
+
+**When the validation reward exceeds what a careful person achieves on the same task, the model has learned the rubric rather than the job.** Treat a score above the human ceiling as a defect report, not a result. This is <Term k="reward hacking">reward hacking</Term>, it is well documented, and it is the characteristic failure of this method.
+
+The related discipline is that the grader is now part of your production system. It needs versioning, review and its own tests, because a fault in the grader becomes a fault trained into the model.
+
+## The test
+
+There is no ordinary climb beyond this. If judgement is right and the model still does not understand your domain's material, the missing piece is [continued pretraining](/ladder/continued-pretraining), which is a different job rather than a higher one.
+
+<EvidenceBadge status="vendor-reported" /> The domain gains above are vendor-published customer results and are flagged as such. The reward-hacking failure mode is independently documented.
+
+<details>
+<summary>The research behind this page</summary>
+
+- Reinforcement fine-tuning customer results (May 2025) [vendor], and the ordering that places this behind a grader, on [intelligence and learning](/layers/r06-intelligence-and-learning) and in [the decision catalog](/decisions).
+- Reward hacking in production reinforcement learning, covered on [the learning flywheel](/architecture/learning-flywheel).
+
+</details>
