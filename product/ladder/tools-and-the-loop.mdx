@@ -20,6 +20,8 @@ Three consequences follow, and they are the whole of harness design.
 
 **Tools are an interface you are designing.** A tool with a vague description gets called at the wrong times. A tool returning ten thousand tokens of JSON burns the context window that the reasoning needs. Tools are designed for a reader with no memory of your system, because that is what they have.
 
+<GuideFigure id="agent-loop-anatomy" fullWidth />
+
 ## Why the harness is not plumbing
 
 Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions, even where the final success rate looks the same (arXiv 2607.04528, July 2026). In retrieval-heavy work the harness choice can outweigh the retrieval architecture itself (arXiv 2605.15184, May 2026).

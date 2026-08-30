@@ -22,6 +22,8 @@ A prompt is not one blob of text. It has parts, and each does a different job.
 
 **The output contract** states the shape you want back, and it should be enforced rather than requested. Modern APIs accept a schema and constrain generation to match it, so the model cannot return prose where you expected fields. Asking politely in the prompt for JSON produces JSON most of the time, which is the worst possible reliability: frequent enough to build on, rare enough to break in production.
 
+<GuideFigure id="prompt-anatomy" fullWidth />
+
 ## Order matters more than people expect
 
 Put the stable parts first and the varying parts last. Providers cache the unchanging prefix of a prompt, and a cache hit is billed at a fraction of fresh input. Any change anywhere in that prefix invalidates everything after it, so a timestamp near the top of a system instruction quietly destroys the saving on every call.

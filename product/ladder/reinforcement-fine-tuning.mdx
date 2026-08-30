@@ -25,6 +25,8 @@ A grader is gameable when score and competence can be separated. The common gaps
 
 The tasks where grading is safe share one shape: **the outcome is checkable by a program that does not share the model's blind spots.** Code that must compile and pass tests. An extracted figure that must match the filing. A schedule that must satisfy every constraint. Where quality is taste, tone or judgement no program holds, the grader will be a proxy, and the proxy will be gamed.
 
+<GuideFigure id="grader-gameability" fullWidth />
+
 ## The alarm that belongs in the runbook
 
 **When validation reward exceeds what a careful person achieves on the same task, the model has learned the rubric rather than the job.** A score above the human ceiling is a defect report, not a triumph. This is <Term k="reward hacking">reward hacking</Term>, it is well documented in production reinforcement learning, and the correct response is to treat the grader as the broken component.

@@ -28,6 +28,8 @@ Read that mechanism closely and the two big facts about fine-tuning fall out of 
 
 One belief needs correcting because it drives bad decisions: **adapters do not prevent forgetting.** Touching fewer weights sounds safer, and the published finding is that LoRA does not protect the model's general capability. If forgetting matters for your use, measure it, and see the repair on [distillation](/ladder/distillation).
 
+<GuideFigure id="tuning-methods" fullWidth />
+
 ## What you need before starting
 
 **Examples in the low thousands, and their quality is the whole game.** The model will learn exactly what the pairs teach, including their errors, their biases and their shortcuts. A hundred meticulous examples beat ten thousand scraped ones.
