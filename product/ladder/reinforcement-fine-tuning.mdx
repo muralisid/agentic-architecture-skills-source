@@ -1,45 +1,70 @@
 ---
 title: "Reinforcement fine-tuning"
 icon: "Target"
-description: "Teaching judgement rather than form, by rewarding outcomes. The entry requirement is a grader that cannot be gamed, which is why most teams should not be here."
+description: "How training against a grader works, what makes a grader gameable, why a score above the human ceiling is a defect report, and the narrow class of tasks where this is the right tool."
 ---
 
 <PlainTerms>
-Every other kind of training on this ladder shows the model examples of the right answer. This one does something different: it lets the model try, scores the result, and rewards what scored well. That works when you can write a program that reliably judges whether an answer is right. When you cannot, this method will still produce a confident model, and it will have learned to satisfy your scoring program rather than to do the job.
+Every other kind of training shows the model what right looks like. This one lets the model try, scores the attempt, and shifts the model towards what scored well. It can teach judgement in a way examples cannot, because judgement is exactly the thing you cannot fully demonstrate. The catch is the scorer: the model will become excellent at whatever the scorer actually measures, which is not always what you meant it to measure. The entry requirement is a grader that cannot be satisfied without doing the real job.
 </PlainTerms>
 
-## What it changes
+## How training against a grader works
 
-Weights, guided by a reward signal instead of by labelled answers. The model generates, a grader scores, and training pushes the model towards higher-scoring behaviour.
+The loop: the model generates an attempt at the task, a grader scores it, and training raises the probability of the behaviours that led to high scores. Where supervised <Term k="fine-tuning">fine-tuning</Term> pulls the model towards fixed reference outputs, this pulls it towards whatever scores well, discovered by the model's own exploration.
 
-## The entry requirement
+That difference is the power and the danger in one mechanism. The power: on tasks where good answers vary and cannot be enumerated, the model can find strategies no example set contained. The reported sample efficiency reflects it: gains from around a hundred graded tasks where supervised fine-tuning at that scale degraded. The danger: the model searches for score, not for your intent, and any gap between the two will be found. Not through anything resembling malice; high-scoring shortcuts are simply reinforced, and the model has far more attempts to find gaps than you spent designing the grader.
 
-**A programmable grader that cannot be gamed.** This is the real gate, and it is why most teams should not be here. The grader must be automatic, because training needs thousands of judgements; it must be correct, because the model will optimise exactly what it measures; and it must be hard to satisfy without doing the actual task.
+## What makes a grader gameable
 
-Tasks where this is achievable share a shape: the answer is checkable. Does the code compile and pass the tests. Does the extracted figure match the filing. Does the proposed schedule satisfy every constraint. Tasks where it is not achievable are those where quality is a matter of taste or of judgement no program holds.
+A grader is gameable when score and competence can be separated. The common gaps:
+
+- **Surface markers.** If well-structured answers with confident phrasing tend to score well, the model learns structure and confidence, detached from correctness.
+- **Length and effort proxies.** If thorough answers score well, expect padding.
+- **An LLM as the judge.** Using another model to grade imports that model's biases as the target, and models have documented preferences for their own family's style. Your own diversity experiment found this the hard way: an effect that existed under a same-family judge vanished under an independent one.
+- **Incomplete coverage.** A grader that checks three properties of a good answer trains a model that optimises those three and neglects the unchecked rest.
+
+The tasks where grading is safe share one shape: **the outcome is checkable by a program that does not share the model's blind spots.** Code that must compile and pass tests. An extracted figure that must match the filing. A schedule that must satisfy every constraint. Where quality is taste, tone or judgement no program holds, the grader will be a proxy, and the proxy will be gamed.
+
+## The alarm that belongs in the runbook
+
+**When validation reward exceeds what a careful person achieves on the same task, the model has learned the rubric rather than the job.** A score above the human ceiling is a defect report, not a triumph. This is <Term k="reward hacking">reward hacking</Term>, it is well documented in production reinforcement learning, and the correct response is to treat the grader as the broken component.
+
+The operational consequence: the grader is production code now. It gets versioning, review, tests and an owner, because a fault in the grader trains a fault into the model, and models trained on a faulty grader do not announce it. They score wonderfully.
 
 ## What it fixes, and what it does not
 
-**Fixes:** judgement and reasoning on tasks with checkable outcomes. Vendor-published customer results in specialist domains report double-digit gains, including 39 percent on tax analysis, 12 points over physician baselines, and 20 percent on citation-extraction F1 [vendor].
+**Fixes:** judgement and multi-step reasoning on tasks with checkable outcomes. Vendor-published customer results in specialist domains report a 39 percent improvement on tax analysis, 12 points over physician baselines, and 20 percent on citation-extraction F1 [vendor].
 
-**Does not fix:** format, tone or style. Those are demonstrable, so they belong to [adapters and fine-tuning](/ladder/adapters-and-fine-tuning). Using a reward signal to teach formatting is the wrong instrument and an expensive one.
+**Does not fix:** format, tone or style, which are demonstrable and belong to [adapters](/ladder/adapters-and-fine-tuning). And it cannot add knowledge, for the same reason nothing in this deck can except [continued pretraining](/ladder/continued-pretraining): the mechanism shapes behaviour, it does not store facts.
 
-## The alarm that belongs in your runbook
+## At the bank
 
-**When the validation reward exceeds what a careful person achieves on the same task, the model has learned the rubric rather than the job.** Treat a score above the human ceiling as a defect report, not a result. This is <Term k="reward hacking">reward hacking</Term>, it is well documented, and it is the characteristic failure of this method.
+The tempting target is the disposition itself: train the agent to propose "escalate" or "no further action" against historical decisions, which the bank has in the millions. The bank should decline, and working through why teaches more than the successes do.
 
-The related discipline is that the grader is now part of your production system. It needs versioning, review and its own tests, because a fault in the grader becomes a fault trained into the model.
+**The labels are biased in a specific, known way.** Historical dispositions record what analysts decided, including their errors in both directions. Worse, the ground truth is asymmetric: a report that was filed gets confirmed or rebutted eventually, but an alert closed as "no further action" is almost never re-examined, so false negatives are invisible. A grader built on these labels teaches the model to reproduce the bank's historical blind spots with new confidence. This is the incomplete-coverage gap at institutional scale.
+
+**Where the grader is genuinely sound, the bank proceeds.** Two components of the agent's work are checkable by program:
+
+*Narrative grounding.* Every factual claim in a draft must trace to a retrieved source. A checker verifies claim-by-claim support: amounts match the transaction store, dates match the case file, no claim floats free. That grader cannot be satisfied by fluent invention, only by grounded drafting, so training against it directly attacks the failure mode this vertical fears most.
+
+*Completeness against the typology.* For each typology, the required evidentiary elements are enumerable: the pattern, the period, the counterparties, the expected-activity comparison. A checker verifies each element is present and sourced. Gameable only by actually assembling the evidence, which is the job.
+
+**The human ceiling check, concretely.** Quality assurance analysts agree with each other on narrative grounding roughly 92 to 95 percent of the time. If the trained model's validation score reaches 99 percent, the correct reading is not that the model has surpassed the QA team. It is that the checker has a hole, and the model found it first. The bank's runbook treats that score as an incident.
+
+**The boundary holds.** The disposition stays with the analyst, which is where the blueprint put it. Reinforcement fine-tuning makes the evidence in front of the analyst more complete and more grounded. It does not move the decision.
 
 ## The test
 
-There is no ordinary climb beyond this. If judgement is right and the model still does not understand your domain's material, the missing piece is [continued pretraining](/ladder/continued-pretraining), which is a different job rather than a higher one.
+If judgement on checkable outcomes is right and the model still misreads your domain's material, the missing piece is [continued pretraining](/ladder/continued-pretraining), which is a different job rather than a higher one. And whatever was trained here, [distillation](/ladder/distillation) can cheapen it once quality is proven.
 
-<EvidenceBadge status="vendor-reported" /> The domain gains above are vendor-published customer results and are flagged as such. The reward-hacking failure mode is independently documented.
+<EvidenceBadge status="vendor-reported" /> The domain gains are vendor-published customer results, flagged as such. The reward-hacking failure mode and the judge-bias finding are independently documented, the latter in our own published experiments.
 
 <details>
 <summary>The research behind this page</summary>
 
-- Reinforcement fine-tuning customer results (May 2025) [vendor], and the ordering that places this behind a grader, on [intelligence and learning](/layers/r06-intelligence-and-learning) and in [the decision catalog](/decisions).
-- Reward hacking in production reinforcement learning, covered on [the learning flywheel](/architecture/learning-flywheel).
+- Reinforcement fine-tuning customer results and sample efficiency (May 2025) [vendor], and the ordering that gates this behind a grader, on [intelligence and learning](/layers/r06-intelligence-and-learning) and in [the decision catalog](/decisions).
+- Reward hacking in production reinforcement learning: covered on [the learning flywheel](/architecture/learning-flywheel).
+- The same-family judge effect vanishing under an independent judge: [diversity, and who consumes the results](/patterns/diversity-and-consumer).
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

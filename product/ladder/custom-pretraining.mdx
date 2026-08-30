@@ -1,56 +1,66 @@
 ---
 title: "Custom pretraining and architecture"
 icon: "Cpu"
-description: "Two different things at the top of the market: training a base model of your own, and designing a different kind of model because your data is not text. Written so you can tell them apart and recognise which, if either, you need."
+description: "The top of the market, where two different things are sold with similar words: training a foundation model of your own, and designing a different kind of model because your data is a network rather than a document."
 ---
 
 <PlainTerms>
-At the top of the market two very different things get sold with similar language. One is building your own foundation model from scratch. The other is designing a different kind of model because your data is not documents at all, but networks, sequences or signals. The first is a question of economics and almost never the answer. The second is a real engineering discipline that applies to a specific and recognisable situation. This page is written so you can tell which one is in front of you.
+At the top of the market two very different things get sold in similar language. One is building your own foundation model from scratch, which is a question of economics and almost never the answer. The other is designing a different kind of model because your data is not documents at all but networks, sequences or signals, which is a real discipline with a recognisable use. This page explains both in enough depth that you can tell which one is in front of you, and whether either applies. The one thing to remember: everything below this chapter works around a fixed model; this chapter is about building models, which is a different profession.
 </PlainTerms>
 
-## Path one: training a base model of your own
+## Path one: a foundation model of your own
 
-**What it is:** pretraining a foundation model from scratch, or from an early checkpoint, on a corpus you assemble.
+**What it is.** Pretraining from scratch: initialise weights randomly, train on trillions of tokens, then align the result into something usable. Everything the base model knows must come from your assembled corpus, because there is no base model.
 
-**What it costs:** frontier-laboratory economics, in compute, in specialist staff, and in the time between deciding and having something usable. The model is then yours to evaluate, align, secure, host and replace when the field moves, which it will.
+**What it costs.** Frontier-laboratory economics: compute in the tens of millions and up, a standing research team, and the time between deciding and having something competitive, during which the field moves. And the artifact is perishable: the open and commercial models improve on someone else's budget, while yours improves on yours.
 
-**When it is genuinely the answer:** almost never for an enterprise. The honest cases are organisations whose data is both enormous and unlike public text, or where sovereignty requirements forbid any external model, and who can carry a standing research team. If you are reading this page to work out whether you qualify, you probably do not.
+**When it is genuine.** Sovereignty mandates that forbid external weights outright, at national or systemically-regulated scale. Or a corpus so large and so unlike public text that general models are structurally wrong for it, together with the money and the team. If you are reading this page to find out whether you qualify, you do not, and that is most of what the page is for.
 
-**What usually gets sold as this and is not:** [continued pretraining](/ladder/continued-pretraining) delivers most of what people want from "our own model", from your existing corpus, at a fraction of the cost, and keeps you on an upgrade path. If someone proposes a custom foundation model, the first question is what continued pretraining on the same corpus would achieve.
+**The question that deflates most proposals.** What would [continued pretraining](/ladder/continued-pretraining) on the same corpus achieve? It delivers most of what people actually want from "our own model", from the same data, at a small fraction of the cost, on an upgrade path someone else maintains.
 
-One published result is worth knowing, with its caveats. Mixing a small fraction of domain data into pretraining from scratch, at 0.1 to 10 percent of tokens, outperformed the standard pipeline of general pretraining followed by fine-tuning across three domains, reducing the tokens needed to reach a given domain performance by up to 1.75 times and improving downstream results by up to 6 percentage points on one mathematics benchmark [vendor]. Note the scope: models from 300M to 3B parameters, a 200B-token budget, and the research is published by a company selling data-curation services. It concerns pretraining from scratch, not continued pretraining, so it argues about how you would run path one rather than whether to take it.
+**One published result, with its flags.** If you are on this path, when the domain data enters matters: mixing 0.1 to 10 percent of domain data into pretraining from scratch outperformed the standard general-pretrain-then-adapt pipeline across three domains, cutting the tokens needed for a given domain performance by up to 1.75 times [vendor]. Scope: models of 300M to 3B parameters, a 200B-token budget, published by a company selling data curation. It informs how to run path one, not whether to take it.
 
-## Path two: designing a different kind of model
+## Path two: when your data is not text
 
-This applies when your data is not text-shaped. Networks of accounts, supply chains, telemetry streams, molecular structures, physical topologies. A language model is the wrong object for these, and the discipline involved is not prompt or context work at any scale.
+A language model is a machine for sequences of tokens. Some enterprise data is not that, and no amount of prompting, retrieval or fine-tuning makes it that. Transaction networks, supply chains, telemetry streams, molecular structures. For these, the model itself is different, most commonly a graph neural network, and the engineering discipline around it is different too.
 
-The failure modes here are structural rather than a matter of tuning, and they are the vocabulary to listen for:
+**How a graph model works, in one paragraph.** Each node starts with a vector describing it. In each layer, every node updates its vector using its neighbours' vectors, so after one layer a node knows about its neighbours, after two it knows about their neighbours, and so on outward. Prediction then reads the node vectors: is this account likely part of a ring, is this component about to fail. The structure itself, who connects to whom, is what the model learns from, which is exactly what a document model cannot see.
 
-| Failure | What it means |
-|---|---|
-| Representation collapse | Learned vectors stop being distinct, so different inputs become indistinguishable |
-| Gradient collapse | The learning signal dies passing back through the layers, so early layers stop learning |
-| Over-smoothing | In a network model, stacking layers averages every node towards the same value, so depth destroys discrimination |
-| Over-squashing | Information from a growing neighbourhood is crushed into a fixed-size vector, so long-range signal is lost |
-| Partitioning and sampling | A graph too large for memory must be cut or sampled, and both change the object being trained on |
-| Distributed convergence | Once training is sharded, single-machine convergence behaviour no longer holds |
+**The failure modes are structural, and they are the vocabulary to listen for.**
 
-Two of these pull against each other, which is the tell for genuine depth: adding layers to relieve over-squashing worsens over-smoothing. Anyone who has really worked here has had to make that trade rather than pick a setting.
+- **Over-smoothing.** Each layer averages neighbours. Stack enough layers and every node in a connected region converges to the same vector: depth destroys the distinctions the model exists to draw. This is why production graph models are often only two or three layers deep.
+- **Over-squashing.** The opposite pressure. Information from a node several hops away must pass through an exponentially growing neighbourhood compressed into fixed-size vectors, so long-range signal is crushed at bottleneck edges.
+- The two **pull against each other**: layers added to relieve over-squashing worsen over-smoothing. This trade is the tell for genuine expertise. Someone who has really worked here has had to resolve it structurally, with rewiring, attention or hierarchical pooling, not with a bigger setting.
+- **Representation and gradient collapse.** The general deep-learning failures: learned vectors that stop being distinct, and learning signal that dies through depth, so parts of the network silently stop training.
+- **Partitioning and sampling.** A graph with billions of edges does not fit in accelerator memory, and unlike documents it cannot be arbitrarily cut: every cut severs real relationships. Partition into clusters and you train on a graph missing its cross-cluster edges; sample neighbourhoods and you introduce variance and bias in what each node sees. Both change the object being trained on, and managing that gap is where much of the real work lives.
+- **Distributed convergence.** Sharded across many machines, optimisation stops behaving like the single-machine textbook: giant effective batches change the loss landscape, stale gradients arrive from busy workers, and communication cost starts dictating the algorithm.
 
-**When it is genuinely the answer:** when the thing you are predicting is a property of a structure rather than of a document, and the structure is too large to fit in memory. That is a recognisable situation, and it has little to do with agents.
+**When it is genuine.** The thing you are predicting is a property of a structure rather than of a document, at a scale where these failure modes actually bite. That situation is recognisable, and it has little to do with agents.
+
+## At the bank
+
+The bank has exactly one dataset with this shape, and it is the important one: the transaction network. Hundreds of millions of accounts, billions of edges, and the thing worth predicting, coordinated activity, is a property of the network. A money-mule ring is nearly invisible account by account: each node's activity looks plausible alone, and the pattern only exists across the structure. This is why network models genuinely belong in financial crime, and why this chapter is not hypothetical in this vertical.
+
+**How it meets the agent, and how it does not.** The graph model is not the agent, does not chat, and is not built by the agent team. It runs in the bank's model-risk-managed scoring estate, and its output arrives in the investigation as one more input: a network risk score, and the subgraph that produced it, exposed through a tool. The agent retrieves it, cites it, and drafts around it, exactly as it does with the transaction store. Deck A's division of labour holds at the top of the ladder: the model computes over the structure, the harness carries the result into the evidence, the analyst decides.
+
+**The staffing point, made concrete.** Everything from step 1 to chapter 7 was built by the bank's engineering organisation around fixed models. Path two is a machine-learning research function with its own model risk lifecycle, and its own failure vocabulary, the one above. A bank that assigns the graph model to the agent team, or the agent to the graph team, has misread this chapter's central sentence: these are different professions that meet at a tool boundary.
+
+**And the deflating question applies here too.** Before the bank builds a bespoke architecture, the simpler credible alternatives get their fair run: hand-built network features fed to a plain classifier, an off-the-shelf graph model at modest depth, known-typology rules. The exotic option must beat the boring ones on the bank's own labels, which is the same [matched control](/patterns/how-to-test-a-context-design) discipline that opened this ladder, applied at its top.
 
 ## How this connects back
 
-Note where this sits. Everything in Deck A and most of Deck B is work done **around a fixed pretrained model**. This page is about **building the model**. They are different disciplines with different staff, and treating one as a continuation of the other is how programmes end up staffed wrongly.
+Everything below this chapter works **around a fixed model**. This chapter **builds models**. Different budgets, different staff, different risk lifecycle, meeting at a tool boundary.
 
-The instinct does transfer, and it is the same instinct this whole ladder is built on: diagnose the structural failure before changing anything, and never on the assumption that a bigger version of what you have will fix it.
+The instinct, though, transfers all the way down, and it is the instinct this whole ladder teaches: diagnose the structural failure before spending, and never assume a bigger version of what you have will fix it.
 
-<EvidenceBadge status="mixed-evidence" /> The pretraining-mix result is vendor-published research at small model scale and flagged as such. The failure modes in path two are standard, well documented, and not specific to this guide.
+<EvidenceBadge status="mixed-evidence" /> The pretraining-mix result is vendor-published research at small model scale, flagged as such. The graph failure modes are standard, well-documented, and not specific to this guide.
 
 <details>
 <summary>The research behind this page</summary>
 
-- The Finetuner's Fallacy, DatologyAI, 18 March 2026 [vendor]: specialised pretraining at 0.1 to 10 percent domain mix, models 300M to 3B, 200B-token budget. https://www.datologyai.com/blog/finetuners-fallacy
-- The alternative to path one for almost all readers is on [continued pretraining](/ladder/continued-pretraining).
+- The Finetuner's Fallacy, DatologyAI, 18 March 2026 [vendor]: domain mix at 0.1 to 10 percent, models 300M to 3B, 200B-token budget. https://www.datologyai.com/blog/finetuners-fallacy
+- The alternative for almost all readers: [continued pretraining](/ladder/continued-pretraining).
+- The matched-control discipline: [how to test a context design](/patterns/how-to-test-a-context-design).
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

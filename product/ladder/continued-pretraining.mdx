@@ -1,63 +1,72 @@
 ---
 title: "Continued pretraining"
 icon: "BookOpenText"
-description: "Teaching a model your domain from raw text rather than from labelled examples. The option for an organisation with a large proprietary corpus, and the one most often confused with fine-tuning."
+description: "How a model learns a domain from raw text, why tokenisation makes specialist language expensive for a general model, what the corpus work really involves, and the budget split the evidence supports."
 ---
 
 <PlainTerms>
-This is how you teach a model your world: its vocabulary, its documents, its notation, the way your industry actually writes. You do not need labelled examples. You need text, a lot of it, and it can be the text you already have. This is the option that suits an organisation sitting on decades of its own material, and it is routinely confused with fine-tuning, which is a different job needing a different kind of data.
+This is how you teach a model your world: not from labelled examples but from raw text, the material your organisation already has in bulk. The model keeps doing what pretraining always did, predicting the next word, but now over your contracts, filings, tickets and manuals, and it comes out reading your domain the way your people do. It is the option that suits an organisation with a large corpus, it is routinely confused with fine-tuning, and the corpus preparation is where the project is won or lost.
 </PlainTerms>
 
-## What it changes
+## What the model actually learns from raw text
 
-The model continues the training it originally had, predicting the next word, but now over your corpus instead of the open internet. Nobody labels anything. The model comes out reading your domain more fluently than it did.
+Next-token prediction sounds too simple to teach anything. It is worth seeing why it is not.
 
-## The distinction that matters
+To predict the next word in "the beneficial owner of the account is", a model must have absorbed what beneficial ownership is, what kinds of entities own accounts, and what tends to follow in the kind of document this is. Prediction quality is a proxy for understanding, and improving it over billions of tokens of your material forces the model to absorb your domain's concepts, relationships and conventions. Nobody labels anything, because the text itself is the supervision: every next word is a tiny test with a known answer.
+
+There is also a mechanical reason general models read specialist text badly, and it is visible before any learning happens. Models read in <Term k="token">tokens</Term>, and a tokeniser trained on general text splits unfamiliar vocabulary into fragments: a drug name, a legal term of art, or a SWIFT message type becomes four or five meaningless shards. The model spends capacity reassembling words your industry treats as atoms. Continued pretraining teaches the model your vocabulary's behaviour even through awkward tokenisation, which is part of why fluency in the domain improves so visibly.
+
+## The distinction, one more time
 
 | | Supervised <Term k="fine-tuning">fine-tuning</Term> | Continued pretraining |
 |---|---|---|
 | Input | Pairs: a question and the wanted answer | Raw text, as it already exists |
-| Volume | Thousands of examples | Billions of <Term k="token">tokens</Term> |
+| Volume | Thousands of examples | Billions of tokens |
 | Teaches | How to behave | What the domain is |
-| Effort to prepare | High: someone must write the answers | Low: you largely already have it |
+| Preparation | High: someone writes the answers | Different: nobody writes anything, but the corpus must be curated |
 
-The preparation cost is the part that changes the business case. Most enterprises cannot easily produce fifty thousand high-quality labelled pairs, and can readily produce a billion tokens of contracts, tickets, filings, manuals, code or correspondence.
+The preparation row deserves expansion, because "you already have the data" is true and misleading.
 
-## What you need before starting
+## The corpus work is the project
 
-A corpus at genuine scale, in the billions of tokens rather than the millions, and the right to train on it. Clarity about what is in it, because the model will absorb whatever is there, including the errors and the material you were not supposed to retain. Access to training infrastructure, either a managed offering or a framework on rented hardware. And an eval suite that measures your domain, not a public benchmark.
+A model absorbs whatever the corpus contains, indiscriminately. The work is deciding what that should be:
 
-The data governance question is sharper here than anywhere else on this ladder. A model trained on your corpus is a derived artifact of it, so classification, residency and deletion obligations reach the resulting weights. [The concern matrix](/architecture/concern-matrix) sets out how that inheritance works.
+- **Deduplication.** Enterprise archives repeat: templates, boilerplate, forwarded chains, near-identical versions. Repetition over-weights whatever repeats.
+- **Quality filtering.** OCR failures, corrupted exports and machine-generated logs teach noise.
+- **Contamination.** Anything you must not retain, and anything you would not want generated back: credentials in old tickets, personal data outside its retention basis, privileged material.
+- **The rights question.** Training on it requires the right to, and obligations follow the weights. A model trained on your corpus is a derived artifact of it, so classification, residency and erasure obligations reach the resulting model. [The concern matrix](/architecture/concern-matrix) sets out that inheritance, and it is sharper here than anywhere else on this ladder, because the artifact is large, expensive, and impossible to selectively forget.
+- **The mix.** Training only on domain text sharpens the domain and dulls everything else. Practice mixes domain material with general text to hold general capability, and the forgetting repair on [distillation](/ladder/distillation) applies here as it did to fine-tuning.
 
-## What it fixes, and what it does not
+## How much goes where: the budget split
 
-**Fixes:** domain vocabulary the base model reads poorly, unusual document structure, proprietary notation and identifiers, industry shorthand, and languages the base model saw little of. If your people can read a document fluently and the model plainly cannot, this is the lever.
+One study modelled the allocation directly: a fixed 30-billion-token budget split between continued pretraining and supervised fine-tuning, 7B-parameter models, across health, chemistry and coding. The optimum in every domain put **roughly 99.99 percent of the budget into continued pretraining** and the small remainder into fine-tuning, and reported an 11.6 percent improvement over a state-of-the-art domain-adapted comparison at up to 95 percent less budget (OpenReview, 8 October 2025).
 
-**Does not fix:** task behaviour or output format. A model that has read a million contracts still needs telling what you want done with one. That is why the standard pattern is continued pretraining first and then supervised fine-tuning, in that order, rather than a choice between them.
+Read it as a direction, not a recipe: one study, three domains, one model size. The durable conclusions are the ordering and the proportion. Domain adaptation is the big job and is done on raw text; task behaviour is the small job on top and is done on pairs. Teams that invert this, hand-writing tens of thousands of pairs to inject knowledge, are doing the expensive job with the wrong instrument.
 
-## How much of your budget should go where
+## At the bank
 
-One study modelled this directly, allocating a fixed 30 billion token budget between continued pretraining and supervised fine-tuning for 7B-parameter models across health, chemistry and coding. The optimum in every domain put **approximately 99.99 percent of the token budget into continued pretraining** and the remainder into fine-tuning, reporting an 11.6 percent improvement over a state-of-the-art domain-adapted comparison at up to 95 percent less token budget (OpenReview, 8 October 2025).
+The bank holds decades of exactly the material this step wants: filed suspicious activity reports and their narratives, case files, typology guidance, internal policy, regulator correspondence, procedure manuals. Hundreds of millions to billions of tokens, written in the dialect the agent is supposed to speak.
 
-Read that as a direction rather than a recipe. It was 7B models, three domains and one budget, and the fine-tuning share is small in tokens rather than unimportant. The useful conclusion is the ordering and the proportion: the domain adaptation is the large job, and the task teaching is the small one on top.
+**What the base model gets wrong, concretely.** It reads "structuring" as organisation rather than as deposits split to evade thresholds. It parses SWIFT field references as noise. It treats "smurfing" as a typo. Every such miss is context the retrieval layer must carry on every call: the agent works, but it works like a bright temp on their first week, needing everything explained. Continued pretraining is how the temp becomes staff.
 
-## What it costs
+**What goes in the corpus, and what does not.** In: the filed reports, guidance, policies, manuals, anonymised case narratives. Out: raw transaction data, which is structured data the model reaches through tools, not prose to absorb; anything under erasure obligations, because weights cannot forget a customer; and correspondence containing personal data outside its retention basis. The corpus review is run jointly with the privacy office, and that is not overhead, it is the project.
 
-Materially more than fine-tuning, because the token volume is thousands of times larger, and the cost scales with corpus size and model size. It also produces the heaviest artifact on this ladder: a base model of your own that must be re-based when the underlying model generation moves, and re-evaluated when your corpus changes.
+**The sequence.** Continued pretraining on the corpus teaches the dialect. The chapter 4 fine-tune re-runs on top to restore the house narrative shape. The general-capability eval runs, and the distillation repair follows if it shows damage. Then the routing economics from chapter 5 are recomputed, because a domain-adapted small model handles a wider routine tier than a general one did.
 
-Forgetting applies here too. Training hard on one domain degrades general capability, and the same repair applies, covered on [distillation](/ladder/distillation).
+**What changes downstream.** Retrieval budget stops being spent on definitions and starts being spent on evidence. Prompts shrink because the model no longer needs the typology glossary inline. The measured effect to expect is not "smarter" but cheaper and sharper: fewer tokens of explanation per alert, better use of what is retrieved.
 
 ## The test for moving on
 
-There is rarely anywhere to move on to. Continued pretraining followed by fine-tuning is the end of the road for almost every enterprise. The remaining step, [custom pretraining and architecture](/ladder/custom-pretraining), is for organisations whose data is not text-shaped at all, or who have frontier-lab economics.
+There is rarely anywhere further to go. Continued pretraining plus fine-tuning is the end of the road for almost every enterprise. The final chapter, [custom pretraining and architecture](/ladder/custom-pretraining), exists for one specific situation: data that is not text at all.
 
-<EvidenceBadge status="preprint-or-prototype" /> The budget-allocation finding is a single study on 7B models across three domains, published on OpenReview in October 2025. It is the most direct evidence available on the question and it has not been replicated here.
+<EvidenceBadge status="preprint-or-prototype" /> The budget-allocation finding is a single study at 7B scale, and is presented as a direction rather than a recipe. The tokenisation mechanism is standard and uncontroversial.
 
 <details>
 <summary>The research behind this page</summary>
 
-- Modelling Optimal Trade-Off Between Continued Pre-Training and Supervised Fine-Tuning for LLM Domain Adaptation, OpenReview, 8 October 2025: 7B models, health, chemistry and coding, 30B-token budget. https://openreview.net/forum?id=guUUlHPXRw
-- Forgetting and its repair: on-policy distillation (October 2025), on [intelligence and learning](/layers/r06-intelligence-and-learning).
-- Data obligations inherited by derived artifacts: [the concern matrix](/architecture/concern-matrix) and [agent data engineering](/layers/r14-agent-data-engineering).
+- Modelling Optimal Trade-Off Between Continued Pre-Training and Supervised Fine-Tuning for LLM Domain Adaptation, OpenReview, 8 October 2025: https://openreview.net/forum?id=guUUlHPXRw
+- Derived artifacts inheriting obligations: [the concern matrix](/architecture/concern-matrix) and [agent data engineering](/layers/r14-agent-data-engineering).
+- The forgetting repair: [distillation](/ladder/distillation), and [intelligence and learning](/layers/r06-intelligence-and-learning).
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

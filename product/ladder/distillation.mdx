@@ -1,38 +1,58 @@
 ---
 title: "Distillation"
 icon: "ArrowDownWideNarrow"
-description: "Not a step up. The same capability from a smaller, cheaper, faster model, and the published repair for the forgetting that domain training causes."
+description: "How a large model teaches a small one, why learning from distributions beats learning from answers, the repair for fine-tuning's forgetting, and the arithmetic that decides when it pays."
 ---
 
 <PlainTerms>
-Everything else on this ladder tries to make an agent better. This one keeps it the same and makes it cheaper. A large model is used to teach a small one, and the small one is what you run. It belongs on the ladder because it is the answer to a real complaint, which is not "this is wrong" but "this is too slow" or "this costs too much". It also has a second use that is easy to miss: it repairs the damage that domain training causes.
+Everything else on this ladder tries to make an agent better. This one keeps quality roughly the same and makes it cheaper and faster, by having a large model teach a small one. It earns its place twice over: it is the answer to "this costs too much at volume", and it is the published repair for the damage that fine-tuning does. The one thing to remember: a student can only be as good as its teacher, so distil only what the teacher already does well.
 </PlainTerms>
 
-## What it changes
+## How a model teaches a model
 
-Which model runs in production. A capable teacher model produces outputs, and a smaller student model is trained to reproduce them. You deploy the student.
+Supervised fine-tuning shows a model the right answer. Distillation shows it something richer: the teacher's full distribution over possible next <Term k="token">tokens</Term>, not just the one it picked. The student learns that "transferred" was chosen, and that "moved" was nearly chosen, and that "flew" was never in contention. Those relative preferences carry far more information per example than a bare answer does, which is why a student can approach teacher quality with surprisingly modest training.
 
-## What it fixes, and what it does not
-
-**Fixes:** unit cost and latency at roughly the same quality, on a bounded task. **Does not fix:** anything about quality. If the teacher is wrong, the student learns to be wrong faster and more cheaply.
+The modern refinement is **on-policy distillation**: rather than the student passively imitating teacher transcripts, the student generates, and the teacher grades the student's own attempts. This matters because it teaches the student in the situations the student actually gets itself into, including its own characteristic mistakes, rather than in the situations the teacher would have been in. The published economics: comparable quality at **9 to 30 times lower training compute** than scaling supervised fine-tuning.
 
 ## The second use: repairing forgetting
 
-Training a model on your domain degrades its general instruction-following. On-policy distillation repairs this, by distilling from the **pre-fine-tune version of the same model** as teacher, at 9 to 30 times lower training compute than scaling supervised fine-tuning. That makes distillation maintenance rather than only compression, and it is the reason it sits between [adapters](/ladder/adapters-and-fine-tuning) and the heavier options rather than at the end.
+The previous chapter left a problem open. Fine-tuning on your domain degrades general capability, and adapters do not prevent it.
 
-## When it is worth it
+The published repair is distillation with a specific teacher: **the pre-fine-tune version of the same model.** The fine-tuned student re-learns the general behaviour from the model it used to be, while keeping the domain behaviour it just gained. This works because the two objectives are not actually in conflict; the fine-tune simply drifted weights it did not need to drift, and the original model is a perfect reference for where they belong.
 
-A narrow, high-volume workload, where the same shape of request runs constantly, and where a locked eval can prove the student holds quality. The tension worth naming: the business case needs a fixed eval set, and a live learning loop keeps rewriting the eval set. Decide which you are running before you commit.
+So distillation is maintenance, not only compression. If you run chapter 4 or chapter 7, plan to run this afterwards, and let your general-capability eval tell you whether you need to.
+
+## When it pays: the arithmetic
+
+Distillation is a fixed cost that buys a lower marginal cost. The decision is arithmetic, not fashion:
+
+- **Volume.** The saving is per call, so the fixed cost divides by call count. A workload of hundreds of calls a day rarely pays it back; tens of thousands a day usually does.
+- **Narrowness.** A student holds teacher quality on a bounded task, not in general. The narrower the task, the smaller the student can be.
+- **A locked eval.** The claim "the student holds quality" is a measurement, and it needs the eval to exist before the student does. The tension worth naming: the business case needs a fixed eval set, and a live learning loop keeps rewriting the eval set. Decide which programme you are running.
+
+And one hard rule: **never distil a capability the teacher does not reliably have.** The student learns the teacher's errors with the same fidelity as its skills, minus the scale that occasionally rescued the teacher.
+
+## At the bank
+
+By the previous chapter, the bank had already moved drafting to a small fine-tuned model, and the general-capability eval came back slightly degraded: the adapter improved narratives and cost the model some instruction-following on unrelated tasks.
+
+**The repair run.** The bank distils from the original, pre-adapter 7B model as teacher, on a general instruction-following mix, while holding the narrative eval as a guard. The degraded capability recovers; the narrative behaviour stays. This is the standard sequence, not an exotic one: fine-tune, measure the collateral damage, distil it away.
+
+**The volume case.** Alert triage runs at tens of thousands of items a month, and most of them are routine: assemble context, produce a narrative, propose "no further action" with reasons. The frontier model's quality on routine alerts is not the constraint, its unit cost is. A distilled student handling the routine tier, with a confidence rule escalating the unusual ones to the larger model, cuts the average cost per alert substantially while the escalation path preserves quality where it matters. The split is measured, not guessed: the eval says which alerts the student handles at parity, and the boundary is set there.
+
+**What the bank does not distil.** The disposition proposal on complex cases. That judgement is the part the analysts and regulators care most about, the teacher's own reliability there is the open question of the next chapter, and a cheaper copy of an unproven judgement is a saving nobody asked for.
 
 ## The test
 
-There is no climb from here. Distillation is a move sideways and down, and it can follow any of the other options in this deck.
+There is no climb from here. Distillation follows the other options rather than replacing them: after [adapters](/ladder/adapters-and-fine-tuning) or [continued pretraining](/ladder/continued-pretraining) as the forgetting repair, or after any of them as the volume play. If what remains wrong is judgement on gradeable outcomes, that is [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning).
 
-<EvidenceBadge status="mixed-evidence" /> The compute ratio and the forgetting repair come from published work; the economics of any specific case depend on your volume and are not general.
+<EvidenceBadge status="mixed-evidence" /> The compute ratio and the forgetting repair are published work. The routing economics are arithmetic whose inputs are your own volumes, and no general number is claimed for them.
 
 <details>
 <summary>The research behind this page</summary>
 
-- On-policy distillation (October 2025), including the forgetting repair and the training-compute comparison, covered on [intelligence and learning](/layers/r06-intelligence-and-learning).
+- On-policy distillation (October 2025), including the pre-fine-tune-teacher repair and the 9 to 30 times training-compute comparison, covered on [intelligence and learning](/layers/r06-intelligence-and-learning).
+- Routing between model tiers and the cost model behind it: [size agent supervision and cost](/layers/r12-observability-and-finops).
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>
