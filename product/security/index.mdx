@@ -1,0 +1,138 @@
+---
+title: "Security practices for AI agents"
+icon: "ShieldCheck"
+description: "The practices that keep an agent useful under attack: threat modelling, untrusted-content handling, identity, tool security, adversarial evaluation, runtime enforcement, and evidence-led response."
+datePublished: "2026-08-31"
+dateModified: "2026-08-31"
+---
+
+<PlainTerms>
+An AI agent is software that reads, decides, and acts. Its security problem is not only whether the model says something unsafe. It is whether untrusted content can redirect the work, whether the agent can reach more than the task requires, whether a poisoned tool or memory can persist the attack, and whether anyone can prove afterward what happened. This section turns those risks into practices a delivery team can apply. The thing to remember: assume the model can be manipulated, then make sure manipulation does not become authority.
+</PlainTerms>
+
+## Why security practices need their own section
+
+**WHY:** The [target-state architecture](/architecture) establishes where identity, policy, gateways, evidence and human accountability belong. That is necessary, but a diagram does not tell a team how to threat-model one workflow, build an adversarial test, qualify an MCP server, respond to a poisoned memory, or decide whether a defense is merely making the agent unusable. Agent security needs repeatable operating practices as well as components.
+
+**WHAT:** Secure an agent as a chain of **intent, context, reasoning, action and evidence**. At every link, identify who can supply data, what authority is available, how a compromise is contained, how the failure will be tested, and what independent record will show the result. Treat external taxonomies and benchmarks as inputs to that work, not as substitutes for it.
+
+## The operating position
+
+**In short:** Do not ask the model to be the boundary that protects the model.
+
+Instructions, retrieved documents, emails, web pages, tool results and messages from other agents eventually reach a model as context. An attacker exploits that convergence by putting instructions where the system expected data. Better prompting and content screening can reduce successful attacks, but the security design must tolerate some failures. NIST describes agent hijacking as the familiar security problem of failing to separate trusted instructions from untrusted external data. Its evaluation work recommends adaptive tests, task-level analysis and multiple attack attempts rather than reliance on one aggregate score ([NIST CAISI, January 2025](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)).
+
+The practical position is therefore:
+
+1. **Assume untrusted content sometimes changes model behaviour.** Detection remains useful, but a detector is not an authorization boundary.
+2. **Give every agent less authority than the surrounding application.** Authority is scoped to the task, expires, and cannot be enlarged by the agent.
+3. **Put consequential decisions outside the model.** The [four deterministic zones](/architecture/deterministic-zones) define the minimum boundary.
+4. **Test utility and security together.** A defense that stops the attack by stopping all useful work has not solved the problem.
+5. **Collect evidence independently.** An agent's account of its own conduct is testimony, not evidence.
+
+<Callout title="The security invariant">
+No text the agent reads, whether it came from a user, a document, a tool, memory, another agent, or the agent itself, may create new authority. Authority comes only from verified identity, explicit delegation and policy enforced outside the model.
+</Callout>
+
+## The practice loop
+
+<Steps>
+<Step>
+**Model the workflow, not only the model.** Draw the identities, data sources, tools, memory stores, approval points and external effects. Mark which inputs an attacker can influence and which actions are consequential.
+</Step>
+<Step>
+**Reduce and bind authority.** Give the agent its own identity, task-scoped credentials, explicit tool allowlists, resource constraints and expiry. A user who may approve a payment does not imply that every agent acting for that user may do so.
+</Step>
+<Step>
+**Mediate every action.** Validate arguments, authorize the specific action, constrain destinations and amounts, and fail closed where the consequence demands it. The model proposes; deterministic machinery disposes.
+</Step>
+<Step>
+**Attack the complete path.** Place adversarial content where the real agent will encounter it: email, web results, retrieved files, tool metadata, memory and agent-to-agent messages. Judge the resulting tool effects, not only the final prose.
+</Step>
+<Step>
+**Observe and respond.** Capture model, prompt, context provenance, tool request, policy decision, effect and human approval through a channel the agent cannot alter. Revoke credentials, isolate state and preserve evidence when a test or incident fails.
+</Step>
+<Step>
+**Turn every failure into a regression.** Add the smallest reproducible counterexample to the evaluation suite, then require it to survive every model, prompt, tool, policy and framework change.
+</Step>
+</Steps>
+
+## The chapters
+
+The guide will be built in this order. The order follows the work: understand the system, constrain it, attack it, and prove what happened.
+
+<Cards>
+  <Card icon={<I name="map" />} title="1. Threat-model an agentic workflow" href="/security/threat-model">
+    Map intent, trust, authority, state and effects before choosing controls. Includes an attack-surface worksheet and the first set of abuse cases.
+  </Card>
+  <Card icon={<I name="alert" />} title="2. Treat retrieved content as hostile">
+    Direct and indirect prompt injection, tool-output poisoning, retrieval poisoning and the controls that still hold when detection fails.
+  </Card>
+  <Card icon={<I name="key" />} title="3. Bind identity, authority and delegation">
+    First-class agent identity, least privilege, task-scoped credentials, non-repudiation, revocation and the confused-deputy problem.
+  </Card>
+  <Card icon={<I name="wrench" />} title="4. Secure tools, MCP and external actions">
+    Tool provenance, schema validation, capability discovery, third-party servers, dangerous combinations and consequential-action gates.
+  </Card>
+  <Card icon={<I name="flask" />} title="5. Evaluate and red-team the agent">
+    Utility, security, adaptive attacks, repeated trials, environment-state judges, defense evaluation and promotion gates.
+  </Card>
+  <Card icon={<I name="target" />} title="6. Use AgentDojo as a worked benchmark">
+    Build and run hijacking scenarios, interpret utility and attack success together, extend the environments and state what the result cannot prove.
+  </Card>
+  <Card icon={<I name="shield" />} title="7. Enforce and contain at runtime">
+    Policy decision points, sandboxes, network egress, transaction limits, approvals, kill switches and recovery boundaries.
+  </Card>
+  <Card icon={<I name="database" />} title="8. Protect memory, context and data">
+    Memory provenance, write policy, quarantine, sensitive-data minimisation, retrieval permissions, deletion and poisoning response.
+  </Card>
+  <Card icon={<I name="activity" />} title="9. Detect, investigate and recover">
+    Security telemetry, independent traces, incident runbooks, credential revocation, state repair and evidence retention.
+  </Card>
+  <Card icon={<I name="clipboard" />} title="10. Crosswalk OWASP without outsourcing judgment">
+    Map the OWASP agentic risks to architecture controls, adversarial tests, owners and evidence, while keeping the guide's own control model stable.
+  </Card>
+</Cards>
+
+## How external frameworks fit
+
+**In short:** OWASP supplies a threat checklist, MITRE ATLAS supplies adversary behaviour, and benchmarks supply experiments. None supplies the complete security architecture.
+
+The **OWASP Top 10 for Agentic Applications 2026** names ten risk areas, from agent goal hijack and tool misuse through memory poisoning, insecure inter-agent communication, cascading failures and human-agent trust exploitation. It is a valuable coverage check and shared vocabulary ([OWASP, December 2025](https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/)).
+
+**MITRE ATLAS** is a living knowledge base of tactics and techniques observed or demonstrated against AI-enabled systems. Its agentic entries include context poisoning, tool poisoning, credential harvesting, tool invocation and exfiltration through agent tools ([MITRE ATLAS, accessed August 2026](https://atlas.mitre.org/)). It is useful for turning a threat statement into concrete adversary paths.
+
+**AgentDojo** is an executable environment for measuring whether a tool-using agent completes a legitimate task and whether an injection makes it complete an attacker's task. It is useful because it evaluates state-changing tool behaviour, not only conversational output ([AgentDojo, NeurIPS 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/97091a5177d8dc64b1da8bf3e1f6fb54-Paper-Datasets_and_Benchmarks_Track.pdf)).
+
+This section connects the three to the enterprise design: each threat must land on an owner and boundary; each mitigation must name where it is enforced; each test must judge an observable outcome; and each deployed control must leave evidence.
+
+## What good looks like
+
+A security review of an agent is complete only when it can answer all six questions:
+
+- **Intent:** What user or business objective is the agent allowed to pursue, and what objectives are explicitly outside scope?
+- **Trust:** Which context sources are trusted, authenticated, untrusted or attacker-writable?
+- **Authority:** Which identities, credentials, tools, resources and external effects are available at each step?
+- **Containment:** What independently enforced rule limits the result when the model is manipulated or simply wrong?
+- **Evaluation:** Which benign tasks and attacker goals prove that the workflow remains useful and safe?
+- **Evidence:** Which independent record proves the input, decision, authorization, effect, approval and recovery?
+
+If one answer is missing, the work is not finished. If the answer exists only in the system prompt, it is not a control.
+
+## Evidence and limits
+
+This section is deliberately narrower than general cybersecurity. Conventional application, cloud, identity, supply-chain and operational-security practices still apply; agent-specific guidance adds to them. OWASP and MITRE are living resources and must be re-verified when their taxonomies change. Benchmark results are evidence about the tested model, scaffold, tool set, attack method and task distribution, not a certification of production safety. The practices here assume that prompt injection cannot be eliminated at the model boundary and therefore emphasize authority reduction, deterministic mediation, adversarial evaluation and independent evidence.
+
+<details>
+<summary>The architecture behind this section</summary>
+
+- [The target-state architecture](/architecture)
+- [The four deterministic zones](/architecture/deterministic-zones)
+- [The identity and delegation chain](/architecture/identity-chain)
+- [Enforcement outside the model](/architecture/enforcement)
+- [The autonomy contract](/architecture/autonomy-contract)
+- [Security and identity](/layers/r10-security-and-identity)
+- [Governance, risk and sovereignty](/layers/r11-governance-risk-sovereignty)
+- [Observability and FinOps](/layers/r12-observability-and-finops)
+
+</details>

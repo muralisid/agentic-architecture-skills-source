@@ -12,6 +12,7 @@ import { Wordmark } from '@/components/site/wordmark';
  */
 export const NAV_LINKS = [
   { text: 'Architecture', url: '/architecture' },
+  { text: 'Security', url: '/security' },
   { text: 'Agentic OS', url: '/agentic-os' },
   { text: 'Ladder', url: '/ladder' },
   { text: 'Layers', url: '/layers' },

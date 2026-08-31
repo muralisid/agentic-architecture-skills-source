@@ -1,6 +1,7 @@
 {
   "pages": [
     "architecture",
+    "security",
     "patterns",
     "layers",
     "decisions",
