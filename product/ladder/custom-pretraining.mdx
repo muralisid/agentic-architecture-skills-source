@@ -22,6 +22,8 @@ At the top of the market two very different things get sold in similar language.
 
 <GuideFigure id="top-of-market-paths" fullWidth />
 
+<TeachingIllustration src="/images/ladder/custom-pretraining-paths-labeled-v2.webp" alt="One path sends vast data and compute into a foundation model while another sends a transaction network through a compact graph model and into an agent tool." title="Two expensive-sounding paths solve different problems" caption="Training from random weights is a sovereignty-and-economics decision at frontier scale. Choosing a different architecture is a data-shape decision: a graph model can calculate over relationships that a text model should receive as governed evidence." />
+
 ## Path two: when your data is not text
 
 A language model is a machine for sequences of tokens. Some enterprise data is not that, and no amount of prompting, retrieval or fine-tuning makes it that. Transaction networks, supply chains, telemetry streams, molecular structures. For these, the model itself is different, most commonly a graph neural network, and the engineering discipline around it is different too.
@@ -40,6 +42,8 @@ A language model is a machine for sequences of tokens. Some enterprise data is n
 **When it is genuine.** The thing you are predicting is a property of a structure rather than of a document, at a scale where these failure modes actually bite. That situation is recognisable, and it has little to do with agents.
 
 ## At the bank
+
+<TeachingIllustration src="/images/ladder/custom-architecture-graph-labeled-v2.webp" alt="A graph model finds a coordinated ring in a transaction network and passes the highlighted subgraph and score through a governed gateway to an agent." title="The specialist model is a tool, not the agent" caption="A graph model finds structure across connected accounts. It returns a score and the evidence-bearing subgraph through a controlled interface; the conversational agent uses that result without pretending it discovered the network pattern itself." />
 
 The bank has exactly one dataset with this shape, and it is the important one: the transaction network. Hundreds of millions of accounts, billions of edges, and the thing worth predicting, coordinated activity, is a property of the network. A money-mule ring is nearly invisible account by account: each node's activity looks plausible alone, and the pattern only exists across the structure. This is why network models genuinely belong in financial crime, and why this chapter is not hypothetical in this vertical.
 

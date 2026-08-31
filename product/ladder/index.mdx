@@ -8,6 +8,13 @@ description: "Eight ways to make an agent better, in the order worth trying them
 When an agent is not good enough there are eight different things you can change, and they are not equally sensible to try. Rewriting the instructions is cheap and often enough. Retraining a model is expensive, slow, and frequently fixes the wrong problem. The first three changes are about the system around the model, and most organisations should live there. The last five change the model itself, and choosing between them is a matter of working out what is actually broken rather than climbing higher. The one thing to remember: teaching a model to behave differently and teaching it about your business are two different jobs needing two different kinds of data, and confusing them is why most model-training projects disappoint.
 </PlainTerms>
 
+<TeachingIllustration
+  src="/images/ladder/overview-two-decks-labeled-v2.webp"
+  alt="An unchanged model moves through instructions, governed context and a controlled tool loop before a measured junction branches to five selective model interventions, all resting on evaluation rails."
+  title="The whole intelligence journey in one view"
+  caption="Start by changing the system around the model: instructions, context, then tools and the loop. Only after those measured gates should a diagnosed failure branch into one or more model changes. The five branches are choices, not higher rungs."
+/>
+
 ## Why the order matters
 
 **WHY:** "The model is not good enough" is a conclusion, not a diagnosis. It is usually reached when nobody has measured what is failing. The published evidence runs the other way: prompt and context work keeps yielding gains teams assumed were exhausted, and the expensive interventions often fix something that was never the problem. Climbing early is not only wasted money. It adds weight, lock-in and a maintenance burden to a system whose real fault is still sitting there underneath.
@@ -29,6 +36,13 @@ It also happens to exercise every chapter. The bank has decades of its own writt
 **In short:** Three steps, in order, and where most organisations should stop.
 
 <GuideFigure id="intelligence-ladder" fullWidth />
+
+<TeachingIllustration
+  src="/images/ladder/overview-deck-a-labeled-v2.webp"
+  alt="The same model appears in three sequential scenes: structured instructions, permission-aware evidence retrieval, and a governed tool loop, with an evaluation rail beneath them."
+  title="Deck A changes the system, not the model"
+  caption="The model stays fixed while the team first improves the task packet, then the evidence reaching it, then the harness that lets it act. The rail beneath each scene shows the rule: measure, find the plateau, and open the next gate only when the remaining failure has changed."
+/>
 
 | # | Step | What it changes | Move on when |
 |---|---|---|---|
@@ -57,6 +71,13 @@ An enterprise with a large proprietary corpus has the raw text and often very fe
 
 <GuideFigure id="model-change-diagnosis" fullWidth />
 
+<TeachingIllustration
+  src="/images/ladder/overview-deck-b-labeled-v2.webp"
+  alt="Five balanced diagnostic branches surround one model: adapters, compression into a smaller model, grader feedback, domain documents, and a graph-shaped specialist model."
+  title="Deck B branches by symptom"
+  caption="Inconsistent behaviour points to adapters. Proven quality with excessive cost points to distillation. Checkable but wrong judgement points to reinforcement. Missing domain understanding points to continued pretraining. Network-shaped data points to a specialist architecture exposed as a tool."
+/>
+
 | What is failing | Where to go |
 |---|---|
 | Wrong format, tone, or task behaviour | [Adapters and fine-tuning](/ladder/adapters-and-fine-tuning) |
@@ -70,6 +91,13 @@ These stack. Continued pretraining followed by supervised fine-tuning is a stand
 ## The rails: an evaluation suite you own
 
 **In short:** Every test on this page is a measurement, so without an eval suite there is no ladder, only opinion.
+
+<TeachingIllustration
+  src="/images/ladder/overview-evaluation-rails-labeled-v2.webp"
+  alt="A sealed collection of real cases passes unchanged through repeated evaluation checkpoints; a score beyond the human band triggers an alarm and a return to inspect the grader."
+  title="The evaluation suite is the rail beneath every stage"
+  caption="The same locked cases and matched controls test each intervention. A gate opens because the evidence justifies a different kind of change, not because a new technique is fashionable. If an automated score escapes beyond careful human performance, inspect the grader before trusting the result."
+/>
 
 An organisation that cannot measure its agent will climb on anecdote, and anecdote favours whichever intervention is most fashionable. Build the suite from real failures rather than imagined ones, before the agent rather than after, and have it owned by the domain experts who can say what a correct answer looks like.
 

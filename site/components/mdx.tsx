@@ -15,6 +15,7 @@ import {
   PrincipleCard,
   ResultChart,
   StatTiles,
+  TeachingIllustration,
   WallChart,
 } from '@/components/visuals';
 
@@ -38,6 +39,7 @@ export function getMDXComponents(components?: MDXComponents) {
     SkillsCatalog,
     SkillsStrip,
     StatTiles,
+    TeachingIllustration,
     Step,
     Steps,
     Term,

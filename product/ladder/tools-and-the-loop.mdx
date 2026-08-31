@@ -22,6 +22,8 @@ Three consequences follow, and they are the whole of harness design.
 
 <GuideFigure id="agent-loop-anatomy" fullWidth />
 
+<TeachingIllustration src="/images/ladder/tools-loop-labeled-v2.webp" alt="A model selects tools through an authorization gate, appends compact results to durable state, and loops under stop controls." title="The harness owns the loop around the model" caption="The model proposes. The harness authorises, executes, records and decides whether another turn is allowed. Durable state and hard stops sit outside the model because they must survive and remain enforceable." />
+
 ## Why the harness is not plumbing
 
 Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions, even where the final success rate looks the same (arXiv 2607.04528, July 2026). In retrieval-heavy work the harness choice can outweigh the retrieval architecture itself (arXiv 2605.15184, May 2026).
@@ -53,6 +55,8 @@ The financial crime agent's loop looks like this. It receives an alert. It calls
 **Single agent first.** The bank's disposition proposal does not need 0.92 F1 from the agent, because the analyst decides. So the multiplier is not justified, and the guide's blueprint puts this agent at a single loop with good tools.
 
 ## Where the depth is
+
+<TeachingIllustration src="/images/ladder/tools-bank-labeled-v2.webp" alt="A bank investigation agent gathers compact results from four tools into a case ledger while rejecting an oversized raw data dump." title="A bank investigation is shaped by its tools" caption="Purpose-built tools return a customer profile, an outlier summary, prior cases and screening evidence. The raw transaction dump stays out; compact results enter a durable record under iteration, time and cost limits." />
 
 [The agent platform layer](/layers/r07-agent-platform) covers the harness, durability, portability and the build-versus-buy split. The harness section of [the vendor-neutral Agentic OS](/agentic-os) covers what a platform provides here and what stays yours.
 

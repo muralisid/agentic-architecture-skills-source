@@ -29,6 +29,8 @@ The preparation row deserves expansion, because "you already have the data" is t
 
 <GuideFigure id="sft-vs-cpt" fullWidth />
 
+<TeachingIllustration src="/images/ladder/continued-pretraining-mechanism-labeled-v2.webp" alt="A huge stream of curated domain documents mixes with general material and repeatedly reshapes a model before a small task-specific layer is added." title="Domain first, task second" caption="Continued pretraining changes how the model represents the domain by learning from raw material at enormous scale. A much smaller supervised set then teaches the particular job the domain-aware model must perform." />
+
 ## The corpus work is the project
 
 A model absorbs whatever the corpus contains, indiscriminately. The work is deciding what that should be:
@@ -40,6 +42,8 @@ A model absorbs whatever the corpus contains, indiscriminately. The work is deci
 - **The mix.** Training only on domain text sharpens the domain and dulls everything else. Practice mixes domain material with general text to hold general capability, and the forgetting repair on [distillation](/ladder/distillation) applies here as it did to fine-tuning.
 
 ## How much goes where: the budget split
+
+<TeachingIllustration src="/images/ladder/continued-pretraining-corpus-labeled-v2.webp" alt="A disordered archive passes through rights, duplication, contamination, quality and balance filters while a sealed evaluation collection stays outside training." title="The corpus is the product" caption="Rights, provenance, deduplication, contamination control, quality and balance determine what the model learns. The evaluation set must remain sealed outside that production line or the final score stops meaning anything." />
 
 One study modelled the allocation directly: a fixed 30-billion-token budget split between continued pretraining and supervised fine-tuning, 7B-parameter models, across health, chemistry and coding. The optimum in every domain put **roughly 99.99 percent of the budget into continued pretraining** and the small remainder into fine-tuning, and reported an 11.6 percent improvement over a state-of-the-art domain-adapted comparison at up to 95 percent less budget (OpenReview, 8 October 2025).
 

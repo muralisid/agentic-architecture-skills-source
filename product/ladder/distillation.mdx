@@ -24,6 +24,8 @@ So distillation is maintenance, not only compression. If you run chapter 4 or ch
 
 <GuideFigure id="distillation-two-uses" fullWidth />
 
+<TeachingIllustration src="/images/ladder/distillation-mechanism-labeled-v2.webp" alt="A large teacher model passes a rich distribution of possible outputs to a compact student, while a single hard answer carries less information below." title="The distribution teaches more than the winning answer" caption="A teacher's relative confidence across alternatives carries information about boundaries and near misses. The student learns that shape, not merely a collection of final answers." />
+
 ## When it pays: the arithmetic
 
 Distillation is a fixed cost that buys a lower marginal cost. The decision is arithmetic, not fashion:
@@ -35,6 +37,8 @@ Distillation is a fixed cost that buys a lower marginal cost. The decision is ar
 And one hard rule: **never distil a capability the teacher does not reliably have.** The student learns the teacher's errors with the same fidelity as its skills, minus the scale that occasionally rescued the teacher.
 
 ## At the bank
+
+<TeachingIllustration src="/images/ladder/distillation-two-uses-labeled-v2.webp" alt="Two parallel paths show a large proven model teaching a smaller volume model and a general model restoring faded abilities in a domain model." title="Compression and repair use the same tool differently" caption="For volume, the proven large model teaches a cheaper student. For repair, the pre-training model teaches general capability back into a domain-tuned model. Both students must pass the same locked evaluation gate." />
 
 By the previous chapter, the bank had already moved drafting to a small fine-tuned model, and the general-capability eval came back slightly degraded: the adapter improved narratives and cost the model some instruction-following on unrelated tasks.
 

@@ -24,6 +24,8 @@ A prompt is not one blob of text. It has parts, and each does a different job.
 
 <GuideFigure id="prompt-anatomy" fullWidth />
 
+<TeachingIllustration src="/images/ladder/instructions-mechanism-labeled-v2.webp" alt="A rulebook, task card, worked examples, case file and output form flow in order through a reasoning model." title="The prompt is an assembled system" caption="Standing rules, the task, worked examples, the changing input and the enforced output shape do different jobs. Treating them as separate parts makes the prompt testable and keeps its stable prefix cacheable." />
+
 ## Order matters more than people expect
 
 Put the stable parts first and the varying parts last. Providers cache the unchanging prefix of a prompt, and a cache hit is billed at a fraction of fresh input. Any change anywhere in that prefix invalidates everything after it, so a timestamp near the top of a system instruction quietly destroys the saving on every call.
@@ -57,6 +59,8 @@ The engineered version does four things:
 **Puts the stable parts first.** The system instruction, the typology definitions and the examples never change between alerts, so they sit at the front and stay cached. The alert and the customer file go last. At tens of thousands of alerts a month that ordering is most of the running cost.
 
 ## What this step does not fix
+
+<TeachingIllustration src="/images/ladder/instructions-bank-labeled-v2.webp" alt="A disorderly pile of investigation papers is transformed into aligned evidence cards and a consistent case report." title="From plausible prose to a reviewable case file" caption="Examples and a schema put each kind of evidence in the same place on every alert, so an analyst can review the result consistently and trace it back to its sources." />
 
 Missing knowledge. If the customer's transaction history is not in the context, no instruction recovers it, and a model asked to summarise evidence it cannot see will produce a fluent narrative anyway. That is the failure mode to fear here, and it is a [step 2](/ladder/context) problem.
 

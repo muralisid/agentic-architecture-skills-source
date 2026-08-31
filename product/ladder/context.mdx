@@ -22,6 +22,8 @@ This step decides what the model gets to see. Documents are cut up, turned into 
 
 <GuideFigure id="context-pipeline-ladder" fullWidth />
 
+<TeachingIllustration src="/images/ladder/context-pipeline-labeled-v2.webp" alt="A structured document becomes permission-carrying pieces, then vectors, and only the most relevant pieces reach the model." title="Retrieval is a chain of transformations" caption="The answer can only be as good as the structure preserved during parsing, the boundaries chosen during chunking, the permissions carried into the index and the evidence selected at retrieval time." />
+
 ## The failure that catches almost everyone
 
 Embedding a whole document produces roughly the average of everything in it. That is fine when a document is about one thing. Enterprise documents are rarely about one thing.
@@ -33,6 +35,8 @@ We measured it. Growing documents from one topic to ten, holding corpus, encoder
 The mechanism behaves as theory predicts. The similarity between a question and its target document's best individual piece stayed flat as topics accumulated, 0.476 to 0.466, while the pooled vector's similarity decayed from 0.476 to 0.225. The signal was never lost. It was averaged away.
 
 ## The correction that matters more than the finding
+
+<TeachingIllustration src="/images/ladder/context-aspect-dilution-labeled-v2.webp" alt="One customer dossier becomes a blurry blended representation in one path and four distinct topic representations in another." title="One blended vector hides the part you asked for" caption="Identity, transactions, alerts and correspondence pull a pooled representation in different directions. Keeping several searchable units preserves the signal that averaging would weaken." />
 
 Splitting a document into several pieces gives it more vectors, and more vectors means more chances to match. So the honest question is not "do several vectors beat one" but "do purpose-shaped pieces beat the same number of arbitrary pieces".
 
