@@ -17,6 +17,8 @@ A <Term k="curation">curation</Term> pipeline (data prepared for a purpose, with
 
 <GuideFigure id="layer-14-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r14-data-pipeline-labeled-v1.webp" alt="A source document passes through layout-aware parsing, meaningful chunking, versioned embeddings and a permission-aware index to a cited answer, while provenance, access, residency and freshness travel throughout and memory writes are quarantined for review." title="The data pipeline determines the ceiling of agent quality" caption="Structure lost during parsing cannot be recovered downstream. Every transformation carries governance metadata, and proposed durable memories take a separate quarantine-and-review path before they can influence future runs." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Layout-aware parser | Extract structure and attach page and cell provenance | Parsing fidelity spot checks | Ingestion |
@@ -61,6 +63,8 @@ Poisoning under 0.1 percent of a memory or knowledge base achieved over 80 perce
 ### Erasure cascades or it did not happen
 
 **In short:** Deleting a record must also delete every copy made from it, or the deletion did not really happen.
+
+<TeachingIllustration src="/images/layers/r14-deletion-cascade-labeled-v1.webp" alt="An erasure request deletes the source record and cascades across parsed text, chunks, vectors, search indexes, agent memory, logs and exclusion sets, producing deletion receipts for audit." title="Deletion is a cross-system operation with proof" caption="Every derivative inherits the source's obligations. The erasure controller must reach every copy and emit receipts; if one derived artifact survives, the deletion has not completed." />
 
 Deletion must reach raw logs, derived memories, and vectors. The published mechanics have three parts. Deleted-vector exclusion sets are consulted before approximate nearest neighbour (ANN) queries, the fast similarity search behind retrieval. Purpose-scoped namespaces give deletion a bounded blast radius. Deletion is exposed as an audited callable operation rather than a manual runbook. Derived artifacts inherit <Term k="residency">residency</Term>: embeddings, memories, and summaries built from in-region data are in-region data. Bitemporal facts separate event time from ingestion time. They let a superseded fact be invalidated without destroying the history that explains an earlier decision.
 

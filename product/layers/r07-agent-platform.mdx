@@ -17,6 +17,8 @@ The <Term k="harness">harness</Term> is the engineering shell around the model: 
 
 <GuideFigure id="layer-07-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r07-harness-labeled-v1.webp" alt="A harness surrounds the model with context assembly, tool calls, inspectable state, separate verification and explicit stopping, while hard limits and a managed runtime provide control and crash survival." title="The model is a component; the harness is the production system" caption="The harness owns the loop, the durable artifacts, independent verification and every stopping condition. A managed runtime supplies isolation and crash survival underneath that organisation-specific control logic." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Harness (the loop) | Context assembly and reset, tool loop, termination, recovery | Iteration caps, wall-clock limits, cancellation checks, stop hooks, approval rules, per-run budgets, kill switch | Built in-house, deployed on the managed runtime |
@@ -56,6 +58,8 @@ Two layers are commonly conflated. A checkpoint preserves data, not execution. A
 ### The lifecycle state machine
 
 **In short:** Agents move through named stages with test thresholds at each gate, and one that stops passing drops out of circulation automatically.
+
+<TeachingIllustration src="/images/layers/r07-lifecycle-labeled-v1.webp" alt="An agent moves through draft, approved, published, deprecated and retired states, with evaluation, safety, lineage and freshness gates; failed agents are removed from circulation." title="Production status is earned, discoverable and reversible" caption="Only PUBLISHED agents appear in discovery. Promotion requires explicit evidence, while later gate failures automatically demote the version instead of leaving stale or unsafe behaviour in circulation." />
 
 The only fully specified published agent lifecycle (Kang and Wang, arXiv 2607.00345, July 2026) runs through five states: DRAFT, APPROVED, PUBLISHED, DEPRECATED, and RETIRED. Each promotion gate has a named threshold. Faithfulness must be at least 0.80, correctness at least 0.90, and tool accuracy at least 0.90. Helpfulness must be at least 0.70, <Term k="latency">latency</Term> at most 15 seconds, and harm at most 5 percent. Versioning is by lineage, so a failing new version never reaches production. A 7-day staleness policy re-evaluates each agent automatically and demotes it on failure. Measured evaluation overhead is $2.10 per month at 10,000 interactions, about 2.5 percent of model cost. The architecturally interesting move is governance through discoverability. Search through <Term k="mcp">MCP (Model Context Protocol)</Term>, the standard plug that connects agents to tools, returns only PUBLISHED agents. So a drop in quality reduces how reachable an agent is automatically, instead of waiting for a policy engine to step in. One caveat: this is a six-agent proof of concept by a cloud consultancy, not observed enterprise operation. Governance practice adds a complementary rule: an agent's <Term k="autonomy level">autonomy level</Term> (how much it may do without a person in the loop) is itself a versioned, review-gated property. <Term k="prompt">Prompt</Term> refinements take a light path. Model updates and autonomy adjustments take a full review. One pharmaceutical programme, with five published levels of agency, requires a runtime policy enforcement layer at the AI gateway before higher levels are enabled.
 

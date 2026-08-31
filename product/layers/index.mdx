@@ -9,7 +9,11 @@ hero_figure: "layers-planes-crosswalk"
 This section walks through the fourteen parts of a company's technology estate that <Term k="agent">agents</Term> will touch, from the servers they run on to the people who supervise them. Each page says what good looks like, how it is built, which popular choices were challenged, and where the evidence runs out. The one thing to remember: the fourteen <Term k="layers">layers</Term> are what you already own, and the seven <Term k="planes">planes</Term> are what you build across them.
 </PlainTerms>
 
+<TeachingIllustration src="/images/layers/layers-vs-planes-labeled-v1.webp" alt="A fourteen-floor enterprise building is crossed by seven end-to-end agent-system planes: execution, action, knowledge, control, improvement, evidence and human." title="Layers are what you own; planes are what you build across them" caption="The fourteen layers are recognisable parts of the enterprise estate. The seven planes coordinate capabilities across several of those layers, so a deployed agent workload never belongs to just one box." />
+
 The estate you already own has fourteen layers. The agent system you build across it has [seven planes](/architecture). Each page below covers one layer in five parts. First, the target state: the architecture to aim for. Second, the mechanisms that implement it, with their exact protocols and measured numbers. Third, the <Term k="contested choice">contested choices</Term>, each with a verdict. Fourth, the layer's <Term k="cross-cutting concern">cross-cutting concern</Term> row: the requirements every layer must honour, such as identity, privacy, and cost. Fifth, what the evidence does not support.
+
+<TeachingIllustration src="/images/layers/fourteen-layers-map-labeled-v1.webp" alt="The fourteen enterprise layers are grouped into execution and platform, action, knowledge, control and evidence, improvement, and human-facing surfaces." title="The fourteen layers grouped by the job they do" caption="This map is the quickest way to find a page. Start with the job you are trying to understand, then choose the layer within that group. Real workloads touch several groups at once." />
 
 <GuideFigure id="layers-planes-crosswalk" fullWidth />
 
@@ -58,5 +62,7 @@ The estate you already own has fourteen layers. The agent system you build acros
 | [R13 Supervision and oversight](/layers/r13-operating-model) | Supervision as a queueing system: capacity with wait time included, load budgeted as a burst rate |
 
 ## How the pages are built
+
+<TeachingIllustration src="/images/layers/layer-page-reading-guide-labeled-v1.webp" alt="Five numbered stations show target state, mechanisms, design decisions, cross-cutting concerns, and evidence and limits." title="Every layer page follows the same five-step reading path" caption="Begin with the target picture, learn the mechanisms, inspect the contested choices, check the concerns that every layer must honour, and finish by testing the recommendation against the evidence and its limits." />
 
 Each page condenses one research track. The tracks, with their findings and dated sources, are in [the research library](/library/layers). Where the evidence does not support a claim, the page says so and names the refusal. The [decision catalog](/decisions) carries every contested choice, with its verdict and the discriminator: the one test that separates the options.

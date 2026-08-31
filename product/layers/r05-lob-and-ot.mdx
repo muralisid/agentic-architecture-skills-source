@@ -17,6 +17,8 @@ This is the <Term k="layer">layer</Term> where agents meet physics. Agents sit o
 
 <GuideFigure id="layer-05-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r05-information-control-paths-labeled-v1.webp" alt="Plant data feeds an agent proposal that is tested in simulation and filtered before a human operator decides, while a barrier prevents direct agent access to the independent safety system and plant controls." title="The language model belongs on the information path" caption="The agent can propose options, but simulation validates them and an operator makes the decision. The deterministic safety and control paths remain separate, independently protected and unreachable by the agent." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Validation loop | Simulate candidate actions against a digital twin or rule set before display | Raw model output never shown; only filtered, safe options reach the operator | Control-room estate, beside the energy or distribution management system (EMS/DMS) |
@@ -50,6 +52,8 @@ Nine cyber agencies published **"Principles for the Secure Integration of AI in 
 ### The alert channel
 
 **In short:** Agent output belongs in the low-priority alert channel, clearly separate from real alarms, and it never counts as a safety protection.
+
+<TeachingIllustration src="/images/layers/r05-advice-alarm-labeled-v1.webp" alt="Real safety alarms remain independent, highest-priority and never replaced by AI; agent advice stays in a separate low-priority, labelled and dismissible channel that an operator verifies." title="Advice must never masquerade as protection" caption="A persuasive recommendation can still be wrong and can narrow what an operator notices. Keeping it visually and operationally separate protects the independent alarm system and preserves human judgement." />
 
 **EEMUA 191 Edition 4 (November 2024)**, the Engineering Equipment and Materials Users Association's alarm-management guide, formalizes an alarm/alert/prompt taxonomy. An alert is information the operator "does not need to respond to, but can if they are able". That channel, visually distinct from configured alarms, is the legitimate home for agent output. There are two reasons agent output can never be credited as an independent protection layer. First, the **Highly Managed Alarm** category (aligned with IEC 62682:2022) requires a defined proof-test method and frequency. A <Term k="probabilistic">probabilistic</Term> output, one that can vary from run to run, cannot satisfy that. Second, alarms sit in administrative controls in the risk hierarchy, and adding an agent does not change that position. The channel must respect load targets. In steady state, at most **1 alarm per operator per 10 minutes** (about 150 per day). In a major upset, at most **10 in the first 10 minutes**. Edition 4 contains no AI content, and the International Society of Automation (ISA) has only floated AI for a future ISA-18.2 revision. So agent output is neither blessed nor barred; the taxonomy is simply the fit. The consequence anchor is **BP-Husky Toledo, 20 September 2022: 3,712 alarms in 12 hours**. Two fatalities and roughly **$597M** in damage followed (CSB, the US Chemical Safety Board, final report June 2024).
 

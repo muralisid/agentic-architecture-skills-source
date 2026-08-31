@@ -17,6 +17,8 @@ Supervision is engineered as a queueing system, not asserted as a role. Every <T
 
 <GuideFigure id="layer-13-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r13-supervision-queue-labeled-v1.webp" alt="Agent sessions are risk-ranked into a priority queue for human reviewers, with capacity determined by arrival rate, review time, allowed wait and peak ten-minute bursts." title="Supervision capacity is a queueing calculation" caption="Headcount alone says nothing about whether escalation work arrives faster than people can process it. Design for peak bursts and allowed waiting time, then monitor the algorithmic monitor against real outcomes." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Sponsor record | Bind each agent to an accountable human | Automatic transfer on departure; credential expiry | Identity platform ([R10](/layers/r10-security-and-identity)) |
@@ -54,6 +56,8 @@ One study covered roughly 55,000 agent-generated code-review comments in 342 rep
 ### Calibrated oversight, not a ratchet
 
 **In short:** As trust grows, people should step in more often while granting more standing freedom; fewer interventions is the warning sign.
+
+<TeachingIllustration src="/images/layers/r13-healthy-autonomy-labeled-v1.webp" alt="Healthy autonomy combines growing standing permission with visible human intervention, easy verification and accountable sponsorship; falling interventions, longer waits, blind trust and skill erosion are warning signs." title="Healthy autonomy changes the shape of oversight; it does not remove oversight" caption="As agents handle more, supervisors encounter more edge cases and may intervene more often even while granting wider standing freedom. Track load, intervention rate, escalation mix and wait time instead of celebrating fewer human touches." />
 
 This is <Term k="calibrated oversight">calibrated oversight</Term>: trust does not reduce supervision; it redistributes it. In measured deployments, auto-approval rose from roughly 20 percent to above 40 percent with experience. Interrupt rates rose from roughly 5 percent to roughly 9 percent over the same period. Rising interventions alongside expanding standing permission is the system working. Falling interventions alongside expanding <Term k="autonomy level">autonomy</Term> is the pattern to investigate. Named accountability is not itself a control. In testing, a phished employee's <Term k="prompt">prompt</Term> asked an agent to read cloud credentials and post them externally. It succeeded in 24 of 25 attempts, and the sponsor's name on the agent prevented none of them.
 

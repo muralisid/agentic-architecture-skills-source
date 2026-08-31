@@ -17,6 +17,8 @@ This page covers the company data that <Term k="agent">agents</Term> read before
 
 <GuideFigure id="layer-02-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r02-permission-retrieval-labeled-v1.webp" alt="Caller identity filters unauthorised documents before a governed index returns source spans and a cited answer, while high-stakes numbers pass through a semantic contract." title="Permission is applied before retrieval, not after generation" caption="The caller's live identity narrows the searchable set before similarity ranking happens. High-stakes numeric questions take a separate deterministic path that produces a governed answer or an explicit refusal." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Permission crawler | Pull source access control lists (ACLs) into index metadata | Fail-close on sync error | Alongside each connector |
@@ -37,6 +39,8 @@ This page covers the company data that <Term k="agent">agents</Term> read before
 ### Embeddings are recoverable data
 
 **In short:** The numeric form of a document can often be turned back into its text, so it needs the same protection as the document.
+
+<TeachingIllustration src="/images/layers/r02-fragment-rules-labeled-v1.webp" alt="A searchable data chunk carries access rules, source provenance, residency, embedding version and freshness metadata; its vector and answer inherit the strictest source rule." title="Every derived fragment must keep its governance envelope" caption="A chunk is not just text. Its permissions, provenance, residency, version and freshness must survive parsing, embedding, indexing and answer generation, because losing that metadata loses the ability to govern the result." />
 
 Exact reconstruction of short inputs from their embeddings has been demonstrated at 92 percent. The result is vec2text, presented at the Empirical Methods in Natural Language Processing conference (EMNLP) in 2023 and reproduced in 2025. The architectural consequence is not optional. Vectors inherit the source's classification, ACLs, <Term k="residency">residency</Term> rules, and privacy obligations. <Term k="erasure">Erasure</Term> cascades into vectors and every derived artifact: delete the record, and every copy made from it goes too. This is the reasoning behind the named risk in the OWASP (Open Worldwide Application Security Project) application list. Treat an index as a copy of the data, because that is what it is.
 

@@ -17,6 +17,8 @@ Learning is an operating discipline, not a one-off training activity. An <Term k
 
 <GuideFigure id="layer-06-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r06-improvement-speeds-labeled-v1.webp" alt="Prompt and context changes move quickly, retrieval and memory changes move at a governed medium speed, and model-weight changes move slowly; all three pass a locked expert-owned evaluation before production." title="The safest improvement path is the fastest and most reversible" caption="Begin with prompt and context, move to governed retrieval or memory only when needed, and change weights rarely. Every path converges on the same locked evaluation and no-regression gate." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Eval suite | Define correct behavior from real failures | The promotion bar and regression baseline; two-expert agreement per task | Versioned like code, owned by domain subject-matter experts (SMEs) |
@@ -38,6 +40,8 @@ The fastest loop is <Term k="context">context</Term> and <Term k="prompt">prompt
 ### Governed rule promotion, revised by evidence
 
 **In short:** Rules earn promotion by surviving real failure cases and the test suite, and writing good rules proved the hard part.
+
+<TeachingIllustration src="/images/layers/r06-rule-promotion-labeled-v1.webp" alt="A real failure is labelled by experts, turned into a candidate rule, challenged with counterexamples and the full test suite, then promoted to policy outside the model; model judges are calibrated against humans." title="A rule becomes policy only after it survives attempts to break it" caption="Counterexamples send weak rules back for revision or rejection. Promoted rules live outside the model where they can be versioned, monitored and demoted, while judges are checked against independent human judgement." />
 
 The 2025 design this page inherited assumed two things: generating candidate rules is easy, and the promotion step is the control point. A July 2026 study of exactly this pipeline (arXiv 2607.20668) inverted that. Execution works. Human-written policies improved a frozen (not retrained) agent built on a 7-billion-parameter (7B) model by 5.0 success points (95 percent confidence interval +1.88 to +9.38). They also cut interaction by 2.64 turns. Generation is the bottleneck. Of 32 automatically learned policies, only 7 were grounded and executable. Another 9 were too generic to change behavior, and 16 were shortcuts, semantic errors, or malformed. Policies learned from traces scored 1.88 points below fixed prompting. The promotion gate failed in both directions. It accepted a rule that cut success from 5 out of 20 to 1 out of 20. It rejected a rule worth +5 points.
 

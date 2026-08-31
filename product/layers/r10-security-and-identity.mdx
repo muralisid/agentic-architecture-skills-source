@@ -17,6 +17,8 @@ This page covers how <Term k="agent">agents</Term> are identified and what stops
 
 <GuideFigure id="layer-10-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r10-policy-decision-labeled-v1.webp" alt="A named agent with a short-lived credential sends an action request to a deterministic policy decision point, which allows execution with an audit receipt or blocks and escalates to a human." title="Every consequential action meets a decision the agent cannot bypass" caption="The policy decision uses caller, action, resource and context as fixed inputs. It fails closed: if the decision service is unavailable, the action stops instead of defaulting to permission." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Agent identity plane | Register every agent; issue short-lived credentials | Owner and risk tier per agent; just-in-time (JIT) elevation with automatic drop-back; kill switch; time-to-revoke | Your existing identity provider (IdP) estate; all four major identity vendors made agent identity generally available (GA) within twelve months |
@@ -49,6 +51,8 @@ The authorisation boundary is <Term k="policy-as-code">policy-as-code</Term> in 
 ### Guardrails are advisory
 
 **In short:** AI-based filters miss most real attacks in published tests, so they may warn but never decide whether an action goes ahead.
+
+<TeachingIllustration src="/images/layers/r10-fixed-rules-labeled-v1.webp" alt="A model may detect patterns and warn but can be attacked; a deterministic, fail-closed and versioned policy engine outside the model decides access, money, safety and official-record actions." title="Models may advise security; fixed controls decide" caption="The model cannot reliably separate instructions from untrusted data. Consequential zones therefore use independent policy code that remains deterministic, versioned and fail-closed even when the model is manipulated." />
 
 Published measurement settles this. In one study (the LLMSEC 2025 workshop of the Association for Computational Linguistics, ACL), roughly **72 percent of attacks got past Azure Prompt Shield**. **Protect AI v1 let 77 percent through, and NeMo jailbreak detection let 72.5 percent through.** In some configurations the figure rose to **100 percent**. The one configuration measured at zero percent bypass paid for it with 16.22 percent false positives (legitimate requests wrongly blocked) and roughly 1.5 seconds of added <Term k="latency">latency</Term> (arXiv 2605.06669). Latency alone separates the layers. A policy engine evaluates in under a millisecond to a few milliseconds. One large language model (LLM) guardrail call takes roughly 1.5 seconds. That is **three orders of magnitude**, roughly a thousand times slower. Guardrails are also themselves a target: an attacker can trip the guardrail on purpose to cause a denial of service (arXiv 2410.02916). The position this evidence forces: guardrails keep their value for content policy, detection of personal data (PII, personally identifiable information), and <Term k="telemetry">telemetry</Term>, where a miss is tolerable. They never authorise an action.
 

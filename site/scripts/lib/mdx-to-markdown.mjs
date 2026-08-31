@@ -22,6 +22,7 @@ const KNOWN_COMPONENTS = new Set([
   'PlainTerms',
   'Term',
   'GuideFigure',
+  'TeachingIllustration',
   'ComparisonFigure',
   'WallChart',
   'ResultChart',
@@ -190,6 +191,22 @@ function renderFigure(props, { figures, siteUrl }) {
   return nodes;
 }
 
+function renderTeachingIllustration(props, { siteUrl }) {
+  const source = String(props.src ?? '');
+  const imageUrl = /^https?:\/\//.test(source)
+    ? source
+    : `${siteUrl}${source.startsWith('/') ? '' : '/'}${source}`;
+  const nodes = [
+    paragraph([
+      strong(`Figure: ${props.title ?? 'Teaching illustration'}.`),
+      ...(props.caption ? [text(` ${props.caption}`)] : []),
+    ]),
+  ];
+  if (props.alt) nodes.push(paragraph([strong('What the image shows:'), text(` ${props.alt}`)]));
+  if (source) nodes.push(paragraph(`Image: ${imageUrl}`));
+  return nodes;
+}
+
 function renderWallChart(props, { siteUrl }) {
   const caption =
     props.caption ??
@@ -294,6 +311,9 @@ function componentPlugin(context) {
         case 'GuideFigure':
         case 'ComparisonFigure':
           replacement = renderFigure(props, context);
+          break;
+        case 'TeachingIllustration':
+          replacement = renderTeachingIllustration(props, context);
           break;
         case 'WallChart':
           replacement = renderWallChart(props, context);

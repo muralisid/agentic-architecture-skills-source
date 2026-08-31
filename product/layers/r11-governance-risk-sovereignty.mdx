@@ -17,6 +17,8 @@ A governed agent estate. The <Term k="agent registry">agent registry</Term> (the
 
 <GuideFigure id="layer-11-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r11-register-labeled-v1.webp" alt="An official agent register records each agent's owner, purpose, risk tier, data classification, deployment location, model version, evidence bundle and kill switch before approval, monitoring or stopping." title="The agent register is the operational compliance inventory" caption="Registration binds an agent to a human owner, a declared purpose, a risk posture, evidence and a tested stop mechanism. An unregistered agent has no authorised route into production." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Agent registry | Compliance inventory: owner, purpose, risk tier, tools and credentials, model and prompt versions | Alignment with Article 49/71 registration; named accountable owner; tier assignment | Governance platform or the catalogue estate you already run |
@@ -37,6 +39,8 @@ Each registry entry records owner, purpose, risk tier, <Term k="tools">tools</Te
 ### The two-tier evidence posture
 
 **In short:** Every production agent keeps a basic set of records, and agents that might count as high-risk under EU law keep much more.
+
+<TeachingIllustration src="/images/layers/r11-risk-evidence-labeled-v1.webp" alt="Every production agent keeps owner, purpose, sources, actions and incident records; potentially high-risk agents add technical, data-governance, oversight, robustness and post-market evidence, while classification routes deployment." title="Evidence and deployment controls grow with impact" caption="Baseline records apply to every production agent. Higher-risk or higher-autonomy use adds a much stronger evidence file, and data classification independently determines whether deployment is public, restricted, sovereign or air-gapped." />
 
 The floor applies to **all** production agents: a registry entry, **per-action audit logs retained for at least six months**, named oversight, and provenance-carrying grounding. The six-month retention is the deployer duty in Article 26, which also requires competent oversight and informing workers. **Instrumentation at the level Article 12 requires applies to the tier that could plausibly classify as high-risk.** That tier includes systems that touch employment, credit, or essential services, and Copilot-class multi-purpose systems under the draft presumption. The honest line, stated plainly: no regulator or auditor has endorsed <Term k="retrieval">retrieval</Term> provenance, the source trail kept by retrieval, as satisfying Article 12. The demand side is already institutional. Forty percent of boards assign AI oversight to a committee, up from 11 percent a year earlier (ISS, Institutional Shareholder Services, 2026). Sixty-two percent reserve agenda time (NACD, the National Association of Corporate Directors, 2026). Only 28 percent of internal-audit leaders are confident they can audit AI risks, and only 21 percent of organisations report a mature agentic governance model (Deloitte). Gartner finds that organisations which operationalise AI TRiSM (trust, risk and security management) are 3.4 times as likely to report high governance effectiveness.
 

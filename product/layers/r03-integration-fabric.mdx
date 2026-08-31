@@ -17,6 +17,8 @@ The target is a governed tool <Term k="plane">plane</Term>. The <Term k="mcp">Mo
 
 <GuideFigure id="layer-03-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r03-gateway-labeled-v1.webp" alt="An agent request passes through a single MCP gateway that checks identity, authorisation, credentials, inspection, rate limits and classification before an approved tool executes and writes an audit record." title="The gateway is the enforcement point for every tool call" caption="The model can request an action, but it never supplies its own credentials or decides whether the request is allowed. One gateway authenticates, authorises, injects credentials, inspects, meters and records the call." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | MCP gateway | Route, authorise, inject, inspect, audit every tool call | Allowlists, token exchange, credential injection, description integrity, rate limits, classification routing | Your API management estate or a dedicated proxy |
@@ -43,6 +45,8 @@ No direct model-to-server connections, ever. The gateway enforces a fixed list. 
 ### Safe-action primitives
 
 **In short:** Tools are read-only unless marked otherwise, every change can be repeated or undone safely, and approvals go through the gateway.
+
+<TeachingIllustration src="/images/layers/r03-tool-defaults-labeled-v1.webp" alt="Safe tool defaults are read-only, version-pinned, privately registered and idempotent; consequential actions require destructive marking, approval, scoped credentials, receipts and rollback." title="Discovery, approval and execution are three different trust decisions" caption="Public registries can help find tools, but they cannot approve them. The private registry pins what is trusted, while the gateway applies extra controls whenever a tool can change state." />
 
 Read-only by default. Tool annotations drive gating: readOnly, destructive, and idempotent (safe to repeat without a second effect). Every tool that changes something carries an idempotency key, so a repeated call does not repeat the change, and returns a receipt. Compensation, the undo step, is defined before shipping, not after the first duplicate. Approvals use elicitation and the `input_required` flow from the 2026-07-28 version. That lets the gateway mediate approvals instead of trapping them inside each agent's <Term k="harness">harness</Term> (the engineering shell around the model). The set is completed by timeouts, circuit breakers (automatic cut-offs for failing dependencies), idempotent retries with receipts, and retry-storm alerts. Rate limits serve as <Term k="budget">budget</Term> controls, and graceful <Term k="degraded mode">degradation</Term> to human queues closes the list.
 

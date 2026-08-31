@@ -17,6 +17,8 @@ Systems of record keep their authority. <Term k="agent">Agents</Term> reach them
 
 <GuideFigure id="layer-04-hero" fullWidth />
 
+<TeachingIllustration src="/images/layers/r04-record-authority-labeled-v1.webp" alt="A requesting person's identity passes through an agent access layer into the existing entitlement controls of the system of record, which remains the authority for the official record." title="The agent inherits authority; it does not invent authority" caption="The access layer carries the requesting person's identity into the system that already owns entitlements and truth. Requests outside that scope are denied before the official record is touched." />
+
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Vendor MCP servers | Expose record APIs as tools carrying the caller's identity | Permission parity with the human path: create, read, update, delete (CRUD) rights, field-level security, sharing rules | Salesforce hosted MCP, ServiceNow MCP Server, Workday Agent-Ready Tools, Oracle Fusion 26A |
@@ -43,6 +45,8 @@ The load-bearing change of the first half of 2026 is that **the permission contr
 ### The no-pause-by-default trap
 
 **In short:** An agent built into a vendor product keeps going unless you deliberately add an approval step, so the pause is your job.
+
+<TeachingIllustration src="/images/layers/r04-read-write-paths-labeled-v1.webp" alt="Read requests return governed records after entitlement checks, while record creation and change pause at an approval checkpoint before an authorised write and audit receipt." title="Reading and consequential writing need different paths" caption="A user may read freely inside existing scope. Creating or changing an official record pauses for approval until evidence earns a wider standing mandate, and vendor model changes trigger release tests before that mandate continues." />
 
 **An embedded agent does not pause by default.** Salesforce agents execute on configuration and context without stopping for approval, unless a human checkpoint is explicitly wired in through Flow. Oracle is the counterpoint. Its approval routing is a first-class primitive: it can confirm whether a user or an agent holds authority for an action and route the request accordingly. ServiceNow markets <Term k="autonomy level">autonomy</Term>, with the human in the loop reserved for security containment; its first-line (L1) IT desk is GA with "91% of cases without reassignment" [vendor]. The gate is your job, not the platform's. Wire the checkpoint per consequence class and instrument the override rate, because a falling override rate is the evidence that earns autonomy.
 
