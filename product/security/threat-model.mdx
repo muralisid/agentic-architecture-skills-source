@@ -3,7 +3,7 @@ title: "Threat-model an agentic workflow"
 icon: "Map"
 description: "A practical method for mapping an agent's intent, trust boundaries, authority, mutable state and external effects before selecting controls or writing red-team tests."
 datePublished: "2026-08-31"
-dateModified: "2026-08-31"
+dateModified: "2026-09-04"
 ---
 
 <PlainTerms>
@@ -15,6 +15,8 @@ A threat model is a map of how an agent could be made to do the wrong thing and 
 **WHY:** A tool-using agent combines control flow and data flow inside a probabilistic model. An email is data to the application, but its text may become an instruction to the model. A tool description is configuration, but a compromised server can change it at runtime. A memory item is state, but it can redirect future plans. A message from another agent may be both a claim and a request for delegated action. The usual boxes and arrows remain necessary, but they do not show how text changes intent or how authority accumulates across a plan.
 
 **WHAT:** Add five overlays to the workflow diagram: **intent, trust, authority, mutable state and effects**. Use them to derive abuse cases. Then bind every material abuse case to prevention, containment, detection, recovery and an executable test.
+
+![Visual summary of the agentic threat-modelling method: trace user intent through the agent and tool gateway to a real-world effect; inspect intent, trust, authority, mutable state and effects; derive abuse cases by combining an attacker-controlled source with an available capability; then prevent, contain, detect, recover and prove.](/figures/security/threat-model.webp)
 
 ## Start with the security objective
 
@@ -61,6 +63,8 @@ Classify every source that can reach the model or an action argument:
 
 Mark where several trust classes are collapsed into the same model context. Those junctions are the primary hijacking surface. NIST frames indirect prompt injection in the same terms: trusted developer instructions and untrusted external data are combined into a unified input, allowing attacker-written data to behave like instructions ([NIST CAISI, January 2025](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)).
 
+![Five trust classes converging into one model context: verified control input; authenticated but untrusted content; externally controlled content; derived content; and unknown provenance. Authentication proves origin, but it does not prove that content is safe to follow.](/figures/security/trust-classes.webp)
+
 ### 3. Authority
 
 Inventory what the agent can exercise, not merely which tools appear in its prompt:
@@ -74,6 +78,8 @@ Inventory what the agent can exercise, not merely which tools appear in its prom
 - credentials or ambient permissions exposed to generated code.
 
 Then ask which combinations create a dangerous capability. Read access to confidential data and permission to send email may be acceptable separately but form an exfiltration path together. File write plus code execution creates persistence. Calendar read plus external messaging creates a social-engineering surface. Threat-model **capability composition**, not only individual tools.
+
+![Three dangerous capability combinations: confidential-data access plus external messaging enables exfiltration; file writing plus code execution enables persistence; and calendar access plus contacting people enables social engineering. Review combinations, not only individual tools.](/figures/security/capability-composition.webp)
 
 The governing rule from [the identity chain](/architecture/identity-chain) is that delegation may narrow authority but never enlarge it. Text in context is not a delegation mechanism.
 
@@ -163,6 +169,8 @@ For the email-exfiltration case, a prompt-injection detector is one preventive s
 ## Turn the threat model into tests
 
 **In short:** Every material abuse case becomes at least one benign task, one attacker goal and one outcome-level judge.
+
+![How a workflow threat becomes an executable security test: define the benign user task, place hostile content in the normal work path, state the exact attacker goal, and judge both legitimate completion and attack success. Measure the clean baseline, utility under attack and whether the unauthorized effect occurred.](/figures/security/threat-model-to-test.webp)
 
 A useful security test has four parts:
 

@@ -3,7 +3,7 @@ title: "Security practices for AI agents"
 icon: "ShieldCheck"
 description: "The practices that keep an agent useful under attack: threat modelling, untrusted-content handling, identity, tool security, adversarial evaluation, runtime enforcement, and evidence-led response."
 datePublished: "2026-08-31"
-dateModified: "2026-08-31"
+dateModified: "2026-09-04"
 ---
 
 <PlainTerms>
@@ -15,6 +15,8 @@ An AI agent is software that reads, decides, and acts. Its security problem is n
 **WHY:** The [target-state architecture](/architecture) establishes where identity, policy, gateways, evidence and human accountability belong. That is necessary, but a diagram does not tell a team how to threat-model one workflow, build an adversarial test, qualify an MCP server, respond to a poisoned memory, or decide whether a defense is merely making the agent unusable. Agent security needs repeatable operating practices as well as components.
 
 **WHAT:** Secure an agent as a chain of **intent, context, reasoning, action and evidence**. At every link, identify who can supply data, what authority is available, how a compromise is contained, how the failure will be tested, and what independent record will show the result. Treat external taxonomies and benchmarks as inputs to that work, not as substitutes for it.
+
+![Visual summary of the six-stage security practice loop: model the workflow, bind authority, mediate actions, attack the path, observe independently, and turn failures into regression tests. OWASP supplies threat coverage, MITRE ATLAS supplies adversary behaviour, and AgentDojo supplies executable tests.](/figures/security/index.webp)
 
 ## The operating position
 
@@ -60,6 +62,8 @@ No text the agent reads, whether it came from a user, a document, a tool, memory
 ## The chapters
 
 The guide will be built in this order. The order follows the work: understand the system, constrain it, attack it, and prove what happened.
+
+![The ten Security Practices chapters arranged as a four-stage journey: understand the workflow and hostile content; constrain identity, tools, runtime and memory; attack through evaluation and AgentDojo; then prove outcomes through detection, recovery and an OWASP crosswalk. Every failure feeds back into the controls and tests.](/figures/security/security-roadmap.webp)
 
 <Cards>
   <Card icon={<I name="map" />} title="1. Threat-model an agentic workflow" href="/security/threat-model">
@@ -109,6 +113,8 @@ This section connects the three to the enterprise design: each threat must land 
 ## What good looks like
 
 A security review of an agent is complete only when it can answer all six questions:
+
+![The six-question agent security review: allowed intent, attacker-influenced inputs, available authority, containment after model manipulation, tests proving useful and safe behaviour, and independent evidence proving what happened. If an answer exists only in the system prompt, it is not a control.](/figures/security/security-review.webp)
 
 - **Intent:** What user or business objective is the agent allowed to pursue, and what objectives are explicitly outside scope?
 - **Trust:** Which context sources are trusted, authenticated, untrusted or attacker-writable?
