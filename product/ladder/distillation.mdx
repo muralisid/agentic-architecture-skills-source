@@ -30,7 +30,7 @@ So distillation is maintenance, not only compression. If you run chapter 4 or ch
 
 Distillation is a fixed cost that buys a lower marginal cost. The decision is arithmetic, not fashion:
 
-- **Volume.** The saving is per call, so the fixed cost divides by call count. A workload of hundreds of calls a day rarely pays it back; tens of thousands a day usually does.
+- **Volume.** The saving is per call, so the fixed cost divides by call count. Divide the fixed cost by the saving on each call. That gives the number of calls it takes to pay the cost back. Compare that with your real call volume. No general threshold applies. The inputs are your own costs and volumes.
 - **Narrowness.** A student holds teacher quality on a bounded task, not in general. The narrower the task, the smaller the student can be.
 - **A locked eval.** The claim "the student holds quality" is a measurement, and it needs the eval to exist before the student does. The tension worth naming: the business case needs a fixed eval set, and a live learning loop keeps rewriting the eval set. Decide which programme you are running.
 
@@ -44,7 +44,7 @@ By the previous chapter, the bank had already moved drafting to a small fine-tun
 
 **The repair run.** The bank distils from the original, pre-adapter 7B model as teacher, on a general instruction-following mix, while holding the narrative eval as a guard. The degraded capability recovers; the narrative behaviour stays. This is the standard sequence, not an exotic one: fine-tune, measure the collateral damage, distil it away.
 
-**The volume case.** Alert triage runs at tens of thousands of items a month, and most of them are routine: assemble context, produce a narrative, propose "no further action" with reasons. The frontier model's quality on routine alerts is not the constraint, its unit cost is. A distilled student handling the routine tier, with a confidence rule escalating the unusual ones to the larger model, cuts the average cost per alert substantially while the escalation path preserves quality where it matters. The split is measured, not guessed: the eval says which alerts the student handles at parity, and the boundary is set there.
+**The volume case.** Alert triage runs at tens of thousands of items a month, and most of them are routine: assemble context, produce a narrative, propose "no further action" with reasons. The frontier model's quality on routine alerts is not the constraint, its unit cost is. A distilled student handling the routine tier, with a confidence rule escalating the unusual ones to the larger model, cuts the average cost per alert substantially while the escalation path preserves quality where it matters. The split is measured, not guessed: the eval says which alerts the student handles at parity, and the boundary is set there. Whether the saving repays the fixed cost is the arithmetic above, run on the bank's own volume and costs.
 
 **What the bank does not distil.** The disposition proposal on complex cases. That judgement is the part the analysts and regulators care most about, the teacher's own reliability there is the open question of the next chapter, and a cheaper copy of an unproven judgement is a saving nobody asked for.
 
