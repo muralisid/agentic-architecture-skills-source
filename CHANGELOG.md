@@ -12,6 +12,12 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-09-11
+
+**Memory on the intelligence ladder.** Step 2 now covers what an agent remembers, using positions the guide already held: memory graded by how long it lasts, the source text kept, facts dated, every write checked before it is kept, and topics treated as search labels rather than memory. Step 1 treats a growing playbook as memory that passes the tested gate. Step 3 treats a record kept past the run as memory. The Deck B distinction now says facts about customers and cases belong in neither training method. The evaluation suite adds the cases memory breaks. No new research: every claim comes from pages and sources already on the site.
+
+**Ladder illustrations corrected.** The Deck A overview had garbled labels on step 3; they are fixed, and step 2 now names memory. The instructions example labelled the naive draft as approved examples and said instructions shape how an analyst uses facts; both are corrected. The prompt illustration labelled the model as a stage called "examples beat adjectives"; it now reads "The model". The distillation illustration now names the pre-fine-tune model. Titles no longer use em dashes. One new illustration shows what an agent remembers.
+
 ## 2026-08-23 (second release)
 
 **Renamed.** The guide is now Agentic Architecture Skills, published at www.agenticarchitectureskills.com, with two tracks: the agentic enterprise, and software built for agents to consume (D036). The previous deployment host redirects permanently.

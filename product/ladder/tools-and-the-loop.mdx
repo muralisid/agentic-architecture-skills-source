@@ -16,13 +16,15 @@ Three consequences follow, and they are the whole of harness design.
 
 **The context grows every turn.** Each tool result is appended, so a long investigation fills the <Term k="context window">context window</Term> with old evidence. You must decide what to do about that, and the choice is not neutral. **Compaction** summarises the history, which is lossy and can quietly drop the detail the model needed. **Reset** starts fresh with a stated goal and a short handover, keeping durable state in files or a record rather than in the conversation. Reset is harder to build and generally more reliable, because a summary of a summary degrades while a written record does not.
 
+**What outlives the run is memory.** A record kept only for the task is engineering. Once it is kept for later runs, it becomes memory. It then needs a named owner, carries its source, waits in quarantine before later runs trust it, and is reached by deletion. [Step 2](/ladder/context#memory-is-context-that-lasts) sets out those rules.
+
 **Nothing stops the loop unless you stop it.** A model can call a tool that returns an unhelpful result, decide to try again, and do that indefinitely. Real harnesses cap iterations, cap wall-clock time, check for cancellation between turns, and expose a stop hook. These are not edge cases, they are the normal path.
 
 **Tools are an interface you are designing.** A tool with a vague description gets called at the wrong times. A tool returning ten thousand tokens of JSON burns the context window that the reasoning needs. Tools are designed for a reader with no memory of your system, because that is what they have.
 
 <GuideFigure id="agent-loop-anatomy" fullWidth />
 
-<TeachingIllustration src="/images/ladder/tools-loop-labeled-v2.webp" alt="A model selects tools through an authorization gate, appends compact results to durable state, and loops under stop controls." title="The harness owns the loop around the model" caption="The model proposes. The harness authorises, executes, records and decides whether another turn is allowed. Durable state and hard stops sit outside the model because they must survive and remain enforceable." />
+<TeachingIllustration src="/images/ladder/tools-loop-labeled-v3.webp" alt="A model selects tools through an authorization gate, appends compact results to durable state, and loops under stop controls." title="The harness owns the loop around the model" caption="The model proposes. The harness authorises, executes, records and decides whether another turn is allowed. Durable state and hard stops sit outside the model because they must survive and remain enforceable." />
 
 ## Why the harness is not plumbing
 
@@ -46,7 +48,7 @@ The financial crime agent's loop looks like this. It receives an alert. It calls
 
 **Tool design decides the cost.** A naive transaction tool returns every field of every transaction in the window, which is tens of thousands of tokens of mostly irrelevant JSON, and the model then reasons badly because the relevant three transactions are buried. The right tool returns a summary by counterparty and a flag for the outliers, with a second tool to pull detail on a specific one. Same data, a fraction of the context, better reasoning.
 
-**Context resets rather than compacts.** A complex investigation can run twenty turns. Compaction risks summarising away the one transaction that mattered, and in a regulated file that is not an acceptable failure. The harness keeps a structured evidence record as it goes, and resets the conversation against that record.
+**Context resets rather than compacts.** A complex investigation can run twenty turns. Compaction risks summarising away the one transaction that mattered, and in a regulated file that is not an acceptable failure. The harness keeps a structured evidence record as it goes, and resets the conversation against that record. If any of that record is kept for later alerts on the same customer, it is memory, and it passes the same check first.
 
 **The loop has hard stops.** An iteration cap, a wall-clock cap, and a cost cap per alert. Without them a single pathological alert can consume the day's budget, and at tens of thousands of alerts a month that is a real operational risk rather than a theoretical one.
 
@@ -74,6 +76,7 @@ That word "traced" is the gate. If you cannot say which turn failed and why, you
 - Harness choice changing downstream decisions: arXiv 2607.04528, July 2026.
 - Harness outweighing retrieval architecture: arXiv 2605.15184, May 2026.
 - The multi-agent cost-accuracy frontier: arXiv 2603.22651, March 2026.
+- What a record kept past the run becomes: [the data-to-memory pipeline](/architecture/data-to-memory) and [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture).
 - Depth on [the agent platform layer](/layers/r07-agent-platform).
 - The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 

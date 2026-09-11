@@ -24,7 +24,7 @@ A prompt is not one blob of text. It has parts, and each does a different job.
 
 <GuideFigure id="prompt-anatomy" fullWidth />
 
-<TeachingIllustration src="/images/ladder/instructions-mechanism-labeled-v2.webp" alt="A rulebook, task card, worked examples, case file and output form flow in order through a reasoning model." title="The prompt is an assembled system" caption="Standing rules, the task, worked examples, the changing input and the enforced output shape do different jobs. Treating them as separate parts makes the prompt testable and keeps its stable prefix cacheable." />
+<TeachingIllustration src="/images/ladder/instructions-mechanism-labeled-v3.webp" alt="A rulebook, task card, worked examples, case file and output form flow in order through a reasoning model." title="The prompt is an assembled system" caption="Standing rules, the task, worked examples, the changing input and the enforced output shape do different jobs. Treating them as separate parts makes the prompt testable and keeps its stable prefix cacheable." />
 
 ## Order matters more than people expect
 
@@ -41,6 +41,8 @@ Run it as a search instead. A published method treats prompts as candidates to b
 Two things follow. Teams that hand-tune and then conclude the model is the limit have usually not run this, so their ceiling is not the model's ceiling. And ten examples is a low bar, which means this is available long before you have enough data for anything in Deck B.
 
 A related result treats context as something that accumulates: rather than one prompt being rewritten, a playbook is grown and curated across many runs. It improved agent benchmarks by 10.6 points and finance tasks by 8.6, with no weight updates and no labelled supervision (ACE, arXiv 2510.04618, ICLR 2026).
+
+A playbook that grows across runs is memory, and it changes how the agent behaves. So each addition passes the same tested gate as any other change before it takes effect. Nothing is kept just because it piled up. [The learning flywheel](/architecture/learning-flywheel) sets out that gate.
 
 ## At the bank
 
@@ -60,7 +62,7 @@ The engineered version does four things:
 
 ## What this step does not fix
 
-<TeachingIllustration src="/images/ladder/instructions-bank-labeled-v2.webp" alt="A disorderly pile of investigation papers is transformed into aligned evidence cards and a consistent case report." title="From plausible prose to a reviewable case file" caption="Examples and a schema put each kind of evidence in the same place on every alert, so an analyst can review the result consistently and trace it back to its sources." />
+<TeachingIllustration src="/images/ladder/instructions-bank-labeled-v3.webp" alt="A disorderly pile of investigation papers is transformed into aligned evidence cards and a consistent case report." title="From plausible prose to a reviewable case file" caption="Examples and a schema put each kind of evidence in the same place on every alert, so an analyst can review the result consistently and trace it back to its sources." />
 
 Missing knowledge. If the customer's transaction history is not in the context, no instruction recovers it, and a model asked to summarise evidence it cannot see will produce a fluent narrative anyway. That is the failure mode to fear here, and it is a [step 2](/ladder/context) problem.
 
@@ -77,6 +79,7 @@ Flat is the signal. Frustration is not. Without a fixed eval you cannot tell a r
 
 - GEPA, reflective prompt evolution, arXiv 2507.19457, ICLR 2026.
 - ACE, context as an evolving playbook, arXiv 2510.04618, ICLR 2026.
+- A growing playbook as memory that passes a tested gate: [the learning flywheel](/architecture/learning-flywheel).
 - The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

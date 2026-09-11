@@ -1,11 +1,11 @@
 ---
 title: "Step 2: Context"
 icon: "Library"
-description: "The pipeline from a document to a retrieved answer, why one embedding per document collapses on real material, and the measurement that moved retrieval from 0.294 to 0.803 on one corpus with one encoder."
+description: "The pipeline from a document to a retrieved answer, why one embedding per document collapses on real material, the measurement that moved retrieval from 0.294 to 0.803 on one corpus with one encoder, and the rules for what an agent remembers."
 ---
 
 <PlainTerms>
-This step decides what the model gets to see. Documents are cut up, turned into numbers, stored, and searched. Every one of those choices changes the answer, and on our own measurements they change it more than anything else available. This page explains the pipeline, the failure that catches almost everyone, and what it looks like inside a bank. The one thing to remember: a document about several things gets one average summary, and a question about one of those things then matches it only weakly.
+This step decides what the model gets to see. Documents are cut up, turned into numbers, stored, and searched. Every one of those choices changes the answer, and on our own measurements they change it more than anything else available. This page explains the pipeline, the failure that catches almost everyone, what changes when the agent keeps memory, and what it looks like inside a bank. The one thing to remember: a document about several things gets one average summary, and a question about one of those things then matches it only weakly.
 </PlainTerms>
 
 ## The pipeline, in order
@@ -22,7 +22,7 @@ This step decides what the model gets to see. Documents are cut up, turned into 
 
 <GuideFigure id="context-pipeline-ladder" fullWidth />
 
-<TeachingIllustration src="/images/ladder/context-pipeline-labeled-v2.webp" alt="A structured document becomes permission-carrying pieces, then vectors, and only the most relevant pieces reach the model." title="Retrieval is a chain of transformations" caption="The answer can only be as good as the structure preserved during parsing, the boundaries chosen during chunking, the permissions carried into the index and the evidence selected at retrieval time." />
+<TeachingIllustration src="/images/ladder/context-pipeline-labeled-v3.webp" alt="A structured document becomes permission-carrying pieces, then vectors, and only the most relevant pieces reach the model." title="Retrieval is a chain of transformations" caption="The answer can only be as good as the structure preserved during parsing, the boundaries chosen during chunking, the permissions carried into the index and the evidence selected at retrieval time." />
 
 ## The failure that catches almost everyone
 
@@ -46,6 +46,24 @@ We ran that control, and on real prose our clever version lost: purpose-shaped c
 
 Meaning-based search is poor at exact strings. On queries naming a specific attribute, keyword search scored **0.997 against 0.314** for the dense index on identical queries. Running both and fusing the rankings costs almost nothing and removes a silent failure: a dense-only system does not return an error when it misses an account number, it returns something plausible instead.
 
+## Memory is context that lasts
+
+**In short:** What an agent keeps from earlier work reaches the model like any document. It also carries duties a document does not.
+
+The guide grades memory by how long it lasts. The current conversation and the evidence fetched for this turn are engineering. So is a working session of hours or days, within limits on where it is held and for how long. Memory that outlives the session is different. A durable profile of a customer or a case is a record, with an owner, consent, retention and deletion duties.
+
+Four rules follow, and each rests on published evidence.
+
+**Keep the source text.** Store the original and add search keys to it. On a published long-term memory benchmark, keeping raw text and adding derived keys improved recall by 9.4 percent and answers by 5.4 percent. Replacing the text with extracted facts or summaries made results worse (LongMemEval, ICLR 2025).
+
+**Record when a fact was true.** Keep the time something happened apart from the time it was stored. A fact that has been replaced is then marked out of date, and the history behind an earlier decision survives. Stale grounding is a named production failure.
+
+**Check a memory before it is kept.** Every write carries its source and waits in quarantine until it is promoted. The reason is measured: poisoning under 0.1 percent of a memory store achieved over 80 percent attack success (AgentPoison, NeurIPS 2024).
+
+**Topics help search. They are not memory.** Topics are labels, stored so they can be rebuilt. A graph is added only where questions follow exact relationships, such as ownership or dependency. [CD-1](/decisions#cd-1) records that verdict.
+
+<TeachingIllustration src="/images/ladder/context-memory-labeled-v1.webp" alt="Working notes in a tray pass through a checkpoint before reaching a filing cabinet of dated record cards, which a thread ties to their original document, with an eraser beside the cabinet." title="What the agent remembers" caption="Working notes last only for the session. Anything kept beyond it passes a check first. A kept memory holds its source and its date, and deletion reaches it like every other copy." />
+
 ## At the bank
 
 The financial crime agent needs the customer's history. That history is exactly the aspect-rich material above: onboarding and identity, expected activity from the customer's stated business, two years of transactions, prior alerts and their dispositions, correspondence, and any prior report filed.
@@ -58,25 +76,31 @@ The financial crime agent needs the customer's history. That history is exactly 
 
 **More is not better.** Adding documents can reduce accuracy until the corpus is scoped: published work shows accuracy falling below 40 percent until domain-scoped curation fixed it (arXiv 2606.11350). The agent that retrieves fifty documents per alert is usually worse than the one that retrieves eight good ones.
 
+**What the agent remembers is a record.** Notes the agent keeps from earlier alerts on the same customer are durable memory about that customer. They carry their source and date. They wait for review before a later alert relies on them. An erasure request for the customer reaches them too, like every other copy.
+
 **Someone owns the corpus.** Curation labour can be human, automated with sampled audits, or both, but accountability cannot be automated away. In *Moffatt v. Air Canada* (BC Civil Resolution Tribunal, 14 February 2024) the company was liable for its chatbot's statements where they contradicted its actual policy.
 
 ## Where the depth is
 
-[Context patterns for agents](/patterns) carries nine patterns, each with its measurement and the conditions under which it fails. [The data-to-memory pipeline](/architecture/data-to-memory) covers the engineering, and [how to test a context design](/patterns/how-to-test-a-context-design) is the method.
+[Context patterns for agents](/patterns) carries nine patterns, each with its measurement and the conditions under which it fails. [The data-to-memory pipeline](/architecture/data-to-memory) covers the engineering, and [how to test a context design](/patterns/how-to-test-a-context-design) is the method. [The memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) sets out the memory tiers, and [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) covers topics, graphs and memory.
 
 ## The test for moving on
 
-**Your representation beats a matched control on your own queries, and what still fails is about acting rather than knowing.**
+**Your representation beats a matched control on your own queries, anything the agent keeps is sourced, dated and checked, and what still fails is about acting rather than knowing.**
 
 An agent that retrieves the right documents and then draws the wrong conclusion, calls the wrong tool, or stops too early does not have a context problem. That is [step 3](/ladder/tools-and-the-loop).
 
-<EvidenceBadge status="independently-measured" /> The retrieval figures are our own, reproducible from the published benchmark and reproduced across two machines and two processor architectures.
+<EvidenceBadge status="mixed-evidence" /> The retrieval figures are our own, reproducible from the published benchmark and reproduced across two machines and two processor architectures. The memory findings are published work by others, cited where they appear.
 
 <details>
 <summary>The research behind this page</summary>
 
 - Benchmark repository: [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), with detail on [aspect dilution](/patterns/aspect-dilution), [real prose](/patterns/real-prose) and [what we got wrong](/patterns/what-we-got-wrong).
 - Added documents reducing accuracy until curation: arXiv 2606.11350.
+- Keeping raw text and adding derived keys, against replacing it with facts or summaries: LongMemEval, ICLR 2025.
+- Poisoning under 0.1 percent of a memory store: AgentPoison, NeurIPS 2024.
+- Memory tiers, dated facts and quarantine: [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) and [the data-to-memory pipeline](/architecture/data-to-memory).
+- Topics and graphs as derived indexes, not memory: [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) and [CD-1](/decisions#cd-1).
 - *Moffatt v. Air Canada*, BC Civil Resolution Tribunal, 14 February 2024.
 - The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 

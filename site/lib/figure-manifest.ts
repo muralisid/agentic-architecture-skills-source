@@ -197,7 +197,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     ] },
   }),
   defineFigure({
-    id: 'intelligence-ladder', category: 'foundation', page: '/ladder', placement: 'The ladder', sourceHeading: 'The seven rungs',
+    id: 'intelligence-ladder', category: 'foundation', page: '/ladder', placement: 'The ladder', sourceHeading: 'Deck A: change the system',
     title: 'Deck A: change the system, in order',
     takeaway: 'Exhaust each step before the next is justified. Most organisations should stop here.',
     caption: 'Each rung changes something different. The gate on each is the evidence that justifies the next step.',
@@ -206,7 +206,7 @@ const foundationalFigures: FigureManifestEntry[] = [
     sources: [guideSource('Context patterns', '/patterns'), guideSource('The agent platform layer', '/layers/r07-agent-platform'), guideSource('Intelligence and learning', '/layers/r06-intelligence-and-learning')],
     data: { stages: [
       { label: 'Instructions', detail: 'Rewrite the prompt and the task description.', gate: 'Accuracy flat for a week', kind: 'human' },
-      { label: 'Context', detail: 'Change what reaches the model, and how it is represented.', gate: 'Beats a matched control', kind: 'evidence' },
+      { label: 'Context', detail: 'Change what reaches the model, including what it remembers.', gate: 'Beats a matched control', kind: 'evidence' },
       { label: 'Tools and the loop', detail: 'Change the system that runs the model.', gate: 'Loop instrumented, failures traced', kind: 'system' },
     ] },
   }),

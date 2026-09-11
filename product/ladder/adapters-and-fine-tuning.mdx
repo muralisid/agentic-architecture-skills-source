@@ -52,7 +52,7 @@ The financial crime agent's narratives are correct by step 3, but they are corre
 
 **What the bank fine-tunes for.** Five thousand historical narratives, written by senior analysts and passed by quality assurance, paired with the alert context they were written from. The training objective is the house shape: how deviations are characterised, how certainty is hedged, how sources are cited inline, what order the sections run in. This is demonstrable behaviour, thousands of clean examples exist, and no paragraph of instructions has fully captured it. That is exactly the fine-tuning use case.
 
-**What the bank refuses to fine-tune for.** Knowledge of customers, typologies or regulation. All of that continues to arrive through retrieval at run time, for two reasons. The mechanism above: the pairs would teach the phrasing of typology explanations, not the typologies. And a governance reason that is decisive in this vertical: facts baked into weights cannot be traced to a source, updated when guidance changes, or deleted when an erasure obligation arrives. Retrieved facts can. A regulated narrative must cite its evidence, and weights do not cite.
+**What the bank refuses to fine-tune for.** Knowledge of customers, typologies or regulation. All of that continues to arrive through retrieval at run time, for two reasons. The mechanism above: the pairs would teach the phrasing of typology explanations, not the typologies. And a governance reason that is decisive in this vertical: facts baked into weights cannot be traced to a source, updated when guidance changes, or deleted when an erasure obligation arrives. Retrieved facts can. A regulated narrative must cite its evidence, and weights do not cite. Those facts live in [retrieval and governed memory](/ladder/context#memory-is-context-that-lasts) instead.
 
 **The economics that make it worthwhile.** The real prize is moving the drafting task from a frontier model to a small fine-tuned one. At tens of thousands of alerts a month, a 7B model with an adapter, hosted on the bank's own infrastructure, drafts at a fraction of the per-alert cost, and the sovereignty posture improves as a side effect: alert data stops leaving the estate. One published head-to-head found a fine-tuned 7B model beating a prompt-engineered frontier model on a classification task, 88 percent against 31 percent, at roughly a fifteenth of the inference cost. Treat that as one data point rather than a law, and prove it on your own eval before you switch.
 
@@ -72,6 +72,7 @@ The financial crime agent's narratives are correct by step 3, but they are corre
 - OpenAI deprecations page, self-serve fine-tuning wind-down, announced 7 May 2026: https://developers.openai.com/api/docs/deprecations
 - LoRA not preventing catastrophic forgetting, and the adaptation ordering: [intelligence and learning](/layers/r06-intelligence-and-learning) and [the decision catalog](/decisions).
 - Why baked-in facts fail governance: [the concern matrix](/architecture/concern-matrix) on derived artifacts inheriting obligations.
+- Retrieval over fine-tuning for adding new facts: Fine-Tuning or Retrieval?, EMNLP 2024, https://aclanthology.org/2024.emnlp-main.15/
 - The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>
