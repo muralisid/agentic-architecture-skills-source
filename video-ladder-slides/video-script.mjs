@@ -1,4 +1,4 @@
-// Turns a page into a Scout7 video script. The page is the source: each <Slide> block's paragraphs
+// Turns a page into a video script. The page is the source: each <Slide> block's paragraphs
 // are its builds, and the video speaks exactly those words.
 //
 //   node video-script.mjs /path/to/product/ladder/index.mdx
@@ -86,7 +86,7 @@ fs.mkdirSync(path.join(HERE, 'clips'), { recursive: true });
 fs.writeFileSync(path.join(HERE, 'clips', `${name}.json`), `${JSON.stringify({ page: journey.page, chapter: journey.chapter, clips: out }, null, 2)}\n`);
 
 const words = out.reduce((a, c) => a + c.words, 0);
-console.log(`${name}: ${blocks.length} slides, ${out.length} clips, ${words} words, about ${(words / 2.8 / 60).toFixed(1)} min at Scout7's 2.8 words a second`);
+console.log(`${name}: ${blocks.length} slides, ${out.length} clips, ${words} words, about ${(words / 2.8 / 60).toFixed(1)} min at the video tool's 2.8 words a second`);
 for (const c of out) console.log(`  ${c.clip_id} ${c.on_camera ? 'CAMERA' : c.slide + ' b' + c.build} (${c.words}) ${c.voiceover}`);
 if (problems.length) {
   console.log(`${problems.length} problems:`);

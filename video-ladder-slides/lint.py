@@ -5,6 +5,7 @@ Usage: python3 lint.py journeys/instructions.json [more files]
 Exits 1 when any error is found. Warnings also need fixing before review.
 """
 import json
+import pathlib
 import re
 import sys
 
@@ -21,7 +22,12 @@ BANNED = {
 BOLTED = re.compile(
     r",\s+(which|where|because|often|meaning|making|so that|while|when|since|leaving|as it)\b", re.I
 )
-PRODUCTS = re.compile(r"scout\s?7|fn7", re.I)
+# The guide names no products of its own. The words to catch are kept out of git,
+# because the site build refuses to publish a repository that carries them. Put one
+# word or phrase per line in products.local.txt to switch this check on.
+_words = pathlib.Path(__file__).with_name("products.local.txt")
+_list = [w.strip() for w in _words.read_text().splitlines() if w.strip()] if _words.exists() else []
+PRODUCTS = re.compile("|".join(re.escape(w) for w in _list), re.I) if _list else None
 LAYOUTS = {
     "title", "statement", "picture", "tiles", "steps", "flow",
     "cycle", "compare", "list", "number", "branch", "rule",
@@ -58,7 +64,7 @@ def lint(file):
         for ch, name in BANNED.items():
             if ch in s:
                 errors.append(f"{path}: {name} in {s!r}")
-        if PRODUCTS.search(s):
+        if PRODUCTS and PRODUCTS.search(s):
             errors.append(f"{path}: product name in {s!r}")
 
     clips = words = 0

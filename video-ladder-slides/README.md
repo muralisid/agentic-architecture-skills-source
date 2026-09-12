@@ -72,6 +72,11 @@ Run these from this folder. Replace `x` with a page name, such as `context`.
 In git: the journeys, the clips, the renderer, the scripts, the fonts, the WebP pictures
 and the MP3 read-throughs.
 
+The site build refuses to publish if reserved words appear anywhere in the repository, so
+no product name is written down here. `lint.py` reads the words to catch from
+`products.local.txt`, which is not committed. Build it from the private blocklist, one
+word per line, or the product check quietly stays off.
+
 Not in git: the rendered frames, the source PNG pictures, the intermediate audio and the
 generated review pages. Frames come back with `render.mjs`. The read-throughs are kept
 because they can only be recorded on a Mac.
@@ -86,7 +91,7 @@ because they can only be recorded on a Mac.
 
 ## Filming
 
-Filming runs through Scout7 Video Studio with the presenter set to "me". The plan is
+Filming runs through the video tool with the presenter set to "me". The plan is
 built from the clips, with the first and last clip on camera, and every middle clip using
 its `film` frame as the image. Rendering bills per clip, so it needs his yes each time.
 The old draft `vid_8ec5e5081a9343e4` still has the removed example in it, so it is parked.
