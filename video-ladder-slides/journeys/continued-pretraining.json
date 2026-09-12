@@ -1,0 +1,863 @@
+{
+  "page": "/ladder/continued-pretraining",
+  "chapter": "Continued pretraining",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "cp-01",
+        "cp-intro"
+      ]
+    },
+    {
+      "heading": "What the model learns from text",
+      "slides": [
+        "cp-03",
+        "cp-20",
+        "cp-04",
+        "cp-21",
+        "cp-05"
+      ]
+    },
+    {
+      "heading": "Two kinds of training",
+      "slides": [
+        "cp-02",
+        "cp-06"
+      ]
+    },
+    {
+      "heading": "Preparing the text is the project",
+      "slides": [
+        "cp-22",
+        "cp-07",
+        "cp-08",
+        "cp-16",
+        "cp-23",
+        "cp-09",
+        "cp-10"
+      ]
+    },
+    {
+      "heading": "How much goes where",
+      "slides": [
+        "cp-11",
+        "cp-12"
+      ]
+    },
+    {
+      "heading": "Putting it to work",
+      "slides": [
+        "cp-14",
+        "cp-15",
+        "cp-17",
+        "cp-18"
+      ]
+    },
+    {
+      "heading": "The test for moving on",
+      "slides": [
+        "cp-19"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "cp-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "cp-01",
+      "layout": "title",
+      "title": "Continued *pretraining*",
+      "text": "How does a model learn your field from the text you already hold?",
+      "builds": [
+        {
+          "narration": [
+            "This chapter is about teaching a model your field of work.",
+            "It learns from text your organisation already holds.",
+            "Think of contracts, support tickets and manuals."
+          ]
+        }
+      ],
+      "caption": "Continued pretraining teaches a model your field from text you already hold. Nobody has to write examples by hand."
+    },
+    {
+      "id": "cp-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "How a model learns from text",
+        "Text versus written examples",
+        "Getting the text ready",
+        "Sharing out the training effort",
+        "What changes once it is done"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "This chapter is one of five ways to change the model itself.",
+            "You pick it when a model does not understand the language of your field."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "First, we see how a model learns from text.",
+            "Then we compare that with training on written examples."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Next, we look at getting the text ready.",
+            "Then we see how to share out the training effort.",
+            "Last, we see what changes once the work is done."
+          ]
+        }
+      ],
+      "caption": "This chapter covers how a model learns from text and how that differs from written examples. It then covers preparing the text, sharing the training, and what changes."
+    },
+    {
+      "id": "cp-03",
+      "layout": "picture",
+      "title": "The text is its own *teacher*",
+      "picture": "A line of text with the last word covered, and a model guessing the hidden word.",
+      "items": [
+        "Your text",
+        "Hidden next word",
+        "The model's guess"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "First, how does a model learn from text at all?",
+            "It is shown some text with the next word hidden."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "It guesses the hidden word.",
+            "Then it checks the real one.",
+            "It does this again and again, over huge amounts of text.",
+            "This is called pretraining."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Every next word is a small test with a known answer.",
+            "So nobody has to write the answers by hand."
+          ]
+        }
+      ],
+      "caption": "A model learns by guessing each next word and checking the real one. This is called pretraining. The text holds every answer.",
+      "image": "pictures/cp-03.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-20",
+      "layout": "statement",
+      "icon": "book",
+      "title": "The same training, *continued* on your text",
+      "text": "An existing model keeps learning from your own text.",
+      "picture": "A model that already read a large stack of general papers, now taking in a new stack of your own papers.",
+      "builds": [
+        {
+          "narration": [
+            "Most models you use have already learned this way.",
+            "They learned from text on every kind of subject.",
+            "Now take one of those models.",
+            "Keep training it the same way, on your own text.",
+            "This is called continued pretraining."
+          ]
+        },
+        {
+          "narration": [
+            "The model keeps guessing next words.",
+            "But now the words come from your field.",
+            "It comes out reading your field the way your people do."
+          ]
+        }
+      ],
+      "caption": "Continued pretraining keeps training an existing model the same way, on your own text. It learns to read your field the way your people do.",
+      "image": "pictures/cp-20.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-04",
+      "layout": "statement",
+      "icon": "search",
+      "title": "Good guesses need *understanding*",
+      "text": "Guessing the next word well needs knowledge of the field.",
+      "builds": [
+        {
+          "narration": [
+            "Why does guessing words teach the model anything?",
+            "To guess the next word well, the model must know what the words mean.",
+            "It must also know what tends to come next in that kind of document."
+          ]
+        },
+        {
+          "narration": [
+            "The model does this over billions of small pieces of text.",
+            "That forces it to learn the ideas of your field and how people write about them."
+          ]
+        }
+      ],
+      "caption": "Guessing well needs knowledge of the field. Over billions of pieces of text, the model learns its ideas and its ways of writing."
+    },
+    {
+      "id": "cp-21",
+      "layout": "statement",
+      "icon": "document",
+      "title": "Models read *pieces* of words",
+      "text": "These small pieces are called tokens.",
+      "picture": "A long thread of small beads running into a model, one bead at a time.",
+      "builds": [
+        {
+          "narration": [
+            "There is also a simple reason models misread specialist text.",
+            "It comes from how a model reads.",
+            "A model does not read whole words.",
+            "It reads text in small pieces.",
+            "A piece is often just part of a word."
+          ]
+        },
+        {
+          "narration": [
+            "These pieces are called tokens.",
+            "The rules for cutting text into tokens were learned from everyday text."
+          ]
+        }
+      ],
+      "caption": "A model reads text in small pieces called tokens. The rules for cutting text into tokens come from everyday text.",
+      "image": "pictures/cp-21.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-05",
+      "layout": "picture",
+      "title": "Specialist words get *broken up*",
+      "picture": "One long specialist word cut into several small broken pieces.",
+      "items": [
+        "A specialist word",
+        "Four or five pieces"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Now take a word that only your field uses.",
+            "The cutting rules have rarely seen it."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "So the word gets cut into four or five pieces that mean nothing.",
+            "The model has to put the word back together before it can use it."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Continued pretraining teaches the model how these words behave.",
+            "It learns to read them well in their cut-up form."
+          ]
+        }
+      ],
+      "caption": "Cutting rules learned from everyday text break a specialist word into meaningless pieces. Continued pretraining teaches the model to read those words anyway.",
+      "image": "pictures/cp-05.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-02",
+      "layout": "statement",
+      "icon": "warning",
+      "title": "Often *confused* with fine-tuning",
+      "text": "Fine-tuning trains a model on examples people write by hand.",
+      "builds": [
+        {
+          "narration": [
+            "So far, we have seen how the model learns from text.",
+            "People often confuse this with another kind of training.",
+            "In that kind, people write examples by hand.",
+            "Each example is a question and the answer they want.",
+            "This is called fine-tuning."
+          ]
+        },
+        {
+          "narration": [
+            "Both kinds train the model further.",
+            "But they do very different jobs."
+          ]
+        }
+      ],
+      "caption": "Fine-tuning trains a model on questions and answers that people write by hand. It is often confused with continued pretraining."
+    },
+    {
+      "id": "cp-06",
+      "layout": "compare",
+      "title": "Two kinds of training, two *jobs*",
+      "left": {
+        "head": "Fine-tuning",
+        "rows": [
+          "Question and answer pairs",
+          "Thousands of examples",
+          "Teaches how to behave",
+          "Someone writes the answers"
+        ]
+      },
+      "right": {
+        "head": "Continued pretraining",
+        "rows": [
+          "Raw text as it exists",
+          "Billions of tokens",
+          "Teaches what the field is",
+          "Text must be prepared"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Here they are side by side.",
+            "Fine-tuning learns from thousands of written question and answer pairs.",
+            "Continued pretraining learns from text just as it already exists.",
+            "Text used just as it exists is called raw text.",
+            "It needs billions of tokens of it."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Fine-tuning teaches the model how to behave.",
+            "Someone has to write every answer.",
+            "Continued pretraining teaches the model what your field is.",
+            "Nobody writes anything.",
+            "But the text must be prepared first."
+          ]
+        }
+      ],
+      "caption": "Fine-tuning uses thousands of written pairs to teach behaviour. Continued pretraining uses billions of tokens of raw text to teach the field."
+    },
+    {
+      "id": "cp-22",
+      "layout": "statement",
+      "icon": "layers",
+      "title": "All the text together is the *corpus*",
+      "text": "Preparing it is where the project is won or lost.",
+      "picture": "Loose papers and folders gathered into one large box, with a model waiting beside it.",
+      "builds": [
+        {
+          "narration": [
+            "We said the text must be prepared first.",
+            "Here is what that involves.",
+            "You gather all the text you plan to train on.",
+            "That whole collection is called the corpus."
+          ]
+        },
+        {
+          "narration": [
+            "The model takes in everything in the corpus.",
+            "It does not choose.",
+            "So preparing the corpus is where the project is won or lost."
+          ]
+        }
+      ],
+      "caption": "All the text gathered for training is called the corpus. The model takes in all of it. Preparing it decides the project.",
+      "image": "pictures/cp-22.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-07",
+      "layout": "list",
+      "title": "Take out repeats and *noise*",
+      "picture": "A sieve over a stack of papers, with copies and torn pages set aside.",
+      "items": [
+        "Remove repeated material",
+        "Filter out noise"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Start by taking out repeats.",
+            "Old archives hold many templates and near-identical copies.",
+            "Whatever repeats gets too much weight in training."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then filter out noise.",
+            "Failed scans, broken files and machine-made logs teach the model noise."
+          ]
+        }
+      ],
+      "caption": "Remove repeats. Templates and copies should not get too much weight. Filter out failed scans, broken files and machine-made logs.",
+      "image": "pictures/cp-07.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-08",
+      "layout": "picture",
+      "title": "Some things must *stay out*",
+      "picture": "An old support ticket carrying a password and personal details, stopped at a gate before the model.",
+      "items": [
+        "Passwords",
+        "Personal data",
+        "Private legal advice"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "Some text must never go in at all.",
+            "Keep out anything you are not allowed to keep.",
+            "Also keep out anything you would not want the model to say back."
+          ]
+        },
+        {
+          "reveal": 1,
+          "narration": [
+            "Old support tickets can hold passwords.",
+            "Those stay out."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Personal data stays out if you have no legal reason to keep it.",
+            "Private legal advice stays out too."
+          ]
+        }
+      ],
+      "caption": "Keep out anything you may not keep or would not want said back. That includes passwords, personal data and private legal advice.",
+      "image": "pictures/cp-08.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-16",
+      "layout": "statement",
+      "icon": "database",
+      "title": "Tables and records stay *out*",
+      "text": "The model looks them up through a tool instead.",
+      "picture": "Papers going into a model, while a filing cabinet of records stands apart, joined only by a thin cord.",
+      "builds": [
+        {
+          "narration": [
+            "Some data is not written text at all.",
+            "It sits in tables and records.",
+            "That data stays out of the corpus too."
+          ]
+        },
+        {
+          "narration": [
+            "When the model needs that data, it looks it up.",
+            "It asks a small program to fetch it.",
+            "A program like this is called a tool."
+          ]
+        }
+      ],
+      "caption": "Data kept in tables and records stays out of the corpus. The model looks it up through a tool instead.",
+      "image": "pictures/cp-16.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-23",
+      "layout": "statement",
+      "icon": "shield",
+      "title": "You need the *right* to train",
+      "text": "Check you are allowed to train on the text.",
+      "builds": [
+        {
+          "narration": [
+            "Next comes the question of rights.",
+            "Before training, check that you are allowed to use the text this way.",
+            "Being able to read the text does not always mean you may train on it."
+          ]
+        }
+      ],
+      "caption": "Before training, check that you have the right to train on the text."
+    },
+    {
+      "id": "cp-09",
+      "layout": "statement",
+      "icon": "lock",
+      "title": "The model *inherits* the rules",
+      "text": "A model trained on your text is made from that text.",
+      "picture": "The same tag tied to a stack of papers and to the model trained on them.",
+      "builds": [
+        {
+          "narration": [
+            "Rules also follow the text into the model.",
+            "A model trained on your corpus is made from that corpus.",
+            "So the rules for that text now apply to the model too."
+          ]
+        },
+        {
+          "narration": [
+            "Some rules say how sensitive the text is.",
+            "Some say where it may be kept.",
+            "Some say when it must be deleted."
+          ]
+        },
+        {
+          "narration": [
+            "And a model cannot forget just one thing.",
+            "If one record must be deleted, the model cannot drop just that record."
+          ]
+        }
+      ],
+      "caption": "Rules about sensitivity, storage and deletion follow the text into the model. A model cannot forget just one record.",
+      "image": "pictures/cp-09.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-10",
+      "layout": "statement",
+      "icon": "scale",
+      "title": "Mix in *general* text",
+      "text": "Your text alone can make the model worse at everything else.",
+      "picture": "Your own papers and everyday papers pouring together into one funnel above a model.",
+      "builds": [
+        {
+          "narration": [
+            "One more thing goes into the corpus.",
+            "If you train only on your own text, the model gets better at your field.",
+            "But it can get worse at everything else."
+          ]
+        },
+        {
+          "narration": [
+            "It loses some of the general skills it had before.",
+            "This is called forgetting."
+          ]
+        },
+        {
+          "narration": [
+            "So your text is mixed with general text.",
+            "General text is everyday writing on every kind of subject.",
+            "It helps the model keep its general skills."
+          ]
+        }
+      ],
+      "caption": "Training only on your own text can make the model forget general skills. Mixing in general text helps it keep them.",
+      "image": "pictures/cp-10.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-11",
+      "layout": "statement",
+      "icon": "money",
+      "title": "One study split a *fixed budget*",
+      "text": "One study, three fields, one model size.",
+      "source": "OpenReview, 8 October 2025",
+      "picture": "One tray holding a very tall stack of plain papers and a tiny stack of two cards.",
+      "builds": [
+        {
+          "narration": [
+            "With the corpus ready, the next question is how to share out the training.",
+            "Say you can afford a fixed amount of training.",
+            "You must decide how much goes to continued pretraining and how much to fine-tuning."
+          ]
+        },
+        {
+          "narration": [
+            "One study tested exactly this.",
+            "It looked at health, chemistry and coding.",
+            "In each one, the best split put almost everything into continued pretraining."
+          ]
+        },
+        {
+          "narration": [
+            "It is one study at one model size.",
+            "Use it as a direction.",
+            "Do not copy the exact split."
+          ]
+        }
+      ],
+      "caption": "One study, published on OpenReview on 8 October 2025, split a fixed training budget. Almost all of it went to continued pretraining. It is a single study at one model size.",
+      "image": "pictures/cp-11.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-12",
+      "layout": "steps",
+      "title": "Big job first, *small job* on top",
+      "items": [
+        "Your field, from raw text",
+        "The task, from pairs"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "So the lesson is about order and size.",
+            "Learning your field is the big job.",
+            "It comes first, and it uses raw text."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            1
+          ],
+          "narration": [
+            "Learning the task is the small job on top.",
+            "It uses question and answer pairs."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            1
+          ],
+          "narration": [
+            "Some teams write tens of thousands of pairs by hand to add knowledge.",
+            "That is the wrong way to do the big job."
+          ]
+        }
+      ],
+      "caption": "Learning your field is the big job. It uses raw text. Learning the task is the small job on top. It uses pairs."
+    },
+    {
+      "id": "cp-14",
+      "layout": "tiles",
+      "title": "What a general model *misreads*",
+      "items": [
+        "Words with a special meaning",
+        "Reference codes",
+        "Insider slang"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "Now let us see what this changes in practice.",
+            "A general model is one trained only on general text.",
+            "Here is what it gets wrong in your field."
+          ]
+        },
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "It reads a common word in its everyday sense.",
+            "Your field may use that word to mean something else."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            1,
+            2
+          ],
+          "narration": [
+            "It treats your reference codes as noise.",
+            "It takes your insider slang for a typo."
+          ]
+        }
+      ],
+      "caption": "A general model reads common words in their everyday sense. It treats reference codes as noise and insider slang as typos."
+    },
+    {
+      "id": "cp-15",
+      "layout": "statement",
+      "icon": "loop",
+      "title": "Explained again on every *request*",
+      "text": "Continued pretraining puts the knowledge into the model.",
+      "picture": "A short note on its way to a model, with a thick booklet of explanations clipped to it.",
+      "builds": [
+        {
+          "narration": [
+            "Every one of these misses costs something.",
+            "The terms must be looked up and explained on every request.",
+            "Looking up text to add to a request is called retrieval."
+          ]
+        },
+        {
+          "narration": [
+            "The system still works.",
+            "But everything has to be explained each time."
+          ]
+        },
+        {
+          "narration": [
+            "Continued pretraining puts that knowledge into the model itself.",
+            "Then the terms no longer need explaining each time."
+          ]
+        }
+      ],
+      "caption": "Without this training, retrieval must explain the terms on every request. Continued pretraining puts that knowledge into the model itself.",
+      "image": "pictures/cp-15.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cp-17",
+      "layout": "steps",
+      "title": "The *order* of work",
+      "items": [
+        "Continued pretraining",
+        "Run fine-tuning again",
+        "Check general skills",
+        "Repair if damaged",
+        "Check the routing again"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "focus": [
+            0,
+            1
+          ],
+          "narration": [
+            "Here is the order of work.",
+            "First, continued pretraining on the corpus teaches your field.",
+            "If the model was fine-tuned before, run that fine-tuning again on top.",
+            "This brings back the style and format of its answers."
+          ]
+        },
+        {
+          "reveal": 4,
+          "focus": [
+            2,
+            3
+          ],
+          "narration": [
+            "Next, test the model's general skills.",
+            "If they are damaged, repair them.",
+            "Use the fix for forgetting from the distillation chapter."
+          ]
+        },
+        {
+          "reveal": 5,
+          "focus": [
+            4
+          ],
+          "narration": [
+            "Your system may send each request to a model of the right size.",
+            "This is called routing.",
+            "Last, check the routing again.",
+            "A small model that knows your field can now take more routine requests."
+          ]
+        }
+      ],
+      "caption": "Train on the corpus. Run fine-tuning again. Test general skills and repair any damage. Last, check the routing again."
+    },
+    {
+      "id": "cp-18",
+      "layout": "list",
+      "title": "What changes *afterwards*",
+      "items": [
+        "Retrieval spent on evidence",
+        "Shorter prompts",
+        "Less explaining per request"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "So what changes afterwards?",
+            "Retrieval stops spending its space on definitions.",
+            "It brings back evidence for the task instead."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The text sent to the model with each request is called the prompt.",
+            "Prompts get shorter.",
+            "A list of definitions no longer needs pasting in."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Each request spends fewer tokens on explaining terms.",
+            "So each request costs less.",
+            "The model also makes better use of what retrieval finds."
+          ]
+        }
+      ],
+      "caption": "Retrieval brings back evidence instead of definitions. Prompts get shorter. Fewer tokens go on explaining terms. What is retrieved gets used better."
+    },
+    {
+      "id": "cp-19",
+      "layout": "branch",
+      "title": "The test for *moving on*",
+      "items": [
+        "Your data is not text",
+        "Custom pretraining and architecture"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "So when should you move past this step?",
+            "There is rarely anywhere further to go.",
+            "Continued pretraining plus fine-tuning is the end of the road for almost every organisation."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The last chapter is custom pretraining and architecture.",
+            "It is only for data that is not text at all."
+          ]
+        }
+      ],
+      "caption": "For almost every organisation this is the end of the ladder. Move on only if your data is not text."
+    },
+    {
+      "id": "cp-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "The text is its own teacher",
+        "Preparing the corpus is the project",
+        "Mix in general text",
+        "Field first, task on top",
+        "Rarely any need to go further"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Here is what to remember.",
+            "A model learns your field by guessing the next word in your own text.",
+            "Preparing that text is where the project is won or lost."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Mix in general text to keep the model's general skills.",
+            "Learn the field first, from raw text.",
+            "Then learn the task on top, from pairs."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "For almost everyone, this is as far as the ladder needs to go.",
+            "The next and last chapter is custom pretraining and architecture."
+          ]
+        }
+      ],
+      "caption": "A model learns your field from your own text. Preparing that text is the project. Mix in general text, learn the field before the task, and rarely go further."
+    }
+  ]
+}

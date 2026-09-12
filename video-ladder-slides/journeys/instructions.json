@@ -1,0 +1,696 @@
+{
+  "page": "/ladder/instructions",
+  "chapter": "Step 1: Instructions",
+  "slides": [
+    {
+      "id": "in-01",
+      "layout": "title",
+      "title": "Step 1: *Instructions*",
+      "text": "How do you know your instructions have done all they can?",
+      "builds": [
+        {
+          "narration": [
+            "Step one is the instructions you give an AI model.",
+            "A system that uses a model to do a job is called an agent.",
+            "This video treats writing an agent's instructions as engineering.",
+            "It ends with a clear test for when to move on."
+          ]
+        }
+      ],
+      "caption": "Step one is the instructions you give the model. Treated as engineering, they have a clear point where more work stops helping."
+    },
+    {
+      "id": "in-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "What instructions are made of",
+        "The best order for the parts",
+        "Letting a machine improve them",
+        "What instructions cannot fix",
+        "The test for moving on"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "When an agent is not good enough, there are several things you can change.",
+            "Some are worth trying before others.",
+            "The first three are tried in order, one step at a time.",
+            "This order is called the ladder.",
+            "Instructions are step one."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "First, we look at what instructions are made of.",
+            "Next, we see why the order of the parts matters.",
+            "Then we see how a machine can improve them."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "After that, we look at what instructions cannot fix.",
+            "Last comes the test for moving on to step two."
+          ]
+        }
+      ],
+      "caption": "Step one of the ladder is the instructions. This video covers their parts, their order, improving them by machine, their limits and the test for moving on."
+    },
+    {
+      "id": "in-02",
+      "layout": "steps",
+      "title": "A prompt has *five parts*",
+      "text": "Each part does a different job.",
+      "items": [
+        "Standing rules",
+        "The task",
+        "Examples",
+        "The input",
+        "Shape of the answer"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "Let us start with what instructions are made of.",
+            "The written instructions you send to a model are called a prompt.",
+            "A prompt has five parts.",
+            "Each part does a different job."
+          ]
+        },
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "The first part is the standing rules.",
+            "They say who the agent is and what it may and may not do.",
+            "They do not change from one case to the next."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            1
+          ],
+          "narration": [
+            "The second part describes the task.",
+            "This is the piece of work to be done right now."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "The third part is examples.",
+            "They show the task already done well."
+          ]
+        },
+        {
+          "reveal": 5,
+          "focus": [
+            3,
+            4
+          ],
+          "narration": [
+            "The fourth part is the input.",
+            "This is the material for this one case.",
+            "The fifth part sets the shape of the answer you want back."
+          ]
+        }
+      ],
+      "caption": "A prompt has standing rules, a task, worked examples, the changing input and the shape of the answer. Treating them as separate parts makes the prompt testable."
+    },
+    {
+      "id": "in-03",
+      "layout": "statement",
+      "icon": "document",
+      "title": "Show the model *examples*",
+      "text": "Two or three good examples teach a pattern best.",
+      "builds": [
+        {
+          "narration": [
+            "Examples are the most useful part of a prompt.",
+            "A model picks up a pattern from two or three good examples.",
+            "That works better than describing the pattern in words.",
+            "Yet examples are the part people use least."
+          ]
+        },
+        {
+          "narration": [
+            "Say you ask a model to write formally.",
+            "Each model reads the word formally in its own way.",
+            "Three samples of the writing you want leave nothing to guess."
+          ]
+        }
+      ],
+      "caption": "A model learns a pattern from two or three good examples more reliably than from a description of the pattern.",
+      "picture": "Three sample sheets with the same layout lead into a small model device, and a new sheet comes out with that same layout.",
+      "image": "pictures/in-03.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-13",
+      "layout": "picture",
+      "title": "A plain summary comes out *different* every time",
+      "picture": "Several draft reports laid side by side, each with its sections in a different order.",
+      "builds": [
+        {
+          "narration": [
+            "Now look at the shape of the answer.",
+            "Say a prompt just asks for a clear summary.",
+            "The answers read well.",
+            "But each one is laid out in a different way."
+          ],
+          "reveal": 2
+        },
+        {
+          "narration": [
+            "So the person checking them cannot skim.",
+            "They have to read every word.",
+            "The agent saves them no time."
+          ],
+          "reveal": 3
+        }
+      ],
+      "caption": "A prompt that only asks for a clear summary gives readable answers in a different shape each time. The person checking them cannot skim. So the agent saves no time.",
+      "image": "pictures/in-13.webp",
+      "aspect": 1.5,
+      "items": [
+        "Each answer reads well",
+        "Each layout is different",
+        "Every word must be read"
+      ]
+    },
+    {
+      "id": "in-04",
+      "layout": "compare",
+      "title": "*Enforce* the shape of the answer",
+      "left": {
+        "head": "Asked for in the prompt",
+        "rows": [
+          "Works most of the time",
+          "Then breaks in real use"
+        ]
+      },
+      "right": {
+        "head": "Enforced with a schema",
+        "rows": [
+          "Must fill the fixed fields",
+          "No loose text instead"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "There are two ways to set the shape of the answer.",
+            "The first is to ask for a format in the prompt.",
+            "That works most of the time.",
+            "The second is to give the model a form with fixed, named fields.",
+            "That form is called a schema.",
+            "The model must fill in those fields."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "People come to rely on the first way.",
+            "Then it breaks once the agent is in real use.",
+            "Modern model services accept a schema and hold the answer to it.",
+            "So the model cannot send back loose text instead of the fields."
+          ]
+        }
+      ],
+      "caption": "Modern model services accept a schema and hold the answer to it. A format that is only asked for in the prompt will sometimes break in real use."
+    },
+    {
+      "id": "in-16",
+      "layout": "list",
+      "title": "Use the prompt to forbid *two* mistakes",
+      "items": [
+        "Deciding for a person",
+        "A claim with no source"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The prompt should also name two mistakes the model must never make.",
+            "The first is making a decision that belongs to a person.",
+            "An agent that decides for people leads them to trust it too much."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The second is a claim with no source.",
+            "Every claim must come from the material the model was given.",
+            "Each claim must also say where it came from."
+          ]
+        }
+      ],
+      "caption": "The model never makes a decision that belongs to a person. Doing so leads people to trust it too much. Every claim comes from the material given and names its source."
+    },
+    {
+      "id": "in-05",
+      "layout": "flow",
+      "title": "Put the *stable* parts first",
+      "items": [
+        "Standing rules",
+        "Examples",
+        "The changing input"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "The order of the parts matters too.",
+            "Some parts never change from one case to the next.",
+            "These are the standing rules and the examples."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The input changes every time.",
+            "Put the parts that never change at the start.",
+            "Put the changing input at the end.",
+            "Here is why this order matters."
+          ]
+        }
+      ],
+      "caption": "The standing rules and examples never change from case to case. So they go first. The changing input goes last."
+    },
+    {
+      "id": "in-21",
+      "layout": "statement",
+      "icon": "money",
+      "title": "The unchanging start can be *reused*",
+      "text": "Reused input costs a fraction of the normal price.",
+      "builds": [
+        {
+          "narration": [
+            "The companies that run models keep a copy of the start of each prompt.",
+            "The next prompt may start in exactly the same way.",
+            "Then they reuse that stored copy.",
+            "This is called caching."
+          ]
+        },
+        {
+          "narration": [
+            "Reusing the stored copy costs a fraction of the normal price.",
+            "So a prompt that always starts the same way costs less."
+          ]
+        }
+      ],
+      "caption": "Model providers keep a stored copy of the unchanging start of a prompt. Reusing it costs a fraction of the normal price. This is called caching.",
+      "picture": "A saved row of blocks rests on a shelf above a matching row of the same blocks, with one small new block at the end.",
+      "image": "pictures/in-21.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-06",
+      "layout": "picture",
+      "title": "One *timestamp* can undo the saving",
+      "picture": "A row of identical blocks with a small clock near the front, and every block after the clock greyed out.",
+      "items": [
+        "Stored copy",
+        "Timestamp",
+        "Full price again"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The saving only works if the start stays exactly the same.",
+            "A change anywhere in it breaks the reuse."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Some prompts put today's date and time near the top.",
+            "This is called a timestamp.",
+            "It changes every time.",
+            "So the start of the prompt is never the same."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Everything after the timestamp is charged at full price again.",
+            "That costs money on every use.",
+            "Putting the parts in the right order costs nothing."
+          ]
+        }
+      ],
+      "caption": "A timestamp near the top of the prompt changes its start on every use. Everything after it is charged at full price again.",
+      "image": "pictures/in-06.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-22",
+      "layout": "statement",
+      "icon": "search",
+      "title": "Improving by hand is a slow *search*",
+      "text": "It is slow and looks at only a few cases.",
+      "builds": [
+        {
+          "narration": [
+            "Next, how do you make a prompt better?",
+            "The usual way is to write it, see where it went wrong, and rewrite it.",
+            "Most people do all of this by hand."
+          ]
+        },
+        {
+          "narration": [
+            "This is really a search for a better prompt.",
+            "Done by hand, that search is slow.",
+            "It also looks at only a few cases."
+          ]
+        }
+      ],
+      "caption": "Rewriting a prompt after reading its failures is a search. Done by hand, it is slow and looks at only a few cases.",
+      "picture": "A magnifying glass rests over two cards in the corner of a large grid of cards that nobody has looked at.",
+      "image": "pictures/in-22.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-07",
+      "layout": "cycle",
+      "title": "Let a machine run the *search*",
+      "items": [
+        "Read the failures",
+        "Write new versions",
+        "Keep a varied set"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "A published method lets a machine run this search instead.",
+            "First, it tries the prompt and reads where it failed."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Then it writes new versions of the prompt.",
+            "It keeps a varied set of good versions instead of polishing only one.",
+            "Then it goes round again."
+          ]
+        }
+      ],
+      "caption": "A published method runs prompt improvement as a search. It reads its own failures, writes new versions and keeps a varied set instead of polishing one."
+    },
+    {
+      "id": "in-08",
+      "layout": "number",
+      "title": "Gains from as few as *ten* cases",
+      "value": "10",
+      "unit": "sample cases before gains appeared",
+      "source": "GEPA, arXiv 2507.19457, ICLR 2026",
+      "builds": [
+        {
+          "narration": [
+            "This method has been tested in published research.",
+            "It did better than a method that retrains the model itself."
+          ]
+        },
+        {
+          "narration": [
+            "It also needed very little to get started.",
+            "Its results improved with as few as ten sample cases to learn from."
+          ]
+        }
+      ],
+      "caption": "It beat a method that retrains the model. Gains appeared from as few as ten sample cases. Other researchers have reviewed the work."
+    },
+    {
+      "id": "in-09",
+      "layout": "list",
+      "title": "The model may not be the *limit*",
+      "items": [
+        "Search before you blame the model",
+        "Ten cases is enough to start"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Two things follow from this.",
+            "First, some teams improve a prompt by hand and then blame the model.",
+            "Most of them have not run this kind of search.",
+            "So they have not seen what the model can really do."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, ten cases is a small number.",
+            "You will have ten cases long before you have enough data to change the model."
+          ]
+        }
+      ],
+      "caption": "Teams that improve prompts by hand and then blame the model have usually not run this search. Ten cases comes long before enough data to change the model."
+    },
+    {
+      "id": "in-10",
+      "layout": "statement",
+      "icon": "book",
+      "title": "Grow a *playbook* as the agent works",
+      "text": "No model training and no answers written in advance.",
+      "builds": [
+        {
+          "narration": [
+            "A related method does not rewrite one prompt.",
+            "Instead, it keeps a written set of lessons for the agent.",
+            "The set grows and is tidied each time the agent does its job.",
+            "This set of lessons is called a playbook."
+          ]
+        },
+        {
+          "narration": [
+            "In published tests, a growing playbook improved results.",
+            "It did not need to train the model.",
+            "It also did not need correct answers written out in advance."
+          ]
+        }
+      ],
+      "caption": "A playbook grown and tidied as the agent works improved results in published tests. It needed no model training and no answers written in advance (ACE, ICLR 2026).",
+      "picture": "A new page is slid into an open binder of lessons, beside a small model device.",
+      "image": "pictures/in-10.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-11",
+      "layout": "statement",
+      "icon": "check",
+      "title": "A growing playbook is *memory*",
+      "text": "Each new lesson is tested before it is used.",
+      "builds": [
+        {
+          "narration": [
+            "An agent can keep things and use them again later.",
+            "What it keeps is called memory.",
+            "So a growing playbook is memory.",
+            "It changes how the agent behaves."
+          ]
+        },
+        {
+          "narration": [
+            "That is why each new lesson is tested before the agent uses it.",
+            "It gets the same checks as any other change.",
+            "Nothing is kept just because it piled up."
+          ]
+        }
+      ],
+      "caption": "A growing playbook changes how the agent behaves. So each new lesson passes the same tests as any other change before it takes effect.",
+      "picture": "A single new page waits at a gate before it can join a closed binder of lessons.",
+      "image": "pictures/in-11.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-18",
+      "layout": "picture",
+      "title": "Instructions cannot supply *missing facts*",
+      "picture": "A model writing a confident report beside an empty filing drawer.",
+      "items": [
+        "Missing facts",
+        "Confident answer"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Even good instructions have a limit.",
+            "If a fact is not in what the model can see, no instruction can supply it."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The model will still write an answer that sounds confident.",
+            "That is the failure to watch for at this step.",
+            "Step two, context, is about what the model gets to see.",
+            "That is where this problem gets fixed."
+          ]
+        }
+      ],
+      "caption": "If a fact is not in what the model can see, no instruction recovers it. The model writes a confident answer anyway. That is the failure to watch for here.",
+      "image": "pictures/in-18.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-19",
+      "layout": "statement",
+      "icon": "lock",
+      "title": "Score every change on a *locked* test",
+      "text": "A fixed set of past cases with known outcomes.",
+      "builds": [
+        {
+          "narration": [
+            "Now, how do you know when this step is done?",
+            "You need a set of test cases that never changes.",
+            "This is called a locked test.",
+            "Without it, you cannot tell if the prompt has really stopped improving."
+          ]
+        },
+        {
+          "narration": [
+            "Use past cases where you already know the right outcome.",
+            "Score every change to the prompt against them."
+          ]
+        }
+      ],
+      "caption": "A locked test is a fixed set of past cases with known outcomes. Every change to the prompt is scored against it.",
+      "picture": "A stack of test cards is strapped shut with a padlock, and a changed sheet is weighed against it on a balance scale.",
+      "image": "pictures/in-19.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "in-20",
+      "layout": "branch",
+      "title": "The test for moving *on*",
+      "items": [
+        "Score goes flat after a week",
+        "Move to step 2: context"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is the test for moving on.",
+            "Spend a focused week improving the prompt against the locked test.",
+            "If the score climbs and then goes flat, this step is done.",
+            "Feeling stuck is not enough on its own."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then move on to step two, context."
+          ]
+        }
+      ],
+      "caption": "Move on when a week of focused prompt work stops moving the score on a locked test. Feeling stuck alone is not the signal."
+    },
+    {
+      "id": "in-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Use examples and a schema",
+        "Put the unchanging parts first",
+        "Let a machine improve the prompt",
+        "Instructions cannot add missing facts",
+        "Move on when scores go flat"
+      ],
+      "builds": [
+        {
+          "reveal": 3,
+          "narration": [
+            "Here is what to remember from step one.",
+            "Show the model good examples.",
+            "Hold the shape of the answer with a schema.",
+            "Put the parts that never change at the start of the prompt.",
+            "Let a machine search for a better prompt."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Instructions cannot supply facts the model cannot see.",
+            "Move on when a week of work stops moving the score on a locked test.",
+            "Next is step two, context."
+          ]
+        }
+      ],
+      "caption": "Use examples and a schema. Put the unchanging parts first. Let a machine improve the prompt. Instructions cannot add missing facts. Move on when a locked test goes flat."
+    }
+  ],
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "in-01",
+        "in-intro"
+      ]
+    },
+    {
+      "heading": "What a prompt is actually made of",
+      "slides": [
+        "in-02",
+        "in-03",
+        "in-13",
+        "in-04",
+        "in-16"
+      ]
+    },
+    {
+      "heading": "Order matters more than people expect",
+      "slides": [
+        "in-05",
+        "in-21",
+        "in-06"
+      ]
+    },
+    {
+      "heading": "Let a machine improve the prompt",
+      "slides": [
+        "in-22",
+        "in-07",
+        "in-08",
+        "in-09",
+        "in-10",
+        "in-11"
+      ]
+    },
+    {
+      "heading": "What this step does not fix",
+      "slides": [
+        "in-18"
+      ]
+    },
+    {
+      "heading": "The test for moving on",
+      "slides": [
+        "in-19",
+        "in-20"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "in-recap"
+      ]
+    }
+  ]
+}

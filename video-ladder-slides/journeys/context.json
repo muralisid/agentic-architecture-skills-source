@@ -1,0 +1,783 @@
+{
+  "page": "/ladder/context",
+  "chapter": "Step 2: Context",
+  "slides": [
+    {
+      "id": "cx-01",
+      "layout": "title",
+      "title": "Step 2: *Context*",
+      "text": "What does the model get to see?",
+      "builds": [
+        {
+          "narration": [
+            "Step two is about what an AI model gets to see.",
+            "Everything the model can see when it answers is called its context.",
+            "To get there, documents are cut up, turned into numbers, stored and searched.",
+            "In our own measurements, these choices changed the answer more than anything else."
+          ]
+        }
+      ],
+      "caption": "Step two decides what reaches the model. How documents are cut up, turned into numbers, stored and searched changes the answer."
+    },
+    {
+      "id": "cx-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "How documents reach the model",
+        "When a document covers many topics",
+        "Searching for exact details",
+        "Looking after the documents",
+        "What is kept for later"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "Some changes to an AI system are worth trying before others.",
+            "The first three are tried in order, one step at a time.",
+            "This order is called the ladder.",
+            "Step one was the instructions you give the model.",
+            "This is step two, context."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "First, we follow a document on its way to the model.",
+            "Then we see what goes wrong when one document covers many topics.",
+            "We also see how to test a fix fairly.",
+            "After that, we look at searching for exact details."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Then we look at who chooses and owns the documents.",
+            "Last, we look at what is kept for later use.",
+            "The video ends with the test for moving on."
+          ]
+        }
+      ],
+      "caption": "Step two of the ladder is context. This video follows a document to the model. It then covers exact search, looking after documents and what is kept."
+    },
+    {
+      "id": "cx-02",
+      "layout": "flow",
+      "title": "A document passes through *five stages*",
+      "items": [
+        "Read the file",
+        "Cut into pieces",
+        "Turn into numbers",
+        "Store for search",
+        "Find the best pieces"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "A system that uses a model to do a job is called an agent.",
+            "To answer questions, an agent often needs facts from documents.",
+            "Let us follow one document on its way to the model."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "First, the file is read and turned into text.",
+            "Then the text is cut into smaller pieces."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Each piece is turned into a list of numbers.",
+            "The numbers are stored so they can be searched quickly."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Then a question comes in.",
+            "The best pieces are found and passed to the model.",
+            "Each stage has its own name.",
+            "We will take them one at a time."
+          ]
+        }
+      ],
+      "caption": "A document is read, cut into pieces, turned into numbers, stored and searched. The best pieces reach the model."
+    },
+    {
+      "id": "cx-20",
+      "layout": "statement",
+      "icon": "document",
+      "title": "Turn the file into *text*",
+      "text": "A lost structure cannot be fixed later.",
+      "builds": [
+        {
+          "narration": [
+            "The first stage turns the file into plain text.",
+            "This is called parsing.",
+            "Good parsing keeps the structure, like the rows and columns of a table."
+          ]
+        },
+        {
+          "narration": [
+            "Say a table is flattened into one long sentence.",
+            "The numbers lose the labels that went with them.",
+            "No later stage can put that back.",
+            "So keep checking samples of the parsing."
+          ]
+        }
+      ],
+      "caption": "Parsing turns a file into text and keeps its structure. A table flattened into a sentence loses which number goes with which label. No later stage recovers it.",
+      "picture": "A neat table on a sheet beside the same boxes squashed into one long broken strip.",
+      "image": "pictures/cx-20.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-21",
+      "layout": "statement",
+      "icon": "document",
+      "title": "Cut the text into *pieces*",
+      "text": "Pieces must be neither too large nor too small.",
+      "builds": [
+        {
+          "narration": [
+            "The second stage cuts the text into pieces that search can find.",
+            "These pieces are called chunks."
+          ]
+        },
+        {
+          "narration": [
+            "A chunk that is too large mixes several topics.",
+            "A chunk that is too small loses the text around it.",
+            "Without that text, it can lose its meaning."
+          ]
+        },
+        {
+          "narration": [
+            "No single size works for every set of documents.",
+            "So the size has to be tested."
+          ]
+        }
+      ],
+      "caption": "Chunking splits text into pieces search can find. Too large and a piece covers several topics. Too small and it loses its meaning. The size is tested.",
+      "picture": "A very large sheet, a tiny scrap and one medium piece of paper that is the right size.",
+      "image": "pictures/cx-21.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-22",
+      "layout": "statement",
+      "icon": "chart",
+      "title": "Turn each piece into *numbers*",
+      "text": "Pieces with similar meaning get similar numbers.",
+      "builds": [
+        {
+          "narration": [
+            "The third stage turns each piece into a list of numbers.",
+            "The numbers stand for what the piece means.",
+            "This list of numbers is called a vector."
+          ]
+        },
+        {
+          "narration": [
+            "Think of each vector as a point on a map of meaning.",
+            "Pieces that mean similar things sit close together.",
+            "Pieces about different things sit far apart."
+          ]
+        }
+      ],
+      "caption": "Each piece becomes a vector, a list of numbers. Pieces that mean similar things end up close together.",
+      "picture": "Three paper pieces each become a dot, and the two with similar meaning sit close together.",
+      "image": "pictures/cx-22.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-23",
+      "layout": "statement",
+      "icon": "database",
+      "title": "Store the numbers for *search*",
+      "text": "The store also records who may see each document.",
+      "builds": [
+        {
+          "narration": [
+            "The fourth stage stores the vectors so they can be searched fast.",
+            "This store is called an index."
+          ]
+        },
+        {
+          "narration": [
+            "The index also records who is allowed to see each document.",
+            "The search uses that record later."
+          ]
+        }
+      ],
+      "caption": "The index stores the vectors for fast search. It also stores who may see each source.",
+      "picture": "A long drawer of neatly filed cards with divider tabs, and one card lifted out.",
+      "image": "pictures/cx-23.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-24",
+      "layout": "statement",
+      "icon": "search",
+      "title": "Find the *nearest* pieces",
+      "text": "Only the closest pieces reach the model.",
+      "builds": [
+        {
+          "narration": [
+            "The last stage starts when someone asks a question.",
+            "The question is turned into a vector in the same way.",
+            "The search finds the pieces whose vectors sit nearest to it."
+          ]
+        },
+        {
+          "narration": [
+            "Those pieces are passed to the model along with the question.",
+            "Finding and passing on the right pieces is called retrieval."
+          ]
+        }
+      ],
+      "caption": "Retrieval turns the question into a vector, finds the nearest pieces and passes them to the model.",
+      "picture": "A question card draws the three nearest paper pieces out of a scatter and hands them to a small model device.",
+      "image": "pictures/cx-24.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-13",
+      "layout": "compare",
+      "title": "Filter by permission *before* the search",
+      "left": {
+        "head": "Filter after",
+        "rows": [
+          "Search everything first",
+          "Counts hint at hidden documents"
+        ]
+      },
+      "right": {
+        "head": "Filter before",
+        "rows": [
+          "Search only what you may see",
+          "No hint of hidden documents"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Retrieval needs one more rule.",
+            "Not everyone is allowed to see every document.",
+            "One way is to search everything first.",
+            "Then remove what the person may not see.",
+            "The other way narrows the search first.",
+            "It only searches what that person is allowed to see."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Filtering afterwards leaks information.",
+            "Even the number of results can show that a hidden document exists.",
+            "Filtering first gives no such hint."
+          ]
+        }
+      ],
+      "caption": "The index stores who may see each source. The search is narrowed to what the person asking may see. Filtering afterwards leaks what exists."
+    },
+    {
+      "id": "cx-04",
+      "layout": "picture",
+      "title": "One vector for a document is an *average*",
+      "picture": "A folder split into four sections, each pulling on a single dot that ends up stuck in the middle, near none of them.",
+      "items": [
+        "Four topics in one document",
+        "One vector in the middle",
+        "A weak match for each topic"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "Now to a mistake that catches almost everyone.",
+            "Say a whole document gets just one vector.",
+            "That vector is roughly the average of everything in the document.",
+            "That is fine if the document is about one thing.",
+            "But documents at work are rarely about one thing."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Picture a long document that covers four different topics.",
+            "Its one vector sits in the middle of all four.",
+            "It is close to none of them."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Now ask about just one of those topics.",
+            "The document comes back as only a weak match."
+          ]
+        }
+      ],
+      "caption": "A document about one thing is fine. Documents at work rarely are. A question about one topic then matches the averaged vector only weakly.",
+      "image": "pictures/cx-04.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-05",
+      "layout": "statement",
+      "icon": "scale",
+      "title": "We *measured* it",
+      "text": "Same documents, same model, only the vectors changed.",
+      "builds": [
+        {
+          "narration": [
+            "We tested this in our own experiments.",
+            "We made each document cover more topics, from one up to ten.",
+            "Everything else stayed the same.",
+            "Search quality fell sharply."
+          ]
+        },
+        {
+          "narration": [
+            "Then we gave each document several vectors instead of one.",
+            "That brought search quality almost all the way back.",
+            "We repeated this on two different machines.",
+            "The result was the same."
+          ]
+        }
+      ],
+      "caption": "Our own test, with documents, model and scoring held fixed. Quality fell as topics grew. Several vectors per document recovered almost all of it.",
+      "picture": "A folder with four sections, each joined to its own dot, and a question card joined to the one dot it needs.",
+      "image": "pictures/cx-05.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-06",
+      "layout": "statement",
+      "icon": "warning",
+      "title": "More vectors also mean more *chances*",
+      "text": "Compare with the same number of plain pieces.",
+      "builds": [
+        {
+          "narration": [
+            "There was a problem with that result.",
+            "Several vectors give a document more chances to match a question.",
+            "So some of the gain might come just from having more pieces."
+          ]
+        },
+        {
+          "narration": [
+            "We ran a fairer test to check.",
+            "We shaped pieces around what each part of a document was for.",
+            "We compared them with the same number of plain chunks.",
+            "On real text, our shaped pieces did worse."
+          ]
+        }
+      ],
+      "caption": "On real text, pieces shaped around a purpose scored below plain chunks with the same number of pieces. More pieces alone can look like a better design.",
+      "picture": "Many darts around a target, most off centre, and one in the middle.",
+      "image": "pictures/cx-06.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-07",
+      "layout": "statement",
+      "icon": "check",
+      "title": "Beat a *matched control* first",
+      "text": "Same number of pieces, on your own questions.",
+      "builds": [
+        {
+          "narration": [
+            "So test any new design against a plain version.",
+            "Give the plain version the same number of pieces.",
+            "A fair comparison like this one is called a matched control."
+          ]
+        },
+        {
+          "narration": [
+            "Your design has to beat it on your own questions.",
+            "Otherwise you are only measuring the extra pieces."
+          ]
+        }
+      ],
+      "caption": "A matched control gets the same number of pieces as the design under test. Without it, you measure the extra pieces instead of the idea.",
+      "picture": "A balance scale with the same number of plain pieces on one pan and shaped pieces on the other.",
+      "image": "pictures/cx-07.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-08",
+      "layout": "statement",
+      "icon": "search",
+      "title": "Keyword search is *not optional*",
+      "text": "Run both kinds of search and merge the results.",
+      "builds": [
+        {
+          "narration": [
+            "So far, search has worked by meaning, using vectors.",
+            "Search by meaning is poor at exact details, like a phone number.",
+            "Another kind of search looks for the exact text.",
+            "This is called keyword search."
+          ]
+        },
+        {
+          "narration": [
+            "In our tests on exact details, keyword search scored far higher.",
+            "Search by meaning does not show an error when it misses.",
+            "It returns something that looks right instead."
+          ]
+        },
+        {
+          "narration": [
+            "So run both kinds of search and merge the results.",
+            "It costs almost nothing."
+          ]
+        }
+      ],
+      "caption": "On questions about an exact detail, keyword search scored far above search by meaning. A search by meaning that misses a phone number returns something that looks right.",
+      "picture": "A ring of nearly identical keys, and only one key fits the lock.",
+      "image": "pictures/cx-08.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-14",
+      "layout": "statement",
+      "icon": "database",
+      "title": "More documents can mean *worse* answers",
+      "text": "Narrow the documents to the subject first.",
+      "builds": [
+        {
+          "narration": [
+            "Now think about which documents belong in the search at all.",
+            "The whole set of documents that can be searched is called the corpus."
+          ]
+        },
+        {
+          "narration": [
+            "Adding more documents can make answers less accurate.",
+            "Published work showed accuracy coming back once the corpus was narrowed to the subject.",
+            "A few good documents usually work better than many."
+          ]
+        }
+      ],
+      "caption": "Published work shows accuracy falling until the corpus was narrowed to the subject (arXiv 2606.11350). A few good documents usually beat many.",
+      "picture": "A large untidy pile of papers next to a small neat stack of three good documents beside a model device.",
+      "image": "pictures/cx-14.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-16",
+      "layout": "statement",
+      "icon": "person",
+      "title": "Someone must *own* the corpus",
+      "text": "Responsibility for the corpus cannot be handed to software.",
+      "builds": [
+        {
+          "narration": [
+            "Someone has to choose and tidy the documents in the corpus.",
+            "This can be done by people, by software with spot checks, or by both.",
+            "But one person or team must still own the corpus."
+          ]
+        },
+        {
+          "narration": [
+            "A real legal case shows why.",
+            "In Moffatt versus Air Canada, the company's chatbot went against its own policy.",
+            "The company was held responsible for what the chatbot said."
+          ]
+        }
+      ],
+      "caption": "Moffatt v. Air Canada, BC Civil Resolution Tribunal, 14 February 2024. The company was held responsible for chatbot statements that went against its own policy.",
+      "picture": "A box file of documents with one blank owner tag tied to it, and a stamp beside it for spot checks.",
+      "image": "pictures/cx-16.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "cx-25",
+      "layout": "statement",
+      "icon": "book",
+      "title": "What an agent keeps is *memory*",
+      "text": "It reaches the model like any document.",
+      "builds": [
+        {
+          "narration": [
+            "Documents are not the only thing the model sees.",
+            "An agent can also keep notes from its earlier work.",
+            "What it keeps is called memory."
+          ]
+        },
+        {
+          "narration": [
+            "When memory is used, it reaches the model just like a document.",
+            "So it needs the same care as a document.",
+            "It also brings some extra duties."
+          ]
+        }
+      ],
+      "caption": "What an agent keeps from earlier work reaches the model like any document. It also carries duties a document does not."
+    },
+    {
+      "id": "cx-09",
+      "layout": "steps",
+      "title": "Memory is context that *lasts*",
+      "items": [
+        "The current conversation",
+        "Hours or days of work",
+        "Kept after the work ends"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "Memory can last for different lengths of time.",
+            "Some lasts only for the current conversation."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            0,
+            1
+          ],
+          "narration": [
+            "Some lasts for a stretch of work of hours or days.",
+            "Both of these are ordinary engineering choices."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "Memory kept after the work ends is different.",
+            "It becomes a record.",
+            "It needs someone who owns it.",
+            "It also needs consent to keep it.",
+            "And it needs rules for how long it is kept and when it is deleted."
+          ]
+        }
+      ],
+      "caption": "The current conversation and hours or days of work are engineering choices. Memory kept after the work ends is a record with an owner, consent, and rules for keeping and deleting it."
+    },
+    {
+      "id": "cx-10",
+      "layout": "list",
+      "title": "Four rules for what the agent *keeps*",
+      "items": [
+        "Keep the source text",
+        "Record when a fact was true",
+        "Check before keeping",
+        "Topics are only labels"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Four rules follow from published evidence.",
+            "First, keep the original text.",
+            "Then add labels to help search find it.",
+            "In published tests, swapping the text for short facts or summaries made results worse."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, record when something happened.",
+            "Keep that apart from the time it was saved.",
+            "Then a fact that has been replaced can be marked out of date."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Third, check every new memory before it is kept.",
+            "It carries its source and waits for review.",
+            "In published work, planting bad entries in a tiny part of a memory store made most attacks succeed."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Fourth, topics are only labels that help search.",
+            "They are not the memory itself.",
+            "They can be rebuilt from the kept text."
+          ]
+        }
+      ],
+      "caption": "Keep the source text, date each fact, check a memory before keeping it, and treat topics as labels. Sources: LongMemEval (ICLR 2025) and AgentPoison (NeurIPS 2024)."
+    },
+    {
+      "id": "cx-17",
+      "layout": "list",
+      "title": "The test for moving *on*",
+      "items": [
+        "Beats a matched control",
+        "Memory sourced, dated and checked",
+        "Failures are about acting"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "So when is step two done?",
+            "There are three signs.",
+            "First, your way of splitting and storing documents beats a matched control.",
+            "It has to win on your own questions."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, everything the agent keeps has a source and a date.",
+            "It has also passed a check."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Third, the agent now finds the right facts.",
+            "What still goes wrong is what it does with them."
+          ]
+        }
+      ],
+      "caption": "Move on when your design beats a matched control on your own questions. Kept memory must be sourced, dated and checked. What still fails should be about acting."
+    },
+    {
+      "id": "cx-18",
+      "layout": "branch",
+      "title": "Acting wrongly is a *step 3* problem",
+      "items": [
+        "Right documents, wrong action",
+        "Step 3: tools and the loop"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what that looks like.",
+            "The agent finds the right documents.",
+            "Then it draws the wrong conclusion, takes the wrong action, or stops too early."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "That is not a context problem.",
+            "It belongs to step three, tools and the loop."
+          ]
+        }
+      ],
+      "caption": "The agent finds the right documents. Then it draws the wrong conclusion, takes the wrong action or stops too early. That is a step 3 problem."
+    },
+    {
+      "id": "cx-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Documents pass through five stages",
+        "One vector can hide a topic",
+        "Test against a matched control",
+        "Use keyword search as well",
+        "Check everything the agent keeps"
+      ],
+      "builds": [
+        {
+          "reveal": 3,
+          "narration": [
+            "Here is what to remember from step two.",
+            "A document is parsed, cut into chunks, turned into vectors, indexed and retrieved.",
+            "One vector for a document about many topics matches each topic only weakly.",
+            "Test any new design against a matched control on your own questions."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Run keyword search alongside search by meaning.",
+            "Give everything the agent keeps a source, a date and a check.",
+            "Next is step three, tools and the loop."
+          ]
+        }
+      ],
+      "caption": "Documents are parsed, chunked, turned into vectors, indexed and retrieved. One vector hides topics. Beat a matched control. Use keyword search too. Check what the agent keeps."
+    }
+  ],
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "cx-01",
+        "cx-intro"
+      ]
+    },
+    {
+      "heading": "How a document reaches the model",
+      "slides": [
+        "cx-02",
+        "cx-20",
+        "cx-21",
+        "cx-22",
+        "cx-23",
+        "cx-24",
+        "cx-13"
+      ]
+    },
+    {
+      "heading": "The failure that catches almost everyone",
+      "slides": [
+        "cx-04",
+        "cx-05"
+      ]
+    },
+    {
+      "heading": "Make the test fair",
+      "slides": [
+        "cx-06",
+        "cx-07"
+      ]
+    },
+    {
+      "heading": "Keyword search is not optional",
+      "slides": [
+        "cx-08"
+      ]
+    },
+    {
+      "heading": "Looking after the documents",
+      "slides": [
+        "cx-14",
+        "cx-16"
+      ]
+    },
+    {
+      "heading": "Memory is context that lasts",
+      "slides": [
+        "cx-25",
+        "cx-09",
+        "cx-10"
+      ]
+    },
+    {
+      "heading": "The test for moving on",
+      "slides": [
+        "cx-17",
+        "cx-18"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "cx-recap"
+      ]
+    }
+  ]
+}

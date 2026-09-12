@@ -1,0 +1,64 @@
+distillation: 23 slides, 63 clips, 1193 words, about 7.1 min at Scout7's 2.8 words a second
+  c001 CAMERA (20) Every other step on this ladder tries to make an agent better. This one keeps the quality about the same.
+  c002 di-01 b1 (23) Instead, it makes the agent cheaper and faster. It works by having a large model teach a small one. This is called distillation.
+  c003 di-intro b1 (22) The ladder is the order in which to try changes to an agent. The early steps change the system around the model.
+  c004 di-intro b2 (23) The later steps change the model itself. Distillation is one of those later steps. First, we look at how one model teaches another.
+  c005 di-intro b4 (22) Then we see how the same idea repairs a model that forgot skills. Next, we work out when distillation pays for itself.
+  c006 di-intro b6 (18) Then we see how two models can share the work. Last, we look at where to go next.
+  c007 di-02 b1 (23) Distillation does two different jobs. The first job is cutting cost. It helps with work that runs a very large number of times.
+  c008 di-02 b2 (16) The second job is a repair. A model can be trained further on your own examples.
+  c009 di-02 b2 (17) This is called fine-tuning. Fine-tuning can damage skills the model already had. Distillation can repair that damage.
+  c010 di-20 b1 (22) So how does one model teach another? Start with a large model that already does the task well. Its answers are good.
+  c011 di-20 b1 (19) But it is slow and costs a lot to run. In distillation, this large model is called the teacher.
+  c012 di-21 b1 (18) Next to it, we put a much smaller model. A small model is cheaper and faster to run.
+  c013 di-21 b1 (17) It learns to do the task by copying the teacher. This small model is called the student.
+  c014 di-22 b1 (21) To see how the teaching works, look at how a model writes. It writes its answer one word at a time.
+  c015 di-22 b1 (22) At each step, some words look more likely than others. The word it picks at each step is called the next word.
+  c016 di-03 b2 (21) Fine-tuning shows a model only the right next word. Say that word is transferred. Distillation shows the student more than that.
+  c017 di-03 b3 (23) The teacher also shows that the word moved was nearly chosen. And it shows that the word flew was never likely at all.
+  c018 di-03 b3 (13) These near misses tell the student a lot more than one right answer.
+  c019 di-03 b3 (12) So a student can get close to its teacher without much training.
+  c020 di-04 b1 (18) There is a newer way to do this. In the newer way, the student tries the task first.
+  c021 di-04 b3 (14) Then the teacher grades the student's own attempt. The student learns from that grade.
+  c022 di-04 b3 (14) So it learns from the mistakes it really makes. This is called on-policy distillation.
+  c023 di-05 b1 (20) Training a model takes a lot of computing power. Published work compared this newer way with simply doing more fine-tuning.
+  c024 di-05 b1 (18) It reached about the same quality. And it used 9 to 30 times less computing power to train.
+  c025 di-06 b1 (20) Now to the second job, the repair. Fine-tuning a model on your own examples makes it better at your work.
+  c026 di-06 b1 (19) But it also makes the model worse at general tasks. It has partly forgotten skills it used to have.
+  c027 di-06 b1 (15) Even fine-tuning that changes only a small part of the model does not prevent this.
+  c028 di-07 b2 (23) The published repair uses a special teacher. The teacher is the same model before it was fine-tuned. The fine-tuned model is the student.
+  c029 di-07 b2 (22) It learns its general skills back from the model it used to be. And it keeps the new skills it just gained.
+  c030 di-08 b1 (21) So distillation is not only a way to save money. It is also maintenance you plan after training a model further.
+  c031 di-08 b1 (13) Plan it after fine-tuning. There is another way to train a model further.
+  c032 di-08 b1 (22) You train it on plain text from your own field. That is called continued pretraining. Plan the same repair after that too.
+  c033 di-23 b1 (15) How do you know if a repair is needed? Keep a test of general skills.
+  c034 di-23 b1 (14) Run it after each round of training. If the scores drop, plan the repair.
+  c035 di-23 b1 (19) While the repair runs, keep testing the new skills too. That shows you whether the repair is undoing them.
+  c036 di-09 b1 (15) Now back to the first job, saving money. Distillation has a cost you pay once.
+  c037 di-09 b2 (17) That is the cost of building the student. After that, every request to the student costs less.
+  c038 di-09 b2 (19) One request to a model is called a call. Divide the one-off cost by the saving on each call.
+  c039 di-09 b3 (24) That tells you how many calls it takes to pay the cost back. Then compare that with the number of calls you really make.
+  c040 di-09 b3 (17) No general number tells you when it pays. You have to use your own costs and volumes.
+  c041 di-10 b1 (18) Distillation also needs the right kind of task. A small student cannot match a large teacher at everything.
+  c042 di-10 b1 (20) It can match the teacher only on a narrow task. The narrower the task, the smaller the student can be.
+  c043 di-24 b1 (24) You also need proof that the student is good enough. That proof comes from a test. Write the test before you build the student.
+  c044 di-24 b1 (16) Then do not change it. A test kept fixed like this is called a locked test.
+  c045 di-11 b1 (18) A locked test can clash with another goal. Proving the saving needs a test that stays the same.
+  c046 di-11 b1 (10) But some teams keep improving their agent all the time.
+  c047 di-11 b1 (15) That work keeps rewriting the test. So decide which of the two you are running.
+  c048 di-12 b1 (22) The student copies everything the teacher does. That includes the teacher's mistakes. The teacher's large size sometimes saved it from a mistake.
+  c049 di-12 b1 (24) The small student does not have that size. So there is one hard rule. Never distil a skill the teacher does not reliably have.
+  c050 di-15 b1 (24) Distillation also lets two models share the work. Say most of the requests an agent gets are routine. The large model handles them well.
+  c051 di-15 b2 (20) But it costs too much to run on every one of them. So the small student handles the routine requests.
+  c052 di-15 b2 (17) The unusual ones still go to the large model. The average cost per request drops a lot.
+  c053 di-25 b1 (18) How does each request reach the right model? The student checks how sure it is of its answer.
+  c054 di-25 b1 (21) If it is not sure enough, the request goes up to the large model. This check is called a confidence rule.
+  c055 di-16 b1 (23) Do not guess which requests are routine. Use your test. It shows which requests the student handles as well as the large model.
+  c056 di-16 b1 (23) Send only those to the student. How much this saves depends on your own volumes. So no general number is claimed for it.
+  c057 di-18 b1 (22) The last question is where distillation fits. It comes after the other ways of improving an agent. It does not replace them.
+  c058 di-18 b1 (19) Now say the agent's judgement is still wrong. And its results are the kind you can check and score.
+  c059 di-18 b2 (22) There is a way to train a model on scored attempts. It is called reinforcement fine-tuning. That is where to go next.
+  c060 di-recap b1 (13) Here is what to remember. Only distil what the teacher already does well.
+  c061 di-recap b2 (18) The student copies its mistakes too. A small student is cheaper and faster to run than its teacher.
+  c062 di-recap b4 (20) The same method repairs what a model forgets after fine-tuning. Whether it pays depends on your own costs and volumes.
+  c063 CAMERA (15) And lock the test before you build the student. Next, we look at reinforcement fine-tuning.

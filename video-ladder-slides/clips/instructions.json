@@ -1,0 +1,627 @@
+{
+  "page": "/ladder/instructions",
+  "chapter": "Step 1: Instructions",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "in-01",
+      "build": 1,
+      "voiceover": "Step one is the instructions you give an AI model. A system that uses a model to do a job is called an agent.",
+      "words": 24,
+      "on_camera": true,
+      "frame": "frames/instructions/film/in-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "in-01",
+      "build": 1,
+      "voiceover": "This video treats writing an agent's instructions as engineering. It ends with a clear test for when to move on.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "in-intro",
+      "build": 1,
+      "voiceover": "When an agent is not good enough, there are several things you can change.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-intro-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "in-intro",
+      "build": 1,
+      "voiceover": "Some are worth trying before others. The first three are tried in order, one step at a time.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-intro-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "in-intro",
+      "build": 2,
+      "voiceover": "This order is called the ladder. Instructions are step one. First, we look at what instructions are made of.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-intro-b2.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "in-intro",
+      "build": 2,
+      "voiceover": "Next, we see why the order of the parts matters. Then we see how a machine can improve them.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-intro-b2.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "in-intro",
+      "build": 3,
+      "voiceover": "After that, we look at what instructions cannot fix. Last comes the test for moving on to step two.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-intro-b3.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "in-02",
+      "build": 1,
+      "voiceover": "Let us start with what instructions are made of. The written instructions you send to a model are called a prompt.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-02-b1.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "in-02",
+      "build": 2,
+      "voiceover": "A prompt has five parts. Each part does a different job. The first part is the standing rules.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-02-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "in-02",
+      "build": 2,
+      "voiceover": "They say who the agent is and what it may and may not do. They do not change from one case to the next.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-02-b2.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "in-02",
+      "build": 3,
+      "voiceover": "The second part describes the task. This is the piece of work to be done right now.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-02-b3.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "in-02",
+      "build": 5,
+      "voiceover": "The third part is examples. They show the task already done well. The fourth part is the input.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-02-b5.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "in-02",
+      "build": 5,
+      "voiceover": "This is the material for this one case. The fifth part sets the shape of the answer you want back.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-02-b5.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "in-03",
+      "build": 1,
+      "voiceover": "Examples are the most useful part of a prompt. A model picks up a pattern from two or three good examples.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-03-b1.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "in-03",
+      "build": 1,
+      "voiceover": "That works better than describing the pattern in words. Yet examples are the part people use least.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-03-b1.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "in-03",
+      "build": 2,
+      "voiceover": "Say you ask a model to write formally. Each model reads the word formally in its own way.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-03-b2.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "in-03",
+      "build": 2,
+      "voiceover": "Three samples of the writing you want leave nothing to guess.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-03-b2.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "in-13",
+      "build": 1,
+      "voiceover": "Now look at the shape of the answer. Say a prompt just asks for a clear summary.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-13-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "in-13",
+      "build": 1,
+      "voiceover": "The answers read well. But each one is laid out in a different way.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-13-b1.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "in-13",
+      "build": 2,
+      "voiceover": "So the person checking them cannot skim. They have to read every word. The agent saves them no time.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-13-b2.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "in-04",
+      "build": 1,
+      "voiceover": "There are two ways to set the shape of the answer. The first is to ask for a format in the prompt.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-04-b1.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "in-04",
+      "build": 1,
+      "voiceover": "That works most of the time. The second is to give the model a form with fixed, named fields.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-04-b1.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "in-04",
+      "build": 2,
+      "voiceover": "That form is called a schema. The model must fill in those fields. People come to rely on the first way.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-04-b2.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "in-04",
+      "build": 2,
+      "voiceover": "Then it breaks once the agent is in real use. Modern model services accept a schema and hold the answer to it.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-04-b2.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "in-04",
+      "build": 2,
+      "voiceover": "So the model cannot send back loose text instead of the fields.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-04-b2.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "in-16",
+      "build": 1,
+      "voiceover": "The prompt should also name two mistakes the model must never make. The first is making a decision that belongs to a person.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-16-b1.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "in-16",
+      "build": 2,
+      "voiceover": "An agent that decides for people leads them to trust it too much. The second is a claim with no source.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-16-b2.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "in-16",
+      "build": 2,
+      "voiceover": "Every claim must come from the material the model was given. Each claim must also say where it came from.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-16-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "in-05",
+      "build": 1,
+      "voiceover": "The order of the parts matters too. Some parts never change from one case to the next.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-05-b1.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "in-05",
+      "build": 2,
+      "voiceover": "These are the standing rules and the examples. The input changes every time. Put the parts that never change at the start.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-05-b2.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "in-05",
+      "build": 2,
+      "voiceover": "Put the changing input at the end. Here is why this order matters.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-05-b2.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "in-21",
+      "build": 1,
+      "voiceover": "The companies that run models keep a copy of the start of each prompt.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-21-b1.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "in-21",
+      "build": 1,
+      "voiceover": "The next prompt may start in exactly the same way. Then they reuse that stored copy. This is called caching.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-21-b1.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "in-21",
+      "build": 2,
+      "voiceover": "Reusing the stored copy costs a fraction of the normal price. So a prompt that always starts the same way costs less.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-21-b2.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "in-06",
+      "build": 1,
+      "voiceover": "The saving only works if the start stays exactly the same. A change anywhere in it breaks the reuse.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-06-b1.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "in-06",
+      "build": 2,
+      "voiceover": "Some prompts put today's date and time near the top. This is called a timestamp. It changes every time.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-06-b2.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "in-06",
+      "build": 3,
+      "voiceover": "So the start of the prompt is never the same. Everything after the timestamp is charged at full price again.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-06-b3.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "in-06",
+      "build": 3,
+      "voiceover": "That costs money on every use. Putting the parts in the right order costs nothing.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-06-b3.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "in-22",
+      "build": 1,
+      "voiceover": "Next, how do you make a prompt better? The usual way is to write it, see where it went wrong, and rewrite it.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-22-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "in-22",
+      "build": 2,
+      "voiceover": "Most people do all of this by hand. This is really a search for a better prompt.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-22-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "in-22",
+      "build": 2,
+      "voiceover": "Done by hand, that search is slow. It also looks at only a few cases.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-22-b2.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "in-07",
+      "build": 1,
+      "voiceover": "A published method lets a machine run this search instead.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-07-b1.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "in-07",
+      "build": 2,
+      "voiceover": "First, it tries the prompt and reads where it failed. Then it writes new versions of the prompt.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-07-b2.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "in-07",
+      "build": 2,
+      "voiceover": "It keeps a varied set of good versions instead of polishing only one. Then it goes round again.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-07-b2.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "in-08",
+      "build": 1,
+      "voiceover": "This method has been tested in published research. It did better than a method that retrains the model itself.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-08-b1.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "in-08",
+      "build": 2,
+      "voiceover": "It also needed very little to get started. Its results improved with as few as ten sample cases to learn from.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-08-b2.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "in-09",
+      "build": 1,
+      "voiceover": "Two things follow from this. First, some teams improve a prompt by hand and then blame the model.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-09-b1.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "in-09",
+      "build": 1,
+      "voiceover": "Most of them have not run this kind of search. So they have not seen what the model can really do.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-09-b1.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "in-09",
+      "build": 2,
+      "voiceover": "Second, ten cases is a small number. You will have ten cases long before you have enough data to change the model.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-09-b2.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "in-10",
+      "build": 1,
+      "voiceover": "A related method does not rewrite one prompt. Instead, it keeps a written set of lessons for the agent.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-10-b1.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "in-10",
+      "build": 1,
+      "voiceover": "The set grows and is tidied each time the agent does its job.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-10-b1.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "in-10",
+      "build": 2,
+      "voiceover": "This set of lessons is called a playbook. In published tests, a growing playbook improved results.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-10-b2.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "in-10",
+      "build": 2,
+      "voiceover": "It did not need to train the model. It also did not need correct answers written out in advance.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-10-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "in-11",
+      "build": 1,
+      "voiceover": "An agent can keep things and use them again later. What it keeps is called memory. So a growing playbook is memory.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-11-b1.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "in-11",
+      "build": 2,
+      "voiceover": "It changes how the agent behaves. That is why each new lesson is tested before the agent uses it.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-11-b2.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "in-11",
+      "build": 2,
+      "voiceover": "It gets the same checks as any other change. Nothing is kept just because it piled up.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-11-b2.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "in-18",
+      "build": 1,
+      "voiceover": "Even good instructions have a limit. If a fact is not in what the model can see, no instruction can supply it.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-18-b1.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "in-18",
+      "build": 2,
+      "voiceover": "The model will still write an answer that sounds confident. That is the failure to watch for at this step.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-18-b2.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "in-18",
+      "build": 2,
+      "voiceover": "Step two, context, is about what the model gets to see. That is where this problem gets fixed.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-18-b2.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "in-19",
+      "build": 1,
+      "voiceover": "Now, how do you know when this step is done? You need a set of test cases that never changes.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-19-b1.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "in-19",
+      "build": 1,
+      "voiceover": "This is called a locked test. Without it, you cannot tell if the prompt has really stopped improving.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-19-b1.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "in-19",
+      "build": 2,
+      "voiceover": "Use past cases where you already know the right outcome. Score every change to the prompt against them.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-19-b2.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "in-20",
+      "build": 1,
+      "voiceover": "Here is the test for moving on. Spend a focused week improving the prompt against the locked test.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-20-b1.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "in-20",
+      "build": 1,
+      "voiceover": "If the score climbs and then goes flat, this step is done.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-20-b1.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "in-20",
+      "build": 2,
+      "voiceover": "Feeling stuck is not enough on its own. Then move on to step two, context.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-20-b2.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "in-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember from step one. Show the model good examples.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-recap-b1.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "in-recap",
+      "build": 1,
+      "voiceover": "Hold the shape of the answer with a schema. Put the parts that never change at the start of the prompt.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-recap-b1.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "in-recap",
+      "build": 2,
+      "voiceover": "Let a machine search for a better prompt. Instructions cannot supply facts the model cannot see.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/instructions/film/in-recap-b2.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "in-recap",
+      "build": 2,
+      "voiceover": "Move on when a week of work stops moving the score on a locked test. Next is step two, context.",
+      "words": 20,
+      "on_camera": true,
+      "frame": "frames/instructions/film/in-recap-b2.png"
+    }
+  ]
+}

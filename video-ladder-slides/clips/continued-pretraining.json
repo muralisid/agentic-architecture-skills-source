@@ -1,0 +1,735 @@
+{
+  "page": "/ladder/continued-pretraining",
+  "chapter": "Continued pretraining",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "cp-01",
+      "build": 1,
+      "voiceover": "This chapter is about teaching a model your field of work.",
+      "words": 11,
+      "on_camera": true,
+      "frame": "frames/continued-pretraining/film/cp-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "cp-01",
+      "build": 1,
+      "voiceover": "It learns from text your organisation already holds. Think of contracts, support tickets and manuals.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "cp-intro",
+      "build": 1,
+      "voiceover": "This chapter is one of five ways to change the model itself.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-intro-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "cp-intro",
+      "build": 2,
+      "voiceover": "You pick it when a model does not understand the language of your field. First, we see how a model learns from text.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-intro-b2.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "cp-intro",
+      "build": 3,
+      "voiceover": "Then we compare that with training on written examples. Next, we look at getting the text ready.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-intro-b3.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "cp-intro",
+      "build": 3,
+      "voiceover": "Then we see how to share out the training effort. Last, we see what changes once the work is done.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-intro-b3.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "cp-03",
+      "build": 1,
+      "voiceover": "First, how does a model learn from text at all? It is shown some text with the next word hidden.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-03-b1.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "cp-03",
+      "build": 2,
+      "voiceover": "It guesses the hidden word. Then it checks the real one. It does this again and again, over huge amounts of text.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-03-b2.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "cp-03",
+      "build": 3,
+      "voiceover": "This is called pretraining. Every next word is a small test with a known answer. So nobody has to write the answers by hand.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-03-b3.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "cp-20",
+      "build": 1,
+      "voiceover": "Most models you use have already learned this way. They learned from text on every kind of subject. Now take one of those models.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-20-b1.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "cp-20",
+      "build": 2,
+      "voiceover": "Keep training it the same way, on your own text. This is called continued pretraining. The model keeps guessing next words.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-20-b2.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "cp-20",
+      "build": 2,
+      "voiceover": "But now the words come from your field. It comes out reading your field the way your people do.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-20-b2.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "cp-04",
+      "build": 1,
+      "voiceover": "Why does guessing words teach the model anything? To guess the next word well, the model must know what the words mean.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-04-b1.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "cp-04",
+      "build": 1,
+      "voiceover": "It must also know what tends to come next in that kind of document.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-04-b1.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "cp-04",
+      "build": 2,
+      "voiceover": "The model does this over billions of small pieces of text.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-04-b2.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "cp-04",
+      "build": 2,
+      "voiceover": "That forces it to learn the ideas of your field and how people write about them.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-04-b2.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "cp-21",
+      "build": 1,
+      "voiceover": "There is also a simple reason models misread specialist text. It comes from how a model reads.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-21-b1.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "cp-21",
+      "build": 1,
+      "voiceover": "A model does not read whole words. It reads text in small pieces. A piece is often just part of a word.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-21-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "cp-21",
+      "build": 2,
+      "voiceover": "These pieces are called tokens. The rules for cutting text into tokens were learned from everyday text.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-21-b2.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "cp-05",
+      "build": 1,
+      "voiceover": "Now take a word that only your field uses. The cutting rules have rarely seen it.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-05-b1.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "cp-05",
+      "build": 2,
+      "voiceover": "So the word gets cut into four or five pieces that mean nothing.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-05-b2.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "cp-05",
+      "build": 2,
+      "voiceover": "The model has to put the word back together before it can use it.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-05-b2.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "cp-05",
+      "build": 3,
+      "voiceover": "Continued pretraining teaches the model how these words behave. It learns to read them well in their cut-up form.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-05-b3.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "cp-02",
+      "build": 1,
+      "voiceover": "So far, we have seen how the model learns from text. People often confuse this with another kind of training.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-02-b1.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "cp-02",
+      "build": 1,
+      "voiceover": "In that kind, people write examples by hand. Each example is a question and the answer they want.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-02-b1.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "cp-02",
+      "build": 2,
+      "voiceover": "This is called fine-tuning. Both kinds train the model further. But they do very different jobs.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-02-b2.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "cp-06",
+      "build": 1,
+      "voiceover": "Here they are side by side. Fine-tuning learns from thousands of written question and answer pairs.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-06-b1.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "cp-06",
+      "build": 1,
+      "voiceover": "Continued pretraining learns from text just as it already exists. Text used just as it exists is called raw text.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-06-b1.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "cp-06",
+      "build": 2,
+      "voiceover": "It needs billions of tokens of it. Fine-tuning teaches the model how to behave. Someone has to write every answer.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-06-b2.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "cp-06",
+      "build": 2,
+      "voiceover": "Continued pretraining teaches the model what your field is. Nobody writes anything. But the text must be prepared first.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-06-b2.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "cp-22",
+      "build": 1,
+      "voiceover": "We said the text must be prepared first. Here is what that involves. You gather all the text you plan to train on.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-22-b1.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "cp-22",
+      "build": 2,
+      "voiceover": "That whole collection is called the corpus. The model takes in everything in the corpus.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-22-b2.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "cp-22",
+      "build": 2,
+      "voiceover": "It does not choose. So preparing the corpus is where the project is won or lost.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-22-b2.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "cp-07",
+      "build": 1,
+      "voiceover": "Start by taking out repeats. Old archives hold many templates and near-identical copies. Whatever repeats gets too much weight in training.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-07-b1.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "cp-07",
+      "build": 2,
+      "voiceover": "Then filter out noise. Failed scans, broken files and machine-made logs teach the model noise.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-07-b2.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "cp-08",
+      "build": 1,
+      "voiceover": "Some text must never go in at all. Keep out anything you are not allowed to keep.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-08-b1.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "cp-08",
+      "build": 2,
+      "voiceover": "Also keep out anything you would not want the model to say back. Old support tickets can hold passwords. Those stay out.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-08-b2.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "cp-08",
+      "build": 3,
+      "voiceover": "Personal data stays out if you have no legal reason to keep it. Private legal advice stays out too.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-08-b3.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "cp-16",
+      "build": 1,
+      "voiceover": "Some data is not written text at all. It sits in tables and records.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-16-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "cp-16",
+      "build": 2,
+      "voiceover": "That data stays out of the corpus too. When the model needs that data, it looks it up.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-16-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "cp-16",
+      "build": 2,
+      "voiceover": "It asks a small program to fetch it. A program like this is called a tool.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-16-b2.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "cp-23",
+      "build": 1,
+      "voiceover": "Next comes the question of rights. Before training, check that you are allowed to use the text this way.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-23-b1.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "cp-23",
+      "build": 1,
+      "voiceover": "Being able to read the text does not always mean you may train on it.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-23-b1.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "cp-09",
+      "build": 1,
+      "voiceover": "Rules also follow the text into the model. A model trained on your corpus is made from that corpus.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-09-b1.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "cp-09",
+      "build": 2,
+      "voiceover": "So the rules for that text now apply to the model too. Some rules say how sensitive the text is.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-09-b2.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "cp-09",
+      "build": 2,
+      "voiceover": "Some say where it may be kept. Some say when it must be deleted.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-09-b2.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "cp-09",
+      "build": 3,
+      "voiceover": "And a model cannot forget just one thing. If one record must be deleted, the model cannot drop just that record.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-09-b3.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "cp-10",
+      "build": 1,
+      "voiceover": "One more thing goes into the corpus. If you train only on your own text, the model gets better at your field.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-10-b1.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "cp-10",
+      "build": 2,
+      "voiceover": "But it can get worse at everything else. It loses some of the general skills it had before.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-10-b2.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "cp-10",
+      "build": 3,
+      "voiceover": "This is called forgetting. So your text is mixed with general text.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-10-b3.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "cp-10",
+      "build": 3,
+      "voiceover": "General text is everyday writing on every kind of subject. It helps the model keep its general skills.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-10-b3.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "cp-11",
+      "build": 1,
+      "voiceover": "With the corpus ready, the next question is how to share out the training. Say you can afford a fixed amount of training.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-11-b1.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "cp-11",
+      "build": 2,
+      "voiceover": "You must decide how much goes to continued pretraining and how much to fine-tuning. One study tested exactly this.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-11-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "cp-11",
+      "build": 2,
+      "voiceover": "It looked at health, chemistry and coding. In each one, the best split put almost everything into continued pretraining.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-11-b2.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "cp-11",
+      "build": 3,
+      "voiceover": "It is one study at one model size. Use it as a direction. Do not copy the exact split.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-11-b3.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "cp-12",
+      "build": 1,
+      "voiceover": "So the lesson is about order and size. Learning your field is the big job. It comes first, and it uses raw text.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-12-b1.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "cp-12",
+      "build": 2,
+      "voiceover": "Learning the task is the small job on top. It uses question and answer pairs.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-12-b2.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "cp-12",
+      "build": 3,
+      "voiceover": "Some teams write tens of thousands of pairs by hand to add knowledge. That is the wrong way to do the big job.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-12-b3.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "cp-14",
+      "build": 1,
+      "voiceover": "Now let us see what this changes in practice. A general model is one trained only on general text.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-14-b1.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "cp-14",
+      "build": 2,
+      "voiceover": "Here is what it gets wrong in your field. It reads a common word in its everyday sense.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-14-b2.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "cp-14",
+      "build": 2,
+      "voiceover": "Your field may use that word to mean something else.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-14-b2.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "cp-14",
+      "build": 3,
+      "voiceover": "It treats your reference codes as noise. It takes your insider slang for a typo.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-14-b3.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "cp-15",
+      "build": 1,
+      "voiceover": "Every one of these misses costs something. The terms must be looked up and explained on every request.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-15-b1.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "cp-15",
+      "build": 2,
+      "voiceover": "Looking up text to add to a request is called retrieval. The system still works. But everything has to be explained each time.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-15-b2.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "cp-15",
+      "build": 3,
+      "voiceover": "Continued pretraining puts that knowledge into the model itself. Then the terms no longer need explaining each time.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-15-b3.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "cp-17",
+      "build": 1,
+      "voiceover": "Here is the order of work. First, continued pretraining on the corpus teaches your field.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-17-b1.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "cp-17",
+      "build": 1,
+      "voiceover": "If the model was fine-tuned before, run that fine-tuning again on top. This brings back the style and format of its answers.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-17-b1.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "cp-17",
+      "build": 2,
+      "voiceover": "Next, test the model's general skills. If they are damaged, repair them. Use the fix for forgetting from the distillation chapter.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-17-b2.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "cp-17",
+      "build": 3,
+      "voiceover": "Your system may send each request to a model of the right size. This is called routing.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-17-b3.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "cp-17",
+      "build": 3,
+      "voiceover": "Last, check the routing again. A small model that knows your field can now take more routine requests.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-17-b3.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "cp-18",
+      "build": 1,
+      "voiceover": "So what changes afterwards? Retrieval stops spending its space on definitions. It brings back evidence for the task instead.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-18-b1.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "cp-18",
+      "build": 2,
+      "voiceover": "The text sent to the model with each request is called the prompt. Prompts get shorter.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-18-b2.png"
+    },
+    {
+      "clip_id": "c073",
+      "slide": "cp-18",
+      "build": 3,
+      "voiceover": "A list of definitions no longer needs pasting in. Each request spends fewer tokens on explaining terms.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-18-b3.png"
+    },
+    {
+      "clip_id": "c074",
+      "slide": "cp-18",
+      "build": 3,
+      "voiceover": "So each request costs less. The model also makes better use of what retrieval finds.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-18-b3.png"
+    },
+    {
+      "clip_id": "c075",
+      "slide": "cp-19",
+      "build": 1,
+      "voiceover": "So when should you move past this step? There is rarely anywhere further to go.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-19-b1.png"
+    },
+    {
+      "clip_id": "c076",
+      "slide": "cp-19",
+      "build": 1,
+      "voiceover": "Continued pretraining plus fine-tuning is the end of the road for almost every organisation.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-19-b1.png"
+    },
+    {
+      "clip_id": "c077",
+      "slide": "cp-19",
+      "build": 2,
+      "voiceover": "The last chapter is custom pretraining and architecture. It is only for data that is not text at all.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-19-b2.png"
+    },
+    {
+      "clip_id": "c078",
+      "slide": "cp-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. A model learns your field by guessing the next word in your own text.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-recap-b1.png"
+    },
+    {
+      "clip_id": "c079",
+      "slide": "cp-recap",
+      "build": 2,
+      "voiceover": "Preparing that text is where the project is won or lost. Mix in general text to keep the model's general skills.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-recap-b2.png"
+    },
+    {
+      "clip_id": "c080",
+      "slide": "cp-recap",
+      "build": 2,
+      "voiceover": "Learn the field first, from raw text. Then learn the task on top, from pairs.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/continued-pretraining/film/cp-recap-b2.png"
+    },
+    {
+      "clip_id": "c081",
+      "slide": "cp-recap",
+      "build": 3,
+      "voiceover": "For almost everyone, this is as far as the ladder needs to go. The next and last chapter is custom pretraining and architecture.",
+      "words": 23,
+      "on_camera": true,
+      "frame": "frames/continued-pretraining/film/cp-recap-b3.png"
+    }
+  ]
+}

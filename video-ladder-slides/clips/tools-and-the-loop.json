@@ -1,0 +1,699 @@
+{
+  "page": "/ladder/tools-and-the-loop",
+  "chapter": "Step 3: Tools and the loop",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "tl-01",
+      "build": 1,
+      "voiceover": "This video is about what runs around an AI model. Often, that is where the real problem is.",
+      "words": 18,
+      "on_camera": true,
+      "frame": "frames/tools-and-the-loop/film/tl-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "tl-intro",
+      "build": 1,
+      "voiceover": "This video covers Step 3 of the ladder: tools and the loop.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-intro-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "tl-intro",
+      "build": 1,
+      "voiceover": "Steps 1 and 2 worked on the instructions and on what the model reads.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-intro-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "tl-intro",
+      "build": 1,
+      "voiceover": "Step 3 works on the system that runs around the model. It is the last step before you change the model itself.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-intro-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "tl-intro",
+      "build": 2,
+      "voiceover": "First, we look at how the loop runs and what it must handle.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-intro-b2.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "tl-intro",
+      "build": 2,
+      "voiceover": "Then we see why it matters and when to split the work. Last comes the test for moving on.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-intro-b2.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "tl-21",
+      "build": 1,
+      "voiceover": "Let us start with how the loop works. Some AI systems do not answer a task in one go. The model asks for something.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-21-b1.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "tl-21",
+      "build": 2,
+      "voiceover": "Your code fetches it and hands back the result. The model reads the result and decides what to do next.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-21-b2.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "tl-21",
+      "build": 2,
+      "voiceover": "This repeats until the model gives its answer. A system that works like this is called an agent.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-21-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "tl-22",
+      "build": 1,
+      "voiceover": "So how does the model get what it asks for?",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-22-b1.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "tl-22",
+      "build": 1,
+      "voiceover": "You give it a set of actions it may ask for. Looking something up is one example.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-22-b1.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "tl-22",
+      "build": 1,
+      "voiceover": "When the model asks for one, your code carries it out. Each of these actions is called a tool.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-22-b1.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "tl-03",
+      "build": 1,
+      "voiceover": "Let us follow one pass around the loop. One pass is called a turn.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-03-b1.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "tl-03",
+      "build": 1,
+      "voiceover": "The model keeps no memory from one turn to the next. So every turn, the whole conversation is sent to it again.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-03-b1.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "tl-03",
+      "build": 2,
+      "voiceover": "The model replies with an answer or asks for a tool. If it asks for a tool, your code runs the tool.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-03-b2.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "tl-03",
+      "build": 3,
+      "voiceover": "Then the result is added to the conversation. This repeats until the model answers or you stop it.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-03-b3.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "tl-25",
+      "build": 1,
+      "voiceover": "Something has to run all of this. It sends the conversation, runs the tools and adds the results.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-25-b1.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "tl-25",
+      "build": 1,
+      "voiceover": "It also decides when the loop must stop. Everything that runs and controls the loop is called the harness.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-25-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "tl-02",
+      "build": 1,
+      "voiceover": "The harness is the part teams most often skip. They improve what the model reads. Then they jump straight to training the model.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-02-b1.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "tl-02",
+      "build": 1,
+      "voiceover": "Training means changing the model itself. The evidence says the harness is usually what was missing.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-02-b1.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "tl-27",
+      "build": 1,
+      "voiceover": "The harness has a few jobs to handle. The first one comes from the loop itself. Each turn adds another result to the conversation.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-27-b1.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "tl-27",
+      "build": 2,
+      "voiceover": "So in a long task, the conversation keeps growing. But a model can only read a limited amount of text at once.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-27-b2.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "tl-27",
+      "build": 2,
+      "voiceover": "That limit is called the context window. A long task soon fills it with old results.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-27-b2.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "tl-04",
+      "build": 1,
+      "voiceover": "When the context window fills up, the harness has to make room. There are two ways to do it.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-04-b1.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "tl-04",
+      "build": 2,
+      "voiceover": "The first way shortens the old conversation into a summary. This is called compaction. A summary can quietly drop the detail the model needed.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-04-b2.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "tl-04",
+      "build": 3,
+      "voiceover": "The second way is to start fresh. The harness keeps a written record of the task outside the conversation.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-04-b3.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "tl-04",
+      "build": 4,
+      "voiceover": "Each fresh start begins from the goal and that record. This is harder to build and generally more reliable.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-04-b4.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "tl-04",
+      "build": 4,
+      "voiceover": "Each time the history is summarised again, a little more is lost. A written record does not lose detail this way.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-04-b4.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "tl-05",
+      "build": 1,
+      "voiceover": "Usually that record is kept only for the task. Sometimes you keep it for later tasks too.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-05-b1.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "tl-05",
+      "build": 2,
+      "voiceover": "A record kept like that is called memory. Memory needs a named owner and a note of its source.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-05-b2.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "tl-05",
+      "build": 2,
+      "voiceover": "It waits for a while before later tasks trust it.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-05-b2.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "tl-05",
+      "build": 2,
+      "voiceover": "And there must be a way to delete it. Step 2 sets out these rules.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-05-b2.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "tl-06",
+      "build": 1,
+      "voiceover": "The loop ends only when the model answers or you stop it.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-06-b1.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "tl-06",
+      "build": 1,
+      "voiceover": "A model can get a poor result from a tool and try again. It can keep doing that forever.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-06-b1.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "tl-06",
+      "build": 2,
+      "voiceover": "So real harnesses set limits. They cap the number of turns and the running time.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-06-b2.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "tl-06",
+      "build": 2,
+      "voiceover": "They check between turns whether the task was cancelled. And they give you a way to stop the loop.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-06-b2.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "tl-06",
+      "build": 3,
+      "voiceover": "Put a cap on the cost of each task too. Without it, one task that never ends can use up a whole day's budget.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-06-b3.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "tl-07",
+      "build": 1,
+      "voiceover": "The harness also runs the tools. So the tools themselves need care. The model has no memory of your system.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-07-b1.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "tl-07",
+      "build": 1,
+      "voiceover": "A tool with a vague description gets called at the wrong times.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-07-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "tl-07",
+      "build": 1,
+      "voiceover": "So describe each tool for a reader who knows nothing about your system.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-07-b1.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "tl-13",
+      "build": 1,
+      "voiceover": "What a tool sends back matters too. A huge block of raw data fills the space the model needs for thinking.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-13-b1.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "tl-13",
+      "build": 2,
+      "voiceover": "A raw data tool returns every row and every field it finds. The few rows that matter get buried. So the model reasons badly.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-13-b2.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "tl-13",
+      "build": 3,
+      "voiceover": "A better tool returns a short summary and flags what stands out. A second tool pulls the full detail on one of them.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-13-b3.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "tl-13",
+      "build": 3,
+      "voiceover": "The model now has far less to read. It reasons better on the same data.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-13-b3.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "tl-26",
+      "build": 1,
+      "voiceover": "Some people using an agent should not see everything it can reach. You might try to write a rule about this in the instructions.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-26-b1.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "tl-26",
+      "build": 2,
+      "voiceover": "But instructions and the content the model reads arrive in the same form.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-26-b2.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "tl-26",
+      "build": 2,
+      "voiceover": "The model cannot reliably tell them apart. So a rule in the instructions cannot enforce access.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-26-b2.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "tl-16",
+      "build": 1,
+      "voiceover": "So the check has to sit outside the model. The agent reaches other systems only through one checkpoint.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-16-b1.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "tl-16",
+      "build": 2,
+      "voiceover": "This checkpoint is called a gateway. On every request, it checks whether the person using the agent may see what was asked for.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-16-b2.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "tl-08",
+      "build": 1,
+      "voiceover": "So far we have seen what the harness does. But does it really change how an agent behaves?",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-08-b1.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "tl-08",
+      "build": 2,
+      "voiceover": "One study kept the task and the model the same. It changed only the harness. The final success rate looked the same.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-08-b2.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "tl-08",
+      "build": 2,
+      "voiceover": "But what the agent believed at later steps changed. So its later decisions changed too.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-08-b2.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "tl-29",
+      "build": 1,
+      "voiceover": "This matters when you read that one model beats another. The two models may have run inside different harnesses.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-29-b1.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "tl-29",
+      "build": 2,
+      "voiceover": "Then the result may say more about the harness than the model. Your own agent is the same.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-29-b2.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "tl-29",
+      "build": 2,
+      "voiceover": "How it behaves depends on your loop as well as your model.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-29-b2.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "tl-30",
+      "build": 1,
+      "voiceover": "Up to now, we have looked at a single agent. Some designs split the work across several agents.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-30-b1.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "tl-30",
+      "build": 1,
+      "voiceover": "Each agent runs its own loop on one part of the task. This is called a multi-agent design.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-30-b1.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "tl-10",
+      "build": 1,
+      "voiceover": "More agents let parts of the work run at the same time. Each agent also has its own separate conversation.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-10-b1.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "tl-10",
+      "build": 2,
+      "voiceover": "So no single conversation has to hold everything. But they multiply the cost. And each agent reasons no better than a single agent would.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-10-b2.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "tl-09",
+      "build": 1,
+      "voiceover": "One study looked at how multi-agent systems fail. It found the failures come from how the system is designed.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-09-b1.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "tl-09",
+      "build": 1,
+      "voiceover": "They do not come from the model. So a stronger model does not fix a badly designed loop.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-09-b1.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "tl-11",
+      "build": 1,
+      "voiceover": "So when is splitting the work worth the cost? One study tested several ways of coordinating agents.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-11-b1.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "tl-11",
+      "build": 1,
+      "voiceover": "It used a large set of official company reports. It scored accuracy from zero to one.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-11-b1.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "tl-11",
+      "build": 2,
+      "voiceover": "Multi-agent is worth it when you need accuracy above about 0.92.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-11-b2.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "tl-11",
+      "build": 2,
+      "voiceover": "Below that, one well-built loop does the job for less. This is the only published threshold.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-11-b2.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "tl-18",
+      "build": 2,
+      "voiceover": "So when is this step done? There are three checks. First, every turn of the loop is recorded and measured.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-18-b2.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "tl-18",
+      "build": 4,
+      "voiceover": "Second, each failure is tracked back to a specific cause. Third, what still fails is the model not knowing your field.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-18-b4.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "tl-20",
+      "build": 1,
+      "voiceover": "To track a failure, you need a record of each run.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-20-b1.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "tl-20",
+      "build": 1,
+      "voiceover": "It shows which tools ran, what they returned and how many turns it took. This record is called a trace.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-20-b1.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "tl-20",
+      "build": 2,
+      "voiceover": "It also shows what the final answer claimed. And it shows the evidence behind each claim.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-20-b2.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "tl-19",
+      "build": 1,
+      "voiceover": "This record is what tells you whether it is time to move on.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-19-b1.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "tl-19",
+      "build": 1,
+      "voiceover": "If you cannot say which turn failed and why, you cannot know the model is at fault.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-19-b1.png"
+    },
+    {
+      "clip_id": "c073",
+      "slide": "tl-19",
+      "build": 1,
+      "voiceover": "Every change to the model itself costs more than finding out.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-19-b1.png"
+    },
+    {
+      "clip_id": "c074",
+      "slide": "tl-recap",
+      "build": 1,
+      "voiceover": "An agent is a model working in a loop. The harness runs that loop and sets its limits.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-recap-b1.png"
+    },
+    {
+      "clip_id": "c075",
+      "slide": "tl-recap",
+      "build": 1,
+      "voiceover": "Who may see what is checked at a gateway. Split the work across agents only when you need very high accuracy.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-recap-b1.png"
+    },
+    {
+      "clip_id": "c076",
+      "slide": "tl-recap",
+      "build": 1,
+      "voiceover": "Before changing the model, trace each failure to its cause.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/tools-and-the-loop/film/tl-recap-b1.png"
+    },
+    {
+      "clip_id": "c077",
+      "slide": "tl-recap",
+      "build": 2,
+      "voiceover": "The next step changes the model itself for the first time. Next up is adapters and fine-tuning.",
+      "words": 17,
+      "on_camera": true,
+      "frame": "frames/tools-and-the-loop/film/tl-recap-b2.png"
+    }
+  ]
+}

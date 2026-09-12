@@ -1,0 +1,654 @@
+{
+  "page": "/ladder/adapters-and-fine-tuning",
+  "chapter": "Adapters and supervised fine-tuning",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "ad-01",
+      "build": 1,
+      "voiceover": "This video is about the first change that touches the model itself. You teach it with examples of the task done well.",
+      "words": 22,
+      "on_camera": true,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "ad-intro",
+      "build": 1,
+      "voiceover": "This video covers adapters and fine-tuning. The first three steps of the ladder change the system around the model.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-intro-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "ad-intro",
+      "build": 1,
+      "voiceover": "The model itself stays the same. This is the first option that changes the model itself.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-intro-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "ad-intro",
+      "build": 2,
+      "voiceover": "First, we look at what training on examples really does.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-intro-b2.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "ad-intro",
+      "build": 2,
+      "voiceover": "Then we see three ways to do it and what you need before you start.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-intro-b2.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "ad-intro",
+      "build": 2,
+      "voiceover": "Next, we see how to move work to a smaller model. Last comes the test for moving on.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-intro-b2.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "ad-22",
+      "build": 1,
+      "voiceover": "Until now, the model itself stayed the same. Now you change it.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-22-b1.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "ad-22",
+      "build": 1,
+      "voiceover": "You collect many examples of the task done well. Each example is an input paired with the answer you wanted.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-22-b1.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "ad-22",
+      "build": 2,
+      "voiceover": "The model is trained on these pairs until it answers more like them. Each example shows the model the right answer to aim for.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-22-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "ad-22",
+      "build": 2,
+      "voiceover": "Training a model this way is called supervised fine-tuning. From here on, we will just say fine-tuning.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-22-b2.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "ad-02",
+      "build": 1,
+      "voiceover": "Fine-tuning is the right tool for two jobs. It makes the model behave the same way every time.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-02-b1.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "ad-02",
+      "build": 1,
+      "voiceover": "And it can move work to a smaller, cheaper model.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-02-b1.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "ad-02",
+      "build": 2,
+      "voiceover": "It is the wrong tool for teaching the model facts. The next slides show why.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-02-b2.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "ad-03",
+      "build": 1,
+      "voiceover": "To see why, look at what training does inside the model. A model is a huge set of numbers.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-03-b1.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "ad-03",
+      "build": 1,
+      "voiceover": "These numbers are called weights. Training shows the model an input and the answer you wanted.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-03-b1.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "ad-03",
+      "build": 2,
+      "voiceover": "It measures how far the model's own answer is from that. Then it nudges the weights a little to close the gap.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-03-b2.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "ad-03",
+      "build": 3,
+      "voiceover": "This repeats over thousands of examples. Slowly, the model's usual behaviour moves toward the pattern the examples share.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-03-b3.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "ad-04",
+      "build": 1,
+      "voiceover": "Training rewards answers that look like your examples. So the model learns their structure, their tone and their confidence.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-04-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "ad-04",
+      "build": 2,
+      "voiceover": "Nothing in the process stores the facts behind them. A few thousand examples cannot carry a million facts.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-04-b2.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "ad-04",
+      "build": 2,
+      "voiceover": "So a fine-tuned model can sound just like your examples and still get details wrong.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-04-b2.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "ad-14",
+      "build": 1,
+      "voiceover": "So where should facts come from? Look them up at the moment the model needs them.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-14-b1.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "ad-14",
+      "build": 1,
+      "voiceover": "Then pass them to the model with the question. This is called retrieval.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-14-b1.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "ad-14",
+      "build": 2,
+      "voiceover": "Facts baked into the weights cannot be traced back to a source.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-14-b2.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "ad-14",
+      "build": 3,
+      "voiceover": "They cannot be updated or deleted either. Facts that are looked up can be traced, updated and deleted.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-14-b3.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "ad-05",
+      "build": 1,
+      "voiceover": "Fine-tuning also has a side effect. The weights being nudged also hold the model's general skills.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-05-b1.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "ad-05",
+      "build": 1,
+      "voiceover": "If you push them hard toward your task, they drift. The model can lose skills it had before. This is called catastrophic forgetting.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-05-b1.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "ad-06",
+      "build": 1,
+      "voiceover": "Now for how fine-tuning is actually done. There are three main ways. The first changes every weight in the model.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-06-b1.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "ad-06",
+      "build": 2,
+      "voiceover": "This is called full fine-tuning. It has the most power to change behaviour. It also needs the most computing power.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-06-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "ad-06",
+      "build": 2,
+      "voiceover": "And you end up with a whole new model to store and run.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-06-b2.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "ad-07",
+      "build": 1,
+      "voiceover": "The second way leaves the model's own weights locked. The change fine-tuning makes can usually be captured in two small tables of numbers.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-07-b1.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "ad-07",
+      "build": 2,
+      "voiceover": "So only those two small tables are trained. When the model runs, their effect is added on top. This method is called LoRA.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-07-b2.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "ad-23",
+      "build": 1,
+      "voiceover": "A whole model takes gigabytes of space. What LoRA produces takes only megabytes.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-23-b1.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "ad-23",
+      "build": 2,
+      "voiceover": "This small add-on is called an adapter. You can keep one shared model running.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-23-b2.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "ad-23",
+      "build": 2,
+      "voiceover": "Then you swap in a different adapter for each task. So one model can do many different jobs.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-23-b2.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "ad-08",
+      "build": 1,
+      "voiceover": "The third way builds on LoRA. While the adapter trains, the locked model is stored in a compressed form.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-08-b1.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "ad-08",
+      "build": 1,
+      "voiceover": "That saves so much computer memory that one powerful chip can adapt a large model.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-08-b1.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "ad-08",
+      "build": 2,
+      "voiceover": "The adapter itself is not compressed. The quality stays close to LoRA. This method is called QLoRA.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-08-b2.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "ad-09",
+      "build": 1,
+      "voiceover": "Changing fewer weights sounds safer. You might expect an adapter to protect the model's other skills.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-09-b1.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "ad-09",
+      "build": 1,
+      "voiceover": "But published research found that LoRA does not protect them. If forgetting matters for your use, measure it.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-09-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "ad-12",
+      "build": 2,
+      "voiceover": "Whichever way you choose, first check that fine-tuning fits your problem. Here is the typical case. The answers are already correct.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-12-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "ad-12",
+      "build": 4,
+      "voiceover": "But their structure and tone still vary from one answer to the next. Adding example answers to the instructions has not fixed it.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-12-b4.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "ad-10",
+      "build": 1,
+      "voiceover": "You need a few thousand examples. The model learns exactly what they teach. That includes their mistakes.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-10-b1.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "ad-10",
+      "build": 2,
+      "voiceover": "So their quality matters more than anything else. Before training, write a set of tests and lock them.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-10-b2.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "ad-10",
+      "build": 2,
+      "voiceover": "Include tests for skills that should not change. If you only test the new task, forgetting can slip through unnoticed.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-10-b2.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "ad-10",
+      "build": 3,
+      "voiceover": "You also need a plan to run the result. An adapter needs its original model to run on.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-10-b3.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "ad-10",
+      "build": 3,
+      "voiceover": "When that model is replaced, the work must be redone and tested again.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-10-b3.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "ad-24",
+      "build": 1,
+      "voiceover": "The training itself has to happen somewhere. You do not have to use your own machines.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-24-b1.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "ad-24",
+      "build": 1,
+      "voiceover": "Some providers run fine-tuning for you as a service. This is called a managed option.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-24-b1.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "ad-24",
+      "build": 1,
+      "voiceover": "You send the examples and get back the trained result.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-24-b1.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "ad-11",
+      "build": 1,
+      "voiceover": "These managed options changed in 2026. This fact changes often. It is correct as of August 2026.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-11-b1.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "ad-11",
+      "build": 2,
+      "voiceover": "OpenAI is closing the fine-tuning that customers set up themselves. It is closing in stages.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-11-b2.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "ad-11",
+      "build": 3,
+      "voiceover": "Remaining customers can start no new jobs after 6 January 2027. Managed fine-tuning on the major cloud platforms is still available.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-11-b3.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "ad-11",
+      "build": 4,
+      "voiceover": "Some models let you download their weights and run them yourself. These are called open-weight models. Adapters on these models are unaffected.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-11-b4.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "ad-15",
+      "build": 1,
+      "voiceover": "Now back to one of the two jobs fine-tuning is good for. The biggest and most capable models cost the most to run.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-15-b1.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "ad-15",
+      "build": 2,
+      "voiceover": "These are called frontier models. Fine-tuning can move a task from a frontier model to a small one.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-15-b2.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "ad-15",
+      "build": 2,
+      "voiceover": "A small fine-tuned model can do the task for a fraction of the cost.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-15-b2.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "ad-15",
+      "build": 2,
+      "voiceover": "It can run on your own servers. Your data then stays with you.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-15-b2.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "ad-16",
+      "build": 1,
+      "voiceover": "One published test compared a small fine-tuned model with a frontier model. The frontier model was given careful instructions instead.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-16-b1.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "ad-16",
+      "build": 1,
+      "voiceover": "The task was putting items into the right category. The small model won by a wide margin at far lower cost.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-16-b1.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "ad-16",
+      "build": 2,
+      "voiceover": "But that is only one test. Prove it on your own tests before you switch.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-16-b2.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "ad-18",
+      "build": 1,
+      "voiceover": "So when is this step done? Move on when the format and behaviour of the answers are right.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-18-b1.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "ad-18",
+      "build": 1,
+      "voiceover": "At that point, what is still wrong is judgement or knowledge. Where you go next depends on which one it is.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-18-b1.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "ad-19",
+      "build": 1,
+      "voiceover": "Say the answers look right, but the reasoning is wrong. And say a program can check whether each outcome is right.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-19-b1.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "ad-19",
+      "build": 1,
+      "voiceover": "Then go to reinforcement fine-tuning. There, the model tries the task and learns from the scores it gets.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-19-b1.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "ad-20",
+      "build": 1,
+      "voiceover": "Say the model still misreads the language and documents of your field. Then go to continued pretraining.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-20-b1.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "ad-20",
+      "build": 1,
+      "voiceover": "There, the model keeps learning from large amounts of your own text.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-20-b1.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "ad-21",
+      "build": 1,
+      "voiceover": "Say the quality is right, but it costs too much or runs too slowly.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-21-b1.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "ad-21",
+      "build": 1,
+      "voiceover": "Then go to distillation. There, a large model trains a small one to do the same work.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-21-b1.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "ad-recap",
+      "build": 1,
+      "voiceover": "Fine-tuning trains a model on examples of a task done well. It makes behaviour consistent. It does not teach the model facts.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-recap-b1.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "ad-recap",
+      "build": 2,
+      "voiceover": "Facts should still be looked up when the model needs them. Training can make the model forget other skills.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-recap-b2.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "ad-recap",
+      "build": 2,
+      "voiceover": "Adapters do not stop this. So measure it. An adapter is a small add-on you can swap for each task.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-recap-b2.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "ad-recap",
+      "build": 3,
+      "voiceover": "Fine-tuning can also move work to a smaller, cheaper model. Next up is distillation.",
+      "words": 14,
+      "on_camera": true,
+      "frame": "frames/adapters-and-fine-tuning/film/ad-recap-b3.png"
+    }
+  ]
+}

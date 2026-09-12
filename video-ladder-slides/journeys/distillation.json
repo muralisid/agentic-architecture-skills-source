@@ -1,0 +1,709 @@
+{
+  "page": "/ladder/distillation",
+  "chapter": "Distillation",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "di-01",
+        "di-intro",
+        "di-02"
+      ]
+    },
+    {
+      "heading": "How a model teaches a model",
+      "slides": [
+        "di-20",
+        "di-21",
+        "di-22",
+        "di-03",
+        "di-04",
+        "di-05"
+      ]
+    },
+    {
+      "heading": "The second use: repairing forgetting",
+      "slides": [
+        "di-06",
+        "di-07",
+        "di-08",
+        "di-23"
+      ]
+    },
+    {
+      "heading": "When it pays: the arithmetic",
+      "slides": [
+        "di-09",
+        "di-10",
+        "di-24",
+        "di-11",
+        "di-12"
+      ]
+    },
+    {
+      "heading": "Splitting work between two models",
+      "slides": [
+        "di-15",
+        "di-25",
+        "di-16"
+      ]
+    },
+    {
+      "heading": "The test",
+      "slides": [
+        "di-18"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "di-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "di-01",
+      "layout": "title",
+      "title": "*Distillation*",
+      "text": "How do you make a good agent cheaper and faster?",
+      "builds": [
+        {
+          "narration": [
+            "Every other step on this ladder tries to make an agent better.",
+            "This one keeps the quality about the same.",
+            "Instead, it makes the agent cheaper and faster.",
+            "It works by having a large model teach a small one.",
+            "This is called distillation."
+          ]
+        }
+      ],
+      "caption": "Distillation keeps an agent's quality about the same and makes it cheaper and faster. A large model teaches a small one."
+    },
+    {
+      "id": "di-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "How one model teaches another",
+        "Repairing a model that forgot skills",
+        "Working out when it pays",
+        "Sharing work between two models",
+        "Where to go next"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "The ladder is the order in which to try changes to an agent.",
+            "The early steps change the system around the model.",
+            "The later steps change the model itself.",
+            "Distillation is one of those later steps."
+          ]
+        },
+        {
+          "reveal": 1,
+          "narration": [
+            "First, we look at how one model teaches another."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then we see how the same idea repairs a model that forgot skills."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Next, we work out when distillation pays for itself."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Then we see how two models can share the work."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Last, we look at where to go next."
+          ]
+        }
+      ],
+      "caption": "Distillation is one of the later ladder steps. Those steps change the model itself. This video covers how it works, whether it pays and where to go next."
+    },
+    {
+      "id": "di-02",
+      "layout": "list",
+      "title": "One tool, two *jobs*",
+      "items": [
+        "Cut cost at high volume",
+        "Repair damage from fine-tuning"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Distillation does two different jobs.",
+            "The first job is cutting cost.",
+            "It helps with work that runs a very large number of times."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The second job is a repair.",
+            "A model can be trained further on your own examples.",
+            "This is called fine-tuning.",
+            "Fine-tuning can damage skills the model already had.",
+            "Distillation can repair that damage."
+          ]
+        }
+      ],
+      "caption": "Distillation cuts cost for work that runs at high volume. It also repairs the damage that fine-tuning does. Fine-tuning means training a model further on your own examples."
+    },
+    {
+      "id": "di-20",
+      "layout": "statement",
+      "title": "The large model is the *teacher*",
+      "icon": "book",
+      "text": "It already does the task well.",
+      "picture": "A large smooth rounded device with no face beside a neat stack of finished papers, with an orange check mark stamp on top.",
+      "builds": [
+        {
+          "narration": [
+            "So how does one model teach another?",
+            "Start with a large model that already does the task well.",
+            "Its answers are good.",
+            "But it is slow and costs a lot to run.",
+            "In distillation, this large model is called the teacher."
+          ]
+        }
+      ],
+      "caption": "Distillation starts with a large model that already does the task well. It is slow and costly to run. This large model is called the teacher.",
+      "image": "pictures/di-20.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-21",
+      "layout": "statement",
+      "title": "The small model is the *student*",
+      "icon": "person",
+      "text": "It learns the task from the teacher.",
+      "picture": "A large rounded device and a small rounded device, with an orange sheet of paper passing from the large one to the small one.",
+      "builds": [
+        {
+          "narration": [
+            "Next to it, we put a much smaller model.",
+            "A small model is cheaper and faster to run.",
+            "It learns to do the task by copying the teacher.",
+            "This small model is called the student."
+          ]
+        }
+      ],
+      "caption": "A much smaller model learns to do the task by copying the teacher. It is cheaper and faster to run. This small model is called the student.",
+      "image": "pictures/di-21.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-22",
+      "layout": "statement",
+      "title": "A model picks the *next word*",
+      "icon": "document",
+      "text": "It writes one word at a time.",
+      "picture": "A row of blank blocks laid end to end, an empty slot at the end, and three candidate blocks above it with the orange one dropping in.",
+      "builds": [
+        {
+          "narration": [
+            "To see how the teaching works, look at how a model writes.",
+            "It writes its answer one word at a time.",
+            "At each step, some words look more likely than others.",
+            "The word it picks at each step is called the next word."
+          ]
+        }
+      ],
+      "caption": "A model writes its answer one word at a time. At each step, some words look more likely than others. The word it picks is called the next word.",
+      "image": "pictures/di-22.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-03",
+      "layout": "picture",
+      "title": "The student sees the *near misses*",
+      "picture": "Three bars of different heights, one for each possible next word: one tall, one nearly as tall, one tiny.",
+      "items": [
+        "transferred",
+        "moved",
+        "flew"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Fine-tuning shows a model only the right next word.",
+            "Say that word is transferred."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Distillation shows the student more than that.",
+            "The teacher also shows that the word moved was nearly chosen."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "And it shows that the word flew was never likely at all.",
+            "These near misses tell the student a lot more than one right answer.",
+            "So a student can get close to its teacher without much training."
+          ]
+        }
+      ],
+      "caption": "The student learns the word the teacher picked. It also learns the near miss and the word that was never likely. So it gets close to the teacher without much training.",
+      "image": "pictures/di-03.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-04",
+      "layout": "cycle",
+      "title": "The student tries, the teacher *grades*",
+      "text": "The student makes the attempt. The teacher grades it.",
+      "items": [
+        "Student attempts the task",
+        "Teacher grades the attempt",
+        "Student learns from the grade"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "There is a newer way to do this.",
+            "In the newer way, the student tries the task first."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then the teacher grades the student's own attempt."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The student learns from that grade.",
+            "So it learns from the mistakes it really makes.",
+            "This is called on-policy distillation."
+          ]
+        }
+      ],
+      "caption": "The student tries the task first and the teacher grades that attempt. The student learns from the mistakes it really makes. This is called on-policy distillation."
+    },
+    {
+      "id": "di-05",
+      "layout": "number",
+      "title": "About the same quality, far less *computing power*",
+      "value": "9 to 30 times",
+      "unit": "less computing power to train, compared with doing more fine-tuning",
+      "source": "On-policy distillation, October 2025 (published work)",
+      "builds": [
+        {
+          "narration": [
+            "Training a model takes a lot of computing power.",
+            "Published work compared this newer way with simply doing more fine-tuning.",
+            "It reached about the same quality.",
+            "And it used 9 to 30 times less computing power to train."
+          ]
+        }
+      ],
+      "caption": "Published work compared on-policy distillation with doing more fine-tuning. It reached about the same quality with 9 to 30 times less computing power to train."
+    },
+    {
+      "id": "di-06",
+      "layout": "statement",
+      "title": "Fine-tuning makes a model *forget*",
+      "icon": "warning",
+      "text": "Training on your own examples weakens general skills.",
+      "picture": "A rounded device with a new orange block attached on one side, while plain grey blocks drift away and fade from the other side.",
+      "builds": [
+        {
+          "narration": [
+            "Now to the second job, the repair.",
+            "Fine-tuning a model on your own examples makes it better at your work.",
+            "But it also makes the model worse at general tasks.",
+            "It has partly forgotten skills it used to have.",
+            "Even fine-tuning that changes only a small part of the model does not prevent this."
+          ]
+        }
+      ],
+      "caption": "Fine-tuning on your own examples makes a model better at your work. It also makes it worse at general tasks. Even changing only a small part of the model does not prevent it.",
+      "image": "pictures/di-06.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-07",
+      "layout": "picture",
+      "title": "The old model teaches the *new* one",
+      "picture": "The same rounded device drawn twice: a paler earlier version on the left sending orange skill blocks along a dotted arc to the later, specialised version on the right.",
+      "items": [
+        "Before fine-tuning",
+        "After fine-tuning"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The published repair uses a special teacher.",
+            "The teacher is the same model before it was fine-tuned."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The fine-tuned model is the student.",
+            "It learns its general skills back from the model it used to be.",
+            "And it keeps the new skills it just gained."
+          ]
+        }
+      ],
+      "caption": "The teacher is the same model as it was before fine-tuning. The fine-tuned model learns its general skills back. It keeps the new skills it just gained.",
+      "image": "pictures/di-07.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-08",
+      "layout": "statement",
+      "title": "Plan distillation as *maintenance*",
+      "icon": "tool",
+      "text": "Run it after any further training.",
+      "picture": "A tall pile of plain pages feeding into a rounded device, with an orange wrench laid ready beside it for the repair afterwards.",
+      "builds": [
+        {
+          "narration": [
+            "So distillation is not only a way to save money.",
+            "It is also maintenance you plan after training a model further.",
+            "Plan it after fine-tuning.",
+            "There is another way to train a model further.",
+            "You train it on plain text from your own field.",
+            "That is called continued pretraining.",
+            "Plan the same repair after that too."
+          ]
+        }
+      ],
+      "caption": "Distillation is also maintenance. Plan it after fine-tuning. Plan it too after continued pretraining. That means training a model further on plain text from your field.",
+      "image": "pictures/di-08.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-23",
+      "layout": "statement",
+      "title": "Test general skills after *training*",
+      "icon": "check",
+      "text": "The test tells you if a repair is needed.",
+      "picture": "A rounded device beside a clipboard of tick boxes, all ticked except one marked with an orange cross.",
+      "builds": [
+        {
+          "narration": [
+            "How do you know if a repair is needed?",
+            "Keep a test of general skills.",
+            "Run it after each round of training.",
+            "If the scores drop, plan the repair.",
+            "While the repair runs, keep testing the new skills too.",
+            "That shows you whether the repair is undoing them."
+          ]
+        }
+      ],
+      "caption": "A test of general skills tells you if a repair is needed. During the repair, keep testing the new skills too.",
+      "image": "pictures/di-23.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-09",
+      "layout": "flow",
+      "title": "Work out when it *pays*",
+      "items": [
+        "One-off cost",
+        "Divide by saving per call",
+        "Calls to pay back",
+        "Compare with real volume"
+      ],
+      "source": "This chapter's own arithmetic, not a published result",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Now back to the first job, saving money.",
+            "Distillation has a cost you pay once.",
+            "That is the cost of building the student."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "After that, every request to the student costs less.",
+            "One request to a model is called a call.",
+            "Divide the one-off cost by the saving on each call.",
+            "That tells you how many calls it takes to pay the cost back."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Then compare that with the number of calls you really make.",
+            "No general number tells you when it pays.",
+            "You have to use your own costs and volumes."
+          ]
+        }
+      ],
+      "caption": "Divide the one-off cost by the saving on each call. That is how many calls it takes to pay it back. Compare it with your real volume."
+    },
+    {
+      "id": "di-10",
+      "layout": "statement",
+      "title": "It only works on a *narrow* task",
+      "icon": "search",
+      "text": "The narrower the task, the smaller the student can be.",
+      "picture": "A large device beside a wide tray of many different shapes, and a small device beside a narrow orange tray holding one kind of shape.",
+      "builds": [
+        {
+          "narration": [
+            "Distillation also needs the right kind of task.",
+            "A small student cannot match a large teacher at everything.",
+            "It can match the teacher only on a narrow task.",
+            "The narrower the task, the smaller the student can be."
+          ]
+        }
+      ],
+      "caption": "A student matches its teacher only on a narrow task. The narrower the task, the smaller the student can be.",
+      "image": "pictures/di-10.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-24",
+      "layout": "statement",
+      "title": "Lock the test *first*",
+      "icon": "shield",
+      "text": "Write the test before the student exists.",
+      "picture": "A closed folder of test papers with an orange padlock on it, beside a dashed outline of a small device not yet built.",
+      "builds": [
+        {
+          "narration": [
+            "You also need proof that the student is good enough.",
+            "That proof comes from a test.",
+            "Write the test before you build the student.",
+            "Then do not change it.",
+            "A test kept fixed like this is called a locked test."
+          ]
+        }
+      ],
+      "caption": "The proof that a student is good enough comes from a test. Write it before you build the student and keep it fixed. This is a locked test.",
+      "image": "pictures/di-24.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-11",
+      "layout": "statement",
+      "title": "A fixed test or a *changing* one",
+      "icon": "scale",
+      "text": "Decide which one you are running.",
+      "picture": "A closed strapped folder on one side, an open folder with pages swapping in and out on the other, and a path that splits between them at an orange dot.",
+      "builds": [
+        {
+          "narration": [
+            "A locked test can clash with another goal.",
+            "Proving the saving needs a test that stays the same.",
+            "But some teams keep improving their agent all the time.",
+            "That work keeps rewriting the test.",
+            "So decide which of the two you are running."
+          ]
+        }
+      ],
+      "caption": "Proving the saving needs a test that stays fixed. Constant improvement keeps rewriting the test. Decide which of the two you are running.",
+      "image": "pictures/di-11.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-12",
+      "layout": "statement",
+      "title": "The student copies the *errors* too",
+      "icon": "warning",
+      "text": "Never distil a skill the teacher does not reliably have.",
+      "picture": "A large device beside a line with an orange zigzag mistake in it, and a small device beside an exact copy of that line, mistake included.",
+      "builds": [
+        {
+          "narration": [
+            "The student copies everything the teacher does.",
+            "That includes the teacher's mistakes.",
+            "The teacher's large size sometimes saved it from a mistake.",
+            "The small student does not have that size.",
+            "So there is one hard rule.",
+            "Never distil a skill the teacher does not reliably have."
+          ]
+        }
+      ],
+      "caption": "The student copies the teacher's mistakes as well as its skills. It lacks the size that sometimes saved the teacher. So only distil what the teacher does reliably.",
+      "image": "pictures/di-12.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-15",
+      "layout": "compare",
+      "title": "Routine requests go to the *student*",
+      "left": {
+        "head": "Routine requests",
+        "rows": [
+          "Most of the volume",
+          "Handled by the small student"
+        ]
+      },
+      "right": {
+        "head": "Unusual requests",
+        "rows": [
+          "The rest",
+          "Sent up to the large model"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Distillation also lets two models share the work.",
+            "Say most of the requests an agent gets are routine.",
+            "The large model handles them well.",
+            "But it costs too much to run on every one of them."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "So the small student handles the routine requests.",
+            "The unusual ones still go to the large model.",
+            "The average cost per request drops a lot."
+          ]
+        }
+      ],
+      "caption": "A distilled student handles routine requests. Unusual ones still go to the large model. The average cost per request drops a lot."
+    },
+    {
+      "id": "di-25",
+      "layout": "statement",
+      "title": "Unsure requests go *up* to the large model",
+      "icon": "arrow",
+      "text": "The student checks how sure it is.",
+      "picture": "A small device with a tray of grey papers at the bottom of a short staircase, and a large device at the top receiving one orange paper.",
+      "builds": [
+        {
+          "narration": [
+            "How does each request reach the right model?",
+            "The student checks how sure it is of its answer.",
+            "If it is not sure enough, the request goes up to the large model.",
+            "This check is called a confidence rule."
+          ]
+        }
+      ],
+      "caption": "The student checks how sure it is of its answer. If it is not sure enough, the request goes up to the large model. This is a confidence rule.",
+      "image": "pictures/di-25.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "di-16",
+      "layout": "statement",
+      "title": "The test sets the *boundary*",
+      "icon": "check",
+      "text": "The test shows which requests the student can handle.",
+      "builds": [
+        {
+          "narration": [
+            "Do not guess which requests are routine.",
+            "Use your test.",
+            "It shows which requests the student handles as well as the large model.",
+            "Send only those to the student.",
+            "How much this saves depends on your own volumes.",
+            "So no general number is claimed for it."
+          ]
+        }
+      ],
+      "caption": "The test shows which requests the student handles as well as the large model. The split goes there. The saving depends on your own volumes."
+    },
+    {
+      "id": "di-18",
+      "layout": "branch",
+      "title": "Where to go *next*",
+      "items": [
+        "Wrong judgement on checkable results",
+        "Reinforcement fine-tuning"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The last question is where distillation fits.",
+            "It comes after the other ways of improving an agent.",
+            "It does not replace them.",
+            "Now say the agent's judgement is still wrong.",
+            "And its results are the kind you can check and score."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "There is a way to train a model on scored attempts.",
+            "It is called reinforcement fine-tuning.",
+            "That is where to go next."
+          ]
+        }
+      ],
+      "caption": "Distillation comes after the other options and does not replace them. If judgement is still wrong on results you can score, look at reinforcement fine-tuning."
+    },
+    {
+      "id": "di-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Only distil the teacher's reliable skills",
+        "The student is cheaper and faster",
+        "It repairs forgetting after fine-tuning",
+        "Your volumes decide if it pays",
+        "Lock the test before you start"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "Only distil what the teacher already does well.",
+            "The student copies its mistakes too."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "A small student is cheaper and faster to run than its teacher."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The same method repairs what a model forgets after fine-tuning."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Whether it pays depends on your own costs and volumes."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "And lock the test before you build the student.",
+            "Next, we look at reinforcement fine-tuning."
+          ]
+        }
+      ],
+      "caption": "Only distil what the teacher does well. The student is cheaper and faster. It repairs forgetting. Your volumes decide if it pays. Lock the test first."
+    }
+  ]
+}

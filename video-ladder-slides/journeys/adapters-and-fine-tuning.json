@@ -1,0 +1,763 @@
+{
+  "page": "/ladder/adapters-and-fine-tuning",
+  "chapter": "Adapters and supervised fine-tuning",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "ad-01",
+        "ad-intro"
+      ]
+    },
+    {
+      "heading": "What training on examples actually does",
+      "slides": [
+        "ad-22",
+        "ad-02",
+        "ad-03",
+        "ad-04",
+        "ad-14",
+        "ad-05"
+      ]
+    },
+    {
+      "heading": "Three ways to fine-tune",
+      "slides": [
+        "ad-06",
+        "ad-07",
+        "ad-23",
+        "ad-08",
+        "ad-09"
+      ]
+    },
+    {
+      "heading": "What you need before starting",
+      "slides": [
+        "ad-12",
+        "ad-10"
+      ]
+    },
+    {
+      "heading": "Services that fine-tune for you",
+      "slides": [
+        "ad-24",
+        "ad-11"
+      ]
+    },
+    {
+      "heading": "Moving work to a smaller model",
+      "slides": [
+        "ad-15",
+        "ad-16"
+      ]
+    },
+    {
+      "heading": "The test for moving on",
+      "slides": [
+        "ad-18",
+        "ad-19",
+        "ad-20",
+        "ad-21"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "ad-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "ad-01",
+      "layout": "title",
+      "title": "Adapters and *fine-tuning*",
+      "text": "What does training on examples change, and what can it not do?",
+      "builds": [
+        {
+          "narration": [
+            "This video is about the first change that touches the model itself.",
+            "You teach it with examples of the task done well."
+          ]
+        }
+      ],
+      "caption": "The first change to the model itself. You teach it with examples of the task done well."
+    },
+    {
+      "id": "ad-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "How training on examples works",
+        "Three ways to do it",
+        "What you need before starting",
+        "Moving work to a smaller model",
+        "The test for moving on"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "This video covers adapters and fine-tuning.",
+            "The first three steps of the ladder change the system around the model.",
+            "The model itself stays the same.",
+            "This is the first option that changes the model itself."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "First, we look at what training on examples really does.",
+            "Then we see three ways to do it and what you need before you start.",
+            "Next, we see how to move work to a smaller model.",
+            "Last comes the test for moving on."
+          ]
+        }
+      ],
+      "caption": "The first option that changes the model itself. How training on examples works, three ways to do it, what you need, and when to move on."
+    },
+    {
+      "id": "ad-22",
+      "layout": "statement",
+      "title": "Teach the model with *examples*",
+      "text": "Each example shows an input and the answer you want.",
+      "icon": "document",
+      "picture": "A stack of paired question and answer cards feeding into a small device.",
+      "builds": [
+        {
+          "narration": [
+            "Until now, the model itself stayed the same.",
+            "Now you change it.",
+            "You collect many examples of the task done well.",
+            "Each example is an input paired with the answer you wanted."
+          ]
+        },
+        {
+          "narration": [
+            "The model is trained on these pairs until it answers more like them.",
+            "Each example shows the model the right answer to aim for.",
+            "Training a model this way is called supervised fine-tuning.",
+            "From here on, we will just say fine-tuning."
+          ]
+        }
+      ],
+      "caption": "Supervised fine-tuning trains a model on examples of a task done well. Each example pairs an input with the answer you wanted.",
+      "image": "pictures/ad-22.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-02",
+      "layout": "compare",
+      "title": "What fine-tuning is *for*",
+      "left": {
+        "head": "Right tool for",
+        "rows": [
+          "Consistent behaviour",
+          "Moving work to a smaller model"
+        ]
+      },
+      "right": {
+        "head": "Wrong tool for",
+        "rows": [
+          "Teaching the model facts"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Fine-tuning is the right tool for two jobs.",
+            "It makes the model behave the same way every time.",
+            "And it can move work to a smaller, cheaper model."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "It is the wrong tool for teaching the model facts.",
+            "The next slides show why."
+          ]
+        }
+      ],
+      "caption": "Fine-tuning makes behaviour consistent and moves work to smaller, cheaper models. It does not teach facts."
+    },
+    {
+      "id": "ad-03",
+      "layout": "flow",
+      "title": "How training on *examples* works",
+      "items": [
+        "Input and wanted answer",
+        "Measure the gap",
+        "Nudge the weights",
+        "Repeat thousands of times"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "To see why, look at what training does inside the model.",
+            "A model is a huge set of numbers.",
+            "These numbers are called weights.",
+            "Training shows the model an input and the answer you wanted."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "It measures how far the model's own answer is from that.",
+            "Then it nudges the weights a little to close the gap."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "This repeats over thousands of examples.",
+            "Slowly, the model's usual behaviour moves toward the pattern the examples share."
+          ]
+        }
+      ],
+      "caption": "Fine-tuning compares the model's answer with the wanted answer. It nudges the weights slightly to close the gap. Over thousands of examples, the usual behaviour shifts."
+    },
+    {
+      "id": "ad-04",
+      "layout": "statement",
+      "title": "It learns the *shape* of answers",
+      "text": "The facts behind the examples are not stored.",
+      "icon": "document",
+      "picture": "A stencil copying a page layout onto a sheet, with the boxes left empty.",
+      "builds": [
+        {
+          "narration": [
+            "Training rewards answers that look like your examples.",
+            "So the model learns their structure, their tone and their confidence.",
+            "Nothing in the process stores the facts behind them."
+          ]
+        },
+        {
+          "narration": [
+            "A few thousand examples cannot carry a million facts.",
+            "So a fine-tuned model can sound just like your examples and still get details wrong."
+          ]
+        }
+      ],
+      "caption": "Training rewards answers shaped like the examples. It teaches the style and the confidence. It does not store the facts.",
+      "image": "pictures/ad-04.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-14",
+      "layout": "compare",
+      "title": "Facts stay out of the *weights*",
+      "left": {
+        "head": "Facts in weights",
+        "rows": [
+          "No source to point to",
+          "Cannot be updated",
+          "Cannot be deleted"
+        ]
+      },
+      "right": {
+        "head": "Facts looked up",
+        "rows": [
+          "Point to their source",
+          "Updated when facts change",
+          "Deleted when required"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "So where should facts come from?",
+            "Look them up at the moment the model needs them.",
+            "Then pass them to the model with the question.",
+            "This is called retrieval."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Facts baked into the weights cannot be traced back to a source.",
+            "They cannot be updated or deleted either."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "Facts that are looked up can be traced, updated and deleted."
+          ]
+        }
+      ],
+      "caption": "Facts should be looked up when needed. Facts in the weights cannot be traced, updated or deleted. Facts that are looked up can."
+    },
+    {
+      "id": "ad-05",
+      "layout": "statement",
+      "title": "It can *forget* other skills",
+      "text": "It is a side effect of how training works.",
+      "icon": "warning",
+      "picture": "A device taking in a new block while older blocks fall away.",
+      "builds": [
+        {
+          "narration": [
+            "Fine-tuning also has a side effect.",
+            "The weights being nudged also hold the model's general skills.",
+            "If you push them hard toward your task, they drift.",
+            "The model can lose skills it had before.",
+            "This is called catastrophic forgetting."
+          ]
+        }
+      ],
+      "caption": "The weights that learn your task also hold general skills. Catastrophic forgetting comes from how training works. It is not a sign of careless work.",
+      "image": "pictures/ad-05.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-06",
+      "layout": "tiles",
+      "title": "Full fine-tuning changes *every* weight",
+      "items": [
+        "Change every weight",
+        "Train a small add-on",
+        "Add-on on a compressed model"
+      ],
+      "builds": [
+        {
+          "reveal": 3,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "Now for how fine-tuning is actually done.",
+            "There are three main ways.",
+            "The first changes every weight in the model.",
+            "This is called full fine-tuning."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "It has the most power to change behaviour.",
+            "It also needs the most computing power.",
+            "And you end up with a whole new model to store and run."
+          ]
+        }
+      ],
+      "caption": "Full fine-tuning changes all the weights. It can change behaviour the most and needs the most computing power. The result is a whole model to run."
+    },
+    {
+      "id": "ad-07",
+      "layout": "picture",
+      "title": "LoRA trains a small *add-on*",
+      "picture": "A large locked block with two thin strips beside it. Only the strips are trained.",
+      "items": [
+        "Big model, locked",
+        "Two small tables of numbers",
+        "Only these are trained"
+      ],
+      "builds": [
+        {
+          "narration": [
+            "The second way leaves the model's own weights locked.",
+            "The change fine-tuning makes can usually be captured in two small tables of numbers.",
+            "So only those two small tables are trained."
+          ]
+        },
+        {
+          "narration": [
+            "When the model runs, their effect is added on top.",
+            "This method is called LoRA."
+          ]
+        }
+      ],
+      "caption": "LoRA locks the model's own weights. It trains two small tables of numbers beside them. Their effect is added when the model runs.",
+      "image": "pictures/ad-07.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-23",
+      "layout": "statement",
+      "title": "Adapters you can *swap*",
+      "text": "One shared model, a different adapter per task.",
+      "icon": "tool",
+      "picture": "One large block with small cards beside it, and one card plugged in.",
+      "builds": [
+        {
+          "narration": [
+            "A whole model takes gigabytes of space.",
+            "What LoRA produces takes only megabytes.",
+            "This small add-on is called an adapter."
+          ]
+        },
+        {
+          "narration": [
+            "You can keep one shared model running.",
+            "Then you swap in a different adapter for each task.",
+            "So one model can do many different jobs."
+          ]
+        }
+      ],
+      "caption": "LoRA produces an adapter of megabytes, not a model of gigabytes. One shared model can swap in a different adapter for each task.",
+      "image": "pictures/ad-23.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-08",
+      "layout": "statement",
+      "title": "QLoRA *compresses* the locked model",
+      "text": "One powerful chip can adapt a large model.",
+      "icon": "chip",
+      "picture": "A large locked block squeezed flat by a clamp, with a thin strip on top.",
+      "builds": [
+        {
+          "narration": [
+            "The third way builds on LoRA.",
+            "While the adapter trains, the locked model is stored in a compressed form.",
+            "That saves so much computer memory that one powerful chip can adapt a large model."
+          ]
+        },
+        {
+          "narration": [
+            "The adapter itself is not compressed.",
+            "The quality stays close to LoRA.",
+            "This method is called QLoRA."
+          ]
+        }
+      ],
+      "caption": "QLoRA compresses the locked model during training. The adapter itself is not compressed. Quality is close to LoRA on far less hardware.",
+      "image": "pictures/ad-08.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-09",
+      "layout": "statement",
+      "title": "Adapters do not prevent *forgetting*",
+      "text": "If forgetting matters for your use, measure it.",
+      "icon": "warning",
+      "builds": [
+        {
+          "narration": [
+            "Changing fewer weights sounds safer.",
+            "You might expect an adapter to protect the model's other skills.",
+            "But published research found that LoRA does not protect them.",
+            "If forgetting matters for your use, measure it."
+          ]
+        }
+      ],
+      "caption": "Changing fewer weights sounds safer. Published research found that LoRA does not protect general skills. The repair for forgetting is covered under distillation."
+    },
+    {
+      "id": "ad-12",
+      "layout": "list",
+      "title": "When fine-tuning *fits*",
+      "items": [
+        "The answers are already correct",
+        "Structure and tone still vary",
+        "Examples in instructions did not help"
+      ],
+      "picture": "Three correct answer sheets, each laid out in a different order.",
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "Whichever way you choose, first check that fine-tuning fits your problem.",
+            "Here is the typical case."
+          ]
+        },
+        {
+          "reveal": 1,
+          "narration": [
+            "The answers are already correct."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "But their structure and tone still vary from one answer to the next."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Adding example answers to the instructions has not fixed it."
+          ]
+        }
+      ],
+      "caption": "The answers are correct. Their structure and tone still vary. Examples in the instructions have not fixed it. That is the fine-tuning use case.",
+      "image": "pictures/ad-12.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-10",
+      "layout": "list",
+      "title": "What you need *before* starting",
+      "items": [
+        "A few thousand good examples",
+        "Tests written before training",
+        "A plan to run the result"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "You need a few thousand examples.",
+            "The model learns exactly what they teach.",
+            "That includes their mistakes.",
+            "So their quality matters more than anything else."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Before training, write a set of tests and lock them.",
+            "Include tests for skills that should not change.",
+            "If you only test the new task, forgetting can slip through unnoticed."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "You also need a plan to run the result.",
+            "An adapter needs its original model to run on.",
+            "When that model is replaced, the work must be redone and tested again."
+          ]
+        }
+      ],
+      "caption": "A small careful set of examples beats a large scraped one. Testing only the new task lets forgetting slip through unnoticed."
+    },
+    {
+      "id": "ad-24",
+      "layout": "statement",
+      "title": "Someone else can run the *training*",
+      "text": "A provider runs fine-tuning for you as a service.",
+      "icon": "tool",
+      "builds": [
+        {
+          "narration": [
+            "The training itself has to happen somewhere.",
+            "You do not have to use your own machines.",
+            "Some providers run fine-tuning for you as a service.",
+            "This is called a managed option.",
+            "You send the examples and get back the trained result."
+          ]
+        }
+      ],
+      "caption": "A managed option is a service that runs fine-tuning for you. You send the examples and get back the result."
+    },
+    {
+      "id": "ad-11",
+      "layout": "list",
+      "title": "The managed options *narrowed* in 2026",
+      "items": [
+        "OpenAI self-serve: closing",
+        "Major cloud platforms: open",
+        "Open-weight adapters: unaffected"
+      ],
+      "source": "OpenAI deprecations page, announced 7 May 2026, as of August 2026",
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "These managed options changed in 2026.",
+            "This fact changes often.",
+            "It is correct as of August 2026."
+          ]
+        },
+        {
+          "reveal": 1,
+          "narration": [
+            "OpenAI is closing the fine-tuning that customers set up themselves.",
+            "It is closing in stages.",
+            "Remaining customers can start no new jobs after 6 January 2027."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Managed fine-tuning on the major cloud platforms is still available."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Some models let you download their weights and run them yourself.",
+            "These are called open-weight models.",
+            "Adapters on these models are unaffected."
+          ]
+        }
+      ],
+      "caption": "As of August 2026. For most companies the OpenAI route is already closed. Existing fine-tuned models keep running until their original models retire."
+    },
+    {
+      "id": "ad-15",
+      "layout": "statement",
+      "title": "Move the work to a *small model*",
+      "text": "A small model on your own servers can cost far less.",
+      "icon": "money",
+      "picture": "A folder moving from a very large device to a small one.",
+      "builds": [
+        {
+          "narration": [
+            "Now back to one of the two jobs fine-tuning is good for.",
+            "The biggest and most capable models cost the most to run.",
+            "These are called frontier models."
+          ]
+        },
+        {
+          "narration": [
+            "Fine-tuning can move a task from a frontier model to a small one.",
+            "A small fine-tuned model can do the task for a fraction of the cost.",
+            "It can run on your own servers.",
+            "Your data then stays with you."
+          ]
+        }
+      ],
+      "caption": "A small model with an adapter on your own servers can do the task at a fraction of the cost. The data stays inside.",
+      "image": "pictures/ad-15.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ad-16",
+      "layout": "statement",
+      "title": "One test is one *data point*",
+      "text": "Prove it on your own tests before you switch.",
+      "icon": "scale",
+      "builds": [
+        {
+          "narration": [
+            "One published test compared a small fine-tuned model with a frontier model.",
+            "The frontier model was given careful instructions instead.",
+            "The task was putting items into the right category.",
+            "The small model won by a wide margin at far lower cost."
+          ]
+        },
+        {
+          "narration": [
+            "But that is only one test.",
+            "Prove it on your own tests before you switch."
+          ]
+        }
+      ],
+      "caption": "One published test on a sorting task. A small fine-tuned model beat a frontier model with careful instructions. It cost a fraction as much."
+    },
+    {
+      "id": "ad-18",
+      "layout": "statement",
+      "title": "The test for *moving on*",
+      "text": "Format and behaviour are fixed. What is wrong is judgement or knowledge.",
+      "icon": "check",
+      "builds": [
+        {
+          "narration": [
+            "So when is this step done?",
+            "Move on when the format and behaviour of the answers are right.",
+            "At that point, what is still wrong is judgement or knowledge.",
+            "Where you go next depends on which one it is."
+          ]
+        }
+      ],
+      "caption": "Adapters have closed the format and behaviour gap. What remains wrong is judgement or knowledge. The next step depends on the symptom."
+    },
+    {
+      "id": "ad-19",
+      "layout": "branch",
+      "title": "Wrong *judgement*",
+      "items": [
+        "Reasoning wrong, outcome can be graded",
+        "Reinforcement fine-tuning"
+      ],
+      "builds": [
+        {
+          "narration": [
+            "Say the answers look right, but the reasoning is wrong.",
+            "And say a program can check whether each outcome is right.",
+            "Then go to reinforcement fine-tuning.",
+            "There, the model tries the task and learns from the scores it gets."
+          ]
+        }
+      ],
+      "caption": "The shape is right, but the reasoning is wrong on outcomes a program can grade. Go to reinforcement fine-tuning."
+    },
+    {
+      "id": "ad-20",
+      "layout": "branch",
+      "title": "Misreads your *field*",
+      "items": [
+        "Misreads your field's language",
+        "Continued pretraining"
+      ],
+      "builds": [
+        {
+          "narration": [
+            "Say the model still misreads the language and documents of your field.",
+            "Then go to continued pretraining.",
+            "There, the model keeps learning from large amounts of your own text."
+          ]
+        }
+      ],
+      "caption": "The model still misreads the language and documents of your field. Go to continued pretraining."
+    },
+    {
+      "id": "ad-21",
+      "layout": "branch",
+      "title": "Right quality, too *costly*",
+      "items": [
+        "Quality right, cost or speed wrong",
+        "Distillation"
+      ],
+      "builds": [
+        {
+          "narration": [
+            "Say the quality is right, but it costs too much or runs too slowly.",
+            "Then go to distillation.",
+            "There, a large model trains a small one to do the same work."
+          ]
+        }
+      ],
+      "caption": "Quality is right. Cost or speed is the complaint. Go to distillation."
+    },
+    {
+      "id": "ad-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "It teaches behaviour, not facts",
+        "Facts should be looked up",
+        "It can make a model forget",
+        "Adapters are small and swappable",
+        "Small models can take over work"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Fine-tuning trains a model on examples of a task done well.",
+            "It makes behaviour consistent.",
+            "It does not teach the model facts.",
+            "Facts should still be looked up when the model needs them."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Training can make the model forget other skills.",
+            "Adapters do not stop this.",
+            "So measure it.",
+            "An adapter is a small add-on you can swap for each task.",
+            "Fine-tuning can also move work to a smaller, cheaper model."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Next up is distillation."
+          ]
+        }
+      ],
+      "caption": "Fine-tuning teaches behaviour, not facts. Facts should be looked up. Training can cause forgetting. Adapters are small and swappable. It can move work to smaller models."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Working files that are generated again from what is committed here.
+frames/
+.chrome-profiles/
+audio/*.m4a
+audio/*.html
+pictures/*.png
+pictures/old/
+pictures/drafts/
+review.html
+ladder-scripts.html
+publish-files.json
+publish-map.json

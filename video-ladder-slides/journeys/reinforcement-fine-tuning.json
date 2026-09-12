@@ -1,0 +1,626 @@
+{
+  "page": "/ladder/reinforcement-fine-tuning",
+  "chapter": "Reinforcement fine-tuning",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "rf-01",
+        "rf-intro"
+      ]
+    },
+    {
+      "heading": "How training against a grader works",
+      "slides": [
+        "rf-20",
+        "rf-02",
+        "rf-03",
+        "rf-21"
+      ]
+    },
+    {
+      "heading": "What makes a grader gameable",
+      "slides": [
+        "rf-04",
+        "rf-05",
+        "rf-06",
+        "rf-12",
+        "rf-07"
+      ]
+    },
+    {
+      "heading": "The warning sign to watch for",
+      "slides": [
+        "rf-08",
+        "rf-09"
+      ]
+    },
+    {
+      "heading": "What it fixes, and what it does not",
+      "slides": [
+        "rf-17",
+        "rf-10"
+      ]
+    },
+    {
+      "heading": "The test",
+      "slides": [
+        "rf-18"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "rf-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "rf-01",
+      "layout": "title",
+      "title": "*Reinforcement* fine-tuning",
+      "text": "How do you teach a model judgement?",
+      "builds": [
+        {
+          "narration": [
+            "Most training shows a model examples of right answers.",
+            "Training a model further on examples like these is called fine-tuning.",
+            "But good judgement is hard to show with examples.",
+            "There is a kind of fine-tuning that can teach it."
+          ]
+        }
+      ],
+      "caption": "Most training shows a model examples of right answers. That is fine-tuning. Reinforcement fine-tuning can teach judgement that examples cannot fully show."
+    },
+    {
+      "id": "rf-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "How training with scores works",
+        "How the score can go wrong",
+        "The warning sign to watch",
+        "What it can and cannot fix",
+        "Where to go next"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "The ladder is the order in which to try changes to an agent.",
+            "The early steps change the system around the model.",
+            "The later steps change the model itself.",
+            "Reinforcement fine-tuning is one of those later steps."
+          ]
+        },
+        {
+          "reveal": 1,
+          "narration": [
+            "First, we look at how training with scores works."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then we see how the score can go wrong."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Next comes the warning sign to watch for."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Then we see what this training can fix and what it cannot."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Last, we look at where to go next."
+          ]
+        }
+      ],
+      "caption": "Reinforcement fine-tuning is one of the later ladder steps. Those steps change the model itself. This video covers how it works, what can go wrong and where to go next."
+    },
+    {
+      "id": "rf-20",
+      "layout": "statement",
+      "title": "The model learns by *trying*",
+      "icon": "loop",
+      "text": "It is pulled towards whatever scores well.",
+      "picture": "A rounded device with three attempt sheets laid out in front of it, one of them marked with an orange ribbon rosette.",
+      "builds": [
+        {
+          "narration": [
+            "First, how this training works.",
+            "Ordinary fine-tuning pulls a model towards fixed right answers.",
+            "This kind works differently.",
+            "The model tries the task in its own way.",
+            "Each attempt gets a score.",
+            "The model is pulled towards whatever scores well.",
+            "This is called reinforcement fine-tuning."
+          ]
+        }
+      ],
+      "caption": "Ordinary fine-tuning pulls a model towards fixed right answers. Here the model tries the task its own way. It is pulled towards whatever scores well.",
+      "image": "pictures/rf-20.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "rf-02",
+      "layout": "cycle",
+      "title": "How training against a *grader* works",
+      "items": [
+        "Model makes an attempt",
+        "Grader scores the attempt",
+        "Training favours what scored well"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is the loop, step by step.",
+            "First, the model makes an attempt at the task."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Next, something checks the attempt and gives it a score.",
+            "This checker is called a grader."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Then training makes the behaviour behind high scores more likely.",
+            "The loop runs again and again."
+          ]
+        }
+      ],
+      "caption": "The model attempts the task. A grader scores the attempt. Training makes the behaviour behind high scores more likely."
+    },
+    {
+      "id": "rf-03",
+      "layout": "statement",
+      "title": "It finds ways no example *showed*",
+      "icon": "search",
+      "text": "Useful where good answers vary and cannot be listed.",
+      "picture": "A fan of example cards each showing the same straight grey route, a round target, and a new curving orange route to the target that no card shows.",
+      "builds": [
+        {
+          "narration": [
+            "This freedom to search is where the power comes from.",
+            "On some tasks, good answers vary a lot.",
+            "You cannot list them all as examples.",
+            "On tasks like these, the model can find ways of working that no example showed."
+          ]
+        }
+      ],
+      "caption": "On some tasks, good answers vary and cannot all be listed. There the model can find ways that no example showed.",
+      "image": "pictures/rf-03.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "rf-21",
+      "layout": "number",
+      "title": "Gains from about a hundred *graded tasks*",
+      "value": "About 100",
+      "unit": "graded tasks were enough to see gains",
+      "text": "Ordinary fine-tuning on that few made the model worse.",
+      "source": "Vendor-reported sample efficiency, May 2025",
+      "builds": [
+        {
+          "narration": [
+            "This training can also work with few tasks.",
+            "The company that sells it reported gains from about a hundred graded tasks.",
+            "Ordinary fine-tuning on that few examples made the model worse.",
+            "A result a seller reports about its own product is called a vendor result.",
+            "So this one is flagged as a vendor result."
+          ]
+        }
+      ],
+      "caption": "A vendor reports gains from about a hundred graded tasks. Ordinary fine-tuning at that scale made the model worse. It is flagged as a vendor result."
+    },
+    {
+      "id": "rf-04",
+      "layout": "picture",
+      "title": "The model will find the *gap*",
+      "picture": "A runner reaching the finish through a gap in a fence, while the marked course goes the long way round.",
+      "items": [
+        "The real job",
+        "The shortcut that scores"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The same freedom to search also brings a danger.",
+            "The model chases the score.",
+            "It does not know what you really meant."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Say the score and your real goal differ somewhere.",
+            "The model will find that gap.",
+            "It gets far more attempts than you spent building the grader."
+          ]
+        },
+        {
+          "narration": [
+            "This is not cheating on purpose.",
+            "Shortcuts that score well simply become more likely.",
+            "Getting a high score without doing the real job is called gaming the grader."
+          ]
+        }
+      ],
+      "caption": "The model searches for a high score. Any gap between the score and what you meant will be found. Scoring high without doing the job is called gaming the grader.",
+      "image": "pictures/rf-04.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "rf-05",
+      "layout": "tiles",
+      "title": "Four ways a grader gets *gamed*",
+      "items": [
+        "Surface style",
+        "Length as effort",
+        "An AI model as judge",
+        "Checks that miss things"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "Here are four common ways a grader gets gamed.",
+            "The first is surface style.",
+            "Say tidy, confident answers score well.",
+            "Then the model learns to look tidy and confident, right or wrong."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            1
+          ],
+          "narration": [
+            "The second is length.",
+            "If long answers score well, expect the model to pad them out."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "The third is using another AI model to give the score.",
+            "A model used this way is called a judge.",
+            "The judge has its own biases.",
+            "It tends to favour some kinds of answer.",
+            "That becomes part of the score."
+          ]
+        },
+        {
+          "reveal": 4,
+          "focus": [
+            3
+          ],
+          "narration": [
+            "The fourth is checks that miss things.",
+            "Say the grader checks three things.",
+            "The model gets good at those three and neglects the rest."
+          ]
+        }
+      ],
+      "caption": "A grader gets gamed when the score and real skill come apart. Common gaps are surface style, length, an AI judge with its own biases, and checks that miss things."
+    },
+    {
+      "id": "rf-06",
+      "layout": "statement",
+      "title": "Our experiments showed the judge *bias*",
+      "icon": "scale",
+      "text": "A difference vanished when a judge from another family checked it.",
+      "picture": "A striped judge device placing an orange ribbon on the answer sheet with matching stripes, not on the dotted one.",
+      "builds": [
+        {
+          "narration": [
+            "Judges have one well-known bias.",
+            "Related models from the same maker form a group called a model family.",
+            "A model tends to prefer answers in the style of its own family.",
+            "We saw this in our own experiments.",
+            "A judge from the same family found a difference.",
+            "That difference vanished when a judge from another family checked it."
+          ]
+        }
+      ],
+      "caption": "Models tend to favour their own family's style. In our own experiments, a difference found by a same-family judge vanished under a judge from another family.",
+      "image": "pictures/rf-06.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "rf-12",
+      "layout": "compare",
+      "title": "Past decisions hide the *misses*",
+      "left": {
+        "head": "Decided to act",
+        "rows": [
+          "Checked again later",
+          "Mistakes come to light"
+        ]
+      },
+      "right": {
+        "head": "Decided to do nothing",
+        "rows": [
+          "Almost never checked again",
+          "Mistakes stay hidden"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Gaps can also hide in old records.",
+            "It is tempting to score a model against decisions people made in the past.",
+            "But those decisions include people's own mistakes.",
+            "Say a decision to act gets checked again later.",
+            "A decision to do nothing is almost never looked at again."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "So a wrong decision to do nothing stays hidden.",
+            "A grader built on these records would teach the model the same blind spots."
+          ]
+        }
+      ],
+      "caption": "It is tempting to grade a model against past decisions. They include people's mistakes. When only decisions to act get checked later, mistakes of doing nothing stay hidden."
+    },
+    {
+      "id": "rf-07",
+      "layout": "list",
+      "title": "Grading is safe when a *program* checks",
+      "text": "Where no program can check, the grader gets gamed.",
+      "items": [
+        "Code compiles and passes tests",
+        "Figure matches its source document",
+        "Schedule meets every rule"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "So when is a grader safe?",
+            "It is safe when a program can check the result.",
+            "That program must not share the model's blind spots."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Think of code that must pass its tests.",
+            "Or a figure that must match its source document.",
+            "Or a schedule that must meet every rule."
+          ]
+        },
+        {
+          "narration": [
+            "Some quality comes down to taste or tone.",
+            "No program can check that.",
+            "There, the grader is only a stand-in.",
+            "And a stand-in will be gamed."
+          ]
+        }
+      ],
+      "caption": "Grading is safe when a program checks the result. Where taste or tone decide quality, the grader is only a stand-in and will be gamed."
+    },
+    {
+      "id": "rf-08",
+      "layout": "statement",
+      "title": "Better than careful people? *Check the grader*",
+      "icon": "warning",
+      "text": "Beating a careful person is a sign of a fault.",
+      "picture": "A dashed line marking the best careful work, a row of navy bars just below it, and one cracked orange bar shooting far above it.",
+      "builds": [
+        {
+          "narration": [
+            "So how do you spot a grader that is being gamed?",
+            "Say the model scores higher than a careful person on the same task.",
+            "Do not treat that as a win.",
+            "It means the model learned the scoring rules instead of the job.",
+            "The score works like a reward for the model.",
+            "So this failure is called reward hacking.",
+            "When it happens, treat the grader as the broken part."
+          ]
+        }
+      ],
+      "caption": "A score above what a careful person gets means the model learned the scoring rules instead of the job. This is reward hacking. Treat the grader as broken.",
+      "image": "pictures/rf-08.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "rf-09",
+      "layout": "statement",
+      "title": "Treat the grader as *important code*",
+      "icon": "tool",
+      "text": "Track its changes, review it, test it and give it an owner.",
+      "picture": "A simple box-shaped checking machine being inspected with a magnifying glass, with a blank orange tag tied on to show it has an owner.",
+      "builds": [
+        {
+          "narration": [
+            "So look after the grader like any important software.",
+            "Keep track of every change to it.",
+            "Have someone review each change.",
+            "Test it.",
+            "And give it a named owner.",
+            "A fault in the grader trains the same fault into the model.",
+            "That model gives no warning.",
+            "It just scores very well."
+          ]
+        }
+      ],
+      "caption": "Look after the grader like important software. A fault in it trains the same fault into the model. That model gives no warning beyond a very good score.",
+      "image": "pictures/rf-09.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "rf-17",
+      "layout": "compare",
+      "title": "What it fixes, and what it *does not*",
+      "left": {
+        "head": "Fixes",
+        "rows": [
+          "Judgement on checkable results",
+          "Reasoning over many steps"
+        ]
+      },
+      "right": {
+        "head": "Does not fix",
+        "rows": [
+          "Format, tone or style",
+          "Missing knowledge"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Now, what can this training fix?",
+            "It fixes judgement on tasks where a program can check the result.",
+            "It does not fix format, tone or style.",
+            "Those are easy to show with examples.",
+            "Ordinary fine-tuning handles them."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "It also fixes reasoning over many steps.",
+            "But it cannot add knowledge the model does not have.",
+            "It changes how the model behaves.",
+            "It does not store new facts."
+          ]
+        }
+      ],
+      "caption": "It fixes judgement and reasoning over many steps on tasks with checkable results. Format, tone and style belong to ordinary fine-tuning. It cannot add knowledge."
+    },
+    {
+      "id": "rf-10",
+      "layout": "list",
+      "title": "Gains in specialist fields are *vendor* results",
+      "items": [
+        "Tax analysis",
+        "Medical task, against doctors",
+        "Pulling references out of documents"
+      ],
+      "source": "Vendor-published customer results, May 2025",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "There are published gains from this training in specialist fields.",
+            "They come from the company that sells it.",
+            "They describe its own customers.",
+            "So they are vendor results."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "They cover tax analysis and a medical task scored against doctors.",
+            "They also cover pulling references out of documents."
+          ]
+        }
+      ],
+      "caption": "Vendor-published customer results report gains in tax analysis, a medical task measured against doctors, and pulling references out of documents."
+    },
+    {
+      "id": "rf-18",
+      "layout": "branch",
+      "title": "Where to go *next*",
+      "items": [
+        "Model misreads your field's material",
+        "Continued pretraining"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The last part is where to go next.",
+            "Say the model's judgement is now right.",
+            "But it still misreads the material in your field."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then what is missing is knowledge of your field.",
+            "You can add it by training the model further on plain text from your field.",
+            "This is called continued pretraining.",
+            "And once quality is proven, a smaller model can learn to do the job more cheaply."
+          ]
+        }
+      ],
+      "caption": "If judgement is right but the model still misreads your field's material, look at continued pretraining. Once quality is proven, a smaller model can learn the job more cheaply."
+    },
+    {
+      "id": "rf-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Graders must require the real job",
+        "The model moves towards high scores",
+        "Gaps in the score get found",
+        "Beats careful people? Check the grader",
+        "It fixes judgement, not knowledge"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "Before you start, you need a grader that only the real job can satisfy."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "This training moves the model towards whatever scores well."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "So any gap between the score and your goal will be found."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "If the model beats a careful person, check the grader first."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "This training fixes judgement.",
+            "It does not add knowledge.",
+            "Next, we look at continued pretraining."
+          ]
+        }
+      ],
+      "caption": "You need a grader only the real job can satisfy. Any gap in the score gets found. If the model beats a careful person, check the grader. It fixes judgement, not knowledge."
+    }
+  ]
+}

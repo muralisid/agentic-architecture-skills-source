@@ -1,0 +1,735 @@
+{
+  "page": "/ladder/context",
+  "chapter": "Step 2: Context",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "cx-01",
+      "build": 1,
+      "voiceover": "Step two is about what an AI model gets to see. Everything the model can see when it answers is called its context.",
+      "words": 23,
+      "on_camera": true,
+      "frame": "frames/context/film/cx-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "cx-01",
+      "build": 1,
+      "voiceover": "To get there, documents are cut up, turned into numbers, stored and searched.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "cx-01",
+      "build": 1,
+      "voiceover": "In our own measurements, these choices changed the answer more than anything else.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-01-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "cx-intro",
+      "build": 1,
+      "voiceover": "Some changes to an AI system are worth trying before others. The first three are tried in order, one step at a time.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-intro-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "cx-intro",
+      "build": 1,
+      "voiceover": "This order is called the ladder. Step one was the instructions you give the model.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-intro-b1.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "cx-intro",
+      "build": 2,
+      "voiceover": "This is step two, context. First, we follow a document on its way to the model.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-intro-b2.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "cx-intro",
+      "build": 2,
+      "voiceover": "Then we see what goes wrong when one document covers many topics. We also see how to test a fix fairly.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-intro-b2.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "cx-intro",
+      "build": 3,
+      "voiceover": "After that, we look at searching for exact details. Then we look at who chooses and owns the documents.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-intro-b3.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "cx-intro",
+      "build": 3,
+      "voiceover": "Last, we look at what is kept for later use. The video ends with the test for moving on.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-intro-b3.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "cx-02",
+      "build": 1,
+      "voiceover": "A system that uses a model to do a job is called an agent. To answer questions, an agent often needs facts from documents.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-02-b1.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "cx-02",
+      "build": 2,
+      "voiceover": "Let us follow one document on its way to the model. First, the file is read and turned into text.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-02-b2.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "cx-02",
+      "build": 3,
+      "voiceover": "Then the text is cut into smaller pieces. Each piece is turned into a list of numbers.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-02-b3.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "cx-02",
+      "build": 4,
+      "voiceover": "The numbers are stored so they can be searched quickly. Then a question comes in.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-02-b4.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "cx-02",
+      "build": 4,
+      "voiceover": "The best pieces are found and passed to the model. Each stage has its own name. We will take them one at a time.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-02-b4.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "cx-20",
+      "build": 1,
+      "voiceover": "The first stage turns the file into plain text. This is called parsing.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-20-b1.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "cx-20",
+      "build": 2,
+      "voiceover": "Good parsing keeps the structure, like the rows and columns of a table. Say a table is flattened into one long sentence.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-20-b2.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "cx-20",
+      "build": 2,
+      "voiceover": "The numbers lose the labels that went with them. No later stage can put that back. So keep checking samples of the parsing.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-20-b2.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "cx-21",
+      "build": 1,
+      "voiceover": "The second stage cuts the text into pieces that search can find. These pieces are called chunks.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-21-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "cx-21",
+      "build": 2,
+      "voiceover": "A chunk that is too large mixes several topics. A chunk that is too small loses the text around it.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-21-b2.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "cx-21",
+      "build": 3,
+      "voiceover": "Without that text, it can lose its meaning. No single size works for every set of documents. So the size has to be tested.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-21-b3.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "cx-22",
+      "build": 1,
+      "voiceover": "The third stage turns each piece into a list of numbers. The numbers stand for what the piece means.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-22-b1.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "cx-22",
+      "build": 2,
+      "voiceover": "This list of numbers is called a vector. Think of each vector as a point on a map of meaning.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-22-b2.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "cx-22",
+      "build": 2,
+      "voiceover": "Pieces that mean similar things sit close together. Pieces about different things sit far apart.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-22-b2.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "cx-23",
+      "build": 1,
+      "voiceover": "The fourth stage stores the vectors so they can be searched fast. This store is called an index.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-23-b1.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "cx-23",
+      "build": 2,
+      "voiceover": "The index also records who is allowed to see each document. The search uses that record later.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-23-b2.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "cx-24",
+      "build": 1,
+      "voiceover": "The last stage starts when someone asks a question. The question is turned into a vector in the same way.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-24-b1.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "cx-24",
+      "build": 1,
+      "voiceover": "The search finds the pieces whose vectors sit nearest to it.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-24-b1.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "cx-24",
+      "build": 2,
+      "voiceover": "Those pieces are passed to the model along with the question. Finding and passing on the right pieces is called retrieval.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-24-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "cx-13",
+      "build": 1,
+      "voiceover": "Retrieval needs one more rule. Not everyone is allowed to see every document. One way is to search everything first.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-13-b1.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "cx-13",
+      "build": 1,
+      "voiceover": "Then remove what the person may not see. The other way narrows the search first.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-13-b1.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "cx-13",
+      "build": 2,
+      "voiceover": "It only searches what that person is allowed to see. Filtering afterwards leaks information.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-13-b2.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "cx-13",
+      "build": 2,
+      "voiceover": "Even the number of results can show that a hidden document exists. Filtering first gives no such hint.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-13-b2.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "cx-04",
+      "build": 1,
+      "voiceover": "Now to a mistake that catches almost everyone. Say a whole document gets just one vector.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-04-b1.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "cx-04",
+      "build": 1,
+      "voiceover": "That vector is roughly the average of everything in the document. That is fine if the document is about one thing.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-04-b1.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "cx-04",
+      "build": 2,
+      "voiceover": "But documents at work are rarely about one thing. Picture a long document that covers four different topics.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-04-b2.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "cx-04",
+      "build": 2,
+      "voiceover": "Its one vector sits in the middle of all four. It is close to none of them.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-04-b2.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "cx-04",
+      "build": 3,
+      "voiceover": "Now ask about just one of those topics. The document comes back as only a weak match.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-04-b3.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "cx-05",
+      "build": 1,
+      "voiceover": "We tested this in our own experiments. We made each document cover more topics, from one up to ten.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-05-b1.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "cx-05",
+      "build": 2,
+      "voiceover": "Everything else stayed the same. Search quality fell sharply. Then we gave each document several vectors instead of one.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-05-b2.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "cx-05",
+      "build": 2,
+      "voiceover": "That brought search quality almost all the way back. We repeated this on two different machines. The result was the same.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-05-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "cx-06",
+      "build": 1,
+      "voiceover": "There was a problem with that result. Several vectors give a document more chances to match a question.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-06-b1.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "cx-06",
+      "build": 2,
+      "voiceover": "So some of the gain might come just from having more pieces. We ran a fairer test to check.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-06-b2.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "cx-06",
+      "build": 2,
+      "voiceover": "We shaped pieces around what each part of a document was for.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-06-b2.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "cx-06",
+      "build": 2,
+      "voiceover": "We compared them with the same number of plain chunks. On real text, our shaped pieces did worse.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-06-b2.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "cx-07",
+      "build": 1,
+      "voiceover": "So test any new design against a plain version. Give the plain version the same number of pieces.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-07-b1.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "cx-07",
+      "build": 1,
+      "voiceover": "A fair comparison like this one is called a matched control.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-07-b1.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "cx-07",
+      "build": 2,
+      "voiceover": "Your design has to beat it on your own questions. Otherwise you are only measuring the extra pieces.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-07-b2.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "cx-08",
+      "build": 1,
+      "voiceover": "So far, search has worked by meaning, using vectors. Search by meaning is poor at exact details, like a phone number.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-08-b1.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "cx-08",
+      "build": 1,
+      "voiceover": "Another kind of search looks for the exact text. This is called keyword search.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-08-b1.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "cx-08",
+      "build": 2,
+      "voiceover": "In our tests on exact details, keyword search scored far higher. Search by meaning does not show an error when it misses.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-08-b2.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "cx-08",
+      "build": 3,
+      "voiceover": "It returns something that looks right instead. So run both kinds of search and merge the results. It costs almost nothing.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-08-b3.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "cx-14",
+      "build": 1,
+      "voiceover": "Now think about which documents belong in the search at all.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-14-b1.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "cx-14",
+      "build": 2,
+      "voiceover": "The whole set of documents that can be searched is called the corpus. Adding more documents can make answers less accurate.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-14-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "cx-14",
+      "build": 2,
+      "voiceover": "Published work showed accuracy coming back once the corpus was narrowed to the subject. A few good documents usually work better than many.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-14-b2.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "cx-16",
+      "build": 1,
+      "voiceover": "Someone has to choose and tidy the documents in the corpus.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-16-b1.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "cx-16",
+      "build": 1,
+      "voiceover": "This can be done by people, by software with spot checks, or by both.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-16-b1.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "cx-16",
+      "build": 2,
+      "voiceover": "But one person or team must still own the corpus. A real legal case shows why.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-16-b2.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "cx-16",
+      "build": 2,
+      "voiceover": "In Moffatt versus Air Canada, the company's chatbot went against its own policy. The company was held responsible for what the chatbot said.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-16-b2.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "cx-25",
+      "build": 1,
+      "voiceover": "Documents are not the only thing the model sees. An agent can also keep notes from its earlier work.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-25-b1.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "cx-25",
+      "build": 2,
+      "voiceover": "What it keeps is called memory. When memory is used, it reaches the model just like a document.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-25-b2.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "cx-25",
+      "build": 2,
+      "voiceover": "So it needs the same care as a document. It also brings some extra duties.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-25-b2.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "cx-09",
+      "build": 1,
+      "voiceover": "Memory can last for different lengths of time. Some lasts only for the current conversation.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-09-b1.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "cx-09",
+      "build": 2,
+      "voiceover": "Some lasts for a stretch of work of hours or days. Both of these are ordinary engineering choices.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-09-b2.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "cx-09",
+      "build": 3,
+      "voiceover": "Memory kept after the work ends is different. It becomes a record. It needs someone who owns it.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-09-b3.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "cx-09",
+      "build": 3,
+      "voiceover": "It also needs consent to keep it. And it needs rules for how long it is kept and when it is deleted.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-09-b3.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "cx-10",
+      "build": 1,
+      "voiceover": "Four rules follow from published evidence. First, keep the original text. Then add labels to help search find it.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-10-b1.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "cx-10",
+      "build": 2,
+      "voiceover": "In published tests, swapping the text for short facts or summaries made results worse. Second, record when something happened.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-10-b2.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "cx-10",
+      "build": 2,
+      "voiceover": "Keep that apart from the time it was saved. Then a fact that has been replaced can be marked out of date.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-10-b2.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "cx-10",
+      "build": 3,
+      "voiceover": "Third, check every new memory before it is kept. It carries its source and waits for review.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-10-b3.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "cx-10",
+      "build": 3,
+      "voiceover": "In published work, planting bad entries in a tiny part of a memory store made most attacks succeed.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-10-b3.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "cx-10",
+      "build": 4,
+      "voiceover": "Fourth, topics are only labels that help search. They are not the memory itself. They can be rebuilt from the kept text.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-10-b4.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "cx-17",
+      "build": 1,
+      "voiceover": "So when is step two done? There are three signs. First, your way of splitting and storing documents beats a matched control.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-17-b1.png"
+    },
+    {
+      "clip_id": "c073",
+      "slide": "cx-17",
+      "build": 2,
+      "voiceover": "It has to win on your own questions. Second, everything the agent keeps has a source and a date.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-17-b2.png"
+    },
+    {
+      "clip_id": "c074",
+      "slide": "cx-17",
+      "build": 3,
+      "voiceover": "It has also passed a check. Third, the agent now finds the right facts. What still goes wrong is what it does with them.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-17-b3.png"
+    },
+    {
+      "clip_id": "c075",
+      "slide": "cx-18",
+      "build": 1,
+      "voiceover": "Here is what that looks like. The agent finds the right documents.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-18-b1.png"
+    },
+    {
+      "clip_id": "c076",
+      "slide": "cx-18",
+      "build": 1,
+      "voiceover": "Then it draws the wrong conclusion, takes the wrong action, or stops too early.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-18-b1.png"
+    },
+    {
+      "clip_id": "c077",
+      "slide": "cx-18",
+      "build": 2,
+      "voiceover": "That is not a context problem. It belongs to step three, tools and the loop.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-18-b2.png"
+    },
+    {
+      "clip_id": "c078",
+      "slide": "cx-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember from step two. A document is parsed, cut into chunks, turned into vectors, indexed and retrieved.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-recap-b1.png"
+    },
+    {
+      "clip_id": "c079",
+      "slide": "cx-recap",
+      "build": 1,
+      "voiceover": "One vector for a document about many topics matches each topic only weakly.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-recap-b1.png"
+    },
+    {
+      "clip_id": "c080",
+      "slide": "cx-recap",
+      "build": 2,
+      "voiceover": "Test any new design against a matched control on your own questions. Run keyword search alongside search by meaning.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/context/film/cx-recap-b2.png"
+    },
+    {
+      "clip_id": "c081",
+      "slide": "cx-recap",
+      "build": 2,
+      "voiceover": "Give everything the agent keeps a source, a date and a check. Next is step three, tools and the loop.",
+      "words": 20,
+      "on_camera": true,
+      "frame": "frames/context/film/cx-recap-b2.png"
+    }
+  ]
+}

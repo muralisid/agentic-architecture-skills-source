@@ -1,0 +1,810 @@
+{
+  "page": "/ladder/tools-and-the-loop",
+  "chapter": "Step 3: Tools and the loop",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "tl-01",
+        "tl-intro"
+      ]
+    },
+    {
+      "heading": "How the loop actually runs",
+      "slides": [
+        "tl-21",
+        "tl-22",
+        "tl-03",
+        "tl-25",
+        "tl-02"
+      ]
+    },
+    {
+      "heading": "What the harness has to handle",
+      "slides": [
+        "tl-27",
+        "tl-04",
+        "tl-05",
+        "tl-06"
+      ]
+    },
+    {
+      "heading": "Tools and access",
+      "slides": [
+        "tl-07",
+        "tl-13",
+        "tl-26",
+        "tl-16"
+      ]
+    },
+    {
+      "heading": "Why the harness matters",
+      "slides": [
+        "tl-08",
+        "tl-29"
+      ]
+    },
+    {
+      "heading": "When to split the work across agents",
+      "slides": [
+        "tl-30",
+        "tl-10",
+        "tl-09",
+        "tl-11"
+      ]
+    },
+    {
+      "heading": "The test for moving on",
+      "slides": [
+        "tl-18",
+        "tl-20",
+        "tl-19"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "tl-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "tl-01",
+      "layout": "title",
+      "title": "Step 3: Tools and the *loop*",
+      "text": "What runs around the model, and when is it the real problem?",
+      "builds": [
+        {
+          "narration": [
+            "This video is about what runs around an AI model.",
+            "Often, that is where the real problem is."
+          ]
+        }
+      ],
+      "caption": "This step is about what runs around the model. Often that is where the real problem is."
+    },
+    {
+      "id": "tl-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "How the loop runs",
+        "What the loop must handle",
+        "Why the setup matters",
+        "When to split the work",
+        "The test for moving on"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "This video covers Step 3 of the ladder: tools and the loop.",
+            "Steps 1 and 2 worked on the instructions and on what the model reads.",
+            "Step 3 works on the system that runs around the model.",
+            "It is the last step before you change the model itself."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "First, we look at how the loop runs and what it must handle.",
+            "Then we see why it matters and when to split the work.",
+            "Last comes the test for moving on."
+          ]
+        }
+      ],
+      "caption": "Step 3 of the ladder. How the loop runs and what it must handle. Why it matters. When to split the work. The test for moving on."
+    },
+    {
+      "id": "tl-21",
+      "layout": "statement",
+      "title": "An agent works in a *loop*",
+      "text": "The model asks for something, reads the result and decides.",
+      "icon": "search",
+      "picture": "A small device in a loop of arrows, fetching a folder and bringing it back.",
+      "builds": [
+        {
+          "narration": [
+            "Let us start with how the loop works.",
+            "Some AI systems do not answer a task in one go.",
+            "The model asks for something.",
+            "Your code fetches it and hands back the result."
+          ]
+        },
+        {
+          "narration": [
+            "The model reads the result and decides what to do next.",
+            "This repeats until the model gives its answer.",
+            "A system that works like this is called an agent."
+          ]
+        }
+      ],
+      "caption": "An agent is a model working in a loop. It asks for something, reads the result and decides what to do next.",
+      "image": "pictures/tl-21.webp",
+      "aspect": 1.57
+    },
+    {
+      "id": "tl-22",
+      "layout": "statement",
+      "title": "The model can ask for *tools*",
+      "text": "Your code does the work and hands back the result.",
+      "icon": "tool",
+      "picture": "A small device reaching for one tool lifted out of an open toolbox.",
+      "builds": [
+        {
+          "narration": [
+            "So how does the model get what it asks for?",
+            "You give it a set of actions it may ask for.",
+            "Looking something up is one example.",
+            "When the model asks for one, your code carries it out.",
+            "Each of these actions is called a tool."
+          ]
+        }
+      ],
+      "caption": "A tool is an action the model can ask for. Your code carries it out and hands back the result.",
+      "image": "pictures/tl-22.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-03",
+      "layout": "cycle",
+      "title": "One turn of the *loop*",
+      "items": [
+        "Whole conversation sent",
+        "Answer or tool request",
+        "Your code runs the tool",
+        "Result added",
+        "Repeat or stop"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Let us follow one pass around the loop.",
+            "One pass is called a turn.",
+            "The model keeps no memory from one turn to the next.",
+            "So every turn, the whole conversation is sent to it again."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The model replies with an answer or asks for a tool.",
+            "If it asks for a tool, your code runs the tool.",
+            "Then the result is added to the conversation."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "This repeats until the model answers or you stop it."
+          ]
+        }
+      ],
+      "caption": "The model keeps no memory between turns. Each turn resends the conversation, runs any tool it asks for and adds the result."
+    },
+    {
+      "id": "tl-25",
+      "layout": "statement",
+      "title": "The harness runs the *loop*",
+      "text": "Everything that runs and controls the loop.",
+      "icon": "tool",
+      "picture": "A device and its loop of arrows held inside one sturdy frame.",
+      "builds": [
+        {
+          "narration": [
+            "Something has to run all of this.",
+            "It sends the conversation, runs the tools and adds the results.",
+            "It also decides when the loop must stop.",
+            "Everything that runs and controls the loop is called the harness."
+          ]
+        }
+      ],
+      "caption": "The harness is everything that runs and controls the loop. It sends the conversation, runs the tools and decides when to stop.",
+      "image": "pictures/tl-25.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-02",
+      "layout": "statement",
+      "title": "The step teams most often *skip*",
+      "text": "They fix what the model reads, then train a model.",
+      "icon": "warning",
+      "picture": "A ladder with the middle rung jumped over.",
+      "builds": [
+        {
+          "narration": [
+            "The harness is the part teams most often skip.",
+            "They improve what the model reads.",
+            "Then they jump straight to training the model.",
+            "Training means changing the model itself.",
+            "The evidence says the harness is usually what was missing."
+          ]
+        }
+      ],
+      "caption": "Teams improve what the model reads and then jump to training. The evidence says the harness is usually the missing piece.",
+      "image": "pictures/tl-02.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-27",
+      "layout": "statement",
+      "title": "The conversation *grows* every turn",
+      "text": "The model can only read so much at once.",
+      "icon": "document",
+      "picture": "A tray of papers piled so high that the top sheets spill over.",
+      "builds": [
+        {
+          "narration": [
+            "The harness has a few jobs to handle.",
+            "The first one comes from the loop itself.",
+            "Each turn adds another result to the conversation.",
+            "So in a long task, the conversation keeps growing."
+          ]
+        },
+        {
+          "narration": [
+            "But a model can only read a limited amount of text at once.",
+            "That limit is called the context window.",
+            "A long task soon fills it with old results."
+          ]
+        }
+      ],
+      "caption": "Each turn adds to the conversation. The model can only read so much at once. That limit is the context window.",
+      "image": "pictures/tl-27.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-04",
+      "layout": "compare",
+      "title": "Two ways to make *room*",
+      "left": {
+        "head": "Compaction",
+        "rows": [
+          "Summarises the history",
+          "Can drop what mattered"
+        ]
+      },
+      "right": {
+        "head": "Reset",
+        "rows": [
+          "Fresh start from a record",
+          "Harder to build, more reliable"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "When the context window fills up, the harness has to make room.",
+            "There are two ways to do it."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The first way shortens the old conversation into a summary.",
+            "This is called compaction.",
+            "A summary can quietly drop the detail the model needed."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The second way is to start fresh.",
+            "The harness keeps a written record of the task outside the conversation.",
+            "Each fresh start begins from the goal and that record."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "This is harder to build and generally more reliable.",
+            "Each time the history is summarised again, a little more is lost.",
+            "A written record does not lose detail this way."
+          ]
+        }
+      ],
+      "caption": "Compaction summarises the history and can lose detail. A reset starts fresh from a written record. It is generally more reliable."
+    },
+    {
+      "id": "tl-05",
+      "layout": "statement",
+      "title": "Records kept for later are *memory*",
+      "text": "Step 2 sets out the rules memory must follow.",
+      "icon": "database",
+      "picture": "A tagged folder kept for later, with an hourglass and a bin beside it.",
+      "builds": [
+        {
+          "narration": [
+            "Usually that record is kept only for the task.",
+            "Sometimes you keep it for later tasks too.",
+            "A record kept like that is called memory."
+          ]
+        },
+        {
+          "narration": [
+            "Memory needs a named owner and a note of its source.",
+            "It waits for a while before later tasks trust it.",
+            "And there must be a way to delete it.",
+            "Step 2 sets out these rules."
+          ]
+        }
+      ],
+      "caption": "A record kept past the task is memory. It needs a named owner and its source. It waits before it is trusted. It can be deleted.",
+      "image": "pictures/tl-05.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-06",
+      "layout": "list",
+      "title": "Nothing stops the loop *unless you do*",
+      "items": [
+        "Cap on turns",
+        "Cap on time",
+        "Cancel check between turns",
+        "A way to stop it",
+        "Cap on cost"
+      ],
+      "picture": "A loop of arrows with a barrier arm lowered across it.",
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "The loop ends only when the model answers or you stop it.",
+            "A model can get a poor result from a tool and try again.",
+            "It can keep doing that forever."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "So real harnesses set limits.",
+            "They cap the number of turns and the running time.",
+            "They check between turns whether the task was cancelled.",
+            "And they give you a way to stop the loop."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Put a cap on the cost of each task too.",
+            "Without it, one task that never ends can use up a whole day's budget."
+          ]
+        }
+      ],
+      "caption": "Real harnesses cap turns and time. They check for cancellation between turns and give you a way to stop. A cost cap per task protects the budget.",
+      "image": "pictures/tl-06.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-07",
+      "layout": "statement",
+      "title": "Describe each tool for the *model*",
+      "text": "The model reads it with no memory of your system.",
+      "icon": "tool",
+      "picture": "A device reaching for the one tool with a clear tag.",
+      "builds": [
+        {
+          "narration": [
+            "The harness also runs the tools.",
+            "So the tools themselves need care.",
+            "The model has no memory of your system.",
+            "A tool with a vague description gets called at the wrong times.",
+            "So describe each tool for a reader who knows nothing about your system."
+          ]
+        }
+      ],
+      "caption": "The model reads each tool with no memory of your system. A vague description gets the tool called at the wrong times.",
+      "image": "pictures/tl-07.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-13",
+      "layout": "compare",
+      "title": "What a tool returns *matters*",
+      "left": {
+        "head": "Raw data tool",
+        "rows": [
+          "Every row, every field",
+          "The key few get buried",
+          "The model reasons badly"
+        ]
+      },
+      "right": {
+        "head": "Purpose-built tools",
+        "rows": [
+          "A short summary",
+          "What stands out is flagged",
+          "Detail pulled on request"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "What a tool sends back matters too.",
+            "A huge block of raw data fills the space the model needs for thinking."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "A raw data tool returns every row and every field it finds.",
+            "The few rows that matter get buried.",
+            "So the model reasons badly."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "A better tool returns a short summary and flags what stands out.",
+            "A second tool pulls the full detail on one of them.",
+            "The model now has far less to read.",
+            "It reasons better on the same data."
+          ]
+        }
+      ],
+      "caption": "A short summary that flags what stands out uses a fraction of the context. A second tool pulls the detail. The model reasons better on the same data."
+    },
+    {
+      "id": "tl-26",
+      "layout": "statement",
+      "title": "Instructions cannot *control* access",
+      "text": "The model cannot reliably tell instructions from content.",
+      "icon": "warning",
+      "picture": "Two identical sheets sliding into a device, with only one marked.",
+      "builds": [
+        {
+          "narration": [
+            "Some people using an agent should not see everything it can reach.",
+            "You might try to write a rule about this in the instructions."
+          ]
+        },
+        {
+          "narration": [
+            "But instructions and the content the model reads arrive in the same form.",
+            "The model cannot reliably tell them apart.",
+            "So a rule in the instructions cannot enforce access."
+          ]
+        }
+      ],
+      "caption": "Instructions and content reach the model in the same form. The model cannot reliably tell them apart. So instructions cannot enforce access.",
+      "image": "pictures/tl-26.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-16",
+      "layout": "picture",
+      "title": "The control lives in the *gateway*",
+      "picture": "An agent reaching several systems through one checkpoint that inspects every request.",
+      "items": [
+        "Agent",
+        "Gateway",
+        "Internal systems"
+      ],
+      "builds": [
+        {
+          "narration": [
+            "So the check has to sit outside the model.",
+            "The agent reaches other systems only through one checkpoint.",
+            "This checkpoint is called a gateway."
+          ]
+        },
+        {
+          "narration": [
+            "On every request, it checks whether the person using the agent may see what was asked for."
+          ]
+        }
+      ],
+      "caption": "The agent reaches other systems only through a gateway. On every request, the gateway checks what the person using the agent may see.",
+      "image": "pictures/tl-16.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-08",
+      "layout": "statement",
+      "title": "Same model, different *harness*",
+      "text": "Harness choices change the agent's later decisions.",
+      "icon": "scale",
+      "picture": "Two identical devices in two different loops, ending at different spots.",
+      "builds": [
+        {
+          "narration": [
+            "So far we have seen what the harness does.",
+            "But does it really change how an agent behaves?",
+            "One study kept the task and the model the same.",
+            "It changed only the harness."
+          ]
+        },
+        {
+          "narration": [
+            "The final success rate looked the same.",
+            "But what the agent believed at later steps changed.",
+            "So its later decisions changed too."
+          ]
+        }
+      ],
+      "caption": "Changing only the harness changed the agent's later decisions. The success rate looked the same (arXiv 2607.04528, July 2026).",
+      "image": "pictures/tl-08.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-29",
+      "layout": "statement",
+      "title": "Model comparisons can *mislead*",
+      "text": "The result may be about the harness.",
+      "icon": "scale",
+      "builds": [
+        {
+          "narration": [
+            "This matters when you read that one model beats another.",
+            "The two models may have run inside different harnesses.",
+            "Then the result may say more about the harness than the model."
+          ]
+        },
+        {
+          "narration": [
+            "Your own agent is the same.",
+            "How it behaves depends on your loop as well as your model."
+          ]
+        }
+      ],
+      "caption": "Comparisons across different harnesses are mixed up with the harness. Your agent's behaviour depends on your loop as well as your model."
+    },
+    {
+      "id": "tl-30",
+      "layout": "statement",
+      "title": "Splitting work across *agents*",
+      "text": "Each agent runs its own loop on one part.",
+      "icon": "tool",
+      "picture": "One stack of papers split three ways, each part with its own small device and loop.",
+      "builds": [
+        {
+          "narration": [
+            "Up to now, we have looked at a single agent.",
+            "Some designs split the work across several agents.",
+            "Each agent runs its own loop on one part of the task.",
+            "This is called a multi-agent design."
+          ]
+        }
+      ],
+      "caption": "A multi-agent design splits the work across several agents. Each one runs its own loop on part of the task.",
+      "image": "pictures/tl-30.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-10",
+      "layout": "compare",
+      "title": "What more agents *buy*",
+      "left": {
+        "head": "They buy",
+        "rows": [
+          "Work at the same time",
+          "A separate conversation each"
+        ]
+      },
+      "right": {
+        "head": "They do not buy",
+        "rows": [
+          "Better reasoning by each agent"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "More agents let parts of the work run at the same time.",
+            "Each agent also has its own separate conversation.",
+            "So no single conversation has to hold everything."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "But they multiply the cost.",
+            "And each agent reasons no better than a single agent would."
+          ]
+        }
+      ],
+      "caption": "More agents let work run at the same time. Each has its own conversation. They multiply the cost. Each agent reasons no better."
+    },
+    {
+      "id": "tl-09",
+      "layout": "statement",
+      "title": "Multi-agent failures are *design* failures",
+      "text": "A stronger model does not fix a badly designed loop.",
+      "icon": "warning",
+      "picture": "A strong device stuck at a gap in a badly built track.",
+      "builds": [
+        {
+          "narration": [
+            "One study looked at how multi-agent systems fail.",
+            "It found the failures come from how the system is designed.",
+            "They do not come from the model.",
+            "So a stronger model does not fix a badly designed loop."
+          ]
+        }
+      ],
+      "caption": "A study of how multi-agent systems fail found the failures come from design. They are not model failures.",
+      "image": "pictures/tl-09.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-11",
+      "layout": "number",
+      "title": "The one published *threshold*",
+      "value": "0.92",
+      "unit": "accuracy needed before multi-agent is justified",
+      "source": "arXiv 2603.22651, March 2026",
+      "builds": [
+        {
+          "narration": [
+            "So when is splitting the work worth the cost?",
+            "One study tested several ways of coordinating agents.",
+            "It used a large set of official company reports.",
+            "It scored accuracy from zero to one."
+          ]
+        },
+        {
+          "narration": [
+            "Multi-agent is worth it when you need accuracy above about 0.92.",
+            "Below that, one well-built loop does the job for less.",
+            "This is the only published threshold."
+          ]
+        }
+      ],
+      "caption": "One study tested ways of coordinating agents. Multi-agent is justified above an accuracy score of about 0.92. This is the only published threshold."
+    },
+    {
+      "id": "tl-18",
+      "layout": "list",
+      "title": "The test for *moving on*",
+      "items": [
+        "Every turn is recorded",
+        "Each failure tracked to a cause",
+        "What remains: knowledge of your field"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "So when is this step done?",
+            "There are three checks."
+          ]
+        },
+        {
+          "reveal": 1,
+          "narration": [
+            "First, every turn of the loop is recorded and measured."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, each failure is tracked back to a specific cause."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Third, what still fails is the model not knowing your field."
+          ]
+        }
+      ],
+      "caption": "Move on when every turn is recorded and each failure has a known cause. What remains is the model not knowing your field."
+    },
+    {
+      "id": "tl-20",
+      "layout": "tiles",
+      "title": "What a trace should *show*",
+      "items": [
+        "Tools called",
+        "What they returned",
+        "Turns run",
+        "What the answer claimed",
+        "Evidence behind each claim"
+      ],
+      "builds": [
+        {
+          "reveal": 3,
+          "focus": [
+            0,
+            1,
+            2
+          ],
+          "narration": [
+            "To track a failure, you need a record of each run.",
+            "It shows which tools ran, what they returned and how many turns it took.",
+            "This record is called a trace."
+          ]
+        },
+        {
+          "reveal": 5,
+          "focus": [
+            3,
+            4
+          ],
+          "narration": [
+            "It also shows what the final answer claimed.",
+            "And it shows the evidence behind each claim."
+          ]
+        }
+      ],
+      "caption": "Per run, the trace records the tools called and what they returned. It also records the turn count, the answer's claims and the evidence behind each."
+    },
+    {
+      "id": "tl-19",
+      "layout": "statement",
+      "title": "Find the failing *turn* first",
+      "text": "Know which turn failed and why before blaming the model.",
+      "icon": "search",
+      "picture": "A magnifying glass over one step in a row of steps.",
+      "builds": [
+        {
+          "narration": [
+            "This record is what tells you whether it is time to move on.",
+            "If you cannot say which turn failed and why, you cannot know the model is at fault.",
+            "Every change to the model itself costs more than finding out."
+          ]
+        }
+      ],
+      "caption": "Every change to the model itself costs more than finding out which turn failed.",
+      "image": "pictures/tl-19.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "tl-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Agents work in a loop",
+        "The harness runs and limits it",
+        "Check access at a gateway",
+        "Split work only for high accuracy",
+        "Trace failures before changing the model"
+      ],
+      "builds": [
+        {
+          "reveal": 5,
+          "narration": [
+            "An agent is a model working in a loop.",
+            "The harness runs that loop and sets its limits.",
+            "Who may see what is checked at a gateway.",
+            "Split the work across agents only when you need very high accuracy.",
+            "Before changing the model, trace each failure to its cause."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "The next step changes the model itself for the first time.",
+            "Next up is adapters and fine-tuning."
+          ]
+        }
+      ],
+      "caption": "An agent is a model in a loop. The harness runs and limits it. Check access at a gateway. Trace failures before changing the model."
+    }
+  ]
+}
