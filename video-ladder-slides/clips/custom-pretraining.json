@@ -1,0 +1,762 @@
+{
+  "page": "/ladder/custom-pretraining",
+  "chapter": "Custom pretraining and architecture",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "ca-01",
+      "build": 1,
+      "voiceover": "At the top of the market, two very different things are sold in similar words.",
+      "words": 15,
+      "on_camera": true,
+      "frame": "frames/custom-pretraining/film/ca-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "ca-01",
+      "build": 1,
+      "voiceover": "This chapter helps you tell which one is in front of you.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "ca-intro",
+      "build": 1,
+      "voiceover": "This is the last chapter of the ladder. It is one of five ways to change the model itself.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-intro-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "ca-intro",
+      "build": 2,
+      "voiceover": "Very few organisations ever need it. First, we look at two offers that sound alike.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-intro-b2.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "ca-intro",
+      "build": 2,
+      "voiceover": "Then we look at path one. That is building your own model from nothing.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-intro-b2.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "ca-intro",
+      "build": 3,
+      "voiceover": "Next is path two. It is a different kind of model for data that is not text.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-intro-b3.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "ca-intro",
+      "build": 3,
+      "voiceover": "Last, we see how this links back to the rest of the ladder.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-intro-b3.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "ca-20",
+      "build": 1,
+      "voiceover": "Start with how most AI models are made. They are trained on huge amounts of text from every subject.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-20-b1.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "ca-20",
+      "build": 1,
+      "voiceover": "Then other models and products are built on top of them.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-20-b1.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "ca-20",
+      "build": 2,
+      "voiceover": "A large model like this is called a foundation model. Most teams start from one that someone else built.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-20-b2.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "ca-02",
+      "build": 1,
+      "voiceover": "Here are the two offers. One is to build your own foundation model from nothing. The other is a different kind of model.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-02-b1.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "ca-02",
+      "build": 2,
+      "voiceover": "It is built for data that is not text. The first comes down to cost.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-02-b2.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "ca-02",
+      "build": 2,
+      "voiceover": "It is almost never the answer. The second is real specialist work. It has a clear use.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-02-b2.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "ca-03",
+      "build": 1,
+      "voiceover": "Start with path one. A model is a huge set of numbers. Training slowly adjusts those numbers. Here, the numbers start out random.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-03-b1.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "ca-03",
+      "build": 2,
+      "voiceover": "The model then reads trillions of small pieces of words. This huge first training is called pretraining. Nothing comes from an existing model.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-03-b2.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "ca-03",
+      "build": 3,
+      "voiceover": "So everything it knows must come from your own text. Last, it is tuned so that people can use it.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-03-b3.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "ca-04",
+      "build": 1,
+      "voiceover": "Path one costs what only the biggest AI labs spend. It needs computing power costing tens of millions and more.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-04-b1.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "ca-04",
+      "build": 2,
+      "voiceover": "It also needs a research team that stays in place. Building takes a long time.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-04-b2.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "ca-04",
+      "build": 3,
+      "voiceover": "The field keeps moving while you build. Meanwhile, open and paid models keep getting better. Someone else pays for that.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-04-b3.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "ca-05",
+      "build": 1,
+      "voiceover": "Path one does make sense in two cases. In the first, a national rule bans using any model from outside.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-05-b1.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "ca-05",
+      "build": 2,
+      "voiceover": "This is called a sovereignty rule. In the second, you hold a huge amount of text.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-05-b2.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "ca-05",
+      "build": 2,
+      "voiceover": "It is so unlike public text that existing models get it wrong. This case also needs the money and the team.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-05-b2.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "ca-06",
+      "build": 1,
+      "voiceover": "One question settles most plans to build your own model.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-06-b1.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "ca-06",
+      "build": 1,
+      "voiceover": "What if you took an existing model and kept training it on your own text? That is called continued pretraining.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-06-b1.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "ca-06",
+      "build": 2,
+      "voiceover": "It gives most of what people want from their own model. It uses the same text.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-06-b2.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "ca-06",
+      "build": 2,
+      "voiceover": "It costs a small fraction as much. And someone else keeps improving the model underneath.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-06-b2.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "ca-07",
+      "build": 1,
+      "voiceover": "If you do take path one, one finding may help. It is about when to mix in text from your own field.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-07-b1.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "ca-07",
+      "build": 2,
+      "voiceover": "One study mixed a little of that text in from the very start.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-07-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "ca-07",
+      "build": 2,
+      "voiceover": "That beat training on public text first and adding your text later.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-07-b2.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "ca-07",
+      "build": 3,
+      "voiceover": "The study was published by a company that sells help with training data. It also used small models.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-07-b3.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "ca-07",
+      "build": 3,
+      "voiceover": "It can guide how you run path one. It does not tell you whether to take it.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-07-b3.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "ca-08",
+      "build": 1,
+      "voiceover": "Now for path two. The models on this ladder read text as a line of small word pieces.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-08-b1.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "ca-08",
+      "build": 2,
+      "voiceover": "Some data is not like that at all. Think of records linked to each other, or supply chains.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-08-b2.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "ca-08",
+      "build": 3,
+      "voiceover": "Think of streams of sensor readings, or molecules. None of this is a line of words.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-08-b3.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "ca-08",
+      "build": 4,
+      "voiceover": "None of the earlier steps on this ladder can change that. Much of this data is things joined by links.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-08-b4.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "ca-08",
+      "build": 4,
+      "voiceover": "A set of things joined by links is called a graph.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-08-b4.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "ca-21",
+      "build": 1,
+      "voiceover": "For data like this, the model itself has to be different. It has to learn from who is linked to whom.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-21-b1.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "ca-21",
+      "build": 2,
+      "voiceover": "The most common choice is called a graph neural network. In this chapter, we just call it a graph model.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-21-b2.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "ca-22",
+      "build": 1,
+      "voiceover": "Here is how a graph model works, one step at a time. Take one thing in the graph, such as one record.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-22-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "ca-22",
+      "build": 2,
+      "voiceover": "It is called a node. Each node starts with a list of numbers. The numbers describe that one thing.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-22-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "ca-09",
+      "build": 1,
+      "voiceover": "Now the model gets to work. It starts from each node's list of numbers.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-09-b1.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "ca-09",
+      "build": 2,
+      "voiceover": "A node's neighbours are the nodes it links to. Each node updates its numbers using its neighbours' numbers.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-09-b2.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "ca-09",
+      "build": 3,
+      "voiceover": "One round of this is called a layer. The model runs several layers, one after another.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-09-b3.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "ca-09",
+      "build": 4,
+      "voiceover": "After two layers, a node knows about its neighbours' neighbours. Last, the model reads each node's numbers to make a prediction.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-09-b4.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "ca-09",
+      "build": 4,
+      "voiceover": "It learns from who connects to whom. A model that reads documents cannot see that.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-09-b4.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "ca-10",
+      "build": 1,
+      "voiceover": "This way of working has two known problems. Each layer mixes a node's numbers with its neighbours' numbers.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-10-b1.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "ca-10",
+      "build": 2,
+      "voiceover": "Stack enough layers, and nearby nodes end up with the same numbers. Then the model can no longer tell them apart.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-10-b2.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "ca-10",
+      "build": 2,
+      "voiceover": "This is called over-smoothing. It is why graph models in real use often have only two or three layers.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-10-b2.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "ca-11",
+      "build": 1,
+      "voiceover": "The second problem pulls the other way. Information from a far node must pass through many nodes to arrive.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-11-b1.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "ca-11",
+      "build": 2,
+      "voiceover": "The number of nodes on the way grows very fast with distance. But each node holds only a fixed-size list of numbers.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-11-b2.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "ca-11",
+      "build": 2,
+      "voiceover": "So far information gets squeezed through narrow links. Much of it is lost. This is called over-squashing.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-11-b2.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "ca-12",
+      "build": 1,
+      "voiceover": "So the two problems pull against each other. More layers let information travel further. That eases over-squashing. But more layers make over-smoothing worse.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-12-b1.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "ca-12",
+      "build": 2,
+      "voiceover": "So turning one setting up does not fix both. People who have really done this work change the design of the model.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-12-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "ca-12",
+      "build": 3,
+      "voiceover": "A model's design is called its architecture. Watch how someone handles this. It shows whether they have real experience.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-12-b3.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "ca-13",
+      "build": 1,
+      "voiceover": "There are three more problems worth listening for. First, the learned numbers can stop being distinct.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-13-b1.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "ca-13",
+      "build": 1,
+      "voiceover": "Or learning can fade out in the deeper layers. Then parts of the model quietly stop learning.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-13-b1.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "ca-13",
+      "build": 2,
+      "voiceover": "Second, a huge graph may not fit in memory. So it must be cut into parts.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-13-b2.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "ca-13",
+      "build": 2,
+      "voiceover": "Every cut breaks real links. So the model trains on a graph with links missing.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-13-b2.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "ca-13",
+      "build": 3,
+      "voiceover": "Third, the training may be spread across many machines. Then training no longer behaves the way the textbooks describe.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-13-b3.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "ca-14",
+      "build": 1,
+      "voiceover": "So when does path two make sense? It fits when what you predict depends on how things link together.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-14-b1.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "ca-14",
+      "build": 2,
+      "voiceover": "It does not sit inside any one document. The data must also be big enough for these problems to really matter.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-14-b2.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "ca-14",
+      "build": 3,
+      "voiceover": "This situation is easy to spot. The rest of this ladder is about AI systems that carry out tasks.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-14-b3.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "ca-14",
+      "build": 3,
+      "voiceover": "These systems are called agents. Path two has little to do with them.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-14-b3.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "ca-16",
+      "build": 1,
+      "voiceover": "Now, how does this connect back to agents? The graph model is not the agent. It does not chat.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-16-b1.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "ca-16",
+      "build": 1,
+      "voiceover": "It runs on its own as a scoring system. That system has its own checks on whether the model can be trusted.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-16-b1.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "ca-16",
+      "build": 2,
+      "voiceover": "The agent reaches the score by asking a small program to fetch it.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-16-b2.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "ca-16",
+      "build": 2,
+      "voiceover": "A program like this is called a tool. It returns the score and the part of the graph behind it.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-16-b2.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "ca-16",
+      "build": 3,
+      "voiceover": "The agent uses them as evidence in its draft. A person makes the decision.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-16-b3.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "ca-17",
+      "build": 1,
+      "voiceover": "This also means two different teams. Every earlier step on this ladder starts from a model that already exists.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-17-b1.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "ca-17",
+      "build": 2,
+      "voiceover": "An engineering team builds around it. The graph model needs a research team that builds models.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-17-b2.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "ca-17",
+      "build": 3,
+      "voiceover": "That team has its own way of checking and approving models. These are two different kinds of work. They meet at the tool.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-17-b3.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "ca-17",
+      "build": 3,
+      "voiceover": "Giving the graph model to the agent team is a mistake. So is giving the agent to the graph team.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-17-b3.png"
+    },
+    {
+      "clip_id": "c073",
+      "slide": "ca-18",
+      "build": 1,
+      "voiceover": "Before building a custom graph model, try the simpler options. First, work out a few simple measures of the graph by hand.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-18-b1.png"
+    },
+    {
+      "clip_id": "c074",
+      "slide": "ca-18",
+      "build": 2,
+      "voiceover": "Then feed them to a simple model. Second, try a ready-made graph model. Keep it only a few layers deep.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-18-b2.png"
+    },
+    {
+      "clip_id": "c075",
+      "slide": "ca-18",
+      "build": 3,
+      "voiceover": "Third, try rules for patterns you already know. Each of these options gets a fair run first.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-18-b3.png"
+    },
+    {
+      "clip_id": "c076",
+      "slide": "ca-23",
+      "build": 1,
+      "voiceover": "Then compare them fairly. Use past cases where you already know the right answer.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-23-b1.png"
+    },
+    {
+      "clip_id": "c077",
+      "slide": "ca-23",
+      "build": 2,
+      "voiceover": "These are called labelled cases. The custom model must beat the simple options on your own labelled cases.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-23-b2.png"
+    },
+    {
+      "clip_id": "c078",
+      "slide": "ca-23",
+      "build": 2,
+      "voiceover": "This is the same fair test used at the start of this ladder.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-23-b2.png"
+    },
+    {
+      "clip_id": "c079",
+      "slide": "ca-19",
+      "build": 1,
+      "voiceover": "The same habit applies at every step of this ladder. Find out what is really failing before you spend money.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-19-b1.png"
+    },
+    {
+      "clip_id": "c080",
+      "slide": "ca-19",
+      "build": 1,
+      "voiceover": "Never assume a bigger version of what you have will fix it.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-19-b1.png"
+    },
+    {
+      "clip_id": "c081",
+      "slide": "ca-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. Building your own foundation model almost never pays. First ask what continued pretraining on the same text would give.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-recap-b1.png"
+    },
+    {
+      "clip_id": "c082",
+      "slide": "ca-recap",
+      "build": 2,
+      "voiceover": "Data made of linked things may need a graph model. That model is a tool the agent calls.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-recap-b2.png"
+    },
+    {
+      "clip_id": "c083",
+      "slide": "ca-recap",
+      "build": 3,
+      "voiceover": "A different team builds it. At every step, find out what is failing before you spend.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/custom-pretraining/film/ca-recap-b3.png"
+    },
+    {
+      "clip_id": "c084",
+      "slide": "ca-recap",
+      "build": 3,
+      "voiceover": "The rule from the start of this ladder still holds. Change the system before you change the model.",
+      "words": 18,
+      "on_camera": true,
+      "frame": "frames/custom-pretraining/film/ca-recap-b3.png"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+instructions: 20 slides, 69 clips, 1267 words, about 7.5 min at Scout7's 2.8 words a second
+  c001 CAMERA (24) Step one is the instructions you give an AI model. A system that uses a model to do a job is called an agent.
+  c002 in-01 b1 (20) This video treats writing an agent's instructions as engineering. It ends with a clear test for when to move on.
+  c003 in-intro b1 (14) When an agent is not good enough, there are several things you can change.
+  c004 in-intro b1 (18) Some are worth trying before others. The first three are tried in order, one step at a time.
+  c005 in-intro b2 (19) This order is called the ladder. Instructions are step one. First, we look at what instructions are made of.
+  c006 in-intro b2 (19) Next, we see why the order of the parts matters. Then we see how a machine can improve them.
+  c007 in-intro b3 (19) After that, we look at what instructions cannot fix. Last comes the test for moving on to step two.
+  c008 in-02 b1 (21) Let us start with what instructions are made of. The written instructions you send to a model are called a prompt.
+  c009 in-02 b2 (18) A prompt has five parts. Each part does a different job. The first part is the standing rules.
+  c010 in-02 b2 (24) They say who the agent is and what it may and may not do. They do not change from one case to the next.
+  c011 in-02 b3 (17) The second part describes the task. This is the piece of work to be done right now.
+  c012 in-02 b5 (18) The third part is examples. They show the task already done well. The fourth part is the input.
+  c013 in-02 b5 (20) This is the material for this one case. The fifth part sets the shape of the answer you want back.
+  c014 in-03 b1 (21) Examples are the most useful part of a prompt. A model picks up a pattern from two or three good examples.
+  c015 in-03 b1 (17) That works better than describing the pattern in words. Yet examples are the part people use least.
+  c016 in-03 b2 (18) Say you ask a model to write formally. Each model reads the word formally in its own way.
+  c017 in-03 b2 (11) Three samples of the writing you want leave nothing to guess.
+  c018 in-13 b1 (17) Now look at the shape of the answer. Say a prompt just asks for a clear summary.
+  c019 in-13 b1 (14) The answers read well. But each one is laid out in a different way.
+  c020 in-13 b2 (19) So the person checking them cannot skim. They have to read every word. The agent saves them no time.
+  c021 in-04 b1 (22) There are two ways to set the shape of the answer. The first is to ask for a format in the prompt.
+  c022 in-04 b1 (19) That works most of the time. The second is to give the model a form with fixed, named fields.
+  c023 in-04 b2 (21) That form is called a schema. The model must fill in those fields. People come to rely on the first way.
+  c024 in-04 b2 (22) Then it breaks once the agent is in real use. Modern model services accept a schema and hold the answer to it.
+  c025 in-04 b2 (12) So the model cannot send back loose text instead of the fields.
+  c026 in-16 b1 (23) The prompt should also name two mistakes the model must never make. The first is making a decision that belongs to a person.
+  c027 in-16 b2 (21) An agent that decides for people leads them to trust it too much. The second is a claim with no source.
+  c028 in-16 b2 (20) Every claim must come from the material the model was given. Each claim must also say where it came from.
+  c029 in-05 b1 (17) The order of the parts matters too. Some parts never change from one case to the next.
+  c030 in-05 b2 (22) These are the standing rules and the examples. The input changes every time. Put the parts that never change at the start.
+  c031 in-05 b2 (13) Put the changing input at the end. Here is why this order matters.
+  c032 in-21 b1 (14) The companies that run models keep a copy of the start of each prompt.
+  c033 in-21 b1 (20) The next prompt may start in exactly the same way. Then they reuse that stored copy. This is called caching.
+  c034 in-21 b2 (22) Reusing the stored copy costs a fraction of the normal price. So a prompt that always starts the same way costs less.
+  c035 in-06 b1 (19) The saving only works if the start stays exactly the same. A change anywhere in it breaks the reuse.
+  c036 in-06 b2 (19) Some prompts put today's date and time near the top. This is called a timestamp. It changes every time.
+  c037 in-06 b3 (20) So the start of the prompt is never the same. Everything after the timestamp is charged at full price again.
+  c038 in-06 b3 (15) That costs money on every use. Putting the parts in the right order costs nothing.
+  c039 in-22 b1 (23) Next, how do you make a prompt better? The usual way is to write it, see where it went wrong, and rewrite it.
+  c040 in-22 b2 (17) Most people do all of this by hand. This is really a search for a better prompt.
+  c041 in-22 b2 (15) Done by hand, that search is slow. It also looks at only a few cases.
+  c042 in-07 b1 (10) A published method lets a machine run this search instead.
+  c043 in-07 b2 (18) First, it tries the prompt and reads where it failed. Then it writes new versions of the prompt.
+  c044 in-07 b2 (18) It keeps a varied set of good versions instead of polishing only one. Then it goes round again.
+  c045 in-08 b1 (19) This method has been tested in published research. It did better than a method that retrains the model itself.
+  c046 in-08 b2 (21) It also needed very little to get started. Its results improved with as few as ten sample cases to learn from.
+  c047 in-09 b1 (18) Two things follow from this. First, some teams improve a prompt by hand and then blame the model.
+  c048 in-09 b1 (21) Most of them have not run this kind of search. So they have not seen what the model can really do.
+  c049 in-09 b2 (22) Second, ten cases is a small number. You will have ten cases long before you have enough data to change the model.
+  c050 in-10 b1 (19) A related method does not rewrite one prompt. Instead, it keeps a written set of lessons for the agent.
+  c051 in-10 b1 (13) The set grows and is tidied each time the agent does its job.
+  c052 in-10 b2 (16) This set of lessons is called a playbook. In published tests, a growing playbook improved results.
+  c053 in-10 b2 (19) It did not need to train the model. It also did not need correct answers written out in advance.
+  c054 in-11 b1 (22) An agent can keep things and use them again later. What it keeps is called memory. So a growing playbook is memory.
+  c055 in-11 b2 (19) It changes how the agent behaves. That is why each new lesson is tested before the agent uses it.
+  c056 in-11 b2 (17) It gets the same checks as any other change. Nothing is kept just because it piled up.
+  c057 in-18 b1 (22) Even good instructions have a limit. If a fact is not in what the model can see, no instruction can supply it.
+  c058 in-18 b2 (20) The model will still write an answer that sounds confident. That is the failure to watch for at this step.
+  c059 in-18 b2 (18) Step two, context, is about what the model gets to see. That is where this problem gets fixed.
+  c060 in-19 b1 (20) Now, how do you know when this step is done? You need a set of test cases that never changes.
+  c061 in-19 b1 (18) This is called a locked test. Without it, you cannot tell if the prompt has really stopped improving.
+  c062 in-19 b2 (18) Use past cases where you already know the right outcome. Score every change to the prompt against them.
+  c063 in-20 b1 (18) Here is the test for moving on. Spend a focused week improving the prompt against the locked test.
+  c064 in-20 b1 (12) If the score climbs and then goes flat, this step is done.
+  c065 in-20 b2 (15) Feeling stuck is not enough on its own. Then move on to step two, context.
+  c066 in-recap b1 (13) Here is what to remember from step one. Show the model good examples.
+  c067 in-recap b1 (21) Hold the shape of the answer with a schema. Put the parts that never change at the start of the prompt.
+  c068 in-recap b2 (16) Let a machine search for a better prompt. Instructions cannot supply facts the model cannot see.
+  c069 CAMERA (20) Move on when a week of work stops moving the score on a locked test. Next is step two, context.

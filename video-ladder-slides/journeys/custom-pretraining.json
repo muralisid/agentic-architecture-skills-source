@@ -1,0 +1,853 @@
+{
+  "page": "/ladder/custom-pretraining",
+  "chapter": "Custom pretraining and architecture",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "ca-01",
+        "ca-intro",
+        "ca-20",
+        "ca-02"
+      ]
+    },
+    {
+      "heading": "Path one: a foundation model of your own",
+      "slides": [
+        "ca-03",
+        "ca-04",
+        "ca-05",
+        "ca-06",
+        "ca-07"
+      ]
+    },
+    {
+      "heading": "Path two: when your data is not text",
+      "slides": [
+        "ca-08",
+        "ca-21",
+        "ca-22",
+        "ca-09",
+        "ca-10",
+        "ca-11",
+        "ca-12",
+        "ca-13",
+        "ca-14"
+      ]
+    },
+    {
+      "heading": "How this connects back",
+      "slides": [
+        "ca-16",
+        "ca-17",
+        "ca-18",
+        "ca-23",
+        "ca-19"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "ca-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "ca-01",
+      "layout": "title",
+      "title": "Custom pretraining and *architecture*",
+      "text": "Your own model from scratch, or a different kind of model?",
+      "builds": [
+        {
+          "narration": [
+            "At the top of the market, two very different things are sold in similar words.",
+            "This chapter helps you tell which one is in front of you."
+          ]
+        }
+      ],
+      "caption": "Two different offers sit at the top of the market. This chapter shows how to tell them apart. It also shows whether either applies."
+    },
+    {
+      "id": "ca-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "Two offers that sound alike",
+        "Path one: your own model",
+        "Path two: a different model",
+        "How it links to the rest"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "This is the last chapter of the ladder.",
+            "It is one of five ways to change the model itself.",
+            "Very few organisations ever need it."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "First, we look at two offers that sound alike.",
+            "Then we look at path one.",
+            "That is building your own model from nothing."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Next is path two.",
+            "It is a different kind of model for data that is not text.",
+            "Last, we see how this links back to the rest of the ladder."
+          ]
+        }
+      ],
+      "caption": "This last chapter covers two offers that sound alike. It explains building your own model and models for data that is not text. It ends with how both link back."
+    },
+    {
+      "id": "ca-20",
+      "layout": "statement",
+      "icon": "chip",
+      "title": "What a *foundation model* is",
+      "text": "A large model that other work is built on.",
+      "picture": "One wide base block with smaller blocks built on top, beside a big stack of papers.",
+      "builds": [
+        {
+          "narration": [
+            "Start with how most AI models are made.",
+            "They are trained on huge amounts of text from every subject.",
+            "Then other models and products are built on top of them."
+          ]
+        },
+        {
+          "narration": [
+            "A large model like this is called a foundation model.",
+            "Most teams start from one that someone else built."
+          ]
+        }
+      ],
+      "caption": "A foundation model is a large model trained on huge amounts of text. Other work is built on top of it.",
+      "image": "pictures/ca-20.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-02",
+      "layout": "compare",
+      "title": "Two things sold in *similar words*",
+      "left": {
+        "head": "Your own foundation model",
+        "rows": [
+          "Built from nothing",
+          "Almost never the answer"
+        ]
+      },
+      "right": {
+        "head": "A different kind of model",
+        "rows": [
+          "For data that is not text",
+          "Real specialist work"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here are the two offers.",
+            "One is to build your own foundation model from nothing.",
+            "The other is a different kind of model.",
+            "It is built for data that is not text."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The first comes down to cost.",
+            "It is almost never the answer.",
+            "The second is real specialist work.",
+            "It has a clear use."
+          ]
+        }
+      ],
+      "caption": "Path one is a cost decision that rarely pays. Path two is real specialist work for data like networks, sequences and signals."
+    },
+    {
+      "id": "ca-03",
+      "layout": "steps",
+      "title": "Path one: training *from scratch*",
+      "items": [
+        "Random starting numbers",
+        "Trillions of word pieces",
+        "Tune it to be useful"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "Start with path one.",
+            "A model is a huge set of numbers.",
+            "Training slowly adjusts those numbers.",
+            "Here, the numbers start out random."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            1
+          ],
+          "narration": [
+            "The model then reads trillions of small pieces of words.",
+            "This huge first training is called pretraining.",
+            "Nothing comes from an existing model.",
+            "So everything it knows must come from your own text."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "Last, it is tuned so that people can use it."
+          ]
+        }
+      ],
+      "caption": "Path one starts from random numbers and trains on trillions of word pieces. Everything the model knows comes from your own text."
+    },
+    {
+      "id": "ca-04",
+      "layout": "statement",
+      "icon": "money",
+      "title": "It needs a *top* AI lab's budget",
+      "text": "Computing power costing tens of millions, a research team, and time.",
+      "picture": "A very tall stack of coins beside a half-built model on a workbench and a large hourglass.",
+      "builds": [
+        {
+          "narration": [
+            "Path one costs what only the biggest AI labs spend.",
+            "It needs computing power costing tens of millions and more.",
+            "It also needs a research team that stays in place."
+          ]
+        },
+        {
+          "narration": [
+            "Building takes a long time.",
+            "The field keeps moving while you build."
+          ]
+        },
+        {
+          "narration": [
+            "Meanwhile, open and paid models keep getting better.",
+            "Someone else pays for that."
+          ]
+        }
+      ],
+      "caption": "Path one costs what the biggest AI labs spend. While you build, outside models keep improving on someone else's budget.",
+      "image": "pictures/ca-04.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-05",
+      "layout": "list",
+      "title": "When path one is *genuine*",
+      "items": [
+        "A rule bans outside models",
+        "A huge body of unusual text"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Path one does make sense in two cases.",
+            "In the first, a national rule bans using any model from outside.",
+            "This is called a sovereignty rule."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "In the second, you hold a huge amount of text.",
+            "It is so unlike public text that existing models get it wrong.",
+            "This case also needs the money and the team."
+          ]
+        }
+      ],
+      "caption": "Path one is genuine under a national sovereignty rule. It is also genuine with a huge body of text unlike public text, plus the money and team."
+    },
+    {
+      "id": "ca-06",
+      "layout": "statement",
+      "icon": "search",
+      "title": "First ask about continued *pretraining*",
+      "text": "What would it achieve on the same text?",
+      "picture": "A finished model taking in a stack of your own papers, with a heap of loose unbuilt parts set aside.",
+      "builds": [
+        {
+          "narration": [
+            "One question settles most plans to build your own model.",
+            "What if you took an existing model and kept training it on your own text?",
+            "That is called continued pretraining."
+          ]
+        },
+        {
+          "narration": [
+            "It gives most of what people want from their own model.",
+            "It uses the same text.",
+            "It costs a small fraction as much.",
+            "And someone else keeps improving the model underneath."
+          ]
+        }
+      ],
+      "caption": "Continued pretraining on the same text gives most of what people want from their own model. It costs far less. Someone else maintains the model underneath.",
+      "image": "pictures/ca-06.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-07",
+      "layout": "statement",
+      "icon": "document",
+      "title": "If you do take *path one*",
+      "text": "A company's own study, using small models.",
+      "builds": [
+        {
+          "narration": [
+            "If you do take path one, one finding may help.",
+            "It is about when to mix in text from your own field."
+          ]
+        },
+        {
+          "narration": [
+            "One study mixed a little of that text in from the very start.",
+            "That beat training on public text first and adding your text later."
+          ]
+        },
+        {
+          "narration": [
+            "The study was published by a company that sells help with training data.",
+            "It also used small models.",
+            "It can guide how you run path one.",
+            "It does not tell you whether to take it."
+          ]
+        }
+      ],
+      "caption": "Mixing a little of your own text in from the start beat adding it later. It is a company's own study with small models. It guides how to run path one only."
+    },
+    {
+      "id": "ca-08",
+      "layout": "picture",
+      "title": "Path two: data that is *not text*",
+      "picture": "A web of linked records, a supply chain, a sensor signal line and a molecule, side by side.",
+      "items": [
+        "Networks of linked records",
+        "Supply chains",
+        "Streams of sensor readings",
+        "Molecules"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "Now for path two.",
+            "The models on this ladder read text as a line of small word pieces.",
+            "Some data is not like that at all."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Think of records linked to each other, or supply chains."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Think of streams of sensor readings, or molecules.",
+            "None of this is a line of words.",
+            "None of the earlier steps on this ladder can change that."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Much of this data is things joined by links.",
+            "A set of things joined by links is called a graph."
+          ]
+        }
+      ],
+      "caption": "Models that read text work on lines of word pieces. Networks, sensor streams and molecules are not like that. Things joined by links form a graph.",
+      "image": "pictures/ca-08.webp",
+      "aspect": 2.02
+    },
+    {
+      "id": "ca-21",
+      "layout": "statement",
+      "icon": "branch",
+      "title": "A model built for *links*",
+      "text": "The most common one is a graph neural network.",
+      "picture": "A web of dots joined by lines, with a model facing it and a row of word bars set aside.",
+      "builds": [
+        {
+          "narration": [
+            "For data like this, the model itself has to be different.",
+            "It has to learn from who is linked to whom."
+          ]
+        },
+        {
+          "narration": [
+            "The most common choice is called a graph neural network.",
+            "In this chapter, we just call it a graph model."
+          ]
+        }
+      ],
+      "caption": "Data made of linked things needs a different kind of model. The most common is a graph neural network. We call it a graph model.",
+      "image": "pictures/ca-21.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-22",
+      "layout": "statement",
+      "icon": "circle",
+      "title": "Each thing is a *node*",
+      "text": "Each node starts with a list of numbers.",
+      "picture": "A web of dots joined by lines, with one dot carrying a small blank card of details.",
+      "builds": [
+        {
+          "narration": [
+            "Here is how a graph model works, one step at a time.",
+            "Take one thing in the graph, such as one record.",
+            "It is called a node."
+          ]
+        },
+        {
+          "narration": [
+            "Each node starts with a list of numbers.",
+            "The numbers describe that one thing."
+          ]
+        }
+      ],
+      "caption": "Each thing in a graph is called a node. Each node starts with a list of numbers that describe it.",
+      "image": "pictures/ca-22.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-09",
+      "layout": "steps",
+      "title": "How a graph model *learns*",
+      "items": [
+        "Each node gets numbers",
+        "Nodes learn from neighbours",
+        "Repeat, reaching further out",
+        "Read nodes to predict"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "Now the model gets to work.",
+            "It starts from each node's list of numbers."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            1
+          ],
+          "narration": [
+            "A node's neighbours are the nodes it links to.",
+            "Each node updates its numbers using its neighbours' numbers.",
+            "One round of this is called a layer."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "The model runs several layers, one after another.",
+            "After two layers, a node knows about its neighbours' neighbours."
+          ]
+        },
+        {
+          "reveal": 4,
+          "focus": [
+            3
+          ],
+          "narration": [
+            "Last, the model reads each node's numbers to make a prediction.",
+            "It learns from who connects to whom.",
+            "A model that reads documents cannot see that."
+          ]
+        }
+      ],
+      "caption": "In each layer, nodes take in their neighbours' numbers. The model then reads each node's numbers to predict."
+    },
+    {
+      "id": "ca-10",
+      "layout": "picture",
+      "title": "Too many layers: nodes look *alike*",
+      "picture": "A cluster of differently coloured dots fading into one shared colour as layers stack up.",
+      "items": [
+        "Layer after layer",
+        "Every node alike"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "This way of working has two known problems.",
+            "Each layer mixes a node's numbers with its neighbours' numbers.",
+            "Stack enough layers, and nearby nodes end up with the same numbers."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then the model can no longer tell them apart.",
+            "This is called over-smoothing.",
+            "It is why graph models in real use often have only two or three layers."
+          ]
+        }
+      ],
+      "caption": "Over-smoothing: with too many layers, nearby nodes end up alike. Graph models in real use often have only two or three layers.",
+      "image": "pictures/ca-10.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-11",
+      "layout": "picture",
+      "title": "Far signals get *squashed*",
+      "picture": "Many distant dots funnelling through one narrow link into a single dot.",
+      "items": [
+        "Distant nodes",
+        "Narrow link",
+        "Fixed-size numbers"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The second problem pulls the other way.",
+            "Information from a far node must pass through many nodes to arrive.",
+            "The number of nodes on the way grows very fast with distance."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "But each node holds only a fixed-size list of numbers.",
+            "So far information gets squeezed through narrow links.",
+            "Much of it is lost.",
+            "This is called over-squashing."
+          ]
+        }
+      ],
+      "caption": "Over-squashing: information from far away is squeezed into fixed-size numbers. Much of it is lost at narrow links.",
+      "image": "pictures/ca-11.webp",
+      "aspect": 2.22
+    },
+    {
+      "id": "ca-12",
+      "layout": "statement",
+      "icon": "scale",
+      "title": "The two problems pull *against* each other",
+      "text": "More layers ease over-squashing and worsen over-smoothing.",
+      "builds": [
+        {
+          "narration": [
+            "So the two problems pull against each other.",
+            "More layers let information travel further.",
+            "That eases over-squashing.",
+            "But more layers make over-smoothing worse."
+          ]
+        },
+        {
+          "narration": [
+            "So turning one setting up does not fix both.",
+            "People who have really done this work change the design of the model.",
+            "A model's design is called its architecture."
+          ]
+        },
+        {
+          "narration": [
+            "Watch how someone handles this.",
+            "It shows whether they have real experience."
+          ]
+        }
+      ],
+      "caption": "Adding layers eases over-squashing but worsens over-smoothing. Experienced people fix this by changing the design of the model."
+    },
+    {
+      "id": "ca-13",
+      "layout": "tiles",
+      "title": "Three more problems to *listen for*",
+      "items": [
+        "Numbers stop being distinct",
+        "A huge graph must be cut",
+        "Training across many machines"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "focus": [
+            0
+          ],
+          "narration": [
+            "There are three more problems worth listening for.",
+            "First, the learned numbers can stop being distinct.",
+            "Or learning can fade out in the deeper layers.",
+            "Then parts of the model quietly stop learning."
+          ]
+        },
+        {
+          "reveal": 2,
+          "focus": [
+            1
+          ],
+          "narration": [
+            "Second, a huge graph may not fit in memory.",
+            "So it must be cut into parts.",
+            "Every cut breaks real links.",
+            "So the model trains on a graph with links missing."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "Third, the training may be spread across many machines.",
+            "Then training no longer behaves the way the textbooks describe."
+          ]
+        }
+      ],
+      "caption": "Learned numbers can stop being distinct. Cutting a huge graph breaks real links. Training across many machines behaves differently."
+    },
+    {
+      "id": "ca-14",
+      "layout": "statement",
+      "icon": "check",
+      "title": "When path two is *genuine*",
+      "text": "You predict something about how things link, at real scale.",
+      "picture": "A wide web of identical dots with one small ring of links drawn in the accent colour.",
+      "builds": [
+        {
+          "narration": [
+            "So when does path two make sense?",
+            "It fits when what you predict depends on how things link together.",
+            "It does not sit inside any one document."
+          ]
+        },
+        {
+          "narration": [
+            "The data must also be big enough for these problems to really matter."
+          ]
+        },
+        {
+          "narration": [
+            "This situation is easy to spot.",
+            "The rest of this ladder is about AI systems that carry out tasks.",
+            "These systems are called agents.",
+            "Path two has little to do with them."
+          ]
+        }
+      ],
+      "caption": "Path two fits when the prediction depends on how things link. The data must be big enough for these problems to matter.",
+      "image": "pictures/ca-14.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-16",
+      "layout": "flow",
+      "title": "The graph model is a *tool*",
+      "items": [
+        "Graph model gives a score",
+        "A tool passes score and evidence",
+        "Agent uses it in its draft",
+        "A person decides"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Now, how does this connect back to agents?",
+            "The graph model is not the agent.",
+            "It does not chat.",
+            "It runs on its own as a scoring system.",
+            "That system has its own checks on whether the model can be trusted."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The agent reaches the score by asking a small program to fetch it.",
+            "A program like this is called a tool.",
+            "It returns the score and the part of the graph behind it."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The agent uses them as evidence in its draft.",
+            "A person makes the decision."
+          ]
+        }
+      ],
+      "caption": "The graph model works out a score from the graph. A tool carries the score and its evidence to the agent. The agent drafts, and a person decides."
+    },
+    {
+      "id": "ca-17",
+      "layout": "statement",
+      "icon": "person",
+      "title": "Two teams that meet at a *tool*",
+      "text": "Different kinds of work, with different ways of managing risk.",
+      "picture": "Two separate workbenches, one with a web of dots and one with a model, joined by a single plug.",
+      "builds": [
+        {
+          "narration": [
+            "This also means two different teams.",
+            "Every earlier step on this ladder starts from a model that already exists.",
+            "An engineering team builds around it."
+          ]
+        },
+        {
+          "narration": [
+            "The graph model needs a research team that builds models.",
+            "That team has its own way of checking and approving models."
+          ]
+        },
+        {
+          "narration": [
+            "These are two different kinds of work.",
+            "They meet at the tool.",
+            "Giving the graph model to the agent team is a mistake.",
+            "So is giving the agent to the graph team."
+          ]
+        }
+      ],
+      "caption": "Every earlier step builds around an existing model. This chapter builds models. The two teams differ in budget, staff and risk checks. They meet at a tool.",
+      "image": "pictures/ca-17.webp",
+      "aspect": 1.5
+    },
+    {
+      "id": "ca-18",
+      "layout": "list",
+      "title": "Try the *boring* options first",
+      "items": [
+        "Hand-made measures of the graph",
+        "A ready-made graph model",
+        "Rules for known patterns"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Before building a custom graph model, try the simpler options.",
+            "First, work out a few simple measures of the graph by hand.",
+            "Then feed them to a simple model."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, try a ready-made graph model.",
+            "Keep it only a few layers deep."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Third, try rules for patterns you already know.",
+            "Each of these options gets a fair run first."
+          ]
+        }
+      ],
+      "caption": "Before a custom model, try hand-made measures of the graph, a ready-made graph model, and rules for known patterns."
+    },
+    {
+      "id": "ca-23",
+      "layout": "statement",
+      "icon": "chart",
+      "title": "The custom model must *beat* them",
+      "text": "Test on past cases with known right answers.",
+      "builds": [
+        {
+          "narration": [
+            "Then compare them fairly.",
+            "Use past cases where you already know the right answer.",
+            "These are called labelled cases."
+          ]
+        },
+        {
+          "narration": [
+            "The custom model must beat the simple options on your own labelled cases.",
+            "This is the same fair test used at the start of this ladder."
+          ]
+        }
+      ],
+      "caption": "The custom model must beat the simple options on your own labelled cases. It is the same fair test used earlier on this ladder."
+    },
+    {
+      "id": "ca-19",
+      "layout": "rule",
+      "title": "Diagnose the *failure* before you spend",
+      "builds": [
+        {
+          "narration": [
+            "The same habit applies at every step of this ladder.",
+            "Find out what is really failing before you spend money.",
+            "Never assume a bigger version of what you have will fix it."
+          ]
+        }
+      ],
+      "caption": "Find out what is really failing before spending. Never assume a bigger version of what you have will fix it."
+    },
+    {
+      "id": "ca-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Your own model rarely pays",
+        "Ask about continued pretraining first",
+        "Graphs need a different model",
+        "The graph model is a tool",
+        "Find the failure before spending"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Here is what to remember.",
+            "Building your own foundation model almost never pays.",
+            "First ask what continued pretraining on the same text would give."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Data made of linked things may need a graph model.",
+            "That model is a tool the agent calls.",
+            "A different team builds it."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "At every step, find out what is failing before you spend.",
+            "The rule from the start of this ladder still holds.",
+            "Change the system before you change the model."
+          ]
+        }
+      ],
+      "caption": "Building your own model rarely pays. Graph models suit data made of linked things. They work as tools. Change the system before you change the model."
+    }
+  ]
+}

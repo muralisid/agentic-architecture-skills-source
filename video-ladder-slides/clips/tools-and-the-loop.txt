@@ -1,0 +1,78 @@
+tools-and-the-loop: 25 slides, 77 clips, 1370 words, about 8.2 min at Scout7's 2.8 words a second
+  c001 CAMERA (18) This video is about what runs around an AI model. Often, that is where the real problem is.
+  c002 tl-intro b1 (12) This video covers Step 3 of the ladder: tools and the loop.
+  c003 tl-intro b1 (14) Steps 1 and 2 worked on the instructions and on what the model reads.
+  c004 tl-intro b1 (22) Step 3 works on the system that runs around the model. It is the last step before you change the model itself.
+  c005 tl-intro b2 (13) First, we look at how the loop runs and what it must handle.
+  c006 tl-intro b2 (19) Then we see why it matters and when to split the work. Last comes the test for moving on.
+  c007 tl-21 b1 (24) Let us start with how the loop works. Some AI systems do not answer a task in one go. The model asks for something.
+  c008 tl-21 b2 (20) Your code fetches it and hands back the result. The model reads the result and decides what to do next.
+  c009 tl-21 b2 (18) This repeats until the model gives its answer. A system that works like this is called an agent.
+  c010 tl-22 b1 (10) So how does the model get what it asks for?
+  c011 tl-22 b1 (17) You give it a set of actions it may ask for. Looking something up is one example.
+  c012 tl-22 b1 (19) When the model asks for one, your code carries it out. Each of these actions is called a tool.
+  c013 tl-03 b1 (14) Let us follow one pass around the loop. One pass is called a turn.
+  c014 tl-03 b1 (22) The model keeps no memory from one turn to the next. So every turn, the whole conversation is sent to it again.
+  c015 tl-03 b2 (22) The model replies with an answer or asks for a tool. If it asks for a tool, your code runs the tool.
+  c016 tl-03 b3 (18) Then the result is added to the conversation. This repeats until the model answers or you stop it.
+  c017 tl-25 b1 (18) Something has to run all of this. It sends the conversation, runs the tools and adds the results.
+  c018 tl-25 b1 (19) It also decides when the loop must stop. Everything that runs and controls the loop is called the harness.
+  c019 tl-02 b1 (23) The harness is the part teams most often skip. They improve what the model reads. Then they jump straight to training the model.
+  c020 tl-02 b1 (16) Training means changing the model itself. The evidence says the harness is usually what was missing.
+  c021 tl-27 b1 (24) The harness has a few jobs to handle. The first one comes from the loop itself. Each turn adds another result to the conversation.
+  c022 tl-27 b2 (22) So in a long task, the conversation keeps growing. But a model can only read a limited amount of text at once.
+  c023 tl-27 b2 (16) That limit is called the context window. A long task soon fills it with old results.
+  c024 tl-04 b1 (19) When the context window fills up, the harness has to make room. There are two ways to do it.
+  c025 tl-04 b2 (24) The first way shortens the old conversation into a summary. This is called compaction. A summary can quietly drop the detail the model needed.
+  c026 tl-04 b3 (19) The second way is to start fresh. The harness keeps a written record of the task outside the conversation.
+  c027 tl-04 b4 (19) Each fresh start begins from the goal and that record. This is harder to build and generally more reliable.
+  c028 tl-04 b4 (21) Each time the history is summarised again, a little more is lost. A written record does not lose detail this way.
+  c029 tl-05 b1 (17) Usually that record is kept only for the task. Sometimes you keep it for later tasks too.
+  c030 tl-05 b2 (19) A record kept like that is called memory. Memory needs a named owner and a note of its source.
+  c031 tl-05 b2 (10) It waits for a while before later tasks trust it.
+  c032 tl-05 b2 (15) And there must be a way to delete it. Step 2 sets out these rules.
+  c033 tl-06 b1 (12) The loop ends only when the model answers or you stop it.
+  c034 tl-06 b1 (19) A model can get a poor result from a tool and try again. It can keep doing that forever.
+  c035 tl-06 b2 (15) So real harnesses set limits. They cap the number of turns and the running time.
+  c036 tl-06 b2 (19) They check between turns whether the task was cancelled. And they give you a way to stop the loop.
+  c037 tl-06 b3 (24) Put a cap on the cost of each task too. Without it, one task that never ends can use up a whole day's budget.
+  c038 tl-07 b1 (20) The harness also runs the tools. So the tools themselves need care. The model has no memory of your system.
+  c039 tl-07 b1 (12) A tool with a vague description gets called at the wrong times.
+  c040 tl-07 b1 (13) So describe each tool for a reader who knows nothing about your system.
+  c041 tl-13 b1 (21) What a tool sends back matters too. A huge block of raw data fills the space the model needs for thinking.
+  c042 tl-13 b2 (24) A raw data tool returns every row and every field it finds. The few rows that matter get buried. So the model reasons badly.
+  c043 tl-13 b3 (23) A better tool returns a short summary and flags what stands out. A second tool pulls the full detail on one of them.
+  c044 tl-13 b3 (15) The model now has far less to read. It reasons better on the same data.
+  c045 tl-26 b1 (24) Some people using an agent should not see everything it can reach. You might try to write a rule about this in the instructions.
+  c046 tl-26 b2 (13) But instructions and the content the model reads arrive in the same form.
+  c047 tl-26 b2 (16) The model cannot reliably tell them apart. So a rule in the instructions cannot enforce access.
+  c048 tl-16 b1 (18) So the check has to sit outside the model. The agent reaches other systems only through one checkpoint.
+  c049 tl-16 b2 (23) This checkpoint is called a gateway. On every request, it checks whether the person using the agent may see what was asked for.
+  c050 tl-08 b1 (18) So far we have seen what the harness does. But does it really change how an agent behaves?
+  c051 tl-08 b2 (22) One study kept the task and the model the same. It changed only the harness. The final success rate looked the same.
+  c052 tl-08 b2 (15) But what the agent believed at later steps changed. So its later decisions changed too.
+  c053 tl-29 b1 (19) This matters when you read that one model beats another. The two models may have run inside different harnesses.
+  c054 tl-29 b2 (18) Then the result may say more about the harness than the model. Your own agent is the same.
+  c055 tl-29 b2 (12) How it behaves depends on your loop as well as your model.
+  c056 tl-30 b1 (18) Up to now, we have looked at a single agent. Some designs split the work across several agents.
+  c057 tl-30 b1 (18) Each agent runs its own loop on one part of the task. This is called a multi-agent design.
+  c058 tl-10 b1 (20) More agents let parts of the work run at the same time. Each agent also has its own separate conversation.
+  c059 tl-10 b2 (24) So no single conversation has to hold everything. But they multiply the cost. And each agent reasons no better than a single agent would.
+  c060 tl-09 b1 (19) One study looked at how multi-agent systems fail. It found the failures come from how the system is designed.
+  c061 tl-09 b1 (18) They do not come from the model. So a stronger model does not fix a badly designed loop.
+  c062 tl-11 b1 (17) So when is splitting the work worth the cost? One study tested several ways of coordinating agents.
+  c063 tl-11 b1 (16) It used a large set of official company reports. It scored accuracy from zero to one.
+  c064 tl-11 b2 (11) Multi-agent is worth it when you need accuracy above about 0.92.
+  c065 tl-11 b2 (16) Below that, one well-built loop does the job for less. This is the only published threshold.
+  c066 tl-18 b2 (20) So when is this step done? There are three checks. First, every turn of the loop is recorded and measured.
+  c067 tl-18 b4 (21) Second, each failure is tracked back to a specific cause. Third, what still fails is the model not knowing your field.
+  c068 tl-20 b1 (11) To track a failure, you need a record of each run.
+  c069 tl-20 b1 (20) It shows which tools ran, what they returned and how many turns it took. This record is called a trace.
+  c070 tl-20 b2 (16) It also shows what the final answer claimed. And it shows the evidence behind each claim.
+  c071 tl-19 b1 (13) This record is what tells you whether it is time to move on.
+  c072 tl-19 b1 (17) If you cannot say which turn failed and why, you cannot know the model is at fault.
+  c073 tl-19 b1 (11) Every change to the model itself costs more than finding out.
+  c074 tl-recap b1 (18) An agent is a model working in a loop. The harness runs that loop and sets its limits.
+  c075 tl-recap b1 (21) Who may see what is checked at a gateway. Split the work across agents only when you need very high accuracy.
+  c076 tl-recap b1 (10) Before changing the model, trace each failure to its cause.
+  c077 CAMERA (17) The next step changes the model itself for the first time. Next up is adapters and fine-tuning.

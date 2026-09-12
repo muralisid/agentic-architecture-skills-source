@@ -1,0 +1,573 @@
+{
+  "page": "/ladder/distillation",
+  "chapter": "Distillation",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "di-01",
+      "build": 1,
+      "voiceover": "Every other step on this ladder tries to make an agent better. This one keeps the quality about the same.",
+      "words": 20,
+      "on_camera": true,
+      "frame": "frames/distillation/film/di-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "di-01",
+      "build": 1,
+      "voiceover": "Instead, it makes the agent cheaper and faster. It works by having a large model teach a small one. This is called distillation.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "di-intro",
+      "build": 1,
+      "voiceover": "The ladder is the order in which to try changes to an agent. The early steps change the system around the model.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-intro-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "di-intro",
+      "build": 2,
+      "voiceover": "The later steps change the model itself. Distillation is one of those later steps. First, we look at how one model teaches another.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-intro-b2.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "di-intro",
+      "build": 4,
+      "voiceover": "Then we see how the same idea repairs a model that forgot skills. Next, we work out when distillation pays for itself.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-intro-b4.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "di-intro",
+      "build": 6,
+      "voiceover": "Then we see how two models can share the work. Last, we look at where to go next.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-intro-b6.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "di-02",
+      "build": 1,
+      "voiceover": "Distillation does two different jobs. The first job is cutting cost. It helps with work that runs a very large number of times.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-02-b1.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "di-02",
+      "build": 2,
+      "voiceover": "The second job is a repair. A model can be trained further on your own examples.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-02-b2.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "di-02",
+      "build": 2,
+      "voiceover": "This is called fine-tuning. Fine-tuning can damage skills the model already had. Distillation can repair that damage.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-02-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "di-20",
+      "build": 1,
+      "voiceover": "So how does one model teach another? Start with a large model that already does the task well. Its answers are good.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-20-b1.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "di-20",
+      "build": 1,
+      "voiceover": "But it is slow and costs a lot to run. In distillation, this large model is called the teacher.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-20-b1.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "di-21",
+      "build": 1,
+      "voiceover": "Next to it, we put a much smaller model. A small model is cheaper and faster to run.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-21-b1.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "di-21",
+      "build": 1,
+      "voiceover": "It learns to do the task by copying the teacher. This small model is called the student.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-21-b1.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "di-22",
+      "build": 1,
+      "voiceover": "To see how the teaching works, look at how a model writes. It writes its answer one word at a time.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-22-b1.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "di-22",
+      "build": 1,
+      "voiceover": "At each step, some words look more likely than others. The word it picks at each step is called the next word.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-22-b1.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "di-03",
+      "build": 2,
+      "voiceover": "Fine-tuning shows a model only the right next word. Say that word is transferred. Distillation shows the student more than that.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-03-b2.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "di-03",
+      "build": 3,
+      "voiceover": "The teacher also shows that the word moved was nearly chosen. And it shows that the word flew was never likely at all.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-03-b3.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "di-03",
+      "build": 3,
+      "voiceover": "These near misses tell the student a lot more than one right answer.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-03-b3.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "di-03",
+      "build": 3,
+      "voiceover": "So a student can get close to its teacher without much training.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-03-b3.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "di-04",
+      "build": 1,
+      "voiceover": "There is a newer way to do this. In the newer way, the student tries the task first.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-04-b1.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "di-04",
+      "build": 3,
+      "voiceover": "Then the teacher grades the student's own attempt. The student learns from that grade.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-04-b3.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "di-04",
+      "build": 3,
+      "voiceover": "So it learns from the mistakes it really makes. This is called on-policy distillation.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-04-b3.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "di-05",
+      "build": 1,
+      "voiceover": "Training a model takes a lot of computing power. Published work compared this newer way with simply doing more fine-tuning.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-05-b1.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "di-05",
+      "build": 1,
+      "voiceover": "It reached about the same quality. And it used 9 to 30 times less computing power to train.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-05-b1.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "di-06",
+      "build": 1,
+      "voiceover": "Now to the second job, the repair. Fine-tuning a model on your own examples makes it better at your work.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-06-b1.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "di-06",
+      "build": 1,
+      "voiceover": "But it also makes the model worse at general tasks. It has partly forgotten skills it used to have.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-06-b1.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "di-06",
+      "build": 1,
+      "voiceover": "Even fine-tuning that changes only a small part of the model does not prevent this.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-06-b1.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "di-07",
+      "build": 2,
+      "voiceover": "The published repair uses a special teacher. The teacher is the same model before it was fine-tuned. The fine-tuned model is the student.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-07-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "di-07",
+      "build": 2,
+      "voiceover": "It learns its general skills back from the model it used to be. And it keeps the new skills it just gained.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-07-b2.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "di-08",
+      "build": 1,
+      "voiceover": "So distillation is not only a way to save money. It is also maintenance you plan after training a model further.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-08-b1.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "di-08",
+      "build": 1,
+      "voiceover": "Plan it after fine-tuning. There is another way to train a model further.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-08-b1.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "di-08",
+      "build": 1,
+      "voiceover": "You train it on plain text from your own field. That is called continued pretraining. Plan the same repair after that too.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-08-b1.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "di-23",
+      "build": 1,
+      "voiceover": "How do you know if a repair is needed? Keep a test of general skills.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-23-b1.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "di-23",
+      "build": 1,
+      "voiceover": "Run it after each round of training. If the scores drop, plan the repair.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-23-b1.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "di-23",
+      "build": 1,
+      "voiceover": "While the repair runs, keep testing the new skills too. That shows you whether the repair is undoing them.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-23-b1.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "di-09",
+      "build": 1,
+      "voiceover": "Now back to the first job, saving money. Distillation has a cost you pay once.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-09-b1.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "di-09",
+      "build": 2,
+      "voiceover": "That is the cost of building the student. After that, every request to the student costs less.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-09-b2.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "di-09",
+      "build": 2,
+      "voiceover": "One request to a model is called a call. Divide the one-off cost by the saving on each call.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-09-b2.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "di-09",
+      "build": 3,
+      "voiceover": "That tells you how many calls it takes to pay the cost back. Then compare that with the number of calls you really make.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-09-b3.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "di-09",
+      "build": 3,
+      "voiceover": "No general number tells you when it pays. You have to use your own costs and volumes.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-09-b3.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "di-10",
+      "build": 1,
+      "voiceover": "Distillation also needs the right kind of task. A small student cannot match a large teacher at everything.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-10-b1.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "di-10",
+      "build": 1,
+      "voiceover": "It can match the teacher only on a narrow task. The narrower the task, the smaller the student can be.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-10-b1.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "di-24",
+      "build": 1,
+      "voiceover": "You also need proof that the student is good enough. That proof comes from a test. Write the test before you build the student.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-24-b1.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "di-24",
+      "build": 1,
+      "voiceover": "Then do not change it. A test kept fixed like this is called a locked test.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-24-b1.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "di-11",
+      "build": 1,
+      "voiceover": "A locked test can clash with another goal. Proving the saving needs a test that stays the same.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-11-b1.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "di-11",
+      "build": 1,
+      "voiceover": "But some teams keep improving their agent all the time.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-11-b1.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "di-11",
+      "build": 1,
+      "voiceover": "That work keeps rewriting the test. So decide which of the two you are running.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-11-b1.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "di-12",
+      "build": 1,
+      "voiceover": "The student copies everything the teacher does. That includes the teacher's mistakes. The teacher's large size sometimes saved it from a mistake.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-12-b1.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "di-12",
+      "build": 1,
+      "voiceover": "The small student does not have that size. So there is one hard rule. Never distil a skill the teacher does not reliably have.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-12-b1.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "di-15",
+      "build": 1,
+      "voiceover": "Distillation also lets two models share the work. Say most of the requests an agent gets are routine. The large model handles them well.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-15-b1.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "di-15",
+      "build": 2,
+      "voiceover": "But it costs too much to run on every one of them. So the small student handles the routine requests.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-15-b2.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "di-15",
+      "build": 2,
+      "voiceover": "The unusual ones still go to the large model. The average cost per request drops a lot.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-15-b2.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "di-25",
+      "build": 1,
+      "voiceover": "How does each request reach the right model? The student checks how sure it is of its answer.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-25-b1.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "di-25",
+      "build": 1,
+      "voiceover": "If it is not sure enough, the request goes up to the large model. This check is called a confidence rule.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-25-b1.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "di-16",
+      "build": 1,
+      "voiceover": "Do not guess which requests are routine. Use your test. It shows which requests the student handles as well as the large model.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-16-b1.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "di-16",
+      "build": 1,
+      "voiceover": "Send only those to the student. How much this saves depends on your own volumes. So no general number is claimed for it.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-16-b1.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "di-18",
+      "build": 1,
+      "voiceover": "The last question is where distillation fits. It comes after the other ways of improving an agent. It does not replace them.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-18-b1.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "di-18",
+      "build": 1,
+      "voiceover": "Now say the agent's judgement is still wrong. And its results are the kind you can check and score.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-18-b1.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "di-18",
+      "build": 2,
+      "voiceover": "There is a way to train a model on scored attempts. It is called reinforcement fine-tuning. That is where to go next.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-18-b2.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "di-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. Only distil what the teacher already does well.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-recap-b1.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "di-recap",
+      "build": 2,
+      "voiceover": "The student copies its mistakes too. A small student is cheaper and faster to run than its teacher.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-recap-b2.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "di-recap",
+      "build": 4,
+      "voiceover": "The same method repairs what a model forgets after fine-tuning. Whether it pays depends on your own costs and volumes.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/distillation/film/di-recap-b4.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "di-recap",
+      "build": 5,
+      "voiceover": "And lock the test before you build the student. Next, we look at reinforcement fine-tuning.",
+      "words": 15,
+      "on_camera": true,
+      "frame": "frames/distillation/film/di-recap-b5.png"
+    }
+  ]
+}

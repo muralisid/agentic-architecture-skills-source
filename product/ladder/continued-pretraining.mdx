@@ -4,66 +4,233 @@ icon: "BookOpenText"
 description: "How a model learns a domain from raw text, why tokenisation makes specialist language expensive for a general model, what the corpus work really involves, and the budget split the evidence supports."
 ---
 
-<PlainTerms>
-This is how you teach a model your world: not from labelled examples but from raw text, the material your organisation already has in bulk. The model keeps doing what pretraining always did, predicting the next word, but now over your contracts, filings, tickets and manuals, and it comes out reading your domain the way your people do. It is the option that suits an organisation with a large corpus, it is routinely confused with fine-tuning, and the corpus preparation is where the project is won or lost.
-</PlainTerms>
+<Slide journey="ladder/continued-pretraining" id="cp-01">
 
-## What the model actually learns from raw text
+This chapter is about teaching a model your field of work. It learns from text your organisation already holds. Think of contracts, support tickets and manuals.
 
-Next-token prediction sounds too simple to teach anything. It is worth seeing why it is not.
+</Slide>
 
-To predict the next word in "the beneficial owner of the account is", a model must have absorbed what beneficial ownership is, what kinds of entities own accounts, and what tends to follow in the kind of document this is. Prediction quality is a proxy for understanding, and improving it over billions of tokens of your material forces the model to absorb your domain's concepts, relationships and conventions. Nobody labels anything, because the text itself is the supervision: every next word is a tiny test with a known answer.
+<Slide journey="ladder/continued-pretraining" id="cp-intro">
 
-There is also a mechanical reason general models read specialist text badly, and it is visible before any learning happens. Models read in <Term k="token">tokens</Term>, and a tokeniser trained on general text splits unfamiliar vocabulary into fragments: a drug name, a legal term of art, or a SWIFT message type becomes four or five meaningless shards. The model spends capacity reassembling words your industry treats as atoms. Continued pretraining teaches the model your vocabulary's behaviour even through awkward tokenisation, which is part of why fluency in the domain improves so visibly.
+This chapter is one of five ways to change the model itself. You pick it when a model does not understand the language of your field.
 
-## The distinction, one more time
+First, we see how a model learns from text. Then we compare that with training on written examples.
 
-| | Supervised <Term k="fine-tuning">fine-tuning</Term> | Continued pretraining |
-|---|---|---|
-| Input | Pairs: a question and the wanted answer | Raw text, as it already exists |
-| Volume | Thousands of examples | Billions of tokens |
-| Teaches | How to behave | What the domain is |
-| Preparation | High: someone writes the answers | Different: nobody writes anything, but the corpus must be curated |
+Next, we look at getting the text ready. Then we see how to share out the training effort. Last, we see what changes once the work is done.
 
-The preparation row deserves expansion, because "you already have the data" is true and misleading.
+</Slide>
 
-<GuideFigure id="sft-vs-cpt" fullWidth />
+## What the model learns from text
 
-<TeachingIllustration src="/images/ladder/continued-pretraining-mechanism-labeled-v2.webp" alt="A huge stream of curated domain documents mixes with general material and repeatedly reshapes a model before a small task-specific layer is added." title="Domain first, task second" caption="Continued pretraining changes how the model represents the domain by learning from raw material at enormous scale. A much smaller supervised set then teaches the particular job the domain-aware model must perform." />
+<Slide journey="ladder/continued-pretraining" id="cp-03">
 
-## The corpus work is the project
+First, how does a model learn from text at all? It is shown some text with the next word hidden.
 
-A model absorbs whatever the corpus contains, indiscriminately. The work is deciding what that should be:
+It guesses the hidden word. Then it checks the real one. It does this again and again, over huge amounts of text. This is called pretraining.
 
-- **Deduplication.** Enterprise archives repeat: templates, boilerplate, forwarded chains, near-identical versions. Repetition over-weights whatever repeats.
-- **Quality filtering.** OCR failures, corrupted exports and machine-generated logs teach noise.
-- **Contamination.** Anything you must not retain, and anything you would not want generated back: credentials in old tickets, personal data outside its retention basis, privileged material.
-- **The rights question.** Training on it requires the right to, and obligations follow the weights. A model trained on your corpus is a derived artifact of it, so classification, residency and erasure obligations reach the resulting model. [The concern matrix](/architecture/concern-matrix) sets out that inheritance, and it is sharper here than anywhere else on this ladder, because the artifact is large, expensive, and impossible to selectively forget.
-- **The mix.** Training only on domain text sharpens the domain and dulls everything else. Practice mixes domain material with general text to hold general capability, and the forgetting repair on [distillation](/ladder/distillation) applies here as it did to fine-tuning.
+Every next word is a small test with a known answer. So nobody has to write the answers by hand.
 
-## How much goes where: the budget split
+</Slide>
 
-<TeachingIllustration src="/images/ladder/continued-pretraining-corpus-labeled-v2.webp" alt="A disordered archive passes through rights, duplication, contamination, quality and balance filters while a sealed evaluation collection stays outside training." title="The corpus is the product" caption="Rights, provenance, deduplication, contamination control, quality and balance determine what the model learns. The evaluation set must remain sealed outside that production line or the final score stops meaning anything." />
+<Slide journey="ladder/continued-pretraining" id="cp-20">
 
-One study modelled the allocation directly: a fixed 30-billion-token budget split between continued pretraining and supervised fine-tuning, 7B-parameter models, across health, chemistry and coding. The optimum in every domain put **roughly 99.99 percent of the budget into continued pretraining** and the small remainder into fine-tuning, and reported an 11.6 percent improvement over a state-of-the-art domain-adapted comparison at up to 95 percent less budget (OpenReview, 8 October 2025).
+Most models you use have already learned this way. They learned from text on every kind of subject. Now take one of those models. Keep training it the same way, on your own text. This is called continued pretraining.
 
-Read it as a direction, not a recipe: one study, three domains, one model size. The durable conclusions are the ordering and the proportion. Domain adaptation is the big job and is done on raw text; task behaviour is the small job on top and is done on pairs. Teams that invert this, hand-writing tens of thousands of pairs to inject knowledge, are doing the expensive job with the wrong instrument.
+The model keeps guessing next words. But now the words come from your field. It comes out reading your field the way your people do.
 
-## At the bank
+</Slide>
 
-The bank holds decades of exactly the material this step wants: filed suspicious activity reports and their narratives, case files, typology guidance, internal policy, regulator correspondence, procedure manuals. Hundreds of millions to billions of tokens, written in the dialect the agent is supposed to speak.
+<Slide journey="ladder/continued-pretraining" id="cp-04">
 
-**What the base model gets wrong, concretely.** It reads "structuring" as organisation rather than as deposits split to evade thresholds. It parses SWIFT field references as noise. It treats "smurfing" as a typo. Every such miss is context the retrieval layer must carry on every call: the agent works, but it works like a bright temp on their first week, needing everything explained. Continued pretraining is how the temp becomes staff.
+Why does guessing words teach the model anything? To guess the next word well, the model must know what the words mean. It must also know what tends to come next in that kind of document.
 
-**What goes in the corpus, and what does not.** In: the filed reports, guidance, policies, manuals, anonymised case narratives. Out: raw transaction data, which is structured data the model reaches through tools, not prose to absorb; anything under erasure obligations, because weights cannot forget a customer; and correspondence containing personal data outside its retention basis. The corpus review is run jointly with the privacy office, and that is not overhead, it is the project.
+The model does this over billions of small pieces of text. That forces it to learn the ideas of your field and how people write about them.
 
-**The sequence.** Continued pretraining on the corpus teaches the dialect. The chapter 4 fine-tune re-runs on top to restore the house narrative shape. The general-capability eval runs, and the distillation repair follows if it shows damage. Then the routing economics from chapter 5 are recomputed, because a domain-adapted small model handles a wider routine tier than a general one did.
+</Slide>
 
-**What changes downstream.** Retrieval budget stops being spent on definitions and starts being spent on evidence. Prompts shrink because the model no longer needs the typology glossary inline. The measured effect to expect is not "smarter" but cheaper and sharper: fewer tokens of explanation per alert, better use of what is retrieved.
+<Slide journey="ladder/continued-pretraining" id="cp-21">
+
+There is also a simple reason models misread specialist text. It comes from how a model reads. A model does not read whole words. It reads text in small pieces. A piece is often just part of a word.
+
+These pieces are called tokens. The rules for cutting text into tokens were learned from everyday text.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-05">
+
+Now take a word that only your field uses. The cutting rules have rarely seen it.
+
+So the word gets cut into four or five pieces that mean nothing. The model has to put the word back together before it can use it.
+
+Continued pretraining teaches the model how these words behave. It learns to read them well in their cut-up form.
+
+</Slide>
+
+## Two kinds of training
+
+<Slide journey="ladder/continued-pretraining" id="cp-02">
+
+So far, we have seen how the model learns from text. People often confuse this with another kind of training. In that kind, people write examples by hand. Each example is a question and the answer they want. This is called fine-tuning.
+
+Both kinds train the model further. But they do very different jobs.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-06">
+
+Here they are side by side. Fine-tuning learns from thousands of written question and answer pairs. Continued pretraining learns from text just as it already exists. Text used just as it exists is called raw text. It needs billions of tokens of it.
+
+Fine-tuning teaches the model how to behave. Someone has to write every answer. Continued pretraining teaches the model what your field is. Nobody writes anything. But the text must be prepared first.
+
+</Slide>
+
+## Preparing the text is the project
+
+<Slide journey="ladder/continued-pretraining" id="cp-22">
+
+We said the text must be prepared first. Here is what that involves. You gather all the text you plan to train on. That whole collection is called the corpus.
+
+The model takes in everything in the corpus. It does not choose. So preparing the corpus is where the project is won or lost.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-07">
+
+Start by taking out repeats. Old archives hold many templates and near-identical copies. Whatever repeats gets too much weight in training.
+
+Then filter out noise. Failed scans, broken files and machine-made logs teach the model noise.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-08">
+
+Some text must never go in at all. Keep out anything you are not allowed to keep. Also keep out anything you would not want the model to say back.
+
+Old support tickets can hold passwords. Those stay out.
+
+Personal data stays out if you have no legal reason to keep it. Private legal advice stays out too.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-16">
+
+Some data is not written text at all. It sits in tables and records. That data stays out of the corpus too.
+
+When the model needs that data, it looks it up. It asks a small program to fetch it. A program like this is called a tool.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-23">
+
+Next comes the question of rights. Before training, check that you are allowed to use the text this way. Being able to read the text does not always mean you may train on it.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-09">
+
+Rules also follow the text into the model. A model trained on your corpus is made from that corpus. So the rules for that text now apply to the model too.
+
+Some rules say how sensitive the text is. Some say where it may be kept. Some say when it must be deleted.
+
+And a model cannot forget just one thing. If one record must be deleted, the model cannot drop just that record.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-10">
+
+One more thing goes into the corpus. If you train only on your own text, the model gets better at your field. But it can get worse at everything else.
+
+It loses some of the general skills it had before. This is called forgetting.
+
+So your text is mixed with general text. General text is everyday writing on every kind of subject. It helps the model keep its general skills.
+
+</Slide>
+
+## How much goes where
+
+<Slide journey="ladder/continued-pretraining" id="cp-11">
+
+With the corpus ready, the next question is how to share out the training. Say you can afford a fixed amount of training. You must decide how much goes to continued pretraining and how much to fine-tuning.
+
+One study tested exactly this. It looked at health, chemistry and coding. In each one, the best split put almost everything into continued pretraining.
+
+It is one study at one model size. Use it as a direction. Do not copy the exact split.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-12">
+
+So the lesson is about order and size. Learning your field is the big job. It comes first, and it uses raw text.
+
+Learning the task is the small job on top. It uses question and answer pairs.
+
+Some teams write tens of thousands of pairs by hand to add knowledge. That is the wrong way to do the big job.
+
+</Slide>
+
+## Putting it to work
+
+<Slide journey="ladder/continued-pretraining" id="cp-14">
+
+Now let us see what this changes in practice. A general model is one trained only on general text. Here is what it gets wrong in your field.
+
+It reads a common word in its everyday sense. Your field may use that word to mean something else.
+
+It treats your reference codes as noise. It takes your insider slang for a typo.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-15">
+
+Every one of these misses costs something. The terms must be looked up and explained on every request. Looking up text to add to a request is called retrieval.
+
+The system still works. But everything has to be explained each time.
+
+Continued pretraining puts that knowledge into the model itself. Then the terms no longer need explaining each time.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-17">
+
+Here is the order of work. First, continued pretraining on the corpus teaches your field. If the model was fine-tuned before, run that fine-tuning again on top. This brings back the style and format of its answers.
+
+Next, test the model's general skills. If they are damaged, repair them. Use the fix for forgetting from the distillation chapter.
+
+Your system may send each request to a model of the right size. This is called routing. Last, check the routing again. A small model that knows your field can now take more routine requests.
+
+</Slide>
+
+<Slide journey="ladder/continued-pretraining" id="cp-18">
+
+So what changes afterwards? Retrieval stops spending its space on definitions. It brings back evidence for the task instead.
+
+The text sent to the model with each request is called the prompt. Prompts get shorter. A list of definitions no longer needs pasting in.
+
+Each request spends fewer tokens on explaining terms. So each request costs less. The model also makes better use of what retrieval finds.
+
+</Slide>
 
 ## The test for moving on
 
-There is rarely anywhere further to go. Continued pretraining plus fine-tuning is the end of the road for almost every enterprise. The final chapter, [custom pretraining and architecture](/ladder/custom-pretraining), exists for one specific situation: data that is not text at all.
+<Slide journey="ladder/continued-pretraining" id="cp-19">
+
+So when should you move past this step? There is rarely anywhere further to go. Continued pretraining plus fine-tuning is the end of the road for almost every organisation.
+
+The last chapter is [custom pretraining and architecture](/ladder/custom-pretraining). It is only for data that is not text at all.
+
+</Slide>
+
+## What to remember
+
+<Slide journey="ladder/continued-pretraining" id="cp-recap">
+
+Here is what to remember. A model learns your field by guessing the next word in your own text. Preparing that text is where the project is won or lost.
+
+Mix in general text to keep the model's general skills. Learn the field first, from raw text. Then learn the task on top, from pairs.
+
+For almost everyone, this is as far as the ladder needs to go. The next and last chapter is custom pretraining and architecture.
+
+</Slide>
 
 <EvidenceBadge status="preprint-or-prototype" /> The budget-allocation finding is a single study at 7B scale, and is presented as a direction rather than a recipe. The tokenisation mechanism is standard and uncontroversial.
 
@@ -73,6 +240,5 @@ There is rarely anywhere further to go. Continued pretraining plus fine-tuning i
 - Modelling Optimal Trade-Off Between Continued Pre-Training and Supervised Fine-Tuning for LLM Domain Adaptation, OpenReview, 8 October 2025: https://openreview.net/forum?id=guUUlHPXRw
 - Derived artifacts inheriting obligations: [the concern matrix](/architecture/concern-matrix) and [agent data engineering](/layers/r14-agent-data-engineering).
 - The forgetting repair: [distillation](/ladder/distillation), and [intelligence and learning](/layers/r06-intelligence-and-learning).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

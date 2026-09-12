@@ -4,53 +4,193 @@ icon: "ArrowDownWideNarrow"
 description: "How a large model teaches a small one, why learning from distributions beats learning from answers, the repair for fine-tuning's forgetting, and the arithmetic that decides when it pays."
 ---
 
-<PlainTerms>
-Everything else on this ladder tries to make an agent better. This one keeps quality roughly the same and makes it cheaper and faster, by having a large model teach a small one. It earns its place twice over: it is the answer to "this costs too much at volume", and it is the published repair for the damage that fine-tuning does. The one thing to remember: a student can only be as good as its teacher, so distil only what the teacher already does well.
-</PlainTerms>
+<Slide journey="ladder/distillation" id="di-01">
+
+Every other step on this ladder tries to make an agent better. This one keeps the quality about the same. Instead, it makes the agent cheaper and faster. It works by having a large model teach a small one. This is called distillation.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-intro">
+
+The ladder is the order in which to try changes to an agent. The early steps change the system around the model. The later steps change the model itself. Distillation is one of those later steps.
+
+First, we look at how one model teaches another.
+
+Then we see how the same idea repairs a model that forgot skills.
+
+Next, we work out when distillation pays for itself.
+
+Then we see how two models can share the work.
+
+Last, we look at where to go next.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-02">
+
+Distillation does two different jobs. The first job is cutting cost. It helps with work that runs a very large number of times.
+
+The second job is a repair. A model can be trained further on your own examples. This is called fine-tuning. Fine-tuning can damage skills the model already had. Distillation can repair that damage.
+
+</Slide>
 
 ## How a model teaches a model
 
-Supervised fine-tuning shows a model the right answer. Distillation shows it something richer: the teacher's full distribution over possible next <Term k="token">tokens</Term>, not just the one it picked. The student learns that "transferred" was chosen, and that "moved" was nearly chosen, and that "flew" was never in contention. Those relative preferences carry far more information per example than a bare answer does, which is why a student can approach teacher quality with surprisingly modest training.
+<Slide journey="ladder/distillation" id="di-20">
 
-The modern refinement is **on-policy distillation**: rather than the student passively imitating teacher transcripts, the student generates, and the teacher grades the student's own attempts. This matters because it teaches the student in the situations the student actually gets itself into, including its own characteristic mistakes, rather than in the situations the teacher would have been in. The published economics: comparable quality at **9 to 30 times lower training compute** than scaling supervised fine-tuning.
+So how does one model teach another? Start with a large model that already does the task well. Its answers are good. But it is slow and costs a lot to run. In distillation, this large model is called the teacher.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-21">
+
+Next to it, we put a much smaller model. A small model is cheaper and faster to run. It learns to do the task by copying the teacher. This small model is called the student.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-22">
+
+To see how the teaching works, look at how a model writes. It writes its answer one word at a time. At each step, some words look more likely than others. The word it picks at each step is called the next word.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-03">
+
+Fine-tuning shows a model only the right next word. Say that word is transferred.
+
+Distillation shows the student more than that. The teacher also shows that the word moved was nearly chosen.
+
+And it shows that the word flew was never likely at all. These near misses tell the student a lot more than one right answer. So a student can get close to its teacher without much training.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-04">
+
+There is a newer way to do this. In the newer way, the student tries the task first.
+
+Then the teacher grades the student's own attempt.
+
+The student learns from that grade. So it learns from the mistakes it really makes. This is called on-policy distillation.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-05">
+
+Training a model takes a lot of computing power. Published work compared this newer way with simply doing more fine-tuning. It reached about the same quality. And it used 9 to 30 times less computing power to train.
+
+</Slide>
 
 ## The second use: repairing forgetting
 
-The previous chapter left a problem open. Fine-tuning on your domain degrades general capability, and adapters do not prevent it.
+<Slide journey="ladder/distillation" id="di-06">
 
-The published repair is distillation with a specific teacher: **the pre-fine-tune version of the same model.** The fine-tuned student re-learns the general behaviour from the model it used to be, while keeping the domain behaviour it just gained. This works because the two objectives are not actually in conflict; the fine-tune simply drifted weights it did not need to drift, and the original model is a perfect reference for where they belong.
+Now to the second job, the repair. Fine-tuning a model on your own examples makes it better at your work. But it also makes the model worse at general tasks. It has partly forgotten skills it used to have. Even fine-tuning that changes only a small part of the model does not prevent this.
 
-So distillation is maintenance, not only compression. If you run chapter 4 or chapter 7, plan to run this afterwards, and let your general-capability eval tell you whether you need to.
+</Slide>
 
-<GuideFigure id="distillation-two-uses" fullWidth />
+<Slide journey="ladder/distillation" id="di-07">
 
-<TeachingIllustration src="/images/ladder/distillation-mechanism-labeled-v4.webp" alt="A large teacher model passes a rich distribution of possible outputs to a compact student, while a single hard answer carries less information below." title="The distribution teaches more than the winning answer" caption="A teacher's relative confidence across alternatives carries information about boundaries and near misses. The student learns that shape, not merely a collection of final answers." />
+The published repair uses a special teacher. The teacher is the same model before it was fine-tuned.
+
+The fine-tuned model is the student. It learns its general skills back from the model it used to be. And it keeps the new skills it just gained.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-08">
+
+So distillation is not only a way to save money. It is also maintenance you plan after training a model further. Plan it after fine-tuning. There is another way to train a model further. You train it on plain text from your own field. That is called continued pretraining. Plan the same repair after that too.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-23">
+
+How do you know if a repair is needed? Keep a test of general skills. Run it after each round of training. If the scores drop, plan the repair. While the repair runs, keep testing the new skills too. That shows you whether the repair is undoing them.
+
+</Slide>
 
 ## When it pays: the arithmetic
 
-Distillation is a fixed cost that buys a lower marginal cost. The decision is arithmetic, not fashion:
+<Slide journey="ladder/distillation" id="di-09">
 
-- **Volume.** The saving is per call, so the fixed cost divides by call count. Divide the fixed cost by the saving on each call. That gives the number of calls it takes to pay the cost back. Compare that with your real call volume. No general threshold applies. The inputs are your own costs and volumes.
-- **Narrowness.** A student holds teacher quality on a bounded task, not in general. The narrower the task, the smaller the student can be.
-- **A locked eval.** The claim "the student holds quality" is a measurement, and it needs the eval to exist before the student does. The tension worth naming: the business case needs a fixed eval set, and a live learning loop keeps rewriting the eval set. Decide which programme you are running.
+Now back to the first job, saving money. Distillation has a cost you pay once. That is the cost of building the student.
 
-And one hard rule: **never distil a capability the teacher does not reliably have.** The student learns the teacher's errors with the same fidelity as its skills, minus the scale that occasionally rescued the teacher.
+After that, every request to the student costs less. One request to a model is called a call. Divide the one-off cost by the saving on each call. That tells you how many calls it takes to pay the cost back.
 
-## At the bank
+Then compare that with the number of calls you really make. No general number tells you when it pays. You have to use your own costs and volumes.
 
-<TeachingIllustration src="/images/ladder/distillation-two-uses-labeled-v3.webp" alt="Two parallel paths show a large proven model teaching a smaller volume model and a general model restoring faded abilities in a domain model." title="Compression and repair use the same tool differently" caption="For volume, the proven large model teaches a cheaper student. For repair, the pre-training model teaches general capability back into a domain-tuned model. Both students must pass the same locked evaluation gate." />
+</Slide>
 
-By the previous chapter, the bank had already moved drafting to a small fine-tuned model, and the general-capability eval came back slightly degraded: the adapter improved narratives and cost the model some instruction-following on unrelated tasks.
+<Slide journey="ladder/distillation" id="di-10">
 
-**The repair run.** The bank distils from the original, pre-adapter 7B model as teacher, on a general instruction-following mix, while holding the narrative eval as a guard. The degraded capability recovers; the narrative behaviour stays. This is the standard sequence, not an exotic one: fine-tune, measure the collateral damage, distil it away.
+Distillation also needs the right kind of task. A small student cannot match a large teacher at everything. It can match the teacher only on a narrow task. The narrower the task, the smaller the student can be.
 
-**The volume case.** Alert triage runs at tens of thousands of items a month, and most of them are routine: assemble context, produce a narrative, propose "no further action" with reasons. The frontier model's quality on routine alerts is not the constraint, its unit cost is. A distilled student handling the routine tier, with a confidence rule escalating the unusual ones to the larger model, cuts the average cost per alert substantially while the escalation path preserves quality where it matters. The split is measured, not guessed: the eval says which alerts the student handles at parity, and the boundary is set there. Whether the saving repays the fixed cost is the arithmetic above, run on the bank's own volume and costs.
+</Slide>
 
-**What the bank does not distil.** The disposition proposal on complex cases. That judgement is the part the analysts and regulators care most about, the teacher's own reliability there is the open question of the next chapter, and a cheaper copy of an unproven judgement is a saving nobody asked for.
+<Slide journey="ladder/distillation" id="di-24">
+
+You also need proof that the student is good enough. That proof comes from a test. Write the test before you build the student. Then do not change it. A test kept fixed like this is called a locked test.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-11">
+
+A locked test can clash with another goal. Proving the saving needs a test that stays the same. But some teams keep improving their agent all the time. That work keeps rewriting the test. So decide which of the two you are running.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-12">
+
+The student copies everything the teacher does. That includes the teacher's mistakes. The teacher's large size sometimes saved it from a mistake. The small student does not have that size. So there is one hard rule. Never distil a skill the teacher does not reliably have.
+
+</Slide>
+
+## Splitting work between two models
+
+<Slide journey="ladder/distillation" id="di-15">
+
+Distillation also lets two models share the work. Say most of the requests an agent gets are routine. The large model handles them well. But it costs too much to run on every one of them.
+
+So the small student handles the routine requests. The unusual ones still go to the large model. The average cost per request drops a lot.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-25">
+
+How does each request reach the right model? The student checks how sure it is of its answer. If it is not sure enough, the request goes up to the large model. This check is called a confidence rule.
+
+</Slide>
+
+<Slide journey="ladder/distillation" id="di-16">
+
+Do not guess which requests are routine. Use your test. It shows which requests the student handles as well as the large model. Send only those to the student. How much this saves depends on your own volumes. So no general number is claimed for it.
+
+</Slide>
 
 ## The test
 
-There is no climb from here. Distillation follows the other options rather than replacing them: after [adapters](/ladder/adapters-and-fine-tuning) or [continued pretraining](/ladder/continued-pretraining) as the forgetting repair, or after any of them as the volume play. If what remains wrong is judgement on gradeable outcomes, that is [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning).
+<Slide journey="ladder/distillation" id="di-18">
+
+The last question is where distillation fits. It comes after the other ways of improving an agent. It does not replace them. Now say the agent's judgement is still wrong. And its results are the kind you can check and score.
+
+There is a way to train a model on scored attempts. It is called [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning). That is where to go next.
+
+</Slide>
+
+## What to remember
+
+<Slide journey="ladder/distillation" id="di-recap">
+
+Here is what to remember. Only distil what the teacher already does well. The student copies its mistakes too.
+
+A small student is cheaper and faster to run than its teacher.
+
+The same method repairs what a model forgets after fine-tuning.
+
+Whether it pays depends on your own costs and volumes.
+
+And lock the test before you build the student. Next, we look at reinforcement fine-tuning.
+
+</Slide>
 
 <EvidenceBadge status="mixed-evidence" /> The compute ratio and the forgetting repair are published work. The routing economics are arithmetic whose inputs are your own volumes, and no general number is claimed for them.
 
@@ -59,6 +199,5 @@ There is no climb from here. Distillation follows the other options rather than 
 
 - On-policy distillation (October 2025), including the pre-fine-tune-teacher repair and the 9 to 30 times training-compute comparison, covered on [intelligence and learning](/layers/r06-intelligence-and-learning).
 - Routing between model tiers and the cost model behind it: [size agent supervision and cost](/layers/r12-observability-and-finops).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

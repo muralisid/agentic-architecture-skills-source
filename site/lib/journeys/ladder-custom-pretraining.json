@@ -1,0 +1,150 @@
+{
+  "id": "ladder/custom-pretraining",
+  "title": "Custom pretraining and architecture",
+  "slides": [
+    {
+      "id": "ca-01",
+      "src": "/slides/ladder/custom-pretraining/ca-01.webp",
+      "title": "Custom pretraining and architecture",
+      "caption": "Two different offers sit at the top of the market. This chapter shows how to tell them apart. It also shows whether either applies."
+    },
+    {
+      "id": "ca-intro",
+      "src": "/slides/ladder/custom-pretraining/ca-intro.webp",
+      "title": "What we will cover",
+      "caption": "This last chapter covers two offers that sound alike. It explains building your own model and models for data that is not text. It ends with how both link back."
+    },
+    {
+      "id": "ca-20",
+      "src": "/slides/ladder/custom-pretraining/ca-20.webp",
+      "title": "What a foundation model is",
+      "caption": "A foundation model is a large model trained on huge amounts of text. Other work is built on top of it."
+    },
+    {
+      "id": "ca-02",
+      "src": "/slides/ladder/custom-pretraining/ca-02.webp",
+      "title": "Two things sold in similar words",
+      "caption": "Path one is a cost decision that rarely pays. Path two is real specialist work for data like networks, sequences and signals."
+    },
+    {
+      "id": "ca-03",
+      "src": "/slides/ladder/custom-pretraining/ca-03.webp",
+      "title": "Path one: training from scratch",
+      "caption": "Path one starts from random numbers and trains on trillions of word pieces. Everything the model knows comes from your own text."
+    },
+    {
+      "id": "ca-04",
+      "src": "/slides/ladder/custom-pretraining/ca-04.webp",
+      "title": "It needs a top AI lab's budget",
+      "caption": "Path one costs what the biggest AI labs spend. While you build, outside models keep improving on someone else's budget."
+    },
+    {
+      "id": "ca-05",
+      "src": "/slides/ladder/custom-pretraining/ca-05.webp",
+      "title": "When path one is genuine",
+      "caption": "Path one is genuine under a national sovereignty rule. It is also genuine with a huge body of text unlike public text, plus the money and team."
+    },
+    {
+      "id": "ca-06",
+      "src": "/slides/ladder/custom-pretraining/ca-06.webp",
+      "title": "First ask about continued pretraining",
+      "caption": "Continued pretraining on the same text gives most of what people want from their own model. It costs far less. Someone else maintains the model underneath."
+    },
+    {
+      "id": "ca-07",
+      "src": "/slides/ladder/custom-pretraining/ca-07.webp",
+      "title": "If you do take path one",
+      "caption": "Mixing a little of your own text in from the start beat adding it later. It is a company's own study with small models. It guides how to run path one only."
+    },
+    {
+      "id": "ca-08",
+      "src": "/slides/ladder/custom-pretraining/ca-08.webp",
+      "title": "Path two: data that is not text",
+      "caption": "Models that read text work on lines of word pieces. Networks, sensor streams and molecules are not like that. Things joined by links form a graph."
+    },
+    {
+      "id": "ca-21",
+      "src": "/slides/ladder/custom-pretraining/ca-21.webp",
+      "title": "A model built for links",
+      "caption": "Data made of linked things needs a different kind of model. The most common is a graph neural network. We call it a graph model."
+    },
+    {
+      "id": "ca-22",
+      "src": "/slides/ladder/custom-pretraining/ca-22.webp",
+      "title": "Each thing is a node",
+      "caption": "Each thing in a graph is called a node. Each node starts with a list of numbers that describe it."
+    },
+    {
+      "id": "ca-09",
+      "src": "/slides/ladder/custom-pretraining/ca-09.webp",
+      "title": "How a graph model learns",
+      "caption": "In each layer, nodes take in their neighbours' numbers. The model then reads each node's numbers to predict."
+    },
+    {
+      "id": "ca-10",
+      "src": "/slides/ladder/custom-pretraining/ca-10.webp",
+      "title": "Too many layers: nodes look alike",
+      "caption": "Over-smoothing: with too many layers, nearby nodes end up alike. Graph models in real use often have only two or three layers."
+    },
+    {
+      "id": "ca-11",
+      "src": "/slides/ladder/custom-pretraining/ca-11.webp",
+      "title": "Far signals get squashed",
+      "caption": "Over-squashing: information from far away is squeezed into fixed-size numbers. Much of it is lost at narrow links."
+    },
+    {
+      "id": "ca-12",
+      "src": "/slides/ladder/custom-pretraining/ca-12.webp",
+      "title": "The two problems pull against each other",
+      "caption": "Adding layers eases over-squashing but worsens over-smoothing. Experienced people fix this by changing the design of the model."
+    },
+    {
+      "id": "ca-13",
+      "src": "/slides/ladder/custom-pretraining/ca-13.webp",
+      "title": "Three more problems to listen for",
+      "caption": "Learned numbers can stop being distinct. Cutting a huge graph breaks real links. Training across many machines behaves differently."
+    },
+    {
+      "id": "ca-14",
+      "src": "/slides/ladder/custom-pretraining/ca-14.webp",
+      "title": "When path two is genuine",
+      "caption": "Path two fits when the prediction depends on how things link. The data must be big enough for these problems to matter."
+    },
+    {
+      "id": "ca-16",
+      "src": "/slides/ladder/custom-pretraining/ca-16.webp",
+      "title": "The graph model is a tool",
+      "caption": "The graph model works out a score from the graph. A tool carries the score and its evidence to the agent. The agent drafts, and a person decides."
+    },
+    {
+      "id": "ca-17",
+      "src": "/slides/ladder/custom-pretraining/ca-17.webp",
+      "title": "Two teams that meet at a tool",
+      "caption": "Every earlier step builds around an existing model. This chapter builds models. The two teams differ in budget, staff and risk checks. They meet at a tool."
+    },
+    {
+      "id": "ca-18",
+      "src": "/slides/ladder/custom-pretraining/ca-18.webp",
+      "title": "Try the boring options first",
+      "caption": "Before a custom model, try hand-made measures of the graph, a ready-made graph model, and rules for known patterns."
+    },
+    {
+      "id": "ca-23",
+      "src": "/slides/ladder/custom-pretraining/ca-23.webp",
+      "title": "The custom model must beat them",
+      "caption": "The custom model must beat the simple options on your own labelled cases. It is the same fair test used earlier on this ladder."
+    },
+    {
+      "id": "ca-19",
+      "src": "/slides/ladder/custom-pretraining/ca-19.webp",
+      "title": "Diagnose the failure before you spend",
+      "caption": "Find out what is really failing before spending. Never assume a bigger version of what you have will fix it."
+    },
+    {
+      "id": "ca-recap",
+      "src": "/slides/ladder/custom-pretraining/ca-recap.webp",
+      "title": "What to remember",
+      "caption": "Building your own model rarely pays. Graph models suit data made of linked things. They work as tools. Change the system before you change the model."
+    }
+  ]
+}

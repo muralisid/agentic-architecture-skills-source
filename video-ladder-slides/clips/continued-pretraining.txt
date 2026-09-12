@@ -1,0 +1,82 @@
+continued-pretraining: 24 slides, 81 clips, 1460 words, about 8.7 min at Scout7's 2.8 words a second
+  c001 CAMERA (11) This chapter is about teaching a model your field of work.
+  c002 cp-01 b1 (15) It learns from text your organisation already holds. Think of contracts, support tickets and manuals.
+  c003 cp-intro b1 (12) This chapter is one of five ways to change the model itself.
+  c004 cp-intro b2 (23) You pick it when a model does not understand the language of your field. First, we see how a model learns from text.
+  c005 cp-intro b3 (17) Then we compare that with training on written examples. Next, we look at getting the text ready.
+  c006 cp-intro b3 (20) Then we see how to share out the training effort. Last, we see what changes once the work is done.
+  c007 cp-03 b1 (20) First, how does a model learn from text at all? It is shown some text with the next word hidden.
+  c008 cp-03 b2 (22) It guesses the hidden word. Then it checks the real one. It does this again and again, over huge amounts of text.
+  c009 cp-03 b3 (24) This is called pretraining. Every next word is a small test with a known answer. So nobody has to write the answers by hand.
+  c010 cp-20 b1 (24) Most models you use have already learned this way. They learned from text on every kind of subject. Now take one of those models.
+  c011 cp-20 b2 (21) Keep training it the same way, on your own text. This is called continued pretraining. The model keeps guessing next words.
+  c012 cp-20 b2 (19) But now the words come from your field. It comes out reading your field the way your people do.
+  c013 cp-04 b1 (22) Why does guessing words teach the model anything? To guess the next word well, the model must know what the words mean.
+  c014 cp-04 b1 (14) It must also know what tends to come next in that kind of document.
+  c015 cp-04 b2 (11) The model does this over billions of small pieces of text.
+  c016 cp-04 b2 (16) That forces it to learn the ideas of your field and how people write about them.
+  c017 cp-21 b1 (17) There is also a simple reason models misread specialist text. It comes from how a model reads.
+  c018 cp-21 b1 (22) A model does not read whole words. It reads text in small pieces. A piece is often just part of a word.
+  c019 cp-21 b2 (17) These pieces are called tokens. The rules for cutting text into tokens were learned from everyday text.
+  c020 cp-05 b1 (16) Now take a word that only your field uses. The cutting rules have rarely seen it.
+  c021 cp-05 b2 (13) So the word gets cut into four or five pieces that mean nothing.
+  c022 cp-05 b2 (14) The model has to put the word back together before it can use it.
+  c023 cp-05 b3 (19) Continued pretraining teaches the model how these words behave. It learns to read them well in their cut-up form.
+  c024 cp-02 b1 (20) So far, we have seen how the model learns from text. People often confuse this with another kind of training.
+  c025 cp-02 b1 (18) In that kind, people write examples by hand. Each example is a question and the answer they want.
+  c026 cp-02 b2 (16) This is called fine-tuning. Both kinds train the model further. But they do very different jobs.
+  c027 cp-06 b1 (16) Here they are side by side. Fine-tuning learns from thousands of written question and answer pairs.
+  c028 cp-06 b1 (20) Continued pretraining learns from text just as it already exists. Text used just as it exists is called raw text.
+  c029 cp-06 b2 (20) It needs billions of tokens of it. Fine-tuning teaches the model how to behave. Someone has to write every answer.
+  c030 cp-06 b2 (19) Continued pretraining teaches the model what your field is. Nobody writes anything. But the text must be prepared first.
+  c031 cp-22 b1 (23) We said the text must be prepared first. Here is what that involves. You gather all the text you plan to train on.
+  c032 cp-22 b2 (15) That whole collection is called the corpus. The model takes in everything in the corpus.
+  c033 cp-22 b2 (16) It does not choose. So preparing the corpus is where the project is won or lost.
+  c034 cp-07 b1 (21) Start by taking out repeats. Old archives hold many templates and near-identical copies. Whatever repeats gets too much weight in training.
+  c035 cp-07 b2 (15) Then filter out noise. Failed scans, broken files and machine-made logs teach the model noise.
+  c036 cp-08 b1 (17) Some text must never go in at all. Keep out anything you are not allowed to keep.
+  c037 cp-08 b2 (22) Also keep out anything you would not want the model to say back. Old support tickets can hold passwords. Those stay out.
+  c038 cp-08 b3 (19) Personal data stays out if you have no legal reason to keep it. Private legal advice stays out too.
+  c039 cp-16 b1 (14) Some data is not written text at all. It sits in tables and records.
+  c040 cp-16 b2 (18) That data stays out of the corpus too. When the model needs that data, it looks it up.
+  c041 cp-16 b2 (16) It asks a small program to fetch it. A program like this is called a tool.
+  c042 cp-23 b1 (19) Next comes the question of rights. Before training, check that you are allowed to use the text this way.
+  c043 cp-23 b1 (15) Being able to read the text does not always mean you may train on it.
+  c044 cp-09 b1 (19) Rules also follow the text into the model. A model trained on your corpus is made from that corpus.
+  c045 cp-09 b2 (20) So the rules for that text now apply to the model too. Some rules say how sensitive the text is.
+  c046 cp-09 b2 (14) Some say where it may be kept. Some say when it must be deleted.
+  c047 cp-09 b3 (21) And a model cannot forget just one thing. If one record must be deleted, the model cannot drop just that record.
+  c048 cp-10 b1 (22) One more thing goes into the corpus. If you train only on your own text, the model gets better at your field.
+  c049 cp-10 b2 (18) But it can get worse at everything else. It loses some of the general skills it had before.
+  c050 cp-10 b3 (12) This is called forgetting. So your text is mixed with general text.
+  c051 cp-10 b3 (18) General text is everyday writing on every kind of subject. It helps the model keep its general skills.
+  c052 cp-11 b1 (23) With the corpus ready, the next question is how to share out the training. Say you can afford a fixed amount of training.
+  c053 cp-11 b2 (19) You must decide how much goes to continued pretraining and how much to fine-tuning. One study tested exactly this.
+  c054 cp-11 b2 (19) It looked at health, chemistry and coding. In each one, the best split put almost everything into continued pretraining.
+  c055 cp-11 b3 (19) It is one study at one model size. Use it as a direction. Do not copy the exact split.
+  c056 cp-12 b1 (23) So the lesson is about order and size. Learning your field is the big job. It comes first, and it uses raw text.
+  c057 cp-12 b2 (15) Learning the task is the small job on top. It uses question and answer pairs.
+  c058 cp-12 b3 (23) Some teams write tens of thousands of pairs by hand to add knowledge. That is the wrong way to do the big job.
+  c059 cp-14 b1 (19) Now let us see what this changes in practice. A general model is one trained only on general text.
+  c060 cp-14 b2 (18) Here is what it gets wrong in your field. It reads a common word in its everyday sense.
+  c061 cp-14 b2 (10) Your field may use that word to mean something else.
+  c062 cp-14 b3 (15) It treats your reference codes as noise. It takes your insider slang for a typo.
+  c063 cp-15 b1 (18) Every one of these misses costs something. The terms must be looked up and explained on every request.
+  c064 cp-15 b2 (23) Looking up text to add to a request is called retrieval. The system still works. But everything has to be explained each time.
+  c065 cp-15 b3 (18) Continued pretraining puts that knowledge into the model itself. Then the terms no longer need explaining each time.
+  c066 cp-17 b1 (15) Here is the order of work. First, continued pretraining on the corpus teaches your field.
+  c067 cp-17 b1 (22) If the model was fine-tuned before, run that fine-tuning again on top. This brings back the style and format of its answers.
+  c068 cp-17 b2 (21) Next, test the model's general skills. If they are damaged, repair them. Use the fix for forgetting from the distillation chapter.
+  c069 cp-17 b3 (17) Your system may send each request to a model of the right size. This is called routing.
+  c070 cp-17 b3 (18) Last, check the routing again. A small model that knows your field can now take more routine requests.
+  c071 cp-18 b1 (19) So what changes afterwards? Retrieval stops spending its space on definitions. It brings back evidence for the task instead.
+  c072 cp-18 b2 (16) The text sent to the model with each request is called the prompt. Prompts get shorter.
+  c073 cp-18 b3 (17) A list of definitions no longer needs pasting in. Each request spends fewer tokens on explaining terms.
+  c074 cp-18 b3 (15) So each request costs less. The model also makes better use of what retrieval finds.
+  c075 cp-19 b1 (15) So when should you move past this step? There is rarely anywhere further to go.
+  c076 cp-19 b1 (14) Continued pretraining plus fine-tuning is the end of the road for almost every organisation.
+  c077 cp-19 b2 (19) The last chapter is custom pretraining and architecture. It is only for data that is not text at all.
+  c078 cp-recap b1 (19) Here is what to remember. A model learns your field by guessing the next word in your own text.
+  c079 cp-recap b2 (21) Preparing that text is where the project is won or lost. Mix in general text to keep the model's general skills.
+  c080 cp-recap b2 (15) Learn the field first, from raw text. Then learn the task on top, from pairs.
+  c081 CAMERA (23) For almost everyone, this is as far as the ladder needs to go. The next and last chapter is custom pretraining and architecture.

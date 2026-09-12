@@ -1,0 +1,144 @@
+{
+  "id": "ladder/distillation",
+  "title": "Distillation",
+  "slides": [
+    {
+      "id": "di-01",
+      "src": "/slides/ladder/distillation/di-01.webp",
+      "title": "Distillation",
+      "caption": "Distillation keeps an agent's quality about the same and makes it cheaper and faster. A large model teaches a small one."
+    },
+    {
+      "id": "di-intro",
+      "src": "/slides/ladder/distillation/di-intro.webp",
+      "title": "What we will cover",
+      "caption": "Distillation is one of the later ladder steps. Those steps change the model itself. This video covers how it works, whether it pays and where to go next."
+    },
+    {
+      "id": "di-02",
+      "src": "/slides/ladder/distillation/di-02.webp",
+      "title": "One tool, two jobs",
+      "caption": "Distillation cuts cost for work that runs at high volume. It also repairs the damage that fine-tuning does. Fine-tuning means training a model further on your own examples."
+    },
+    {
+      "id": "di-20",
+      "src": "/slides/ladder/distillation/di-20.webp",
+      "title": "The large model is the teacher",
+      "caption": "Distillation starts with a large model that already does the task well. It is slow and costly to run. This large model is called the teacher."
+    },
+    {
+      "id": "di-21",
+      "src": "/slides/ladder/distillation/di-21.webp",
+      "title": "The small model is the student",
+      "caption": "A much smaller model learns to do the task by copying the teacher. It is cheaper and faster to run. This small model is called the student."
+    },
+    {
+      "id": "di-22",
+      "src": "/slides/ladder/distillation/di-22.webp",
+      "title": "A model picks the next word",
+      "caption": "A model writes its answer one word at a time. At each step, some words look more likely than others. The word it picks is called the next word."
+    },
+    {
+      "id": "di-03",
+      "src": "/slides/ladder/distillation/di-03.webp",
+      "title": "The student sees the near misses",
+      "caption": "The student learns the word the teacher picked. It also learns the near miss and the word that was never likely. So it gets close to the teacher without much training."
+    },
+    {
+      "id": "di-04",
+      "src": "/slides/ladder/distillation/di-04.webp",
+      "title": "The student tries, the teacher grades",
+      "caption": "The student tries the task first and the teacher grades that attempt. The student learns from the mistakes it really makes. This is called on-policy distillation."
+    },
+    {
+      "id": "di-05",
+      "src": "/slides/ladder/distillation/di-05.webp",
+      "title": "About the same quality, far less computing power",
+      "caption": "Published work compared on-policy distillation with doing more fine-tuning. It reached about the same quality with 9 to 30 times less computing power to train."
+    },
+    {
+      "id": "di-06",
+      "src": "/slides/ladder/distillation/di-06.webp",
+      "title": "Fine-tuning makes a model forget",
+      "caption": "Fine-tuning on your own examples makes a model better at your work. It also makes it worse at general tasks. Even changing only a small part of the model does not prevent it."
+    },
+    {
+      "id": "di-07",
+      "src": "/slides/ladder/distillation/di-07.webp",
+      "title": "The old model teaches the new one",
+      "caption": "The teacher is the same model as it was before fine-tuning. The fine-tuned model learns its general skills back. It keeps the new skills it just gained."
+    },
+    {
+      "id": "di-08",
+      "src": "/slides/ladder/distillation/di-08.webp",
+      "title": "Plan distillation as maintenance",
+      "caption": "Distillation is also maintenance. Plan it after fine-tuning. Plan it too after continued pretraining. That means training a model further on plain text from your field."
+    },
+    {
+      "id": "di-23",
+      "src": "/slides/ladder/distillation/di-23.webp",
+      "title": "Test general skills after training",
+      "caption": "A test of general skills tells you if a repair is needed. During the repair, keep testing the new skills too."
+    },
+    {
+      "id": "di-09",
+      "src": "/slides/ladder/distillation/di-09.webp",
+      "title": "Work out when it pays",
+      "caption": "Divide the one-off cost by the saving on each call. That is how many calls it takes to pay it back. Compare it with your real volume."
+    },
+    {
+      "id": "di-10",
+      "src": "/slides/ladder/distillation/di-10.webp",
+      "title": "It only works on a narrow task",
+      "caption": "A student matches its teacher only on a narrow task. The narrower the task, the smaller the student can be."
+    },
+    {
+      "id": "di-24",
+      "src": "/slides/ladder/distillation/di-24.webp",
+      "title": "Lock the test first",
+      "caption": "The proof that a student is good enough comes from a test. Write it before you build the student and keep it fixed. This is a locked test."
+    },
+    {
+      "id": "di-11",
+      "src": "/slides/ladder/distillation/di-11.webp",
+      "title": "A fixed test or a changing one",
+      "caption": "Proving the saving needs a test that stays fixed. Constant improvement keeps rewriting the test. Decide which of the two you are running."
+    },
+    {
+      "id": "di-12",
+      "src": "/slides/ladder/distillation/di-12.webp",
+      "title": "The student copies the errors too",
+      "caption": "The student copies the teacher's mistakes as well as its skills. It lacks the size that sometimes saved the teacher. So only distil what the teacher does reliably."
+    },
+    {
+      "id": "di-15",
+      "src": "/slides/ladder/distillation/di-15.webp",
+      "title": "Routine requests go to the student",
+      "caption": "A distilled student handles routine requests. Unusual ones still go to the large model. The average cost per request drops a lot."
+    },
+    {
+      "id": "di-25",
+      "src": "/slides/ladder/distillation/di-25.webp",
+      "title": "Unsure requests go up to the large model",
+      "caption": "The student checks how sure it is of its answer. If it is not sure enough, the request goes up to the large model. This is a confidence rule."
+    },
+    {
+      "id": "di-16",
+      "src": "/slides/ladder/distillation/di-16.webp",
+      "title": "The test sets the boundary",
+      "caption": "The test shows which requests the student handles as well as the large model. The split goes there. The saving depends on your own volumes."
+    },
+    {
+      "id": "di-18",
+      "src": "/slides/ladder/distillation/di-18.webp",
+      "title": "Where to go next",
+      "caption": "Distillation comes after the other options and does not replace them. If judgement is still wrong on results you can score, look at reinforcement fine-tuning."
+    },
+    {
+      "id": "di-recap",
+      "src": "/slides/ladder/distillation/di-recap.webp",
+      "title": "What to remember",
+      "caption": "Only distil what the teacher does well. The student is cheaper and faster. It repairs forgetting. Your volumes decide if it pays. Lock the test first."
+    }
+  ]
+}

@@ -12,6 +12,10 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-09-12
+
+**The intelligence ladder is now a run of slides.** Each of the nine pages shows one idea per slide, with a short explanation under it. New words are explained in plain words before they are named. Each page opens with what it covers and closes with what to remember. The pages hold 213 slides, up from 155 illustrations and prose sections. The bank example is gone, so the theory stands on its own. No new research: every claim and source is one the pages already carried.
+
 ## 2026-09-11
 
 **Distillation pay-back rule corrected.** The distillation page gave two call-volume thresholds for when distillation pays back. The bank example sat between them. The page's own evidence note also says no general number is claimed. The thresholds are replaced by the pay-back arithmetic itself, and the bank example now points to it.

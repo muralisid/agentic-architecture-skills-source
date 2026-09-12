@@ -4,112 +4,323 @@ icon: "ListOrdered"
 description: "Eight ways to make an agent better, in the order worth trying them. Three change the system around the model, five change the model itself, and the choice among those five is a diagnosis rather than a climb."
 ---
 
-<PlainTerms>
-When an agent is not good enough there are eight different things you can change, and they are not equally sensible to try. Rewriting the instructions is cheap and often enough. Retraining a model is expensive, slow, and frequently fixes the wrong problem. The first three changes are about the system around the model, and most organisations should live there. The last five change the model itself, and choosing between them is a matter of working out what is actually broken rather than climbing higher. The one thing to remember: teaching a model to behave differently and teaching it about your business are two different jobs needing two different kinds of data, and confusing them is why most model-training projects disappoint.
-</PlainTerms>
+<Slide journey="ladder/index" id="ov-01">
 
-<TeachingIllustration
-  src="/images/ladder/overview-two-decks-labeled-v3.webp"
-  alt="An unchanged model moves through instructions, governed context and a controlled tool loop before a measured junction branches to five selective model interventions, all resting on evaluation rails."
-  title="The whole intelligence journey in one view"
-  caption="Start by changing the system around the model: instructions, context, then tools and the loop. Only after those measured gates should a diagnosed failure branch into one or more model changes. The five branches are choices, not higher rungs."
-/>
+When an AI system is not good enough, there are eight things you can change. They are not equally sensible to try. This video shows the order worth trying them in.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-intro">
+
+Here is what this video covers. We start with two simple words you will need.
+
+Then we look at why the order of changes matters.
+
+Next, three changes to the system around the AI.
+
+Then five changes to the AI itself.
+
+Last, how to measure every change. That is how you know what worked.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-model">
+
+At the heart of any AI system is a program that reads text and writes text back. You give it words, and it answers with words. This program is called the model.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-agent">
+
+A model on its own only writes answers. Often we want more. We want it to finish a whole task.
+
+So we build a system around the model. It lets the model take actions, one step after another. This is called an agent.
+
+</Slide>
 
 ## Why the order matters
 
-**WHY:** "The model is not good enough" is a conclusion, not a diagnosis. It is usually reached when nobody has measured what is failing. The published evidence runs the other way: prompt and context work keeps yielding gains teams assumed were exhausted, and the expensive interventions often fix something that was never the problem. Climbing early is not only wasted money. It adds weight, lock-in and a maintenance burden to a system whose real fault is still sitting there underneath.
+<Slide journey="ladder/index" id="ov-02">
 
-**WHAT:** Treat improvement as two decks. **Deck A changes the system around the model** and is genuinely sequential: exhaust each step before the next is justified. **Deck B changes the model itself** and is not sequential: after the first step you choose by symptom, and several of the options combine rather than replace one another. Everything rests on an <Term k="eval">evaluation</Term> suite you own, because every test below is a measurement.
+Now you know what a model and an agent are. So why does the order of changes matter?
 
-## The worked example running through these chapters
+When an agent fails, a common first reaction is to blame the model. People say the model is not good enough. But that does not say what is actually wrong. It is usually said before anyone has measured what is failing.
 
-**In short:** One agent, followed from a first prompt to the top of the ladder, so each step is shown doing real work rather than described in the abstract.
+</Slide>
 
-Every chapter applies its step to the same case: a **financial crime investigation agent** at a retail and commercial bank. It assembles the context behind a transaction-monitoring alert, retrieves the customer's history, drafts the narrative, and proposes a disposition. The analyst decides.
+<Slide journey="ladder/index" id="ov-03">
 
-The [banking blueprint](/library/blueprints/verticals/banking-and-financial-services) calls this the strongest internal case in the vertical, for three reasons that also make it a good teacher. Alert volume is high, so cost is a real constraint rather than a footnote. The labels are real, because every alert eventually gets a disposition and some become confirmed cases, which means quality can be measured rather than argued about. And the analyst stays the decider, so the agent is assisting rather than acting, which keeps the control question honest.
+The usual answer is to change the model itself. You feed it new examples, and it learns from them. This is called training.
 
-It also happens to exercise every chapter. The bank has decades of its own written material, which is what makes continued pretraining a genuine option, and its transaction data is a network rather than a document, which is the one situation where the final chapter applies.
+Training too early costs a lot of money.
+
+It also makes the system heavier. And it can tie you to one model.
+
+You now have a trained model to look after. And the real fault is still sitting there underneath.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-04">
+
+Published work points the other way. Better wording and better information for the model are cheap to try. They keep finding gains that teams thought were used up.
+
+The expensive changes often fix something that was never the problem.
+
+</Slide>
 
 ## Deck A: change the system
 
-**In short:** Three steps, in order, and where most organisations should stop.
+<Slide journey="ladder/index" id="ov-07">
 
-<GuideFigure id="intelligence-ladder" fullWidth />
+We saw why jumping to training too early is costly. Now, here are all eight things you can change.
 
-<TeachingIllustration
-  src="/images/ladder/overview-deck-a-labeled-v4.webp"
-  alt="The same model appears in three sequential scenes: structured instructions, permission-aware evidence and memory, and a governed tool loop, with an evaluation rail beneath them."
-  title="Deck A changes the system, not the model"
-  caption="The model stays fixed while the team first improves the task packet, then the evidence and memory reaching it, then the harness that lets it act. The rail beneath each scene shows the rule: measure, find the plateau, and open the next gate only when the remaining failure has changed."
-/>
+The first three change the system around the model. The model itself stays exactly the same.
 
-| # | Step | What it changes | Move on when |
-|---|---|---|---|
-| 1 | [Instructions](/ladder/instructions) | The wording of the task | Accuracy climbs for a week of prompt work, then goes flat |
-| 2 | [Context](/ladder/context) | What reaches the model: how documents are represented, and what the agent remembers | Your representation beats a <Term k="matched control">matched control</Term>, and what still fails is acting rather than knowing |
-| 3 | [Tools and the loop](/ladder/tools-and-the-loop) | The system that runs the model | The loop is instrumented and traced, and the residue is the model not knowing your domain |
+The last five change the model itself. These are the expensive ones.
 
-Step 3 is the one most often skipped. Teams go from "the context is good and it is still failing" straight to training. The evidence says otherwise: holding task, environment and model constant, harness choices measurably change the decisions an agent makes even where the final success rate looks the same, and in retrieval-heavy work the harness can matter more than the retrieval architecture. Most organisations that believe they need a trained model need better tools and a better loop.
+</Slide>
 
-## The distinction that decides Deck B
+<Slide journey="ladder/index" id="ov-08">
 
-**In short:** Teaching behaviour and teaching knowledge are different jobs, needing different data, and most disappointment comes from confusing them.
+The first three work like a ladder. You climb them in order. Finish each step before the next one is worth trying. We call this group Deck A.
 
-| | Supervised <Term k="fine-tuning">fine-tuning</Term> | Continued pretraining |
-|---|---|---|
-| Learns from | Input and output pairs | Raw text |
-| How much | Thousands of examples | Billions of <Term k="token">tokens</Term> |
-| Changes | How the model **behaves** | What the model **knows**, and how it reads your language |
-| Wrong tool for | Adding knowledge | Fixing format or tone |
+</Slide>
 
-An enterprise with a large proprietary corpus has the raw text and often very few labelled pairs. That makes continued pretraining the natural option for a data-rich organisation, and it is why so many fine-tuning projects disappoint: the wrong instrument was chosen for the complaint.
+<Slide journey="ladder/index" id="ov-09">
 
-Facts about particular customers, cases and policies belong in neither column. They stay in retrieval and in the agent's governed memory, where they can be cited, updated and deleted. Weights can do none of those things.
+Step one is the [instructions](/ladder/instructions). You write words that tell the model what the task is. Those words are called the prompt.
+
+Keep improving the prompt. Measure how often the answers are right. Move on when that climbs for a week of work, then goes flat.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-10">
+
+Step two is [context](/ladder/context). Everything that reaches the model along with the task is called context. It includes your documents, and what the agent remembers from before.
+
+First, your way of preparing documents must beat a plain, simple version. Test both on the same cases. That keeps it fair. Then move on when the failures left are about taking action, not missing knowledge.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-loop">
+
+Before step three, one more idea. An agent works in rounds. First, it picks an action.
+
+Then it looks at the result.
+
+Then it decides what to do next, and goes round again. This repeating cycle is called the loop.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-11">
+
+Step three is the [tools and the loop](/ladder/tools-and-the-loop). The agent can do things, like search a file or save a note. Each of these abilities is called a tool.
+
+Record every round of the loop. Then you can trace what happened. Move on when what still fails is the model not knowing your field.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-12">
+
+Of the three steps, step three is the one most often skipped. Teams see that the context is good, but the agent still fails. So they jump straight to training.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-13">
+
+Published work kept the task and the model fixed, and changed only the loop. The agent made different decisions. That happened even when the success rate looked the same.
+
+For tasks that are mostly about finding information, the loop can matter more than how the search is built. Most teams who think they need a trained model need better tools and a better loop.
+
+</Slide>
+
+## Behaviour and knowledge are different jobs
+
+<Slide journey="ladder/index" id="ov-finetune">
+
+That was Deck A. Now we turn to changing the model itself.
+
+One way is to show the model thousands of examples. Each example is a task paired with a good answer. The model learns to behave like the examples. This is called fine-tuning.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-pretrain">
+
+There is a second way to teach a model. A model first learns by reading a huge amount of text.
+
+You can let it keep reading, using your own documents. It learns the words and ideas of your field. This is called continued pretraining.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-14">
+
+Now put the two side by side. Teaching a model how to behave and teaching it about your field are different jobs.
+
+Fine-tuning learns from thousands of examples. Continued pretraining learns from raw text. That just means plain documents. It needs billions of small pieces of words.
+
+Fine-tuning changes how the model behaves. Continued pretraining changes what it knows, and how it reads your language.
+
+So fine-tuning is the wrong tool for adding knowledge. And continued pretraining is the wrong tool for fixing format or tone.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-15">
+
+This matters for most companies. A company with lots of its own documents has plenty of raw text. But it often has very few example pairs. That makes continued pretraining the natural option for it.
+
+It also explains why so many fine-tuning projects disappoint. The wrong tool was picked for the problem.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-16">
+
+One more point about both methods. Some facts are about one customer, one case or one policy. Those facts belong in neither method. They stay in documents the agent looks up, and in the agent's [governed memory](/ladder/context#memory-is-context-that-lasts).
+
+There, each fact can be shown with its source, updated or deleted. A trained model cannot do any of those things.
+
+</Slide>
 
 ## Deck B: change the model
 
-**In short:** Not a climb. Read the symptom, pick the chapter, and expect to combine more than one.
+<Slide journey="ladder/index" id="ov-17">
 
-<GuideFigure id="model-change-diagnosis" fullWidth />
+We saw two different ways to teach a model. Now, how to choose among the five changes to the model.
 
-<TeachingIllustration
-  src="/images/ladder/overview-deck-b-labeled-v4.webp"
-  alt="Five balanced diagnostic branches surround one model: adapters, compression into a smaller model, grader feedback, domain documents, and a graph-shaped specialist model."
-  title="Deck B branches by symptom"
-  caption="Inconsistent behaviour points to adapters. Proven quality with excessive cost points to distillation. Checkable but wrong judgement points to reinforcement. Missing domain understanding points to continued pretraining. Network-shaped data points to a specialist architecture exposed as a tool."
-/>
+These five do not run in order. You look at what is failing, and pick the change that fits. You may need more than one. We call this group Deck B.
 
-| What is failing | Where to go |
-|---|---|
-| Wrong format, tone, or task behaviour | [Adapters and fine-tuning](/ladder/adapters-and-fine-tuning) |
-| Right quality, too slow or too expensive | [Distillation](/ladder/distillation) |
-| Right format, wrong judgement, and outcomes can be graded | [Reinforcement fine-tuning](/ladder/reinforcement-fine-tuning) |
-| Does not understand your domain's language, documents or notation | [Continued pretraining](/ladder/continued-pretraining) |
-| Your data is not text-shaped: graphs, sequences, signals at scale | [Custom pretraining and architecture](/ladder/custom-pretraining) |
+</Slide>
 
-These stack. Continued pretraining followed by supervised fine-tuning is a standard pairing rather than an either-or: the first teaches the domain, the second teaches the task. Distillation is not a climb at all, and can follow any of the others.
+<Slide journey="ladder/index" id="ov-adapters">
 
-## The rails: an evaluation suite you own
+The first symptom is wrong format, tone or task behaviour. The fix is to teach new behaviour with fine-tuning.
 
-**In short:** Every test on this page is a measurement, so without an eval suite there is no ladder, only opinion.
+You do not have to change the whole model. You can train a small add-on that sits on top of it. This add-on is called an adapter.
 
-<TeachingIllustration
-  src="/images/ladder/overview-evaluation-rails-labeled-v2.webp"
-  alt="A sealed collection of real cases passes unchanged through repeated evaluation checkpoints; a score beyond the human band triggers an alarm and a return to inspect the grader."
-  title="The evaluation suite is the rail beneath every stage"
-  caption="The same locked cases and matched controls test each intervention. A gate opens because the evidence justifies a different kind of change, not because a new technique is fashionable. If an automated score escapes beyond careful human performance, inspect the grader before trusting the result."
-/>
+</Slide>
 
-An organisation that cannot measure its agent will climb on anecdote, and anecdote favours whichever intervention is most fashionable. Build the suite from real failures rather than imagined ones, before the agent rather than after, and have it owned by the domain experts who can say what a correct answer looks like.
+<Slide journey="ladder/index" id="ov-distill">
 
-If the agent keeps memory, the suite also tests what memory breaks: a fact that changed over time, a question the record cannot answer, a record that was deleted, and a person who may not see it.
+The second symptom is different. The answers are good, but the model is too slow or too expensive.
 
-One hazard belongs here rather than further up. When a validation score exceeds what a careful person achieves on the same task, the system has learned the rubric rather than the job. Treat that as an alarm, not a result. It is the standard signature of <Term k="reward hacking">reward hacking</Term>, and it matters most on the graded steps in Deck B.
+Then a large model can teach a smaller, cheaper model to give the same answers. This is called distillation.
 
-<PrincipleCard eyebrow="The rule" title="Change the system before you change the model" kind="evidence">
-Deck A is sequential and cheap, and it is where the evidence says most of the available gain still is. Deck B is expensive, adds a trained artifact you must maintain, and is chosen by symptom rather than by ambition. An organisation that skips the tests usually arrives in Deck B carrying a fault that step 2 or step 3 would have fixed, and now has a model to keep as well.
-</PrincipleCard>
+</Slide>
+
+<Slide journey="ladder/index" id="ov-reinforce">
+
+The third symptom is right format, but wrong judgement. The answer looks right, but the decision in it is wrong.
+
+This fix needs results that can be checked and scored. The model tries, gets a score, and does more of what scored well. This is called reinforcement fine-tuning.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-read">
+
+The fourth symptom is about understanding. The model does not understand the words, documents or symbols of your field.
+
+We met this fix earlier. Let the model keep reading your own text with continued pretraining.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-custom">
+
+The last symptom is about the data itself. Sometimes your data is not text at all. It might be a web of connections, long sequences, or signals, in huge amounts.
+
+Then look at a model built specially for that kind of data. This is called a custom architecture.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-18">
+
+Here is the whole map in one place. Wrong format, tone or behaviour points to [adapters and fine-tuning](/ladder/adapters-and-fine-tuning).
+
+Too slow or too costly points to [distillation](/ladder/distillation).
+
+Wrong judgement points to [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning).
+
+Misreading your field points to [continued pretraining](/ladder/continued-pretraining).
+
+Data that is not text points to [custom architecture](/ladder/custom-pretraining).
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-19">
+
+These options often combine. A standard pairing is continued pretraining, then fine-tuning. The first teaches the field. The second teaches the task.
+
+Distillation can come after any of the others. It makes the final model smaller and cheaper to run.
+
+</Slide>
+
+## Measure every change
+
+<Slide journey="ladder/index" id="ov-20">
+
+That covers all eight changes. Now, the one thing every change depends on.
+
+Every decision to move on is based on a measurement. So you need a fixed set of real cases with known correct answers. You own it, and you test every change against it. This is called an evaluation suite.
+
+Without one, teams pick changes based on stories. And stories favour whatever is most fashionable.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-21">
+
+Here is how to build that suite.
+
+Build it from real failures, not imagined ones.
+
+Build it before the agent, not after.
+
+Have experts in your field own it. They know what a correct answer looks like.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-22">
+
+Some agents keep a memory from one task to the next. If yours does, the suite also tests what memory can break.
+
+Test a fact that changed over time. Test a question the record cannot answer.
+
+Test a record that was deleted. And test a person who is not allowed to see it.
+
+</Slide>
+
+<Slide journey="ladder/index" id="ov-23">
+
+One warning belongs here. Sometimes a score comes out higher than a careful person gets on the same task.
+
+That means the system learned to score well without doing the job. This is called reward hacking. Treat it as an alarm. Check how the score is given before you trust it.
+
+</Slide>
+
+## What this rests on
+
+<Slide journey="ladder/index" id="ov-24">
+
+Before we finish, a note on the evidence. Deck A rests partly on our own measurements.
+
+Deck B comes from published work, and from the companies that make the models.
+
+Splitting the eight changes into two decks is my own view.
+
+</Slide>
+
+## What to remember
+
+<Slide journey="ladder/index" id="ov-recap">
+
+Here is what to remember. First, change the system before you change the model.
+
+Deck A runs in order and costs little. The evidence says most of the gain is still there.
+
+Deck B is picked by what is failing. It costs more, and it adds a model you must look after.
+
+Teaching behaviour and teaching knowledge are different jobs. They need different kinds of data.
+
+Measure every change against real cases with known answers. The next video is Step 1, Instructions.
+
+</Slide>
 
 <EvidenceBadge status="mixed-evidence" /> Deck A rests partly on our own measurements. Deck B is documented from published work and vendor documentation, with sources and dates on each chapter. The two-deck structure itself is an author position.
 

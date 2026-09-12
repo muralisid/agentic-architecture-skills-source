@@ -4,6 +4,8 @@ export { EvidenceBadge, evidenceLabels, type EvidenceBadgeProps } from './eviden
 export { GlossaryTerm, type GlossaryTermProps } from './glossary-term';
 export { GuideFigure, type GuideFigureProps } from './guide-figure';
 export { TeachingIllustration, type TeachingIllustrationProps } from './teaching-illustration';
+export { SlideJourney, type SlideJourneyProps } from './slide-journey';
+export { Slide, type SlideProps } from './slide';
 export { PrincipleCard, type PrincipleCardProps } from './principle-card';
 export { WallChart } from './wall-chart';
 export { ResultChart, StatTiles, type ResultChartProps, type StatTileItem } from './result-chart';
