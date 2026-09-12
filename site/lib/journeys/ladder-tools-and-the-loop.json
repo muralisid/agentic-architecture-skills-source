@@ -1,0 +1,156 @@
+{
+  "id": "ladder/tools-and-the-loop",
+  "title": "Step 3: Tools and the loop",
+  "slides": [
+    {
+      "id": "tl-01",
+      "src": "/slides/ladder/tools-and-the-loop/tl-01.webp",
+      "title": "Step 3: Tools and the loop",
+      "caption": "This step is about what runs around the model. Often that is where the real problem is."
+    },
+    {
+      "id": "tl-intro",
+      "src": "/slides/ladder/tools-and-the-loop/tl-intro.webp",
+      "title": "What we will cover",
+      "caption": "Step 3 of the ladder. How the loop runs and what it must handle. Why it matters. When to split the work. The test for moving on."
+    },
+    {
+      "id": "tl-21",
+      "src": "/slides/ladder/tools-and-the-loop/tl-21.webp",
+      "title": "An agent works in a loop",
+      "caption": "An agent is a model working in a loop. It asks for something, reads the result and decides what to do next."
+    },
+    {
+      "id": "tl-22",
+      "src": "/slides/ladder/tools-and-the-loop/tl-22.webp",
+      "title": "The model can ask for tools",
+      "caption": "A tool is an action the model can ask for. Your code carries it out and hands back the result."
+    },
+    {
+      "id": "tl-03",
+      "src": "/slides/ladder/tools-and-the-loop/tl-03.webp",
+      "title": "One turn of the loop",
+      "caption": "The model keeps no memory between turns. Each turn resends the conversation, runs any tool it asks for and adds the result."
+    },
+    {
+      "id": "tl-25",
+      "src": "/slides/ladder/tools-and-the-loop/tl-25.webp",
+      "title": "The harness runs the loop",
+      "caption": "The harness is everything that runs and controls the loop. It sends the conversation, runs the tools and decides when to stop."
+    },
+    {
+      "id": "tl-02",
+      "src": "/slides/ladder/tools-and-the-loop/tl-02.webp",
+      "title": "The step teams most often skip",
+      "caption": "Teams improve what the model reads and then jump to training. The evidence says the harness is usually the missing piece."
+    },
+    {
+      "id": "tl-27",
+      "src": "/slides/ladder/tools-and-the-loop/tl-27.webp",
+      "title": "The conversation grows every turn",
+      "caption": "Each turn adds to the conversation. The model can only read so much at once. That limit is the context window."
+    },
+    {
+      "id": "tl-04",
+      "src": "/slides/ladder/tools-and-the-loop/tl-04.webp",
+      "title": "Two ways to make room",
+      "caption": "Compaction summarises the history and can lose detail. A reset starts fresh from a written record. It is generally more reliable."
+    },
+    {
+      "id": "tl-05",
+      "src": "/slides/ladder/tools-and-the-loop/tl-05.webp",
+      "title": "Records kept for later are memory",
+      "caption": "A record kept past the task is memory. It needs a named owner and its source. It waits before it is trusted. It can be deleted."
+    },
+    {
+      "id": "tl-06",
+      "src": "/slides/ladder/tools-and-the-loop/tl-06.webp",
+      "title": "Nothing stops the loop unless you do",
+      "caption": "Real harnesses cap turns and time. They check for cancellation between turns and give you a way to stop. A cost cap per task protects the budget."
+    },
+    {
+      "id": "tl-07",
+      "src": "/slides/ladder/tools-and-the-loop/tl-07.webp",
+      "title": "Describe each tool for the model",
+      "caption": "The model reads each tool with no memory of your system. A vague description gets the tool called at the wrong times."
+    },
+    {
+      "id": "tl-13",
+      "src": "/slides/ladder/tools-and-the-loop/tl-13.webp",
+      "title": "What a tool returns matters",
+      "caption": "A short summary that flags what stands out uses a fraction of the context. A second tool pulls the detail. The model reasons better on the same data."
+    },
+    {
+      "id": "tl-26",
+      "src": "/slides/ladder/tools-and-the-loop/tl-26.webp",
+      "title": "Instructions cannot control access",
+      "caption": "Instructions and content reach the model in the same form. The model cannot reliably tell them apart. So instructions cannot enforce access."
+    },
+    {
+      "id": "tl-16",
+      "src": "/slides/ladder/tools-and-the-loop/tl-16.webp",
+      "title": "The control lives in the gateway",
+      "caption": "The agent reaches other systems only through a gateway. On every request, the gateway checks what the person using the agent may see."
+    },
+    {
+      "id": "tl-08",
+      "src": "/slides/ladder/tools-and-the-loop/tl-08.webp",
+      "title": "Same model, different harness",
+      "caption": "Changing only the harness changed the agent's later decisions. The success rate looked the same (arXiv 2607.04528, July 2026)."
+    },
+    {
+      "id": "tl-29",
+      "src": "/slides/ladder/tools-and-the-loop/tl-29.webp",
+      "title": "Model comparisons can mislead",
+      "caption": "Comparisons across different harnesses are mixed up with the harness. Your agent's behaviour depends on your loop as well as your model."
+    },
+    {
+      "id": "tl-30",
+      "src": "/slides/ladder/tools-and-the-loop/tl-30.webp",
+      "title": "Splitting work across agents",
+      "caption": "A multi-agent design splits the work across several agents. Each one runs its own loop on part of the task."
+    },
+    {
+      "id": "tl-10",
+      "src": "/slides/ladder/tools-and-the-loop/tl-10.webp",
+      "title": "What more agents buy",
+      "caption": "More agents let work run at the same time. Each has its own conversation. They multiply the cost. Each agent reasons no better."
+    },
+    {
+      "id": "tl-09",
+      "src": "/slides/ladder/tools-and-the-loop/tl-09.webp",
+      "title": "Multi-agent failures are design failures",
+      "caption": "A study of how multi-agent systems fail found the failures come from design. They are not model failures."
+    },
+    {
+      "id": "tl-11",
+      "src": "/slides/ladder/tools-and-the-loop/tl-11.webp",
+      "title": "The one published threshold",
+      "caption": "One study tested ways of coordinating agents. Multi-agent is justified above an accuracy score of about 0.92. This is the only published threshold."
+    },
+    {
+      "id": "tl-18",
+      "src": "/slides/ladder/tools-and-the-loop/tl-18.webp",
+      "title": "The test for moving on",
+      "caption": "Move on when every turn is recorded and each failure has a known cause. What remains is the model not knowing your field."
+    },
+    {
+      "id": "tl-20",
+      "src": "/slides/ladder/tools-and-the-loop/tl-20.webp",
+      "title": "What a trace should show",
+      "caption": "Per run, the trace records the tools called and what they returned. It also records the turn count, the answer's claims and the evidence behind each."
+    },
+    {
+      "id": "tl-19",
+      "src": "/slides/ladder/tools-and-the-loop/tl-19.webp",
+      "title": "Find the failing turn first",
+      "caption": "Every change to the model itself costs more than finding out which turn failed."
+    },
+    {
+      "id": "tl-recap",
+      "src": "/slides/ladder/tools-and-the-loop/tl-recap.webp",
+      "title": "What to remember",
+      "caption": "An agent is a model in a loop. The harness runs and limits it. Check access at a gateway. Trace failures before changing the model."
+    }
+  ]
+}

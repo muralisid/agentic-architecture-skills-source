@@ -4,69 +4,221 @@ icon: "Repeat"
 description: "How an agent loop actually runs, what a harness controls, why the same model in a different harness makes different decisions, and the only published threshold for going multi-agent."
 ---
 
-<PlainTerms>
-An agent is not one call to a model. It is a loop: the model asks for something, the system fetches it, the model reads the result and decides what to do next. Everything that governs that loop is the harness, and it is the part teams skip on the way from "the context is fine" to "we need to train a model". The evidence says it is usually the thing that was actually missing.
-</PlainTerms>
+<Slide journey="ladder/tools-and-the-loop" id="tl-01">
+
+This video is about what runs around an AI model. Often, that is where the real problem is.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-intro">
+
+This video covers Step 3 of the ladder: tools and the loop. Steps 1 and 2 worked on the instructions and on what the model reads. Step 3 works on the system that runs around the model. It is the last step before you change the model itself.
+
+First, we look at how the loop runs and what it must handle. Then we see why it matters and when to split the work. Last comes the test for moving on.
+
+</Slide>
 
 ## How the loop actually runs
 
-The model is stateless. Every turn, the whole conversation is sent again, the model replies either with an answer or with a request to use a tool, and if it is a tool request your code executes it and appends the result. Repeat until the model answers or you stop it.
+<Slide journey="ladder/tools-and-the-loop" id="tl-21">
 
-Three consequences follow, and they are the whole of harness design.
+Let us start with how the loop works. Some AI systems do not answer a task in one go. The model asks for something. Your code fetches it and hands back the result.
 
-**The context grows every turn.** Each tool result is appended, so a long investigation fills the <Term k="context window">context window</Term> with old evidence. You must decide what to do about that, and the choice is not neutral. **Compaction** summarises the history, which is lossy and can quietly drop the detail the model needed. **Reset** starts fresh with a stated goal and a short handover, keeping durable state in files or a record rather than in the conversation. Reset is harder to build and generally more reliable, because a summary of a summary degrades while a written record does not.
+The model reads the result and decides what to do next. This repeats until the model gives its answer. A system that works like this is called an agent.
 
-**What outlives the run is memory.** A record kept only for the task is engineering. Once it is kept for later runs, it becomes memory. It then needs a named owner, carries its source, waits in quarantine before later runs trust it, and is reached by deletion. [Step 2](/ladder/context#memory-is-context-that-lasts) sets out those rules.
+</Slide>
 
-**Nothing stops the loop unless you stop it.** A model can call a tool that returns an unhelpful result, decide to try again, and do that indefinitely. Real harnesses cap iterations, cap wall-clock time, check for cancellation between turns, and expose a stop hook. These are not edge cases, they are the normal path.
+<Slide journey="ladder/tools-and-the-loop" id="tl-22">
 
-**Tools are an interface you are designing.** A tool with a vague description gets called at the wrong times. A tool returning ten thousand tokens of JSON burns the context window that the reasoning needs. Tools are designed for a reader with no memory of your system, because that is what they have.
+So how does the model get what it asks for? You give it a set of actions it may ask for. Looking something up is one example. When the model asks for one, your code carries it out. Each of these actions is called a tool.
 
-<GuideFigure id="agent-loop-anatomy" fullWidth />
+</Slide>
 
-<TeachingIllustration src="/images/ladder/tools-loop-labeled-v4.webp" alt="A clockwise loop runs from the model to a gateway, then a toolbox, then a record of results and a limits gauge, and back to the model." title="The harness owns the loop around the model" caption="The model proposes. The harness authorises, executes, records and decides whether another turn is allowed. Durable state and hard stops sit outside the model because they must survive and remain enforceable." />
+<Slide journey="ladder/tools-and-the-loop" id="tl-03">
 
-## Why the harness is not plumbing
+Let us follow one pass around the loop. One pass is called a turn. The model keeps no memory from one turn to the next. So every turn, the whole conversation is sent to it again.
 
-Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions, even where the final success rate looks the same (arXiv 2607.04528, July 2026). In retrieval-heavy work the harness choice can outweigh the retrieval architecture itself (arXiv 2605.15184, May 2026).
+The model replies with an answer or asks for a tool. If it asks for a tool, your code runs the tool. Then the result is added to the conversation.
 
-Two things follow. Published benchmark comparisons run across different harnesses are confounded, so a claim that model A beats model B may be a claim about the scaffolding. And your own agent's behaviour is a property of your loop, not only of the model you licensed.
+This repeats until the model answers or you stop it.
 
-A third finding is worth carrying: multi-agent failures are design failures rather than model failures. A taxonomy built from 150 traces and validated on more than 1,600 across seven frameworks identifies fourteen failure modes in three categories, and that is its central conclusion. A stronger model in a badly designed loop is still a badly designed loop.
+</Slide>
 
-## The multi-agent question, with the one published number
+<Slide journey="ladder/tools-and-the-loop" id="tl-25">
 
-Splitting work across several agents buys parallel breadth and context isolation, at a cost multiplier of roughly 1.4 to 20 times. It does not buy reasoning quality per token.
+Something has to run all of this. It sends the conversation, runs the tools and adds the results. It also decides when the loop must stop. Everything that runs and controls the loop is called the harness.
 
-On 10,000 SEC filings across 25 field types, five models and four coordination patterns, a hierarchical supervisor-worker design reached 0.921 F1 at 1.4 times the cost and was the best point on the cost-accuracy frontier. A reflexive self-correcting pattern reached 0.943 at 2.3 times. A hybrid captured 89 percent of the accuracy gain at 1.15 times (arXiv 2603.22651, March 2026).
+</Slide>
 
-The threshold that follows is the only published one: **multi-agent is justified when the accuracy requirement exceeds about 0.92 F1.** Below that you are paying a multiplier for something a single well-built loop delivers.
+<Slide journey="ladder/tools-and-the-loop" id="tl-02">
 
-## At the bank
+The harness is the part teams most often skip. They improve what the model reads. Then they jump straight to training the model. Training means changing the model itself. The evidence says the harness is usually what was missing.
 
-The financial crime agent's loop looks like this. It receives an alert. It calls core banking for the customer profile, the transaction store for the flagged period, the case system for prior alerts, and a screening service for counterparty checks. It reads what comes back, decides whether it needs more, and eventually drafts the narrative and a proposed disposition.
+</Slide>
 
-**Tool design decides the cost.** A naive transaction tool returns every field of every transaction in the window, which is tens of thousands of tokens of mostly irrelevant JSON, and the model then reasons badly because the relevant three transactions are buried. The right tool returns a summary by counterparty and a flag for the outliers, with a second tool to pull detail on a specific one. Same data, a fraction of the context, better reasoning.
+## What the harness has to handle
 
-**Context resets rather than compacts.** A complex investigation can run twenty turns. Compaction risks summarising away the one transaction that mattered, and in a regulated file that is not an acceptable failure. The harness keeps a structured evidence record as it goes, and resets the conversation against that record. If any of that record is kept for later alerts on the same customer, it is memory, and it passes the same check first.
+<Slide journey="ladder/tools-and-the-loop" id="tl-27">
 
-**The loop has hard stops.** An iteration cap, a wall-clock cap, and a cost cap per alert. Without them a single pathological alert can consume the day's budget, and at tens of thousands of alerts a month that is a real operational risk rather than a theoretical one.
+The harness has a few jobs to handle. The first one comes from the loop itself. Each turn adds another result to the conversation. So in a long task, the conversation keeps growing.
 
-**Tool access is where the control lives, not the prompt.** The agent reaches systems through a <Term k="gateway">gateway</Term> that checks, on every call, whether this analyst may see this customer. The agent's own instructions are not the control, because instructions and content reach the model as the same kind of <Term k="token">token</Term> and cannot be reliably separated. This is the argument on [the four deterministic zones](/architecture/deterministic-zones).
+But a model can only read a limited amount of text at once. That limit is called the context window. A long task soon fills it with old results.
 
-**Single agent first.** The bank's disposition proposal does not need 0.92 F1 from the agent, because the analyst decides. So the multiplier is not justified, and the guide's blueprint puts this agent at a single loop with good tools.
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-04">
+
+When the context window fills up, the harness has to make room. There are two ways to do it.
+
+The first way shortens the old conversation into a summary. This is called compaction. A summary can quietly drop the detail the model needed.
+
+The second way is to start fresh. The harness keeps a written record of the task outside the conversation. Each fresh start begins from the goal and that record.
+
+This is harder to build and generally more reliable. Each time the history is summarised again, a little more is lost. A written record does not lose detail this way.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-05">
+
+Usually that record is kept only for the task. Sometimes you keep it for later tasks too. A record kept like that is called memory.
+
+Memory needs a named owner and a note of its source. It waits for a while before later tasks trust it. And there must be a way to delete it. Step 2 sets out these rules.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-06">
+
+The loop ends only when the model answers or you stop it. A model can get a poor result from a tool and try again. It can keep doing that forever.
+
+So real harnesses set limits. They cap the number of turns and the running time. They check between turns whether the task was cancelled. And they give you a way to stop the loop.
+
+Put a cap on the cost of each task too. Without it, one task that never ends can use up a whole day's budget.
+
+</Slide>
+
+## Tools and access
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-07">
+
+The harness also runs the tools. So the tools themselves need care. The model has no memory of your system. A tool with a vague description gets called at the wrong times. So describe each tool for a reader who knows nothing about your system.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-13">
+
+What a tool sends back matters too. A huge block of raw data fills the space the model needs for thinking.
+
+A raw data tool returns every row and every field it finds. The few rows that matter get buried. So the model reasons badly.
+
+A better tool returns a short summary and flags what stands out. A second tool pulls the full detail on one of them. The model now has far less to read. It reasons better on the same data.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-26">
+
+Some people using an agent should not see everything it can reach. You might try to write a rule about this in the instructions.
+
+But instructions and the content the model reads arrive in the same form. The model cannot reliably tell them apart. So a rule in the instructions cannot enforce access.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-16">
+
+So the check has to sit outside the model. The agent reaches other systems only through one checkpoint. This checkpoint is called a gateway.
+
+On every request, it checks whether the person using the agent may see what was asked for.
+
+</Slide>
+
+## Why the harness matters
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-08">
+
+So far we have seen what the harness does. But does it really change how an agent behaves? One study kept the task and the model the same. It changed only the harness.
+
+The final success rate looked the same. But what the agent believed at later steps changed. So its later decisions changed too.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-29">
+
+This matters when you read that one model beats another. The two models may have run inside different harnesses. Then the result may say more about the harness than the model.
+
+Your own agent is the same. How it behaves depends on your loop as well as your model.
+
+</Slide>
+
+## When to split the work across agents
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-30">
+
+Up to now, we have looked at a single agent. Some designs split the work across several agents. Each agent runs its own loop on one part of the task. This is called a multi-agent design.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-10">
+
+More agents let parts of the work run at the same time. Each agent also has its own separate conversation. So no single conversation has to hold everything.
+
+But they multiply the cost. And each agent reasons no better than a single agent would.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-09">
+
+One study looked at how multi-agent systems fail. It found the failures come from how the system is designed. They do not come from the model. So a stronger model does not fix a badly designed loop.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-11">
+
+So when is splitting the work worth the cost? One study tested several ways of coordinating agents. It used a large set of official company reports. It scored accuracy from zero to one.
+
+Multi-agent is worth it when you need accuracy above about 0.92. Below that, one well-built loop does the job for less. This is the only published threshold.
+
+</Slide>
 
 ## Where the depth is
-
-<TeachingIllustration src="/images/ladder/tools-bank-labeled-v2.webp" alt="A bank investigation agent gathers compact results from four tools into a case ledger while rejecting an oversized raw data dump." title="A bank investigation is shaped by its tools" caption="Purpose-built tools return a customer profile, an outlier summary, prior cases and screening evidence. The raw transaction dump stays out; compact results enter a durable record under iteration, time and cost limits." />
 
 [The agent platform layer](/layers/r07-agent-platform) covers the harness, durability, portability and the build-versus-buy split. The harness section of [the vendor-neutral Agentic OS](/agentic-os) covers what a platform provides here and what stays yours.
 
 ## The test for moving on
 
-**The loop is instrumented, failures are traced to a specific cause, and what remains is the model not knowing your domain.**
+<Slide journey="ladder/tools-and-the-loop" id="tl-18">
 
-That word "traced" is the gate. If you cannot say which turn failed and why, you cannot know the model is at fault, and every option in Deck B costs more than finding out. At the bank the trace shows, per alert, which tools were called, what they returned, how many turns ran, what the draft claimed and which retrieved evidence each claim came from.
+So when is this step done? There are three checks.
+
+First, every turn of the loop is recorded and measured.
+
+Second, each failure is tracked back to a specific cause.
+
+Third, what still fails is the model not knowing your field.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-20">
+
+To track a failure, you need a record of each run. It shows which tools ran, what they returned and how many turns it took. This record is called a trace.
+
+It also shows what the final answer claimed. And it shows the evidence behind each claim.
+
+</Slide>
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-19">
+
+This record is what tells you whether it is time to move on. If you cannot say which turn failed and why, you cannot know the model is at fault. Every change to the model itself costs more than finding out.
+
+</Slide>
+
+## What to remember
+
+<Slide journey="ladder/tools-and-the-loop" id="tl-recap">
+
+An agent is a model working in a loop. The harness runs that loop and sets its limits. Who may see what is checked at a gateway. Split the work across agents only when you need very high accuracy. Before changing the model, trace each failure to its cause.
+
+The next step changes the model itself for the first time. Next up is adapters and fine-tuning.
+
+</Slide>
 
 <EvidenceBadge status="independently-measured" /> The harness and multi-agent findings are independent published work, not ours.
 
@@ -78,6 +230,5 @@ That word "traced" is the gate. If you cannot say which turn failed and why, you
 - The multi-agent cost-accuracy frontier: arXiv 2603.22651, March 2026.
 - What a record kept past the run becomes: [the data-to-memory pipeline](/architecture/data-to-memory) and [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture).
 - Depth on [the agent platform layer](/layers/r07-agent-platform).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

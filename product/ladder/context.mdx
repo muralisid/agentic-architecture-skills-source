@@ -4,81 +4,185 @@ icon: "Library"
 description: "The pipeline from a document to a retrieved answer, why one embedding per document collapses on real material, the measurement that moved retrieval from 0.294 to 0.803 on one corpus with one encoder, and the rules for what an agent remembers."
 ---
 
-<PlainTerms>
-This step decides what the model gets to see. Documents are cut up, turned into numbers, stored, and searched. Every one of those choices changes the answer, and on our own measurements they change it more than anything else available. This page explains the pipeline, the failure that catches almost everyone, what changes when the agent keeps memory, and what it looks like inside a bank. The one thing to remember: a document about several things gets one average summary, and a question about one of those things then matches it only weakly.
-</PlainTerms>
+<Slide journey="ladder/context" id="cx-01">
 
-## The pipeline, in order
+Step two is about what an AI model gets to see. Everything the model can see when it answers is called its context. To get there, documents are cut up, turned into numbers, stored and searched. In our own measurements, these choices changed the answer more than anything else.
 
-**Parse.** Turn the source file into text while keeping its structure. A table that becomes a run-on sentence has lost the relationship between a figure and its label, and no later stage recovers it. Parsing quality sets the ceiling for everything downstream, so it gets spot-checked forever rather than assumed.
+</Slide>
 
-**Chunk.** Split into retrievable pieces. Too large and one piece covers several topics. Too small and a piece loses the context that made it meaningful. No single recipe survives across corpora, which is why this is evaluated rather than configured.
+<Slide journey="ladder/context" id="cx-intro">
 
-**Embed.** Turn each piece into a vector: a list of numbers positioning it in a space where nearby means similar in meaning. Every vector carries the version of the model that produced it, because changing encoder invalidates the whole index.
+Some changes to an AI system are worth trying before others. The first three are tried in order, one step at a time. This order is called the ladder. Step one was the instructions you give the model. This is step two, context.
 
-**Index.** Store the vectors for fast nearest-neighbour search, and store the source's access rights alongside them.
+First, we follow a document on its way to the model. Then we see what goes wrong when one document covers many topics. We also see how to test a fix fairly. After that, we look at searching for exact details.
 
-**Retrieve.** Turn the question into a vector the same way, find the nearest pieces, and pass them to the model.
+Then we look at who chooses and owns the documents. Last, we look at what is kept for later use. The video ends with the test for moving on.
 
-<GuideFigure id="context-pipeline-ladder" fullWidth />
+</Slide>
 
-<TeachingIllustration src="/images/ladder/context-pipeline-labeled-v3.webp" alt="A structured document becomes permission-carrying pieces, then vectors, and only the most relevant pieces reach the model." title="Retrieval is a chain of transformations" caption="The answer can only be as good as the structure preserved during parsing, the boundaries chosen during chunking, the permissions carried into the index and the evidence selected at retrieval time." />
+## How a document reaches the model
+
+<Slide journey="ladder/context" id="cx-02">
+
+A system that uses a model to do a job is called an agent. To answer questions, an agent often needs facts from documents. Let us follow one document on its way to the model.
+
+First, the file is read and turned into text. Then the text is cut into smaller pieces.
+
+Each piece is turned into a list of numbers. The numbers are stored so they can be searched quickly.
+
+Then a question comes in. The best pieces are found and passed to the model. Each stage has its own name. We will take them one at a time.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-20">
+
+The first stage turns the file into plain text. This is called parsing. Good parsing keeps the structure, like the rows and columns of a table.
+
+Say a table is flattened into one long sentence. The numbers lose the labels that went with them. No later stage can put that back. So keep checking samples of the parsing.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-21">
+
+The second stage cuts the text into pieces that search can find. These pieces are called chunks.
+
+A chunk that is too large mixes several topics. A chunk that is too small loses the text around it. Without that text, it can lose its meaning.
+
+No single size works for every set of documents. So the size has to be tested.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-22">
+
+The third stage turns each piece into a list of numbers. The numbers stand for what the piece means. This list of numbers is called a vector.
+
+Think of each vector as a point on a map of meaning. Pieces that mean similar things sit close together. Pieces about different things sit far apart.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-23">
+
+The fourth stage stores the vectors so they can be searched fast. This store is called an index.
+
+The index also records who is allowed to see each document. The search uses that record later.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-24">
+
+The last stage starts when someone asks a question. The question is turned into a vector in the same way. The search finds the pieces whose vectors sit nearest to it.
+
+Those pieces are passed to the model along with the question. Finding and passing on the right pieces is called retrieval.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-13">
+
+Retrieval needs one more rule. Not everyone is allowed to see every document. One way is to search everything first. Then remove what the person may not see. The other way narrows the search first. It only searches what that person is allowed to see.
+
+Filtering afterwards leaks information. Even the number of results can show that a hidden document exists. Filtering first gives no such hint.
+
+</Slide>
 
 ## The failure that catches almost everyone
 
-Embedding a whole document produces roughly the average of everything in it. That is fine when a document is about one thing. Enterprise documents are rarely about one thing.
+<Slide journey="ladder/context" id="cx-04">
 
-Picture a customer file holding identity details, two years of transactions, a prior alert and a complaint. One vector for that file sits at the centre of all four topics, and is a close match for none of them. Ask about the complaint and the file is a weak match, because three quarters of its representation is about something else.
+Now to a mistake that catches almost everyone. Say a whole document gets just one vector. That vector is roughly the average of everything in the document. That is fine if the document is about one thing. But documents at work are rarely about one thing.
 
-We measured it. Growing documents from one topic to ten, holding corpus, encoder and scoring fixed, <Term k="ndcg">nDCG@10</Term> fell from **0.815 to 0.294**. Giving each document several vectors instead of one recovered it to **0.803**. Same corpus, same encoder, only the representation changed.
+Picture a long document that covers four different topics. Its one vector sits in the middle of all four. It is close to none of them.
 
-The mechanism behaves as theory predicts. The similarity between a question and its target document's best individual piece stayed flat as topics accumulated, 0.476 to 0.466, while the pooled vector's similarity decayed from 0.476 to 0.225. The signal was never lost. It was averaged away.
+Now ask about just one of those topics. The document comes back as only a weak match.
 
-## The correction that matters more than the finding
+</Slide>
 
-<TeachingIllustration src="/images/ladder/context-aspect-dilution-labeled-v2.webp" alt="One customer dossier becomes a blurry blended representation in one path and four distinct topic representations in another." title="One blended vector hides the part you asked for" caption="Identity, transactions, alerts and correspondence pull a pooled representation in different directions. Keeping several searchable units preserves the signal that averaging would weaken." />
+<Slide journey="ladder/context" id="cx-05">
 
-Splitting a document into several pieces gives it more vectors, and more vectors means more chances to match. So the honest question is not "do several vectors beat one" but "do purpose-shaped pieces beat the same number of arbitrary pieces".
+We tested this in our own experiments. We made each document cover more topics, from one up to ten. Everything else stayed the same. Search quality fell sharply.
 
-We ran that control, and on real prose our clever version lost: purpose-shaped cards scored 0.635 against plain chunking's 0.667. We published it. The lesson is the method rather than the result. Anything you adopt here has to beat a <Term k="matched control">matched control</Term> at equal capacity on your own queries, or you have measured the extra capacity and called it insight.
+Then we gave each document several vectors instead of one. That brought search quality almost all the way back. We repeated this on two different machines. The result was the same.
+
+</Slide>
+
+## Make the test fair
+
+<Slide journey="ladder/context" id="cx-06">
+
+There was a problem with that result. Several vectors give a document more chances to match a question. So some of the gain might come just from having more pieces.
+
+We ran a fairer test to check. We shaped pieces around what each part of a document was for. We compared them with the same number of plain chunks. On real text, our shaped pieces did worse.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-07">
+
+So test any new design against a plain version. Give the plain version the same number of pieces. A fair comparison like this one is called a matched control.
+
+Your design has to beat it on your own questions. Otherwise you are only measuring the extra pieces.
+
+</Slide>
 
 ## Keyword search is not optional
 
-Meaning-based search is poor at exact strings. On queries naming a specific attribute, keyword search scored **0.997 against 0.314** for the dense index on identical queries. Running both and fusing the rankings costs almost nothing and removes a silent failure: a dense-only system does not return an error when it misses an account number, it returns something plausible instead.
+<Slide journey="ladder/context" id="cx-08">
+
+So far, search has worked by meaning, using vectors. Search by meaning is poor at exact details, like a phone number. Another kind of search looks for the exact text. This is called keyword search.
+
+In our tests on exact details, keyword search scored far higher. Search by meaning does not show an error when it misses. It returns something that looks right instead.
+
+So run both kinds of search and merge the results. It costs almost nothing.
+
+</Slide>
+
+## Looking after the documents
+
+<Slide journey="ladder/context" id="cx-14">
+
+Now think about which documents belong in the search at all. The whole set of documents that can be searched is called the corpus.
+
+Adding more documents can make answers less accurate. Published work showed accuracy coming back once the corpus was narrowed to the subject. A few good documents usually work better than many.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-16">
+
+Someone has to choose and tidy the documents in the corpus. This can be done by people, by software with spot checks, or by both. But one person or team must still own the corpus.
+
+A real legal case shows why. In Moffatt versus Air Canada, the company's chatbot went against its own policy. The company was held responsible for what the chatbot said.
+
+</Slide>
 
 ## Memory is context that lasts
 
-**In short:** What an agent keeps from earlier work reaches the model like any document. It also carries duties a document does not.
+<Slide journey="ladder/context" id="cx-25">
 
-The guide grades memory by how long it lasts. The current conversation and the evidence fetched for this turn are engineering. So is a working session of hours or days, within limits on where it is held and for how long. Memory that outlives the session is different. A durable profile of a customer or a case is a record, with an owner, consent, retention and deletion duties.
+Documents are not the only thing the model sees. An agent can also keep notes from its earlier work. What it keeps is called memory.
 
-Four rules follow, and each rests on published evidence.
+When memory is used, it reaches the model just like a document. So it needs the same care as a document. It also brings some extra duties.
 
-**Keep the source text.** Store the original and add search keys to it. On a published long-term memory benchmark, keeping raw text and adding derived keys improved recall by 9.4 percent and answers by 5.4 percent. Replacing the text with extracted facts or summaries made results worse (LongMemEval, ICLR 2025).
+</Slide>
 
-**Record when a fact was true.** Keep the time something happened apart from the time it was stored. A fact that has been replaced is then marked out of date, and the history behind an earlier decision survives. Stale grounding is a named production failure.
+<Slide journey="ladder/context" id="cx-09">
 
-**Check a memory before it is kept.** Every write carries its source and waits in quarantine until it is promoted. The reason is measured: poisoning under 0.1 percent of a memory store achieved over 80 percent attack success (AgentPoison, NeurIPS 2024).
+Memory can last for different lengths of time. Some lasts only for the current conversation.
 
-**Topics help search. They are not memory.** Topics are labels, stored so they can be rebuilt. A graph is added only where questions follow exact relationships, such as ownership or dependency. [CD-1](/decisions#cd-1) records that verdict.
+Some lasts for a stretch of work of hours or days. Both of these are ordinary engineering choices.
 
-<TeachingIllustration src="/images/ladder/context-memory-labeled-v1.webp" alt="Working notes in a tray pass through a checkpoint before reaching a filing cabinet of dated record cards, which a thread ties to their original document, with an eraser beside the cabinet." title="What the agent remembers" caption="Working notes last only for the session. Anything kept beyond it passes a check first. A kept memory holds its source and its date, and deletion reaches it like every other copy." />
+Memory kept after the work ends is different. It becomes a record. It needs someone who owns it. It also needs consent to keep it. And it needs rules for how long it is kept and when it is deleted.
 
-## At the bank
+</Slide>
 
-The financial crime agent needs the customer's history. That history is exactly the aspect-rich material above: onboarding and identity, expected activity from the customer's stated business, two years of transactions, prior alerts and their dispositions, correspondence, and any prior report filed.
+<Slide journey="ladder/context" id="cx-10">
 
-**One vector per customer file does not work**, for the reason set out above. Each part gets its own representation, and the question decides which is searched.
+Four rules follow from published evidence. First, keep the original text. Then add labels to help search find it. In published tests, swapping the text for short facts or summaries made results worse.
 
-**Keyword search is doing heavy lifting here**, more than in most domains. Investigations turn on exact strings: account numbers, sort codes, counterparty names, reference fields, sanctions list entries. A near-match on a name is not a match, and getting it wrong in either direction is expensive.
+Second, record when something happened. Keep that apart from the time it was saved. Then a fact that has been replaced can be marked out of date.
 
-**Permission filtering happens before the search, not after.** The index carries the access rights of each source, and retrieval is filtered on the analyst's live identity before ranking. Filtering afterwards leaks information: result counts alone tell you something exists that you may not see. In a bank this is not a refinement, it is the difference between a compliant system and a reportable incident.
+Third, check every new memory before it is kept. It carries its source and waits for review. In published work, planting bad entries in a tiny part of a memory store made most attacks succeed.
 
-**More is not better.** Adding documents can reduce accuracy until the corpus is scoped: published work shows accuracy falling below 40 percent until domain-scoped curation fixed it (arXiv 2606.11350). The agent that retrieves fifty documents per alert is usually worse than the one that retrieves eight good ones.
+Fourth, topics are only labels that help search. They are not the memory itself. They can be rebuilt from the kept text.
 
-**What the agent remembers is a record.** Notes the agent keeps from earlier alerts on the same customer are durable memory about that customer. They carry their source and date. They wait for review before a later alert relies on them. An erasure request for the customer reaches them too, like every other copy.
-
-**Someone owns the corpus.** Curation labour can be human, automated with sampled audits, or both, but accountability cannot be automated away. In *Moffatt v. Air Canada* (BC Civil Resolution Tribunal, 14 February 2024) the company was liable for its chatbot's statements where they contradicted its actual policy.
+</Slide>
 
 ## Where the depth is
 
@@ -86,9 +190,33 @@ The financial crime agent needs the customer's history. That history is exactly 
 
 ## The test for moving on
 
-**Your representation beats a matched control on your own queries, anything the agent keeps is sourced, dated and checked, and what still fails is about acting rather than knowing.**
+<Slide journey="ladder/context" id="cx-17">
 
-An agent that retrieves the right documents and then draws the wrong conclusion, calls the wrong tool, or stops too early does not have a context problem. That is [step 3](/ladder/tools-and-the-loop).
+So when is step two done? There are three signs. First, your way of splitting and storing documents beats a matched control. It has to win on your own questions.
+
+Second, everything the agent keeps has a source and a date. It has also passed a check.
+
+Third, the agent now finds the right facts. What still goes wrong is what it does with them.
+
+</Slide>
+
+<Slide journey="ladder/context" id="cx-18">
+
+Here is what that looks like. The agent finds the right documents. Then it draws the wrong conclusion, takes the wrong action, or stops too early.
+
+That is not a context problem. It belongs to [step three](/ladder/tools-and-the-loop), tools and the loop.
+
+</Slide>
+
+## What to remember
+
+<Slide journey="ladder/context" id="cx-recap">
+
+Here is what to remember from step two. A document is parsed, cut into chunks, turned into vectors, indexed and retrieved. One vector for a document about many topics matches each topic only weakly. Test any new design against a matched control on your own questions.
+
+Run keyword search alongside search by meaning. Give everything the agent keeps a source, a date and a check. Next is step three, tools and the loop.
+
+</Slide>
 
 <EvidenceBadge status="mixed-evidence" /> The retrieval figures are our own, reproducible from the published benchmark and reproduced across two machines and two processor architectures. The memory findings are published work by others, cited where they appear.
 
@@ -102,6 +230,5 @@ An agent that retrieves the right documents and then draws the wrong conclusion,
 - Memory tiers, dated facts and quarantine: [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) and [the data-to-memory pipeline](/architecture/data-to-memory).
 - Topics and graphs as derived indexes, not memory: [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) and [CD-1](/decisions#cd-1).
 - *Moffatt v. Air Canada*, BC Civil Resolution Tribunal, 14 February 2024.
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

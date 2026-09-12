@@ -1,0 +1,138 @@
+{
+  "id": "ladder/context",
+  "title": "Step 2: Context",
+  "slides": [
+    {
+      "id": "cx-01",
+      "src": "/slides/ladder/context/cx-01.webp",
+      "title": "Step 2: Context",
+      "caption": "Step two decides what reaches the model. How documents are cut up, turned into numbers, stored and searched changes the answer."
+    },
+    {
+      "id": "cx-intro",
+      "src": "/slides/ladder/context/cx-intro.webp",
+      "title": "What we will cover",
+      "caption": "Step two of the ladder is context. This video follows a document to the model. It then covers exact search, looking after documents and what is kept."
+    },
+    {
+      "id": "cx-02",
+      "src": "/slides/ladder/context/cx-02.webp",
+      "title": "A document passes through five stages",
+      "caption": "A document is read, cut into pieces, turned into numbers, stored and searched. The best pieces reach the model."
+    },
+    {
+      "id": "cx-20",
+      "src": "/slides/ladder/context/cx-20.webp",
+      "title": "Turn the file into text",
+      "caption": "Parsing turns a file into text and keeps its structure. A table flattened into a sentence loses which number goes with which label. No later stage recovers it."
+    },
+    {
+      "id": "cx-21",
+      "src": "/slides/ladder/context/cx-21.webp",
+      "title": "Cut the text into pieces",
+      "caption": "Chunking splits text into pieces search can find. Too large and a piece covers several topics. Too small and it loses its meaning. The size is tested."
+    },
+    {
+      "id": "cx-22",
+      "src": "/slides/ladder/context/cx-22.webp",
+      "title": "Turn each piece into numbers",
+      "caption": "Each piece becomes a vector, a list of numbers. Pieces that mean similar things end up close together."
+    },
+    {
+      "id": "cx-23",
+      "src": "/slides/ladder/context/cx-23.webp",
+      "title": "Store the numbers for search",
+      "caption": "The index stores the vectors for fast search. It also stores who may see each source."
+    },
+    {
+      "id": "cx-24",
+      "src": "/slides/ladder/context/cx-24.webp",
+      "title": "Find the nearest pieces",
+      "caption": "Retrieval turns the question into a vector, finds the nearest pieces and passes them to the model."
+    },
+    {
+      "id": "cx-13",
+      "src": "/slides/ladder/context/cx-13.webp",
+      "title": "Filter by permission before the search",
+      "caption": "The index stores who may see each source. The search is narrowed to what the person asking may see. Filtering afterwards leaks what exists."
+    },
+    {
+      "id": "cx-04",
+      "src": "/slides/ladder/context/cx-04.webp",
+      "title": "One vector for a document is an average",
+      "caption": "A document about one thing is fine. Documents at work rarely are. A question about one topic then matches the averaged vector only weakly."
+    },
+    {
+      "id": "cx-05",
+      "src": "/slides/ladder/context/cx-05.webp",
+      "title": "We measured it",
+      "caption": "Our own test, with documents, model and scoring held fixed. Quality fell as topics grew. Several vectors per document recovered almost all of it."
+    },
+    {
+      "id": "cx-06",
+      "src": "/slides/ladder/context/cx-06.webp",
+      "title": "More vectors also mean more chances",
+      "caption": "On real text, pieces shaped around a purpose scored below plain chunks with the same number of pieces. More pieces alone can look like a better design."
+    },
+    {
+      "id": "cx-07",
+      "src": "/slides/ladder/context/cx-07.webp",
+      "title": "Beat a matched control first",
+      "caption": "A matched control gets the same number of pieces as the design under test. Without it, you measure the extra pieces instead of the idea."
+    },
+    {
+      "id": "cx-08",
+      "src": "/slides/ladder/context/cx-08.webp",
+      "title": "Keyword search is not optional",
+      "caption": "On questions about an exact detail, keyword search scored far above search by meaning. A search by meaning that misses a phone number returns something that looks right."
+    },
+    {
+      "id": "cx-14",
+      "src": "/slides/ladder/context/cx-14.webp",
+      "title": "More documents can mean worse answers",
+      "caption": "Published work shows accuracy falling until the corpus was narrowed to the subject (arXiv 2606.11350). A few good documents usually beat many."
+    },
+    {
+      "id": "cx-16",
+      "src": "/slides/ladder/context/cx-16.webp",
+      "title": "Someone must own the corpus",
+      "caption": "Moffatt v. Air Canada, BC Civil Resolution Tribunal, 14 February 2024. The company was held responsible for chatbot statements that went against its own policy."
+    },
+    {
+      "id": "cx-25",
+      "src": "/slides/ladder/context/cx-25.webp",
+      "title": "What an agent keeps is memory",
+      "caption": "What an agent keeps from earlier work reaches the model like any document. It also carries duties a document does not."
+    },
+    {
+      "id": "cx-09",
+      "src": "/slides/ladder/context/cx-09.webp",
+      "title": "Memory is context that lasts",
+      "caption": "The current conversation and hours or days of work are engineering choices. Memory kept after the work ends is a record with an owner, consent, and rules for keeping and deleting it."
+    },
+    {
+      "id": "cx-10",
+      "src": "/slides/ladder/context/cx-10.webp",
+      "title": "Four rules for what the agent keeps",
+      "caption": "Keep the source text, date each fact, check a memory before keeping it, and treat topics as labels. Sources: LongMemEval (ICLR 2025) and AgentPoison (NeurIPS 2024)."
+    },
+    {
+      "id": "cx-17",
+      "src": "/slides/ladder/context/cx-17.webp",
+      "title": "The test for moving on",
+      "caption": "Move on when your design beats a matched control on your own questions. Kept memory must be sourced, dated and checked. What still fails should be about acting."
+    },
+    {
+      "id": "cx-18",
+      "src": "/slides/ladder/context/cx-18.webp",
+      "title": "Acting wrongly is a step 3 problem",
+      "caption": "The agent finds the right documents. Then it draws the wrong conclusion, takes the wrong action or stops too early. That is a step 3 problem."
+    },
+    {
+      "id": "cx-recap",
+      "src": "/slides/ladder/context/cx-recap.webp",
+      "title": "What to remember",
+      "caption": "Documents are parsed, chunked, turned into vectors, indexed and retrieved. One vector hides topics. Beat a matched control. Use keyword search too. Check what the agent keeps."
+    }
+  ]
+}

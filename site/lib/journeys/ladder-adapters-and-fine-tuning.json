@@ -1,0 +1,150 @@
+{
+  "id": "ladder/adapters-and-fine-tuning",
+  "title": "Adapters and supervised fine-tuning",
+  "slides": [
+    {
+      "id": "ad-01",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-01.webp",
+      "title": "Adapters and fine-tuning",
+      "caption": "The first change to the model itself. You teach it with examples of the task done well."
+    },
+    {
+      "id": "ad-intro",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-intro.webp",
+      "title": "What we will cover",
+      "caption": "The first option that changes the model itself. How training on examples works, three ways to do it, what you need, and when to move on."
+    },
+    {
+      "id": "ad-22",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-22.webp",
+      "title": "Teach the model with examples",
+      "caption": "Supervised fine-tuning trains a model on examples of a task done well. Each example pairs an input with the answer you wanted."
+    },
+    {
+      "id": "ad-02",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-02.webp",
+      "title": "What fine-tuning is for",
+      "caption": "Fine-tuning makes behaviour consistent and moves work to smaller, cheaper models. It does not teach facts."
+    },
+    {
+      "id": "ad-03",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-03.webp",
+      "title": "How training on examples works",
+      "caption": "Fine-tuning compares the model's answer with the wanted answer. It nudges the weights slightly to close the gap. Over thousands of examples, the usual behaviour shifts."
+    },
+    {
+      "id": "ad-04",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-04.webp",
+      "title": "It learns the shape of answers",
+      "caption": "Training rewards answers shaped like the examples. It teaches the style and the confidence. It does not store the facts."
+    },
+    {
+      "id": "ad-14",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-14.webp",
+      "title": "Facts stay out of the weights",
+      "caption": "Facts should be looked up when needed. Facts in the weights cannot be traced, updated or deleted. Facts that are looked up can."
+    },
+    {
+      "id": "ad-05",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-05.webp",
+      "title": "It can forget other skills",
+      "caption": "The weights that learn your task also hold general skills. Catastrophic forgetting comes from how training works. It is not a sign of careless work."
+    },
+    {
+      "id": "ad-06",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-06.webp",
+      "title": "Full fine-tuning changes every weight",
+      "caption": "Full fine-tuning changes all the weights. It can change behaviour the most and needs the most computing power. The result is a whole model to run."
+    },
+    {
+      "id": "ad-07",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-07.webp",
+      "title": "LoRA trains a small add-on",
+      "caption": "LoRA locks the model's own weights. It trains two small tables of numbers beside them. Their effect is added when the model runs."
+    },
+    {
+      "id": "ad-23",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-23.webp",
+      "title": "Adapters you can swap",
+      "caption": "LoRA produces an adapter of megabytes, not a model of gigabytes. One shared model can swap in a different adapter for each task."
+    },
+    {
+      "id": "ad-08",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-08.webp",
+      "title": "QLoRA compresses the locked model",
+      "caption": "QLoRA compresses the locked model during training. The adapter itself is not compressed. Quality is close to LoRA on far less hardware."
+    },
+    {
+      "id": "ad-09",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-09.webp",
+      "title": "Adapters do not prevent forgetting",
+      "caption": "Changing fewer weights sounds safer. Published research found that LoRA does not protect general skills. The repair for forgetting is covered under distillation."
+    },
+    {
+      "id": "ad-12",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-12.webp",
+      "title": "When fine-tuning fits",
+      "caption": "The answers are correct. Their structure and tone still vary. Examples in the instructions have not fixed it. That is the fine-tuning use case."
+    },
+    {
+      "id": "ad-10",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-10.webp",
+      "title": "What you need before starting",
+      "caption": "A small careful set of examples beats a large scraped one. Testing only the new task lets forgetting slip through unnoticed."
+    },
+    {
+      "id": "ad-24",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-24.webp",
+      "title": "Someone else can run the training",
+      "caption": "A managed option is a service that runs fine-tuning for you. You send the examples and get back the result."
+    },
+    {
+      "id": "ad-11",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-11.webp",
+      "title": "The managed options narrowed in 2026",
+      "caption": "As of August 2026. For most companies the OpenAI route is already closed. Existing fine-tuned models keep running until their original models retire."
+    },
+    {
+      "id": "ad-15",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-15.webp",
+      "title": "Move the work to a small model",
+      "caption": "A small model with an adapter on your own servers can do the task at a fraction of the cost. The data stays inside."
+    },
+    {
+      "id": "ad-16",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-16.webp",
+      "title": "One test is one data point",
+      "caption": "One published test on a sorting task. A small fine-tuned model beat a frontier model with careful instructions. It cost a fraction as much."
+    },
+    {
+      "id": "ad-18",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-18.webp",
+      "title": "The test for moving on",
+      "caption": "Adapters have closed the format and behaviour gap. What remains wrong is judgement or knowledge. The next step depends on the symptom."
+    },
+    {
+      "id": "ad-19",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-19.webp",
+      "title": "Wrong judgement",
+      "caption": "The shape is right, but the reasoning is wrong on outcomes a program can grade. Go to reinforcement fine-tuning."
+    },
+    {
+      "id": "ad-20",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-20.webp",
+      "title": "Misreads your field",
+      "caption": "The model still misreads the language and documents of your field. Go to continued pretraining."
+    },
+    {
+      "id": "ad-21",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-21.webp",
+      "title": "Right quality, too costly",
+      "caption": "Quality is right. Cost or speed is the complaint. Go to distillation."
+    },
+    {
+      "id": "ad-recap",
+      "src": "/slides/ladder/adapters-and-fine-tuning/ad-recap.webp",
+      "title": "What to remember",
+      "caption": "Fine-tuning teaches behaviour, not facts. Facts should be looked up. Training can cause forgetting. Adapters are small and swappable. It can move work to smaller models."
+    }
+  ]
+}
