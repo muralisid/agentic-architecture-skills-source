@@ -1,59 +1,68 @@
 ---
 title: "What we have measured"
 icon: "FlaskConical"
-description: "The one memory system this guide has reproduced independently on LongMemEval, LoCoMo and BEAM 10M, with its own code and no model, and what the reproduction showed about how memory scores are made."
+description: "Why this guide chose to test the memory system with the least realistic published claim, 100 percent on two benchmarks; what running its own code on LongMemEval, LoCoMo and BEAM 10M found; and the realisation at the end, that the 100 percent was a retrieval score with no answer behind it."
 ---
 
 <PlainTerms>
-Rather than take any vendor's number on trust, we picked one memory system and ran its own code on the three main benchmarks ourselves, with no paid model in the loop. The system was MemPalace, a verbatim store that reached forty-seven thousand GitHub stars within two weeks of its April 2026 launch on claims of 100 percent on two benchmarks. We matched its published numbers exactly, then measured where they come from and what happens at ten million tokens. The one thing to remember: the same code that scores 97 on a small benchmark scores 25 at ten million tokens, and both numbers are honest.
+In the spring of 2026 one memory project claimed a perfect score on two of the main memory benchmarks. Perfect scores do not happen on real tests, so rather than argue about it we ran the project's own code ourselves on three benchmarks, with no paid model involved. The published numbers came out exactly. Then we looked at what they were numbers of. The one thing to remember: the 100 percent was never a measure of answering questions. It measured whether the right passage was somewhere in a list, and on one benchmark the list was the whole conversation.
 </PlainTerms>
 
 ## Why this system
 
-**In short:** It is the simplest credible architecture, it publishes retrieval-only scores, and its code runs with no model, so every number is reproducible for nothing.
+**In short:** It made the least realistic claim in the field, its code runs with no model, and the claim was still on its benchmark page when we tested it.
 
-MemPalace stores the original text unchanged in a <Term k="vector index">vector index</Term> with a small default embedding model, applies keyword multipliers to the distances, and never runs a language model at write time. That makes it the class 1 baseline from the [taxonomy](/memory/six-architectures), and the benchmark from which every extracted or graph architecture has to earn its extra cost. Its claims were also public and disputed: the project retracted several in April 2026, including the 100 percent headline, and an independent analysis the same month attributed its results to verbatim storage and embedding choice rather than to its organising metaphor.
+In April 2026 MemPalace, a local-first memory that stores the original text unchanged, published 100 percent on LongMemEval and 100 percent on LoCoMo, and reached forty-seven thousand GitHub stars within two weeks. No other system had claimed a perfect score on either <Term k="benchmark">benchmark</Term>; the strongest vendor claims sat in the low nineties under vendor-chosen judges. A perfect score on a benchmark whose own authors measured a frontier model at 60.6 percent is either a discovery or a measurement artefact, and the difference can be settled by running the code.
 
-The full reproduction, with the code, the per-question outputs and every corrected claim, is published as a research piece in this guide's library. This page carries the headline rows.
+The project made that easy. It runs no language <Term k="model">model</Term> at write time and none at read time unless a reranker is switched on, so every published figure can be reproduced from its own scripts for no cost. Its project history records partial corrections on 7 and 14 April 2026, but the 100 percent rows were still in its published benchmark file on 13 September 2026, when we ran the test. So we ran it.
 
-## The reproduction
+## What we did
 
-**In short:** Every published retrieval-only figure reproduced to the decimal from the project's own script; the 100 percent figures reproduce too, and mean something else.
+We ran the project's own evaluation scripts, unmodified, on LongMemEval_S and on LoCoMo, with no API key, then reimplemented its code path to switch each component on and off, and validated the reimplementation against the published figures to the decimal. We then took the same code path and weights to BEAM 10M, the one public benchmark at ten million <Term k="token">tokens</Term>, which the project had not run. Every number was recomputed independently from the per-question records, and the whole run reproduces from a clean clone by one command. The full piece, with the code and the outputs, sits in the research library.
 
-Retrieval-only school. The unit is a session on the two small benchmarks and a message on BEAM; the candidate pool per question is stated on every row.
+## What we found
+
+**In short:** Every published retrieval figure reproduced exactly. The 100 percent figures reproduced too, and turned out to mean something other than what a reader would assume.
+
+Retrieval-only school. The unit is a session on the two small benchmarks and a message on BEAM; the candidate pool per question is on every row.
 
 | Benchmark | Unit, pool | Configuration | Metric | Score |
 |---|---|---|---|---|
-| LongMemEval_S | session, 48 | raw, no model | recall at 5, any-hit | 96.6 |
+| LongMemEval_S | session, 48 | raw, no model | recall at 5, any-hit, the project's headline form | 96.6 |
 | LongMemEval_S | session, 48 | same ranking | recall at 5, TREC fraction | 91.7 |
 | LongMemEval_S | session, 48 | keyword-boosted, no rerank | recall at 5, any-hit and TREC | 98.2 and 94.3 |
+| LongMemEval_S | session, 48 | keyword-boosted plus a paid rerank and three fixes for three named questions | recall at 5 | the published 100; not run, needs a key; the project's own held-out figure is 98.4 |
 | LoCoMo | session, 28 | raw, no model | recall at 10, fraction | 60.3 |
 | LoCoMo | session, 28 | keyword-boosted, no model | recall at 10, fraction | 88.9 |
-| LoCoMo | session, 28 | any configuration | recall at 50 | 100.0, because 50 exceeds every pool |
+| LoCoMo | session, 28 | any configuration, no model, no rerank | recall at 50 | 100.0 |
 | BEAM 10M | message, about 21,000 | keyword-boosted, no model | recall at 10, fraction and any-hit | 24.5 and 41.5 |
 | BEAM 10M | message, about 21,000 | same | recall at 100, fraction and any-hit | 42.3 and 65.9 |
 
-<EvidenceBadge status="independently-measured" /> The project's own script, unmodified, produced the LongMemEval and LoCoMo rows. The BEAM rows use the project's LoCoMo code path and weights on the benchmark it had not run. A one-command reproduction from a clean clone matched every committed output.
+<EvidenceBadge status="independently-measured" /> The LoCoMo 100 percent reproduces on every one of the 1,986 questions with no reranker and no model, because the largest conversation has 32 sessions and the published setting asked for the top 50. The published claim credited a paid reranker; the reranker had nothing left to do.
 
-Full question-answering school: no score. The project generates no answer and scores none. Its optional model step selects a passage; it does not read. The row is empty because the measurement was not made, not because it was made and was low.
+Three mechanisms, all measured, account for the rest.
 
-## What the reproduction showed
+- **Truncation.** The default encoder reads the first 256 word pieces of a session, about 190 words. On LongMemEval 88 percent of the evidence sits inside that window, because the benchmark places the answer early in a constructed session. On LoCoMo 54 percent sits outside it; for those questions the encoder scores 39.7 against a chance baseline of 37.1, and the keyword scorer, which reads the full text, is what carries LoCoMo from 60.3 to 88.9.
+- **The metric.** The 96.6 is any-hit, a full hit if one gold session is in the top five. As the TREC fraction on the same ranking it is 91.7.
+- **Density.** At ten million tokens the pool is twenty-one thousand messages. Word overlap between question and evidence predicts recall at a correlation of about 0.5; message length does not; a larger encoder moves the result by about a point. Keyword search alone, with no encoder, scores within four points of the full pipeline. The ceiling given the number of gold messages per question is 91.6 at k of 10, so the shortfall is headroom, not arithmetic.
 
-**In short:** Three mechanisms, all measured, explain both the high scores and the low one.
+## The realisation
 
-- **Truncation.** The default encoder reads the first 256 word pieces of a session, about 190 words. On LongMemEval 88 percent of the evidence sits inside that window, because the benchmark places the answer early in a constructed session, and removing the truncation changes nothing. On LoCoMo 54 percent sits outside it; for those questions the encoder scores 39.7 against a chance baseline of 37.1, and removing the truncation is worth 22.6 points. The keyword scorer, which reads the full text, is what carries LoCoMo from 60.3 to 88.9.
-- **The metric.** The 96.6 is any-hit. As the TREC fraction on the same ranking it is 91.7. The 100 percent on LoCoMo is a k of 50 over pools of at most 32.
-- **Density.** At ten million tokens the pool is twenty-one thousand messages. Word overlap between question and evidence predicts recall at a correlation of about 0.5; the length of the message does not; swapping the encoder for a larger one moves the result by about a point, and splitting messages into sub-chunks lowers it. Keyword search alone, with no encoder, scores within four points of the full pipeline.
+**In short:** The project never answers a question. Its scores, including the 100 percent, are retrieval scores, and a retrieval score is not an accuracy claim.
 
-<EvidenceBadge status="independently-measured" /> The ceiling given the number of gold messages per question is 91.6 at k of 10, so the shortfall at ten million tokens is headroom, not arithmetic.
+This is what took longest to see, because the project's page presents its results the way the answer-scoring vendors present theirs. Its evaluation scripts embed the question, rank the sessions, and check whether a labelled session is in the top k. No answer is generated, so no answer is judged. The optional model step is a selector prompted to pick "which of the following passages most directly answers this question" from a three-hundred-character prefix of each candidate; it is not a reader. The project's own benchmark file says, below the tables, that the scores "do not measure whether an LLM can correctly answer the question".
 
-## What it means, and what it does not
+Read as what it is, the work is sound. A verbatim store with a keyword channel is a real and useful baseline: free to index, honest about what it keeps, and hard to beat on the small benchmarks by any architecture that transforms the text on the way in. Read as what a reader assumes, an accuracy of 100 percent, it is not valid. Retrieval recall is always higher than the end-to-end score on the same system; one of the two 100 percent figures returns the entire candidate pool and measures nothing about ranking; the other rests on a paid reranker and three fixes written for three named failing questions, which the project itself labels "teaching to the test". A memory system that produces no answer cannot claim accuracy at all.
 
-It means that a verbatim store with a keyword channel is a real baseline: free to index, honest about what it keeps, and hard to beat on the small benchmarks by any architecture that transforms the text on the way in. It means that the scores every vendor publishes on those benchmarks are earned in a setting where the encoder's coarse distinctions suffice. And it means that at enterprise scale the same baseline finds a quarter of the evidence, which is where the [open question](/memory/the-ten-million-token-question) starts.
+That is the finding this guide takes forward, and it is why the [benchmarks page](/memory/what-the-benchmarks-measure) keeps the two schools of scoring in separate tables. Full question-answering school, for this system: no score, because the measurement was not made.
 
-It does not mean that this system is recommended, or that any other is. The guide's [standing rule](/layers/r14-agent-data-engineering) on memory-service benchmarks holds: run your own acceptance suite on your own corpus. What this page adds is a worked example of how to read one, and one independently measured point on the ten-million-token axis.
+## What it does and does not mean
 
-Our own architecture and its results on these benchmarks are not published here yet. They will appear on this page, in the same two tables, when the study is complete.
+It does not mean the project misled anyone deliberately; its file says what its metric is, and it retracted several claims in April 2026. It does not mean the system is recommended, or that any other is. The guide's [standing rule](/layers/r14-agent-data-engineering) holds: run your own acceptance suite on your own corpus, and score the answers.
+
+It does mean three things a reader can use. First, a perfect score on a memory benchmark is a signal to look at the metric, the k and the pool before anything else. Second, a system's own no-model retrieval score, honestly labelled, is the right baseline to hold every extracted or graph architecture against. Third, at ten million tokens the same code finds a quarter of the evidence, which is where the [open question](/memory/the-ten-million-token-question) starts.
+
+Our own architecture and its results on these three benchmarks are not published here yet. They will appear on this page in the same two tables, retrieval and answered questions separately, when the study is complete.
 
 <details>
 <summary>The research behind this page</summary>
