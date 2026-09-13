@@ -1,0 +1,528 @@
+{
+  "page": "/memory",
+  "chapter": "Memory architectures",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "mo-01",
+      "build": 1,
+      "voiceover": "An AI agent forgets everything when its task ends. Unless something is built to remember for it.",
+      "words": 17,
+      "on_camera": true,
+      "frame": "frames/memory-index/film/mo-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "mo-01",
+      "build": 1,
+      "voiceover": "That something is called its memory. This section looks at how memories are built today.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "mo-01",
+      "build": 1,
+      "voiceover": "It looks at how they are scored. And it asks how far the scores are from what an enterprise needs.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-01-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "mo-intro",
+      "build": 1,
+      "voiceover": "This section has six pages. Each page is a run of slides like this one. Each slide is explained under it, in plain words.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-intro-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "mo-intro",
+      "build": 2,
+      "voiceover": "First, why memory needs its own section. Then the six ways a memory can be built.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-intro-b2.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "mo-intro",
+      "build": 3,
+      "voiceover": "Then how memory systems are scored, and where the scores mislead. Then why a one-million-token context window is not a memory.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-intro-b3.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "mo-intro",
+      "build": 3,
+      "voiceover": "Then the question that gives the section its point. It is about ten million tokens. Last, the one system we tested ourselves.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-intro-b3.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "mo-agent",
+      "build": 1,
+      "voiceover": "At the heart of any AI system is a model. It reads text and writes text back.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-agent-b1.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "mo-agent",
+      "build": 2,
+      "voiceover": "A system that uses a model to do a job is called an agent. The model keeps nothing between calls.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-agent-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "mo-agent",
+      "build": 2,
+      "voiceover": "When the task ends, everything it saw is gone. The next task starts from a blank page.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-agent-b2.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "mo-agent",
+      "build": 3,
+      "voiceover": "For a chat about the weather, that is fine. For a claims team or a service desk, it is not.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-agent-b3.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "mo-agent",
+      "build": 3,
+      "voiceover": "They need the agent to remember last week, last year, and the customer's whole history.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-agent-b3.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "mo-memory",
+      "build": 1,
+      "voiceover": "Memory is what is built around the model to remember for it.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-memory-b1.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "mo-memory",
+      "build": 1,
+      "voiceover": "It is a store, an index, and a way to bring the right piece back. It is not part of the model.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-memory-b1.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "mo-memory",
+      "build": 2,
+      "voiceover": "What the store keeps decides what can ever be recalled. How the index works decides what is found.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-memory-b2.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "mo-memory",
+      "build": 3,
+      "voiceover": "Those two choices are the subject of this section. This guide already says what a memory must carry.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-memory-b3.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "mo-memory",
+      "build": 3,
+      "voiceover": "Its source, its permissions, and a working delete. This section adds how it is built, and whether the build works.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-memory-b3.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "mo-count",
+      "build": 1,
+      "voiceover": "By September 2026 there are more than thirty named memory systems. Four large cloud providers ship a managed memory service.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-count-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "mo-count",
+      "build": 2,
+      "voiceover": "Six survey papers propose their own taxonomy. Since 2025 at least ten new benchmarks have appeared.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-count-b2.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "mo-count",
+      "build": 2,
+      "voiceover": "Every system reports a score on one of them. Almost none of the scores can be compared with each other.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-count-b2.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "mo-count",
+      "build": 3,
+      "voiceover": "The judges differ. The question subsets differ. And the sizes of the tests are far below what an enterprise runs at.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-count-b3.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "mo-two-facts",
+      "build": 1,
+      "voiceover": "The first fact is what is stored. Original words, a summary, extracted facts, a graph, or the weights.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-two-facts-b1.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "mo-two-facts",
+      "build": 2,
+      "voiceover": "What is stored decides what can ever be found again. The second fact is when a model runs.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-two-facts-b2.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "mo-two-facts",
+      "build": 2,
+      "voiceover": "At write time, as each document arrives. At read time, as each question comes in.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-two-facts-b2.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "mo-two-facts",
+      "build": 2,
+      "voiceover": "In the background, between tasks. Or during training, so the memory lives in the weights.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-two-facts-b2.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "mo-two-facts",
+      "build": 3,
+      "voiceover": "Those two facts decide the cost, and they decide what is lost. Page two sorts every named system by them.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-two-facts-b3.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "mo-scores",
+      "build": 1,
+      "voiceover": "Vendors report scores in the low nineties on the two best-known benchmarks. Those scores are real, under the judges the vendors chose.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scores-b1.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "mo-scores",
+      "build": 2,
+      "voiceover": "But look at the size of the test. The smaller benchmark has conversations of 16 to 26 thousand tokens.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scores-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "mo-scores",
+      "build": 3,
+      "voiceover": "The larger one has about 115 thousand tokens per question. A modern model reads either of those in one call.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scores-b3.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "mo-scores",
+      "build": 3,
+      "voiceover": "So a high score there says little about memory at scale. Page three shows what the benchmarks measure and where scores mislead.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scores-b3.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "mo-scale",
+      "build": 1,
+      "voiceover": "A token is the unit AI usage is measured in. It is roughly three quarters of a word.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scale-b1.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "mo-scale",
+      "build": 2,
+      "voiceover": "Ten million tokens is about seven million words. That is a little more than one year of one worker's received mail and chat.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scale-b2.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "mo-scale",
+      "build": 3,
+      "voiceover": "Before any attachments, documents, tickets or meetings. A customer's history over a decade is larger. A litigation file is larger.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scale-b3.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "mo-scale",
+      "build": 3,
+      "voiceover": "A plant's maintenance record is larger. Ten million is the floor for an enterprise memory, not the ceiling.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-scale-b3.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "mo-beam",
+      "build": 1,
+      "voiceover": "One public benchmark reaches ten million tokens. It is called BEAM, and it was published at a top conference in 2026.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-beam-b1.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "mo-beam",
+      "build": 1,
+      "voiceover": "At that size, giving the model everything scores 0.10 on a scale of 0 to 1.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-beam-b1.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "mo-beam",
+      "build": 3,
+      "voiceover": "Finding the best pieces first and passing them in scores 0.25. The benchmark authors built their own memory design.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-beam-b3.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "mo-beam",
+      "build": 3,
+      "voiceover": "It scores 0.27. That is the best published, independently run result at ten million tokens. Nothing is close to solid.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-beam-b3.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "mo-vendors",
+      "build": 1,
+      "voiceover": "Three vendors have since published their own ten-million-token numbers. Each used its own judge and its own test harness.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-vendors-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "mo-vendors",
+      "build": 2,
+      "voiceover": "None of them is comparable to the paper's table. None is comparable to the others. None has been reproduced by anyone else.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-vendors-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "mo-vendors",
+      "build": 3,
+      "voiceover": "This section shows them, flagged as vendor reported. It never places them in a ranking.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-vendors-b3.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "mo-rules",
+      "build": 1,
+      "voiceover": "This section handles numbers under three rules. First, a number from the party that built the system is flagged as vendor reported.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-rules-b1.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "mo-rules",
+      "build": 1,
+      "voiceover": "The judges differ, so it is never placed in a ranking with another vendor's number.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-rules-b1.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "mo-rules",
+      "build": 2,
+      "voiceover": "Second, a number this guide produced by running the system's own code is marked independently measured.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-rules-b2.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "mo-rules",
+      "build": 3,
+      "voiceover": "It sits in its own row. Third, a retrieval score and an answer score are different quantities.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-rules-b3.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "mo-rules",
+      "build": 3,
+      "voiceover": "One asks whether the right passage was found. The other asks whether the answer came out right.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-rules-b3.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "mo-rules",
+      "build": 3,
+      "voiceover": "They never share a table. This is the single most useful habit a reader can take from the section.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-rules-b3.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "mo-map",
+      "build": 1,
+      "voiceover": "Page two sorts the systems into six classes. Page three sets out the benchmarks and ten ways a score misleads.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-map-b1.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "mo-map",
+      "build": 2,
+      "voiceover": "Page four shows why a one-million-token window is not a memory, and what ten million tokens costs.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-map-b2.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "mo-map",
+      "build": 2,
+      "voiceover": "Page five puts the enterprise workload beside the best results and leaves the question open.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-map-b2.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "mo-map",
+      "build": 3,
+      "voiceover": "Page six records the one system we reproduced ourselves. The last page carries every source with its date and its vendor flag.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-map-b3.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "mo-open",
+      "build": 1,
+      "voiceover": "No independently run, published result shows any memory architecture answering well over ten million tokens. No long-context model does either.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-open-b1.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "mo-open",
+      "build": 2,
+      "voiceover": "None has earned a recommendation, so this section makes none. It ends on the gap, and leaves the question with you.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-open-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "mo-open",
+      "build": 3,
+      "voiceover": "Our own research on the question is under way. It will be published here when it is complete, in the same two tables.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-open-b3.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "mo-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. A memory is decided by what it stores and when a model runs.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-recap-b1.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "mo-recap",
+      "build": 2,
+      "voiceover": "Every high score was earned on a test that fits in one call to a model.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-recap-b2.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "mo-recap",
+      "build": 3,
+      "voiceover": "Read every number with its unit, its pool and its judge. Keep retrieval scores and answer scores apart.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-index/film/mo-recap-b3.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "mo-recap",
+      "build": 4,
+      "voiceover": "Ten million tokens is the floor for an enterprise memory. Nothing solid has been shown there, by anyone. The next page sorts the architectures.",
+      "words": 24,
+      "on_camera": true,
+      "frame": "frames/memory-index/film/mo-recap-b4.png"
+    }
+  ]
+}

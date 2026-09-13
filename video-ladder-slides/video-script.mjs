@@ -16,7 +16,10 @@ const MIN = 10;
 
 const mdxFile = path.resolve(process.argv[2]);
 const name = path.basename(mdxFile, '.mdx');
-const journey = JSON.parse(fs.readFileSync(path.join(HERE, 'journeys', `${name}.json`), 'utf8'));
+// The journey file defaults to journeys/<page>.json; pass it as the second argument when the names differ.
+const journeyFile = process.argv[3] ? path.resolve(process.argv[3]) : path.join(HERE, 'journeys', `${name}.json`);
+const journeyName = path.basename(journeyFile, '.json');
+const journey = JSON.parse(fs.readFileSync(journeyFile, 'utf8'));
 const builds = Object.fromEntries(journey.slides.map((s) => [s.id, (s.builds || []).length || 1]));
 
 const plain = (text) => text
@@ -74,7 +77,7 @@ const out = clips.map((c, i) => ({
   voiceover: c.sentences.join(' '),
   words: c.words,
   on_camera: i === 0 || i === clips.length - 1,
-  frame: `frames/${name}/film/${c.slide}-b${c.build + 1}.png`,
+  frame: `frames/${journeyName}/film/${c.slide}-b${c.build + 1}.png`,
 }));
 
 for (const c of out) {
@@ -83,7 +86,7 @@ for (const c of out) {
 }
 
 fs.mkdirSync(path.join(HERE, 'clips'), { recursive: true });
-fs.writeFileSync(path.join(HERE, 'clips', `${name}.json`), `${JSON.stringify({ page: journey.page, chapter: journey.chapter, clips: out }, null, 2)}\n`);
+fs.writeFileSync(path.join(HERE, 'clips', `${journeyName}.json`), `${JSON.stringify({ page: journey.page, chapter: journey.chapter, clips: out }, null, 2)}\n`);
 
 const words = out.reduce((a, c) => a + c.words, 0);
 console.log(`${name}: ${blocks.length} slides, ${out.length} clips, ${words} words, about ${(words / 2.8 / 60).toFixed(1)} min at the video tool's 2.8 words a second`);

@@ -1,0 +1,672 @@
+{
+  "page": "/memory/what-we-have-measured",
+  "chapter": "What we have measured",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "mm-01",
+        "mm-intro"
+      ]
+    },
+    {
+      "heading": "Why this system",
+      "slides": [
+        "mm-claim",
+        "mm-why"
+      ]
+    },
+    {
+      "heading": "What we did",
+      "slides": [
+        "mm-did"
+      ]
+    },
+    {
+      "heading": "What we found",
+      "slides": [
+        "mm-lme",
+        "mm-locomo",
+        "mm-beam"
+      ]
+    },
+    {
+      "heading": "Three mechanisms, all measured",
+      "slides": [
+        "mm-truncation",
+        "mm-metric",
+        "mm-density"
+      ]
+    },
+    {
+      "heading": "The realisation",
+      "slides": [
+        "mm-realisation",
+        "mm-sound"
+      ]
+    },
+    {
+      "heading": "What it does and does not mean",
+      "slides": [
+        "mm-means"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "mm-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "mm-01",
+      "layout": "title",
+      "title": "What we have *measured*",
+      "text": "A perfect score, reproduced exactly, and what it turned out to be.",
+      "builds": [
+        {
+          "narration": [
+            "In the spring of 2026 one memory project claimed a perfect score on two of the main memory benchmarks.",
+            "Perfect scores do not happen on real tests.",
+            "So rather than argue about it, we ran the project's own code ourselves.",
+            "On three benchmarks, with no paid model involved.",
+            "The published numbers came out exactly.",
+            "Then we looked at what they were numbers of."
+          ]
+        }
+      ],
+      "caption": "In spring 2026 one project claimed a perfect score on two memory benchmarks. We ran its code ourselves. The numbers came out exactly. Then we looked at what they were numbers of."
+    },
+    {
+      "id": "mm-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "Why this system",
+        "What we did",
+        "What we found",
+        "The realisation",
+        "What it means"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "First, why we chose this system to test.",
+            "Then what we did, step by step."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Then what the reproduction found, in the two-table form this section uses."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Then the realisation that took longest to see.",
+            "Last, what it does and does not mean for a reader."
+          ]
+        }
+      ],
+      "caption": "Why we chose this system. What we did. What the reproduction found. The realisation at the end. What it does and does not mean."
+    },
+    {
+      "id": "mm-claim",
+      "layout": "number",
+      "title": "The claim: *100 percent*",
+      "value": "100%",
+      "unit": "claimed on two memory benchmarks, April 2026, by a project with 47 thousand stars in two weeks",
+      "text": "Either a discovery or a measurement artefact.",
+      "builds": [
+        {
+          "narration": [
+            "In April 2026 a local-first memory project published 100 percent on the two best-known memory benchmarks.",
+            "It stores the original text unchanged.",
+            "It reached 47 thousand GitHub stars within two weeks."
+          ]
+        },
+        {
+          "narration": [
+            "No other system had claimed a perfect score on either benchmark.",
+            "The strongest vendor claims sat in the low nineties, under judges the vendors chose."
+          ]
+        },
+        {
+          "narration": [
+            "The larger benchmark's own authors had measured a frontier model at 60.6 percent.",
+            "A perfect score there is either a discovery or a measurement artefact.",
+            "The difference can be settled by running the code."
+          ]
+        }
+      ],
+      "caption": "In April 2026 a local-first verbatim memory published 100 percent on two benchmarks. It reached 47 thousand GitHub stars within two weeks."
+    },
+    {
+      "id": "mm-why",
+      "layout": "list",
+      "title": "Why this *system*",
+      "items": [
+        "The least realistic claim",
+        "No model, so free to reproduce",
+        "The claim was still published"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "We chose it for three reasons.",
+            "It made the least realistic claim in the field."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "It runs no language model at write time.",
+            "And none at read time unless an optional reranker is switched on.",
+            "So every published figure can be reproduced from its own scripts, for no cost."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Its project history records partial corrections on 7 and 14 April 2026.",
+            "We ran the test on 13 September 2026.",
+            "The 100 percent rows were still in its published benchmark file that day.",
+            "So we ran it."
+          ]
+        }
+      ],
+      "caption": "It made the least realistic claim in the field. Its code runs with no model, so every figure reproduces for nothing. And the claim was still on its benchmark page when we tested."
+    },
+    {
+      "id": "mm-did",
+      "layout": "steps",
+      "title": "What we *did*",
+      "items": [
+        "Their scripts, unmodified",
+        "Rebuilt, then checked",
+        "The ten-million-token benchmark",
+        "One command reproduces it"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "We ran the project's own evaluation scripts, unmodified, on the two small benchmarks.",
+            "With no API key."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Then we reimplemented its code path so each component could be switched on and off.",
+            "We validated the reimplementation against the published figures to the decimal."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Then we took the same code path and weights to the ten-million-token benchmark.",
+            "The project had not run it."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Every number was recomputed independently from the per-question records.",
+            "The whole run reproduces from a clean clone by one command.",
+            "The full piece, with code and outputs, sits in the research library."
+          ]
+        }
+      ],
+      "caption": "Their scripts unmodified on two benchmarks. A validated reimplementation to switch parts on and off. The same code on the ten-million-token benchmark. One command reproduces it all."
+    },
+    {
+      "id": "mm-lme",
+      "layout": "table",
+      "title": "The larger benchmark: *exact*",
+      "head": [
+        "Configuration",
+        "Metric",
+        "Score"
+      ],
+      "widths": [
+        2.6,
+        2,
+        1
+      ],
+      "rows": [
+        [
+          "Raw, no model",
+          "Recall at 5, any-hit",
+          "96.6"
+        ],
+        [
+          "Same ranking",
+          "Recall at 5, TREC fraction",
+          "91.7"
+        ],
+        [
+          "Keyword-boosted, no rerank",
+          "Any-hit and fraction",
+          "98.2 and 94.3"
+        ],
+        [
+          "Paid rerank plus three fixes",
+          "Recall at 5",
+          "100, held out 98.4"
+        ]
+      ],
+      "text": "Session unit, pool of 48. Independently measured with their script.",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "On the larger benchmark, their script produced their headline 96.6 exactly.",
+            "That is any-hit recall at five: was one labelled session in the top five?",
+            "The unit is a session, and the pool is 48 sessions per question."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "On the same ranking, the standard TREC fraction is 91.7."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Their keyword-boosted mode, with no rerank, reaches 98.2 any-hit and 94.3 as the fraction."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The published 100 rests on a paid rerank plus three fixes written for three named failing questions.",
+            "We did not run it; it needs a key.",
+            "The project's own held-out figure for that mode is 98.4."
+          ]
+        }
+      ],
+      "caption": "Their headline 96.6 is any-hit recall at five. On the same ranking, the TREC fraction is 91.7. Their keyword-boosted mode reaches 98.2. The 100 needs a paid rerank and three fixes."
+    },
+    {
+      "id": "mm-locomo",
+      "layout": "table",
+      "title": "The smaller benchmark: the *100* explained",
+      "head": [
+        "Configuration",
+        "Metric",
+        "Score"
+      ],
+      "widths": [
+        2.6,
+        2,
+        1
+      ],
+      "rows": [
+        [
+          "Raw, no model",
+          "Recall at 10, fraction",
+          "60.3"
+        ],
+        [
+          "Keyword-boosted, no model",
+          "Recall at 10, fraction",
+          "88.9"
+        ],
+        [
+          "Any configuration, no model",
+          "Recall at 50",
+          "100.0"
+        ]
+      ],
+      "text": "Session unit, pool of 28. Top 50 returns every session.",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "On the smaller benchmark, raw mode scores 60.3 at k of ten.",
+            "The unit is a session and the pool is 28 per question."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The keyword-boosted mode scores 88.9."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "And at k of 50, every configuration scores 100.",
+            "On every one of the 1,986 questions, with no reranker and no model.",
+            "The largest conversation has 32 sessions.",
+            "The published setting asked for the top 50.",
+            "The published claim credited a paid reranker; the reranker had nothing left to do."
+          ]
+        }
+      ],
+      "caption": "Raw scores 60.3 and keyword-boosted 88.9 at k of 10. The largest conversation has 32 sessions. So at k of 50 every configuration scores 100."
+    },
+    {
+      "id": "mm-beam",
+      "layout": "bars",
+      "title": "The same code at *ten million*",
+      "unit": "Recall, percent, message unit, pool about 21,000",
+      "max": 100,
+      "items": [
+        [
+          "Top 10, fraction of evidence",
+          24.5,
+          "24.5"
+        ],
+        [
+          "Top 10, any-hit",
+          41.5,
+          "41.5"
+        ],
+        [
+          "Top 100, fraction of evidence",
+          42.3,
+          "42.3"
+        ],
+        [
+          "Top 100, any-hit",
+          65.9,
+          "65.9"
+        ]
+      ],
+      "text": "Independently measured. The project had not run this benchmark.",
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Then we took the same code to the ten-million-token benchmark.",
+            "The unit is a message, and the pool is about 21 thousand messages per question.",
+            "In the top ten it finds 24.5 percent of the evidence.",
+            "Under the project's own any-hit form, 41.5."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "In the top hundred, 42.3 percent as the fraction, and 65.9 as any-hit."
+          ]
+        },
+        {
+          "narration": [
+            "The ceiling given the number of gold messages per question is 91.6 at k of ten.",
+            "So the shortfall is headroom, not arithmetic."
+          ]
+        }
+      ],
+      "caption": "On the ten-million-token benchmark the same code finds 24.5 percent of the evidence in the top ten. In the top hundred, 42.3 percent."
+    },
+    {
+      "id": "mm-truncation",
+      "layout": "statement",
+      "title": "Mechanism one: *truncation*",
+      "icon": "document",
+      "text": "The encoder reads 190 words. Where the answer sits decides the score.",
+      "builds": [
+        {
+          "narration": [
+            "Three mechanisms, all measured, explain the numbers.",
+            "The first is truncation.",
+            "The default encoder reads the first 256 word pieces of a session, about 190 words."
+          ]
+        },
+        {
+          "narration": [
+            "On the larger benchmark, 88 percent of the evidence sits inside that window.",
+            "The benchmark places the answer early in a constructed session."
+          ]
+        },
+        {
+          "narration": [
+            "On the smaller benchmark, 54 percent sits outside it.",
+            "For those questions the encoder scores 39.7 against a chance baseline of 37.1.",
+            "The keyword scorer reads the full text.",
+            "That is what carries the smaller benchmark from 60.3 to 88.9."
+          ]
+        }
+      ],
+      "caption": "The encoder reads the first 190 words of a session. On the larger benchmark 88 percent of evidence sits inside that window. On the smaller, 54 percent sits outside."
+    },
+    {
+      "id": "mm-metric",
+      "layout": "statement",
+      "title": "Mechanism two: the *metric*",
+      "icon": "scale",
+      "text": "Any-hit, and a k larger than the pool.",
+      "builds": [
+        {
+          "narration": [
+            "The second mechanism is the metric.",
+            "The 96.6 is any-hit.",
+            "A full hit if one gold session is in the top five, however many there were."
+          ]
+        },
+        {
+          "narration": [
+            "As the standard fraction on the same ranking, it is 91.7."
+          ]
+        },
+        {
+          "narration": [
+            "The 100 on the smaller benchmark is a k of 50 over pools of at most 32.",
+            "It measures nothing about ranking."
+          ]
+        }
+      ],
+      "caption": "The 96.6 is any-hit: a full hit if one gold session is in the top five. As the TREC fraction it is 91.7. The 100 is a k of 50 over pools of 32."
+    },
+    {
+      "id": "mm-density",
+      "layout": "statement",
+      "title": "Mechanism three: *density*",
+      "icon": "search",
+      "text": "Words predict recall. A better encoder does not.",
+      "builds": [
+        {
+          "narration": [
+            "The third mechanism is density.",
+            "At ten million tokens the pool is 21 thousand messages."
+          ]
+        },
+        {
+          "narration": [
+            "Word overlap between question and evidence predicts recall at a correlation of about 0.5.",
+            "Message length does not."
+          ]
+        },
+        {
+          "narration": [
+            "A larger encoder moves the result by about a point.",
+            "Splitting messages into smaller pieces lowers it.",
+            "Keyword search alone, with no encoder, scores within four points of the full pipeline."
+          ]
+        }
+      ],
+      "caption": "At ten million tokens the pool is 21 thousand messages. Word overlap predicts recall. A larger encoder moves the result by about a point. Keyword search alone is within four points."
+    },
+    {
+      "id": "mm-realisation",
+      "layout": "rule",
+      "title": "The *realisation*",
+      "kicker": "What the 100 percent was",
+      "text": "A retrieval score is not an accuracy claim.",
+      "builds": [
+        {
+          "narration": [
+            "This is what took longest to see.",
+            "The project's page presents its results the way the answer-scoring vendors present theirs.",
+            "But its scripts embed the question, rank the sessions, and check whether a labelled session is in the top k."
+          ]
+        },
+        {
+          "narration": [
+            "No answer is generated.",
+            "So no answer is judged.",
+            "The optional model step is a selector.",
+            "It is asked which passage most directly answers the question, from a 300-character prefix of each.",
+            "It is not a reader."
+          ]
+        },
+        {
+          "narration": [
+            "The project's own benchmark file says so, below its tables.",
+            "The scores do not measure whether a model can answer the question.",
+            "Read as retrieval, the work is sound.",
+            "Read as accuracy, the 100 percent is not valid.",
+            "A memory system that produces no answer cannot claim accuracy at all."
+          ]
+        }
+      ],
+      "caption": "The project never answers a question. Its scores, including the 100 percent, are retrieval scores. A retrieval score is not an accuracy claim."
+    },
+    {
+      "id": "mm-sound",
+      "layout": "compare",
+      "title": "Sound as *retrieval*, invalid as *accuracy*",
+      "left": {
+        "head": "As retrieval",
+        "rows": [
+          "A real baseline",
+          "Free to index",
+          "Hard to beat on small tests"
+        ]
+      },
+      "right": {
+        "head": "As accuracy",
+        "rows": [
+          "Not valid",
+          "One 100 returns the whole pool",
+          "One rests on tuned fixes"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Read as what it is, the work is sound.",
+            "A verbatim store with a keyword channel is a real and useful baseline.",
+            "Free to index, and honest about what it keeps.",
+            "On the small benchmarks it is hard to beat by anything that transforms the text."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Read as what a reader assumes, an accuracy of 100 percent, it is not valid.",
+            "Retrieval recall is always higher than the end-to-end score."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "One of the two 100 figures returns the entire candidate pool.",
+            "The other rests on a paid reranker and three fixes for three named questions.",
+            "The project itself calls those fixes teaching to the test.",
+            "That is the finding this guide takes forward.",
+            "It is why the benchmarks page keeps the two schools in separate tables."
+          ]
+        }
+      ],
+      "caption": "A verbatim store with a keyword channel is a real baseline. As an accuracy claim, one 100 returns the whole pool. The other rests on a paid rerank and three tuned fixes."
+    },
+    {
+      "id": "mm-means",
+      "layout": "list",
+      "title": "What it does and does not *mean*",
+      "items": [
+        "No bad faith, no recommendation",
+        "A perfect score means look closer",
+        "The no-model baseline is the bar",
+        "A quarter found at ten million"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "It does not mean the project misled anyone deliberately.",
+            "Its file says what its metric is, and it retracted several claims in April 2026.",
+            "It does not mean the system is recommended, or that any other is.",
+            "The standing rule holds: run your own acceptance suite on your own corpus, and score the answers."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "It does mean three things a reader can use.",
+            "A perfect score on a memory benchmark is a signal.",
+            "Look at the metric, the k and the pool first."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "A system's own no-model retrieval score, honestly labelled, is the right baseline to hold every extracted or graph architecture against."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "And at ten million tokens the same code finds a quarter of the evidence.",
+            "That is where the open question starts.",
+            "Our own architecture and its results on these three benchmarks are not published here yet.",
+            "When the study is complete, they will appear on this page in the same two tables."
+          ]
+        }
+      ],
+      "caption": "No claim of bad faith; the project says what its metric is and retracted claims in April 2026. No recommendation. Three things a reader can use."
+    },
+    {
+      "id": "mm-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Reproduced exactly",
+        "Retrieval only, no answer",
+        "Truncation, metric, density",
+        "A quarter at ten million"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "We reproduced a 100 percent claim exactly, from the project's own code."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "It was a retrieval score with no answer behind it, at a k that returned the whole pool."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Three measured mechanisms explain the rest: truncation, the metric, and density."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "At ten million tokens the same code finds a quarter of the evidence.",
+            "The sources page carries every reference for this section, with its date and its vendor flag."
+          ]
+        }
+      ],
+      "caption": "We reproduced a 100 percent claim exactly. It was retrieval only, with no answer, at a k that returned the whole pool. At ten million tokens the same code finds a quarter."
+    }
+  ]
+}

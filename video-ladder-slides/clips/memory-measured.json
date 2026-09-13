@@ -1,0 +1,681 @@
+{
+  "page": "/memory/what-we-have-measured",
+  "chapter": "What we have measured",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "mm-01",
+      "build": 1,
+      "voiceover": "In the spring of 2026 one memory project claimed a perfect score on two of the main memory benchmarks.",
+      "words": 19,
+      "on_camera": true,
+      "frame": "frames/memory-measured/film/mm-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "mm-01",
+      "build": 1,
+      "voiceover": "Perfect scores do not happen on real tests. So rather than argue about it, we ran the project's own code ourselves.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "mm-01",
+      "build": 1,
+      "voiceover": "On three benchmarks, with no paid model involved. The published numbers came out exactly. Then we looked at what they were numbers of.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-01-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "mm-intro",
+      "build": 1,
+      "voiceover": "First, why we chose this system to test. Then what we did, step by step.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-intro-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "mm-intro",
+      "build": 2,
+      "voiceover": "Then what the reproduction found, in the two-table form this section uses.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-intro-b2.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "mm-intro",
+      "build": 3,
+      "voiceover": "Then the realisation that took longest to see. Last, what it does and does not mean for a reader.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-intro-b3.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "mm-claim",
+      "build": 1,
+      "voiceover": "In April 2026 a local-first memory project published 100 percent on the two best-known memory benchmarks. It stores the original text unchanged.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-claim-b1.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "mm-claim",
+      "build": 2,
+      "voiceover": "It reached 47 thousand GitHub stars within two weeks. No other system had claimed a perfect score on either benchmark.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-claim-b2.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "mm-claim",
+      "build": 2,
+      "voiceover": "The strongest vendor claims sat in the low nineties, under judges the vendors chose.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-claim-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "mm-claim",
+      "build": 3,
+      "voiceover": "The larger benchmark's own authors had measured a frontier model at 60.6 percent.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-claim-b3.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "mm-claim",
+      "build": 3,
+      "voiceover": "A perfect score there is either a discovery or a measurement artefact. The difference can be settled by running the code.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-claim-b3.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "mm-why",
+      "build": 1,
+      "voiceover": "We chose it for three reasons. It made the least realistic claim in the field.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-why-b1.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "mm-why",
+      "build": 2,
+      "voiceover": "It runs no language model at write time. And none at read time unless an optional reranker is switched on.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-why-b2.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "mm-why",
+      "build": 2,
+      "voiceover": "So every published figure can be reproduced from its own scripts, for no cost.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-why-b2.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "mm-why",
+      "build": 3,
+      "voiceover": "Its project history records partial corrections on 7 and 14 April 2026. We ran the test on 13 September 2026.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-why-b3.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "mm-why",
+      "build": 3,
+      "voiceover": "The 100 percent rows were still in its published benchmark file that day. So we ran it.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-why-b3.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "mm-did",
+      "build": 1,
+      "voiceover": "We ran the project's own evaluation scripts, unmodified, on the two small benchmarks. With no API key.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-did-b1.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "mm-did",
+      "build": 2,
+      "voiceover": "Then we reimplemented its code path so each component could be switched on and off.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-did-b2.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "mm-did",
+      "build": 3,
+      "voiceover": "We validated the reimplementation against the published figures to the decimal. Then we took the same code path and weights to the ten-million-token benchmark.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-did-b3.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "mm-did",
+      "build": 4,
+      "voiceover": "The project had not run it. Every number was recomputed independently from the per-question records.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-did-b4.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "mm-did",
+      "build": 4,
+      "voiceover": "The whole run reproduces from a clean clone by one command. The full piece, with code and outputs, sits in the research library.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-did-b4.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "mm-lme",
+      "build": 1,
+      "voiceover": "On the larger benchmark, their script produced their headline 96.6 exactly.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-lme-b1.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "mm-lme",
+      "build": 1,
+      "voiceover": "That is any-hit recall at five: was one labelled session in the top five?",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-lme-b1.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "mm-lme",
+      "build": 2,
+      "voiceover": "The unit is a session, and the pool is 48 sessions per question. On the same ranking, the standard TREC fraction is 91.7.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-lme-b2.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "mm-lme",
+      "build": 3,
+      "voiceover": "Their keyword-boosted mode, with no rerank, reaches 98.2 any-hit and 94.3 as the fraction.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-lme-b3.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "mm-lme",
+      "build": 4,
+      "voiceover": "The published 100 rests on a paid rerank plus three fixes written for three named failing questions.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-lme-b4.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "mm-lme",
+      "build": 4,
+      "voiceover": "We did not run it; it needs a key. The project's own held-out figure for that mode is 98.4.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-lme-b4.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "mm-locomo",
+      "build": 1,
+      "voiceover": "On the smaller benchmark, raw mode scores 60.3 at k of ten. The unit is a session and the pool is 28 per question.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-locomo-b1.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "mm-locomo",
+      "build": 3,
+      "voiceover": "The keyword-boosted mode scores 88.9. And at k of 50, every configuration scores 100.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-locomo-b3.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "mm-locomo",
+      "build": 3,
+      "voiceover": "On every one of the 1,986 questions, with no reranker and no model. The largest conversation has 32 sessions.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-locomo-b3.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "mm-locomo",
+      "build": 3,
+      "voiceover": "The published setting asked for the top 50. The published claim credited a paid reranker; the reranker had nothing left to do.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-locomo-b3.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "mm-beam",
+      "build": 1,
+      "voiceover": "Then we took the same code to the ten-million-token benchmark.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-beam-b1.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "mm-beam",
+      "build": 1,
+      "voiceover": "The unit is a message, and the pool is about 21 thousand messages per question.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-beam-b1.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "mm-beam",
+      "build": 1,
+      "voiceover": "In the top ten it finds 24.5 percent of the evidence. Under the project's own any-hit form, 41.5.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-beam-b1.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "mm-beam",
+      "build": 2,
+      "voiceover": "In the top hundred, 42.3 percent as the fraction, and 65.9 as any-hit.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-beam-b2.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "mm-beam",
+      "build": 3,
+      "voiceover": "The ceiling given the number of gold messages per question is 91.6 at k of ten. So the shortfall is headroom, not arithmetic.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-beam-b3.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "mm-truncation",
+      "build": 1,
+      "voiceover": "Three mechanisms, all measured, explain the numbers. The first is truncation.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-truncation-b1.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "mm-truncation",
+      "build": 1,
+      "voiceover": "The default encoder reads the first 256 word pieces of a session, about 190 words.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-truncation-b1.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "mm-truncation",
+      "build": 2,
+      "voiceover": "On the larger benchmark, 88 percent of the evidence sits inside that window. The benchmark places the answer early in a constructed session.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-truncation-b2.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "mm-truncation",
+      "build": 3,
+      "voiceover": "On the smaller benchmark, 54 percent sits outside it. For those questions the encoder scores 39.7 against a chance baseline of 37.1.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-truncation-b3.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "mm-truncation",
+      "build": 3,
+      "voiceover": "The keyword scorer reads the full text. That is what carries the smaller benchmark from 60.3 to 88.9.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-truncation-b3.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "mm-metric",
+      "build": 1,
+      "voiceover": "The second mechanism is the metric. The 96.6 is any-hit.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-metric-b1.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "mm-metric",
+      "build": 1,
+      "voiceover": "A full hit if one gold session is in the top five, however many there were.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-metric-b1.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "mm-metric",
+      "build": 2,
+      "voiceover": "As the standard fraction on the same ranking, it is 91.7.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-metric-b2.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "mm-metric",
+      "build": 3,
+      "voiceover": "The 100 on the smaller benchmark is a k of 50 over pools of at most 32. It measures nothing about ranking.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-metric-b3.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "mm-density",
+      "build": 1,
+      "voiceover": "The third mechanism is density. At ten million tokens the pool is 21 thousand messages.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-density-b1.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "mm-density",
+      "build": 2,
+      "voiceover": "Word overlap between question and evidence predicts recall at a correlation of about 0.5. Message length does not.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-density-b2.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "mm-density",
+      "build": 3,
+      "voiceover": "A larger encoder moves the result by about a point. Splitting messages into smaller pieces lowers it.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-density-b3.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "mm-density",
+      "build": 3,
+      "voiceover": "Keyword search alone, with no encoder, scores within four points of the full pipeline.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-density-b3.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "mm-realisation",
+      "build": 1,
+      "voiceover": "This is what took longest to see. The project's page presents its results the way the answer-scoring vendors present theirs.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-realisation-b1.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "mm-realisation",
+      "build": 1,
+      "voiceover": "But its scripts embed the question, rank the sessions, and check whether a labelled session is in the top k.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-realisation-b1.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "mm-realisation",
+      "build": 2,
+      "voiceover": "No answer is generated. So no answer is judged. The optional model step is a selector.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-realisation-b2.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "mm-realisation",
+      "build": 2,
+      "voiceover": "It is asked which passage most directly answers the question, from a 300-character prefix of each.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-realisation-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "mm-realisation",
+      "build": 3,
+      "voiceover": "It is not a reader. The project's own benchmark file says so, below its tables.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-realisation-b3.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "mm-realisation",
+      "build": 3,
+      "voiceover": "The scores do not measure whether a model can answer the question. Read as retrieval, the work is sound.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-realisation-b3.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "mm-realisation",
+      "build": 3,
+      "voiceover": "Read as accuracy, the 100 percent is not valid. A memory system that produces no answer cannot claim accuracy at all.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-realisation-b3.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "mm-sound",
+      "build": 1,
+      "voiceover": "Read as what it is, the work is sound. A verbatim store with a keyword channel is a real and useful baseline.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-sound-b1.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "mm-sound",
+      "build": 1,
+      "voiceover": "Free to index, and honest about what it keeps. On the small benchmarks it is hard to beat by anything that transforms the text.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-sound-b1.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "mm-sound",
+      "build": 2,
+      "voiceover": "Read as what a reader assumes, an accuracy of 100 percent, it is not valid.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-sound-b2.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "mm-sound",
+      "build": 3,
+      "voiceover": "Retrieval recall is always higher than the end-to-end score. One of the two 100 figures returns the entire candidate pool.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-sound-b3.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "mm-sound",
+      "build": 3,
+      "voiceover": "The other rests on a paid reranker and three fixes for three named questions. The project itself calls those fixes teaching to the test.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-sound-b3.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "mm-sound",
+      "build": 3,
+      "voiceover": "That is the finding this guide takes forward. It is why the benchmarks page keeps the two schools in separate tables.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-sound-b3.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "mm-means",
+      "build": 1,
+      "voiceover": "It does not mean the project misled anyone deliberately. Its file says what its metric is, and it retracted several claims in April 2026.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b1.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "mm-means",
+      "build": 1,
+      "voiceover": "It does not mean the system is recommended, or that any other is.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b1.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "mm-means",
+      "build": 1,
+      "voiceover": "The standing rule holds: run your own acceptance suite on your own corpus, and score the answers.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b1.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "mm-means",
+      "build": 2,
+      "voiceover": "It does mean three things a reader can use. A perfect score on a memory benchmark is a signal.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b2.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "mm-means",
+      "build": 2,
+      "voiceover": "Look at the metric, the k and the pool first.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b2.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "mm-means",
+      "build": 3,
+      "voiceover": "A system's own no-model retrieval score, honestly labelled, is the right baseline to hold every extracted or graph architecture against.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b3.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "mm-means",
+      "build": 4,
+      "voiceover": "And at ten million tokens the same code finds a quarter of the evidence. That is where the open question starts.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b4.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "mm-means",
+      "build": 4,
+      "voiceover": "Our own architecture and its results on these three benchmarks are not published here yet.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b4.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "mm-means",
+      "build": 4,
+      "voiceover": "When the study is complete, they will appear on this page in the same two tables.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-means-b4.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "mm-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. We reproduced a 100 percent claim exactly, from the project's own code.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-recap-b1.png"
+    },
+    {
+      "clip_id": "c073",
+      "slide": "mm-recap",
+      "build": 2,
+      "voiceover": "It was a retrieval score with no answer behind it, at a k that returned the whole pool.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-recap-b2.png"
+    },
+    {
+      "clip_id": "c074",
+      "slide": "mm-recap",
+      "build": 4,
+      "voiceover": "Three measured mechanisms explain the rest: truncation, the metric, and density. At ten million tokens the same code finds a quarter of the evidence.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-measured/film/mm-recap-b4.png"
+    },
+    {
+      "clip_id": "c075",
+      "slide": "mm-recap",
+      "build": 4,
+      "voiceover": "The sources page carries every reference for this section, with its date and its vendor flag.",
+      "words": 16,
+      "on_camera": true,
+      "frame": "frames/memory-measured/film/mm-recap-b4.png"
+    }
+  ]
+}

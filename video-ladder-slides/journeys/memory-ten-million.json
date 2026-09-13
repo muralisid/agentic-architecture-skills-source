@@ -1,0 +1,618 @@
+{
+  "page": "/memory/the-ten-million-token-question",
+  "chapter": "The ten-million-token question",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "mt-01",
+        "mt-intro"
+      ]
+    },
+    {
+      "heading": "How large the workload is",
+      "slides": [
+        "mt-worker",
+        "mt-anchors"
+      ]
+    },
+    {
+      "heading": "What the one public test at ten million shows",
+      "slides": [
+        "mt-beam-what",
+        "mt-beam-results"
+      ]
+    },
+    {
+      "heading": "What the vendors report at ten million",
+      "slides": [
+        "mt-vendors",
+        "mt-independent"
+      ]
+    },
+    {
+      "heading": "Why ten million is hard in a way one million is not",
+      "slides": [
+        "mt-why",
+        "mt-density"
+      ]
+    },
+    {
+      "heading": "The question, left open",
+      "slides": [
+        "mt-q1",
+        "mt-q2",
+        "mt-q3"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "mt-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "mt-01",
+      "layout": "title",
+      "title": "The ten-million-token *question*",
+      "text": "How big is the workload, and what has been shown at that size?",
+      "builds": [
+        {
+          "narration": [
+            "The memory systems on the market are scored on conversations that would fit in a long email thread.",
+            "The work an enterprise wants remembered is measured in years of mail, chat, tickets and documents.",
+            "This page puts the two sizes side by side.",
+            "It shows what the only public test at that size gives every approach.",
+            "And it ends with the question the industry has not answered."
+          ]
+        }
+      ],
+      "caption": "Memory systems are scored on conversations that fit in an email thread. The work an enterprise wants remembered is years of mail, chat, tickets and documents."
+    },
+    {
+      "id": "mt-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "How large the workload is",
+        "What the one test shows",
+        "What the vendors report",
+        "Why ten million is hard",
+        "The question, left open"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "First, how large an enterprise memory workload is, in tokens, from sourced figures.",
+            "Then what the one public benchmark at ten million tokens shows."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Then what the vendors report at that size, and why the reports cannot be compared.",
+            "Then why ten million is hard in a way one million is not."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Last, the question itself, in three parts, left with you."
+          ]
+        }
+      ],
+      "caption": "How large the workload is, in tokens. What the one public test at ten million shows. What the vendors report. Why ten million is hard. The question, left open."
+    },
+    {
+      "id": "mt-worker",
+      "layout": "number",
+      "title": "One worker, one *year*",
+      "value": "6 to 8M",
+      "unit": "tokens of received mail and chat per knowledge worker per year, derived",
+      "text": "Before attachments, documents, tickets or meetings.",
+      "builds": [
+        {
+          "narration": [
+            "Start with one person.",
+            "Microsoft's Work Trend Index of June 2025 counts 117 emails received per weekday.",
+            "And 153 chat messages."
+          ]
+        },
+        {
+          "narration": [
+            "A public corpus of sent mail averages 144 words per message.",
+            "Take 250 working days and three quarters of a word per token.",
+            "Email alone is about 5.6 million tokens a year.",
+            "Add chat, at an assumed 20 words a message, and the total is 6 to 8 million."
+          ]
+        },
+        {
+          "narration": [
+            "That excludes attachments, documents, tickets and meetings.",
+            "The chat figure is an assumption, and the page says so.",
+            "Ten million tokens is a little more than one worker's year."
+          ]
+        }
+      ],
+      "caption": "Microsoft counts 117 emails and 153 chat messages received per weekday. At 144 words per email, that is about 6 to 8 million tokens a year, derived."
+    },
+    {
+      "id": "mt-anchors",
+      "layout": "table",
+      "title": "Sourced *anchors* for scale",
+      "head": [
+        "Workload",
+        "Size"
+      ],
+      "widths": [
+        3,
+        2
+      ],
+      "rows": [
+        [
+          "One company's senior mail, 150 people",
+          "About 100 million tokens, derived"
+        ],
+        [
+          "One mailbox at its quota",
+          "100 gigabytes, 1.5 terabyte archive"
+        ],
+        [
+          "A synthetic enterprise corpus, 2026",
+          "About 500 thousand documents"
+        ],
+        [
+          "All US annual reports, 1993 to 2020",
+          "6.5 billion tokens"
+        ],
+        [
+          "English Wikipedia",
+          "5.27 billion words"
+        ]
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Here are sourced anchors for the scale.",
+            "One public corpus holds the mail of about 150 senior staff at one company.",
+            "It is about half a million messages.",
+            "No token count is published; derived from message length it is roughly 100 million tokens.",
+            "A single enterprise mailbox quota is 100 gigabytes, with an archive of 1.5 terabytes."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "A synthetic enterprise corpus built for retrieval research in 2026 holds about 500 thousand documents across nine source types.",
+            "Its authors say no real corpus of that size can be released.",
+            "All United States annual reports from 1993 to 2020 come to 6.5 billion tokens."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "And English Wikipedia is 5.27 billion words.",
+            "A service desk, a claims team or an engineering programme needs a slice of the estate.",
+            "That slice starts at tens of millions of tokens and grows every day.",
+            "Ten million is the floor, not the ceiling."
+          ]
+        }
+      ],
+      "caption": "One company's senior mail from the 2000s is about 100 million tokens. A mailbox quota is 100 gigabytes. All US annual reports since 1993 are 6.5 billion tokens."
+    },
+    {
+      "id": "mt-beam-what",
+      "layout": "list",
+      "title": "The one public test at *ten million*",
+      "items": [
+        "100 conversations, 10 at ten million",
+        "2,000 questions",
+        "Ten abilities",
+        "Judge scores 0, 0.5 or 1"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "One public benchmark reaches ten million tokens.",
+            "It was published by two universities and accepted at a top conference in 2026.",
+            "It has one hundred synthetic conversations, twenty of them at 128 thousand tokens.",
+            "Then 35 at half a million, 35 at one million, and ten at ten million."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "It has two thousand questions, two per ability per conversation."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The ten abilities are abstention, contradiction resolution, event ordering, information extraction and instruction following.",
+            "Then knowledge update, multi-session reasoning, preference following, summarisation and temporal reasoning."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "A judge scores each answer against rubric points at 0, half, or 1.",
+            "The authors evaluated no commercial memory system."
+          ]
+        }
+      ],
+      "caption": "BEAM has one hundred synthetic conversations, ten of them at ten million tokens, and two thousand questions across ten abilities. A judge scores each answer 0, 0.5 or 1."
+    },
+    {
+      "id": "mt-beam-results",
+      "layout": "table",
+      "title": "What the test *shows*",
+      "head": [
+        "Length",
+        "Full context",
+        "Retrieval",
+        "Authors' memory"
+      ],
+      "widths": [
+        1.4,
+        1,
+        1,
+        1.2
+      ],
+      "rows": [
+        [
+          "100K",
+          "0.24",
+          "0.32",
+          "0.36"
+        ],
+        [
+          "1M",
+          "0.26",
+          "0.31",
+          "0.34"
+        ],
+        [
+          "10M",
+          "0.10",
+          "0.25",
+          "0.27"
+        ]
+      ],
+      "text": "Best backbone. Three other backbones score 0.19 to 0.24 at ten million.",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here are the results for the best backbone, a one-million-token open-weight model.",
+            "Three approaches: full context, retrieval of the top five, and the authors' own memory design.",
+            "At 100 thousand tokens they score 0.24, 0.32 and 0.36."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "At one million, 0.26, 0.31 and 0.34."
+          ]
+        },
+        {
+          "reveal": 3,
+          "focus": [
+            2
+          ],
+          "narration": [
+            "At ten million, 0.10, 0.25 and 0.27.",
+            "Three things stand out.",
+            "The scores are low at every length.",
+            "That includes 100 thousand tokens, a size the model reads in one call.",
+            "The memory design adds 6 to 11 points over retrieval, and no more.",
+            "And every method is strongest on abstention and weakest on contradiction resolution."
+          ]
+        }
+      ],
+      "caption": "With a one-million-token model, full context scores 0.10 at ten million, retrieval 0.25, and the authors' memory design 0.27. Scores are low at every length."
+    },
+    {
+      "id": "mt-vendors",
+      "layout": "table",
+      "title": "What the vendors *report*",
+      "head": [
+        "Vendor",
+        "At 1M",
+        "At 10M",
+        "Conditions"
+      ],
+      "widths": [
+        1.2,
+        0.8,
+        0.8,
+        3
+      ],
+      "rows": [
+        [
+          "First, April 2026",
+          "64.1",
+          "48.6",
+          "Own judge; setup unclear"
+        ],
+        [
+          "Second, 2026",
+          "not given",
+          "0.67",
+          "Own judge; settings differ by scale"
+        ],
+        [
+          "Third, December 2025",
+          "0.631",
+          "0.406",
+          "Own harness"
+        ]
+      ],
+      "text": "Vendor reported. Not comparable to the paper or to each other.",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Three vendors have published their own ten-million-token numbers.",
+            "The first reports 64.1 at one million and 48.6 at ten million.",
+            "Its documentation lists one hundred conversations per scale.",
+            "The released data has ten at ten million.",
+            "So the setup is unclear."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The second reports 0.67 at ten million.",
+            "It notes that its settings differ between scales: different conversations, models and retrieval procedures."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The third reports 0.631 at one million and 0.406 at ten million.",
+            "It adds that testing recall on data that fits a context window is no longer meaningful."
+          ]
+        },
+        {
+          "narration": [
+            "These rows are shown because they exist, not because they can be compared.",
+            "The scales differ, the judges differ, and the setups differ from the paper.",
+            "What they share is the shape: each falls from one million to ten million.",
+            "Each vendor chose to publish anyway. That is to their credit."
+          ]
+        }
+      ],
+      "caption": "Three vendors published their own ten-million-token numbers. Each used its own judge and harness. None is comparable to the paper, and none has been reproduced."
+    },
+    {
+      "id": "mt-independent",
+      "layout": "statement",
+      "title": "Two independent points *beside* them",
+      "icon": "chart",
+      "text": "11.1 against 1.2 at ten million; 72.5 against 48.5 at 115 million.",
+      "builds": [
+        {
+          "narration": [
+            "Two independent data points sit beside the vendor rows."
+          ]
+        },
+        {
+          "narration": [
+            "A 2026 corpus benchmark reports a memory agent at 11.1 over ten million tokens.",
+            "Plain retrieval scores 1.2 on the same task."
+          ]
+        },
+        {
+          "narration": [
+            "A May 2026 benchmark goes past ten million, to 115 million tokens of agent trajectories.",
+            "Its best method stores the trajectories as files and searches them with a coding agent.",
+            "It scores 72.5 against 48.5 for retrieval.",
+            "That task is closer to an engineer's workspace than to a customer's history."
+          ]
+        }
+      ],
+      "caption": "A 2026 corpus benchmark reports a memory agent at 11.1 and retrieval at 1.2 over ten million tokens. A 115-million-token benchmark reports a file-storing agent at 72.5."
+    },
+    {
+      "id": "mt-why",
+      "layout": "steps",
+      "title": "Why ten million is *hard*",
+      "items": [
+        "Nothing reads the whole",
+        "The pool is too dense",
+        "The evidence is spread"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Why is ten million hard in a way one million is not?",
+            "Three separate mechanisms compound.",
+            "The first is arithmetic.",
+            "No shipped model reads ten million tokens in one call.",
+            "So every approach retrieves, and the retrieval is the whole game."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The second is the encoder.",
+            "An embedding separates a session about careers from one about cooking.",
+            "It does not separate one career message from twenty thousand others on the same topic.",
+            "At ten million tokens a single conversation holds about twenty thousand messages."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The third is spread.",
+            "The questions that fail worst need many messages from different points in a long history.",
+            "Event ordering, summarisation, and reasoning across sessions.",
+            "Find one message and stop, and you have found nothing useful."
+          ]
+        }
+      ],
+      "caption": "Nothing can read the whole. The candidate pool is too dense for an encoder. And the evidence is spread across years. The three compound."
+    },
+    {
+      "id": "mt-density",
+      "layout": "statement",
+      "title": "At that density, *words* discriminate",
+      "icon": "search",
+      "text": "Word overlap predicts recall. Encoder choice does not.",
+      "builds": [
+        {
+          "narration": [
+            "We measured the density problem ourselves, on one system, on the ten-million-token benchmark.",
+            "Exact word overlap between the question and the evidence predicts whether the evidence is found.",
+            "The choice of encoder does not."
+          ]
+        },
+        {
+          "narration": [
+            "This guide already keeps keyword search in the loop for names and identifiers.",
+            "At this density it stops being optional.",
+            "At this density it becomes the discriminating channel."
+          ]
+        },
+        {
+          "narration": [
+            "On those ten-million-token questions the gold evidence averages seven and a half messages.",
+            "It reaches 83.",
+            "This is why the 90 percent scores on the small benchmarks do not transfer.",
+            "Those benchmarks have pools of 28 to 48 sessions and mostly need one session per question."
+          ]
+        }
+      ],
+      "caption": "On the ten-million-token benchmark, exact word overlap between question and evidence predicts whether the evidence is found. The choice of encoder does not."
+    },
+    {
+      "id": "mt-q1",
+      "layout": "statement",
+      "title": "Question one: *which* architecture",
+      "icon": "brain",
+      "text": "Useful recall over ten million tokens, at a bearable cost per question.",
+      "builds": [
+        {
+          "narration": [
+            "This section does not recommend an architecture for enterprise scale.",
+            "No architecture has published a result that would justify one.",
+            "So the question is left with you, in three parts."
+          ]
+        },
+        {
+          "narration": [
+            "Part one.",
+            "Which architecture, if any, gives an agent useful recall over ten million tokens of an enterprise's own records?",
+            "And at a cost per question that a service desk or a claims team can bear?"
+          ]
+        }
+      ],
+      "caption": "Which architecture, if any, gives an agent useful recall over ten million tokens of its own records? And at a cost a service desk can bear?"
+    },
+    {
+      "id": "mt-q2",
+      "layout": "statement",
+      "title": "Question two: how would you *know*",
+      "icon": "scale",
+      "text": "Independent, past the window, unit and judge stated, two tables.",
+      "builds": [
+        {
+          "narration": [
+            "Part two.",
+            "How would you know?"
+          ]
+        },
+        {
+          "narration": [
+            "The score would have to be independently produced.",
+            "On a corpus that does not fit a context window.",
+            "With the unit, the pool, the k and the judge stated."
+          ]
+        },
+        {
+          "narration": [
+            "And with retrieval-only and answered-question results in separate tables.",
+            "Nothing published so far meets all of that."
+          ]
+        }
+      ],
+      "caption": "The score would have to be independently produced, on a corpus that does not fit a context window. Unit, pool, k and judge stated. Two separate tables."
+    },
+    {
+      "id": "mt-q3",
+      "layout": "statement",
+      "title": "Question three: what would it *cost*",
+      "icon": "money",
+      "text": "Index once, or pay one to six hundred dollars per question.",
+      "builds": [
+        {
+          "narration": [
+            "Part three.",
+            "What would it cost to index?"
+          ]
+        },
+        {
+          "narration": [
+            "And how does that compare with sending everything to the model?",
+            "At list price that is between one dollar and six hundred dollars per ten million tokens, per question."
+          ]
+        },
+        {
+          "narration": [
+            "Until these three are answered, a memory system chosen for an enterprise workload is chosen on faith.",
+            "Our own research on the question is under way.",
+            "It will be published here when it is complete."
+          ]
+        }
+      ],
+      "caption": "What would it cost to index? Sending everything to the model costs one to six hundred dollars per ten million tokens. How do the two compare?"
+    },
+    {
+      "id": "mt-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Ten million is one worker's year",
+        "Best independent result: 0.27",
+        "Vendor numbers unchecked",
+        "The question is open"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "Ten million tokens is a little more than one worker's year of mail and chat.",
+            "It is the floor for an enterprise memory."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The best independent result at that size is 0.27 on a scale of 0 to 1."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The vendor numbers at that size are unchecked and cannot be compared."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The question is open, in three parts: which architecture, how would you know, and what would it cost.",
+            "The next page records the one measurement we have made ourselves."
+          ]
+        }
+      ],
+      "caption": "Ten million tokens is one worker's year, and the floor. The best independent result there is 0.27. Vendor numbers are unchecked. The question is open."
+    }
+  ]
+}

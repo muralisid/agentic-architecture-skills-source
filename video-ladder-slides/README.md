@@ -24,6 +24,18 @@ Working state as of 2026-09-12. Read this first before changing anything here.
 | Custom pretraining and architecture | 24 | 84 | 9.2 min |
 | **Total** | **213** | **678** | **76 min** |
 
+The memory architectures section, added 2026-09-13, uses the same toolkit. Its journeys are `journeys/memory-*.json`, its pages `product/memory/*.mdx`, and its slides `site/public/slides/memory/`.
+
+| Page | Slides | Clips | Read-through |
+| --- | ---: | ---: | ---: |
+| Memory architectures | 14 | see clips | 7.9 min |
+| Six ways to build a memory | 19 | see clips | 11.2 min |
+| What the benchmarks measure | 14 | see clips | 10.1 min |
+| Long context is not memory | 12 | see clips | 7.9 min |
+| The ten-million-token question | 14 | see clips | 9.4 min |
+| What we have measured | 15 | see clips | 9.6 min |
+| **Memory total** | **88** | | **56 min** |
+
 - All nine pages pass `lint.py`, `lint-domain.py` and the site content check.
 - Nothing is filmed. Nothing is merged. The work sits on branch `ladder/slide-journeys`.
 - A merge to `main` deploys the site, so it needs Murali's yes.
@@ -43,6 +55,15 @@ Working state as of 2026-09-12. Read this first before changing anything here.
 - Writing rules: no em dash, no arrow characters, no curly quotes, and no sentence over
   20 words. Short sentences, plain words, one idea each.
 - Nothing is filmed or published without Murali's yes on that page's script.
+
+## Running on Linux
+
+The renderer takes the browser from the environment: `CHROME=/path/to/chromium` and
+`CHROME_FLAGS="--no-sandbox --window-size=1920,1200"`. The export encodes WebP with
+`cwebp` where it exists and otherwise with Pillow. `write-page.py` and `export-site.mjs`
+find the repository relative to this folder, or from `REPO` and `SITE`. Two layouts were
+added for the memory section: `bars` for scores and prices, and `table` for small grids.
+Concept pictures are not generated here; statement slides carry an icon instead.
 
 ## The order to run things
 

@@ -15,7 +15,7 @@ import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = "/Users/muralisid/github_other/agentic-architecture-skills-source"
+REPO = os.environ.get("REPO") or os.path.dirname(HERE)
 
 # Links on the page only. The video script strips them.
 MANUAL_LINKS = {
@@ -54,11 +54,13 @@ def link_branch(paras, own):
 
 
 def main(name):
-    page_file = f"{REPO}/product/ladder/{name}.mdx"
     with open(os.path.join(HERE, "journeys", f"{name}.json")) as fh:
         journey = json.load(fh)
-    jid = "ladder/index" if journey["page"] == "/ladder" else journey["page"].lstrip("/")
-    own = "/" + ("ladder" if name == "index" else jid)
+    # A section's own page ("/ladder", "/memory") is its index journey and its index.mdx.
+    segs = journey["page"].lstrip("/").split("/")
+    jid = f"{segs[0]}/index" if len(segs) == 1 else "/".join(segs)
+    page_file = f"{REPO}/product/{segs[0]}/{'index' if len(segs) == 1 else segs[-1]}.mdx"
+    own = "/" + "/".join(segs)
     slides = {s["id"]: s for s in journey["slides"]}
 
     sections = journey.get("sections")
@@ -76,7 +78,7 @@ def main(name):
     tail = "\n".join(line for line in current[tail_at:].strip().split("\n") if not re.search(r"\bbank", line, re.I))
 
     published = subprocess.run(
-        ["git", "-C", REPO, "show", f"HEAD:product/ladder/{name}.mdx"], capture_output=True, text=True
+        ["git", "-C", REPO, "show", f"HEAD:{os.path.relpath(page_file, REPO)}"], capture_output=True, text=True
     ).stdout
     depth = re.search(r"^## Where the depth is\n(.*?)(?=^## |\Z)", published, re.S | re.M)
     depth_text = re.sub(r"<(TeachingIllustration|GuideFigure)\b[\s\S]*?/>\s*", "", depth.group(1)).strip() if depth else None

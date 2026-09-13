@@ -14,6 +14,16 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 
 ---
 
+## Added for the memory architectures section, September 2026
+
+| Item | Why volatile | Where used | Re-check |
+|---|---|---|---|
+| Context windows, long-context price tiers and cache rates for every model family on the long-context page | Prices change quarterly; one Flash line changes price on 2027-01-01; one provider re-routed its Pro model on 2026-09-14 | /memory/long-context-is-not-memory | December 2026, against first-party pricing pages |
+| Status of the four managed memory services (one still in preview as of 2026-06-02) | Preview to GA transitions | /memory/six-architectures | December 2026 |
+| Every vendor benchmark row: LoCoMo, LongMemEval and BEAM scores reported by memory vendors | Vendors re-publish monthly under new judges | /memory/what-the-benchmarks-measure, /memory/the-ten-million-token-question | December 2026 |
+| Whether an independent evaluation of any commercial memory system on BEAM has appeared | Would change the section's open question | /memory/the-ten-million-token-question | December 2026 |
+| The MemPalace benchmark file and history page | The project has retracted claims before | /memory/what-we-have-measured | December 2026 |
+
 ## Completed for the August 2026 release
 
 | Item | Result | Primary source |

@@ -1,0 +1,90 @@
+{
+  "id": "memory/what-the-benchmarks-measure",
+  "title": "What the benchmarks measure",
+  "slides": [
+    {
+      "id": "mb-01",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-01.webp",
+      "title": "What the benchmarks measure",
+      "caption": "A memory benchmark asks questions about a long conversation. There are two ways to score it, and most claims quote one while the reader assumes the other."
+    },
+    {
+      "id": "mb-intro",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-intro.webp",
+      "title": "What we will cover",
+      "caption": "The two schools of scoring and the six benchmarks that matter. Why two are saturated and the vendor dispute of 2025. Ten ways a score misleads and five questions to ask."
+    },
+    {
+      "id": "mb-retrieval",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-retrieval.webp",
+      "title": "The retrieval school: was it found",
+      "caption": "Retrieval recall at k asks what fraction of the gold evidence sits in the top k results. No answer is generated. The standard form is the TREC fraction."
+    },
+    {
+      "id": "mb-answer",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-answer.webp",
+      "title": "The answer school: was it right",
+      "caption": "A reader answers from what was retrieved. The answer is scored by word overlap or by a model as judge. It depends on the reader and the judge."
+    },
+    {
+      "id": "mb-two-tables",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-two-tables.webp",
+      "title": "Two schools, two tables",
+      "caption": "Both schools are legitimate. The only error is to place a retrieval-only number beside an answer number and read them as one thing."
+    },
+    {
+      "id": "mb-six",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-six.webp",
+      "title": "The six benchmarks that matter",
+      "caption": "LoCoMo and LongMemEval are saturated. BEAM and MemoryAgentBench are far from it. ConvoMem finds retrieval unnecessary below 150 conversations. LongMemEval-V2 passes ten million tokens."
+    },
+    {
+      "id": "mb-newer",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-newer.webp",
+      "title": "Five more in 2026 say the same",
+      "caption": "Five benchmarks from February to August 2026 report the same two things. Plain retrieval or plain long context stays competitive. Factual scores do not carry over to using the memory."
+    },
+    {
+      "id": "mb-locomo",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-locomo.webp",
+      "title": "Why the first benchmark is saturated",
+      "caption": "A conversation fits inside a modern context window several times over. The scorer's category labels differ from the paper. 446 questions have no answer. 99 labels are wrong."
+    },
+    {
+      "id": "mb-lme",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-lme.webp",
+      "title": "The second benchmark is better built",
+      "caption": "A fixed judge with 97 percent agreement with humans, seven question types, and separate columns for retrieval and answers. Its authors measured a frontier model at 0.606."
+    },
+    {
+      "id": "mb-dispute",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-dispute.webp",
+      "title": "The dispute of 2025",
+      "caption": "The two largest vendors published each other's scores. One reported 65.99. The other corrected its own 84 to 75.14. The first recomputed that to 58.44. The benchmark cannot separate them."
+    },
+    {
+      "id": "mb-ten-a",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-ten-a.webp",
+      "title": "Ten ways a score misleads, one to five",
+      "caption": "Any-hit reported as recall. A k larger than the pool. Retrieval beside judged answers. The credited target. Category relabelling and denominators."
+    },
+    {
+      "id": "mb-ten-b",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-ten-b.webp",
+      "title": "Ten ways a score misleads, six to ten",
+      "caption": "Fixes tuned to named questions. The vendor as reader and judge. Corrupted or missing gold. Single runs. Synthetic recall as a proxy for reading."
+    },
+    {
+      "id": "mb-five",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-five.webp",
+      "title": "Five questions before believing a number",
+      "caption": "Which school? What unit and pool? What k? Whose reader and judge? How many tokens, and does that fit one context window?"
+    },
+    {
+      "id": "mb-recap",
+      "src": "/slides/memory/what-the-benchmarks-measure/mb-recap.webp",
+      "title": "What to remember",
+      "caption": "Two schools, two tables. The two famous benchmarks fit in one context window and are saturated. Ten ways a score misleads. Five questions to ask."
+    }
+  ]
+}

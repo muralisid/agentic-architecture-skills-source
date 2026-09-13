@@ -1,0 +1,90 @@
+{
+  "id": "memory/index",
+  "title": "Memory architectures",
+  "slides": [
+    {
+      "id": "mo-01",
+      "src": "/slides/memory/index/mo-01.webp",
+      "title": "Memory architectures",
+      "caption": "Memory is what an agent keeps between tasks. This section looks at how memories are built and scored. It asks how far the scores are from what an enterprise needs."
+    },
+    {
+      "id": "mo-intro",
+      "src": "/slides/memory/index/mo-intro.webp",
+      "title": "What we will cover",
+      "caption": "Six pages. Why memory needs its own section, six ways to build one, and how memory is scored. Then long context, the ten-million-token question, and what we measured."
+    },
+    {
+      "id": "mo-agent",
+      "src": "/slides/memory/index/mo-agent.webp",
+      "title": "An agent forgets when the task ends",
+      "caption": "A model reads text and writes text. An agent is a system that uses a model to do a job. When the job ends, the model keeps nothing."
+    },
+    {
+      "id": "mo-memory",
+      "src": "/slides/memory/index/mo-memory.webp",
+      "title": "That something is its memory",
+      "caption": "Memory is what is built around the model so the agent can recall. It is a store, an index, and a way to bring the right piece back."
+    },
+    {
+      "id": "mo-count",
+      "src": "/slides/memory/index/mo-count.webp",
+      "title": "A crowded field",
+      "caption": "By September 2026 there are more than thirty named memory systems and four managed cloud services. Six survey taxonomies and ten new benchmarks. Almost none of their scores compare."
+    },
+    {
+      "id": "mo-two-facts",
+      "src": "/slides/memory/index/mo-two-facts.webp",
+      "title": "Two facts decide everything",
+      "caption": "Every memory architecture is placed by what it stores and by when a model runs. Those two choices fix what can be recalled and what it costs."
+    },
+    {
+      "id": "mo-scores",
+      "src": "/slides/memory/index/mo-scores.webp",
+      "title": "Every high score is small",
+      "caption": "Every memory score above 90 percent was earned on a conversation of 16 thousand to 115 thousand tokens. That fits inside one call to a modern model."
+    },
+    {
+      "id": "mo-scale",
+      "src": "/slides/memory/index/mo-scale.webp",
+      "title": "Ten million tokens",
+      "caption": "Ten million tokens is a little more than one year of one worker's received mail and chat. An enterprise memory workload starts there and grows."
+    },
+    {
+      "id": "mo-beam",
+      "src": "/slides/memory/index/mo-beam.webp",
+      "title": "At ten million, the best result",
+      "caption": "One public benchmark reaches ten million tokens. There, plain long context scores 0.10 and retrieval 0.25. The authors' own memory design scores 0.27 on a scale of 0 to 1."
+    },
+    {
+      "id": "mo-vendors",
+      "src": "/slides/memory/index/mo-vendors.webp",
+      "title": "Vendor numbers at ten million are unchecked",
+      "caption": "Three vendors have published their own ten-million-token scores. Each used its own judge and harness. None is comparable to the paper, and none has been reproduced."
+    },
+    {
+      "id": "mo-rules",
+      "src": "/slides/memory/index/mo-rules.webp",
+      "title": "Three rules for every number",
+      "caption": "Vendor numbers are flagged and never ranked against each other. Independently measured numbers sit in their own rows. Retrieval scores and answer scores never share a table."
+    },
+    {
+      "id": "mo-map",
+      "src": "/slides/memory/index/mo-map.webp",
+      "title": "Six pages in this section",
+      "caption": "The six pages: the taxonomy, the benchmarks, long context, the ten-million-token question, what we measured, and the sources."
+    },
+    {
+      "id": "mo-open",
+      "src": "/slides/memory/index/mo-open.webp",
+      "title": "The question is open",
+      "caption": "No independently run, published result shows any memory architecture or long-context model answering well over a single ten-million-token corpus. The section ends on that gap."
+    },
+    {
+      "id": "mo-recap",
+      "src": "/slides/memory/index/mo-recap.webp",
+      "title": "What to remember",
+      "caption": "Memory is built by what is stored and when a model runs. Every high score is on a small test. Ten million tokens is the floor, and nothing solid has been shown there."
+    }
+  ]
+}

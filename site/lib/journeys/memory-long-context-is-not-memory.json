@@ -1,0 +1,78 @@
+{
+  "id": "memory/long-context-is-not-memory",
+  "title": "Long context is not memory",
+  "slides": [
+    {
+      "id": "ml-01",
+      "src": "/slides/memory/long-context-is-not-memory/ml-01.webp",
+      "title": "Long context is not memory",
+      "caption": "Most leading models read a million tokens in one call. That invites skipping the memory. Models get worse at finding things long before the window is full."
+    },
+    {
+      "id": "ml-intro",
+      "src": "/slides/memory/long-context-is-not-memory/ml-intro.webp",
+      "title": "What we will cover",
+      "caption": "The one-million-token window is standard. Two pricing regimes. Effective context is a fraction of nominal. Long context against retrieval. What ten million tokens costs."
+    },
+    {
+      "id": "ml-standard",
+      "src": "/slides/memory/long-context-is-not-memory/ml-standard.webp",
+      "title": "The window is standard",
+      "caption": "As of September 2026, nine model families offer a million tokens or more. One claims ten million. The claim and the useful length are different numbers."
+    },
+    {
+      "id": "ml-pricing",
+      "src": "/slides/memory/long-context-is-not-memory/ml-pricing.webp",
+      "title": "Two pricing regimes",
+      "caption": "Some vendors bill flat across the window. Others bill the whole request at double once it passes a threshold. Memory workloads sit on the wrong side of the threshold."
+    },
+    {
+      "id": "ml-nolima",
+      "src": "/slides/memory/long-context-is-not-memory/ml-nolima.webp",
+      "title": "Effective context is a fraction",
+      "caption": "One test removes word overlap between question and evidence. On it, effective context is 1K to 16K for models that claim 1M to 10M."
+    },
+    {
+      "id": "ml-four",
+      "src": "/slides/memory/long-context-is-not-memory/ml-four.webp",
+      "title": "Four more lines of evidence",
+      "caption": "Almost all models drop sharply past the plain needle test. Synthetic tests do not predict real tasks. Every model degrades with length. The vendors say so themselves."
+    },
+    {
+      "id": "ml-2026",
+      "src": "/slides/memory/long-context-is-not-memory/ml-2026.webp",
+      "title": "The 2026 follow-ups reach a million",
+      "caption": "The leader at 128 thousand tokens is not the leader at one million. Frontier models miss dangerous actions far more often after 800 thousand tokens."
+    },
+    {
+      "id": "ml-versus",
+      "src": "/slides/memory/long-context-is-not-memory/ml-versus.webp",
+      "title": "Long context against retrieval",
+      "caption": "Within the window, long context wins on accuracy by 7 to 13 points. It loses on cost by ten to twenty-six times. Past the window, plain retrieval collapses too."
+    },
+    {
+      "id": "ml-corpusqa",
+      "src": "/slides/memory/long-context-is-not-memory/ml-corpusqa.webp",
+      "title": "Past the window, both collapse",
+      "caption": "A 2026 benchmark tests question answering over 128 thousand to ten million tokens. At four million, plain retrieval scores 2.4 and a memory agent 22.1. At ten million, 1.2 and 11.1."
+    },
+    {
+      "id": "ml-cost",
+      "src": "/slides/memory/long-context-is-not-memory/ml-cost.webp",
+      "title": "What ten million tokens costs",
+      "caption": "At list price, one ten-million-token prompt costs between one dollar and six hundred dollars. No one-million-token model accepts it in a single call."
+    },
+    {
+      "id": "ml-cache",
+      "src": "/slides/memory/long-context-is-not-memory/ml-cache.webp",
+      "title": "Caching helps a static corpus",
+      "caption": "A cached read of ten million tokens costs three cents to twenty dollars. It helps only when the same tokens are asked again within the cache lifetime."
+    },
+    {
+      "id": "ml-recap",
+      "src": "/slides/memory/long-context-is-not-memory/ml-recap.webp",
+      "title": "What to remember",
+      "caption": "A window bounds one call and proves nothing about what will be found. Effective context is thousands of tokens, not millions. Cost tiers start where memory workloads begin."
+    }
+  ]
+}

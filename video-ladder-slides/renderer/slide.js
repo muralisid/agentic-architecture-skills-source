@@ -201,6 +201,36 @@
         + `<div class="unit">${rich(s.unit || '')}</div>${s.text ? `<p class="lede">${rich(s.text)}</p>` : ''}</div>`;
     },
 
+    // bars: one horizontal bar per item, for scores and prices. items: [[label, value, shown?]], max optional.
+    bars(s, st, ctx) {
+      const items = s.items || [];
+      const max = s.max || Math.max(...items.map((it) => Number(it[1]) || 0)) || 1;
+      const n = items.length;
+      const font = sizeFor(n, ctx.variant === 'video' ? [40, 38, 36, 33, 30, 27, 25] : [48, 46, 44, 42, 38, 34, 30]);
+      const rows = items.map((it, i) => {
+        const [label, value, shown] = it;
+        const pct = Math.max(2, Math.min(100, (Number(value) / max) * 100));
+        return `<div class="brow-bar ${foc(i, st)}" style="visibility:${vis(i, st)};font-size:${font}px">`
+          + `<div class="bl">${rich(label)}</div><div class="bt"><div class="bf" style="width:${pct}%"></div></div>`
+          + `<div class="bv">${esc(shown ?? value)}</div></div>`;
+      }).join('');
+      const note = s.text ? `<p class="lede bnote">${rich(s.text)}</p>` : '';
+      return `${topTitle(s)}<div class="stage L-bars" style="--bars:${n}">${s.unit ? `<div class="bunit">${rich(s.unit)}</div>` : ''}<div class="bwrap">${rows}</div>${note}</div>`;
+    },
+
+    // table: a small grid. head: [...], rows: [[...]]. Rows reveal by index; focus highlights rows.
+    table(s, st, ctx) {
+      const head = s.head || [];
+      const rows = s.rows || [];
+      const cols = Math.max(head.length, ...rows.map((r) => r.length));
+      const font = sizeFor(rows.length, ctx.variant === 'video' ? [40, 40, 38, 34, 31, 28, 25, 23] : [52, 50, 48, 44, 40, 36, 30, 27]);
+      const widths = s.widths ? s.widths.map((w) => `${w}fr`).join(' ') : `2fr ${'1fr '.repeat(Math.max(0, cols - 1)).trim()}`;
+      const th = head.map((h, j) => `<div class="th ${j ? 'num' : ''}">${rich(h)}</div>`).join('');
+      const tr = rows.map((r, i) => `<div class="tr ${foc(i, st)}" style="visibility:${vis(i, st)}">`
+        + r.map((c, j) => `<div class="td ${j ? 'num' : ''}">${rich(c)}</div>`).join('') + '</div>').join('');
+      return `${topTitle(s)}<div class="stage L-table" style="--cols:${widths};--tfont:${font}px"><div class="grid card"><div class="tr head">${th}</div>${tr}</div>${s.text ? `<p class="lede tnote">${rich(s.text)}</p>` : ''}</div>`;
+    },
+
     branch(s, st) {
       const pairs = s.pairs || (s.items && s.items.length === 2 ? [s.items] : []);
       const rows = pairs.map(([a, b], i) => `<div class="brow" style="visibility:${vis(i, st)}"><div class="sym card">${rich(a)}</div>`
@@ -210,7 +240,7 @@
     },
   };
 
-  const WATCH = ['stage', 'tile', 'rung', 'step', 'box', 'node', 'col', 'crow', 'sym', 'opt', 'caption', 'pv', 'L-statement', 'L-rule', 'L-title', 'labels'];
+  const WATCH = ['stage', 'tile', 'rung', 'step', 'box', 'node', 'col', 'crow', 'sym', 'opt', 'caption', 'pv', 'L-statement', 'L-rule', 'L-title', 'labels', 'bl', 'bv', 'td', 'th'];
 
   function describe(el) {
     return `${el.tagName.toLowerCase()}.${[...el.classList].join('.')} "${el.textContent.trim().slice(0, 48)}"`;

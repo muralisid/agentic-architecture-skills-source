@@ -1,0 +1,766 @@
+{
+  "page": "/memory/six-architectures",
+  "chapter": "Six ways to build a memory",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "ma-01",
+        "ma-intro"
+      ]
+    },
+    {
+      "heading": "Two questions place any system",
+      "slides": [
+        "ma-axis1",
+        "ma-axis2",
+        "ma-tiers"
+      ]
+    },
+    {
+      "heading": "The six classes",
+      "slides": [
+        "ma-six",
+        "ma-c1",
+        "ma-c2",
+        "ma-c3",
+        "ma-c4",
+        "ma-c5",
+        "ma-c6"
+      ]
+    },
+    {
+      "heading": "Where the named systems sit",
+      "slides": [
+        "ma-placed",
+        "ma-fallback"
+      ]
+    },
+    {
+      "heading": "The managed services",
+      "slides": [
+        "ma-cloud"
+      ]
+    },
+    {
+      "heading": "What changed in 2026",
+      "slides": [
+        "ma-2026",
+        "ma-baseline"
+      ]
+    },
+    {
+      "heading": "Memory inside the model",
+      "slides": [
+        "ma-research"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "ma-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "ma-01",
+      "layout": "title",
+      "title": "Six ways to build a *memory*",
+      "text": "What is stored, and when does a model run?",
+      "builds": [
+        {
+          "narration": [
+            "A memory for an agent can be built in six ways.",
+            "It can keep the original words.",
+            "It can keep a summary, or a list of facts a model pulled out.",
+            "It can keep a web of who relates to what.",
+            "It can let the agent write its own notes.",
+            "Or it can bake what was learned into the model itself.",
+            "Each choice decides what can be found later, and what is thrown away on the way in."
+          ]
+        }
+      ],
+      "caption": "A memory can keep the original words, a summary, extracted facts or a web of relations. It can keep the agent's own notes, or the model's weights. Each choice decides what is lost."
+    },
+    {
+      "id": "ma-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "Two questions that place a system",
+        "The six classes",
+        "Where the named systems sit",
+        "The managed cloud services",
+        "What changed in 2026",
+        "Memory inside the model"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "First, the two questions that place any memory system.",
+            "Then the six classes those questions produce."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Then where the named systems sit, about forty of them.",
+            "Then the four managed services from the large cloud providers."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "Then three product moves in 2026 that all point the same way.",
+            "Last, the research line that puts memory inside the model, with no product yet."
+          ]
+        }
+      ],
+      "caption": "The two axes and the six classes. Where every named system sits and the four managed cloud services. What changed in 2026 and the research line with no product yet."
+    },
+    {
+      "id": "ma-axis1",
+      "layout": "statement",
+      "title": "First question: what is *stored*",
+      "icon": "database",
+      "text": "From the original words to the model's weights.",
+      "builds": [
+        {
+          "narration": [
+            "The first question is what is persisted.",
+            "At one end, the original text, unchanged.",
+            "At the other end, the model's own weights."
+          ]
+        },
+        {
+          "narration": [
+            "In between sit summaries, extracted facts, and graphs of entities and relations.",
+            "Each step along that line transforms the original more."
+          ]
+        },
+        {
+          "narration": [
+            "Transformation makes the store smaller and cheaper to read.",
+            "It also throws away whatever the transformer did not think mattered.",
+            "That loss is silent, and no later search recovers it."
+          ]
+        }
+      ],
+      "caption": "The first axis runs from the original text through summaries, extracted facts and graph triples to weights. The more the text is transformed, the more is lost."
+    },
+    {
+      "id": "ma-axis2",
+      "layout": "steps",
+      "title": "Second question: when a model *runs*",
+      "items": [
+        "At write time",
+        "At read time",
+        "In the background",
+        "During training"
+      ],
+      "text": "Where the intelligence is spent is where the cost sits.",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The second question is when a model runs.",
+            "Some systems run a model at write time, once per document.",
+            "They pay once and read cheaply."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Some run a model only at read time.",
+            "They store cheaply and pay per question."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Some run a model in the background, between tasks.",
+            "They pay continuously and hope the consolidation is right before anyone asks."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "And some produce the memory by training.",
+            "The model reads it implicitly, in the forward pass.",
+            "Where the intelligence is spent is where the cost sits."
+          ]
+        }
+      ],
+      "caption": "A model can run at write time, at read time, in a background pass, or during training. Where the intelligence is spent is where the cost sits."
+    },
+    {
+      "id": "ma-tiers",
+      "layout": "statement",
+      "title": "Tiers grade *how long*, classes say *how built*",
+      "icon": "layers",
+      "text": "The tier decides the duties. The class decides the recall.",
+      "builds": [
+        {
+          "narration": [
+            "This guide already grades memory by how long it is kept.",
+            "Those are the tiers, M1 to M5.",
+            "The tier decides the governance: ownership, consent, retention and erasure."
+          ]
+        },
+        {
+          "narration": [
+            "The six classes on this page are different.",
+            "They describe how a store at any tier is built."
+          ]
+        },
+        {
+          "narration": [
+            "Both are needed.",
+            "The tier says what duties attach.",
+            "The class says what can be recalled."
+          ]
+        }
+      ],
+      "caption": "The memory tiers M1 to M5 grade what a memory holds by how long it is kept. The six classes describe how a store at any tier is built. Both are needed."
+    },
+    {
+      "id": "ma-six",
+      "layout": "tiles",
+      "title": "The six *classes*",
+      "items": [
+        "Verbatim store",
+        "Extracted facts and profiles",
+        "Graph store",
+        "Hierarchical summaries",
+        "Agent-managed files",
+        "Memory in the weights"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Class one keeps the original text with a search index and no model at write time.",
+            "Class two keeps facts and profiles that a model pulled out of each conversation."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Class three keeps entities and relations as a graph. Each relation can carry the dates it held.",
+            "Class four keeps summaries at one or more levels of abstraction."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "Class five lets the agent itself read and write memory files through tool calls.",
+            "Class six puts the memory in weights or caches, written by training.",
+            "We take them one at a time."
+          ]
+        }
+      ],
+      "caption": "Verbatim stores, extracted facts and profiles, graphs, hierarchical summaries, agent-managed files, and memory in the weights."
+    },
+    {
+      "id": "ma-c1",
+      "layout": "statement",
+      "title": "Class 1: keep the *original text*",
+      "icon": "document",
+      "text": "Nothing lost on the way in, nothing consolidated either.",
+      "builds": [
+        {
+          "narration": [
+            "Class one stores the original text, unchanged.",
+            "It is indexed by embeddings, and usually by keywords too.",
+            "No model runs at write time."
+          ]
+        },
+        {
+          "narration": [
+            "Nothing is lost on the way in.",
+            "Ingestion is the cheapest there is.",
+            "Exact names and quotations stay findable."
+          ]
+        },
+        {
+          "narration": [
+            "The cost comes later.",
+            "Nothing is consolidated, so the same fact appears every place it was said.",
+            "And the encoder reads only the first few hundred words of each unit. Long units are cut short."
+          ]
+        }
+      ],
+      "caption": "A verbatim store keeps the text unchanged in a vector index and usually a keyword index. Nothing is lost on the way in. Nothing is consolidated either."
+    },
+    {
+      "id": "ma-c2",
+      "layout": "statement",
+      "title": "Class 2: extract the *facts*",
+      "icon": "file-text",
+      "text": "Small and readable; whatever was not extracted is gone.",
+      "builds": [
+        {
+          "narration": [
+            "Class two runs a model at write time.",
+            "The model pulls out atomic facts, notes, or a profile of the person."
+          ]
+        },
+        {
+          "narration": [
+            "The store is small, readable, and easy to update.",
+            "A profile can be injected whole into the next task."
+          ]
+        },
+        {
+          "narration": [
+            "The loss is silent and permanent.",
+            "Whatever the extractor did not think mattered is not in the memory.",
+            "This is the class most commercial memory layers chose in 2025."
+          ]
+        }
+      ],
+      "caption": "A model pulls atomic facts, notes or profiles out of each conversation at write time. The store is small and readable. Whatever was not extracted is gone."
+    },
+    {
+      "id": "ma-c3",
+      "layout": "statement",
+      "title": "Class 3: build a *graph*",
+      "icon": "branch",
+      "text": "Relationships and dates, at a model call per document.",
+      "builds": [
+        {
+          "narration": [
+            "Class three also runs a model at write time.",
+            "It extracts entities, relations and facts, and stores them as nodes and edges.",
+            "Often each edge carries the dates it was true."
+          ]
+        },
+        {
+          "narration": [
+            "Retrieval can walk the graph.",
+            "That buys relationship questions, what was true when, and a path that can be explained."
+          ]
+        },
+        {
+          "narration": [
+            "It costs a model call per document.",
+            "It adds a second database to run.",
+            "And on plain factual questions, a sparse graph can do worse than simple retrieval."
+          ]
+        }
+      ],
+      "caption": "Entities, relations and facts become nodes and edges. Each edge can carry the dates it was true. Retrieval walks the graph. Extraction costs a model call per document."
+    },
+    {
+      "id": "ma-c4",
+      "layout": "statement",
+      "title": "Class 4: keep *summaries*",
+      "icon": "book",
+      "text": "Good for the whole; detail below the summary is gone.",
+      "builds": [
+        {
+          "narration": [
+            "Class four keeps summaries.",
+            "Sometimes at several levels, from a paragraph up to the whole corpus.",
+            "Sometimes as compressed observations that stay in the model's context."
+          ]
+        },
+        {
+          "narration": [
+            "This buys questions about the whole.",
+            "What are the themes, what changed over the year.",
+            "A stable summary also caches well, so it is cheap to reuse."
+          ]
+        },
+        {
+          "narration": [
+            "Detail below the summary level is gone.",
+            "And summaries drift from the source as the source changes."
+          ]
+        }
+      ],
+      "caption": "Summaries at one or more levels, or compressed observations kept in context. Good for questions about the whole corpus. Detail below the summary is gone."
+    },
+    {
+      "id": "ma-c5",
+      "layout": "statement",
+      "title": "Class 5: the agent keeps *files*",
+      "icon": "tool",
+      "text": "Versionable and readable; only as good as the agent's judgement.",
+      "builds": [
+        {
+          "narration": [
+            "Class five lets the agent manage its own memory.",
+            "It reads and writes files or memory blocks through tool calls.",
+            "A small core stays in its context every turn."
+          ]
+        },
+        {
+          "narration": [
+            "The agent decides what matters.",
+            "The files can be versioned like code, and a person can read them."
+          ]
+        },
+        {
+          "narration": [
+            "Quality depends on the agent's judgement at write time.",
+            "And there is no index over the raw history unless one is added.",
+            "One vendor moved its whole product to this class in 2026."
+          ]
+        }
+      ],
+      "caption": "The agent itself reads and writes memory files or blocks through tool calls, with a small core always present. A person can inspect and version it."
+    },
+    {
+      "id": "ma-c6",
+      "layout": "statement",
+      "title": "Class 6: memory in the *weights*",
+      "icon": "chip",
+      "text": "No retrieval step, no product, no way to delete a fact.",
+      "builds": [
+        {
+          "narration": [
+            "Class six puts the memory inside the model.",
+            "In its weights, in its key-value caches, or in a latent pool.",
+            "It is written by training, or by learning at test time."
+          ]
+        },
+        {
+          "narration": [
+            "There is no retrieval step at all.",
+            "In principle the effective context could be very long."
+          ]
+        },
+        {
+          "narration": [
+            "It is research.",
+            "Nothing has shipped as a product memory layer.",
+            "An enterprise memory cannot do without erasure and audit. Both are unsolved here."
+          ]
+        }
+      ],
+      "caption": "Memory lives in weights, key-value caches or latent pools, written by training or test-time learning. No retrieval step at all. No product yet."
+    },
+    {
+      "id": "ma-placed",
+      "layout": "table",
+      "title": "Where the named systems *sit*",
+      "head": [
+        "Class",
+        "Examples, first public date"
+      ],
+      "widths": [
+        1.4,
+        4
+      ],
+      "rows": [
+        [
+          "1. Verbatim",
+          "A verbatim store (2026); a file-store baseline (2025); every paper's retrieval baseline"
+        ],
+        [
+          "2. Extracted facts",
+          "Most commercial layers (2025); the four managed cloud services"
+        ],
+        [
+          "3. Graph",
+          "Two graph vendors (2025); graph research systems (2024 to 2025)"
+        ],
+        [
+          "4. Summaries",
+          "Tree summaries (2024); observation memory (2026)"
+        ],
+        [
+          "5. Agent files",
+          "The operating-system pattern (2023); a memory tool (2025); file products (2026)"
+        ],
+        [
+          "6. In the weights",
+          "Test-time memory (2024 to 2025); trained caches (2025)"
+        ]
+      ],
+      "builds": [
+        {
+          "reveal": 3,
+          "narration": [
+            "Here is where the named systems sit, from their own papers and documentation.",
+            "Class one holds the verbatim system we tested, and the plain retrieval baseline in every paper.",
+            "Class two holds most commercial memory layers, and the managed cloud services.",
+            "Class three holds the graph vendors and the graph research systems."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "Class four holds the tree and observation systems.",
+            "Class five holds the operating-system pattern, the file-based products, and the memory tool from one model vendor.",
+            "Class six holds the research line: test-time memory, trained caches, and latent pools.",
+            "Eleven systems span two classes.",
+            "The full list, with dates, is in the tail of this page."
+          ]
+        }
+      ],
+      "caption": "All placements come from the systems' own papers and documentation, accessed 13 September 2026. The commercial layer converged on classes two and three."
+    },
+    {
+      "id": "ma-fallback",
+      "layout": "statement",
+      "title": "The pattern that *matters*: keep the source",
+      "icon": "shield",
+      "text": "Extraction loses accuracy. The best systems keep the text beside it.",
+      "builds": [
+        {
+          "narration": [
+            "Eleven systems span two classes.",
+            "The spanning pattern is the same each time.",
+            "An extracted or graph store, with the original text kept beside it."
+          ]
+        },
+        {
+          "narration": [
+            "It is the design answer to one finding, made independently more than once.",
+            "Replacing the original text with extracted artefacts lowers accuracy."
+          ]
+        },
+        {
+          "narration": [
+            "One 2026 study measured verbatim chunks beating extracted facts by 15.9 points.",
+            "The largest memory benchmark's authors found the same in 2024.",
+            "Keeping the text and adding derived keys improved recall by 9.4 percent.",
+            "Replacing it with facts or summaries made answers worse."
+          ]
+        }
+      ],
+      "caption": "Eleven systems span two classes. Extraction loses accuracy. So the spanning pattern is an extracted or graph store with the verbatim source kept beside it."
+    },
+    {
+      "id": "ma-cloud",
+      "layout": "table",
+      "title": "All four cloud providers ship *memory*",
+      "head": [
+        "Service",
+        "Status, date",
+        "What it stores"
+      ],
+      "widths": [
+        2,
+        2,
+        2.4
+      ],
+      "rows": [
+        [
+          "A memory tool",
+          "Public beta, September 2025",
+          "Files the agent writes"
+        ],
+        [
+          "A first cloud service",
+          "Generally available, October 2025",
+          "Extracted facts, summaries"
+        ],
+        [
+          "A second cloud service",
+          "Generally available, December 2025",
+          "Extracted facts, consolidated"
+        ],
+        [
+          "A third cloud service",
+          "Preview, June 2026",
+          "Profiles, summaries, procedures"
+        ]
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "All four large cloud providers now ship a memory service.",
+            "One model vendor ships a memory tool: the agent writes files into a directory the customer owns.",
+            "The first cloud service reached general availability in October 2025."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The second reached general availability in December 2025, and started billing in January 2026.",
+            "The third was still in public preview in June 2026."
+          ]
+        },
+        {
+          "narration": [
+            "All four store extracted facts and preferences.",
+            "None stores the transcript.",
+            "Whatever the extractor did not keep is not in the memory.",
+            "The transcript, if kept at all, lives elsewhere under different retention rules."
+          ]
+        }
+      ],
+      "caption": "The four managed services and their dates. All four store extracted facts and preferences, not the transcript."
+    },
+    {
+      "id": "ma-2026",
+      "layout": "list",
+      "title": "What changed in *2026*",
+      "items": [
+        "Memory moved to plain files",
+        "Graph memory pulled from open source",
+        "A community edition ended"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Three product moves in 2026 point the same way.",
+            "One vendor moved its memory to versioned markdown files in February.",
+            "In March it deprecated its server-side memory tools."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The largest vendor removed graph memory from its open-source release.",
+            "It is now a platform feature only, with no open replacement.",
+            "Its new algorithm adds facts and never overwrites them."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "A third vendor stopped supporting its community edition.",
+            "The open graph engine remains; the hosted product carries the claims.",
+            "All three moves are towards plainer storage and less transformation at write time."
+          ]
+        }
+      ],
+      "caption": "Three product moves in one quarter pointed the same way: towards plainer storage and less transformation at write time."
+    },
+    {
+      "id": "ma-baseline",
+      "layout": "compare",
+      "title": "The vendors' own *baselines*",
+      "left": {
+        "head": "Full context",
+        "rows": [
+          "Scores 72.90",
+          "Within 0.4 of the vendor",
+          "Slow and costly per call"
+        ]
+      },
+      "right": {
+        "head": "The memory layer",
+        "rows": [
+          "Scores 68.44",
+          "Vendor's best variant",
+          "Fast and cheap per call"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Two more signals sit beside the product moves.",
+            "In the largest vendor's own 2025 paper, giving the model the full conversation scores 72.90.",
+            "The vendor's best memory variant scores 68.44."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "In the second vendor's paper, the full-conversation baseline is within 0.4 of the vendor's system."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Both papers argue the trade on latency and token cost instead.",
+            "That is a legitimate trade, and a different claim.",
+            "And a 2026 study found that swapping the embedding model alone moved accuracy by 6.2 points.",
+            "That is more than the gap between several competing systems."
+          ]
+        }
+      ],
+      "caption": "In the two largest vendors' own papers, the full-context baseline beats or nearly matches the memory layer on accuracy. The trade the vendors argue is latency and cost."
+    },
+    {
+      "id": "ma-research",
+      "layout": "list",
+      "title": "The line with no product *yet*",
+      "items": [
+        "Test-time memory, past two million",
+        "Trained caches, 38 times smaller",
+        "Learned text memory, 3.5 million"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Class six is where the long-run bet sits.",
+            "One research line updates a neural memory at test time.",
+            "It reports needle-in-haystack recall beyond two million tokens, and 80 percent on a synthetic test at ten million."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Another trains a small cache per corpus offline.",
+            "It reports 38 times less memory at inference."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "A third trains a fixed-length text memory by reinforcement learning.",
+            "It reads 3.5 million tokens after training on 8 thousand, with under 5 percent loss.",
+            "Each is a paper with code and no product.",
+            "None addresses erasure, permissions or audit."
+          ]
+        }
+      ],
+      "caption": "Test-time memory reports recall past two million tokens. Trained caches report 38 times less memory. A learned text memory reads 3.5 million tokens from an 8K training context."
+    },
+    {
+      "id": "ma-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Class before vendor",
+        "Keep the source beside it",
+        "Count the model calls",
+        "Weights are research"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "Decide the class before the vendor.",
+            "The class fixes what is lost at write time, and no later search recovers it."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "If you choose an extracted or graph store, keep the original text beside it.",
+            "The vendors that score best now do."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Count the model calls per document at write time and per question at read time.",
+            "That is the cost model, and it differs tenfold between classes."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Treat memory in the weights as research until a product can delete a fact on request.",
+            "The next page looks at how these systems are scored."
+          ]
+        }
+      ],
+      "caption": "Decide the class before the vendor. Keep the source beside any extracted store. Count model calls per document and per question. Treat memory in the weights as research."
+    }
+  ]
+}

@@ -30,7 +30,7 @@ _list = [w.strip() for w in _words.read_text().splitlines() if w.strip()] if _wo
 PRODUCTS = re.compile("|".join(re.escape(w) for w in _list), re.I) if _list else None
 LAYOUTS = {
     "title", "statement", "picture", "tiles", "steps", "flow",
-    "cycle", "compare", "list", "number", "branch", "rule",
+    "cycle", "compare", "list", "number", "branch", "rule", "bars", "table",
 }
 
 

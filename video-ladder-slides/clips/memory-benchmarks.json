@@ -1,0 +1,681 @@
+{
+  "page": "/memory/what-the-benchmarks-measure",
+  "chapter": "What the benchmarks measure",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "mb-01",
+      "build": 1,
+      "voiceover": "A memory benchmark gives a system a long conversation. Then it asks questions about it. There are two ways to score the result.",
+      "words": 23,
+      "on_camera": true,
+      "frame": "frames/memory-benchmarks/film/mb-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "mb-01",
+      "build": 1,
+      "voiceover": "One checks whether the right passage was found. The other checks whether the final answer was right.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "mb-01",
+      "build": 1,
+      "voiceover": "They are different questions with different numbers. Most published claims quote one while the reader assumes the other.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-01-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "mb-intro",
+      "build": 1,
+      "voiceover": "First, the two schools of scoring, and why they never share a table. Then the six benchmarks that matter in September 2026.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-intro-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "mb-intro",
+      "build": 2,
+      "voiceover": "Then why the two best-known benchmarks are saturated. Then the dispute between the two largest vendors, as documented in public.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-intro-b2.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "mb-intro",
+      "build": 3,
+      "voiceover": "Then ten documented ways a published score misleads. Last, five questions to ask before believing any number.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-intro-b3.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "mb-retrieval",
+      "build": 1,
+      "voiceover": "The retrieval school measures recall at k. Of the units marked as evidence, what fraction sits in the top k the system returns.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-retrieval-b1.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "mb-retrieval",
+      "build": 2,
+      "voiceover": "The standard form is the TREC fraction, computed by shared tools. A looser variant is called any-hit.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-retrieval-b2.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "mb-retrieval",
+      "build": 2,
+      "voiceover": "It scores a full hit when at least one gold unit is in the top k.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-retrieval-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "mb-retrieval",
+      "build": 3,
+      "voiceover": "It is always higher when a question has more than one piece of evidence. The retrieval school is honest about what it leaves out.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-retrieval-b3.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "mb-retrieval",
+      "build": 3,
+      "voiceover": "No answer is generated. So nothing is known about whether a reader could use what was found.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-retrieval-b3.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "mb-answer",
+      "build": 1,
+      "voiceover": "The answer school runs a reader over what was retrieved. Then it scores the answer.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-answer-b1.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "mb-answer",
+      "build": 2,
+      "voiceover": "By word overlap against a reference, or by a model acting as judge. This is what the two best-known benchmark papers score.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-answer-b2.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "mb-answer",
+      "build": 3,
+      "voiceover": "It depends on the reader and on the judge. There is no standard judge prompt.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-answer-b3.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "mb-answer",
+      "build": 3,
+      "voiceover": "So two systems scored by two vendors are not on the same scale, even on the same benchmark.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-answer-b3.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "mb-two-tables",
+      "build": 1,
+      "voiceover": "Both schools of scoring are legitimate, and neither is the lesser.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-two-tables-b1.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "mb-two-tables",
+      "build": 2,
+      "voiceover": "The only error is to place a retrieval number beside an answer number and read them as one thing.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-two-tables-b2.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "mb-two-tables",
+      "build": 2,
+      "voiceover": "A retrieval score is always higher than the answer score on the same system.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-two-tables-b2.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "mb-two-tables",
+      "build": 3,
+      "voiceover": "Every table in this section says which school it belongs to. And no table holds both.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-two-tables-b3.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "mb-six",
+      "build": 1,
+      "voiceover": "Six benchmarks matter in September 2026. The first has ten conversations of 16 to 26 thousand tokens and nearly two thousand questions.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b1.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "mb-six",
+      "build": 1,
+      "voiceover": "Vendors report 92 to 95 on it. The second has 500 questions over about 115 thousand tokens each, with a fixed judge.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b1.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "mb-six",
+      "build": 2,
+      "voiceover": "Vendors report 90 to 94. The third reaches ten million tokens, with two thousand questions across ten abilities.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b2.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "mb-six",
+      "build": 2,
+      "voiceover": "The best published score there is 0.36 at half a million tokens and 0.27 at ten million.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b2.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "mb-six",
+      "build": 2,
+      "voiceover": "The fourth tests retrieval, learning, long-range reading and forgetting. The best system scores under 50, and every method fails multi-hop forgetting.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b2.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "mb-six",
+      "build": 3,
+      "voiceover": "The fifth finds that full context scores 70 to 82 even on its hardest cases.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b3.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "mb-six",
+      "build": 3,
+      "voiceover": "Its authors say retrieval is unnecessary below about 150 conversations. The sixth passes ten million tokens, to 115 million tokens of agent trajectories.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b3.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "mb-six",
+      "build": 3,
+      "voiceover": "A file-storing agent scores 72.5 there, against 48.5 for retrieval.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-six-b3.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "mb-newer",
+      "build": 2,
+      "voiceover": "Five more benchmarks appeared between February and August 2026. Each reports the same two things in its own words.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-newer-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "mb-newer",
+      "build": 2,
+      "voiceover": "Plain retrieval or plain long context stays competitive with dedicated memory systems.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-newer-b2.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "mb-newer",
+      "build": 2,
+      "voiceover": "And strong scores on factual recall do not carry over to using the memory well.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-newer-b2.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "mb-newer",
+      "build": 3,
+      "voiceover": "One June 2026 study ran twelve systems on eleven datasets. It found no architecture that wins everywhere.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-newer-b3.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "mb-locomo",
+      "build": 1,
+      "voiceover": "The first benchmark's conversations run 16 to 26 thousand tokens. Every frontier model reads that in one call.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-locomo-b1.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "mb-locomo",
+      "build": 1,
+      "voiceover": "The largest vendor's own paper reports full context at 72.90, above its best memory variant at 68.44.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-locomo-b1.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "mb-locomo",
+      "build": 2,
+      "voiceover": "The released data has known defects. The scorer's code treats category one as multi-hop.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-locomo-b2.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "mb-locomo",
+      "build": 2,
+      "voiceover": "The paper lists single-hop first. So vendor tables disagree with each other on which category is which.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-locomo-b2.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "mb-locomo",
+      "build": 3,
+      "voiceover": "The 446 adversarial questions have no reference answer. Vendors drop them and score the remaining 1,540.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-locomo-b3.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "mb-locomo",
+      "build": 4,
+      "voiceover": "An audit in April 2026 found 99 wrong labels among those 1,540. It put the ceiling near 93 under the released answers.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-locomo-b4.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "mb-locomo",
+      "build": 4,
+      "voiceover": "Vendors reporting 92 to 95 are at or above that ceiling, each under its own judge.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-locomo-b4.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "mb-lme",
+      "build": 1,
+      "voiceover": "The second benchmark is better designed. It has a fixed judge model, with over 97 percent agreement with human graders.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-lme-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "mb-lme",
+      "build": 2,
+      "voiceover": "It has seven question types, including knowledge updates and abstention. Its paper keeps retrieval recall and answer accuracy in separate columns.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-lme-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "mb-lme",
+      "build": 2,
+      "voiceover": "Its authors measured a frontier model at 0.870 with only the evidence.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-lme-b2.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "mb-lme",
+      "build": 2,
+      "voiceover": "With the full history of 115 thousand tokens, the same model scored 0.606.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-lme-b2.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "mb-lme",
+      "build": 3,
+      "voiceover": "Vendors now report 90 to 94 with their own readers and judges. And retrieval-only scores of 96.6 to 100 with no model at all.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-lme-b3.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "mb-lme",
+      "build": 3,
+      "voiceover": "The candidate pool averages 48 sessions. So a retrieval score at k of 50 covers the whole pool and measures nothing.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-lme-b3.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "mb-dispute",
+      "build": 2,
+      "voiceover": "The two largest memory vendors published each other's scores. In April 2025 one reported the other at 65.99. In May the other replied.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-dispute-b2.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "mb-dispute",
+      "build": 2,
+      "voiceover": "It had erred in its own earlier claim of 84, and corrected itself to 75.14. It criticised the first vendor for misconfiguration.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-dispute-b2.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "mb-dispute",
+      "build": 3,
+      "voiceover": "The first vendor's chief technology officer then filed a public issue. He recomputed the second vendor at 58.44.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-dispute-b3.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "mb-dispute",
+      "build": 3,
+      "voiceover": "Adversarial answers had been counted in a numerator whose denominator excluded them. Prompts had changed, and one run was compared against ten.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-dispute-b3.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "mb-dispute",
+      "build": 4,
+      "voiceover": "The issue was closed without a reply. Both vendors now publish scores above 90 on the same benchmark, under newer judges.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-dispute-b4.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "mb-dispute",
+      "build": 4,
+      "voiceover": "None of these numbers is wrong on its own terms. Together they show the benchmark cannot separate the two systems.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-dispute-b4.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "mb-ten-a",
+      "build": 1,
+      "voiceover": "Here are ten documented ways a published score misleads. None needs bad faith. Most are choices a benchmark leaves open.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b1.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "mb-ten-a",
+      "build": 1,
+      "voiceover": "First, any-hit reported as recall. On one ranking, 96.6 any-hit at k of five is 91.7 as the TREC fraction.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b1.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "mb-ten-a",
+      "build": 2,
+      "voiceover": "Second, a k larger than the candidate pool. At k of 50 over conversations of 19 to 32 sessions, every session is returned.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "mb-ten-a",
+      "build": 3,
+      "voiceover": "Recall is 1.0 by construction, and a 100 percent claim was published on exactly that. Third, a retrieval score placed beside judged answers.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b3.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "mb-ten-a",
+      "build": 3,
+      "voiceover": "A 96 from one school beside a 72 from the other reads as a 24-point lead that does not exist.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b3.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "mb-ten-a",
+      "build": 4,
+      "voiceover": "Fourth, the credited target. A 2026 study moved credit between the raw turn, the session and a canonical form.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b4.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "mb-ten-a",
+      "build": 5,
+      "voiceover": "Rankings changed on 83 to 94 percent of queries, and the order of systems flipped. Fifth, category relabelling and denominators.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b5.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "mb-ten-a",
+      "build": 5,
+      "voiceover": "Three vendors map the same categories three ways. One dispute turned on answers counted in a numerator whose denominator excluded them.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-a-b5.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "mb-ten-b",
+      "build": 1,
+      "voiceover": "Sixth, fixes tuned to named questions. One vendor's file records three fixes written for three failing questions.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-b-b1.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "mb-ten-b",
+      "build": 2,
+      "voiceover": "It labels them teaching to the test. Held out, the 100 became 98.4. Seventh, the vendor as reader and judge.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-b-b2.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "mb-ten-b",
+      "build": 2,
+      "voiceover": "One vendor scores with the same frontier model as reader and as judge. Another scores its managed platform with proprietary parts.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-b-b2.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "mb-ten-b",
+      "build": 3,
+      "voiceover": "There is no standard judge prompt. Eighth, corrupted or missing gold. 446 questions have no answer.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-b-b3.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "mb-ten-b",
+      "build": 4,
+      "voiceover": "99 of the remaining 1,540 penalise a correct answer. Word overlap scores two spellings of the same date as different. Ninth, single runs.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-b-b4.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "mb-ten-b",
+      "build": 5,
+      "voiceover": "One vendor published one run against a competitor's ten with standard deviations. Tenth, synthetic recall as a proxy for reading.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-b-b5.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "mb-ten-b",
+      "build": 5,
+      "voiceover": "Needle tests do not predict downstream performance. On the hardest lexical test, eleven of thirteen models lose half their accuracy by 32 thousand tokens.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-ten-b-b5.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "mb-five",
+      "build": 1,
+      "voiceover": "Ask five questions before believing a memory number. Start with the school. Was an answer generated and judged, or was a passage only found?",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-five-b1.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "mb-five",
+      "build": 2,
+      "voiceover": "Second, what unit was retrieved, a session, a turn or a message, and how many candidates were in the pool?",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-five-b2.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "mb-five",
+      "build": 3,
+      "voiceover": "Third, what k, and is k smaller than the pool?",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-five-b3.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "mb-five",
+      "build": 4,
+      "voiceover": "Fourth, who was the reader and who was the judge, and was either the vendor's choice?",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-five-b4.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "mb-five",
+      "build": 5,
+      "voiceover": "Fifth, how many tokens was the corpus, and does that fit inside one call to the reader? This is the question vendors rarely answer.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-five-b5.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "mb-five",
+      "build": 5,
+      "voiceover": "A claim that answers all five and still stands is worth a reproduction. A claim that answers fewer than three is a headline.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-five-b5.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "mb-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. Retrieval scores and answer scores are two different quantities, and never share a table.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-recap-b1.png"
+    },
+    {
+      "clip_id": "c073",
+      "slide": "mb-recap",
+      "build": 2,
+      "voiceover": "The two famous benchmarks fit inside one context window, and vendors have saturated them under their own judges.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-recap-b2.png"
+    },
+    {
+      "clip_id": "c074",
+      "slide": "mb-recap",
+      "build": 3,
+      "voiceover": "A score without its unit, its pool and its judge is a headline, not a number.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-benchmarks/film/mb-recap-b3.png"
+    },
+    {
+      "clip_id": "c075",
+      "slide": "mb-recap",
+      "build": 4,
+      "voiceover": "The benchmarks that reach enterprise scale are far from saturated. The next page asks whether a long context window makes memory unnecessary.",
+      "words": 22,
+      "on_camera": true,
+      "frame": "frames/memory-benchmarks/film/mb-recap-b4.png"
+    }
+  ]
+}

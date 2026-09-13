@@ -1,0 +1,639 @@
+{
+  "page": "/memory/what-the-benchmarks-measure",
+  "chapter": "What the benchmarks measure",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "mb-01",
+        "mb-intro"
+      ]
+    },
+    {
+      "heading": "Two schools of scoring",
+      "slides": [
+        "mb-retrieval",
+        "mb-answer",
+        "mb-two-tables"
+      ]
+    },
+    {
+      "heading": "The benchmarks that matter",
+      "slides": [
+        "mb-six",
+        "mb-newer"
+      ]
+    },
+    {
+      "heading": "Why the two small benchmarks are saturated",
+      "slides": [
+        "mb-locomo",
+        "mb-lme"
+      ]
+    },
+    {
+      "heading": "The dispute of 2025, as documented",
+      "slides": [
+        "mb-dispute"
+      ]
+    },
+    {
+      "heading": "Ten ways a published score misleads",
+      "slides": [
+        "mb-ten-a",
+        "mb-ten-b"
+      ]
+    },
+    {
+      "heading": "How to read a memory claim",
+      "slides": [
+        "mb-five"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "mb-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "mb-01",
+      "layout": "title",
+      "title": "What the benchmarks *measure*",
+      "text": "Two schools of scoring, six benchmarks, ten ways a score misleads.",
+      "builds": [
+        {
+          "narration": [
+            "A memory benchmark gives a system a long conversation.",
+            "Then it asks questions about it.",
+            "There are two ways to score the result.",
+            "One checks whether the right passage was found.",
+            "The other checks whether the final answer was right.",
+            "They are different questions with different numbers.",
+            "Most published claims quote one while the reader assumes the other."
+          ]
+        }
+      ],
+      "caption": "A memory benchmark asks questions about a long conversation. There are two ways to score it, and most claims quote one while the reader assumes the other."
+    },
+    {
+      "id": "mb-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "Two schools of scoring",
+        "The six benchmarks",
+        "Why two are saturated",
+        "The dispute of 2025",
+        "Ten ways a score misleads",
+        "Five questions to ask"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "First, the two schools of scoring, and why they never share a table.",
+            "Then the six benchmarks that matter in September 2026."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Then why the two best-known benchmarks are saturated.",
+            "Then the dispute between the two largest vendors, as documented in public."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "Then ten documented ways a published score misleads.",
+            "Last, five questions to ask before believing any number."
+          ]
+        }
+      ],
+      "caption": "The two schools of scoring and the six benchmarks that matter. Why two are saturated and the vendor dispute of 2025. Ten ways a score misleads and five questions to ask."
+    },
+    {
+      "id": "mb-retrieval",
+      "layout": "statement",
+      "title": "The retrieval school: was it *found*",
+      "icon": "search",
+      "text": "What fraction of the evidence reached the top k?",
+      "builds": [
+        {
+          "narration": [
+            "The retrieval school measures recall at k.",
+            "Of the units marked as evidence, what fraction sits in the top k the system returns.",
+            "The standard form is the TREC fraction, computed by shared tools."
+          ]
+        },
+        {
+          "narration": [
+            "A looser variant is called any-hit.",
+            "It scores a full hit when at least one gold unit is in the top k.",
+            "It is always higher when a question has more than one piece of evidence."
+          ]
+        },
+        {
+          "narration": [
+            "The retrieval school is honest about what it leaves out.",
+            "No answer is generated.",
+            "So nothing is known about whether a reader could use what was found."
+          ]
+        }
+      ],
+      "caption": "Retrieval recall at k asks what fraction of the gold evidence sits in the top k results. No answer is generated. The standard form is the TREC fraction."
+    },
+    {
+      "id": "mb-answer",
+      "layout": "statement",
+      "title": "The answer school: was it *right*",
+      "icon": "check",
+      "text": "Did the answer come out right, by whose judge?",
+      "builds": [
+        {
+          "narration": [
+            "The answer school runs a reader over what was retrieved.",
+            "Then it scores the answer.",
+            "By word overlap against a reference, or by a model acting as judge."
+          ]
+        },
+        {
+          "narration": [
+            "This is what the two best-known benchmark papers score."
+          ]
+        },
+        {
+          "narration": [
+            "It depends on the reader and on the judge.",
+            "There is no standard judge prompt.",
+            "So two systems scored by two vendors are not on the same scale, even on the same benchmark."
+          ]
+        }
+      ],
+      "caption": "A reader answers from what was retrieved. The answer is scored by word overlap or by a model as judge. It depends on the reader and the judge."
+    },
+    {
+      "id": "mb-two-tables",
+      "layout": "rule",
+      "title": "Two schools, *two tables*",
+      "kicker": "The rule",
+      "text": "A retrieval score and an answer score never share a table.",
+      "builds": [
+        {
+          "narration": [
+            "Both schools of scoring are legitimate, and neither is the lesser."
+          ]
+        },
+        {
+          "narration": [
+            "The only error is to place a retrieval number beside an answer number and read them as one thing.",
+            "A retrieval score is always higher than the answer score on the same system."
+          ]
+        },
+        {
+          "narration": [
+            "Every table in this section says which school it belongs to.",
+            "And no table holds both."
+          ]
+        }
+      ],
+      "caption": "Both schools are legitimate. The only error is to place a retrieval-only number beside an answer number and read them as one thing."
+    },
+    {
+      "id": "mb-six",
+      "layout": "table",
+      "title": "The six benchmarks that *matter*",
+      "head": [
+        "Benchmark",
+        "Corpus per question",
+        "State"
+      ],
+      "widths": [
+        2,
+        2.2,
+        2.4
+      ],
+      "rows": [
+        [
+          "LoCoMo, 2024",
+          "16 to 26 thousand tokens",
+          "Saturated: vendors 92 to 95"
+        ],
+        [
+          "LongMemEval, 2025",
+          "115 thousand tokens",
+          "Near saturation: vendors 90 to 94"
+        ],
+        [
+          "BEAM, 2026",
+          "128 thousand to 10 million",
+          "Far off: best 0.27 at 10M"
+        ],
+        [
+          "MemoryAgentBench, 2025",
+          "103 thousand to 1.4 million",
+          "Far off: best 49.6"
+        ],
+        [
+          "ConvoMem, 2025",
+          "1 thousand to 3 million",
+          "Full context 70 to 82"
+        ],
+        [
+          "LongMemEval-V2, 2026",
+          "Up to 115 million",
+          "Files 72.5, retrieval 48.5"
+        ]
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Six benchmarks matter in September 2026.",
+            "The first has ten conversations of 16 to 26 thousand tokens and nearly two thousand questions.",
+            "Vendors report 92 to 95 on it.",
+            "The second has 500 questions over about 115 thousand tokens each, with a fixed judge.",
+            "Vendors report 90 to 94."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The third reaches ten million tokens, with two thousand questions across ten abilities.",
+            "The best published score there is 0.36 at half a million tokens and 0.27 at ten million.",
+            "The fourth tests retrieval, learning, long-range reading and forgetting.",
+            "The best system scores under 50, and every method fails multi-hop forgetting."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "The fifth finds that full context scores 70 to 82 even on its hardest cases.",
+            "Its authors say retrieval is unnecessary below about 150 conversations.",
+            "The sixth passes ten million tokens, to 115 million tokens of agent trajectories.",
+            "A file-storing agent scores 72.5 there, against 48.5 for retrieval."
+          ]
+        }
+      ],
+      "caption": "LoCoMo and LongMemEval are saturated. BEAM and MemoryAgentBench are far from it. ConvoMem finds retrieval unnecessary below 150 conversations. LongMemEval-V2 passes ten million tokens."
+    },
+    {
+      "id": "mb-newer",
+      "layout": "statement",
+      "title": "Five more in 2026 say the *same*",
+      "icon": "chart",
+      "text": "No architecture wins everywhere, and plain retrieval keeps up.",
+      "builds": [
+        {
+          "narration": [
+            "Five more benchmarks appeared between February and August 2026."
+          ]
+        },
+        {
+          "narration": [
+            "Each reports the same two things in its own words.",
+            "Plain retrieval or plain long context stays competitive with dedicated memory systems.",
+            "And strong scores on factual recall do not carry over to using the memory well."
+          ]
+        },
+        {
+          "narration": [
+            "One June 2026 study ran twelve systems on eleven datasets.",
+            "It found no architecture that wins everywhere."
+          ]
+        }
+      ],
+      "caption": "Five benchmarks from February to August 2026 report the same two things. Plain retrieval or plain long context stays competitive. Factual scores do not carry over to using the memory."
+    },
+    {
+      "id": "mb-locomo",
+      "layout": "list",
+      "title": "Why the first benchmark is *saturated*",
+      "items": [
+        "Fits in one context window",
+        "Category labels differ from the paper",
+        "446 questions have no answer",
+        "99 labels penalise correct answers"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The first benchmark's conversations run 16 to 26 thousand tokens.",
+            "Every frontier model reads that in one call.",
+            "The largest vendor's own paper reports full context at 72.90, above its best memory variant at 68.44."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The released data has known defects.",
+            "The scorer's code treats category one as multi-hop.",
+            "The paper lists single-hop first.",
+            "So vendor tables disagree with each other on which category is which."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The 446 adversarial questions have no reference answer.",
+            "Vendors drop them and score the remaining 1,540."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "An audit in April 2026 found 99 wrong labels among those 1,540.",
+            "It put the ceiling near 93 under the released answers.",
+            "Vendors reporting 92 to 95 are at or above that ceiling, each under its own judge."
+          ]
+        }
+      ],
+      "caption": "A conversation fits inside a modern context window several times over. The scorer's category labels differ from the paper. 446 questions have no answer. 99 labels are wrong."
+    },
+    {
+      "id": "mb-lme",
+      "layout": "statement",
+      "title": "The second benchmark is *better built*",
+      "icon": "scale",
+      "text": "Fixed judge, seven types, and two separate columns.",
+      "builds": [
+        {
+          "narration": [
+            "The second benchmark is better designed.",
+            "It has a fixed judge model, with over 97 percent agreement with human graders.",
+            "It has seven question types, including knowledge updates and abstention."
+          ]
+        },
+        {
+          "narration": [
+            "Its paper keeps retrieval recall and answer accuracy in separate columns.",
+            "Its authors measured a frontier model at 0.870 with only the evidence.",
+            "With the full history of 115 thousand tokens, the same model scored 0.606."
+          ]
+        },
+        {
+          "narration": [
+            "Vendors now report 90 to 94 with their own readers and judges.",
+            "And retrieval-only scores of 96.6 to 100 with no model at all.",
+            "The candidate pool averages 48 sessions.",
+            "So a retrieval score at k of 50 covers the whole pool and measures nothing."
+          ]
+        }
+      ],
+      "caption": "A fixed judge with 97 percent agreement with humans, seven question types, and separate columns for retrieval and answers. Its authors measured a frontier model at 0.606."
+    },
+    {
+      "id": "mb-dispute",
+      "layout": "steps",
+      "title": "The dispute of *2025*",
+      "items": [
+        "65.99, April 2025",
+        "84 corrected to 75.14",
+        "Recomputed to 58.44",
+        "Both above 90 now"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The two largest memory vendors published each other's scores.",
+            "In April 2025 one reported the other at 65.99."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "In May the other replied.",
+            "It had erred in its own earlier claim of 84, and corrected itself to 75.14.",
+            "It criticised the first vendor for misconfiguration."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The first vendor's chief technology officer then filed a public issue.",
+            "He recomputed the second vendor at 58.44.",
+            "Adversarial answers had been counted in a numerator whose denominator excluded them.",
+            "Prompts had changed, and one run was compared against ten."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The issue was closed without a reply.",
+            "Both vendors now publish scores above 90 on the same benchmark, under newer judges.",
+            "None of these numbers is wrong on its own terms.",
+            "Together they show the benchmark cannot separate the two systems."
+          ]
+        }
+      ],
+      "caption": "The two largest vendors published each other's scores. One reported 65.99. The other corrected its own 84 to 75.14. The first recomputed that to 58.44. The benchmark cannot separate them."
+    },
+    {
+      "id": "mb-ten-a",
+      "layout": "list",
+      "title": "Ten ways a score misleads, *one to five*",
+      "items": [
+        "Any-hit reported as recall",
+        "A k larger than the pool",
+        "Retrieval beside judged answers",
+        "The credited target",
+        "Relabelling and denominators"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here are ten documented ways a published score misleads.",
+            "None needs bad faith.",
+            "Most are choices a benchmark leaves open.",
+            "First, any-hit reported as recall.",
+            "On one ranking, 96.6 any-hit at k of five is 91.7 as the TREC fraction."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, a k larger than the candidate pool.",
+            "At k of 50 over conversations of 19 to 32 sessions, every session is returned.",
+            "Recall is 1.0 by construction, and a 100 percent claim was published on exactly that."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Third, a retrieval score placed beside judged answers.",
+            "A 96 from one school beside a 72 from the other reads as a 24-point lead that does not exist."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Fourth, the credited target.",
+            "A 2026 study moved credit between the raw turn, the session and a canonical form.",
+            "Rankings changed on 83 to 94 percent of queries, and the order of systems flipped."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Fifth, category relabelling and denominators.",
+            "Three vendors map the same categories three ways.",
+            "One dispute turned on answers counted in a numerator whose denominator excluded them."
+          ]
+        }
+      ],
+      "caption": "Any-hit reported as recall. A k larger than the pool. Retrieval beside judged answers. The credited target. Category relabelling and denominators."
+    },
+    {
+      "id": "mb-ten-b",
+      "layout": "list",
+      "title": "Ten ways a score misleads, *six to ten*",
+      "items": [
+        "Fixes tuned to named questions",
+        "Vendor as reader and judge",
+        "Corrupted or missing gold",
+        "Single runs",
+        "Synthetic recall as a proxy"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Sixth, fixes tuned to named questions.",
+            "One vendor's file records three fixes written for three failing questions.",
+            "It labels them teaching to the test.",
+            "Held out, the 100 became 98.4."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Seventh, the vendor as reader and judge.",
+            "One vendor scores with the same frontier model as reader and as judge.",
+            "Another scores its managed platform with proprietary parts.",
+            "There is no standard judge prompt."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Eighth, corrupted or missing gold.",
+            "446 questions have no answer.",
+            "99 of the remaining 1,540 penalise a correct answer.",
+            "Word overlap scores two spellings of the same date as different."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Ninth, single runs.",
+            "One vendor published one run against a competitor's ten with standard deviations."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Tenth, synthetic recall as a proxy for reading.",
+            "Needle tests do not predict downstream performance.",
+            "On the hardest lexical test, eleven of thirteen models lose half their accuracy by 32 thousand tokens."
+          ]
+        }
+      ],
+      "caption": "Fixes tuned to named questions. The vendor as reader and judge. Corrupted or missing gold. Single runs. Synthetic recall as a proxy for reading."
+    },
+    {
+      "id": "mb-five",
+      "layout": "list",
+      "title": "Five questions before *believing* a number",
+      "items": [
+        "Which school?",
+        "What unit, what pool?",
+        "What k?",
+        "Whose reader, whose judge?",
+        "How many tokens?"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Ask five questions before believing a memory number.",
+            "Start with the school. Was an answer generated and judged, or was a passage only found?"
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, what unit was retrieved, a session, a turn or a message, and how many candidates were in the pool?"
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Third, what k, and is k smaller than the pool?"
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Fourth, who was the reader and who was the judge, and was either the vendor's choice?"
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Fifth, how many tokens was the corpus, and does that fit inside one call to the reader?",
+            "This is the question vendors rarely answer.",
+            "A claim that answers all five and still stands is worth a reproduction.",
+            "A claim that answers fewer than three is a headline."
+          ]
+        }
+      ],
+      "caption": "Which school? What unit and pool? What k? Whose reader and judge? How many tokens, and does that fit one context window?"
+    },
+    {
+      "id": "mb-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Two schools, two tables",
+        "The famous benchmarks are saturated",
+        "Unit, pool and judge",
+        "Scale is far from solved"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "Retrieval scores and answer scores are two different quantities, and never share a table."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The two famous benchmarks fit inside one context window, and vendors have saturated them under their own judges."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "A score without its unit, its pool and its judge is a headline, not a number."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The benchmarks that reach enterprise scale are far from saturated.",
+            "The next page asks whether a long context window makes memory unnecessary."
+          ]
+        }
+      ],
+      "caption": "Two schools, two tables. The two famous benchmarks fit in one context window and are saturated. Ten ways a score misleads. Five questions to ask."
+    }
+  ]
+}

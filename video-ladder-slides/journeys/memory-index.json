@@ -1,0 +1,534 @@
+{
+  "page": "/memory",
+  "chapter": "Memory architectures",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "mo-01",
+        "mo-intro"
+      ]
+    },
+    {
+      "heading": "Why memory needs its own section",
+      "slides": [
+        "mo-agent",
+        "mo-memory",
+        "mo-count"
+      ]
+    },
+    {
+      "heading": "Two facts and two schools",
+      "slides": [
+        "mo-two-facts",
+        "mo-scores"
+      ]
+    },
+    {
+      "heading": "The size that matters",
+      "slides": [
+        "mo-scale",
+        "mo-beam",
+        "mo-vendors"
+      ]
+    },
+    {
+      "heading": "How this section handles numbers",
+      "slides": [
+        "mo-rules",
+        "mo-map"
+      ]
+    },
+    {
+      "heading": "The question this section leaves open",
+      "slides": [
+        "mo-open"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "mo-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "mo-01",
+      "layout": "title",
+      "title": "Memory *architectures*",
+      "text": "What does an agent remember, and how far does it hold?",
+      "builds": [
+        {
+          "narration": [
+            "An AI agent forgets everything when its task ends.",
+            "Unless something is built to remember for it.",
+            "That something is called its memory.",
+            "This section looks at how memories are built today.",
+            "It looks at how they are scored.",
+            "And it asks how far the scores are from what an enterprise needs."
+          ]
+        }
+      ],
+      "caption": "Memory is what an agent keeps between tasks. This section looks at how memories are built and scored. It asks how far the scores are from what an enterprise needs."
+    },
+    {
+      "id": "mo-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "Why memory is its own subject",
+        "Six ways to build a memory",
+        "How memory is scored",
+        "Long context is not memory",
+        "The ten-million-token question",
+        "What we measured ourselves"
+      ],
+      "builds": [
+        {
+          "reveal": 0,
+          "narration": [
+            "This section has six pages.",
+            "Each page is a run of slides like this one.",
+            "Each slide is explained under it, in plain words."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "First, why memory needs its own section.",
+            "Then the six ways a memory can be built.",
+            "Then how memory systems are scored, and where the scores mislead."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "Then why a one-million-token context window is not a memory.",
+            "Then the question that gives the section its point.",
+            "It is about ten million tokens.",
+            "Last, the one system we tested ourselves."
+          ]
+        }
+      ],
+      "caption": "Six pages. Why memory needs its own section, six ways to build one, and how memory is scored. Then long context, the ten-million-token question, and what we measured."
+    },
+    {
+      "id": "mo-agent",
+      "layout": "statement",
+      "title": "An agent forgets when the task *ends*",
+      "icon": "bot",
+      "text": "The model keeps nothing between calls.",
+      "builds": [
+        {
+          "narration": [
+            "At the heart of any AI system is a model.",
+            "It reads text and writes text back.",
+            "A system that uses a model to do a job is called an agent."
+          ]
+        },
+        {
+          "narration": [
+            "The model keeps nothing between calls.",
+            "When the task ends, everything it saw is gone.",
+            "The next task starts from a blank page."
+          ]
+        },
+        {
+          "narration": [
+            "For a chat about the weather, that is fine.",
+            "For a claims team or a service desk, it is not.",
+            "They need the agent to remember last week, last year, and the customer's whole history."
+          ]
+        }
+      ],
+      "caption": "A model reads text and writes text. An agent is a system that uses a model to do a job. When the job ends, the model keeps nothing."
+    },
+    {
+      "id": "mo-memory",
+      "layout": "statement",
+      "title": "That something is its *memory*",
+      "icon": "brain",
+      "text": "A store, an index, and a way back to the right piece.",
+      "builds": [
+        {
+          "narration": [
+            "Memory is what is built around the model to remember for it.",
+            "It is a store, an index, and a way to bring the right piece back.",
+            "It is not part of the model."
+          ]
+        },
+        {
+          "narration": [
+            "What the store keeps decides what can ever be recalled.",
+            "How the index works decides what is found.",
+            "Those two choices are the subject of this section."
+          ]
+        },
+        {
+          "narration": [
+            "This guide already says what a memory must carry.",
+            "Its source, its permissions, and a working delete.",
+            "This section adds how it is built, and whether the build works."
+          ]
+        }
+      ],
+      "caption": "Memory is what is built around the model so the agent can recall. It is a store, an index, and a way to bring the right piece back."
+    },
+    {
+      "id": "mo-count",
+      "layout": "number",
+      "title": "A crowded *field*",
+      "value": "30+",
+      "unit": "named memory systems, four cloud services, six taxonomies, ten new benchmarks",
+      "text": "Every one reports a score. Almost none compare.",
+      "builds": [
+        {
+          "narration": [
+            "By September 2026 there are more than thirty named memory systems.",
+            "Four large cloud providers ship a managed memory service.",
+            "Six survey papers propose their own taxonomy."
+          ]
+        },
+        {
+          "narration": [
+            "Since 2025 at least ten new benchmarks have appeared.",
+            "Every system reports a score on one of them.",
+            "Almost none of the scores can be compared with each other."
+          ]
+        },
+        {
+          "narration": [
+            "The judges differ.",
+            "The question subsets differ.",
+            "And the sizes of the tests are far below what an enterprise runs at."
+          ]
+        }
+      ],
+      "caption": "By September 2026 there are more than thirty named memory systems and four managed cloud services. Six survey taxonomies and ten new benchmarks. Almost none of their scores compare."
+    },
+    {
+      "id": "mo-two-facts",
+      "layout": "tiles",
+      "title": "Two facts decide *everything*",
+      "items": [
+        "What is stored",
+        "When a model runs"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "The first fact is what is stored.",
+            "Original words, a summary, extracted facts, a graph, or the weights.",
+            "What is stored decides what can ever be found again."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "The second fact is when a model runs.",
+            "At write time, as each document arrives.",
+            "At read time, as each question comes in.",
+            "In the background, between tasks.",
+            "Or during training, so the memory lives in the weights."
+          ]
+        },
+        {
+          "narration": [
+            "Those two facts decide the cost, and they decide what is lost.",
+            "Page two sorts every named system by them."
+          ]
+        }
+      ],
+      "caption": "Every memory architecture is placed by what it stores and by when a model runs. Those two choices fix what can be recalled and what it costs."
+    },
+    {
+      "id": "mo-scores",
+      "layout": "statement",
+      "title": "Every high score is *small*",
+      "icon": "chart",
+      "text": "Above 90 percent was earned on 16 to 115 thousand tokens.",
+      "builds": [
+        {
+          "narration": [
+            "Vendors report scores in the low nineties on the two best-known benchmarks.",
+            "Those scores are real, under the judges the vendors chose."
+          ]
+        },
+        {
+          "narration": [
+            "But look at the size of the test.",
+            "The smaller benchmark has conversations of 16 to 26 thousand tokens.",
+            "The larger one has about 115 thousand tokens per question."
+          ]
+        },
+        {
+          "narration": [
+            "A modern model reads either of those in one call.",
+            "So a high score there says little about memory at scale.",
+            "Page three shows what the benchmarks measure and where scores mislead."
+          ]
+        }
+      ],
+      "caption": "Every memory score above 90 percent was earned on a conversation of 16 thousand to 115 thousand tokens. That fits inside one call to a modern model."
+    },
+    {
+      "id": "mo-scale",
+      "layout": "number",
+      "title": "Ten million *tokens*",
+      "value": "10M",
+      "unit": "tokens is a little more than one year of one worker's received mail and chat",
+      "text": "An enterprise memory starts there and grows every day.",
+      "builds": [
+        {
+          "narration": [
+            "A token is the unit AI usage is measured in.",
+            "It is roughly three quarters of a word.",
+            "Ten million tokens is about seven million words."
+          ]
+        },
+        {
+          "narration": [
+            "That is a little more than one year of one worker's received mail and chat.",
+            "Before any attachments, documents, tickets or meetings."
+          ]
+        },
+        {
+          "narration": [
+            "A customer's history over a decade is larger.",
+            "A litigation file is larger.",
+            "A plant's maintenance record is larger.",
+            "Ten million is the floor for an enterprise memory, not the ceiling."
+          ]
+        }
+      ],
+      "caption": "Ten million tokens is a little more than one year of one worker's received mail and chat. An enterprise memory workload starts there and grows."
+    },
+    {
+      "id": "mo-beam",
+      "layout": "bars",
+      "title": "At ten million, the best *result*",
+      "unit": "Score, 0 to 1, ten-million-token conversations",
+      "max": 1,
+      "items": [
+        [
+          "Full context",
+          0.104,
+          "0.10"
+        ],
+        [
+          "Retrieval, top five",
+          0.249,
+          "0.25"
+        ],
+        [
+          "The authors' memory design",
+          0.266,
+          "0.27"
+        ]
+      ],
+      "text": "No commercial memory system was evaluated by the authors.",
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "One public benchmark reaches ten million tokens.",
+            "It is called BEAM, and it was published at a top conference in 2026.",
+            "At that size, giving the model everything scores 0.10 on a scale of 0 to 1."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Finding the best pieces first and passing them in scores 0.25."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The benchmark authors built their own memory design.",
+            "It scores 0.27.",
+            "That is the best published, independently run result at ten million tokens.",
+            "Nothing is close to solid."
+          ]
+        }
+      ],
+      "caption": "One public benchmark reaches ten million tokens. There, plain long context scores 0.10 and retrieval 0.25. The authors' own memory design scores 0.27 on a scale of 0 to 1."
+    },
+    {
+      "id": "mo-vendors",
+      "layout": "statement",
+      "title": "Vendor numbers at ten million are *unchecked*",
+      "icon": "warning",
+      "text": "Own judge, own harness, not reproduced.",
+      "builds": [
+        {
+          "narration": [
+            "Three vendors have since published their own ten-million-token numbers.",
+            "Each used its own judge and its own test harness."
+          ]
+        },
+        {
+          "narration": [
+            "None of them is comparable to the paper's table.",
+            "None is comparable to the others.",
+            "None has been reproduced by anyone else."
+          ]
+        },
+        {
+          "narration": [
+            "This section shows them, flagged as vendor reported.",
+            "It never places them in a ranking."
+          ]
+        }
+      ],
+      "caption": "Three vendors have published their own ten-million-token scores. Each used its own judge and harness. None is comparable to the paper, and none has been reproduced."
+    },
+    {
+      "id": "mo-rules",
+      "layout": "list",
+      "title": "Three rules for every *number*",
+      "items": [
+        "Vendor numbers flagged, never ranked",
+        "Independent numbers in their own rows",
+        "Retrieval and answers kept apart"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "This section handles numbers under three rules.",
+            "First, a number from the party that built the system is flagged as vendor reported.",
+            "The judges differ, so it is never placed in a ranking with another vendor's number."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Second, a number this guide produced by running the system's own code is marked independently measured.",
+            "It sits in its own row."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Third, a retrieval score and an answer score are different quantities.",
+            "One asks whether the right passage was found.",
+            "The other asks whether the answer came out right.",
+            "They never share a table.",
+            "This is the single most useful habit a reader can take from the section."
+          ]
+        }
+      ],
+      "caption": "Vendor numbers are flagged and never ranked against each other. Independently measured numbers sit in their own rows. Retrieval scores and answer scores never share a table."
+    },
+    {
+      "id": "mo-map",
+      "layout": "tiles",
+      "title": "Six pages in this *section*",
+      "items": [
+        "Six ways to build a memory",
+        "What the benchmarks measure",
+        "Long context is not memory",
+        "The ten-million-token question",
+        "What we have measured",
+        "Sources"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "Page two sorts the systems into six classes.",
+            "Page three sets out the benchmarks and ten ways a score misleads."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Page four shows why a one-million-token window is not a memory, and what ten million tokens costs.",
+            "Page five puts the enterprise workload beside the best results and leaves the question open."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "Page six records the one system we reproduced ourselves.",
+            "The last page carries every source with its date and its vendor flag."
+          ]
+        }
+      ],
+      "caption": "The six pages: the taxonomy, the benchmarks, long context, the ten-million-token question, what we measured, and the sources."
+    },
+    {
+      "id": "mo-open",
+      "layout": "statement",
+      "title": "The question is *open*",
+      "icon": "search",
+      "text": "Nothing solid above ten million tokens, from anyone, yet.",
+      "builds": [
+        {
+          "narration": [
+            "No independently run, published result shows any memory architecture answering well over ten million tokens.",
+            "No long-context model does either."
+          ]
+        },
+        {
+          "narration": [
+            "None has earned a recommendation, so this section makes none.",
+            "It ends on the gap, and leaves the question with you."
+          ]
+        },
+        {
+          "narration": [
+            "Our own research on the question is under way.",
+            "It will be published here when it is complete, in the same two tables."
+          ]
+        }
+      ],
+      "caption": "No independently run, published result shows any memory architecture or long-context model answering well over a single ten-million-token corpus. The section ends on that gap."
+    },
+    {
+      "id": "mo-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "Stored what, model when",
+        "High scores are on small tests",
+        "Unit, pool, judge, two tables",
+        "Ten million is the floor"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "A memory is decided by what it stores and when a model runs."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Every high score was earned on a test that fits in one call to a model."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Read every number with its unit, its pool and its judge.",
+            "Keep retrieval scores and answer scores apart."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "Ten million tokens is the floor for an enterprise memory.",
+            "Nothing solid has been shown there, by anyone.",
+            "The next page sorts the architectures."
+          ]
+        }
+      ],
+      "caption": "Memory is built by what is stored and when a model runs. Every high score is on a small test. Ten million tokens is the floor, and nothing solid has been shown there."
+    }
+  ]
+}

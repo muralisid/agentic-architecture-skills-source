@@ -254,3 +254,32 @@ em { font-style: normal; font-weight: 600; color: var(--ember-ink); }
 .L-list.with-pic .n { width: 64px; height: 64px; font-size: 28px; }
 .lpic { width: 760px; }
 .v-video .lpic { width: 580px; }
+
+/* bars: horizontal bars for scores and prices */
+.L-bars { display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.bunit { font-size: 24px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.bwrap { display: flex; flex-direction: column; gap: 18px; }
+.brow-bar { display: grid; grid-template-columns: 720px 1fr 220px; align-items: center; gap: 28px; font-weight: 500; line-height: 1.15; }
+.v-video .brow-bar { grid-template-columns: 440px 1fr 170px; }
+.bl { text-align: right; overflow: hidden; }
+.bt { height: 1.05em; min-height: 34px; border-radius: 10px; background: var(--hair); overflow: hidden; }
+.bf { height: 100%; border-radius: 10px; background: var(--ember); }
+.brow-bar.off .bf { background: #e2ddd3; }
+.brow-bar.on .bl, .brow-bar.on .bv { color: var(--ember-ink); font-weight: 600; }
+.bv { font-family: var(--serif); font-size: 1.2em; font-weight: 500; }
+.bnote { margin-top: 14px; font-size: 34px; }
+
+/* table: a small grid */
+.L-table { display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.L-table .grid { border-radius: 22px; overflow: hidden; }
+.L-table .tr { display: grid; grid-template-columns: var(--cols); border-bottom: 1.5px solid var(--hair); }
+.L-table .tr:last-child { border-bottom: 0; }
+.L-table .tr.head { background: var(--paper-2); }
+.L-table .th { padding: 18px 26px; font-size: 24px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.L-table .td { padding: 20px 28px; font-size: var(--tfont); line-height: 1.2; }
+.L-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.L-table .td.num { font-family: var(--serif); font-size: calc(var(--tfont) * 1.15); }
+.L-table .tr.on { background: var(--ember-soft); }
+.L-table .tr.on .td { color: var(--ember-ink); font-weight: 600; }
+.L-table .tr.off .td { opacity: .45; }
+.tnote { font-size: 32px; }

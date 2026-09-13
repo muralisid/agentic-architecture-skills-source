@@ -8,12 +8,23 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const SITE = '/Users/muralisid/github_other/agentic-architecture-skills-source/site';
+const SITE = process.env.SITE || path.resolve(HERE, '..', 'site');
 
 const journeyFile = path.resolve(process.argv[2]);
 const journey = JSON.parse(fs.readFileSync(journeyFile, 'utf8'));
 const name = path.basename(journeyFile, '.json');
-const id = journey.page === '/ladder' ? 'ladder/index' : journey.page.replace(/^\//, '');
+// A section's own page ('/ladder', '/memory') is that section's index journey.
+const segs = journey.page.replace(/^\//, '').split('/');
+const id = segs.length === 1 ? `${segs[0]}/index` : segs.join('/');
+
+// cwebp where it exists; otherwise Pillow, which encodes WebP on any machine with Python.
+function toWebp(png, out) {
+  try {
+    execFileSync('cwebp', ['-quiet', '-q', '88', png, '-o', out]);
+  } catch {
+    execFileSync('python3', ['-c', 'import sys; from PIL import Image; Image.open(sys.argv[1]).save(sys.argv[2], "WEBP", quality=88, method=6)', png, out]);
+  }
+}
 const plain = (s) => String(s || '').replace(/\*/g, '');
 
 const outDir = path.join(SITE, 'public', 'slides', id);
@@ -21,7 +32,7 @@ fs.mkdirSync(outDir, { recursive: true });
 
 const slides = journey.slides.map((s) => {
   const png = path.join(HERE, 'frames', name, 'site', `${s.id}.png`);
-  execFileSync('cwebp', ['-quiet', '-q', '88', png, '-o', path.join(outDir, `${s.id}.webp`)]);
+  toWebp(png, path.join(outDir, `${s.id}.webp`));
   return { id: s.id, src: `/slides/${id}/${s.id}.webp`, title: plain(s.title), caption: s.caption };
 });
 

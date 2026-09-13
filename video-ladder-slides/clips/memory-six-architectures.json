@@ -1,0 +1,816 @@
+{
+  "page": "/memory/six-architectures",
+  "chapter": "Six ways to build a memory",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "ma-01",
+      "build": 1,
+      "voiceover": "A memory for an agent can be built in six ways. It can keep the original words.",
+      "words": 17,
+      "on_camera": true,
+      "frame": "frames/memory-six-architectures/film/ma-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "ma-01",
+      "build": 1,
+      "voiceover": "It can keep a summary, or a list of facts a model pulled out. It can keep a web of who relates to what.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "ma-01",
+      "build": 1,
+      "voiceover": "It can let the agent write its own notes. Or it can bake what was learned into the model itself.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-01-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "ma-01",
+      "build": 1,
+      "voiceover": "Each choice decides what can be found later, and what is thrown away on the way in.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-01-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "ma-intro",
+      "build": 1,
+      "voiceover": "First, the two questions that place any memory system. Then the six classes those questions produce.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-intro-b1.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "ma-intro",
+      "build": 2,
+      "voiceover": "Then where the named systems sit, about forty of them. Then the four managed services from the large cloud providers.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-intro-b2.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "ma-intro",
+      "build": 3,
+      "voiceover": "Then three product moves in 2026 that all point the same way.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-intro-b3.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "ma-intro",
+      "build": 3,
+      "voiceover": "Last, the research line that puts memory inside the model, with no product yet.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-intro-b3.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "ma-axis1",
+      "build": 1,
+      "voiceover": "The first question is what is persisted. At one end, the original text, unchanged.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis1-b1.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "ma-axis1",
+      "build": 2,
+      "voiceover": "At the other end, the model's own weights. In between sit summaries, extracted facts, and graphs of entities and relations.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis1-b2.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "ma-axis1",
+      "build": 3,
+      "voiceover": "Each step along that line transforms the original more. Transformation makes the store smaller and cheaper to read.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis1-b3.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "ma-axis1",
+      "build": 3,
+      "voiceover": "It also throws away whatever the transformer did not think mattered. That loss is silent, and no later search recovers it.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis1-b3.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "ma-axis2",
+      "build": 1,
+      "voiceover": "The second question is when a model runs. Some systems run a model at write time, once per document.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis2-b1.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "ma-axis2",
+      "build": 2,
+      "voiceover": "They pay once and read cheaply. Some run a model only at read time.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis2-b2.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "ma-axis2",
+      "build": 3,
+      "voiceover": "They store cheaply and pay per question. Some run a model in the background, between tasks.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis2-b3.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "ma-axis2",
+      "build": 4,
+      "voiceover": "They pay continuously and hope the consolidation is right before anyone asks. And some produce the memory by training.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis2-b4.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "ma-axis2",
+      "build": 4,
+      "voiceover": "The model reads it implicitly, in the forward pass. Where the intelligence is spent is where the cost sits.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-axis2-b4.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "ma-tiers",
+      "build": 1,
+      "voiceover": "This guide already grades memory by how long it is kept. Those are the tiers, M1 to M5.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-tiers-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "ma-tiers",
+      "build": 2,
+      "voiceover": "The tier decides the governance: ownership, consent, retention and erasure. The six classes on this page are different.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-tiers-b2.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "ma-tiers",
+      "build": 3,
+      "voiceover": "They describe how a store at any tier is built. Both are needed.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-tiers-b3.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "ma-tiers",
+      "build": 3,
+      "voiceover": "The tier says what duties attach. The class says what can be recalled.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-tiers-b3.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "ma-six",
+      "build": 1,
+      "voiceover": "Class one keeps the original text with a search index and no model at write time.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-six-b1.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "ma-six",
+      "build": 2,
+      "voiceover": "Class two keeps facts and profiles that a model pulled out of each conversation. Class three keeps entities and relations as a graph.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-six-b2.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "ma-six",
+      "build": 2,
+      "voiceover": "Each relation can carry the dates it held. Class four keeps summaries at one or more levels of abstraction.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-six-b2.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "ma-six",
+      "build": 3,
+      "voiceover": "Class five lets the agent itself read and write memory files through tool calls.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-six-b3.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "ma-six",
+      "build": 3,
+      "voiceover": "Class six puts the memory in weights or caches, written by training. We take them one at a time.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-six-b3.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "ma-c1",
+      "build": 1,
+      "voiceover": "Class one stores the original text, unchanged. It is indexed by embeddings, and usually by keywords too. No model runs at write time.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c1-b1.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "ma-c1",
+      "build": 2,
+      "voiceover": "Nothing is lost on the way in. Ingestion is the cheapest there is. Exact names and quotations stay findable.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c1-b2.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "ma-c1",
+      "build": 3,
+      "voiceover": "The cost comes later. Nothing is consolidated, so the same fact appears every place it was said.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c1-b3.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "ma-c1",
+      "build": 3,
+      "voiceover": "And the encoder reads only the first few hundred words of each unit. Long units are cut short.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c1-b3.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "ma-c2",
+      "build": 1,
+      "voiceover": "Class two runs a model at write time. The model pulls out atomic facts, notes, or a profile of the person.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c2-b1.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "ma-c2",
+      "build": 2,
+      "voiceover": "The store is small, readable, and easy to update. A profile can be injected whole into the next task.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c2-b2.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "ma-c2",
+      "build": 3,
+      "voiceover": "The loss is silent and permanent. Whatever the extractor did not think mattered is not in the memory.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c2-b3.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "ma-c2",
+      "build": 3,
+      "voiceover": "This is the class most commercial memory layers chose in 2025.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c2-b3.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "ma-c3",
+      "build": 1,
+      "voiceover": "Class three also runs a model at write time. It extracts entities, relations and facts, and stores them as nodes and edges.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c3-b1.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "ma-c3",
+      "build": 2,
+      "voiceover": "Often each edge carries the dates it was true. Retrieval can walk the graph.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c3-b2.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "ma-c3",
+      "build": 3,
+      "voiceover": "That buys relationship questions, what was true when, and a path that can be explained. It costs a model call per document.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c3-b3.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "ma-c3",
+      "build": 3,
+      "voiceover": "It adds a second database to run. And on plain factual questions, a sparse graph can do worse than simple retrieval.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c3-b3.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "ma-c4",
+      "build": 1,
+      "voiceover": "Class four keeps summaries. Sometimes at several levels, from a paragraph up to the whole corpus.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c4-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "ma-c4",
+      "build": 2,
+      "voiceover": "Sometimes as compressed observations that stay in the model's context. This buys questions about the whole.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c4-b2.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "ma-c4",
+      "build": 2,
+      "voiceover": "What are the themes, what changed over the year. A stable summary also caches well, so it is cheap to reuse.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c4-b2.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "ma-c4",
+      "build": 3,
+      "voiceover": "Detail below the summary level is gone. And summaries drift from the source as the source changes.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c4-b3.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "ma-c5",
+      "build": 1,
+      "voiceover": "Class five lets the agent manage its own memory. It reads and writes files or memory blocks through tool calls.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c5-b1.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "ma-c5",
+      "build": 2,
+      "voiceover": "A small core stays in its context every turn. The agent decides what matters.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c5-b2.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "ma-c5",
+      "build": 3,
+      "voiceover": "The files can be versioned like code, and a person can read them. Quality depends on the agent's judgement at write time.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c5-b3.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "ma-c5",
+      "build": 3,
+      "voiceover": "And there is no index over the raw history unless one is added. One vendor moved its whole product to this class in 2026.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c5-b3.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "ma-c6",
+      "build": 1,
+      "voiceover": "Class six puts the memory inside the model. In its weights, in its key-value caches, or in a latent pool.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c6-b1.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "ma-c6",
+      "build": 2,
+      "voiceover": "It is written by training, or by learning at test time. There is no retrieval step at all.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c6-b2.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "ma-c6",
+      "build": 3,
+      "voiceover": "In principle the effective context could be very long. It is research. Nothing has shipped as a product memory layer.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c6-b3.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "ma-c6",
+      "build": 3,
+      "voiceover": "An enterprise memory cannot do without erasure and audit. Both are unsolved here.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-c6-b3.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "ma-placed",
+      "build": 1,
+      "voiceover": "Here is where the named systems sit, from their own papers and documentation.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-placed-b1.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "ma-placed",
+      "build": 1,
+      "voiceover": "Class one holds the verbatim system we tested, and the plain retrieval baseline in every paper.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-placed-b1.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "ma-placed",
+      "build": 1,
+      "voiceover": "Class two holds most commercial memory layers, and the managed cloud services.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-placed-b1.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "ma-placed",
+      "build": 2,
+      "voiceover": "Class three holds the graph vendors and the graph research systems. Class four holds the tree and observation systems.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-placed-b2.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "ma-placed",
+      "build": 2,
+      "voiceover": "Class five holds the operating-system pattern, the file-based products, and the memory tool from one model vendor.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-placed-b2.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "ma-placed",
+      "build": 2,
+      "voiceover": "Class six holds the research line: test-time memory, trained caches, and latent pools.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-placed-b2.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "ma-placed",
+      "build": 2,
+      "voiceover": "Eleven systems span two classes. The full list, with dates, is in the tail of this page.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-placed-b2.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "ma-fallback",
+      "build": 1,
+      "voiceover": "Eleven systems span two classes. The spanning pattern is the same each time.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-fallback-b1.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "ma-fallback",
+      "build": 1,
+      "voiceover": "An extracted or graph store, with the original text kept beside it.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-fallback-b1.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "ma-fallback",
+      "build": 2,
+      "voiceover": "It is the design answer to one finding, made independently more than once. Replacing the original text with extracted artefacts lowers accuracy.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-fallback-b2.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "ma-fallback",
+      "build": 3,
+      "voiceover": "One 2026 study measured verbatim chunks beating extracted facts by 15.9 points. The largest memory benchmark's authors found the same in 2024.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-fallback-b3.png"
+    },
+    {
+      "clip_id": "c062",
+      "slide": "ma-fallback",
+      "build": 3,
+      "voiceover": "Keeping the text and adding derived keys improved recall by 9.4 percent. Replacing it with facts or summaries made answers worse.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-fallback-b3.png"
+    },
+    {
+      "clip_id": "c063",
+      "slide": "ma-cloud",
+      "build": 1,
+      "voiceover": "All four large cloud providers now ship a memory service.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-cloud-b1.png"
+    },
+    {
+      "clip_id": "c064",
+      "slide": "ma-cloud",
+      "build": 1,
+      "voiceover": "One model vendor ships a memory tool: the agent writes files into a directory the customer owns.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-cloud-b1.png"
+    },
+    {
+      "clip_id": "c065",
+      "slide": "ma-cloud",
+      "build": 2,
+      "voiceover": "The first cloud service reached general availability in October 2025. The second reached general availability in December 2025, and started billing in January 2026.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-cloud-b2.png"
+    },
+    {
+      "clip_id": "c066",
+      "slide": "ma-cloud",
+      "build": 3,
+      "voiceover": "The third was still in public preview in June 2026. All four store extracted facts and preferences. None stores the transcript.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-cloud-b3.png"
+    },
+    {
+      "clip_id": "c067",
+      "slide": "ma-cloud",
+      "build": 3,
+      "voiceover": "Whatever the extractor did not keep is not in the memory. The transcript, if kept at all, lives elsewhere under different retention rules.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-cloud-b3.png"
+    },
+    {
+      "clip_id": "c068",
+      "slide": "ma-2026",
+      "build": 1,
+      "voiceover": "Three product moves in 2026 point the same way. One vendor moved its memory to versioned markdown files in February.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-2026-b1.png"
+    },
+    {
+      "clip_id": "c069",
+      "slide": "ma-2026",
+      "build": 2,
+      "voiceover": "In March it deprecated its server-side memory tools. The largest vendor removed graph memory from its open-source release.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-2026-b2.png"
+    },
+    {
+      "clip_id": "c070",
+      "slide": "ma-2026",
+      "build": 2,
+      "voiceover": "It is now a platform feature only, with no open replacement. Its new algorithm adds facts and never overwrites them.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-2026-b2.png"
+    },
+    {
+      "clip_id": "c071",
+      "slide": "ma-2026",
+      "build": 3,
+      "voiceover": "A third vendor stopped supporting its community edition. The open graph engine remains; the hosted product carries the claims.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-2026-b3.png"
+    },
+    {
+      "clip_id": "c072",
+      "slide": "ma-2026",
+      "build": 3,
+      "voiceover": "All three moves are towards plainer storage and less transformation at write time.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-2026-b3.png"
+    },
+    {
+      "clip_id": "c073",
+      "slide": "ma-baseline",
+      "build": 1,
+      "voiceover": "Two more signals sit beside the product moves. In the largest vendor's own 2025 paper, giving the model the full conversation scores 72.90.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-baseline-b1.png"
+    },
+    {
+      "clip_id": "c074",
+      "slide": "ma-baseline",
+      "build": 2,
+      "voiceover": "The vendor's best memory variant scores 68.44. In the second vendor's paper, the full-conversation baseline is within 0.4 of the vendor's system.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-baseline-b2.png"
+    },
+    {
+      "clip_id": "c075",
+      "slide": "ma-baseline",
+      "build": 3,
+      "voiceover": "Both papers argue the trade on latency and token cost instead. That is a legitimate trade, and a different claim.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-baseline-b3.png"
+    },
+    {
+      "clip_id": "c076",
+      "slide": "ma-baseline",
+      "build": 3,
+      "voiceover": "And a 2026 study found that swapping the embedding model alone moved accuracy by 6.2 points.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-baseline-b3.png"
+    },
+    {
+      "clip_id": "c077",
+      "slide": "ma-baseline",
+      "build": 3,
+      "voiceover": "That is more than the gap between several competing systems.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-baseline-b3.png"
+    },
+    {
+      "clip_id": "c078",
+      "slide": "ma-research",
+      "build": 1,
+      "voiceover": "Class six is where the long-run bet sits. One research line updates a neural memory at test time.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-research-b1.png"
+    },
+    {
+      "clip_id": "c079",
+      "slide": "ma-research",
+      "build": 1,
+      "voiceover": "It reports needle-in-haystack recall beyond two million tokens, and 80 percent on a synthetic test at ten million.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-research-b1.png"
+    },
+    {
+      "clip_id": "c080",
+      "slide": "ma-research",
+      "build": 2,
+      "voiceover": "Another trains a small cache per corpus offline. It reports 38 times less memory at inference.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-research-b2.png"
+    },
+    {
+      "clip_id": "c081",
+      "slide": "ma-research",
+      "build": 3,
+      "voiceover": "A third trains a fixed-length text memory by reinforcement learning.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-research-b3.png"
+    },
+    {
+      "clip_id": "c082",
+      "slide": "ma-research",
+      "build": 3,
+      "voiceover": "It reads 3.5 million tokens after training on 8 thousand, with under 5 percent loss.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-research-b3.png"
+    },
+    {
+      "clip_id": "c083",
+      "slide": "ma-research",
+      "build": 3,
+      "voiceover": "Each is a paper with code and no product. None addresses erasure, permissions or audit.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-research-b3.png"
+    },
+    {
+      "clip_id": "c084",
+      "slide": "ma-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. Decide the class before the vendor.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-recap-b1.png"
+    },
+    {
+      "clip_id": "c085",
+      "slide": "ma-recap",
+      "build": 1,
+      "voiceover": "The class fixes what is lost at write time, and no later search recovers it.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-recap-b1.png"
+    },
+    {
+      "clip_id": "c086",
+      "slide": "ma-recap",
+      "build": 2,
+      "voiceover": "If you choose an extracted or graph store, keep the original text beside it. The vendors that score best now do.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-recap-b2.png"
+    },
+    {
+      "clip_id": "c087",
+      "slide": "ma-recap",
+      "build": 3,
+      "voiceover": "Count the model calls per document at write time and per question at read time.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-recap-b3.png"
+    },
+    {
+      "clip_id": "c088",
+      "slide": "ma-recap",
+      "build": 3,
+      "voiceover": "That is the cost model, and it differs tenfold between classes.",
+      "words": 11,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-recap-b3.png"
+    },
+    {
+      "clip_id": "c089",
+      "slide": "ma-recap",
+      "build": 4,
+      "voiceover": "Treat memory in the weights as research until a product can delete a fact on request.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-six-architectures/film/ma-recap-b4.png"
+    },
+    {
+      "clip_id": "c090",
+      "slide": "ma-recap",
+      "build": 4,
+      "voiceover": "The next page looks at how these systems are scored.",
+      "words": 10,
+      "on_camera": true,
+      "frame": "frames/memory-six-architectures/film/ma-recap-b4.png"
+    }
+  ]
+}

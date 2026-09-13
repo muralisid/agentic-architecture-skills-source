@@ -1,0 +1,96 @@
+{
+  "id": "memory/what-we-have-measured",
+  "title": "What we have measured",
+  "slides": [
+    {
+      "id": "mm-01",
+      "src": "/slides/memory/what-we-have-measured/mm-01.webp",
+      "title": "What we have measured",
+      "caption": "In spring 2026 one project claimed a perfect score on two memory benchmarks. We ran its code ourselves. The numbers came out exactly. Then we looked at what they were numbers of."
+    },
+    {
+      "id": "mm-intro",
+      "src": "/slides/memory/what-we-have-measured/mm-intro.webp",
+      "title": "What we will cover",
+      "caption": "Why we chose this system. What we did. What the reproduction found. The realisation at the end. What it does and does not mean."
+    },
+    {
+      "id": "mm-claim",
+      "src": "/slides/memory/what-we-have-measured/mm-claim.webp",
+      "title": "The claim: 100 percent",
+      "caption": "In April 2026 a local-first verbatim memory published 100 percent on two benchmarks. It reached 47 thousand GitHub stars within two weeks."
+    },
+    {
+      "id": "mm-why",
+      "src": "/slides/memory/what-we-have-measured/mm-why.webp",
+      "title": "Why this system",
+      "caption": "It made the least realistic claim in the field. Its code runs with no model, so every figure reproduces for nothing. And the claim was still on its benchmark page when we tested."
+    },
+    {
+      "id": "mm-did",
+      "src": "/slides/memory/what-we-have-measured/mm-did.webp",
+      "title": "What we did",
+      "caption": "Their scripts unmodified on two benchmarks. A validated reimplementation to switch parts on and off. The same code on the ten-million-token benchmark. One command reproduces it all."
+    },
+    {
+      "id": "mm-lme",
+      "src": "/slides/memory/what-we-have-measured/mm-lme.webp",
+      "title": "The larger benchmark: exact",
+      "caption": "Their headline 96.6 is any-hit recall at five. On the same ranking, the TREC fraction is 91.7. Their keyword-boosted mode reaches 98.2. The 100 needs a paid rerank and three fixes."
+    },
+    {
+      "id": "mm-locomo",
+      "src": "/slides/memory/what-we-have-measured/mm-locomo.webp",
+      "title": "The smaller benchmark: the 100 explained",
+      "caption": "Raw scores 60.3 and keyword-boosted 88.9 at k of 10. The largest conversation has 32 sessions. So at k of 50 every configuration scores 100."
+    },
+    {
+      "id": "mm-beam",
+      "src": "/slides/memory/what-we-have-measured/mm-beam.webp",
+      "title": "The same code at ten million",
+      "caption": "On the ten-million-token benchmark the same code finds 24.5 percent of the evidence in the top ten. In the top hundred, 42.3 percent."
+    },
+    {
+      "id": "mm-truncation",
+      "src": "/slides/memory/what-we-have-measured/mm-truncation.webp",
+      "title": "Mechanism one: truncation",
+      "caption": "The encoder reads the first 190 words of a session. On the larger benchmark 88 percent of evidence sits inside that window. On the smaller, 54 percent sits outside."
+    },
+    {
+      "id": "mm-metric",
+      "src": "/slides/memory/what-we-have-measured/mm-metric.webp",
+      "title": "Mechanism two: the metric",
+      "caption": "The 96.6 is any-hit: a full hit if one gold session is in the top five. As the TREC fraction it is 91.7. The 100 is a k of 50 over pools of 32."
+    },
+    {
+      "id": "mm-density",
+      "src": "/slides/memory/what-we-have-measured/mm-density.webp",
+      "title": "Mechanism three: density",
+      "caption": "At ten million tokens the pool is 21 thousand messages. Word overlap predicts recall. A larger encoder moves the result by about a point. Keyword search alone is within four points."
+    },
+    {
+      "id": "mm-realisation",
+      "src": "/slides/memory/what-we-have-measured/mm-realisation.webp",
+      "title": "The realisation",
+      "caption": "The project never answers a question. Its scores, including the 100 percent, are retrieval scores. A retrieval score is not an accuracy claim."
+    },
+    {
+      "id": "mm-sound",
+      "src": "/slides/memory/what-we-have-measured/mm-sound.webp",
+      "title": "Sound as retrieval, invalid as accuracy",
+      "caption": "A verbatim store with a keyword channel is a real baseline. As an accuracy claim, one 100 returns the whole pool. The other rests on a paid rerank and three tuned fixes."
+    },
+    {
+      "id": "mm-means",
+      "src": "/slides/memory/what-we-have-measured/mm-means.webp",
+      "title": "What it does and does not mean",
+      "caption": "No claim of bad faith; the project says what its metric is and retracted claims in April 2026. No recommendation. Three things a reader can use."
+    },
+    {
+      "id": "mm-recap",
+      "src": "/slides/memory/what-we-have-measured/mm-recap.webp",
+      "title": "What to remember",
+      "caption": "We reproduced a 100 percent claim exactly. It was retrieval only, with no answer, at a k that returned the whole pool. At ten million tokens the same code finds a quarter."
+    }
+  ]
+}

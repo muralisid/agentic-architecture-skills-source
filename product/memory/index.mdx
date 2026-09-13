@@ -6,46 +6,157 @@ datePublished: "2026-09-13"
 dateModified: "2026-09-13"
 ---
 
-<PlainTerms>
-An AI agent forgets everything when its task ends unless something is built to remember for it. That something is called its memory. This section looks at how memories are built today, how they are scored, and how far the scores are from what an enterprise needs. The one thing to remember: every published memory score was earned on a few hundred thousand words at most, and an enterprise question routinely reaches across ten million or more. Nobody has yet shown solid results at that size.
-</PlainTerms>
+<Slide journey="memory/index" id="mo-01">
 
-## Why memory architectures need their own section
+An AI agent forgets everything when its task ends. Unless something is built to remember for it. That something is called its memory. This section looks at how memories are built today. It looks at how they are scored. And it asks how far the scores are from what an enterprise needs.
 
-**WHY:** The [data-to-memory pipeline](/architecture/data-to-memory) says what a memory must carry: <Term k="provenance">provenance</Term>, permissions and a working delete. The [agent data engineering layer](/layers/r14-agent-data-engineering) says how to govern it. Neither says how a memory is built, or which build works. By September 2026 there are more than thirty named memory systems, four managed memory services from the large cloud providers, six survey taxonomies and, since 2025, at least ten new <Term k="benchmark">benchmarks</Term>. Every one of them reports a score. Almost none of the scores are comparable, and none is earned at the scale an enterprise runs at.
+</Slide>
 
-**WHAT:** Classify the architectures by two facts that decide everything else: what is stored, and when a <Term k="model">model</Term> runs. Read every score with its unit, its candidate pool and its judge. Separate retrieval-only scores from answered-question scores and never average them. Then put the number that matters beside them: the size of the workload the memory is meant to serve.
+<Slide journey="memory/index" id="mo-intro">
 
-## The question this section leaves open
+This section has six pages. Each page is a run of slides like this one. Each slide is explained under it, in plain words.
 
-**In short:** The largest public memory benchmark stops at ten million <Term k="token">tokens</Term>, and at that size the best published result is 0.27 on a scale of 0 to 1.
+First, why memory needs its own section. Then the six ways a memory can be built. Then how memory systems are scored, and where the scores mislead.
 
-Ten million tokens is not a large enterprise workload. It is a little more than one year of one knowledge worker's received email and chat, before attachments, documents, tickets or meetings. A customer's history across a decade of correspondence, a litigation file, an engineering programme, a plant's maintenance record: each of these is larger. Every memory score above 90 percent that appears in this section was earned on a conversation of between 16 thousand and 115 thousand tokens. At ten million, on the one public benchmark that reaches it, plain long context scores 0.10, retrieval 0.25, and the benchmark authors' own memory design 0.27. Three vendors have since published their own ten-million-token numbers, each under its own judge and harness, none comparable to the paper's table, and none reproduced by anyone else.
+Then why a one-million-token context window is not a memory. Then the question that gives the section its point. It is about ten million tokens. Last, the one system we tested ourselves.
 
-<EvidenceBadge status="no-published-precedent" /> No independently run, published result shows any memory architecture or long-context model answering well over a single ten-million-token corpus. The section ends on that gap rather than on a recommendation.
+</Slide>
 
-## The pages
+## Why memory needs its own section
 
-| Page | What it settles |
-|---|---|
-| [Six ways to build a memory](/memory/six-architectures) | The taxonomy: verbatim stores, extracted facts, graphs, summaries, agent-managed files, and memory inside the weights. Where every named system sits, and what changed in 2026. |
-| [What the benchmarks measure](/memory/what-the-benchmarks-measure) | The two schools of scoring, the six benchmarks that matter, why two of them are saturated, and ten documented ways a published memory score misleads. |
-| [Long context is not memory](/memory/long-context-is-not-memory) | One-million-token windows are standard. Effective context is 2K to 16K on the hardest tests. What ten million tokens costs at list price. |
-| [The ten-million-token question](/memory/the-ten-million-token-question) | How large enterprise memory workloads are, what the only ten-million-token benchmark shows, and the question the industry has not answered. |
-| [What we have measured](/memory/what-we-have-measured) | Why this guide tested the system with the least realistic claim, 100 percent on two benchmarks; the exact reproduction; and the realisation that the score was retrieval only, with no answer behind it. |
-| [Sources](/memory/sources) | Every claim above with its date, its URL, and its vendor flag. |
+<Slide journey="memory/index" id="mo-agent">
+
+At the heart of any AI system is a model. It reads text and writes text back. A system that uses a model to do a job is called an agent.
+
+The model keeps nothing between calls. When the task ends, everything it saw is gone. The next task starts from a blank page.
+
+For a chat about the weather, that is fine. For a claims team or a service desk, it is not. They need the agent to remember last week, last year, and the customer's whole history.
+
+</Slide>
+
+<Slide journey="memory/index" id="mo-memory">
+
+Memory is what is built around the model to remember for it. It is a store, an index, and a way to bring the right piece back. It is not part of the model.
+
+What the store keeps decides what can ever be recalled. How the index works decides what is found. Those two choices are the subject of this section.
+
+This guide already says what a memory must carry. Its source, its permissions, and a working delete. This section adds how it is built, and whether the build works.
+
+</Slide>
+
+<Slide journey="memory/index" id="mo-count">
+
+By September 2026 there are more than thirty named memory systems. Four large cloud providers ship a managed memory service. Six survey papers propose their own taxonomy.
+
+Since 2025 at least ten new benchmarks have appeared. Every system reports a score on one of them. Almost none of the scores can be compared with each other.
+
+The judges differ. The question subsets differ. And the sizes of the tests are far below what an enterprise runs at.
+
+</Slide>
+
+## Two facts and two schools
+
+<Slide journey="memory/index" id="mo-two-facts">
+
+The first fact is what is stored. Original words, a summary, extracted facts, a graph, or the weights. What is stored decides what can ever be found again.
+
+The second fact is when a model runs. At write time, as each document arrives. At read time, as each question comes in. In the background, between tasks. Or during training, so the memory lives in the weights.
+
+Those two facts decide the cost, and they decide what is lost. Page two sorts every named system by them.
+
+</Slide>
+
+<Slide journey="memory/index" id="mo-scores">
+
+Vendors report scores in the low nineties on the two best-known benchmarks. Those scores are real, under the judges the vendors chose.
+
+But look at the size of the test. The smaller benchmark has conversations of 16 to 26 thousand tokens. The larger one has about 115 thousand tokens per question.
+
+A modern model reads either of those in one call. So a high score there says little about memory at scale. Page three shows what the benchmarks measure and where scores mislead.
+
+</Slide>
+
+## The size that matters
+
+<Slide journey="memory/index" id="mo-scale">
+
+A token is the unit AI usage is measured in. It is roughly three quarters of a word. Ten million tokens is about seven million words.
+
+That is a little more than one year of one worker's received mail and chat. Before any attachments, documents, tickets or meetings.
+
+A customer's history over a decade is larger. A litigation file is larger. A plant's maintenance record is larger. Ten million is the floor for an enterprise memory, not the ceiling.
+
+</Slide>
+
+<Slide journey="memory/index" id="mo-beam">
+
+One public benchmark reaches ten million tokens. It is called BEAM, and it was published at a top conference in 2026. At that size, giving the model everything scores 0.10 on a scale of 0 to 1.
+
+Finding the best pieces first and passing them in scores 0.25.
+
+The benchmark authors built their own memory design. It scores 0.27. That is the best published, independently run result at ten million tokens. Nothing is close to solid.
+
+</Slide>
+
+<Slide journey="memory/index" id="mo-vendors">
+
+Three vendors have since published their own ten-million-token numbers. Each used its own judge and its own test harness.
+
+None of them is comparable to the paper's table. None is comparable to the others. None has been reproduced by anyone else.
+
+This section shows them, flagged as vendor reported. It never places them in a ranking.
+
+</Slide>
 
 ## How this section handles numbers
 
-**In short:** Vendor numbers are shown, flagged, and never ranked against each other; independently measured numbers sit in their own rows; retrieval scores and answer scores never share a table.
+<Slide journey="memory/index" id="mo-rules">
 
-The [agent data engineering layer](/layers/r14-agent-data-engineering) refuses to cite memory-service benchmarks because every one in circulation is vendor-authored and disputed between vendors. That refusal stands for recommendations. This section relaxes it for description only, under three rules.
+This section handles numbers under three rules. First, a number from the party that built the system is flagged as vendor reported. The judges differ, so it is never placed in a ranking with another vendor's number.
 
-1. A number reported by the party that built the system carries the vendor-reported badge and appears in a table that states the judge, the question subset and the date. Two vendor numbers are never placed in a ranking, because the judges differ.
-2. A number this guide produced by running the system's own code, or by reimplementing its code path and matching a published figure to the decimal, carries the independently measured badge.
-3. A retrieval-only score (was the right passage in the top k) and a full question-answering score (did the answer come out right) are two different quantities. They are reported in separate tables with the unit retrieved, the candidate pool and the k on every row. This is the two-table rule, and it is the single most useful habit a reader can take from the section.
+Second, a number this guide produced by running the system's own code is marked independently measured. It sits in its own row.
 
-<EvidenceBadge status="author-position" /> The taxonomy, the reading rules and the closing question are the author's. The counts, the dates and the scores are sourced on every page.
+Third, a retrieval score and an answer score are different quantities. One asks whether the right passage was found. The other asks whether the answer came out right. They never share a table. This is the single most useful habit a reader can take from the section.
+
+</Slide>
+
+<Slide journey="memory/index" id="mo-map">
+
+Page two sorts the systems into six classes. Page three sets out the benchmarks and ten ways a score misleads.
+
+Page four shows why a one-million-token window is not a memory, and what ten million tokens costs. Page five puts the enterprise workload beside the best results and leaves the question open.
+
+Page six records the one system we reproduced ourselves. The last page carries every source with its date and its vendor flag.
+
+</Slide>
+
+## The question this section leaves open
+
+<Slide journey="memory/index" id="mo-open">
+
+No independently run, published result shows any memory architecture answering well over ten million tokens. No long-context model does either.
+
+None has earned a recommendation, so this section makes none. It ends on the gap, and leaves the question with you.
+
+Our own research on the question is under way. It will be published here when it is complete, in the same two tables.
+
+</Slide>
+
+## What to remember
+
+<Slide journey="memory/index" id="mo-recap">
+
+Here is what to remember. A memory is decided by what it stores and when a model runs.
+
+Every high score was earned on a test that fits in one call to a model.
+
+Read every number with its unit, its pool and its judge. Keep retrieval scores and answer scores apart.
+
+Ten million tokens is the floor for an enterprise memory. Nothing solid has been shown there, by anyone. The next page sorts the architectures.
+
+</Slide>
+
+<EvidenceBadge status="author-position" /> The taxonomy, the reading rules and the closing question are the author's. The counts, the dates and the scores are sourced on every page of the section and on the [sources](/memory/sources) page.
 
 <details>
 <summary>The research behind this page</summary>

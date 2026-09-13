@@ -1,0 +1,90 @@
+{
+  "id": "memory/the-ten-million-token-question",
+  "title": "The ten-million-token question",
+  "slides": [
+    {
+      "id": "mt-01",
+      "src": "/slides/memory/the-ten-million-token-question/mt-01.webp",
+      "title": "The ten-million-token question",
+      "caption": "Memory systems are scored on conversations that fit in an email thread. The work an enterprise wants remembered is years of mail, chat, tickets and documents."
+    },
+    {
+      "id": "mt-intro",
+      "src": "/slides/memory/the-ten-million-token-question/mt-intro.webp",
+      "title": "What we will cover",
+      "caption": "How large the workload is, in tokens. What the one public test at ten million shows. What the vendors report. Why ten million is hard. The question, left open."
+    },
+    {
+      "id": "mt-worker",
+      "src": "/slides/memory/the-ten-million-token-question/mt-worker.webp",
+      "title": "One worker, one year",
+      "caption": "Microsoft counts 117 emails and 153 chat messages received per weekday. At 144 words per email, that is about 6 to 8 million tokens a year, derived."
+    },
+    {
+      "id": "mt-anchors",
+      "src": "/slides/memory/the-ten-million-token-question/mt-anchors.webp",
+      "title": "Sourced anchors for scale",
+      "caption": "One company's senior mail from the 2000s is about 100 million tokens. A mailbox quota is 100 gigabytes. All US annual reports since 1993 are 6.5 billion tokens."
+    },
+    {
+      "id": "mt-beam-what",
+      "src": "/slides/memory/the-ten-million-token-question/mt-beam-what.webp",
+      "title": "The one public test at ten million",
+      "caption": "BEAM has one hundred synthetic conversations, ten of them at ten million tokens, and two thousand questions across ten abilities. A judge scores each answer 0, 0.5 or 1."
+    },
+    {
+      "id": "mt-beam-results",
+      "src": "/slides/memory/the-ten-million-token-question/mt-beam-results.webp",
+      "title": "What the test shows",
+      "caption": "With a one-million-token model, full context scores 0.10 at ten million, retrieval 0.25, and the authors' memory design 0.27. Scores are low at every length."
+    },
+    {
+      "id": "mt-vendors",
+      "src": "/slides/memory/the-ten-million-token-question/mt-vendors.webp",
+      "title": "What the vendors report",
+      "caption": "Three vendors published their own ten-million-token numbers. Each used its own judge and harness. None is comparable to the paper, and none has been reproduced."
+    },
+    {
+      "id": "mt-independent",
+      "src": "/slides/memory/the-ten-million-token-question/mt-independent.webp",
+      "title": "Two independent points beside them",
+      "caption": "A 2026 corpus benchmark reports a memory agent at 11.1 and retrieval at 1.2 over ten million tokens. A 115-million-token benchmark reports a file-storing agent at 72.5."
+    },
+    {
+      "id": "mt-why",
+      "src": "/slides/memory/the-ten-million-token-question/mt-why.webp",
+      "title": "Why ten million is hard",
+      "caption": "Nothing can read the whole. The candidate pool is too dense for an encoder. And the evidence is spread across years. The three compound."
+    },
+    {
+      "id": "mt-density",
+      "src": "/slides/memory/the-ten-million-token-question/mt-density.webp",
+      "title": "At that density, words discriminate",
+      "caption": "On the ten-million-token benchmark, exact word overlap between question and evidence predicts whether the evidence is found. The choice of encoder does not."
+    },
+    {
+      "id": "mt-q1",
+      "src": "/slides/memory/the-ten-million-token-question/mt-q1.webp",
+      "title": "Question one: which architecture",
+      "caption": "Which architecture, if any, gives an agent useful recall over ten million tokens of its own records? And at a cost a service desk can bear?"
+    },
+    {
+      "id": "mt-q2",
+      "src": "/slides/memory/the-ten-million-token-question/mt-q2.webp",
+      "title": "Question two: how would you know",
+      "caption": "The score would have to be independently produced, on a corpus that does not fit a context window. Unit, pool, k and judge stated. Two separate tables."
+    },
+    {
+      "id": "mt-q3",
+      "src": "/slides/memory/the-ten-million-token-question/mt-q3.webp",
+      "title": "Question three: what would it cost",
+      "caption": "What would it cost to index? Sending everything to the model costs one to six hundred dollars per ten million tokens. How do the two compare?"
+    },
+    {
+      "id": "mt-recap",
+      "src": "/slides/memory/the-ten-million-token-question/mt-recap.webp",
+      "title": "What to remember",
+      "caption": "Ten million tokens is one worker's year, and the floor. The best independent result there is 0.27. Vendor numbers are unchecked. The question is open."
+    }
+  ]
+}

@@ -1,0 +1,609 @@
+{
+  "page": "/memory/long-context-is-not-memory",
+  "chapter": "Long context is not memory",
+  "sections": [
+    {
+      "heading": null,
+      "slides": [
+        "ml-01",
+        "ml-intro"
+      ]
+    },
+    {
+      "heading": "The window is standard now",
+      "slides": [
+        "ml-standard",
+        "ml-pricing"
+      ]
+    },
+    {
+      "heading": "Effective context is a fraction of nominal",
+      "slides": [
+        "ml-nolima",
+        "ml-four",
+        "ml-2026"
+      ]
+    },
+    {
+      "heading": "Long context against retrieval",
+      "slides": [
+        "ml-versus",
+        "ml-corpusqa"
+      ]
+    },
+    {
+      "heading": "What ten million tokens costs",
+      "slides": [
+        "ml-cost",
+        "ml-cache"
+      ]
+    },
+    {
+      "heading": "What to remember",
+      "slides": [
+        "ml-recap"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "ml-01",
+      "layout": "title",
+      "title": "Long context is not *memory*",
+      "text": "The window limits what can be sent, not what will be found.",
+      "builds": [
+        {
+          "narration": [
+            "A model's context window is how much it can read at once.",
+            "Most leading models now read a million tokens in a single call.",
+            "That is between five and seven hundred thousand words.",
+            "It invites a simple idea: skip the memory and give the model everything.",
+            "This page shows why that does not work for enterprise data.",
+            "The window is a limit on what can be sent.",
+            "It is not a promise about what will be found."
+          ]
+        }
+      ],
+      "caption": "Most leading models read a million tokens in one call. That invites skipping the memory. Models get worse at finding things long before the window is full."
+    },
+    {
+      "id": "ml-intro",
+      "layout": "list",
+      "title": "What we will *cover*",
+      "items": [
+        "The window is standard",
+        "Two pricing regimes",
+        "Effective context is a fraction",
+        "Long context against retrieval",
+        "What ten million tokens costs"
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "First, how standard the one-million-token window has become.",
+            "Then the two ways vendors price it."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Then the evidence that effective context is a small fraction of the nominal window."
+          ]
+        },
+        {
+          "reveal": 5,
+          "narration": [
+            "Then what the studies of long context against retrieval found.",
+            "Last, what one ten-million-token prompt costs at list price."
+          ]
+        }
+      ],
+      "caption": "The one-million-token window is standard. Two pricing regimes. Effective context is a fraction of nominal. Long context against retrieval. What ten million tokens costs."
+    },
+    {
+      "id": "ml-standard",
+      "layout": "number",
+      "title": "The window is *standard*",
+      "value": "9",
+      "unit": "model families offer a million tokens or more; one claims ten million",
+      "text": "First-party documentation, accessed 13 September 2026.",
+      "builds": [
+        {
+          "narration": [
+            "As of 13 September 2026, nine model families offer a context window of a million tokens or more.",
+            "The list includes every large model vendor, several open-weight families, and two Chinese providers."
+          ]
+        },
+        {
+          "narration": [
+            "One open-weight model claims ten million tokens.",
+            "Its claim and its useful length turn out to be very different numbers.",
+            "We come to that in a moment."
+          ]
+        }
+      ],
+      "caption": "As of September 2026, nine model families offer a million tokens or more. One claims ten million. The claim and the useful length are different numbers."
+    },
+    {
+      "id": "ml-pricing",
+      "layout": "compare",
+      "title": "Two pricing *regimes*",
+      "left": {
+        "head": "Flat across the window",
+        "rows": [
+          "Same rate at any length",
+          "Three vendors as of September 2026",
+          "Simple to budget"
+        ]
+      },
+      "right": {
+        "head": "Tiered past a threshold",
+        "rows": [
+          "Double past 272 thousand",
+          "Double past 200 thousand",
+          "Triple past 256 thousand"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Pricing has split into two regimes.",
+            "Some vendors bill flat across the whole window.",
+            "A nine hundred thousand token request costs the same per token as a nine thousand token one."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Others bill the whole request at a higher rate once it passes a threshold.",
+            "One doubles the input rate past 272 thousand tokens.",
+            "Another doubles past 200 thousand.",
+            "A third triples past 256 thousand."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The regime matters more than the headline rate for a memory workload.",
+            "A memory workload is, by definition, on the wrong side of the threshold."
+          ]
+        }
+      ],
+      "caption": "Some vendors bill flat across the window. Others bill the whole request at double once it passes a threshold. Memory workloads sit on the wrong side of the threshold."
+    },
+    {
+      "id": "ml-nolima",
+      "layout": "table",
+      "title": "Effective context is a *fraction*",
+      "head": [
+        "Model",
+        "Claimed",
+        "Effective",
+        "At 32K"
+      ],
+      "widths": [
+        2.2,
+        1,
+        1,
+        1
+      ],
+      "rows": [
+        [
+          "GPT-4.1",
+          "1M",
+          "16K",
+          "79.8"
+        ],
+        [
+          "GPT-4o",
+          "128K",
+          "8K",
+          "69.7"
+        ],
+        [
+          "Claude 3.5 Sonnet",
+          "200K",
+          "4K",
+          "29.8"
+        ],
+        [
+          "Gemini 1.5 Pro",
+          "2M",
+          "2K",
+          "48.2"
+        ],
+        [
+          "Llama 4 Maverick",
+          "1M",
+          "2K",
+          "24.5"
+        ],
+        [
+          "Llama 4 Scout",
+          "10M",
+          "1K",
+          "21.6"
+        ]
+      ],
+      "text": "Effective means keeping 85 percent of the short-context score. ICML 2025.",
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "One benchmark hides a needle whose words do not match the question.",
+            "The model must reason rather than match.",
+            "Effective length is the longest context at which a model keeps 85 percent of its short-context accuracy.",
+            "A model that claims one million tokens keeps that accuracy to 16 thousand.",
+            "One that claims 128 thousand keeps it to 8 thousand."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "A model that claims 200 thousand keeps it to 4 thousand.",
+            "A model that claims two million keeps it to 2 thousand."
+          ]
+        },
+        {
+          "reveal": 6,
+          "focus": [
+            5
+          ],
+          "narration": [
+            "And the model that claims ten million keeps it to 1 thousand.",
+            "At 32 thousand tokens it scores 21.6 out of 100.",
+            "Eleven of the thirteen models tested fell below half their short-context accuracy by 32 thousand tokens.",
+            "No later independent test has contradicted the pattern."
+          ]
+        }
+      ],
+      "caption": "One test removes word overlap between question and evidence. On it, effective context is 1K to 16K for models that claim 1M to 10M."
+    },
+    {
+      "id": "ml-four",
+      "layout": "list",
+      "title": "Four more lines of *evidence*",
+      "items": [
+        "Sharp drops past the needle test",
+        "Synthetic tests predict nothing",
+        "Every model degrades with length",
+        "The vendors say so"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Four other lines of evidence say the same thing at different lengths.",
+            "A 2024 suite of thirteen tasks found almost every model near perfect on the plain needle test.",
+            "Then almost all dropped sharply with length.",
+            "Only about half were satisfactory at 32 thousand tokens."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "A 2025 suite of 59 models found that no synthetic test predicts real downstream tasks.",
+            "Open-weight models collapsed on citation tasks at 128 thousand tokens."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "A vector database vendor tested eighteen models in July 2025.",
+            "Every one degraded with input length.",
+            "A focused prompt of 300 tokens beat the full 113 thousand token history on every model."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "And one model vendor's own engineering guidance from September 2025 says it plainly.",
+            "As the tokens in the context window increase, the model's ability to recall from it decreases."
+          ]
+        }
+      ],
+      "caption": "Almost all models drop sharply past the plain needle test. Synthetic tests do not predict real tasks. Every model degrades with length. The vendors say so themselves."
+    },
+    {
+      "id": "ml-2026",
+      "layout": "statement",
+      "title": "The 2026 follow-ups reach a *million*",
+      "icon": "warning",
+      "text": "The leader at 128K is not the leader at 1M.",
+      "builds": [
+        {
+          "narration": [
+            "The 2026 follow-ups extend this to the million-token range."
+          ]
+        },
+        {
+          "narration": [
+            "A May 2026 study tested 26 models.",
+            "The leader at 128 thousand tokens was not the leader at one million.",
+            "Seven models moved two or more ranks between the two lengths."
+          ]
+        },
+        {
+          "narration": [
+            "A second May 2026 study watched frontier models miss dangerous actions.",
+            "After 800 thousand tokens of ordinary activity, they missed them two to thirty times more often."
+          ]
+        },
+        {
+          "narration": [
+            "A June 2026 study of long searches found models giving up well before the window was full.",
+            "The rate rose with length."
+          ]
+        }
+      ],
+      "caption": "The leader at 128 thousand tokens is not the leader at one million. Frontier models miss dangerous actions far more often after 800 thousand tokens."
+    },
+    {
+      "id": "ml-versus",
+      "layout": "compare",
+      "title": "Long context against *retrieval*",
+      "left": {
+        "head": "Long context",
+        "rows": [
+          "Ahead by 7.6 to 13.1 points",
+          "73.1 percent correct",
+          "Twenty-six times the cost"
+        ]
+      },
+      "right": {
+        "head": "Retrieval",
+        "rows": [
+          "Behind within the window",
+          "65.4 percent correct",
+          "One twenty-sixth of the cost"
+        ]
+      },
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "What about the studies that compare long context with retrieval directly?",
+            "Within the window, long context wins on accuracy.",
+            "A 2024 comparison found it ahead by 7.6 points with one frontier model and 13.1 with another."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "It loses on cost.",
+            "A June 2026 study measured 73.1 percent correct for long context against 65.4 for retrieval.",
+            "At twenty-six times the per-question token cost."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "The 2024 study proposed routing between the two.",
+            "That cut cost by 39 to 65 percent.",
+            "Both results hold only for corpora that fit the window."
+          ]
+        }
+      ],
+      "caption": "Within the window, long context wins on accuracy by 7 to 13 points. It loses on cost by ten to twenty-six times. Past the window, plain retrieval collapses too."
+    },
+    {
+      "id": "ml-corpusqa",
+      "layout": "bars",
+      "title": "Past the window, *both* collapse",
+      "unit": "Accuracy, 0 to 100",
+      "max": 100,
+      "items": [
+        [
+          "128K, best model",
+          82,
+          "82.0"
+        ],
+        [
+          "1M, best model",
+          50.7,
+          "50.7"
+        ],
+        [
+          "4M, plain retrieval",
+          2.43,
+          "2.4"
+        ],
+        [
+          "4M, memory agent",
+          22.14,
+          "22.1"
+        ],
+        [
+          "10M, plain retrieval",
+          1.2,
+          "1.2"
+        ],
+        [
+          "10M, memory agent",
+          11.13,
+          "11.1"
+        ]
+      ],
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "The picture changes past the window.",
+            "A January 2026 benchmark tests question answering over four sizes of corpus.",
+            "At 128 thousand tokens the best models score above 80.",
+            "At one million, the best scores 50.7."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "At four million tokens, plain retrieval scores 2.4.",
+            "A memory agent that plans and searches scores 22.1."
+          ]
+        },
+        {
+          "reveal": 6,
+          "narration": [
+            "At ten million, retrieval scores 1.2 and the memory agent 11.1.",
+            "Nothing is good at ten million.",
+            "But the shape is clear.",
+            "Whatever works there is not one call over the corpus, and not one retrieval either."
+          ]
+        }
+      ],
+      "caption": "A 2026 benchmark tests question answering over 128 thousand to ten million tokens. At four million, plain retrieval scores 2.4 and a memory agent 22.1. At ten million, 1.2 and 11.1."
+    },
+    {
+      "id": "ml-cost",
+      "layout": "bars",
+      "title": "What ten million tokens *costs*",
+      "unit": "US dollars per ten million input tokens, list price, September 2026",
+      "max": 600,
+      "items": [
+        [
+          "Budget model A, $0.10 per million",
+          1,
+          "$1"
+        ],
+        [
+          "Budget model B, $0.15 per million",
+          1.5,
+          "$1.50"
+        ],
+        [
+          "Mid-tier model, $2 flat",
+          20,
+          "$20"
+        ],
+        [
+          "Pro preview, $4 past 200K",
+          40,
+          "$40"
+        ],
+        [
+          "Frontier model, $10 flat",
+          100,
+          "$100"
+        ],
+        [
+          "Frontier model, $20 past 272K",
+          200,
+          "$200"
+        ],
+        [
+          "Pro tier, $60 past 272K",
+          600,
+          "$600"
+        ]
+      ],
+      "text": "Model names, thresholds and cache rates are on the sources page.",
+      "builds": [
+        {
+          "reveal": 2,
+          "narration": [
+            "What does one ten-million-token prompt cost at list price?",
+            "The table is arithmetic on published prices, at the rate above each threshold.",
+            "The cheapest one-million-token model charges ten cents per million.",
+            "Ten million tokens cost one dollar.",
+            "A second budget model costs a dollar and a half."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "A mid-tier frontier model at two dollars per million costs twenty dollars.",
+            "A preview model that doubles past 200 thousand costs forty."
+          ]
+        },
+        {
+          "reveal": 7,
+          "narration": [
+            "The largest models cost one hundred, two hundred and six hundred dollars for the same prompt.",
+            "The spread is six hundred to one.",
+            "And no one-million-token model accepts ten million tokens in one call.",
+            "The prompt would have to be split.",
+            "These are token-volume costs, not a single request."
+          ]
+        }
+      ],
+      "caption": "At list price, one ten-million-token prompt costs between one dollar and six hundred dollars. No one-million-token model accepts it in a single call."
+    },
+    {
+      "id": "ml-cache",
+      "layout": "statement",
+      "title": "Caching helps a *static* corpus",
+      "icon": "money",
+      "text": "Three cents to twenty dollars, if the same tokens come back.",
+      "builds": [
+        {
+          "narration": [
+            "Most vendors sell a cached read at a fraction of the input price.",
+            "A cached read of ten million tokens costs between three cents and twenty dollars.",
+            "One pro tier gives no cache discount at all."
+          ]
+        },
+        {
+          "narration": [
+            "Caching helps only when the same tokens are asked again within the cache lifetime.",
+            "That is true for a static corpus.",
+            "It is not true for a memory that grows every day."
+          ]
+        },
+        {
+          "narration": [
+            "A memory workload serves a team many times a day.",
+            "And prices change quarterly.",
+            "The sources page records the access date and what to re-check."
+          ]
+        }
+      ],
+      "caption": "A cached read of ten million tokens costs three cents to twenty dollars. It helps only when the same tokens are asked again within the cache lifetime."
+    },
+    {
+      "id": "ml-recap",
+      "layout": "list",
+      "title": "What to *remember*",
+      "items": [
+        "A window bounds one call",
+        "Effective context is thousands",
+        "Cost tiers start where memory begins",
+        "Neither one call nor one retrieval"
+      ],
+      "builds": [
+        {
+          "reveal": 1,
+          "narration": [
+            "Here is what to remember.",
+            "A context window sets the upper bound on one call.",
+            "It is not evidence that the call will find what is in it."
+          ]
+        },
+        {
+          "reveal": 2,
+          "narration": [
+            "Effective context for evidence that does not share words with the question is measured in thousands of tokens.",
+            "Not millions."
+          ]
+        },
+        {
+          "reveal": 3,
+          "narration": [
+            "Cost scales with tokens sent.",
+            "The long-context price tiers are set exactly where memory workloads begin."
+          ]
+        },
+        {
+          "reveal": 4,
+          "narration": [
+            "The two published results at ten million tokens agree.",
+            "Neither one call nor one retrieval works there.",
+            "What does is the open question on the next page."
+          ]
+        }
+      ],
+      "caption": "A window bounds one call and proves nothing about what will be found. Effective context is thousands of tokens, not millions. Cost tiers start where memory workloads begin."
+    }
+  ]
+}

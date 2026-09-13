@@ -10,7 +10,9 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// CHROME points at the browser binary; CHROME_FLAGS adds flags such as --no-sandbox on Linux.
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const EXTRA_FLAGS = (process.env.CHROME_FLAGS || '').split(' ').filter(Boolean);
 // One browser profile per run, so several renders can run side by side.
 const PROFILE = path.join(HERE, '.chrome-profiles', String(process.pid));
 fs.mkdirSync(PROFILE, { recursive: true });
@@ -60,7 +62,7 @@ const port = 9400 + Math.floor(Math.random() * 400);
 chrome = spawn(CHROME, [
   '--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${PROFILE}`,
   '--use-mock-keychain', '--no-first-run', '--no-default-browser-check', '--disable-gpu',
-  '--hide-scrollbars', '--force-device-scale-factor=1', '--allow-file-access-from-files', 'about:blank',
+  '--hide-scrollbars', '--force-device-scale-factor=1', '--allow-file-access-from-files', ...EXTRA_FLAGS, 'about:blank',
 ], { stdio: 'ignore' });
 
 async function pageSocket() {
@@ -131,7 +133,7 @@ async function shoot(payload, file) {
   if (r.exceptionDetails) {
     throw new Error(`${payload.slide.id}: ${r.exceptionDetails.exception?.description || r.exceptionDetails.text}`);
   }
-  const shot = await cdp.send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, width: 1920, height: 1080, scale: 1 } });
+  const shot = await cdp.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: 0, width: 1920, height: 1080, scale: 1 } });
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, Buffer.from(shot.data, 'base64'));
   return r.result.value || [];

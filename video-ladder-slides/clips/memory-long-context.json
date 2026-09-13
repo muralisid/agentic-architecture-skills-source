@@ -1,0 +1,555 @@
+{
+  "page": "/memory/long-context-is-not-memory",
+  "chapter": "Long context is not memory",
+  "clips": [
+    {
+      "clip_id": "c001",
+      "slide": "ml-01",
+      "build": 1,
+      "voiceover": "A model's context window is how much it can read at once.",
+      "words": 12,
+      "on_camera": true,
+      "frame": "frames/memory-long-context/film/ml-01-b1.png"
+    },
+    {
+      "clip_id": "c002",
+      "slide": "ml-01",
+      "build": 1,
+      "voiceover": "Most leading models now read a million tokens in a single call. That is between five and seven hundred thousand words.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-01-b1.png"
+    },
+    {
+      "clip_id": "c003",
+      "slide": "ml-01",
+      "build": 1,
+      "voiceover": "It invites a simple idea: skip the memory and give the model everything. This page shows why that does not work for enterprise data.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-01-b1.png"
+    },
+    {
+      "clip_id": "c004",
+      "slide": "ml-01",
+      "build": 1,
+      "voiceover": "The window is a limit on what can be sent. It is not a promise about what will be found.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-01-b1.png"
+    },
+    {
+      "clip_id": "c005",
+      "slide": "ml-intro",
+      "build": 1,
+      "voiceover": "First, how standard the one-million-token window has become. Then the two ways vendors price it.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-intro-b1.png"
+    },
+    {
+      "clip_id": "c006",
+      "slide": "ml-intro",
+      "build": 2,
+      "voiceover": "Then the evidence that effective context is a small fraction of the nominal window.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-intro-b2.png"
+    },
+    {
+      "clip_id": "c007",
+      "slide": "ml-intro",
+      "build": 3,
+      "voiceover": "Then what the studies of long context against retrieval found. Last, what one ten-million-token prompt costs at list price.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-intro-b3.png"
+    },
+    {
+      "clip_id": "c008",
+      "slide": "ml-standard",
+      "build": 1,
+      "voiceover": "As of 13 September 2026, nine model families offer a context window of a million tokens or more.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-standard-b1.png"
+    },
+    {
+      "clip_id": "c009",
+      "slide": "ml-standard",
+      "build": 2,
+      "voiceover": "The list includes every large model vendor, several open-weight families, and two Chinese providers. One open-weight model claims ten million tokens.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-standard-b2.png"
+    },
+    {
+      "clip_id": "c010",
+      "slide": "ml-standard",
+      "build": 2,
+      "voiceover": "Its claim and its useful length turn out to be very different numbers. We come to that in a moment.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-standard-b2.png"
+    },
+    {
+      "clip_id": "c011",
+      "slide": "ml-pricing",
+      "build": 1,
+      "voiceover": "Pricing has split into two regimes. Some vendors bill flat across the whole window.",
+      "words": 14,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-pricing-b1.png"
+    },
+    {
+      "clip_id": "c012",
+      "slide": "ml-pricing",
+      "build": 1,
+      "voiceover": "A nine hundred thousand token request costs the same per token as a nine thousand token one.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-pricing-b1.png"
+    },
+    {
+      "clip_id": "c013",
+      "slide": "ml-pricing",
+      "build": 2,
+      "voiceover": "Others bill the whole request at a higher rate once it passes a threshold. One doubles the input rate past 272 thousand tokens.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-pricing-b2.png"
+    },
+    {
+      "clip_id": "c014",
+      "slide": "ml-pricing",
+      "build": 3,
+      "voiceover": "Another doubles past 200 thousand. A third triples past 256 thousand. The regime matters more than the headline rate for a memory workload.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-pricing-b3.png"
+    },
+    {
+      "clip_id": "c015",
+      "slide": "ml-pricing",
+      "build": 3,
+      "voiceover": "A memory workload is, by definition, on the wrong side of the threshold.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-pricing-b3.png"
+    },
+    {
+      "clip_id": "c016",
+      "slide": "ml-nolima",
+      "build": 1,
+      "voiceover": "One benchmark hides a needle whose words do not match the question. The model must reason rather than match.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-nolima-b1.png"
+    },
+    {
+      "clip_id": "c017",
+      "slide": "ml-nolima",
+      "build": 1,
+      "voiceover": "Effective length is the longest context at which a model keeps 85 percent of its short-context accuracy.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-nolima-b1.png"
+    },
+    {
+      "clip_id": "c018",
+      "slide": "ml-nolima",
+      "build": 1,
+      "voiceover": "A model that claims one million tokens keeps that accuracy to 16 thousand. One that claims 128 thousand keeps it to 8 thousand.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-nolima-b1.png"
+    },
+    {
+      "clip_id": "c019",
+      "slide": "ml-nolima",
+      "build": 2,
+      "voiceover": "A model that claims 200 thousand keeps it to 4 thousand. A model that claims two million keeps it to 2 thousand.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-nolima-b2.png"
+    },
+    {
+      "clip_id": "c020",
+      "slide": "ml-nolima",
+      "build": 3,
+      "voiceover": "And the model that claims ten million keeps it to 1 thousand. At 32 thousand tokens it scores 21.6 out of 100.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-nolima-b3.png"
+    },
+    {
+      "clip_id": "c021",
+      "slide": "ml-nolima",
+      "build": 3,
+      "voiceover": "Eleven of the thirteen models tested fell below half their short-context accuracy by 32 thousand tokens. No later independent test has contradicted the pattern.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-nolima-b3.png"
+    },
+    {
+      "clip_id": "c022",
+      "slide": "ml-four",
+      "build": 1,
+      "voiceover": "Four other lines of evidence say the same thing at different lengths.",
+      "words": 12,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-four-b1.png"
+    },
+    {
+      "clip_id": "c023",
+      "slide": "ml-four",
+      "build": 1,
+      "voiceover": "A 2024 suite of thirteen tasks found almost every model near perfect on the plain needle test. Then almost all dropped sharply with length.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-four-b1.png"
+    },
+    {
+      "clip_id": "c024",
+      "slide": "ml-four",
+      "build": 2,
+      "voiceover": "Only about half were satisfactory at 32 thousand tokens. A 2025 suite of 59 models found that no synthetic test predicts real downstream tasks.",
+      "words": 24,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-four-b2.png"
+    },
+    {
+      "clip_id": "c025",
+      "slide": "ml-four",
+      "build": 3,
+      "voiceover": "Open-weight models collapsed on citation tasks at 128 thousand tokens. A vector database vendor tested eighteen models in July 2025.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-four-b3.png"
+    },
+    {
+      "clip_id": "c026",
+      "slide": "ml-four",
+      "build": 3,
+      "voiceover": "Every one degraded with input length. A focused prompt of 300 tokens beat the full 113 thousand token history on every model.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-four-b3.png"
+    },
+    {
+      "clip_id": "c027",
+      "slide": "ml-four",
+      "build": 4,
+      "voiceover": "And one model vendor's own engineering guidance from September 2025 says it plainly.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-four-b4.png"
+    },
+    {
+      "clip_id": "c028",
+      "slide": "ml-four",
+      "build": 4,
+      "voiceover": "As the tokens in the context window increase, the model's ability to recall from it decreases.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-four-b4.png"
+    },
+    {
+      "clip_id": "c029",
+      "slide": "ml-2026",
+      "build": 2,
+      "voiceover": "The 2026 follow-ups extend this to the million-token range. A May 2026 study tested 26 models.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-2026-b2.png"
+    },
+    {
+      "clip_id": "c030",
+      "slide": "ml-2026",
+      "build": 2,
+      "voiceover": "The leader at 128 thousand tokens was not the leader at one million.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-2026-b2.png"
+    },
+    {
+      "clip_id": "c031",
+      "slide": "ml-2026",
+      "build": 3,
+      "voiceover": "Seven models moved two or more ranks between the two lengths. A second May 2026 study watched frontier models miss dangerous actions.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-2026-b3.png"
+    },
+    {
+      "clip_id": "c032",
+      "slide": "ml-2026",
+      "build": 3,
+      "voiceover": "After 800 thousand tokens of ordinary activity, they missed them two to thirty times more often.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-2026-b3.png"
+    },
+    {
+      "clip_id": "c033",
+      "slide": "ml-2026",
+      "build": 4,
+      "voiceover": "A June 2026 study of long searches found models giving up well before the window was full. The rate rose with length.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-2026-b4.png"
+    },
+    {
+      "clip_id": "c034",
+      "slide": "ml-versus",
+      "build": 1,
+      "voiceover": "What about the studies that compare long context with retrieval directly? Within the window, long context wins on accuracy.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-versus-b1.png"
+    },
+    {
+      "clip_id": "c035",
+      "slide": "ml-versus",
+      "build": 1,
+      "voiceover": "A 2024 comparison found it ahead by 7.6 points with one frontier model and 13.1 with another.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-versus-b1.png"
+    },
+    {
+      "clip_id": "c036",
+      "slide": "ml-versus",
+      "build": 2,
+      "voiceover": "It loses on cost. A June 2026 study measured 73.1 percent correct for long context against 65.4 for retrieval.",
+      "words": 19,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-versus-b2.png"
+    },
+    {
+      "clip_id": "c037",
+      "slide": "ml-versus",
+      "build": 3,
+      "voiceover": "At twenty-six times the per-question token cost. The 2024 study proposed routing between the two.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-versus-b3.png"
+    },
+    {
+      "clip_id": "c038",
+      "slide": "ml-versus",
+      "build": 3,
+      "voiceover": "That cut cost by 39 to 65 percent. Both results hold only for corpora that fit the window.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-versus-b3.png"
+    },
+    {
+      "clip_id": "c039",
+      "slide": "ml-corpusqa",
+      "build": 1,
+      "voiceover": "The picture changes past the window. A January 2026 benchmark tests question answering over four sizes of corpus.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-corpusqa-b1.png"
+    },
+    {
+      "clip_id": "c040",
+      "slide": "ml-corpusqa",
+      "build": 1,
+      "voiceover": "At 128 thousand tokens the best models score above 80. At one million, the best scores 50.7.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-corpusqa-b1.png"
+    },
+    {
+      "clip_id": "c041",
+      "slide": "ml-corpusqa",
+      "build": 2,
+      "voiceover": "At four million tokens, plain retrieval scores 2.4. A memory agent that plans and searches scores 22.1.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-corpusqa-b2.png"
+    },
+    {
+      "clip_id": "c042",
+      "slide": "ml-corpusqa",
+      "build": 3,
+      "voiceover": "At ten million, retrieval scores 1.2 and the memory agent 11.1. Nothing is good at ten million.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-corpusqa-b3.png"
+    },
+    {
+      "clip_id": "c043",
+      "slide": "ml-corpusqa",
+      "build": 3,
+      "voiceover": "But the shape is clear. Whatever works there is not one call over the corpus, and not one retrieval either.",
+      "words": 20,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-corpusqa-b3.png"
+    },
+    {
+      "clip_id": "c044",
+      "slide": "ml-cost",
+      "build": 1,
+      "voiceover": "What does one ten-million-token prompt cost at list price? The table is arithmetic on published prices, at the rate above each threshold.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cost-b1.png"
+    },
+    {
+      "clip_id": "c045",
+      "slide": "ml-cost",
+      "build": 1,
+      "voiceover": "The cheapest one-million-token model charges ten cents per million. Ten million tokens cost one dollar.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cost-b1.png"
+    },
+    {
+      "clip_id": "c046",
+      "slide": "ml-cost",
+      "build": 2,
+      "voiceover": "A second budget model costs a dollar and a half. A mid-tier frontier model at two dollars per million costs twenty dollars.",
+      "words": 22,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cost-b2.png"
+    },
+    {
+      "clip_id": "c047",
+      "slide": "ml-cost",
+      "build": 2,
+      "voiceover": "A preview model that doubles past 200 thousand costs forty.",
+      "words": 10,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cost-b2.png"
+    },
+    {
+      "clip_id": "c048",
+      "slide": "ml-cost",
+      "build": 3,
+      "voiceover": "The largest models cost one hundred, two hundred and six hundred dollars for the same prompt.",
+      "words": 16,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cost-b3.png"
+    },
+    {
+      "clip_id": "c049",
+      "slide": "ml-cost",
+      "build": 3,
+      "voiceover": "The spread is six hundred to one. And no one-million-token model accepts ten million tokens in one call.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cost-b3.png"
+    },
+    {
+      "clip_id": "c050",
+      "slide": "ml-cost",
+      "build": 3,
+      "voiceover": "The prompt would have to be split. These are token-volume costs, not a single request.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cost-b3.png"
+    },
+    {
+      "clip_id": "c051",
+      "slide": "ml-cache",
+      "build": 1,
+      "voiceover": "Most vendors sell a cached read at a fraction of the input price.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cache-b1.png"
+    },
+    {
+      "clip_id": "c052",
+      "slide": "ml-cache",
+      "build": 1,
+      "voiceover": "A cached read of ten million tokens costs between three cents and twenty dollars. One pro tier gives no cache discount at all.",
+      "words": 23,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cache-b1.png"
+    },
+    {
+      "clip_id": "c053",
+      "slide": "ml-cache",
+      "build": 2,
+      "voiceover": "Caching helps only when the same tokens are asked again within the cache lifetime. That is true for a static corpus.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cache-b2.png"
+    },
+    {
+      "clip_id": "c054",
+      "slide": "ml-cache",
+      "build": 3,
+      "voiceover": "It is not true for a memory that grows every day. A memory workload serves a team many times a day.",
+      "words": 21,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cache-b3.png"
+    },
+    {
+      "clip_id": "c055",
+      "slide": "ml-cache",
+      "build": 3,
+      "voiceover": "And prices change quarterly. The sources page records the access date and what to re-check.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-cache-b3.png"
+    },
+    {
+      "clip_id": "c056",
+      "slide": "ml-recap",
+      "build": 1,
+      "voiceover": "Here is what to remember. A context window sets the upper bound on one call.",
+      "words": 15,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-recap-b1.png"
+    },
+    {
+      "clip_id": "c057",
+      "slide": "ml-recap",
+      "build": 1,
+      "voiceover": "It is not evidence that the call will find what is in it.",
+      "words": 13,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-recap-b1.png"
+    },
+    {
+      "clip_id": "c058",
+      "slide": "ml-recap",
+      "build": 2,
+      "voiceover": "Effective context for evidence that does not share words with the question is measured in thousands of tokens.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-recap-b2.png"
+    },
+    {
+      "clip_id": "c059",
+      "slide": "ml-recap",
+      "build": 3,
+      "voiceover": "Not millions. Cost scales with tokens sent. The long-context price tiers are set exactly where memory workloads begin.",
+      "words": 18,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-recap-b3.png"
+    },
+    {
+      "clip_id": "c060",
+      "slide": "ml-recap",
+      "build": 4,
+      "voiceover": "The two published results at ten million tokens agree. Neither one call nor one retrieval works there.",
+      "words": 17,
+      "on_camera": false,
+      "frame": "frames/memory-long-context/film/ml-recap-b4.png"
+    },
+    {
+      "clip_id": "c061",
+      "slide": "ml-recap",
+      "build": 4,
+      "voiceover": "What does is the open question on the next page.",
+      "words": 10,
+      "on_camera": true,
+      "frame": "frames/memory-long-context/film/ml-recap-b4.png"
+    }
+  ]
+}

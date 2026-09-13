@@ -1,0 +1,120 @@
+{
+  "id": "memory/six-architectures",
+  "title": "Six ways to build a memory",
+  "slides": [
+    {
+      "id": "ma-01",
+      "src": "/slides/memory/six-architectures/ma-01.webp",
+      "title": "Six ways to build a memory",
+      "caption": "A memory can keep the original words, a summary, extracted facts or a web of relations. It can keep the agent's own notes, or the model's weights. Each choice decides what is lost."
+    },
+    {
+      "id": "ma-intro",
+      "src": "/slides/memory/six-architectures/ma-intro.webp",
+      "title": "What we will cover",
+      "caption": "The two axes and the six classes. Where every named system sits and the four managed cloud services. What changed in 2026 and the research line with no product yet."
+    },
+    {
+      "id": "ma-axis1",
+      "src": "/slides/memory/six-architectures/ma-axis1.webp",
+      "title": "First question: what is stored",
+      "caption": "The first axis runs from the original text through summaries, extracted facts and graph triples to weights. The more the text is transformed, the more is lost."
+    },
+    {
+      "id": "ma-axis2",
+      "src": "/slides/memory/six-architectures/ma-axis2.webp",
+      "title": "Second question: when a model runs",
+      "caption": "A model can run at write time, at read time, in a background pass, or during training. Where the intelligence is spent is where the cost sits."
+    },
+    {
+      "id": "ma-tiers",
+      "src": "/slides/memory/six-architectures/ma-tiers.webp",
+      "title": "Tiers grade how long, classes say how built",
+      "caption": "The memory tiers M1 to M5 grade what a memory holds by how long it is kept. The six classes describe how a store at any tier is built. Both are needed."
+    },
+    {
+      "id": "ma-six",
+      "src": "/slides/memory/six-architectures/ma-six.webp",
+      "title": "The six classes",
+      "caption": "Verbatim stores, extracted facts and profiles, graphs, hierarchical summaries, agent-managed files, and memory in the weights."
+    },
+    {
+      "id": "ma-c1",
+      "src": "/slides/memory/six-architectures/ma-c1.webp",
+      "title": "Class 1: keep the original text",
+      "caption": "A verbatim store keeps the text unchanged in a vector index and usually a keyword index. Nothing is lost on the way in. Nothing is consolidated either."
+    },
+    {
+      "id": "ma-c2",
+      "src": "/slides/memory/six-architectures/ma-c2.webp",
+      "title": "Class 2: extract the facts",
+      "caption": "A model pulls atomic facts, notes or profiles out of each conversation at write time. The store is small and readable. Whatever was not extracted is gone."
+    },
+    {
+      "id": "ma-c3",
+      "src": "/slides/memory/six-architectures/ma-c3.webp",
+      "title": "Class 3: build a graph",
+      "caption": "Entities, relations and facts become nodes and edges. Each edge can carry the dates it was true. Retrieval walks the graph. Extraction costs a model call per document."
+    },
+    {
+      "id": "ma-c4",
+      "src": "/slides/memory/six-architectures/ma-c4.webp",
+      "title": "Class 4: keep summaries",
+      "caption": "Summaries at one or more levels, or compressed observations kept in context. Good for questions about the whole corpus. Detail below the summary is gone."
+    },
+    {
+      "id": "ma-c5",
+      "src": "/slides/memory/six-architectures/ma-c5.webp",
+      "title": "Class 5: the agent keeps files",
+      "caption": "The agent itself reads and writes memory files or blocks through tool calls, with a small core always present. A person can inspect and version it."
+    },
+    {
+      "id": "ma-c6",
+      "src": "/slides/memory/six-architectures/ma-c6.webp",
+      "title": "Class 6: memory in the weights",
+      "caption": "Memory lives in weights, key-value caches or latent pools, written by training or test-time learning. No retrieval step at all. No product yet."
+    },
+    {
+      "id": "ma-placed",
+      "src": "/slides/memory/six-architectures/ma-placed.webp",
+      "title": "Where the named systems sit",
+      "caption": "All placements come from the systems' own papers and documentation, accessed 13 September 2026. The commercial layer converged on classes two and three."
+    },
+    {
+      "id": "ma-fallback",
+      "src": "/slides/memory/six-architectures/ma-fallback.webp",
+      "title": "The pattern that matters: keep the source",
+      "caption": "Eleven systems span two classes. Extraction loses accuracy. So the spanning pattern is an extracted or graph store with the verbatim source kept beside it."
+    },
+    {
+      "id": "ma-cloud",
+      "src": "/slides/memory/six-architectures/ma-cloud.webp",
+      "title": "All four cloud providers ship memory",
+      "caption": "The four managed services and their dates. All four store extracted facts and preferences, not the transcript."
+    },
+    {
+      "id": "ma-2026",
+      "src": "/slides/memory/six-architectures/ma-2026.webp",
+      "title": "What changed in 2026",
+      "caption": "Three product moves in one quarter pointed the same way: towards plainer storage and less transformation at write time."
+    },
+    {
+      "id": "ma-baseline",
+      "src": "/slides/memory/six-architectures/ma-baseline.webp",
+      "title": "The vendors' own baselines",
+      "caption": "In the two largest vendors' own papers, the full-context baseline beats or nearly matches the memory layer on accuracy. The trade the vendors argue is latency and cost."
+    },
+    {
+      "id": "ma-research",
+      "src": "/slides/memory/six-architectures/ma-research.webp",
+      "title": "The line with no product yet",
+      "caption": "Test-time memory reports recall past two million tokens. Trained caches report 38 times less memory. A learned text memory reads 3.5 million tokens from an 8K training context."
+    },
+    {
+      "id": "ma-recap",
+      "src": "/slides/memory/six-architectures/ma-recap.webp",
+      "title": "What to remember",
+      "caption": "Decide the class before the vendor. Keep the source beside any extracted store. Count model calls per document and per question. Treat memory in the weights as research."
+    }
+  ]
+}
