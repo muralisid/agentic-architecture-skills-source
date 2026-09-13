@@ -496,7 +496,7 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'agentic-os', 'security', 'ladder', 'patterns', 'layers', 'decisions', 'about'],
+    pages: ['architecture', 'agentic-os', 'security', 'ladder', 'patterns', 'memory', 'layers', 'decisions', 'about'],
   },
   architecture: {
     title: 'Architecture',
@@ -543,6 +543,20 @@ const metas = {
       'how-to-test-a-context-design',
       'what-we-got-wrong',
       'reading-list',
+    ],
+  },
+  memory: {
+    title: 'Memory architectures',
+    icon: 'Brain',
+    description: 'How agent memories are built, what the benchmarks measure, and the open question at enterprise scale.',
+    pages: [
+      'index',
+      'six-architectures',
+      'what-the-benchmarks-measure',
+      'long-context-is-not-memory',
+      'the-ten-million-token-question',
+      'what-we-have-measured',
+      'sources',
     ],
   },
   library: {

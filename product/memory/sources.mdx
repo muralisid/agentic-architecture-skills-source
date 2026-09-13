@@ -1,0 +1,93 @@
+---
+title: "Sources for the memory section"
+icon: "BookOpen"
+description: "Every claim in the memory architectures section with its date, URL and vendor flag, grouped by page, with the items that must be re-verified and the claims that were checked and could not be published."
+---
+
+All URLs accessed 13 September 2026 unless stated. [vendor] marks a number or claim published by the party that built the system or sells the model. [derived] marks arithmetic by the author with the assumptions stated on the page. Items under "checked, not published" were searched for and could not be confirmed from a primary source; they are recorded so that nobody has to search again.
+
+## Six ways to build a memory
+
+Systems, first public version, and the source used for placement.
+
+- Mem0: arXiv 2504.19413 (28 April 2025) [vendor]; docs.mem0.ai graph memory overview (graph memory platform-only, no open-source replacement) [vendor]; mem0.ai blog, state of AI agent memory 2026 (1 April 2026, single-pass add-only extraction) [vendor]; mem0.ai series A (28 October 2025) [vendor].
+- Zep and Graphiti: arXiv 2501.13956 (20 January 2025) [vendor]; github.com/getzep/graphiti (Apache 2.0; episodes kept as raw ground truth); github.com/getzep/zep (community edition no longer supported).
+- Letta and MemGPT: arXiv 2310.08560 (12 October 2023); letta.com blog, benchmarking AI agent memory (12 August 2025, 74.0 on LoCoMo with files) [vendor]; docs.letta.com MemFS; letta.com blog, context repositories (12 February 2026) [vendor]; letta.com blog, our next phase (16 March 2026, deprecations) [vendor]; sleep-time compute, arXiv 2504.13171 (17 April 2025).
+- LangMem: github.com/langchain-ai/langmem and its conceptual guide (MIT).
+- Supermemory: github.com/supermemoryai/supermemory; supermemory.ai/research [vendor, no methodology or date on the page].
+- Cognee: github.com/topoteretes/cognee (Apache 2.0); cognee.ai seed announcement (19 February 2026) [vendor].
+- Memobase: github.com/memodb-io/memobase and its LoCoMo experiment page [vendor].
+- MemPalace: github.com/MemPalace/mempalace, benchmarks/BENCHMARKS.md and docs/HISTORY.md (corrections of 7 and 14 April 2026) [vendor]; issue 29 (7 April 2026); independent analysis arXiv 2604.21284 (23 April 2026).
+- MemOS: arXiv 2507.03724 (4 July 2025) [vendor]; github.com/MemTensor/MemOS [vendor].
+- MemoryOS: arXiv 2506.06326 (30 May 2025); github.com/BAI-LAB/MemoryOS.
+- A-MEM: arXiv 2502.12110 (17 February 2025, NeurIPS 2025); github.com/agiresearch/A-mem.
+- HippoRAG: arXiv 2405.14831 (23 May 2024, NeurIPS 2024); HippoRAG 2: arXiv 2502.14802 (20 February 2025, ICML 2025).
+- MemoryBank: arXiv 2305.10250 (17 May 2023). Generative Agents: arXiv 2304.03442 (7 April 2023). RAPTOR: arXiv 2401.18059 (31 January 2024). GraphRAG: arXiv 2404.16130 (24 April 2024) [vendor]. LightRAG: arXiv 2410.05779 (8 October 2024, EMNLP 2025).
+- Memory^3: arXiv 2407.01178 (1 July 2024). Titans: arXiv 2501.00663 (31 December 2024) [vendor]. ATLAS: arXiv 2505.23735 (29 May 2025) [vendor]. HOPE and nested learning: research.google blog (7 November 2025) [vendor]. MemoryLLM: arXiv 2402.04624 (7 February 2024). M+: arXiv 2502.00592 (1 February 2025). Cartridges: arXiv 2506.06266 (6 June 2025); github.com/HazyResearch/cartridges. MemAgent: arXiv 2507.02259 (3 July 2025, ICLR 2026). Mem-alpha: arXiv 2509.25911 (30 September 2025).
+- 2026 entrants: Hindsight, arXiv 2512.12818 (14 December 2025) [vendor]; Honcho, plasticlabs.ai benchmarking post (19 December 2025) [vendor]; EverMemOS, arXiv 2601.02163 (5 January 2026) [vendor]; Mastra observational memory, mastra.ai research (9 February 2026) [vendor]; ByteRover, arXiv 2604.01599 (2 April 2026) [vendor]; Memex(RL), arXiv 2603.04257 (4 March 2026); MemPro, arXiv 2606.00619 (30 May 2026); AtomMem, arXiv 2606.19847 (18 June 2026); Agent Zero Memory, arXiv 2608.29606 (30 August 2026, affiliation not shown).
+- Extraction loss: Fidelity before structure, arXiv 2601.00821 (v4, 22 July 2026; verbatim chunks beat extracted artefacts by 15.9 points on LoCoMo categories 1 to 3); LongMemEval, arXiv 2410.10813 (replacing text with facts or summaries lowers accuracy; key expansion improves recall by 9.4 percent); MemDelta, arXiv 2606.29914 (29 June 2026; embedding swap moves LoCoMo accuracy by 6.2 points).
+- Managed services: claude.com/blog/context-management (29 September 2025) [vendor] and the platform memory-tool documentation; AWS what's new, AgentCore preview (16 July 2025) and generally available (13 October 2025) [vendor], and the AgentCore Memory developer guide; Google Cloud blog, Memory Bank public preview (8 July 2025) [vendor], and the Vertex AI release notes (generally available 16 December 2025; billing from 28 January 2026); Microsoft Foundry devblogs (February 2026 roundup; Build 2026, 2 June 2026) [vendor] and learn.microsoft.com, what is memory (preview as of 2 June 2026); OpenAI compaction guide and changelog (5 March 2026) [vendor]; ChatGPT memory rollout via TechCrunch (13 February 2024), the OpenAI page returned an error.
+- Surveys consulted for the taxonomy: arXiv 2404.13501 (April 2024); arXiv 2504.15965 (April 2025); arXiv 2505.00675 (May 2025); arXiv 2512.13564 (December 2025); arXiv 2602.06052 (January 2026, TMLR); arXiv 2604.01707 (April 2026). The six-class taxonomy on the page is the author's synthesis of these and is not taken from any one of them.
+
+## What the benchmarks measure
+
+- LoCoMo: arXiv 2402.17753 (27 February 2024); ACL 2024 long papers, pages 13851 to 13870; github.com/snap-research/locomo, file task_eval/evaluation.py (code comments assigning category 1 to multi-hop); project page snap-research.github.io/locomo. Token counts: 9K in the arXiv v1 abstract, 16K in the ACL abstract, about 26K measured in arXiv 2504.19413 [vendor].
+- The 2025 dispute: blog.getzep.com, "Is Mem0 really SOTA in agent memory?" (6 May 2025, modified 3 June 2026; correction to 75.14 plus or minus 0.17) [vendor]; github.com/getzep/zep-papers issue 5 (8 May 2025, recomputation to 58.44, filed by Mem0's chief technology officer) [vendor]; arXiv 2504.19413 tables 1 and 2 (full-context 72.90 against 68.44) [vendor].
+- Later LoCoMo claims, all on the 1,540-question subset: getzep.com/research (94.7, reader and judge gpt-5.4, modified 27 August 2026) [vendor]; mem0.ai/research and docs.mem0.ai memory evaluation (92.5, managed platform, 12 September 2026) [vendor]; byterover.dev benchmark post (92.2, 27 February 2026) [vendor]; arXiv 2512.12818 (89.61) [vendor].
+- LoCoMo label audit: dev.to, Vektor, "Is the industry standard test broken?" (22 April 2026; 99 score-corrupting labels, 45 of 47 commonsense answers undefined) [vendor, claims checkable against the released data]; ATANT, arXiv 2604.10981 (13 April 2026; empty-gold scoring bug affecting 23 percent of the corpus).
+- Independent LoCoMo results: Terranova, Ross and Birch, arXiv 2510.23730 (27 October 2025); Fidelity before structure, arXiv 2601.00821.
+- LongMemEval: arXiv 2410.10813 (14 October 2024; v2 4 March 2025; ICLR 2025); github.com/xiaowu0162/LongMemEval. Figures on the page: 0.870 oracle against 0.606 full history for GPT-4o; judge agreement over 97 percent; table 3 recall and accuracy columns.
+- LongMemEval vendor claims: arXiv 2501.13956 (71.2 against 60.2) [vendor]; emergence.ai blog (86) [vendor]; arXiv 2512.12818 (91.4) [vendor]; getzep.com/research (90.2) [vendor]; mem0.ai/research (94.4) [vendor]; byterover.dev (92.8) [vendor].
+- BEAM: arXiv 2510.27246 (31 October 2025; v2 21 February 2026; ICLR 2026); github.com/mohammadtavakoli78/BEAM; huggingface.co/datasets/Mohammadta/BEAM-10M (CC BY-SA 4.0).
+- MemoryAgentBench: arXiv 2507.05257 (7 July 2025; v4 28 June 2026). ConvoMem: arXiv 2511.10523 (13 November 2025). LongMemEval-V2: arXiv 2605.12493 (12 May 2026). MemBench: arXiv 2506.21605 (ACL 2025 Findings).
+- 2026 benchmarks: LoCoMo-Plus, arXiv 2602.10715; StructMemEval, arXiv 2602.11243; EvoMemBench, arXiv 2605.18421; DynamicMem, arXiv 2606.22877; StreamMemBench, arXiv 2606.14571; UtilMem, arXiv 2608.30508; "Are we ready for an agent-native memory system?", arXiv 2606.24775 (twelve systems, eleven datasets).
+- The credited target: "Same ranking, different winner", arXiv 2605.24060 (22 May 2026; revised 26 August 2026).
+- Any-hit, pool size and tuned fixes: MemPalace benchmarks/BENCHMARKS.md ("teaching to the test"; held-out 98.4) [vendor]; vectorize.io, MemPalace benchmarks article (12 April 2026) [vendor of a competitor]; this guide's reproduction, below.
+- No standard judge prompt: dreaming.press, "How to read an agent memory benchmark" (30 June 2026, updated 2 August 2026).
+
+## Long context is not memory
+
+- Context windows and prices, first-party pages: platform.claude.com models overview, pricing and release notes (1M at standard pricing from 13 March 2026; Fable 5.1, Opus 5 and Sonnet 5 prices) [vendor]; developers.openai.com pricing, model pages for gpt-6-astra, gpt-5.5, gpt-5.5-pro and gpt-5.6-luna, and the changelog (272K threshold, double input above it) [vendor]; ai.google.dev pricing and model pages for Gemini 2.5 Pro, 2.5 Flash-Lite, 3.1 Pro Preview, 3.5 Flash and 3.8 Flash (200K threshold on the Pro line; cache storage per hour) [vendor]; api-docs.deepseek.com pricing and the news items of 24 April, 13 August and 10 September 2026 [vendor]; alibabacloud.com Model Studio pricing and the Qwen3.8-Max press release (3 August 2026) [vendor]; docs.x.ai models (200K threshold) [vendor]; AWS what's new, Nova 2 (2 December 2025) and the Nova 2 user guide [vendor]; platform.kimi.ai pricing [vendor]; ai.meta.com Llama 4 announcement (5 April 2025) [vendor]; docs.mistral.ai model cards (Medium 3.5, 256K).
+- The ten-million-token cost table is [derived] from those prices at the rate above each vendor's threshold; cache write and read rates as published; no shipped one-million model accepts ten million tokens in one request.
+- Effective context: NoLiMa, arXiv 2502.05167 (ICML 2025) and github.com/adobe-research/NoLiMa (table last updated 17 July 2025); RULER, arXiv 2404.06654 (COLM 2024); HELMET, arXiv 2410.02694 (ICLR 2025); trychroma.com research, context rot (14 July 2025) [vendor]; anthropic.com engineering, effective context engineering for AI agents (29 September 2025) [vendor]; Databricks, long context RAG performance of LLMs (12 August 2024) [vendor].
+- 2026 follow-ups: ATLAS, arXiv 2605.28079 (27 May 2026); classifier context rot, arXiv 2605.12366 (12 May 2026); context rot in long-horizon search, arXiv 2606.29718 (29 June 2026); CorpusQA, arXiv 2601.14952 (21 January 2026; v2 25 April 2026).
+- Long context against retrieval: arXiv 2407.16833 (23 July 2024; Google DeepMind and University of Michigan); arXiv 2501.01880 (27 December 2024); Token Tax, arXiv 2606.20898 (18 June 2026).
+- Multi-needle recall at one million tokens, vendor cards: anthropic.com, Claude Opus 4.6 (5 February 2026; 76 percent on the eight-needle variant) [vendor]; deepmind.google Gemini Pro page (84.9 at 128K, 26.3 at 1M on the same variant) [vendor]; huggingface.co/datasets/openai/mrcr (12 April 2025; fix 5 December 2025) [vendor].
+
+## The ten-million-token question
+
+- Microsoft Work Trend Index, "Breaking down the infinite workday" (17 June 2025; 117 emails and 153 Teams messages received per weekday) [vendor]. The per-worker token figure is [derived] on the page.
+- Enron: cs.cmu.edu/~enron (about 0.5 million messages, about 150 users, version of 7 May 2015); arXiv 1410.2759 (517,431 messages in the 2004 version). The token figure is [derived]; no published count exists.
+- Exchange Online limits, learn.microsoft.com (updated 9 September 2026) [vendor].
+- EnterpriseRAG-Bench, arXiv 2605.05253 (5 May 2026). EDGAR-CORPUS, arXiv 2109.14394 and its dataset card. English Wikipedia, "Size of Wikipedia" (13 September 2026).
+- BEAM results table: arXiv 2510.27246 v2, table 1. Gold-evidence counts on the ten-million-token questions: this guide's corpus build over the released BEAM-10M data, below.
+- Vendor ten-million-token claims: docs.mem0.ai memory evaluation and github.com/mem0ai/mem0 README (64.1 at 1M, 48.6 at 10M; "0-99 (100 total per scale)") [vendor]; github.com/topoteretes/cognee README (0.79 at 100K, 0.67 at 10M, with the vendor's caveat) [vendor]; plasticlabs.ai, benchmarking Honcho (19 December 2025; 0.631 at 1M, 0.406 at 10M) [vendor].
+- CorpusQA at four and ten million tokens: arXiv 2601.14952. LongMemEval-V2 at 115 million tokens: arXiv 2605.12493.
+
+## What we have measured
+
+- The reproduction: this guide's research piece on MemPalace, to be placed in the library under the agent data engineering track; the code and per-question outputs are in the agent-memory-research repository, which is private until the study concludes. Every number on the page was recomputed independently from the per-question records and reproduced from a clean clone by one command.
+- Star count and independent analysis: arXiv 2604.21284 (23 April 2026; 47,000 stars in two weeks). Retractions: MemPalace docs/HISTORY.md (7 and 14 April 2026) [vendor].
+- Metric definitions: TREC recall at k as implemented by pytrec_eval; any-hit as defined in MemPalace benchmarks/BENCHMARKS.md [vendor].
+
+## Re-verify by December 2026
+
+- Every model price and threshold on the long-context page. Gemini Flash prices change on 1 January 2027; DeepSeek routed its Pro model to the Flash line on 14 September 2026.
+- The status of the Microsoft Foundry memory service (preview as of 2 June 2026) and the Vertex Memory Bank per-memory price (not rendered on the pricing page at access).
+- Every vendor benchmark row: Mem0, Zep, ByteRover, Hindsight, Honcho, Cognee, Supermemory, Mastra. These move monthly.
+- GitHub star counts and the Mem0 open-source and platform split.
+- Whether an independent evaluation of any commercial memory system on BEAM has appeared.
+
+## Checked, not published
+
+- A paper stating LoCoMo's category mismatch in words: not found; the code comment is the citation.
+- The Llama 4 Scout Fiction.LiveBench figure of 15.6 percent at 120K: seen only in a secondary newsletter; the leaderboard page did not render.
+- MRCR figures for OpenAI models at one million tokens: the OpenAI launch page returned an error; aggregator figures not used.
+- Klimt and Yang (2004) message and user counts for Enron: the PDF could not be read at access.
+- Radicati's 126 emails per business user per day: paid report only.
+- IDC and Gartner unstructured-data shares and volumes: primary pages returned errors; secondary only.
+- Any published estimate of tokens per knowledge worker per year: none found.
+- Slack messages per user: no official figure.
+- MemOS's "159 percent" temporal-reasoning claim: not on the abstract, the fetched HTML or the repository README.
+- Zep's "80.32 percent at 189 milliseconds": appears only in a competitor's report.
+- OMEGA, ZeroMemory and similar LongMemEval claims above 95: aggregator only.

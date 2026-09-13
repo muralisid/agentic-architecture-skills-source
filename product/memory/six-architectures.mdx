@@ -1,0 +1,92 @@
+---
+title: "Six ways to build a memory"
+icon: "LayoutGrid"
+description: "A taxonomy of agent memory architectures keyed on two facts: what is stored, and when a model runs. Every named system placed, the managed cloud services beside them, and the three product shifts of 2026 that all point the same way."
+---
+
+<PlainTerms>
+A memory for an agent can keep the original words, or keep a summary, or keep a list of facts a model pulled out, or keep a web of who-relates-to-what, or let the agent write its own notes, or bake what was learned into the model itself. Each choice decides what can be found later, what it costs to store, and what is lost on the way in. This page sorts the systems on the market into six kinds by those choices. The one thing to remember: the more a memory transforms the original at write time, the cheaper it is to read and the more it has already thrown away.
+</PlainTerms>
+
+## Two axes decide the class
+
+**In short:** Ask what is persisted, and ask at which moment a model runs: at write time, at read time, in a background pass, or during training.
+
+Every architecture in this page is placed by those two answers. The first axis runs from verbatim text through summaries, extracted facts and graph triples to weights. The second axis says where the intelligence is spent. A system that runs a model at write time pays once per document and reads cheaply; a system that runs a model only at read time stores cheaply and pays per question; a system that runs one in the background pays continuously and hopes the consolidation is right before anyone asks.
+
+The <Term k="memory">memory tiers</Term> M1 to M5 in the [memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) grade what a memory holds by how long it is kept. The six classes here describe how a store at any tier is built. Both are needed: the tier decides the governance, the class decides what can be recalled.
+
+## The six classes
+
+| Class | What is stored | When a model runs | What it buys | Where it breaks |
+|---|---|---|---|---|
+| 1. Verbatim store, non-model index | The original text, unchanged, in a <Term k="vector index">vector index</Term> and usually a keyword index | Never at write; only as the reader | Nothing lost on the way in; the cheapest ingestion there is; exact names and quotations still findable | Nothing is consolidated, so the same fact appears in every place it was said; long units are truncated by the encoder |
+| 2. Extracted fact and profile store | Atomic facts, notes or schema-bound profiles that a model pulled out of each conversation | At write, on the hot path or in a buffer | Small, readable, updatable; a profile can be injected whole | Extraction loses what the extractor did not think mattered; the loss is silent and permanent |
+| 3. Graph-structured store | Entities, relations and facts as nodes and edges, often with validity windows | At write, for extraction | Relationship traversal; what was true when; explainable paths | Extraction cost per document; sparse graphs on plain factual questions; a second database to run |
+| 4. Hierarchical summary store | Summaries at one or more levels of abstraction, or compressed observations kept in context | At write or in a background pass | Corpus-wide questions; a stable prefix that caches well | Detail below the summary level is gone; summaries drift from the source |
+| 5. Agent-managed files and blocks | Files or memory blocks the agent itself reads and writes through tool calls, with a small always-present core | At read, by the agent; optionally in a background sleep pass | The agent decides what matters; versionable; inspectable by a person | Quality depends on the agent's judgement at write time; no index over the raw history unless one is added |
+| 6. Parametric and latent memory | Weights, key-value caches or latent pools updated by training or test-time learning | During training or test-time updates; read implicitly | No retrieval step at all; potentially very long effective context | Research stage; nothing shipped as a product memory layer; erasure and audit are unsolved |
+
+## Where the named systems sit
+
+**In short:** The commercial layer converged on class 2 and class 3 in 2025; the credible simple alternative is class 1; class 6 has no product.
+
+All placements are from the systems' own papers, repositories and documentation, accessed 13 September 2026. Dates are the first public version. Where a system spans two classes the second is given in brackets.
+
+| Class | Systems, with first public date |
+|---|---|
+| 1. Verbatim | MemPalace (April 2026); the plain retrieval baseline in every memory paper; the file-store baseline Letta published in August 2025; the trajectory-file agent in LongMemEval-V2 (May 2026) |
+| 2. Extracted facts | Mem0 (April 2025, base variant); LangMem (February 2025); Supermemory; Memobase; Honcho (December 2025) [3]; Hindsight (December 2025) [3]; EverMemOS (January 2026); AtomMem (June 2026); A-MEM (February 2025) [3]; MemoryBank (May 2023) [1]; the memory feature in ChatGPT (February 2024); the managed services from the four cloud providers below |
+| 3. Graph | Zep and Graphiti (January 2025); Mem0's graph variant (April 2025, platform-only since 2026); Cognee; HippoRAG (May 2024) and HippoRAG 2 (February 2025); GraphRAG (April 2024) [4]; LightRAG (October 2024); ByteRover (April 2026) [5] |
+| 4. Summary | RAPTOR (January 2024); MemoryOS (May 2025); Mastra observational memory (February 2026); MemAgent (July 2025); the reflections in Generative Agents (April 2023) [1] |
+| 5. Agent-managed | MemGPT and Letta (October 2023; MemFS and context repositories February 2026); the Anthropic memory tool (September 2025); Mem-alpha (September 2025); Memex(RL) (March 2026) [1]; MemPro (May 2026) |
+| 6. Parametric | Titans (December 2024), ATLAS (May 2025) and HOPE (November 2025); MemoryLLM (February 2024) and M+ (February 2025); Cartridges (June 2025); Memory^3 (July 2024) [1] |
+
+MemOS (July 2025) is the one system that claims to span classes 2, 3 and 6 under a single abstraction, holding plain text, activation caches and parametric memory together. That claim is the vendor's.
+
+Eleven systems span two classes, and the spanning pattern that matters for a design decision is the same each time: an extracted or graph store with a verbatim fallback beside it. Graphiti keeps the raw episodes under its edges, Memex(RL) keeps a full-fidelity database behind its learned summaries, and two of the newer entrants lock every recalled fact to its source turn. Each is the design answer to the same finding, made independently in at least two 2026 studies and in the LongMemEval paper of 2024: replacing the original text with extracted artefacts lowers question-answering accuracy. On the LoCoMo benchmark one January 2026 study measured verbatim chunks beating model-extracted artefacts by 15.9 points overall on the three reasoning categories, and the LongMemEval authors found in 2024 that replacing sessions with summaries or facts "negatively impacts QA performance due to information loss" while keeping the text and adding derived keys improved recall by 9.4 percent. <EvidenceBadge status="primary-source" />
+
+## The managed services
+
+**In short:** All four large cloud providers now ship a memory service, and all four store extracted facts and preferences rather than the transcript.
+
+| Provider and service | Status and date | What it stores |
+|---|---|---|
+| Anthropic memory tool with context editing | Public beta 29 September 2025; no beta header required as of September 2026 | Files the model writes and reads under a memory directory in the customer's own storage; class 5 |
+| AWS Bedrock AgentCore Memory | Preview 16 July 2025; generally available 13 October 2025 | Short-term turn events per session; long-term extracted preferences, facts and session summaries; a self-managed extraction strategy since GA; class 2 |
+| Google Vertex AI Agent Engine Memory Bank | Preview 8 July 2025; generally available 16 December 2025; billed from 28 January 2026 | Facts and preferences extracted by Gemini from sessions, scoped by user, consolidated with contradiction resolution; class 2 |
+| Microsoft Foundry Agent Service Memory | Public preview February 2026; procedural memory added June 2026; still preview as of 2 June 2026 | User profile memory, chat summary memory, procedural memory; quotas of 100 scopes per store and 10,000 memories per scope; classes 2 and 4 |
+
+OpenAI offers memory inside ChatGPT (February 2024) and a compaction primitive in its API (March 2026) that folds a long context into an encrypted state item. No first-party long-term memory store for API agents was found as of the access date.
+
+The consequence for an enterprise is direct. Each service applies a model at write time and keeps what that model extracted. Whatever it did not extract is gone from the memory, and the raw transcript, if it is kept at all, is kept somewhere else under different retention rules. The [data-to-memory pipeline](/architecture/data-to-memory) rule that every derivative carries the source's permissions and deletion duties applies to the extracted facts and to the transcript separately.
+
+## What changed in 2026
+
+**In short:** Three product moves in one quarter pointed the same way, towards plainer storage and less transformation at write time.
+
+- **Letta moved memory to versioned files.** In February 2026 it rebuilt its memory as a git-backed markdown filesystem with a file tree in the system prompt, and in March 2026 announced the deprecation of its server-side memory tools, templates and filesystem abstractions. The company's August 2025 post had already reported 74.0 percent on LoCoMo with a small model that stored conversation history in plain files. <EvidenceBadge status="vendor-reported" />
+- **Mem0 removed graph memory from open source.** Its documentation states that graph memory is a platform feature, always on, and is not being replaced by an open-source equivalent. Its April 2026 algorithm change moved to single-pass, add-only extraction where nothing is overwritten. <EvidenceBadge status="vendor-reported" />
+- **Zep stopped supporting its community edition.** Graphiti, the graph engine, remains open under Apache 2.0; the hosted product carries the benchmark claims.
+
+Two further signals sit beside these. The 2025 papers from the two largest memory vendors each contain a full-context baseline that beats or nearly matches the vendor's own system on accuracy: in one, the full-context row scores 72.90 against the vendor's best 68.44 on LoCoMo; in the other, the full-conversation baseline is within 0.4 of the vendor on the deep memory retrieval test. Both papers argue the trade on <Term k="latency">latency</Term> and token cost instead, which is a legitimate trade and a different claim. <EvidenceBadge status="vendor-reported" /> And a single-author study in June 2026 found that swapping the embedding model alone moved LoCoMo accuracy by 6.2 points, more than the gap between several competing systems. <EvidenceBadge status="preprint-or-prototype" />
+
+## The line of research with no product yet
+
+Class 6 is where the long-run bet sits. Google's Titans, ATLAS and HOPE line updates a neural memory at test time and reports needle-in-haystack accuracy beyond two million tokens and an 80 percent result at ten million tokens on a synthetic reasoning set. Stanford's Cartridges train a small key-value cache per corpus offline and report 38.6 times less memory at inference. MemAgent trains a fixed-length text memory by reinforcement learning and extrapolates from an 8K training context to a 3.5 million token task with under 5 percent loss. Each is a paper with released code and no memory product built on it. The results are on synthetic or academic tasks, and none addresses erasure, permissions or audit, which an enterprise memory cannot do without. <EvidenceBadge status="preprint-or-prototype" />
+
+## What to take from the taxonomy
+
+1. Decide the class before the vendor. The class fixes what is lost at write time, which no later retrieval recovers.
+2. If a class 2 or class 3 store is chosen, keep the verbatim source beside it. The vendors that score best now do.
+3. Count the model calls per document at write time and per question at read time. That is the cost model, and it differs by an order of magnitude between classes.
+4. Treat any class 6 claim as research until a product exists that can delete a fact on request.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Sources for this section](/memory/sources), the systems block
+- [When a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep), the graph-versus-retrieval decision this guide already carries
+- [The memory-pipeline architecture](/library/architecture/memory-pipeline-architecture)
+
+</details>

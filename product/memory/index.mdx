@@ -1,0 +1,58 @@
+---
+title: "Memory architectures for AI agents"
+icon: "Brain"
+description: "The six ways a memory for an agent is built, what the public benchmarks do and do not measure, why a one-million-token context window is not a memory, and the question no architecture has yet answered: useful recall over ten million tokens of enterprise data."
+datePublished: "2026-09-13"
+dateModified: "2026-09-13"
+---
+
+<PlainTerms>
+An AI agent forgets everything when its task ends unless something is built to remember for it. That something is called its memory. This section looks at how memories are built today, how they are scored, and how far the scores are from what an enterprise needs. The one thing to remember: every published memory score was earned on a few hundred thousand words at most, and an enterprise question routinely reaches across ten million or more. Nobody has yet shown solid results at that size.
+</PlainTerms>
+
+## Why memory architectures need their own section
+
+**WHY:** The [data-to-memory pipeline](/architecture/data-to-memory) says what a memory must carry: <Term k="provenance">provenance</Term>, permissions and a working delete. The [agent data engineering layer](/layers/r14-agent-data-engineering) says how to govern it. Neither says how a memory is built, or which build works. By September 2026 there are more than thirty named memory systems, four managed memory services from the large cloud providers, six survey taxonomies and, since 2025, at least ten new <Term k="benchmark">benchmarks</Term>. Every one of them reports a score. Almost none of the scores are comparable, and none is earned at the scale an enterprise runs at.
+
+**WHAT:** Classify the architectures by two facts that decide everything else: what is stored, and when a <Term k="model">model</Term> runs. Read every score with its unit, its candidate pool and its judge. Separate retrieval-only scores from answered-question scores and never average them. Then put the number that matters beside them: the size of the workload the memory is meant to serve.
+
+## The question this section leaves open
+
+**In short:** The largest public memory benchmark stops at ten million <Term k="token">tokens</Term>, and at that size the best published result is 0.27 on a scale of 0 to 1.
+
+Ten million tokens is not a large enterprise workload. It is a little more than one year of one knowledge worker's received email and chat, before attachments, documents, tickets or meetings. A customer's history across a decade of correspondence, a litigation file, an engineering programme, a plant's maintenance record: each of these is larger. Every memory score above 90 percent that appears in this section was earned on a conversation of between 16 thousand and 115 thousand tokens. At ten million, on the one public benchmark that reaches it, plain long context scores 0.10, retrieval 0.25, and the benchmark authors' own memory design 0.27. Three vendors have since published their own ten-million-token numbers, each under its own judge and harness, none comparable to the paper's table, and none reproduced by anyone else.
+
+<EvidenceBadge status="no-published-precedent" /> No independently run, published result shows any memory architecture or long-context model answering well over a single ten-million-token corpus. The section ends on that gap rather than on a recommendation.
+
+## The pages
+
+| Page | What it settles |
+|---|---|
+| [Six ways to build a memory](/memory/six-architectures) | The taxonomy: verbatim stores, extracted facts, graphs, summaries, agent-managed files, and memory inside the weights. Where every named system sits, and what changed in 2026. |
+| [What the benchmarks measure](/memory/what-the-benchmarks-measure) | The two schools of scoring, the six benchmarks that matter, why two of them are saturated, and ten documented ways a published memory score misleads. |
+| [Long context is not memory](/memory/long-context-is-not-memory) | One-million-token windows are standard. Effective context is 2K to 16K on the hardest tests. What ten million tokens costs at list price. |
+| [The ten-million-token question](/memory/the-ten-million-token-question) | How large enterprise memory workloads are, what the only ten-million-token benchmark shows, and the question the industry has not answered. |
+| [What we have measured](/memory/what-we-have-measured) | The one system this guide has reproduced independently on three benchmarks, and what the reproduction showed about how scores are made. |
+| [Sources](/memory/sources) | Every claim above with its date, its URL, and its vendor flag. |
+
+## How this section handles numbers
+
+**In short:** Vendor numbers are shown, flagged, and never ranked against each other; independently measured numbers sit in their own rows; retrieval scores and answer scores never share a table.
+
+The [agent data engineering layer](/layers/r14-agent-data-engineering) refuses to cite memory-service benchmarks because every one in circulation is vendor-authored and disputed between vendors. That refusal stands for recommendations. This section relaxes it for description only, under three rules.
+
+1. A number reported by the party that built the system carries the vendor-reported badge and appears in a table that states the judge, the question subset and the date. Two vendor numbers are never placed in a ranking, because the judges differ.
+2. A number this guide produced by running the system's own code, or by reimplementing its code path and matching a published figure to the decimal, carries the independently measured badge.
+3. A retrieval-only score (was the right passage in the top k) and a full question-answering score (did the answer come out right) are two different quantities. They are reported in separate tables with the unit retrieved, the candidate pool and the k on every row. This is the two-table rule, and it is the single most useful habit a reader can take from the section.
+
+<EvidenceBadge status="author-position" /> The taxonomy, the reading rules and the closing question are the author's. The counts, the dates and the scores are sourced on every page.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Sources for this section](/memory/sources)
+- [The memory-pipeline architecture](/library/architecture/memory-pipeline-architecture), the tiers M1 to M5 that grade what a memory holds by how long it is kept
+- [Agent data engineering findings](/library/layers/r14-agent-data-engineering/findings)
+- [Context patterns for agents](/patterns), the measured retrieval evidence this guide already carries
+
+</details>

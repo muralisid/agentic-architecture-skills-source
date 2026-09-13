@@ -1,0 +1,86 @@
+---
+title: "Long context is not memory"
+icon: "Maximize2"
+description: "One-million-token context windows are standard at the frontier in September 2026. Effective context on the hardest tests is 2K to 16K. What a ten-million-token prompt costs at list price, and what the long-context-versus-retrieval studies actually found."
+---
+
+<PlainTerms>
+A model's context window is how much it can read at once. Most leading models now read a million tokens, between five and seven hundred thousand words depending on the tokenizer, in a single call. That invites a simple idea: skip the memory and give the model everything. This page shows why that does not work for enterprise data. Models get much worse at finding things long before the window is full, no model reads ten million tokens in one call, and the price of trying is a hundred to six hundred dollars per question at the top of the market. The one thing to remember: the window is a limit on what can be sent, not a promise about what will be found.
+</PlainTerms>
+
+## The window is standard now
+
+**In short:** Nine model families offer a million tokens or more, and one claims ten million. The claim and the useful length are different numbers.
+
+As of 13 September 2026, first-party documentation lists a one-million-token <Term k="context window">context window</Term> at Anthropic (all current frontier models, at standard pricing since March 2026), OpenAI (the current family, 1,050,000 tokens, with a maximum input of 922,000), Google (the Pro and Flash lines, 1,048,576 tokens), DeepSeek, Alibaba's Qwen, xAI, Amazon's Nova 2, Moonshot and Meta's Llama 4. Llama 4 Scout is the one model that claims ten million. Mistral has no first-party one-million model.
+
+Pricing has split into two regimes. Anthropic, the Google Flash line and DeepSeek bill flat across the window. OpenAI bills the whole request at double the input rate once it passes 272 thousand tokens; the Google Pro line doubles past 200 thousand; xAI doubles at 200 thousand; one Qwen tier triples past 256 thousand. The regime matters more than the headline rate for a memory workload, because a memory workload is by definition on the wrong side of the threshold.
+
+## Effective context is a fraction of nominal
+
+**In short:** On the test that removes word overlap between question and evidence, effective context is 1K to 16K for models that claim 1M to 10M.
+
+The NoLiMa benchmark (ICML 2025) hides a needle whose wording does not share words with the question, so the model must reason rather than match. Its effective length is the longest context at which a model keeps 85 percent of its short-context accuracy.
+
+| Model | Claimed window | Effective length | Accuracy at 32K |
+|---|---|---|---|
+| GPT-4.1 | 1M | 16K | 79.8 |
+| GPT-4o | 128K | 8K | 69.7 |
+| Claude 3.5 Sonnet | 200K | 4K | 29.8 |
+| Gemini 1.5 Pro | 2M | 2K | 48.2 |
+| Gemini 2.5 Flash | 1M | 2K | 48.4 |
+| Llama 4 Maverick | 1M | 2K | 24.5 |
+| Llama 4 Scout | 10M | 1K | 21.6 |
+
+<EvidenceBadge status="primary-source" /> Eleven of thirteen models tested fell below half their short-context accuracy by 32 thousand tokens. The table stops at the July 2025 revision of the benchmark; newer models are not on it, and the pattern has not been contradicted by any later independent test.
+
+Four other lines of evidence say the same thing at different lengths.
+
+- RULER (2024, thirteen tasks, seventeen models): almost all models score near perfectly on the plain needle test and then drop sharply with length; only about half were satisfactory at 32 thousand tokens.
+- HELMET (ICLR 2025, fifty-nine models to 128 thousand tokens): no synthetic test correlates above 0.8 with real downstream tasks, and open-weight models collapse on citation tasks at 128 thousand where closed models hold.
+- Chroma's context rot report (July 2025, eighteen models): every model degrades with input length, faster when the question and the evidence share fewer words. On LongMemEval, a focused prompt of about 300 tokens beats the full 113 thousand token history for every model tested. <EvidenceBadge status="vendor-reported" />
+- Anthropic's own engineering guidance (September 2025): "As the number of tokens in the context window increases, the model's ability to accurately recall information from that context decreases." <EvidenceBadge status="vendor-reported" />
+
+The 2026 follow-ups extend this to the million-token range. A May 2026 study of twenty-six models found that the leader at 128 thousand tokens is not the leader at one million, and that seven models move two or more ranks between the two lengths. A second May 2026 study found frontier models missing dangerous actions two to thirty times more often when those actions occur after 800 thousand tokens of benign activity. A June 2026 study of long-horizon search found models giving up or answering wrongly well before the window was exhausted, at a rate that rises with length. <EvidenceBadge status="preprint-or-prototype" />
+
+## Long context against retrieval, when both are affordable
+
+**In short:** Long context wins on accuracy within the window and loses on cost by ten to twenty-six times; past the window, plain retrieval collapses too.
+
+Google DeepMind's 2024 comparison found long context beating retrieval by 7.6 points with one frontier model and 13.1 with another, on corpora that fit the window, and proposed routing between the two to cut cost by 39 to 65 percent. A June 2026 study measured 73.1 percent correctness for long context against 65.4 for semantic retrieval at twenty-six times the per-query token cost. <EvidenceBadge status="primary-source" />
+
+The picture changes past the window. CorpusQA (January 2026, revised April 2026) tests question answering over corpora of 128 thousand, one million, four million and ten million tokens. At 128 thousand the best models score above 80. At one million the best is 50.7. At four million, plain retrieval scores 2.4 and a memory agent 22.1; at ten million, 1.2 against 11.1. Nothing is good at ten million, but the shape is clear: whatever works there is not a single call over the corpus, and it is not a single retrieval either. <EvidenceBadge status="preprint-or-prototype" />
+
+## What ten million tokens costs
+
+**In short:** At list price, one ten-million-token prompt costs between one dollar and six hundred dollars depending on the model, and no one-million-token model accepts it in a single call.
+
+The table is arithmetic on the vendors' published list prices, accessed 13 September 2026, at the rate that applies above each vendor's long-context threshold. Cached reads use the vendor's published cache rate. The prompt would have to be split across calls, and the figures are token volume, not a single request.
+
+| Model, price per million input tokens above threshold | Ten million tokens, uncached | Ten million, cached read |
+|---|---|---|
+| Gemini 2.5 Flash-Lite, $0.10 | $1 | $0.10 |
+| DeepSeek Flash, $0.15 off-peak | $1.50 | $0.03 |
+| Claude Sonnet 5, $2 flat | $20 | $2 |
+| Gemini 3.1 Pro Preview, $4 past 200K | $40 | $4, plus $45 per hour to hold the cache |
+| Claude Fable 5.1, $10 flat | $100 | $2.50 |
+| GPT-6 Astra, $20 past 272K | $200 | $20 |
+| GPT-5.5 Pro, $60 past 272K | $600 | $600, no cache discount |
+
+The spread is six hundred to one. A memory workload that serves a team asks that question many times a day. Caching helps only when the same ten million tokens are asked again within the cache lifetime, which is the case for a static corpus and not for a growing one. Prices change quarterly; the sources page records the access date and the [re-verification list](/library/re-verification) carries the items to re-check.
+
+## What follows for a memory design
+
+1. A context window sets the upper bound on one call. It is not evidence that the call will find what is in it.
+2. Effective context for reasoning over evidence that does not share words with the question is measured in thousands of tokens, not millions.
+3. Cost scales with tokens sent, and the long-context price tiers are set precisely where memory workloads begin.
+4. The two published results at ten million tokens agree that neither one call nor one retrieval works there. What does is the open question the [next page](/memory/the-ten-million-token-question) puts.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Sources for this section](/memory/sources), the long-context block
+- [Step 2: Context](/ladder/context), the ladder page on what reaches the model
+- [Context patterns for agents](/patterns), including why keyword search stays in the loop
+
+</details>
