@@ -10,7 +10,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 // One browser profile per run, so several renders can run side by side.
 const PROFILE = path.join(HERE, '.chrome-profiles', String(process.pid));
 fs.mkdirSync(PROFILE, { recursive: true });
@@ -57,10 +57,11 @@ try {
 }
 
 const port = 9400 + Math.floor(Math.random() * 400);
+const extraArgs = process.env.CHROME_EXTRA_ARGS ? process.env.CHROME_EXTRA_ARGS.split(' ') : [];
 chrome = spawn(CHROME, [
   '--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${PROFILE}`,
   '--use-mock-keychain', '--no-first-run', '--no-default-browser-check', '--disable-gpu',
-  '--hide-scrollbars', '--force-device-scale-factor=1', '--allow-file-access-from-files', 'about:blank',
+  '--hide-scrollbars', '--force-device-scale-factor=1', '--allow-file-access-from-files', ...extraArgs, 'about:blank',
 ], { stdio: 'ignore' });
 
 async function pageSocket() {
