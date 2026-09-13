@@ -438,7 +438,9 @@
           ]
         }
       ],
-      "caption": "The encoder reads the first 190 words of a session. On the larger benchmark 88 percent of evidence sits inside that window. On the smaller, 54 percent sits outside."
+      "caption": "The encoder reads the first 190 words of a session. On the larger benchmark 88 percent of evidence sits inside that window. On the smaller, 54 percent sits outside.",
+      "picture": "A long page with only its top strip lit, the rest in shadow.",
+      "aspect": 1.5
     },
     {
       "id": "mm-metric",
@@ -466,7 +468,9 @@
           ]
         }
       ],
-      "caption": "The 96.6 is any-hit: a full hit if one gold session is in the top five. As the TREC fraction it is 91.7. The 100 is a k of 50 over pools of 32."
+      "caption": "The 96.6 is any-hit: a full hit if one gold session is in the top five. As the TREC fraction it is 91.7. The 100 is a k of 50 over pools of 32.",
+      "picture": "A net with fifty holes over a pond of thirty fish, all of them caught.",
+      "aspect": 1.5
     },
     {
       "id": "mm-density",
@@ -495,7 +499,9 @@
           ]
         }
       ],
-      "caption": "At ten million tokens the pool is 21 thousand messages. Word overlap predicts recall. A larger encoder moves the result by about a point. Keyword search alone is within four points."
+      "caption": "At ten million tokens the pool is 21 thousand messages. Word overlap predicts recall. A larger encoder moves the result by about a point. Keyword search alone is within four points.",
+      "picture": "A wall of thousands of identical index cards, one card lit where its word matches.",
+      "aspect": 1.5
     },
     {
       "id": "mm-realisation",

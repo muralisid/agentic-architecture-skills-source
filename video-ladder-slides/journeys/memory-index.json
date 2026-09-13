@@ -142,7 +142,9 @@
           ]
         }
       ],
-      "caption": "A model reads text and writes text. An agent is a system that uses a model to do a job. When the job ends, the model keeps nothing."
+      "caption": "A model reads text and writes text. An agent is a system that uses a model to do a job. When the job ends, the model keeps nothing.",
+      "picture": "A small robot at a desk, the desk swept clean, a wastepaper basket full of pages beside it.",
+      "aspect": 1.5
     },
     {
       "id": "mo-memory",
@@ -173,7 +175,9 @@
           ]
         }
       ],
-      "caption": "Memory is what is built around the model so the agent can recall. It is a store, an index, and a way to bring the right piece back."
+      "caption": "Memory is what is built around the model so the agent can recall. It is a store, an index, and a way to bring the right piece back.",
+      "picture": "The same robot with a filing cabinet beside it, one drawer open and a card being lifted out.",
+      "aspect": 1.5
     },
     {
       "id": "mo-count",
@@ -271,7 +275,9 @@
           ]
         }
       ],
-      "caption": "Every memory score above 90 percent was earned on a conversation of 16 thousand to 115 thousand tokens. That fits inside one call to a modern model."
+      "caption": "Every memory score above 90 percent was earned on a conversation of 16 thousand to 115 thousand tokens. That fits inside one call to a modern model.",
+      "picture": "A tall trophy standing on a very small box, next to a ruler showing the box is tiny.",
+      "aspect": 1.5
     },
     {
       "id": "mo-scale",
@@ -383,7 +389,9 @@
           ]
         }
       ],
-      "caption": "Three vendors have published their own ten-million-token scores. Each used its own judge and harness. None is comparable to the paper, and none has been reproduced."
+      "caption": "Three vendors have published their own ten-million-token scores. Each used its own judge and harness. None is comparable to the paper, and none has been reproduced.",
+      "picture": "Three judges at three separate tables, each holding up a different scorecard.",
+      "aspect": 1.5
     },
     {
       "id": "mo-rules",
@@ -486,7 +494,9 @@
           ]
         }
       ],
-      "caption": "No independently run, published result shows any memory architecture or long-context model answering well over a single ten-million-token corpus. The section ends on that gap."
+      "caption": "No independently run, published result shows any memory architecture or long-context model answering well over a single ten-million-token corpus. The section ends on that gap.",
+      "picture": "An open door in a plain wall, light coming through, no room visible beyond it.",
+      "aspect": 1.5
     },
     {
       "id": "mo-recap",

@@ -148,7 +148,9 @@
           ]
         }
       ],
-      "caption": "The first axis runs from the original text through summaries, extracted facts and graph triples to weights. The more the text is transformed, the more is lost."
+      "caption": "The first axis runs from the original text through summaries, extracted facts and graph triples to weights. The more the text is transformed, the more is lost.",
+      "picture": "A row of five objects: a full page, a folded summary, a list of cards, a web of dots, a stone tablet.",
+      "aspect": 1.5
     },
     {
       "id": "ma-axis2",
@@ -223,7 +225,9 @@
           ]
         }
       ],
-      "caption": "The memory tiers M1 to M5 grade what a memory holds by how long it is kept. The six classes describe how a store at any tier is built. Both are needed."
+      "caption": "The memory tiers M1 to M5 grade what a memory holds by how long it is kept. The six classes describe how a store at any tier is built. Both are needed.",
+      "picture": "A bookshelf with five shelves, the bottom shelf loose papers, the top shelf bound and locked volumes.",
+      "aspect": 1.5
     },
     {
       "id": "ma-six",
@@ -292,7 +296,9 @@
           ]
         }
       ],
-      "caption": "A verbatim store keeps the text unchanged in a vector index and usually a keyword index. Nothing is lost on the way in. Nothing is consolidated either."
+      "caption": "A verbatim store keeps the text unchanged in a vector index and usually a keyword index. Nothing is lost on the way in. Nothing is consolidated either.",
+      "picture": "A stack of untouched pages behind a glass front, with a simple index card taped to the glass.",
+      "aspect": 1.5
     },
     {
       "id": "ma-c2",
@@ -321,7 +327,9 @@
           ]
         }
       ],
-      "caption": "A model pulls atomic facts, notes or profiles out of each conversation at write time. The store is small and readable. Whatever was not extracted is gone."
+      "caption": "A model pulls atomic facts, notes or profiles out of each conversation at write time. The store is small and readable. Whatever was not extracted is gone.",
+      "picture": "A page passing through a sieve, a few short cards falling out below, shreds left in the sieve.",
+      "aspect": 1.5
     },
     {
       "id": "ma-c3",
@@ -351,7 +359,9 @@
           ]
         }
       ],
-      "caption": "Entities, relations and facts become nodes and edges. Each edge can carry the dates it was true. Retrieval walks the graph. Extraction costs a model call per document."
+      "caption": "Entities, relations and facts become nodes and edges. Each edge can carry the dates it was true. Retrieval walks the graph. Extraction costs a model call per document.",
+      "picture": "Named dots joined by labelled strings, one string with a small date tag on it.",
+      "aspect": 1.5
     },
     {
       "id": "ma-c4",
@@ -381,7 +391,9 @@
           ]
         }
       ],
-      "caption": "Summaries at one or more levels, or compressed observations kept in context. Good for questions about the whole corpus. Detail below the summary is gone."
+      "caption": "Summaries at one or more levels, or compressed observations kept in context. Good for questions about the whole corpus. Detail below the summary is gone.",
+      "picture": "A pyramid of paper: many pages at the base, one page at the top.",
+      "aspect": 1.5
     },
     {
       "id": "ma-c5",
@@ -411,7 +423,9 @@
           ]
         }
       ],
-      "caption": "The agent itself reads and writes memory files or blocks through tool calls, with a small core always present. A person can inspect and version it."
+      "caption": "The agent itself reads and writes memory files or blocks through tool calls, with a small core always present. A person can inspect and version it.",
+      "picture": "A robot writing in a folder of loose sheets, one sheet pinned to the wall beside it.",
+      "aspect": 1.5
     },
     {
       "id": "ma-c6",
@@ -441,7 +455,9 @@
           ]
         }
       ],
-      "caption": "Memory lives in weights, key-value caches or latent pools, written by training or test-time learning. No retrieval step at all. No product yet."
+      "caption": "Memory lives in weights, key-value caches or latent pools, written by training or test-time learning. No retrieval step at all. No product yet.",
+      "picture": "A brain drawn as a circuit board, with no drawer, no folder and no shelf anywhere near it.",
+      "aspect": 1.5
     },
     {
       "id": "ma-placed",
@@ -533,7 +549,9 @@
           ]
         }
       ],
-      "caption": "Eleven systems span two classes. Extraction loses accuracy. So the spanning pattern is an extracted or graph store with the verbatim source kept beside it."
+      "caption": "Eleven systems span two classes. Extraction loses accuracy. So the spanning pattern is an extracted or graph store with the verbatim source kept beside it.",
+      "picture": "A card index standing on top of the full pages it was drawn from, both kept together.",
+      "aspect": 1.5
     },
     {
       "id": "ma-cloud",

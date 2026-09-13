@@ -338,7 +338,9 @@
           ]
         }
       ],
-      "caption": "The leader at 128 thousand tokens is not the leader at one million. Frontier models miss dangerous actions far more often after 800 thousand tokens."
+      "caption": "The leader at 128 thousand tokens is not the leader at one million. Frontier models miss dangerous actions far more often after 800 thousand tokens.",
+      "picture": "A podium where the tallest runner at the short race stands lower at the long race.",
+      "aspect": 1.5
     },
     {
       "id": "ml-versus",
@@ -559,7 +561,9 @@
           ]
         }
       ],
-      "caption": "A cached read of ten million tokens costs three cents to twenty dollars. It helps only when the same tokens are asked again within the cache lifetime."
+      "caption": "A cached read of ten million tokens costs three cents to twenty dollars. It helps only when the same tokens are asked again within the cache lifetime.",
+      "picture": "A frozen block of pages beside a stream of new pages flowing past it.",
+      "aspect": 1.5
     },
     {
       "id": "ml-recap",

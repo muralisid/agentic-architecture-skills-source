@@ -416,7 +416,9 @@
           ]
         }
       ],
-      "caption": "A 2026 corpus benchmark reports a memory agent at 11.1 and retrieval at 1.2 over ten million tokens. A 115-million-token benchmark reports a file-storing agent at 72.5."
+      "caption": "A 2026 corpus benchmark reports a memory agent at 11.1 and retrieval at 1.2 over ten million tokens. A 115-million-token benchmark reports a file-storing agent at 72.5.",
+      "picture": "Two small flags planted in an empty field, far from a crowd of larger vendor banners.",
+      "aspect": 1.5
     },
     {
       "id": "mt-why",
@@ -489,7 +491,9 @@
           ]
         }
       ],
-      "caption": "On the ten-million-token benchmark, exact word overlap between question and evidence predicts whether the evidence is found. The choice of encoder does not."
+      "caption": "On the ten-million-token benchmark, exact word overlap between question and evidence predicts whether the evidence is found. The choice of encoder does not.",
+      "picture": "A haystack of identical straws, one straw marked with a word that matches a card held above.",
+      "aspect": 1.5
     },
     {
       "id": "mt-q1",
@@ -513,7 +517,9 @@
           ]
         }
       ],
-      "caption": "Which architecture, if any, gives an agent useful recall over ten million tokens of its own records? And at a cost a service desk can bear?"
+      "caption": "Which architecture, if any, gives an agent useful recall over ten million tokens of its own records? And at a cost a service desk can bear?",
+      "picture": "A blank blueprint pinned to a wall, a pencil resting on it, nothing drawn yet.",
+      "aspect": 1.5
     },
     {
       "id": "mt-q2",
@@ -542,7 +548,9 @@
           ]
         }
       ],
-      "caption": "The score would have to be independently produced, on a corpus that does not fit a context window. Unit, pool, k and judge stated. Two separate tables."
+      "caption": "The score would have to be independently produced, on a corpus that does not fit a context window. Unit, pool, k and judge stated. Two separate tables.",
+      "picture": "A measuring tape laid across a pile of pages far taller than the tape.",
+      "aspect": 1.5
     },
     {
       "id": "mt-q3",
@@ -571,7 +579,9 @@
           ]
         }
       ],
-      "caption": "What would it cost to index? Sending everything to the model costs one to six hundred dollars per ten million tokens. How do the two compare?"
+      "caption": "What would it cost to index? Sending everything to the model costs one to six hundred dollars per ten million tokens. How do the two compare?",
+      "picture": "A coin balanced on a scale against a single card index.",
+      "aspect": 1.5
     },
     {
       "id": "mt-recap",

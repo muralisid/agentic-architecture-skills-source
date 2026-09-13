@@ -144,7 +144,9 @@
           ]
         }
       ],
-      "caption": "Retrieval recall at k asks what fraction of the gold evidence sits in the top k results. No answer is generated. The standard form is the TREC fraction."
+      "caption": "Retrieval recall at k asks what fraction of the gold evidence sits in the top k results. No answer is generated. The standard form is the TREC fraction.",
+      "picture": "A hand pulling one card from a drawer while a magnifying glass checks it against a list.",
+      "aspect": 1.5
     },
     {
       "id": "mb-answer",
@@ -173,7 +175,9 @@
           ]
         }
       ],
-      "caption": "A reader answers from what was retrieved. The answer is scored by word overlap or by a model as judge. It depends on the reader and the judge."
+      "caption": "A reader answers from what was retrieved. The answer is scored by word overlap or by a model as judge. It depends on the reader and the judge.",
+      "picture": "A hand writing an answer on a slip, and a second person stamping it right or wrong.",
+      "aspect": 1.5
     },
     {
       "id": "mb-two-tables",
@@ -306,7 +310,9 @@
           ]
         }
       ],
-      "caption": "Five benchmarks from February to August 2026 report the same two things. Plain retrieval or plain long context stays competitive. Factual scores do not carry over to using the memory."
+      "caption": "Five benchmarks from February to August 2026 report the same two things. Plain retrieval or plain long context stays competitive. Factual scores do not carry over to using the memory.",
+      "picture": "Five new signposts all pointing the same way along one road.",
+      "aspect": 1.5
     },
     {
       "id": "mb-locomo",
@@ -384,7 +390,9 @@
           ]
         }
       ],
-      "caption": "A fixed judge with 97 percent agreement with humans, seven question types, and separate columns for retrieval and answers. Its authors measured a frontier model at 0.606."
+      "caption": "A fixed judge with 97 percent agreement with humans, seven question types, and separate columns for retrieval and answers. Its authors measured a frontier model at 0.606.",
+      "picture": "A set of balance scales with a fixed weight on one side and a labelled sample on the other.",
+      "aspect": 1.5
     },
     {
       "id": "mb-dispute",

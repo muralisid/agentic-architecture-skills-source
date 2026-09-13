@@ -63,7 +63,10 @@ The renderer takes the browser from the environment: `CHROME=/path/to/chromium` 
 `cwebp` where it exists and otherwise with Pillow. `write-page.py` and `export-site.mjs`
 find the repository relative to this folder, or from `REPO` and `SITE`. Two layouts were
 added for the memory section: `bars` for scores and prices, and `table` for small grids.
-Concept pictures are not generated here; statement slides carry an icon instead.
+Concept pictures are not generated here. Every statement slide in the memory journeys carries its
+`picture` brief and `aspect`; until an `image` is added the slide renders with its icon, and no
+placeholder reaches the site. To add a picture: generate it from the brief, run it through
+`prepare-pictures.mjs`, set `image` on the slide, then render and export the journey again.
 
 ## The order to run things
 
