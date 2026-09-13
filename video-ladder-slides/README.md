@@ -95,3 +95,13 @@ Filming runs through the video tool with the presenter set to "me". The plan is
 built from the clips, with the first and last clip on camera, and every middle clip using
 its `film` frame as the image. Rendering bills per clip, so it needs his yes each time.
 The old draft `vid_8ec5e5081a9343e4` still has the removed example in it, so it is parked.
+
+A new draft, `vid_c50025d38a684250`, carries only the overview page's first two clips
+(c001, c002 from `clips/index.json`) as a preview: full screen, no presenter bubble,
+landscape, cream theme, presenter "me". Frame `frames/index/film/ov-01-b1.png` was
+rendered for clip 2 and uploaded as its exact image asset. Stills are not drawn yet and
+nothing is filmed. Waiting on Murali's yes before drawing or filming.
+
+`render.mjs` now reads `CHROME_PATH` and `CHROME_EXTRA_ARGS` env vars instead of only the
+hardcoded macOS Chrome path, so it can render on a Linux container too (needs
+`--no-sandbox` there since it runs as root).
