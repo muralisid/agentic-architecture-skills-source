@@ -111,14 +111,15 @@ Continuing batch by batch through the remaining clips on Murali's "don't stop
 until it's done" instruction: render each batch's frames, upload, plan, and
 film, without pausing for approval between batches.
 
-Batch 3 (`vid_46576edc9b34490b`) carries clips c013 to c022, same format.
-Rendering.
+Batch 3 (`vid_46576edc9b34490b`) carries clips c013 to c022, same format. Filmed
+and stitched.
+Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu11wabcdae66ad605/video/captioned_1789379884515.mp4
 
 Batch 4 (`vid_c1da23fb608841b4`) carries clips c023 to c032, same format.
-Rendering in parallel with batch 3.
+Stitching.
 
 Batch 5 (`vid_72bcfd20277f43c4`) carries clips c033 to c042, same format.
-Rendering in parallel with batches 3 and 4.
+Filming.
 
 The logo-mark watermark flagged on `pictures/ov-agent.webp` also appears on
 `pictures/ov-04.webp` (top right of its illustration). Confirmed systemic
