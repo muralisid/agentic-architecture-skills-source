@@ -132,6 +132,14 @@ async function shoot(payload, file) {
   if (r.exceptionDetails) {
     throw new Error(`${payload.slide.id}: ${r.exceptionDetails.exception?.description || r.exceptionDetails.text}`);
   }
+  // The FIRST Page.captureScreenshot call of a session reliably returns a stale,
+  // half-composited (visibly tiled) frame regardless of what is on screen -
+  // confirmed by capturing the same unchanged paint twice in a row. Throw one
+  // away before trusting a screenshot.
+  if (!shoot.warmedUp) {
+    await cdp.send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, width: 1920, height: 1080, scale: 1 } });
+    shoot.warmedUp = true;
+  }
   const shot = await cdp.send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 0, width: 1920, height: 1080, scale: 1 } });
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, Buffer.from(shot.data, 'base64'));

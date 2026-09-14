@@ -100,8 +100,26 @@ A new draft, `vid_c50025d38a684250`, carries only the overview page's first two 
 (c001, c002 from `clips/index.json`) as a preview: full screen, no presenter bubble,
 landscape, cream theme, presenter "me". Frame `frames/index/film/ov-01-b1.png` was
 rendered for clip 2 and uploaded as its exact image asset. Murali approved the script.
-Both clips are filmed and stitched. Waiting on his yes before continuing with the rest
-of the 92-clip overview script, one batch of frames at a time.
+Both clips are filmed and stitched. Clip 2's voice was missing on the first pass;
+fixed with `scout7_video_regenerate_part(part='voice')` and restitched.
+
+Batch 2 (`vid_23dff75bf45e4ab0`) carries clips c003 to c012, same format, a separate
+draft since this tool cannot append clips to an existing one. Filming in progress.
+
+Video Studio has no standalone "audio only" stage: narration is baked in per clip
+only once that clip is filmed (paid), same step that produces its visuals. There is
+no way to preview the full read before any clip is generated. Proceeding batch by
+batch instead, filming each batch (visuals plus audio together) so Murali can review
+the reading as each batch lands.
+
+`render.mjs` had a real bug, not a one-off: the FIRST `Page.captureScreenshot` of
+every fresh headless session came back tiled and half-composited (confirmed by
+capturing the same unchanged paint twice — first came back broken, second clean).
+Fixed by discarding one screenshot before trusting the first real frame.
+
+Also flagged, not yet fixed: `pictures/ov-agent.webp` (pre-existing asset, added in
+an earlier commit) carries a small logo mark in the corner of its illustration,
+likely a watermark left by whatever image generator produced it. Worth regenerating.
 
 `render.mjs` now reads `CHROME_PATH` and `CHROME_EXTRA_ARGS` env vars instead of only the
 hardcoded macOS Chrome path, so it can render on a Linux container too (needs
