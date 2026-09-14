@@ -122,6 +122,9 @@ Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/conten
 Batch 5 (`vid_72bcfd20277f43c4`) carries clips c033 to c042, same format.
 Filming.
 
+Batch 6 (`vid_1af73a83bc324fa7`) carries clips c043 to c052, same format.
+Rendering in parallel with batch 5.
+
 The logo-mark watermark flagged on `pictures/ov-agent.webp` also appears on
 `pictures/ov-04.webp` (top right of its illustration). Confirmed systemic
 across at least two illustration assets, not a one-off.
