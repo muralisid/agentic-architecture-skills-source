@@ -100,8 +100,8 @@ A new draft, `vid_c50025d38a684250`, carries only the overview page's first two 
 (c001, c002 from `clips/index.json`) as a preview: full screen, no presenter bubble,
 landscape, cream theme, presenter "me". Frame `frames/index/film/ov-01-b1.png` was
 rendered for clip 2 and uploaded as its exact image asset. Murali approved the script.
-Both stills are drawn and checked against their prompts. Clip 1 (on camera) is filming;
-clip 2 is next.
+Both clips are filmed and stitched. Waiting on his yes before continuing with the rest
+of the 92-clip overview script, one batch of frames at a time.
 
 `render.mjs` now reads `CHROME_PATH` and `CHROME_EXTRA_ARGS` env vars instead of only the
 hardcoded macOS Chrome path, so it can render on a Linux container too (needs
