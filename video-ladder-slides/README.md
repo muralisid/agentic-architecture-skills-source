@@ -119,8 +119,9 @@ Batch 4 (`vid_c1da23fb608841b4`) carries clips c023 to c032, same format. Filmed
 and stitched.
 Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu125s4j57ad7e1f8e/video/final_1789380258141.mp4
 
-Batch 5 (`vid_72bcfd20277f43c4`) carries clips c033 to c042, same format.
-Filming.
+Batch 5 (`vid_72bcfd20277f43c4`) carries clips c033 to c042, same format. Filmed
+and stitched.
+Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu12iowh1b78754ef2/video/captioned_1789381145245.mp4
 
 Batch 6 (`vid_1af73a83bc324fa7`) carries clips c043 to c052, same format.
 Rendering in parallel with batch 5.
