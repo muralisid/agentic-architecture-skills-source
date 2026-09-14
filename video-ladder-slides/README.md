@@ -114,6 +114,9 @@ film, without pausing for approval between batches.
 Batch 3 (`vid_46576edc9b34490b`) carries clips c013 to c022, same format.
 Rendering.
 
+Batch 4 (`vid_c1da23fb608841b4`) carries clips c023 to c032, same format.
+Rendering in parallel with batch 3.
+
 The logo-mark watermark flagged on `pictures/ov-agent.webp` also appears on
 `pictures/ov-04.webp` (top right of its illustration). Confirmed systemic
 across at least two illustration assets, not a one-off.
