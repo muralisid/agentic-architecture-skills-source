@@ -128,10 +128,11 @@ and stitched.
 Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu12y5s34df250b776/video/final_1789381555574.mp4
 
 Batch 7 (`vid_515ee123012b4f8f`) carries clips c053 to c062, same format.
-Filming. Clip 5 (c057, "The first symptom is wrong format, tone or task
-behaviour.") is 10 words, just under the tool's no-dead-air threshold, so
-it renders with a fraction-of-a-second silent tail. Left as-is since it is
-the exact vetted script line.
+Filmed and stitched. Clip 5 (c057, "The first symptom is wrong format,
+tone or task behaviour.") is 10 words, just under the tool's no-dead-air
+threshold, so it renders with a fraction-of-a-second silent tail. Left
+as-is since it is the exact vetted script line.
+Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu13ckqmc7924f84ae/video/final_1789382627027.mp4
 
 The logo-mark watermark flagged on `pictures/ov-agent.webp` also appears on
 `pictures/ov-04.webp` (top right of its illustration). Confirmed systemic
