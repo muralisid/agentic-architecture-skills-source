@@ -159,3 +159,6 @@ hardcoded macOS Chrome path, so it can render on a Linux container too (needs
 Batch 8 (`vid_023a4b64e79b40ef`) carries clips c063 to c072, same format.
 Rendering, in parallel with batch 7. Voiced with the workspace's own cloned
 voice (`use_own_voice`), same as the rest of the series.
+
+Batch 9 (`vid_7e3071985adf4ec4`) carries clips c073 to c082, same format.
+Rendering, in parallel with batches 7 and 8.
