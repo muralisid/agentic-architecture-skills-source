@@ -172,9 +172,10 @@ was the other on-camera instance). Rendering, in parallel with batches 7,
 8 and 9. Once all four land, all ten batches of the overview page are
 filmed.
 
-Batches 8, 9 and 10 stalled mid-film: after 45+ minutes their job status
-still reports "running" but stuck at the same clip count (6/10, 4/10, 4/10)
-since roughly the 8-minute mark, well past the tool's usual ~8-minute
-total. Not retried, since the render tool warns a second call on a running
-job double-shoots it; still monitoring for either progress or the state
-flipping to idle (safe to retry only then).
+Batches 8, 9 and 10 stalled mid-film: as of 65+ minutes elapsed their job
+status still reports "running" but stuck at the same clip count (6/10,
+4/10, 4/10) since roughly the 8-minute mark, well past the tool's usual
+~8-minute total. Not retried, since the render tool warns a second call on
+a running job double-shoots it, and the state never flipped to idle to
+make that safe. Flagged to Murali as a real blocker rather than kept
+waiting indefinitely.
