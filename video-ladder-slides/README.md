@@ -162,3 +162,11 @@ voice (`use_own_voice`), same as the rest of the series.
 
 Batch 9 (`vid_7e3071985adf4ec4`) carries clips c073 to c082, same format.
 Rendering, in parallel with batches 7 and 8.
+
+Batch 10 (`vid_9f77409962f4482e`) carries clips c083 to c092, the last batch
+of the 92-clip script. Same full-screen format for clips 1 to 9; clip 10
+(c092) is Murali on camera, closing the video, matching the repo rule that
+the first and last clip of each video are on camera (batch 1's first clip
+was the other on-camera instance). Rendering, in parallel with batches 7,
+8 and 9. Once all four land, all ten batches of the overview page are
+filmed.
