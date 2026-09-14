@@ -123,14 +123,15 @@ Batch 5 (`vid_72bcfd20277f43c4`) carries clips c033 to c042, same format. Filmed
 and stitched.
 Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu12iowh1b78754ef2/video/captioned_1789381145245.mp4
 
-Batch 6 (`vid_1af73a83bc324fa7`) carries clips c043 to c052, same format.
-Rendering in parallel with batch 5.
+Batch 6 (`vid_1af73a83bc324fa7`) carries clips c043 to c052, same format. Filmed
+and stitched.
+Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu12y5s34df250b776/video/final_1789381555574.mp4
 
 Batch 7 (`vid_515ee123012b4f8f`) carries clips c053 to c062, same format.
-Rendering in parallel with batches 5 and 6. Clip 5 (c057, "The first
-symptom is wrong format, tone or task behaviour.") is 10 words, just under
-the tool's no-dead-air threshold, so it renders with a fraction-of-a-second
-silent tail. Left as-is since it is the exact vetted script line.
+Filming. Clip 5 (c057, "The first symptom is wrong format, tone or task
+behaviour.") is 10 words, just under the tool's no-dead-air threshold, so
+it renders with a fraction-of-a-second silent tail. Left as-is since it is
+the exact vetted script line.
 
 The logo-mark watermark flagged on `pictures/ov-agent.webp` also appears on
 `pictures/ov-04.webp` (top right of its illustration). Confirmed systemic
@@ -154,3 +155,7 @@ likely a watermark left by whatever image generator produced it. Worth regenerat
 `render.mjs` now reads `CHROME_PATH` and `CHROME_EXTRA_ARGS` env vars instead of only the
 hardcoded macOS Chrome path, so it can render on a Linux container too (needs
 `--no-sandbox` there since it runs as root).
+
+Batch 8 (`vid_023a4b64e79b40ef`) carries clips c063 to c072, same format.
+Rendering, in parallel with batch 7. Voiced with the workspace's own cloned
+voice (`use_own_voice`), same as the rest of the series.
