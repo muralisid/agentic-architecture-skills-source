@@ -125,6 +125,12 @@ Filming.
 Batch 6 (`vid_1af73a83bc324fa7`) carries clips c043 to c052, same format.
 Rendering in parallel with batch 5.
 
+Batch 7 (`vid_515ee123012b4f8f`) carries clips c053 to c062, same format.
+Rendering in parallel with batches 5 and 6. Clip 5 (c057, "The first
+symptom is wrong format, tone or task behaviour.") is 10 words, just under
+the tool's no-dead-air threshold, so it renders with a fraction-of-a-second
+silent tail. Left as-is since it is the exact vetted script line.
+
 The logo-mark watermark flagged on `pictures/ov-agent.webp` also appears on
 `pictures/ov-04.webp` (top right of its illustration). Confirmed systemic
 across at least two illustration assets, not a one-off.
