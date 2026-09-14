@@ -104,7 +104,12 @@ Both clips are filmed and stitched. Clip 2's voice was missing on the first pass
 fixed with `scout7_video_regenerate_part(part='voice')` and restitched.
 
 Batch 2 (`vid_23dff75bf45e4ab0`) carries clips c003 to c012, same format, a separate
-draft since this tool cannot append clips to an existing one. Filming in progress.
+draft since this tool cannot append clips to an existing one. Filmed and stitched.
+Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu110t8g3a9c1afe8d/video/final_1789378312061.mp4
+
+Continuing batch by batch through the remaining clips (c013 onward) on Murali's
+"don't stop until it's done" instruction: render each batch's frames, upload,
+plan, and film, without pausing for approval between batches.
 
 Video Studio has no standalone "audio only" stage: narration is baked in per clip
 only once that clip is filmed (paid), same step that produces its visuals. There is
