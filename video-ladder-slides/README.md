@@ -107,9 +107,16 @@ Batch 2 (`vid_23dff75bf45e4ab0`) carries clips c003 to c012, same format, a sepa
 draft since this tool cannot append clips to an existing one. Filmed and stitched.
 Video: https://scout7.ai/sharedFS/qVcE2CLV4jOX71SHenyzDfm0QVC2_6008952380/content-strategy/content/content_vs_mu110t8g3a9c1afe8d/video/final_1789378312061.mp4
 
-Continuing batch by batch through the remaining clips (c013 onward) on Murali's
-"don't stop until it's done" instruction: render each batch's frames, upload,
-plan, and film, without pausing for approval between batches.
+Continuing batch by batch through the remaining clips on Murali's "don't stop
+until it's done" instruction: render each batch's frames, upload, plan, and
+film, without pausing for approval between batches.
+
+Batch 3 (`vid_46576edc9b34490b`) carries clips c013 to c022, same format.
+Rendering.
+
+The logo-mark watermark flagged on `pictures/ov-agent.webp` also appears on
+`pictures/ov-04.webp` (top right of its illustration). Confirmed systemic
+across at least two illustration assets, not a one-off.
 
 Video Studio has no standalone "audio only" stage: narration is baked in per clip
 only once that clip is filmed (paid), same step that produces its visuals. There is
