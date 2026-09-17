@@ -4,231 +4,60 @@ icon: "Cpu"
 description: "The top of the market, where two different things are sold with similar words: training a foundation model of your own, and designing a different kind of model because your data is a network rather than a document."
 ---
 
-<Slide journey="ladder/custom-pretraining" id="ca-01">
-
-At the top of the market, two very different things are sold in similar words. This chapter helps you tell which one is in front of you.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-intro">
-
-This is the last chapter of the ladder. It is one of five ways to change the model itself. Very few organisations ever need it.
-
-First, we look at two offers that sound alike. Then we look at path one. That is building your own model from nothing.
-
-Next is path two. It is a different kind of model for data that is not text. Last, we see how this links back to the rest of the ladder.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-20">
-
-Start with how most AI models are made. They are trained on huge amounts of text from every subject. Then other models and products are built on top of them.
-
-A large model like this is called a foundation model. Most teams start from one that someone else built.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-02">
-
-Here are the two offers. One is to build your own foundation model from nothing. The other is a different kind of model. It is built for data that is not text.
-
-The first comes down to cost. It is almost never the answer. The second is real specialist work. It has a clear use.
-
-</Slide>
+<PlainTerms>
+At the top of the market two very different things get sold in similar language. One is building your own foundation model from scratch, which is a question of economics and almost never the answer. The other is designing a different kind of model because your data is not documents at all but networks, sequences or signals, which is a real discipline with a recognisable use. This page explains both in enough depth that you can tell which one is in front of you, and whether either applies. The one thing to remember: everything below this chapter works around a fixed model; this chapter is about building models, which is a different profession.
+</PlainTerms>
 
 ## Path one: a foundation model of your own
 
-<Slide journey="ladder/custom-pretraining" id="ca-03">
+**What it is.** Pretraining from scratch: initialise weights randomly, train on trillions of tokens, then align the result into something usable. Everything the base model knows must come from your assembled corpus, because there is no base model.
 
-Start with path one. A model is a huge set of numbers. Training slowly adjusts those numbers. Here, the numbers start out random.
+**What it costs.** Frontier-laboratory economics: compute in the tens of millions and up, a standing research team, and the time between deciding and having something competitive, during which the field moves. And the artifact is perishable: the open and commercial models improve on someone else's budget, while yours improves on yours.
 
-The model then reads trillions of small pieces of words. This huge first training is called pretraining. Nothing comes from an existing model. So everything it knows must come from your own text.
+**When it is genuine.** Sovereignty mandates that forbid external weights outright, at national or systemically-regulated scale. Or a corpus so large and so unlike public text that general models are structurally wrong for it, together with the money and the team. If you are reading this page to find out whether you qualify, you do not, and that is most of what the page is for.
 
-Last, it is tuned so that people can use it.
+**The question that deflates most proposals.** What would [continued pretraining](/ladder/continued-pretraining) on the same corpus achieve? It delivers most of what people actually want from "our own model", from the same data, at a small fraction of the cost, on an upgrade path someone else maintains.
 
-</Slide>
+**One published result, with its flags.** If you are on this path, when the domain data enters matters: mixing 0.1 to 10 percent of domain data into pretraining from scratch outperformed the standard general-pretrain-then-adapt pipeline across three domains, cutting the tokens needed for a given domain performance by up to 1.75 times [vendor]. Scope: models of 300M to 3B parameters, a 200B-token budget, published by a company selling data curation. It informs how to run path one, not whether to take it.
 
-<Slide journey="ladder/custom-pretraining" id="ca-04">
+<GuideFigure id="top-of-market-paths" fullWidth />
 
-Path one costs what only the biggest AI labs spend. It needs computing power costing tens of millions and more. It also needs a research team that stays in place.
-
-Building takes a long time. The field keeps moving while you build.
-
-Meanwhile, open and paid models keep getting better. Someone else pays for that.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-05">
-
-Path one does make sense in two cases. In the first, a national rule bans using any model from outside. This is called a sovereignty rule.
-
-In the second, you hold a huge amount of text. It is so unlike public text that existing models get it wrong. This case also needs the money and the team.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-06">
-
-One question settles most plans to build your own model. What if you took an existing model and kept training it on your own text? That is called continued pretraining.
-
-It gives most of what people want from their own model. It uses the same text. It costs a small fraction as much. And someone else keeps improving the model underneath.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-07">
-
-If you do take path one, one finding may help. It is about when to mix in text from your own field.
-
-One study mixed a little of that text in from the very start. That beat training on public text first and adding your text later.
-
-The study was published by a company that sells help with training data. It also used small models. It can guide how you run path one. It does not tell you whether to take it.
-
-</Slide>
+<TeachingIllustration src="/images/ladder/custom-pretraining-paths-labeled-v3.webp" alt="One path sends vast data and compute into a foundation model while another sends a transaction network through a compact graph model and into an agent tool." title="Two expensive-sounding paths solve different problems" caption="Training from random weights is a sovereignty-and-economics decision at frontier scale. Choosing a different architecture is a data-shape decision: a graph model can calculate over relationships that a text model should receive as governed evidence." />
 
 ## Path two: when your data is not text
 
-<Slide journey="ladder/custom-pretraining" id="ca-08">
+A language model is a machine for sequences of tokens. Some enterprise data is not that, and no amount of prompting, retrieval or fine-tuning makes it that. Transaction networks, supply chains, telemetry streams, molecular structures. For these, the model itself is different, most commonly a graph neural network, and the engineering discipline around it is different too.
 
-Now for path two. The models on this ladder read text as a line of small word pieces. Some data is not like that at all.
+**How a graph model works, in one paragraph.** Each node starts with a vector describing it. In each layer, every node updates its vector using its neighbours' vectors, so after one layer a node knows about its neighbours, after two it knows about their neighbours, and so on outward. Prediction then reads the node vectors: is this account likely part of a ring, is this component about to fail. The structure itself, who connects to whom, is what the model learns from, which is exactly what a document model cannot see.
 
-Think of records linked to each other, or supply chains.
+**The failure modes are structural, and they are the vocabulary to listen for.**
 
-Think of streams of sensor readings, or molecules. None of this is a line of words. None of the earlier steps on this ladder can change that.
+- **Over-smoothing.** Each layer averages neighbours. Stack enough layers and every node in a connected region converges to the same vector: depth destroys the distinctions the model exists to draw. This is why production graph models are often only two or three layers deep.
+- **Over-squashing.** The opposite pressure. Information from a node several hops away must pass through an exponentially growing neighbourhood compressed into fixed-size vectors, so long-range signal is crushed at bottleneck edges.
+- The two **pull against each other**: layers added to relieve over-squashing worsen over-smoothing. This trade is the tell for genuine expertise. Someone who has really worked here has had to resolve it structurally, with rewiring, attention or hierarchical pooling, not with a bigger setting.
+- **Representation and gradient collapse.** The general deep-learning failures: learned vectors that stop being distinct, and learning signal that dies through depth, so parts of the network silently stop training.
+- **Partitioning and sampling.** A graph with billions of edges does not fit in accelerator memory, and unlike documents it cannot be arbitrarily cut: every cut severs real relationships. Partition into clusters and you train on a graph missing its cross-cluster edges; sample neighbourhoods and you introduce variance and bias in what each node sees. Both change the object being trained on, and managing that gap is where much of the real work lives.
+- **Distributed convergence.** Sharded across many machines, optimisation stops behaving like the single-machine textbook: giant effective batches change the loss landscape, stale gradients arrive from busy workers, and communication cost starts dictating the algorithm.
 
-Much of this data is things joined by links. A set of things joined by links is called a graph.
+**When it is genuine.** The thing you are predicting is a property of a structure rather than of a document, at a scale where these failure modes actually bite. That situation is recognisable, and it has little to do with agents.
 
-</Slide>
+## At the bank
 
-<Slide journey="ladder/custom-pretraining" id="ca-21">
+<TeachingIllustration src="/images/ladder/custom-architecture-graph-labeled-v2.webp" alt="A graph model finds a coordinated ring in a transaction network and passes the highlighted subgraph and score through a governed gateway to an agent." title="The specialist model is a tool, not the agent" caption="A graph model finds structure across connected accounts. It returns a score and the evidence-bearing subgraph through a controlled interface; the conversational agent uses that result without pretending it discovered the network pattern itself." />
 
-For data like this, the model itself has to be different. It has to learn from who is linked to whom.
+The bank has exactly one dataset with this shape, and it is the important one: the transaction network. Hundreds of millions of accounts, billions of edges, and the thing worth predicting, coordinated activity, is a property of the network. A money-mule ring is nearly invisible account by account: each node's activity looks plausible alone, and the pattern only exists across the structure. This is why network models genuinely belong in financial crime, and why this chapter is not hypothetical in this vertical.
 
-The most common choice is called a graph neural network. In this chapter, we just call it a graph model.
+**How it meets the agent, and how it does not.** The graph model is not the agent, does not chat, and is not built by the agent team. It runs in the bank's model-risk-managed scoring estate, and its output arrives in the investigation as one more input: a network risk score, and the subgraph that produced it, exposed through a tool. The agent retrieves it, cites it, and drafts around it, exactly as it does with the transaction store. Deck A's division of labour holds at the top of the ladder: the model computes over the structure, the harness carries the result into the evidence, the analyst decides.
 
-</Slide>
+**The staffing point, made concrete.** Everything from step 1 to chapter 7 was built by the bank's engineering organisation around fixed models. Path two is a machine-learning research function with its own model risk lifecycle, and its own failure vocabulary, the one above. A bank that assigns the graph model to the agent team, or the agent to the graph team, has misread this chapter's central sentence: these are different professions that meet at a tool boundary.
 
-<Slide journey="ladder/custom-pretraining" id="ca-22">
-
-Here is how a graph model works, one step at a time. Take one thing in the graph, such as one record. It is called a node.
-
-Each node starts with a list of numbers. The numbers describe that one thing.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-09">
-
-Now the model gets to work. It starts from each node's list of numbers.
-
-A node's neighbours are the nodes it links to. Each node updates its numbers using its neighbours' numbers. One round of this is called a layer.
-
-The model runs several layers, one after another. After two layers, a node knows about its neighbours' neighbours.
-
-Last, the model reads each node's numbers to make a prediction. It learns from who connects to whom. A model that reads documents cannot see that.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-10">
-
-This way of working has two known problems. Each layer mixes a node's numbers with its neighbours' numbers. Stack enough layers, and nearby nodes end up with the same numbers.
-
-Then the model can no longer tell them apart. This is called over-smoothing. It is why graph models in real use often have only two or three layers.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-11">
-
-The second problem pulls the other way. Information from a far node must pass through many nodes to arrive. The number of nodes on the way grows very fast with distance.
-
-But each node holds only a fixed-size list of numbers. So far information gets squeezed through narrow links. Much of it is lost. This is called over-squashing.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-12">
-
-So the two problems pull against each other. More layers let information travel further. That eases over-squashing. But more layers make over-smoothing worse.
-
-So turning one setting up does not fix both. People who have really done this work change the design of the model. A model's design is called its architecture.
-
-Watch how someone handles this. It shows whether they have real experience.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-13">
-
-There are three more problems worth listening for. First, the learned numbers can stop being distinct. Or learning can fade out in the deeper layers. Then parts of the model quietly stop learning.
-
-Second, a huge graph may not fit in memory. So it must be cut into parts. Every cut breaks real links. So the model trains on a graph with links missing.
-
-Third, the training may be spread across many machines. Then training no longer behaves the way the textbooks describe.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-14">
-
-So when does path two make sense? It fits when what you predict depends on how things link together. It does not sit inside any one document.
-
-The data must also be big enough for these problems to really matter.
-
-This situation is easy to spot. The rest of this ladder is about AI systems that carry out tasks. These systems are called agents. Path two has little to do with them.
-
-</Slide>
+**And the deflating question applies here too.** Before the bank builds a bespoke architecture, the simpler credible alternatives get their fair run: hand-built network features fed to a plain classifier, an off-the-shelf graph model at modest depth, known-typology rules. The exotic option must beat the boring ones on the bank's own labels, which is the same [matched control](/patterns/how-to-test-a-context-design) discipline that opened this ladder, applied at its top.
 
 ## How this connects back
 
-<Slide journey="ladder/custom-pretraining" id="ca-16">
+Everything below this chapter works **around a fixed model**. This chapter **builds models**. Different budgets, different staff, different risk lifecycle, meeting at a tool boundary.
 
-Now, how does this connect back to agents? The graph model is not the agent. It does not chat. It runs on its own as a scoring system. That system has its own checks on whether the model can be trusted.
-
-The agent reaches the score by asking a small program to fetch it. A program like this is called a tool. It returns the score and the part of the graph behind it.
-
-The agent uses them as evidence in its draft. A person makes the decision.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-17">
-
-This also means two different teams. Every earlier step on this ladder starts from a model that already exists. An engineering team builds around it.
-
-The graph model needs a research team that builds models. That team has its own way of checking and approving models.
-
-These are two different kinds of work. They meet at the tool. Giving the graph model to the agent team is a mistake. So is giving the agent to the graph team.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-18">
-
-Before building a custom graph model, try the simpler options. First, work out a few simple measures of the graph by hand. Then feed them to a simple model.
-
-Second, try a ready-made graph model. Keep it only a few layers deep.
-
-Third, try rules for patterns you already know. Each of these options gets a fair run first.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-23">
-
-Then compare them fairly. Use past cases where you already know the right answer. These are called labelled cases.
-
-The custom model must beat the simple options on your own labelled cases. This is the same fair test used at the start of this ladder.
-
-</Slide>
-
-<Slide journey="ladder/custom-pretraining" id="ca-19">
-
-The same habit applies at every step of this ladder. Find out what is really failing before you spend money. Never assume a bigger version of what you have will fix it.
-
-</Slide>
-
-## What to remember
-
-<Slide journey="ladder/custom-pretraining" id="ca-recap">
-
-Here is what to remember. Building your own foundation model almost never pays. First ask what continued pretraining on the same text would give.
-
-Data made of linked things may need a graph model. That model is a tool the agent calls. A different team builds it.
-
-At every step, find out what is failing before you spend. The rule from the start of this ladder still holds. Change the system before you change the model.
-
-</Slide>
+The instinct, though, transfers all the way down, and it is the instinct this whole ladder teaches: diagnose the structural failure before spending, and never assume a bigger version of what you have will fix it.
 
 <EvidenceBadge status="mixed-evidence" /> The pretraining-mix result is vendor-published research at small model scale, flagged as such. The graph failure modes are standard, well-documented, and not specific to this guide.
 
@@ -238,5 +67,6 @@ At every step, find out what is failing before you spend. The rule from the star
 - The Finetuner's Fallacy, DatologyAI, 18 March 2026 [vendor]: domain mix at 0.1 to 10 percent, models 300M to 3B, 200B-token budget. https://www.datologyai.com/blog/finetuners-fallacy
 - The alternative for almost all readers: [continued pretraining](/ladder/continued-pretraining).
 - The matched-control discipline: [how to test a context design](/patterns/how-to-test-a-context-design).
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

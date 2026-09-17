@@ -4,163 +4,64 @@ icon: "Target"
 description: "How training against a grader works, what makes a grader gameable, why a score above the human ceiling is a defect report, and the narrow class of tasks where this is the right tool."
 ---
 
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-01">
-
-Most training shows a model examples of right answers. Training a model further on examples like these is called fine-tuning. But good judgement is hard to show with examples. There is a kind of fine-tuning that can teach it.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-intro">
-
-The ladder is the order in which to try changes to an agent. The early steps change the system around the model. The later steps change the model itself. Reinforcement fine-tuning is one of those later steps.
-
-First, we look at how training with scores works.
-
-Then we see how the score can go wrong.
-
-Next comes the warning sign to watch for.
-
-Then we see what this training can fix and what it cannot.
-
-Last, we look at where to go next.
-
-</Slide>
+<PlainTerms>
+Every other kind of training shows the model what right looks like. This one lets the model try, scores the attempt, and shifts the model towards what scored well. It can teach judgement in a way examples cannot, because judgement is exactly the thing you cannot fully demonstrate. The catch is the scorer: the model will become excellent at whatever the scorer actually measures, which is not always what you meant it to measure. The entry requirement is a grader that cannot be satisfied without doing the real job.
+</PlainTerms>
 
 ## How training against a grader works
 
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-20">
+The loop: the model generates an attempt at the task, a grader scores it, and training raises the probability of the behaviours that led to high scores. Where supervised <Term k="fine-tuning">fine-tuning</Term> pulls the model towards fixed reference outputs, this pulls it towards whatever scores well, discovered by the model's own exploration.
 
-First, how this training works. Ordinary fine-tuning pulls a model towards fixed right answers. This kind works differently. The model tries the task in its own way. Each attempt gets a score. The model is pulled towards whatever scores well. This is called reinforcement fine-tuning.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-02">
-
-Here is the loop, step by step. First, the model makes an attempt at the task.
-
-Next, something checks the attempt and gives it a score. This checker is called a grader.
-
-Then training makes the behaviour behind high scores more likely. The loop runs again and again.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-03">
-
-This freedom to search is where the power comes from. On some tasks, good answers vary a lot. You cannot list them all as examples. On tasks like these, the model can find ways of working that no example showed.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-21">
-
-This training can also work with few tasks. The company that sells it reported gains from about a hundred graded tasks. Ordinary fine-tuning on that few examples made the model worse. A result a seller reports about its own product is called a vendor result. So this one is flagged as a vendor result.
-
-</Slide>
+That difference is the power and the danger in one mechanism. The power: on tasks where good answers vary and cannot be enumerated, the model can find strategies no example set contained. The reported sample efficiency reflects it: gains from around a hundred graded tasks where supervised fine-tuning at that scale degraded. The danger: the model searches for score, not for your intent, and any gap between the two will be found. Not through anything resembling malice; high-scoring shortcuts are simply reinforced, and the model has far more attempts to find gaps than you spent designing the grader.
 
 ## What makes a grader gameable
 
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-04">
+A grader is gameable when score and competence can be separated. The common gaps:
 
-The same freedom to search also brings a danger. The model chases the score. It does not know what you really meant.
+- **Surface markers.** If well-structured answers with confident phrasing tend to score well, the model learns structure and confidence, detached from correctness.
+- **Length and effort proxies.** If thorough answers score well, expect padding.
+- **An LLM as the judge.** Using another model to grade imports that model's biases as the target, and models have documented preferences for their own family's style. Your own diversity experiment found this the hard way: an effect that existed under a same-family judge vanished under an independent one.
+- **Incomplete coverage.** A grader that checks three properties of a good answer trains a model that optimises those three and neglects the unchecked rest.
 
-Say the score and your real goal differ somewhere. The model will find that gap. It gets far more attempts than you spent building the grader.
+The tasks where grading is safe share one shape: **the outcome is checkable by a program that does not share the model's blind spots.** Code that must compile and pass tests. An extracted figure that must match the filing. A schedule that must satisfy every constraint. Where quality is taste, tone or judgement no program holds, the grader will be a proxy, and the proxy will be gamed.
 
-This is not cheating on purpose. Shortcuts that score well simply become more likely. Getting a high score without doing the real job is called gaming the grader.
+<GuideFigure id="grader-gameability" fullWidth />
 
-</Slide>
+<TeachingIllustration src="/images/ladder/reinforcement-loop-labeled-v2.webp" alt="A model acts, a deterministic checker evaluates the outcome, a reward returns, and an independent human benchmark can trigger an alarm." title="The grader closes the learning loop" caption="Reinforcement fine-tuning works when the real outcome can be checked automatically. The independent human benchmark remains outside the loop so an implausibly high machine score is treated as a grader defect, not a triumph." />
 
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-05">
+## The alarm that belongs in the runbook
 
-Here are four common ways a grader gets gamed. The first is surface style. Say tidy, confident answers score well. Then the model learns to look tidy and confident, right or wrong.
+**When validation reward exceeds what a careful person achieves on the same task, the model has learned the rubric rather than the job.** A score above the human ceiling is a defect report, not a triumph. This is <Term k="reward hacking">reward hacking</Term>, it is well documented in production reinforcement learning, and the correct response is to treat the grader as the broken component.
 
-The second is length. If long answers score well, expect the model to pad them out.
-
-The third is using another AI model to give the score. A model used this way is called a judge. The judge has its own biases. It tends to favour some kinds of answer. That becomes part of the score.
-
-The fourth is checks that miss things. Say the grader checks three things. The model gets good at those three and neglects the rest.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-06">
-
-Judges have one well-known bias. Related models from the same maker form a group called a model family. A model tends to prefer answers in the style of its own family. We saw this in our own experiments. A judge from the same family found a difference. That difference vanished when a judge from another family checked it.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-12">
-
-Gaps can also hide in old records. It is tempting to score a model against decisions people made in the past. But those decisions include people's own mistakes. Say a decision to act gets checked again later. A decision to do nothing is almost never looked at again.
-
-So a wrong decision to do nothing stays hidden. A grader built on these records would teach the model the same blind spots.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-07">
-
-So when is a grader safe? It is safe when a program can check the result. That program must not share the model's blind spots.
-
-Think of code that must pass its tests. Or a figure that must match its source document. Or a schedule that must meet every rule.
-
-Some quality comes down to taste or tone. No program can check that. There, the grader is only a stand-in. And a stand-in will be gamed.
-
-</Slide>
-
-## The warning sign to watch for
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-08">
-
-So how do you spot a grader that is being gamed? Say the model scores higher than a careful person on the same task. Do not treat that as a win. It means the model learned the scoring rules instead of the job. The score works like a reward for the model. So this failure is called reward hacking. When it happens, treat the grader as the broken part.
-
-</Slide>
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-09">
-
-So look after the grader like any important software. Keep track of every change to it. Have someone review each change. Test it. And give it a named owner. A fault in the grader trains the same fault into the model. That model gives no warning. It just scores very well.
-
-</Slide>
+The operational consequence: the grader is production code now. It gets versioning, review, tests and an owner, because a fault in the grader trains a fault into the model, and models trained on a faulty grader do not announce it. They score wonderfully.
 
 ## What it fixes, and what it does not
 
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-17">
+<TeachingIllustration src="/images/ladder/reinforcement-reward-hacking-labeled-v2.webp" alt="A model takes a shortcut through three superficial checks while a stronger evaluation follows a complete evidence network with independent review." title="A narrow score creates a narrow intelligence" caption="If the grader checks only visible features, the model learns to decorate those features and route around the job. Strong evaluation ties several independent checks to source evidence and keeps human review outside the model's influence." />
 
-Now, what can this training fix? It fixes judgement on tasks where a program can check the result. It does not fix format, tone or style. Those are easy to show with examples. Ordinary fine-tuning handles them.
+**Fixes:** judgement and multi-step reasoning on tasks with checkable outcomes. Vendor-published customer results in specialist domains report a 39 percent improvement on tax analysis, 12 points over physician baselines, and 20 percent on citation-extraction F1 [vendor].
 
-It also fixes reasoning over many steps. But it cannot add knowledge the model does not have. It changes how the model behaves. It does not store new facts.
+**Does not fix:** format, tone or style, which are demonstrable and belong to [adapters](/ladder/adapters-and-fine-tuning). And it cannot add knowledge, for the same reason nothing in this deck can except [continued pretraining](/ladder/continued-pretraining): the mechanism shapes behaviour, it does not store facts.
 
-</Slide>
+## At the bank
 
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-10">
+The tempting target is the disposition itself: train the agent to propose "escalate" or "no further action" against historical decisions, which the bank has in the millions. The bank should decline, and working through why teaches more than the successes do.
 
-There are published gains from this training in specialist fields. They come from the company that sells it. They describe its own customers. So they are vendor results.
+**The labels are biased in a specific, known way.** Historical dispositions record what analysts decided, including their errors in both directions. Worse, the ground truth is asymmetric: a report that was filed gets confirmed or rebutted eventually, but an alert closed as "no further action" is almost never re-examined, so false negatives are invisible. A grader built on these labels teaches the model to reproduce the bank's historical blind spots with new confidence. This is the incomplete-coverage gap at institutional scale.
 
-They cover tax analysis and a medical task scored against doctors. They also cover pulling references out of documents.
+**Where the grader is genuinely sound, the bank proceeds.** Two components of the agent's work are checkable by program:
 
-</Slide>
+*Narrative grounding.* Every factual claim in a draft must trace to a retrieved source. A checker verifies claim-by-claim support: amounts match the transaction store, dates match the case file, no claim floats free. That grader cannot be satisfied by fluent invention, only by grounded drafting, so training against it directly attacks the failure mode this vertical fears most.
+
+*Completeness against the typology.* For each typology, the required evidentiary elements are enumerable: the pattern, the period, the counterparties, the expected-activity comparison. A checker verifies each element is present and sourced. Gameable only by actually assembling the evidence, which is the job.
+
+**The human ceiling check, concretely.** Quality assurance analysts agree with each other on narrative grounding roughly 92 to 95 percent of the time. If the trained model's validation score reaches 99 percent, the correct reading is not that the model has surpassed the QA team. It is that the checker has a hole, and the model found it first. The bank's runbook treats that score as an incident.
+
+**The boundary holds.** The disposition stays with the analyst, which is where the blueprint put it. Reinforcement fine-tuning makes the evidence in front of the analyst more complete and more grounded. It does not move the decision.
 
 ## The test
 
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-18">
-
-The last part is where to go next. Say the model's judgement is now right. But it still misreads the material in your field.
-
-Then what is missing is knowledge of your field. You can add it by training the model further on plain text from your field. This is called [continued pretraining](/ladder/continued-pretraining). And once quality is proven, a smaller model can learn to do the job more cheaply.
-
-</Slide>
-
-## What to remember
-
-<Slide journey="ladder/reinforcement-fine-tuning" id="rf-recap">
-
-Here is what to remember. Before you start, you need a grader that only the real job can satisfy.
-
-This training moves the model towards whatever scores well.
-
-So any gap between the score and your goal will be found.
-
-If the model beats a careful person, check the grader first.
-
-This training fixes judgement. It does not add knowledge. Next, we look at continued pretraining.
-
-</Slide>
+If judgement on checkable outcomes is right and the model still misreads your domain's material, the missing piece is [continued pretraining](/ladder/continued-pretraining), which is a different job rather than a higher one. And whatever was trained here, [distillation](/ladder/distillation) can cheapen it once quality is proven.
 
 <EvidenceBadge status="vendor-reported" /> The domain gains are vendor-published customer results, flagged as such. The reward-hacking failure mode and the judge-bias finding are independently documented, the latter in our own published experiments.
 
@@ -170,5 +71,6 @@ This training fixes judgement. It does not add knowledge. Next, we look at conti
 - Reinforcement fine-tuning customer results and sample efficiency (May 2025) [vendor], and the ordering that gates this behind a grader, on [intelligence and learning](/layers/r06-intelligence-and-learning) and in [the decision catalog](/decisions).
 - Reward hacking in production reinforcement learning: covered on [the learning flywheel](/architecture/learning-flywheel).
 - The same-family judge effect vanishing under an independent judge: [diversity, and who consumes the results](/patterns/diversity-and-consumer).
+- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
 
 </details>

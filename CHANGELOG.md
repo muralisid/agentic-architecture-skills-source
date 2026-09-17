@@ -12,6 +12,10 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-09-17
+
+**The intelligence ladder is back to prose and figures.** The nine ladder pages return to the form they had on 11 September: written sections, each with a few illustrations. The slide run described in the 12 September entry is withdrawn. The ladder's slide images are removed from the site. No claim and no source changed. The Memory section is unaffected and stays a run of slides. The 13 September entry describes that form as the ladder's; the ladder no longer uses it. The ladder slides stay in the history at commit cce2644, and the toolkit that made them stays in the repository.
+
 ## 2026-09-13
 
 **A memory architectures section.** Six new pages under Memory: a taxonomy of six memory architectures keyed on what is stored and when a model runs, what the public benchmarks measure and ten ways a score misleads, why a one-million-token context window is not a memory, the ten-million-token question with the enterprise workload beside the best published results, one independent reproduction of a published 100 percent claim, and a dated source register. Each page is a run of slides with its explanation, in the ladder's form, so the same words carry a video. The section describes the industry from primary sources; every vendor number is flagged, vendor numbers are never ranked against each other, and retrieval-only and answered-question scores never share a table. The section recommends no architecture: no published, independently run result shows useful recall over ten million tokens. The R14 layer page's refusal to cite memory-service benchmarks stands for recommendations; the section relaxes it for description under those rules.
