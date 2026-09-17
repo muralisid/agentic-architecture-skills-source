@@ -2,10 +2,12 @@
 title: "Step 2: Context"
 icon: "Library"
 description: "The pipeline from a document to a retrieved answer, why one embedding per document collapses on real material, the measurement that moved retrieval from 0.294 to 0.803 on one corpus with one encoder, and the rules for what an agent remembers."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
-This step decides what the model gets to see. Documents are cut up, turned into numbers, stored, and searched. Every one of those choices changes the answer, and on our own measurements they change it more than anything else available. This page explains the pipeline, the failure that catches almost everyone, what changes when the agent keeps memory, and what it looks like inside a bank. The one thing to remember: a document about several things gets one average summary, and a question about one of those things then matches it only weakly.
+This step decides what the model gets to see. Documents are cut up, turned into numbers, stored, and searched. Every one of those choices changes the answer, and on our own measurements they change it more than anything else available. This page explains the pipeline, the failure that catches almost everyone, what changes when the agent keeps memory, and how it supports an industrial investigation. The one thing to remember: a document about several things gets one average summary, and a question about one of those things then matches it only weakly.
 </PlainTerms>
 
 ## The pipeline, in order
@@ -64,21 +66,15 @@ Four rules follow, and each rests on published evidence.
 
 <TeachingIllustration src="/images/ladder/context-memory-labeled-v1.webp" alt="Working notes in a tray pass through a checkpoint before reaching a filing cabinet of dated record cards, which a thread ties to their original document, with an eraser beside the cabinet." title="What the agent remembers" caption="Working notes last only for the session. Anything kept beyond it passes a check first. A kept memory holds its source and its date, and deletion reaches it like every other copy." />
 
-## At the bank
+## In utilities and mining
 
-The financial crime agent needs the customer's history. That history is exactly the aspect-rich material above: onboarding and identity, expected activity from the customer's stated business, two years of transactions, prior alerts and their dispositions, correspondence, and any prior report filed.
+<TeachingIllustration src="/figures/ladder/industrial-context.svg" mobileSrc="/figures/ladder/industrial-context-mobile.svg" title="Supply evidence for an audit investigation" alt="Question: Which issue recurs?. Sources: Findings and action records. Context: Site, dates, and procedure. Answer: Supported pattern and gaps" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-**One vector per customer file does not work**, for the reason set out above. Each part gets its own representation, and the question decides which is searched.
+An audit investigation needs the original finding, its site and date, the applicable procedure, action history, and closure evidence. A collection of similar sentences can suggest a topic while missing the context needed to explain it.
 
-**Keyword search is doing heavy lifting here**, more than in most domains. Investigations turn on exact strings: account numbers, sort codes, counterparty names, reference fields, sanctions list entries. A near-match on a name is not a match, and getting it wrong in either direction is expensive.
+Retrieve the relevant passages and records using the investigator’s current permissions. Preserve source identifiers and time. Compare matched chunks and keyword search before adding multiple representations. A graph or specialist embedding is useful only if it improves the actual questions.
 
-**Permission filtering happens before the search, not after.** The index carries the access rights of each source, and retrieval is filtered on the analyst's live identity before ranking. Filtering afterwards leaks information: result counts alone tell you something exists that you may not see. In a bank this is not a refinement, it is the difference between a compliant system and a reportable incident.
-
-**More is not better.** Adding documents can reduce accuracy until the corpus is scoped: published work shows accuracy falling below 40 percent until domain-scoped curation fixed it (arXiv 2606.11350). The agent that retrieves fifty documents per alert is usually worse than the one that retrieves eight good ones.
-
-**What the agent remembers is a record.** Notes the agent keeps from earlier alerts on the same customer are durable memory about that customer. They carry their source and date. They wait for review before a later alert relies on them. An erasure request for the customer reaches them too, like every other copy.
-
-**Someone owns the corpus.** Curation labour can be human, automated with sampled audits, or both, but accountability cannot be automated away. In *Moffatt v. Air Canada* (BC Civil Resolution Tribunal, 14 February 2024) the company was liable for its chatbot's statements where they contradicted its actual policy.
+A reviewer should be able to inspect why the evidence supports the proposed pattern. Missing evidence remains a gap. It must not become a confident systemic conclusion. See [systemic audit issues](/use-cases/systemic-audit-issues).
 
 ## Where the depth is
 
@@ -95,13 +91,13 @@ An agent that retrieves the right documents and then draws the wrong conclusion,
 <details>
 <summary>The research behind this page</summary>
 
-- Benchmark repository: [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), with detail on [aspect dilution](/patterns/aspect-dilution), [real prose](/patterns/real-prose) and [what we got wrong](/patterns/what-we-got-wrong).
+- Original context measurements are author-reported experiments; see the [research reports](/research/experiments).
 - Added documents reducing accuracy until curation: arXiv 2606.11350.
 - Keeping raw text and adding derived keys, against replacing it with facts or summaries: LongMemEval, ICLR 2025.
 - Poisoning under 0.1 percent of a memory store: AgentPoison, NeurIPS 2024.
 - Memory tiers, dated facts and quarantine: [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) and [the data-to-memory pipeline](/architecture/data-to-memory).
 - Topics and graphs as derived indexes, not memory: [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) and [CD-1](/decisions#cd-1).
 - *Moffatt v. Air Canada*, BC Civil Resolution Tribunal, 14 February 2024.
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

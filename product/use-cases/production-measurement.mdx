@@ -1,0 +1,50 @@
+---
+title: "Investigate production discrepancies"
+description: "Combine visual measurements with production records to find and explain differences."
+position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+The author described computer-vision work around iron-ore production measurement. This proposed extension investigates inconsistent measurements rather than treating one model output as the final production figure.
+
+## The proposed work
+
+<TeachingIllustration src="/figures/use-cases/production-measurement.svg" mobileSrc="/figures/use-cases/production-measurement-mobile.svg" title="Investigate production discrepancies" alt="Measure: Calibrated visual estimate. Compare: Scales and production records. Investigate: Find the missing explanation. Review: Resolve uncertain evidence. Reconcile: Record the accepted result" caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+
+## Start with evidence
+
+Keep the original image, camera calibration, measurement interval, equipment identity, and uncertainty with the visual estimate. Reconcile it with available weighbridge, belt-scale, survey, or production-system evidence. Volume needs an appropriate density assumption before it becomes an estimate of mass.
+
+## What the agent adds
+
+When the estimates differ materially, an agent can check maintenance events, sensor health, operating interruptions, and record timing. It can request another measurement or prepare a reconciliation case with competing explanations. The accepted production record remains a controlled business decision.
+
+## How the investigation proceeds
+
+Use the size and timing of a discrepancy to choose the next evidence request. For example, a difference only during a camera outage suggests a different check from a difference across every shift. Stop when the discrepancy is explained within an agreed tolerance or needs an engineer.
+
+## Measure the business result
+
+Measure error against an accepted reference, unresolved discrepancy rate, investigation time, and the cost of calibration and review. Compare a fixed reconciliation rule with the adaptive agent. Track the economic effect only after demonstrating that the measurement is reliable.
+
+## Responsibility and failure handling
+
+Do not let generated explanations replace measurements. Preserve units, uncertainty, timing, and every adjustment. Missing or uncalibrated evidence should produce an unresolved case rather than an apparently precise tonnage.
+
+## Start with a bounded trial
+
+Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+
+## Explore the architecture
+
+- [Business & industrial systems](/layers/r05-lob-and-ot).
+- [Systems of record](/layers/r04-systems-of-record).
+- [Data engineering for agents](/layers/r14-agent-data-engineering).
+
+Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+
+## External sources
+
+- [Roboflow Workflows documentation](https://docs.roboflow.com/workflows). Accessed 17 September 2026.

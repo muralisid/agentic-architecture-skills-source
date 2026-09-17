@@ -1,0 +1,34 @@
+---
+title: "Represent places and changes over time"
+description: "Use geospatial similarity while retaining the location and observation period."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/memory/location-and-satellite-data.svg" mobileSrc="/figures/memory/location-and-satellite-data-mobile.svg" title="Represent places and changes over time" alt="Place: Coordinates and asset. Observation: Image date and quality. Representation: Learned surface behavior. Comparison: Find change or similarity. Inspection: Verify the relevant detail" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+
+## A representation can describe more than a photograph
+
+Google’s annual Satellite Embedding dataset describes each 10-meter pixel using 64 dimensions that encode surface conditions over a year. Its documentation supports comparisons between years. That is useful evidence for exploring broad surface change; it does not supply the exact day an event began.
+
+## Keep the time interval explicit
+
+Store the location, start and end of the represented interval, dataset version, and original observation references. Learned seasonal behavior and an exact date answer different questions.
+
+## Match resolution to the decision
+
+A representation of a region can help identify an area worth examining. A particular tree’s clearance from a conductor requires evidence with suitable spatial detail, geometry, and freshness. Do not treat annual regional change as a real-time clearance measurement.
+
+## Combine with the asset map
+
+Join candidate findings to verified network assets and previous inspections. Check coordinate systems and observation quality. Then prioritize a suitable inspection or request better imagery.
+
+## Evaluate against field evidence
+
+Measure how often candidate locations become confirmed findings, what is missed, and whether prioritization improves the existing process. See [vegetation inspection](/use-cases/vegetation-inspection).
+
+## External sources
+
+- [Google Satellite Embedding dataset documentation](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL). Accessed 17 September 2026.

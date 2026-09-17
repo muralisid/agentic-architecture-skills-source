@@ -4,21 +4,25 @@ audience: ["CIO/CTO","Enterprise architect","Supply-chain leader"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Supply Chain and Operations."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "3 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/verticals/utilities-and-energy"
 ---
 
-# Department Blueprint: Supply Chain and Operations
+# Supply chain and operations
 
-As of August 2026. Phase 6. The department the founding metaphor came from.
+A proposed workflow for supply chain and operations. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+A late delivery could stop planned work. The planner must compare inventory, supplier commitments, transport status, and acceptable substitutes.
 
-A distribution business runs an ERP for planning, a WMS in the warehouse, transport management, a supplier base reached by EDI and portals, and a planning team that spends most of its week reconciling exceptions: short shipments, late suppliers, allocation conflicts, and demand signals that disagree.
+![Investigate a delivery exception: Detect the delay, then Gather supply facts, then Compare options, then Approve a change, then Confirm execution.](/figures/blueprints/supply-chain-mobile.svg)
 
-## 2. Agent team design
+## Start with the simplest useful solution
+
+Compare the agent with eRP exception reports, reorder rules, and established planning workflows. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Notes |
 |---|---|---|---|
@@ -27,35 +31,41 @@ A distribution business runs an ERP for planning, a WMS in the warehouse, transp
 | Planning analysis agent | Explains plan variance and demand-signal disagreement with provenance | A2, L2 | Explains; the planner decides |
 | Document processing agent | Extracts and validates shipping, customs and compliance documents | A3, L1 | Parsing fidelity is the ceiling here |
 
-## 3. Planes activated
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
+
+## How the architecture supports the task
 
 Action (**direct**: ERP, WMS and EDI through wrapped APIs), Knowledge (**direct**: parsing fidelity caps everything), Improvement (**direct**), Human, Control, Evidence, Execution (supporting).
 
-## 4. Controls
+## Controls and human decisions
 
-- Idempotency and compensation on every agent-initiated action. A duplicated purchase order is a real cost, and retry behaviour is where duplication comes from.
-- Approval gates by consequence class: quantity and date changes below a threshold flow, commercial terms do not.
-- Supplier-facing communication carries disclosure and is retained.
-- Parsing provenance at page and cell level, because a customs document error is a compliance event.
-- Degraded-mode behaviour specified: the warehouse does not stop when an agent does.
+Require approval for purchases and contractual changes. Prevent repeated tool calls from creating duplicate orders.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-**Per run.** Moderate, with tool fan-out across systems.
+## A useful investigation loop
 
-**Per resolved outcome.** Cost per exception cleared, against the planner's loaded hour. The compounding value is upstream: every exception whose root cause is recorded improves the master data everything else grounds on, which is the slow loop that matters more than the fast one.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-## 6. Honest limits
+## Economics and measures
 
-- **No named-factory case exists of an MES agent taking autonomous production action with measured outcomes.** Widely circulated figures in this space trace to content farms. This blueprint stops at the planning and administrative layer for that reason.
-- Warehouse and shop-floor actuation is R05 territory and carries the OT boundary: agents on the information path, not the control path.
-- Parsing quality caps document processing. Even the best parsers lose at least 14% of retrieval performance against ground-truth structure, so document agents need spot-check metrics rather than trust.
-- Master data quality is usually the real constraint, and no agent fixes it faster than it degrades without an owner.
+Measure delivery recovery, stockouts, rework, duplicate actions, planner effort, and total cost of the chosen remedy.
 
-## 7. Metrics
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-Exception clear rate and rework rate. Duplicate-action rate, which should be zero. Parsing fidelity spot checks. Master data disagreement count, trending down. Supplier response cycle time. Planner hours recovered.
+## Limits to test
 
-## Sources
+A proposed substitute may violate engineering, quality, or contractual requirements. Obtain the relevant approval before changing the plan.
 
-research/R03-integration-fabric/ (idempotency, compensation, EDI), research/R04-systems-of-record/, research/R05-lob-and-ot/ (the OT boundary and the MES finding), research/R14-agent-data-engineering/ (parsing).
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
+
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.
+
+- [Government guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/), December 2025. Additional reading for deployments that interact with industrial systems.

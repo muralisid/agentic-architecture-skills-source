@@ -11,7 +11,7 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { author, repoUrl, siteUrl, sourceRepositoryPublic } from '@/lib/shared';
+import { author, siteUrl } from '@/lib/shared';
 import { articleSchema, jsonLd } from '@/lib/structured-data';
 import { getProvidedFigure } from '@/lib/share-image';
 import { Byline } from '@/components/site/byline';
@@ -55,7 +55,7 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
       />
       <div className="flex flex-row flex-wrap gap-2 items-center border-b pb-6">
         <MarkdownCopyButton markdownUrl={markdownUrl} />
-        <ViewOptionsPopover markdownUrl={markdownUrl} githubUrl={sourceRepositoryPublic ? repoUrl : undefined} />
+        <ViewOptionsPopover markdownUrl={markdownUrl}  />
         {heroFigure ? (
           <a href={`/figures/${heroFigure}.svg`} download className="rounded-full border px-3 py-1.5 text-sm font-medium">
             Download the architecture diagram (SVG)
@@ -73,6 +73,11 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
           />
         </div>
       ) : null}
+      {page.data.position ? <aside className="mt-6 border-l-2 border-ember pl-4 text-sm leading-6" aria-label="Where things stand">
+        <p className="font-semibold">Where things stand</p>
+        <p className="text-fd-muted-foreground">{page.data.position}</p>
+        {page.data.lastReviewed ? <p className="mt-1 text-xs text-fd-muted-foreground">Reviewed {page.data.lastReviewed}</p> : null}
+      </aside> : null}
       <DocsBody className="mt-8">
         <MDX
           components={getMDXComponents({

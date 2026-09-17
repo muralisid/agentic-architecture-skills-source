@@ -48,3 +48,8 @@ Write access follows a trust progression rather than a policy switch: review eve
 ## What to check before signing off
 
 The caller's identity survives every hop; credentials are short-lived and injected; every tool carries an annotation; consequential actions are idempotent with receipts and a compensation path; descriptions are versioned; the audit record names the person; and revocation has been exercised end to end. `references/identity-and-delegation.md` and `references/enforcement.md` carry the detail behind each.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

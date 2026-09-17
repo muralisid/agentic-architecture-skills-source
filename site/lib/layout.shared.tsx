@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { repoUrl, sourceRepositoryPublic } from './shared';
+import { SECTIONS } from './navigation';
 import { Wordmark } from '@/components/site/wordmark';
 
 /**
@@ -10,19 +10,7 @@ import { Wordmark } from '@/components/site/wordmark';
  * plain anchors: a client-side navigation would ask this app for a payload it
  * cannot produce, and prefetching one would fail on every header render.
  */
-export const NAV_LINKS = [
-  { text: 'Architecture', url: '/architecture' },
-  { text: 'Security', url: '/security' },
-  { text: 'Agentic OS', url: '/agentic-os' },
-  { text: 'Ladder', url: '/ladder' },
-  { text: 'Layers', url: '/layers' },
-  { text: 'Decisions', url: '/decisions' },
-  { text: 'Skills', url: '/skills' },
-  { text: 'Patterns', url: '/patterns' },
-  { text: 'Library', url: '/library' },
-  { text: 'Blogs', url: '/content', proxied: true },
-  { text: 'About', url: '/about' },
-] as const;
+export const NAV_LINKS = SECTIONS.map(({ text, url }) => ({ text, url }));
 
 /** Landing page: the floating pill header (components/site/site-header.tsx) reads these. */
 export function baseOptions(): BaseLayoutProps {
@@ -40,7 +28,7 @@ export function baseOptions(): BaseLayoutProps {
       ...('proxied' in rest && rest.proxied ? { external: true } : {}),
     })),
     themeSwitch: { mode: 'light-dark' },
-    ...(sourceRepositoryPublic ? { githubUrl: repoUrl } : {}),
+
   };
 }
 
@@ -48,6 +36,6 @@ export function baseOptions(): BaseLayoutProps {
 export function docsBaseOptions(): Omit<BaseLayoutProps, 'nav'> {
   return {
     themeSwitch: { mode: 'light-dark' },
-    ...(sourceRepositoryPublic ? { githubUrl: repoUrl } : {}),
+
   };
 }

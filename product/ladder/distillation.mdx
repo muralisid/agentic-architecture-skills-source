@@ -2,6 +2,8 @@
 title: "Distillation"
 icon: "ArrowDownWideNarrow"
 description: "How a large model teaches a small one, why learning from distributions beats learning from answers, the repair for fine-tuning's forgetting, and the arithmetic that decides when it pays."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -36,17 +38,15 @@ Distillation is a fixed cost that buys a lower marginal cost. The decision is ar
 
 And one hard rule: **never distil a capability the teacher does not reliably have.** The student learns the teacher's errors with the same fidelity as its skills, minus the scale that occasionally rescued the teacher.
 
-## At the bank
+## In utilities and mining
 
-<TeachingIllustration src="/images/ladder/distillation-two-uses-labeled-v3.webp" alt="Two parallel paths show a large proven model teaching a smaller volume model and a general model restoring faded abilities in a domain model." title="Compression and repair use the same tool differently" caption="For volume, the proven large model teaches a cheaper student. For repair, the pre-training model teaches general capability back into a domain-tuned model. Both students must pass the same locked evaluation gate." />
+<TeachingIllustration src="/figures/ladder/industrial-distillation.svg" mobileSrc="/figures/ladder/industrial-distillation-mobile.svg" title="Test a smaller model for routine evidence work" alt="Teacher: A demonstrated capability. Examples: Representative task outputs. Student: A smaller candidate model. Comparison: Quality and full cost" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-By the previous chapter, the bank had already moved drafting to a small fine-tuned model, and the general-capability eval came back slightly degraded: the adapter improved narratives and cost the model some instruction-following on unrelated tasks.
+Suppose a larger model performs a bounded evidence-extraction task adequately. A smaller model may be worth evaluating for routine cases if the volume and cost justify training and maintenance.
 
-**The repair run.** The bank distils from the original, pre-adapter 7B model as teacher, on a general instruction-following mix, while holding the narrative eval as a guard. The degraded capability recovers; the narrative behaviour stays. This is the standard sequence, not an exotic one: fine-tune, measure the collateral damage, distil it away.
+Build examples with source references and checks. Hold out unusual documents, missing evidence, and conflicting records. Compare the student with the original model and a simpler extraction approach. Route out-of-scope cases to the existing reviewed process.
 
-**The volume case.** Alert triage runs at tens of thousands of items a month, and most of them are routine: assemble context, produce a narrative, propose "no further action" with reasons. The frontier model's quality on routine alerts is not the constraint, its unit cost is. A distilled student handling the routine tier, with a confidence rule escalating the unusual ones to the larger model, cuts the average cost per alert substantially while the escalation path preserves quality where it matters. The split is measured, not guessed: the eval says which alerts the student handles at parity, and the boundary is set there. Whether the saving repays the fixed cost is the arithmetic above, run on the bank's own volume and costs.
-
-**What the bank does not distil.** The disposition proposal on complex cases. That judgement is the part the analysts and regulators care most about, the teacher's own reliability there is the open question of the next chapter, and a cheaper copy of an unproven judgement is a saving nobody asked for.
+Do not assume distillation repairs every regression caused by earlier training. Accept it only when evaluation shows that the required capabilities are retained and the complete operating cost improves.
 
 ## The test
 
@@ -59,6 +59,6 @@ There is no climb from here. Distillation follows the other options rather than 
 
 - On-policy distillation (October 2025), including the pre-fine-tune-teacher repair and the 9 to 30 times training-compute comparison, covered on [intelligence and learning](/layers/r06-intelligence-and-learning).
 - Routing between model tiers and the cost model behind it: [size agent supervision and cost](/layers/r12-observability-and-finops).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

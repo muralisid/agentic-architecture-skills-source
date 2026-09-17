@@ -4,21 +4,25 @@ audience: ["CIO/CTO","Enterprise architect","Banking architecture and risk lead"
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Banking and Financial Services."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "4 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/verticals/manufacturing-and-supply-chain"
 ---
 
-# Vertical Blueprint: Banking and Financial Services
+# Banking and financial services
 
-As of August 2026. Phase 6. The richest regulatory material in the guide, and the vertical where the deterministic boundary was proved rather than argued.
+A proposed workflow for banking and financial services. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+An analyst investigates an account-service or transaction exception. The task needs source records, the relevant policy, and an explanation a reviewer can check.
 
-A retail and commercial bank runs core banking, a customer servicing estate across branch, contact centre and digital, payments infrastructure, a lending origination and servicing chain, and a control stack covering financial crime, model risk, operational resilience and conduct. Every one of those is regulated, and three of them are regulated by different regulators with different reporting timelines.
+![Prepare a reviewable case: Gather the case, then Check source records, then Compare explanations, then Review the decision, then Keep the evidence.](/figures/blueprints/banking-and-financial-services-mobile.svg)
 
-## 2. Agent team design
+## Start with the simplest useful solution
+
+Compare the agent with existing case-management rules and analyst search tools. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Notes |
 |---|---|---|---|
@@ -28,38 +32,39 @@ A retail and commercial bank runs core banking, a customer servicing estate acro
 | Regulatory reporting draft agent | Drafts narrative against governed numbers | A1 to A2, L1 | Drafts. Attestation is deterministic and human |
 | Payment exception agent | Investigates failed and returned payments, proposes remediation | A3, L2 | Remediation executes through mandate-bound authorisation |
 
-## 3. Planes activated
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
+
+## How the architecture supports the task
 
 Control (**direct**: two deterministic zones plus model risk management), Evidence (**direct**: several regimes at once), Knowledge (**direct**), Action (**direct**), Human (**direct**), Improvement (**direct**), Execution (**direct**: sovereignty and classification routing).
 
-## 4. Controls
+## Controls and human decisions
 
-- **Movement of money is deterministic.** Authorisation is a rule over verifiable credentials and scoped mandates; fraud and anomaly models feed it as advisory input. This is not a constraint the guide invented for banks: card networks already work this way, and the 2025 to 2026 agentic payment stack was built independently by three networks, each landing on scoped, revocable, cryptographically bound mandates consumed by deterministic authorisation.
-- **Formal regulatory records are deterministic.** Records regimes mandate accountability and immutable records rather than deterministic generation. Drafting is permitted, attestation is not delegable.
-- **Credit and creditworthiness assessment is Annex III high-risk** under the EU AI Act, with obligations deferred to 2 December 2027. Deferral moves the deadline, not the classification work, and standards lead times run beyond twelve months.
-- Model risk management alignment, which most banks already operate and which absorbs agent governance more cleanly than a parallel AI committee.
-- Operational resilience duties (DORA-class) apply to the agent platform as a critical service, including third-party concentration risk on model providers.
-- Article-12-grade instrumentation for the plausibly high-risk tier; evidence floor everywhere else.
+Keep credit decisions, payment authority, and regulated reporting under the institution's approved controls. Confirm the exact legal requirements for the intended jurisdiction and activity.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-**Per run.** Higher than average: investigation work is retrieval-heavy with wide tool fan-out.
+## A useful investigation loop
 
-**Per resolved outcome.** Cost per alert dispositioned, per case closed, per payment exception cleared, each including the analyst's review minutes. The compliance cost is proportional to classification plausibility, not uniform, which is the point of the tiered posture.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-**The unusual term.** In this vertical, the cost of a wrong outcome is frequently a regulatory finding rather than a customer refund, and that term dominates the model. A business case that omits it is not conservative, it is wrong.
+## Economics and measures
 
-## 6. Honest limits
+Measure review quality, rework, analyst time, customer impact, and completeness of the decision record.
 
-- **Deterministic authorisation does not protect intent formation.** One of the agentic payment protocols was successfully red-teamed via prompt injection operating entirely within mandate bounds. The gate bounds the blast radius; upstream injection defence and human confirmation of intent remain necessary.
-- No published production case exists of an agent holding autonomous credit or payment authority in a regulated bank.
-- Financial crime disposition automation faces a supervisory expectation of human accountability that no published deployment has displaced.
-- The multi-agent incident reporting gap bites hardest here: when several agents contribute to one incident across jurisdictions, no regulation or standard says who reports what.
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-## 7. Metrics
+## Limits to test
 
-Alert disposition rate and quality-assurance failure rate together. False-positive reduction measured against a held-out baseline rather than against the prior year. Analyst review minutes per alert. Payment exception clear rate and duplicate-action rate. Evidence-pack completeness for the plausibly high-risk tier. Regulatory finding count, which is the metric that actually governs.
+This is a design proposal, not evidence of regulatory compliance. A control at execution does not by itself protect against misleading information earlier in the workflow.
 
-## Sources
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
 
-research/R10-security-and-identity/ (deterministic zones, payment stack, intent-formation caveat), research/R11-governance-risk-sovereignty/ (Annex III, Omnibus, records regimes, resilience), research/R04-systems-of-record/, research/R09-experience-and-channels/, research/R06-intelligence-and-learning/ (model risk alignment).
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.

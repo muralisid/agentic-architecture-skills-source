@@ -6,6 +6,8 @@ import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 
 const readerPageSchema = pageSchema.extend({
   video: pageSchema.shape.title.optional(),
+  position: pageSchema.shape.title.optional(),
+  lastReviewed: pageSchema.shape.title.optional(),
   hero_figure: pageSchema.shape.title.optional(),
   // Injected by scripts/sync-content.mjs from the source file's git history.
   datePublished: pageSchema.shape.title.optional(),

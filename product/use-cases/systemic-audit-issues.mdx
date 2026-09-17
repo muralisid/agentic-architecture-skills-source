@@ -1,0 +1,50 @@
+---
+title: "Investigate recurring audit issues"
+description: "Use patterns across sites to ask better questions and test possible systemic causes."
+position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+The author described using topic modeling on audit gaps and action details, particularly geotechnical audits, to look for systemic issues across sites. The proposed agent adds targeted follow-up investigation and tests competing explanations.
+
+## The proposed work
+
+<TeachingIllustration src="/figures/use-cases/systemic-audit-issues.svg" mobileSrc="/figures/use-cases/systemic-audit-issues-mobile.svg" title="Investigate recurring audit issues" alt="Find a pattern: Audit findings and actions. Form a hypothesis: State a possible cause. Seek evidence: Check other sites and dates. Challenge: Look for counterexamples. Report: Explain support and limits" caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+
+## Start with evidence
+
+Keep finding text, site, audit scope, date, severity, action owner, closure evidence, and changes to the audit method. Clustered language is a starting point for investigation, not proof that several sites share a cause.
+
+## What the agent adds
+
+The agent can request maintenance history, inspection records, action closure evidence, or procedure changes relevant to a specific hypothesis. Keep a record of what would disprove the explanation. Check whether apparent recurrence comes from different audit coverage, copied wording, or inconsistent classification.
+
+## How the investigation proceeds
+
+For each hypothesis, specify the missing evidence and the next discriminating question. Search for sites that did not show the issue as well as those that did. Stop when the evidence supports a bounded conclusion, competing explanations remain unresolved, or the investigation budget is exhausted.
+
+## Measure the business result
+
+Measure expert agreement, useful issues discovered, false systemic conclusions, evidence completeness, and investigation effort. Compare with topic modeling plus expert review. A larger number of clusters or retrieved records is not the business outcome.
+
+## Responsibility and failure handling
+
+An engineering or assurance owner decides the response. The agent reports associations and uncertainty, not unproved causation. Keep site permissions and traceability across every combined source.
+
+## Start with a bounded trial
+
+Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+
+## Explore the architecture
+
+- [Intelligence & learning](/layers/r06-intelligence-and-learning).
+- [Governance & risk](/layers/r11-governance-risk-sovereignty).
+- [Data engineering for agents](/layers/r14-agent-data-engineering).
+
+Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+
+## External sources
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629). Accessed 17 September 2026.

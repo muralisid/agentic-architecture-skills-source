@@ -53,3 +53,16 @@ The architectural line sits where information persists past the end of a session
 Artifacts built from many sources at once (cross-document summaries, extracted memories, cluster labels) have no complete published permissions answer. Current practice stamps the intersection of the sources' permissions and re-derives when any of them changes. Say so when it comes up rather than implying the problem is solved.
 
 `references/agent-data-engineering.md` and `references/data-platform.md` carry the engineering detail, the cost figures and the vendor-published claims, each labelled.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [Choose the representation for the question](references/memory-choosing-representations.md): consult when this aspect is part of the task.
+- [Represent how equipment behaves over time](references/memory-time-series.md): consult when this aspect is part of the task.
+- [Represent places and changes over time](references/memory-location-and-satellite-data.md): consult when this aspect is part of the task.
+- [Combine different kinds of evidence](references/memory-combining-evidence.md): consult when this aspect is part of the task.
+- [Keep memory usable and accountable](references/memory-permissions-and-lifecycle.md): consult when this aspect is part of the task.

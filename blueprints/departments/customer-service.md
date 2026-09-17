@@ -4,21 +4,25 @@ audience: ["CIO/CTO","Enterprise architect","Customer-service lead"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Customer Service."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "4 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/departments/finance"
 ---
 
-# Department Blueprint: Customer Service
+# Customer service
 
-As of August 2026. Phase 6. The most publicly visible agent deployment, and the most reversible.
+A proposed workflow for customer service. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+A customer disputes a bill. The agent needs the account record, the applicable tariff or contract, and the earlier conversation.
 
-A consumer business handles contacts across chat, email and voice. Volume concentrates in a narrow set of intents: order status, returns, billing disputes, account changes, and a long tail of everything else. A knowledge base exists. Agents work from macros. Executives have seen a demo promising 70% deflection.
+![Resolve a customer problem: Verify the customer, then Gather account facts, then Explain the issue, then Approve a remedy, then Check resolution.](/figures/blueprints/customer-service-mobile.svg)
 
-## 2. Agent team design
+## Start with the simplest useful solution
+
+Compare the agent with searchable help articles, a billing calculator, and established escalation rules. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Notes |
 |---|---|---|---|
@@ -27,38 +31,39 @@ A consumer business handles contacts across chat, email and voice. Volume concen
 | Account action agent | Executes bounded account changes within the customer's own scope | A3 on reversible actions, A2 on irreversible, L1 | Refunds and commitments are gated. See controls |
 | Agent-assist | Drafts and retrieves for a human handling the tail | A1, L1 | Consistently the highest-return application in the department and the least demoed |
 
-## 3. Planes activated
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
+
+## How the architecture supports the task
 
 Knowledge (**direct**: a governed knowledge base, never model memory), Human (**direct**: escalation to a real queue), Evidence (**direct**: conversations are legal evidence), Action (**direct**), Control (**direct**: a separate edge on the shared control plane), Improvement (**direct**: customer escalations label failures for free, making this the highest-value trace source in the enterprise), Execution (supporting).
 
-## 4. Controls
+## Controls and human decisions
 
-- **Mandatory AI disclosure.** Article 50 transparency duties are enforceable from 2 August 2026. No agent presents as a named human.
-- Customer identity and entitlement checked before any account action; the agent acts strictly within the customer's own scope.
-- Irreversible actions gated: refunds above a threshold, contractual commitments, account closure.
-- Escalation to a real human queue, wired with working-state transfer, **before launch**. Never manufacture containment through queue unavailability.
-- A vulnerable-customer path that bypasses the agent.
-- Full conversation retention as legal evidence.
-- Hardening for the public prompt-injection surface. Users here are anonymous and sometimes adversarial, unlike authenticated employees under an acceptable-use policy.
+Require account verification before disclosure. Apply refund limits outside the model. Let the customer reach a person.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-**Per run.** Roughly an order of magnitude below a human contact. Outcome-priced offerings list between $0.99 and $2.00 per automated resolution against a $6 to $12 human-handled comparator, all vendor list pricing as of mid-2026.
+## A useful investigation loop
 
-**Per resolved outcome.** Divide by resolution, and track repeat-contact rate beside it. A conversation that ends without escalation scores as contained whether the customer was helped or gave up, and re-contact multiplies true cost per issue while the dashboard improves.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-## 6. Honest limits
+## Economics and measures
 
-- **Every documented reversal of an AI-first service programme set a containment or headcount target.** This is the strongest single finding in the department and it is a target-setting failure, not a technology failure.
-- 74% of surveyed senior decision-makers had already rolled back or shut down a customer AI communications agent after a governance failure, rising to 81% among organisations with mature guardrails. Maturity correlates with catching failures, not avoiding them.
-- **Statements here bind externally.** A tribunal held a company responsible for what its chatbot told a customer, rejecting the argument that the chatbot was a separate legal entity. A 2026 German appellate decision held that a chatbot is part of corporate communication rather than a third party, that liability attaches regardless of training-data provenance, and that general disclaimers do not provide sufficient protection.
-- **No credible independent escalation-rate benchmark exists** as of mid-2026. The guide states the absence rather than repeating circulating figures.
-- No independent production accuracy figures exist for voice agents; published latency distributions come from small vendor samples.
+Measure resolution and repeat contact together, time to a person, disputed answers, and cost per resolved issue.
 
-## 7. Metrics
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-Resolution rate. Repeat-contact rate within a defined window. Escalation by trigger. Containment reported only alongside resolution, never alone. Time to human when escalation fires. Complaint and regulator-contact rate. Cost per resolved issue.
+## Limits to test
 
-## Sources
+A contained conversation is not necessarily a resolved issue. Test difficult cases, language differences, and incorrect source records.
 
-research/R09-experience-and-channels/findings.md and sources.md. Disclosure duties: research/R11-governance-risk-sovereignty/. Trace value: [../../synthesis/learning-loops-map.md](../../synthesis/learning-loops-map.md).
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
+
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.

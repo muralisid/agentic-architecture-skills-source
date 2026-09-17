@@ -26,6 +26,14 @@
         {
           "route": "/decisions",
           "as": "decision-catalog.md"
+        },
+        {
+          "route": "/architecture/system-view",
+          "as": "architecture-system-view.md"
+        },
+        {
+          "route": "/architecture/software-for-agents",
+          "as": "architecture-software-for-agents.md"
         }
       ]
     },
@@ -70,6 +78,10 @@
         {
           "route": "/library/architecture/archetype-grid",
           "as": "enterprise-archetypes.md"
+        },
+        {
+          "route": "/use-cases/enterprise-transformation",
+          "as": "use-cases-enterprise-transformation.md"
         }
       ],
       "scripts": [
@@ -105,6 +117,38 @@
         {
           "route": "/library/blueprints/departments/finance",
           "as": "blueprint-finance.md"
+        },
+        {
+          "route": "/use-cases/choose-where-to-start",
+          "as": "use-cases-choose-where-to-start.md"
+        },
+        {
+          "route": "/use-cases/safety-coaching",
+          "as": "use-cases-safety-coaching.md"
+        },
+        {
+          "route": "/use-cases/vegetation-inspection",
+          "as": "use-cases-vegetation-inspection.md"
+        },
+        {
+          "route": "/use-cases/compliance-evidence",
+          "as": "use-cases-compliance-evidence.md"
+        },
+        {
+          "route": "/use-cases/production-measurement",
+          "as": "use-cases-production-measurement.md"
+        },
+        {
+          "route": "/use-cases/systemic-audit-issues",
+          "as": "use-cases-systemic-audit-issues.md"
+        },
+        {
+          "route": "/use-cases/commercial-growth",
+          "as": "use-cases-commercial-growth.md"
+        },
+        {
+          "route": "/use-cases/water-operations",
+          "as": "use-cases-water-operations.md"
         }
       ]
     },
@@ -153,6 +197,26 @@
         {
           "route": "/patterns",
           "as": "retrieval-recommended-approach.md"
+        },
+        {
+          "route": "/memory/choosing-representations",
+          "as": "memory-choosing-representations.md"
+        },
+        {
+          "route": "/memory/time-series",
+          "as": "memory-time-series.md"
+        },
+        {
+          "route": "/memory/location-and-satellite-data",
+          "as": "memory-location-and-satellite-data.md"
+        },
+        {
+          "route": "/memory/combining-evidence",
+          "as": "memory-combining-evidence.md"
+        },
+        {
+          "route": "/memory/permissions-and-lifecycle",
+          "as": "memory-permissions-and-lifecycle.md"
         }
       ]
     },
@@ -201,6 +265,10 @@
         {
           "route": "/layers/r12-observability-and-finops",
           "as": "observability-and-finops.md"
+        },
+        {
+          "route": "/use-cases/value-and-investment",
+          "as": "use-cases-value-and-investment.md"
         }
       ]
     },
@@ -257,6 +325,14 @@
         {
           "route": "/library/architecture/vision-and-target-state",
           "as": "12-vision.md"
+        },
+        {
+          "route": "/architecture/system-view",
+          "as": "architecture-system-view.md"
+        },
+        {
+          "route": "/architecture/task-walkthrough",
+          "as": "architecture-task-walkthrough.md"
         }
       ]
     },
@@ -397,6 +473,14 @@
         {
           "route": "/library/techniques/when-a-knowledge-graph-earns-its-keep",
           "as": "10-technique-knowledge-graphs.md"
+        },
+        {
+          "route": "/memory/choosing-representations",
+          "as": "memory-choosing-representations.md"
+        },
+        {
+          "route": "/memory/changing-facts",
+          "as": "memory-changing-facts.md"
         }
       ]
     }

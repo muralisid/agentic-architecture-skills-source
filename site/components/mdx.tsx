@@ -1,3 +1,4 @@
+import { ArchitectureMap } from '@/components/visuals/architecture-map';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import type { MDXComponents } from 'mdx/types';
@@ -27,6 +28,7 @@ export function getMDXComponents(components?: MDXComponents) {
     h2: H2WithIcon,
     h3: H3WithIcon,
     table: ResponsiveTable,
+    ArchitectureMap,
     ComparisonFigure,
     EvidenceBadge,
     GlossaryTerm,

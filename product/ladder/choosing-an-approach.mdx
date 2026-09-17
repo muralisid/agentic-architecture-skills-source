@@ -1,0 +1,32 @@
+---
+title: "Choose what to change"
+description: "Diagnose the failure before choosing a model or training method."
+position: "Diagnostic guidance. Each proposed change needs a matched evaluation, not an assumed benefit."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/ladder/capability-choice.svg" mobileSrc="/figures/ladder/capability-choice-mobile.svg" title="Choose the change that fits the problem" alt="Observe a failure: Use a real task. Locate the cause: Information, tool, model. Try a small change: Keep a matched baseline. Measure the result: Quality, time, cost. Release or revise: Keep the ability to undo" caption="More training is one option. A better tool or clearer evidence may solve the same problem." />
+
+## Start with a failed task
+
+Keep the request, allowed actions, evidence available at the time, tool results, and observed outcome. Ask the domain owner what a successful result would have looked like. A vague complaint such as “the agent is unreliable” is not enough to select a remedy.
+
+## Check the information
+
+Could the agent access the correct source? Was the information current and did it survive parsing? If the needed evidence never reached the model, additional training may hide rather than repair the failure. Try a controlled test with the correct evidence supplied.
+
+## Check the task and tools
+
+Was the instruction ambiguous? Could the tools perform the required operation? Did the agent distinguish a submitted request from a completed action? Inspect tool errors, permissions, and retry behavior before changing the model.
+
+## Check the workflow
+
+A known sequence may be better expressed as a workflow. An investigation with uncertain next steps may benefit from a bounded agent loop. Use several agents only when specialization or independent work improves the measured result.
+
+## Then assess model adaptation
+
+If the task, evidence, and tools are adequate, compare model choice, examples, fine-tuning, and other adaptation methods. Use held-out tasks and include maintenance cost. A new model that improves an automated score but creates more expert review is not an unqualified improvement.
+
+See [the full set of methods](/ladder), [context design](/patterns/how-to-test-a-context-design), and [business economics](/use-cases/value-and-investment).

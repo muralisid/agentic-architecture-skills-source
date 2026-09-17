@@ -1,0 +1,36 @@
+---
+title: "From information to usable memory"
+description: "Preserve the evidence while making it easier to find and use."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/memory/information-to-memory.svg" mobileSrc="/figures/memory/information-to-memory-mobile.svg" title="From information to usable memory" alt="Collect: Original records and media. Identify: Entity, source, and time. Prepare: Parse and check quality. Represent: Index for the task. Maintain: Update, correct, remove" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+
+## Start with the original
+
+Keep a stable source reference and the evidence that supports a derived fact. For a document, this may be a page and passage. For a video, it is a clip and time interval. For a sensor, it is the readings, units, and observation window.
+
+## Check before adding intelligence
+
+Resolve the asset or customer identity. Check timestamps, permissions, and quality. Separate missing information from a confirmed negative finding. If parsing loses a table heading or unit, a later model may produce a fluent but incorrect interpretation.
+
+## Prepare for a particular task
+
+Use chunks, extracted fields, relationships, or representations where they help a known question. Retain the original evidence alongside summaries or extracted facts so a reader can inspect details that extraction omitted.
+
+## Govern durable memory
+
+Task context is temporary working material. Information retained for future tasks needs an owner, a purpose, a retention decision, and an update path. A proposed lesson from one run is not automatically an approved policy.
+
+## Verify the complete path
+
+Test a question whose answer changed, a record the user cannot access, a deleted source, and a question the evidence cannot answer. The result should respect the source state, not simply return the closest match.
+
+Continue to [representations](/memory/choosing-representations) and [lifecycle](/memory/permissions-and-lifecycle).
+
+## External sources
+
+- [LandingAI document grounding, vendor documentation](https://landing.ai/llms/visual-grounding-and-auditability-how-landingai-ade-makes-every-extraction-defensible). Accessed 17 September 2026.

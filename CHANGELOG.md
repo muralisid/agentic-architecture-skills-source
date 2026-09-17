@@ -12,6 +12,10 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-09-17 audience revision
+
+Six reader entrances; business and architecture starting points; industrial use cases; expanded multimodal memory articles and responsive illustrations; updated department proposals; research status and evidence labelling; updated skill bundles. The earlier same-day entry below describes the previous state. Memory no longer uses slide runs. No new experiment results are claimed.
+
 ## 2026-09-17
 
 **The intelligence ladder is back to prose and figures.** The nine ladder pages return to the form they had on 11 September: written sections, each with a few illustrations. The slide run described in the 12 September entry is withdrawn. The ladder's slide images are removed from the site. No claim and no source changed. The Memory section is unaffected and stays a run of slides. The 13 September entry describes that form as the ladder's; the ladder no longer uses it. The ladder slides stay in the history at commit cce2644, and the toolkit that made them stays in the repository.

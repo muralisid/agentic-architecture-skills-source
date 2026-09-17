@@ -57,3 +57,13 @@ Two rules travel with every answer drawn from this material.
 ## What this reference refuses to say
 
 It publishes no timeline, no human-to-agent supervision ratio, and no build-versus-buy figures, because the evidence for those does not exist in a citable form. Six cross-cutting concerns have no complete published answer anywhere and are marked as open rather than papered over. Products are named for orientation as of the date on the wall chart, are representative rather than exhaustive, and are not endorsements. Where a number comes from a vendor, the text says so.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [The seven responsibilities of an agentic enterprise](references/architecture-system-view.md): consult when this aspect is part of the task.
+- [Follow one inspection task](references/architecture-task-walkthrough.md): consult when this aspect is part of the task.

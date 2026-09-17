@@ -48,3 +48,19 @@ The department blueprints in `references/` show the shape end to end: `blueprint
 ## Record the decision
 
 For each candidate: the resolved outcome and its value, the evaluability verdict with the eval owner, the zone check, the grounding status, the autonomy level being requested, and the kill criteria. `references/autonomy-contract.md` states the controls each level requires, which is what the request is actually asking for.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [Choose where to start](references/use-cases-choose-where-to-start.md): consult when this aspect is part of the task.
+- [Safety coaching from CCTV events](references/use-cases-safety-coaching.md): consult when this aspect is part of the task.
+- [Prioritize vegetation inspections](references/use-cases-vegetation-inspection.md): consult when this aspect is part of the task.
+- [Collect and check compliance evidence](references/use-cases-compliance-evidence.md): consult when this aspect is part of the task.
+- [Investigate production discrepancies](references/use-cases-production-measurement.md): consult when this aspect is part of the task.
+- [Investigate recurring audit issues](references/use-cases-systemic-audit-issues.md): consult when this aspect is part of the task.
+- [Turn delivery knowledge into new opportunities](references/use-cases-commercial-growth.md): consult when this aspect is part of the task.
+- [Investigate a water-network anomaly](references/use-cases-water-operations.md): consult when this aspect is part of the task.

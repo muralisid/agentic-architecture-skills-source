@@ -1,0 +1,36 @@
+---
+title: "Keep memory usable and accountable"
+description: "Give retained information an owner, access rules, and a working update and removal process."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/memory/permissions-and-lifecycle.svg" mobileSrc="/figures/memory/permissions-and-lifecycle-mobile.svg" title="Keep memory usable and accountable" alt="Source: Owner and permission. Derived data: Track every transformation. Access: Check the current caller. Change: Update or invalidate. Removal: Verify affected copies" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+
+## Start with ownership
+
+Identify who can authorize the use of a source and who maintains its quality. Keep the permitted purpose and retention requirements with the information. A derived vector or summary should not become a route around source access rules.
+
+## Check access during retrieval
+
+Use the current caller and task authority when selecting evidence. Account for stale permissions and changed membership. Do not reveal restricted source details through explanations, search previews, or diagnostic traces.
+
+## Treat new memories as proposals
+
+An agent may suggest retaining an observation. Check its source, purpose, sensitivity, and reliability before allowing it to affect later tasks. Evidence that a task succeeded once does not automatically justify a new organizational rule.
+
+## Follow the derivatives
+
+Track the raw record, extracted fields, indexes, summaries, caches, and relevant evaluation copies. Corrections and removal requests need a defined route through those derivatives. Where retention duties conflict, follow the approved policy rather than letting the model improvise.
+
+## Keep unresolved issues visible
+
+A summary derived from several sources may be hard to separate when one permission changes. Re-derivation or more restrictive access can be necessary. State the limitation and test the actual implementation.
+
+Use [data engineering for agents](/layers/r14-agent-data-engineering), [identity and access](/architecture/identity-chain), and the [knowledge-pipeline skill](/skills).
+
+## External sources
+
+- [NIST AI Risk Management Framework Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook). Accessed 17 September 2026.

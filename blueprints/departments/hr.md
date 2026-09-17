@@ -4,21 +4,25 @@ audience: ["CIO/CTO","Enterprise architect","HR leader"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for HR and People."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "4 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/departments/sales"
 ---
 
-# Department Blueprint: HR and People
+# HR and people
 
-As of August 2026. Phase 6. The department where the agent is subject to employment law as well as AI law.
+A proposed workflow for hr and people. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+An employee asks which leave policy applies to a particular location and contract. The answer depends on current policy and access-controlled employee information.
 
-An HR function runs recruitment, onboarding, employee query handling, performance and development cycles, and workforce reporting. Employee queries are high volume and highly repetitive. Recruitment is high volume and high consequence. Both look like obvious agent candidates and they sit on opposite sides of a legal line.
+![Answer an employee policy question: Verify access, then Find current policy, then Check applicability, then Review exceptions, then Explain next steps.](/figures/blueprints/hr-mobile.svg)
 
-## 2. Agent team design
+## Start with the simplest useful solution
+
+Compare the agent with a maintained policy search and a structured employee-service form. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Notes |
 |---|---|---|---|
@@ -27,36 +31,39 @@ An HR function runs recruitment, onboarding, employee query handling, performanc
 | Recruitment screening assistant | Summarises applications against stated criteria, surfaces evidence | A1, L0 | Deliberately the lowest position in any blueprint in this guide. See controls |
 | Workforce insight agent | Analyses aggregate workforce data for planning | A2, L1 | Aggregate only. Individual-level inference is a different product with different duties |
 
-## 3. Planes activated
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
+
+## How the architecture supports the task
 
 Knowledge (**direct**), Control (**direct**), Evidence (**direct**: consultation records as well as action logs), Human (**direct**), Action (supporting), Improvement (supporting), Execution (supporting).
 
-## 4. Controls
+## Controls and human decisions
 
-- **Recruitment screening and employment decisions sit in the EU AI Act's Annex III high-risk category.** The AI Omnibus deferred those obligations to 2 December 2027, which changes the deadline and not the classification work. Standards lead times run beyond twelve months, so classification work starts now.
-- **Merely formal human participation is not sufficient.** A human who rubber-stamps a ranked list has not exercised oversight, and regulator guidance says so directly. Design the review so the human can reach a different answer, which means showing the evidence rather than the score.
-- **The provider-flip trap.** Substantially modifying a purchased system, or putting your own name on it, can make you its provider rather than its deployer, with the heavier obligation set. This is an architecture constraint from the first decision, not a procurement footnote.
-- **Co-determination duties.** In several European jurisdictions, introducing systems capable of monitoring employee performance triggers works-council rights independently of AI law. The published boundary case turned on capability rather than intent.
-- Worker data in supervision and monitoring telemetry carries its own consultation duties. Monitoring the monitors is itself monitoring.
-- The portable contract clause worth knowing: **no discipline based solely on the system's output.** It appears across otherwise very different bargaining architectures and travels well into policy even where no union is present.
+Separate policy assistance from employment decisions. Route hiring, performance, disciplinary, and disputed eligibility decisions to accountable people.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-**Per run.** Low. Query handling is retrieval-shaped.
+## A useful investigation loop
 
-**Per resolved outcome.** Cost per query resolved, with the HR business partner's time as the comparator. The recruitment agents are not costed on efficiency at all: their business case is consistency and evidence quality, and an efficiency case for screening automation is a signal that the classification work has not been done.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-## 6. Honest limits
+## Economics and measures
 
-- **Consultation does not slow adoption.** The counterintuitive finding: EU adoption runs at 79% against 90% in the US, with staff resistance the second-most-cited reason for non-adoption, and the Commission naming "contested adoption" as the failure mode. Early consultation is faster than late consultation, not slower.
-- Formal AI clauses in collective agreements remain rare while informal consultation is common. The absence of a clause is not the absence of a duty.
-- No published evidence supports agent autonomy in performance or disciplinary decisions, and the guide recommends against building it.
-- Employee-facing agents inherit the R08 finding: they will improve solitary work such as query handling and will not change coordinated work such as performance cycles, because changing those requires agreeing new norms.
+Measure correct policy application, reopened requests, stale answers, access violations, and employee effort.
 
-## 7. Metrics
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-Query resolution and reopen rate. Corpus freshness against policy change. Escalation rate to HR business partners. For recruitment: reviewer override rate, which should be materially above zero, because a near-zero override rate is evidence of rubber-stamping rather than of accuracy. Consultation records completeness.
+## Limits to test
 
-## Sources
+A policy answer may depend on local rules or individual agreements. The design requires a jurisdiction and employment-policy review before use.
 
-research/R13-operating-model/findings.md (co-determination, union architectures, the consultation finding), research/R11-governance-risk-sovereignty/ (Annex III, the Omnibus deferral, the provider flip), research/R08-productivity-and-collaboration/, research/R04-systems-of-record/ (HRIS).
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
+
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.

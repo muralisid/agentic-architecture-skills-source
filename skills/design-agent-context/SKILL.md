@@ -58,3 +58,13 @@ Search rather than read end to end: `grep -n "nDCG@10" references/*.md` finds th
 Every figure traces to a named experiment artifact. Differences of about 0.03 nDCG@10 on a few hundred queries are small but real when the paired test says so, and the pages give intervals rather than point estimates alone. The encoders were small, the corpora ran to twenty thousand documents, and everything was in English: say so when a claim is carried into a different setting.
 
 Four things this evidence does not support, and which should not be asserted: that alignment rather than capacity explains the multi-vector benefit; that the two-pass cost advantage widens with corpus size; that the gate is where the saving comes from; and that the right amount of diversity depends on whether a model or a person reads the results.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [Choose the representation for the question](references/memory-choosing-representations.md): consult when this aspect is part of the task.
+- [Remember facts that change](references/memory-changing-facts.md): consult when this aspect is part of the task.

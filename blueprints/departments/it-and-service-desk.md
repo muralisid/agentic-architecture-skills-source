@@ -4,23 +4,25 @@ audience: ["CIO/CTO","Enterprise architect","IT and service-management lead"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for IT and Service Desk."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "4 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/departments/customer-service"
 ---
 
-# Department Blueprint: IT and Service Desk
+# IT and service desk
 
-As of August 2026. Phase 6. Internal-facing, and the department where production agents actually concentrate.
+A proposed workflow for it and service desk. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+A colleague cannot access an approved application. The service team needs to distinguish a missing entitlement from an outage or a device fault.
 
-A mid-sized enterprise runs roughly 40,000 service desk tickets a quarter. Password and access requests, software provisioning, VPN and connectivity, laptop and peripheral faults, and a long tail of application questions. Tier 1 resolves the routine, escalates the rest, and the escalation queue is where the expensive time goes. Knowledge articles exist, are partly stale, and nobody owns them.
+![Resolve a service request: Check identity, then Read service history, then Diagnose the request, then Approve the change, then Confirm recovery.](/figures/blueprints/it-and-service-desk-mobile.svg)
 
-This is the first place most enterprises put agents, and the adoption data supports the instinct: software engineering, IT operations and the service desk are where production agents concentrate. It is also the department where the guide's own advice most cleanly applies, because the work is internal, the failures are contained, and success is objectively measurable.
+## Start with the simplest useful solution
 
-## 2. Agent team design
+Compare the agent with a current knowledge article and a rules-based request form. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Why here |
 |---|---|---|---|
@@ -29,9 +31,9 @@ This is the first place most enterprises put agents, and the adoption data suppo
 | Provisioning agent | Executes bounded, reversible fulfilment: group membership, licence assignment, software deployment | A3, L1 | Deliberately L1. Provisioning is where a learned shortcut becomes an entitlement error |
 | Diagnostic agent | Correlates telemetry, reproduces, proposes a fix with evidence | A2, L2 | Proposes only. The human applies |
 
-**Access provisioning is a deterministic zone.** The provisioning agent gathers context, checks policy, assembles the request and can execute a pre-approved pattern; it does not decide entitlement. That decision is made by a rule over verifiable attributes, outside the model. This is the single most important design line in the blueprint, and it is the one most often crossed because provisioning automation looks like a workflow problem.
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
 
-## 3. Planes activated
+## How the architecture supports the task
 
 | Plane | Role |
 |---|---|
@@ -43,33 +45,33 @@ This is the first place most enterprises put agents, and the adoption data suppo
 | Execution | Supporting. Retrieval-grade isolation is sufficient; no code execution needed |
 | Human | **Direct.** Tier 2 becomes the exception queue, and its shape changes |
 
-## 4. Controls
+## Controls and human decisions
 
-- Agents act as the requesting user through wrapped ITSM and identity APIs. Entitlement stays in the identity platform. No service-account agents.
-- Deterministic policy decision on every provisioning action, evaluated in the tool-call path.
-- Knowledge corpus with a named owner and a review cadence. Stale grounding here produces confidently wrong answers about policies that changed.
-- ACLs propagated into the index: a service desk corpus contains HR, security and finance content that not every requester may see.
-- Kill switch at the gateway, drilled. Provisioning is the fastest way for an agent error to become an access incident.
+Never approve your own privilege increase. Check entitlement in the identity system before every change.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-**Per run.** Retrieval-heavy, short loops, low multiplier. This is among the cheapest agent workloads in the enterprise.
+## A useful investigation loop
 
-**Per resolved outcome.** Divide by tickets genuinely resolved, not by tickets closed without escalation. The service desk equivalent of the containment trap is auto-closure, and reopen rate is the metric that exposes it. Include Tier 2 supervision minutes.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-**The honest comparator.** The published deployment closest to this shape had agent-eligible conversations under 10% of total volume, and within that subset the agent completed 35% without a human taking over. Build the business case on that shape rather than on a deflection-rate target, and the programme survives its first quarter of measurement.
+## Economics and measures
 
-## 6. Honest limits
+Measure successful recovery, reopened tickets, time to human support, and specialist review minutes.
 
-- **The long tail does not automate.** The routine is where the value is; the tail is where the tickets that hurt live, and it is tail work that Tier 2 actually does.
-- **Auto-closure is measurable and meaningless.** It is containment wearing a different name.
-- **Knowledge corpora rot fastest here** because IT policy changes constantly. A corpus without an owner degrades to worse than no corpus, and the accuracy evidence is direct: an uncurated corpus grew from 54 to over 1,100 documents and accuracy fell from 75% to under 40% until domain scoping fixed it.
-- **No published comparison exists** of embedded ITSM-vendor agents against external agents on identical ticket sets, so platform arguments here rest on architecture rather than outcome data.
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-## 7. Metrics
+## Limits to test
 
-Resolution rate and reopen rate together, never resolution alone. Escalation mix by trigger. Time to resolution at the 90th percentile, not the mean, because the mean hides the tail this blueprint cannot automate. Corpus freshness against policy change lag. Refusal rate, which should be non-zero and stable. Tier 2 supervision minutes per resolved ticket, trending down.
+A ticket marked closed does not prove the colleague can work. Diagnose unfamiliar failures with a specialist.
 
-## Sources
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
 
-research/R04-systems-of-record/, research/R06-intelligence-and-learning/, research/R09-experience-and-channels/ (the containment lesson transfers), research/R10-security-and-identity/, research/R13-operating-model/, research/R14-agent-data-engineering/.
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.

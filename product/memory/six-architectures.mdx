@@ -2,15 +2,19 @@
 title: "Six ways to build a memory"
 icon: "LayoutGrid"
 description: "A taxonomy of agent memory architectures keyed on two facts: what is stored, and when a model runs. Every named system placed, the managed cloud services beside them, and the three product shifts of 2026 that all point the same way."
+datePublished: "2026-09-13"
+dateModified: "2026-09-17"
 ---
 
-<Slide journey="memory/six-architectures" id="ma-01">
+<TeachingIllustration src="/figures/memory/six-memory-designs.svg" mobileSrc="/figures/memory/six-memory-designs-mobile.svg" title="Six memory designs" alt="Compare original records, extracted facts, relationships, summaries, agent notes, and learned representations using a pump maintenance example." caption="Choose what must remain recoverable. These designs can be combined; they are not stages everyone must adopt." />
+
+<span id="ma-01" />
 
 A memory for an agent can be built in six ways. It can keep the original words. It can keep a summary, or a list of facts a model pulled out. It can keep a web of who relates to what. It can let the agent write its own notes. Or it can bake what was learned into the model itself. Each choice decides what can be found later, and what is thrown away on the way in.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-intro">
+
+<span id="ma-intro" />
 
 First, the two questions that place any memory system. Then the six classes those questions produce.
 
@@ -18,11 +22,11 @@ Then where the named systems sit, about forty of them. Then the four managed ser
 
 Then three product moves in 2026 that all point the same way. Last, the research line that puts memory inside the model, with no product yet.
 
-</Slide>
+
 
 ## Two questions place any system
 
-<Slide journey="memory/six-architectures" id="ma-axis1">
+<span id="ma-axis1" />
 
 The first question is what is persisted. At one end, the original text, unchanged. At the other end, the model's own weights.
 
@@ -30,9 +34,9 @@ In between sit summaries, extracted facts, and graphs of entities and relations.
 
 Transformation makes the store smaller and cheaper to read. It also throws away whatever the transformer did not think mattered. That loss is silent, and no later search recovers it.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-axis2">
+
+<span id="ma-axis2" />
 
 The second question is when a model runs. Some systems run a model at write time, once per document. They pay once and read cheaply.
 
@@ -42,9 +46,9 @@ Some run a model in the background, between tasks. They pay continuously and hop
 
 And some produce the memory by training. The model reads it implicitly, in the forward pass. Where the intelligence is spent is where the cost sits.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-tiers">
+
+<span id="ma-tiers" />
 
 This guide already grades memory by how long it is kept. Those are the tiers, M1 to M5. The tier decides the governance: ownership, consent, retention and erasure.
 
@@ -52,31 +56,31 @@ The six classes on this page are different. They describe how a store at any tie
 
 Both are needed. The tier says what duties attach. The class says what can be recalled.
 
-</Slide>
+
 
 ## The six classes
 
-<Slide journey="memory/six-architectures" id="ma-six">
+<span id="ma-six" />
 
-Class one keeps the original text with a search index and no model at write time. Class two keeps facts and profiles that a model pulled out of each conversation.
+Class one keeps the original text with a search index without generative extraction at write time. Class two keeps facts and profiles that a model pulled out of each conversation.
 
 Class three keeps entities and relations as a graph. Each relation can carry the dates it held. Class four keeps summaries at one or more levels of abstraction.
 
 Class five lets the agent itself read and write memory files through tool calls. Class six puts the memory in weights or caches, written by training. We take them one at a time.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-c1">
 
-Class one stores the original text, unchanged. It is indexed by embeddings, and usually by keywords too. No model runs at write time.
+<span id="ma-c1" />
 
-Nothing is lost on the way in. Ingestion is the cheapest there is. Exact names and quotations stay findable.
+Class one stores the original text, unchanged. It is indexed by embeddings, and usually by keywords too. No generative model extracts or summarizes the records at write time; an embedding model may still create the index.
 
-The cost comes later. Nothing is consolidated, so the same fact appears every place it was said. And the encoder reads only the first few hundred words of each unit. Long units are cut short.
+Keeping the original records preserves details for later inspection. Indexing and access control still have costs. Exact names and quotations remain available to lexical search.
 
-</Slide>
+The cost comes later. Nothing is consolidated, so the same fact appears every place it was said. Each encoder has an input limit. Verify how the chosen model handles long units and whether ingestion truncates them.
 
-<Slide journey="memory/six-architectures" id="ma-c2">
+
+
+<span id="ma-c2" />
 
 Class two runs a model at write time. The model pulls out atomic facts, notes, or a profile of the person.
 
@@ -84,9 +88,9 @@ The store is small, readable, and easy to update. A profile can be injected whol
 
 The loss is silent and permanent. Whatever the extractor did not think mattered is not in the memory. This is the class most commercial memory layers chose in 2025.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-c3">
+
+<span id="ma-c3" />
 
 Class three also runs a model at write time. It extracts entities, relations and facts, and stores them as nodes and edges. Often each edge carries the dates it was true.
 
@@ -94,9 +98,9 @@ Retrieval can walk the graph. That buys relationship questions, what was true wh
 
 It costs a model call per document. It adds a second database to run. And on plain factual questions, a sparse graph can do worse than simple retrieval.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-c4">
+
+<span id="ma-c4" />
 
 Class four keeps summaries. Sometimes at several levels, from a paragraph up to the whole corpus. Sometimes as compressed observations that stay in the model's context.
 
@@ -104,9 +108,9 @@ This buys questions about the whole. What are the themes, what changed over the 
 
 Detail below the summary level is gone. And summaries drift from the source as the source changes.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-c5">
+
+<span id="ma-c5" />
 
 Class five lets the agent manage its own memory. It reads and writes files or memory blocks through tool calls. A small core stays in its context every turn.
 
@@ -114,9 +118,9 @@ The agent decides what matters. The files can be versioned like code, and a pers
 
 Quality depends on the agent's judgement at write time. And there is no index over the raw history unless one is added. One vendor moved its whole product to this class in 2026.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-c6">
+
+<span id="ma-c6" />
 
 Class six puts the memory inside the model. In its weights, in its key-value caches, or in a latent pool. It is written by training, or by learning at test time.
 
@@ -124,19 +128,19 @@ There is no retrieval step at all. In principle the effective context could be v
 
 It is research. Nothing has shipped as a product memory layer. An enterprise memory cannot do without erasure and audit. Both are unsolved here.
 
-</Slide>
+
 
 ## Where the named systems sit
 
-<Slide journey="memory/six-architectures" id="ma-placed">
+<span id="ma-placed" />
 
 Here is where the named systems sit, from their own papers and documentation. Class one holds the verbatim system we tested, and the plain retrieval baseline in every paper. Class two holds most commercial memory layers, and the managed cloud services. Class three holds the graph vendors and the graph research systems.
 
 Class four holds the tree and observation systems. Class five holds the operating-system pattern, the file-based products, and the memory tool from one model vendor. Class six holds the research line: test-time memory, trained caches, and latent pools. Eleven systems span two classes. The full list, with dates, is in the tail of this page.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-fallback">
+
+<span id="ma-fallback" />
 
 Eleven systems span two classes. The spanning pattern is the same each time. An extracted or graph store, with the original text kept beside it.
 
@@ -144,11 +148,11 @@ It is the design answer to one finding, made independently more than once. Repla
 
 One 2026 study measured verbatim chunks beating extracted facts by 15.9 points. The largest memory benchmark's authors found the same in 2024. Keeping the text and adding derived keys improved recall by 9.4 percent. Replacing it with facts or summaries made answers worse.
 
-</Slide>
+
 
 ## The managed services
 
-<Slide journey="memory/six-architectures" id="ma-cloud">
+<span id="ma-cloud" />
 
 All four large cloud providers now ship a memory service. One model vendor ships a memory tool: the agent writes files into a directory the customer owns. The first cloud service reached general availability in October 2025.
 
@@ -156,11 +160,11 @@ The second reached general availability in December 2025, and started billing in
 
 All four store extracted facts and preferences. None stores the transcript. Whatever the extractor did not keep is not in the memory. The transcript, if kept at all, lives elsewhere under different retention rules.
 
-</Slide>
+
 
 ## What changed in 2026
 
-<Slide journey="memory/six-architectures" id="ma-2026">
+<span id="ma-2026" />
 
 Three product moves in 2026 point the same way. One vendor moved its memory to versioned markdown files in February. In March it deprecated its server-side memory tools.
 
@@ -168,9 +172,9 @@ The largest vendor removed graph memory from its open-source release. It is now 
 
 A third vendor stopped supporting its community edition. The open graph engine remains; the hosted product carries the claims. All three moves are towards plainer storage and less transformation at write time.
 
-</Slide>
 
-<Slide journey="memory/six-architectures" id="ma-baseline">
+
+<span id="ma-baseline" />
 
 Two more signals sit beside the product moves. In the largest vendor's own 2025 paper, giving the model the full conversation scores 72.90. The vendor's best memory variant scores 68.44.
 
@@ -178,11 +182,11 @@ In the second vendor's paper, the full-conversation baseline is within 0.4 of th
 
 Both papers argue the trade on latency and token cost instead. That is a legitimate trade, and a different claim. And a 2026 study found that swapping the embedding model alone moved accuracy by 6.2 points. That is more than the gap between several competing systems.
 
-</Slide>
+
 
 ## Memory inside the model
 
-<Slide journey="memory/six-architectures" id="ma-research">
+<span id="ma-research" />
 
 Class six is where the long-run bet sits. One research line updates a neural memory at test time. It reports needle-in-haystack recall beyond two million tokens, and 80 percent on a synthetic test at ten million.
 
@@ -190,11 +194,11 @@ Another trains a small cache per corpus offline. It reports 38 times less memory
 
 A third trains a fixed-length text memory by reinforcement learning. It reads 3.5 million tokens after training on 8 thousand, with under 5 percent loss. Each is a paper with code and no product. None addresses erasure, permissions or audit.
 
-</Slide>
+
 
 ## What to remember
 
-<Slide journey="memory/six-architectures" id="ma-recap">
+<span id="ma-recap" />
 
 Here is what to remember. Decide the class before the vendor. The class fixes what is lost at write time, and no later search recovers it.
 
@@ -204,11 +208,11 @@ Count the model calls per document at write time and per question at read time. 
 
 Treat memory in the weights as research until a product can delete a fact on request. The next page looks at how these systems are scored.
 
-</Slide>
+
 
 <EvidenceBadge status="primary-source" /> Every placement is from the system's own paper, repository or documentation, accessed 13 September 2026. Vendor benchmark figures are flagged. The six-class taxonomy is the author's synthesis of six published surveys.
 
-## The numbers behind the slides
+## Results and supporting detail
 
 ### The six classes
 | Class | What is stored | When a model runs | What it buys | Where it breaks |

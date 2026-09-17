@@ -15,10 +15,11 @@
     "types:check": "npm run skills:build && next typegen && tsc --noEmit",
     "guard": "node scripts/prebuild-guard.mjs",
     "figures:export": "node scripts/export-figures.mjs",
-    "validate": "npm run validate:content && npm run validate:figures && npm run validate:skills",
+    "validate": "npm run validate:content && npm run validate:figures && npm run validate:skills && npm run validate:reader",
     "validate:content": "node ../scripts/check-content.mjs",
     "validate:figures": "node scripts/validate-figures.mjs",
-    "diagrams:legacy": "node scripts/build-wall-chart.mjs"
+    "diagrams:legacy": "node scripts/build-wall-chart.mjs",
+    "validate:reader": "node scripts/validate-reader-journeys.mjs"
   },
   "dependencies": {
     "cnfast": "^0.1.0",

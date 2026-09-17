@@ -1,0 +1,36 @@
+---
+title: "Represent how equipment behaves over time"
+description: "Find similar operating periods without discarding units, duration, or context."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/memory/time-series.svg" mobileSrc="/figures/memory/time-series-mobile.svg" title="Represent how equipment behaves over time" alt="Window: Readings over an interval. Context: Units and operating state. Representation: Trend, shape, relationships. Search: Comparable past periods. Check: Inspect records and outcomes" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+
+## Define the observation window
+
+“Find periods like this pump’s last 30 minutes” is different from “Find a pump with the same average pressure”. Keep the sampling interval, missing readings, channels, and operating conditions with the window.
+
+## Decide what similar should mean
+
+Two signals may have the same shape at different magnitudes. Normalization can make them look alike while hiding an operationally important difference. A short spike and a sustained excursion should not become interchangeable merely because they share a peak.
+
+## Learn and test the representation
+
+TS2Vec learns timestamp-level contextual representations and can aggregate them over a subsequence. That provides a concrete example of time-series representation learning. It does not prove usefulness on a particular utility or mining dataset.
+
+## Separate retrieval from forecasting
+
+A model trained to forecast future values may contain useful internal representations, but forecasting accuracy is not evidence that nearest-neighbor retrieval finds the right historical episodes. Evaluate the proposed search task directly.
+
+## Keep the outcome in view
+
+Retrieve the original readings and the subsequent confirmed event, not just an embedding score. Compare with thresholds, simple features, and existing operator practice. Include periods that look similar but have different causes.
+
+Follow the proposed [water-operations investigation](/use-cases/water-operations).
+
+## External sources
+
+- [TS2Vec: representation learning for time series](https://arxiv.org/abs/2106.10466). Accessed 17 September 2026.

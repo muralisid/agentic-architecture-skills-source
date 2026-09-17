@@ -2,6 +2,8 @@
 title: "Context patterns for agents"
 icon: "Shapes"
 description: "Nine patterns for giving an agent the right context, each with the measurement that supports it and the published work behind it. Derived from our own experiments on public corpora and from the retrieval literature, and written to be applied rather than admired."
+datePublished: "2026-08-23"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -36,7 +38,7 @@ An agent is only as good as what reaches its context. These are nine patterns fo
 
 Where a pattern is marked measured, we ran it: five rounds on public corpora, with human relevance judgements where they exist, seeded and reproducible. Where it is marked published work, the evidence is someone else's and is cited. The [reading list](/patterns/reading-list) has about thirty-five papers with what each shows.
 
-The code, the committed outputs and the per-query results are public at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), under MIT for the code and CC BY-SA for everything else. You do not have to take any number here on trust: recompute it, or rerun the experiment. The programme's working documents are published with it, and the [hypothesis scorecard](/patterns/what-we-got-wrong) records how each prediction fared.
+These pages report the author’s experiments. Read each comparison with its dataset, baseline, and limitations; this revision does not claim independent replication. The [changed findings](/research/what-changed) explain where the results narrowed our advice.
 
 ---
 
@@ -178,7 +180,7 @@ The encoders were small, the corpora ran to twenty thousand documents, everythin
 <summary>The research behind this page</summary>
 
 - The experiment pages linked from each pattern, and the [reading list](/patterns/reading-list)
-- The [benchmark repository](https://github.com/muralisid/multicard-bench), commit 2b9c6ef, 2026-08-22: one metrics file and one per-query file per experiment. It is public, so every number on these pages can be recomputed from the per-query results rather than taken on trust
+
 - [Agent data engineering](/layers/r14-agent-data-engineering) and [the data-to-memory pipeline](/architecture/data-to-memory), where these patterns sit in the architecture
 - [CD-25](/decisions#cd-25) records the decision
 

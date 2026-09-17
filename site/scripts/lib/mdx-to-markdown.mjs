@@ -19,6 +19,7 @@ import { visit } from 'unist-util-visit';
 import { parse as parseYaml } from 'yaml';
 
 const KNOWN_COMPONENTS = new Set([
+  'ArchitectureMap',
   'PlainTerms',
   'Term',
   'GuideFigure',
@@ -264,6 +265,9 @@ function componentPlugin(context) {
       let replacement;
 
       switch (name) {
+        case 'ArchitectureMap':
+          replacement = [paragraph('Explore all fourteen enterprise architecture layers at ' + context.siteUrl + '/layers. The layers cover infrastructure, data, integration, official records, industrial systems, models, agent platforms, collaboration, channels, security, governance, monitoring, operating practices, and agent data engineering.')];
+          break;
         case 'Term':
           // Inline: keep the words, drop the tooltip.
           replacement = node.children.length ? node.children : [text(String(props.k ?? ''))];

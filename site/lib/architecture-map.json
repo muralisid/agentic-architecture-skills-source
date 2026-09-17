@@ -1,0 +1,100 @@
+[
+  {
+    "id": "R01",
+    "url": "/layers/r01-infrastructure",
+    "title": "Infrastructure & compute",
+    "body": "Run models and tasks within capacity, locality, and recovery limits.",
+    "group": "Run intelligence"
+  },
+  {
+    "id": "R02",
+    "url": "/layers/r02-data-platform",
+    "title": "Data platform",
+    "body": "Provide trusted business data with ownership and access rules.",
+    "group": "Supply knowledge"
+  },
+  {
+    "id": "R03",
+    "url": "/layers/r03-integration-fabric",
+    "title": "Integration & tools",
+    "body": "Connect agents to existing APIs, events, and workflows.",
+    "group": "Connect and control"
+  },
+  {
+    "id": "R04",
+    "url": "/layers/r04-systems-of-record",
+    "title": "Systems of record",
+    "body": "Read and change official records through checked operations.",
+    "group": "Operate the enterprise"
+  },
+  {
+    "id": "R05",
+    "url": "/layers/r05-lob-and-ot",
+    "title": "Business & industrial systems",
+    "body": "Connect operational work while protecting physical actions.",
+    "group": "Operate the enterprise"
+  },
+  {
+    "id": "R06",
+    "url": "/layers/r06-intelligence-and-learning",
+    "title": "Intelligence & learning",
+    "body": "Choose models and evaluate changes in their behavior.",
+    "group": "Run intelligence"
+  },
+  {
+    "id": "R07",
+    "url": "/layers/r07-agent-platform",
+    "title": "Agent platform",
+    "body": "Coordinate tools, task state, recovery, and model calls.",
+    "group": "Run intelligence"
+  },
+  {
+    "id": "R08",
+    "url": "/layers/r08-productivity-and-collaboration",
+    "title": "Workplace & collaboration",
+    "body": "Let people direct work and handle exceptions in familiar tools.",
+    "group": "Operate the enterprise"
+  },
+  {
+    "id": "R09",
+    "url": "/layers/r09-experience-and-channels",
+    "title": "Experiences & channels",
+    "body": "Deliver useful service with a clear route to a person.",
+    "group": "Operate the enterprise"
+  },
+  {
+    "id": "R10",
+    "url": "/layers/r10-security-and-identity",
+    "title": "Security & identity",
+    "body": "Identify the agent and enforce the permissions of its task.",
+    "group": "Connect and control"
+  },
+  {
+    "id": "R11",
+    "url": "/layers/r11-governance-risk-sovereignty",
+    "title": "Governance & risk",
+    "body": "Set accountability, evidence requirements, and data-location constraints.",
+    "group": "Connect and control"
+  },
+  {
+    "id": "R12",
+    "url": "/layers/r12-observability-and-finops",
+    "title": "Monitoring & cost",
+    "body": "Observe quality, failures, and the full cost of completed work.",
+    "group": "Connect and control"
+  },
+  {
+    "id": "R13",
+    "url": "/layers/r13-operating-model",
+    "title": "Operating model",
+    "body": "Assign responsibility, supervision capacity, and incident ownership.",
+    "group": "Operate the enterprise"
+  },
+  {
+    "id": "R14",
+    "url": "/layers/r14-agent-data-engineering",
+    "title": "Data engineering for agents",
+    "body": "Prepare, represent, retrieve, update, and remove usable evidence.",
+    "group": "Supply knowledge"
+  }
+]

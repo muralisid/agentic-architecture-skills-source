@@ -25,12 +25,12 @@ export function SiteHeader(props: ComponentProps<'header'>) {
 
   return (
     <header {...props} id="nd-nav" className={cn('sticky top-0 z-40 px-3 pt-3 sm:px-6', props.className)}>
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-4 rounded-full border border-fd-border bg-fd-card/90 px-4 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur-xl sm:px-5">
+      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-4 rounded-full border border-fd-border bg-fd-card/90 px-4 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur-xl sm:px-5">
         <Link href="/" className="shrink-0" aria-label="Home">
           <Wordmark />
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="Sections">
+        <nav className="hidden items-center gap-3 xl:flex" aria-label="Sections">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.url || pathname.startsWith(`${link.url}/`);
             const Tag = 'proxied' in link && link.proxied ? 'a' : Link;
@@ -52,27 +52,20 @@ export function SiteHeader(props: ComponentProps<'header'>) {
 
         <div className="flex items-center gap-1.5 sm:gap-2">
           {SearchFull ? (
-            <SearchFull hideIfDisabled className="hidden w-full max-w-[220px] rounded-full ps-2.5 lg:inline-flex" />
+            <SearchFull hideIfDisabled className="hidden w-full max-w-[220px] rounded-full ps-2.5 xl:inline-flex" />
           ) : null}
-          {SearchSmall ? <SearchSmall hideIfDisabled className="p-2 lg:hidden" /> : null}
+          {SearchSmall ? <SearchSmall hideIfDisabled className="p-2 xl:hidden" /> : null}
           {ThemeSwitch ? (
             <span className="inline-flex shrink-0">
               <ThemeSwitch />
             </span>
           ) : null}
-          <Link
-            href="/architecture"
-            className="hidden items-center gap-1.5 rounded-full bg-ember px-4 py-2 text-sm font-semibold whitespace-nowrap text-white shadow-md shadow-ember/20 transition-colors hover:bg-ember-deep md:inline-flex"
-          >
-            Start with the architecture
-            <ArrowRight className="size-3.5" />
-          </Link>
           <button
             type="button"
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
-            className="inline-flex size-9 items-center justify-center rounded-full text-fd-foreground transition-colors hover:bg-fd-accent lg:hidden"
+            className="inline-flex size-9 items-center justify-center rounded-full text-fd-foreground transition-colors hover:bg-fd-accent xl:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -80,7 +73,7 @@ export function SiteHeader(props: ComponentProps<'header'>) {
       </div>
 
       {open ? (
-        <div className="mx-auto mt-2 w-full max-w-6xl rounded-3xl border border-fd-border bg-fd-card p-3 shadow-lg lg:hidden">
+        <div className="mx-auto mt-2 w-full max-w-7xl rounded-3xl border border-fd-border bg-fd-card p-3 shadow-lg xl:hidden">
           <nav className="flex flex-col" aria-label="Sections">
             {NAV_LINKS.map((link) => {
               const Tag = 'proxied' in link && link.proxied ? 'a' : Link;
@@ -96,14 +89,6 @@ export function SiteHeader(props: ComponentProps<'header'>) {
               );
             })}
           </nav>
-          <Link
-            href="/architecture"
-            onClick={() => setOpen(false)}
-            className="mt-2 flex items-center justify-center gap-1.5 rounded-full bg-ember px-4 py-2.5 text-sm font-semibold text-white md:hidden"
-          >
-            Start with the architecture
-            <ArrowRight className="size-3.5" />
-          </Link>
         </div>
       ) : null}
     </header>

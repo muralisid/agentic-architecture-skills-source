@@ -44,3 +44,8 @@ Four of the twenty-five conclude that the question itself is wrong. Those are th
 ## What this reference will not do
 
 Choose a vendor. The catalog resolves architecture choices on evidence and economics; product selection depends on facts that date within a quarter, and the guide stopped publishing a vendor comparison for that reason. Where a decision has no published head-to-head measurement, the entry says so rather than inferring one.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

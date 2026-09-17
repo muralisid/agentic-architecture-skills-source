@@ -53,3 +53,12 @@ For every dimension scoring below the level the workload needs, name the specifi
 ## What the score does not decide
 
 Whether the use case is worth doing. Readiness caps autonomy; value and evaluability decide funding, and those are a separate question with their own gates.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [Build an agentic enterprise](references/use-cases-enterprise-transformation.md): consult when this aspect is part of the task.

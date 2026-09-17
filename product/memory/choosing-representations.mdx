@@ -1,0 +1,34 @@
+---
+title: "Choose the representation for the question"
+description: "Make similarity useful without losing exact business facts."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/memory/choosing-representations.svg" mobileSrc="/figures/memory/choosing-representations-mobile.svg" title="Choose the representation for the question" alt="Question: What must be answered?. Evidence: Which source can answer?. Representation: What should be preserved?. Retrieval: How will matches be found?. Evaluation: Did the result help?" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+
+## Keep exact questions exact
+
+Identifiers, balances, quantities, dates, and official statuses usually need a record or a governed query. A similarity score is not a substitute for checking the correct record. Keyword search also matters for exact names and phrases.
+
+## Use vectors for useful resemblance
+
+An embedding is a learned representation. Its training objective influences which differences it preserves. A representation that groups documents by subject may be unsuitable for distinguishing two almost identical procedures with different safety limits.
+
+## Use relationships when relationships are the question
+
+A graph can help trace how assets, controls, people, and events connect. Start with existing keys and joins. Add a graph when the relationship questions justify its preparation and maintenance cost. See [when a graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep).
+
+## Preserve the dimensions the task needs
+
+Ask whether similarity should preserve magnitude, duration, order, location, language, or operating state. Normalize only after deciding which differences matter. Keep exact metadata alongside representations.
+
+## Compare against a simpler baseline
+
+Test keyword retrieval, ordinary chunks, or a database query before adding multiple views. The [existing context experiments](/patterns) contain both improvements and cases where a more complex representation lost. New media require their own evaluation.
+
+## External sources
+
+- [TS2Vec: representation learning for time series](https://arxiv.org/abs/2106.10466). Accessed 17 September 2026.

@@ -69,3 +69,13 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 ## Items deliberately not on this list
 
 Claims sourced to peer-reviewed research, standards texts, regulation, and primary human-factors literature. These age slowly and are cited with dates. The 1983 residual-work finding underpinning the founding metaphor has been stable for four decades and is not a re-verification candidate.
+
+## September 2026 industrial examples
+
+Next review: December 2026, or before an adoption decision. The following are vendor descriptions, not independently verified outcome claims.
+
+- [NVIDIA video search and summarization](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard): supported inputs, deployment requirements, and documented capability. Checked 2026-09-17.
+- [Roboflow Workflows](https://docs.roboflow.com/workflows): supported processing and integration features. Checked 2026-09-17.
+- [LandingAI document grounding](https://landing.ai/llms/visual-grounding-and-auditability-how-landingai-ade-makes-every-extraction-defensible): source-page grounding claims and product scope. Checked 2026-09-17.
+- [AiDASH vegetation management case](https://www.aidash.com/resource/aidash-transforming-vegetation-management-for-national-grid-using-satellite-analytics-and-ai/): current case description. Checked 2026-09-17.
+- [AlphaEarth annual embeddings](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL): availability, annual intervals, resolution, and comparability across releases. Checked 2026-09-17.

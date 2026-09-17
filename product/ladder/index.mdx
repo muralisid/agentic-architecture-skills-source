@@ -1,124 +1,44 @@
 ---
-title: "The intelligence ladder"
-icon: "ListOrdered"
-description: "Eight ways to make an agent better, in the order worth trying them. Three change the system around the model, five change the model itself, and the choice among those five is a diagnosis rather than a climb."
+title: "Intelligence ladder"
+description: "Choose how to turn model capability into useful, reliable enterprise work."
+position: "Design choices, not a required progression. Select the smallest intervention that meets the task\u2019s measured requirements."
+lastReviewed: "2026-09-17"
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
-<PlainTerms>
-When an agent is not good enough there are eight different things you can change, and they are not equally sensible to try. Rewriting the instructions is cheap and often enough. Retraining a model is expensive, slow, and frequently fixes the wrong problem. The first three changes are about the system around the model, and most organisations should live there. The last five change the model itself, and choosing between them is a matter of working out what is actually broken rather than climbing higher. The one thing to remember: teaching a model to behave differently and teaching it about your business are two different jobs needing two different kinds of data, and confusing them is why most model-training projects disappoint.
-</PlainTerms>
+An agent’s result depends on its instructions, information, tools, workflow, and model. Start with a real failure and identify which part needs to change. More training is useful only when it addresses the actual limitation.
 
-<TeachingIllustration
-  src="/images/ladder/overview-two-decks-labeled-v3.webp"
-  alt="An unchanged model moves through instructions, governed context and a controlled tool loop before a measured junction branches to five selective model interventions, all resting on evaluation rails."
-  title="The whole intelligence journey in one view"
-  caption="Start by changing the system around the model: instructions, context, then tools and the loop. Only after those measured gates should a diagnosed failure branch into one or more model changes. The five branches are choices, not higher rungs."
-/>
+<TeachingIllustration src="/figures/ladder/capability-choice.svg" mobileSrc="/figures/ladder/capability-choice-mobile.svg" title="Choose the change that fits the problem" alt="Observe a failure: Use a real task. Locate the cause: Information, tool, model. Try a small change: Keep a matched baseline. Measure the result: Quality, time, cost. Release or revise: Keep the ability to undo" caption="More training is one option. A better tool or clearer evidence may solve the same problem." />
 
-## Why the order matters
+## Improve how the agent works
 
-**WHY:** "The model is not good enough" is a conclusion, not a diagnosis. It is usually reached when nobody has measured what is failing. The published evidence runs the other way: prompt and context work keeps yielding gains teams assumed were exhausted, and the expensive interventions often fix something that was never the problem. Climbing early is not only wasted money. It adds weight, lock-in and a maintenance burden to a system whose real fault is still sitting there underneath.
+<Cards>
+<Card title="Instructions" href="/ladder/instructions">Clarify the task, constraints, and expected result.</Card>
+<Card title="Context" href="/ladder/context">Supply the right evidence and current task state.</Card>
+<Card title="Tools and the loop" href="/ladder/tools-and-the-loop">Let the agent gather evidence, act within limits, and inspect the result.</Card>
+</Cards>
 
-**WHAT:** Treat improvement as two decks. **Deck A changes the system around the model** and is genuinely sequential: exhaust each step before the next is justified. **Deck B changes the model itself** and is not sequential: after the first step you choose by symptom, and several of the options combine rather than replace one another. Everything rests on an <Term k="eval">evaluation</Term> suite you own, because every test below is a measurement.
+## Adapt the model when the task justifies it
 
-## The worked example running through these chapters
+<Cards>
+<Card title="Adapters and fine-tuning" href="/ladder/adapters-and-fine-tuning">Teach a repeatable behavior using suitable examples.</Card>
+<Card title="Distillation" href="/ladder/distillation">Transfer a demonstrated capability to a smaller or cheaper model.</Card>
+<Card title="Reinforcement fine-tuning" href="/ladder/reinforcement-fine-tuning">Improve decisions using feedback that actually measures the task.</Card>
+<Card title="Continued pretraining" href="/ladder/continued-pretraining">Develop domain familiarity where evidence justifies further training.</Card>
+<Card title="Custom pretraining" href="/ladder/custom-pretraining">Consider a specialist model architecture and its full cost.</Card>
+</Cards>
 
-**In short:** One agent, followed from a first prompt to the top of the ladder, so each step is shown doing real work rather than described in the abstract.
+The site’s broader purpose is to distill model intelligence into enterprise capability. **Model distillation** is also the name of one particular training technique; it is not required for every enterprise agent.
 
-Every chapter applies its step to the same case: a **financial crime investigation agent** at a retail and commercial bank. It assembles the context behind a transaction-monitoring alert, retrieves the customer's history, drafts the narrative, and proposes a disposition. The analyst decides.
+## Choose the arrangement
 
-The [banking blueprint](/library/blueprints/verticals/banking-and-financial-services) calls this the strongest internal case in the vertical, for three reasons that also make it a good teacher. Alert volume is high, so cost is a real constraint rather than a footnote. The labels are real, because every alert eventually gets a disposition and some become confirmed cases, which means quality can be measured rather than argued about. And the analyst stays the decider, so the agent is assisting rather than acting, which keeps the control question honest.
+- [Diagnose what to change](/ladder/choosing-an-approach).
+- [Use a workflow, one agent, or several](/ladder/single-and-multiple-agents).
+- [Combine language, vision, and specialist models](/ladder/combining-models).
 
-It also happens to exercise every chapter. The bank has decades of its own written material, which is what makes continued pretraining a genuine option, and its transaction data is a network rather than a document, which is the one situation where the final chapter applies.
+## Keep the comparison honest
 
-## Deck A: change the system
+Use representative tasks and a simpler baseline. Measure correctness, business usefulness, time, cost, and human review. Keep failures and unchanged results. For retrieval, the [context experiments](/patterns) show why extra complexity must earn its place.
 
-**In short:** Three steps, in order, and where most organisations should stop.
-
-<GuideFigure id="intelligence-ladder" fullWidth />
-
-<TeachingIllustration
-  src="/images/ladder/overview-deck-a-labeled-v4.webp"
-  alt="The same model appears in three sequential scenes: structured instructions, permission-aware evidence and memory, and a governed tool loop, with an evaluation rail beneath them."
-  title="Deck A changes the system, not the model"
-  caption="The model stays fixed while the team first improves the task packet, then the evidence and memory reaching it, then the harness that lets it act. The rail beneath each scene shows the rule: measure, find the plateau, and open the next gate only when the remaining failure has changed."
-/>
-
-| # | Step | What it changes | Move on when |
-|---|---|---|---|
-| 1 | [Instructions](/ladder/instructions) | The wording of the task | Accuracy climbs for a week of prompt work, then goes flat |
-| 2 | [Context](/ladder/context) | What reaches the model: how documents are represented, and what the agent remembers | Your representation beats a <Term k="matched control">matched control</Term>, and what still fails is acting rather than knowing |
-| 3 | [Tools and the loop](/ladder/tools-and-the-loop) | The system that runs the model | The loop is instrumented and traced, and the residue is the model not knowing your domain |
-
-Step 3 is the one most often skipped. Teams go from "the context is good and it is still failing" straight to training. The evidence says otherwise: holding task, environment and model constant, harness choices measurably change the decisions an agent makes even where the final success rate looks the same, and in retrieval-heavy work the harness can matter more than the retrieval architecture. Most organisations that believe they need a trained model need better tools and a better loop.
-
-## The distinction that decides Deck B
-
-**In short:** Teaching behaviour and teaching knowledge are different jobs, needing different data, and most disappointment comes from confusing them.
-
-| | Supervised <Term k="fine-tuning">fine-tuning</Term> | Continued pretraining |
-|---|---|---|
-| Learns from | Input and output pairs | Raw text |
-| How much | Thousands of examples | Billions of <Term k="token">tokens</Term> |
-| Changes | How the model **behaves** | What the model **knows**, and how it reads your language |
-| Wrong tool for | Adding knowledge | Fixing format or tone |
-
-An enterprise with a large proprietary corpus has the raw text and often very few labelled pairs. That makes continued pretraining the natural option for a data-rich organisation, and it is why so many fine-tuning projects disappoint: the wrong instrument was chosen for the complaint.
-
-Facts about particular customers, cases and policies belong in neither column. They stay in retrieval and in the agent's governed memory, where they can be cited, updated and deleted. Weights can do none of those things.
-
-## Deck B: change the model
-
-**In short:** Not a climb. Read the symptom, pick the chapter, and expect to combine more than one.
-
-<GuideFigure id="model-change-diagnosis" fullWidth />
-
-<TeachingIllustration
-  src="/images/ladder/overview-deck-b-labeled-v4.webp"
-  alt="Five balanced diagnostic branches surround one model: adapters, compression into a smaller model, grader feedback, domain documents, and a graph-shaped specialist model."
-  title="Deck B branches by symptom"
-  caption="Inconsistent behaviour points to adapters. Proven quality with excessive cost points to distillation. Checkable but wrong judgement points to reinforcement. Missing domain understanding points to continued pretraining. Network-shaped data points to a specialist architecture exposed as a tool."
-/>
-
-| What is failing | Where to go |
-|---|---|
-| Wrong format, tone, or task behaviour | [Adapters and fine-tuning](/ladder/adapters-and-fine-tuning) |
-| Right quality, too slow or too expensive | [Distillation](/ladder/distillation) |
-| Right format, wrong judgement, and outcomes can be graded | [Reinforcement fine-tuning](/ladder/reinforcement-fine-tuning) |
-| Does not understand your domain's language, documents or notation | [Continued pretraining](/ladder/continued-pretraining) |
-| Your data is not text-shaped: graphs, sequences, signals at scale | [Custom pretraining and architecture](/ladder/custom-pretraining) |
-
-These stack. Continued pretraining followed by supervised fine-tuning is a standard pairing rather than an either-or: the first teaches the domain, the second teaches the task. Distillation is not a climb at all, and can follow any of the others.
-
-## The rails: an evaluation suite you own
-
-**In short:** Every test on this page is a measurement, so without an eval suite there is no ladder, only opinion.
-
-<TeachingIllustration
-  src="/images/ladder/overview-evaluation-rails-labeled-v2.webp"
-  alt="A sealed collection of real cases passes unchanged through repeated evaluation checkpoints; a score beyond the human band triggers an alarm and a return to inspect the grader."
-  title="The evaluation suite is the rail beneath every stage"
-  caption="The same locked cases and matched controls test each intervention. A gate opens because the evidence justifies a different kind of change, not because a new technique is fashionable. If an automated score escapes beyond careful human performance, inspect the grader before trusting the result."
-/>
-
-An organisation that cannot measure its agent will climb on anecdote, and anecdote favours whichever intervention is most fashionable. Build the suite from real failures rather than imagined ones, before the agent rather than after, and have it owned by the domain experts who can say what a correct answer looks like.
-
-If the agent keeps memory, the suite also tests what memory breaks: a fact that changed over time, a question the record cannot answer, a record that was deleted, and a person who may not see it.
-
-One hazard belongs here rather than further up. When a validation score exceeds what a careful person achieves on the same task, the system has learned the rubric rather than the job. Treat that as an alarm, not a result. It is the standard signature of <Term k="reward hacking">reward hacking</Term>, and it matters most on the graded steps in Deck B.
-
-<PrincipleCard eyebrow="The rule" title="Change the system before you change the model" kind="evidence">
-Deck A is sequential and cheap, and it is where the evidence says most of the available gain still is. Deck B is expensive, adds a trained artifact you must maintain, and is chosen by symptom rather than by ambition. An organisation that skips the tests usually arrives in Deck B carrying a fault that step 2 or step 3 would have fixed, and now has a model to keep as well.
-</PrincipleCard>
-
-<EvidenceBadge status="mixed-evidence" /> Deck A rests partly on our own measurements. Deck B is documented from published work and vendor documentation, with sources and dates on each chapter. The two-deck structure itself is an author position.
-
-<details>
-<summary>The research behind this page</summary>
-
-- Deck A, step 2 measurements: the benchmark repository at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), with detail on [aspect dilution](/patterns/aspect-dilution) and [real prose](/patterns/real-prose), and the failures on [what we got wrong](/patterns/what-we-got-wrong).
-- Deck A, step 3: arXiv 2607.04528 (July 2026) on harness choice changing downstream decisions; arXiv 2605.15184 (May 2026) on the harness outweighing retrieval architecture. Depth on [the agent platform layer](/layers/r07-agent-platform).
-- The adaptation ordering behind Deck B is recorded in [the decision catalog](/decisions) and set out on [intelligence and learning](/layers/r06-intelligence-and-learning).
-- The memory cases in the suite come from the acceptance test in [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep). Why facts stay out of weights: [adapters and fine-tuning](/ladder/adapters-and-fine-tuning).
-
-</details>
+For a complete system, explore [architecture](/architecture). For practical applications, start with [use cases](/use-cases).

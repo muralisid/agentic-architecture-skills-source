@@ -50,3 +50,13 @@ Order findings by severity: deterministic-zone violations, then enforcement plac
 ## What this reference will not tell you
 
 Product selection, pricing, and sequencing. It names representative products for orientation only, and it publishes no timeline, no supervision ratio, and no build-versus-buy figures, because the evidence for those does not exist in a form worth quoting.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [The seven responsibilities of an agentic enterprise](references/architecture-system-view.md): consult when this aspect is part of the task.
+- [Make software that agents can use](references/architecture-software-for-agents.md): consult when this aspect is part of the task.

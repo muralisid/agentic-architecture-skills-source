@@ -1,7 +1,7 @@
 // Generates the site content tree in content/docs.
 // Two sources: hand-authored product pages in the repo's product/ directory
 // (copied verbatim), and the research corpus (mirrored under /library).
-// The repo is the source of truth (DECISIONS.md D001); the site is a view of it.
+// Source material is input. Reader-facing claims require evidence and editorial review.
 // Run via `npm run sync`, which `build` and `dev` both call.
 
 import { copyFile, mkdir, readFile, readdir, realpath, rm, stat, writeFile } from 'node:fs/promises';
@@ -9,12 +9,14 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { readerContent } from './lib/reader-content.mjs';
 import { sourceRepo } from '../lib/site.config.mjs';
 
 const siteDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const repoDir = path.dirname(siteDir);
 const outDir = path.join(siteDir, 'content', 'docs');
 const productDir = path.join(repoDir, 'product');
+const readerSections = JSON.parse(await readFile(path.join(siteDir, 'content-map.json'), 'utf8'));
 
 const REPO = `https://github.com/${sourceRepo.user}/${sourceRepo.repo}`;
 const BRANCH = sourceRepo.branch;
@@ -243,7 +245,7 @@ function rewriteLink(sourceRel, href) {
   // Directory link, e.g. profiles/
   const asIndex = path.posix.join(clean.replace(/\/$/, ''), 'README.md');
   if (map.has(asIndex)) return routeFor(map.get(asIndex)) + (hash ? '#' + hash : '');
-  return REPO_PUBLIC ? `${REPO}/blob/${BRANCH}/${clean.replace(/\/$/, '')}` : null;
+  return null;
 }
 
 const FIGURE_SOURCE_DIR = path.join(repoDir, 'figures', 'assets');
@@ -302,7 +304,7 @@ function linkifyBarePaths(sourceRel, body) {
   return body.replace(/(^|[\s(])((?:research|synthesis|techniques|frameworks|blueprints)\/[A-Za-z0-9._\-/]+\.md)/g,
     (whole, lead, p) => {
       if (!map.has(p)) return whole;
-      return `${lead}[${p}](${routeFor(map.get(p))})`;
+      return `${lead}[Related analysis](${routeFor(map.get(p))})`;
     });
 }
 
@@ -316,8 +318,9 @@ await rm(FIGURE_COPIED_OUTPUT_DIR, { recursive: true, force: true });
 // ---------------------------------------------------------------------------
 let written = 0;
 for (const [rel, slug] of map) {
-  const raw = await readFile(path.join(repoDir, rel), 'utf8');
-  const sourceBody = stripSourceFrontmatter(raw);
+  const publicRecords = { 'DECISIONS.md': 'decision-history.md', 'CHANGELOG.md': 'updates.md' };
+  const raw = await readFile(publicRecords[rel] ? path.join(siteDir, 'editorial', publicRecords[rel]) : path.join(repoDir, rel), 'utf8');
+  const sourceBody = readerContent(stripSourceFrontmatter(raw));
   const derived = titleAndDescription(sourceBody, path.basename(rel, '.md'));
   const title = cleanTitle(derived.title, slug, rel);
   const description = /^(as of|phase\s+\d|scope|status)\b/i.test(derived.description) ? '' : derived.description;
@@ -328,14 +331,13 @@ for (const [rel, slug] of map) {
   body = await rewriteImages(rel, body);
   body = body.replace(/(?<!!)\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, href) => {
     const target = rewriteLink(rel, href);
-    return target === null ? text : `[${text}](${target})`;
+    return target === null ? text : `[${/\.(md|mdx)$/.test(text) || /^(research|synthesis|knowledge)\//.test(text) ? "Related explanation" : text}](${target})`;
   });
   body = linkifyBarePaths(rel, body);
   body = body.trimStart();
 
-  const footer = REPO_PUBLIC
-    ? `\n\n---\n\nSource: [\`${rel}\`](${REPO}/blob/${BRANCH}/${rel}) in the guide repository.\n`
-    : `\n\n---\n\nSource: \`${rel}\` in the evidence repository behind this site.\n`;
+  const footer = '';
+  body = readerContent(body);
 
   const { datePublished, dateModified } = gitDates(rel);
   const frontmatter =
@@ -353,10 +355,10 @@ for (const [rel, slug] of map) {
 // The library front door: written here because no single corpus file is it.
 await writeFile(path.join(outDir, 'library', 'index.md'), `---
 title: "Research library"
-description: "The evidence behind every page on this site: 14 layer research tracks, cross-layer synthesis, frameworks, blueprints, and vendor research, with dated sources throughout."
+description: "The evidence behind every page on this site: 14 layer research tracks, architecture models, frameworks, industry examples, and dated external sources."
 ---
 
-Every product page on this site is a condensation of this library. Claims carry dated sources, vendor-published numbers are flagged as such, author positions are labelled as positions, and volatile facts sit on a re-verification list.
+Explore detailed explanations, research findings, and practical frameworks. External sources, author-reported experiments, and design proposals are identified separately. Existing material is reviewed and revised as evidence changes.
 
 - [Architecture](/library/architecture): the cross-layer chapters, from the vision to the learning loops.
 - [The 14 enterprise layers](/library/layers): one research track per layer of the estate.
@@ -468,7 +470,7 @@ function assertProductPage(rel, text) {
 
 let productWritten = 0;
 for (const rel of productFiles) {
-  const text = await readFile(path.join(productDir, rel), 'utf8');
+  const text = readerContent(await readFile(path.join(productDir, rel), 'utf8'));
   if (!/^---\n[\s\S]*?\btitle:\s*"/.test(text) || !/\bdescription:\s*"/.test(text)) {
     throw new Error(`product/${rel} is missing title or description frontmatter.`);
   }
@@ -496,13 +498,15 @@ const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar.
-    pages: ['architecture', 'agentic-os', 'security', 'ladder', 'patterns', 'memory', 'layers', 'decisions', 'about'],
+    pages: [...readerSections.map((section) => section.id), 'agentic-os', 'security', 'patterns', 'layers', 'decisions', 'about'],
   },
+  'use-cases': { title: 'Use cases', pages: ['index', 'safety-coaching', 'production-measurement', 'vegetation-inspection', 'compliance-evidence', 'systemic-audit-issues', 'commercial-growth', 'water-operations', 'choose-where-to-start', 'value-and-investment', 'enterprise-transformation'] },
+  research: { title: 'Research', pages: ['index', 'experiments', 'questions', 'what-changed', 'industrial-examples', 'method'] },
   architecture: {
     title: 'Architecture',
     icon: 'Compass',
     description: 'The cross-layer design of the agentic enterprise.',
-    pages: ['index', 'plain-words', 'deterministic-zones', 'identity-chain', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
+    pages: ['index', 'system-view', 'task-walkthrough', 'software-for-agents', 'plain-words', 'deterministic-zones', 'identity-chain', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
   },
   security: {
     title: 'Security practices',
@@ -526,8 +530,8 @@ const metas = {
   ladder: {
     title: 'Intelligence ladder',
     icon: 'ListOrdered',
-    description: 'Eight ways to make an agent better, in the order worth trying them.',
-    pages: ['index', 'instructions', 'context', 'tools-and-the-loop', 'adapters-and-fine-tuning', 'distillation', 'reinforcement-fine-tuning', 'continued-pretraining', 'custom-pretraining'],
+    description: 'Choose the change that improves the task.',
+    pages: ['index', 'choosing-an-approach', 'single-and-multiple-agents', 'combining-models', 'instructions', 'context', 'tools-and-the-loop', 'adapters-and-fine-tuning', 'distillation', 'reinforcement-fine-tuning', 'continued-pretraining', 'custom-pretraining'],
   },
   patterns: {
     title: 'Patterns',
@@ -546,11 +550,13 @@ const metas = {
     ],
   },
   memory: {
-    title: 'Memory architectures',
+    title: 'Knowledge & memory',
     icon: 'Brain',
     description: 'How agent memories are built, what the benchmarks measure, and the open question at enterprise scale.',
     pages: [
       'index',
+      'information-to-memory', 'choosing-representations', 'images-video-and-audio',
+      'location-and-satellite-data', 'time-series', 'combining-evidence', 'changing-facts', 'permissions-and-lifecycle',
       'six-architectures',
       'what-the-benchmarks-measure',
       'long-context-is-not-memory',
@@ -588,7 +594,7 @@ const metas = {
   },
   'library/blueprints/verticals': {
     title: 'Verticals',
-    pages: ['utilities-and-energy', 'banking-and-financial-services', 'manufacturing-and-supply-chain', 'public-sector'],
+    pages: ['utilities-and-energy', 'water-utilities', 'mining-and-resources', 'manufacturing-and-supply-chain', 'banking-and-financial-services', 'public-sector'],
   },
 };
 

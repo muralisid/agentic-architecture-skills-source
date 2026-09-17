@@ -1,275 +1,59 @@
 import Link from 'next/link';
-import {
-  ArrowUpRight,
-  Cable,
-  CheckCircle2,
-  Gauge,
-  KeyRound,
-  RefreshCw,
-  Shapes,
-  ShieldCheck,
-  Workflow,
-} from 'lucide-react';
-import { appName, author } from '@/lib/shared';
-import { WallChartPreview } from '@/components/site/wall-chart-preview';
-import { StatTiles } from '@/components/visuals/result-chart';
-import { SkillsStrip } from '@/components/skills/skills-catalog';
-import { CopyLine } from '@/components/skills/copy-line';
-import { installCommands, skillCount } from '@/lib/skills';
+import { ArrowUpRight, Building2, Layers3 } from 'lucide-react';
 import { SiteFooter } from '@/components/site/site-footer';
-import { Byline } from '@/components/site/byline';
-import { Eyebrow, FeatureCard, PillLink, SectionDecor, SectionHeading } from '@/components/site/section';
-
-const spine = [
-  {
-    title: 'The four deterministic zones',
-    href: '/architecture/deterministic-zones',
-    icon: ShieldCheck,
-    body: 'Four places where a model may advise but never decide: access, money, physical safety, and official records. What sits in each, and how to build the boundary.',
-  },
-  {
-    title: 'The identity and delegation chain',
-    href: '/architecture/identity-chain',
-    icon: KeyRound,
-    body: "How every agent action stays traceable to the person who asked for it, from the agent's own identity through to the business system it touches.",
-  },
-  {
-    title: 'Enforcement outside the model',
-    href: '/architecture/enforcement',
-    icon: Cable,
-    body: 'Why the rules that stop an agent live outside the model, in a gateway and a policy engine, and why AI filters alone are not enough.',
-  },
-  {
-    title: 'The data-to-memory pipeline',
-    href: '/architecture/data-to-memory',
-    icon: Workflow,
-    body: 'How company information reaches an agent: prepared, indexed, permission-checked, cited back to its source, and deleted everywhere when it must be.',
-  },
-  {
-    title: 'The learning flywheel',
-    href: '/architecture/learning-flywheel',
-    icon: RefreshCw,
-    body: 'How agents get better over time without anyone losing control: every change is tested, approved, rolled out in stages, and can be pulled back.',
-  },
-  {
-    title: 'The autonomy contract',
-    href: '/architecture/autonomy-contract',
-    icon: Gauge,
-    body: 'How much an agent may do on its own, decided per task, with the controls each level requires and the checks that must pass before autonomy rises.',
-  },
-];
-
-const trust = ['Every claim dated and sourced', 'Vendor figures labelled', 'Every arm reported, including the ones that beat us'] as const;
-
-const patternStats = [
-  { value: '9', label: 'Patterns, each measured', note: 'From representation to selection to how you tell whether any of it worked on your own corpus.' },
-  { value: '0.815 to 0.294', label: 'What one vector costs', note: 'nDCG@10 as a document grows from one aspect to ten. Several vectors per document hold it above 0.63.' },
-  { value: '+0.224', label: 'Showing the designer the corpus', note: 'Over generic views, when a model designs the taxonomy from a sample of the documents themselves.' },
-  { value: '~200x', label: 'Designing rather than reading', note: 'Cheaper at comparable topic granularity, when the model designs and names and classical machinery touches every document.' },
-];
+import { TeachingIllustration } from '@/components/visuals/teaching-illustration';
 
 export default function HomePage() {
-  return (
-    <main className="flex flex-1 flex-col">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div
-          className="pointer-events-none absolute inset-0"
-          aria-hidden="true"
-          style={{
-            background:
-              'radial-gradient(50% 45% at 22% 18%, rgba(240,74,42,0.12), transparent 70%), radial-gradient(40% 40% at 88% 75%, rgba(240,74,42,0.07), transparent 72%)',
-          }}
-        />
-        <SectionDecor circles="both" dots="tr" />
-        <div className="relative mx-auto w-full max-w-4xl px-6 pt-16 pb-12 text-center md:pt-24 md:pb-16">
-          <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-ember-deep">
-            Target-state architecture for the agentic enterprise
-          </p>
-          <h1 className="mt-6 font-serif text-[40px] font-medium leading-[1.06] text-fd-foreground sm:text-5xl lg:text-6xl">
-            The agentic enterprise, <span className="italic text-ember">on one page.</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-[1.75] text-fd-muted-foreground md:text-[17px]">
-            One chart carrying the whole target state: the components, the protocols, the control points, and the
-            boundaries a model may not cross. Behind it, the contested choices with verdicts, the evidence for each,
-            and the refusals stated plainly. Built for the architects who will design it, and written so that everyone
-            who will live with it can follow.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <PillLink href="/architecture">Read the architecture</PillLink>
-            <PillLink href="/decisions" variant="outline">
-              25 decisions with verdicts
-            </PillLink>
-            <PillLink href="/skills" variant="soft" arrow>
-              Install it into your agent
-            </PillLink>
-          </div>
-          <div className="mt-7 flex justify-center">
-            <Byline />
-          </div>
-          <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-fd-muted-foreground">
-            {trust.map((item) => (
-              <li key={item} className="flex items-center gap-1.5">
-                <CheckCircle2 className="size-4 text-ember" />
-                {item}
-              </li>
-            ))}
-          </ul>
+  return <div id="main-content" className="flex-1">
+    <section className="mx-auto max-w-6xl px-6 pb-16 pt-14 md:px-8 md:pt-20">
+      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ember-deep">Model intelligence. Enterprise capability.</p>
+      <h1 className="mt-5 max-w-4xl font-serif text-4xl leading-[1.12] sm:text-5xl lg:text-6xl">Turn your enterprise into an <span className="italic text-ember-deep">agentic enterprise.</span></h1>
+      <p className="mt-6 max-w-2xl text-lg leading-8 text-fd-muted-foreground">How to distill model intelligence into useful work, connect it to the enterprise, and measure the business result. Start with the question that matters to you.</p>
+      <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <Link href="/use-cases" className="group rounded-2xl border border-fd-border bg-fd-card p-7 transition-colors hover:border-ember focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember">
+          <Building2 className="size-7 text-ember-deep" aria-hidden="true" />
+          <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-fd-muted-foreground">Start with the business</p>
+          <h2 className="mt-2 font-serif text-3xl">What could agents do for us?</h2>
+          <p className="mt-4 leading-7 text-fd-muted-foreground">Explore growth, production, service, safety, and compliance through concrete examples from utilities, mining, and across the enterprise.</p>
+          <span className="mt-7 inline-flex items-center gap-2 font-semibold text-ember-deep">Explore use cases <ArrowUpRight className="size-4" /></span>
+        </Link>
+        <Link href="/architecture" className="group rounded-2xl border border-fd-border bg-fd-card p-7 transition-colors hover:border-ember focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember">
+          <Layers3 className="size-7 text-ember-deep" aria-hidden="true" />
+          <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-fd-muted-foreground">Start with the architecture</p>
+          <h2 className="mt-2 font-serif text-3xl">How does it all fit together?</h2>
+          <p className="mt-4 leading-7 text-fd-muted-foreground">Explore fourteen enterprise layers, then open the components, interfaces, controls, and design choices behind a working agent.</p>
+          <span className="mt-7 inline-flex items-center gap-2 font-semibold text-ember-deep">Explore architecture <ArrowUpRight className="size-4" /></span>
+        </Link>
+      </div>
+    </section>
+    <section className="border-y bg-fd-card/40">
+      <div className="mx-auto max-w-6xl px-6 py-12 md:px-8">
+        <h2 className="font-serif text-3xl">Follow your interest</h2>
+        <div className="mt-7 grid gap-x-9 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ['Intelligence ladder', '/ladder', 'Instructions, context, tools, and model adaptation. Choose what improves the task.'],
+            ['Knowledge & memory', '/memory', 'Represent and retrieve documents, images, locations, and equipment behavior.'],
+            ['Research', '/research', 'Read the results, the limitations, and the questions still worth investigating.'],
+            ['Skills', '/skills', 'Apply the guide to a design, readiness assessment, or implementation decision.'],
+          ].map(([title,href,body]) => <div key={href}><Link className="font-semibold underline decoration-fd-border underline-offset-4 hover:text-ember-deep" href={href}>{title} ↗</Link><p className="mt-2 text-sm leading-6 text-fd-muted-foreground">{body}</p></div>)}
         </div>
-        <div className="relative mx-auto w-full max-w-6xl px-6 pb-16 md:px-8">
-          <WallChartPreview />
-        </div>
-      </section>
-
-      {/* The skills */}
-      <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-24">
-        <SectionDecor circles="tr" dots="bl" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
-          <SectionHeading
-            eyebrow="Read it, or install it"
-            title={
-              <>
-                {skillCount()} skills your agent can <span className="italic text-ember">use directly.</span>
-              </>
-            }
-            sub="Every section of this site is published as an Agent Skill: a folder your agent reads, carrying the architecture, the decisions and the measured evidence with the sources intact. One command installs the catalogue into Claude Code, Codex, Cursor, Gemini CLI or Copilot."
-          />
-          <div className="mx-auto mt-8 max-w-2xl">
-            <CopyLine command={installCommands.everything} />
-          </div>
-          <div className="mt-10">
-            <SkillsStrip limit={6} />
-          </div>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <PillLink href="/skills">The full catalogue</PillLink>
-            <PillLink href="/skills/install" variant="outline">
-              Per-agent instructions
-            </PillLink>
+      </div>
+    </section>
+    <section className="mx-auto max-w-6xl px-6 py-14 md:px-8">
+      <h2 className="font-serif text-3xl">From a useful task to an enterprise capability</h2>
+      <TeachingIllustration src="/figures/use-cases/enterprise-flow.svg" mobileSrc="/figures/use-cases/enterprise-flow-mobile.svg" title="The same goal, different starting points" alt="Business intent leads to an agent capability, connected enterprise systems, people and controls, and a measured business result." caption="Use cases explain the work. Architecture explains the system that makes it possible. Research helps us test and improve both." />
+      <div className="grid gap-8 border-t pt-9 md:grid-cols-[1fr_2fr]">
+        <div><p className="text-xs font-semibold uppercase tracking-wider text-ember-deep">Evidence and open questions</p><h2 className="mt-3 font-serif text-3xl">Know where things stand.</h2></div>
+        <div className="space-y-5">
+          <p className="leading-7 text-fd-muted-foreground">The guide distinguishes measured findings, external reports, and proposed designs. New ideas sit alongside the results that changed our earlier advice.</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
+            <Link href="/research/what-changed" className="underline underline-offset-4">What changed our advice</Link>
+            <Link href="/research/questions" className="underline underline-offset-4">Questions to investigate</Link>
+            <Link href="/research/industrial-examples" className="underline underline-offset-4">Industrial examples</Link>
           </div>
         </div>
-      </section>
-
-      {/* The spine */}
-      <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-24">
-        <SectionDecor circles="bl" dots="none" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
-          <SectionHeading
-            eyebrow="The cross-layer spine"
-            title={
-              <>
-                Six things every design must get <span className="italic text-ember">right.</span>
-              </>
-            }
-            sub="Each one cuts across every layer on the chart. Get these right and the layer-by-layer choices become ordinary engineering."
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {spine.map((s) => (
-              <FeatureCard key={s.href} href={s.href} title={s.title} icon={<s.icon className="size-6" strokeWidth={1.8} />}>
-                {s.body}
-              </FeatureCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The patterns */}
-      <section className="relative overflow-hidden py-20 md:py-24">
-        <SectionDecor circles="both" dots="br" />
-        <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-            <div>
-              <Eyebrow>Patterns, not opinions</Eyebrow>
-              <h2 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-fd-foreground md:text-5xl">
-                How to give an agent the <span className="italic text-ember">right context.</span>
-              </h2>
-              <p className="mt-5 text-[16px] leading-[1.7] text-fd-muted-foreground md:text-[17px]">
-                Nine patterns for what reaches an agent's context: how to represent a document so a question finds the
-                part that answers it, how to keep the cost sane, what to pass on, and how to tell whether it worked.
-                Each says <span className="mark-wash">what to do and what it buys</span>, with the measurement behind
-                it from our own experiments and the published work. The catalogue{' '}
-                <span className="mark-wash">grows with each study</span>.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <PillLink href="/patterns">
-                  <Shapes className="size-4" />
-                  The nine patterns
-                </PillLink>
-                <PillLink href="/patterns/how-to-test-a-context-design" variant="outline">
-                  How to test them on your corpus
-                </PillLink>
-              </div>
-              <Link
-                href="/patterns/reading-list"
-                className="mt-5 inline-flex items-center gap-1 text-[14px] font-semibold text-ember-deep hover:text-ember-ink"
-              >
-                The papers each pattern rests on
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </div>
-            <StatTiles items={patternStats} columns={2} />
-          </div>
-        </div>
-      </section>
-
-      {/* How this is written */}
-      <section className="relative overflow-hidden py-20 md:py-24">
-        <div className="relative mx-auto w-full max-w-6xl px-6 md:px-8">
-          <SectionHeading
-            eyebrow="How this is written"
-            title={
-              <>
-                Verdicts, sources, and gaps stated <span className="italic text-ember">as gaps.</span>
-              </>
-            }
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-3">
-            <FeatureCard title="Evidence status on every claim">
-              Vendor-published figures are labelled. Author positions are labelled. Unverified claims are excluded and
-              the exclusion is stated.
-            </FeatureCard>
-            <FeatureCard title="Verdicts, not surveys">
-              Every contested choice ends in a decision with the discriminator that decides your case, and what would
-              change it.
-            </FeatureCard>
-            <FeatureCard title="Gaps published as gaps">
-              Six cross-cutting concerns have no complete answer anywhere. They are listed with their status rather than
-              papered over.
-            </FeatureCard>
-          </div>
-        </div>
-      </section>
-
-      {/* Final call */}
-      <section className="relative overflow-hidden bg-fd-card/60 py-20 md:py-28">
-        <SectionDecor circles="both" dots="none" />
-        <div className="relative mx-auto w-full max-w-3xl px-6 text-center">
-          <Eyebrow center>Ready when you are</Eyebrow>
-          <h2 className="mt-6 font-serif text-4xl font-medium leading-[1.1] text-fd-foreground md:text-5xl">
-            Take the chart.
-            <br />
-            <span className="text-ember">Then go as deep as you need.</span>
-          </h2>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <PillLink href="/architecture">Open the one-page architecture</PillLink>
-            <PillLink href="/layers" variant="outline">
-              Go layer by layer
-            </PillLink>
-          </div>
-          <p className="mt-5 text-[13px] text-fd-muted-foreground">
-            {appName}, written by{' '}
-            <a
-              href={author.linkedin}
-              rel="author noopener"
-              target="_blank"
-              className="font-medium text-fd-foreground underline decoration-fd-border underline-offset-4 hover:decoration-ember"
-            >
-              {author.name}
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <SiteFooter />
-    </main>
-  );
+      </div>
+    </section>
+    <SiteFooter />
+  </div>;
 }

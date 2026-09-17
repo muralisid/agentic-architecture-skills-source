@@ -2,6 +2,8 @@
 title: "Step 3: Tools and the loop"
 icon: "Repeat"
 description: "How an agent loop actually runs, what a harness controls, why the same model in a different harness makes different decisions, and the only published threshold for going multi-agent."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -42,23 +44,19 @@ On 10,000 SEC filings across 25 field types, five models and four coordination p
 
 The threshold that follows is the only published one: **multi-agent is justified when the accuracy requirement exceeds about 0.92 F1.** Below that you are paying a multiplier for something a single well-built loop delivers.
 
-## At the bank
+## In utilities and mining
 
-The financial crime agent's loop looks like this. It receives an alert. It calls core banking for the customer profile, the transaction store for the flagged period, the case system for prior alerts, and a screening service for counterparty checks. It reads what comes back, decides whether it needs more, and eventually drafts the narrative and a proposed disposition.
+<TeachingIllustration src="/figures/ladder/industrial-tools-and-the-loop.svg" mobileSrc="/figures/ladder/industrial-tools-and-the-loop-mobile.svg" title="Investigate a vegetation candidate" alt="Candidate: Image near an asset. Tool call: Check map and work orders. Observation: Read evidence and gaps. Next step: Inspect, request, or stop" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-**Tool design decides the cost.** A naive transaction tool returns every field of every transaction in the window, which is tens of thousands of tokens of mostly irrelevant JSON, and the model then reasons badly because the relevant three transactions are buried. The right tool returns a summary by counterparty and a flag for the outliers, with a second tool to pull detail on a specific one. Same data, a fraction of the context, better reasoning.
+A vegetation candidate arrives with a location and observation date. The agent checks the asset map, recent inspections, and existing work orders. If the image cannot establish the required detail, it prepares a field-inspection request rather than inferring exact clearance.
 
-**Context resets rather than compacts.** A complex investigation can run twenty turns. Compaction risks summarising away the one transaction that mattered, and in a regulated file that is not an acceptable failure. The harness keeps a structured evidence record as it goes, and resets the conversation against that record. If any of that record is kept for later alerts on the same customer, it is memory, and it passes the same check first.
+Each tool returns a bounded result with source references. The loop has a deadline, a cost limit, and a stopping rule. Permission checks remain outside the model. Creating a request is distinct from completing the inspection.
 
-**The loop has hard stops.** An iteration cap, a wall-clock cap, and a cost cap per alert. Without them a single pathological alert can consume the day's budget, and at tens of thousands of alerts a month that is a real operational risk rather than a theoretical one.
-
-**Tool access is where the control lives, not the prompt.** The agent reaches systems through a <Term k="gateway">gateway</Term> that checks, on every call, whether this analyst may see this customer. The agent's own instructions are not the control, because instructions and content reach the model as the same kind of <Term k="token">token</Term> and cannot be reliably separated. This is the argument on [the four deterministic zones](/architecture/deterministic-zones).
-
-**Single agent first.** The bank's disposition proposal does not need 0.92 F1 from the agent, because the analyst decides. So the multiplier is not justified, and the guide's blueprint puts this agent at a single loop with good tools.
+Begin with one agent or a fixed workflow. Add specialists only when they improve outcome quality or useful concurrency enough to justify coordination. See [vegetation inspection](/use-cases/vegetation-inspection).
 
 ## Where the depth is
 
-<TeachingIllustration src="/images/ladder/tools-bank-labeled-v2.webp" alt="A bank investigation agent gathers compact results from four tools into a case ledger while rejecting an oversized raw data dump." title="A bank investigation is shaped by its tools" caption="Purpose-built tools return a customer profile, an outlier summary, prior cases and screening evidence. The raw transaction dump stays out; compact results enter a durable record under iteration, time and cost limits." />
+
 
 [The agent platform layer](/layers/r07-agent-platform) covers the harness, durability, portability and the build-versus-buy split. The harness section of [the vendor-neutral Agentic OS](/agentic-os) covers what a platform provides here and what stays yours.
 
@@ -66,7 +64,7 @@ The financial crime agent's loop looks like this. It receives an alert. It calls
 
 **The loop is instrumented, failures are traced to a specific cause, and what remains is the model not knowing your domain.**
 
-That word "traced" is the gate. If you cannot say which turn failed and why, you cannot know the model is at fault, and every option in Deck B costs more than finding out. At the bank the trace shows, per alert, which tools were called, what they returned, how many turns ran, what the draft claimed and which retrieved evidence each claim came from.
+That word "traced" is the gate. If you cannot say which turn failed and why, you cannot know the model is at fault, and every option in Model adaptation costs more than finding out. For an inspection, a trace should show the sources consulted, tool responses, checks made, and the confirmed action.
 
 <EvidenceBadge status="independently-measured" /> The harness and multi-agent findings are independent published work, not ours.
 
@@ -78,6 +76,6 @@ That word "traced" is the gate. If you cannot say which turn failed and why, you
 - The multi-agent cost-accuracy frontier: arXiv 2603.22651, March 2026.
 - What a record kept past the run becomes: [the data-to-memory pipeline](/architecture/data-to-memory) and [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture).
 - Depth on [the agent platform layer](/layers/r07-agent-platform).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

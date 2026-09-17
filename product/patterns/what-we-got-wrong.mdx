@@ -2,6 +2,8 @@
 title: "What we got wrong"
 icon: "ClipboardCheck"
 description: "The scorecard for every hypothesis this programme tested. Three predictions were confirmed, one survived only in a narrower form, and seven were contradicted or not supported. The full record, the code and the per-query results are public."
+datePublished: "2026-08-24"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -64,23 +66,18 @@ An independent reviewer was pointed at the first sprint with instructions to rej
 
 ## The record
 
-**In short:** The working documents are published as they were written, not tidied up.
-
-- [The programme record](https://github.com/muralisid/multicard-bench/tree/main/docs/programme): the findings summary, the hypothesis register with every verdict, the adversarial review, the frozen preregistration, and both sprint diaries
-- [The benchmark](https://github.com/muralisid/multicard-bench): the code, the committed outputs and the per-query results for twenty experiments, so any number on these pages can be recomputed rather than believed
-
-The sprint diaries are append-only and still contain conclusions later withdrawn. That is deliberate, so the record shows what was believed and when, but it makes them a poor way to learn what is true. The findings summary is the one to read.
+These pages summarize author-reported experiments and corrections. The underlying working records are not offered here as independent evidence. Use the stated methods and limits to decide what to reproduce on your own tasks.
 
 ## Limits of this evidence
 
-The encoders were small, the corpora ran to twenty thousand documents, everything was in English, and no production data was used. Prices are as of 2026-08-19 and local compute is priced at zero. A larger instruction-tuned encoder would strengthen the query-side conditioning result rather than weaken it. The obvious next experiment is a real aspect-targeted corpus with human judgements, which would test the one positive finding that currently rests on synthetic data.
+The encoders were small, the corpora ran to twenty thousand documents, everything was in English, and no production data was used. Prices are as of 2026-08-19 and local compute is priced at zero. Whether a larger instruction-tuned encoder strengthens the query-side conditioning result remains a question to test. The obvious next experiment is a real aspect-targeted corpus with human judgements, which would test the one positive finding that currently rests on synthetic data.
 
 <details>
 <summary>The research behind this page</summary>
 
-- The hypothesis register and findings summary, published in full at [docs/programme](https://github.com/muralisid/multicard-bench/tree/main/docs/programme)
-- The adversarial review of Sprint R1, commit 1cec616, 2026-08-20
-- Benchmark repository, commit 2b9c6ef, 2026-08-22: one metrics file and one per-query file per experiment
+
+
+
 - [CD-25](/decisions#cd-25) records the decision this evidence supports
 
 </details>

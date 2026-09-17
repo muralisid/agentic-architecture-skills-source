@@ -4,78 +4,76 @@ audience: ["CIO/CTO","Enterprise architect","Utilities operations lead"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Utilities and Energy."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "5 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/verticals/banking-and-financial-services"
 ---
 
-# Vertical Blueprint: Utilities and Energy
+# Power utilities and energy
 
-As of August 2026. Phase 6. The vertical where agents meet physics, and the one where this guide is most willing to say no.
+A proposed workflow for power utilities and energy. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+A utility finds a possible vegetation or equipment risk on a distribution route. Staff must reconcile imagery, GIS, asset records, and recent inspections before scheduling field work.
 
-A distribution utility runs an asset register in an EAM system, work management on top of it, a field workforce on mobile devices, a GIS that disagrees with the asset register in ways everyone has learned to work around, an outage management system, an ADMS, and a control room where operators watch alarms and event streams. Storm season doubles the alarm load and halves the time available to think about any one of them.
+![Turn asset evidence into inspected work: Detect a concern, then Locate the asset, then Check the evidence, then Approve inspection, then Confirm the result.](/figures/blueprints/utilities-and-energy-mobile.svg)
 
-Four candidate agent applications present themselves: alarm and event triage in the control room, asset data reconciliation across systems that disagree, field crew assistance at the job, and switching order generation.
+## Start with the simplest useful solution
 
-Three of those four are good ideas. The fourth is the one every vendor demonstrates.
+Compare the agent with scheduled inspection, GIS rules, and conventional condition monitoring. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
 
-## 2. Agent team design
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Verdict |
 |---|---|---|---|
 | Event context agent | Watches alarm and event streams, assembles context an operator cannot hold in working memory, presents candidate interpretations | A2, L1 | Recommended. Output is an alert the operator may ignore |
 | Asset reconciliation agent | Finds and explains disagreements between EAM, GIS and field-captured data, proposes corrections with provenance | A2 to A3 on the write path, L2 | Recommended. The write path is data quality, where a wrong recommendation costs a rejected change |
 | Field assistance agent | Retrieves the right past incident, the applicable procedure and the asset history for the job in front of the crew | A2, L1 | Recommended. Degraded-connectivity behaviour must be specified |
-| Switching order agent | Generates switching orders | Not recommended at any autonomy level | The sector's own survey ranks this the **lowest**-adopted AI use case, at 1.08 on a five-point scale. That is the practitioners answering |
+| Switching assistance | Gather approved procedures for an operator | Assisted only | No autonomous switching authority in this proposed design |
 
-**The organising principle: agents on the information path, not the control path.** The control path is governed by standards written for deterministic systems, and those standards have not been updated to bless probabilistic ones. Agent output is never an independent protection layer.
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
 
-## 3. Planes activated
+## How the architecture supports the task
 
 | Plane | Role |
 |---|---|
 | Knowledge | **Direct.** Historian data, asset registers, past incidents, procedures, all with lineage and freshness bounded by process dynamics |
 | Human | **Direct.** The operator holds decision authority. Everything else in the blueprint serves that |
 | Evidence | **Direct.** Operator-custodied session logging, not vendor-held. Every displayed option attributable to its source and timestamped |
-| Execution | **Direct.** Local deployment inside the perimeter, because control-system data typically may not leave it |
+| Execution | **Direct.** Deployment selected from data classification and operational constraints |
 | Control | Supporting. Unnamed OT assets are not routable; access severable in seconds |
 | Action | Supporting, and deliberately narrow. Read paths broad, write paths confined to data quality |
 | Improvement | Supporting. Two loops at different speeds: fast operational learning from overrides, slow compounding asset learning from work orders |
 
-## 4. Controls
+## Controls and human decisions
 
-- **The validation loop, which is this vertical's signature pattern.** Raw model output is never displayed. Candidate actions are simulated against a digital twin or checked against rules, filtered, and only surviving options reach the operator. The model proposes; physics or policy disposes.
-- Agent output confined to the alert or prompt channel and visually distinct from configured alarms. An operator must never mistake a suggestion for an alarm.
-- Per-agent identity as a security principal with least privilege, access severable in seconds, and no routing to unnamed OT assets.
-- Local open-weight deployment inside the perimeter. This is the published pattern, and it is a classification decision rather than a cost decision.
-- Tested revert-to-manual. Agent failure must not degrade the control system.
-- Recommendation acceptance and override telemetry, custodied by the operator.
+Keep switching, protection, and physical control in approved control systems. Let the agent prepare evidence and proposed work. Test operation when connectivity fails.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-Value here is measured in avoided truck rolls, avoided outages, deferred asset replacement and hours of specialist engineering time. Token cost is the cheapest input in the system and reporting it is close to meaningless.
+## A useful investigation loop
 
-The one measured result in the published literature sets the shape: a model converted energy-management-system node-breaker models into bus-branch planning models in under a minute, work the national-lab authors describe as usually taking regional-entity staff multiple weeks, and the converted case matched the actual state-estimation case closely enough to satisfy the applicable model-validation standard. Weeks of specialist time collapsing into minutes, with the specialist still checking the result. That is the economics of this vertical.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-The constraint on the other side: an industry research body puts roughly 95% of utility data behind cybersecurity and customer-privacy walls, which is why the credible collective efforts are data-pooling consortia rather than model competitions.
+## Economics and measures
 
-## 6. Honest limits
+Measure confirmed defects, missed risks in a sampled control set, inspection lead time, unnecessary visits, and crew review effort.
 
-This section is longer here than in any other blueprint, and that is the finding.
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-- **No published production AI alarm-triage deployment exists in an electric utility control room.** The published work is research, refinery pilots and product announcements. The event context agent above is a design proposal with shipped analogues, not an established practice, and the guide labels it as such.
-- **No published agent holds autonomous control authority at any named water utility, anywhere.**
-- **No named-factory case exists** of an MES agent taking autonomous production action with measured outcomes. Widely circulated figures in this space trace to content farms.
-- **30% of surveyed sector entities report active bans on public AI tools.** Any blueprint that assumes tool availability is describing a different industry.
-- The sector's own adoption ranking is sobering across the board: writing log entries scored 1.35 and predicting equipment failures 1.76, both on a five-point scale.
+## Limits to test
 
-## 7. Metrics
+Imagery can be old, obscured, or too coarse to establish clearance. Treat detection as a reason to inspect. Confirm asset identity and current conditions in the field.
 
-Alarm-to-operator ratio during upsets, measured as a burst rate over ten minutes, never as a daily average. Recommendation acceptance and override rates, by agent and by operator. Asset register disagreement count, trending down. Truck rolls avoided. Specialist hours recovered on model and data work. Time to revert to manual, drilled and timed.
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
 
-## Sources
+## External reading
 
-research/R05-lob-and-ot/findings.md and sources.md carry every claim above, including the sector survey and the model-conversion result. Validation loop and alarm-load discipline: research/R05 and research/R13-operating-model/. Sovereignty posture: [../../synthesis/sovereignty-matrix.md](../../synthesis/sovereignty-matrix.md).
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.
+
+- [Government guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/), December 2025. Additional reading for deployments that interact with industrial systems.

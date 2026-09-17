@@ -1,0 +1,66 @@
+[
+  {
+    "id": "use-cases",
+    "text": "Use cases",
+    "url": "/use-cases",
+    "description": "Business opportunities and practical starting points",
+    "prefixes": [
+      "/use-cases",
+      "/library/blueprints",
+      "/library/frameworks"
+    ]
+  },
+  {
+    "id": "architecture",
+    "text": "Architecture",
+    "url": "/architecture",
+    "description": "Fourteen layers and the system around an agent",
+    "prefixes": [
+      "/architecture",
+      "/layers",
+      "/security",
+      "/agentic-os",
+      "/decisions",
+      "/library/architecture"
+    ]
+  },
+  {
+    "id": "ladder",
+    "text": "Intelligence ladder",
+    "url": "/ladder",
+    "description": "Choose how to put model intelligence to work",
+    "prefixes": [
+      "/ladder"
+    ]
+  },
+  {
+    "id": "memory",
+    "text": "Knowledge & memory",
+    "url": "/memory",
+    "description": "Represent, retrieve, and maintain useful evidence",
+    "prefixes": [
+      "/memory",
+      "/patterns",
+      "/library/techniques"
+    ]
+  },
+  {
+    "id": "research",
+    "text": "Research",
+    "url": "/research",
+    "description": "Questions, experiments, evidence, and changed advice",
+    "prefixes": [
+      "/research",
+      "/library"
+    ]
+  },
+  {
+    "id": "skills",
+    "text": "Skills",
+    "url": "/skills",
+    "description": "Apply the guide to a real design task",
+    "prefixes": [
+      "/skills"
+    ]
+  }
+]

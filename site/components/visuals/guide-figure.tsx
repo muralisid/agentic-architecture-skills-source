@@ -11,14 +11,15 @@ export interface GuideFigureProps {
 }
 
 function FigureSources({ figure }: { figure: FigureManifestEntry }) {
-  if (!figure.sources.length) return null;
+  const sources = figure.sources.filter((source) => /^https?:\/\//.test(source.href) && !/github\.com\/muralisid\/(agentic-architecture-skills-source|multicard-bench|agent-memory-research)/.test(source.href));
+  if (!sources.length) return null;
 
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.6875rem] text-fd-muted-foreground">
       <span>Reviewed {figure.reviewedAt}</span>
       <span aria-hidden="true">·</span>
       <span>Sources:</span>
-      {figure.sources.map((source) => (
+      {sources.map((source) => (
         <a key={`${source.href}-${source.label}`} href={source.href} className="underline decoration-fd-border underline-offset-4 hover:text-fd-foreground">
           {source.label}
         </a>

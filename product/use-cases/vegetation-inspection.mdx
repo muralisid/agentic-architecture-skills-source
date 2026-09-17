@@ -1,0 +1,51 @@
+---
+title: "Prioritize vegetation inspections"
+description: "Turn image-based risk candidates into evidence-backed field work."
+position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+This is a proposed utility workflow informed by the author’s electricity-distribution experience. Satellite-assisted vegetation management has vendor-reported precedents; the adaptive investigation and work-order design here must be evaluated separately.
+
+## The proposed work
+
+<TeachingIllustration src="/figures/use-cases/vegetation-inspection.svg" mobileSrc="/figures/use-cases/vegetation-inspection-mobile.svg" title="Prioritize vegetation inspections" alt="Observe: Dated imagery and assets. Locate: Find a risk candidate. Check: History, resolution, priority. Request: Create a bounded inspection. Confirm: Track field evidence" caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+
+## Start with evidence
+
+Use imagery suited to the question and the distribution-network asset map. Record observation date, location, resolution, and quality. A broad vegetation signal can identify an area worth inspecting without proving the clearance of a particular conductor.
+
+## What the agent adds
+
+An agent can compare prior inspections, recent work, weather-related context, and existing requests. It can prepare a prioritized inspection with its supporting evidence and create the request through the permitted work-management interface. A specialist survey or field inspection establishes facts that the image cannot resolve.
+
+## How the investigation proceeds
+
+The repeated investigation asks whether the candidate is near the correct asset, whether evidence is recent enough, and whether work is already planned. Request another observation only when it can change the next decision. Stop with a justified inspection request or an explicit evidence gap.
+
+## Measure the business result
+
+Measure confirmed findings per inspection, missed-risk samples, duplicate work, time from candidate to inspection, and total assessment cost. Compare with the existing patrol and planning process. Do not transfer a vendor’s reported benefit to a different network.
+
+## Responsibility and failure handling
+
+The agent proposes or creates an inspection within its authority. It does not approve vegetation removal or switch equipment. Network constraints, environmental requirements, and field safety remain with the responsible operating process.
+
+## Start with a bounded trial
+
+Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+
+## Explore the architecture
+
+- [Business & industrial systems](/layers/r05-lob-and-ot).
+- [Integration & tools](/layers/r03-integration-fabric).
+- [Data engineering for agents](/layers/r14-agent-data-engineering).
+
+Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+
+## External sources
+
+- [AiDASH vegetation management at National Grid, vendor case study](https://www.aidash.com/resource/aidash-transforming-vegetation-management-for-national-grid-using-satellite-analytics-and-ai/). Accessed 17 September 2026.
+- [Google Satellite Embedding dataset documentation](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL). Accessed 17 September 2026.

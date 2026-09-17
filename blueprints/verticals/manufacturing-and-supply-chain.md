@@ -4,23 +4,25 @@ audience: ["CIO/CTO","Enterprise architect","Manufacturing operations lead"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Manufacturing and Supply Chain."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "4 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/verticals/public-sector"
 ---
 
-# Vertical Blueprint: Manufacturing and Supply Chain
+# Manufacturing and supply chain
 
-As of August 2026. Phase 6. The literal bottling plant.
+A proposed workflow for manufacturing and supply chain. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+A production line produces an unexpected defect. A quality engineer needs inspection images, batch records, machine readings, and the approved process specification.
 
-A manufacturer runs an ERP for planning, an MES on the shop floor, a historian collecting process data, a maintenance system against an asset register, a WMS in the warehouse, and a quality function that owns both specification and release. Changeover between products is the expensive event. Unplanned downtime is the expensive failure.
+![Investigate a quality deviation: Detect a deviation, then Link the batch, then Compare past events, then Review the cause, then Verify corrective work.](/figures/blueprints/manufacturing-and-supply-chain-mobile.svg)
 
-This is the vertical the guide's founding metaphor came from, and testing it here is the most direct check available on whether the metaphor generalises.
+## Start with the simplest useful solution
 
-## 2. Agent team design
+Compare the agent with statistical process control, inspection rules, and established maintenance analysis. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Notes |
 |---|---|---|---|
@@ -30,37 +32,41 @@ This is the vertical the guide's founding metaphor came from, and testing it her
 | Supply exception agent | The supply-chain department blueprint, applied to production materials | A3, L2 | See the department blueprint |
 | Production control agent | Takes autonomous production action | Not recommended | No named-factory case with measured outcomes exists. See limits |
 
-## 3. Planes activated
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
+
+## How the architecture supports the task
 
 Knowledge (**direct**: historian, asset register, procedures, batch records), Human (**direct**: the floor crew is the point), Action (**direct** on the information path), Improvement (**direct**), Evidence, Control, Execution (supporting, with the OT boundary from R05).
 
-## 4. Controls
+## Controls and human decisions
 
-- **The OT boundary from the utilities blueprint applies unchanged.** Agents on the information path, not the control path. Agent output is never an independent protection layer. Safety-instrumented functions exclude machine learning by standard.
-- Batch and quality records carry regulatory weight in regulated manufacturing; drafting is permitted, release is not delegable.
-- Agent output visually distinct from control-system alerts.
-- Tested revert-to-manual; agent failure must not degrade production.
-- Where the plant is in scope for industrial security regimes, agent connectivity is a segmentation question before it is an architecture question.
+Keep equipment control and product release in their approved systems. Use the agent to assemble evidence and suggest investigations.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-Value is measured in unplanned downtime avoided, changeover minutes recovered, scrap and rework reduced, and deferred asset replacement. Token cost is negligible against any of these.
+## A useful investigation loop
 
-The metaphor's own economics, stated honestly: physical automation at scale supports the direction, with one major logistics operator passing a million robots against roughly 1.2 million warehouse staff, employees per facility at a sixteen-year low, and packages shipped per employee rising more than twentyfold over a decade. What that supports is the direction and the shape of the residual work, not a ratio and not a timeline.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-## 6. Honest limits
+## Economics and measures
 
-This is the vertical where the guide's founding metaphor gets tested, so the limits are stated at length.
+Measure first-pass yield, investigation time, recurrence, false alarms, review effort, and recovery after an incorrect suggestion.
 
-- **The canonical lights-out figure is wrong.** The widely circulated claim that a famous automated electronics plant runs 128 robots with nine workers is a misquote; the primary reporting says several dozen workers per shift. Fourteen years later no plant of that kind has reached full lights-out at scale.
-- **No named-factory case exists** of an MES agent taking autonomous production action with measured outcomes. Circulating figures trace to content farms.
-- The residual work is real and stable: supervise, adjust, maintain, expand, improve are the tasks the human-factors literature identified in 1983 and has found stable since. That is what the metaphor supports.
-- The honest version, and the one this guide defends: **different humans, doing different work, under a different failure model.** Not fewer humans on a schedule.
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-## 7. Metrics
+## Limits to test
 
-Unplanned downtime. Changeover duration and first-pass yield after changeover. Maintenance schedule adherence and emergency work ratio. Deviation investigation cycle time. Specialist hours recovered. Time to revert to manual, drilled and timed.
+Similarity to an earlier event does not establish the cause. Test competing explanations and validate the corrective action.
 
-## Sources
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
 
-research/R05-lob-and-ot/, research/R13-operating-model/ (the metaphor test, the human-factors record, the crew-figure correction), research/R03-integration-fabric/, [../../synthesis/vision-and-target-state.md](../../synthesis/vision-and-target-state.md).
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.
+
+- [Government guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/), December 2025. Additional reading for deployments that interact with industrial systems.

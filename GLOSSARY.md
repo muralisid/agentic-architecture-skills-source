@@ -95,3 +95,19 @@ Canonical definitions used across the guide. Terms are defined once here and use
 **Portfolio supervision constraint.** Oversight capacity applied across the whole approved use-case set rather than per workload, because workloads are approved individually and supervised collectively.
 
 **Evals.** Systematic, versioned tests of agent quality, safety, grounding, and regressions: golden datasets, scenario tests, adversarial prompts, LLM-as-judge with human review. A production gate, not an afterthought.
+
+## Representation and evidence
+
+**Distilling model intelligence into an enterprise capability.** In this guide's business language, selecting and applying model capabilities to a useful task, with enterprise information, tools, controls, and measures. This broader activity does not necessarily involve model distillation, the training technique.
+
+**Time-series embedding.** A learned representation of observations over time, used to compare behavior or support another analysis. The sampling interval, units, observation window, and operating conditions remain relevant. [TS2Vec](https://arxiv.org/abs/2106.10466), 2021, source reviewed 2026-09-17.
+
+**Geospatial embedding.** A learned representation associated with a location or area. Its meaning depends on the data and training objective. An annual representation can capture temporal patterns without giving an exact event date. [AlphaEarth dataset documentation](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL), reviewed 2026-09-17.
+
+**Multimodal evidence.** Evidence in more than one form, such as text, images, audio, video, or sensor readings. This describes the inputs, not a guarantee that one model understands them all equally well.
+
+**Multiple-model system.** A system using different models for different jobs, such as a visual detector, a time-series encoder, and a language model. Multiple models do not necessarily imply multiple agents.
+
+**Representation alignment.** Learning a shared relationship between representations so comparisons across them are meaningful. Equal vector dimensions alone do not establish alignment.
+
+**Evidence fusion.** Combining findings from separate searches or models into a reviewed set of evidence for a task. In the guide's proposed designs, asset identity, place, time, permissions, and original source links connect the findings.

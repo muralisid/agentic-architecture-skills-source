@@ -37,7 +37,7 @@ A complete published guide (docs site, built from this repo) covering:
 | `inputs/` | Raw canonical inputs (unvetted research material, not guide content) |
 | `product/` | The authored site pages: the architecture, the fourteen layers, the decision catalog, and the research section |
 | `archive/` | Material no longer published: the vendor hub, the per-layer vendor tables, the methodology instruments and the research briefs. Kept, not maintained |
-| `site/` | The docs site. Generated from the markdown above; the repo stays the source of truth |
+| `site/` | The docs site. Source material is input to an evidence-led reader experience |
 | `CHANGELOG.md` | Published revisions, including positions research changed |
 | `RE-VERIFICATION.md` | Volatile facts and when to re-check them |
 | `GLOSSARY.md` | Canonical definitions used across the guide |
@@ -77,3 +77,11 @@ Maintainer: [@muralisid](https://github.com/muralisid)
 ## License
 
 Dual licensed: content (markdown, research, guide text) under [CC BY-SA 4.0](LICENSE-CONTENT.md); code (site, scripts) under [MIT](LICENSE).
+
+## September 2026 audience revision
+
+The site has six reader entrances: Use cases, Architecture, Intelligence ladder, Knowledge & memory, Research, and Skills. Business readers begin with outcomes; architects begin with fourteen explorable layers. Utilities and mining supply the principal worked examples while department and wider enterprise coverage remains.
+
+The source material is input, not evidence by itself. Public claims should link to external sources; author-reported experiments and proposed designs must be labelled. The public decision and update summaries live in `site/editorial/`, while this repository retains the full development history.
+
+Navigation ownership is recorded in `site/content-map.json`. New illustrations have text alternatives and phone variants where needed. Skill bundles include the same revised guidance. Run the site build and reader-journey validation before publication.

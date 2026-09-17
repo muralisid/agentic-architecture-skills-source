@@ -59,3 +59,8 @@ Sign it. The register is what later work assumes exists, and an unsigned draft t
 ## The caveat that keeps this honest
 
 Authorization bounds the blast radius; it does not bound intent. An agent that is tricked will act within its permissions, so the register limits what a successful attack can reach and never prevents one.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

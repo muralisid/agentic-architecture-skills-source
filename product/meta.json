@@ -1,11 +1,10 @@
 {
   "pages": [
+    "use-cases",
     "architecture",
-    "security",
-    "patterns",
+    "ladder",
     "memory",
-    "layers",
-    "decisions",
-    "about"
+    "research",
+    "skills"
   ]
 }

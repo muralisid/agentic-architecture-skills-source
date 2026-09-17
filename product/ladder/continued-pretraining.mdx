@@ -2,6 +2,8 @@
 title: "Continued pretraining"
 icon: "BookOpenText"
 description: "How a model learns a domain from raw text, why tokenisation makes specialist language expensive for a general model, what the corpus work really involves, and the budget split the evidence supports."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -49,17 +51,15 @@ One study modelled the allocation directly: a fixed 30-billion-token budget spli
 
 Read it as a direction, not a recipe: one study, three domains, one model size. The durable conclusions are the ordering and the proportion. Domain adaptation is the big job and is done on raw text; task behaviour is the small job on top and is done on pairs. Teams that invert this, hand-writing tens of thousands of pairs to inject knowledge, are doing the expensive job with the wrong instrument.
 
-## At the bank
+## In utilities and mining
 
-The bank holds decades of exactly the material this step wants: filed suspicious activity reports and their narratives, case files, typology guidance, internal policy, regulator correspondence, procedure manuals. Hundreds of millions to billions of tokens, written in the dialect the agent is supposed to speak.
+<TeachingIllustration src="/figures/ladder/industrial-continued-pretraining.svg" mobileSrc="/figures/ladder/industrial-continued-pretraining-mobile.svg" title="Evaluate domain adaptation for industrial language" alt="Corpus: Permitted technical material. Adaptation: Learn domain regularities. Task tuning: Shape useful behavior. Evaluation: Check domain and general tasks" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-**What the base model gets wrong, concretely.** It reads "structuring" as organisation rather than as deposits split to evade thresholds. It parses SWIFT field references as noise. It treats "smurfing" as a typo. Every such miss is context the retrieval layer must carry on every call: the agent works, but it works like a bright temp on their first week, needing everything explained. Continued pretraining is how the temp becomes staff.
+A utility or mining organization may have technical language, notation, and document structures that a general model handles poorly. Domain adaptation is a candidate only after retrieval, a glossary, examples, and model choice have received a fair comparison.
 
-**What goes in the corpus, and what does not.** In: the filed reports, guidance, policies, manuals, anonymised case narratives. Out: raw transaction data, which is structured data the model reaches through tools, not prose to absorb; anything under erasure obligations, because weights cannot forget a customer; and correspondence containing personal data outside its retention basis. The corpus review is run jointly with the privacy office, and that is not overhead, it is the project.
+Review the training material’s rights, sensitivity, quality, and intended use. Keep changing asset facts and requirements available through governed evidence. Training a model on a document is not a substitute for citing the applicable version during a task.
 
-**The sequence.** Continued pretraining on the corpus teaches the dialect. The chapter 4 fine-tune re-runs on top to restore the house narrative shape. The general-capability eval runs, and the distillation repair follows if it shows damage. Then the routing economics from chapter 5 are recomputed, because a domain-adapted small model handles a wider routine tier than a general one did.
-
-**What changes downstream.** Retrieval budget stops being spent on definitions and starts being spent on evidence. Prompts shrink because the model no longer needs the typology glossary inline. The measured effect to expect is not "smarter" but cheaper and sharper: fewer tokens of explanation per alert, better use of what is retrieved.
+Measure the specific domain improvement, general-capability regressions, preparation cost, and ongoing update burden. Do not assume that training will shrink every prompt or improve every downstream workflow.
 
 ## The test for moving on
 
@@ -73,6 +73,6 @@ There is rarely anywhere further to go. Continued pretraining plus fine-tuning i
 - Modelling Optimal Trade-Off Between Continued Pre-Training and Supervised Fine-Tuning for LLM Domain Adaptation, OpenReview, 8 October 2025: https://openreview.net/forum?id=guUUlHPXRw
 - Derived artifacts inheriting obligations: [the concern matrix](/architecture/concern-matrix) and [agent data engineering](/layers/r14-agent-data-engineering).
 - The forgetting repair: [distillation](/ladder/distillation), and [intelligence and learning](/layers/r06-intelligence-and-learning).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

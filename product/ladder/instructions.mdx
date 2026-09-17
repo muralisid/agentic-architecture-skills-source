@@ -2,10 +2,12 @@
 title: "Step 1: Instructions"
 icon: "MessageSquare"
 description: "What a prompt is actually made of, why examples work better than adjectives, how automated optimisation beats hand-tuning, and the exact signal that says you have run out of room here."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
-This is prompt writing, and everyone has done some. What most people have not done is treat it as engineering: pinning the output shape so it cannot drift, teaching by example rather than by adjective, and letting a machine search for a better prompt than a person would write. This page covers the mechanics, then applies them to a bank's financial crime agent. The one thing to remember: you have not exhausted this step until a week of concentrated work stops moving a fixed score.
+This is prompt writing, and everyone has done some. What most people have not done is treat it as engineering: pinning the output shape so it cannot drift, teaching by example rather than by adjective, and letting a machine search for a better prompt than a person would write. This page covers the mechanics, then applies them to a utility inspection brief. The one thing to remember: you have not exhausted this step until a matched evaluation shows that instruction changes no longer address the observed failure.
 </PlainTerms>
 
 ## What a prompt is actually made of
@@ -38,39 +40,33 @@ The instinct is to write a prompt, read the failures, and rewrite it. That is a 
 
 Run it as a search instead. A published method treats prompts as candidates to be mutated and selected: the system reads its own failures, proposes revisions, and keeps a diverse frontier of candidates rather than hill-climbing on one. It beat a reinforcement-learning baseline by six points on average and up to twenty, using up to 35 times fewer rollouts, with gains appearing from as few as ten training examples (GEPA, arXiv 2507.19457, ICLR 2026).
 
-Two things follow. Teams that hand-tune and then conclude the model is the limit have usually not run this, so their ceiling is not the model's ceiling. And ten examples is a low bar, which means this is available long before you have enough data for anything in Deck B.
+Two things follow. Teams that hand-tune and then conclude the model is the limit have usually not run this, so their ceiling is not the model's ceiling. And ten examples is a low bar, which means this is available long before you have enough data for anything in Model adaptation.
 
 A related result treats context as something that accumulates: rather than one prompt being rewritten, a playbook is grown and curated across many runs. It improved agent benchmarks by 10.6 points and finance tasks by 8.6, with no weight updates and no labelled supervision (ACE, arXiv 2510.04618, ICLR 2026).
 
 A playbook that grows across runs is memory, and it changes how the agent behaves. So each addition passes the same tested gate as any other change before it takes effect. Nothing is kept just because it piled up. [The learning flywheel](/architecture/learning-flywheel) sets out that gate.
 
-## At the bank
+## In utilities and mining
 
-The financial crime agent's first job is to draft the narrative behind an alert: what the customer does, what the flagged transactions were, what makes them unusual, and what the analyst should look at.
+<TeachingIllustration src="/figures/ladder/industrial-instructions.svg" mobileSrc="/figures/ladder/industrial-instructions-mobile.svg" title="Prepare an inspection brief" alt="Task: Investigate this asset. Evidence: Use dated observations. Output: Findings, gaps, next check. Boundary: No unsupported conclusion" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-The naive prompt is a paragraph asking for a clear summary of the alert. It produces something readable and unusable, because it varies. Sometimes it opens with the customer, sometimes with the transaction. Sometimes it states the typology, sometimes it implies it. An analyst reviewing sixty of these a day cannot skim inconsistent prose, so they read every word, and the agent has saved nothing.
+Consider a utility inspection assistant. A vague instruction to “summarize the issue” may produce readable prose that leaves out the asset, observation date, source, or unresolved question.
 
-The engineered version does four things:
+Specify the output: asset identifier, observed condition, evidence references, uncertainty, and recommended next check. Include approved examples of good briefs and counterexamples showing unsupported conclusions. Validate required fields outside the model.
 
-**Pins the output shape.** Fields, enforced by schema: customer profile summary, expected activity, observed activity, the specific deviation, the matching typology, the recommended next check. The analyst's eye lands in the same place every time.
-
-**Teaches the house voice by example.** Three real narratives, previously written by senior analysts and approved in quality assurance, included in the prompt. Not "write in a professional regulatory tone".
-
-**Forbids the two failure modes explicitly.** No conclusion about whether this is suspicious, because that is the analyst's call and an agent that asserts it invites automation bias. And no fact that is not in the retrieved evidence, with every claim carrying its source.
-
-**Puts the stable parts first.** The system instruction, the typology definitions and the examples never change between alerts, so they sit at the front and stay cached. The alert and the customer file go last. At tens of thousands of alerts a month that ordering is most of the running cost.
+The task remains evidence preparation. A clear instruction does not authorize the agent to operate equipment or certify a condition. Evaluate the brief against representative cases and reviewer effort. The example is a proposed design, not a measured deployment.
 
 ## What this step does not fix
 
-<TeachingIllustration src="/images/ladder/instructions-bank-labeled-v3.webp" alt="A disorderly pile of investigation papers is transformed into aligned evidence cards and a consistent case report." title="From plausible prose to a reviewable case file" caption="Examples and a schema put each kind of evidence in the same place on every alert, so an analyst can review the result consistently and trace it back to its sources." />
 
-Missing knowledge. If the customer's transaction history is not in the context, no instruction recovers it, and a model asked to summarise evidence it cannot see will produce a fluent narrative anyway. That is the failure mode to fear here, and it is a [step 2](/ladder/context) problem.
+
+Missing knowledge. If the asset history is not in the context, no instruction recovers it, and a model asked to summarise evidence it cannot see will produce a fluent narrative anyway. That is the failure mode to fear here, and it is a [step 2](/ladder/context) problem.
 
 ## The test for moving on
 
-**Accuracy climbs during a week of concentrated prompt work, then goes flat against a locked <Term k="eval">eval</Term> suite.**
+**Compare instruction changes against a fixed <Term k="eval">eval</Term> suite and inspect the failures that remain.**
 
-Flat is the signal. Frustration is not. Without a fixed eval you cannot tell a real ceiling from a bad afternoon, and the difference decides whether you are about to spend a quarter's budget for nothing. At the bank the eval is a frozen set of a few hundred historical alerts with known dispositions, scored on whether the draft narrative contains the facts the analyst actually used.
+Flat is the signal. Frustration is not. Without a fixed eval you cannot tell a real ceiling from a bad afternoon, and the difference decides whether you are about to spend a quarter's budget for nothing. Use a fixed evaluation set of representative inspection cases, including missing and conflicting evidence.
 
 <EvidenceBadge status="independently-measured" /> Both published results above are peer-reviewed and independent of this guide.
 
@@ -80,6 +76,6 @@ Flat is the signal. Frustration is not. Without a fixed eval you cannot tell a r
 - GEPA, reflective prompt evolution, arXiv 2507.19457, ICLR 2026.
 - ACE, context as an evolving playbook, arXiv 2510.04618, ICLR 2026.
 - A growing playbook as memory that passes a tested gate: [the learning flywheel](/architecture/learning-flywheel).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

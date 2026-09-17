@@ -11,7 +11,7 @@
 export const siteName = 'Agentic Architecture Skills';
 export const siteShortName = 'Architecture Skills';
 export const siteDescription =
-  'Architecture skills for the agentic enterprise and for software that agents consume first. Read the guide, or install it into your agent.';
+  'How to distill model intelligence and turn an enterprise into an agentic enterprise. Explore use cases, architecture, knowledge, and research.';
 
 /** Hosts that served the site before the domain moved; redirected permanently. */
 export const legacyHosts = ['agentic-enterprise-ten.vercel.app'];

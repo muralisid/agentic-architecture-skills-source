@@ -4,21 +4,25 @@ audience: ["CIO/CTO","Enterprise architect","Marketing leader"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Marketing."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "3 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/departments/supply-chain"
 ---
 
-# Department Blueprint: Marketing
+# Marketing
 
-As of August 2026. Phase 6. High agent adoption, high disclosure exposure, and a homogenisation question nobody has settled.
+A proposed workflow for marketing. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+A marketing team needs to explain a new service to a specific audience using accurate claims and approved brand material.
 
-A marketing function runs content production, campaign operations, lifecycle and email programmes, performance analysis, and brand governance. Content volume is the perennial constraint and agents relieve it immediately, which is exactly why this department needs governance ahead of enthusiasm.
+![Prepare a supported campaign: Define the audience, then Gather approved facts, then Draft variants, then Review the claims, then Measure response.](/figures/blueprints/marketing-mobile.svg)
 
-## 2. Agent team design
+## Start with the simplest useful solution
+
+Compare the agent with templates, approved copy, and a conventional campaign experiment. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Notes |
 |---|---|---|---|
@@ -27,33 +31,39 @@ A marketing function runs content production, campaign operations, lifecycle and
 | Performance analysis agent | Explains campaign performance against history with provenance | A2, L2 | Explains; the marketer decides |
 | Localisation agent | Adapts approved content per market against local rules | A2 to A3, L1 | Local disclosure and labelling rules vary sharply |
 
-## 3. Planes activated
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
+
+## How the architecture supports the task
 
 Knowledge (**direct**: brand and claims corpus with an owner), Human (**direct**: publication approval), Evidence (**direct**: synthetic-content labelling), Improvement (**direct**), Action, Control, Execution (supporting).
 
-## 4. Controls
+## Controls and human decisions
 
-- **Synthetic content labelling is a live obligation in more than one jurisdiction.** China's AIGC labelling took effect in September 2025 and EU Article 50 transparency duties are enforceable from 2 August 2026. Labelling is a pipeline capability, not a policy statement.
-- A claims corpus with a named owner. Marketing agents generate claims, and unverifiable claims about a product are a regulatory exposure separate from AI law.
-- Publication approval is a human gate. Nothing an agent writes reaches an audience unreviewed.
-- No agent presents as a named human in any channel.
+Review product claims and image rights. Apply audience permissions and publication approval outside the model.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-**Per run.** Low per asset, and volume is the risk rather than unit cost: the cheapest thing to do with a content agent is produce more content than anyone can govern.
+## A useful investigation loop
 
-**Per resolved outcome.** Cost per published asset including review time, and review time is the term that grows. A programme that reports asset cost falling while review capacity is unchanged is describing a queue, not a saving.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-## 6. Honest limits
+## Economics and measures
 
-- **The homogenisation question is unresolved.** Studies credibly disagree on whether the homogenisation effect observed at output level aggregates to population level. The guide publishes the contest rather than a verdict, and the practical implication is to measure output diversity rather than assume it.
-- Slide and asset generation was **faster and markedly worse** in observed-task testing. Speed on creative output is not the metric.
-- No independent field measurement exists of production content quality effects at enterprise scale.
+Measure incremental qualified response, conversion, cost, complaints, and correction effort.
 
-## 7. Metrics
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-Published assets per reviewer per week, which is the real capacity measure. Review rejection rate. Output diversity, measured rather than assumed. Labelling coverage, which should be 100% and is worth alerting on. Claims-corpus freshness.
+## Limits to test
 
-## Sources
+Generating more content is not evidence of business growth. Test audience relevance and factual accuracy before increasing volume.
 
-research/R11-governance-risk-sovereignty/ (labelling and transparency), research/R08-productivity-and-collaboration/ (task-level results, homogenisation contest), research/R09-experience-and-channels/.
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
+
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.

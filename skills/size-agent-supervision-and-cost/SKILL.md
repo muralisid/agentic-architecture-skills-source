@@ -46,3 +46,12 @@ A cost model that prices agent actions but not the governance plane is wrong by 
 ## 4. What to measure
 
 Exceptions per hour at peak; minutes per exception; auto-approval share and interrupt rate over time; resolved outcomes; cost per resolved outcome including supervision; the rate of wrong outcomes and what each costs; and the budget envelope against actual spend. `references/observability-and-finops.md` has the instrumentation and the traps, including the metrics that flatter a programme without measuring it.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [Measure value and full cost](references/use-cases-value-and-investment.md): consult when this aspect is part of the task.

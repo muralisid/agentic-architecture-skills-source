@@ -2,6 +2,8 @@
 title: "Reinforcement fine-tuning"
 icon: "Target"
 description: "How training against a grader works, what makes a grader gameable, why a score above the human ceiling is a defect report, and the narrow class of tasks where this is the right tool."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -41,23 +43,17 @@ The operational consequence: the grader is production code now. It gets versioni
 
 **Fixes:** judgement and multi-step reasoning on tasks with checkable outcomes. Vendor-published customer results in specialist domains report a 39 percent improvement on tax analysis, 12 points over physician baselines, and 20 percent on citation-extraction F1 [vendor].
 
-**Does not fix:** format, tone or style, which are demonstrable and belong to [adapters](/ladder/adapters-and-fine-tuning). And it cannot add knowledge, for the same reason nothing in this deck can except [continued pretraining](/ladder/continued-pretraining): the mechanism shapes behaviour, it does not store facts.
+**Does not fix:** format, tone or style, which are demonstrable and belong to [adapters](/ladder/adapters-and-fine-tuning). And it cannot add knowledge, for the same reason none of these methods can except [continued pretraining](/ladder/continued-pretraining): the mechanism shapes behaviour, it does not store facts.
 
-## At the bank
+## In utilities and mining
 
-The tempting target is the disposition itself: train the agent to propose "escalate" or "no further action" against historical decisions, which the bank has in the millions. The bank should decline, and working through why teaches more than the successes do.
+<TeachingIllustration src="/figures/ladder/industrial-reinforcement-fine-tuning.svg" mobileSrc="/figures/ladder/industrial-reinforcement-fine-tuning-mobile.svg" title="Check whether the feedback measures the job" alt="Task: Prepare supported findings. Feedback: Check evidence and omissions. Challenge: Try to exploit the score. Evaluation: Use independent review" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-**The labels are biased in a specific, known way.** Historical dispositions record what analysts decided, including their errors in both directions. Worse, the ground truth is asymmetric: a report that was filed gets confirmed or rebutted eventually, but an alert closed as "no further action" is almost never re-examined, so false negatives are invisible. A grader built on these labels teaches the model to reproduce the bank's historical blind spots with new confidence. This is the incomplete-coverage gap at institutional scale.
+A compliance-evidence assistant might receive feedback for citing the correct clause, locating the supporting record, and identifying missing evidence. Before using that feedback for training, test whether it can reward a plausible but invalid answer.
 
-**Where the grader is genuinely sound, the bank proceeds.** Two components of the agent's work are checkable by program:
+Historical audit closure is not automatically ground truth. It may reflect incomplete inspection, inconsistent practices, or missed issues. A grader that checks the presence of a citation does not establish that the cited evidence supports the claim.
 
-*Narrative grounding.* Every factual claim in a draft must trace to a retrieved source. A checker verifies claim-by-claim support: amounts match the transaction store, dates match the case file, no claim floats free. That grader cannot be satisfied by fluent invention, only by grounded drafting, so training against it directly attacks the failure mode this vertical fears most.
-
-*Completeness against the typology.* For each typology, the required evidentiary elements are enumerable: the pattern, the period, the counterparties, the expected-activity comparison. A checker verifies each element is present and sourced. Gameable only by actually assembling the evidence, which is the job.
-
-**The human ceiling check, concretely.** Quality assurance analysts agree with each other on narrative grounding roughly 92 to 95 percent of the time. If the trained model's validation score reaches 99 percent, the correct reading is not that the model has surpassed the QA team. It is that the checker has a hole, and the model found it first. The bank's runbook treats that score as an incident.
-
-**The boundary holds.** The disposition stays with the analyst, which is where the blueprint put it. Reinforcement fine-tuning makes the evidence in front of the analyst more complete and more grounded. It does not move the decision.
+Use independent review, held-out cases, and adversarial examples to test the grader. A high automated score is a reason to inspect the result, not proof that the model has become an assurance authority. Formal conclusions remain with the responsible review process.
 
 ## The test
 
@@ -71,6 +67,6 @@ If judgement on checkable outcomes is right and the model still misreads your do
 - Reinforcement fine-tuning customer results and sample efficiency (May 2025) [vendor], and the ordering that gates this behind a grader, on [intelligence and learning](/layers/r06-intelligence-and-learning) and in [the decision catalog](/decisions).
 - Reward hacking in production reinforcement learning: covered on [the learning flywheel](/architecture/learning-flywheel).
 - The same-family judge effect vanishing under an independent judge: [diversity, and who consumes the results](/patterns/diversity-and-consumer).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

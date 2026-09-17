@@ -2,6 +2,8 @@
 title: "Custom pretraining and architecture"
 icon: "Cpu"
 description: "The top of the market, where two different things are sold with similar words: training a foundation model of your own, and designing a different kind of model because your data is a network rather than a document."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -41,17 +43,15 @@ A language model is a machine for sequences of tokens. Some enterprise data is n
 
 **When it is genuine.** The thing you are predicting is a property of a structure rather than of a document, at a scale where these failure modes actually bite. That situation is recognisable, and it has little to do with agents.
 
-## At the bank
+## In utilities and mining
 
-<TeachingIllustration src="/images/ladder/custom-architecture-graph-labeled-v2.webp" alt="A graph model finds a coordinated ring in a transaction network and passes the highlighted subgraph and score through a governed gateway to an agent." title="The specialist model is a tool, not the agent" caption="A graph model finds structure across connected accounts. It returns a score and the evidence-bearing subgraph through a controlled interface; the conversational agent uses that result without pretending it discovered the network pattern itself." />
+<TeachingIllustration src="/figures/ladder/industrial-custom-pretraining.svg" mobileSrc="/figures/ladder/industrial-custom-pretraining-mobile.svg" title="Connect a specialist model to the agent" alt="Problem: A defined prediction task. Baseline: Rules or existing model. Specialist: Train only if justified. Tool result: Evidence for the agent" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-The bank has exactly one dataset with this shape, and it is the important one: the transaction network. Hundreds of millions of accounts, billions of edges, and the thing worth predicting, coordinated activity, is a property of the network. A money-mule ring is nearly invisible account by account: each node's activity looks plausible alone, and the pattern only exists across the structure. This is why network models genuinely belong in financial crime, and why this chapter is not hypothetical in this vertical.
+A specialist model could estimate a production quantity, characterize an equipment sequence, or analyze relationships in a network. The agent can use that model through a tool without being the model itself.
 
-**How it meets the agent, and how it does not.** The graph model is not the agent, does not chat, and is not built by the agent team. It runs in the bank's model-risk-managed scoring estate, and its output arrives in the investigation as one more input: a network risk score, and the subgraph that produced it, exposed through a tool. The agent retrieves it, cites it, and drafts around it, exactly as it does with the transaction store. Deck A's division of labour holds at the top of the ladder: the model computes over the structure, the harness carries the result into the evidence, the analyst decides.
+Start with the measurement or prediction task and a credible reference outcome. Compare conventional features, existing models, and simpler statistical methods before building a new architecture. Include the data, research, deployment, and maintenance effort.
 
-**The staffing point, made concrete.** Everything from step 1 to chapter 7 was built by the bank's engineering organisation around fixed models. Path two is a machine-learning research function with its own model risk lifecycle, and its own failure vocabulary, the one above. A bank that assigns the graph model to the agent team, or the agent to the graph team, has misread this chapter's central sentence: these are different professions that meet at a tool boundary.
-
-**And the deflating question applies here too.** Before the bank builds a bespoke architecture, the simpler credible alternatives get their fair run: hand-built network features fed to a plain classifier, an off-the-shelf graph model at modest depth, known-typology rules. The exotic option must beat the boring ones on the bank's own labels, which is the same [matched control](/patterns/how-to-test-a-context-design) discipline that opened this ladder, applied at its top.
+Keep the specialist’s units, uncertainty, calibration, and applicable conditions with its result. An agent’s fluent explanation must not turn an uncertain estimate into an official production record. See [production measurement](/use-cases/production-measurement).
 
 ## How this connects back
 
@@ -67,6 +67,6 @@ The instinct, though, transfers all the way down, and it is the instinct this wh
 - The Finetuner's Fallacy, DatologyAI, 18 March 2026 [vendor]: domain mix at 0.1 to 10 percent, models 300M to 3B, 200B-token budget. https://www.datologyai.com/blog/finetuners-fallacy
 - The alternative for almost all readers: [continued pretraining](/ladder/continued-pretraining).
 - The matched-control discipline: [how to test a context design](/patterns/how-to-test-a-context-design).
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

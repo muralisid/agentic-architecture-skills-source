@@ -4,46 +4,11 @@ import { appName, author, repoUrl, sourceRepositoryPublic } from '@/lib/shared';
 import { Wordmark } from './wordmark';
 import { cn } from '@/lib/cn';
 
-const LINK_GROUPS: { category: string; links: { name: string; href: string }[] }[] = [
-  {
-    category: 'The guide',
-    links: [
-      { name: 'Architecture', href: '/architecture' },
-      { name: 'The fourteen layers', href: '/layers' },
-      { name: 'Decisions', href: '/decisions' },
-      { name: 'Patterns', href: '/patterns' },
-      { name: 'Plain words', href: '/architecture/plain-words' },
-    ],
-  },
-  {
-    category: 'Patterns',
-    links: [
-      { name: 'The nine patterns', href: '/patterns' },
-      { name: 'Aspect dilution', href: '/patterns/aspect-dilution' },
-      { name: 'Where views lose', href: '/patterns/real-prose' },
-      { name: 'How to test a design', href: '/patterns/how-to-test-a-context-design' },
-      { name: 'Reading list', href: '/patterns/reading-list' },
-    ],
-  },
-  {
-    category: 'Library',
-    links: [
-      { name: 'Research library', href: '/library' },
-      { name: 'Techniques', href: '/library/techniques' },
-      { name: 'Frameworks', href: '/library/frameworks' },
-      { name: 'Blueprints', href: '/library/blueprints' },
-    ],
-  },
-  {
-    category: 'About',
-    links: [
-      { name: 'About the author', href: '/about' },
-      { name: 'Decision log', href: '/library/decisions' },
-      { name: 'Re-verification list', href: '/library/re-verification' },
-      { name: 'Changelog', href: '/library/changelog' },
-      { name: 'Contributing', href: '/library/contributing' },
-    ],
-  },
+const LINK_GROUPS = [
+  { category: 'Explore', links: [{ name: 'Use cases', href: '/use-cases' }, { name: 'Architecture', href: '/architecture' }, { name: 'Intelligence ladder', href: '/ladder' }] },
+  { category: 'Understand', links: [{ name: 'Knowledge & memory', href: '/memory' }, { name: 'Research', href: '/research' }, { name: 'Skills', href: '/skills' }] },
+  { category: 'Go deeper', links: [{ name: 'Technology decisions', href: '/decisions' }, { name: 'Security', href: '/security' }, { name: 'Reference library', href: '/library' }] },
+  { category: 'About', links: [{ name: 'About the author', href: '/about' }, { name: 'Glossary', href: '/library/glossary' }, { name: 'Updates', href: '/library/changelog' }] },
 ];
 
 /** The site footer: brand column, link groups, an evidence banner, and the licence line. */
@@ -58,8 +23,7 @@ export function SiteFooter({ compact = false, className }: { compact?: boolean; 
                 <Wordmark size="large" />
               </Link>
               <p className="mt-4 max-w-sm text-[14px] leading-[1.7] text-fd-muted-foreground">
-                An open, vendor-neutral reference for the architecture of the agentic enterprise: the components, the
-                control points, the contested choices, and the evidence behind each.
+                How to distill model intelligence and turn an enterprise into an agentic enterprise. Business opportunities, architecture, and practical evidence.
               </p>
             </div>
             {LINK_GROUPS.map((group, index) => (
@@ -87,17 +51,17 @@ export function SiteFooter({ compact = false, className }: { compact?: boolean; 
                   <BookMarked className="size-5 text-ember" />
                 </div>
                 <div>
-                  <p className="text-[14px] font-semibold text-fd-foreground">Every claim carries a dated source</p>
+                  <p className="text-[14px] font-semibold text-fd-foreground">Evidence, limitations, and open questions</p>
                   <p className="text-[13px] text-fd-muted-foreground">
                     Vendor numbers are labelled, positions are labelled, and every measurement names the experiment behind it.
                   </p>
                 </div>
               </div>
               <Link
-                href="/library"
+                href="/research"
                 className="group inline-flex items-center gap-2 rounded-full bg-ember-soft px-5 py-2.5 text-[13px] font-semibold text-ember-ink transition-colors hover:bg-ember-wash dark:bg-fd-accent dark:text-fd-accent-foreground"
               >
-                Open the research library
+                Explore the research
                 <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
@@ -131,11 +95,7 @@ export function SiteFooter({ compact = false, className }: { compact?: boolean; 
             <Link href="/library/glossary" className="transition-colors hover:text-fd-foreground">
               Glossary
             </Link>
-            {sourceRepositoryPublic ? (
-              <a href={repoUrl} className="transition-colors hover:text-fd-foreground">
-                Repository
-              </a>
-            ) : null}
+            <a href="/content" className="transition-colors hover:text-fd-foreground">Articles</a>
           </div>
         </div>
       </div>

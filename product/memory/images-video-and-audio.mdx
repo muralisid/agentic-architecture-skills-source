@@ -1,0 +1,37 @@
+---
+title: "Remember images, video, and audio"
+description: "Connect visual and audio evidence to the exact event it describes."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/memory/images-video-and-audio.svg" mobileSrc="/figures/memory/images-video-and-audio-mobile.svg" title="Remember images, video, and audio" alt="Observe: Keep original media. Locate: Asset, clip, and time. Describe: Detection or transcription. Retrieve: Find relevant evidence. Verify: Inspect the original" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+
+## Keep an event record
+
+Store the source, observation interval, asset or scene, model version, and uncertainty with a derived event. Preserve the original media reference. A generated description is an interpretation, not a replacement for the recording.
+
+## Choose the model for the job
+
+A detector can locate a known object or event. A vision-language model can help interpret a scene. A speech model can produce a transcript. These outputs may support the same investigation, but they can fail differently.
+
+## Retrieve the useful interval
+
+A whole-video representation may find a related recording without locating the exact second that matters. Evaluate both discovery and event localization. For conversations, retain speaker attribution and timing only to the extent supported by the recording and approved identity process.
+
+## Inspect before acting
+
+For a safety case, show the reviewer the supporting clip and the applicable procedure. Generated coaching media must be clearly separated from incident evidence. Uncertain identification should not trigger a message to an assumed person.
+
+## Test on the environment
+
+Include darkness, occlusion, background noise, unusual equipment, and events that should not be flagged. Compare the complete workflow with the existing detector or manual review process.
+
+The [safety-coaching example](/use-cases/safety-coaching) shows a proposed application. NVIDIA documents a video-search blueprint; Roboflow documents configurable vision workflows. These are vendor-described implementation options, not independent proof of this case’s outcomes.
+
+## External sources
+
+- [NVIDIA video search and summarization blueprint, vendor documentation](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard). Accessed 17 September 2026.
+- [Roboflow Workflows documentation](https://docs.roboflow.com/workflows). Accessed 17 September 2026.

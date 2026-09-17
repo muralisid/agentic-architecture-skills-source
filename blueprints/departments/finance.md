@@ -4,57 +4,66 @@ audience: ["CIO/CTO","Enterprise architect","Finance leader"]
 decision_or_output: "Record the target workflow, accountable roles, deterministic controls, success measures, and stop conditions for Finance."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "3 minutes"
-evidence_status: "Blueprint synthesis: cited evidence, vendor-reported findings, author positions, and honest limits are labelled inline."
+evidence_status: "Proposed design, revised 2026-09-17. Outcomes require local evaluation."
 next: "/docs/blueprints/departments/hr"
 ---
 
-# Department Blueprint: Finance
+# Finance
 
-As of August 2026. Phase 6. Two of the four deterministic zones live in this department.
+A proposed workflow for finance. Revised 17 September 2026. The roles below are design options, not claims that these agents are deployed or that multiple agents are necessary.
 
----
+## The business opportunity
 
-## 1. The scenario
+An invoice does not match the purchase order and receipt. A finance analyst must establish whether the mismatch is timing, quantity, price, or an incorrect record.
 
-A finance function runs accounts payable and receivable, procurement, month-end close, management reporting, treasury, and statutory reporting. Invoice matching is partly automated and heavily exception-driven. Close is a fixed calendar with a compressed tail. Statutory filings carry personal accountability.
+![Investigate a reconciliation exception: Find the exception, then Collect records, then Reconcile the facts, then Review the proposal, then Record the outcome.](/figures/blueprints/finance-mobile.svg)
 
-## 2. Agent team design
+## Start with the simplest useful solution
+
+Compare the agent with deterministic three-way matching and a well-designed exception queue. Use the same representative cases and count human review, errors, integration, and ongoing operation. Add an agent only where choosing what to investigate or handling varied evidence improves the result.
+
+## Proposed responsibilities
 
 | Agent | What it does | A x L position | Notes |
 |---|---|---|---|
-| Invoice exception agent | Investigates match failures, gathers evidence, proposes disposition | A3, L2 | The highest-volume, best-labelled work in the department |
+| Invoice exception agent | Investigates match failures, gathers evidence, proposes disposition | A3, L2 | Start where exception records and reviewer decisions are available |
 | Reconciliation agent | Explains variances across ledgers and subledgers with provenance | A2 to A3, L2 | Explains; the accountant disposes |
 | Close assistance agent | Assembles schedules, chases open items, drafts commentary against actuals | A2, L1 | Compresses the tail of close, which is where the overtime lives |
 | Reporting draft agent | Drafts management and statutory narrative from governed numbers | A1 to A2, L1 | Drafts only. Attestation is deterministic and human |
 
-## 3. Planes activated
+Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
+
+## How the architecture supports the task
 
 Knowledge (**direct**: semantic contracts on every numeric answer), Action (**direct**: wrapped ERP and banking APIs), Control (**direct**: the two deterministic zones), Evidence (**direct**: records regimes), Human (**direct**), Improvement (supporting), Execution (supporting).
 
-## 4. Controls
+## Controls and human decisions
 
-- **Movement of money is a deterministic zone.** Payment authorisation is a rule over verifiable credentials and mandates. Fraud and anomaly scoring feed that rule as advisory input, which is exactly how card networks already work. The convergent proof is the agentic payment stack built independently by three networks, each landing on scoped, revocable, cryptographically bound mandates consumed by deterministic authorisation.
-- **Formal regulatory records are a deterministic zone.** Records regimes mandate accountability and immutable records, not deterministic generation. Drafting with a model is permitted; attestation is not delegable. The cautionary tale is a public professional-services refund after AI-generated content reached a government deliverable.
-- Semantic contracts gate every numeric answer, which converts a class of silent wrong numbers into visible refusals.
-- Segregation of duties survives agent introduction: the agent that proposes a payment cannot be the agent that approves it, and neither decides entitlement.
-- Model risk management alignment where the enterprise operates one.
+Use accounting software for calculations. Keep payment approval and segregation of duties in established systems.
 
-## 5. Economics
+Give every tool call a task identity, a limited permission scope, and a recorded result. Before a write, check that the source record has not changed. Stop when required evidence is unavailable, the task budget is reached, or a proposal exceeds the authorised scope.
 
-**Per run.** Moderate. Exception investigation is retrieval-heavy with tool fan-out.
+## A useful investigation loop
 
-**Per resolved outcome.** Cost per exception cleared, including the accountant's review minutes. The value is concentrated in the close calendar rather than in per-invoice cost: hours recovered in the compressed tail are worth more than the same hours recovered in week two.
+Observe the exception, identify the missing fact, request that evidence, and check whether it changes the proposed action. Repeat only while there is a concrete unanswered question. End with a reviewed proposal, a confirmed result, or an explicit request for human help.
 
-## 6. Honest limits
+## Economics and measures
 
-- Spreadsheet and numeric analysis is a documented weak spot. In observed-task testing, spreadsheet data analysis was **slower and less accurate** than working without the tool. Treat any agent proposal that centres on ad-hoc numeric analysis with suspicion, and route numbers through the semantic layer rather than through the model.
-- No published production case exists of an agent with autonomous payment authority in a regulated enterprise, and this guide would not recommend one if it did.
-- Fine-grained entitlement in ERP estates is frequently the real blocker. If the human permission model is loose, an agent acting as the requesting user inherits the looseness.
+Measure exceptions cleared correctly, rework, close-cycle delays, reviewer minutes, and duplicate postings.
 
-## 7. Metrics
+Agree the baseline with the process owner. Count value only after the outcome is confirmed. Compare the value of recovered time and improved outcomes with the full cost of tools, models, evidence preparation, supervision, and correction.
 
-Exception clear rate and rework rate. Close-tail hours. Refusal rate on numeric questions, which should be visible and stable. Segregation-of-duties violations, which should be zero and are worth alerting on. Cost per exception cleared including review.
+## Limits to test
 
-## Sources
+A plausible explanation does not prove a balance is correct. Keep the original documents and the calculated reconciliation available.
 
-research/R04-systems-of-record/, research/R10-security-and-identity/ (deterministic zones and the payment stack), research/R11-governance-risk-sovereignty/ (records regimes), research/R08-productivity-and-collaboration/ (the numeric-analysis finding), research/R02-data-platform/ (semantic contracts).
+Evaluate ordinary cases, uncommon failures, conflicting evidence, and recovery after an interrupted action before expanding authority.
+
+## External reading
+
+The workflow above is the guide's proposal. These sources support the general investigation and risk-management methods; they do not validate the proposed business result.
+
+- [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629), 2022. Research basis for alternating reasoning and tool use.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023. General framework for managing AI risks.
+
+Sources reviewed 17 September 2026.

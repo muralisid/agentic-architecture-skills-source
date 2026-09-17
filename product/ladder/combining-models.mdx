@@ -1,0 +1,32 @@
+---
+title: "Combine models around a useful task"
+description: "Let specialist models contribute evidence while the complete system owns the result."
+position: "Proposed integration patterns. Evaluate component errors and the end-to-end result separately."
+lastReviewed: "2026-09-17"
+datePublished: "2026-09-17"
+dateModified: "2026-09-17"
+---
+
+<TeachingIllustration src="/figures/ladder/model-combination.svg" mobileSrc="/figures/ladder/model-combination-mobile.svg" title="Several models, one accountable task" alt="Observe: Vision or signal model. Retrieve: Relevant records and history. Reason: Decide what to check next. Act: Use a permitted business tool. Evaluate: Check the complete outcome" caption="A language model need not perform every measurement. Models and agents are different design choices." />
+
+## Give each model a clear job
+
+A vision model may identify a candidate event. A retrieval model may find related evidence. A language model may prepare an explanation or choose the next investigation step. A forecasting model may contribute a prediction. Keep their outputs, uncertainty, and assumptions distinguishable.
+
+## Preserve the evidence between steps
+
+Pass source references, timestamps, units, and the model or configuration version that produced a result. Do not turn a detector score into a confirmed operational fact just because the next model repeats it fluently.
+
+## Route by task requirements
+
+Choose the smallest model or conventional method that meets the task’s requirements. Escalate a difficult case when a stronger model or a person can resolve a specific uncertainty. Include the extra delay, cost, and failure modes in the comparison.
+
+## Inspect the complete chain
+
+A strong component can still produce a poor overall system if it measures the wrong thing or loses context at a handoff. Evaluate the complete workflow using the original evidence and the accepted business outcome.
+
+For example, [production measurement](/use-cases/production-measurement) needs calibrated measurements and reconciliation. [Safety coaching](/use-cases/safety-coaching) needs correct incident evidence and a responsible delivery process.
+
+## External examples
+
+NVIDIA’s [video-search blueprint](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard) and [Roboflow Workflows](https://docs.roboflow.com/workflows) document ways to compose visual processing capabilities. Vendor documentation, accessed 17 September 2026. Their availability does not validate the outcomes of the proposed cases.

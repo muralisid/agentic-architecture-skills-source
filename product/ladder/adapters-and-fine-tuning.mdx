@@ -2,6 +2,8 @@
 title: "Adapters and supervised fine-tuning"
 icon: "SlidersHorizontal"
 description: "How training on examples actually changes a model, what LoRA and QLoRA really are, why fine-tuning cannot add knowledge, the forgetting it causes, and the narrowing of the managed options in 2026."
+datePublished: "2026-08-29"
+dateModified: "2026-09-17"
 ---
 
 <PlainTerms>
@@ -46,21 +48,19 @@ One belief needs correcting because it drives bad decisions: **adapters do not p
 
 For most enterprises reading this, that route is already closed. What remains: managed fine-tuning through the major cloud platforms, and parameter-efficient methods on open-weight models you host or rent, which are unaffected. This is a volatile product fact and sits on the re-verification list.
 
-## At the bank
+## In utilities and mining
 
-The financial crime agent's narratives are correct by step 3, but they are correct the way a capable generalist writes: serviceable prose, inconsistent structure under pressure, and a tone that quality assurance keeps flagging. The prompt already carries three exemplar narratives, and at the margins the model still drifts.
+<TeachingIllustration src="/figures/ladder/industrial-adapters-and-fine-tuning.svg" mobileSrc="/figures/ladder/industrial-adapters-and-fine-tuning-mobile.svg" title="Teach a consistent inspection report" alt="Examples: Reviewed evidence and reports. Training: Learn the report behavior. Evaluation: Hold out sites and cases. Runtime: Retrieve current facts" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-**What the bank fine-tunes for.** Five thousand historical narratives, written by senior analysts and passed by quality assurance, paired with the alert context they were written from. The training objective is the house shape: how deviations are characterised, how certainty is hedged, how sources are cited inline, what order the sections run in. This is demonstrable behaviour, thousands of clean examples exist, and no paragraph of instructions has fully captured it. That is exactly the fine-tuning use case.
+A mining team may have reviewed examples showing how an inspection report should distinguish observations, uncertainty, and required follow-up. These pairs can be candidates for teaching consistent report behavior when instructions alone are insufficient.
 
-**What the bank refuses to fine-tune for.** Knowledge of customers, typologies or regulation. All of that continues to arrive through retrieval at run time, for two reasons. The mechanism above: the pairs would teach the phrasing of typology explanations, not the typologies. And a governance reason that is decisive in this vertical: facts baked into weights cannot be traced to a source, updated when guidance changes, or deleted when an erasure obligation arrives. Retrieved facts can. A regulated narrative must cite its evidence, and weights do not cite. Those facts live in [retrieval and governed memory](/ladder/context#memory-is-context-that-lasts) instead.
+Keep current standards, asset condition, and individual incidents in retrievable evidence. Evaluate on held-out sites and unusual cases, not just reports similar to the training examples. Check that improved formatting does not conceal unsupported claims.
 
-**The economics that make it worthwhile.** The real prize is moving the drafting task from a frontier model to a small fine-tuned one. At tens of thousands of alerts a month, a 7B model with an adapter, hosted on the bank's own infrastructure, drafts at a fraction of the per-alert cost, and the sovereignty posture improves as a side effect: alert data stops leaving the estate. One published head-to-head found a fine-tuned 7B model beating a prompt-engineered frontier model on a classification task, 88 percent against 31 percent, at roughly a fifteenth of the inference cost. Treat that as one data point rather than a law, and prove it on your own eval before you switch.
-
-**What the bank measures afterwards.** The narrative eval, and a general-capability eval: summarisation of unrelated documents, instruction-following on unseen tasks. The second is the forgetting check. If it degrades, the repair is on the next page.
+Compare against a prompt-and-examples baseline and include preparation, hosting, review, and maintenance cost. No particular model size, volume, or saving is assumed in this proposed example.
 
 ## The test for moving on
 
-<TeachingIllustration src="/images/ladder/fine-tuning-bank-labeled-v3.webp" alt="Paired bank evidence and approved reports train detachable behavior modules on a frozen model while a locked knowledge vault remains separate." title="Examples teach the task, not the missing facts" caption="Approved evidence-to-narrative pairs can teach structure, tone and recurring decisions. They do not turn the adapter into a knowledge store; current policies and customer facts still belong in governed context." />
+
 
 **Adapters have closed the format and behaviour gap, and what remains wrong is judgement or knowledge.** If the shape is right and the reasoning is wrong on outcomes you can grade programmatically, go to [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning). If the model still misreads your domain's language and documents, go to [continued pretraining](/ladder/continued-pretraining). If quality is right and cost or latency is the complaint, go to [distillation](/ladder/distillation).
 
@@ -73,6 +73,6 @@ The financial crime agent's narratives are correct by step 3, but they are corre
 - LoRA not preventing catastrophic forgetting, and the adaptation ordering: [intelligence and learning](/layers/r06-intelligence-and-learning) and [the decision catalog](/decisions).
 - Why baked-in facts fail governance: [the concern matrix](/architecture/concern-matrix) on derived artifacts inheriting obligations.
 - Retrieval over fine-tuning for adding new facts: Fine-Tuning or Retrieval?, EMNLP 2024, https://aclanthology.org/2024.emnlp-main.15/
-- The case is drawn from the [banking and financial services blueprint](/library/blueprints/verticals/banking-and-financial-services).
+- Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>
