@@ -1,44 +1,70 @@
 ---
 title: "Intelligence ladder"
 description: "Choose how to turn model capability into useful, reliable enterprise work."
-position: "Design choices, not a required progression. Select the smallest intervention that meets the task\u2019s measured requirements."
-lastReviewed: "2026-09-17"
+position: "Design choices, not a required progression. Select the smallest intervention that meets the task’s measured requirements."
+lastReviewed: "2026-09-18"
 datePublished: "2026-08-29"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-An agent’s result depends on its instructions, information, tools, workflow, and model. Start with a real failure and identify which part needs to change. More training is useful only when it addresses the actual limitation.
+A model can explain why a pump might be vibrating and still be unable to help the maintenance team complete an inspection. The gap becomes clearer when we look at what the job actually requires.
 
-<TeachingIllustration src="/figures/ladder/capability-choice.svg" mobileSrc="/figures/ladder/capability-choice-mobile.svg" title="Choose the change that fits the problem" alt="Observe a failure: Use a real task. Locate the cause: Information, tool, model. Try a small change: Keep a matched baseline. Measure the result: Quality, time, cost. Release or revise: Keep the ability to undo" caption="More training is one option. A better tool or clearer evidence may solve the same problem." />
+<TeachingIllustration src="/figures/ladder/why-the-ladder.svg" mobileSrc="/figures/ladder/why-the-ladder-mobile.svg" title="Why a better answer may not finish the job" alt="A model answering a question: “Inspect the pump bearing.”: A useful suggestion, but no asset lookup, current reading, or work receipt.: Advice has been produced.; An agent doing bounded work: A reviewed inspection request: Use the right records, gather missing evidence, request approval, verify receipt.: An outcome can be confirmed.. First identify what the task is missing. Then choose the change that supplies it." caption="Then choose the change that supplies it." />
 
-## Improve how the agent works
+## Start with a useful answer, then ask what is missing
+
+Consider a proposed maintenance assistant. You ask, “What should we do about this pump?” The model gives a reasonable explanation of bearing wear. That demonstrates useful knowledge, but the team needs something more specific: which pump, what changed, what the current procedure allows, and whether an inspection was actually requested.
+
+A natural response is to write a longer prompt, paste in more documents, or try a larger model. Each can help a particular problem. But none, by itself, supplies a missing asset record, permission to create a work order, or confirmation that the work-order system accepted it.
+
+The Intelligence ladder gives you a way to work through that gap. Begin with the limitation you can observe. Change the part of the system responsible for it. Test whether the job now succeeds before adding more machinery.
+
+<TeachingIllustration src="/figures/ladder/failure-to-choice.svg" mobileSrc="/figures/ladder/failure-to-choice-mobile.svg" title="Match the failure to the intervention" alt="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." caption="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." />
+
+## First, make the task clear
+
+Suppose “What should we do?” produces a general maintenance essay. The team actually needs a short investigation note: observations, possible causes, missing evidence, and the next permitted check. Clear instructions and an example may be enough to produce that result.
+
+**Why this matters:** you cannot judge the agent's performance if you have not said what a useful outcome looks like. [Instructions](/ladder/instructions) explains how to make that expectation explicit.
+
+## Next, give it the evidence for this job
+
+Now the note is well structured, but it refers to the wrong pump model. Repeating the instruction will not supply the correct asset record. The agent needs current, relevant evidence: the asset identity, recent work, readings, and applicable procedure.
+
+**Why this matters:** general model knowledge cannot establish what happened to this particular pump yesterday. [Context](/ladder/context) explains how to supply the working information. [Knowledge and memory](/memory) explains how to make that information findable and trustworthy over time.
+
+## Then, let it close a specific gap
+
+The current vibration pattern might require another reading or a check of a work order. A static answer cannot fetch evidence it was never given. Tools let the agent inspect a record or request an allowed operation. A bounded investigation loop lets it decide which missing fact to seek next and inspect the result.
+
+**Why this matters:** proposing an inspection and confirming its creation are different outcomes. [Tools and the loop](/ladder/tools-and-the-loop) explains this difference. Use a fixed workflow when the required sequence is already known.
+
+## Adapt the model when a limitation remains
+
+Perhaps the assistant has the right task, evidence, and tools but still cannot produce a consistent equipment-fault classification on held-out examples. That is a reason to investigate model choice or adaptation. It is not yet proof that training will help.
+
+The methods below address different problems. They are not a sequence that every enterprise must complete.
 
 <Cards>
-<Card title="Instructions" href="/ladder/instructions">Clarify the task, constraints, and expected result.</Card>
-<Card title="Context" href="/ladder/context">Supply the right evidence and current task state.</Card>
-<Card title="Tools and the loop" href="/ladder/tools-and-the-loop">Let the agent gather evidence, act within limits, and inspect the result.</Card>
+<Card title="Adapters and fine-tuning" href="/ladder/adapters-and-fine-tuning">When a repeatable behavior remains unreliable, test whether suitable examples can teach it.</Card>
+<Card title="Distillation" href="/ladder/distillation">When a capability already works but is too expensive or slow, test whether a smaller model can preserve it.</Card>
+<Card title="Reinforcement fine-tuning" href="/ladder/reinforcement-fine-tuning">When decisions can be graded reliably, examine whether outcome feedback improves them.</Card>
+<Card title="Continued pretraining" href="/ladder/continued-pretraining">When domain familiarity is a persistent limitation, examine the evidence and cost of further training.</Card>
+<Card title="Custom pretraining" href="/ladder/custom-pretraining">When existing models cannot serve the data or task, investigate a specialist model and the investment it requires.</Card>
 </Cards>
 
-## Adapt the model when the task justifies it
+## Stop when the useful job works
 
-<Cards>
-<Card title="Adapters and fine-tuning" href="/ladder/adapters-and-fine-tuning">Teach a repeatable behavior using suitable examples.</Card>
-<Card title="Distillation" href="/ladder/distillation">Transfer a demonstrated capability to a smaller or cheaper model.</Card>
-<Card title="Reinforcement fine-tuning" href="/ladder/reinforcement-fine-tuning">Improve decisions using feedback that actually measures the task.</Card>
-<Card title="Continued pretraining" href="/ladder/continued-pretraining">Develop domain familiarity where evidence justifies further training.</Card>
-<Card title="Custom pretraining" href="/ladder/custom-pretraining">Consider a specialist model architecture and its full cost.</Card>
-</Cards>
+The path is meaningful because each change removes an identified obstacle. You may need only instructions and a database query. Another task may require visual analysis, a controlled investigation loop, and specialist models. Adding all of them is not the goal.
 
-The site’s broader purpose is to distill model intelligence into enterprise capability. **Model distillation** is also the name of one particular training technique; it is not required for every enterprise agent.
+For the pump assistant, success means a supported investigation and a confirmed, permitted outcome with acceptable human effort. Compare that result with the existing process on the same kinds of cases. Count errors, review time, latency, and cost as well as successful answers.
 
-## Choose the arrangement
+The broader aim is to distill model intelligence into enterprise capability. **Model distillation** is one specific training technique within that work; it is not a prerequisite for becoming an agentic enterprise.
 
-- [Diagnose what to change](/ladder/choosing-an-approach).
-- [Use a workflow, one agent, or several](/ladder/single-and-multiple-agents).
-- [Combine language, vision, and specialist models](/ladder/combining-models).
+## Go deeper where your problem takes you
 
-## Keep the comparison honest
+- [Diagnose what to change](/ladder/choosing-an-approach): inspect a failed task and run a comparison that separates possible causes.
+- [Use a workflow, one agent, or several](/ladder/single-and-multiple-agents): choose how the work should be organized.
+- [Combine language, vision, and specialist models](/ladder/combining-models): give different kinds of work to suitable models.
 
-Use representative tasks and a simpler baseline. Measure correctness, business usefulness, time, cost, and human review. Keep failures and unchanged results. For retrieval, the [context experiments](/patterns) show why extra complexity must earn its place.
-
-For a complete system, explore [architecture](/architecture). For practical applications, start with [use cases](/use-cases).
+The pump story is an illustrative design, not a deployment result. For the surrounding system, explore [architecture](/architecture); for proposed business applications, explore [use cases](/use-cases).

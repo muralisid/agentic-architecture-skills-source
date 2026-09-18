@@ -2,12 +2,18 @@
 title: "From information to usable memory"
 description: "Preserve the evidence while making it easier to find and use."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/memory/information-to-memory.svg" mobileSrc="/figures/memory/information-to-memory-mobile.svg" title="From information to usable memory" alt="Collect: Original records and media. Identify: Entity, source, and time. Prepare: Parse and check quality. Represent: Index for the task. Maintain: Update, correct, remove" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+## A useful fact can lose its meaning on the way into memory
+
+A maintenance assistant reads a work order and saves “bearing replaced”. That is a reasonable way to shorten a long document, but the next investigation cannot tell which bearing was replaced, on which pump, or whether the work was completed. The short note preserved a topic while losing the facts needed to use it.
+
+<TeachingIllustration src="/figures/memory/source-envelope.svg" mobileSrc="/figures/memory/source-envelope-mobile.svg" title="What disappeared from the summary?" alt="Only the extracted sentence: “Bearing replaced.”: Which pump? Which bearing? When? Was the work confirmed?: The sentence cannot settle this task.; A fact with its evidence: P-17 · bearing B2 · 14 May: Completed work order W-204. Technician confirmation and source link.: The agent can check the record.. Keep the context that lets a later task verify what a statement means." caption="Keep the context that lets a later task verify what a statement means." />
+
+The design below keeps enough context to verify the statement later. Its preparation steps matter because identity, time, units, and source references are easier to preserve during ingestion than to reconstruct after a detail has been dropped.
 
 ## Start with the original
 

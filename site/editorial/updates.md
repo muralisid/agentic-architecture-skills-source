@@ -1,5 +1,9 @@
 # Guide updates
 
+## 2026-09-18: explain the problem before the method
+
+Reframed the Intelligence ladder and Knowledge & memory entrances around an illustrative pump investigation. Added opening problem diagrams, a failure-to-intervention map, memory comparisons, and a dated repair example. Memory articles now explain the tempting starting approach, the failure it can cause, and why the design choices matter. Existing technical depth and source links remain.
+
 ## September 2026 revision
 
 - Added separate starting points for business readers and architects, with six shared sections.

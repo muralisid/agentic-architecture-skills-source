@@ -3,8 +3,12 @@ title: "Long context is not memory"
 icon: "Maximize2"
 description: "One-million-token context windows are standard at the frontier in September 2026. Effective context on the hardest tests is 2K to 16K. What a ten-million-token prompt costs at list price, and what the long-context-versus-retrieval studies actually found."
 datePublished: "2026-09-13"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
+
+## Why not just give the model everything?
+
+If a missing document caused a bad answer, providing more documents is a reasonable next attempt. A larger context can help when the relevant evidence fits and the model uses it well. It still leaves questions about which source applies, what changed, who may read it, and what the task costs. This article separates those memory responsibilities from the size of the working context.
 
 <TeachingIllustration src="/figures/memory/memory-process.svg" mobileSrc="/figures/memory/memory-process-mobile.svg" title="Give the agent evidence it can use" alt="Original evidence: Records, media, readings. Preparation: Identity, time, access. Representation: Records, vectors, graph. Retrieval: Find and verify sources. Decision context: Relevant cited evidence" caption="Keep the original evidence. Update or remove every affected representation when it changes." />
 

@@ -2,12 +2,18 @@
 title: "Represent places and changes over time"
 description: "Use geospatial similarity while retaining the location and observation period."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/memory/location-and-satellite-data.svg" mobileSrc="/figures/memory/location-and-satellite-data-mobile.svg" title="Represent places and changes over time" alt="Place: Coordinates and asset. Observation: Image date and quality. Representation: Learned surface behavior. Comparison: Find change or similarity. Inspection: Verify the relevant detail" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+## The map answers one question; the inspection needs another
+
+A utility finds an area whose vegetation representation changed between years. It is tempting to turn that result straight into a clearance warning. But a changed area does not, by itself, establish which tree is near which conductor, how large the gap is, or whether the observation reflects conditions today.
+
+<TeachingIllustration src="/figures/memory/place-and-time.svg" mobileSrc="/figures/memory/place-and-time-mobile.svg" title="A changed area is not a clearance reading" alt="An annual regional change: “Vegetation changed here.”: This narrows where to look. It does not measure a tree-to-line gap now.: A location for investigation.; Evidence for field work: Current image + line geometry: Check detail, date, asset location, and the inspection record.: A supported inspection request.. Choose the spatial detail and observation date required by the decision." caption="Choose the spatial detail and observation date required by the decision." />
+
+Use broad representations to guide investigation, then obtain the resolution, geometry, and freshness required by the operational decision. The value comes from narrowing the search while keeping the limits of the observation visible.
 
 ## A representation can describe more than a photograph
 

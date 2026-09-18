@@ -2,12 +2,18 @@
 title: "Keep memory usable and accountable"
 description: "Give retained information an owner, access rules, and a working update and removal process."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/memory/permissions-and-lifecycle.svg" mobileSrc="/figures/memory/permissions-and-lifecycle-mobile.svg" title="Keep memory usable and accountable" alt="Source: Owner and permission. Derived data: Track every transformation. Access: Check the current caller. Change: Update or invalidate. Removal: Verify affected copies" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+## A deleted document can leave a readable memory behind
+
+A restricted incident report is summarized for an investigation. Later, access to the original is withdrawn. If the summary and its index entries remain available under different permissions, an agent can still reveal information from the report. Protecting only the original has not protected the information derived from it.
+
+<TeachingIllustration src="/figures/memory/permissions-derived.svg" mobileSrc="/figures/memory/permissions-derived-mobile.svg" title="A summary is still derived from a source" alt="Only protect the document: Restricted incident report: The report is removed, but its copied summary remains searchable.: The restriction has not propagated.; Track every derived copy: Source → index → summary: Carry access rules and source versions. Remove or restrict affected copies.: The answer respects source access.. A memory design needs an update path for derived information as well as originals." caption="A memory design needs an update path for derived information as well as originals." />
+
+Track which sources produced each retained representation and how access changes, correction, or deletion affect those representations. This is why ownership and lifecycle belong in the memory design from the beginning.
 
 ## Start with ownership
 

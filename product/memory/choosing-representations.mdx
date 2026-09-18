@@ -2,12 +2,18 @@
 title: "Choose the representation for the question"
 description: "Make similarity useful without losing exact business facts."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/memory/choosing-representations.svg" mobileSrc="/figures/memory/choosing-representations-mobile.svg" title="Choose the representation for the question" alt="Question: What must be answered?. Evidence: Which source can answer?. Representation: What should be preserved?. Retrieval: How will matches be found?. Evaluation: Did the result help?" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+## A close match is not always the right answer
+
+Suppose every record about a pump is turned into a vector and every question is answered by similarity search. This is a useful starting point for finding related material. But “Which pump is P-17?” needs exact identity, while “Which past vibration episode resembles this one?” asks about behavior. A design that treats both questions alike can return relevant-looking evidence that does not establish the requested fact.
+
+<TeachingIllustration src="/figures/memory/question-map.svg" mobileSrc="/figures/memory/question-map-mobile.svg" title="One pump, different questions" alt="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." caption="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." />
+
+Choose the representation according to the distinction the question needs to preserve. The diagram shows several questions about the same pump, not a sequence of technologies to install.
 
 ## Keep exact questions exact
 

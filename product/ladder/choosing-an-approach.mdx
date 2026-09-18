@@ -2,12 +2,20 @@
 title: "Choose what to change"
 description: "Diagnose the failure before choosing a model or training method."
 position: "Diagnostic guidance. Each proposed change needs a matched evaluation, not an assumed benefit."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/ladder/capability-choice.svg" mobileSrc="/figures/ladder/capability-choice-mobile.svg" title="Choose the change that fits the problem" alt="Observe a failure: Use a real task. Locate the cause: Information, tool, model. Try a small change: Keep a matched baseline. Measure the result: Quality, time, cost. Release or revise: Keep the ability to undo" caption="More training is one option. A better tool or clearer evidence may solve the same problem." />
+An assistant recommends inspecting a bearing that was replaced yesterday. Calling it a “reasoning failure” suggests a stronger model. But perhaps the repair record was never supplied, the wrong asset was retrieved, or the tool returned an error that the agent ignored. These failures need different remedies.
+
+<TeachingIllustration src="/figures/ladder/failure-to-choice.svg" mobileSrc="/figures/ladder/failure-to-choice-mobile.svg" title="Match the failure to the intervention" alt="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." caption="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." />
+
+## Run a comparison that separates the causes
+
+First give the same model the correct asset record and confirmed repair, leaving the task unchanged. If the answer improves, investigate the information path. If it still fails, clarify the expected result and inspect the reasoning against the evidence. If it proposes the right action but cannot complete it, inspect tools, permissions, and confirmation. Only then compare models or training approaches against the remaining failure.
+
+This is an illustrative diagnostic exercise. A single successful answer is not enough to establish the remedy. Repeat the comparison on representative cases, including ones where no repair occurred.
 
 ## Start with a failed task
 

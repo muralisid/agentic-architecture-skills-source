@@ -2,12 +2,18 @@
 title: "Represent how equipment behaves over time"
 description: "Find similar operating periods without discarding units, duration, or context."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/memory/time-series.svg" mobileSrc="/figures/memory/time-series-mobile.svg" title="Represent how equipment behaves over time" alt="Window: Readings over an interval. Context: Units and operating state. Representation: Trend, shape, relationships. Search: Comparable past periods. Check: Inspect records and outcomes" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+## An average can hide the event you are looking for
+
+Two operating periods can have a similar average vibration level while one contains a brief spike and the other a growing oscillation. Storing only the average makes those periods hard to distinguish. Comparing raw readings point by point can also miss a useful resemblance when equipment runs at different scales.
+
+The aim is to make the relevant behavior searchable while retaining the units and duration that affect its meaning. Decide what should count as similar before choosing an encoder.
+
+<TeachingIllustration src="/figures/memory/time-series.svg" mobileSrc="/figures/memory/time-series-mobile.svg" title="Represent how equipment behaves over time" alt="Three illustrative signals compare the current pump with a similar shape at a different magnitude and a similar peak lasting longer. The charts are independently scaled; similarity does not prove the same cause." caption="Decide whether shape, magnitude, or duration matters, then retain the original readings to check the match." />
 
 ## Define the observation window
 

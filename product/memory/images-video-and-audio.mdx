@@ -2,12 +2,18 @@
 title: "Remember images, video, and audio"
 description: "Connect visual and audio evidence to the exact event it describes."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/memory/images-video-and-audio.svg" mobileSrc="/figures/memory/images-video-and-audio-mobile.svg" title="Remember images, video, and audio" alt="Observe: Keep original media. Locate: Asset, clip, and time. Describe: Detection or transcription. Retrieve: Find relevant evidence. Verify: Inspect the original" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+## A description can point to evidence without proving the event
+
+A safety assistant finds a recording labelled “unsafe behavior in the loading bay”. If the whole hour has one summary, the reviewer still has to find the few seconds that support the claim. If the agent retains only that summary, later questions about who was present or what happened just before the event may be impossible to check.
+
+<TeachingIllustration src="/figures/memory/event-evidence.svg" mobileSrc="/figures/memory/event-evidence-mobile.svg" title="Finding a video is not finding the event" alt="One label for the recording: “Unsafe behavior in loading bay.”: The recording lasts one hour. The label does not locate the event.: A reviewer must search again.; A bounded event to review: Camera 3 · 14:02:11–14:02:18: Keep the clip and surrounding context. The event label is a hypothesis.: A reviewer can inspect the claim.. Generated descriptions help discovery. The original interval supports verification." caption="The original interval supports verification." />
+
+The memory should help someone discover the recording and inspect the relevant interval. These are separate jobs. Keep the observation accessible and treat the generated description as an interpretation to verify.
 
 ## Keep an event record
 

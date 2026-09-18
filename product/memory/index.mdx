@@ -2,39 +2,70 @@
 title: "Knowledge & memory"
 description: "What should an agent know, remember, and retrieve to complete its work?"
 position: "Design guidance with separate experimental evidence. A representation must be evaluated on the questions and data it will actually serve."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-13"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-Imagine an agent investigating a pump. It needs the correct asset record, relevant previous work, current readings, and the procedure that applies today. Keeping more text is not enough: the agent must find the right evidence and know what it is allowed to use.
+Imagine asking an agent whether a pump needs another inspection. It finds a convincing maintenance report, but the report is about a different pump and predates a repair. The problem is not a shortage of stored information. It is whether the agent can connect the right evidence to this question.
 
-<TeachingIllustration src="/figures/memory/memory-process.svg" mobileSrc="/figures/memory/memory-process-mobile.svg" title="Give the agent evidence it can use" alt="Original evidence: Records, media, readings. Preparation: Identity, time, access. Representation: Records, vectors, graph. Retrieval: Find and verify sources. Decision context: Relevant cited evidence" caption="Keep the original evidence. Update or remove every affected representation when it changes." />
+<TeachingIllustration src="/figures/memory/memory-failure.svg" mobileSrc="/figures/memory/memory-failure-mobile.svg" title="A relevant answer can still be wrong" alt="A shared pile of text: “Replace the bearing.”: A similar report mentions P-71. It is from before the repair.: Similarity hides the mismatch.; Evidence for this task: “Check P-17 before deciding.”: Match the asset and dates. Read current vibration and repair records.: The missing evidence is visible.. A useful memory must connect the answer to the right asset, time, and source." caption="A useful memory must connect the answer to the right asset, time, and source." />
 
-## Start with the question
+## Why putting everything in one place is only a beginning
 
-A record can answer “Which pump is this?” A document search can locate a procedure. A time-series representation may help find similar operating behavior. A graph can help follow relationships. Choose the representation for the question, then test it against a simpler alternative.
+A straightforward starting design is to collect manuals, inspection reports, work orders, and conversation history in one searchable store. The agent can now find relevant material. That is useful, especially for questions about relatively stable documents.
+
+But relevance alone does not settle the pump investigation. A report can discuss the same symptom on another asset. A summary can omit that a repair was completed. An old procedure can use almost the same words as its replacement. More retrieved text can contain all of these possibilities without telling the agent which one applies.
+
+The purpose of knowledge and memory design is to make those distinctions recoverable. Before choosing storage technology, ask what the next task will need to establish and what it must be able to check.
+
+## Follow one investigation through the evidence
+
+Our illustrative agent is investigating pump P-17. It needs to establish the asset identity, read the procedure that applies today, compare current behavior with past episodes, and check whether an earlier fault was repaired. Those are different questions, even though they belong to one task.
+
+<TeachingIllustration src="/figures/memory/question-map.svg" mobileSrc="/figures/memory/question-map-mobile.svg" title="One pump, different questions" alt="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." caption="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." />
+
+This is why a single retrieval method is not automatically the answer to every memory problem. An exact lookup can identify P-17. Document search can find its procedure. A suitable time-series representation can help find similar behavior. Relationships can connect a bearing replacement to a work order. Each helps preserve a different part of what the agent needs to know.
+
+**Start here:** [choose the representation for the question](/memory/choosing-representations). The point of a vector is to make a useful kind of resemblance searchable. The question determines which similarities matter and which differences must remain visible.
+
+## Keep enough context to check a remembered fact
+
+Suppose the agent stores “bearing replaced” after reading a work order. The short note looks useful, but a later task needs to know which bearing, on which pump, when, and whether completion was confirmed. Without those details, compression has removed the part that makes the memory usable.
+
+<TeachingIllustration src="/figures/memory/source-envelope.svg" mobileSrc="/figures/memory/source-envelope-mobile.svg" title="What disappeared from the summary?" alt="Only the extracted sentence: “Bearing replaced.”: Which pump? Which bearing? When? Was the work confirmed?: The sentence cannot settle this task.; A fact with its evidence: P-17 · bearing B2 · 14 May: Completed work order W-204. Technician confirmation and source link.: The agent can check the record.. Keep the context that lets a later task verify what a statement means." caption="Keep the context that lets a later task verify what a statement means." />
+
+Keep the original evidence and the information needed to find it again. A summary can help the agent navigate; the underlying record lets it verify the claim. [From information to usable memory](/memory/information-to-memory) explains what to preserve during preparation.
+
+## Remember what changed, not just what was said
+
+The inspection may correctly say that a bearing was faulty on 12 May. A completed repair may change the situation on 14 May. Deleting the inspection would lose useful history, but presenting it as the current condition would mislead the next investigation.
+
+<TeachingIllustration src="/figures/memory/fact-timeline.svg" mobileSrc="/figures/memory/fact-timeline-mobile.svg" title="Facts change with events" alt="An inspection on 12 May finds a fault, a repair on 14 May changes the situation, and a question on 18 May needs current evidence while preserving the old inspection as history." caption="Keep historical evidence and current condition distinguishable." />
+
+[Changing facts](/memory/changing-facts) explains how versions and events affect an answer. [Permissions and lifecycle](/memory/permissions-and-lifecycle) explains why a copied summary or index entry needs an update and access policy too.
+
+## Extend the same reasoning beyond documents
+
+A sentence describing a video is not the video. A regional satellite representation is not a current measurement of clearance from a power line. An average vibration level is not the pattern of a developing fault. The representation should retain what the intended question needs.
 
 <Cards>
-<Card title="From information to memory" href="/memory/information-to-memory">Prepare sources, keep their context, and govern what persists.</Card>
-<Card title="Choose a representation" href="/memory/choosing-representations">Records, words, vectors, graphs, and sequences serve different questions.</Card>
-<Card title="Images, video, and audio" href="/memory/images-video-and-audio">Keep the observation and its time, not only a generated description.</Card>
-<Card title="Location and satellite data" href="/memory/location-and-satellite-data">Describe places and changes without losing exact dates and locations.</Card>
-<Card title="Equipment readings over time" href="/memory/time-series">Compare behavior while keeping units, timing, and operating context.</Card>
-<Card title="Combine evidence" href="/memory/combining-evidence">Join useful results without assuming different vector spaces are comparable.</Card>
+<Card title="Images, video, and audio" href="/memory/images-video-and-audio">Why finding a recording is different from locating and verifying an event.</Card>
+<Card title="Location and satellite data" href="/memory/location-and-satellite-data">Why a useful regional change signal may still need fresh, detailed inspection evidence.</Card>
+<Card title="Equipment readings over time" href="/memory/time-series">Why similar averages can hide different operating behavior.</Card>
+<Card title="Combine evidence" href="/memory/combining-evidence">Why matching results by asset and time matters more than collecting several confident answers.</Card>
 </Cards>
 
-## Keep it correct as the world changes
+## Choose the design after the problem is clear
 
-[Changing facts](/memory/changing-facts) covers versions, conflicts, dates, and expiry. [Permissions and lifecycle](/memory/permissions-and-lifecycle) covers access, updates, deletion, and ownership. Remembered information does not become an approved business rule merely because it was repeated.
+Now the storage and retrieval choices have a purpose: preserve the distinctions the investigation needs, find them efficiently, and keep them valid as sources change.
 
-## Choose and test the design
+- [Six memory approaches](/memory/six-architectures): compare what each retains and what it may leave out.
+- [Long context and retrieval](/memory/long-context-is-not-memory): decide when more material in the working context helps.
+- [Large context at enterprise scale](/memory/the-ten-million-token-question): examine the evidence behind much larger workloads.
+- [What benchmarks measure](/memory/what-the-benchmarks-measure): check whether a reported score tests your problem.
+- [What we measured](/memory/what-we-have-measured) and [retrieval patterns](/patterns): read findings with their controls and limitations.
 
-- [Six memory approaches](/memory/six-architectures): what is retained and how it is used.
-- [Long context and retrieval](/memory/long-context-is-not-memory): capacity, useful evidence, and cost.
-- [Large context at enterprise scale](/memory/the-ten-million-token-question): evidence and unresolved questions.
-- [What benchmarks measure](/memory/what-the-benchmarks-measure): read comparisons carefully.
-- [What we measured](/memory/what-we-have-measured): author-reported experimental findings and limits.
-- [Context and retrieval patterns](/patterns): matched baselines and negative results included.
+A practical test is to ask about the wrong asset, a repaired fault, an inaccessible record, and a question with no supporting evidence. A useful memory should help the agent recognize these differences, rather than merely find plausible text.
 
-For the architecture, open [data engineering for agents](/layers/r14-agent-data-engineering). For a business application, follow [water operations](/use-cases/water-operations) or [compliance evidence](/use-cases/compliance-evidence).
+Continue with the proposed [water-operations investigation](/use-cases/water-operations), or see where this work fits in [data engineering for agents](/layers/r14-agent-data-engineering).

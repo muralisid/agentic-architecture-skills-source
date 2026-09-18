@@ -2,12 +2,18 @@
 title: "Remember facts that change"
 description: "Keep time, source versions, and corrections visible in the answer."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/memory/changing-facts.svg" mobileSrc="/figures/memory/changing-facts-mobile.svg" title="Remember facts that change" alt="Observation: What was recorded?. Validity: When was it true?. New evidence: What changed?. Reconciliation: Replace or retain both?. Answer: State the relevant date" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+## Yesterday’s correct answer can be wrong today
+
+An inspection identifies a damaged bearing. Two days later, a work order confirms its replacement. An agent that retrieves the inspection alone may recommend work that has already happened. An agent that overwrites the inspection loses the history needed to investigate recurrence.
+
+<TeachingIllustration src="/figures/memory/fact-timeline.svg" mobileSrc="/figures/memory/fact-timeline-mobile.svg" title="Facts change with events" alt="An inspection on 12 May finds a fault, a repair on 14 May changes the situation, and a question on 18 May needs current evidence while preserving the old inspection as history." caption="Keep historical evidence and current condition distinguishable." />
+
+Keep both events and their relationship. The question may be about the condition at inspection time, the current condition, or the sequence between them. The design must let retrieval distinguish those questions.
 
 ## Different dates answer different questions
 

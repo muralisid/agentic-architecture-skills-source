@@ -12,6 +12,10 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-09-18: explain the problem before the method
+
+Reframed the Intelligence ladder and Knowledge & memory entrances around an illustrative pump investigation. Added opening problem diagrams, a failure-to-intervention map, memory comparisons, and a dated repair example. Memory articles now explain the tempting starting approach, the failure it can cause, and why the design choices matter. Existing technical depth and source links remain.
+
 ## 2026-09-17 audience revision
 
 Six reader entrances; business and architecture starting points; industrial use cases; expanded multimodal memory articles and responsive illustrations; updated department proposals; research status and evidence labelling; updated skill bundles. The earlier same-day entry below describes the previous state. Memory no longer uses slide runs. No new experiment results are claimed.
