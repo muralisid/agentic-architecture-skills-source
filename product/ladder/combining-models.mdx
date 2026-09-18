@@ -2,31 +2,55 @@
 title: "Combine models around a useful task"
 description: "Let specialist models contribute evidence while the complete system owns the result."
 position: "Proposed integration patterns. Evaluate component errors and the end-to-end result separately."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/ladder/model-combination.svg" mobileSrc="/figures/ladder/model-combination-mobile.svg" title="Several models, one accountable task" alt="Observe: Vision or signal model. Retrieve: Relevant records and history. Reason: Decide what to check next. Act: Use a permitted business tool. Evaluate: Check the complete outcome" caption="A language model need not perform every measurement. Models and agents are different design choices." />
+A mine wants to understand how much material was produced and why two measurements disagree. A camera sees the belt, a measurement system estimates material volume, and operational records provide another view. **How do we combine those capabilities into a result someone can check and use?**
+
+<TeachingIllustration src="/images/ladder/specialist-model-team-v1.webp" title="Give each capability a job in the business task" alt="An iron ore conveyor is observed by a camera, measured with calibrated geometry, reconciled against scale and material records, explained with a language model, and reviewed by an accountable person. Missing evidence sends the investigation back to the records." caption="Illustrative production investigation. The measurement method needs calibration and validation for the actual site." expandable />
+
+## Why one model should not have to do everything
+
+It is convenient to send every input to a general model and ask for a finished answer. But recognizing material in an image, measuring it, comparing records, and explaining a discrepancy are different jobs. A convincing explanation does not establish that the underlying measurement was valid.
+
+Start with the result the business needs. Then decide what each model, conventional calculation, data service, and person should contribute. Some tasks may be handled adequately by one model; the case for extra components must come from measured need.
 
 ## Give each model a clear job
 
-A vision model may identify a candidate event. A retrieval model may find related evidence. A language model may prepare an explanation or choose the next investigation step. A forecasting model may contribute a prediction. Keep their outputs, uncertainty, and assumptions distinguishable.
+In this proposed production example, a visual system identifies the relevant material and observation interval. A calibrated measurement method estimates volume. An exact calculation can convert volume to mass only with suitable density information and a consistent measurement basis. Moisture, units, and the comparison period need explicit treatment. This is a design sketch, not a validated tonnage-measurement method.
+
+Retrieval brings in scale records, operating logs, and known measurement limits. A language model can organize the discrepancy, identify missing evidence, and prepare an explanation. A responsible person reviews unresolved issues before the result becomes an accepted operational report.
+
+A forecasting model could contribute an expected range where that helps the task, but its prediction remains distinct from an observed measurement. Preserve each component's assumptions and uncertainty. See [production measurement](/use-cases/production-measurement) for the fuller case.
 
 ## Preserve the evidence between steps
 
-Pass source references, timestamps, units, and the model or configuration version that produced a result. Do not turn a detector score into a confirmed operational fact just because the next model repeats it fluently.
+<TeachingIllustration src="/images/ladder/model-evidence-handoff-v1.webp" title="Do not let uncertainty disappear between models" alt="A weak handoff turns a possible obstruction into a confirmed claim. A traceable handoff retains the original image, source, time, model version, limitations, and confidence before choosing an inspection or further evidence request." caption="An output remains an observation or estimate until the required checks support a stronger conclusion." expandable />
+
+Pass the original source reference, asset, timestamp or interval, units, model or configuration version, and known limitations. Keep a detector score separate from operational certainty. A second model repeating the first model's claim is not additional evidence.
+
+For a possible belt obstruction, the next useful step may be to inspect another view or request a site check. If the evidence is insufficient, retain that uncertainty in the result. [Knowledge and memory](/memory) explains how to keep the supporting records discoverable and referenceable.
+
+## Let the investigation choose a useful next check
+
+If the volume estimate and scale record disagree, first check whether both describe the same material and period. If they do, inspect calibration records or missing inputs. After each check, reassess the remaining gap. Stop when the acceptance criteria are met, the investigation limit is reached, or a person must decide.
+
+This is where an agent loop can add value around existing specialist models. The loop selects the next permitted check; it does not turn an unsupported estimate into a fact. See [tools and the loop](/ladder/tools-and-the-loop).
 
 ## Route by task requirements
 
-Choose the smallest model or conventional method that meets the task’s requirements. Escalate a difficult case when a stronger model or a person can resolve a specific uncertainty. Include the extra delay, cost, and failure modes in the comparison.
+Compare the smallest model or conventional method that meets each component's requirements. Escalate a difficult case when another capability or a person can resolve a specific uncertainty. Test the routing decision too: a system that misses difficult cases will not benefit from an expert it never calls.
+
+Several models do not require several agents. One agent can call vision, retrieval, and calculation tools. A fixed workflow can also connect them. [Choose coordination](/ladder/single-and-multiple-agents) separately from the models used.
 
 ## Inspect the complete chain
 
-A strong component can still produce a poor overall system if it measures the wrong thing or loses context at a handoff. Evaluate the complete workflow using the original evidence and the accepted business outcome.
+Check each component against its own expected output, then test the whole task against the accepted business result. Include missing images, incorrect time alignment, failed tools, conflicting measurements, and cases where no justified conclusion is available.
 
-For example, [production measurement](/use-cases/production-measurement) needs calibrated measurements and reconciliation. [Safety coaching](/use-cases/safety-coaching) needs correct incident evidence and a responsible delivery process.
+Count component calls, data preparation, retries, integration maintenance, and human review. A more accurate detector helps only if the complete process produces a better outcome. The same principle applies to [safety coaching](/use-cases/safety-coaching): finding a candidate event and responsibly delivering useful coaching are separate responsibilities.
 
 ## External examples
 
-NVIDIA’s [video-search blueprint](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard) and [Roboflow Workflows](https://docs.roboflow.com/workflows) document ways to compose visual processing capabilities. Vendor documentation, accessed 17 September 2026. Their availability does not validate the outcomes of the proposed cases.
+[Roboflow Workflows](https://docs.roboflow.com/workflows) and NVIDIA's [video-search blueprint](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard) document composition of visual processing capabilities. Vendor documentation, reviewed 18 September 2026. These illustrate component integration; they do not validate the industrial outcomes proposed here. [ReAct](https://arxiv.org/abs/2210.03629), 2022, provides research background for interleaved reasoning and action, reviewed 18 September 2026.

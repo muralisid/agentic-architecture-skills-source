@@ -2,33 +2,53 @@
 title: "Workflow, one agent, or several?"
 description: "Choose coordination that helps the task rather than adding unnecessary moving parts."
 position: "Compare these arrangements on the actual task. More agents do not establish better performance."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-<TeachingIllustration src="/figures/ladder/agent-arrangements.svg" mobileSrc="/figures/ladder/agent-arrangements-mobile.svg" title="Choose how the work is coordinated" alt="Known steps: Use a fixed workflow. Uncertain next step: Use one bounded agent. Distinct specialties: Consider separate agents. Shared result: Check handoffs and evidence" caption="These are alternatives to compare. Several models can operate inside a single agent." />
+An enterprise needs work completed, whether that means preparing an inspection request or investigating repeated audit findings. **Which decisions should be fixed in software, which should one agent make, and which genuinely need separate investigators?**
+
+<TeachingIllustration src="/images/ladder/coordination-choices-v1.webp" title="Choose coordination to fit the work" alt="Compare a fixed inspection workflow, one agent investigating a pump problem, and separate document, asset, and departmental investigations feeding one reviewed result." caption="These are alternatives to test, not maturity levels. A workflow can use models, and one agent can use several models." expandable />
+
+## Why adding agents can create more work
+
+A natural design is to assign an agent to every role: planner, researcher, critic, writer, and reviewer. But who owns an unanswered question? What happens when two agents use different versions of the same standard? Who notices that both created the same inspection request?
+
+Before separating the work, make the responsibility for the complete result clear. Extra agents should solve a specific problem that a simpler arrangement could not handle well enough.
 
 ## A workflow when the sequence is known
 
-A scheduled report or a validated document-processing sequence may not need an agent deciding every step. Keep predictable operations explicit. A workflow can call models for individual tasks without giving them control of the whole process.
+Consider an inspection request with established rules: validate the asset identifier, check required fields, prepare the request, and obtain approval. Keep these steps explicit in software. A model can interpret the free-text description within that workflow without choosing the entire process.
+
+This gives the business a predictable route through known work. Test exceptions such as missing fields and existing requests. Add a separate investigation only where the fixed route cannot resolve the case.
 
 ## One agent for a bounded investigation
 
-An agent can select a useful tool, inspect what it returns, and decide whether more evidence is needed. Give it a task owner, tool permissions, and time and cost limits. Define what counts as enough evidence and when to ask a person.
+Now consider a pump whose readings changed after a repair. The useful next check depends on what the agent finds. It might inspect the repair record, compare operating conditions, then request a missing measurement.
+
+Give one agent a clear question, permitted tools, and time and cost limits. Define when the evidence is sufficient, when to stop, and when to ask a person. A repeated unproductive lookup should not become an endless loop. [ReAct](https://arxiv.org/abs/2210.03629), published in 2022, studies interleaving reasoning and action; this industrial example is an illustrative application, not a result from that paper. Reviewed 18 September 2026.
 
 ## Several agents when separation helps
 
-A compliance investigation might involve distinct document, asset, and departmental capabilities. Separate agents can be useful when their responsibilities, tools, or work can be clearly separated. Measure coordination overhead, repeated work, inconsistent assumptions, and failure recovery against one well-designed agent.
+A mining compliance investigation may need separate checks of standards, equipment records, and departmental evidence. Separation is a candidate when the investigations have distinct scopes or can make useful progress independently.
+
+Keep one owner for the final result. A document specialist might identify a requirement while an asset specialist checks relevant inspection records. The owner must reconcile both against the same site, period, and version of the standard. Several agents agreeing is not independent verification if they all rely on the same wrong source.
 
 ## Make the handoff explicit
 
-Pass the task, permitted scope, source references, unresolved questions, and expected result. One agent’s conclusion is still a claim for another agent to inspect, not an authorization. Assign ownership of the final outcome and of any shared state.
+<TeachingIllustration src="/images/ladder/agent-handoff-v1.webp" title="Pass enough evidence for the next person or agent to check" alt="A specialist passes a folder to the task owner containing question, allowed scope, sources and dates, findings, uncertainty, and expected result. Missing replies, conflicting evidence, and repeated requests each have an explicit recovery path." caption="A handoff passes a claim and its support. It does not grant new permission to act." expandable />
+
+Pass the question, permitted scope, source references, findings, unresolved issues, and expected result. Identify the asset, site, time period, and source version. Assign ownership of shared state so two agents cannot silently overwrite each other's work.
+
+For a missing reply, set a retry limit and a route to the owner. For conflicting evidence, preserve the disagreement for review. For repeated requests, check the recorded operation before sending another. The [autonomy contract](/architecture/autonomy-contract) sets the allowed actions independently of how agents are arranged.
 
 ## Evaluate the complete result
 
-Measure task success, review effort, latency, and full cost. Test a missing specialist response, conflicting evidence, and a repeated request. See [the technology decision](/decisions#cd-21-multi-agent-orchestration-vs-a-single-good-loop) and [systemic audit investigation](/use-cases/systemic-audit-issues).
+Compare the simplest credible workflow, one capable agent, and the proposed team on representative tasks. Count duplicated work, coordination calls, expert review, elapsed time, failures, and full cost. Do not select a team solely because individual specialists produce impressive answers.
 
-## External source
+Test missing responses, conflicting records, changed permissions, and repeated requests. Keep the team only when its contribution justifies the additional coordination. Explore [systemic audit investigation](/use-cases/systemic-audit-issues) and [the architecture decision](/decisions#cd-21-multi-agent-orchestration-vs-a-single-good-loop).
 
-[ReAct](https://arxiv.org/abs/2210.03629) describes interleaving reasoning and action. Accessed 17 September 2026. The coordination choices above are design proposals, not results claimed by that paper.
+## Further reading
+
+Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), published 19 December 2024, distinguishes predefined workflows from model-directed execution and describes coordination patterns. Reviewed 18 September 2026. The industrial arrangements here are design proposals to evaluate, not vendor-validated deployments.

@@ -12,6 +12,10 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-09-18: visual guides to agent design choices
+
+Expanded the guides to diagnosing failures, coordinating agents, and combining models. Added six generated teaching illustrations, industrial examples, explicit handoffs, and comparisons based on complete task outcomes and cost. Examples are illustrative designs rather than measured deployments.
+
 ## 2026-09-18: intelligence and memory as enterprise pillars
 
 Reframed the two sections around appropriate agent capability, full business cost, and traceable evidence for decisions. Added a generated visual tour of text, image, video, audio, geospatial, and time-series representations, followed by memory organization and decision records. The spatial illustrations are conceptual, not measured embeddings. Existing technical articles remain available.

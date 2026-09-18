@@ -1,0 +1,43 @@
+{
+  "mode": "built-in image_gen",
+  "styleReference": "site/public/images/ladder/context-pipeline-labeled-v3.webp",
+  "assets": [
+    {
+      "name": "diagnose-before-upgrading",
+      "prompt": "Use case: infographic-diagram. Create a polished educational website illustration matching the supplied reference image's ivory background, deep teal headings, orange accents, softly shaded document icons and explanatory arrows. Reference is style only, create entirely new content. Landscape 3:2, crisp legible large typography, generous spacing, limited exact labels, no logos, no em dashes. Main title: \"FIND WHAT FAILED BEFORE CHANGING THE MODEL\". Opening diagnostic infographic. Left: industrial pump bearing, old inspection recommendation, fresh repair record disconnected from agent. Label 'Bearing replaced yesterday' and 'Agent recommends replacement'. Right: four clear diagnostic branches with icons: 'Task unclear? Clarify the instruction'; 'Evidence missing? Repair retrieval'; 'Action failed? Check the tool'; 'Still fails? Compare models'. A bottom small evaluation strip reads 'Test the repair on more cases'. Show causal investigation, not automatic promise. No imaginary numeric results.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-97ac7aec-5793-48d4-8a3a-851897bdbba2.png",
+      "output": "site/public/images/ladder/diagnose-before-upgrading-v1.webp"
+    },
+    {
+      "name": "controlled-agent-comparison",
+      "prompt": "Use case: infographic-diagram. Create a polished educational website illustration matching the supplied reference image's ivory background, deep teal headings, orange accents, softly shaded document icons and explanatory arrows. Reference is style only, create entirely new content. Landscape 3:2, crisp legible large typography, generous spacing, limited exact labels, no logos, no em dashes. Main title: \"CHANGE ONE THING, THEN TEST AGAIN\". Two parallel test lanes of the same pump maintenance task and same model: top 'Original setup' with missing repair record, output 'Repeat inspection'; bottom 'Correct evidence supplied' with dated repair document, output 'Check post-repair readings'. Label both outputs 'Illustrative result'. Merge into checklist 'Did the change help?' with 'Correct decisions', 'Human review', 'Time', 'Full cost'. End 'Repeat on held-out cases'. Clear matched comparison, not empirically proven performance.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-81aac1d7-35b6-460c-8685-51bba7ef11dd.png",
+      "output": "site/public/images/ladder/controlled-agent-comparison-v1.webp",
+      "editPrompt": "Edit this teaching infographic, preserve composition, style and all other labels. Change ONLY the small sentence 'Repair appears effective' below 'Check post-repair readings' to 'Verify current condition'. A repair record alone must not imply that the repair worked. Change ONLY the small sentence under 'Full cost' from 'Include parts, labour and downtime' to 'Models, tools, review and rework'. Keep all other details unchanged."
+    },
+    {
+      "name": "coordination-choices",
+      "prompt": "Use case: infographic-diagram. Create a polished educational website illustration matching the supplied reference image's ivory background, deep teal headings, orange accents, softly shaded document icons and explanatory arrows. Reference is style only, create entirely new content. Landscape 3:2, crisp legible large typography, generous spacing, limited exact labels, no logos, no em dashes. Main title: \"WORKFLOW, ONE AGENT, OR SEVERAL?\". Three equally weighted illustrated columns, not numbered maturity levels. 'Known steps' shows water inspection request moving through fixed boxes 'Validate → Prepare → Approve'. 'Uncertain next step' shows one agent investigator by water pump and a loop 'Choose check → Read evidence → Reassess', with 'Stop or ask a person'. 'Separate investigations' shows an owner coordinating three investigators for mining audit evidence 'Documents', 'Assets', 'Departments', converging to 'One reviewed result'. Footer 'Compare the whole task: quality, time, review, cost'. No implication several agents is best.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-939ae59d-8d4c-4bfb-a243-8702f1fba024.png",
+      "output": "site/public/images/ladder/coordination-choices-v1.webp"
+    },
+    {
+      "name": "agent-handoff",
+      "prompt": "Use case: infographic-diagram. Create a polished educational website illustration matching the supplied reference image's ivory background, deep teal headings, orange accents, softly shaded document icons and explanatory arrows. Reference is style only, create entirely new content. Landscape 3:2, crisp legible large typography, generous spacing, limited exact labels, no logos, no em dashes. Main title: \"WHAT MUST TRAVEL BETWEEN AGENTS?\". Large central evidence folder travelling from 'Specialist' on left to 'Task owner' on right. Folder six clearly spaced illustrated compartments labeled 'Question', 'Allowed scope', 'Sources and dates', 'Findings', 'Uncertainty', 'Expected result'. Below three compact illustrated exception paths: 'Missing reply → Retry limit'; 'Conflicting evidence → Review'; 'Repeated request → Check existing work'. Footer 'A finding is not permission to act'. Industrial compliance setting, avoid robotic people, show role icons.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-b7f72f4d-5f59-4b18-8bed-a580de2e3deb.png",
+      "output": "site/public/images/ladder/agent-handoff-v1.webp"
+    },
+    {
+      "name": "specialist-model-team",
+      "prompt": "Use case: infographic-diagram. Create a polished educational website illustration matching the supplied reference image's ivory background, deep teal headings, orange accents, softly shaded document icons and explanatory arrows. Reference is style only, create entirely new content. Landscape 3:2, crisp legible large typography, generous spacing, limited exact labels, no logos, no em dashes. Main title: \"SEVERAL MODELS, ONE USEFUL RESULT\". Industrial conveyor iron ore example. Main flowing illustrated pipeline 'Observe' camera and belt → 'Measure' calibrated geometry/volume model with 'Volume estimate' → 'Reconcile' scale records and density/moisture records → 'Explain' language model with evidence folder → 'Approve' responsible person and draft report. Highlight amber badge 'Volume is not mass' beside measure. Show 'Missing evidence?' arrow from reconcile back to source records, not to made-up estimate. Footer 'Models contribute evidence. The system owns the outcome.' No numerical claims.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-31311f05-4e80-4df3-b1b9-5c285067e37f.png",
+      "output": "site/public/images/ladder/specialist-model-team-v1.webp"
+    },
+    {
+      "name": "model-evidence-handoff",
+      "prompt": "Use case: infographic-diagram. Create a polished educational website illustration matching the supplied reference image's ivory background, deep teal headings, orange accents, softly shaded document icons and explanatory arrows. Reference is style only, create entirely new content. Landscape 3:2, crisp legible large typography, generous spacing, limited exact labels, no logos, no em dashes. Main title: \"KEEP THE EVIDENCE THROUGH EVERY MODEL\". Two comparison rows, quarry camera illustrative detection. Upper amber row 'Weak handoff': image with uncertain event -> small card 'Possible obstruction' -> confident text 'Confirmed obstruction' with warning icon 'Uncertainty lost'. Lower teal row 'Traceable handoff': original image -> evidence card with 'Source', 'Time', 'Model version', 'Limits', 'Confidence' -> next-check decision 'Inspect or request more evidence'. At bottom output tied by dotted line to original image, caption 'Keep the observation separate from the conclusion'. Avoid fabricated confidence scores.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-0ee4e56d-3125-402a-bb6d-08fd02f853b7.png",
+      "output": "site/public/images/ladder/model-evidence-handoff-v1.webp"
+    }
+  ]
+}

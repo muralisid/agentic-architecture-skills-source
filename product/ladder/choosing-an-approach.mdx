@@ -7,34 +7,48 @@ datePublished: "2026-09-17"
 dateModified: "2026-09-18"
 ---
 
-An assistant recommends inspecting a bearing that was replaced yesterday. Calling it a “reasoning failure” suggests a stronger model. But perhaps the repair record was never supplied, the wrong asset was retrieved, or the tool returned an error that the agent ignored. These failures need different remedies.
+An agent recommends replacing a pump bearing that was replaced yesterday. Should we buy a more capable model, rewrite its instructions, or train it? **First find out what prevented it from doing the job correctly.**
 
-<TeachingIllustration src="/figures/ladder/failure-to-choice.svg" mobileSrc="/figures/ladder/failure-to-choice-mobile.svg" title="Match the failure to the intervention" alt="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." caption="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." />
+<TeachingIllustration src="/images/ladder/diagnose-before-upgrading-v1.webp" title="Find what failed before changing the model" alt="A pump maintenance recommendation conflicts with a recent repair record. Diagnose unclear instructions, missing evidence, failed tools, or remaining model limitations before selecting a change." caption="Illustrative maintenance case. The same wrong answer can have several different causes." expandable />
 
-## Run a comparison that separates the causes
+## Why a stronger model may not fix the problem
 
-First give the same model the correct asset record and confirmed repair, leaving the task unchanged. If the answer improves, investigate the information path. If it still fails, clarify the expected result and inspect the reasoning against the evidence. If it proposes the right action but cannot complete it, inspect tools, permissions, and confirmation. Only then compare models or training approaches against the remaining failure.
+It is tempting to treat every wrong answer as insufficient intelligence. In this example, the repair record may never have reached the agent. It may concern a different pump. Or a failed tool call may have been mistaken for a successful lookup. Changing the model without checking these possibilities leaves the cause unresolved.
 
-This is an illustrative diagnostic exercise. A single successful answer is not enough to establish the remedy. Repeat the comparison on representative cases, including ones where no repair occurred.
+The [Intelligence ladder](/ladder) explains the available ways to build capability. This page helps choose which part to change. The aim is a better completed task at an acceptable full cost.
 
 ## Start with a failed task
 
-Keep the request, allowed actions, evidence available at the time, tool results, and observed outcome. Ask the domain owner what a successful result would have looked like. A vague complaint such as “the agent is unreliable” is not enough to select a remedy.
+Keep the request, allowed actions, sources available at the time, tool results, and actual outcome. Ask the maintenance owner what an acceptable result would have been. A useful expectation might be: identify the completed repair, check the latest readings, and request further inspection only if the evidence supports it.
+
+That gives us something concrete to test. “Make the agent more reliable” does not.
+
+## Run a comparison that separates the causes
+
+<TeachingIllustration src="/images/ladder/controlled-agent-comparison-v1.webp" title="Test a specific explanation for the failure" alt="Two runs use the same task and model. One lacks the repair record; the other receives the correct evidence. Compare decisions, human review, time, and full cost, then repeat on held-out cases." caption="The outputs are examples, not measured results. Keep other settings comparable and repeat runs to account for variation." expandable />
+
+First supply the correct repair record to the same model, keeping the task and other settings comparable. If its answer improves consistently, investigate the information path. This is evidence for a retrieval or context problem, not proof that the whole system is fixed.
+
+Then test the proposed repair through the real retrieval path. Include pumps that were not repaired, old records, wrong asset identifiers, and missing information. Supplying the answer manually is a diagnostic test; it is not the production solution.
 
 ## Check the information
 
-Could the agent access the correct source? Was the information current and did it survive parsing? If the needed evidence never reached the model, additional training may hide rather than repair the failure. Try a controlled test with the correct evidence supplied.
+Could the agent access the correct source? Did parsing retain the repair date and asset identity? Was the current version retrieved? Did the evidence actually reach the model? Use [context testing](/patterns/how-to-test-a-context-design) and [memory organization](/memory/information-to-memory) to examine this path.
 
 ## Check the task and tools
 
-Was the instruction ambiguous? Could the tools perform the required operation? Did the agent distinguish a submitted request from a completed action? Inspect tool errors, permissions, and retry behavior before changing the model.
+If evidence is adequate but the requested result is unclear, try clearer instructions and examples. If the agent selects a sensible action but cannot complete it, inspect permissions, tool inputs, errors, and confirmation. A submitted work order is not a completed repair. Test retries without creating duplicate work.
 
 ## Check the workflow
 
-A known sequence may be better expressed as a workflow. An investigation with uncertain next steps may benefit from a bounded agent loop. Use several agents only when specialization or independent work improves the measured result.
+If the same steps are always required, compare a fixed workflow. If the next check depends on the result of the previous one, compare a bounded investigation. If separate investigations are useful, evaluate [one agent or several](/ladder/single-and-multiple-agents). Changing coordination should address an observed difficulty.
 
 ## Then assess model adaptation
 
-If the task, evidence, and tools are adequate, compare model choice, examples, fine-tuning, and other adaptation methods. Use held-out tasks and include maintenance cost. A new model that improves an automated score but creates more expert review is not an unqualified improvement.
+When the task, evidence, and tools are adequate, compare another model, better examples, or training against the remaining limitation. If capability is already good but expensive, test whether a smaller model or [distillation](/ladder/distillation) can preserve the required quality.
 
-See [the full set of methods](/ladder), [context design](/patterns/how-to-test-a-context-design), and [business economics](/use-cases/value-and-investment).
+Use tasks held apart from development. Count unsuccessful attempts, expert review, latency, and maintenance alongside model charges. Retain changes that improve the agreed outcome enough to justify their cost. See [business economics](/use-cases/value-and-investment).
+
+## Basis for this guidance
+
+This diagnostic sequence and pump example are teaching proposals, not reported experimental results. Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), published 19 December 2024, supports starting simply and evaluating added complexity. Reviewed 18 September 2026.
