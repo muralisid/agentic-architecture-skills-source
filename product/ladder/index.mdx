@@ -1,70 +1,76 @@
 ---
 title: "Intelligence ladder"
-description: "Choose how to turn model capability into useful, reliable enterprise work."
-position: "Design choices, not a required progression. Select the smallest intervention that meets the task’s measured requirements."
+description: "How intelligent should an agent be, and what should that intelligence cost?"
+position: "Teaching guidance and illustrative designs. Evaluate the proposed approach on representative tasks before adoption."
 lastReviewed: "2026-09-18"
 datePublished: "2026-08-29"
 dateModified: "2026-09-18"
 ---
 
-A model can explain why a pump might be vibrating and still be unable to help the maintenance team complete an inspection. The gap becomes clearer when we look at what the job actually requires.
+To turn an enterprise into an agentic enterprise, we need agents that can do useful work at an acceptable cost. The intelligence question is simple: **what must this agent understand, decide, and do to complete its job well?**
 
-<TeachingIllustration src="/figures/ladder/why-the-ladder.svg" mobileSrc="/figures/ladder/why-the-ladder-mobile.svg" title="Why a better answer may not finish the job" alt="A model answering a question: “Inspect the pump bearing.”: A useful suggestion, but no asset lookup, current reading, or work receipt.: Advice has been produced.; An agent doing bounded work: A reviewed inspection request: Use the right records, gather missing evidence, request approval, verify receipt.: An outcome can be confirmed.. First identify what the task is missing. Then choose the change that supplies it." caption="Then choose the change that supplies it." />
+<TeachingIllustration src="/images/ladder/enterprise-pillars-v1.webp" title="Two pillars within the enterprise architecture" alt="Enterprise systems, people, tools, and controls support intelligence and memory. Intelligence enables understanding, investigation, and permitted action. Memory supplies discoverable, verifiable, cited evidence. Together they support useful work and verified results." caption="Architecture provides the whole system. Intelligence and memory deserve a closer look because they shape what an agent can do and what supports its decisions." expandable />
 
-## Start with a useful answer, then ask what is missing
+## Architecture gives us the whole system; now we examine intelligence
 
-Consider a proposed maintenance assistant. You ask, “What should we do about this pump?” The model gives a reasonable explanation of bearing wear. That demonstrates useful knowledge, but the team needs something more specific: which pump, what changed, what the current procedure allows, and whether an inspection was actually requested.
+The [enterprise architecture](/architecture) explains the layers that connect models, data, business systems, people, and controls. Within that system, we now look closely at two pillars. **Intelligence** determines how the agent handles the task. **Memory** supplies information the agent can find, check, and use as evidence.
 
-A natural response is to write a longer prompt, paste in more documents, or try a larger model. Each can help a particular problem. But none, by itself, supplies a missing asset record, permission to create a work order, or confirmation that the work-order system accepted it.
+A powerful model is a useful starting point, but its general capability is not yet an enterprise capability. We have to shape it around the work: the goal, the available evidence, the tools, the limits, and the measure of success. That is what this guide means by distilling model intelligence into an enterprise agent.
 
-The Intelligence ladder gives you a way to work through that gap. Begin with the limitation you can observe. Change the part of the system responsible for it. Test whether the job now succeeds before adding more machinery.
+## How much intelligence does the job need?
 
-<TeachingIllustration src="/figures/ladder/failure-to-choice.svg" mobileSrc="/figures/ladder/failure-to-choice-mobile.svg" title="Match the failure to the intervention" alt="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." caption="Unclear tasks suggest instructions; missing evidence suggests context; missing capabilities suggest tools; residual behavior failures may justify adaptation; expensive demonstrated capability may justify distillation." />
+A natural starting point is to use one capable model for every task and give it broad instructions. That makes experimentation easy, but it does not tell us where reasoning adds value, where a known workflow is enough, or whether a complex agent pays for its extra effort.
 
-## First, make the task clear
+Compare three kinds of work. These are design choices to test, not a mandatory progression.
 
-Suppose “What should we do?” produces a general maintenance essay. The team actually needs a short investigation note: observations, possible causes, missing evidence, and the next permitted check. Clear instructions and an example may be enough to produce that result.
+<TeachingIllustration src="/images/ladder/intelligence-budget-v1.webp" title="Match intelligence to the work and its full cost" alt="Compare known steps handled by a workflow, choosing the next check in a bounded investigation, and specialist judgment that may justify adaptation. Count models, tools, data, review, and errors, then evaluate cost per successful task." caption="These are task choices, not universal maturity levels or measured cost rankings." expandable />
 
-**Why this matters:** you cannot judge the agent's performance if you have not said what a useful outcome looks like. [Instructions](/ladder/instructions) explains how to make that expectation explicit.
+**When the steps are known**, such as checking required fields before submitting an inspection request, ordinary software or a fixed workflow may do the job. A model might help interpret free text without choosing the whole process.
 
-## Next, give it the evidence for this job
+**When the next step depends on what is discovered**, such as investigating an unexplained production discrepancy, an agent may need to identify missing evidence, select a tool, examine its result, and decide what to check next. Its useful intelligence lies in managing that bounded investigation.
 
-Now the note is well structured, but it refers to the wrong pump model. Repeating the instruction will not supply the correct asset record. The agent needs current, relevant evidence: the asset identity, recent work, readings, and applicable procedure.
+**When specialist behavior remains difficult**, such as recognizing a particular defect pattern or consistently applying a domain classification, compare better inputs, specialist models, and adaptation. Training becomes a candidate when it addresses a demonstrated limitation and the enterprise can maintain the result.
 
-**Why this matters:** general model knowledge cannot establish what happened to this particular pump yesterday. [Context](/ladder/context) explains how to supply the working information. [Knowledge and memory](/memory) explains how to make that information findable and trustworthy over time.
+A capable agent does not automatically need broad authority. An excellent analysis may still require a person to approve an action. Choose [autonomy and supervision](/architecture/autonomy-contract) separately from the model's capability.
 
-## Then, let it close a specific gap
+## The Intelligence ladder helps us build the capability deliberately
 
-The current vibration pattern might require another reading or a check of a work order. A static answer cannot fetch evidence it was never given. Tools let the agent inspect a record or request an allowed operation. A bounded investigation loop lets it decide which missing fact to seek next and inspect the result.
-
-**Why this matters:** proposing an inspection and confirming its creation are different outcomes. [Tools and the loop](/ladder/tools-and-the-loop) explains this difference. Use a fixed workflow when the required sequence is already known.
-
-## Adapt the model when a limitation remains
-
-Perhaps the assistant has the right task, evidence, and tools but still cannot produce a consistent equipment-fault classification on held-out examples. That is a reason to investigate model choice or adaptation. It is not yet proof that training will help.
-
-The methods below address different problems. They are not a sequence that every enterprise must complete.
+Begin with an outcome the business can recognize. Then examine the choices that make the agent capable of achieving it.
 
 <Cards>
-<Card title="Adapters and fine-tuning" href="/ladder/adapters-and-fine-tuning">When a repeatable behavior remains unreliable, test whether suitable examples can teach it.</Card>
-<Card title="Distillation" href="/ladder/distillation">When a capability already works but is too expensive or slow, test whether a smaller model can preserve it.</Card>
-<Card title="Reinforcement fine-tuning" href="/ladder/reinforcement-fine-tuning">When decisions can be graded reliably, examine whether outcome feedback improves them.</Card>
-<Card title="Continued pretraining" href="/ladder/continued-pretraining">When domain familiarity is a persistent limitation, examine the evidence and cost of further training.</Card>
-<Card title="Custom pretraining" href="/ladder/custom-pretraining">When existing models cannot serve the data or task, investigate a specialist model and the investment it requires.</Card>
+<Card title="Instructions: define good work" href="/ladder/instructions">Tell the agent the goal, constraints, and required result. Otherwise capability may be spent on the wrong task.</Card>
+<Card title="Context: supply what matters now" href="/ladder/context">Give it relevant evidence and current task state. General knowledge does not establish the current condition of a particular asset.</Card>
+<Card title="Tools and the loop: investigate and act" href="/ladder/tools-and-the-loop">Let it fill a specific information gap or perform an allowed operation, then check what happened.</Card>
 </Cards>
 
-## Stop when the useful job works
+If those are sufficient, stop there. If a measured limitation remains, the model-adaptation methods below explain additional options. Improving the system and adapting the model can be combined; the names do not prescribe a shopping list.
 
-The path is meaningful because each change removes an identified obstacle. You may need only instructions and a database query. Another task may require visual analysis, a controlled investigation loop, and specialist models. Adding all of them is not the goal.
+## What should that intelligence cost?
 
-For the pump assistant, success means a supported investigation and a confirmed, permitted outcome with acceptable human effort. Compare that result with the existing process on the same kinds of cases. Count errors, review time, latency, and cost as well as successful answers.
+Judge cost against the business outcome, not just one model call. An investigation can involve many calls, data retrieval, external tools, retries, and expert review. A cheaper answer that creates more rework may be the more expensive way to finish the job.
 
-The broader aim is to distill model intelligence into enterprise capability. **Model distillation** is one specific training technique within that work; it is not a prerequisite for becoming an agentic enterprise.
+For a trial, record the total cost of the evaluated cases, including unsuccessful attempts, and divide it by the number of outcomes accepted as successful under the agreed quality standard. Also report the failure rate and serious errors separately, so a favorable average cannot hide them.
 
-## Go deeper where your problem takes you
+Compare configurations on the same representative cases. For example, test a rules-based workflow, a smaller model with retrieval, and a more capable model allowed to investigate. Route difficult cases to additional capability only if you can reliably recognize those cases and measure the improvement. Count the cost of building and maintaining that routing too.
 
-- [Diagnose what to change](/ladder/choosing-an-approach): inspect a failed task and run a comparison that separates possible causes.
-- [Use a workflow, one agent, or several](/ladder/single-and-multiple-agents): choose how the work should be organized.
-- [Combine language, vision, and specialist models](/ladder/combining-models): give different kinds of work to suitable models.
+For a production decision, spread build and integration costs over realistic task volumes and include recurring evaluation, monitoring, and maintenance. Training may add preparation cost while reducing effort per task; an investigation loop may add calls while avoiding expensive errors. Measure those tradeoffs rather than assuming that one arrangement is always cheaper.
 
-The pump story is an illustrative design, not a deployment result. For the surrounding system, explore [architecture](/architecture); for proposed business applications, explore [use cases](/use-cases).
+Ask whether more capability improves correctness, time to completion, or the human effort required enough to justify its full cost. The [value and investment guide](/use-cases/value-and-investment) develops this business comparison.
+
+## When changing the model is justified
+
+<Cards>
+<Card title="Adapters and fine-tuning" href="/ladder/adapters-and-fine-tuning">Teach a repeatable behavior from examples when current behavior is the limitation.</Card>
+<Card title="Distillation" href="/ladder/distillation">Test whether a demonstrated capability can run on a smaller model at acceptable quality.</Card>
+<Card title="Reinforcement fine-tuning" href="/ladder/reinforcement-fine-tuning">Use outcome feedback where the quality of a decision can be graded reliably.</Card>
+<Card title="Continued pretraining" href="/ladder/continued-pretraining">Investigate additional domain training when the evidence supports that investment.</Card>
+<Card title="Custom pretraining" href="/ladder/custom-pretraining">Consider a specialist model when the task and data justify its full development cost.</Card>
+</Cards>
+
+Model distillation is one specific training technique. The broader goal of distilling intelligence into enterprise work includes all the system choices above.
+
+## Continue into the other pillar: memory
+
+An agent's judgment is useful only if we can examine what supported it. [Knowledge and memory](/memory) starts with the information an enterprise holds: text, images, video, sound, locations, and measured behavior. It then explains how to organize that information into retrievable, referenceable evidence for decisions.
+
+For implementation choices, [diagnose a failed task](/ladder/choosing-an-approach), compare [one agent with several](/ladder/single-and-multiple-agents), or explore [combining specialist models](/ladder/combining-models).

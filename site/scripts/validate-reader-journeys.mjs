@@ -21,7 +21,7 @@ for(const p of docs){const text=await readFile(p,'utf8');
  assert(!/\bDeck [AB]\b|\brungs?\b/i.test(text),`Old reader terminology in ${p}`);
  assert(!/github\.com\/muralisid\/(agentic-architecture-skills-source|multicard-bench|agent-memory-research)/.test(text),`Internal evidence link in ${p}`);
  if(p.includes('/memory/'))assert(!/<Slide(?:\s|Journey)/.test(text),`Slide run in ${p}`);
- for(const m of text.matchAll(/(?:src|mobileSrc)="(\/figures\/[^"?]+)"/g)){await access(path.join(root,'public',m[1]));diagrams++;}
+ for(const m of text.matchAll(/(?:src|mobileSrc)="(\/(?:figures|images)\/[^"?]+)"/g)){await access(path.join(root,'public',m[1]));diagrams++;}
 }
 const decisions=await read('content/docs/decisions/index.mdx');
 for(let n=1;n<=25;n++)assert(new RegExp('CD-'+String(n)+'\\b').test(decisions),`Lost decision ${n}`);

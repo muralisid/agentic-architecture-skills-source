@@ -217,6 +217,26 @@
         {
           "route": "/memory/permissions-and-lifecycle",
           "as": "memory-permissions-and-lifecycle.md"
+        },
+        {
+          "route": "/memory",
+          "as": "memory-guide.md"
+        },
+        {
+          "route": "/memory/text-embeddings",
+          "as": "memory-text-embeddings-guide.md"
+        },
+        {
+          "route": "/memory/image-embeddings",
+          "as": "memory-image-embeddings-guide.md"
+        },
+        {
+          "route": "/memory/video-embeddings",
+          "as": "memory-video-embeddings-guide.md"
+        },
+        {
+          "route": "/memory/audio-embeddings",
+          "as": "memory-audio-embeddings-guide.md"
         }
       ]
     },
@@ -269,6 +289,10 @@
         {
           "route": "/use-cases/value-and-investment",
           "as": "use-cases-value-and-investment.md"
+        },
+        {
+          "route": "/ladder",
+          "as": "ladder-guide.md"
         }
       ]
     },

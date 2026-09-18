@@ -552,11 +552,12 @@ const metas = {
   memory: {
     title: 'Knowledge & memory',
     icon: 'Brain',
-    description: 'How agent memories are built, what the benchmarks measure, and the open question at enterprise scale.',
+    description: 'Represent enterprise knowledge and preserve evidence for decisions.',
     pages: [
       'index',
-      'information-to-memory', 'choosing-representations', 'images-video-and-audio',
-      'location-and-satellite-data', 'time-series', 'combining-evidence', 'changing-facts', 'permissions-and-lifecycle',
+      'text-embeddings', 'image-embeddings', 'video-embeddings', 'audio-embeddings',
+      'location-and-satellite-data', 'time-series', 'information-to-memory', 'choosing-representations',
+      'images-video-and-audio', 'combining-evidence', 'changing-facts', 'permissions-and-lifecycle',
       'six-architectures',
       'what-the-benchmarks-measure',
       'long-context-is-not-memory',

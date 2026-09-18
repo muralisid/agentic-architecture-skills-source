@@ -1,71 +1,107 @@
 ---
 title: "Knowledge & memory"
-description: "What should an agent know, remember, and retrieve to complete its work?"
-position: "Design guidance with separate experimental evidence. A representation must be evaluated on the questions and data it will actually serve."
+description: "Represent enterprise knowledge so agents can find it and cite the evidence behind their decisions."
+position: "Teaching guidance and illustrative designs. Evaluate the proposed approach on representative tasks before adoption."
 lastReviewed: "2026-09-18"
 datePublished: "2026-09-13"
 dateModified: "2026-09-18"
 ---
 
-Imagine asking an agent whether a pump needs another inspection. It finds a convincing maintenance report, but the report is about a different pump and predates a repair. The problem is not a shortage of stored information. It is whether the agent can connect the right evidence to this question.
+An agent needs information it can use and evidence we can check. **How should the enterprise organize what it knows so that an agent can find the right material and show what supports its decision?**
 
-<TeachingIllustration src="/figures/memory/memory-failure.svg" mobileSrc="/figures/memory/memory-failure-mobile.svg" title="A relevant answer can still be wrong" alt="A shared pile of text: “Replace the bearing.”: A similar report mentions P-71. It is from before the repair.: Similarity hides the mismatch.; Evidence for this task: “Check P-17 before deciding.”: Match the asset and dates. Read current vibration and repair records.: The missing evidence is visible.. A useful memory must connect the answer to the right asset, time, and source." caption="A useful memory must connect the answer to the right asset, time, and source." />
+The [architecture](/architecture) places memory within the enterprise system. The [Intelligence ladder](/ladder) explains how to build the capability the task needs at an acceptable cost. Here we explore the second pillar: representing enterprise information, finding it again, and retaining a traceable basis for decisions.
 
-## Why putting everything in one place is only a beginning
+## First, get a feel for memory in vector space
 
-A straightforward starting design is to collect manuals, inspection reports, work orders, and conversation history in one searchable store. The agent can now find relevant material. That is useful, especially for questions about relatively stable documents.
+An enterprise holds words, photographs, recordings, maps, and readings over time. Turning all of them into short text summaries is convenient, but can lose precisely what a later question needs: a visual feature, a sequence of events, a surface pattern, or a changing signal.
 
-But relevance alone does not settle the pump investigation. A report can discuss the same symptom on another asset. A summary can omit that a repair was completed. An old procedure can use almost the same words as its replacement. More retrieved text can contain all of these possibilities without telling the agent which one applies.
+The illustrations are **conceptual maps, not measured embeddings**. Start with text, then look at what changes for other forms of information.
 
-The purpose of knowledge and memory design is to make those distinctions recoverable. Before choosing storage technology, ask what the next task will need to establish and what it must be able to check.
+## Text: find related meaning
 
-## Follow one investigation through the evidence
+<TeachingIllustration src="/images/memory/text-space-v1.webp" title="Text: find related meaning" alt="Text encoder maps two differently worded pump-pressure passages near each other and a leave-policy passage elsewhere. A query retrieves nearby passages while retaining the original source, version, and permissions." caption="Text similarity helps locate a passage. It does not establish whether that passage is current or applicable." expandable />
 
-Our illustrative agent is investigating pump P-17. It needs to establish the asset identity, read the procedure that applies today, compare current behavior with past episodes, and check whether an earlier fault was repaired. Those are different questions, even though they belong to one task.
+An embedding represents selected features as numbers so a search can find useful similarities. Picture a space in which related examples lie near each other. What counts as related depends on the model and its training. Actual spaces have many dimensions; a two-dimensional illustration cannot show every relationship.
 
-<TeachingIllustration src="/figures/memory/question-map.svg" mobileSrc="/figures/memory/question-map-mobile.svg" title="One pump, different questions" alt="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." caption="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." />
+A representation is not the whole memory. Keep the original sources, exact records, dates, and access rules alongside it. Start with the kind of question the agent will ask.
 
-This is why a single retrieval method is not automatically the answer to every memory problem. An exact lookup can identify P-17. Document search can find its procedure. A suitable time-series representation can help find similar behavior. Relationships can connect a bearing replacement to a work order. Each helps preserve a different part of what the agent needs to know.
+“Pump pressure is falling” and “low discharge pressure” may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
 
-**Start here:** [choose the representation for the question](/memory/choosing-representations). The point of a vector is to make a useful kind of resemblance searchable. The question determines which similarities matter and which differences must remain visible.
+[Explore this memory type](/memory/text-embeddings).
 
-## Keep enough context to check a remembered fact
+## Images: find visual resemblance
 
-Suppose the agent stores “bearing replaced” after reading a work order. The short note looks useful, but a later task needs to know which bearing, on which pump, when, and whether completion was confirmed. Without those details, compression has removed the part that makes the memory usable.
+<TeachingIllustration src="/images/memory/image-space-v1.webp" title="Images: find visual resemblance" alt="Two inspection photographs of corroded pipe joints map to nearby points while clean-valve images form a different group. An aligned text-image model can connect a phrase to visual results. Each result links back to the original image." caption="Inspect the original image, date, and asset. Visual resemblance is not a diagnosis." expandable />
 
-<TeachingIllustration src="/figures/memory/source-envelope.svg" mobileSrc="/figures/memory/source-envelope-mobile.svg" title="What disappeared from the summary?" alt="Only the extracted sentence: “Bearing replaced.”: Which pump? Which bearing? When? Was the work confirmed?: The sentence cannot settle this task.; A fact with its evidence: P-17 · bearing B2 · 14 May: Completed work order W-204. Technician confirmation and source link.: The agent can check the record.. Keep the context that lets a later task verify what a statement means." caption="Keep the context that lets a later task verify what a statement means." />
+A model can place visually related inspection images near each other, making it possible to look for earlier examples of corrosion or damage. With a suitably aligned text-image model, a written query can also find images. What counts as similar depends on training.
 
-Keep the original evidence and the information needed to find it again. A summary can help the agent navigate; the underlying record lets it verify the claim. [From information to usable memory](/memory/information-to-memory) explains what to preserve during preparation.
+[Explore this memory type](/memory/image-embeddings).
 
-## Remember what changed, not just what was said
+## Video: find a similar event
 
-The inspection may correctly say that a bearing was faulty on 12 May. A completed repair may change the situation on 14 May. Deleting the inspection would lose useful history, but presenting it as the current condition would mislead the next investigation.
+<TeachingIllustration src="/images/memory/video-space-v1.webp" title="Video: find a similar event" alt="A timestamped CCTV clip becomes a representation of an event interval. Similar filmstrips are grouped together; a retrieved result opens the original clip with its camera, start and end time, and surrounding context." caption="Keep timestamps and original clips. A vector is not a directly readable event chronology." expandable />
 
-<TeachingIllustration src="/figures/memory/fact-timeline.svg" mobileSrc="/figures/memory/fact-timeline-mobile.svg" title="Facts change with events" alt="An inspection on 12 May finds a fault, a repair on 14 May changes the situation, and a question on 18 May needs current evidence while preserving the old inspection as history." caption="Keep historical evidence and current condition distinguishable." />
+A video contains change: a person approaches a loading zone, a vehicle moves, or an inspection unfolds. A suitable representation can help search for similar clips or events. Finding a related video is different from locating the exact interval that supports a claim.
 
-[Changing facts](/memory/changing-facts) explains how versions and events affect an answer. [Permissions and lifecycle](/memory/permissions-and-lifecycle) explains why a copied summary or index entry needs an update and access policy too.
+[Explore this memory type](/memory/video-embeddings).
 
-## Extend the same reasoning beyond documents
+## Audio: find a similar sound
 
-A sentence describing a video is not the video. A regional satellite representation is not a current measurement of clearance from a power line. An average vibration level is not the pattern of a developing fault. The representation should retain what the intended question needs.
+<TeachingIllustration src="/images/memory/audio-space-v1.webp" title="Audio: find a similar sound" alt="Pump recordings with rattling patterns are grouped separately from a steady hum. Each match opens a recording with equipment and interval metadata. A speech transcript is shown as a separate representation." caption="Listen to the original and check operating conditions. Similar sounds need not have the same cause." expandable />
 
-<Cards>
-<Card title="Images, video, and audio" href="/memory/images-video-and-audio">Why finding a recording is different from locating and verifying an event.</Card>
-<Card title="Location and satellite data" href="/memory/location-and-satellite-data">Why a useful regional change signal may still need fresh, detailed inspection evidence.</Card>
-<Card title="Equipment readings over time" href="/memory/time-series">Why similar averages can hide different operating behavior.</Card>
-<Card title="Combine evidence" href="/memory/combining-evidence">Why matching results by asset and time matters more than collecting several confident answers.</Card>
-</Cards>
+A pump rattle and a spoken maintenance instruction need different kinds of information. Sound representations can help find acoustic resemblance; a transcript can help find words. Choose the form that preserves what the question asks about.
 
-## Choose the design after the problem is clear
+[Explore this memory type](/memory/audio-embeddings).
 
-Now the storage and retrieval choices have a purpose: preserve the distinctions the investigation needs, find them efficiently, and keep them valid as sources change.
+## Geospatial data: find similar places or change
 
-- [Six memory approaches](/memory/six-architectures): compare what each retains and what it may leave out.
-- [Long context and retrieval](/memory/long-context-is-not-memory): decide when more material in the working context helps.
-- [Large context at enterprise scale](/memory/the-ten-million-token-question): examine the evidence behind much larger workloads.
-- [What benchmarks measure](/memory/what-the-benchmarks-measure): check whether a reported score tests your problem.
-- [What we measured](/memory/what-we-have-measured) and [retrieval patterns](/patterns): read findings with their controls and limitations.
+<TeachingIllustration src="/images/memory/geospatial-space-v1.webp" title="Geospatial data: find similar places or change" alt="Earth patches containing forest, water, fields, and mining ground map into groups by learned surface characteristics rather than physical distance. Yearly representations can be compared, while coordinates, observation intervals, and source observations remain attached." caption="Nearby in the representation does not mean nearby on Earth. Annual patterns do not identify an exact event date." expandable />
 
-A practical test is to ask about the wrong asset, a repaired fault, an inaccessible record, and a question with no supporting evidence. A useful memory should help the agent recognize these differences, rather than merely find plausible text.
+A place can be represented by learned surface characteristics and, in some models, behavior over a period. Distant areas may be similar in that space. Comparing the same location across years can guide a change investigation, while exact coordinates and dates remain explicit.
 
-Continue with the proposed [water-operations investigation](/use-cases/water-operations), or see where this work fits in [data engineering for agents](/layers/r14-agent-data-engineering).
+[Explore this memory type](/memory/location-and-satellite-data).
+
+## Time-series data: find similar behavior
+
+<TeachingIllustration src="/images/memory/time-series-space-v1.webp" title="Time-series data: find similar behavior" alt="Operating windows with growing oscillations and a spike form a different group from steady signals. A query finds comparable historical windows and returns original readings and confirmed outcomes, with units, duration, and operating state." caption="A similar operating pattern suggests an investigation. It does not establish the same underlying cause." expandable />
+
+The useful resemblance may be a developing oscillation, a spike, or a sequence of changes across pressure and vibration. This lets an agent ask, “What behaved like this before?” Decide whether shape, magnitude, duration, or operating state should matter.
+
+[Explore this memory type](/memory/time-series).
+
+## These are different spaces, not one universal memory map
+
+Two models can produce vectors of the same length without giving those coordinates the same meaning. Search within a suitable space and combine the resulting evidence by asset, place, time, and source. A jointly trained or explicitly aligned model can support some cross-modal comparisons; do not assume every combination is aligned.
+
+These six types describe the **form of information**. A different question is how long an agent should retain it and how it should be stored. Task context, past events, approved procedures, source records, summaries, and relationships can each use different representations. The [six memory designs](/memory/six-architectures) examine those storage choices.
+
+## Then organize memory around evidence and decisions
+
+Once the representations make sense, the organization problem becomes clearer. A familiar starting design is to put everything into an index and retrieve the closest results. That helps discover material. It does not by itself establish that a result concerns the right asset, remains current, is accessible to this user, or supports the proposed action.
+
+<TeachingIllustration src="/images/memory/evidence-organization-v1.webp" title="Organize memory so a decision can be checked" alt="Original records and media feed separate representations. Retrieval checks asset identity, time, access, and version. An evidence folder keeps citations and unresolved contradictions. A decision record retains the evidence used, rationale, approval, and outcome. Corrections propagate to derived information." caption="A vector helps locate evidence. The decision must remain traceable to the original sources and the versions used." expandable />
+
+**Preserve the source.** Keep the original passage, image, recording, or observation window and the information needed to locate it. A generated summary should not be the only surviving evidence. [Prepare usable memory](/memory/information-to-memory).
+
+**Represent for the question.** Use exact queries for official identifiers and values, lexical search for precise terms, suitable embeddings for resemblance, and relationships where the question requires them. [Choose a representation](/memory/choosing-representations).
+
+**Retrieve and check.** Check identity, observation period, version, and current permissions. Keep conflicts visible instead of silently blending them. [Combine evidence](/memory/combining-evidence), handle [changing facts](/memory/changing-facts), and maintain [access and lifecycle](/memory/permissions-and-lifecycle).
+
+**Keep a decision record.** Retain the request, the source references and versions used, the evidence relevant to the decision, unresolved uncertainty, a concise rationale, required approval, and the observed outcome. A rationale should explain the decision against the evidence; storing private model reasoning is not required. A citation makes inspection possible, but does not by itself establish that the decision was correct.
+
+## Test whether memory serves the work
+
+Ask whether the agent found the right evidence and whether a reviewer can follow the answer back to it. Include wrong-asset matches, repaired faults, changed permissions, misleadingly similar images, and questions with no supporting evidence. Measure retrieval quality, decision quality, review effort, latency, and full operating cost.
+
+Go deeper into [long context](/memory/long-context-is-not-memory), [enterprise-scale history](/memory/the-ten-million-token-question), [benchmark interpretation](/memory/what-the-benchmarks-measure), and [reported experiments](/memory/what-we-have-measured). Apply the design to [compliance evidence](/use-cases/compliance-evidence) or a [water-operations investigation](/use-cases/water-operations).
+
+## Sources for the representation examples
+
+These primary sources illustrate model families, not a ranking or a guarantee for an industrial deployment. Reviewed 18 September 2026.
+
+- [Sentence-BERT](https://arxiv.org/abs/1908.10084), 2019: sentence representations for semantic comparison.
+- [CLIP](https://openai.com/index/clip/), 2021: learned relationships between images and text.
+- [InternVideo2](https://arxiv.org/abs/2403.15377), 2024: multimodal video representation research.
+- [CLAP](https://arxiv.org/abs/2206.04769), 2022: audio and natural-language representation research.
+- [AlphaEarth Foundations](https://deepmind.google/blog/alphaearth-foundations-helps-map-our-planet-in-unprecedented-detail/), 2025: geospatial representations and annual embedding data.
+- [TS2Vec](https://arxiv.org/abs/2106.10466), 2021: contextual representations of time series.

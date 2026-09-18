@@ -12,6 +12,10 @@ next: "/docs/contributing"
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the [re-verification list](RE-VERIFICATION.md), which is reviewed quarterly.
 
+## 2026-09-18: intelligence and memory as enterprise pillars
+
+Reframed the two sections around appropriate agent capability, full business cost, and traceable evidence for decisions. Added a generated visual tour of text, image, video, audio, geospatial, and time-series representations, followed by memory organization and decision records. The spatial illustrations are conceptual, not measured embeddings. Existing technical articles remain available.
+
 ## 2026-09-18: explain the problem before the method
 
 Reframed the Intelligence ladder and Knowledge & memory entrances around an illustrative pump investigation. Added opening problem diagrams, a failure-to-intervention map, memory comparisons, and a dated repair example. Memory articles now explain the tempting starting approach, the failure it can cause, and why the design choices matter. Existing technical depth and source links remain.

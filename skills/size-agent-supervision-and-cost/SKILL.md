@@ -55,3 +55,7 @@ Treat the supplied references as a starting point, not proof that a recommendati
 ## Additional task references
 
 - [Measure value and full cost](references/use-cases-value-and-investment.md): consult when this aspect is part of the task.
+
+## Intelligence and memory pillars
+
+- [Ladder](references/ladder-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.

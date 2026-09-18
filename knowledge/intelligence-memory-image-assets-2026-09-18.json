@@ -1,0 +1,74 @@
+[
+  {
+    "name": "enterprise-pillars",
+    "section": "ladder",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-ac159498-6294-4a06-bd94-7066c433fcc5.png",
+    "output": "site/public/images/ladder/enterprise-pillars-v1.webp",
+    "width": 1586,
+    "bytes": 299586
+  },
+  {
+    "name": "intelligence-budget",
+    "section": "ladder",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-86c2cf30-b3a4-4fcd-90b8-41dd36292d78.png",
+    "output": "site/public/images/ladder/intelligence-budget-v1.webp",
+    "width": 1586,
+    "bytes": 312820
+  },
+  {
+    "name": "text-space",
+    "section": "memory",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-e69c7888-0ea5-4242-913b-685d8d7ced58.png",
+    "output": "site/public/images/memory/text-space-v1.webp",
+    "width": 1586,
+    "bytes": 168270
+  },
+  {
+    "name": "image-space",
+    "section": "memory",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-6bed5268-dabc-4858-82c5-ba2bdfa0b594.png",
+    "output": "site/public/images/memory/image-space-v1.webp",
+    "width": 1586,
+    "bytes": 307468
+  },
+  {
+    "name": "video-space",
+    "section": "memory",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-2a10ff88-45e1-42c6-8b1f-09d289983098.png",
+    "output": "site/public/images/memory/video-space-v1.webp",
+    "width": 1586,
+    "bytes": 257390
+  },
+  {
+    "name": "audio-space",
+    "section": "memory",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-02d46032-0c66-4138-bab7-6e6fea6b3502.png",
+    "output": "site/public/images/memory/audio-space-v1.webp",
+    "width": 1586,
+    "bytes": 209784
+  },
+  {
+    "name": "geospatial-space",
+    "section": "memory",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-e74aef64-1082-4daf-8ee9-589889382023.png",
+    "output": "site/public/images/memory/geospatial-space-v1.webp",
+    "width": 1586,
+    "bytes": 402186
+  },
+  {
+    "name": "time-series-space",
+    "section": "memory",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-2ff6222e-4251-43b8-b320-aca200bbf93a.png",
+    "output": "site/public/images/memory/time-series-space-v1.webp",
+    "width": 1586,
+    "bytes": 211094
+  },
+  {
+    "name": "evidence-organization",
+    "section": "memory",
+    "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-cb9b0e91-95b8-4e37-a32b-989868cfc99d.png",
+    "output": "site/public/images/memory/evidence-organization-v1.webp",
+    "width": 1586,
+    "bytes": 296228
+  }
+]

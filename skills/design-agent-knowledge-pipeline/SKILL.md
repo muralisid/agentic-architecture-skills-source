@@ -66,3 +66,11 @@ Treat the supplied references as a starting point, not proof that a recommendati
 - [Represent places and changes over time](references/memory-location-and-satellite-data.md): consult when this aspect is part of the task.
 - [Combine different kinds of evidence](references/memory-combining-evidence.md): consult when this aspect is part of the task.
 - [Keep memory usable and accountable](references/memory-permissions-and-lifecycle.md): consult when this aspect is part of the task.
+
+## Intelligence and memory pillars
+
+- [Memory](references/memory-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: text embeddings](references/memory-text-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: image embeddings](references/memory-image-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: video embeddings](references/memory-video-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: audio embeddings](references/memory-audio-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
