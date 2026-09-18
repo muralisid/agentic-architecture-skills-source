@@ -1,44 +1,80 @@
 ---
 title: "Architecture of the agentic enterprise"
-description: "Start with the fourteen enterprise layers. Explore the system, its controls, and how an agent completes real work."
+description: "See how intelligence, memory, tools, people, and controls work together, then explore the fourteen enterprise layers."
 position: "Reference design. The appropriate implementation depends on the task, existing systems, and available control interfaces."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
 
-An agent needs more than a model. It needs information, tools, permission to act, and a way to confirm the result. This map connects those responsibilities to the enterprise systems and teams that provide them.
+How do you turn model intelligence into useful enterprise work? Start with a task, such as investigating a possible safety issue and arranging an inspection. The architecture must connect the agent to evidence, give it appropriate tools, limit what it can do, and confirm what actually happened.
 
-## Explore the fourteen layers
+Connecting a model to documents can help it answer a question. Completing the work requires more: current information, permission to act, reliable business systems, and someone responsible when the task cannot be completed.
+
+## See the whole system first
+
+<TeachingIllustration src="/images/architecture/enterprise-overview-v1.webp" expandable title="From a business goal to a confirmed result" alt="A business owner defines a goal. An agent uses intelligence and memory, passes an independent permission check, and uses enterprise systems. The system returns a result for the agent to check. People oversee the work and independent records capture what happened." caption="Start with the outcome. Intelligence and memory help the agent work toward it; tools, controls, and people make that work possible." />
+
+For example, an agent reviewing vegetation near power lines needs images, the correct asset location, and the inspection policy. It may request a closer look or propose an inspection. A separate permission check determines whether it can create the work order. The task ends with a confirmed result or a clear handover to a person.
+
+This is a proposed design example, not a claim that an image alone establishes a safety risk. The [task walkthrough](/architecture/task-walkthrough) follows an inspection in more detail.
+
+## Break the system into responsibilities
+
+The reference design uses seven **planes** to group responsibilities. These are a way to reason about the system, not seven products to buy.
+
+<TeachingIllustration src="/images/architecture/architecture-responsibilities-v1.webp" expandable title="Seven responsibilities in one system" alt="Human: set goals and handle exceptions. Execution: run the agent and workflow. Knowledge: supply information and memory. Action: connect tools and business systems. Control: enforce permissions and limits. Evidence: independently record what happened. Improvement: evaluate changes before release." caption="Every responsibility needs an owner and an implementation. Several may be supported by systems the enterprise already operates." />
+
+Read the diagram around one task: a person sets the goal; execution runs the agent; knowledge supplies context; action connects it to tools. Control limits what is allowed. Evidence records what happened. Improvement tests proposed changes before they enter use.
+
+Two boundaries matter throughout this design. **The model does not enforce its own permissions.** Enforcement belongs outside its reasoning. **The agent is not the sole author of its audit trail.** Trusted collection must capture calls, approvals, and outcomes independently. Read the [complete system view](/architecture/system-view) for the boundaries and their implementation options.
+
+## Connect intelligence and memory
+
+Intelligence and memory are two important parts of this architecture. Their design starts with different questions: how capable must the agent be for this task, and what information must it have to make a supported decision?
+
+<TeachingIllustration src="/images/architecture/intelligence-memory-loop-v1.webp" expandable title="How intelligence and memory work together" alt="Memory supplies the current task, past experience, and reference evidence to intelligence. Intelligence chooses the next check. A separate permission gate precedes tool use. The result returns for checking and the agent continues or finishes. Task progress is saved; updates to shared memory require review." caption="Memory supplies context and referenceable evidence. Intelligence chooses the next step. The actual result determines whether to continue, stop, or ask for help." />
+
+In the inspection example, thread memory keeps track of the location being investigated and checks already completed. Longer-lived memory may supply an earlier inspection, an approved procedure, or a relevant past case. The agent uses that context to decide whether it has enough information or needs another observation.
+
+Keep two kinds of evidence distinct. **Reference evidence** supports the decision: which image, record, or procedure was used, and when it applied. **Execution evidence** establishes what happened: which tool was called, who approved it, and what the business system returned. A summary written by the agent cannot replace those records.
+
+Saving task progress is also different from changing shared knowledge or improving a model. Review proposed durable updates for accuracy, access, and freshness. Test changes to models, prompts, and policies through the improvement process before release.
+
+<Cards>
+<Card title="Design the intelligence" href="/ladder">Choose the level of reasoning, tool use, and coordination the task needs. Consider quality, time, cost, and supervision together.</Card>
+<Card title="Design the memory" href="/memory">Start with current context, thread memory, and longer-lived knowledge. Then organize sources, representations, retrieval, and lifecycle.</Card>
+</Cards>
+
+## Find these responsibilities in the fourteen layers
+
+The seven planes describe responsibilities across the system. The fourteen layers below locate the enterprise capabilities that provide them. They are two views of the same architecture, not twenty-one separate components.
+
+For intelligence, start with **Intelligence & learning** and **Agent platform**, supported by **Infrastructure & compute**. For memory, start with **Data platform** and **Data engineering for agents**, connected to the agent platform. Both depend on security, governance, monitoring, and the people operating the service.
 
 <ArchitectureMap />
 
-## Follow the work across the layers
+Open a layer to see its role, then follow its detailed design. The [plane-to-layer crosswalk](/architecture/system-view#the-crosswalk) connects the two views explicitly.
 
-<TeachingIllustration src="/figures/architecture/agent-task.svg" mobileSrc="/figures/architecture/agent-task-mobile.svg" title="One inspection task, end to end" alt="Request: Inspect this asset. Evidence: Read records and images. Investigation: Check what is missing. Allowed action: Create an inspection. Confirmation: Record the result" caption="Permission is checked before an action; evidence and human responsibility span the task." />
+## Add detail when you need it
 
-An inspection request may involve asset records, images, an agent platform, a work-order API, and a responsible engineer. The layers show where those capabilities live. The seven planes explain who does the work, enforces the rules, records evidence, and improves the system.
-
-<Cards>
-<Card title="See the complete system" href="/architecture/system-view">The seven planes, their responsibilities, and the two boundaries that keep control and evidence independent.</Card>
-<Card title="Follow one task" href="/architecture/task-walkthrough">Trace an inspection from the request to a confirmed work order.</Card>
-<Card title="Make software usable by agents" href="/architecture/software-for-agents">Interfaces, delegated access, reliable transactions, and human handover.</Card>
-<Card title="Compare technology choices" href="/decisions">Twenty-five decisions with alternatives, evidence, and conditions that change the answer.</Card>
-</Cards>
-
-## Design the boundaries
+Once the main flow is clear, work through the boundaries for your task:
 
 - [Protect consequential actions](/architecture/deterministic-zones): access, money, physical safety, and official regulatory records.
 - [Identify the agent and its sponsor](/architecture/identity-chain), then [enforce permission outside the model](/architecture/enforcement).
 - [Choose autonomy for the task](/architecture/autonomy-contract), with enough supervision capacity to support it.
-- [Prepare useful knowledge](/memory), [test changes](/architecture/learning-flywheel), and [check all ten concerns](/architecture/concern-matrix).
-- [Examine threats and security practices](/security), including misleading instructions in retrieved material.
+- [Test proposed improvements](/architecture/learning-flywheel), [check all ten cross-cutting concerns](/architecture/concern-matrix), and [examine security threats](/security).
 
-## Adapt to the organization
+<Cards>
+<Card title="Make software usable by agents" href="/architecture/software-for-agents">Design interfaces, delegated access, reliable transactions, and human handover.</Card>
+<Card title="Compare technology choices" href="/decisions">Explore twenty-five decisions with alternatives, evidence, and conditions that change the answer.</Card>
+</Cards>
 
-Use the [enterprise reference designs](/library/architecture/master-target-state) to compare starting points. A company operating agents inside purchased software has different controls available from a team operating its own agent platform. Check those interfaces rather than assuming one gateway observes every action.
+## Adapt the design to your enterprise
 
-Business leaders can start with [use cases](/use-cases). Architects can open [all fourteen detailed layers](/layers), or use an [architecture review skill](/skills).
+A company using agents inside purchased software has different control interfaces from a team operating its own agent platform. Check what each system exposes rather than assuming one gateway observes every action. The [enterprise reference designs](/library/architecture/master-target-state) compare starting points.
+
+Start from a [business use case](/use-cases), explore [all fourteen detailed layers](/layers), or apply an [architecture review skill](/skills) to a concrete design.
 
 <details>
 <summary>Detailed system explanations</summary>
