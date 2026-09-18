@@ -1,0 +1,137 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-09-18",
+  "reference": "site/public/images/architecture/enterprise-overview-v1.webp",
+  "images": [
+    {
+      "slug": "opportunity-map",
+      "title": "Choose the work that matters",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Choose the work that matters\". Three large illustrated columns: \"Healthcare\" with hospital, coordinator, calendar; sublabels \"Access • Care support • Operations\". \"Energy\" with solar panels, wind generation and industrial energy facility; sublabels \"Production • Assets • Planning\". \"Utilities\" with power lines, water tower, homes; sublabels \"Networks • Water • Customers\". Below all three a four-station path \"Find a problem\" → \"Design the agent's role\" → \"Check evidence and authority\" → \"Measure the result\". Keep industries distinct with large spacious illustrations.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-6cdfb278-0260-4e89-84d6-15e2e7c88b73.png",
+      "output": "site/public/images/use-cases/opportunity-map-v1.webp"
+    },
+    {
+      "slug": "agent-roles",
+      "title": "Four ways agents help people work",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Four ways agents help people work\". Four equal illustrated cards arranged 2 by 2, no ranking or arrows between them. \"Converse\" / \"Explain and clarify\" with person and chat software; \"Create\" / \"Draft useful material\" with document and training video screen; \"Assist\" / \"Help inside the workflow\" with highlighted evidence on a case screen; \"Coordinate\" / \"Follow work to completion\" with task handoffs across teams. Footer \"A single use case can combine these roles. Permission is a separate choice.\"",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-9d3324dd-391c-4e53-a103-d16f142f0aa6.png",
+      "output": "site/public/images/use-cases/agent-roles-v1.webp"
+    },
+    {
+      "slug": "healthcare-map",
+      "title": "Healthcare: follow the work around the patient",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Healthcare: follow the work around the patient\". Four left-to-right illustrated stations with arrows: \"Access care\" / \"Referrals and appointments\" (calendar receptionist), \"Support care teams\" / \"Prepare relevant evidence\" (clinician with record), \"Coordinate follow-up\" / \"Track agreed next steps\" (task calendar), \"Run the service\" / \"Capacity, supplies and assurance\" (hospital operations team). Bottom strip \"Clinical decisions remain with qualified professionals\". No diagnostic advice or invented patient data.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-b2e0ad64-ca6d-479e-b515-ce93324e5257.png",
+      "output": "site/public/images/use-cases/healthcare-map-v1.webp"
+    },
+    {
+      "slug": "energy-map",
+      "title": "Energy: from production to dependable supply",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Energy: from production to dependable supply\". Four spacious left-to-right stations: \"Plan\" / \"Demand and investment\" (forecast and planning board); \"Produce\" / \"Generation and operations\" (solar wind and industrial facility); \"Maintain\" / \"Asset health and work\" (thermal image and technician); \"Deliver value\" / \"Supply commitments and performance\" (business records). Bottom strip \"Agents investigate and prepare work. Operators authorize physical changes.\"",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-735ade7e-0a9b-4b12-a3dd-fc6cec224a3a.png",
+      "output": "site/public/images/use-cases/energy-map-v1.webp"
+    },
+    {
+      "slug": "utilities-map",
+      "title": "Utilities: keep essential services working",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Utilities: keep essential services working\". Four equal illustrated cards in 2 by 2 layout: \"Electricity networks\" / \"Inspect assets and vegetation\" (power lines with tree and inspection tablet); \"Water and wastewater\" / \"Investigate quality, flow and assets\" (water network and telemetry software); \"Customer service\" / \"Explain bills and service events\" (person and bill); \"Assurance and resilience\" / \"Prepare evidence and response plans\" (audit receipt and planning team). Footer \"Service quality • Reliability • Affordability\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-bf82fbce-2b4e-4edd-ab5c-ae9177725bfc.png",
+      "output": "site/public/images/use-cases/utilities-map-v1.webp"
+    },
+    {
+      "slug": "referral-coordination",
+      "title": "From a referral to a confirmed appointment",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"From a referral to a confirmed appointment\". Five illustrated stations in clear sequence: \"Receive\" / \"Approved referral\" (document); \"Check\" / \"Identity and missing details\" (record comparison); \"Resolve\" / \"Ask for specific information\" (coordinator chat); \"Book\" / \"Check permission and preferences\" (calendar and lock); \"Confirm\" / \"Record the accepted booking\" (receipt). Footer \"Clinical urgency stays with the care team. Unresolved cases stay visible.\"",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-87cbdabf-e4ff-40ab-a42a-dc42686bf7be.png",
+      "output": "site/public/images/use-cases/referral-coordination-v1.webp"
+    },
+    {
+      "slug": "care-follow-up",
+      "title": "Keep agreed follow-up from getting lost",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Keep agreed follow-up from getting lost\". Four stations in clear sequence: \"Agreed plan\" / \"Clinician-approved actions\" (signed care task list); \"Track\" / \"Owners and due dates\" (task board); \"Check\" / \"Completion evidence\" (record and receipt); \"Escalate\" / \"A person resolves exceptions\" (care coordinator). Below a curved arrow from Check back to Track labeled \"Follow up within agreed limits\". Footer \"A delivered message does not prove completed care.\"",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-5b5033f1-2202-4d00-b06e-b272ea885c05.png",
+      "output": "site/public/images/use-cases/care-follow-up-v1.webp",
+      "edit": {
+        "prompt": "Edit this illustration, preserve style, all layout, main headings and footer. In the Check panel change \"Task complete\" to \"Is it complete?\" and replace the big green tick beside it with a teal question mark. Change the small label \"Receipt\" under the right document to \"Task record\". Add the short label \"If unresolved\" above the rightward arrow leading from Check to Escalate. These changes clarify that completion is checked and only unresolved cases escalate. Preserve everything else.",
+        "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-d1e39563-0fc7-4406-ada5-acf249b5f875.png"
+      }
+    },
+    {
+      "slug": "energy-asset-investigation",
+      "title": "Investigate an energy asset before planning work",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Investigate an energy asset before planning work\". Four illustrated stations: \"Observe\" / \"Anomaly in readings or images\" (time-series and thermal panel); \"Compare\" / \"History and operating conditions\" (maintenance records); \"Investigate\" / \"Request the missing evidence\" (software AI chip with document references); \"Prepare work\" / \"Engineer reviews the proposal\" (engineer and work order). Footer \"No automatic plant control\". All arrows go left to right, no control bypass.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-2b85abe3-3d14-4711-ba50-be946253c329.png",
+      "output": "site/public/images/use-cases/energy-asset-investigation-v1.webp"
+    },
+    {
+      "slug": "safety-coaching",
+      "title": "Turn a verified event into a coaching moment",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Turn a verified event into a coaching moment\". Five stations: \"Detect\" / \"Candidate CCTV event\" (camera clip); \"Verify\" / \"Check context and procedure\" (reviewer and document); \"Create\" / \"Draft a teaching video\" (video clearly marked \"GENERATED LESSON\"); \"Approve\" / \"Check identity and delivery\" (person approval gate); \"Follow up\" / \"Track learning and recurrence\" (checklist). Footer \"Keep original incident evidence separate from generated teaching material.\"",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-f3484a3c-fcb5-4ef7-82a6-ac6a4345055a.png",
+      "output": "site/public/images/use-cases/safety-coaching-v1.webp"
+    },
+    {
+      "slug": "production-measurement",
+      "title": "Investigate a production discrepancy",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Investigate a production discrepancy\". Four stations: \"Estimate\" / \"Calibrated visual measurement\" (ore conveyor and camera); \"Compare\" / \"Scales and production records\" (weighing scale and chart); \"Investigate\" / \"Timing, calibration and interruptions\" (evidence software); \"Reconcile\" / \"Owner accepts the supported result\" (signed record). Footer \"Keep units, uncertainty and source measurements\". No numerical tonnage.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-a152cfd5-7ce6-4841-becf-a62dc143351d.png",
+      "output": "site/public/images/use-cases/production-measurement-v1.webp"
+    },
+    {
+      "slug": "vegetation-inspection",
+      "title": "From vegetation signals to field evidence",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"From vegetation signals to field evidence\". Five stations: \"Observe\" / \"Dated imagery and asset map\" (satellite and map); \"Locate\" / \"Potential issue near a line\" (trees near overhead wires); \"Check\" / \"Prior work and image limits\" (inspection records); \"Request\" / \"Permitted inspection order\" (workorder and lock); \"Confirm\" / \"Field team records findings\" (technician). Footer \"An image candidate is not a confirmed clearance violation\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-db39bd1e-8827-44c7-a986-de879180a01b.png",
+      "output": "site/public/images/use-cases/vegetation-inspection-v1.webp"
+    },
+    {
+      "slug": "compliance-evidence",
+      "title": "From a requirement to evidence a reviewer can check",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"From a requirement to evidence a reviewer can check\". Five stations: \"Requirement\" / \"Clause and version\" (standard document); \"Shared check\" / \"Preserve each obligation\" (linked checklist); \"Collect\" / \"Ask the responsible teams\" (department folders); \"Validate\" / \"Scope, date and source\" (magnifying glass over evidence); \"Review\" / \"Coverage and unresolved gaps\" (person reviewer). Footer \"Collected documents do not automatically prove compliance\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-da0002b9-89c3-4cb2-a092-e74a7865b52e.png",
+      "output": "site/public/images/use-cases/compliance-evidence-v1.webp"
+    },
+    {
+      "slug": "systemic-audit-issues",
+      "title": "Test whether recurring audit issues share a cause",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Test whether recurring audit issues share a cause\". Four stations: \"Find a pattern\" / \"Compare findings across sites\" (three site audit files); \"Ask why\" / \"State competing explanations\" (two hypothesis cards); \"Investigate\" / \"Seek evidence and counterexamples\" (software AI window and records); \"Report\" / \"Explain support and uncertainty\" (assurance reviewer). Footer \"Similar wording is a clue, not proof of a common cause\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-eaa21b49-bc52-4771-bcfb-8689778fa40c.png",
+      "output": "site/public/images/use-cases/systemic-audit-issues-v1.webp"
+    },
+    {
+      "slug": "commercial-growth",
+      "title": "Turn relevant experience into a credible proposal",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Turn relevant experience into a credible proposal\". Four stations: \"Understand\" / \"Customer need\" (conversation notes); \"Retrieve\" / \"Approved delivery evidence\" (case study files); \"Prepare\" / \"Options and assumptions\" (proposal); \"Review\" / \"Scope, price and commitments\" (account owner). Footer \"Measure accepted outcomes, not generated proposals\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-3d2c5623-d2ce-4a73-a61b-9bc50b206cf2.png",
+      "output": "site/public/images/use-cases/commercial-growth-v1.webp"
+    },
+    {
+      "slug": "water-operations",
+      "title": "Investigate a water-network anomaly",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Investigate a water-network anomaly\". Four stations: \"Observe\" / \"Unusual pressure or flow\" (water network plus chart); \"Compare\" / \"Normal operation and recent work\" (time-series and records); \"Investigate\" / \"Sensor issue, planned change or leak?\" (three evidence cards with question marks); \"Request\" / \"Reviewed field investigation\" (operator work order). Footer \"Operators retain control of valves and treatment\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-3b830964-f50c-4c9b-a5d0-5300bfdfb28e.png",
+      "output": "site/public/images/use-cases/water-operations-v1.webp"
+    },
+    {
+      "slug": "choose-where-to-start",
+      "title": "Choose a task you can evaluate and operate",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Choose a task you can evaluate and operate\". Three large illustrated gates in sequence: \"Useful outcome\" / \"A clear owner and baseline\" (owner and scorecard); \"Usable evidence\" / \"Accessible, current and relevant\" (source cards); \"Controlled action\" / \"Permission, recovery and review\" (gate and reviewer). All flow into small final \"Bounded trial\" (small scope checklist). Below gates a separate preparation tray \"Resolve gaps before expanding\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-ce9e8c6b-1720-4f74-8907-309f21e7bed3.png",
+      "output": "site/public/images/use-cases/choose-where-to-start-v1.webp"
+    },
+    {
+      "slug": "value-and-investment",
+      "title": "Measure value per completed outcome",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Measure value per completed outcome\". Two large balanced panels side by side. Left \"Business result\" with icons and labels \"Quality\", \"Time\", \"Capacity\", \"Service\". Right \"Full cost\" with icons and labels \"Models and tools\", \"Data and integration\", \"Review and rework\", \"Operations\". Below separate comparison strip \"Current process → Trial → Measured decision\". Footer \"Count confirmed outcomes. Keep serious harms visible separately.\" No fabricated numbers or formula.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-6ff5d6c8-fb8f-46af-ad1f-1999b82071ae.png",
+      "output": "site/public/images/use-cases/value-and-investment-v1.webp"
+    },
+    {
+      "slug": "enterprise-transformation",
+      "title": "Grow from one useful task to shared enterprise capability",
+      "prompt": "Use case: infographic-diagram. Original educational website illustration. Attached image is style reference only: warm ivory, deep teal headings, teal and orange accents, clean dimensional illustrations, generous negative space, highly legible short labels. Landscape 16:9 high resolution. No logos, no watermark, no em dash. AI is a software chip/window, never a pump or robot person. Draw domain objects where useful, but do not confuse them with AI. Every use case is a proposed design, no invented performance statistics. Exact title: \"Grow from one useful task to shared enterprise capability\". Three ascending but horizontally clear illustrated scenes: \"One bounded task\" / \"Prove the outcome\" (single task); \"Related workflows\" / \"Reuse what fits\" (three connected task windows); \"Enterprise portfolio\" / \"Expand on measured value\" (hospital, energy site, utility network linked to shared software). Under all a foundation strip labeled \"Identity • Evidence • Tools • Evaluation • Human ownership\". Footer \"Recheck cost, controls and supervision at each expansion\".",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-ea1f9889-0f6a-4037-b90d-d6011f875817.png",
+      "output": "site/public/images/use-cases/enterprise-transformation-v1.webp"
+    }
+  ]
+}

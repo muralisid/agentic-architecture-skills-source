@@ -10,11 +10,11 @@ export function sectionFor(url: string) {
 export function readerTree(tree: PageTree.Root): PageTree.Root {
   function select(nodes: PageTree.Node[], id: string): PageTree.Node[] {
     return nodes.flatMap((node): PageTree.Node[] => {
-      if (node.type === 'separator') return id === 'memory' ? [node] : [];
+      if (node.type === 'separator') return ['memory', 'use-cases'].includes(id) ? [node] : [];
       if (node.type === 'page') return sectionFor(node.url).id === id ? [node] : [];
       const children = select(node.children, id);
       const index = node.index && sectionFor(node.index.url).id === id ? node.index : undefined;
-      if (!children.length && !index) return [];
+      if (!index && !children.some((child) => child.type !== 'separator')) return [];
       return [{ ...node, $id: `${id}:${node.$id ?? node.index?.url ?? String(node.name)}`, root: false, index, children }];
     });
   }
@@ -23,15 +23,16 @@ export function readerTree(tree: PageTree.Root): PageTree.Root {
     children: SECTIONS.map((section): PageTree.Folder => {
       const children = select(tree.children, section.id);
       const landing = children.find((n) => n.type === 'folder' && (n.index?.url === section.url ||
-        (section.id === 'memory' && n.children.some((child) => child.type === 'page' && child.url === section.url))));
+        (['memory', 'use-cases'].includes(section.id) && n.children.some((child) => child.type === 'page' && child.url === section.url))));
       if (landing?.type === 'folder') {
-        if (section.id === 'memory') {
+        if (['memory', 'use-cases'].includes(section.id)) {
           const grouped: PageTree.Node[] = [];
           let group: PageTree.Folder | undefined;
           for (const node of landing.children) {
             if (node.type === 'separator') {
-              group = { type: 'folder', name: node.name, $id: `memory-group:${String(node.name)}`, collapsible: true,
-                defaultOpen: !String(node.name).startsWith('Optional') && !String(node.name).startsWith('Advanced'),
+              group = { type: 'folder', name: node.name, $id: `${section.id}-group:${String(node.name)}`, collapsible: true,
+                defaultOpen: section.id === 'use-cases' ? String(node.name) === 'Choose an industry' :
+                  !String(node.name).startsWith('Optional') && !String(node.name).startsWith('Advanced'),
                 children: [] };
               grouped.push(group);
             } else if (group) group.children.push(node);

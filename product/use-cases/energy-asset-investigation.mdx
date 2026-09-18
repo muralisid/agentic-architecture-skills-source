@@ -1,0 +1,40 @@
+---
+title: "Investigate an energy asset before planning work"
+description: "Bring readings, inspection images, operating conditions, and maintenance history into a reviewable investigation."
+position: "Proposed agent workflow. Engineering findings and work authorization require local validation and accountable owners."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-18"
+dateModified: "2026-09-18"
+---
+
+Consider equipment at a generation site operating outside its expected temperature range. A dashboard flags the difference. An engineer must still check operating load, sensor quality, recent work, and inspection evidence before deciding whether maintenance is needed. The agent's proposed contribution is to help investigate that difference.
+
+<TeachingIllustration src="/images/use-cases/energy-asset-investigation-v1.webp" expandable title="Investigate before planning work" alt="Observe an anomaly in readings or images, compare operating history, request missing evidence, and prepare a work proposal for an engineer. No automatic plant control." caption="The useful output is a supported finding or a clear evidence gap, followed by an engineering decision." />
+
+## Establish a trustworthy starting point
+
+Keep the asset identifier, measurement interval, units, operating baseline, and sensor quality with the alert. For a thermal or visual inspection, retain the original image, date, location, and inspection conditions. An apparent hotspot or performance difference is a candidate for review, not a completed diagnosis.
+
+## Ask the next useful question
+
+Is the difference explained by operating conditions? Did it begin after maintenance? Is one measurement unreliable? Use approved analysis tools to compare evidence. Request a targeted inspection only if it can distinguish the remaining explanations. Stop when an engineer can assess the case, evidence remains insufficient, or the investigation limit is reached.
+
+## Combine models through evidence
+
+A time-series model can identify unusual behavior. A vision model can locate a candidate feature in inspection imagery. An LLM can organize their outputs alongside work records and propose the next check. Preserve each tool's uncertainty and source references. Do not treat agreement between models as independent proof when they rely on the same observations.
+
+Memory connects current task progress, similar past cases, and approved engineering procedures. Similarity retrieval suggests useful comparisons; the engineer checks whether the operating conditions make them relevant.
+
+## Prepare a controlled handover
+
+Provide the finding, alternatives considered, supporting sources, unresolved questions, and suggested work scope. The engineering owner approves the response. The agent may create a draft work item through a permitted interface; it does not alter setpoints, isolate equipment, or commit an outage.
+
+## Test whether it earns its place
+
+Compare the agent with existing alarms, fixed checks, and engineer-led investigation. Measure accepted findings, missed issues in reviewed samples, false work requests, review time, investigation cost, and work-package quality. Reduced downtime is a separate outcome requiring a defensible comparison over time.
+
+## External context
+
+The IEA's [Energy and AI report, 2025](https://www.iea.org/reports/energy-and-ai/ai-for-energy-optimisation-and-innovation) discusses AI across energy operations, including maintenance. This example extends that application area into a proposed agent workflow; it is not a reported IEA deployment or result. Reviewed 18 September 2026.
+
+Continue with [Energy](/use-cases/energy), [combining models](/ladder/combining-models), or [combining evidence](/memory/combining-evidence).

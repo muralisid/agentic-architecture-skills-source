@@ -2,16 +2,23 @@
 title: "Investigate a water-network anomaly"
 description: "Bring telemetry, asset history, and field evidence into one bounded investigation."
 position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
+
+An alarm identifies unusual behavior, but an operator must still distinguish a faulty sensor, planned work, and a possible network issue. The proposed agent gathers the evidence needed for that decision.
+
+## See the work first
+
+<TeachingIllustration src="/images/use-cases/water-operations-v1.webp" expandable title="Investigate a water-network anomaly" alt="Observe unusual pressure or flow, compare normal operation and recent work, investigate sensor issues, planned changes or leaks, and prepare a reviewed field request." caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+
+<details>
+<summary>Experience behind this example</summary>
 
 This is a proposed application informed by utility integration experience. It is not presented as a personally delivered autonomous water-operations system.
 
-## The proposed work
-
-<TeachingIllustration src="/figures/use-cases/water-operations.svg" mobileSrc="/figures/use-cases/water-operations-mobile.svg" title="Investigate a water-network anomaly" alt="Observe: Pressure or flow anomaly. Context: Asset and operating history. Compare: Similar periods and events. Investigate: Request useful field evidence. Escalate: Create a reviewed work item" caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+</details>
 
 ## Start with evidence
 
@@ -48,3 +55,5 @@ Continue with [knowledge and memory](/memory), [value and investment](/use-cases
 ## External sources
 
 - [TS2Vec: representation learning for time series](https://arxiv.org/abs/2106.10466). Accessed 17 September 2026.
+
+Return to [Utilities](/use-cases/utilities) or [explore the agent roles](/use-cases/agent-roles).

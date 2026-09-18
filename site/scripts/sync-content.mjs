@@ -500,7 +500,7 @@ const metas = {
     // own root and never appears in the product sidebar.
     pages: [...readerSections.map((section) => section.id), 'agentic-os', 'security', 'patterns', 'layers', 'decisions', 'about'],
   },
-  'use-cases': { title: 'Use cases', pages: ['index', 'safety-coaching', 'production-measurement', 'vegetation-inspection', 'compliance-evidence', 'systemic-audit-issues', 'commercial-growth', 'water-operations', 'choose-where-to-start', 'value-and-investment', 'enterprise-transformation'] },
+  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', 'agent-roles', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'safety-coaching', 'compliance-evidence', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---From idea to investment---', 'choose-where-to-start', 'value-and-investment', 'enterprise-transformation', '---More industries and functions---'] },
   research: { title: 'Research', pages: ['index', 'experiments', 'questions', 'what-changed', 'industrial-examples', 'method'] },
   architecture: {
     title: 'Architecture',

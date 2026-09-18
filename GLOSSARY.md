@@ -125,3 +125,5 @@ These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs
 **Representation alignment.** Learning a shared relationship between representations so comparisons across them are meaningful. Equal vector dimensions alone do not establish alignment.
 
 **Evidence fusion.** Combining findings from separate searches or models into a reviewed set of evidence for a task. In the guide's proposed designs, asset identity, place, time, permissions, and original source links connect the findings.
+
+**Agent contribution roles.** The guide’s teaching categories for how an agent helps: converse (explain and clarify), create (prepare material), assist (support an existing workflow), and coordinate (follow permitted work toward completion). Roles can overlap and do not specify authority or a maturity level.

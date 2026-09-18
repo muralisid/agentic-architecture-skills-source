@@ -14,7 +14,7 @@ export default function HomePage() {
           <Building2 className="size-7 text-ember-deep" aria-hidden="true" />
           <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-fd-muted-foreground">Start with the business</p>
           <h2 className="mt-2 font-serif text-3xl">What could agents do for us?</h2>
-          <p className="mt-4 leading-7 text-fd-muted-foreground">Explore growth, production, service, safety, and compliance through concrete examples from utilities, mining, and across the enterprise.</p>
+          <p className="mt-4 leading-7 text-fd-muted-foreground">Explore Healthcare, Energy, and Utilities through visual maps and practical examples of service, operations, safety, and growth.</p>
           <span className="mt-7 inline-flex items-center gap-2 font-semibold text-ember-deep">Explore use cases <ArrowUpRight className="size-4" /></span>
         </Link>
         <Link href="/architecture" className="group rounded-2xl border border-fd-border bg-fd-card p-7 transition-colors hover:border-ember focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember">

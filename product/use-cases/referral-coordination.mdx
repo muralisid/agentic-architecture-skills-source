@@ -1,0 +1,40 @@
+---
+title: "From referral to a confirmed appointment"
+description: "See how an agent could resolve missing information and coordinate a booking within an approved care process."
+position: "Proposed administrative workflow. Clinical decisions remain with the care team. No clinical or financial benefit is assumed."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-18"
+dateModified: "2026-09-18"
+---
+
+Consider a clinic receiving a referral with an incomplete attachment. A shared inbox and checklist can track the request, but someone still has to identify the missing detail, contact its owner, and check the response. This proposed agent helps resolve those exceptions.
+
+<TeachingIllustration src="/images/use-cases/referral-coordination-v1.webp" expandable title="From referral to a confirmed appointment" alt="Receive an approved referral, check identity and completeness, request specific missing information, check booking permission and preferences, then record the accepted booking. Clinical urgency stays with the care team." caption="The outcome is a confirmed booking or a visible unresolved case. A suggested time is not a booking." />
+
+## Follow the work
+
+**Receive and check.** Use an approved referral, verified identity, required administrative fields, and the current service directory. Flag inconsistent identifiers for a person. The agent must not infer missing clinical facts or independently assign clinical urgency.
+
+**Resolve one gap at a time.** Identify the specific missing item and request it through an approved channel. Check the response against the request. Thread memory records what has already been asked and received, so the patient and staff are not sent repeated requests.
+
+**Prepare and confirm.** Retrieve permitted appointment options and recorded communication preferences. Check authority before booking. Read back the scheduling-system result, preserve its identifier, and handle concurrent booking changes or failed writes explicitly.
+
+## Where intelligence and memory help
+
+Document extraction can locate fields and attachments; the agent checks which administrative question remains unresolved. Reference memory supplies current process rules. Task memory tracks the request, owner, deadline, and responses. Keep original documents available as evidence and patient-specific information within its authorized scope.
+
+Use a fixed workflow for routine completeness checks. Add adaptive reasoning only if variable documents and exceptions justify its extra cost. This does not require several agents.
+
+## Keep the boundary clear
+
+A care coordinator owns exceptions. Clinical eligibility, urgency, and changes to treatment return to qualified professionals. Define approved contact channels, consent requirements, deadlines, and escalation before a trial. A request that cannot be resolved stays open with a reason.
+
+## Test the business result
+
+Compare with a checklist and scheduling team on a representative historical sample, then a narrow supervised trial. Measure completeness errors, incorrect patient matches, duplicate bookings, resolution time, staff effort, and patient experience. Do not infer clinical benefit from booking speed.
+
+## Standards connection
+
+HL7 FHIR distinguishes the service request, task progress, and appointment. Its [R4 Task resource](https://hl7.org/fhir/R4/task.html) tracks activity completion; its [R4 Appointment resource](https://hl7.org/fhir/R4/appointment.html) describes scheduling. These are integration references, not evidence that an agent is safe or effective. Confirm the version and local profiles your systems support. Reviewed 18 September 2026.
+
+Continue with [Healthcare](/use-cases/healthcare), [follow-up coordination](/use-cases/care-follow-up), or [the architecture](/architecture).

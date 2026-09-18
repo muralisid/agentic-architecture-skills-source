@@ -1,0 +1,38 @@
+---
+title: "Keep agreed follow-up from getting lost"
+description: "Track clinician-approved actions, check completion evidence, and bring unresolved work back to a responsible person."
+position: "Proposed coordination workflow. The agent follows an approved plan; it does not decide treatment or establish clinical completion on its own."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-18"
+dateModified: "2026-09-18"
+---
+
+Consider an approved follow-up plan involving more than one team. A reminder may be delivered while the actual task remains unfinished. This design keeps the agreed action, its owner, and its completion evidence together.
+
+<TeachingIllustration src="/images/use-cases/care-follow-up-v1.webp" expandable title="Keep agreed follow-up from getting lost" alt="Begin with clinician-approved actions. Track owners and due dates. Check completion evidence. Follow up within agreed limits and escalate exceptions to a person. A delivered message does not prove completed care." caption="The agent coordinates an existing plan. The care team defines what completion means and handles clinical exceptions." />
+
+## Start with an approved task
+
+Record the requested action, responsible team, due date, communication permissions, and expected confirmation. An unclear plan goes back to the care team. The agent must not invent a follow-up action to fill a gap.
+
+## Check what actually happened
+
+Look for the agreed completion record in an authorized system. A message receipt, a scheduled appointment, and a completed encounter describe different states. If a record is missing, ask the responsible team for the specific confirmation rather than repeatedly messaging the patient.
+
+## Use memory to avoid repeated work
+
+Task memory keeps requests, responses, deadlines, and unresolved reasons together. Reference memory holds the approved operating procedure and communication templates. Restrict access by role and purpose, and apply the organization's retention policy to records and derived summaries.
+
+## Stop at the agreed boundary
+
+Set contact limits, escalation deadlines, and a named care coordinator. Route symptoms, uncertainty about urgency, and changes to the plan into the care team's approved process. The agent cannot mark a clinical action complete from a plausible summary alone.
+
+## Compare with the simpler alternative
+
+A reminder queue may be sufficient when every task has the same inputs and completion rule. Test whether the agent improves resolution of variable, multi-team exceptions. Measure unresolved tasks, incorrect closure, unnecessary contacts, coordinator workload, and time to verified completion. Keep adverse events and patient complaints visible separately.
+
+## Standards connection
+
+The [HL7 FHIR R4 Task specification](https://hl7.org/fhir/R4/task.html) represents task status, ownership, inputs, and outputs. It can support the distinction between requested work and completed work. Local workflow design and clinical governance remain necessary. Reviewed 18 September 2026.
+
+Return to [Healthcare](/use-cases/healthcare), explore [memory organization](/memory), or [evaluate the investment](/use-cases/value-and-investment).

@@ -2,16 +2,23 @@
 title: "Safety coaching from CCTV events"
 description: "Help people learn from risky situations while keeping incident evidence and teaching material distinct."
 position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
-lastReviewed: "2026-09-17"
+lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-09-18"
 ---
+
+A detected event still needs review, context, and an appropriate lesson. In this proposed workflow, the agent helps turn a supported finding into coaching that a safety owner can approve.
+
+## See the work first
+
+<TeachingIllustration src="/images/use-cases/safety-coaching-v1.webp" expandable title="Safety coaching from CCTV events" alt="Detect a candidate CCTV event, verify context and procedure, draft a clearly labeled teaching video, approve identity and delivery, then track learning and recurrence. Original incident evidence remains separate." caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+
+<details>
+<summary>Experience behind this example</summary>
 
 The earlier risk-bot work described by the author processed CCTV streams to find at-risk behavior and create a coaching opportunity. The extension below adds an agent-assisted coaching process; it is not a claim that this complete process was deployed.
 
-## The proposed work
-
-<TeachingIllustration src="/figures/use-cases/safety-coaching.svg" mobileSrc="/figures/use-cases/safety-coaching-mobile.svg" title="Safety coaching from CCTV events" alt="Detect: Find a candidate event. Verify: Review clip and context. Prepare: Draft a coaching lesson. Deliver: Check recipient and approval. Follow up: Measure learning and recurrence" caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+</details>
 
 ## Start with evidence
 
@@ -48,3 +55,5 @@ Continue with [knowledge and memory](/memory), [value and investment](/use-cases
 ## External sources
 
 - [NVIDIA video search and summarization blueprint, vendor documentation](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard). Accessed 17 September 2026.
+
+Return to [Energy](/use-cases/energy) or [explore the agent roles](/use-cases/agent-roles).

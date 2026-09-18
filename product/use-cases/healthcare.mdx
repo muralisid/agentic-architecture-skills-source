@@ -1,0 +1,46 @@
+---
+title: "Healthcare: follow the work around the patient"
+description: "Explore access, care-team support, follow-up, and operations through illustrated agent opportunities."
+position: "Proposed use-case designs. Outcomes require local evaluation; the maps are learning aids, not formal standards mappings."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-18"
+dateModified: "2026-09-18"
+---
+
+For this proposed design, consider a referral that reaches a clinic with a missing attachment. A person must find the gap, contact the right team, and check what came back. A useful agent helps carry that work to a visible conclusion while the care team owns clinical decisions.
+
+<TeachingIllustration src="/images/use-cases/healthcare-map-v1.webp" expandable title="Follow the work around the patient" alt="Access care through referrals and appointments; support care teams with evidence; coordinate agreed follow-up; run the service through capacity, supplies and assurance. Clinical decisions remain with qualified professionals." caption="Choose a part of the service, then follow one specific task. These opportunities are proposed designs, not claims of deployed clinical performance." />
+
+## Access care
+
+Start with referral completeness and appointment coordination. The agent can identify missing administrative details, request them through an approved channel, and prepare booking options. Clinical urgency and eligibility questions go to the responsible team.
+
+<Cards>
+<Card title="From referral to appointment" href="/use-cases/referral-coordination">Follow the evidence, missing-information requests, booking permission, and confirmation.</Card>
+</Cards>
+
+## Support care teams
+
+A possible evidence-preparation assistant can organize approved records for a clinician, with source links and dates. Document extraction or specialist image analysis, where validated for the intended task, could supply inputs. An LLM summary must preserve uncertainty and cannot turn an unreviewed model output into a diagnosis. Evaluate omissions and misleading summaries, not just reading speed.
+
+## Coordinate follow-up
+
+A proposed follow-up agent tracks actions already agreed by the care team. It checks ownership, completion records, and unanswered requests. Unresolved tasks remain visible to a coordinator.
+
+<Cards>
+<Card title="Keep agreed follow-up visible" href="/use-cases/care-follow-up">Separate a sent reminder from evidence that the agreed work was completed.</Card>
+</Cards>
+
+## Run the service
+
+Other starting points include evidence collection for internal assurance, checking supply exceptions, and preparing staffing or capacity briefs. Assess access and patient confidentiality for each workflow. The shared [compliance-evidence example](/use-cases/compliance-evidence) explains the collection pattern; apply it to the local healthcare requirements with a qualified owner.
+
+## What to measure first
+
+For these coordination examples, compare completion time, missing-information resolution, incorrect routing, duplicate bookings, staff review effort, and patient experience with the current workflow. Define accessibility and communication preferences before a live trial. Faster processing alone does not demonstrate better clinical outcomes.
+
+## Frameworks behind the map
+
+WHO's [2023 digital-health classification](https://www.who.int/publications/i/item/9789240081949) provides a common language for digital interventions. Its primary-user groups cover persons, healthcare providers, health management and support personnel, and data services. The [WHO classification listing](https://smart.who.int/base/CodeSystem-CDHIv2.html) includes referral coordination and scheduling. APQC's [Healthcare Provider process framework](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-healthcare-provider-pdf) offers a process view. This page uses an original patient-service journey to introduce opportunities, not a formal mapping to either framework. Reviewed 18 September 2026.
+
+Next: [choose a bounded first task](/use-cases/choose-where-to-start) or [see the architecture](/architecture).
