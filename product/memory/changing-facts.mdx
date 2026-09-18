@@ -1,38 +1,39 @@
 ---
-title: "Remember facts that change"
-description: "Keep time, source versions, and corrections visible in the answer."
-position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+title: "Keep current facts and history distinct"
+description: "Separate event time, arrival time, and the period a fact applies to."
+position: "Design guidance with illustrative examples. Validate the design on the work it will support."
 lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
 dateModified: "2026-09-18"
 ---
 
-## Yesterday’s correct answer can be wrong today
+On Monday, an inspection is due. It is completed on Tuesday, but its report arrives on Friday. A question about Monday and a question about today need different answers. Simply choosing the last document received does not solve either question reliably.
 
-An inspection identifies a damaged bearing. Two days later, a work order confirms its replacement. An agent that retrieves the inspection alone may recommend work that has already happened. An agent that overwrites the inspection loses the history needed to investigate recurrence.
+<TeachingIllustration src="/images/memory/memory-time-v1.webp" title="A fact has a time and a source" alt="An inspection is due Monday, completed Tuesday, and reported Friday. Questions about Monday and after Tuesday follow different evidence. Event time differs from the time the report arrives." caption="Teaching illustration. The example is a proposed design, not a measured deployment." expandable />
 
-<TeachingIllustration src="/figures/memory/fact-timeline.svg" mobileSrc="/figures/memory/fact-timeline-mobile.svg" title="Facts change with events" alt="An inspection on 12 May finds a fault, a repair on 14 May changes the situation, and a question on 18 May needs current evidence while preserving the old inspection as history." caption="Keep historical evidence and current condition distinguishable." />
+## Preserve the episode without freezing the status
 
-Keep both events and their relationship. The question may be about the condition at inspection time, the current condition, or the sequence between them. The design must let retrieval distinguish those questions.
+Keep the due notice and completion event as history. Derive current status from applicable, verified evidence. Completion of an inspection does not by itself establish that every finding was resolved.
 
-## Different dates answer different questions
+An episodic record preserves the event. A current fact or entity profile may need an update. A procedure changes only through its own approval process. These are different consequences of the same new evidence.
 
-Record when an event happened, when a source says a fact was valid, and when the system received the evidence. A late report should not automatically become the newest operational truth.
+## Record the dates that matter
 
-## Keep versions and scope
+Retain when an event occurred, the period a statement applies to, and when the system received or recorded it. Include the source version. A late report can change our understanding of the past without becoming a new event in the present.
 
-An asset’s name, owner, or procedure can change. Preserve the source version and applicable period. A question about last year’s inspection may require the procedure then in force, not today’s procedure.
+## Treat corrections differently from new events
 
-## Handle conflicting evidence
+A corrected asset identifier may invalidate earlier joins. A revised completion date may change which procedure was applicable. Track affected indexes, extracted facts, summaries, and retained task context, then update or invalidate them.
 
-Do not silently overwrite a fact because a new passage looks more confident. Compare source authority, scope, date, and supporting evidence. If the conflict cannot be resolved, return the disagreement and the decision it affects.
+Preserve the correction history where policy allows. Do not keep exposing information that must be removed merely to preserve an audit trail.
 
-## Propagate corrections
+## Keep unresolved contradictions explicit
 
-Identify derived fields, indexes, summaries, and retained task context affected by a correction. Update or invalidate them. Keep a record of the correction without continuing to expose information that must be removed.
+Check source authority, scope, date, and support. Do not overwrite a fact because a new generated statement sounds more confident. When evidence cannot resolve the conflict, report the disagreement and which decision depends on it.
 
-## Test time explicitly
+## Test time as part of memory quality
 
-Include cases involving an older valid fact, a later correction, a delayed observation, and an expired source. A learned temporal pattern does not replace exact temporal metadata.
+Include questions about past status, present status, delayed reports, revised procedures, and expired sources. LongMemEval explicitly evaluates knowledge updates and temporal reasoning in conversational memory: [paper](https://arxiv.org/abs/2410.10813), first published 2024, reviewed 18 September 2026. The enterprise timeline here is illustrative.
 
-Continue to [location and satellite observations](/memory/location-and-satellite-data) and [the six memory approaches](/memory/six-architectures).
+
+**Continue the story:** [Decide who can retain and recall it](/memory/permissions-and-lifecycle).

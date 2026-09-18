@@ -1,0 +1,40 @@
+---
+title: "Choose the representation for the question"
+description: "Make similarity useful without losing exact business facts."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-17"
+dateModified: "2026-09-18"
+---
+
+## A close match is not always the right answer
+
+Suppose every record about a pump is turned into a vector and every question is answered by similarity search. This is a useful starting point for finding related material. But “Which pump is P-17?” needs exact identity, while “Which past vibration episode resembles this one?” asks about behavior. A design that treats both questions alike can return relevant-looking evidence that does not establish the requested fact.
+
+<TeachingIllustration src="/figures/memory/question-map.svg" mobileSrc="/figures/memory/question-map-mobile.svg" title="One pump, different questions" alt="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." caption="Exact records establish identity; document versions establish procedure; time-series comparisons find similar behavior; relationships trace dependencies; media preserves an observation." />
+
+Choose the representation according to the distinction the question needs to preserve. The diagram shows several questions about the same pump, not a sequence of technologies to install.
+
+## Keep exact questions exact
+
+Identifiers, balances, quantities, dates, and official statuses usually need a record or a governed query. A similarity score is not a substitute for checking the correct record. Keyword search also matters for exact names and phrases.
+
+## Use vectors for useful resemblance
+
+An embedding is a learned representation. Its training objective influences which differences it preserves. A representation that groups documents by subject may be unsuitable for distinguishing two almost identical procedures with different safety limits.
+
+## Use relationships when relationships are the question
+
+A graph can help trace how assets, controls, people, and events connect. Start with existing keys and joins. Add a graph when the relationship questions justify its preparation and maintenance cost. See [when a graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep).
+
+## Preserve the dimensions the task needs
+
+Ask whether similarity should preserve magnitude, duration, order, location, language, or operating state. Normalize only after deciding which differences matter. Keep exact metadata alongside representations.
+
+## Compare against a simpler baseline
+
+Test keyword retrieval, ordinary chunks, or a database query before adding multiple views. The [existing context experiments](/patterns) contain both improvements and cases where a more complex representation lost. New media require their own evaluation.
+
+## External sources
+
+- [TS2Vec: representation learning for time series](https://arxiv.org/abs/2106.10466). Accessed 17 September 2026.

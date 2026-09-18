@@ -1,38 +1,39 @@
 ---
-title: "Combine different kinds of evidence"
-description: "Join relevant observations around a task without forcing them into one vector space."
-position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+title: "Bring evidence together"
+description: "Join sources by identity, place, and time before combining their conclusions."
+position: "Design guidance with illustrative examples. Validate the design on the work it will support."
 lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
 dateModified: "2026-09-18"
 ---
 
-## Several relevant results can still describe different events
+The agent finds an inspection report, a site photograph, and a similar sensor event. Together they look convincing. But the photograph might be from another site and the sensor event from last year. **Relevance alone does not establish that the results describe the same case.**
 
-A document search finds a bearing fault, a sensor search finds a vibration pattern, and an image search finds a damaged component. Combining the three can produce a persuasive explanation. But if the results concern different pumps or periods, they do not support one investigation.
+<TeachingIllustration src="/images/memory/evidence-join-v1.webp" title="Check the connection between the sources" alt="Only authorized records, photographs, and sensor windows enter the view, then pass identity, place, time, and consistency checks. Supported evidence and unresolved conflicts stay distinguishable before the agent produces a decision with references." caption="Teaching illustration. The example is a proposed design, not a measured deployment." expandable />
 
-Bring results together using the asset, place, time, and original evidence. Then check whether they agree. Separate models can contribute useful findings without their vector coordinates being directly comparable.
+## Give every search the same question
 
-<TeachingIllustration src="/figures/memory/combining-evidence.svg" mobileSrc="/figures/memory/combining-evidence-mobile.svg" title="Combine different kinds of evidence" alt="Task: One explicit question. Separate searches: Records, text, media, signals. Join: Asset and time interval. Check: Agreement and conflict. Context: Evidence for the next action" caption="Design illustration. The source evidence and its permitted use remain part of the result." />
+State the site, asset, period, and decision under investigation. Search official records by identifier, documents by relevant terms or meaning, and media or readings by suitable representations. Keep each result linked to its original source.
 
-## Start with separate searches
+Combine the results through verified identity and time. Do not directly compare coordinates from unrelated embedding models. A shared space requires explicit alignment and a task-level evaluation.
 
-Use the suitable retrieval method for each source. A work order may need an exact asset lookup, a procedure may need document search, and a vibration episode may need a time-series comparison. Bring their results together using verified identity and time.
+## Keep observations and conclusions apart
 
-## Do not compare unrelated coordinates
+The report says an inspection was completed. The photograph shows a particular condition at a particular time. A sensor comparison finds a historical resemblance. None of these automatically confirms the others. Write down what each supports and what remains unknown.
 
-Equal vector length does not mean equal meaning. Vectors from independently trained models are not automatically in the same space. Use separate ranked results first. A shared representation requires an alignment or fusion method and evidence that it improves the task.
+## Resolve disagreement without hiding it
 
-## Check agreement and contradiction
+If a recent report contradicts a photograph, check which period each describes and whether either source was corrected. Request the observation that could resolve the issue. If the conflict remains material, include it in the result and route the decision to its owner.
 
-A recent inspection may contradict an older image interpretation. A sensor may have been replaced between two observations. Keep conflicting evidence visible and seek the observation that could resolve it.
+## Preserve access across the combined view
 
-## Control the combined view
+The current reader must be permitted to see every source detail exposed. A summary made from several sources may need restricted access or regeneration when any source's permissions change. An apparently harmless combination can reveal more than each isolated item.
 
-The reader must be allowed to access every source exposed in the result. Derived summaries and cross-source representations require an explicit access and deletion policy. Do not assume that attaching a single permission label solves every combination.
+## Ask whether the extra source helped
 
-## Evaluate the contribution of each source
+Compare records alone, text alone, and the proposed combination on the same tasks. Count evidence missed, unsupported conclusions, review effort, and cost. Keep extra modalities only when they improve the outcome enough to justify maintaining them.
 
-Compare text alone, operational records alone, and the combined approach on representative questions. Measure whether an extra modality changes a decision correctly and what it costs to acquire and review it. Remove complexity that adds no useful information.
+This is a proposed case-assembly pattern. The underlying document, image, and signal representations are illustrated in the [vector-space tour](/memory/vector-spaces), with primary sources for each model family.
 
-See [systemic audit investigations](/use-cases/systemic-audit-issues) and [permissions and lifecycle](/memory/permissions-and-lifecycle).
+
+**Continue the story:** [Handle facts that change](/memory/changing-facts).

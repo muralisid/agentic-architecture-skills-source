@@ -74,3 +74,7 @@ Treat the supplied references as a starting point, not proof that a recommendati
 - [Memory: image embeddings](references/memory-image-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
 - [Memory: video embeddings](references/memory-video-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
 - [Memory: audio embeddings](references/memory-audio-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+
+## Memory foundations
+
+Use [memory roles and scope](references/memory-foundations.md) to distinguish working context, thread state, and long-term episodes, facts, and procedures before choosing storage. These roles are separate from information forms and retrieval methods. Use the [vector-space tour](references/memory-vector-spaces.md) when choosing representations for particular information forms.

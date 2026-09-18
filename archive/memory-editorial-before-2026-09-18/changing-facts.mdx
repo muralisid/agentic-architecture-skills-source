@@ -1,0 +1,38 @@
+---
+title: "Remember facts that change"
+description: "Keep time, source versions, and corrections visible in the answer."
+position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-17"
+dateModified: "2026-09-18"
+---
+
+## Yesterday’s correct answer can be wrong today
+
+An inspection identifies a damaged bearing. Two days later, a work order confirms its replacement. An agent that retrieves the inspection alone may recommend work that has already happened. An agent that overwrites the inspection loses the history needed to investigate recurrence.
+
+<TeachingIllustration src="/figures/memory/fact-timeline.svg" mobileSrc="/figures/memory/fact-timeline-mobile.svg" title="Facts change with events" alt="An inspection on 12 May finds a fault, a repair on 14 May changes the situation, and a question on 18 May needs current evidence while preserving the old inspection as history." caption="Keep historical evidence and current condition distinguishable." />
+
+Keep both events and their relationship. The question may be about the condition at inspection time, the current condition, or the sequence between them. The design must let retrieval distinguish those questions.
+
+## Different dates answer different questions
+
+Record when an event happened, when a source says a fact was valid, and when the system received the evidence. A late report should not automatically become the newest operational truth.
+
+## Keep versions and scope
+
+An asset’s name, owner, or procedure can change. Preserve the source version and applicable period. A question about last year’s inspection may require the procedure then in force, not today’s procedure.
+
+## Handle conflicting evidence
+
+Do not silently overwrite a fact because a new passage looks more confident. Compare source authority, scope, date, and supporting evidence. If the conflict cannot be resolved, return the disagreement and the decision it affects.
+
+## Propagate corrections
+
+Identify derived fields, indexes, summaries, and retained task context affected by a correction. Update or invalidate them. Keep a record of the correction without continuing to expose information that must be removed.
+
+## Test time explicitly
+
+Include cases involving an older valid fact, a later correction, a delayed observation, and an expired source. A learned temporal pattern does not replace exact temporal metadata.
+
+Continue to [location and satellite observations](/memory/location-and-satellite-data) and [the six memory approaches](/memory/six-architectures).

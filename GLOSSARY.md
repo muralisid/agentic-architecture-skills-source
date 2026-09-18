@@ -30,9 +30,23 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Access identity vs presence identity.** Access identity lets an agent act on systems under governance (ID2). Presence identity makes the agent addressable as a colleague: email, meetings, org chart (ID3). The trade-off is collaboration ergonomics vs attack and compliance surface.
 
-**Memory tiers (M1 to M5).** M1 thread (current conversation), M2 retrieved knowledge (evidence for the current turn), M3 session, M4 entity memory (long-term profiles of customers, assets, cases), M5 cross-domain organizational memory. Higher tiers carry ownership, consent, retention, and erasure obligations.
+**Working memory / working context.** Information selected for the agent's current decision, including the current task, relevant evidence, and recent results. This guide uses working context for the material supplied to a model call; application task state can contain more than that call sees.
 
-**Memory planes.** Working context (engineering discipline), the agent's persistent store (governance-heavy), and organizational memory (shared substrate). Distinct from memory tiers, which grade persistence within stores.
+**Thread memory.** Retained conversation and task state scoped to one continuing thread or case, including messages, tool results, and pending work. It can be persisted across interruptions; thread scope does not prescribe a retention duration.
+
+**Long-term memory.** Information deliberately retained for reuse across tasks or threads under explicit scope, ownership, access, and lifecycle rules. It is not synonymous with a vector database.
+
+**Episodic memory.** Retained records of particular experiences or events, with their context, actions, evidence, and outcomes where known.
+
+**Semantic memory.** Retained facts and concepts, with source, scope, and validity information where applicable. Distinct from semantic search, a way to retrieve similar content.
+
+**Procedural memory.** Retained knowledge of how to perform work, including approved instructions, methods, and tool-use procedures. Proposed lessons from episodes require the appropriate validation and approval before becoming enterprise procedures.
+
+These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs/2309.02427) (2023, revised 2024) and the implementation-oriented [LangGraph memory overview](https://docs.langchain.com/oss/python/concepts/memory), reviewed 18 September 2026. The enterprise approval and lifecycle requirements are this guide's design guidance. Purpose, retention scope, information form, and storage implementation are separate dimensions.
+
+**Memory tiers (M1 to M5).** M1 thread (current conversation), M2 retrieved knowledge (evidence for the current turn), M3 session, M4 entity memory (long-term profiles of customers, assets, cases), M5 cross-domain organizational memory. These are legacy scope labels, not an ordered taxonomy of memory kinds or retention duration. Apply ownership, access, retention, and erasure rules at every scope.
+
+**Memory planes.** Working context (engineering discipline), the agent's persistent store (governance-heavy), and organizational memory (shared substrate). Distinct from memory roles (episodic, semantic, procedural) and from the legacy scope labels M1 to M5.
 
 **Two learning loops.** The system flywheel (offline, evaluated, versioned, gated: trace, eval, curate, improve, staged rollout) and instance memory (online, immediate, exposed to drift and poisoning). They must be governed separately; memory learnings are promoted through the flywheel, never allowed to silently reshape behavior.
 

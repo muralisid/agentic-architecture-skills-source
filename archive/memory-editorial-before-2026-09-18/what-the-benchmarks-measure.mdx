@@ -1,0 +1,220 @@
+---
+title: "What the benchmarks measure"
+icon: "Ruler"
+description: "The two schools of memory scoring, the six benchmarks that matter as of September 2026, why the two small ones are saturated, and ten documented ways a published memory score misleads."
+datePublished: "2026-09-13"
+dateModified: "2026-09-18"
+---
+
+## A high score may answer a different question
+
+You need to know whether an agent can retrieve the correct maintenance evidence for your task. A benchmark might instead test recall of a fact in a conversation or answering a question after the right passage has already been found. Both can be useful tests, but their scores are not interchangeable. Start by identifying what the test actually asks the system to do.
+
+<TeachingIllustration src="/figures/memory/memory-process.svg" mobileSrc="/figures/memory/memory-process-mobile.svg" title="Give the agent evidence it can use" alt="Original evidence: Records, media, readings. Preparation: Identity, time, access. Representation: Records, vectors, graph. Retrieval: Find and verify sources. Decision context: Relevant cited evidence" caption="Keep the original evidence. Update or remove every affected representation when it changes." />
+
+<span id="mb-01" />
+
+A memory benchmark gives a system a long conversation. Then it asks questions about it. There are two ways to score the result. One checks whether the right passage was found. The other checks whether the final answer was right. They are different questions with different numbers. Most published claims quote one while the reader assumes the other.
+
+
+
+<span id="mb-intro" />
+
+First, the two schools of scoring, and why they never share a table. Then the six benchmarks that matter in September 2026.
+
+Then why the two best-known benchmarks are saturated. Then the dispute between the two largest vendors, as documented in public.
+
+Then ten documented ways a published score misleads. Last, five questions to ask before believing any number.
+
+
+
+## Two schools of scoring
+
+<span id="mb-retrieval" />
+
+The retrieval school measures recall at k. Of the units marked as evidence, what fraction sits in the top k the system returns. The standard form is the TREC fraction, computed by shared tools.
+
+A looser variant is called any-hit. It scores a full hit when at least one gold unit is in the top k. It is always higher when a question has more than one piece of evidence.
+
+The retrieval school is honest about what it leaves out. No answer is generated. So nothing is known about whether a reader could use what was found.
+
+
+
+<span id="mb-answer" />
+
+The answer school runs a reader over what was retrieved. Then it scores the answer. By word overlap against a reference, or by a model acting as judge.
+
+This is what the two best-known benchmark papers score.
+
+It depends on the reader and on the judge. There is no standard judge prompt. So two systems scored by two vendors are not on the same scale, even on the same benchmark.
+
+
+
+<span id="mb-two-tables" />
+
+Both schools of scoring are legitimate, and neither is the lesser.
+
+The only error is to place a retrieval number beside an answer number and read them as one thing. A retrieval score is always higher than the answer score on the same system.
+
+Every table in this section says which school it belongs to. And no table holds both.
+
+
+
+## The benchmarks that matter
+
+<span id="mb-six" />
+
+Six benchmarks matter in September 2026. The first has ten conversations of 16 to 26 thousand tokens and nearly two thousand questions. Vendors report 92 to 95 on it. The second has 500 questions over about 115 thousand tokens each, with a fixed judge. Vendors report 90 to 94.
+
+The third reaches ten million tokens, with two thousand questions across ten abilities. The best published score there is 0.36 at half a million tokens and 0.27 at ten million. The fourth tests retrieval, learning, long-range reading and forgetting. The best system scores under 50, and every method fails multi-hop forgetting.
+
+The fifth finds that full context scores 70 to 82 even on its hardest cases. Its authors say retrieval is unnecessary below about 150 conversations. The sixth passes ten million tokens, to 115 million tokens of agent trajectories. A file-storing agent scores 72.5 there, against 48.5 for retrieval.
+
+
+
+<span id="mb-newer" />
+
+Five more benchmarks appeared between February and August 2026.
+
+Each reports the same two things in its own words. Plain retrieval or plain long context stays competitive with dedicated memory systems. And strong scores on factual recall do not carry over to using the memory well.
+
+One June 2026 study ran twelve systems on eleven datasets. It found no architecture that wins everywhere.
+
+
+
+## Why the two small benchmarks are saturated
+
+<span id="mb-locomo" />
+
+The first benchmark's conversations run 16 to 26 thousand tokens. Every frontier model reads that in one call. The largest vendor's own paper reports full context at 72.90, above its best memory variant at 68.44.
+
+The released data has known defects. The scorer's code treats category one as multi-hop. The paper lists single-hop first. So vendor tables disagree with each other on which category is which.
+
+The 446 adversarial questions have no reference answer. Vendors drop them and score the remaining 1,540.
+
+An audit in April 2026 found 99 wrong labels among those 1,540. It put the ceiling near 93 under the released answers. Vendors reporting 92 to 95 are at or above that ceiling, each under its own judge.
+
+
+
+<span id="mb-lme" />
+
+The second benchmark is better designed. It has a fixed judge model, with over 97 percent agreement with human graders. It has seven question types, including knowledge updates and abstention.
+
+Its paper keeps retrieval recall and answer accuracy in separate columns. Its authors measured a frontier model at 0.870 with only the evidence. With the full history of 115 thousand tokens, the same model scored 0.606.
+
+Vendors now report 90 to 94 with their own readers and judges. And retrieval-only scores of 96.6 to 100 with no model at all. The candidate pool averages 48 sessions. So a retrieval score at k of 50 covers the whole pool and measures nothing.
+
+
+
+## The dispute of 2025, as documented
+
+<span id="mb-dispute" />
+
+The two largest memory vendors published each other's scores. In April 2025 one reported the other at 65.99.
+
+In May the other replied. It had erred in its own earlier claim of 84, and corrected itself to 75.14. It criticised the first vendor for misconfiguration.
+
+The first vendor's chief technology officer then filed a public issue. He recomputed the second vendor at 58.44. Adversarial answers had been counted in a numerator whose denominator excluded them. Prompts had changed, and one run was compared against ten.
+
+The issue was closed without a reply. Both vendors now publish scores above 90 on the same benchmark, under newer judges. None of these numbers is wrong on its own terms. Together they show the benchmark cannot separate the two systems.
+
+
+
+## Ten ways a published score misleads
+
+<span id="mb-ten-a" />
+
+Here are ten documented ways a published score misleads. None needs bad faith. Most are choices a benchmark leaves open. First, any-hit reported as recall. On one ranking, 96.6 any-hit at k of five is 91.7 as the TREC fraction.
+
+Second, a k larger than the candidate pool. At k of 50 over conversations of 19 to 32 sessions, every session is returned. Recall is 1.0 by construction, and a 100 percent claim was published on exactly that.
+
+Third, a retrieval score placed beside judged answers. A 96 from one school beside a 72 from the other reads as a 24-point lead that does not exist.
+
+Fourth, the credited target. A 2026 study moved credit between the raw turn, the session and a canonical form. Rankings changed on 83 to 94 percent of queries, and the order of systems flipped.
+
+Fifth, category relabelling and denominators. Three vendors map the same categories three ways. One dispute turned on answers counted in a numerator whose denominator excluded them.
+
+
+
+<span id="mb-ten-b" />
+
+Sixth, fixes tuned to named questions. One vendor's file records three fixes written for three failing questions. It labels them teaching to the test. Held out, the 100 became 98.4.
+
+Seventh, the vendor as reader and judge. One vendor scores with the same frontier model as reader and as judge. Another scores its managed platform with proprietary parts. There is no standard judge prompt.
+
+Eighth, corrupted or missing gold. 446 questions have no answer. 99 of the remaining 1,540 penalise a correct answer. Word overlap scores two spellings of the same date as different.
+
+Ninth, single runs. One vendor published one run against a competitor's ten with standard deviations.
+
+Tenth, synthetic recall as a proxy for reading. Needle tests do not predict downstream performance. On the hardest lexical test, eleven of thirteen models lose half their accuracy by 32 thousand tokens.
+
+
+
+## How to read a memory claim
+
+<span id="mb-five" />
+
+Ask five questions before believing a memory number. Start with the school. Was an answer generated and judged, or was a passage only found?
+
+Second, what unit was retrieved, a session, a turn or a message, and how many candidates were in the pool?
+
+Third, what k, and is k smaller than the pool?
+
+Fourth, who was the reader and who was the judge, and was either the vendor's choice?
+
+Fifth, how many tokens was the corpus, and does that fit inside one call to the reader? This is the question vendors rarely answer. A claim that answers all five and still stands is worth a reproduction. A claim that answers fewer than three is a headline.
+
+
+
+## What to remember
+
+<span id="mb-recap" />
+
+Here is what to remember. Retrieval scores and answer scores are two different quantities, and never share a table.
+
+The two famous benchmarks fit inside one context window, and vendors have saturated them under their own judges.
+
+A score without its unit, its pool and its judge is a headline, not a number.
+
+The benchmarks that reach enterprise scale are far from saturated. The next page asks whether a long context window makes memory unnecessary.
+
+
+
+<EvidenceBadge status="mixed-evidence" /> The benchmark descriptions and the defects are from the benchmark papers, code and public audits. The vendor scores are vendor reported and flagged. The reproduction rows are this guide's own.
+
+## Results and supporting detail
+
+### The benchmarks that matter
+| Benchmark, source | Corpus per question | Questions | Official metric | State as of September 2026 |
+|---|---|---|---|---|
+| LoCoMo, ACL 2024 | 10 conversations of about 16 to 26 thousand tokens, 19 to 32 sessions | 1,986 in five categories; 446 adversarial carry no gold answer | Token F1; refusal check for adversarial | Saturated. Vendors report 92 to 95 on the 1,540 scored questions under their own judges |
+| LongMemEval, ICLR 2025 | S: about 115 thousand tokens, about 48 sessions. M: about 1.5 million tokens, 500 sessions | 500 in seven types | Judged accuracy by a fixed model; recall at k reported separately for the retrieval stage | Near saturation on S. Vendors report 90 to 94; retrieval-only any-hit scores of 96 to 100 are reported with no model |
+| BEAM, ICLR 2026 | 100 conversations: 20 at 128K, 35 at 500K, 35 at 1M, 10 at 10M tokens | 2,000; two per ability per conversation across ten abilities | Judge over rubric nuggets, 0, 0.5 or 1; rank correlation for event ordering | Far from saturation. Best published academic score 0.36 at 500K and 0.27 at 10M |
+| MemoryAgentBench, 2025, revised June 2026 | 103 thousand to 1.44 million tokens | 2,071 across retrieval, test-time learning, long-range understanding and selective forgetting | Task accuracy | Far from saturation. Best overall 49.6 for a frontier model; every method at or below 28 on multi-hop forgetting; commercial memory layers 21 to 24 |
+| ConvoMem, November 2025 | 1 thousand to 3 million tokens | 75,336 | Accuracy | Full context scores 70 to 82 on the hardest cases; authors find retrieval unnecessary below about 150 conversations |
+| LongMemEval-V2, May 2026 | Up to 115 million tokens of agent trajectories | 451 | Judged accuracy | A file-storing coding agent scores 72.5 against 48.5 for retrieval; the first benchmark past ten million tokens |
+
+Five more appeared between February and August 2026: LoCoMo-Plus, StructMemEval, EvoMemBench, DynamicMem and UtilMem. Each reports the same two things in its own words: plain retrieval or plain long context remains competitive with dedicated memory systems, and strong scores on the factual benchmarks do not carry over to using the memory well. One June 2026 study of twelve systems on eleven datasets found no architecture that wins everywhere.
+
+### Ten ways a published score misleads
+Each item below has a primary source in the [sources](/memory/sources) page. None requires bad faith; most are choices a benchmark leaves open.
+
+1. **Any-hit reported as recall.** A full hit if one gold unit is in the top k. On the same ranking, one system's 96.6 any-hit at k of 5 is 91.7 as the TREC fraction.
+2. **k larger than the candidate pool.** At k of 50 over conversations of 19 to 32 sessions, every session is returned and recall is 1.0 by construction. A 100 percent claim was published on exactly this setting.
+3. **Retrieval-only beside judged answers.** A retrieval score is always higher than the end-to-end score on the same system. Placing a 96 from one school beside a 72 from the other reads as a 24-point lead that does not exist.
+4. **The credited target.** A May 2026 study showed that moving credit between the raw turn, the source session and a canonical form changes nDCG on 83 to 94 percent of queries and flips the order of systems.
+5. **Category relabelling and denominators.** LoCoMo's paper order and code order differ; three vendors map the categories three ways; one dispute turned on adversarial answers in a numerator whose denominator excluded them.
+6. **Fixes tuned to named questions.** One vendor's own file records three fixes written for three failing questions and labels them "teaching to the test"; held-out, the 100 became 98.4.
+7. **The vendor as reader and judge.** One vendor scores with the same frontier model as reader and as judge; another scores its managed platform with proprietary components. There is no standard judge prompt.
+8. **Corrupted or missing gold.** 446 LoCoMo questions have no answer; 99 of the remaining 1,540 have labels that penalise correct answers; token F1 scores "7 May 2023" against "May 7th, 2023" as different.
+9. **Single runs.** One vendor published one run against a competitor's ten with standard deviations.
+10. **Synthetic recall as a proxy for reading.** Needle-in-haystack tests do not predict downstream performance; on the hardest lexical-mismatch test, eleven of thirteen models lose more than half their accuracy by 32 thousand tokens.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Sources for this section](/memory/sources), the benchmarks block
+- [What we have measured](/memory/what-we-have-measured), the one reproduction this guide has run on all three of the main benchmarks
+- [How to test a context design](/patterns/how-to-test-a-context-design), the matched-control method this guide applies to its own retrieval claims
+
+</details>

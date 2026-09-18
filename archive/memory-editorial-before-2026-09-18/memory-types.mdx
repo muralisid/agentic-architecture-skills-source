@@ -1,0 +1,53 @@
+---
+title: "What an agent should remember"
+description: "Working context, thread memory, and durable experiences, facts, and methods."
+position: "Design guidance with illustrative examples. Validate the design on the work it will support."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-18"
+dateModified: "2026-09-18"
+---
+
+Imagine an inspection investigation paused while waiting for a photograph. When it resumes, the agent needs the open question and what it already checked. When a new investigation begins, it may need lessons from the finished case. Those are different memory needs.
+
+<TeachingIllustration src="/images/memory/memory-map-v1.webp" title="Remember the current task and what can help future work" alt="A working context receives selected material from a resumable thread and a long-term store of episodes, facts, and approved procedures." caption="These categories overlap. An episode may be retained long term and later selected into working context." expandable />
+
+## What is needed right now?
+
+The current question, relevant sources, recent tool results, and next permitted action belong in the model's working context. Think of this as the material selected for the current decision. Keep pending checks and operational state explicit in the application, rather than relying on a free-form conversation to carry them accurately.
+
+If everything is copied into every call, old assumptions and irrelevant material travel with it. If too much is removed, the agent may repeat work or forget a constraint. The design task is to select enough information for the next step.
+
+## What must survive a pause in this thread?
+
+The inspection case should retain its messages, tool results, outstanding questions, and operation identifiers. A checkpoint allows work to resume, but a saved intention is not proof that an external operation completed. Check the work-order system before retrying a request.
+
+“Short term” often describes the scope of a conversation, not a promise that its records disappear quickly. A thread can be stored for weeks under a retention policy. A login session may end while the case continues. LangGraph's [memory overview](https://docs.langchain.com/oss/python/concepts/memory) documents thread-scoped state and cross-thread storage. Reviewed 18 September 2026.
+
+## What is worth keeping for future tasks?
+
+Long-term memory needs a purpose and a permitted audience. Within it, three useful roles are:
+
+- **Episodic:** the completed inspection, the checks performed, evidence used, decision, and observed outcome. This answers “What happened in that case?”
+- **Semantic:** supported facts, such as which site owns an asset or which standard applies, with source and validity information. This answers “What do we know?” It is not the same thing as semantic search.
+- **Procedural:** the approved inspection method and escalation rules. This answers “How should this work be done?” A successful past run may suggest a revision, but cannot approve its own new procedure.
+
+These roles follow the distinctions discussed in [CoALA](https://arxiv.org/abs/2309.02427), published in 2023 and revised in 2024. They are useful design categories, not a universally fixed product taxonomy. Reviewed 18 September 2026.
+
+<TeachingIllustration src="/images/memory/memory-lifecycle-v1.webp" title="A task can produce several different kinds of memory" alt="An investigation collects observations, works with evidence, reviews candidate memories, retains an episode or supported fact or approved method, and retrieves useful material for a future task. Corrections can update or remove retained information." caption="Teaching illustration. The example is a proposed design, not a measured deployment." expandable />
+
+## Other names describe other dimensions
+
+An **entity profile** groups information around a person, asset, site, or case. **Shared organizational memory** describes who may reuse it. A **reflection** is a derived interpretation to check, not a new source of truth. A **summary** compresses information. A **vector index** helps find similar items. These are not additional mutually exclusive categories beside episodic memory.
+
+For example, one inspection episode can include text and photographs, be indexed by embeddings, belong to an asset profile, and be visible only to an authorized team. Its scope, purpose, and representation each answer a different question.
+
+Model weights and internal caches are another design dimension. They can influence behavior, but they are not a substitute for source references and explicit operational records.
+
+## Decide what not to retain
+
+Do not promote an unverified guess, temporary credential, or an irrelevant personal detail simply because it appeared during a task. Review candidate memories against their source, purpose, access, and retention rules. Correcting or removing a memory is part of maintaining it.
+
+For a first design, keep a resumable task record, preserve source evidence, and add durable memories only where a future task needs them. The canonical terms are in the [glossary](/library/glossary).
+
+
+**Continue the story:** [Turn information into usable memory](/memory/information-to-memory).

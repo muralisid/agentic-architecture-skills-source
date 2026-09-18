@@ -1,0 +1,217 @@
+---
+title: "The ten-million-token question"
+icon: "Search"
+description: "How large enterprise memory workloads are in tokens, what the one public benchmark at ten million tokens shows, what the vendors say about their own results there, and the question the industry has not answered."
+datePublished: "2026-09-13"
+dateModified: "2026-09-18"
+---
+
+## What if the useful evidence is spread across years?
+
+A single investigation may depend on years of work orders, procedures, and earlier discussions. Putting that entire history into one request sounds simple. The engineering question is whether the system finds the right evidence reliably, keeps its context, and does so at acceptable cost. The measurements below examine parts of that question, not a blanket guarantee for a large enterprise memory.
+
+<TeachingIllustration src="/figures/memory/memory-process.svg" mobileSrc="/figures/memory/memory-process-mobile.svg" title="Give the agent evidence it can use" alt="Original evidence: Records, media, readings. Preparation: Identity, time, access. Representation: Records, vectors, graph. Retrieval: Find and verify sources. Decision context: Relevant cited evidence" caption="Keep the original evidence. Update or remove every affected representation when it changes." />
+
+<span id="mt-01" />
+
+The memory systems on the market are scored on conversations that would fit in a long email thread. The work an enterprise wants remembered is measured in years of mail, chat, tickets and documents. This page puts the two sizes side by side. It shows what the only public test at that size gives every approach. And it ends with the question the industry has not answered.
+
+
+
+<span id="mt-intro" />
+
+First, how large an enterprise memory workload is, in tokens, from sourced figures. Then what the one public benchmark at ten million tokens shows.
+
+Then what the vendors report at that size, and why the reports cannot be compared. Then why ten million is hard in a way one million is not.
+
+Last, the question itself, in three parts, left with you.
+
+
+
+## How large the workload is
+
+<span id="mt-worker" />
+
+Start with one person. Microsoft's Work Trend Index of June 2025 counts 117 emails received per weekday. And 153 chat messages.
+
+A public corpus of sent mail averages 144 words per message. Take 250 working days and three quarters of a word per token. Email alone is about 5.6 million tokens a year. Add chat, at an assumed 20 words a message, and the total is 6 to 8 million.
+
+That excludes attachments, documents, tickets and meetings. The chat figure is an assumption, and the page says so. Ten million tokens is a little more than one worker's year.
+
+
+
+<span id="mt-anchors" />
+
+Here are sourced anchors for the scale. One public corpus holds the mail of about 150 senior staff at one company. It is about half a million messages. No token count is published; derived from message length it is roughly 100 million tokens. A single enterprise mailbox quota is 100 gigabytes, with an archive of 1.5 terabytes.
+
+A synthetic enterprise corpus built for retrieval research in 2026 holds about 500 thousand documents across nine source types. Its authors say no real corpus of that size can be released. All United States annual reports from 1993 to 2020 come to 6.5 billion tokens.
+
+And English Wikipedia is 5.27 billion words. A service desk, a claims team or an engineering programme needs a slice of the estate. That slice starts at tens of millions of tokens and grows every day. Ten million is the floor, not the ceiling.
+
+
+
+## What the one public test at ten million shows
+
+<span id="mt-beam-what" />
+
+One public benchmark reaches ten million tokens. It was published by two universities and accepted at a top conference in 2026. It has one hundred synthetic conversations, twenty of them at 128 thousand tokens. Then 35 at half a million, 35 at one million, and ten at ten million.
+
+It has two thousand questions, two per ability per conversation.
+
+The ten abilities are abstention, contradiction resolution, event ordering, information extraction and instruction following. Then knowledge update, multi-session reasoning, preference following, summarisation and temporal reasoning.
+
+A judge scores each answer against rubric points at 0, half, or 1. The authors evaluated no commercial memory system.
+
+
+
+<span id="mt-beam-results" />
+
+Here are the results for the best backbone, a one-million-token open-weight model. Three approaches: full context, retrieval of the top five, and the authors' own memory design. At 100 thousand tokens they score 0.24, 0.32 and 0.36.
+
+At one million, 0.26, 0.31 and 0.34.
+
+At ten million, 0.10, 0.25 and 0.27. Three things stand out. The scores are low at every length. That includes 100 thousand tokens, a size the model reads in one call. The memory design adds 6 to 11 points over retrieval, and no more. And every method is strongest on abstention and weakest on contradiction resolution.
+
+
+
+## What the vendors report at ten million
+
+<span id="mt-vendors" />
+
+Three vendors have published their own ten-million-token numbers. The first reports 64.1 at one million and 48.6 at ten million. Its documentation lists one hundred conversations per scale. The released data has ten at ten million. So the setup is unclear.
+
+The second reports 0.67 at ten million. It notes that its settings differ between scales: different conversations, models and retrieval procedures.
+
+The third reports 0.631 at one million and 0.406 at ten million. It adds that testing recall on data that fits a context window is no longer meaningful.
+
+These rows are shown because they exist, not because they can be compared. The scales differ, the judges differ, and the setups differ from the paper. What they share is the shape: each falls from one million to ten million. Each vendor chose to publish anyway. That is to their credit.
+
+
+
+<span id="mt-independent" />
+
+Two independent data points sit beside the vendor rows.
+
+A 2026 corpus benchmark reports a memory agent at 11.1 over ten million tokens. Plain retrieval scores 1.2 on the same task.
+
+A May 2026 benchmark goes past ten million, to 115 million tokens of agent trajectories. Its best method stores the trajectories as files and searches them with a coding agent. It scores 72.5 against 48.5 for retrieval. That task is closer to an engineer's workspace than to a customer's history.
+
+
+
+## Why ten million is hard in a way one million is not
+
+<span id="mt-why" />
+
+Why is ten million hard in a way one million is not? Three separate mechanisms compound. The first is arithmetic. No shipped model reads ten million tokens in one call. So every approach retrieves, and the retrieval is the whole game.
+
+The second is the encoder. An embedding separates a session about careers from one about cooking. It does not separate one career message from twenty thousand others on the same topic. At ten million tokens a single conversation holds about twenty thousand messages.
+
+The third is spread. The questions that fail worst need many messages from different points in a long history. Event ordering, summarisation, and reasoning across sessions. Find one message and stop, and you have found nothing useful.
+
+
+
+<span id="mt-density" />
+
+We measured the density problem ourselves, on one system, on the ten-million-token benchmark. Exact word overlap between the question and the evidence predicts whether the evidence is found. The choice of encoder does not.
+
+This guide already keeps keyword search in the loop for names and identifiers. At this density it stops being optional. At this density it becomes the discriminating channel.
+
+On those ten-million-token questions the gold evidence averages seven and a half messages. It reaches 83. This is why the 90 percent scores on the small benchmarks do not transfer. Those benchmarks have pools of 28 to 48 sessions and mostly need one session per question.
+
+
+
+## The question, left open
+
+<span id="mt-q1" />
+
+This section does not recommend an architecture for enterprise scale. No architecture has published a result that would justify one. So the question is left with you, in three parts.
+
+Part one. Which architecture, if any, gives an agent useful recall over ten million tokens of an enterprise's own records? And at a cost per question that a service desk or a claims team can bear?
+
+
+
+<span id="mt-q2" />
+
+Part two. How would you know?
+
+The score would have to be independently produced. On a corpus that does not fit a context window. With the unit, the pool, the k and the judge stated.
+
+And with retrieval-only and answered-question results in separate tables. Nothing published so far meets all of that.
+
+
+
+<span id="mt-q3" />
+
+Part three. What would it cost to index?
+
+And how does that compare with sending everything to the model? At list price that is between one dollar and six hundred dollars per ten million tokens, per question.
+
+Until these three are answered, a memory system chosen for an enterprise workload is chosen on faith. Our own research on the question is under way. It will be published here when it is complete.
+
+
+
+## What to remember
+
+<span id="mt-recap" />
+
+Here is what to remember. Ten million tokens is a little more than one worker's year of mail and chat. It is the floor for an enterprise memory.
+
+The best independent result at that size is 0.27 on a scale of 0 to 1.
+
+The vendor numbers at that size are unchecked and cannot be compared.
+
+The question is open, in three parts: which architecture, how would you know, and what would it cost. The next page records the one measurement we have made ourselves.
+
+
+
+<EvidenceBadge status="no-published-precedent" /> No independently run, published result shows any memory architecture or long-context model answering well over a single ten-million-token corpus. The workload figures are sourced or marked derived; the vendor rows are flagged.
+
+## Results and supporting detail
+
+### How large the workload is
+**In short:** Ten million tokens is one person's year of received communication, before the documents. Anything worth calling organisational memory is larger.
+
+Sourced anchors, with derivations marked as such.
+
+| Workload | Size | Basis |
+|---|---|---|
+| One knowledge worker's received email and chat, one year | About 6 to 8 million tokens, derived | Microsoft's Work Trend Index (June 2025) counts 117 emails and 153 Teams messages received per weekday. At the Enron sent-mail average of 144 words per message, 250 working days, and three-quarters of a word per token, email alone is about 5.6 million tokens. The chat estimate assumes 20 words per message and is the author's. Attachments, documents, tickets and meetings are excluded. |
+| The Enron corpus, one company's senior management | About 0.5 million messages from about 150 users; derived at roughly 100 million tokens | Carnegie Mellon's corpus page; the token figure is derived from message count and mean length, no published count exists |
+| One Microsoft 365 mailbox at its quota | 100 gigabytes, with a 1.5 terabyte archive on the enterprise plans | Exchange Online limits, updated September 2026 |
+| A synthetic enterprise corpus built for retrieval research | About 500 thousand documents across nine source types, including chat, mail, tickets and a wiki | EnterpriseRAG-Bench, May 2026; the authors state that no real enterprise corpus of that scale can be released |
+| All United States annual reports, 1993 to 2020 | 220,375 filings, 6.5 billion tokens | EDGAR-CORPUS, 2021 |
+| English Wikipedia | 7.24 million articles, 5.27 billion words | Wikipedia's own size page, 13 September 2026 |
+
+The [readiness assessment](/library/frameworks/readiness-assessments) asks what an enterprise's agents will need to know. The honest answer for a service desk, a claims team or an engineering programme is a slice of the estate that starts at tens of millions of tokens and grows every day. Ten million is the floor, not the ceiling.
+
+### What the one public test at ten million shows
+**In short:** On BEAM's ten-million-token conversations, plain long context scores 0.10, retrieval 0.25, and the benchmark authors' own memory design 0.27.
+
+BEAM (ICLR 2026, University of Alberta and University of Massachusetts Amherst) is the only public benchmark whose conversations reach ten million <Term k="token">tokens</Term>. It has one hundred synthetic conversations, ten of them at ten million tokens, and two thousand questions across ten abilities: abstention, contradiction resolution, event ordering, information extraction, instruction following, knowledge update, multi-session reasoning, preference following, summarisation and temporal reasoning. A judge scores each response against rubric nuggets at 0, 0.5 or 1.
+
+| Backbone, context window | 100K | 1M | 10M |
+|---|---|---|---|
+| Llama 4 Maverick, 1M: full context / retrieval / the authors' memory | 0.240 / 0.323 / 0.358 | 0.259 / 0.307 / 0.336 | 0.104 / 0.249 / 0.266 |
+| GPT-4.1 nano, 1M | 0.239 / 0.309 / 0.345 | 0.191 / 0.302 / 0.336 | 0.109 / 0.218 / 0.226 |
+| Gemini 2.0 Flash, 1M | 0.242 / 0.280 / 0.294 | 0.199 / 0.271 / 0.284 | 0.122 / 0.216 / 0.192 |
+| Qwen 2.5 32B, 128K | 0.280 / 0.269 / 0.311 | 0.193 / 0.285 / 0.309 | 0.133 / 0.211 / 0.238 | Three things stand out. The scores are low at every length, including one hundred thousand tokens, which a one-million-token model reads in one call. The authors' memory design, which combines an extracted episodic store, a working memory of recent turns and a compressed scratchpad, adds 6 to 11 points over retrieval and no more. And the authors report that every method is strongest on abstention and weakest on contradiction resolution, "indicating that contradiction detection remains a challenging open problem". The benchmark evaluated no commercial memory system.
+
+### What the vendors report at ten million
+**In short:** Three vendors have published their own ten-million-token numbers. Each is under its own judge, none has been reproduced, and none is comparable to the paper's table.
+
+| Vendor, date | Reported at 1M | Reported at 10M | Conditions stated by the vendor |
+|---|---|---|---|
+| Mem0, April 2026 | 64.1 | 48.6 | Single-pass retrieval at a top-200 budget, about 6,900 tokens per query, the vendor's own evaluation framework; its documentation lists one hundred conversations evaluated per scale, where the released data has ten at ten million |
+| Cognee, 2026 | not reported | 0.67 | Exploratory, question-type routing, five rounds; the vendor notes that its 100K and 10M settings use different conversations, ingestion models and retrieval procedures |
+| Honcho, December 2025 | 0.631 | 0.406 | The vendor's own harness; it adds that testing recall on data that fits in a frontier context window "is no longer particularly meaningful" | These rows are shown because they exist, not because they can be compared. The scales differ, the judges differ, and the setups differ from the paper's. What they share is the shape: each vendor's score falls from one million to ten million, and each vendor chose to publish it anyway, which is to their credit.
+
+Two independent data points sit beside the vendor rows. CorpusQA (2026) reports a memory agent at 11.1 and plain retrieval at 1.2 on ten-million-token corpora. LongMemEval-V2 (May 2026) goes past ten million to 115 million tokens of agent trajectories, and its best method, a coding agent that stores trajectories as files and searches them, scores 72.5 against 48.5 for retrieval, on a task closer to an engineer's workspace than to a customer's history.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Sources for this section](/memory/sources), the workloads and BEAM blocks
+- [Long context is not memory](/memory/long-context-is-not-memory), the price and effective-context evidence
+- [Agent data engineering findings](/library/layers/r14-agent-data-engineering/findings), section 4 on economics
+
+</details>

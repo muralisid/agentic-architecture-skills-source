@@ -7,37 +7,37 @@ datePublished: "2026-09-17"
 dateModified: "2026-09-18"
 ---
 
-An agent recommends replacing a pump bearing that was replaced yesterday. Should we buy a more capable model, rewrite its instructions, or train it? **First find out what prevented it from doing the job correctly.**
+An agent schedules an inspection that was completed yesterday. Should we buy a more capable model, rewrite its instructions, or train it? **First find out what prevented it from doing the job correctly.**
 
-<TeachingIllustration src="/images/ladder/diagnose-before-upgrading-v1.webp" title="Find what failed before changing the model" alt="A pump maintenance recommendation conflicts with a recent repair record. Diagnose unclear instructions, missing evidence, failed tools, or remaining model limitations before selecting a change." caption="Illustrative maintenance case. The same wrong answer can have several different causes." expandable />
+<TeachingIllustration src="/images/ladder/diagnosis-software-v1.webp" title="Find what failed before changing the model" alt="An explicitly labelled AI model produces an inspection plan without the completion record. Diagnose unclear instructions, missing evidence, failed tools, or remaining model limitations before selecting a change." caption="Illustrative inspection case. The AI model is software; the inspection is its task. The same wrong answer can have several different causes." expandable />
 
 ## Why a stronger model may not fix the problem
 
-It is tempting to treat every wrong answer as insufficient intelligence. In this example, the repair record may never have reached the agent. It may concern a different pump. Or a failed tool call may have been mistaken for a successful lookup. Changing the model without checking these possibilities leaves the cause unresolved.
+It is tempting to treat every wrong answer as insufficient intelligence. In this example, the completion record may never have reached the agent. It may concern a different inspection case. Or a failed tool call may have been mistaken for a successful lookup. Changing the model without checking these possibilities leaves the cause unresolved.
 
 The [Intelligence ladder](/ladder) explains the available ways to build capability. This page helps choose which part to change. The aim is a better completed task at an acceptable full cost.
 
 ## Start with a failed task
 
-Keep the request, allowed actions, sources available at the time, tool results, and actual outcome. Ask the maintenance owner what an acceptable result would have been. A useful expectation might be: identify the completed repair, check the latest readings, and request further inspection only if the evidence supports it.
+Keep the request, allowed actions, sources available at the time, tool results, and actual outcome. Ask the inspection owner what an acceptable result would have been. A useful expectation might be: identify the completed inspection, check unresolved findings, and request further inspection only if the evidence supports it.
 
 That gives us something concrete to test. “Make the agent more reliable” does not.
 
 ## Run a comparison that separates the causes
 
-<TeachingIllustration src="/images/ladder/controlled-agent-comparison-v1.webp" title="Test a specific explanation for the failure" alt="Two runs use the same task and model. One lacks the repair record; the other receives the correct evidence. Compare decisions, human review, time, and full cost, then repeat on held-out cases." caption="The outputs are examples, not measured results. Keep other settings comparable and repeat runs to account for variation." expandable />
+<TeachingIllustration src="/images/ladder/comparison-software-v1.webp" title="Test a specific explanation for the failure" alt="Two runs use the same task and model. One lacks the completion record; the other receives the correct evidence. Compare decisions, human review, time, and full cost, then repeat on held-out cases." caption="The outputs are examples, not measured results. Keep other settings comparable and repeat runs to account for variation." expandable />
 
-First supply the correct repair record to the same model, keeping the task and other settings comparable. If its answer improves consistently, investigate the information path. This is evidence for a retrieval or context problem, not proof that the whole system is fixed.
+First supply the correct completion record to the same model, keeping the task and other settings comparable. If its answer improves consistently, investigate the information path. This is evidence for a retrieval or context problem, not proof that the whole system is fixed.
 
-Then test the proposed repair through the real retrieval path. Include pumps that were not repaired, old records, wrong asset identifiers, and missing information. Supplying the answer manually is a diagnostic test; it is not the production solution.
+Then test the proposed fix through the real retrieval path. Include inspections that were not completed, old records, wrong asset identifiers, and missing information. Supplying the answer manually is a diagnostic test; it is not the production solution.
 
 ## Check the information
 
-Could the agent access the correct source? Did parsing retain the repair date and asset identity? Was the current version retrieved? Did the evidence actually reach the model? Use [context testing](/patterns/how-to-test-a-context-design) and [memory organization](/memory/information-to-memory) to examine this path.
+Could the agent access the correct source? Did parsing retain the completion date and asset identity? Was the current version retrieved? Did the evidence actually reach the model? Use [context testing](/patterns/how-to-test-a-context-design) and [memory organization](/memory/information-to-memory) to examine this path.
 
 ## Check the task and tools
 
-If evidence is adequate but the requested result is unclear, try clearer instructions and examples. If the agent selects a sensible action but cannot complete it, inspect permissions, tool inputs, errors, and confirmation. A submitted work order is not a completed repair. Test retries without creating duplicate work.
+If evidence is adequate but the requested result is unclear, try clearer instructions and examples. If the agent selects a sensible action but cannot complete it, inspect permissions, tool inputs, errors, and confirmation. A submitted inspection request is not a completed inspection. Test retries without creating duplicate work.
 
 ## Check the workflow
 
@@ -51,4 +51,4 @@ Use tasks held apart from development. Count unsuccessful attempts, expert revie
 
 ## Basis for this guidance
 
-This diagnostic sequence and pump example are teaching proposals, not reported experimental results. Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), published 19 December 2024, supports starting simply and evaluating added complexity. Reviewed 18 September 2026.
+This diagnostic sequence and inspection case example are teaching proposals, not reported experimental results. Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), published 19 December 2024, supports starting simply and evaluating added complexity. Reviewed 18 September 2026.

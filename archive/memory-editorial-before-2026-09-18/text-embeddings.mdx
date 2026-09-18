@@ -1,0 +1,34 @@
+---
+title: "Text embeddings: search by meaning"
+description: "Make differently worded passages discoverable while preserving exact evidence."
+position: "Teaching guidance and illustrative designs. Evaluate the proposed approach on representative tasks before adoption."
+lastReviewed: "2026-09-18"
+datePublished: "2026-09-18"
+dateModified: "2026-09-18"
+---
+
+“Pump pressure is falling” and “low discharge pressure” may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
+
+<TeachingIllustration src="/images/memory/text-space-v1.webp" title="Text: find related meaning" alt="Text encoder maps two differently worded pump-pressure passages near each other and a leave-policy passage elsewhere. A query retrieves nearby passages while retaining the original source, version, and permissions." caption="Text similarity helps locate a passage. It does not establish whether that passage is current or applicable." expandable />
+
+## What the space represents
+
+The picture groups two ways of describing a pressure problem. It is a teaching example of semantic resemblance, not a claim about coordinates from a particular encoder. A text embedding can help retrieve a passage whose wording differs from the query. Sentence-BERT is one research example of training sentence representations for semantic comparison.
+
+## What to retain beside the vector
+
+Keep the document and passage reference, source version, applicable dates, language, entity identifiers, and permissions. Retrieve the original passage so the agent and reviewer can inspect what it says. Keep lexical search or exact queries for identifiers and other details that similarity alone does not settle.
+
+## Where the first approach can fail
+
+Embedding every document as one item may blur several topics together. Summarizing first may remove a qualification or unit. A passage about an old procedure can remain very similar to the replacement. Test those failures with the questions the agent must actually answer.
+
+## How it serves a decision
+
+For a pump investigation, semantic search can locate a relevant inspection method. The asset record and current procedure version establish applicability. The decision record cites the passage used, rather than an embedding distance.
+
+Compare with keyword retrieval and ordinary chunks before adding extra representations. [Choose the representation](/memory/choosing-representations) and [prepare its sources](/memory/information-to-memory).
+
+## External source
+
+[Sentence-BERT](https://arxiv.org/abs/1908.10084), 2019. Reviewed 18 September 2026.

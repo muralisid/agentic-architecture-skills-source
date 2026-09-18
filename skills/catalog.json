@@ -237,6 +237,14 @@
         {
           "route": "/memory/audio-embeddings",
           "as": "memory-audio-embeddings-guide.md"
+        },
+        {
+          "route": "/memory/memory-types",
+          "as": "memory-foundations.md"
+        },
+        {
+          "route": "/memory/vector-spaces",
+          "as": "memory-vector-spaces.md"
         }
       ]
     },

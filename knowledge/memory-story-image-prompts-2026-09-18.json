@@ -1,0 +1,114 @@
+{
+  "mode": "built-in image_gen",
+  "styleReference": "site/public/images/ladder/context-pipeline-labeled-v3.webp",
+  "assets": [
+    {
+      "section": "memory",
+      "name": "memory-map",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"WHAT DOES AN AGENT NEED TO REMEMBER?\". Three zones. Left 'Working context' with a small desk holding 'Current question', 'Relevant evidence', 'Next action'. Middle 'Thread memory' with a resumable case folder 'Messages', 'Tool results', 'Pending checks'. Right large shelf labelled 'Long-term memory' holding three distinct files 'Episodic: past events', 'Semantic: facts', 'Procedural: approved methods'. Arrow from shelf and case folder to desk 'Select for this task'. Bottom 'Retain deliberately. Retrieve selectively.' These zones are distinct, not sequential maturity stages. No industrial machines. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-61942e48-4a83-462a-b962-b6b1c3d47a0e.png",
+      "output": "site/public/images/memory/memory-map-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "memory-lifecycle",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"FROM ONE INVESTIGATION TO THE NEXT\". An enterprise inspection case, five visual panels 'Observe' incoming report, 'Work' task folder with current evidence, 'Review' human checking candidate notes against sources, 'Retain' three files 'Episode', 'Fact', 'Approved method', 'Recall' a new question receiving selected evidence. Feedback loop 'Correct or remove' from review to retained records. Tiny distinction 'A past success is not a new rule'. No all-data-save implication, no physical pumps. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-a2a3f102-b6cb-46b5-bfdb-db574333a10c.png",
+      "output": "site/public/images/memory/memory-lifecycle-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "representation-choices",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"CHOOSE THE REPRESENTATION FOR THE QUESTION\". Four parallel branches from an inspection question card: 'Exact identity' → structured table and key 'Record lookup'; 'Similar meaning' → document cluster 'Text embeddings'; 'Similar observation' → photo, waveform and map clusters 'Suitable media embeddings'; 'Connected facts' → linked nodes 'Relationships'. Separate foundation row 'Original sources + identity + time + permissions'. No invented coordinates, no physical equipment as AI. Footer 'Memory purpose and storage method are different choices'. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-678dae1c-bf27-4116-b167-cbaf7d36b1f0.png",
+      "output": "site/public/images/memory/representation-choices-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "media-event",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"FIND THE EVENT, THEN CHECK THE EVIDENCE\". A video timeline labelled 'One-hour recording', magnifying crop to 'Relevant interval' with preceding and following context. Under the interval, aligned 'Video frames', 'Audio', 'Transcript' tracks. They feed a case card 'Source', 'Time', 'Location', 'Uncertainty'. Separate orange card 'Generated coaching' downstream of a human review gate, visually distinct from original evidence. Footer 'A description helps search. The recording supports review.' Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "editPrompt": "Fix only the malformed title on the orange right panel to read exactly 'Generated coaching'. Keep its lightbulb icon completely separate from the text, with enough whitespace to avoid overlap. Preserve everything else.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-c97170ed-93f0-4cc1-932a-676226dd2b9b.png",
+      "output": "site/public/images/memory/media-event-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "evidence-join",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"DO THESE RESULTS DESCRIBE THE SAME EVENT?\". Three source lanes 'Inspection record', 'Site photo', 'Sensor window' flowing through gate checks 'Same asset?', 'Same place?', 'Same period?', 'Allowed access?'. After gate two destinations: teal folder 'Supported evidence' and amber folder 'Conflict or mismatch'. Both visible to an AI reasoning component explicitly labelled 'Agent', then 'Decision with sources'. Clear branching, conflicts not silently dropped, no pump imagery. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "editPrompt": "Correct this diagram's access logic. Change ONLY the lowest gate-check card: title 'Allowed access?' becomes 'Consistent account?' and its subtitle becomes 'Do these sources agree?'. Add a small clearly readable subtitle just below main title 'Only authorized sources enter this view'. Preserve all remaining layout, arrows, panels and text. Unauthorized sources must never be shown to the agent; the amber path is now for contradictions and identity/time mismatches only.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-7c78afea-b5b0-43e8-9be8-431033a03e04.png",
+      "output": "site/public/images/memory/evidence-join-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "memory-time",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"WHAT WAS TRUE, AND WHEN?\". Illustrative inspection timeline with exact labels 'Monday: inspection due', 'Tuesday: inspection completed', 'Friday: report received'. Two question cards 'Status on Monday?' pointing to due; 'Status after Tuesday?' pointing to completed once evidence verified. Dotted line Tuesday→Friday labelled 'Event time differs from arrival time'. Original events stay in history. Footer 'Keep versions, valid periods, and corrections'. No completion implies safety clearance. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "editPrompt": "Change ONLY the bottom small sentence 'No completion implies safety clearance.' to 'Completion does not mean every finding is resolved.' Keep all other text and layout exactly unchanged.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-fd6e3ac8-b2f2-4aef-bc4b-9ca5c95080cf.png",
+      "output": "site/public/images/memory/memory-time-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "memory-access",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"ACCESS RULES MUST FOLLOW THE INFORMATION\". Source report with lock feeding index entry, extracted note, summary, cached task context. All linked to source with thin dotted lineage. A changed-access badge fans out to all derivatives with amber review/refresh icons. At right permission gate before 'Current caller' receives allowed evidence only. Bottom lifecycle strip 'Owner → Review → Retain → Correct or remove'. Text 'Recheck access when reading'. Show connected derivatives rather than only original deletion. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-d78dde93-9037-4e36-833f-06cbb1324842.png",
+      "output": "site/public/images/memory/memory-access-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "memory-storage",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"SIX STORAGE CHOICES, DIFFERENT TRADEOFFS\". Six equally weighted illustrated compartments 2x3. 'Original records' document archive, small label 'Preserve detail'; 'Extracted facts' key-value cards 'Check extraction'; 'Relationships' graph 'Maintain links'; 'Summaries' layered document tree 'Check omissions'; 'Agent notes' editable notebook 'Review writes'; 'Learned internal memory' neural chip 'Different update and audit limits'. Footer 'Combine when useful. Keep evidence recoverable.' No claim all internal memory is training or all products unshipped. Distinct from cognitive types. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-7c2dd7b0-070d-4da4-bb3a-755da48a0048.png",
+      "output": "site/public/images/memory/memory-storage-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "memory-evaluation",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"FINDING EVIDENCE IS NOT THE WHOLE TEST\". Three clearly separated checkpoints flowing left to right 'Retrieve' with selected source pages, question 'Did we find the evidence?'; 'Answer' with cited response, question 'Does it support the answer?'; 'Complete the task' with reviewed case, question 'Was the outcome correct?'. Bottom four testcards 'Changed fact', 'No evidence', 'Restricted source', 'Interrupted task'. Footer 'Report quality, time, review effort, and full cost'. No scores. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-650bde51-1069-4b83-ae31-d760b6673ccf.png",
+      "output": "site/public/images/memory/memory-evaluation-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "context-and-memory",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"WHAT THE MODEL SEES NOW IS NOT EVERYTHING WE RETAIN\". Large archive 'Retained memory' beside case folder 'Thread state'. Both feed controlled selector 'Relevance + time + access' and then a smaller desktop window 'Working context for this call'. Within window software chip 'AI model'. Output 'Answer with references'. After call a reviewed-write arrow loops to retained memory with gate 'Review before saving'. Label 'A larger window does not manage retention'. No pump or equipment imagery. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-193ed2c3-04f5-46ac-ad6b-ab0777d3f006.png",
+      "output": "site/public/images/memory/context-and-memory-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "memory-at-scale",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"FIND THE RIGHT EVIDENCE ACROSS YEARS\". Broad enterprise archive containing years of records across three labelled sites. Funnel 'Scope the question: site, asset, period' -> 'Search suitable stores' -> 'Read selected sources' -> 'Resolve gaps or conflicts' -> 'Cited result'. A return arrow from gaps back to search. Small bottom cards 'Relevant evidence found?', 'Important evidence missed?', 'Cost per completed task?'. No unsupported benchmark numbers; ten million tokens not treated as universal cutoff. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-1cdd1dc5-78bb-4737-a47c-50962238519b.png",
+      "output": "site/public/images/memory/memory-at-scale-v1.webp"
+    },
+    {
+      "section": "memory",
+      "name": "memory-research-status",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"WHAT DOES A REPORTED RESULT ACTUALLY SHOW?\". Three equally clear panels 'Reported finding' document with source label; 'Reproduction package' package of dataset, code, settings and per-question outputs; 'Independent check' rerun result and limitations. Between first and last show checking process, not guaranteed success. Bottom toy example: 'Return every document' → 'Evidence included' next to warning 'Answer quality still unknown'. Footer 'Label reported, reproduced, and independently checked results separately'. No fake empirical numbers. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-3ee63310-2e20-4dcd-abca-9d91252e85e1.png",
+      "output": "site/public/images/memory/memory-research-status-v1.webp"
+    },
+    {
+      "section": "ladder",
+      "name": "diagnosis-software",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"WHY DID THE AGENT GIVE THE WRONG ANSWER?\". Explicit software diagram no industrial equipment: request 'Prepare the current inspection plan' goes into rectangle with neural-chip icon labelled 'AI model'. A source document 'Inspection already completed' is outside dashed evidence input. Output 'Schedule inspection again' with amber question. Four diagnostic cards 'Instructions', 'Evidence', 'Tools', 'Model capability'. Footer 'Find the cause before choosing the change'. AI is software not physical asset. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-de784518-077a-4b06-b5fd-b0bef4e4c220.png",
+      "output": "site/public/images/ladder/diagnosis-software-v1.webp"
+    },
+    {
+      "section": "ladder",
+      "name": "comparison-software",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"SAME AI MODEL, BETTER EVIDENCE?\". Two horizontal controlled-comparison lanes both contain identical neural-chip icon in rectangle 'Same AI model', same request 'Prepare inspection plan'. Top 'Missing completion record' → 'Proposes repeat inspection'. Bottom 'Verified completion record' → 'Checks remaining work'. Both labelled 'Illustrative output'. Comparison checkpoint 'Correctness • Review effort • Time • Full cost'. Footer 'Test on new cases before accepting the fix'. No pump, no equipment model, no realistic reported metrics. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-2cf66133-b839-43a6-8c8f-8b997ccbba47.png",
+      "output": "site/public/images/ladder/comparison-software-v1.webp"
+    },
+    {
+      "section": "ladder",
+      "name": "coordination-software",
+      "prompt": "Use case: infographic-diagram. Generate a new rich educational diagram in the style of the reference: warm ivory, deep teal, orange accents, soft shaded documents, crisp typography and generous whitespace. Reference is style only. Landscape 3:2, large easily readable labels. Main title exactly \"WHO CHOOSES THE NEXT STEP?\". Three equal columns: 'Fixed workflow' software boxes 'Validate → Prepare → Approve'; 'One agent' software window labelled 'Agent' with neural chip and circular tool-use loop 'Choose check → Read result → Reassess'; 'Several agents' three clearly labelled software windows 'Documents', 'Assets', 'Departments' coordinated by 'Task owner', combining into 'Reviewed result'. No robots no physical machines. Footer 'Models provide capabilities. Agents coordinate work.' No maturity numbering. Avoid em dashes, logos, tiny text, invented numeric results. Make arrows unambiguous.",
+      "source": "/Users/muralisid/.codex/generated_images/01a0ae3b-bb57-7831-a51c-184816a9835e/exec-d9e4e6c0-16dd-4319-82ce-2e551167dc50.png",
+      "output": "site/public/images/ladder/coordination-software-v1.webp"
+    }
+  ]
+}

@@ -1,43 +1,37 @@
 ---
-title: "Remember images, video, and audio"
-description: "Connect visual and audio evidence to the exact event it describes."
-position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
+title: "From a media match to an event"
+description: "Find the relevant interval and preserve what a reviewer needs to check it."
+position: "Design guidance with illustrative examples. Validate the design on the work it will support."
 lastReviewed: "2026-09-18"
 datePublished: "2026-09-17"
 dateModified: "2026-09-18"
 ---
 
-## A description can point to evidence without proving the event
+A search finds an hour of video labelled “possible unsafe activity”. That is a lead, but the reviewer still needs the seconds that support the claim, the surrounding context, and the applicable procedure. A saved description alone cannot provide all of that.
 
-A safety assistant finds a recording labelled “unsafe behavior in the loading bay”. If the whole hour has one summary, the reviewer still has to find the few seconds that support the claim. If the agent retains only that summary, later questions about who was present or what happened just before the event may be impossible to check.
+<TeachingIllustration src="/images/memory/media-event-v1.webp" title="Find the event, then check what happened" alt="A recording is narrowed to a relevant interval with surrounding context. Video frames, audio, and transcript align with source, time, location, and uncertainty. Generated coaching remains separate from original incident evidence." caption="Teaching illustration. The example is a proposed design, not a measured deployment." expandable />
 
-<TeachingIllustration src="/figures/memory/event-evidence.svg" mobileSrc="/figures/memory/event-evidence-mobile.svg" title="Finding a video is not finding the event" alt="One label for the recording: “Unsafe behavior in loading bay.”: The recording lasts one hour. The label does not locate the event.: A reviewer must search again.; A bounded event to review: Camera 3 · 14:02:11–14:02:18: Keep the clip and surrounding context. The event label is a hypothesis.: A reviewer can inspect the claim.. Generated descriptions help discovery. The original interval supports verification." caption="The original interval supports verification." />
+## Search and verification need different information
 
-The memory should help someone discover the recording and inspect the relevant interval. These are separate jobs. Keep the observation accessible and treat the generated description as an interpretation to verify.
+An embedding or generated description can help discover a recording. The original clip supports inspection of the event. Retain its source, time interval, scene or asset identity, processing version, and known uncertainty. Do the same for a photograph or audio excerpt.
 
-## Keep an event record
+A transcript helps find spoken words but may omit tone, background sounds, or visual context. Keep it linked to the recording and avoid treating uncertain speaker identity as confirmed.
 
-Store the source, observation interval, asset or scene, model version, and uncertainty with a derived event. Preserve the original media reference. A generated description is an interpretation, not a replacement for the recording.
+## Build an event record
 
-## Choose the model for the job
+Attach the relevant interval and enough context before and after it to judge the claim. Distinguish an observation from its interpretation: “person visible near vehicle” and “person violated the exclusion rule” require different support.
 
-A detector can locate a known object or event. A vision-language model can help interpret a scene. A speech model can produce a transcript. These outputs may support the same investigation, but they can fail differently.
+This event record can become part of episodic memory. Its images and audio are information forms, while its episodic role is to preserve what happened. That distinction keeps the memory design understandable.
 
-## Retrieve the useful interval
+## Check before creating an action
 
-A whole-video representation may find a related recording without locating the exact second that matters. Evaluate both discovery and event localization. For conversations, retain speaker attribution and timing only to the extent supported by the recording and approved identity process.
+For safety coaching, a reviewer should see the evidence and the relevant procedure. Verify identity through the approved process before addressing a person. A generated coaching video is educational output; it must not be filed as footage of the incident.
 
-## Inspect before acting
+## Test both finding and locating
 
-For a safety case, show the reviewer the supporting clip and the applicable procedure. Generated coaching media must be clearly separated from incident evidence. Uncertain identification should not trigger a message to an assumed person.
+Measure whether search discovers the right recording and whether it identifies the right interval. Include darkness, occlusion, background noise, unusual scenes, and events that should not trigger a finding. Compare with the existing detector or manual review process.
 
-## Test on the environment
+NVIDIA's [video-search blueprint](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard) and [Roboflow Workflows](https://docs.roboflow.com/workflows) provide vendor examples of composing visual processing. Reviewed 18 September 2026. Their documentation does not validate the proposed safety outcome.
 
-Include darkness, occlusion, background noise, unusual equipment, and events that should not be flagged. Compare the complete workflow with the existing detector or manual review process.
 
-The [safety-coaching example](/use-cases/safety-coaching) shows a proposed application. NVIDIA documents a video-search blueprint; Roboflow documents configurable vision workflows. These are vendor-described implementation options, not independent proof of this case’s outcomes.
-
-## External sources
-
-- [NVIDIA video search and summarization blueprint, vendor documentation](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard). Accessed 17 September 2026.
-- [Roboflow Workflows documentation](https://docs.roboflow.com/workflows). Accessed 17 September 2026.
+**Continue the story:** [Combine observations into a case](/memory/combining-evidence).

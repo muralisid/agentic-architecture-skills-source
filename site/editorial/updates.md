@@ -1,5 +1,9 @@
 # Guide updates
 
+## 2026-09-18: memory foundations before implementation
+
+Reorganized memory around working context, thread state, and long-term episodes, facts, and procedures. Added a guided reading path, grouped navigation, optional embedding tours, and generated diagrams for the operating and advanced pages. Replaced equipment-as-model illustrations with labelled software components. Research pages now distinguish public sources from earlier author-reported experiments.
+
 ## 2026-09-18: visual guides to agent design choices
 
 Expanded the guides to diagnosing failures, coordinating agents, and combining models. Added six generated teaching illustrations, industrial examples, explicit handoffs, and comparisons based on complete task outcomes and cost. Examples are illustrative designs rather than measured deployments.
