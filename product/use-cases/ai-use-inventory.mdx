@@ -1,0 +1,166 @@
+---
+title: "Build an AI use inventory a regulator can read"
+description: "A template for listing every AI use in a utility, the decision it influences, the safeguards around it, and the evidence that the safeguards work."
+position: "Proposed template. It is not legal advice and not an official form of any commission. Check the filing requirements in the order that applies to you."
+lastReviewed: "2026-09-19"
+datePublished: "2026-09-19"
+dateModified: "2026-09-19"
+---
+
+A regulator asks a utility to list every place it uses AI and to show how each use is governed. Most utilities can name their headline projects. Few can list the AI already inside vendor products, office tools, and analytics that predate the word "AI". This page gives a template for the inventory and for the policies that sit beside it.
+
+## Why this matters now
+
+On 17 September 2026 the New York Public Service Commission opened Case 26-M-0552. Within 60 days, twelve named gas, electric, and water utilities must file a complete inventory of AI system use cases in their operations, together with the policies, procedures, and protocols that govern AI use. The commission states that it will evaluate the filings against commonly accepted AI governance frameworks. It names seven risks: hallucinations, algorithmic biases, transparency issues, data privacy concerns, misconfiguration errors, cybersecurity attacks, and functional brittleness. Reporting reviewed on 19 September 2026 says semiannual reports follow the first filing.
+
+The Arizona Corporation Commission opened Docket AU-00000A-26-0060 on the use of AI by energy and water utilities on 24 March 2026. A utility outside both states can still use the same inventory for its board, its auditors, and its insurers.
+
+## What counts as an AI use
+
+Set the boundary before counting. A narrow boundary produces a short list that a later audit contradicts. We propose that an entry is any system where a learned or generative model influences a decision, a record, a customer interaction, or a physical action. That includes four groups that are easy to miss.
+
+- **AI inside purchased products.** Meter data analytics, outage prediction, security monitoring, customer contact platforms, and enterprise software assistants.
+- **Older machine learning.** Load forecasting, theft detection, credit and collections scoring, and image-based inspection that went live before generative AI.
+- **Staff use of general assistants.** Drafting, summarising, and coding tools used with company information.
+- **Contractor and vendor use on your behalf.** Vegetation analytics, call handling, and engineering studies performed by a third party using AI.
+
+Fixed rules, thresholds, and conventional optimisation are not AI uses. List them only where a model supplies an input to them.
+
+## The inventory, one row per use
+
+Each row answers six questions. The columns below are the template. A spreadsheet version is available as a [CSV file](/figures/use-cases/ai-use-inventory-template.csv).
+
+### 1. What is it and who owns it
+
+| Column | What to record |
+|---|---|
+| Use ID and name | A stable identifier and a plain name a commissioner would understand |
+| Business function | Customer service, network operations, asset management, field work, planning, finance, safety, corporate |
+| Accountable owner | A named role in the business, not the IT team and not the vendor |
+| Status | Proposed, trial, production, suspended, retired, with the date of the last change |
+| Source | Built in house, purchased product, feature inside a purchased product, third-party service |
+
+### 2. What kind of AI is it
+
+| Column | What to record |
+|---|---|
+| Technique | Statistical or machine learning model, computer vision, generative model, agent that uses tools |
+| Model and supplier | Model family, supplier, version or release date, and where it runs |
+| Learning level | L0 fixed, L1 curated updates, L2 governed learning, L3 continuous learning inside limits. See the [autonomy contract](/architecture/autonomy-contract) |
+| Change control | Who approves a model, prompt, or configuration change, and how it is tested first |
+
+### 3. What does it touch
+
+| Column | What to record |
+|---|---|
+| Information read | Customer personal information, usage data, asset records, operational telemetry, critical infrastructure information, employee records |
+| Systems written | Every system where the AI use can create or change a record, or "none" |
+| Operational technology | Whether any output can reach a control system, and by what path. See [business and industrial systems](/layers/r05-lob-and-ot) |
+| Data location | Where information is processed and stored, and whether the supplier may retain or train on it |
+
+### 4. What decision does it influence
+
+This is the section a regulator will read most closely. Record the decision, not the technology.
+
+| Column | What to record |
+|---|---|
+| Decision or action | The specific decision the output feeds, for example "which spans to inspect first" |
+| Role of the output | Informs a person, drafts for review, acts within a limit, acts without review |
+| Autonomy level | A0 manual to A5 governed lights-out, set for this task. See the [autonomy contract](/architecture/autonomy-contract) |
+| Deterministic zone | Whether the use touches access, movement of money, safety actuation, or formal records. See [the four deterministic zones](/architecture/deterministic-zones) |
+| Final decision maker | The named role, fixed rule, or certified system that makes the final call |
+| Customer effect | Whether a customer is affected, and whether the customer is told AI was involved |
+
+A use that touches a deterministic zone needs one more statement: where the boundary is enforced. "The prompt tells the model not to" is not a control. The control is a rule, an approval step, or a system outside the model that the model cannot bypass.
+
+### 5. How is each named risk handled
+
+Map safeguards to the seven risks the New York commission names. A safeguard is something that can be tested. For each one, record the test and its date.
+
+| Risk named by the commission | Safeguards to record |
+|---|---|
+| Hallucinations | Answers restricted to approved sources, source shown with each answer, human review before anything is sent or filed, sampled accuracy checks |
+| Algorithmic biases | Outcome comparison across customer groups and areas, review of training data, a route for a customer to contest a result |
+| Transparency issues | Plain description of how the output is produced, disclosure to customers and staff, record of which output led to which action |
+| Data privacy concerns | Data minimisation, supplier retention terms, access limits, privacy assessment date |
+| Misconfiguration errors | Change approval, test environment, configuration held under version control, rollback tested |
+| Cybersecurity attacks | Threat model that covers prompt injection and supplier access, least-privilege credentials for the AI use, monitoring, ability to cut access quickly. See [security practices](/security) |
+| Functional brittleness | Performance monitoring, defined operating range, documented manual fallback, and the date the fallback was last exercised |
+
+### 6. Where is the evidence
+
+| Column | What to record |
+|---|---|
+| Evaluation | The test set or sample used, the measure, the last result, and the date |
+| Logs | What is logged, who holds the logs, and how long they are kept. Logs of operational uses should be held by the utility, not only by the supplier |
+| Incidents | Count and summary since the last report, including near misses and customer complaints |
+| Next review | Date and owner |
+
+## The policies that sit beside the inventory
+
+The order asks for policies, procedures, and protocols as well as the list. We propose that a filing covers at least these eight. Each should name an owner and a review date.
+
+1. **Acceptable use.** What staff may and may not do with general AI assistants and company information.
+2. **Intake and approval.** How a new AI use is proposed, assessed, and entered in the inventory before it goes live.
+3. **Procurement.** What suppliers must disclose about AI inside their products, including data retention, model changes, and subcontractors.
+4. **Human oversight.** How autonomy levels are assigned, who may raise one, and how review capacity is sized for peak periods such as storms.
+5. **Deterministic boundaries.** The rule that a model may inform but never decide on access, movement of money, safety actuation, and formal records, and how each boundary is enforced.
+6. **Change control.** Testing and approval for model, prompt, data, and configuration changes.
+7. **Incident response.** How an AI failure is detected, contained, reported, and reviewed, and when the regulator is told.
+8. **Records.** What is retained, for how long, and who can retrieve it for an audit or a rate case.
+
+The commission has not named the frameworks it will use. The [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) and ISO/IEC 42001 are two widely used references, and the joint government [guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/) applies to uses near control systems. Mapping the policy set to one of them makes the filing easier to evaluate. This template is not a formal mapping to any of them.
+
+## Three worked rows
+
+These are illustrative entries for proposed uses described elsewhere in this guide. They are not descriptions of deployed systems.
+
+| | Vegetation inspection candidates | Customer bill explanation | Staff drafting assistant |
+|---|---|---|---|
+| Decision influenced | Which spans a planner inspects first | What a customer is told about an approved bill | Wording of internal documents |
+| Role of the output | Drafts an inspection request for review | Answers from approved bill data, routes the rest | Drafts for the author to edit |
+| Autonomy level | A2 | A2 for answers, A1 for anything unresolved | A1 |
+| Deterministic zone | None. Does not approve clearing or switching | Money and formal records. Cannot change an account, a bill, or a payment plan | Formal records if used for regulatory filings. Sign-off stays with a named person |
+| Final decision maker | Vegetation planner | Billing system rules and a service agent | The author |
+| Main risks | Brittleness, misconfiguration | Hallucinations, privacy, biases | Privacy, hallucinations |
+| Key safeguard | Field inspection confirms every finding | Answers limited to the customer's own approved records | No customer or critical infrastructure information in the tool |
+| Evidence | Confirmed findings per inspection, missed-risk sample | Sampled answer accuracy, complaint rate | Usage policy acknowledgement, periodic audit |
+
+The first row follows the [vegetation inspection example](/use-cases/vegetation-inspection). The second follows the [customer-service blueprint](/library/blueprints/departments/customer-service).
+
+## How to fill it in
+
+1. **Start from systems, not from a survey.** Ask each supplier in writing which products in use contain AI features. Review software and cloud invoices. Then ask the business units.
+2. **Record the decision first.** If nobody can say which decision an AI use influences, it is not ready to be reported as governed.
+3. **Assign the autonomy level as it operates today.** Do not record the level in the design document if people have stopped reviewing the output.
+4. **Mark the gaps.** An honest row with a missing safeguard and a date to close it is stronger than a complete-looking row that fails an audit.
+5. **Put an owner on the list itself.** Semiannual reporting means the inventory is a process with an owner, a change trigger, and a review cycle.
+
+An agent can help with the collection. The pattern is the same as [collecting compliance evidence](/use-cases/compliance-evidence): request a specific record from the team that owns it, check date and scope, and pass gaps to a reviewer. The inventory itself is a formal record. A named person attests to it.
+
+## Measure whether the inventory works
+
+Measure coverage against an independent check, such as a sample of supplier contracts or network traffic to known AI services. Track the share of rows with a tested safeguard for each applicable risk, the age of the oldest evaluation, the time from a new AI use to its row, and the number of uses found by audit that were not on the list.
+
+## Limits
+
+This template reflects the press release for Case 26-M-0552 and general governance practice. It was written before any utility filed and before the commission published an evaluation method. The order itself governs what a New York utility must file. Other commissions may ask different questions. The autonomy levels and deterministic zones are this guide's own constructs. Explain them in a filing in plain words, or translate them to the terms your commission uses.
+
+## Explore the architecture
+
+- [Governance, risk and sovereignty](/layers/r11-governance-risk-sovereignty).
+- [The four deterministic zones](/architecture/deterministic-zones).
+- [The autonomy contract](/architecture/autonomy-contract).
+- [Observability and FinOps](/layers/r12-observability-and-finops).
+
+Continue with [choose where to start](/use-cases/choose-where-to-start) or the [electricity](/library/blueprints/verticals/utilities-and-energy) and [water](/library/blueprints/verticals/water-utilities) blueprints.
+
+## External sources
+
+- [PSC Launches Inquiry into the Use of Artificial Intelligence by New York's Utilities](https://dps.ny.gov/news/psc-launches-inquiry-use-artificial-intelligence-new-yorks-utilities), New York Department of Public Service press release, 17 September 2026, Case 26-M-0552. Accessed 19 September 2026.
+- [New York to begin monitoring utilities' use of AI](https://www.wskg.org/2026-09-17/new-york-to-begin-monitoring-utilities-use-of-ai), WSKG, 17 September 2026. Source for the semiannual reporting cycle. Accessed 19 September 2026.
+- [Commissioner Lea Márquez Peterson opens formal inquiry into potential use of AI in utilities' operations](https://azcc.gov/lmarquezpeterson/news/2026/03/27/commissioner-lea-m%C3%A1rquez-peterson-opens-formal-inquiry-into-potential-use-of-artificial-intelligence-in-utilities--operations), Arizona Corporation Commission, 27 March 2026, Docket AU-00000A-26-0060. Accessed 19 September 2026.
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023.
+- [Government guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/), December 2025.
+
+Return to [Utilities](/use-cases/utilities) or [explore the agent roles](/use-cases/agent-roles).

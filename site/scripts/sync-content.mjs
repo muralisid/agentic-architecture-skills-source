@@ -394,7 +394,8 @@ libraryRoutes.add('/library');
 // at the same relative path, which is why a page refers to it as
 // /figures/<section>/<file>. Only files in a section directory are mirrored,
 // because the top level of public/figures belongs to the generated diagrams.
-const PRODUCT_ASSET_EXTENSION = /\.(?:avif|gif|jpe?g|png|svg|webp)$/i;
+// CSV is included so a page can offer a template download stored beside it.
+const PRODUCT_ASSET_EXTENSION = /\.(?:avif|csv|gif|jpe?g|png|svg|webp)$/i;
 
 async function collectProductAssets(dir, acc = []) {
   if (!existsSync(path.join(productDir, dir))) return acc;
@@ -500,7 +501,7 @@ const metas = {
     // own root and never appears in the product sidebar.
     pages: [...readerSections.map((section) => section.id), 'agentic-os', 'security', 'patterns', 'layers', 'decisions', 'about'],
   },
-  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', 'agent-roles', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'safety-coaching', 'compliance-evidence', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---From idea to investment---', 'choose-where-to-start', 'value-and-investment', 'enterprise-transformation', '---More industries and functions---'] },
+  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', 'agent-roles', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---From idea to investment---', 'choose-where-to-start', 'value-and-investment', 'enterprise-transformation', '---More industries and functions---'] },
   research: { title: 'Research', pages: ['index', 'experiments', 'questions', 'what-changed', 'industrial-examples', 'method'] },
   architecture: {
     title: 'Architecture',
