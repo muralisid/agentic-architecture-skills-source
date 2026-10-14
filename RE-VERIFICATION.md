@@ -53,6 +53,8 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 | CSA agentic autonomy levels v2.0 (18 Mar 2026) and the Agentic Universe draft (1 Apr 2026) | Reported as AI-assisted and not formally reviewed; may be revised or withdrawn | Risk profile crosswalk; agent types | January 2027 |
 | Anthropic's measure of 0.8 percent of tool calls appearing irreversible (18 Feb 2026) | Vendor telemetry on its own platform, not independently checked | Agent types, evidence | When an independent measure appears |
 | Entra Agent ID sponsor rules (sponsor required at creation; passes to the leaver's manager), updated 3 Sep 2026 | Vendor-documented product behaviour, subject to change | Agent lifecycle; identity chain | January 2027 |
+| Utilities figures reported by vendors or consultancies: AGL 36 percent containment (IBM), PG&E 67 percent (PolyAI), Vector pole inspection times (Tapestry), Westnetz 90 percent and EWE 99.5 percent (consultancy citing PwC), Kraken's A$170 million at Origin against Origin's own A$100 to 150 million | Self-reported outcomes that the reporters may revise; the Origin deck was seen only in a search excerpt | Utilities, energy, billing exceptions, vegetation and water pages; utilities blueprint | January 2027, against the utilities' own filings |
+| Packaged-application vendor counts and dates: SAP agent and skill counts (Q1 2026) and the Autonomous Suite (12 May 2026), Oracle's edition exclusions (Forrester, 8 May 2026), Salesforce Agentforce revenue (27 May 2026) and per-action pricing, Microsoft Dynamics 365 agent dates (April to September 2026) | Vendor marketing counts and roadmap dates move quarterly | Agents and packaged applications | January 2027 |
 
 ## Due Q4 2026
 

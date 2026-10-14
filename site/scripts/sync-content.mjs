@@ -501,7 +501,7 @@ const metas = {
     // own root and never appears in the product sidebar.
     pages: [...readerSections.map((section) => section.id), 'agentic-os', 'security', 'patterns', 'layers', 'decisions', 'about'],
   },
-  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', 'agent-roles', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---From idea to investment---', 'choose-where-to-start', 'value-and-investment', 'enterprise-transformation', '---More industries and functions---'] },
+  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', 'agent-roles', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'billing-exceptions', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---From idea to investment---', 'choose-where-to-start', 'packaged-applications', 'value-and-investment', 'enterprise-transformation', '---More industries and functions---'] },
   research: { title: 'Research', pages: ['index', 'experiments', 'questions', 'what-changed', 'industrial-examples', 'method'] },
   architecture: {
     title: 'Architecture',

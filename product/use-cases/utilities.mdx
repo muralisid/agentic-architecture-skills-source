@@ -1,19 +1,27 @@
 ---
 title: "Utilities: keep essential services working"
-description: "Explore electricity networks, water and wastewater, customer service, and assurance through a visual use-case map."
-position: "Proposed use-case designs. Outcomes require local evaluation; the maps are learning aids, not formal standards mappings."
-lastReviewed: "2026-09-18"
+description: "Named, dated AI deployments at utilities in electricity networks, water, customer service and assurance, with who reported each result, where each sits on autonomy, and the control it needs."
+position: "Deployments are as reported by the party named, and almost none is independently audited. Autonomy placements, zones and controls are this guide's position. Proposed designs are labelled as proposals."
+lastReviewed: "2026-10-14"
 datePublished: "2026-09-18"
-dateModified: "2026-09-19"
+dateModified: "2026-10-14"
 ---
 
-An unusual reading or an image alert is only the beginning of utility work. Someone must check which asset is involved, whether the observation is reliable, what work is already planned, and who should investigate. These proposed agents help close that gap between a signal and a supported work request.
+An unusual reading, an image alert or a customer call is only the start of utility work. Someone must check the asset or account, test the signal, and decide who acts. Each area below starts with named deployments: the utility, the date, who reported the result, and the stage. Vendor results are marked [vendor]. This guide's proposed designs follow, labelled as proposals.
+
+Each entry says whether the system advises or acts. It gives the <Term k="autonomy level">autonomy level</Term>, from A0 manual to A5 governed lights-out. It gives the <Term k="learning level">learning level</Term>, from L0 fixed to L3 continuous. It names the [zone or floor](/architecture/deterministic-zones) the work touches. In the deployments found, language-model systems advise. The few that act alone run fixed rules.
 
 <TeachingIllustration src="/images/use-cases/utilities-map-v1.webp" expandable title="Keep essential services working" alt="Four areas: electricity networks, water and wastewater, customer service, and assurance and resilience. Shared outcomes include service quality, reliability and affordability." caption="Choose a service problem. Keep the investigation separate from authorization to change physical operations." />
 
 ## Electricity networks
 
-Use dated imagery and an asset map to find inspection candidates. The agent checks location, previous work, evidence quality, and duplicates before preparing an inspection request. Field evidence confirms what the image cannot establish.
+**Vector, New Zealand: pole inspection (production).** Vector works with Tapestry on aerial images of its network. Roadside pole checks fell from 30 to 45 minutes to 5 to 7 minutes. Tapestry reported this from Vector's data on 20 August 2025 [vendor]. The tool advises. A detection triggers an inspection. A field crew confirms it.
+
+**Essential Energy, New South Wales: safety signals in crew notes (preparing to deploy).** An AI reads the free-text notes crews record on iPads. The utility projects it will find safety signals in 76 percent of cases. Its current rules find 59 percent (iTnews, 16 April 2026). That is a projection, not a measurement. The tool advises only.
+
+**Proposed design.** Use dated imagery and an asset map to find inspection candidates. The agent checks location, previous work, evidence quality and duplicates before it prepares an inspection request. Field evidence confirms what the image cannot establish.
+
+**Where these sit on the architecture.** Vector's tool is A2, L1. Essential Energy's is A1, L1. The risk to watch is staff trusting it too much. The proposed vegetation agent is A2, L1. It creates inspection requests. That puts it at Tier 2 on the [risk profile](/architecture/risk-profile). None of these touches [safety actuation](/architecture/deterministic-zones#safety-actuation). No utility was found letting an AI agent operate switching or protection. The control that must exist: a detection triggers an inspection. The field confirms it.
 
 <Cards>
 <Card title="Prioritize vegetation inspections" href="/use-cases/vegetation-inspection">Follow a candidate from observation to a confirmed field finding.</Card>
@@ -21,7 +29,15 @@ Use dated imagery and an asset map to find inspection candidates. The agent chec
 
 ## Water and wastewater
 
-Bring telemetry, operating history, and field observations together. The agent tests whether a signal is consistent with a sensor problem, planned work, or an issue needing investigation. Treatment and network control remain in approved operating processes.
+**Watercare, Auckland: wastewater sensors (production rollout).** Watercare is installing 5,000 sensors in its wastewater network after a 135-sensor trial. An AI layer learns normal behaviour. It alerts staff to inflow, blockages and pump-station problems. Staff decide on maintenance (Watercare, 18 August 2025).
+
+**Sydney Water with UTS: leak detection (production).** Acoustic sensors in water mains feed an AI that ranks the risk of leaks and breaks. Its developers report 80 percent accuracy at locating likely failures within 200 metres (Trenchless Australasia, February 2023). It advises crews.
+
+No language-model triage of SCADA alarms was found at any utility. SCADA is the control-room system that monitors and operates pumps and valves.
+
+**Proposed design.** Bring telemetry, operating history and field observations together. The agent tests whether a signal fits a sensor problem, planned work, or an issue needing investigation. Treatment and network control stay in approved operating processes.
+
+**Where these sit on the architecture.** Both named systems and the proposed agent advise, at A2, L1. None of them writes to SCADA. That keeps them out of the [safety actuation zone](/architecture/deterministic-zones#safety-actuation). The control that must exist: no write path from the agent to <Term k="ot">operational technology</Term>. See [business and industrial systems](/layers/r05-lob-and-ot).
 
 <Cards>
 <Card title="Investigate a network anomaly" href="/use-cases/water-operations">See how a bounded investigation uses time-series evidence and asset memory.</Card>
@@ -29,11 +45,35 @@ Bring telemetry, operating history, and field observations together. The agent t
 
 ## Customer service
 
-A proposed assistant could explain an approved bill or outage update, gather details, and route the unresolved case. A coordinating extension could track the service request to a confirmed response. Keep account changes, compensation, and public communications behind their own approval rules. Start with the [customer-service blueprint](/library/blueprints/departments/customer-service).
+**AGL, Australia: chat (production).** AGL's assistant on IBM watsonx contains 36 percent of about 125,000 monthly chats (IBM case study, undated) [vendor]. Its one journey that acts alone adds a concession card. That journey is a fixed rule-based flow.
+
+**PG&E, California: voice (production).** PG&E's voice agent, built by PolyAI, answers outage and billing calls and routes the rest. PolyAI reports 67 percent containment and 35,000 labour hours saved (customer page, 2026) [vendor].
+
+The AGL and PG&E figures count different things: chats against calls. They are not comparable. <Term k="containment">Containment</Term> counts contacts that never reached a person. It does not count problems solved.
+
+**Kraken with Sierra: account journeys (production at one utility).** Kraken launched agents with Sierra in June 2026. They run set journeys such as identity checks, home moves and meter reads. One unnamed utility went live in four weeks on about 1.3 million accounts. No results are published (Pulse2, 12 June 2026) [vendor].
+
+An independent trade analysis looked at these agents (CX Today, 12 August 2026). It says anything that changes a balance, payment, tariff or debt should be a hard stop. No named utility says a language-model agent changes a payment plan on its own.
+
+Prefer the utility's own filing over the vendor's. Kraken claims A$170 million saved at Origin [vendor]. Origin's half-year deck says A$100 to 150 million. That deck was seen only in a search excerpt.
+
+**The hardship precedent.** In AER v Origin (Federal Court, 6 July 2022), automated processes changed payment plans without checking capacity to pay. Origin admitted over 100,000 breaches affecting over 90,000 customers. It paid an A$17 million penalty. The regulator warned that automation must not replace human contact for customers in hardship. This was automation, not AI. Ofgem and the UK Energy Ombudsman set out two expectations on 5 February 2026. Firms should make it easy to reach a person. They should say when AI is in use.
+
+**Proposed design.** An assistant explains an approved bill or outage update, gathers details, and routes the unresolved case. A coordinating extension tracks the request to a confirmed response. Start with the [customer-service blueprint](/library/blueprints/departments/customer-service).
+
+**Where these sit on the architecture.** AGL's and PG&E's assistants are A2, L1. Kraken's set journeys are A3, L1. Any change to a balance, payment or tariff is in the [money zone](/architecture/deterministic-zones#movement-of-money). The control that must exist is approval on account changes. Measure the resolution rate, not containment. Hardship, disconnection and payment plans sit under the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). There the agent only flags, at A1. A trained person decides and checks capacity to pay for each case. The [four questions](/use-cases/agent-roles) score a customer chat agent this way.
+
+<Cards>
+<Card title="Resolve billing exceptions without deciding hardship" href="/use-cases/billing-exceptions">Clear implausible meter reads with rules and a specialist, and hand hardship to a person.</Card>
+</Cards>
 
 ## Assurance and resilience
 
-Collect maintenance, inspection, training, and incident evidence with clear dates and ownership. Compare recurring findings across sites without treating similar text as proof of a shared cause.
+No utility was found using agents for regulatory reporting or compliance evidence. The search was not complete. Ofwat says regulatory reporting is one area where UK water companies report some AI use. It names no case (Kurrant, 18 June 2026).
+
+**Proposed design.** Collect maintenance, inspection, training and incident evidence with clear dates and ownership. Compare recurring findings across sites without treating similar text as proof of a shared cause.
+
+**Where these sit on the architecture.** The proposed evidence and audit agents advise, at A2, L1. A filing to a regulator is a [formal regulatory record](/architecture/deterministic-zones#formal-regulatory-records). A named person signs it. The control that must exist: every finding links to its source record.
 
 <Cards>
 <Card title="Prepare evidence for review" href="/use-cases/compliance-evidence">Link obligations, checks, source records, and unresolved gaps.</Card>
@@ -46,5 +86,23 @@ Collect maintenance, inspection, training, and incident evidence with clear date
 APQC's [Utilities process framework](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-utilities-pdf-version) provides an industry process structure. EPA's [Effective Utility Management guidance](https://www.epa.gov/sustainable-water-infrastructure/things-local-officials-should-know-about-effective-water) provides a wider view of water-utility performance. Our four areas are a simplified navigation aid, not the complete taxonomy of either reference. Reviewed 18 September 2026.
 
 Select measures for the actual task: confirmed findings per inspection, duplicate work, investigation time, unresolved service requests, and total cost. Broader reliability and quality outcomes need evaluation over an appropriate period.
+
+## Sources added October 2026
+
+Checked 14 October 2026 unless noted.
+
+- [Tapestry on Vector](https://x.company/blog/posts/tapestry-vector/), 20 August 2025, using Vector's data [vendor].
+- [iTnews on Essential Energy](http://www.itnews.com.au/news/essential-energy-turns-to-ai-for-safety-inspections-625091), 16 April 2026.
+- [Watercare sensor rollout](https://www.watercare.co.nz/home/about-us/latest-news-and-media/watercare-s-wastewater-network-smartens-up-with-rollout-of-5000-sensors), 18 August 2025.
+- [Trenchless Australasia on Sydney Water](https://www.trenchless-australasia.com/2023/02/22/sydney-water-takes-on-more-tech/), 22 February 2023. Read through a search summary.
+- [IBM case study on AGL](https://www.ibm.com/case-studies/agl-energy), undated [vendor].
+- [PolyAI on PG&E](https://poly.ai/customers/pge), 2026 [vendor].
+- [Pulse2 on Kraken and Sierra](https://pulse2.com/kraken-launches-autonomous-agents-with-sierra-to-transform-utility-customer-service/), 12 June 2026 [vendor].
+- [CX Today on Kraken's agents](https://cxtoday.com/kraken-autonomous-agents), 12 August 2026. Independent trade analysis.
+- [Kraken case study on Origin](https://www.kraken.tech/case-studies/origin), undated [vendor].
+- [Origin half-year 2026 presentation](https://www.originenergy.com.au/wp-content/uploads/65/Origin-Energy-HY26-Investor-Presentation.pdf), 12 February 2026. Seen only in a search excerpt.
+- [AER release on Origin](https://www.aer.gov.au/news-release/origin-penalised-17-million-for-customer-hardship-breaches), 6 July 2022, as reported by [Region](https://region.com.au/origin-fined-17-million-admits-breaching-hardship-obligations-100000-times/572811).
+- [Ofgem and the Energy Ombudsman on AI](https://www.ofgem.gov.uk/blog/understanding-ai-energy-sector-benefits-risks-and-your-rights), 5 February 2026.
+- [Kurrant on Ofwat's AI plan](https://kurrant.com/kurrantly-news/ofwat-backs-ai-for-the-water-sector-as-data-centre-demand-strains-supply/), 18 June 2026.
 
 Continue with the [water blueprint](/library/blueprints/verticals/water-utilities), [electricity blueprint](/library/blueprints/verticals/utilities-and-energy), or [choose a first task](/use-cases/choose-where-to-start).

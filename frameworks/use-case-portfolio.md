@@ -38,6 +38,18 @@ A use case is fundable this quarter only if it passes all three.
 
 **Gate 3: Grounding readiness.** A curated corpus with a named owner either exists or can exist within the funding period, scoped to this use case rather than to a source system. Corpus size is not the measure: growing a corpus from 54 to over 1,100 uncurated documents dropped accuracy from 75% to under 40% until domain scoping fixed it.
 
+### Two tests for packaged applications
+
+Added October 2026 from this guide's research on packaged, or commercial off-the-shelf (COTS), software. No published selection framework found carries either test. The closest, [Microsoft's Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/business-strategy-plan) (updated 2 June 2026, vendor-published), asks whether a SaaS agent already meets the need. It does not ask which edition the enterprise runs, or when the agent arrives.
+
+Both tests run after the three gates and before scoring. They do not decide whether a use case is worth doing. They decide whether the enterprise should build the agent at all.
+
+**One package or several?** Inside one package, the vendor holds the data and the permissions and is likely to ship an agent. Across several packages, no vendor agent covers the whole job, and the join is the strongest build candidate.
+
+**Is a vendor agent generally available on this edition, or dated within two quarters?** Count only agents marked generally available in release notes, treat announced agents as unavailable, and check the price after any free period. Vendor agents are tied to editions: Oracle's are not coming to E-Business Suite, JD Edwards, PeopleSoft or Hyperion ([Forrester, 8 May 2026](https://www.forrester.com/blogs/oracle-applications-analyst-summit-fusion-agents-are-shifting-from-assist-to-decide/)), and SAP ties its AI to cloud editions or a committed migration ([SAPinsider, 15 May 2026](https://sapinsider.org/articles/sapphire-2026-your-sap-erp-just-got-an-ai-brain-now-what-seven-questions-every-leader-must-answer/)).
+
+Inside one package, on a supported edition, with a dated generally available agent, the decision is wait or buy. The use case leaves the build ranking but stays on the portfolio, and its vendor date is re-checked each quarter. Across packages, or on an excluded edition, the agent is built, and built thin so it can be retired when a vendor agent arrives. A vendor agent still takes a registry entry and still draws on the shared supervision capacity in constraint 1 below. The full method and a dated map of a utility estate are in [agents and packaged applications](/use-cases/packaged-applications).
+
 ## Scoring what survives the gates
 
 ```

@@ -1,0 +1,112 @@
+---
+title: "Resolve billing exceptions without deciding hardship"
+description: "Clear implausible meter reads and failed bills with rules, models and a specialist's approval, and hand anything about hardship, disconnection or a payment plan to a trained person."
+position: "Proposed agent design. The named deployments use rules and models, not language models, and their figures come from a consultancy summary. SAP's agents are plans. Autonomy placements and controls are this guide's position."
+lastReviewed: "2026-10-14"
+datePublished: "2026-10-14"
+dateModified: "2026-10-14"
+---
+
+A meter read looks wrong, or a bill fails a check. The case lands on an exception list. A specialist must work out whether it is a typing error, a faulty meter, an estimate, or real use. The proposed agent gathers that evidence and proposes a resolution. It stops the moment hardship, disconnection or a payment plan is involved.
+
+## See the work first
+
+The work runs in five steps.
+
+1. An implausible read or a failed bill reaches the exception list.
+2. The agent checks the account for any sign of hardship, disconnection or a payment plan.
+3. It gathers the read history, meter events, past bills and account notes.
+4. It proposes a resolution and shows the evidence behind it.
+5. A fixed rule releases plausible cases above an agreed confidence level. A sample of those is checked. A specialist approves the rest.
+
+<details>
+<summary>Experience behind this example</summary>
+
+This is a proposed design built from published deployments and one court case. It is not presented as a system the author has delivered.
+
+</details>
+
+## Who does this today
+
+The best measured exception automation found is German. It uses rules and models, not language models.
+
+- **Westnetz, Germany.** Westnetz resolves 90 percent of meter-reading exceptions automatically. Stage: production.
+- **EWE, Germany.** EWE checks about 50,000 photo meter reads a month at 99.5 percent accuracy. Stage: production.
+- **Stadtwerke Essen, N-ERGIE and others.** A scoring add-on used by more than 20 German utilities flags implausible reads. It releases nothing. Stage: in use.
+
+All three come through a consultancy summary that cites PwC (innobu, 26 September 2026).
+
+Language-model agents for this work are still mostly plans. SAP's billing-exception agents propose resolutions for a person to approve. One user-group article dated them to Q2 2026 (ASUG, 21 January 2026). Another gave Q3 2026 (ASUG, 27 May 2026). On 14 October 2026 it was not confirmed that they had shipped. IBM started a programme with six founding utilities to build SAP utility agents (11 September 2026) [vendor]. Billing exception management is one of its planned agents. It has published no results. No named utility was found letting a language-model agent change a bill on its own.
+
+## Start with evidence
+
+The limit on this work comes from a court case about automation, not AI. In AER v Origin (Federal Court, 6 July 2022), automated processes changed payment plans without checking capacity to pay. Origin admitted over 100,000 breaches affecting over 90,000 customers. It paid an A$17 million penalty. The regulator warned that automation must not replace human contact for customers in hardship. Ofgem and the UK Energy Ombudsman set out two expectations on 5 February 2026. Firms should make it easy to reach a person. They should say when AI is in use.
+
+For your own trial, collect a set of past exceptions. For each case keep the read, the meter's history, the reason it was flagged, and what the specialist decided. Those decisions are the reference the agent is tested against.
+
+## What the agent adds
+
+Rules and models already score reads. The agent adds the investigation a specialist does next. It compares the read with past periods. It checks meter events, such as a replacement or a fault. It reads account notes and recent contacts. Then it proposes one resolution, such as accepting the read, using an estimate, or asking for a new read. Each proposal carries its evidence and a confidence level.
+
+The consultancy summary recommends a shape for release. Cases above a confidence threshold are released automatically. A person decides the rest. A random sample of released cases is checked (innobu, 26 September 2026). This guide's position adds one condition. The model never releases anything itself. A fixed rule in the billing system checks the confidence level and a set of hard limits. Only then does it release the case. The hard limits include a cap on the bill change and no hardship or disconnection flag on the account.
+
+## How the investigation proceeds
+
+The agent asks three questions in order.
+
+1. Does the account show any sign of hardship, a disconnection, or a payment plan? A sign can be a hardship flag, missed payments, or a note that the customer is struggling to pay. If yes, the agent hands the case to a trained person with its evidence and stops.
+2. Is the read wrong, or is the use real?
+3. If the read is wrong, what is the most likely cause, and what correction fits it?
+
+Ask for another read only when it can change the decision. Stop with a proposed resolution, a named evidence gap, or a hand-off to a person.
+
+## Measure the business result
+
+Measure the resolution rate: cases resolved correctly and not reopened. Do not measure <Term k="containment">containment</Term>. Count wrong releases found by sampling, reversals, billing complaints, time to resolve, and <Term k="cost per resolved outcome">cost per resolved outcome</Term>. Count the hardship cases routed to a person, and how fast a person picked each one up.
+
+An independent trade analysis recommends counting vulnerable-customer outcomes, reversals and wrong actions (CX Today, 12 August 2026). Compare with the current exception team on the same cases. Do not carry Westnetz's 90 percent to a different network. It came from rules and models on German market processes.
+
+## Responsibility and failure handling
+
+The agent may analyse, propose and flag. It never changes a bill or an account itself. A fixed rule or a specialist approves every change.
+
+Once hardship, disconnection or a payment plan is involved, the agent only flags and drafts. A trained person decides and checks capacity to pay for that customer. The Origin case shows what happens when automation changes payment plans without that check.
+
+If a source system is down, or the evidence conflicts, the case goes to a specialist. A missing read is never treated as a normal one. Each release is logged with its evidence and with the rule or person that approved it.
+
+## Where this sits
+
+[The four questions](/use-cases/agent-roles#billing-exception-agent) and the [risk profile](/architecture/risk-profile) place this agent as follows. The placements are this guide's position.
+
+- **Advises or acts:** both. It proposes every resolution. A fixed rule releases plausible cases. A specialist approves the rest.
+- **Placement:** on the [autonomy contract](/architecture/autonomy-contract), A3, L1 for plausible cases released by the rule. A2, L1 for the rest. A1 once hardship is involved. People approve every change to its rules and thresholds.
+- **Zone:** the [money zone](/architecture/deterministic-zones#movement-of-money), for any change to a bill.
+- **Floor:** the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor), the moment hardship, disconnection or a payment plan is involved.
+- **Control:** approval on every account change, by a fixed rule or a specialist. A measured resolution rate, not containment.
+- **Tier:** Tier 3. A zone action always scores High. Hardship cases stay at Tier 3.
+
+## Start with a bounded trial
+
+Use a representative historical sample of exceptions, with the specialists' decisions as the reference. Run the agent in <Term k="shadow mode">shadow mode</Term>, with no live releases. Review errors and costs with the billing team that will own the work. Then allow automatic release for one plausible exception type, under a small cap on the bill change. Keep sampling. Move further only when quality, permissions, recovery and supervision are adequate.
+
+## Explore the architecture
+
+- [Systems of record](/layers/r04-systems-of-record).
+- [Integration & tools](/layers/r03-integration-fabric).
+- [Governance, risk and sovereignty](/layers/r11-governance-risk-sovereignty).
+
+Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+
+## External sources
+
+All accessed 14 October 2026.
+
+- [innobu on AI for exception cases in metering](https://www.innobu.com/en/articles/ai-exception-cases-market-communication-metering-2026.html), 26 September 2026. Consultancy summary citing PwC.
+- [ASUG on SAP Joule for utilities](https://www.asug.com/insights/sap-positions-joule-as-a-process-native-copilot-for-the-utilities-value-chain), 21 January 2026.
+- [ASUG on SAP's utilities agents](https://www.asug.com/insights/sap-bets-on-ai-agents-to-tame-utilities-most-complex-workflow), 27 May 2026.
+- [IBM on its AI Lighthouse Council for SAP utilities](https://www.ibm.com/new/announcements/ibm-launches-the-ibm-ai-lighthouse-council-for-sap-utilities), 11 September 2026 [vendor].
+- [AER release on Origin's hardship breaches](https://www.aer.gov.au/news-release/origin-penalised-17-million-for-customer-hardship-breaches), 6 July 2022, as reported by [Region](https://region.com.au/origin-fined-17-million-admits-breaching-hardship-obligations-100000-times/572811).
+- [Ofgem and the Energy Ombudsman on AI](https://www.ofgem.gov.uk/blog/understanding-ai-energy-sector-benefits-risks-and-your-rights), 5 February 2026.
+- [CX Today on Kraken's agents](https://cxtoday.com/kraken-autonomous-agents), 12 August 2026. Independent trade analysis.
+
+Return to [Utilities](/use-cases/utilities) or [explore the agent roles](/use-cases/agent-roles).

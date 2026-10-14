@@ -2,9 +2,9 @@
 title: "Investigate an energy asset before planning work"
 description: "Bring readings, inspection images, operating conditions, and maintenance history into a reviewable investigation."
 position: "Proposed agent workflow. Engineering findings and work authorization require local validation and accountable owners."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-14"
 datePublished: "2026-09-18"
-dateModified: "2026-09-18"
+dateModified: "2026-10-14"
 ---
 
 Consider equipment at a generation site operating outside its expected temperature range. A dashboard flags the difference. An engineer must still check operating load, sensor quality, recent work, and inspection evidence before deciding whether maintenance is needed. The agent's proposed contribution is to help investigate that difference.
@@ -19,15 +19,39 @@ Keep the asset identifier, measurement interval, units, operating baseline, and 
 
 Is the difference explained by operating conditions? Did it begin after maintenance? Is one measurement unreliable? Use approved analysis tools to compare evidence. Request a targeted inspection only if it can distinguish the remaining explanations. Stop when an engineer can assess the case, evidence remains insufficient, or the investigation limit is reached.
 
+## Let the agent call engineering tools
+
+The agent does not do the engineering calculation itself. It plans the investigation and calls trusted tools, such as a time-series model, a thermal analysis or a power-flow solver. The tools calculate. The agent organizes their results and proposes the next check.
+
+Two planning cases use this pattern. AgenticGrid, from Monash University with Transgrid and Essential Energy, lets agents choose which studies to run. A conventional open-source solver does the power-flow calculation. Each action is logged. Its Broken Hill model was checked against a year of measured transformer load (Race for 2030, trial). Duke Energy and AWS run agents on Duke's own simulation software, grid models and engineering standards. AWS says data preparation fell from about two weeks to hours [vendor]. Duke says its engineers make all final engineering decisions (T&D World, 18 September 2026).
+
+Both cases are planning work, not asset investigation. The pattern carries over. The language model plans, the engineering tools calculate, and an engineer decides.
+
 ## Combine models through evidence
 
 A time-series model can identify unusual behavior. A vision model can locate a candidate feature in inspection imagery. An LLM can organize their outputs alongside work records and propose the next check. Preserve each tool's uncertainty and source references. Do not treat agreement between models as independent proof when they rely on the same observations.
 
 Memory connects current task progress, similar past cases, and approved engineering procedures. Similarity retrieval suggests useful comparisons; the engineer checks whether the operating conditions make them relevant.
 
+## Check each suggestion before anyone acts
+
+The agent's suggestion is checked against telemetry and history before anyone acts on it. Does the reading it relies on match the live data? Has the same pattern appeared before? What did it turn out to be? A rule set or a <Term k="digital twin">digital twin</Term> can test a proposed cause against the physics. Only suggestions that pass reach the engineer.
+
+This is the <Term k="validation loop">validation loop</Term>. Suggestion tools already ship. So the research behind this guide calls this loop the part worth designing. The [R05 validation loop](/layers/r05-lob-and-ot#the-validation-loop) shows how it works in the control room.
+
 ## Prepare a controlled handover
 
 Provide the finding, alternatives considered, supporting sources, unresolved questions, and suggested work scope. The engineering owner approves the response. The agent may create a draft work item through a permitted interface; it does not alter setpoints, isolate equipment, or commit an outage.
+
+## Where this sits
+
+This is this guide's proposal, not a reported deployment. [The four questions](/use-cases/agent-roles) place it as follows.
+
+- **Advises or acts:** advises. The agent calls engineering tools. A person decides.
+- **Placement:** A2, L1 to L2. It does a set task and an engineer decides. People choose what it learns from (L1). Accepted and rejected findings may feed a reviewed learning loop (L2).
+- **Zone:** none. It never touches [safety actuation](/architecture/deterministic-zones#safety-actuation). It reads plant data and never writes to controls. Work authorization stays with a person.
+- **Control:** the validation loop above, and a draft work item that a named person approves.
+- **Tier:** score it with the [risk profile](/architecture/risk-profile). Control-system data scores High there on its own.
 
 ## Test whether it earns its place
 
@@ -36,5 +60,10 @@ Compare the agent with existing alarms, fixed checks, and engineer-led investiga
 ## External context
 
 The IEA's [Energy and AI report, 2025](https://www.iea.org/reports/energy-and-ai/ai-for-energy-optimisation-and-innovation) discusses AI across energy operations, including maintenance. This example extends that application area into a proposed agent workflow; it is not a reported IEA deployment or result. Reviewed 18 September 2026.
+
+Sources added October 2026:
+
+- [Race for 2030, AgenticGrid at Broken Hill](https://www.racefor2030.com.au/ai-model-helps-network-planners-answer-questions-fast/), undated. Accessed 14 October 2026.
+- [T&D World, AWS and Duke Energy agents for interconnection studies](https://www.tdworld.com/smart-utility/news/55406294/aws-duke-energy-use-ai-agents-to-accelerate-interconnection-studies), 18 September 2026. The time saving is AWS's figure [vendor].
 
 Continue with [Energy](/use-cases/energy), [combining models](/ladder/combining-models), or [combining evidence](/memory/combining-evidence).

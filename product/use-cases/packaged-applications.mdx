@@ -1,0 +1,159 @@
+---
+title: "Agents and packaged applications"
+description: "When core systems are packaged software you cannot rewrite, decide process by process whether to wait for the vendor's agent, buy it, or build a thin one."
+position: "This guide's selection method. Vendor counts and dates are vendor-published and re-verified quarterly."
+lastReviewed: "2026-10-14"
+datePublished: "2026-10-14"
+dateModified: "2026-10-14"
+---
+
+<PlainTerms>
+Most large organisations run their core work on packaged software, also called COTS (commercial off-the-shelf). Billing, finance, asset and field systems are bought, not written. The vendor owns the code. So the question is not only "should we build an agent?" It is also "will the vendor ship one for our version, and when?" The one thing to remember: wait for a vendor only when a dated agent exists for your edition. Build thin where the work crosses several packages.
+</PlainTerms>
+
+## Why packaged software changes the question
+
+Two pieces of advice are common. One says wait for the vendor to put agents inside the package. The other says build agents on the glue around the packages: middleware, portals and reporting. Neither works as a blanket rule.
+
+This guide's position:
+
+- **Inside one package**, on a supported edition, with a dated agent that is generally available: wait or buy.
+- **Across packages**, or on an edition the vendor excludes: build, and build thin.
+
+Generally available (GA) means any customer can buy it and run it in production, not a preview. Vendors are moving into every glue layer at once. So the opening is the join across packages, not each layer.
+
+## Where vendor agents really are
+
+**In short:** Every large package vendor now sells agents. Most are tied to cloud editions. Dates move, prices are open, and no vendor publishes how many of its agents run in production.
+
+Status as of 14 October 2026:
+
+| Vendor | What the vendor claims | Edition and price | Still open |
+|---|---|---|---|
+| SAP | Over 30 specialised agents and more than 2,500 Joule skills in Q1 2026 (14 April 2026) [vendor]. An "Autonomous Suite" over 200-plus agents, unveiled 12 May 2026 [vendor]. | AI is tied to cloud editions or a committed migration. Joule Studio, its agent builder, is free only through 31 December 2026 (SAPinsider, 15 May 2026). | No GA date for the Autonomous Suite in the coverage. Price after 2026 not disclosed. |
+| Oracle | 1,000-plus prebuilt agents, cited at an analyst summit (Forrester, 8 May 2026) [vendor]. | Its agents are not coming to E-Business Suite, JD Edwards, PeopleSoft or Hyperion. They need the Fusion cloud applications. | No production counts shared. Renewal pricing for agent-heavy use is unresolved. |
+| Salesforce | Agentforce annual recurring revenue of USD 1.2 billion for the quarter to 30 April 2026 (27 May 2026) [vendor]. | Pricing moved from USD 2 per conversation to per-action credits within about eight months. | No paid-deal count in the results. |
+| Microsoft | Dynamics 365 agents slated for April to September 2026 (18 March 2026) [vendor]. | Pricing and prerequisites not stated in the announcement. | Slated is not shipped. Check each agent's release note. |
+
+**Dates move.** ASUG is the SAP user group. SAP's utilities billing-exception agent was "scheduled for Q2 2026" in one ASUG article (21 January 2026) [vendor]. A Billing Document Agent was "planned for Q3 2026" in another ASUG article (27 May 2026) [vendor]. The two scopes may differ. So this is a likely slip, not a confirmed one. Neither is confirmed as shipped on 14 October 2026.
+
+**Counts do not compare.** Vendors count agents, assistants, skills and apps differently. None publishes how many of its agents run in production. Forrester calls this the main gap in Oracle's case.
+
+**The layer that governs agents across vendors is contested, not empty.** SAP, ServiceNow, Workday, Microsoft and MuleSoft each offer to register other vendors' agents (diginomica, 5 May 2026; CIO.com, 12 May 2026) [vendor]. Each wants to be the one list of every agent. Workday's claim that its own registry is generally available is unconfirmed ([what has shipped](/architecture/agent-lifecycle#what-has-shipped-and-what-has-not)).
+
+## The six tests
+
+**In short:** Run six tests on each process, in order. Tests three and four are the new ones for packaged applications.
+
+1. **Does it need an agent?** A predictable task needs ordinary code. Questions over a fixed set of documents need plain retrieval. This follows Microsoft's Cloud Adoption Framework (updated 2 June 2026) [vendor].
+2. **Can it be evaluated?** Domain experts must be able to write pass-or-fail tasks from real failures. This is the existing gate in [the use-case portfolio](/library/frameworks/use-case-portfolio). A valuable process that fails it goes to the make-it-evaluable queue. It is neither built nor rejected.
+3. **Is the process inside one package or across several?** Inside one package, the vendor holds the data and the permissions. It is likely to ship an agent. Across several packages, no vendor agent covers the whole job.
+4. **Is a vendor agent GA on this edition, or dated within two quarters?** Count only agents marked GA in release notes. Treat "announced" as unavailable. Check the price after any free period ends.
+5. **What is the consequence class?** Score the agent with the [risk profile](/architecture/risk-profile). Check which [deterministic zones](/architecture/deterministic-zones) it touches. A bill change is a money action, whoever built the agent.
+6. **Score impact, feasibility and desirability.** Microsoft's framework scores each from 1 to 5. Then check that your reviewers can absorb the load across the whole portfolio.
+
+Tests three and four appear in no published framework found in this guide's research. The only fully documented selection method found is Microsoft's. It asks whether a software-as-a-service (SaaS) agent already meets the need. It does not ask which edition you run, or when an agent will arrive.
+
+### Five outcomes
+
+| Outcome | When it applies | What you do |
+|---|---|---|
+| Wait or buy | Inside one package, on a supported edition, with an agent that is GA or dated within two quarters | Use the vendor's agent. Register it. Re-check the date each quarter. |
+| Build thin across packages | The process crosses packages, the edition is excluded, or nothing is dated within two quarters | Build a small agent that works through governed <Term k="api">APIs</Term>. Leave each package's rules inside the package. |
+| Wrap | You use vendor agents in several packages | Use them. Own the interface inventory, the semantic layer, the registry and the policy. |
+| Not an agent | Test one fails | Use ordinary code, a fixed workflow or plain retrieval. |
+| Prepare first | Test two fails, or the data or interfaces are not ready | Fund the definition of success, the data and the interfaces before any agent. |
+
+Thin means small and easy to retire. The agent keeps no business rules of its own. When a vendor agent later covers the job, you switch yours off. The interfaces and definitions stay. Describe each agent, bought or built, with the [four questions](/use-cases/agent-roles).
+
+## Where enterprise-built agents land in a utility estate
+
+**In short:** Vendors cover most single systems. The strongest place to build is the join across billing, outage, mapping and field systems. No measured outcome exists yet for any enterprise-built portal, middleware or reporting agent.
+
+The table maps a typical electricity or water utility. Dates are as of 14 October 2026. The third column is this guide's position.
+
+| Layer | What vendors ship, dated | This guide's position | Evidence status |
+|---|---|---|---|
+| Billing: SAP IS-U or S/4HANA Utilities, Oracle Customer Care and Billing | SAP customer self-service agent live since Q4 2025 [vendor]. Billing-exception agents planned for Q2 to Q3 2026; shipped status unconfirmed. No Oracle billing agent found. IBM co-build with six utilities announced 11 September 2026, no results yet [vendor]. | Cloud editions: wait, within the two-quarter window. Older IS-U: build thin over the exception worklists, through governed APIs. A named person approves any bill change. | No measured result from an agent inside IS-U or Customer Care and Billing. |
+| SCADA and ADMS (the grid control systems) | Schneider Electric Grid AI Assistant, 4 June 2026: any operational action stays subject to user review [vendor]. GE Vernova GridOS for Transmission, 9 June 2026: no AI features described [vendor]. | Use the vendor's assistants. Build only on the read-only information path, with the [validation loop](/layers/r05-lob-and-ot#the-validation-loop). | No utility found lets an AI agent operate protection or switching. |
+| GIS (mapping) and asset registers | No vendor agent found. | Build. Reconciling asset, GIS and field records crosses packages. | The only measured result in [the operations layer](/layers/r05-lob-and-ot#the-measured-economic-result) belongs to this asset-data pattern. |
+| Mobile workforce | Microsoft scheduling agent slated for April to September 2026 [vendor]. SAP Field Service Management reached through Joule [vendor]. | Use the vendor's scheduling. Build retrieval across procedures and asset history. | Advisory only. No results published. |
+| Integration and APIs | SAP Integration Suite builds integration flows from plain language. SAP's own architecture page calls its MCP Gateway usable if prerequisites are met [vendor]. SAPinsider (13 August 2026) still calls it roadmap. MuleSoft Agent Fabric, September 2025 [vendor]. | No new bus. Govern the interfaces agents may use, and clean the inventory. SAP PI/PO mainstream support ends in 2027. | No measured outcome. |
+| Portals | SAP for Me with Joule [vendor]. Kraken agents live at one unnamed utility on about 1.3 million accounts, June 2026 [vendor]. | Vendor agent for journeys inside one system. Build for journeys across billing, outage and field. | No measured outcome for an enterprise-built portal agent. |
+| BI (business intelligence and reporting) | Agentic features now baseline in Gartner's June 2026 analytics review, per a consultancy summary. Databricks Genie GA 12 June 2025 [vendor]. | Use the vendor's agent. Invest in the <Term k="semantic layer">semantic layer</Term>, read-only database roles and the user's own identity. | No independent adoption data. |
+| The join across systems | No vendor covers outage messaging and work orders across billing, outage, GIS and field. | The strongest build candidate. | Architectural case only. |
+
+Take an outage. The billing system knows who is affected. The outage system knows what failed. GIS knows where. The field system knows who is on the way. A customer message and a work order need all four. No single vendor's agent sees all four today. Gartner expects agent networks that span applications only in 2028 (as reported 27 August 2025).
+
+The evidence is weakest where the case for building on the glue leans hardest. The case for portals, middleware and BI is architectural, not measured. For the work itself, see [Utilities](/use-cases/utilities) and [Energy](/use-cases/energy).
+
+## What to own whatever you buy
+
+**In short:** Four things stay yours whichever agents you run. They also make each vendor agent easier to replace.
+
+- **Interface inventory.** List every interface between systems, with its owner and purpose. Retire dead flows. Decide which ones become agent tools. SAP's own guidance keeps existing roles in force and starts read-only [vendor].
+- **Semantic layer.** Keep one set of business definitions under every reporting agent. Databricks says Genie's answer quality depends on curation [vendor].
+- **Agent registry.** Keep one <Term k="registry">registry</Term> that lists every agent, including the ones inside vendor products. Cover <Term k="two estates">both estates</Term>: agents behind your own gateway, and agents that run on a vendor's controls. Vendors offer to hold this list. Whichever you use, it must hold other vendors' agents too. The record fields are on [the agent lifecycle page](/architecture/agent-lifecycle#the-registry-record).
+- **Policy at the gateway.** Put access and approval rules at your own <Term k="gateway">gateway</Term> and <Term k="policy decision point">policy decision point</Term>. Do not leave them inside each vendor's agent. Then a change of vendor does not change the rules.
+
+## Counterpoints, both ways
+
+**In short:** The evidence does not settle wait versus build. It shows where each argument is weakest.
+
+**Against building on the glue layer.**
+
+- **Poor data.** SAP's chief executive said no AI agent can make up for poor data (ERP Today, Sapphire 2026 keynote, May 2026) [vendor].
+- **Fragile legacy interfaces.** Old systems lack real-time execution, modern APIs and secure identity (Deloitte Tech Trends 2026, 10 December 2025).
+- **Vendor encroachment.** Vendors are building into integration, reporting and portals at once (SAPinsider, 13 August 2026; Futurum, 12 June 2026). A thick custom layer may be overtaken.
+- **Partner-built pilots do better.** In Deloitte's report, pilots built with partners reach full deployment twice as often as in-house ones. It is the only quantified build-versus-buy result found. Its method is not visible.
+
+**Against waiting.**
+
+- **Excluded editions.** Oracle's agents need its cloud applications. SAP ties its AI to cloud editions or a committed migration. On those vendors, waiting means waiting to migrate.
+- **Open prices.** Joule Studio is free only through 2026. Oracle's renewal pricing is unresolved. Salesforce changed its pricing model within months.
+- **Slipping dates.** The SAP utilities agent above moved by a quarter between two articles. One SAP customer at Sapphire 2026 would build a financial-close assistant itself if SAP's was three months away (CIO.com, 12 May 2026).
+- **Lock-in.** Putting agents inside one platform may deepen dependence on that vendor (Futurum, 12 June 2026).
+
+The two sides are not equal on evidence. The case against the glue rests on documented data and interface problems. The case against waiting rests on dated facts about editions and prices. Lock-in is analyst opinion.
+
+## Evidence and limits
+
+- Vendor counts, dates and prices are vendor-published and marked [vendor]. This page is re-verified each quarter.
+- With no production counts, the only fair comparison is GA against announced, from the release notes.
+- Gartner's build-versus-buy notes (July and August 2026) were seen only as abstracts. Gartner's analytics review was read only through a consultancy summary. Gartner's own pages refused access.
+- Several vendor pages returned errors, including Salesforce's page for energy and utilities. No source was found for Oracle's utilities agents.
+- The shipped status of SAP's Q2 and Q3 2026 utilities agents is unconfirmed. Sources conflict on whether SAP's MCP Gateway is GA in a given tenant. No per-agent GA list from Sapphire 2026 was found.
+- No named custom agent was found that a vendor feature later replaced. No named customer was found who was let down by a vendor agent.
+- The six tests, the two-quarter window and the five outcomes are this guide's position. They have not been tested against outcomes.
+
+Continue with [choose where to start](/use-cases/choose-where-to-start) or [value and investment](/use-cases/value-and-investment).
+
+## Sources added October 2026
+
+- [SAP News, Business AI release highlights Q1 2026](https://news.sap.com/2026/04/sap-business-ai-release-highlights-q1-2026/), 14 April 2026 [vendor]
+- [CIO.com, SAP's agents at Sapphire 2026](https://cio.com/article/4170465/saps-biggest-ai-bet-yet-agents-that-execute-not-just-assist.html), 12 May 2026
+- [ERP Today, the Sapphire 2026 keynote](https://erp.today/will-sap-be-a-software-company-in-the-future-sapphire-2026-keynote-maps-saps-new-erp-stack/), May 2026
+- [SAPinsider, seven questions after Sapphire 2026](https://sapinsider.org/articles/sapphire-2026-your-sap-erp-just-got-an-ai-brain-now-what-seven-questions-every-leader-must-answer/), 15 May 2026
+- [SAPinsider, the Integration Suite enhanced edition](https://sapinsider.org/articles/inside-the-enhanced-edition-what-saps-integration-suite-shift-means-for-the-autonomous-enterprise/), 13 August 2026
+- [SAP Architecture Center, MCP Gateway reference architecture](https://architecture.learning.sap.com/docs/ref-arch/d2e34e), read October 2026 [vendor]
+- [ASUG, Joule across the utilities value chain](https://www.asug.com/insights/sap-positions-joule-as-a-process-native-copilot-for-the-utilities-value-chain), 21 January 2026 [vendor]
+- [ASUG, SAP's agents for utilities meter-to-cash](https://www.asug.com/insights/sap-bets-on-ai-agents-to-tame-utilities-most-complex-workflow), 27 May 2026 [vendor]
+- [Futurum, SAP Joule in customer support](https://futurumgroup.com/insights/saps-joule-bets-on-agentic-ai-to-redefine-enterprise-support-will-customers-buy-in/), 12 June 2026
+- [Forrester, Oracle applications analyst summit](https://www.forrester.com/blogs/oracle-applications-analyst-summit-fusion-agents-are-shifting-from-assist-to-decide/), 8 May 2026
+- [Salesforce, Q1 fiscal 2027 results](https://salesforce.com/news/press-releases/2026/05/27/fy27-q1-earnings), 27 May 2026 [vendor]
+- [Constellation Research, Agentforce launch pricing](https://www.constellationr.com/insights/news/salesforce-push-ai-agents-agentic-ai-overload-looms), 15 September 2024
+- [Redress Compliance, Agentforce pricing changes](https://www.redresscompliance.com/salesforce-agentforce-pricing-evolution-2026.html), 2026, an advisory firm that sells licence advice
+- [Microsoft, Dynamics 365 2026 release wave 1](https://www.microsoft.com/en-us/dynamics-365/blog/?p=201384), 18 March 2026 [vendor]
+- [diginomica, ServiceNow Knowledge 2026](https://diginomica.com/servicenow-knowledge-2026-ai-control-tower-expands-autonomous-workforce-reaches-every-function-and), 5 May 2026
+- [Workday, agent system of record](https://blog.workday.com/en-us/managing-ai-powered-future-of-work.html), undated [vendor]
+- [CIO.com, MuleSoft Agent Fabric launch](https://www.cio.com/article/4063090/mulesoft-launches-agent-fabric-to-tackle-agent-sprawl-and-unify-enterprise-ai-workflows.html), September 2025
+- [Microsoft Cloud Adoption Framework, business plan for AI agents](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/business-strategy-plan), updated 2 June 2026 [vendor]
+- [Deloitte, Tech Trends 2026, agentic AI strategy](https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/agentic-ai-strategy.html), 10 December 2025
+- [Gartner, build versus buy with AI, abstract](https://www.gartner.com/en/documents/8252458) and [a second abstract](https://www.gartner.com/en/documents/8145229), July and August 2026, abstracts only
+- [IT Brief Australia, Gartner's forecast for agents in enterprise apps](https://itbrief.com.au/story/ai-agents-to-power-40-of-enterprise-apps-by-2026-says-gartner), 27 August 2025
+- [Concord, a consultancy's summary of Gartner's 2026 analytics review](https://www.concordusa.com/blog/what-gartners-2026-magic-quadrant-for-abi-tells-us-about-the-tools-we-work-in-every-day), 2026
+- [Databricks, AI/BI Genie generally available](https://www.databricks.com/en/blog/aibi-genie-now-generally-available), 12 June 2025 [vendor]
+- [IBM, AI Lighthouse Council for SAP utilities](https://www.ibm.com/new/announcements/ibm-launches-the-ibm-ai-lighthouse-council-for-sap-utilities), 11 September 2026 [vendor]
+- [Pulse2, Kraken Autonomous Agents with Sierra](https://pulse2.com/kraken-launches-autonomous-agents-with-sierra-to-transform-utility-customer-service/), 12 June 2026 [vendor]
+- [Eurelectric, Schneider Electric Grid AI Assistant for ADMS](https://www.eurelectric.org/stories/schneider-electric-grid-ai-assistant-for-advanced-distribution-management-system-adms-operations/), 4 June 2026 [vendor]
+- [GE Vernova, GridOS for Transmission](https://www.gevernova.com/news/press-releases/ge-vernova-introduces-gridosr-transmission-new-ai), 9 June 2026 [vendor]
