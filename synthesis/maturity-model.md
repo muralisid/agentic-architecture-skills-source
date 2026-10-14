@@ -35,6 +35,8 @@ Who executes the work, and what role the human plays. The A-levels are an enterp
 
 The bottling plant of the vision chapter operates at A3 to A4. Two cautions on A5, both from the evidence: a published argument exists against building fully autonomous agents at all (Mitchell et al., 2025), and production deployments in 2026 cluster at low autonomy levels (Gartner, 2025-2026). A5 is a governed end-state that few workloads should reach, entered per domain and never declared enterprise-wide.
 
+Autonomy is recorded three ways: designed (what the build allows), permitted (what the contract grants) and exercised (what the logs show). Controls follow the higher of permitted and exercised. Exercised above permitted is an incident. The MIT AI Agent Index (2025 edition) studied enterprise agents. They were configured at low autonomy but often ran at high autonomy once deployed.
+
 ## Axis 2: Learning (L0 to L3)
 
 Where and how the agent improves, and under what governance. This axis is the model's contribution, introduced by this guide.
@@ -89,9 +91,10 @@ What the adjacent measurement does support:
 - Morris et al., Levels of AGI, arXiv Nov 2023 / ICML 2024. https://arxiv.org/abs/2311.02462
 - Feng, McDonald, Zhang, Levels of Autonomy for AI Agents, arXiv Jun 2025. https://arxiv.org/abs/2506.12469
 - Mitchell, Ghosh, Luccioni, Pistilli, Fully Autonomous AI Agents Should Not Be Developed, arXiv Feb 2025. https://arxiv.org/abs/2502.02649
-- Salesforce, Agentic Maturity Model, Apr 10 2025. https://www.salesforce.com/news/stories/agentic-maturity-model/ [vendor]
+- Salesforce, Agentic Maturity Model, Apr 10 2025 (date not re-verified in October 2026). https://www.salesforce.com/news/stories/agentic-maturity-model/ [vendor]
 - Anthropic, framework for safe and trustworthy agents, Aug 4 2025 [vendor]
 - Kasirzadeh and Gabriel, Characterizing AI Agents, arXiv Apr 2025. https://arxiv.org/abs/2504.21848
+- MIT AI Agent Index, 2025 edition. https://aiagentindex.mit.edu/
 - Sheridan and Verplank (1978); Parasuraman, Sheridan, Wickens (2000); SAE J3016 (lineage)
 - Gartner, agentic AI maturity and adoption commentary, 2025-2026 (via press releases and licensed reprints)
 - Olsen and Wood, fan-out and neglect-time formulation of supervisory capacity (2004 onward); human-supervisory-control literature

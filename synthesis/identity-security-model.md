@@ -55,7 +55,7 @@ Four properties make this chain trustworthy rather than decorative:
 
 ## The deterministic boundary, in its final form
 
-**Models may inform, never decide.** In the four zones where consequences are irreversible, the decision rule is deterministic over verifiable credentials and policies, and model output is an advisory input.
+**Models may take permission away, never grant it** (restated October 2026; first written as "models may inform, never decide", which shipped model-based reviewers inside sandboxes made too strong a claim). In the four zones where consequences are irreversible, the decision rule is deterministic over verifiable credentials and policies, and model output is an advisory input.
 
 | Zone | What stays deterministic | What probabilistic signals legitimately do |
 |---|---|---|

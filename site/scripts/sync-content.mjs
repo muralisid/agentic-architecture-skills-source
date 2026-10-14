@@ -507,7 +507,7 @@ const metas = {
     title: 'Architecture',
     icon: 'Compass',
     description: 'The cross-layer design of the agentic enterprise.',
-    pages: ['index', 'system-view', 'task-walkthrough', 'software-for-agents', 'plain-words', 'deterministic-zones', 'identity-chain', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
+    pages: ['index', 'system-view', 'task-walkthrough', 'software-for-agents', 'plain-words', 'deterministic-zones', 'risk-profile', 'identity-chain', 'agent-lifecycle', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
   },
   security: {
     title: 'Security practices',

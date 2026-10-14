@@ -30,6 +30,16 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Access identity vs presence identity.** Access identity lets an agent act on systems under governance (ID2). Presence identity makes the agent addressable as a colleague: email, meetings, org chart (ID3). The trade-off is collaboration ergonomics vs attack and compliance surface.
 
+**Sponsor and owner.** The sponsor is the business person accountable for why an agent exists, what it may do and whether it should keep running; named at creation and recorded on the ID2 identity. The owner is the technical custodian who runs its configuration, credentials, evals and incidents. Some vendors use "owner" for the accountable person; this guide does not.
+
+**Agent lifecycle.** The nine stages every agent passes through: register, sponsor and owner, entitle, evaluate, approve, operate, change, periodic review, retire. The registry record carries the stage, the risk tier and the autonomy levels. See product/architecture/agent-lifecycle.mdx.
+
+**Change trigger.** A change to an agent's model, prompt, tools, permissions, data sources, memory policy, autonomy level or sponsor. A trigger re-runs evals and the risk profile before release. No standard defines re-approval; this is the guide's rule.
+
+**Orphaned agent.** An agent that keeps running after its owner's or sponsor's account is disabled. Sponsorship passes to a named successor, and periodic review retires what nobody claims.
+
+**Designed, permitted and exercised autonomy.** Three readings of an agent's autonomy level: what the build allows, what the autonomy contract permits, and what the logs show. Controls follow the higher of permitted and exercised; exercised above permitted is an incident.
+
 **Working memory / working context.** Information selected for the agent's current decision, including the current task, relevant evidence, and recent results. This guide uses working context for the material supplied to a model call; application task state can contain more than that call sees.
 
 **Thread memory.** Retained conversation and task state scoped to one continuing thread or case, including messages, tool results, and pending work. It can be persisted across interruptions; thread scope does not prescribe a retention duration.
@@ -58,7 +68,19 @@ These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs
 
 **Two-estate problem.** An enterprise's own gateway can only govern the metered estate (API traffic it proxies). Licensed platforms (Copilot, Agentforce, Frontier) run outside it. Architecture, audit, and cost control must span both estates.
 
-**Deterministic boundary principle (models may inform, never decide).** Identity, entitlements, access control, and audit are always enforced by deterministic systems outside the model. In the four zones where consequences are irreversible (access control, movement of money, safety actuation, formal regulatory records), the decision rule is deterministic over verifiable credentials and policies; model outputs are advisory inputs. Probabilistic signals inside those zones are normal and useful; probabilistic decisions are not. See research/R10-security-and-identity/findings.md.
+**Deterministic boundary principle (models may take permission away, never grant it).** Identity, entitlements, access control, and audit are always enforced by deterministic systems outside the model. Probabilistic components (a model, a classifier, a model-based reviewer) may deny, escalate or quarantine; they may never grant a permission outside the deterministic envelope; in the four zones (access control, movement of money, safety actuation, formal regulatory records) they may not approve at all. Probabilistic signals inside those zones are normal and useful; probabilistic decisions are not. First written as "models may inform, never decide" and restated in October 2026 after shipped products let models approve some actions inside sandboxes. See product/architecture/deterministic-zones.mdx and research/R10-security-and-identity/findings.md.
+
+**Destruction rule.** Any delete, drop, destroy or reset on production data or environments is its own rule in the policy decision point, never folded into a broader permission. It runs plan-then-apply, with a named person approving that exact action once, two signatures for production deletion, deletion protection on the target, and backups outside the agent's reach. Sits beside the four zones; added October 2026.
+
+**People-decisions floor.** Where an agent makes or shapes a significant decision about a person (credit, employment, insurance, health, housing, education, benefits, utility hardship or disconnection), a named person with authority to change the outcome decides, the model may score and draft, the person affected receives the notice the law requires, and the decision is logged with the model's inputs. A rule of accountability, notice and audit rather than a deterministic rule; it never lowers the risk tier. Added October 2026.
+
+**Plan-then-apply.** The agent proposes a plan; a deterministic system applies it after approval. The pattern for any agent that changes production, and the mechanism behind the destruction rule.
+
+**Risk tier (Basic, Enhanced, Strict).** One of three levels set by the worst of nine factors: autonomy, the verb the agent's credential holds, system reach, reversibility of the consequence, blast radius, highest data class and egress, untrusted input, decision consequence for people, and oversight strength as a modifier. The tier picks the controls, the sign-off and the review cadence, and travels on the registry record. Five conditions are always High. See product/architecture/risk-profile.mdx.
+
+**Rule of Two.** One agent session holds at most two of: untrusted input, sensitive data, and the power to change state or communicate out. All three together caps autonomy at A2 and puts a person on every action. From Meta's agent security guidance (October 2025) and the "lethal trifecta" (June 2025).
+
+**Consequence class.** The fourth classification question for an agent: the zones it touches, its destruction risk, whether it shapes decisions about people, and the reversibility and reach of its actions. With the capability surface, it sets the risk tier.
 
 **Curation before context.** Data is prepared for agents per purpose and use case. The LLM guides (taxonomy, topics, judgment) while cheaper deterministic machinery executes at scale (embeddings, topic modelling, classifiers). Production-grade agents stand on curated data, not raw corpora pushed through the model.
 
@@ -78,7 +100,11 @@ These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs
 
 **Sponsor / Owner.** The accountability pattern for agents: a required business Sponsor accountable for the agent's purpose and lifecycle, and a technical Owner managing configuration and credentials.
 
-**Capability-surface gating.** Controls are chosen by what an agent can actually do, not by its product category. Execution isolation follows code, browsing, and computer use; presence controls follow mailboxes, meeting seats, and directory visibility; the assessment is repeated on every tool grant, because agents accrete capability over time.
+**Capability-surface gating.** Controls are chosen by what an agent's own credentials let it do (read, write, delete, run code or SQL, browse, send externally, pay, change access, actuate), plus three flags: whether it takes untrusted input, the highest data class it can reach, and whether it writes long-term memory. Not by its product category. Execution isolation follows code, browsing, and computer use; presence controls follow mailboxes, meeting seats, and directory visibility; the assessment is repeated on every tool grant, because agents accrete capability over time.
+
+**Agent role.** What an agent does for people: converse, create, assist or coordinate, with a business-domain tag. A label that implies no authority and sets no controls; the domain tag can trigger the people-decisions floor. Replaces the earlier contribution roles, and the four types before them (October 2026).
+
+**Interface a model builds.** A screen, card or form assembled by a model at run time. A display rule in the experience layer, not an agent type: validated before display, every fact shows its source, action buttons come only from a fixed catalogue, and personalising by behaviour or emotion needs consent.
 
 **Evidence floor / Article-12-grade instrumentation.** The guide's two-level compliance posture. An evidence floor applies to every production agent: registry entry, retained action logs, named oversight, and provenance-carrying grounding. Article-12-grade instrumentation (EU AI Act logging depth, oversight capture, technical documentation) applies to the tier that could plausibly classify high-risk. Proportionality replaces blanket compliance.
 

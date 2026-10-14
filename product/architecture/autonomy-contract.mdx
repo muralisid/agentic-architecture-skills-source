@@ -23,6 +23,8 @@ Every task an agent takes on sits at a chosen level of independence, from a pers
 
 The first axis is the <Term k="autonomy level">autonomy level</Term>: who executes the work, and what the human keeps hold of. Its levels are A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, and A5 governed lights-out. The second axis is the <Term k="learning level">learning level</Term>: whether the agent improves, and under what control. Its levels are L0 fixed policy, L1 curated learning, L2 governed learning (the <Term k="flywheel">learning flywheel</Term>), and L3 continuous learning inside <Term k="guardrails">guardrails</Term>. The two axes move independently. Every workload sits somewhere on the grid deliberately, and movement is earned and reversible.
 
+Autonomy is recorded three ways. Designed autonomy is what the build allows. Permitted autonomy is what this contract grants. Exercised autonomy is what the logs show the agent doing. Controls follow the higher of permitted and exercised. Exercised above permitted is an incident. This happens in practice. The [MIT AI Agent Index](https://aiagentindex.mit.edu/) (2025 edition) studied enterprise agents. They were configured at low autonomy but often ran at high autonomy once deployed. How A0 to A5 lines up with other published ladders is in [the crosswalk on the risk profile](/architecture/risk-profile#the-autonomy-crosswalk).
+
 <GuideFigure id="autonomy-learning-matrix" fullWidth />
 
 ## The controls column is the contract

@@ -29,18 +29,27 @@ List every action the agent can cause, directly through a tool or indirectly by 
 
 `references/deterministic-zones.md` defines them. Four questions decide the classification:
 
-- Does the action grant, widen, or bypass access to something?
+- Does the action grant, widen, or bypass access, change security configuration, or move personal data across a boundary?
 - Does it move money, commit to spending, or authorise a payment?
 - Can it actuate anything physical (safety actuation), directly or by changing what a control system does?
 - Does it create, amend, or submit a record that a regulator, a court, or an auditor will treat as authoritative?
 
-Any yes puts the action in a zone. In a zone the rule is the same: the model may produce evidence, a recommendation, or a draft, and a deterministic rule over verified identity and policy makes the decision.
+Any yes puts the action in a zone. In a zone the rule is the same: the model may produce evidence, a recommendation, a draft, or a block, and a deterministic rule over verified identity and policy makes the decision. Models may take permission away, never grant it. In a zone they never approve.
+
+Two more questions decide whether a rule beside the zones applies:
+
+- Does it delete, drop, destroy, or reset production data or an environment?
+- Does it make or shape a significant decision about a person: credit, employment, insurance, health, housing, education, benefits, or utility hardship or disconnection?
+
+A yes to the first applies the destruction rule. The action is its own rule in the policy decision point, never folded into a broader permission. It runs plan-then-apply: the agent proposes, a deterministic system applies after approval. A named person approves that exact action, once. Two people sign for production deletion. The target has deletion protection, and backups sit where the agent's identity cannot delete them.
+
+A yes to the second applies the people-decisions floor. A named person with authority to change the outcome decides; the model may score and draft. The person affected gets the notice the law requires. Each decision is logged with the model's inputs. Sign-off does not lower the risk tier.
 
 ## 3. Design the control for each entry
 
 For each zone action, name three things: the deterministic rule, the place it is evaluated, and the record it leaves. `references/enforcement.md` gives the three tiers (the gateway, the policy decision point, and rules promoted outside the model) and what each can and cannot enforce. Two anti-patterns to reject explicitly:
 
-- A prompt instruction, a system prompt, or a model-based guardrail as the thing that grants or denies. Guardrails are advisory: measured evasion rates make them unfit as the boundary.
+- A prompt instruction, a system prompt, or a model-based guardrail as the boundary. A model may deny, escalate, or quarantine on top of the deterministic rule; it never grants. Measured evasion rates make guardrails unfit as the boundary.
 - Post-filtering results after the agent has already retrieved them. Filter before, on the caller's live identity.
 
 ## 4. Trace the identity chain
@@ -51,14 +60,14 @@ Every action in the register must be attributable to a person. `references/ident
 
 ## The register
 
-| Action | Zone | Deterministic rule | Evaluated at | Record left | Reversible |
+| Action | Zone, rule, or floor | Deterministic rule | Evaluated at | Record left | Reversible |
 |---|---|---|---|---|---|
 
 Sign it. The register is what later work assumes exists, and an unsigned draft tends to be treated as one person's opinion.
 
 ## The caveat that keeps this honest
 
-Authorization bounds the blast radius; it does not bound intent. An agent that is tricked will act within its permissions, so the register limits what a successful attack can reach and never prevents one.
+Authorization bounds the blast radius; it does not bound intent. An agent that is tricked will act within its permissions, so the register limits what a successful attack can reach and never prevents one. Write destructive verbs as separate rules, and allow intent checks by model reviewers or signed mandates only in a subtract-only role.
 
 
 ## Applying this guidance

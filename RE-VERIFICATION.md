@@ -48,6 +48,11 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 | Card-network agent dispute and liability rules (none binding as of Oct 2026; one forecast says April 2027 at the earliest) and Coinbase x402 agent-wallet budget design | Network rules are being written | R10 payment stack; deterministic zones | April 2027 |
 | SAP utilities agents dated Q2 and Q3 2026 in user-group coverage | Dates slipped once already; shipped status unconfirmed on 14 Oct 2026 | Utilities use cases (pending rebuild) | Before the utilities pages publish |
 | AER automated-bidding guideline update (bulletin of 5 Aug 2026 read through a law-firm alert) | The guideline deadline was delayed | Utilities use cases (pending rebuild) | Before the utilities pages publish |
+| Model-based approvers as defaults: Codex Auto-review (30 Apr 2026) and Claude Code auto mode as default (14 Aug 2026); AWS guardrail scores feeding AgentCore Policy | Vendor defaults and figures (99.1 percent auto-approved; 13.6 against 89 percent) change with releases and are unreplicated | Deterministic zones; enforcement; risk profile | January 2027 |
+| Agentic payment stack: AP2 spec version, Visa TAP, Mastercard Verifiable Intent (co-development with Google read through search summaries), Stripe shared payment tokens, Coinbase x402 agent wallets | Protocols are months old and liability rules are unwritten | Deterministic zones, movement of money | April 2027 |
+| CSA agentic autonomy levels v2.0 (18 Mar 2026) and the Agentic Universe draft (1 Apr 2026) | Reported as AI-assisted and not formally reviewed; may be revised or withdrawn | Risk profile crosswalk; agent types | January 2027 |
+| Anthropic's measure of 0.8 percent of tool calls appearing irreversible (18 Feb 2026) | Vendor telemetry on its own platform, not independently checked | Agent types, evidence | When an independent measure appears |
+| Entra Agent ID sponsor rules (sponsor required at creation; passes to the leaver's manager), updated 3 Sep 2026 | Vendor-documented product behaviour, subject to change | Agent lifecycle; identity chain | January 2027 |
 
 ## Due Q4 2026
 

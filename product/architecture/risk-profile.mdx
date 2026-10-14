@@ -1,0 +1,206 @@
+---
+title: "The risk profile: factors, tiers, controls"
+icon: "Gauge"
+description: "How to score any agent on nine factors, set one of three risk tiers from the worst factor, and match controls, sign-off and review to that tier."
+---
+
+<PlainTerms>
+Every agent gets a risk tier before it goes live. The tier comes from nine plain questions. What can the agent's own login do? Which systems can it reach? Can the damage be undone? What data does it touch? Does it read text from outsiders? Does it shape a decision about a person? Each answer is Low, Medium or High. The worst answer sets the tier: Basic, Enhanced or Strict. The tier sets the controls, who signs, and how often the agent is reviewed. The thing to remember: score what the agent's login can do and what it can damage. Writing code is not the test.
+</PlainTerms>
+
+## Why agents need a risk profile
+
+**WHY:** Two agents at the same autonomy level can carry very different risk. One summarises public documents. The other reads customer records and takes text from strangers. An <Term k="autonomy level">autonomy level</Term> says who holds the decision. It does not say what can go wrong. A role name does not either.
+
+**WHAT:** Score every agent on nine factors, each Low, Medium or High. The worst factor sets one of three tiers: Tier 1 Basic, Tier 2 Enhanced or Tier 3 Strict. Some conditions are always High. The tier picks the controls, the people who sign, the evidence and the review cadence. It is stored on the agent's <Term k="registry">registry</Term> record and scored again on every change.
+
+This structure is this guide's position, built from the published models named below. No threshold on this page has been tested against incident data. No such data exists.
+
+## The nine factors
+
+**In short:** Nine questions, each answered Low, Medium or High. Score what the agent can actually do, not what its description says.
+
+| Factor | Low | Medium | High |
+|---|---|---|---|
+| 1. Autonomy (the higher of permitted and exercised) | A0 to A2 | A3 | A4, A5 |
+| 2. Verb the agent's own credential holds | None, read, draft | Undoable changes; internal messages; a fixed zone transaction named in the zone register | Delete; code or SQL on live systems; pay; binding external messages; change access; other zone actions |
+| 3. System reach | Sandbox, non-production | Production system of record; customer channel | Control or safety system; several production or third-party systems |
+| 4. Reversibility of the consequence | Undone in minutes | Undone with effort | Cannot be undone, or backups within the agent's reach |
+| 5. Blast radius | One record or user | One team or system | Many systems, the enterprise, the public |
+| 6. Highest data class, plus egress | Public, internal | Confidential or personal | Regulated, control-system |
+| 7. Untrusted input | None, or curated | Any | Untrusted input, plus confidential data or higher, plus an external action (the Rule of Two) |
+| 8. Decision consequence for people | None | Affects a service, not rights | Shapes a significant decision about a person (credit, work, benefits, health, housing, utility hardship), or a regulated function |
+| 9. Oversight strength and track record | A modifier only. It may add controls. It never lowers the tier. | | |
+
+How to read the factors:
+
+- **The verb** is what the credential allows, not what the tool description promises.
+- **Reversibility** scores the consequence, not the action. Exposed data cannot be un-seen. The Cloud Security Alliance (CSA) draws the same line in its autonomy levels v2.0 (18 March 2026).
+- **Data class** uses the five classes in [the sovereignty matrix](/library/architecture/sovereignty-matrix): public, internal, confidential or personal, regulated, control-system. Outputs inherit the highest input class. Microsoft documents that Agent 365 output does not inherit the source's sensitivity label [vendor].
+- **Untrusted input** is any text the organisation did not write or check, such as emails, tickets and customer chat. Meta's "Agents Rule of Two" (31 October 2025) [vendor] allows a session at most two of three things. They are untrusted input, sensitive data, and the power to act or send outside. All three together is High.
+- **Decisions about people** follow the law, not the action. An HR screening agent can be read-only and still score High. The rules are on [the people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor).
+- **Oversight** is a modifier because it is weak when measured. The figures are under Evidence and limits.
+
+## The tier rules
+
+**In short:** The worst factor sets the tier. Five conditions are always High. When unsure, go up.
+
+1. **Three tiers.** Any High gives Tier 3. Any Medium gives at least Tier 2. All Low gives Tier 1.
+2. **Always High.** These set Tier 3 whatever else is true:
+   - an action inside a <Term k="deterministic zone">deterministic zone</Term> (access, money, safety actuation, formal records);
+   - destroying anything in production;
+   - code or SQL run against production;
+   - regulated or control-system data;
+   - a significant decision about a person.
+3. **One exception.** A fixed, reversible zone transaction sits at Tier 2. It must be named in the signed [zone register](/architecture/deterministic-zones#find-the-zones-in-your-enterprise) and run by a deterministic service, not the model. IMDA's Dayos case puts password resets in its lowest tier. This guide is stricter.
+4. **The Rule of Two caps autonomy.** If one session holds all three parts, autonomy is capped at A2. A person reviews every output.
+5. **A multi-agent system takes its highest member's tier.** This follows the TrustX ARC framework.
+6. **When unsure, go up.** This follows the fail-safe rule in GAIE.
+7. **Demote at once. Promote on evidence.** An anomaly or a change of scope demotes the agent at once. Promotion needs controls in place and eval results, not a count of clean runs. Nineteen passes in twenty runs fits a true pass rate as low as 78 percent ([the arithmetic](/agentic-os)). So this guide does not adopt GAIE's rule of twenty clean deployments.
+
+The worst-factor rule comes from TrustX ARC (preprint, 10 July 2026). The go-up rule comes from GAIE (preprint, 21 June 2026).
+
+## Why three tiers
+
+**In short:** Models that score several factors mostly end in three tiers. Four-level schemes rank autonomy. A0 to A5 already covers that.
+
+Published models fall into two families. Autonomy ladders rank how much the human holds. Multi-factor models rank risk from several inputs. Most end in three tiers:
+
+- CSA's Capabilities-Based Risk Assessment (CBRA) maps to low, medium and high control baselines.
+- TrustX ARC scores twelve factors into three tiers.
+- GAIE routes code tasks into three oversight tiers.
+- IMDA's agentic AI framework v1.5 (20 May 2026) has two cases. Dayos sorts IT tickets into three tiers [vendor]. MSD collapses five levels of agency into three governance pathways.
+
+The four-level schemes are autonomy ladders. Gartner has four levels (26 May 2026) and AWS has four scopes (21 November 2025). BCG has four stages (8 July 2026) [vendor]. The crosswalk below maps them to A0 to A5.
+
+Triage at the front door stays binary. Telstra dropped its medium risk tier at intake (UTS Human Technology Institute case study, May 2026). Intake asks one question: is every factor Low? If yes, the agent takes the Tier 1 path. If not, review assigns Tier 2 or Tier 3. Their approval paths differ sharply.
+
+## Controls, sign-off and review by tier
+
+**In short:** Each tier adds to the one below. Tier 1 passes on pipeline evidence alone.
+
+| | Tier 1 Basic | Tier 2 Enhanced | Tier 3 Strict |
+|---|---|---|---|
+| Controls | Own identity at ID2 and a registry entry; scoped access; logs held outside the agent; evals passed; security tests; a cap per run; a <Term k="kill switch">kill switch</Term>; sampled audit | Tier 1, plus: a <Term k="policy decision point">policy decision point</Term> on every write, failing closed; the user's identity carried through; approvals bound to the exact action and used once; evals against a human baseline; incident response; tested rollback; an authenticating egress proxy; kill switch timed | Tier 2, plus: a policy check on every action; continuous monitoring; circuit breakers; plan-then-apply in production; a named person approves each floor action; independent validation; logs to the EU AI Act record-keeping standard; disclosure duties met |
+| Who signs | Owner and sponsor | Tier 1, plus a security architect and the AI risk council, or the existing impact assessment with assessing and approving officers (as the DTA sets out) | Tier 2, plus architecture review, second-line risk and an executive; the board where a regulator expects it |
+| Evidence | Registry entry, evals, security scan; a standard pipeline change | Impact assessment, baseline evals, red-team results, rollback and kill-switch times | Tier 2, plus independent validation, the zone register entry, the [oversight-capacity calculation](/architecture/autonomy-contract#the-oversight-gate-as-a-burst-rate) at A3 and above, a map of regulatory duties |
+| Review | Yearly, and on change | Quarterly | Quarterly, and continuous |
+
+ID2 means the agent has its own account, least privilege, short-lived credentials and a named sponsor ([the identity chain](/architecture/identity-chain)). Tier 1 needs no change board. DORA research links heavy change approval with worse delivery.
+
+## The autonomy crosswalk
+
+**In short:** A0 to A5 lines up with other published ladders. Each A-level sets a floor on the tier.
+
+| Site level | Human's job | CSA v2.0 | Gartner | AWS scope | R11 label | Tier floor |
+|---|---|---|---|---|---|---|
+| A0 Manual | All work, no AI | None | None | None | None | n/a |
+| A1 Assisted | Acts; AI suggests | 0 (AI informs, humans act) | 1 Observe, 2 Advise | 1 No agency | Observe, Advise | 1 |
+| A2 Delegated tasks | Reviews every output | 1 Assisted | 3 Act with approval | 2 Prescribed | Act-with-approval | 1 |
+| A3 Supervised autonomy | Approves irreversible actions, handles exceptions | 2 Supervised, 3 Conditional | 3 to 4 | 3 Supervised | Act-with-approval or Autonomous | 2 |
+| A4 Managed autonomy | Works exception queues | 4 High autonomy | 4 Act autonomously | 4 Full agency | Autonomous | 3 |
+| A5 Governed lights-out | Sets policy, audits outcomes | 5 Full ("not recommended for production") | 4 | 4 Full agency | Autonomous | 3 |
+
+The CSA column is from v2.0 (18 March 2026). It is reported as AI-assisted and not formally reviewed. The mapping is this guide's reading of each source's definitions.
+
+The R11 labels on [the governance layer](/layers/r11-governance-risk-sovereignty) are Gartner's four autonomy levels, word for word. In this guide they are autonomy labels, not risk tiers. Gartner mixes two lines: whether the agent can write, and whether a person approves. So no exact map exists.
+
+One mapping is open. CSA's level 0 is named None (human execution). By name it is A0. Its definition is "AI informs, humans act". By definition it is A1. This guide maps by definition.
+
+## Code and SQL: three corrections
+
+**In short:** Code and SQL on live systems do raise risk. But reads leak too, labels fail, and the deletions came from the operator's own production rights.
+
+A common view is that code and SQL are the danger. It is partly right. IMDA, CSA, ARC and the Claude Code and Codex permission models all rank acting above reading. Three findings correct the view.
+
+**Read-only SQL still leaks.** In July 2025 a coding assistant connected to Supabase read a support ticket with hidden instructions. It then read a secrets table and posted the result back into the ticket. Its database credential skipped row-level security (Simon Willison, 6 July 2025). Reads can also be silently wrong. A 2024 frontier model solved 21.3 percent of enterprise text-to-SQL tasks on Spider 2.0 (arXiv 2411.07763).
+
+**"Read-only" labels fail. Score the credential.** An injected COMMIT ended the read-only mode of a reference Postgres MCP server (Datadog Security Labs, 21 August 2025). What holds is a database role that can only read, used under the person's own identity. Databricks Genie runs generated queries this way [vendor].
+
+**The deletions came from standing authority, not from generating code.** Four incidents fit one pattern. They are Replit (July 2025), AWS Kiro (December 2025), Google Antigravity (December 2025) and a Terraform destroy (26 February 2026). The Kiro case reportedly caused about 13 hours of disruption. Amazon calls it user error from misconfigured access. Each agent held its operator's production rights and had shell or infrastructure access. None had a stop outside the model. Reviewed code shipped through a pipeline is a different path. The cases are set out under [the destruction rule](/architecture/deterministic-zones#the-destruction-rule).
+
+## Three worked examples
+
+**In short:** Three utility agents, scored on all nine factors.
+
+| Factor | Customer chat agent | Billing-exception agent | Vegetation inspection agent |
+|---|---|---|---|
+| What it does | Answers account questions for the signed-in customer | Resolves implausible meter reads | Flags defects in aerial images |
+| 1. Autonomy | A2. Low | A3 for plausible cases, A2 for the rest. Medium | A2. Low |
+| 2. Verb | Reads one account; account changes go to a person. Low | Changes bills, a money zone action. High | Reads imagery; drafts findings. Low |
+| 3. Reach | Customer channel. Medium | Billing system of record. Medium | Analysis environment. Low |
+| 4. Reversibility | A wrong answer is corrected with effort. Medium | A wrong bill is reissued with effort. Medium | A false flag is dropped in minutes. Low |
+| 5. Blast radius | One customer. Low | One account per case; many if a rule is wrong. Medium | One finding. Low |
+| 6. Data | Personal. Medium | Personal. Medium | Internal. Low |
+| 7. Untrusted input | Customer text. Medium | Customer notes on the account. Medium | Curated imagery. Low |
+| 8. People | Affects a service. Medium | High where hardship is involved; Medium otherwise | None. Low |
+| 9. Oversight | Sampled transcript review. Adds controls only | Review of the A2 cases. Adds controls only | A field crew confirms each finding. Adds controls only |
+| Tier | **Tier 2** | **Tier 3** | **Tier 1** |
+
+**The chat agent is Tier 2.** Several factors are Medium and none is High. Its replies go only to the customer whose account it reads. So the Rule of Two is not met. It stays below High while account changes go to a person.
+
+**The billing-exception agent is Tier 3.** Changing a bill is a money zone action. Hardship cases also hit the people floor. It drops to Tier 2 only under the exception. The release must be a fixed, reversible rule in the signed zone register. A deterministic service must run it. Hardship cases stay at Tier 3.
+
+**The vegetation inspection agent is Tier 1.** Every factor is Low. Writing work orders into the asset system would make it Tier 2. The [vegetation inspection example](/use-cases/vegetation-inspection) creates inspection requests. So that version sits at Tier 2. The scoring assumes the existing patrol programme still runs. If the agent's misses would go unchecked, score it again.
+
+## Where the tier travels
+
+The tier sits on the registry record, beside the owner, sponsor and autonomy level. It picks who signs, what evidence they need, and how often the agent is reviewed. Any change to the model, prompt, tools, permissions, data sources, memory policy, autonomy level or sponsor triggers a new score.
+
+- Registration to retirement: [the agent lifecycle](/architecture/agent-lifecycle).
+- The floor actions: [the deterministic zones](/architecture/deterministic-zones).
+- The policy decision point, egress proxy and kill switch: [enforcement](/architecture/enforcement).
+- The autonomy levels and their controls: [the autonomy contract](/architecture/autonomy-contract).
+
+## Evidence and limits
+
+No study links agent type, tier or capability to incident rates. The Agent Incident Registry (10 September 2026) holds 487 records. Its authors say the data supports case lookup, not failure rates. A study of 547 coding-tool failures (Hasan and Biswas) has no count of total runs. So it gives no rate either. No published tiering model has been tested against outcomes. ARC and GAIE are preprints with illustrative examples. CBRA's own worked example does not add up (54 shown as 48).
+
+Regulators set proportionality and factors, but name no agent tiers. APRA (30 April 2026) asks for monitoring in proportion to how critical the use is. MAS (7 October 2026) asks firms to rate the risk materiality of each AI use. The DTA's impact assessment uses an assessing officer and an approving officer. Its pages timed out. That point rests on search excerpts. The Five Eyes guidance (1 May 2026) asks for autonomy in steps and human control points. The tiers here are this guide's synthesis, not a regulatory scale.
+
+One question is open. Microsoft's Cloud Adoption Framework sets one baseline for every agent (1 October 2026) [vendor]. Tier 1 is close to that baseline. Gartner says uniform governance fails. Tiers 2 and 3 answer that warning. Neither side has outcome data.
+
+Oversight is weak when measured. Users approved 93 percent of Claude Code permission prompts (Anthropic, 25 March 2026) [vendor]. In a vendor study reported in August 2026, people caught 13.6 percent of dangerous commands. A classifier caught 89 percent [vendor]. Neither figure has been replicated. A person who approves is not the same as a person who checks.
+
+These are this guide's judgement: the factor cut-offs, the floors, the tier boundaries, the Tier 2 exception and the review cadences. Re-verify the regulator items before relying on them.
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Security and identity findings](/library/layers/r10-security-and-identity/findings)
+- [Governance, risk and sovereignty findings](/library/layers/r11-governance-risk-sovereignty/findings)
+- [The sovereignty matrix](/library/architecture/sovereignty-matrix)
+
+Sources added October 2026:
+
+- IMDA agentic AI framework v1.5, 20 May 2026: [PDF](https://www.imda.gov.sg/assets/63438074-73f6-4dcc-a281-030f42642cf4.pdf)
+- TrustX ARC, arXiv 2607.09586, 10 July 2026: [arXiv](https://arxiv.org/abs/2607.09586)
+- GAIE, arXiv 2606.22484, 21 June 2026: [arXiv](https://arxiv.org/abs/2606.22484)
+- CSA CBRA: [CSA](https://cloudsecurityalliance.org/artifacts/capabilities-based-risk-assessment-cbra-for-ai-systems)
+- CSA autonomy levels v2.0, 18 March 2026: [CSA Labs](https://labs.cloudsecurityalliance.org/research/agentic-ai-autonomy-levels-control-framework-v2-csa-styled/)
+- Gartner, 26 May 2026: [press release](https://gartner.com/en/newsroom/press-releases/2026-05-26-gartner-says-applying-uniform-governance-across-ai-agents-will-lead-to-enterprise-ai-agent-failure)
+- AWS scoping matrix, 21 November 2025 [vendor]: [blog](https://aws.amazon.com/blogs/security/the-agentic-ai-security-scoping-matrix-a-framework-for-securing-autonomous-ai-systems/)
+- BCG, 8 July 2026 [vendor]: [PDF](https://web-assets.bcg.com/pdf-src/prod-live/agentic-ai-strategy-cio-cto.pdf)
+- UTS HTI, Telstra case study, May 2026: [PDF](https://www.uts.edu.au/research/centres/human-technology-institute/resources/contentassets/hti_aicgp-case-study_telstra-2026_f.pdf)
+- Meta, Agents Rule of Two, 31 October 2025 [vendor]: [blog](https://ai.meta.com/blog/practical-ai-agent-security/)
+- Microsoft Purview and Agent 365 [vendor]: [docs](https://learn.microsoft.com/en-us/purview/ai-agent-365)
+- Microsoft Cloud Adoption Framework, 1 October 2026 [vendor]: [docs](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/governance-security-across-organization)
+- Simon Willison on Supabase MCP, 6 July 2025: [post](https://simonwillison.net/2025/Jul/06/supabase-mcp-lethal-trifecta/)
+- Datadog Security Labs, 21 August 2025: [article](https://securitylabs.datadoghq.com/articles/mcp-vulnerability-case-study-SQL-injection-in-the-postgresql-mcp-server/)
+- Databricks Genie [vendor]: [docs](https://docs.databricks.com/gcp/en/genie/concepts)
+- Spider 2.0, arXiv 2411.07763: [arXiv](https://arxiv.org/abs/2411.07763)
+- Replit, The Register, 21 July 2025: [article](https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/)
+- AWS Kiro, TechTarget, 23 February 2026: [article](https://www.techtarget.com/searchsoftwarequality/news/366639129/AWS-Kiro-user-error-reflects-common-AI-coding-review-gap)
+- Google Antigravity, TechRadar: [article](https://www.techradar.com/ai-platforms-assistants/googles-antigravity-ai-deleted-a-developers-drive-and-then-apologized)
+- Terraform destroy, owner's account: [post](https://aishippingblog.com/p/how-i-dropped-our-production-database)
+- Agent Incident Registry, arXiv 2609.11030, 10 September 2026: [arXiv](https://arxiv.org/abs/2609.11030)
+- Hasan and Biswas, arXiv 2605.30777: [arXiv](https://arxiv.org/abs/2605.30777)
+- APRA, 30 April 2026: [letter](https://www.apra.gov.au/apra-letter-to-industry-on-artificial-intelligence-ai)
+- MAS, 7 October 2026: [media release](https://www.mas.gov.sg/news/media-releases/2026/mas-sets-out-supervisory-expectations-on-responsible-ai-adoption-by-financial-institutions)
+- DTA impact assessment: [page](https://www.digital.gov.au/ai/ai-in-government-policy/ai-use-case-impact-assessment)
+- Five Eyes, Careful Adoption of Agentic AI Services, 1 May 2026: [CISA](https://www.cisa.gov/resources-tools/resources/careful-adoption-agentic-ai-services)
+- Anthropic, Claude Code auto mode, 25 March 2026 [vendor]: [post](https://anthropic.com/engineering/claude-code-auto-mode)
+- Help Net Security, 10 August 2026 [vendor figures]: [article](https://www.helpnetsecurity.com/2026/08/10/anthropic-claude-code-auto-mode/)
+- DORA, change approval: [page](https://dora.dev/capabilities/streamlining-change-approval/)
+
+</details>
