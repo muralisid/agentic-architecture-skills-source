@@ -14,7 +14,7 @@ A complete published guide (docs site, built from this repo) covering:
 2. **Current state baselines**: enterprise archetypes and maturity readiness assessments (data, security)
 3. **14 research tracks**: one per enterprise landscape layer, from infrastructure to operating model
 4. **Production techniques library**: use-case-driven data curation and cost engineering patterns with real economics
-5. **Roadmap framework**: checklist-governed; your answers on economics, sovereignty, risk, and audience produce your roadmap variant
+5. **Roadmap framework**: the use-case portfolio framework; the nine-factor roadmap checklist was archived on 2026-08-23 (D038) and is no longer published
 7. **Blueprints**: department and vertical target states (utilities & energy, banking & financial services, manufacturing & supply chain, public sector)
 
 ## Editorial stance
@@ -52,7 +52,7 @@ A complete published guide (docs site, built from this repo) covering:
 | 2. Current state and maturity references | Baseline published: size-by-gravity archetype grid and light/heavy readiness assessment |
 | 3. Layer research (pilot: R03 Integration fabric) | Complete: all 14 tracks published |
 | 4. Synthesis + techniques library | Synthesis complete: master target state, concerns matrix, memory pipelines, economics, sovereignty, identity and security, learning loops. Techniques library open and growing |
-| 5. Roadmap framework | Published: nine-factor roadmap generator and the use-case portfolio framework |
+| 5. Roadmap framework | Use-case portfolio framework published; the nine-factor roadmap generator was archived 2026-08-23 (D038) and is not on the site |
 | 6. Blueprints | Published: 7 department and 4 vertical blueprints |
 | 7. Vendor analysis | Archived 2026-08-23 (D038): product facts date within a quarter, so the one-page wall chart carries product orientation and is re-verified every two months |
 | 8. Publication | Site built and verified: Fumadocs on Next.js, ready to deploy on Vercel with root directory `site` |

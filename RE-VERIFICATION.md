@@ -34,6 +34,21 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 ---
 | OpenAI self-serve fine-tuning wind-down | Announced 7 May 2026. New organisations blocked 7 May 2026; organisations without fine-tuned inference in 60 days blocked 2 July 2026; all remaining customers blocked 6 January 2027. Used on /ladder/adapters-and-fine-tuning. Re-check before the January 2027 date passes | https://developers.openai.com/api/docs/deprecations |
 
+## Added 14 October 2026: corrections round
+
+| Item | Why volatile | Where used | Re-check |
+|---|---|---|---|
+| Agent identity GA states: Okta (scheduled 30 Apr 2026, unconfirmed), SailPoint (trade press 4 Aug 2026), CyberArk now Idira (vendor blog Jan 2026), Ping (announced 27 May 2026); Microsoft Agent 365 parts still in preview at GA (agent user accounts, cross-cloud registry sync); AWS Agent Registry GA date given as 31 Aug and 6 Aug 2026 | Preview to GA transitions; vendor pages change | R10 target-state table and identity mechanics; identity chain | January 2027, against each vendor's own release notes |
+| Microsoft FIDES status (experimental, Python-only, no code-execution support as of 7 Oct 2026) | A framework feature can graduate in one release | R10 policy decision point; enforcement page | January 2027 |
+| gVisor host code-execution flaw reported in 2026 on one aggregator page | Unconfirmed against the project's advisories | R01 sandbox section and evidence | Before the next R01 edit |
+| ASD ISM agent controls ISM-2133 to ISM-2135 and amended ISM-2113 (September 2026) | Control numbers taken from a compliance firm's walkthrough; the ISM release notes timed out | R10 threat canon | Against cyber.gov.au before quoting a number |
+| MAS AI risk management guidelines phasing (12 and 24 months from 7 Oct 2026) | Transition dates from the response-to-feedback paper | R10 and R11 | On the MAS page before the first milestone |
+| OAIC automated-decision transparency rule start, 10 Dec 2026, and the Commonwealth AI impact-assessment deadline, 15 Dec 2026 | Read through law-firm summaries and search excerpts; government pages timed out | R11 regulatory geometry | On the OAIC and DTA pages before December 2026 |
+| Queensland FAIRA: policy says required, framework page says non-mandated | The agency may reconcile the two pages | R11 regulatory geometry | December 2026 |
+| Card-network agent dispute and liability rules (none binding as of Oct 2026; one forecast says April 2027 at the earliest) and Coinbase x402 agent-wallet budget design | Network rules are being written | R10 payment stack; deterministic zones | April 2027 |
+| SAP utilities agents dated Q2 and Q3 2026 in user-group coverage | Dates slipped once already; shipped status unconfirmed on 14 Oct 2026 | Utilities use cases (pending rebuild) | Before the utilities pages publish |
+| AER automated-bidding guideline update (bulletin of 5 Aug 2026 read through a law-firm alert) | The guideline deadline was delayed | Utilities use cases (pending rebuild) | Before the utilities pages publish |
+
 ## Due Q4 2026
 
 | Item | What to check | Where it is used |

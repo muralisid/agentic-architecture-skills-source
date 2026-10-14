@@ -31,7 +31,7 @@ List every action the agent can cause, directly through a tool or indirectly by 
 
 - Does the action grant, widen, or bypass access to something?
 - Does it move money, commit to spending, or authorise a payment?
-- Can it affect physical safety, directly or by changing what a control system does?
+- Can it actuate anything physical (safety actuation), directly or by changing what a control system does?
 - Does it create, amend, or submit a record that a regulator, a court, or an auditor will treat as authoritative?
 
 Any yes puts the action in a zone. In a zone the rule is the same: the model may produce evidence, a recommendation, or a draft, and a deterministic rule over verified identity and policy makes the decision.
