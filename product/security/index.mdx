@@ -61,7 +61,7 @@ No text the agent reads, whether it came from a user, a document, a tool, memory
 
 ## The chapters
 
-The guide will be built in this order. The order follows the work: understand the system, constrain it, attack it, and prove what happened.
+The guide will be built in this order. The order follows the work: understand the system, constrain it, attack it, and prove what happened. Chapter 1 is written. Chapters 2 to 10 are planned. Until each one is written, its card opens the page that covers part of it today.
 
 ![The ten Security Practices chapters arranged as a four-stage journey: understand the workflow and hostile content; constrain identity, tools, runtime and memory; attack through evaluation and AgentDojo; then prove outcomes through detection, recovery and an OWASP crosswalk. Every failure feeds back into the controls and tests.](/figures/security/security-roadmap.webp)
 
@@ -69,32 +69,32 @@ The guide will be built in this order. The order follows the work: understand th
   <Card icon={<I name="map" />} title="1. Threat-model an agentic workflow" href="/security/threat-model">
     Map intent, trust, authority, state and effects before choosing controls. Includes an attack-surface worksheet and the first set of abuse cases.
   </Card>
-  <Card icon={<I name="alert" />} title="2. Treat retrieved content as hostile">
-    Direct and indirect prompt injection, tool-output poisoning, retrieval poisoning and the controls that still hold when detection fails.
+  <Card icon={<I name="alert" />} title="2. Treat retrieved content as hostile (planned)" href="/architecture/data-to-memory">
+    Direct and indirect prompt injection, tool-output poisoning, retrieval poisoning and the controls that still hold when detection fails. Planned. Covered in part today by the data-to-memory pipeline.
   </Card>
-  <Card icon={<I name="key" />} title="3. Bind identity, authority and delegation">
-    First-class agent identity, least privilege, task-scoped credentials, non-repudiation, revocation and the confused-deputy problem.
+  <Card icon={<I name="key" />} title="3. Bind identity, authority and delegation (planned)" href="/architecture/identity-chain">
+    First-class agent identity, least privilege, task-scoped credentials, non-repudiation, revocation and the confused-deputy problem. Planned. Covered in part today by the identity and delegation chain.
   </Card>
-  <Card icon={<I name="wrench" />} title="4. Secure tools, MCP and external actions">
-    Tool provenance, schema validation, capability discovery, third-party servers, dangerous combinations and consequential-action gates.
+  <Card icon={<I name="wrench" />} title="4. Secure tools, MCP and external actions (planned)" href="/architecture/risk-profile">
+    Tool provenance, schema validation, capability discovery, third-party servers, dangerous combinations and consequential-action gates. Planned. Covered in part today by the risk profile.
   </Card>
-  <Card icon={<I name="flask" />} title="5. Evaluate and red-team the agent">
-    Utility, security, adaptive attacks, repeated trials, environment-state judges, defense evaluation and promotion gates.
+  <Card icon={<I name="flask" />} title="5. Evaluate and red-team the agent (planned)" href="/architecture/agent-lifecycle">
+    Utility, security, adaptive attacks, repeated trials, environment-state judges, defense evaluation and promotion gates. Planned. Covered in part today by the agent lifecycle.
   </Card>
-  <Card icon={<I name="target" />} title="6. Use AgentDojo as a worked benchmark">
-    Build and run hijacking scenarios, interpret utility and attack success together, extend the environments and state what the result cannot prove.
+  <Card icon={<I name="target" />} title="6. Use AgentDojo as a worked benchmark (planned)" href="/security/threat-model">
+    Build and run hijacking scenarios, interpret utility and attack success together, extend the environments and state what the result cannot prove. Planned. Covered in part today by chapter 1.
   </Card>
-  <Card icon={<I name="shield" />} title="7. Enforce and contain at runtime">
-    Policy decision points, sandboxes, network egress, transaction limits, approvals, kill switches and recovery boundaries.
+  <Card icon={<I name="shield" />} title="7. Enforce and contain at runtime (planned)" href="/architecture/enforcement">
+    Policy decision points, sandboxes, network egress, transaction limits, approvals, kill switches and recovery boundaries. Planned. Covered in part today by enforcement outside the model.
   </Card>
-  <Card icon={<I name="database" />} title="8. Protect memory, context and data">
-    Memory provenance, write policy, quarantine, sensitive-data minimisation, retrieval permissions, deletion and poisoning response.
+  <Card icon={<I name="database" />} title="8. Protect memory, context and data (planned)" href="/memory/permissions-and-lifecycle">
+    Memory provenance, write policy, quarantine, sensitive-data minimisation, retrieval permissions, deletion and poisoning response. Planned. Covered in part today by memory permissions and lifecycle.
   </Card>
-  <Card icon={<I name="activity" />} title="9. Detect, investigate and recover">
-    Security telemetry, independent traces, incident runbooks, credential revocation, state repair and evidence retention.
+  <Card icon={<I name="activity" />} title="9. Detect, investigate and recover (planned)" href="/layers/r12-observability-and-finops">
+    Security telemetry, independent traces, incident runbooks, credential revocation, state repair and evidence retention. Planned. Covered in part today by observability and FinOps.
   </Card>
-  <Card icon={<I name="clipboard" />} title="10. Crosswalk OWASP without outsourcing judgment">
-    Map the OWASP agentic risks to architecture controls, adversarial tests, owners and evidence, while keeping the guide's own control model stable.
+  <Card icon={<I name="clipboard" />} title="10. Crosswalk OWASP without outsourcing judgment (planned)" href="/layers/r10-security-and-identity">
+    Map the OWASP agentic risks to architecture controls, adversarial tests, owners and evidence, while keeping the guide's own control model stable. Planned. Covered in part today by the security and identity layer.
   </Card>
 </Cards>
 

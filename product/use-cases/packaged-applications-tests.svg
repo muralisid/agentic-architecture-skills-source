@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Six tests, five outcomes</title>
+<desc id="desc">Each process runs through six tests in order, and can stop early at Not an agent or Prepare first. Inside one package with a GA or dated vendor agent, the outcome is wait or buy. Vendor agents in several packages mean wrap, and anything else means build thin. Every agent then gets a consequence class on the risk profile and a score for the portfolio.</desc>
+<defs>
+<marker id="ah9a4c2d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker>
+</defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32" y="56" font-family="Arial,sans-serif" font-size="34" font-weight="bold" fill="#182e31">Six tests, five outcomes</text>
+<text x="32" y="94" font-family="Arial,sans-serif" font-size="20" fill="#465958">Run the six tests on each process, in order. Tests 4 and 5 are new for packaged applications.</text>
+<rect x="32" y="132" width="300" height="227" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="164.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">Test 1</text>
+<text x="48" y="198.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Does it need an agent?</text>
+<text x="48" y="232.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">A predictable task needs</text>
+<text x="48" y="255.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">ordinary code.</text>
+<rect x="402" y="132" width="300" height="227" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="418" y="164.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">Test 2</text>
+<text x="418" y="198.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Can it be evaluated?</text>
+<text x="418" y="232.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Experts can write</text>
+<text x="418" y="255.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">pass-or-fail tasks from</text>
+<text x="418" y="278.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">real failures.</text>
+<rect x="772" y="132" width="400" height="227" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="788" y="164.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">Tests 4 and 5</text>
+<text x="788" y="198.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f">Inside one package, with a</text>
+<text x="788" y="227.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f">vendor agent GA or dated</text>
+<text x="788" y="256.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f">within two quarters?</text>
+<text x="788" y="290.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Count only agents marked GA in</text>
+<text x="788" y="313.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">release notes. Treat announced as</text>
+<text x="788" y="336.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">unavailable.</text>
+<rect x="1110.3" y="144" width="47.7" height="32" rx="16" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1119.3" y="166.48" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">new</text>
+<path d="M336 245.5 H396" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="367" y="233.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d" text-anchor="middle">yes</text>
+<path d="M706 245.5 H766" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="737" y="233.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d" text-anchor="middle">yes</text>
+<rect x="1242" y="122" width="326" height="538" rx="16" fill="none" stroke="#9a4c2d" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="1258" y="152" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">Agent outcomes</text>
+<rect x="1258" y="166" width="294" height="115" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1274" y="201.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#1e3a8a">Wait or buy</text>
+<text x="1274" y="235.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Use the vendor's agent.</text>
+<text x="1274" y="258.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Register it.</text>
+<rect x="1258" y="325" width="294" height="161" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="1274" y="360.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Wrap</text>
+<text x="1274" y="394.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Use them. Own the</text>
+<text x="1274" y="417.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">interfaces, semantic</text>
+<text x="1274" y="440.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">layer, registry and</text>
+<text x="1274" y="463.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">policy.</text>
+<rect x="1258" y="506" width="294" height="138" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1274" y="541.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#4c1d95">Build thin</text>
+<text x="1274" y="575.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">A small agent through</text>
+<text x="1274" y="598.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">governed APIs. Easy to</text>
+<text x="1274" y="621.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">switch off.</text>
+<path d="M1176 223.5 H1252" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="1215" y="211.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d" text-anchor="middle">yes</text>
+<path d="M1298 285 V319" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="1312" y="309" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">in several packages</text>
+<path d="M972 363 V575 H1252" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="984" y="399" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">no</text>
+<rect x="32" y="421" width="300" height="138" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="48" y="456.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#1e293b">Not an agent</text>
+<text x="48" y="490.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Use ordinary code, a fixed</text>
+<text x="48" y="513.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">workflow or plain</text>
+<text x="48" y="536.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">retrieval.</text>
+<rect x="402" y="421" width="300" height="138" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="418" y="456.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f">Prepare first</text>
+<text x="418" y="490.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Fund the definition of</text>
+<text x="418" y="513.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">success, the data and the</text>
+<text x="418" y="536.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">interfaces.</text>
+<path d="M182 363 V415" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="194" y="397" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">no</text>
+<path d="M552 363 V415" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="564" y="397" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">no</text>
+<path d="M1405 662 V684 H212 V714" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="720" y="674" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d" text-anchor="middle">Every agent outcome goes on to tests 3 and 6</text>
+<rect x="32" y="720" width="360" height="121" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="752.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">Test 3</text>
+<text x="48" y="786.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">What is the consequence</text>
+<text x="48" y="815.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">class?</text>
+<path d="M396 780.5 H456" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<rect x="462" y="720" width="320" height="121" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="478" y="755.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Risk profile</text>
+<text x="478" y="789.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Sets the tier, the zones it</text>
+<text x="478" y="812.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">touches and the controls.</text>
+<path d="M786 780.5 H846" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<rect x="852" y="720" width="360" height="121" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="868" y="752.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">Test 6</text>
+<text x="868" y="786.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Score impact, feasibility</text>
+<text x="868" y="815.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">and desirability</text>
+<path d="M1216 780.5 H1276" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<rect x="1282" y="720" width="286" height="121" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="1298" y="755.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#134e4a">Portfolio</text>
+<text x="1298" y="789.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Check reviewers can</text>
+<text x="1298" y="812.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">absorb the load.</text>
+<text x="32" y="884" font-family="Arial,sans-serif" font-size="18" fill="#465958">This guide's position. The six tests and five outcomes have not been tested against outcomes.</text>
+</svg>

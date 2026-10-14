@@ -30,11 +30,13 @@ The supporting evidence is the failure data rather than a preference: only a min
 
 ## The three admission gates
 
+![Ideas pass three gates: evaluability, a deterministic-zone check and reliable evidence. A fail goes to the make-it-evaluable queue, a redesign or rejection, or grounding preparation. Two packaged-application tests decide whether to wait or buy, or to build thin. What survives is scored, checked against constraints across the whole set, and funded with kill criteria written now. The portfolio is re-ranked every quarter.](/figures/use-cases/portfolio-gates-to-funding.svg)
+
 A use case is fundable this quarter only if it passes all three.
 
 **Gate 1: Evaluability.** A domain SME can write twenty to fifty pass-or-fail tasks drawn from real failures, and a baseline exists or can be measured. Domain SMEs own this bar, not the platform team.
 
-**Gate 2: Deterministic-zone check.** Does the use case require a decision inside access control, movement of money, safety actuation, or a formal regulatory record? If yes, it is fundable only in a redesigned form where the model informs and a deterministic rule decides. If the value of the use case depends on the model making that decision, reject it. This gate exists to stop a class of proposal that is attractive, expensive and unshippable.
+**Gate 2: Deterministic-zone check.** Does the use case require a decision inside access control, movement of money, safety actuation, or a formal regulatory record? If yes, it is fundable only in a redesigned form where the model may analyse, draft and flag, and a deterministic rule or a named person makes the decision (models may take permission away, never grant it). If the value of the use case depends on the model making that decision, reject it. This gate exists to stop a class of proposal that is attractive, expensive and unshippable.
 
 **Gate 3: Grounding readiness.** A curated corpus with a named owner either exists or can exist within the funding period, scoped to this use case rather than to a source system. Corpus size is not the measure: growing a corpus from 54 to over 1,100 uncurated documents dropped accuracy from 75% to under 40% until domain scoping fixed it.
 
@@ -44,11 +46,13 @@ Added October 2026 from this guide's research on packaged, or commercial off-the
 
 Both tests run after the three gates and before scoring. They do not decide whether a use case is worth doing. They decide whether the enterprise should build the agent at all.
 
-**One package or several?** Inside one package, the vendor holds the data and the permissions and is likely to ship an agent. Across several packages, no vendor agent covers the whole job, and the join is the strongest build candidate.
+**Test 4: One package or several?** Inside one package, the vendor holds the data and the permissions and is likely to ship an agent. Across several packages, no vendor agent covers the whole job, and the join is the strongest build candidate.
 
-**Is a vendor agent generally available on this edition, or dated within two quarters?** Count only agents marked generally available in release notes, treat announced agents as unavailable, and check the price after any free period. Vendor agents are tied to editions: Oracle's are not coming to E-Business Suite, JD Edwards, PeopleSoft or Hyperion ([Forrester, 8 May 2026](https://www.forrester.com/blogs/oracle-applications-analyst-summit-fusion-agents-are-shifting-from-assist-to-decide/)), and SAP ties its AI to cloud editions or a committed migration ([SAPinsider, 15 May 2026](https://sapinsider.org/articles/sapphire-2026-your-sap-erp-just-got-an-ai-brain-now-what-seven-questions-every-leader-must-answer/)).
+**Test 5: Is a vendor agent generally available on this edition, or dated within two quarters?** Count only agents marked generally available in release notes, treat announced agents as unavailable, and check the price after any free period. Vendor agents are tied to editions: Oracle's are not coming to E-Business Suite, JD Edwards, PeopleSoft or Hyperion ([Forrester, 8 May 2026](https://www.forrester.com/blogs/oracle-applications-analyst-summit-fusion-agents-are-shifting-from-assist-to-decide/)), and SAP ties its AI to cloud editions or a committed migration ([SAPinsider, 15 May 2026](https://sapinsider.org/articles/sapphire-2026-your-sap-erp-just-got-an-ai-brain-now-what-seven-questions-every-leader-must-answer/)).
 
 Inside one package, on a supported edition, with a dated generally available agent, the decision is wait or buy. The use case leaves the build ranking but stays on the portfolio, and its vendor date is re-checked each quarter. Across packages, or on an excluded edition, the agent is built, and built thin so it can be retired when a vendor agent arrives. A vendor agent still takes a registry entry and still draws on the shared supervision capacity in constraint 1 below. The full method and a dated map of a utility estate are in [agents and packaged applications](/use-cases/packaged-applications).
+
+The three gates and the two tests are the five checks on [choose where to start](/use-cases/choose-where-to-start), in the same order and with the same numbers. [Agents and packaged applications](/use-cases/packaged-applications) runs them in the same order as six tests. It adds "does it need an agent?" as test one, so gates 1 and 2 are its tests two and three. Tests 4 and 5 keep their numbers there. Gate 3, grounding readiness, sits in its "Prepare first" outcome. Its test six is the scoring below.
 
 ## Scoring what survives the gates
 

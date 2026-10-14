@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Seven planes across fourteen layers</title>
+<desc id="desc">A fourteen-floor building shows the layers you already own, from R01 Infrastructure at the bottom to R14 Agent data engineering at the top. Seven vertical planes cross it: execution, action, knowledge, control, improvement, evidence and human, with a mark where each plane is mainly built from a layer. Two rules bind them: enforcement lives outside execution, so the control plane stops actions at the edge of the execution plane, and evidence is collected where the agent cannot write. A dashed second outline shows the licensed estate, where agents run on a vendor control plane that your own gateway does not see.</desc>
+<defs><marker id="ah-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="20" markerHeight="20" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#0f766e"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="33" y="50" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">Seven planes across fourteen layers</text>
+<text x="33" y="82" font-family="Arial,sans-serif" font-size="20" fill="#465958">The layers are what you own. The planes are what you build across them.</text>
+<rect x="419" y="100" width="118" height="774" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="478" y="132" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#4c1d95">Execution</text>
+<rect x="541" y="100" width="118" height="774" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="600" y="132" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e3a8a">Action</text>
+<rect x="663" y="100" width="118" height="774" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="722" y="132" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e3a8a">Knowledge</text>
+<rect x="785" y="100" width="118" height="774" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="844" y="132" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">Control</text>
+<rect x="907" y="100" width="118" height="774" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="966" y="132" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#4c1d95">Improvement</text>
+<rect x="1029" y="100" width="118" height="774" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="1088" y="132" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#134e4a">Evidence</text>
+<rect x="1151" y="100" width="118" height="774" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="1210" y="132" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#78350f">Human</text>
+<text x="45" y="132" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">The fourteen layers you own</text>
+<rect x="33" y="152" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="179" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R14</text>
+<text x="93" y="179" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Agent data engineering</text>
+<path d="M417 152 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="683" y="162" width="78" height="20" rx="10" fill="#2563eb"/>
+<rect x="33" y="192" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="219" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R13</text>
+<text x="93" y="219" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Operating model and supervision</text>
+<path d="M417 192 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="1171" y="202" width="78" height="20" rx="10" fill="#d97706"/>
+<rect x="33" y="232" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="259" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R12</text>
+<text x="93" y="259" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Observability and FinOps</text>
+<path d="M417 232 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="927" y="242" width="78" height="20" rx="10" fill="#7c3aed"/>
+<rect x="1049" y="242" width="78" height="20" rx="10" fill="#0f766e"/>
+<rect x="33" y="272" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="299" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R11</text>
+<text x="93" y="299" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Governance, risk and sovereignty</text>
+<path d="M417 272 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="805" y="282" width="78" height="20" rx="10" fill="#475569"/>
+<rect x="1049" y="282" width="78" height="20" rx="10" fill="#0f766e"/>
+<rect x="33" y="312" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="339" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R10</text>
+<text x="93" y="339" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Security and identity</text>
+<path d="M417 312 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="805" y="322" width="78" height="20" rx="10" fill="#475569"/>
+<rect x="33" y="352" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="379" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R09</text>
+<text x="93" y="379" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Experience and channels</text>
+<path d="M417 352 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="1171" y="362" width="78" height="20" rx="10" fill="#d97706"/>
+<rect x="33" y="392" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="419" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R08</text>
+<text x="93" y="419" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Productivity and collaboration</text>
+<path d="M417 392 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="1171" y="402" width="78" height="20" rx="10" fill="#d97706"/>
+<rect x="33" y="432" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="459" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R07</text>
+<text x="93" y="459" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Agent platform</text>
+<path d="M417 432 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="439" y="442" width="78" height="20" rx="10" fill="#7c3aed"/>
+<rect x="805" y="442" width="78" height="20" rx="10" fill="#475569"/>
+<rect x="33" y="472" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="499" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R06</text>
+<text x="93" y="499" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Intelligence and learning</text>
+<path d="M417 472 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="927" y="482" width="78" height="20" rx="10" fill="#7c3aed"/>
+<rect x="33" y="512" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="539" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R05</text>
+<text x="93" y="539" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Line of business and OT</text>
+<path d="M417 512 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="561" y="522" width="78" height="20" rx="10" fill="#2563eb"/>
+<rect x="33" y="552" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="579" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R04</text>
+<text x="93" y="579" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Systems of record</text>
+<path d="M417 552 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="561" y="562" width="78" height="20" rx="10" fill="#2563eb"/>
+<rect x="33" y="592" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="619" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R03</text>
+<text x="93" y="619" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Integration fabric</text>
+<path d="M417 592 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="561" y="602" width="78" height="20" rx="10" fill="#2563eb"/>
+<rect x="33" y="632" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="659" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R02</text>
+<text x="93" y="659" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Data platform</text>
+<path d="M417 632 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="683" y="642" width="78" height="20" rx="10" fill="#2563eb"/>
+<rect x="33" y="672" width="384" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+<text x="45" y="699" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R01</text>
+<text x="93" y="699" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Infrastructure</text>
+<path d="M417 672 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="439" y="682" width="78" height="20" rx="10" fill="#7c3aed"/>
+<path d="M417 712 H1271" fill="none" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.7"/>
+<rect x="33" y="152" width="1238" height="560" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+<rect x="33" y="726" width="384" height="64" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="49" y="752" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">Enforcement lives</text>
+<text x="49" y="776" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">outside execution</text>
+<circle cx="844" cy="758" r="8" fill="#475569"/>
+<path d="M844.0 758 H543" fill="none" stroke="#475569" stroke-width="6"/>
+<path d="M543 738 V778" fill="none" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+<rect x="33" y="800" width="384" height="64" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="49" y="826" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#134e4a">Evidence is collected where</text>
+<text x="49" y="850" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#134e4a">the agent cannot write</text>
+<circle cx="478" cy="832" r="8" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<path d="M486.0 832 H1086.0" fill="none" stroke="#0f766e" stroke-width="6" stroke-dasharray="14 8" marker-end="url(#ah-teal)"/>
+<rect x="1293" y="100" width="274" height="612" rx="18" fill="#f8fafc" stroke="#475569" stroke-width="2.5" stroke-dasharray="12 8"/>
+<text x="1313" y="140" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Licensed estate:</text>
+<text x="1313" y="166" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">vendor control plane</text>
+<text x="1313" y="218" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Suite copilots and</text>
+<text x="1313" y="242" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">agents inside record</text>
+<text x="1313" y="266" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">systems.</text>
+<text x="1313" y="306" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Your gateway does not</text>
+<text x="1313" y="330" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">see them.</text>
+<text x="1313" y="370" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Govern them through</text>
+<text x="1313" y="394" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">tenant settings and the</text>
+<text x="1313" y="418" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">telemetry you can</text>
+<text x="1313" y="442" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">export.</text>
+<text x="1313" y="482" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">Both rules still apply.</text>
+<path d="M1317 530 H1543" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 6"/>
+<path d="M1317 560 H1543" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 6"/>
+<path d="M1317 590 H1543" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 6"/>
+<path d="M1317 620 H1543" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 6"/>
+<path d="M1317 650 H1543" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 6"/>
+<path d="M1317 680 H1543" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6 6"/>
+<rect x="1293" y="736" width="44" height="20" rx="10" fill="#7c3aed"/>
+<text x="1349" y="752" font-family="Arial,sans-serif" font-size="18" fill="#465958">Filled mark: the plane</text>
+<text x="1349" y="776" font-family="Arial,sans-serif" font-size="18" fill="#465958">is mainly built from</text>
+<text x="1349" y="800" font-family="Arial,sans-serif" font-size="18" fill="#465958">this layer.</text>
+</svg>

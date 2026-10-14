@@ -97,6 +97,8 @@ Managed runtimes converged on being framework-agnostic. One hyperscaler runtime 
 | C9 | Cost | Per-run token and cost budgets enforced in the harness; multiplier chosen deliberately per task class |
 | C10 | Resilience | Durable execution or artifacts-as-state; crash recovery tested; hibernate-and-wake for long waits |
 
+**Next step:** read the next layer, [R08 Productivity and collaboration](/layers/r08-productivity-and-collaboration).
+
 ## Evidence and limits
 
 The failure record at this <Term k="layer">layer</Term> is built from <Term k="traces">traces</Term> rather than from Common Vulnerabilities and Exposures (CVE) records. A taxonomy known as MAST (presented at the NeurIPS 2025 conference) was built from 150 traces and validated on more than 1,600 traces across seven frameworks. Inter-rater agreement (kappa) was 0.88. It identifies 14 failure modes in 3 categories. It concludes that multi-agent failures are design failures, not model failures. A benchmark competition across 2,196 execution traces and 149 teams found that token expenditure does not reliably predict task completion. Success correlated negatively with token usage, execution length, and tool entropy (how varied the tool choices were). Winning submissions improved <Term k="guardrails">guardrails</Term> rather than architectures (arXiv 2605.08518).

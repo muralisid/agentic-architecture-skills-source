@@ -43,16 +43,20 @@ Status as of 14 October 2026:
 
 ## The six tests
 
-**In short:** Run six tests on each process, in order. Tests three and four are the new ones for packaged applications.
+**In short:** Run six tests on each process, in order. Tests four and five are the new ones for packaged applications.
+
+<TeachingIllustration src="/figures/use-cases/packaged-applications-tests.svg" mobileSrc="/figures/use-cases/packaged-applications-tests-mobile.svg" expandable title="Six tests, five outcomes" alt="A decision flow. If the work needs no agent, the outcome is Not an agent. If it cannot be evaluated, the outcome is Prepare first. If it sits inside one package with a vendor agent that is GA or dated within two quarters, wait or buy. With vendor agents in several packages, wrap. Otherwise build thin. Every agent then gets a consequence class on the risk profile and a score for the portfolio." caption="Tests 4 and 5 are new for packaged applications. Wait for a vendor only when a dated agent exists for your edition." />
 
 1. **Does it need an agent?** A predictable task needs ordinary code. Questions over a fixed set of documents need plain retrieval. This follows Microsoft's Cloud Adoption Framework (updated 2 June 2026) [vendor].
 2. **Can it be evaluated?** Domain experts must be able to write pass-or-fail tasks from real failures. This is the existing gate in [the use-case portfolio](/library/frameworks/use-case-portfolio). A valuable process that fails it goes to the make-it-evaluable queue. It is neither built nor rejected.
-3. **Is the process inside one package or across several?** Inside one package, the vendor holds the data and the permissions. It is likely to ship an agent. Across several packages, no vendor agent covers the whole job.
-4. **Is a vendor agent GA on this edition, or dated within two quarters?** Count only agents marked GA in release notes. Treat "announced" as unavailable. Check the price after any free period ends.
-5. **What is the consequence class?** Score the agent with the [risk profile](/architecture/risk-profile). Check which [deterministic zones](/architecture/deterministic-zones) it touches. A bill change is a money action, whoever built the agent.
+3. **What is the consequence class?** Score the agent with the [risk profile](/architecture/risk-profile). Check which [deterministic zones](/architecture/deterministic-zones) it touches. A bill change is a money action, whoever built the agent.
+4. **Is the process inside one package or across several?** Inside one package, the vendor holds the data and the permissions. It is likely to ship an agent. Across several packages, no vendor agent covers the whole job.
+5. **Is a vendor agent GA on this edition, or dated within two quarters?** Count only agents marked GA in release notes. Treat "announced" as unavailable. Check the price after any free period ends.
 6. **Score impact, feasibility and desirability.** Microsoft's framework scores each from 1 to 5. Then check that your reviewers can absorb the load across the whole portfolio.
 
-Tests three and four appear in no published framework found in this guide's research. The only fully documented selection method found is Microsoft's. It asks whether a software-as-a-service (SaaS) agent already meets the need. It does not ask which edition you run, or when an agent will arrive.
+These six tests run in the same order as the five checks on [choose where to start](/use-cases/choose-where-to-start) and the gates in [the use-case portfolio](/library/frameworks/use-case-portfolio). Test one, "Does it need an agent?", comes first. Tests two and three are checks one and two. Tests four and five are checks four and five, with the same numbers. Test six is the scoring that follows the checks. Check three, reliable evidence, sits in the "Prepare first" outcome below.
+
+Tests four and five appear in no published framework found in this guide's research. The only fully documented selection method found is Microsoft's. It asks whether a software-as-a-service (SaaS) agent already meets the need. It does not ask which edition you run, or when an agent will arrive.
 
 ### Five outcomes
 
@@ -64,11 +68,13 @@ Tests three and four appear in no published framework found in this guide's rese
 | Not an agent | Test one fails | Use ordinary code, a fixed workflow or plain retrieval. |
 | Prepare first | Test two fails, or the data or interfaces are not ready | Fund the definition of success, the data and the interfaces before any agent. |
 
-Thin means small and easy to retire. The agent keeps no business rules of its own. When a vendor agent later covers the job, you switch yours off. The interfaces and definitions stay. Describe each agent, bought or built, with the [four questions](/use-cases/agent-roles).
+Thin means small and easy to retire. The agent keeps no business rules of its own. When a vendor agent later covers the job, you switch yours off. The interfaces and definitions stay. Describe each agent, bought or built, with the four questions on [agent types](/architecture/agent-types).
 
 ## Where enterprise-built agents land in a utility estate
 
 **In short:** Vendors cover most single systems. The strongest place to build is the join across billing, outage, mapping and field systems. No measured outcome exists yet for any enterprise-built portal, middleware or reporting agent.
+
+<TeachingIllustration src="/figures/use-cases/packaged-applications-estate.svg" mobileSrc="/figures/use-cases/packaged-applications-estate-mobile.svg" expandable title="Where agents land in a packaged-application estate" alt="Seven packaged systems in a utility estate, each badged with what vendors ship as of 14 October 2026. BI, portals, integration and grid systems have GA vendor agents, and so does SAP billing self-service. SAP billing exceptions, SAP's MCP Gateway and Microsoft scheduling are planned but not confirmed. Nothing was found for GIS, asset registers or Oracle billing. A band marks the join across billing, outage, GIS and field. A strip at the base lists what you own: the interface inventory, semantic layer, agent registry and gateway policy." caption="Vendors cover most single systems. The join across systems is the place to build. The badges follow the table below and are checked again each quarter." />
 
 The table maps a typical electricity or water utility. Dates are as of 14 October 2026. The third column is this guide's position.
 
@@ -116,6 +122,8 @@ The evidence is weakest where the case for building on the glue leans hardest. T
 
 The two sides are not equal on evidence. The case against the glue rests on documented data and interface problems. The case against waiting rests on dated facts about editions and prices. Lock-in is analyst opinion.
 
+**Next step:** put a value and a full cost on the agent on [measure value and full cost](/use-cases/value-and-investment).
+
 ## Evidence and limits
 
 - Vendor counts, dates and prices are vendor-published and marked [vendor]. This page is re-verified each quarter.
@@ -125,8 +133,6 @@ The two sides are not equal on evidence. The case against the glue rests on docu
 - The shipped status of SAP's Q2 and Q3 2026 utilities agents is unconfirmed. Sources conflict on whether SAP's MCP Gateway is GA in a given tenant. No per-agent GA list from Sapphire 2026 was found.
 - No named custom agent was found that a vendor feature later replaced. No named customer was found who was let down by a vendor agent.
 - The six tests, the two-quarter window and the five outcomes are this guide's position. They have not been tested against outcomes.
-
-Continue with [choose where to start](/use-cases/choose-where-to-start) or [value and investment](/use-cases/value-and-investment).
 
 ## Sources added October 2026
 

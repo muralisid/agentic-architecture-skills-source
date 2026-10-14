@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read=(p)=>readFile(path.join(root,p),'utf8');
 const sections=JSON.parse(await read('content-map.json'));
-assert.deepEqual(sections.map(s=>s.id),['use-cases','architecture','ladder','memory','research','skills']);
+assert.deepEqual(sections.map(s=>s.id),['start','use-cases','architecture','ladder','memory','research','skills']);
 const layers=JSON.parse(await read('lib/architecture-map.json'));
 assert.equal(layers.length,14);assert.equal(new Set(layers.map(l=>l.url)).size,14);
 async function walk(dir){const out=[];for(const e of await readdir(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())out.push(...await walk(p));else if(/\.mdx?$/.test(p))out.push(p);}return out;}
@@ -34,4 +34,4 @@ if(origin){
   const response=await fetch(origin+from,{redirect:'manual'});assert([307,308].includes(response.status));assert.equal(new URL(response.headers.get('location'),origin).pathname,to);
  }
 }
-console.log(`Reader checks passed: ${routes.size} pages, ${oldRoutes.length} retained product routes, 14 layers, 25 decisions, ${diagrams} diagram references, and 6 entrances${origin ? ', with HTTP checks' : ''}.`);
+console.log(`Reader checks passed: ${routes.size} pages, ${oldRoutes.length} retained product routes, 14 layers, 25 decisions, ${diagrams} diagram references, and 7 entrances${origin ? ', with HTTP checks' : ''}.`);

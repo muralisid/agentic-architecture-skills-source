@@ -72,6 +72,8 @@ const config = {
         })),
       // The first-day site lived under /docs; the corpus mirror now lives under /library.
       { source: '/docs/:path*', destination: '/library/:path*', permanent: false },
+      // Agent types are an architecture concept, so the page moved out of Use cases.
+      { source: '/use-cases/agent-roles', destination: '/architecture/agent-types', permanent: false },
       // The research section became the patterns section: the experiments are
       // the evidence for a pattern rather than the point in themselves.
       { source: '/research/recommended-approach', destination: '/patterns', permanent: false },

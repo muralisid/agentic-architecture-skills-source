@@ -47,6 +47,10 @@ Measurements from 2026 force three edits to the intuitive design:
 
 The one fully specified published lifecycle runs DRAFT, APPROVED, PUBLISHED, DEPRECATED, RETIRED. It names a threshold for each gate: faithfulness at least 0.80, correctness 0.90, tool accuracy 0.90, helpfulness 0.70, <Term k="latency">latency</Term> (response time) at most 15 seconds, harm at most 5 percent. A seven-day staleness policy triggers automated re-evaluation. Its enforcement is architecturally elegant: **discovery returns only PUBLISHED agents**. An agent whose quality degrades therefore becomes harder to reach, without a policy engine intervening. Rollouts run in <Term k="shadow">shadow mode</Term> first, alongside production and affecting nothing. Next comes a <Term k="canary">canary</Term> release, where 1 to 5 percent of traffic uses the change, gated on session success, satisfaction, and escalation. Then it goes to everyone, with feature flags separating activation from deployment.
 
+These five states are release states, gated on quality scores. They are not the full agent lifecycle this guide uses. That has nine stages, from registration to retirement, on [the agent lifecycle](/architecture/agent-lifecycle).
+
+<TeachingIllustration src="/figures/architecture/build-and-release.svg" mobileSrc="/figures/architecture/build-and-release-mobile.svg" expandable title="Build and release an agent" alt="Eight steps in two rows. First, domain experts write 20 to 50 pass-or-fail tasks from real failures, and these are the acceptance criteria. The agent is built, then passes an eval gate where counterexamples survive and no eval regresses, then security tests set by its tier floor: a security scan at A1 and A2, red-team results at A3, and independent validation at A4 and A5. A fail at either check goes back to build. Sign-off follows the risk tier. The release goes through your existing pipeline, then runs in shadow, then as a canary on 1 to 5 percent of traffic, then for everyone. A regression rolls back to the last proven version. Promoted rules land as policy-as-code outside the model, and every listed change re-runs the evals and the risk profile." caption="The evals pass and the approvals are signed before anyone relies on the agent. Every change takes the same path again." />
+
 <GuideFigure id="learning-promotion-pipeline" fullWidth />
 
 ## Judges are governed components
@@ -60,6 +64,8 @@ The one fully specified published lifecycle runs DRAFT, APPROVED, PUBLISHED, DEP
 **In short:** The test set-up itself can be gamed, so it is locked down like a production system.
 
 The evaluation <Term k="harness">harness</Term>, the shell that runs an agent through its tests, can itself be attacked. An agent with no real capability has scored perfectly on several major public <Term k="benchmarks">benchmarks</Term> by editing the evaluation configuration rather than solving anything. The recurring weakness was the absence of <Term k="isolation">isolation</Term> between the agent and its evaluator. Eval infrastructure therefore gets the same isolation discipline as production.
+
+**Next step:** check who owns and who enforces each concern on [the concern matrix](/architecture/concern-matrix).
 
 <details>
 <summary>The research behind this page</summary>

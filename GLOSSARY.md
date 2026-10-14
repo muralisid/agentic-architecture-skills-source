@@ -130,7 +130,7 @@ These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs
 
 **The seven planes.** The planes of the agentic system built across the enterprise estate, distinct from the 14 layers of the estate itself: execution, action, knowledge, control, improvement, evidence, and human. Enforcement lives in the control plane, never in the execution plane, and the evidence plane is fed by collection the agent cannot influence.
 
-**Cost per resolved outcome.** The decision-level unit in the economics model: run cost divided by resolution rate, plus supervision minutes at a loaded rate, plus the failure rate multiplied by the cost of a wrong outcome. Distinct from cost per run, which is the unit platforms meter.
+**Cost per resolved outcome.** The decision-level unit in the economics model: all model, tool and platform cost for the period, failed and retried attempts included, plus supervision time at a loaded rate, plus the cost of fixing wrong outcomes, divided by the outcomes accepted as resolved under the agreed quality standard. Report the resolution rate, failure rate, serious errors and repeat contacts beside it, and divide by resolution, never by containment. Distinct from cost per run, which is the unit platforms meter. One definition since October 2026 (D051); earlier pages carried three.
 
 **Make-it-evaluable queue.** Where a valuable use case goes when a domain expert cannot yet write pass-or-fail tasks for it. The funded work is defining success (writing the tasks, measuring the human baseline, finding the real failures), not building the agent. The highest-return spend in an immature programme.
 
@@ -153,5 +153,3 @@ These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs
 **Representation alignment.** Learning a shared relationship between representations so comparisons across them are meaningful. Equal vector dimensions alone do not establish alignment.
 
 **Evidence fusion.** Combining findings from separate searches or models into a reviewed set of evidence for a task. In the guide's proposed designs, asset identity, place, time, permissions, and original source links connect the findings.
-
-**Agent contribution roles.** The guide’s teaching categories for how an agent helps: converse (explain and clarify), create (prepare material), assist (support an existing workflow), and coordinate (follow permitted work toward completion). Roles can overlap and do not specify authority or a maturity level.

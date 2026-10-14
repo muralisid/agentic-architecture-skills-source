@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3123" role="img" aria-labelledby="title desc">
+<title id="title">Named utility deployments by autonomy level</title>
+<desc id="desc">Named utility deployments in four areas, each a dot with its date and stage, placed by autonomy level from A1 to A4. Almost all sit at A2 or below, and nothing was found at A4. A line at A2 reads: in the deployments found, language-model systems advise. Proposed designs are drawn as hollow dots.</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="720" height="3123" fill="#f8f5ef"/>
+<text x="28" y="62" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">Named utility deployments by</text>
+<text x="28" y="109" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">autonomy level</text>
+<text x="28" y="160" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each dot is a named deployment, with its date and</text>
+<text x="28" y="191" font-family="Arial,sans-serif" font-size="24" fill="#465958">stage. Higher means more independence.</text>
+<path d="M28 236 H118" fill="none" stroke="#182e31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<text x="136" y="244" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">In the deployments found, language-model</text>
+<text x="136" y="275" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">systems advise</text>
+<circle cx="42" cy="308" r="11" fill="#0f766e"/>
+<text x="68" y="316" font-family="Arial,sans-serif" font-size="24" fill="#465958">Named deployment, as reported by the party</text>
+<text x="68" y="347" font-family="Arial,sans-serif" font-size="24" fill="#465958">named</text>
+<circle cx="42" cy="374" r="11" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="68" y="382" font-family="Arial,sans-serif" font-size="24" fill="#465958">This guide's proposed design</text>
+<rect x="28" y="439" width="664" height="663" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="484.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Electricity networks</text>
+<rect x="48" y="505" width="235.2" height="38" rx="19" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="60" y="532.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Safety actuation</text>
+<text x="48" y="574.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">None of these touches it.</text>
+<rect x="42" y="610" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="644" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A4</text>
+<rect x="128" y="610" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="644" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<rect x="42" y="672" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="706" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A3</text>
+<rect x="128" y="672" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="706" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<path d="M36 729 H684" fill="none" stroke="#182e31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<rect x="42" y="734" width="76" height="192" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="768" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A2</text>
+<rect x="128" y="734" width="550" height="192" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="148" cy="761.2" r="11" fill="#0f766e"/>
+<text x="172" y="769.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Vector, New Zealand</text>
+<text x="172" y="799.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Pole inspection, 20 August 2025</text>
+<text x="172" y="829.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Production</text>
+<circle cx="148" cy="865.2" r="11" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="172" y="873.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="172" y="903.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Vegetation inspection agent</text>
+<rect x="42" y="936" width="76" height="148" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="970" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A1</text>
+<rect x="128" y="936" width="550" height="148" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="148" cy="963.2" r="11" fill="#0f766e"/>
+<text x="172" y="971.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Essential Energy, NSW</text>
+<text x="172" y="1001.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Safety signals in crew notes, 16</text>
+<text x="172" y="1031.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">April 2026</text>
+<text x="172" y="1061.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Preparing to deploy</text>
+<rect x="28" y="1128" width="664" height="671" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="1173.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Water and wastewater</text>
+<rect x="48" y="1194" width="235.2" height="38" rx="19" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="60" y="1221.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Safety actuation</text>
+<text x="48" y="1263.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">No write path to OT.</text>
+<rect x="42" y="1299" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="1333" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A4</text>
+<rect x="128" y="1299" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="1333" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<rect x="42" y="1361" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="1395" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A3</text>
+<rect x="128" y="1361" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="1395" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<path d="M36 1418 H684" fill="none" stroke="#182e31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<rect x="42" y="1423" width="76" height="296" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="1457" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A2</text>
+<rect x="128" y="1423" width="550" height="296" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="148" cy="1450.2" r="11" fill="#0f766e"/>
+<text x="172" y="1458.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Watercare, Auckland</text>
+<text x="172" y="1488.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Wastewater sensors, 18 August 2025</text>
+<text x="172" y="1518.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Production rollout</text>
+<circle cx="148" cy="1554.2" r="11" fill="#0f766e"/>
+<text x="172" y="1562.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Sydney Water with UTS</text>
+<text x="172" y="1592.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Leak detection, February 2023</text>
+<text x="172" y="1622.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Production</text>
+<circle cx="148" cy="1658.2" r="11" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="172" y="1666.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="172" y="1696.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Network anomaly agent</text>
+<rect x="42" y="1729" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="1763" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A1</text>
+<rect x="128" y="1729" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="1763" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<rect x="28" y="1825" width="664" height="658" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="1870.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Customer service</text>
+<rect x="48" y="1891" width="156" height="38" rx="19" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="60" y="1918.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Money zone</text>
+<rect x="212" y="1891" width="314.4" height="38" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="224" y="1918.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">People-decisions floor</text>
+<rect x="42" y="1955" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="1989" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A4</text>
+<rect x="128" y="1955" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="1989" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<rect x="42" y="2017" width="76" height="118" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="2051" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A3</text>
+<rect x="128" y="2017" width="550" height="118" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="148" cy="2044.2" r="11" fill="#0f766e"/>
+<text x="172" y="2052.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Kraken with Sierra</text>
+<text x="172" y="2082.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Set account journeys, June 2026</text>
+<text x="172" y="2112.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Production at one utility</text>
+<path d="M36 2140 H684" fill="none" stroke="#182e31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<rect x="42" y="2145" width="76" height="222" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="2179" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A2</text>
+<rect x="128" y="2145" width="550" height="222" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="148" cy="2172.2" r="11" fill="#0f766e"/>
+<text x="172" y="2180.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">AGL, Australia</text>
+<text x="172" y="2210.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Chat, case study undated</text>
+<text x="172" y="2240.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Production</text>
+<circle cx="148" cy="2276.2" r="11" fill="#0f766e"/>
+<text x="172" y="2284.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">PG&amp;E, California</text>
+<text x="172" y="2314.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Voice, 2026</text>
+<text x="172" y="2344.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Production</text>
+<rect x="42" y="2377" width="76" height="88" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="2411" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A1</text>
+<rect x="128" y="2377" width="550" height="88" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="148" cy="2404.2" r="11" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="172" y="2412.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="172" y="2442.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Hardship flag only. A person decides.</text>
+<rect x="28" y="2509" width="664" height="537" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="2554.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Assurance and resilience</text>
+<rect x="48" y="2575" width="354" height="38" rx="19" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="60" y="2602.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Formal regulatory records</text>
+<text x="48" y="2644.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">A named person signs a filing.</text>
+<rect x="42" y="2680" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="2714" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A4</text>
+<rect x="128" y="2680" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="2714" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<rect x="42" y="2742" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="2776" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A3</text>
+<rect x="128" y="2742" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="2776" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<path d="M36 2799 H684" fill="none" stroke="#182e31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<rect x="42" y="2804" width="76" height="162" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="2838" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A2</text>
+<rect x="128" y="2804" width="550" height="162" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="148" cy="2831.2" r="11" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="172" y="2839.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="172" y="2869.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Evidence and audit agents</text>
+<text x="142" y="2913.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">No named deployment found. The search</text>
+<text x="142" y="2943.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">was not complete.</text>
+<rect x="42" y="2976" width="76" height="52" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="80" y="3010" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31" text-anchor="middle">A1</text>
+<rect x="128" y="2976" width="550" height="52" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="144" y="3010" font-family="Arial,sans-serif" font-size="24" fill="#7a8a88">None found</text>
+<text x="28" y="3082" font-family="Arial,sans-serif" font-size="24" fill="#465958">Autonomy placements are this guide's position.</text>
+</svg>

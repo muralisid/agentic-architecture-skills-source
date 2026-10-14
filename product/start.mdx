@@ -1,0 +1,136 @@
+---
+title: "Start here: the road to an agentic enterprise"
+icon: "Compass"
+description: "What an agentic enterprise is, what changes, and the pages to read at each of seven stations, in order."
+position: "This guide's reading order. It orders and links existing pages; it is not a plan generator."
+lastReviewed: "2026-10-14"
+datePublished: "2026-10-14"
+dateModified: "2026-10-14"
+---
+
+<PlainTerms>
+An agentic enterprise is a company where governed <Term k="agent">agents</Term> do the routine knowledge work. People set the intent. They supervise the work and handle the exceptions. They stay accountable for the result. Picture a modern bottling plant. The line runs without people doing the physical work. A few skilled people guide it and step in when a machine jams. Knowledge work is heading to the same shape. The company keeps the fourteen <Term k="layers">layers</Term> it already owns. It adds seven new <Term k="planes">planes</Term> of agent capability across them. The one thing to remember: agents do the routine work, and people stay accountable.
+</PlainTerms>
+
+<TeachingIllustration src="/figures/start/journey.svg" mobileSrc="/figures/start/journey-mobile.svg" expandable title="The road to an agentic enterprise" alt="Seven stations run in order: 1 Understand, 2 Assess readiness, 3 Choose use cases, 4 Design, 5 Build, 6 Operate and 7 Scale autonomy. Each station lists the pages to read. A gate sits between each pair of stations, from sponsors can say what changes and what stays, to oversight capacity proven at burst. An evidence rail runs under every station. An arrow from station 7 back to station 3 marks the next use case." caption="Read the stations in order. Pass each gate before you move on. The next use case starts again at station 3." />
+
+This page puts the guide in order. The road has seven stations. Each station lists the pages to read, in order. Each ends with a gate: what must be true before you move on. The pages already exist. This page only orders them.
+
+## What changes
+
+"Today" means how most companies work now, including their first agent pilots.
+
+<TeachingIllustration src="/figures/start/what-changes.svg" mobileSrc="/figures/start/what-changes-mobile.svg" expandable title="What changes" alt="Six rows compare today with the agentic way. Routine work moves from people to governed agents, each with its own identity. People set intent, supervise, handle exceptions and stay accountable. Rules move from the prompt to the gateway and the policy decision point. Evidence is collected where the agent cannot write. Learning is promoted through evals, not edited prompts. The same fourteen layers stay, with seven new planes across them." caption="Violet marks the work agents do. Amber marks what people do. The estate you own stays the same." />
+
+| | Today | Agentic |
+|---|---|---|
+| Who does routine work | People, with software as a tool | Governed agents, each with its own identity |
+| What people do | Carry out each step | Set intent, supervise, handle exceptions and stay accountable |
+| Where the rules live | In the prompt | At the gateway and the policy decision point, outside the model |
+| Who records what happened | Often the agent, in its own log | Evidence is collected where the agent cannot write |
+| How behaviour changes | Someone edits the prompt | Learning is promoted through evals, not edited prompts |
+| What stays and what is new | The fourteen layers you own | The same fourteen layers, with seven new planes of agent capability across them |
+
+The gateway and the policy decision point are services outside the model. They allow or block each action. Evals are fixed tests that a change must pass before release. [Enforcement outside the model](/architecture/enforcement) and [the learning flywheel](/architecture/learning-flywheel) explain both.
+
+## 1. Understand
+
+Learn the shape of the system before you change anything.
+
+1. [Architecture of the agentic enterprise](/architecture): the whole system on one page.
+2. [The seven responsibilities](/architecture/system-view): the planes and the two rules that bind them.
+3. [Follow one inspection task](/architecture/task-walkthrough): one task, from goal to confirmed result.
+4. [Vision and target state](/library/architecture/vision-and-target-state): the full research view.
+
+**Gate:** the sponsors can say what changes and what stays.
+
+## 2. Assess readiness
+
+Find out how far the organisation can go today.
+
+1. [The readiness assessment](/library/frameworks/readiness-assessments): six readiness areas, each scored on its own.
+2. [The ceiling table](/architecture/autonomy-contract#readiness-gates-autonomy): readiness caps how freely an agent may act.
+
+**Gate:** a readiness profile, and the autonomy ceiling that follows from it.
+
+## 3. Choose use cases
+
+Pick work you can judge, protect and supply with evidence.
+
+1. [Choose where to start](/use-cases/choose-where-to-start): the checks a first task must pass.
+2. [Agents and packaged applications](/use-cases/packaged-applications): wait for the vendor's agent, buy it, or build a thin one.
+3. [Measure value and full cost](/use-cases/value-and-investment): the business case, with review and rework counted.
+4. [Industries](/use-cases): worked examples in healthcare, energy and utilities.
+5. [The use-case portfolio](/library/frameworks/use-case-portfolio): compare value, cost, risk and supervision load.
+
+**Gate:** the use case is admitted and its risk tier is set.
+
+## 4. Design
+
+Turn the use case into an agent you can bound.
+
+1. [Agent types](/architecture/agent-types): four questions for any agent.
+2. [The autonomy contract](/architecture/autonomy-contract): the autonomy and learning levels, and the ceiling readiness sets.
+3. [The risk profile](/architecture/risk-profile): score the agent to set its tier. The tier sets the controls.
+4. [The deterministic zones](/architecture/deterministic-zones): the areas where a model may never approve.
+5. [The identity chain](/architecture/identity-chain): trace every action to the person who asked.
+6. [The agent lifecycle](/architecture/agent-lifecycle): nine stages, from register to retire.
+7. [Enforcement outside the model](/architecture/enforcement): where the controls sit.
+8. [The data-to-memory pipeline](/architecture/data-to-memory): from company data to a cited answer.
+9. [The fourteen layers](/layers): what each part of the estate must provide.
+10. [The threat model](/security/threat-model) and [the decision catalog](/decisions): what can go wrong, and the technology choices with verdicts.
+
+**Gate:** the zone register is signed and the controls are chosen. The zone register is the one-page list of who decides in each zone.
+
+## 5. Build
+
+Build the agent and test it before anyone relies on it.
+
+1. [The intelligence ladder](/ladder): the order in which to try changes.
+2. [Choose what to change](/ladder/choosing-an-approach): match the change to the failure.
+3. [Knowledge and memory](/memory): give the agent the evidence it needs.
+4. [The Agentic OS](/agentic-os): the runtime you buy and the harness you build.
+5. [Context patterns](/patterns): tested ways to give an agent the right context.
+6. [The learning flywheel](/architecture/learning-flywheel): the evals a change must pass.
+
+**Gate:** the evals pass and the approvals are signed.
+
+## 6. Operate
+
+Run the agent, watch it, and count what it costs.
+
+1. [Observability and FinOps](/layers/r12-observability-and-finops): traces the agent cannot forge, and budgets with hard limits.
+2. [Operating model and supervision](/layers/r13-operating-model): how much supervision the work really needs.
+3. [The agent lifecycle](/architecture/agent-lifecycle#the-nine-stages): the operate, change and review stages.
+4. [Measure value and full cost](/use-cases/value-and-investment): compare the result with the old process.
+5. [The economics model](/library/architecture/economics-model): the full cost of each outcome.
+
+**Gate:** oversight capacity is proven at peak load, not just on an average day.
+
+<TeachingIllustration src="/figures/start/operate.svg" mobileSrc="/figures/start/operate-mobile.svg" expandable title="Operate, every week" alt="Four panels form a weekly loop around the words every week. Observability covers traces the agent cannot forge, costs and incidents, in layer R12. Cost covers cost per resolved outcome, budgets and circuit breakers. Supervision covers exception queues and burst capacity, in layer R13. Lifecycle covers change triggers, periodic review and retirement." caption="Run these four checks every week. Station 6 is done when oversight capacity holds at peak load, not just on an average day." />
+
+
+## 7. Scale autonomy
+
+Let a proven agent do more, one step at a time.
+
+1. [The autonomy contract](/architecture/autonomy-contract): the controls and checks that earn each step up.
+2. [The learning flywheel](/architecture/learning-flywheel): improve behaviour without losing control of it.
+3. [The autonomy crosswalk](/architecture/risk-profile#the-autonomy-crosswalk): how outside autonomy scales map to this guide's levels.
+4. [Build an agentic enterprise](/use-cases/enterprise-transformation): share what works across the company.
+
+**Gate:** each step up waits until readiness, controls and oversight capacity all allow it.
+
+The next use case starts again at station 3.
+
+## Three readers, one route
+
+**A CIO** owns stations 1, 2 and 7. They set the intent and accept the readiness profile. They decide when an agent may act more freely. They also fund the use cases chosen at station 3.
+
+**An enterprise architect** owns stations 4 and 5. They turn each use case into an agent with a type, a tier, zones and controls. They make sure the build passes its evals.
+
+**A programme lead** owns stations 3 and 6. They choose the use cases and set up each trial. They run the agents day to day and measure the value. They bring each new use case back to station 3.
+
+## The evidence rail
+
+Many pages end with an evidence and limits section. It says what the sources support and where they stop. The [research tab](/research) holds the experiments and the open questions. The [research library](/library) holds the layer research and the dated sources. The [re-verification list](/library/re-verification) dates the facts that change fast, such as product names and prices.

@@ -49,7 +49,7 @@ The trace is a **session span** containing **model-call spans** and **tool-call 
 
 **In short:** Spending limits are enforced by fixed rules at three levels, and when money runs out the work goes to a person.
 
-Budget enforcement is a deterministic control, not a model behaviour, and it ships in three tiers. The first tier is per-invocation hard caps on the <Term k="harness">harness</Term> (the engineering shell around the model). AgentCore ships **maxIterations (default 75)**, **timeout (default 3600 seconds)**, and **maxTokens**, all carrying cost-allocation tags [vendor]. The second tier is **hierarchical budgets** at the <Term k="gateway">gateway</Term>, set per key, user, team, and organisation. These **return HTTP 429 on exhaustion**; LiteLLM is the dominant open-source pattern. The third tier is control-plane billing policies. Agent 365 ships **Agent Billing Policies** with budget limits and threshold alerts (November 2025). Agentforce **Digital Wallet** drills down to agent, action, and channel at **$0.10 per action** [vendor pricing]. **Copilot Credits are priced at $0.01** [vendor pricing]. Above the caps sit the sponsor envelope and anomaly detection. Budget-exhaustion behaviour is defined before <Term k="autonomy level">autonomy</Term> is granted: the agent **fails to a human queue**, it does not silently retry.
+Budget enforcement is a deterministic control, not a model behaviour, and it ships at three levels (levels of enforcement, not risk tiers). The first level is per-invocation hard caps on the <Term k="harness">harness</Term> (the engineering shell around the model). AgentCore ships **maxIterations (default 75)**, **timeout (default 3600 seconds)**, and **maxTokens**, all carrying cost-allocation tags [vendor]. The second tier is **hierarchical budgets** at the <Term k="gateway">gateway</Term>, set per key, user, team, and organisation. These **return HTTP 429 on exhaustion**; LiteLLM is the dominant open-source pattern. The third tier is control-plane billing policies. Agent 365 ships **Agent Billing Policies** with budget limits and threshold alerts (November 2025). Agentforce **Digital Wallet** drills down to agent, action, and channel at **$0.10 per action** [vendor pricing]. **Copilot Credits are priced at $0.01** [vendor pricing]. Above the caps sit the sponsor envelope and anomaly detection. Budget-exhaustion behaviour is defined before <Term k="autonomy level">autonomy</Term> is granted: the agent **fails to a human queue**, it does not silently retry.
 
 ### The change gate
 
@@ -96,6 +96,8 @@ Cost and usage live in two estates: the licensed estate (per-seat copilots) and 
 | C8 | Safety and oversight | Canary gates with human review; guardrail alerts in both directions; kill-switch integration |
 | C9 | Cost | The layer's core: envelopes, caps, showback to chargeback, anomaly detection, cost per outcome |
 | C10 | Resilience | Budget-exhaustion behaviour defined (fail to human queues); an observability outage does not blind the kill switch |
+
+**Next step:** read the next layer, [R13 Operating model and supervision](/layers/r13-operating-model).
 
 ## Evidence and limits
 

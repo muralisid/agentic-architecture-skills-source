@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Build and release an agent</title>
+<desc id="desc">Evals are written first, from real failures, and act as the acceptance criteria. The agent is built, then passes an eval gate, security tests scaled to its autonomy and sign-off by risk tier. It is released through the existing pipeline, runs in shadow, then as a canary on 1 to 5 percent of traffic, then for everyone, with rollback on any regression. Promoted rules land as policy-as-code outside the model, and every change re-runs the evals.</desc>
+<defs>
+<marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
+<marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">Build and release an agent</text>
+<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">The evals are written first. They are the acceptance criteria. A failed check goes back to build.</text>
+<rect x="40" y="150" width="350" height="194.6" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="56" y="182" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#134e4a">1. Evals first</text>
+<text x="56" y="209.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Domain experts write 20 to 50</text>
+<text x="56" y="232.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">pass-or-fail tasks from real</text>
+<text x="56" y="255.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">failures, before the agent.</text>
+<text x="56" y="282.3" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">They are the acceptance</text>
+<text x="56" y="305.3" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">criteria.</text>
+<rect x="430" y="150" width="350" height="194.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="446" y="182" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#4c1d95">2. Build</text>
+<text x="446" y="209.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Harness, context and tools.</text>
+<text x="446" y="236.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">Each part must beat a matched</text>
+<text x="446" y="259.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">control on your own queries.</text>
+<rect x="820" y="150" width="350" height="194.6" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="836" y="182" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">3. Eval gate</text>
+<text x="836" y="209.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Counterexamples survive. No eval</text>
+<text x="836" y="232.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">regresses.</text>
+<text x="836" y="259.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">How often a pattern appears</text>
+<text x="836" y="282.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">never promotes it.</text>
+<rect x="1210" y="150" width="350" height="194.6" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="1226" y="182" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">4. Security tests</text>
+<text x="1226" y="209.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Autonomy sets the lowest tier.</text>
+<text x="1226" y="232.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">The tier sets the tests.</text>
+<text x="1242" y="255.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">A1, A2: a security scan</text>
+<circle cx="1231" cy="249.5" r="3.5" fill="#465958"/>
+<text x="1242" y="278.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">A3: adds red-team results</text>
+<circle cx="1231" cy="272.4" r="3.5" fill="#465958"/>
+<text x="1242" y="301.1" font-family="Arial,sans-serif" font-size="18" fill="#465958">A4, A5: adds independent</text>
+<text x="1242" y="324.1" font-family="Arial,sans-serif" font-size="18" fill="#465958">validation</text>
+<circle cx="1231" cy="295.3" r="3.5" fill="#465958"/>
+<path d="M390 247.3 L428 247.3" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M780 247.3 L818 247.3" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M1170 247.3 L1208 247.3" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M1385.0 150 L1385.0 132 L605.0 132 L605.0 148" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
+<path d="M995 150 L995 132" fill="none" stroke="#e11d48" stroke-width="2.5"/>
+<text x="800" y="123" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#881337">Fail: back to build</text>
+<path d="M1385.0 344.6 L1385.0 375.6 L215.0 375.6 L215.0 404.6" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<text x="1373" y="367.6" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#182e31">Passed</text>
+<rect x="40" y="406.6" width="350" height="213.7" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="56" y="438.6" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#78350f">5. Sign-off by risk tier</text>
+<text x="72" y="462" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 1: owner and sponsor</text>
+<circle cx="61" cy="456.2" r="3.5" fill="#465958"/>
+<text x="72" y="484.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 2: adds a security</text>
+<text x="72" y="507.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">architect and the AI risk</text>
+<text x="72" y="530.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">council</text>
+<circle cx="61" cy="479.1" r="3.5" fill="#465958"/>
+<text x="72" y="553.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 3: adds architecture</text>
+<text x="72" y="576.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">review, second-line risk and</text>
+<text x="72" y="599.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">an executive</text>
+<circle cx="61" cy="548" r="3.5" fill="#465958"/>
+<rect x="430" y="406.6" width="350" height="213.7" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="446" y="438.6" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">6. Release through your</text>
+<text x="446" y="462.6" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">existing pipeline</text>
+<text x="446" y="490" font-family="Arial,sans-serif" font-size="18" fill="#465958">A standard pipeline change. The</text>
+<text x="446" y="513" font-family="Arial,sans-serif" font-size="18" fill="#465958">agent never approves its own</text>
+<text x="446" y="536" font-family="Arial,sans-serif" font-size="18" fill="#465958">deployment.</text>
+<rect x="820" y="406.6" width="350" height="213.7" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="836" y="438.6" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">7. Shadow, then canary</text>
+<text x="836" y="466" font-family="Arial,sans-serif" font-size="18" fill="#465958">Shadow runs beside production</text>
+<text x="836" y="489" font-family="Arial,sans-serif" font-size="18" fill="#465958">and changes nothing.</text>
+<text x="836" y="515.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">Canary: 1 to 5 percent of</text>
+<text x="836" y="538.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">traffic, gated on session</text>
+<text x="836" y="561.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">success, satisfaction and</text>
+<text x="836" y="584.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">escalation.</text>
+<rect x="1210" y="406.6" width="350" height="213.7" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="1226" y="438.6" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#134e4a">8. Everyone</text>
+<text x="1226" y="466" font-family="Arial,sans-serif" font-size="18" fill="#465958">Feature flags separate switching</text>
+<text x="1226" y="489" font-family="Arial,sans-serif" font-size="18" fill="#465958">it on from deploying it.</text>
+<text x="1226" y="515.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">The agent now runs with its</text>
+<text x="1226" y="538.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">budget, caps per run and a kill</text>
+<text x="1226" y="561.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">switch.</text>
+<path d="M390 513.45 L428 513.45" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M780 513.45 L818 513.45" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M1170 513.45 L1208 513.45" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<rect x="40" y="670.3" width="480" height="175.8" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="56" y="702.3" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Promoted rules land outside the model</text>
+<text x="56" y="729.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">A rule the learning loop promotes ships as</text>
+<text x="56" y="752.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">policy-as-code. It is versioned and deployed</text>
+<text x="56" y="775.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">apart from the model.</text>
+<text x="56" y="802.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">It passes the same gates from step 3, and it</text>
+<text x="56" y="825.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">can be demoted.</text>
+<rect x="560" y="670.3" width="480" height="175.8" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="576" y="702.3" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e293b">Every change re-runs the checks</text>
+<text x="576" y="729.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">Model, prompt, tools, permissions, data</text>
+<text x="576" y="752.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">sources, memory policy, autonomy level or</text>
+<text x="576" y="775.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">sponsor.</text>
+<text x="576" y="802.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">Each re-runs the evals and the risk profile</text>
+<text x="576" y="825.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">from step 3.</text>
+<rect x="1080" y="670.3" width="480" height="175.8" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="1096" y="702.3" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#881337">Roll back on any regression</text>
+<text x="1096" y="729.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">Return to the last proven version.</text>
+<text x="1096" y="756.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">With feature flags, rollback is a flag flip,</text>
+<text x="1096" y="779.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">not a redeploy.</text>
+<path d="M1130 620.3000000000001 L1130 668.3000000000001" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
+<path d="M1385.0 620.3000000000001 L1385.0 668.3000000000001" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
+</svg>

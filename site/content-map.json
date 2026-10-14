@@ -1,5 +1,14 @@
 [
   {
+    "id": "start",
+    "text": "Start here",
+    "url": "/start",
+    "description": "The road to an agentic enterprise, in order",
+    "prefixes": [
+      "/start"
+    ]
+  },
+  {
     "id": "use-cases",
     "text": "Use cases",
     "url": "/use-cases",

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Billing exceptions: who does what</title>
+<desc id="desc">An implausible read or failed bill reaches the exception list, and the agent first checks for hardship, disconnection or a payment plan. If it finds one, a trained person decides and the agent stops. Otherwise the agent gathers evidence and proposes a resolution, and a fixed rule releases it only within the cap and flags. A specialist approves the rest, every release is logged, a sample is checked, and the model never releases.</desc>
+<defs>
+<marker id="ah9a4c2d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker>
+</defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32" y="54" font-family="Arial,sans-serif" font-size="34" font-weight="bold" fill="#182e31">Billing exceptions: who does what</text>
+<text x="32" y="88" font-family="Arial,sans-serif" font-size="20" fill="#465958">Proposed design. The agent proposes. A fixed rule or a person approves every change.</text>
+<rect x="32" y="104" width="1536" height="138" rx="0" fill="#ffffff" stroke="none" stroke-width="2" fill-opacity="0.5" class="deco"/>
+<rect x="32" y="112" width="128" height="122" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="40" y="167" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">Billing</text>
+<text x="40" y="193" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">system</text>
+<rect x="32" y="250" width="128" height="122" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="40" y="318" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#4c1d95">Agent</text>
+<rect x="32" y="380" width="1536" height="138" rx="0" fill="#ffffff" stroke="none" stroke-width="2" fill-opacity="0.5" class="deco"/>
+<rect x="32" y="388" width="128" height="122" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="40" y="456" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#0f172a">Fixed rule</text>
+<rect x="32" y="526" width="128" height="122" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="40" y="594" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#78350f">Specialist</text>
+<rect x="32" y="656" width="1536" height="138" rx="0" fill="#ffffff" stroke="none" stroke-width="2" fill-opacity="0.5" class="deco"/>
+<rect x="32" y="664" width="128" height="122" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="40" y="719" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#78350f">Hardship</text>
+<text x="40" y="745" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#78350f">officer</text>
+<path d="M32 104 H1568" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 242 H1568" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 380 H1568" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 518 H1568" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 656 H1568" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 794 H1568" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="172" y="112" width="168" height="122" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="182" y="139.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1e3a8a">Exception list</text>
+<text x="182" y="169.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Implausible</text>
+<text x="182" y="192.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">read or failed</text>
+<text x="182" y="215.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">bill</text>
+<rect x="364" y="250" width="179" height="122" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="374" y="277.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#881337">Hardship check</text>
+<text x="374" y="307.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Hardship,</text>
+<text x="374" y="330.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">payment plan or</text>
+<text x="374" y="353.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">disconnection?</text>
+<rect x="364" y="664" width="607" height="122" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="374" y="691.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#78350f">A trained person decides</text>
+<text x="374" y="721.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Checks capacity to pay. The agent hands over its evidence</text>
+<text x="374" y="744.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">and stops.</text>
+<rect x="589" y="250" width="179" height="122" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="599" y="277.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#4c1d95">Gather evidence</text>
+<text x="599" y="307.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Read history,</text>
+<text x="599" y="330.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">meter events,</text>
+<text x="599" y="353.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">bills, notes</text>
+<rect x="792" y="250" width="179" height="122" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="802" y="277.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#4c1d95">Propose</text>
+<text x="802" y="307.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">One resolution,</text>
+<text x="802" y="330.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">with evidence</text>
+<text x="802" y="353.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">and confidence</text>
+<rect x="995" y="250" width="179" height="122" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="1005" y="277.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#881337">The model never</text>
+<text x="1005" y="302.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#881337">releases</text>
+<text x="1005" y="332.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">A fixed rule or</text>
+<text x="1005" y="355.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">a person does.</text>
+<rect x="995" y="388" width="179" height="122" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="1005" y="415.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#0f172a">Rule check</text>
+<text x="1005" y="445.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Confidence, cap</text>
+<text x="1005" y="468.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">on the change,</text>
+<text x="1005" y="491.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">no hardship flag</text>
+<rect x="1198" y="112" width="179" height="122" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1208" y="139.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1e3a8a">Release logged</text>
+<text x="1208" y="169.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Every one, with</text>
+<text x="1208" y="192.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">its evidence and</text>
+<text x="1208" y="215.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">approver</text>
+<rect x="1198" y="526" width="179" height="122" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1208" y="553.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#78350f">Specialist</text>
+<text x="1208" y="583.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Approves every</text>
+<text x="1208" y="606.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">case the rule</text>
+<text x="1208" y="629.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">does not release</text>
+<rect x="1401" y="526" width="168" height="122" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1411" y="553.1" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#78350f">Sample checked</text>
+<text x="1411" y="583.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">A sample of</text>
+<text x="1411" y="606.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">released cases</text>
+<rect x="642.8" y="670" width="126.9" height="32" rx="16" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="651.8" y="692.48" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">Agent stops</text>
+<path d="M344 173 H453.5 V244" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<path d="M453.5 376 V658" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="465.5" y="455" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">yes</text>
+<path d="M546 311 H584" fill="none" stroke="#9a4c2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="566" y="299" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d" text-anchor="middle">no</text>
+<path d="M771 311 H787" fill="none" stroke="#9a4c2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<path d="M881.5 376 V449 H989" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<path d="M1178 449 H1228 V240" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="1238" y="475" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">passes</text>
+<path d="M1084.5 514 V587 H1192" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="1096.5" y="552" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">fails</text>
+<path d="M1333 522 V240" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="1343" y="475" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">approved</text>
+<path d="M1381 173 H1485 V520" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<text x="1497" y="317" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#9a4c2d">sample</text>
+<text x="32" y="834" font-family="Arial,sans-serif" font-size="18" fill="#465958">Proposed design. The placements and controls are this guide's position.</text>
+</svg>

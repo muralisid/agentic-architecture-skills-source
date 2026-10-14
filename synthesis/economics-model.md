@@ -51,10 +51,13 @@ The unit the decision requires. Three terms, and the second and third are the on
 
 ```
 Cost per resolved outcome
-    =   run cost / resolution rate
-      + supervision minutes per item x loaded supervisor rate
-      + failure rate x cost of a wrong outcome
+    =   ( model, tool and platform cost for the period, failed and retried attempts included
+        + supervision time x loaded supervisor rate
+        + cost of fixing wrong outcomes )
+      / outcomes accepted as resolved under the agreed quality standard
 ```
+
+This is the one definition the guide uses from October 2026 (D051). An earlier form divided only the run cost by the resolution rate and added the other two terms per attempt, which understated cost whenever resolution was below 100 percent. The three terms below are the three lines of the numerator.
 
 **Term 1: divide by resolution, never by containment.** Containment counts conversations that never reached a human, whether or not the customer was helped. Resolution counts problems actually solved. Every documented reversal of an AI-first service programme set a containment or headcount target. Track repeat-contact rate alongside it, because re-contact multiplies true cost per issue while the containment dashboard improves.
 

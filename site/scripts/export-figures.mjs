@@ -37,7 +37,7 @@ function wrapText(value, maxCharacters, maxLines = 6) {
   }
   if (line) lines.push(line);
   if (lines.length <= maxLines) return lines;
-  return [...lines.slice(0, maxLines - 1), `${lines[maxLines - 1].slice(0, Math.max(1, maxCharacters - 1))}…`];
+  return [...lines.slice(0, maxLines - 1), `${lines[maxLines - 1].slice(0, Math.max(1, maxCharacters - 3))}...`];
 }
 
 function textBlock(value, x, y, options = {}) {
@@ -48,8 +48,8 @@ function textBlock(value, x, y, options = {}) {
 
 function cardsFor(figure) {
   const data = figure.data;
-  if (data.lanes?.length) return data.lanes.map((lane) => ({ label: lane.label, detail: lane.steps.join(' → '), kind: lane.kind }));
-  if (data.columns?.length) return data.columns.map((column) => ({ label: column.label, detail: column.items.join(' • '), kind: column.kind }));
+  if (data.lanes?.length) return data.lanes.map((lane) => ({ label: lane.label, detail: lane.steps.join(' -> '), kind: lane.kind }));
+  if (data.columns?.length) return data.columns.map((column) => ({ label: column.label, detail: column.items.join(', '), kind: column.kind }));
   if (data.stages?.length) return data.stages.map((stage, index) => ({ label: `${index + 1}. ${stage.label}`, detail: `${stage.detail}${stage.gate ? ` Gate: ${stage.gate}.` : ''}`, kind: stage.kind }));
   if (data.metrics?.length) return data.metrics.map((metric) => ({ label: metric.label, detail: `${metric.value}${metric.detail ? `: ${metric.detail}` : ''}`, kind: 'evidence' }));
   if (data.nodes?.length) return data.nodes.map((node) => ({ label: node.label, detail: node.detail ?? node.group ?? '', kind: node.kind }));

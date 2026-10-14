@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">The four deterministic zones</title>
+<desc id="desc">A model sits in the centre and may analyse, draft, recommend, flag and block. Four zones surround it: access, money, safety actuation and formal records. In each zone a fixed rule or a named person decides. The model may deny, escalate or quarantine, but it may never grant.</desc>
+<defs>
+<marker id="ah-evidence" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#0f766e"/></marker>
+<marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">The four deterministic zones</text>
+<text x="40" y="88" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">Models may take permission away, never grant it.</text>
+<rect x="40" y="108" width="560" height="206" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="4"/>
+<text x="56" y="140" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">Access and entitlements</text>
+<text x="56" y="170" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Decides</text>
+<text x="226" y="170" font-family="Arial,sans-serif" font-size="18" fill="#465958">A policy decision point, over</text>
+<text x="226" y="192" font-family="Arial,sans-serif" font-size="18" fill="#465958">verified identity, failing closed</text>
+<text x="56" y="222" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Advises</text>
+<text x="226" y="222" font-family="Arial,sans-serif" font-size="18" fill="#465958">Risk scores, anomaly signals, model</text>
+<text x="226" y="244" font-family="Arial,sans-serif" font-size="18" fill="#465958">output</text>
+<text x="56" y="274" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">The agent's job</text>
+<text x="226" y="274" font-family="Arial,sans-serif" font-size="18" fill="#465958">Request with its own identity;</text>
+<text x="226" y="296" font-family="Arial,sans-serif" font-size="18" fill="#465958">accept the decision</text>
+<rect x="620" y="108" width="560" height="206" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="4"/>
+<text x="636" y="140" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">Movement of money</text>
+<text x="636" y="170" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Decides</text>
+<text x="806" y="170" font-family="Arial,sans-serif" font-size="18" fill="#465958">The rail or issuer, checking a</text>
+<text x="806" y="192" font-family="Arial,sans-serif" font-size="18" fill="#465958">signed, scoped credential</text>
+<text x="636" y="222" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Advises</text>
+<text x="806" y="222" font-family="Arial,sans-serif" font-size="18" fill="#465958">Fraud and risk models; the model's</text>
+<text x="806" y="244" font-family="Arial,sans-serif" font-size="18" fill="#465958">proposal</text>
+<text x="636" y="274" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">The agent's job</text>
+<text x="806" y="274" font-family="Arial,sans-serif" font-size="18" fill="#465958">Assemble the purchase, present the</text>
+<text x="806" y="296" font-family="Arial,sans-serif" font-size="18" fill="#465958">credential, stop at its edges</text>
+<rect x="40" y="446" width="560" height="206" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="4"/>
+<text x="56" y="478" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">Safety actuation</text>
+<text x="56" y="508" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Decides</text>
+<text x="226" y="508" font-family="Arial,sans-serif" font-size="18" fill="#465958">Operators, interlocks and the safety</text>
+<text x="226" y="530" font-family="Arial,sans-serif" font-size="18" fill="#465958">instrumented system</text>
+<text x="56" y="560" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Advises</text>
+<text x="226" y="560" font-family="Arial,sans-serif" font-size="18" fill="#465958">Agent analysis through a validated</text>
+<text x="226" y="582" font-family="Arial,sans-serif" font-size="18" fill="#465958">presentation layer</text>
+<text x="56" y="612" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">The agent's job</text>
+<text x="226" y="612" font-family="Arial,sans-serif" font-size="18" fill="#465958">Read sanitized data, propose and</text>
+<text x="226" y="634" font-family="Arial,sans-serif" font-size="18" fill="#465958">explain</text>
+<rect x="620" y="446" width="560" height="206" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="4"/>
+<text x="636" y="478" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">Formal regulatory records</text>
+<text x="636" y="508" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Decides</text>
+<text x="806" y="508" font-family="Arial,sans-serif" font-size="18" fill="#465958">A named person attests; the system</text>
+<text x="806" y="530" font-family="Arial,sans-serif" font-size="18" fill="#465958">of record keeps it immutable</text>
+<text x="636" y="560" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">Advises</text>
+<text x="806" y="560" font-family="Arial,sans-serif" font-size="18" fill="#465958">Model drafts and checks, with</text>
+<text x="806" y="582" font-family="Arial,sans-serif" font-size="18" fill="#465958">provenance</text>
+<text x="636" y="612" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">The agent's job</text>
+<text x="806" y="612" font-family="Arial,sans-serif" font-size="18" fill="#465958">Draft with citations, flag gaps,</text>
+<text x="806" y="634" font-family="Arial,sans-serif" font-size="18" fill="#465958">stop before the signature</text>
+<rect x="370" y="330" width="460" height="100" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="600" y="370" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#4c1d95">Probabilistic reasoning</text>
+<text x="600" y="404" font-family="Arial,sans-serif" font-size="20" text-anchor="middle" fill="#4c1d95">analyse, draft, recommend, flag, block</text>
+<path d="M370 380 L52 380" fill="none" stroke="#0f766e" stroke-width="3" marker-end="url(#ah-evidence)"/>
+<text x="205" y="366" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#134e4a">deny, escalate, quarantine</text>
+<path d="M141 406 L147.3 412.3 L159 399.7" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linecap="round"/>
+<text x="168" y="413" font-family="Arial,sans-serif" font-size="18" fill="#134e4a">allowed</text>
+<path d="M830 380 L1168 380" fill="none" stroke="#e11d48" stroke-width="3" marker-end="url(#ah-risk)"/>
+<text x="1000" y="354" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="#881337">grant</text>
+<path d="M968 347 L1032 347" fill="none" stroke="#e11d48" stroke-width="3"/>
+<circle cx="1000" cy="380.0" r="15" fill="#fff" stroke="#e11d48" stroke-width="3"/>
+<path d="M993 373 L1007 387 M993 387 L1007 373" fill="none" stroke="#e11d48" stroke-width="3.5" stroke-linecap="round"/>
+<text x="1000" y="420" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#881337">never</text>
+<text x="1200" y="126" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#182e31">Beside the zones</text>
+<rect x="1200" y="140" width="360" height="174" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="1216" y="174" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#881337">Destruction rule</text>
+<text x="1216" y="208" font-family="Arial,sans-serif" font-size="20" fill="#881337">Plan, then apply</text>
+<text x="1216" y="238" font-family="Arial,sans-serif" font-size="20" fill="#881337">Named approval, once</text>
+<text x="1216" y="268" font-family="Arial,sans-serif" font-size="20" fill="#881337">Two signers in production</text>
+<text x="1216" y="298" font-family="Arial,sans-serif" font-size="20" fill="#881337">Protected backups</text>
+<rect x="1200" y="330" width="360" height="144" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="1216" y="364" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#881337">People-decisions floor</text>
+<text x="1216" y="398" font-family="Arial,sans-serif" font-size="20" fill="#881337">A named person decides</text>
+<text x="1216" y="428" font-family="Arial,sans-serif" font-size="20" fill="#881337">Notice to the person</text>
+<text x="1216" y="458" font-family="Arial,sans-serif" font-size="20" fill="#881337">Each decision logged</text>
+<text x="1200" y="514" font-family="Arial,sans-serif" font-size="18" fill="#465958">In the zones the model may draft,</text>
+<text x="1200" y="538" font-family="Arial,sans-serif" font-size="18" fill="#465958">suggest, flag or block. A fixed rule</text>
+<text x="1200" y="562" font-family="Arial,sans-serif" font-size="18" fill="#465958">or a named person makes the final</text>
+<text x="1200" y="586" font-family="Arial,sans-serif" font-size="18" fill="#465958">call.</text>
+<text x="40" y="680" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">Find the zones in your enterprise: one yes is enough</text>
+<rect x="40" y="692" width="241.7" height="188" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="52" y="718" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">1</text>
+<text x="52" y="742" font-family="Arial,sans-serif" font-size="18" fill="#465958">Does a regulator or</text>
+<text x="52" y="764" font-family="Arial,sans-serif" font-size="18" fill="#465958">standard name it, or</text>
+<text x="52" y="786" font-family="Arial,sans-serif" font-size="18" fill="#465958">rely on its records?</text>
+<text x="52" y="866" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Yes: a zone</text>
+<rect x="295.7" y="692" width="241.7" height="188" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="307.7" y="718" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">2</text>
+<text x="307.7" y="742" font-family="Arial,sans-serif" font-size="18" fill="#465958">Is it irreversible,</text>
+<text x="307.7" y="764" font-family="Arial,sans-serif" font-size="18" fill="#465958">or is reversing it a</text>
+<text x="307.7" y="786" font-family="Arial,sans-serif" font-size="18" fill="#465958">legal or financial</text>
+<text x="307.7" y="808" font-family="Arial,sans-serif" font-size="18" fill="#465958">event?</text>
+<text x="307.7" y="866" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Yes: a zone</text>
+<rect x="551.3" y="692" width="241.7" height="188" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="563.3" y="718" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">3</text>
+<text x="563.3" y="742" font-family="Arial,sans-serif" font-size="18" fill="#465958">Does it move money,</text>
+<text x="563.3" y="764" font-family="Arial,sans-serif" font-size="18" fill="#465958">change access,</text>
+<text x="563.3" y="786" font-family="Arial,sans-serif" font-size="18" fill="#465958">actuate, or create a</text>
+<text x="563.3" y="808" font-family="Arial,sans-serif" font-size="18" fill="#465958">record others rely</text>
+<text x="563.3" y="830" font-family="Arial,sans-serif" font-size="18" fill="#465958">on?</text>
+<text x="563.3" y="866" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Yes: a zone</text>
+<rect x="807" y="692" width="241.7" height="188" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="819" y="718" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">4</text>
+<text x="819" y="742" font-family="Arial,sans-serif" font-size="18" fill="#465958">Is certified or</text>
+<text x="819" y="764" font-family="Arial,sans-serif" font-size="18" fill="#465958">validated logic</text>
+<text x="819" y="786" font-family="Arial,sans-serif" font-size="18" fill="#465958">making this decision</text>
+<text x="819" y="808" font-family="Arial,sans-serif" font-size="18" fill="#465958">today?</text>
+<text x="819" y="866" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Yes: a zone</text>
+<rect x="1062.7" y="692" width="241.7" height="188" rx="12" fill="#fff" stroke="#e11d48" stroke-width="1.5"/>
+<text x="1074.7" y="718" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#881337">5</text>
+<text x="1074.7" y="742" font-family="Arial,sans-serif" font-size="18" fill="#465958">Does it delete, drop,</text>
+<text x="1074.7" y="764" font-family="Arial,sans-serif" font-size="18" fill="#465958">destroy or reset</text>
+<text x="1074.7" y="786" font-family="Arial,sans-serif" font-size="18" fill="#465958">production?</text>
+<text x="1074.7" y="866" font-family="Arial,sans-serif" font-size="18" fill="#881337">Yes: destruction rule</text>
+<rect x="1318.3" y="692" width="241.7" height="188" rx="12" fill="#fff" stroke="#e11d48" stroke-width="1.5"/>
+<text x="1330.3" y="718" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#881337">6</text>
+<text x="1330.3" y="742" font-family="Arial,sans-serif" font-size="18" fill="#465958">Does it make or shape</text>
+<text x="1330.3" y="764" font-family="Arial,sans-serif" font-size="18" fill="#465958">a significant</text>
+<text x="1330.3" y="786" font-family="Arial,sans-serif" font-size="18" fill="#465958">decision about a</text>
+<text x="1330.3" y="808" font-family="Arial,sans-serif" font-size="18" fill="#465958">person?</text>
+<text x="1330.3" y="844" font-family="Arial,sans-serif" font-size="18" fill="#881337">Yes: people-decisions</text>
+<text x="1330.3" y="866" font-family="Arial,sans-serif" font-size="18" fill="#881337">floor</text>
+</svg>

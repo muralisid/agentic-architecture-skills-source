@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">What changes</title>
+<desc id="desc">Six rows compare how most companies work today with the agentic way. Routine work moves from people with software as a tool to governed agents, each with its own identity. People move from carrying out each step to setting intent, supervising, handling exceptions and staying accountable. Rules move from the prompt to the gateway and the policy decision point, outside the model. Evidence is collected where the agent cannot write, and learning is promoted through evals, not edited prompts. The same fourteen layers stay, with seven new planes of agent capability across them.</desc>
+<defs><marker id="ah-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#94a3b8"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="33" y="54" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">What changes</text>
+<text x="33" y="88" font-family="Arial,sans-serif" font-size="20" fill="#465958">Today means how most companies work now, including their first agent pilots.</text>
+<rect x="1060" y="70" width="22" height="22" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="1092" y="88" font-family="Arial,sans-serif" font-size="18" fill="#465958">Today</text>
+<rect x="1171.5" y="70" width="22" height="22" rx="5" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1203.5" y="88" font-family="Arial,sans-serif" font-size="18" fill="#465958">Agentic: agents</text>
+<rect x="1382" y="70" width="22" height="22" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1414" y="88" font-family="Arial,sans-serif" font-size="18" fill="#465958">Agentic: people</text>
+<text x="369" y="136" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e293b">Today</text>
+<text x="859" y="136" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#4c1d95">Agentic</text>
+<rect x="33" y="152" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="49" y="209" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">Who does routine work</text>
+<rect x="349" y="152" width="440" height="98" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="369" y="209" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">People, with software as a tool</text>
+<path d="M795 201.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
+<rect x="839" y="152" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="859" y="209" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">Governed agents, each with its own identity</text>
+<rect x="33" y="262" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="49" y="319" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">What people do</text>
+<rect x="349" y="262" width="440" height="98" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="369" y="319" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">Carry out each step</text>
+<path d="M795 311.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
+<rect x="839" y="262" width="728" height="98" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="859" y="305" font-family="Arial,sans-serif" font-size="22" fill="#78350f">Set intent, supervise, handle exceptions</text>
+<text x="859" y="333" font-family="Arial,sans-serif" font-size="22" fill="#78350f">and stay accountable</text>
+<rect x="33" y="372" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="49" y="429" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">Where the rules live</text>
+<rect x="349" y="372" width="440" height="98" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="369" y="429" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">In the prompt</text>
+<path d="M795 421.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
+<rect x="839" y="372" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="859" y="415" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">At the gateway and the policy decision point,</text>
+<text x="859" y="443" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">outside the model</text>
+<rect x="33" y="482" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="49" y="526" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">Who records</text>
+<text x="49" y="552" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">what happened</text>
+<rect x="349" y="482" width="440" height="98" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="369" y="539" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">Often the agent, in its own log</text>
+<path d="M795 531.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
+<rect x="839" y="482" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="859" y="539" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">Evidence is collected where the agent cannot write</text>
+<rect x="33" y="592" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="49" y="649" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">How behaviour changes</text>
+<rect x="349" y="592" width="440" height="98" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="369" y="649" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">Someone edits the prompt</text>
+<path d="M795 641.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
+<rect x="839" y="592" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="859" y="649" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">Learning is promoted through evals, not edited prompts</text>
+<rect x="33" y="702" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="49" y="746" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">What stays and</text>
+<text x="49" y="772" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">what is new</text>
+<rect x="349" y="702" width="440" height="98" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="369" y="759" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">The fourteen layers you own</text>
+<path d="M795 751.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
+<rect x="839" y="702" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="859" y="745" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">The same fourteen layers, with seven new planes</text>
+<text x="859" y="773" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">of agent capability across them</text>
+<rect x="33" y="816" width="1534" height="52" rx="26" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="800" y="850" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#1e3a8a">Same fourteen layers. Seven new planes.</text>
+</svg>

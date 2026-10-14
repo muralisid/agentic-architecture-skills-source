@@ -62,7 +62,7 @@ This gate exists because of the single strongest negative finding in the guide.
 
 What the adjacent measurement does support:
 
-- Supervisory capacity follows the fan-out relation: capacity is neglect time divided by the sum of interaction time and **wait time**. Wait time is the term architects forget and the one that usually binds, because it is set by queueing and escalation design rather than by the agent.
+- Supervisory capacity follows the fan-out relation: capacity is neglect time divided by the sum of interaction time and **wait time**, plus one. Wait time is the term architects forget and the one that usually binds, because it is set by queueing and escalation design rather than by the agent.
 - The only directly measured capacity in a comparable supervisory task fell between four and six units, in a low-stakes simulation. It is a floor for intuition, not a target.
 - Published ratios across domains span a thirty- to fiftyfold range, driven entirely by task, autonomy level, and consequence. There is no domain-independent number to find.
 - Consequence-weighted domains regulate **below** one to one. Nuclear control rooms require multiple licensed operators per unit with continuous presence at the controls.

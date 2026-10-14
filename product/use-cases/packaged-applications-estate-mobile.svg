@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3049" role="img" aria-labelledby="title desc">
+<title id="title">Where agents land in a packaged-application estate</title>
+<desc id="desc">Seven packaged systems in a utility estate, badged with what vendors ship as of 14 October 2026. Some have vendor agents that are GA, some have planned ones, and GIS has none found. The strongest place to build is the join across billing, outage, GIS and field. Four things stay yours: interface inventory, semantic layer, agent registry and gateway policy.</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="720" height="3049" fill="#f8f5ef"/>
+<text x="28" y="62" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">Where agents land in a</text>
+<text x="28" y="109" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">packaged-application estate</text>
+<rect x="28" y="132" width="321.2" height="54" rx="6" fill="#ffffff" stroke="#9a4c2d" stroke-width="2.5"/>
+<rect x="33" y="137" width="311.2" height="44" rx="4" fill="none" stroke="#9a4c2d" stroke-width="1"/>
+<text x="50" y="167" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#9a4c2d">As of 14 October 2026</text>
+<text x="28" y="232" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each box is a packaged system. Its badges show</text>
+<text x="28" y="263" font-family="Arial,sans-serif" font-size="24" fill="#465958">what vendors ship for it.</text>
+<rect x="28" y="304" width="664" height="220" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="48" y="349.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#4c1d95">The join: an outage message and a work</text>
+<text x="48" y="385.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#4c1d95">order need billing, outage, GIS and</text>
+<text x="48" y="421.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#4c1d95">field</text>
+<text x="48" y="463.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">No vendor covers it. It is the strongest build</text>
+<text x="48" y="494.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">candidate.</text>
+<rect x="28" y="548" width="664" height="512" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="589.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#7c3aed">Needed for the join</text>
+<text x="48" y="634.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Billing</text>
+<text x="48" y="676.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">SAP IS-U, Oracle Customer Care and Billing</text>
+<rect x="48" y="692" width="222" height="38" rx="19" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="60" y="719.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Vendor agent GA</text>
+<text x="48" y="761.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">SAP customer self-service agent, live since Q4</text>
+<text x="48" y="792.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">2025</text>
+<rect x="48" y="808" width="288" height="38" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="60" y="835.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Planned, unconfirmed</text>
+<text x="48" y="877.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">SAP billing-exception agents, planned for Q2 to</text>
+<text x="48" y="908.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Q3 2026</text>
+<rect x="48" y="924" width="156" height="38" rx="19" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="60" y="951.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e293b">None found</text>
+<text x="48" y="993.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Oracle billing agent</text>
+<text x="48" y="1030.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">A named person approves any bill change.</text>
+<rect x="28" y="1078" width="664" height="305" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="1119.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#7c3aed">Needed for the join</text>
+<text x="48" y="1164.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">SCADA and ADMS</text>
+<text x="48" y="1206.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">The grid control systems</text>
+<rect x="48" y="1222" width="222" height="38" rx="19" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="60" y="1249.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Vendor agent GA</text>
+<text x="48" y="1291.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Schneider Electric Grid AI Assistant, 4 June</text>
+<text x="48" y="1322.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">2026. Any operational action stays subject to</text>
+<text x="48" y="1353.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">user review.</text>
+<rect x="28" y="1401" width="664" height="274" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="1442.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#7c3aed">Needed for the join</text>
+<text x="48" y="1487.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">GIS and asset register</text>
+<text x="48" y="1529.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Mapping and asset records</text>
+<rect x="48" y="1545" width="156" height="38" rx="19" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="60" y="1572.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e293b">None found</text>
+<text x="48" y="1614.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">No vendor agent found. Matching asset, GIS and</text>
+<text x="48" y="1645.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">field records crosses packages.</text>
+<rect x="28" y="1693" width="664" height="274" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="1734.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#7c3aed">Needed for the join</text>
+<text x="48" y="1779.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Mobile workforce</text>
+<text x="48" y="1821.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Field crews and scheduling</text>
+<rect x="48" y="1837" width="288" height="38" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="60" y="1864.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Planned, unconfirmed</text>
+<text x="48" y="1906.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Microsoft scheduling agent slated for April to</text>
+<text x="48" y="1937.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">September 2026. Slated is not shipped.</text>
+<rect x="28" y="1985" width="664" height="277" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="2030.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Integration and APIs</text>
+<rect x="48" y="2047" width="222" height="38" rx="19" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="60" y="2074.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Vendor agent GA</text>
+<text x="48" y="2116.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">MuleSoft Agent Fabric, September 2025</text>
+<rect x="48" y="2132" width="288" height="38" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="60" y="2159.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Planned, unconfirmed</text>
+<text x="48" y="2201.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">SAP MCP Gateway. Sources conflict on whether it</text>
+<text x="48" y="2232.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">is GA.</text>
+<rect x="28" y="2280" width="664" height="192" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="2325.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Portals</text>
+<rect x="48" y="2342" width="222" height="38" rx="19" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="60" y="2369.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Vendor agent GA</text>
+<text x="48" y="2411.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Kraken agents live at one unnamed utility on</text>
+<text x="48" y="2442.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">about 1.3 million accounts, June 2026</text>
+<rect x="28" y="2490" width="664" height="202" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="2535.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">BI</text>
+<text x="48" y="2577.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Business intelligence and reporting</text>
+<rect x="48" y="2593" width="222" height="38" rx="19" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="60" y="2620.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Vendor agent GA</text>
+<text x="48" y="2662.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Databricks Genie GA, 12 June 2025</text>
+<rect x="28" y="2718" width="664" height="184" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="48" y="2763.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#0f172a">Own: interface inventory, semantic</text>
+<text x="48" y="2799.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#0f172a">layer, agent registry, gateway policy</text>
+<text x="48" y="2841.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">These stay yours, whichever agents you run,</text>
+<text x="48" y="2872.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">bought or built.</text>
+<text x="28" y="2946" font-family="Arial,sans-serif" font-size="24" fill="#465958">Badges follow the utility estate table on this</text>
+<text x="28" y="2977" font-family="Arial,sans-serif" font-size="24" fill="#465958">page. Vendor claims are vendor-published and</text>
+<text x="28" y="3008" font-family="Arial,sans-serif" font-size="24" fill="#465958">re-checked each quarter.</text>
+</svg>

@@ -182,7 +182,7 @@ const LAYER_TITLES = {
   'r10-security-and-identity': 'Security and identity',
   'r11-governance-risk-sovereignty': 'Governance, risk and sovereignty',
   'r12-observability-and-finops': 'Observability and FinOps',
-  'r13-operating-model': 'Operating model',
+  'r13-operating-model': 'Operating model and supervision',
   'r14-agent-data-engineering': 'Agent data engineering',
 };
 
@@ -498,16 +498,27 @@ for (const rel of productFiles) {
 const metas = {
   '.': {
     // Only the product sections appear in the main tree; the library is its
-    // own root and never appears in the product sidebar.
-    pages: [...readerSections.map((section) => section.id), 'agentic-os', 'security', 'patterns', 'layers', 'decisions', 'about'],
+    // own root and never appears in the product sidebar. 'start' (product/start.mdx)
+    // comes first because it is the first entry in content-map.json.
+    pages: [...readerSections.map((section) => section.id), 'layers', 'agentic-os', 'security', 'patterns', 'decisions', 'about'],
   },
-  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', 'agent-roles', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'billing-exceptions', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---From idea to investment---', 'choose-where-to-start', 'packaged-applications', 'value-and-investment', 'enterprise-transformation', '---More industries and functions---'] },
+  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'billing-exceptions', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---Choose and fund---', 'choose-where-to-start', 'packaged-applications', 'value-and-investment', 'enterprise-transformation', '---Blueprints and frameworks---'] },
   research: { title: 'Research', pages: ['index', 'experiments', 'questions', 'what-changed', 'industrial-examples', 'method'] },
   architecture: {
     title: 'Architecture',
     icon: 'Compass',
     description: 'The cross-layer design of the agentic enterprise.',
-    pages: ['index', 'system-view', 'task-walkthrough', 'software-for-agents', 'plain-words', 'deterministic-zones', 'risk-profile', 'identity-chain', 'agent-lifecycle', 'enforcement', 'data-to-memory', 'learning-flywheel', 'autonomy-contract', 'concern-matrix'],
+    pages: [
+      'index',
+      '---See the system---',
+      'system-view', 'task-walkthrough',
+      '---Classify every agent---',
+      'agent-types', 'autonomy-contract', 'risk-profile',
+      '---Bound what it can do---',
+      'deterministic-zones', 'identity-chain', 'agent-lifecycle', 'enforcement',
+      '---Knowledge, learning and reference---',
+      'data-to-memory', 'learning-flywheel', 'concern-matrix', 'software-for-agents', 'plain-words',
+    ],
   },
   security: {
     title: 'Security practices',
@@ -532,7 +543,7 @@ const metas = {
     title: 'Intelligence ladder',
     icon: 'ListOrdered',
     description: 'Choose the change that improves the task.',
-    pages: ['index', 'choosing-an-approach', 'single-and-multiple-agents', 'combining-models', 'instructions', 'context', 'tools-and-the-loop', 'adapters-and-fine-tuning', 'distillation', 'reinforcement-fine-tuning', 'continued-pretraining', 'custom-pretraining'],
+    pages: ['index', 'choosing-an-approach', 'instructions', 'context', 'tools-and-the-loop', 'single-and-multiple-agents', 'combining-models', 'adapters-and-fine-tuning', 'distillation', 'reinforcement-fine-tuning', 'continued-pretraining', 'custom-pretraining'],
   },
   patterns: {
     title: 'Patterns',
@@ -561,8 +572,9 @@ const metas = {
       '---Make memory usable---',
       'choosing-representations', 'images-video-and-audio', 'combining-evidence',
       'changing-facts', 'permissions-and-lifecycle', 'what-the-benchmarks-measure',
-      '---Optional visual tour---',
-      'vector-spaces',
+      '---Optional: types of data---',
+      'vector-spaces', 'text-embeddings', 'image-embeddings', 'video-embeddings',
+      'audio-embeddings', 'location-and-satellite-data', 'time-series',
       '---Advanced design and research---',
       'six-architectures', 'long-context-is-not-memory',
       'the-ten-million-token-question', 'what-we-have-measured', 'sources',

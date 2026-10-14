@@ -13,6 +13,8 @@ Each entry says whether the system advises or acts. It gives the <Term k="autono
 
 <TeachingIllustration src="/images/use-cases/utilities-map-v1.webp" expandable title="Keep essential services working" alt="Four areas: electricity networks, water and wastewater, customer service, and assurance and resilience. Shared outcomes include service quality, reliability and affordability." caption="Choose a service problem. Keep the investigation separate from authorization to change physical operations." />
 
+<TeachingIllustration src="/figures/use-cases/utilities-deployments-map.svg" mobileSrc="/figures/use-cases/utilities-deployments-map-mobile.svg" expandable title="Named utility deployments by autonomy level" alt="Four columns: electricity networks, water and wastewater, customer service, and assurance and resilience. Vector, Watercare, Sydney Water, AGL and PG&E sit at A2. Kraken with Sierra sits at A3. Essential Energy sits at A1. Nothing sits at A4. A line at A2 reads: in the deployments found, language-model systems advise. Hollow dots mark this guide's proposed designs. Badges name the zone or floor each area touches." caption="Placements are this guide's position. Results are as reported by the party named, and almost none is independently audited." />
+
 ## Electricity networks
 
 **Vector, New Zealand: pole inspection (production).** Vector works with Tapestry on aerial images of its network. Roadside pole checks fell from 30 to 45 minutes to 5 to 7 minutes. Tapestry reported this from Vector's data on 20 August 2025 [vendor]. The tool advises. A detection triggers an inspection. A field crew confirms it.
@@ -61,10 +63,11 @@ Prefer the utility's own filing over the vendor's. Kraken claims A$170 million s
 
 **Proposed design.** An assistant explains an approved bill or outage update, gathers details, and routes the unresolved case. A coordinating extension tracks the request to a confirmed response. Start with the [customer-service blueprint](/library/blueprints/departments/customer-service).
 
-**Where these sit on the architecture.** AGL's and PG&E's assistants are A2, L1. Kraken's set journeys are A3, L1. Any change to a balance, payment or tariff is in the [money zone](/architecture/deterministic-zones#movement-of-money). The control that must exist is approval on account changes. Measure the resolution rate, not containment. Hardship, disconnection and payment plans sit under the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). There the agent only flags, at A1. A trained person decides and checks capacity to pay for each case. The [four questions](/use-cases/agent-roles) score a customer chat agent this way.
+**Where these sit on the architecture.** AGL's and PG&E's assistants are A2, L1. Kraken's set journeys are A3, L1. Any change to a balance, payment or tariff is in the [money zone](/architecture/deterministic-zones#movement-of-money). The control that must exist is approval on account changes. Measure the resolution rate, not containment. Hardship, disconnection and payment plans sit under the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). There the agent only flags, at A1. A trained person decides and checks capacity to pay for each case. The four questions on [agent types](/architecture/agent-types) score a customer chat agent this way.
 
 <Cards>
 <Card title="Resolve billing exceptions without deciding hardship" href="/use-cases/billing-exceptions">Clear implausible meter reads with rules and a specialist, and hand hardship to a person.</Card>
+<Card title="Wait for the vendor's agent, or build one" href="/use-cases/packaged-applications">Billing and customer systems are packaged software. Decide process by process whether a vendor agent will do the job.</Card>
 </Cards>
 
 ## Assurance and resilience

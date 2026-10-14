@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowUpRight, Building2, Layers3 } from 'lucide-react';
+import { ArrowUpRight, Building2, Compass, Layers3 } from 'lucide-react';
 import { SiteFooter } from '@/components/site/site-footer';
 import { TeachingIllustration } from '@/components/visuals/teaching-illustration';
 
@@ -9,7 +9,14 @@ export default function HomePage() {
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ember-deep">Model intelligence. Enterprise capability.</p>
       <h1 className="mt-5 max-w-4xl font-serif text-4xl leading-[1.12] sm:text-5xl lg:text-6xl">Turn your enterprise into an <span className="italic text-ember-deep">agentic enterprise.</span></h1>
       <p className="mt-6 max-w-2xl text-lg leading-8 text-fd-muted-foreground">How to distill model intelligence into useful work, connect it to the enterprise, and measure the business result. Start with the question that matters to you.</p>
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
+      <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <Link href="/start" className="group rounded-2xl border border-fd-border bg-fd-card p-7 transition-colors hover:border-ember focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember">
+          <Compass className="size-7 text-ember-deep" aria-hidden="true" />
+          <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-fd-muted-foreground">Start with the route</p>
+          <h2 className="mt-2 font-serif text-3xl">Where do we start?</h2>
+          <p className="mt-4 leading-7 text-fd-muted-foreground">The road to an agentic enterprise, in seven stations.</p>
+          <span className="mt-7 inline-flex items-center gap-2 font-semibold text-ember-deep">Start here <ArrowUpRight className="size-4" /></span>
+        </Link>
         <Link href="/use-cases" className="group rounded-2xl border border-fd-border bg-fd-card p-7 transition-colors hover:border-ember focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember">
           <Building2 className="size-7 text-ember-deep" aria-hidden="true" />
           <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-fd-muted-foreground">Start with the business</p>

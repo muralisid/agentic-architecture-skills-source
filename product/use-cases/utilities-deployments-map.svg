@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Named utility deployments by autonomy level</title>
+<desc id="desc">Named utility deployments in four areas, each a dot with its date and stage, placed by autonomy level from A1 to A4. Almost all sit at A2 or below, and nothing was found at A4. A line at A2 reads: in the deployments found, language-model systems advise. Proposed designs are drawn as hollow dots.</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32" y="54" font-family="Arial,sans-serif" font-size="34" font-weight="bold" fill="#182e31">Named utility deployments by autonomy level</text>
+<text x="32" y="90" font-family="Arial,sans-serif" font-size="20" fill="#465958">Each dot is a named deployment, with its date and stage. Higher means more independence.</text>
+<rect x="164" y="110" width="342" height="137" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="178" y="143.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Electricity networks</text>
+<rect x="178" y="161" width="176.4" height="32" rx="16" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="187" y="183.48" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">Safety actuation</text>
+<text x="178" y="217.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">None of these touches it.</text>
+<rect x="518" y="110" width="342" height="137" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="532" y="143.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Water and wastewater</text>
+<rect x="532" y="161" width="176.4" height="32" rx="16" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="541" y="183.48" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">Safety actuation</text>
+<text x="532" y="217.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">No write path to OT.</text>
+<rect x="872" y="110" width="342" height="137" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="886" y="143.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Customer service</text>
+<rect x="886" y="161" width="117" height="32" rx="16" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="895" y="183.48" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">Money zone</text>
+<rect x="886" y="201" width="235.8" height="32" rx="16" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="895" y="223.48" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">People-decisions floor</text>
+<rect x="1226" y="110" width="342" height="137" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="1240" y="143.8" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Assurance and resilience</text>
+<rect x="1240" y="161" width="265.5" height="32" rx="16" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="1249" y="183.48" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">Formal regulatory records</text>
+<text x="1240" y="217.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">A named person signs a filing.</text>
+<text x="32" y="140" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#465958">Zone</text>
+<text x="32" y="164" font-family="Arial,sans-serif" font-size="18" fill="#465958">or floor</text>
+<rect x="32" y="259" width="120" height="91" rx="10" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="44" y="289" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">A4</text>
+<text x="44" y="313" font-family="Arial,sans-serif" font-size="18" fill="#465958">Managed</text>
+<text x="44" y="336" font-family="Arial,sans-serif" font-size="18" fill="#465958">autonomy</text>
+<rect x="164" y="259" width="1404" height="91" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="866" y="311.5" font-family="Arial,sans-serif" font-size="20" fill="#465958" text-anchor="middle">Nothing found at A4, named or proposed</text>
+<rect x="32" y="360" width="120" height="112" rx="10" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="44" y="390" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">A3</text>
+<text x="44" y="414" font-family="Arial,sans-serif" font-size="18" fill="#465958">Supervised</text>
+<text x="44" y="437" font-family="Arial,sans-serif" font-size="18" fill="#465958">autonomy</text>
+<rect x="164" y="360" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="518" y="360" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="872" y="360" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="890" cy="381.9" r="9" fill="#0f766e"/>
+<text x="912" y="388.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Kraken with Sierra</text>
+<text x="912" y="410.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Set account journeys, June</text>
+<text x="912" y="432.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">2026</text>
+<text x="912" y="454.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Production at one utility</text>
+<rect x="1226" y="360" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="482" width="120" height="246" rx="10" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="44" y="512" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">A2</text>
+<text x="44" y="536" font-family="Arial,sans-serif" font-size="18" fill="#465958">Delegated</text>
+<text x="44" y="559" font-family="Arial,sans-serif" font-size="18" fill="#465958">tasks</text>
+<rect x="164" y="482" width="342" height="246" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="182" cy="503.9" r="9" fill="#0f766e"/>
+<text x="204" y="510.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Vector, New Zealand</text>
+<text x="204" y="532.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Pole inspection, 20 August</text>
+<text x="204" y="554.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">2025</text>
+<text x="204" y="576.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Production</text>
+<circle cx="182" cy="603.9" r="9" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="204" y="610.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="204" y="632.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Vegetation inspection agent</text>
+<rect x="518" y="482" width="342" height="246" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="536" cy="503.9" r="9" fill="#0f766e"/>
+<text x="558" y="510.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Watercare, Auckland</text>
+<text x="558" y="532.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Wastewater sensors, 18 August</text>
+<text x="558" y="554.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">2025</text>
+<text x="558" y="576.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Production rollout</text>
+<circle cx="536" cy="603.9" r="9" fill="#0f766e"/>
+<text x="558" y="610.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Sydney Water with UTS</text>
+<text x="558" y="632.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Leak detection, February 2023</text>
+<text x="558" y="654.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Production</text>
+<circle cx="536" cy="681.9" r="9" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="558" y="688.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="558" y="710.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Network anomaly agent</text>
+<rect x="872" y="482" width="342" height="246" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="890" cy="503.9" r="9" fill="#0f766e"/>
+<text x="912" y="510.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">AGL, Australia</text>
+<text x="912" y="532.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Chat, case study undated</text>
+<text x="912" y="554.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Production</text>
+<circle cx="890" cy="581.9" r="9" fill="#0f766e"/>
+<text x="912" y="588.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">PG&amp;E, California</text>
+<text x="912" y="610.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Voice, 2026</text>
+<text x="912" y="632.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Production</text>
+<rect x="1226" y="482" width="342" height="246" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="1244" cy="503.9" r="9" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="1266" y="510.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="1266" y="532.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Evidence and audit agents</text>
+<text x="1240" y="566.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">No named deployment found. The</text>
+<text x="1240" y="588.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">search was not complete.</text>
+<rect x="32" y="738" width="120" height="112" rx="10" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="44" y="768" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">A1</text>
+<text x="44" y="792" font-family="Arial,sans-serif" font-size="18" fill="#465958">Assisted</text>
+<rect x="164" y="738" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="182" cy="759.9" r="9" fill="#0f766e"/>
+<text x="204" y="766.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Essential Energy, NSW</text>
+<text x="204" y="788.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Safety signals in crew notes,</text>
+<text x="204" y="810.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">16 April 2026</text>
+<text x="204" y="832.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Preparing to deploy</text>
+<rect x="518" y="738" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="872" y="738" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<circle cx="890" cy="759.9" r="9" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="912" y="766.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Proposed design</text>
+<text x="912" y="788.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Hardship flag only. A person</text>
+<text x="912" y="810.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">decides.</text>
+<rect x="1226" y="738" width="342" height="112" rx="10" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M158 477 H1568" fill="none" stroke="#182e31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7"/>
+<rect x="180" y="431" width="633" height="38" rx="19" fill="#182e31" stroke="none" stroke-width="2"/>
+<text x="194" y="457" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#ffffff">In the deployments found, language-model systems advise</text>
+<circle cx="46" cy="876" r="9" fill="#0f766e"/>
+<text x="64" y="882" font-family="Arial,sans-serif" font-size="18" fill="#465958">Named deployment, as reported by the party named</text>
+<circle cx="575.2" cy="876" r="9" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="593.2" y="882" font-family="Arial,sans-serif" font-size="18" fill="#465958">This guide's proposed design</text>
+<text x="1568" y="882" font-family="Arial,sans-serif" font-size="18" fill="#465958" text-anchor="end">Autonomy placements are this guide's position.</text>
+</svg>

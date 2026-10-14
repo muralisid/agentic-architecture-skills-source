@@ -1,9 +1,10 @@
 ---
 name: map-deterministic-boundaries
 description: >-
-  Work out which actions an AI agent must never decide on its own, and design
-  the deterministic control around each one. Covers the four zones where a model
-  may advise but never decide (access and entitlements, movement of money,
+  Work out which actions an AI agent must never approve on its own, and design
+  the deterministic control around each one. Covers the rule that models may
+  take permission away, never grant it, and the four zones where a model may
+  not approve at all (access and entitlements, movement of money,
   safety actuation, formal regulatory records), the identity and delegation
   chain that keeps every action traceable to the person who asked, and where
   enforcement belongs. Produces a zone register and the control for each entry.
@@ -47,7 +48,7 @@ A yes to the second applies the people-decisions floor. A named person with auth
 
 ## 3. Design the control for each entry
 
-For each zone action, name three things: the deterministic rule, the place it is evaluated, and the record it leaves. `references/enforcement.md` gives the three tiers (the gateway, the policy decision point, and rules promoted outside the model) and what each can and cannot enforce. Two anti-patterns to reject explicitly:
+For each zone action, name three things: the deterministic rule, the place it is evaluated, and the record it leaves. `references/enforcement.md` gives the three enforcement points (the gateway, the policy decision point, and rules promoted outside the model) and what each can and cannot enforce. Two anti-patterns to reject explicitly:
 
 - A prompt instruction, a system prompt, or a model-based guardrail as the boundary. A model may deny, escalate, or quarantine on top of the deterministic rule; it never grants. Measured evasion rates make guardrails unfit as the boundary.
 - Post-filtering results after the agent has already retrieved them. Filter before, on the caller's live identity.

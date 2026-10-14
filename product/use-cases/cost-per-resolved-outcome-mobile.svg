@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1674" role="img" aria-labelledby="title desc">
+<title id="title">Cost per resolved outcome</title>
+<desc id="desc">Add all costs for the period, failed and retried attempts included. That means model, tool and platform cost, supervision time at a loaded rate, and the cost of fixing wrong outcomes. Divide by the outcomes accepted as resolved under the agreed quality standard, never by containment. Report the resolution rate, failure rate, serious errors and repeat contacts beside it.</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="720" height="1674" fill="#f8f5ef"/>
+<text x="28" y="62" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">Cost per resolved outcome</text>
+<rect x="28" y="119" width="664" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="50" y="159" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Cost per resolved outcome = all costs for</text>
+<text x="50" y="193" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">the period / outcomes accepted as resolved</text>
+<rect x="28" y="247" width="664" height="148" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="48" y="292.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#4c1d95">Model, tool and platform cost</text>
+<text x="48" y="334.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">All of it for the period. Failed and retried</text>
+<text x="48" y="365.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">attempts included.</text>
+<text x="360" y="429" font-family="Arial,sans-serif" font-size="44" font-weight="bold" fill="#182e31" text-anchor="middle">+</text>
+<rect x="28" y="449" width="664" height="148" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="48" y="494.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#78350f">Supervision time at a loaded rate</text>
+<text x="48" y="536.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">The time people spend to review and resolve</text>
+<text x="48" y="567.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">exceptions.</text>
+<text x="360" y="631" font-family="Arial,sans-serif" font-size="44" font-weight="bold" fill="#182e31" text-anchor="middle">+</text>
+<rect x="28" y="651" width="664" height="148" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5"/>
+<text x="48" y="696.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#881337">Cost of fixing wrong outcomes</text>
+<text x="48" y="738.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Rework, reversals and corrections when an</text>
+<text x="48" y="769.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">outcome was wrong.</text>
+<path d="M28 823 H692" fill="none" stroke="#182e31" stroke-width="6" stroke-linecap="butt" stroke-linejoin="round"/>
+<text x="360" y="863" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31" text-anchor="middle">divided by</text>
+<rect x="28" y="885" width="664" height="117" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<text x="48" y="930.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#134e4a">Outcomes accepted as resolved</text>
+<text x="48" y="972.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Judged against the agreed quality standard.</text>
+<rect x="28" y="1042" width="664" height="184" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5"/>
+<text x="48" y="1087.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#881337">Divide by resolution, never by</text>
+<text x="48" y="1123.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#881337">containment</text>
+<text x="48" y="1165.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Containment counts contacts that never reached</text>
+<text x="48" y="1196.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">a person. It does not count problems solved.</text>
+<rect x="28" y="1246" width="664" height="240" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<text x="48" y="1291.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#134e4a">Report beside it</text>
+<circle cx="55.2" cy="1326.88" r="4.08" fill="#465958"/>
+<text x="72" y="1333.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Resolution rate</text>
+<circle cx="55.2" cy="1367.88" r="4.08" fill="#465958"/>
+<text x="72" y="1374.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Failure rate</text>
+<circle cx="55.2" cy="1408.88" r="4.08" fill="#465958"/>
+<text x="72" y="1415.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Serious errors</text>
+<circle cx="55.2" cy="1449.88" r="4.08" fill="#465958"/>
+<text x="72" y="1456.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Repeat contacts</text>
+<text x="28" y="1536" font-family="Arial,sans-serif" font-size="24" fill="#465958">Use the same definition of a resolved outcome when</text>
+<text x="28" y="1567" font-family="Arial,sans-serif" font-size="24" fill="#465958">you compare options.</text>
+<text x="28" y="1602" font-family="Arial,sans-serif" font-size="24" fill="#465958">Show severe or delayed harms on their own, not</text>
+<text x="28" y="1633" font-family="Arial,sans-serif" font-size="24" fill="#465958">inside an average.</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2162" role="img" aria-labelledby="title desc">
+<title id="title">Supervision capacity at burst</title>
+<desc id="desc">Fan-out, how many agents one supervisor can watch, equals neglect time divided by interaction time plus wait time, plus one. Leaving wait time out overstates capacity by up to 67 percent. A timeline shows routine exceptions, then a burst that crosses the capacity line in the busiest ten minutes while the daily average still looks fine. The system degrades safely, then recovers.</desc>
+<defs>
+<marker id="ah182e31" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#182e31"/></marker>
+</defs>
+<rect x="0" y="0" width="720" height="2162" fill="#f8f5ef"/>
+<text x="28" y="62" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">Supervision capacity at burst</text>
+<text x="28" y="113" font-family="Arial,sans-serif" font-size="24" fill="#465958">Size oversight for the busiest ten minutes, with</text>
+<text x="28" y="144" font-family="Arial,sans-serif" font-size="24" fill="#465958">wait time counted. Never use a daily average.</text>
+<rect x="28" y="189" width="664" height="150" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="52" y="239" font-family="Arial,sans-serif" font-size="30" font-weight="bold" fill="#182e31">Fan-out =</text>
+<text x="52" y="279" font-family="Arial,sans-serif" font-size="30" font-weight="bold" fill="#182e31">neglect time /</text>
+<text x="52" y="319" font-family="Arial,sans-serif" font-size="30" font-weight="bold" fill="#182e31">(interaction time + <tspan fill="#e11d48">wait time</tspan>) + 1</text>
+<rect x="28" y="357" width="664" height="148" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="402.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Fan-out</text>
+<text x="48" y="444.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">How many agents one supervisor can watch at</text>
+<text x="48" y="475.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">once.</text>
+<rect x="28" y="519" width="664" height="117" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="564.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Neglect time</text>
+<text x="48" y="606.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">How long an agent can safely run unattended.</text>
+<rect x="28" y="650" width="664" height="117" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="48" y="695.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Interaction time</text>
+<text x="48" y="737.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">How long a person needs per intervention.</text>
+<rect x="28" y="781" width="664" height="148" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="48" y="826.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#881337">Wait time</text>
+<text x="48" y="868.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">The term people drop. Leaving it out overstates</text>
+<text x="48" y="899.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">capacity by up to 67 percent.</text>
+<text x="28" y="973" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Items needing a person, per ten minutes</text>
+<path d="M239 1041 V1421" fill="none" stroke="#c9c2b4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6"/>
+<path d="M346.1 1041 V1421" fill="none" stroke="#c9c2b4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6"/>
+<path d="M503.6 1041 V1421" fill="none" stroke="#c9c2b4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 6"/>
+<rect x="298.85" y="1041" width="31.5" height="380" rx="4" fill="#fffbeb" stroke="#d97706" stroke-width="2" stroke-dasharray="6 5" class="deco"/>
+<polygon points="287.82,1208.2 287.82,1204.67 289.4,1192.65 290.98,1180.49 292.55,1168.28 294.12,1156.14 295.7,1144.18 297.27,1132.52 298.85,1121.28 300.43,1110.58 302,1100.53 303.58,1091.26 305.15,1082.85 306.72,1075.43 308.3,1069.07 309.88,1063.85 311.45,1059.84 313.02,1057.09 314.6,1055.64 316.18,1056.97 317.75,1062.49 319.32,1071.96 320.9,1084.97 322.48,1100.81 324.05,1118.69 325.62,1137.98 327.2,1158.01 328.77,1178.18 330.35,1197.91 330.35,1208.2" fill="#fff1f2" fill-opacity="0.35" stroke="none"/>
+<polygon points="287.82,1208.2 287.82,1204.67 289.4,1192.65 290.98,1180.49 292.55,1168.28 294.12,1156.14 295.7,1144.18 297.27,1132.52 298.85,1121.28 300.43,1110.58 302,1100.53 303.58,1091.26 305.15,1082.85 306.72,1075.43 308.3,1069.07 309.88,1063.85 311.45,1059.84 313.02,1057.09 314.6,1055.64 316.18,1056.97 317.75,1062.49 319.32,1071.96 320.9,1084.97 322.48,1100.81 324.05,1118.69 325.62,1137.98 327.2,1158.01 328.77,1178.18 330.35,1197.91 330.35,1208.2" fill="#e11d48" fill-opacity="0.18" stroke="none"/>
+<path d="M50 1208.2 H680" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50 1330.66 H680" fill="none" stroke="#7a8a88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 7"/>
+<polyline points="50,1363.96 51.58,1362.9 53.15,1361.86 54.73,1360.85 56.3,1359.89 57.88,1358.98 59.45,1358.14 61.02,1357.38 62.6,1356.71 64.17,1356.13 65.75,1355.66 67.33,1355.29 68.9,1355.04 70.47,1354.9 72.05,1354.89 73.62,1354.99 75.2,1355.21 76.78,1355.54 78.35,1355.99 79.92,1356.54 81.5,1357.18 83.07,1357.92 84.65,1358.74 86.22,1359.63 87.8,1360.58 89.38,1361.58 90.95,1362.61 92.53,1363.67 94.1,1364.74 95.67,1365.81 97.25,1366.86 98.83,1367.89 100.4,1368.87 101.97,1369.81 103.55,1370.68 105.12,1371.49 106.7,1372.21 108.28,1372.84 109.85,1373.38 111.43,1373.82 113,1374.16 114.58,1374.39 116.15,1374.51 117.72,1374.53 119.3,1374.44 120.88,1374.25 122.45,1373.96 124.02,1373.58 125.6,1373.12 127.17,1372.58 128.75,1371.97 130.32,1371.31 131.9,1370.61 133.48,1369.87 135.05,1369.11 136.62,1368.34 138.2,1367.57 139.77,1366.82 141.35,1366.1 142.93,1365.41 144.5,1364.78 146.07,1364.2 147.65,1363.7 149.22,1363.27 150.8,1362.93 152.38,1362.69 153.95,1362.54 155.53,1362.49 157.1,1362.55 158.68,1362.71 160.25,1362.98 161.82,1363.34 163.4,1363.81 164.97,1364.37 166.55,1365.02 168.12,1365.75 169.7,1366.55 171.28,1367.42 172.85,1368.33 174.43,1369.29 176,1370.28 177.57,1371.28 179.15,1372.29 180.72,1373.28 182.3,1374.26 183.88,1375.21 185.45,1376.1 187.03,1376.94 188.6,1377.71 190.18,1378.4 191.75,1379.01 193.33,1379.51 194.9,1379.92 196.47,1380.21 198.05,1380.39 199.62,1380.46 201.2,1380.4 202.78,1380.23 204.35,1379.94 205.93,1379.53 207.5,1379.01 209.07,1378.39 210.65,1377.67 212.22,1376.86 213.8,1375.97 215.38,1375 216.95,1373.97 218.53,1372.88 220.1,1371.75 221.68,1370.6 223.25,1369.42 224.83,1368.23 226.4,1367.03 227.97,1365.85 229.55,1364.68 231.12,1363.52 232.7,1362.4 234.27,1361.3 235.85,1360.22 237.42,1359.17 239,1358.14 240.57,1357.12 242.15,1356.1 243.72,1355.06 245.3,1354 246.88,1352.88 248.45,1351.68 250.03,1350.39 251.6,1348.96 253.18,1347.37 254.75,1345.57 256.33,1343.54 257.9,1341.23 259.48,1338.61 261.05,1335.62 262.62,1332.24 264.2,1328.41 265.77,1324.11 267.35,1319.29 268.92,1313.93 270.5,1308 272.07,1301.48 273.65,1294.34 275.23,1286.59 276.8,1278.23 278.38,1269.26 279.95,1259.71 281.52,1249.61 283.1,1239 284.68,1227.93 286.25,1216.46 287.82,1204.67 289.4,1192.65 290.98,1180.49 292.55,1168.28 294.12,1156.14 295.7,1144.18 297.27,1132.52 298.85,1121.28 300.43,1110.58 302,1100.53 303.58,1091.26 305.15,1082.85 306.72,1075.43 308.3,1069.07 309.88,1063.85 311.45,1059.84 313.02,1057.09 314.6,1055.64 316.18,1056.97 317.75,1062.49 319.32,1071.96 320.9,1084.97 322.48,1100.81 324.05,1118.69 325.62,1137.98 327.2,1158.01 328.77,1178.18 330.35,1197.91 331.93,1216.71 333.5,1234.19 335.07,1250.07 336.65,1264.15 338.23,1276.37 339.8,1286.71 341.38,1295.27 342.95,1302.17 344.53,1307.57 346.1,1311.68 347.68,1314.7 349.25,1316.82 350.82,1318.24 352.4,1319.13 353.97,1319.64 355.55,1319.91 357.12,1320.05 358.7,1320.16 360.27,1320.33 361.85,1320.62 363.43,1321.08 365,1321.77 366.57,1322.52 368.15,1323.13 369.72,1323.62 371.3,1323.99 372.88,1324.23 374.45,1324.36 376.02,1324.37 377.6,1324.26 379.17,1324.05 380.75,1323.74 382.32,1323.33 383.9,1322.83 385.47,1322.26 387.05,1321.61 388.62,1320.9 390.2,1320.14 391.77,1319.34 393.35,1318.52 394.93,1317.69 396.5,1316.85 398.07,1316.03 399.65,1315.23 401.23,1314.46 402.8,1313.75 404.38,1313.09 405.95,1312.5 407.52,1311.98 409.1,1311.55 410.68,1311.2 412.25,1310.96 413.82,1310.81 415.4,1310.76 416.98,1310.82 418.55,1310.97 420.12,1311.23 421.7,1311.58 423.28,1312.03 424.85,1312.56 426.43,1313.17 428,1313.85 429.58,1314.59 431.15,1315.38 432.73,1316.21 434.3,1317.07 435.88,1317.94 437.45,1318.82 439.03,1319.69 440.6,1320.53 442.18,1321.35 443.75,1322.11 445.32,1322.82 446.9,1323.47 448.47,1324.03 450.05,1324.51 451.62,1324.89 453.2,1325.17 454.77,1325.35 456.35,1325.41 457.92,1325.36 459.5,1325.2 461.07,1324.92 462.65,1324.53 464.22,1324.03 465.8,1323.42 467.38,1322.77 468.95,1322.12 470.52,1321.49 472.1,1320.87 473.68,1320.27 475.25,1319.71 476.82,1319.18 478.4,1318.71 479.98,1318.29 481.55,1317.94 483.12,1317.67 484.7,1317.48 486.27,1317.38 487.85,1317.39 489.43,1317.51 491,1317.75 492.57,1318.11 494.15,1318.6 495.73,1319.23 497.3,1319.99 498.88,1320.89 500.45,1321.93 502.03,1323.1 503.6,1324.41 505.18,1325.84 506.75,1327.4 508.33,1329.08 509.9,1330.86 511.48,1332.74 513.05,1334.71 514.62,1336.75 516.2,1338.85 517.78,1341.01 519.35,1343.19 520.92,1345.39 522.5,1347.59 524.08,1349.77 525.65,1351.93 527.22,1354.03 528.8,1356.07 530.38,1358.04 531.95,1359.91 533.52,1361.67 535.1,1363.31 536.67,1364.82 538.25,1366.18 539.83,1367.39 541.4,1368.43 542.97,1369.3 544.55,1370 546.12,1370.51 547.7,1370.83 549.27,1370.97 550.85,1370.92 552.42,1370.68 554,1370.26 555.58,1369.71 557.15,1369.09 558.73,1368.41 560.3,1367.68 561.88,1366.9 563.45,1366.1 565.02,1365.28 566.6,1364.46 568.17,1363.64 569.75,1362.85 571.33,1362.08 572.9,1361.37 574.48,1360.7 576.05,1360.11 577.62,1359.59 579.2,1359.15 580.77,1358.81 582.35,1358.57 583.93,1358.43 585.5,1358.4 587.08,1358.48 588.65,1358.67 590.23,1358.97 591.8,1359.39 593.38,1359.91 594.95,1360.53 596.52,1361.25 598.1,1362.06 599.68,1362.94 601.25,1363.9 602.82,1364.92 604.4,1365.99 605.98,1367.09 607.55,1368.22 609.12,1369.36 610.7,1370.5 612.27,1371.62 613.85,1372.72 615.42,1373.77 617,1374.78 618.57,1375.72 620.15,1376.59 621.73,1377.38 623.3,1378.07 624.88,1378.66 626.45,1379.15 628.02,1379.52 629.6,1379.79 631.17,1379.93 632.75,1379.96 634.33,1379.87 635.9,1379.67 637.48,1379.35 639.05,1378.94 640.62,1378.42 642.2,1377.81 643.77,1377.12 645.35,1376.35 646.92,1375.53 648.5,1374.65 650.08,1373.74 651.65,1372.79 653.23,1371.84 654.8,1370.88 656.38,1369.93 657.95,1369.01 659.52,1368.12 661.1,1367.28 662.68,1366.5 664.25,1365.78 665.83,1365.15 667.4,1364.59 668.98,1364.13 670.55,1363.76 672.12,1363.49 673.7,1363.33 675.27,1363.26 676.85,1363.3 678.43,1363.45 680,1363.69" fill="none" stroke="#9a4c2d" stroke-width="4" stroke-linejoin="round"/>
+<path d="M50 1421 V1031" fill="none" stroke="#182e31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50 1421 H686" fill="none" stroke="#182e31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah182e31)"/>
+<text x="344.6" y="1071" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">busiest</text>
+<text x="344.6" y="1099" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">ten minutes</text>
+<text x="680" y="1198.2" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="end">Capacity</text>
+<text x="680" y="1320.66" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#465958" text-anchor="end">Daily average</text>
+<text x="352.4" y="1177.8" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Over capacity</text>
+<circle cx="144.5" cy="1455" r="17" fill="#182e31"/>
+<text x="144.5" y="1464" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<circle cx="292.55" cy="1455" r="17" fill="#182e31"/>
+<text x="292.55" y="1464" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<circle cx="424.85" cy="1455" r="17" fill="#182e31"/>
+<text x="424.85" y="1464" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<circle cx="591.8" cy="1455" r="17" fill="#182e31"/>
+<text x="591.8" y="1464" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<circle cx="45" cy="1503" r="17" fill="#182e31"/>
+<text x="45" y="1512" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="76" y="1511" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Routine</text>
+<text x="76" y="1543" font-family="Arial,sans-serif" font-size="24" fill="#465958">Exceptions arrive within staffed capacity.</text>
+<circle cx="45" cy="1580" r="17" fill="#182e31"/>
+<text x="45" y="1589" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="76" y="1588" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Burst</text>
+<text x="76" y="1620" font-family="Arial,sans-serif" font-size="24" fill="#465958">Exceptions arrive together and exceed</text>
+<text x="76" y="1651" font-family="Arial,sans-serif" font-size="24" fill="#465958">capacity.</text>
+<circle cx="45" cy="1688" r="17" fill="#182e31"/>
+<text x="45" y="1697" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="76" y="1696" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Degrade</text>
+<text x="76" y="1728" font-family="Arial,sans-serif" font-size="24" fill="#465958">Pause, narrow permissions or return work to</text>
+<text x="76" y="1759" font-family="Arial,sans-serif" font-size="24" fill="#465958">people.</text>
+<circle cx="45" cy="1796" r="17" fill="#182e31"/>
+<text x="45" y="1805" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="76" y="1804" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Recover</text>
+<text x="76" y="1836" font-family="Arial,sans-serif" font-size="24" fill="#465958">Clear the backlog and verify before restoring</text>
+<text x="76" y="1867" font-family="Arial,sans-serif" font-size="24" fill="#465958">autonomy.</text>
+<text x="28" y="1918" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Capacity: what reviewers can clear in ten minutes,</text>
+<text x="28" y="1949" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">wait time counted.</text>
+<text x="28" y="1986" font-family="Arial,sans-serif" font-size="24" fill="#465958">Daily average: looks fine on the dashboard.</text>
+<text x="28" y="2023" font-family="Arial,sans-serif" font-size="24" fill="#881337">Over capacity: the queue and wait times grow.</text>
+<text x="28" y="2090" font-family="Arial,sans-serif" font-size="24" fill="#465958">No credible human-to-agent supervision ratio is</text>
+<text x="28" y="2121" font-family="Arial,sans-serif" font-size="24" fill="#465958">published. Use your own measured wait times.</text>
+</svg>

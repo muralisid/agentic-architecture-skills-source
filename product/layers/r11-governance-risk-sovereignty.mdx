@@ -15,7 +15,7 @@ This page covers how the organisation stays accountable for its <Term k="agent">
 
 **In short:** Every agent is on an official register with a named <Term k="owner">owner</Term> and a risk tier, and the records kept grow with the risk.
 
-A governed agent estate. The <Term k="agent registry">agent registry</Term> (the official list of agents) is the compliance inventory, aligned with the registration machinery of the <Term k="eu ai act">EU AI Act</Term>. Every agent carries two tiers. The <Term k="autonomy">autonomy</Term> tier says how much it may do without a person. The classification-plausibility tier says how likely it is to count as high-risk under the Act. The evidence kept follows the tier. There is an <Term k="evidence floor">evidence floor</Term> for all production agents. Agents that could plausibly classify as high-risk get instrumentation at the level Article 12 of the Act requires. <Term k="kill switch">Kill switches</Term> and incident runbooks are wired before autonomy expands. <Term k="provenance">Provenance</Term>-carrying <Term k="grounding">grounding</Term> makes answers citable by construction: each answer carries the record of where its information came from. Board reporting is fed from the registry and live <Term k="telemetry">telemetry</Term>, not bespoke decks. <Term k="sovereignty">Sovereignty</Term> (where data may be stored and processed) is satisfied by routing each deployment by its <Term k="classification">data classification</Term>. This <Term k="layer">layer</Term> is where accountability for the whole agent estate sits.
+A governed agent estate. The <Term k="agent registry">agent registry</Term> (the official list of agents) is the compliance inventory, aligned with the registration machinery of the <Term k="eu ai act">EU AI Act</Term>. Every agent carries two ratings. The <Term k="autonomy">autonomy</Term> level says how much it may do without a person. The classification-plausibility tier says how likely it is to count as high-risk under the Act. The evidence kept follows the tier. There is an <Term k="evidence floor">evidence floor</Term> for all production agents. Agents that could plausibly classify as high-risk get instrumentation at the level Article 12 of the Act requires. <Term k="kill switch">Kill switches</Term> and incident runbooks are wired before autonomy expands. <Term k="provenance">Provenance</Term>-carrying <Term k="grounding">grounding</Term> makes answers citable by construction: each answer carries the record of where its information came from. Board reporting is fed from the registry and live <Term k="telemetry">telemetry</Term>, not bespoke decks. <Term k="sovereignty">Sovereignty</Term> (where data may be stored and processed) is satisfied by routing each deployment by its <Term k="classification">data classification</Term>. This <Term k="layer">layer</Term> is where accountability for the whole agent estate sits.
 
 <GuideFigure id="layer-11-hero" fullWidth />
 
@@ -24,7 +24,7 @@ A governed agent estate. The <Term k="agent registry">agent registry</Term> (the
 | Component | Responsibility | Control it hosts | Where it runs |
 |---|---|---|---|
 | Agent registry | Compliance inventory: owner, purpose, risk tier, tools and credentials, model and prompt versions | Alignment with Article 49/71 registration; named accountable owner; tier assignment | Governance platform or the catalogue estate you already run |
-| Tiering and gates | Assign autonomy and classification-plausibility tiers per agent | Observe, Advise, Act-with-approval and Autonomous gates; documented Article 6(4) self-assessments | Governance workflow tooling |
+| Tiering and gates | Assign an autonomy level and a classification-plausibility tier per agent | Observe, Advise, Act-with-approval and Autonomous gates; documented Article 6(4) self-assessments | Governance workflow tooling |
 | Evidence store | Retain per-action logs, oversight records, documentation | Six-month log retention floor (Article 26); tamper-evident storage; Annex IV documentation for the plausible tier | SIEM (security information and event management) and log estate plus GRC (governance, risk and compliance) evidence storage |
 | Provenance-carrying retrieval | Store chunks and sources alongside embeddings | Citation by construction; source provenance on every grounded claim | The retrieval estate |
 | Kill switch and incident machinery | Stop agents fast; report serious incidents | Article 14(4)(e) stop capability; Article 73 timelines; tested runbooks | Agent platform and control-tower tooling |
@@ -40,7 +40,7 @@ Each registry entry records owner, purpose, risk tier, <Term k="tools">tools</Te
 
 ### The two-tier evidence posture
 
-**In short:** Every production agent keeps a basic set of records, and agents that might count as high-risk under EU law keep much more.
+**In short:** There are two levels of records (evidence tiers, not risk tiers). Every production agent keeps a basic set of records, and agents that might count as high-risk under EU law keep much more.
 
 <TeachingIllustration src="/images/layers/r11-risk-evidence-labeled-v1.webp" alt="Every production agent keeps owner, purpose, sources, actions and incident records; potentially high-risk agents add technical, data-governance, oversight, robustness and post-market evidence, while classification routes deployment." title="Evidence and deployment controls grow with impact" caption="Baseline records apply to every production agent. Higher-risk or higher-autonomy use adds a much stronger evidence file, and data classification independently determines whether deployment is public, restricted, sovereign or air-gapped." />
 
@@ -91,6 +91,8 @@ The stop capability now exists in three forms. First, a product feature: **Servi
 | C8 | Safety and oversight | Article 14 oversight design; kill switches (product, draft mandate, Act hook); fundamental rights impact assessment (FRIA) where applicable |
 | C9 | Cost | Compliance cost tiered to classification plausibility; provider-flip avoidance as a design constraint |
 | C10 | Resilience | Incident reporting machinery on the Article 73 timeline; multi-agent incident gap acknowledged |
+
+**Next step:** read the next layer, [R12 Observability and FinOps](/layers/r12-observability-and-finops).
 
 ## Evidence and limits
 

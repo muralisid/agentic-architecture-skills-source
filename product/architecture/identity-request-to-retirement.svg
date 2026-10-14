@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Identity, request to retirement</title>
+<desc id="desc">Every request runs one chain, from the requesting user and sponsor to the evidence record. The agent uses its own ID2 identity through a gateway, a policy check and the system of record. Kill switches sit at the identity, gateway, runtime and harness. Over its life the agent is registered, entitled, operated, changed, reviewed and retired.</desc>
+<defs>
+<marker id="ah-agent" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#7c3aed"/></marker>
+<marker id="ah-brown" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#9a4c2d"/></marker>
+<marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
+<marker id="ah-human" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#d97706"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">Identity, request to retirement</text>
+<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">An agent should never be able to do anything its requesting user could not do themselves.</text>
+<text x="40" y="136" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">Every request</text>
+<rect x="40" y="150" width="220" height="116" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="54" y="184" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#78350f">Requesting user</text>
+<text x="54" y="214" font-family="Arial,sans-serif" font-size="19" fill="#465958">Asks for the task</text>
+<path d="M260 208 L298 208" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#ah-human)"/>
+<rect x="40" y="282" width="220" height="116" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="54" y="316" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#78350f">Sponsor</text>
+<text x="54" y="346" font-family="Arial,sans-serif" font-size="19" fill="#465958">Answers for the</text>
+<text x="54" y="370" font-family="Arial,sans-serif" font-size="19" fill="#465958">agent</text>
+<path d="M260 340 L298 340" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#ah-human)"/>
+<rect x="300" y="150" width="220" height="248" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="314" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#4c1d95">Agent (ID2)</text>
+<text x="314" y="214" font-family="Arial,sans-serif" font-size="19" fill="#465958">Own registered</text>
+<text x="314" y="238" font-family="Arial,sans-serif" font-size="19" fill="#465958">identity</text>
+<text x="314" y="266" font-family="Arial,sans-serif" font-size="19" fill="#465958">Holds no secrets</text>
+<path d="M320 289.4 A8.55 8.55 0 1 0 332 289.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M326 284.8 V294.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<text x="350.6" y="302" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#881337">identity</text>
+<path d="M320 321.4 A8.55 8.55 0 1 0 332 321.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M326 316.8 V326.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<text x="350.6" y="334" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#881337">runtime</text>
+<path d="M320 353.4 A8.55 8.55 0 1 0 332 353.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M326 348.8 V358.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<text x="350.6" y="366" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#881337">harness</text>
+<path d="M520 274 L558 274" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
+<rect x="560" y="150" width="220" height="248" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="574" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Gateway</text>
+<text x="574" y="207" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">(token exchange)</text>
+<text x="574" y="241" font-family="Arial,sans-serif" font-size="19" fill="#465958">Exchanges the</text>
+<text x="574" y="265" font-family="Arial,sans-serif" font-size="19" fill="#465958">caller's identity</text>
+<text x="574" y="293" font-family="Arial,sans-serif" font-size="19" fill="#465958">Injects</text>
+<text x="574" y="317" font-family="Arial,sans-serif" font-size="19" fill="#465958">short-lived</text>
+<text x="574" y="341" font-family="Arial,sans-serif" font-size="19" fill="#465958">credentials</text>
+<path d="M580 364.4 A8.55 8.55 0 1 0 592 364.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M586 359.8 V369.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<text x="610.5" y="377" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#881337">gateway</text>
+<path d="M780 274 L818 274" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
+<rect x="820" y="150" width="220" height="248" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="834" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Policy decision</text>
+<text x="834" y="204" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">point</text>
+<text x="834" y="238" font-family="Arial,sans-serif" font-size="19" fill="#465958">Rule over verified</text>
+<text x="834" y="262" font-family="Arial,sans-serif" font-size="19" fill="#465958">identity</text>
+<text x="834" y="290" font-family="Arial,sans-serif" font-size="19" fill="#465958">Fails closed</text>
+<path d="M1040 274 L1078 274" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
+<rect x="1080" y="150" width="220" height="248" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1094" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">System of record</text>
+<text x="1094" y="207" font-family="Arial,sans-serif" font-size="19" fill="#1e3a8a">(run-as-user)</text>
+<text x="1094" y="241" font-family="Arial,sans-serif" font-size="19" fill="#465958">Acts as the person</text>
+<text x="1094" y="265" font-family="Arial,sans-serif" font-size="19" fill="#465958">who asked</text>
+<text x="1094" y="293" font-family="Arial,sans-serif" font-size="19" fill="#465958">Audit log names</text>
+<text x="1094" y="317" font-family="Arial,sans-serif" font-size="19" fill="#465958">that person</text>
+<path d="M1300 274 L1338 274" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
+<rect x="1340" y="150" width="220" height="248" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="1354" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#134e4a">Evidence record</text>
+<text x="1354" y="214" font-family="Arial,sans-serif" font-size="19" fill="#465958">Each decision</text>
+<text x="1354" y="238" font-family="Arial,sans-serif" font-size="19" fill="#465958">lands here</text>
+<text x="1354" y="266" font-family="Arial,sans-serif" font-size="19" fill="#465958">Traceable to the</text>
+<text x="1354" y="290" font-family="Arial,sans-serif" font-size="19" fill="#465958">person who asked</text>
+<path d="M410 398 L410 440" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#ah-agent)"/>
+<rect x="300" y="442" width="220" height="78" rx="12" fill="#fff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="314" y="474" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#4c1d95">Sub-agent</text>
+<text x="314" y="502" font-family="Arial,sans-serif" font-size="19" fill="#465958">scope only narrows</text>
+<rect x="560" y="456" width="1000" height="50" rx="25" fill="#fff" stroke="#e11d48" stroke-width="2"/>
+<path d="M583 474 A10 10 0 1 0 597 474" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M590 469 V480" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<text x="612" y="488" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#881337">Kill switches at identity, gateway, runtime and harness. Revoke time drilled.</text>
+<text x="40" y="590" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">Every agent, over its life</text>
+<rect x="40" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="54" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Register</text>
+<text x="54" y="668" font-family="Arial,sans-serif" font-size="19" fill="#465958">ID2 identity and a</text>
+<text x="54" y="692" font-family="Arial,sans-serif" font-size="19" fill="#465958">named sponsor</text>
+<path d="M260 644 L298 644" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<rect x="300" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="314" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Entitle</text>
+<text x="314" y="661" font-family="Arial,sans-serif" font-size="19" fill="#0f172a">(grant expires)</text>
+<text x="314" y="695" font-family="Arial,sans-serif" font-size="19" fill="#465958">Narrow grant for a</text>
+<text x="314" y="719" font-family="Arial,sans-serif" font-size="19" fill="#465958">stated task</text>
+<path d="M520 644 L558 644" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<rect x="560" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="574" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Operate</text>
+<text x="574" y="668" font-family="Arial,sans-serif" font-size="19" fill="#465958">Budget and hard</text>
+<text x="574" y="692" font-family="Arial,sans-serif" font-size="19" fill="#465958">caps per run</text>
+<path d="M580 715.4 A8.55 8.55 0 1 0 592 715.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M586 710.8 V720.4" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+<text x="610.5" y="728" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#881337">kill switch</text>
+<path d="M780 644 L818 644" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<rect x="820" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="834" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Change</text>
+<text x="834" y="668" font-family="Arial,sans-serif" font-size="19" fill="#465958">Re-run evals and</text>
+<text x="834" y="692" font-family="Arial,sans-serif" font-size="19" fill="#465958">risk profile</text>
+<path d="M1040 644 L1078 644" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<rect x="1080" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="1094" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Review</text>
+<text x="1094" y="668" font-family="Arial,sans-serif" font-size="19" fill="#465958">Purpose, access,</text>
+<text x="1094" y="692" font-family="Arial,sans-serif" font-size="19" fill="#465958">budget, need</text>
+<path d="M1300 644 L1338 644" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<rect x="1340" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="1354" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Retire</text>
+<text x="1354" y="668" font-family="Arial,sans-serif" font-size="19" fill="#465958">Disable, revoke,</text>
+<text x="1354" y="692" font-family="Arial,sans-serif" font-size="19" fill="#465958">keep the record</text>
+<text x="40" y="810" font-family="Arial,sans-serif" font-size="19" fill="#465958">Every hop keeps the requesting person's identity. Edge and sub-agent identities can only narrow the scope.</text>
+</svg>

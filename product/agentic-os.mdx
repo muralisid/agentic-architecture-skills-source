@@ -45,8 +45,10 @@ Every one of these framings treats context as a surface to configure rather than
 | 1. Runtime | **Buy** | Sandbox, session store, identity, <Term k="gateway">gateway</Term>, scheduling, metering, trace collection |
 | 2. <Term k="harness">Harness</Term> | **Build** | Context assembly and reset, termination, state survival, verification, loop limits |
 | 3. Context layer | **Build. Nobody sells it** | Parsing, chunking, versioned embeddings, permission-aware indexing, retrieval that can refuse |
-| 4. Deterministic boundary | **Build** | The decisions a model may inform and never make, and the evidence channel it cannot influence |
+| 4. Deterministic boundary | **Build** | Models may take permission away, never grant it: a model may deny or escalate, and inside the four zones it may not approve at all. Plus the evidence channel a model cannot influence |
 | 5. Adaptation ladder | **Build the ordering** | When to engineer context, when to distil, when to fine-tune |
+
+<TeachingIllustration src="/figures/architecture/agentic-os-loop.svg" mobileSrc="/figures/architecture/agentic-os-loop-mobile.svg" expandable title="One agent loop, five parts" alt="One turn of an agent loop runs in seven steps: context assembly, the model call, tool routing through the gateway, a policy check outside the model, the result, evidence written where the agent cannot write, and termination and budget checks, which repeat or stop the loop. Each step is tagged with the part that owns it. A side panel lists the five parts: the runtime, which you buy, and the harness, the context layer, the deterministic boundary and the adaptation ladder, which you build. An eval suite you own binds all five." caption="Buy the runtime. Build the other four parts, and hold each one to a matched control on your own queries." />
 
 ## 1. The runtime, which you buy
 
@@ -152,6 +154,8 @@ An Agentic OS worth the name is five parts: a runtime you buy, and a harness, a 
 </PrincipleCard>
 
 <EvidenceBadge status="mixed-evidence" /> The definitions are quoted from dated primary sources and the retrieval figures are our own, reproducible from the published benchmark. Vendor-published figures are flagged. The five-part synthesis is an author position.
+
+**Next step:** see tested ways to give an agent the right context on [context patterns](/patterns).
 
 <details>
 <summary>The research behind this page</summary>

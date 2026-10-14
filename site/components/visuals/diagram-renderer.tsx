@@ -480,7 +480,7 @@ function MatrixDiagram({ figure }: { figure: FigureManifestEntry }) {
       <table className="m-0 hidden w-full table-fixed border-collapse text-left text-xs sm:table print:table">
         <thead>
           <tr className="bg-fd-muted/55">
-            <th className="w-[18%] break-words border-b border-r px-3 py-3 font-semibold" scope="col">Dimension</th>
+            <th className="w-[18%] break-words border-b border-r px-3 py-3 font-semibold" scope="col">Area</th>
             {columns.map((column) => (
               <th key={column} className="break-words border-b border-r px-2 py-3 font-semibold last:border-r-0" scope="col">{column}</th>
             ))}

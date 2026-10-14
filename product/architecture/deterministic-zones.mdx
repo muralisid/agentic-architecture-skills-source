@@ -15,7 +15,7 @@ Some decisions are too important to leave to an AI model: who gets access, wheth
 
 **WHAT:** Draw four deterministic zones around **access and entitlements, movement of money, safety actuation, and formal regulatory records**. Inside each zone the agent may analyse, draft, recommend, flag and block. Fixed policy, a certified system, a payment rail or a named person decides, and the agent cannot bypass it. Beside the zones sit **a destruction rule** and **a people-decisions floor**.
 
-![Visual summary of the four deterministic zones](/figures/architecture/deterministic-zones.jpg)
+<TeachingIllustration src="/figures/architecture/deterministic-zones-walls.svg" mobileSrc="/figures/architecture/deterministic-zones-walls-mobile.svg" expandable title="Models may take permission away, never grant it" alt="A model sits in the centre. It may analyse, draft, recommend, flag and block. Four walls surround it: access and entitlements, movement of money, safety actuation, and formal regulatory records. Each wall shows who decides, what advises, and the agent's job. Arrows show the model may deny, escalate or quarantine. A crossed-out arrow shows it may never grant. Two panels sit beside the zones. The destruction rule needs a plan, a named approval, two signers and protected backups. The people-decisions floor needs a named person to decide, notice and a log. A strip of six yes or no questions finds the zones in an enterprise." caption="Inside the zones a fixed rule or a named person decides. The model may advise or block." />
 
 ## The principle
 
@@ -76,10 +76,10 @@ What sits inside: authorization decisions, <Term k="entitlement">entitlement</Te
 
 <Steps>
 <Step>
-**Put the decision in the path, not in the prompt.** List the <Term k="tool call">tool calls</Term> that touch access, security configuration or personal data flows. The <Term k="policy decision point">policy decision point</Term> sits behind [the gateway](/architecture/enforcement#tier-1-the-gateway), so none is reachable without a decision. A <Term k="prompt">prompt</Term> instruction is advice.
+**Put the decision in the path, not in the prompt.** List the <Term k="tool call">tool calls</Term> that touch access, security configuration or personal data flows. The <Term k="policy decision point">policy decision point</Term> sits behind [the gateway](/architecture/enforcement#enforcement-point-1-the-gateway), so none is reachable without a decision. A <Term k="prompt">prompt</Term> instruction is advice.
 </Step>
 <Step>
-**Write policy as code, data flows included.** Cedar-class engines answer in under a millisecond; Open Policy Agent handles rules that join data from several sources. <Term k="policy-as-code">Policy-as-code</Term> is versioned and reviewed like any production change ([the policy decision point](/architecture/enforcement#tier-2-the-policy-decision-point)).
+**Write policy as code, data flows included.** Cedar-class engines answer in under a millisecond; Open Policy Agent handles rules that join data from several sources. <Term k="policy-as-code">Policy-as-code</Term> is versioned and reviewed like any production change ([the policy decision point](/architecture/enforcement#enforcement-point-2-the-policy-decision-point)).
 </Step>
 <Step>
 **Fail closed, log, and test the bypass.** If the policy engine goes down, consequential actions stop. Each decision lands in [the evidence record](/layers/r11-governance-risk-sovereignty#the-two-tier-evidence-posture). A red team tries to reach a tool without a decision. How an agent proves who it is lives on [the identity chain](/architecture/identity-chain).
@@ -281,6 +281,8 @@ Classify every tool in the gateway's registry against the six questions. Write t
 
 - The signed register lets your regulator and your board say yes to everything outside it.
 - A use case that needs a model to approve inside a zone is reshaped (the model proposes, the rule decides) or rejected.
+
+**Next step:** trace every action back to the person who asked on [the identity and delegation chain](/architecture/identity-chain).
 
 ## Evidence and limits
 

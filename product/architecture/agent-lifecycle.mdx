@@ -18,6 +18,8 @@ Think of this page as HR (human resources) for agents. Each agent gets its own i
 
 **In short:** Every agent passes through the same nine stages. Each is marked as shipped in a product, set out in guidance, or this guide's position.
 
+<TeachingIllustration src="/figures/architecture/agent-lifecycle-loop.svg" mobileSrc="/figures/architecture/agent-lifecycle-loop-mobile.svg" expandable title="Nine stages, one registry record" alt="Nine stages run in order: register, sponsor and owner, entitle, evaluate, approve, operate, change, periodic review and retire. Each stage carries a badge: shipped, guidance or this guide's position. Eight change triggers send a running agent back to evaluate: model, prompt, tools, permissions, data sources, memory policy, autonomy level and sponsor. A review loop checks purpose, access, budget and need quarterly, or yearly for Tier 1. Retire opens out into disable, revoke, redirect, remove and keep. The registry record sits in the centre in four groups. When a sponsor leaves, sponsorship passes to their manager." caption="No agent runs without a registry entry and a named sponsor. Retiring is more than switching off." />
+
 | Stage | What happens | Evidence status |
 |---|---|---|
 | 1. Register | A <Term k="registry">registry</Term> entry and an ID2 identity exist before any credential. ID2 is this guide's floor: the agent's own account, <Term k="least privilege">least privilege</Term>, short-lived credentials and a named sponsor. | Guidance. Microsoft's Cloud Adoption Framework (CAF, 1 October 2026) asks for one inventory and a distinct identity per agent [vendor]. APRA and the DTA expect a register. |
@@ -157,6 +159,8 @@ Three regulators already ask for parts of this record. The Monetary Authority of
 | NIST (US standards body) agent identity work | Concept paper, 5 February 2026. No final standard. | Guidance, early stage |
 | MCP (the standard agents use to call tools) authorisation | Draft binds each token to one server and forbids passing tokens through. | Draft specification |
 | Re-approval triggers | No standard defines them. | Practitioner sources; this guide's position |
+
+**Next step:** see where the rules are enforced on [enforcement outside the model](/architecture/enforcement).
 
 ## Evidence and limits
 

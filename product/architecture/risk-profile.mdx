@@ -45,6 +45,8 @@ How to read the factors:
 
 **In short:** The worst factor sets the tier. Five conditions are always High. When unsure, go up.
 
+<TeachingIllustration src="/figures/architecture/risk-profile-factors-to-tier.svg" mobileSrc="/figures/architecture/risk-profile-factors-to-tier-mobile.svg" expandable title="From nine factors to one tier" alt="Nine factors are each scored Low, Medium or High. A funnel shows that the worst factor wins. All Low gives Tier 1 Basic, any Medium Tier 2 Enhanced, and any High Tier 3 Strict. Each tier lists its controls, who signs and how often it is reviewed. Five conditions are always High: zone actions, production destruction, code or SQL on production, regulated or control-system data, and decisions about people. A fixed, reversible zone transaction in the signed register drops to Tier 2. Oversight strength adds controls only. The Rule of Two caps autonomy at A2. A multi-agent system takes its highest member's tier. When unsure, go up." caption="The worst factor sets the tier. Oversight can add controls. It never lowers the tier." />
+
 1. **Three tiers.** Any High gives Tier 3. Any Medium gives at least Tier 2. All Low gives Tier 1.
 2. **Always High.** These set Tier 3 whatever else is true:
    - an action inside a <Term k="deterministic zone">deterministic zone</Term> (access, money, safety actuation, formal records);
@@ -56,7 +58,7 @@ How to read the factors:
 4. **The Rule of Two caps autonomy.** If one session holds all three parts, autonomy is capped at A2. A person reviews every output.
 5. **A multi-agent system takes its highest member's tier.** This follows the TrustX ARC framework.
 6. **When unsure, go up.** This follows the fail-safe rule in GAIE.
-7. **Demote at once. Promote on evidence.** An anomaly or a change of scope demotes the agent at once. Promotion needs controls in place and eval results, not a count of clean runs. Nineteen passes in twenty runs fits a true pass rate as low as 78 percent ([the arithmetic](/agentic-os)). So this guide does not adopt GAIE's rule of twenty clean deployments.
+7. **Demote at once. Promote on evidence.** An anomaly or a change of scope demotes the agent at once. Promotion needs controls in place and eval results, not a count of clean runs. Nineteen passes in twenty runs fits a true pass rate as low as 78 percent ([the arithmetic](/agentic-os#a-worked-caution-the-trust-ledger)). So this guide does not adopt GAIE's rule of twenty clean deployments.
 
 The worst-factor rule comes from TrustX ARC (preprint, 10 July 2026). The go-up rule comes from GAIE (preprint, 21 June 2026).
 
@@ -151,6 +153,8 @@ The tier sits on the registry record, beside the owner, sponsor and autonomy lev
 - The floor actions: [the deterministic zones](/architecture/deterministic-zones).
 - The policy decision point, egress proxy and kill switch: [enforcement](/architecture/enforcement).
 - The autonomy levels and their controls: [the autonomy contract](/architecture/autonomy-contract).
+
+**Next step:** design the controls for the riskiest actions on [the four deterministic zones](/architecture/deterministic-zones).
 
 ## Evidence and limits
 

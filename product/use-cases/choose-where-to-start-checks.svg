@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Apply five checks</title>
+<desc id="desc">Five checks in order: can we evaluate it, can we protect its actions, and can we supply reliable evidence. Then two new checks for packaged applications: is the process inside one package, and is a vendor agent GA or dated within two quarters. An idea that fails a check goes into a preparation list.</desc>
+<defs>
+<marker id="ah9a4c2d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker>
+</defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32" y="58" font-family="Arial,sans-serif" font-size="34" font-weight="bold" fill="#182e31">Apply five checks</text>
+<text x="32" y="98" font-family="Arial,sans-serif" font-size="22" fill="#465958">Run them on each idea, in order. Checks 4 and 5 are new.</text>
+<rect x="32" y="162" width="275.2" height="430" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="52" y="200" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#9a4c2d">Check 1</text>
+<text x="52" y="241.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Can we evaluate</text>
+<text x="52" y="275.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">it?</text>
+<text x="52" y="315.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">Agree what a</text>
+<text x="52" y="344.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">correct and useful</text>
+<text x="52" y="373.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">result looks like,</text>
+<text x="52" y="402.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">with realistic</text>
+<text x="52" y="431.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">examples.</text>
+<path d="M313.2 377 H339.2" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<rect x="347.2" y="162" width="275.2" height="430" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="367.2" y="200" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#9a4c2d">Check 2</text>
+<text x="367.2" y="241.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Can we protect</text>
+<text x="367.2" y="275.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">its actions?</text>
+<text x="367.2" y="315.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">Find actions on</text>
+<text x="367.2" y="344.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">access, money,</text>
+<text x="367.2" y="373.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">safety actuation or</text>
+<text x="367.2" y="402.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">formal regulatory</text>
+<text x="367.2" y="431.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">records. Place the</text>
+<text x="367.2" y="460.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">controls outside</text>
+<text x="367.2" y="489.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">the model.</text>
+<path d="M628.4 377 H654.4" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<rect x="662.4" y="162" width="275.2" height="430" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
+<text x="682.4" y="200" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#9a4c2d">Check 3</text>
+<text x="682.4" y="241.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Can we supply</text>
+<text x="682.4" y="275.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">reliable</text>
+<text x="682.4" y="309.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">evidence?</text>
+<text x="682.4" y="349.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">Check access,</text>
+<text x="682.4" y="378.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">quality, freshness</text>
+<text x="682.4" y="407.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">and ownership of</text>
+<text x="682.4" y="436.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">the information.</text>
+<path d="M943.6 377 H969.6" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<rect x="977.6" y="162" width="275.2" height="430" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="997.6" y="200" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#9a4c2d">Check 4</text>
+<text x="997.6" y="241.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Is the process</text>
+<text x="997.6" y="275.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">inside one</text>
+<text x="997.6" y="309.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">package or</text>
+<text x="997.6" y="343.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">across several?</text>
+<text x="997.6" y="383.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">Does one packaged</text>
+<text x="997.6" y="412.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">system hold all the</text>
+<text x="997.6" y="441.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">data and</text>
+<text x="997.6" y="470.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">permissions?</text>
+<rect x="1185.8" y="176" width="53" height="34" rx="17" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1195.8" y="200.2" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#78350f">new</text>
+<path d="M1258.8 377 H1284.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
+<rect x="1292.8" y="162" width="275.2" height="430" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1312.8" y="200" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#9a4c2d">Check 5</text>
+<text x="1312.8" y="241.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Is a vendor</text>
+<text x="1312.8" y="275.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">agent GA on your</text>
+<text x="1312.8" y="309.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">edition, or</text>
+<text x="1312.8" y="343.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">dated within two</text>
+<text x="1312.8" y="377.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">quarters?</text>
+<text x="1312.8" y="417.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">Count only agents</text>
+<text x="1312.8" y="446.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">marked GA in</text>
+<text x="1312.8" y="475.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">release notes.</text>
+<text x="1312.8" y="504.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">Treat announced</text>
+<text x="1312.8" y="533.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">ones as</text>
+<text x="1312.8" y="562.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">unavailable.</text>
+<rect x="1501" y="176" width="53" height="34" rx="17" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1511" y="200.2" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#78350f">new</text>
+<path d="M32 616 V634 H937.6 V616" fill="none" stroke="#465958" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M484.8 634 V650" fill="none" stroke="#465958" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="484.8" y="680" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31" text-anchor="middle">The three gates in the use-case portfolio</text>
+<path d="M977.6 616 V634 H1568 V616" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1272.8 634 V650" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1272.8" y="680" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">New for packaged applications. They decide</text>
+<text x="1272.8" y="709" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">whether to wait for a vendor's agent or build</text>
+<text x="1272.8" y="738" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">your own.</text>
+<text x="32" y="807" font-family="Arial,sans-serif" font-size="20" fill="#465958">An idea that fails a check goes into a preparation list. It may need clearer outcomes, better interfaces or better data.</text>
+</svg>

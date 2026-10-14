@@ -19,6 +19,8 @@ The work runs in five steps.
 4. It proposes a resolution and shows the evidence behind it.
 5. A fixed rule releases plausible cases above an agreed confidence level. A sample of those is checked. A specialist approves the rest.
 
+<TeachingIllustration src="/figures/use-cases/billing-exceptions-flow.svg" mobileSrc="/figures/use-cases/billing-exceptions-flow-mobile.svg" expandable title="Billing exceptions: who does what" alt="Swimlanes for the billing system, the agent, a fixed rule, a specialist and a hardship officer. The exception list goes to the agent's hardship check. If there is any sign of hardship, disconnection or a payment plan, a trained person decides and the agent stops. Otherwise the agent gathers evidence and proposes a resolution with a confidence level. A fixed rule checks the confidence, the cap on the change and the flags. It releases the case or sends it to a specialist. Every release is logged and a sample is checked." caption="The model never releases. A fixed rule or a specialist approves every change." />
+
 <details>
 <summary>Experience behind this example</summary>
 
@@ -76,7 +78,7 @@ If a source system is down, or the evidence conflicts, the case goes to a specia
 
 ## Where this sits
 
-[The four questions](/use-cases/agent-roles#billing-exception-agent) and the [risk profile](/architecture/risk-profile) place this agent as follows. The placements are this guide's position.
+The four questions on [agent types](/architecture/agent-types#billing-exception-agent) and the [risk profile](/architecture/risk-profile) place this agent as follows. The placements are this guide's position.
 
 - **Advises or acts:** both. It proposes every resolution. A fixed rule releases plausible cases. A specialist approves the rest.
 - **Placement:** on the [autonomy contract](/architecture/autonomy-contract), A3, L1 for plausible cases released by the rule. A2, L1 for the rest. A1 once hardship is involved. People approve every change to its rules and thresholds.
@@ -109,4 +111,6 @@ All accessed 14 October 2026.
 - [Ofgem and the Energy Ombudsman on AI](https://www.ofgem.gov.uk/blog/understanding-ai-energy-sector-benefits-risks-and-your-rights), 5 February 2026.
 - [CX Today on Kraken's agents](https://cxtoday.com/kraken-autonomous-agents), 12 August 2026. Independent trade analysis.
 
-Return to [Utilities](/use-cases/utilities) or [explore the agent roles](/use-cases/agent-roles).
+Return to [Utilities](/use-cases/utilities) or [explore the agent types](/architecture/agent-types).
+
+**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).

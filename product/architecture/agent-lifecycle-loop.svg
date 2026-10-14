@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">The agent lifecycle: register to retire</title>
+<desc id="desc">Every agent passes through nine stages, from register to retire. Eight kinds of change send a running agent back to evaluation. The sponsor checks purpose, access, budget and need every quarter, or every year for Tier 1. Retiring has five steps: disable, revoke, redirect, remove and keep.</desc>
+<defs>
+<marker id="ah-brown" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#9a4c2d"/></marker>
+<marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
+<marker id="ah-human" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#d97706"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">The agent lifecycle: register to retire</text>
+<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">No agent runs without a registry entry and a named sponsor.</text>
+<rect x="40" y="104" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="52" y="134" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">1. Register</text>
+<text x="52" y="160" font-family="Arial,sans-serif" font-size="18" fill="#465958">Entry and ID2 identity</text>
+<rect x="52" y="174" width="93.2" height="28" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="98.6" y="194.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Guidance</text>
+<rect x="340" y="104" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="352" y="134" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">2. Sponsor and owner</text>
+<text x="352" y="160" font-family="Arial,sans-serif" font-size="18" fill="#465958">Named at creation</text>
+<rect x="352" y="174" width="83.3" height="28" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="393.6" y="194.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#134e4a">Shipped</text>
+<rect x="640" y="104" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="652" y="134" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">3. Entitle</text>
+<text x="652" y="160" font-family="Arial,sans-serif" font-size="18" fill="#465958">Template, expiring grant</text>
+<rect x="652" y="174" width="83.3" height="28" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="693.6" y="194.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#134e4a">Shipped</text>
+<rect x="741.3" y="174" width="93.2" height="28" rx="14" fill="#fff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="787.9" y="194.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e293b">Position</text>
+<rect x="940" y="104" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="952" y="134" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">4. Evaluate</text>
+<text x="952" y="160" font-family="Arial,sans-serif" font-size="18" fill="#465958">Evals and red-team tests</text>
+<rect x="952" y="174" width="93.2" height="28" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="998.6" y="194.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Guidance</text>
+<rect x="1276" y="104" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="1288" y="134" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">5. Approve</text>
+<text x="1288" y="160" font-family="Arial,sans-serif" font-size="18" fill="#465958">Path set by risk tier</text>
+<rect x="1288" y="174" width="162.5" height="28" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="1369.2" y="194.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#134e4a">Shipped in part</text>
+<rect x="1456.5" y="174" width="93.2" height="28" rx="14" fill="#fff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="1503.1" y="194.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e293b">Position</text>
+<rect x="1276" y="606" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="1288" y="636" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">6. Operate</text>
+<text x="1288" y="662" font-family="Arial,sans-serif" font-size="18" fill="#465958">Budget, caps, kill switch</text>
+<rect x="1288" y="676" width="93.2" height="28" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="1334.6" y="696.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Guidance</text>
+<rect x="1387.2" y="676" width="93.2" height="28" rx="14" fill="#fff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="1433.8" y="696.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e293b">Position</text>
+<rect x="940" y="606" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="952" y="636" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">7. Change</text>
+<text x="952" y="662" font-family="Arial,sans-serif" font-size="18" fill="#465958">Evals and profile re-run</text>
+<rect x="952" y="676" width="93.2" height="28" rx="14" fill="#fff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="998.6" y="696.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e293b">Position</text>
+<rect x="640" y="606" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="652" y="636" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">8. Periodic review</text>
+<text x="652" y="662" font-family="Arial,sans-serif" font-size="18" fill="#465958">Sponsor confirms need</text>
+<rect x="652" y="676" width="93.2" height="28" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="698.6" y="696.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Guidance</text>
+<rect x="340" y="606" width="280" height="108" rx="12" fill="#fff" stroke="#475569" stroke-width="2"/>
+<text x="352" y="636" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#0f172a">9. Retire</text>
+<text x="352" y="662" font-family="Arial,sans-serif" font-size="18" fill="#465958">Not just switched off</text>
+<rect x="352" y="676" width="93.2" height="28" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="398.6" y="696.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Guidance</text>
+<path d="M321 138 L338 138" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M621 138 L638 138" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M921 138 L938 138" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M1221 138 L1274 138" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M1414 212 L1414 604" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M1275 680 L1222 680" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M939 680 L922 680" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M639 680 L622 680" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M1276 630 L1248 630 L1248 182 L1222 182" fill="none" stroke="#9a4c2d" stroke-width="3" marker-end="url(#ah-brown)"/>
+<text x="1024" y="246" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#182e31">Change triggers</text>
+<rect x="1024" y="258" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="280" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Model</text>
+<path d="M1230 274 L1248 274" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<rect x="1024" y="298" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="320" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Prompt</text>
+<path d="M1230 314 L1248 314" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<rect x="1024" y="338" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="360" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Tools</text>
+<path d="M1230 354 L1248 354" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<rect x="1024" y="378" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="400" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Permissions</text>
+<path d="M1230 394 L1248 394" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<rect x="1024" y="418" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="440" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Data sources</text>
+<path d="M1230 434 L1248 434" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<rect x="1024" y="458" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="480" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Memory policy</text>
+<path d="M1230 474 L1248 474" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<rect x="1024" y="498" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="520" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Autonomy level</text>
+<path d="M1230 514 L1248 514" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<rect x="1024" y="538" width="206" height="32" rx="16" fill="#fff" stroke="#9a4c2d" stroke-width="1.5"/>
+<text x="1040" y="560" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Sponsor</text>
+<path d="M1230 554 L1248 554" fill="none" stroke="#9a4c2d" stroke-width="2"/>
+<path d="M478 212 L478 222" fill="none" stroke="#d97706" stroke-width="2"/>
+<rect x="340" y="222" width="300" height="36" rx="18" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="354" y="246" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#78350f">Sponsor leaves</text>
+<path d="M502 240 L540 240" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#ah-human)"/>
+<text x="552" y="246" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#78350f">manager</text>
+<rect x="348" y="268" width="656" height="328" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="364" y="298" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#134e4a">The registry record</text>
+<text x="988" y="298" font-family="Arial,sans-serif" font-size="18" text-anchor="end" fill="#134e4a">one per agent</text>
+<rect x="364" y="314" width="305" height="130" rx="10" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+<text x="376" y="340" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#134e4a">Who it is and why it exists</text>
+<text x="376" y="364" font-family="Arial,sans-serif" font-size="18" fill="#465958">ID and template, purpose</text>
+<text x="376" y="387" font-family="Arial,sans-serif" font-size="18" fill="#465958">Role and domain, origin</text>
+<text x="376" y="410" font-family="Arial,sans-serif" font-size="18" fill="#465958">Sponsor and owner, estate</text>
+<text x="376" y="433" font-family="Arial,sans-serif" font-size="18" fill="#465958">Lifecycle state</text>
+<rect x="683" y="314" width="305" height="130" rx="10" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+<text x="695" y="340" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#134e4a">What it can do</text>
+<text x="695" y="364" font-family="Arial,sans-serif" font-size="18" fill="#465958">Credential verbs and scopes</text>
+<text x="695" y="387" font-family="Arial,sans-serif" font-size="18" fill="#465958">Untrusted-input flag</text>
+<text x="695" y="410" font-family="Arial,sans-serif" font-size="18" fill="#465958">Highest data class, egress</text>
+<text x="695" y="433" font-family="Arial,sans-serif" font-size="18" fill="#465958">Zones and floors</text>
+<rect x="364" y="456" width="305" height="130" rx="10" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+<text x="376" y="482" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#134e4a">How it is governed</text>
+<text x="376" y="506" font-family="Arial,sans-serif" font-size="18" fill="#465958">Risk tier and its factor</text>
+<text x="376" y="529" font-family="Arial,sans-serif" font-size="18" fill="#465958">A-level, L-level, budget</text>
+<text x="376" y="552" font-family="Arial,sans-serif" font-size="18" fill="#465958">Evals, approval record</text>
+<text x="376" y="575" font-family="Arial,sans-serif" font-size="18" fill="#465958">Regulatory tags</text>
+<rect x="683" y="456" width="305" height="130" rx="10" fill="#fff" stroke="#0f766e" stroke-width="1.5"/>
+<text x="695" y="482" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#134e4a">How it changes over time</text>
+<text x="695" y="506" font-family="Arial,sans-serif" font-size="18" fill="#465958">Model, prompt, tool versions</text>
+<text x="695" y="529" font-family="Arial,sans-serif" font-size="18" fill="#465958">Memory policy, change log</text>
+<text x="695" y="552" font-family="Arial,sans-serif" font-size="18" fill="#465958">Last review, last invocation</text>
+<text x="695" y="575" font-family="Arial,sans-serif" font-size="18" fill="#465958">Revoke time</text>
+<text x="40" y="246" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#182e31">Retire, step by step</text>
+<rect x="40" y="260" width="280" height="66" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="52" y="288" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">1. Disable</text>
+<text x="52" y="312" font-family="Arial,sans-serif" font-size="18" fill="#465958">Stop work, block tokens</text>
+<rect x="40" y="336" width="280" height="66" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="52" y="364" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">2. Revoke</text>
+<text x="52" y="388" font-family="Arial,sans-serif" font-size="18" fill="#465958">Credentials, grants, keys</text>
+<rect x="40" y="412" width="280" height="66" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="52" y="440" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">3. Redirect</text>
+<text x="52" y="464" font-family="Arial,sans-serif" font-size="18" fill="#465958">To replacement or person</text>
+<rect x="40" y="488" width="280" height="66" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="52" y="516" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">4. Remove</text>
+<text x="52" y="540" font-family="Arial,sans-serif" font-size="18" fill="#465958">Memory and unique tools</text>
+<rect x="40" y="564" width="280" height="66" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="52" y="592" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">5. Keep</text>
+<text x="52" y="616" font-family="Arial,sans-serif" font-size="18" fill="#465958">Decision records, traces</text>
+<path d="M340 696 L328 696 L328 293 L318 293" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<path d="M780 714 L780 760 L1414 760 L1414 716" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
+<text x="794" y="790" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Purpose, access, budget, need: quarterly; yearly for Tier 1</text>
+<text x="794" y="830" font-family="Arial,sans-serif" font-size="18" fill="#9a4c2d">Any change trigger re-runs the evals and the risk profile before release.</text>
+<text x="40" y="680" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#182e31">Evidence badges</text>
+<rect x="40" y="694" width="83.3" height="28" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="81.7" y="714.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#134e4a">Shipped</text>
+<text x="150" y="714" font-family="Arial,sans-serif" font-size="18" fill="#465958">in a product</text>
+<rect x="40" y="736" width="93.2" height="28" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="86.6" y="756.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Guidance</text>
+<text x="150" y="756" font-family="Arial,sans-serif" font-size="18" fill="#465958">published guidance</text>
+<rect x="40" y="778" width="93.2" height="28" rx="14" fill="#fff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="86.6" y="798.5" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e293b">Position</text>
+<text x="150" y="798" font-family="Arial,sans-serif" font-size="18" fill="#465958">this guide's view</text>
+</svg>

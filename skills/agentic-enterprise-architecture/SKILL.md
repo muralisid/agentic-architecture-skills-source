@@ -3,8 +3,8 @@ name: agentic-enterprise-architecture
 description: >-
   The cross-layer reference for running AI agents inside an enterprise: seven
   planes across fourteen layers, the two plane rules, the four deterministic
-  zones where a model may advise but never decide, the identity and delegation
-  chain, enforcement outside the model, the data-to-memory pipeline, the
+  zones (models may take permission away, never grant it, and inside the zones
+  may not approve at all), the identity and delegation chain, enforcement outside the model, the data-to-memory pipeline, the
   learning flywheel, the autonomy contract (A0 to A5 by L0 to L3), the
   cross-cutting concern matrix, and a plain-words glossary. Use whenever a
   question concerns how an enterprise should architect, govern, secure or
@@ -25,9 +25,9 @@ Twelve pages, ordered so that reading them in sequence builds the argument. Load
 |---|---|
 | `references/01-target-state-architecture.md` | The whole design on one page: seven planes, the two rules that bind them, the two-estate reality, three builds by size and regulatory intensity |
 | `references/02-plain-words-glossary.md` | Every term the other pages use, in plain words |
-| `references/03-deterministic-zones.md` | The four places a model may advise but never decide, and how to build each boundary |
+| `references/03-deterministic-zones.md` | The rule that models may take permission away, never grant it; the four places a model may not approve at all; and how to build each boundary |
 | `references/04-identity-and-delegation.md` | How an action stays traceable to the person who asked, hop by hop, with the standards |
-| `references/05-enforcement.md` | Why the rules that stop an agent live outside the model, and the three tiers that enforce them |
+| `references/05-enforcement.md` | Why the rules that stop an agent live outside the model, and the three enforcement points that hold them |
 | `references/06-data-to-memory.md` | How company information reaches an agent and what it may remember |
 | `references/07-learning-flywheel.md` | How behaviour changes without anyone losing control: evals, promotion gates, demotion |
 | `references/08-autonomy-contract.md` | How much an agent may do alone, decided per task, with the controls each level requires |

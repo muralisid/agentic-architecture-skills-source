@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2994" role="img" aria-labelledby="title desc">
+<title id="title">Risk profile: factors to tier</title>
+<desc id="desc">Nine factors are each scored Low, Medium or High. The worst factor sets Tier 1 Basic, Tier 2 Enhanced or Tier 3 Strict. Zone actions, production destruction, code on production, regulated data and decisions about people are always High. A fixed, reversible zone transaction in the signed register sits at Tier 2.</desc>
+<defs>
+<marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
+<marker id="ah-neutral" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#94a3b8"/></marker>
+<marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="28" y="64" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">Risk profile: factors to tier</text>
+<text x="28" y="110" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each factor is Low, Medium or High. The worst</text>
+<text x="28" y="142" font-family="Arial,sans-serif" font-size="24" fill="#465958">factor sets the tier.</text>
+<rect x="28" y="176" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="227" font-family="Arial,sans-serif" font-size="24" fill="#182e31">1. Autonomy</text>
+<rect x="580" y="199" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="227.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="199" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="227.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="199" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="227.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<rect x="28" y="272" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="308" font-family="Arial,sans-serif" font-size="24" fill="#182e31">2. Verb the agent's own</text>
+<text x="44" y="338" font-family="Arial,sans-serif" font-size="24" fill="#182e31">credential holds</text>
+<rect x="580" y="295" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="323.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="295" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="323.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="295" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="323.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<rect x="28" y="368" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="419" font-family="Arial,sans-serif" font-size="24" fill="#182e31">3. System reach</text>
+<rect x="580" y="391" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="419.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="391" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="419.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="391" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="419.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<rect x="28" y="464" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="500" font-family="Arial,sans-serif" font-size="24" fill="#182e31">4. Reversibility of the</text>
+<text x="44" y="530" font-family="Arial,sans-serif" font-size="24" fill="#182e31">consequence</text>
+<rect x="580" y="487" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="515.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="487" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="515.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="487" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="515.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<rect x="28" y="560" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="611" font-family="Arial,sans-serif" font-size="24" fill="#182e31">5. Blast radius</text>
+<rect x="580" y="583" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="611.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="583" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="611.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="583" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="611.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<rect x="28" y="656" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="692" font-family="Arial,sans-serif" font-size="24" fill="#182e31">6. Highest data class,</text>
+<text x="44" y="722" font-family="Arial,sans-serif" font-size="24" fill="#182e31">plus egress</text>
+<rect x="580" y="679" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="707.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="679" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="707.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="679" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="707.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<rect x="28" y="752" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="803" font-family="Arial,sans-serif" font-size="24" fill="#182e31">7. Untrusted input</text>
+<rect x="580" y="775" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="803.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="775" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="803.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="775" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="803.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<rect x="28" y="848" width="664" height="86" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
+<text x="44" y="884" font-family="Arial,sans-serif" font-size="24" fill="#182e31">8. Decision consequence</text>
+<text x="44" y="914" font-family="Arial,sans-serif" font-size="24" fill="#182e31">for people</text>
+<rect x="580" y="871" width="100" height="40" rx="20" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="630" y="899.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">High</text>
+<rect x="474" y="871" width="100" height="40" rx="20" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+<text x="524" y="899.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Medium</text>
+<rect x="368" y="871" width="100" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="418" y="899.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Low</text>
+<polygon points="28,950 692,950 420,1060 300,1060" fill="#eef2f6" stroke="#475569" stroke-width="2" stroke-linejoin="round"/>
+<text x="360" y="994" font-family="Arial,sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="#0f172a">Worst factor wins</text>
+<path d="M360 1060 L360 1078 L44 1078" fill="none" stroke="#475569" stroke-width="3"/>
+<rect x="64" y="1100" width="628" height="246" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="80" y="1138" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0f172a">Tier 1 Basic</text>
+<rect x="559.6" y="1112" width="118.4" height="42" rx="21" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="618.8" y="1141.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">All Low</text>
+<text x="80" y="1182" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Controls</text>
+<text x="220" y="1182" font-family="Arial,sans-serif" font-size="24" fill="#465958">Own identity, scoped access,</text>
+<text x="220" y="1214" font-family="Arial,sans-serif" font-size="24" fill="#465958">evals, a cap per run, a kill</text>
+<text x="220" y="1246" font-family="Arial,sans-serif" font-size="24" fill="#465958">switch</text>
+<text x="80" y="1286" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Who signs</text>
+<text x="220" y="1286" font-family="Arial,sans-serif" font-size="24" fill="#465958">Owner and sponsor</text>
+<text x="80" y="1326" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Review</text>
+<text x="220" y="1326" font-family="Arial,sans-serif" font-size="24" fill="#465958">Yearly, and on change</text>
+<rect x="64" y="1376" width="628" height="122" rx="12" fill="#fff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="80" y="1414" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">Exception</text>
+<text x="80" y="1450" font-family="Arial,sans-serif" font-size="24" fill="#465958">Fixed, reversible zone transaction in the</text>
+<text x="80" y="1482" font-family="Arial,sans-serif" font-size="24" fill="#465958">signed register</text>
+<path d="M378 1498 L378 1532" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+<rect x="64" y="1538" width="628" height="246" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="80" y="1576" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0f172a">Tier 2 Enhanced</text>
+<rect x="520" y="1550" width="158" height="42" rx="21" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="599" y="1579.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Any Medium</text>
+<text x="80" y="1620" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Controls</text>
+<text x="220" y="1620" font-family="Arial,sans-serif" font-size="24" fill="#465958">Tier 1, plus a policy check on</text>
+<text x="220" y="1652" font-family="Arial,sans-serif" font-size="24" fill="#465958">every write and tested rollback</text>
+<text x="80" y="1692" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Who signs</text>
+<text x="220" y="1692" font-family="Arial,sans-serif" font-size="24" fill="#465958">Tier 1, plus a security architect</text>
+<text x="220" y="1724" font-family="Arial,sans-serif" font-size="24" fill="#465958">and the AI risk council</text>
+<text x="80" y="1764" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Review</text>
+<text x="220" y="1764" font-family="Arial,sans-serif" font-size="24" fill="#465958">Quarterly</text>
+<rect x="64" y="1814" width="628" height="224" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="80" y="1854" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#881337">Always High</text>
+<text x="676" y="1854" font-family="Arial,sans-serif" font-size="24" text-anchor="end" fill="#881337">sets Tier 3</text>
+<text x="80" y="1892" font-family="Arial,sans-serif" font-size="24" fill="#881337">zone action</text>
+<text x="80" y="1924" font-family="Arial,sans-serif" font-size="24" fill="#881337">production destruction</text>
+<text x="80" y="1956" font-family="Arial,sans-serif" font-size="24" fill="#881337">code or SQL on production</text>
+<text x="80" y="1988" font-family="Arial,sans-serif" font-size="24" fill="#881337">regulated or control-system data</text>
+<text x="80" y="2020" font-family="Arial,sans-serif" font-size="24" fill="#881337">decision about a person</text>
+<path d="M378 2038 L378 2072" fill="none" stroke="#e11d48" stroke-width="3" marker-end="url(#ah-risk)"/>
+<rect x="64" y="2078" width="628" height="278" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="80" y="2116" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0f172a">Tier 3 Strict</text>
+<rect x="546.4" y="2090" width="131.6" height="42" rx="21" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="612.2" y="2119.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#881337">Any High</text>
+<text x="80" y="2160" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Controls</text>
+<text x="220" y="2160" font-family="Arial,sans-serif" font-size="24" fill="#465958">Tier 2, plus a policy check on</text>
+<text x="220" y="2192" font-family="Arial,sans-serif" font-size="24" fill="#465958">every action and a named person</text>
+<text x="220" y="2224" font-family="Arial,sans-serif" font-size="24" fill="#465958">for each floor action</text>
+<text x="80" y="2264" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Who signs</text>
+<text x="220" y="2264" font-family="Arial,sans-serif" font-size="24" fill="#465958">Tier 2, plus architecture review,</text>
+<text x="220" y="2296" font-family="Arial,sans-serif" font-size="24" fill="#465958">second-line risk and an executive</text>
+<text x="80" y="2336" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Review</text>
+<text x="220" y="2336" font-family="Arial,sans-serif" font-size="24" fill="#465958">Quarterly, and continuous</text>
+<path d="M44 1078 L44 2112" fill="none" stroke="#475569" stroke-width="3"/>
+<path d="M44 1134 L61 1134" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+<path d="M44 1572 L61 1572" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+<path d="M44 2112 L61 2112" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+<rect x="64" y="2466" width="628" height="100" rx="12" fill="#fff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="80" y="2506" font-family="Arial,sans-serif" font-size="24" fill="#182e31">9. Oversight strength and track record</text>
+<text x="80" y="2542" font-family="Arial,sans-serif" font-size="24" font-style="italic" fill="#1e293b">A modifier only</text>
+<path d="M600 2466 L600 2360" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="3 7" marker-end="url(#ah-neutral)"/>
+<text x="64" y="2407" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e293b">adds controls only,</text>
+<text x="64" y="2437" font-family="Arial,sans-serif" font-size="24" fill="#465958">never lowers the tier</text>
+<text x="28" y="2616" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">Also apply</text>
+<rect x="28" y="2632" width="664" height="64" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="48" y="2673" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Rule of Two</text>
+<path d="M250 2664 L318 2664" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+<text x="336" y="2673" font-family="Arial,sans-serif" font-size="24" fill="#465958">cap at A2</text>
+<rect x="28" y="2708" width="664" height="64" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="48" y="2749" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Multi-agent</text>
+<path d="M250 2740 L318 2740" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+<text x="336" y="2749" font-family="Arial,sans-serif" font-size="24" fill="#465958">highest member</text>
+<rect x="28" y="2784" width="664" height="64" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
+<text x="48" y="2825" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Unsure</text>
+<path d="M250 2816 L318 2816" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+<text x="336" y="2825" font-family="Arial,sans-serif" font-size="24" fill="#465958">go up</text>
+<text x="28" y="2890" font-family="Arial,sans-serif" font-size="24" fill="#465958">This structure is this guide's position, built</text>
+<text x="28" y="2922" font-family="Arial,sans-serif" font-size="24" fill="#465958">from published models. No threshold here has been</text>
+<text x="28" y="2954" font-family="Arial,sans-serif" font-size="24" fill="#465958">tested against incident data.</text>
+</svg>

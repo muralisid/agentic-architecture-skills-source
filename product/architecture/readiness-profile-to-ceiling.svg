@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">The weakest area sets the ceiling</title>
+<desc id="desc">Northstar, a fictional example, scores 2, 2, 1, 1, 2, 1 across six readiness areas scored from 0 to 3. Its lowest score is 1, drawn across to the ceiling table. Data and integration are at 2 and every other area is at least 1, so the ceiling is A2. The profile governs, never the total.</desc>
+<defs>
+<marker id="ahe11d48" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e11d48"/></marker>
+</defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32" y="52" font-family="Arial,sans-serif" font-size="34" font-weight="bold" fill="#182e31">The weakest area sets the ceiling</text>
+<text x="32" y="88" font-family="Arial,sans-serif" font-size="20" fill="#465958">Northstar Components, a fictional teaching example. Profile 2, 2, 1, 1, 2, 1. Ceiling A2.</text>
+<text x="32" y="136" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#182e31">Readiness profile, each area scored 0 to 3</text>
+<text x="1060" y="136" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#182e31">The ceiling table</text>
+<rect x="1060" y="152" width="508" height="38" rx="8" fill="#efe8da" stroke="none" stroke-width="2"/>
+<text x="1072" y="178" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Profile</text>
+<text x="1372" y="178" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Safe ceiling</text>
+<rect x="1060" y="196" width="508" height="68" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M1360 202 V258" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1072" y="224" font-family="Arial,sans-serif" font-size="18" fill="#465958">All six at 3, plus</text>
+<text x="1072" y="247" font-family="Arial,sans-serif" font-size="18" fill="#465958">regulator-ready evidence</text>
+<text x="1372" y="224" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">A5 candidacy, per</text>
+<text x="1372" y="247" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">domain only</text>
+<rect x="1060" y="270" width="508" height="91" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M1360 276 V355" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1072" y="298" font-family="Arial,sans-serif" font-size="18" fill="#465958">All six at 2+, operations</text>
+<text x="1072" y="321" font-family="Arial,sans-serif" font-size="18" fill="#465958">and governance at 3</text>
+<text x="1372" y="298" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">A4, and L2</text>
+<text x="1372" y="321" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">governed learning</text>
+<text x="1372" y="344" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">is required</text>
+<rect x="1060" y="367" width="508" height="91" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M1360 373 V452" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1072" y="395" font-family="Arial,sans-serif" font-size="18" fill="#465958">Data, integration,</text>
+<text x="1072" y="418" font-family="Arial,sans-serif" font-size="18" fill="#465958">identity, and operations at</text>
+<text x="1072" y="441" font-family="Arial,sans-serif" font-size="18" fill="#465958">2+</text>
+<text x="1372" y="395" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">A3</text>
+<rect x="1060" y="464" width="508" height="68" rx="8" fill="#fff1f2" stroke="#e11d48" stroke-width="3"/>
+<path d="M1360 470 V526" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1072" y="492" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Data and integration at 2+,</text>
+<text x="1072" y="515" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">others at 1+</text>
+<text x="1372" y="492" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">A2</text>
+<rect x="1060" y="538" width="508" height="68" rx="8" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M1360 544 V600" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1072" y="566" font-family="Arial,sans-serif" font-size="18" fill="#465958">Any area at 0 for the</text>
+<text x="1072" y="589" font-family="Arial,sans-serif" font-size="18" fill="#465958">target workload</text>
+<text x="1372" y="566" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">A1 only</text>
+<path d="M176 658 H896" fill="none" stroke="#d8d1c3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="166" y="664" font-family="Arial,sans-serif" font-size="18" fill="#465958" text-anchor="end">0 absent</text>
+<path d="M176 498 H896" fill="none" stroke="#d8d1c3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="166" y="504" font-family="Arial,sans-serif" font-size="18" fill="#465958" text-anchor="end">1 ad hoc</text>
+<path d="M176 338 H896" fill="none" stroke="#d8d1c3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="166" y="344" font-family="Arial,sans-serif" font-size="18" fill="#465958" text-anchor="end">2 managed</text>
+<path d="M176 178 H896" fill="none" stroke="#d8d1c3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="166" y="184" font-family="Arial,sans-serif" font-size="18" fill="#465958" text-anchor="end">3 operated</text>
+<rect x="204" y="338" width="64" height="320" rx="4" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<text x="236" y="368" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a" text-anchor="middle">2</text>
+<text x="236" y="684" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Data</text>
+<text x="236" y="706" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">readiness</text>
+<rect x="324" y="338" width="64" height="320" rx="4" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<text x="356" y="368" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a" text-anchor="middle">2</text>
+<text x="356" y="684" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Integration</text>
+<text x="356" y="706" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">readiness</text>
+<rect x="444" y="498" width="64" height="160" rx="4" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5"/>
+<text x="476" y="528" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337" text-anchor="middle">1</text>
+<text x="476" y="684" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Identity</text>
+<text x="476" y="706" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">readiness</text>
+<rect x="564" y="498" width="64" height="160" rx="4" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5"/>
+<text x="596" y="528" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337" text-anchor="middle">1</text>
+<text x="596" y="684" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Operational</text>
+<text x="596" y="706" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">discipline</text>
+<rect x="684" y="338" width="64" height="320" rx="4" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<text x="716" y="368" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a" text-anchor="middle">2</text>
+<text x="716" y="684" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Governance</text>
+<text x="716" y="706" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">and value</text>
+<text x="716" y="728" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">discipline</text>
+<rect x="804" y="498" width="64" height="160" rx="4" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5"/>
+<text x="836" y="528" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337" text-anchor="middle">1</text>
+<text x="836" y="684" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Workforce</text>
+<text x="836" y="706" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">and</text>
+<text x="836" y="728" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">operating</text>
+<text x="836" y="750" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">model</text>
+<path d="M176 166 V658" fill="none" stroke="#182e31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M176 498 H1054" fill="none" stroke="#e11d48" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 7" marker-end="url(#ahe11d48)"/>
+<text x="906" y="526" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">Lowest score: 1</text>
+<text x="1060" y="638" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">Data and integration are at 2. Every other area is</text>
+<text x="1060" y="661" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#182e31">at least 1. So the A2 row applies.</text>
+<text x="1060" y="690" font-family="Arial,sans-serif" font-size="18" fill="#465958">To reach A3, identity and operations must also</text>
+<text x="1060" y="713" font-family="Arial,sans-serif" font-size="18" fill="#465958">reach 2.</text>
+<text x="32" y="884" font-family="Arial,sans-serif" font-size="18" fill="#465958">Read the profile, not the total of 9. Northstar is a teaching example, not a benchmark.</text>
+</svg>

@@ -1,5 +1,6 @@
 ---
 title: "Agent types: four questions for any agent"
+icon: "Tags"
 description: "Classify any agent by its role, what its own credentials let it do, how freely it acts, and what it can damage. Role labels imply no authority."
 position: "This guide's classification. Role labels imply no authority; the risk tier sets the controls."
 lastReviewed: "2026-10-14"
@@ -65,6 +66,8 @@ Record five things.
 
 ## Which question sets controls
 
+<TeachingIllustration src="/figures/architecture/agent-types-four-questions.svg" mobileSrc="/figures/architecture/agent-types-four-questions-mobile.svg" expandable title="Four questions for any agent" alt="Four cards ask about role, capability surface, autonomy and consequence class. Capability surface and consequence feed the risk tier. The risk tier sets the controls. Autonomy sets the human's job and can raise the tier floor. Role is a label only and sets no controls. Its domain tag can trigger the people-decisions floor, which adds to the controls. A strip maps old words to role labels: conversational to converse, creative to create, passive to assist, active to coordinate." caption="A role is a label, not a permission. Capability and consequence set the tier." />
+
 This guide's position:
 
 - Capability surface and consequence set the risk tier. The [risk profile](/architecture/risk-profile) scores them into Tier 1, 2 or 3. The worst factor wins.
@@ -125,15 +128,9 @@ Anthropic scored 998,481 tool calls on its own platform (18 February 2026) [vend
 
 The IMDA framework is voluntary guidance, not law. Gartner's four autonomy levels (26 May 2026) were read through Gartner's mirror site. The main page refused access. The full Gartner report is for clients only. One source reports the CSA draft as AI-assisted. Another found no such note. Treat it as a draft, not a CSA standard. The papers cited here are arXiv preprints. Their peer review status is unknown.
 
-## The roles in one example
+## Next step
 
-<TeachingIllustration src="/images/use-cases/agent-roles-v1.webp" expandable title="Four ways agents help people work" alt="Four overlapping roles: converse, create, assist and coordinate. Permission is a separate decision." caption="The four roles are labels for what an agent does for people. They imply no authority." />
-
-A referral coordinator can converse to clarify a request, create a summary, assist a booking clerk, and coordinate missing paperwork. The [referral example](/use-cases/referral-coordination) brings these together. The booking still needs verified identity, the right authority, and confirmation from the scheduling system.
-
-Choose the [intelligence required](/ladder/choosing-an-approach) and [memory required](/memory/memory-types) after defining the work. If a checklist, fixed workflow or retrieval search completes the work reliably at lower total cost, start there.
-
-Continue with [Healthcare](/use-cases/healthcare), [Energy](/use-cases/energy), or [Utilities](/use-cases/utilities).
+Set how freely the agent may act with [the autonomy contract](/architecture/autonomy-contract). Then score its tier with [the risk profile](/architecture/risk-profile).
 
 <details>
 <summary>The research behind this page</summary>
