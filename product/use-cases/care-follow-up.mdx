@@ -37,4 +37,15 @@ The [HL7 FHIR R4 Task specification](https://hl7.org/fhir/R4/task.html) represen
 
 Return to [Healthcare](/use-cases/healthcare), explore [memory organization](/memory), or [evaluate the investment](/use-cases/value-and-investment).
 
+## Where this sits
+
+This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+
+- **Role:** coordinate. Domain: healthcare follow-up.
+- **Capability surface:** reads the plan and completion records. Writes task status. Messages care teams and patients within set limits. Untrusted input: patient replies. Highest data class: regulated health records.
+- **Placement:** A2, L0 on the [autonomy contract](/architecture/autonomy-contract). The care coordinator reviews its output. It follows the approved procedure and does not learn from cases. Anything clinical drops to A1. The care team decides.
+- **Floor:** the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). It applies where a clinical decision is shaped. This design sends those to the care team. No zone applies.
+- **Tier:** Tier 3. Health records count as regulated data. That scores High. Patient replies, health data and outgoing messages are all three parts of the <Term k="rule of two">Rule of Two</Term>. So autonomy stays at A2 or below.
+- **Control:** its credential cannot mark a clinical action complete. Only the responsible team closes it.
+
 **Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).

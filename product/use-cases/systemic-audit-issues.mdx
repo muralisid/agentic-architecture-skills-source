@@ -58,4 +58,15 @@ Continue with [knowledge and memory](/memory), [value and investment](/use-cases
 
 Return to [Utilities](/use-cases/utilities) or [explore the agent types](/architecture/agent-types).
 
+## Where this sits
+
+This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+
+- **Role:** assist. Domain: audit and assurance across sites.
+- **Capability surface:** reads audit findings, maintenance history, inspection records and closure evidence. Sends internal requests for evidence. Writes its own notes, not the audit record. Untrusted input: none. Highest data class: confidential.
+- **Placement:** A2, L1 on the [autonomy contract](/architecture/autonomy-contract). An engineering or assurance owner reviews every report. People choose the past findings it learns from. Deciding the response drops to A1. The owner decides.
+- **Zone:** none. Its findings are advice. A finding that goes into a formal audit record is in the [formal records zone](/architecture/deterministic-zones#formal-regulatory-records). A named person signs that record.
+- **Tier:** Tier 2. Production systems of record and internal requests score Medium. No zone action.
+- **Control:** every finding links to its source record.
+
 **Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).

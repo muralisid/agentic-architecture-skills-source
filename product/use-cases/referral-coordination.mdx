@@ -39,4 +39,15 @@ HL7 FHIR distinguishes the service request, task progress, and appointment. Its 
 
 Continue with [Healthcare](/use-cases/healthcare), [follow-up coordination](/use-cases/care-follow-up), or [the architecture](/architecture).
 
+## Where this sits
+
+This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+
+- **Role:** coordinate. Domain: healthcare referrals and booking.
+- **Capability surface:** reads referrals, identity details and appointment options. Writes bookings. Requests missing details. Untrusted input: attachments and replies from outside the clinic. Highest data class: regulated health records.
+- **Placement:** A2, L0 on the [autonomy contract](/architecture/autonomy-contract). A care coordinator reviews its output. It runs a fixed workflow and does not learn from cases. Eligibility, urgency and treatment changes drop to A1. Qualified professionals decide.
+- **Floor:** the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). It applies where eligibility or urgency is shaped. This design keeps those with the care team. No zone applies.
+- **Tier:** Tier 3. Health records count as regulated data. That scores High. Outside attachments, health data and outgoing requests are all three parts of the <Term k="rule of two">Rule of Two</Term>. So autonomy stays at A2 or below.
+- **Control:** its credential cannot set clinical urgency or eligibility.
+
 **Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).

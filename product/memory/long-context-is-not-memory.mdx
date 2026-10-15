@@ -2,9 +2,9 @@
 title: "How context and memory work together"
 description: "A larger reading window helps some tasks; it does not decide what to retain or trust."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-13"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
 ---
 
 If a model can read a long history, why build a memory system? For a bounded case with a manageable set of documents, supplying the complete relevant material may be a good baseline. The difficulty begins when that history changes, contains restricted information, or must serve many different tasks.
@@ -33,7 +33,9 @@ Use retrieval to locate a relevant case, then give the model enough surrounding 
 
 Count source preparation, retrieval, input and output processing, repeated calls, cache behavior, latency, and human review. A cached input can change pricing without fixing relevance or access. A cheap lookup can still be expensive if it misses evidence and creates rework.
 
-Use current provider prices when doing an actual business comparison. There is no fixed price table here because the result depends on the selected models, request sizes, reuse pattern, and deployment.
+Memory buys cost and speed. It does not buy free accuracy. Mem0's own paper shows the trade on LoCoMo with gpt-4o-mini. Its memory used about 15 times fewer tokens per query than the full conversation: 1,764 against 26,031. The slowest answers (95th percentile) took 1.4 seconds against 17.1 seconds. Accuracy was about 6 points lower: 66.88 against 72.90 for full context ([Mem0 paper, arXiv 2504.19413, 28 April 2025](https://arxiv.org/html/2504.19413)) [vendor]. On the harder MemoryAgentBench, plain long context also beat three commercial memory agents overall. See [test memory against the work](/memory/what-the-benchmarks-measure). Sources read 14 October 2026.
+
+Use current provider prices when doing an actual business comparison. There is no fixed price table here because the result depends on the selected models, request sizes, reuse pattern, and deployment. For how agents spend tokens on context, and how to meter that per resolved outcome, see [token efficiency](/memory/token-efficiency).
 
 ## Test against the question
 

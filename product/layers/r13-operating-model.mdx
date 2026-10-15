@@ -1,21 +1,21 @@
 ---
 title: "Operating model and supervision"
 icon: "Eye"
-description: "How much human supervision agents really need, worked out from waiting times and peak load rather than headcount, and the measurements that prove oversight is happening."
+description: "How much human supervision agents really need, worked out from waiting times and peak load rather than headcount, the measurements that prove oversight is happening, and how the teams around the agents are organised."
 hero_figure: "layer-13-hero"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
 ---
 
 <PlainTerms>
-This page is about the people who supervise AI agents. It covers how many items one person can realistically watch, how to plan for the busiest moments, and how to tell whether oversight is working. It matters because supervision that exists only on an organisation chart fails quietly, and the cost of that failure lands on the business. The one thing to remember: plan supervision around how long items wait for a decision, and make checking easy. As trust in an agent grows, expect people to step in more often, not less.
+This page is about the people who supervise AI agents. It covers how many items one person can realistically watch, how to plan for the busiest moments, and how to tell whether oversight is working. It matters because supervision that exists only on an organisation chart fails quietly, and the cost of that failure lands on the business. It also sets out how the teams that build and run agents are organised: one platform and three small lanes. The one thing to remember: plan supervision around how long items wait for a decision, and make checking easy. As trust in an agent grows, expect people to step in more often, not less.
 </PlainTerms>
 
 ## Target state
 
 **In short:** Supervision is designed like a queue with measured capacity, every agent has a named accountable person, and a monitor watches the monitors.
 
-Supervision is engineered as a queueing system, not asserted as a role. Every <Term k="agent">agent</Term> has a named accountable <Term k="sponsor">sponsor</Term> recorded on its <Term k="agent identity">identity</Term>. Its credentials are scoped, expire, and require a fresh approval cycle. Sponsorship transfers automatically on departure rather than lapsing. Supervision is integrated with the work rather than handed to a specialist function. Oversight is designed for prevention and legibility, with verification made cheap by construction rather than demanded by policy. Supervision load is measured and capped by queueing behaviour rather than by agent count. A monitoring <Term k="layer">layer</Term> watches the monitors: an algorithmic pass flags elevated-risk sessions before a human looks at anything.
+Supervision is engineered as a queueing system, not asserted as a role. Every <Term k="agent">agent</Term> has a named accountable <Term k="sponsor">sponsor</Term> recorded on its <Term k="agent identity">identity</Term>. Its credentials are scoped, expire, and require a fresh approval cycle. Sponsorship transfers automatically on departure rather than lapsing. Supervision is integrated with the work rather than handed to a specialist function. Oversight is designed for prevention and legibility, with verification made cheap by construction rather than demanded by policy. Supervision load is measured and capped by queueing behaviour rather than by agent count. A monitoring <Term k="layer">layer</Term> watches the monitors: an algorithmic pass flags elevated-risk sessions before a human looks at anything. Around the agents, a thin office writes the rules, one platform enforces them, and three small lanes coach and then step back. That structure is [set out below](#one-platform-three-lanes-how-the-work-is-organised).
 
 <GuideFigure id="layer-13-hero" fullWidth />
 
@@ -65,10 +65,79 @@ One study covered roughly 55,000 agent-generated code-review comments in 342 rep
 
 This is <Term k="calibrated oversight">calibrated oversight</Term>: trust does not reduce supervision; it redistributes it. In measured deployments, auto-approval rose from roughly 20 percent to above 40 percent with experience. Interrupt rates rose from roughly 5 percent to roughly 9 percent over the same period. Rising interventions alongside expanding standing permission is the system working. Falling interventions alongside expanding <Term k="autonomy level">autonomy</Term> is the pattern to investigate. Named accountability is not itself a control. In testing, a phished employee's <Term k="prompt">prompt</Term> asked an agent to read cloud credentials and post them externally. It succeeded in 24 of 25 attempts, and the sponsor's name on the agent prevented none of them.
 
+### One platform, three lanes: how the work is organised
+
+**In short:** A thin office writes the rules and holds the money. One platform team turns the rules into automatic checks. Three small lanes build each new pattern once, then step back. Business teams build and run the rest.
+
+This section is this guide's position. One model covers AI, cloud and integration, because almost every agent needs all three. The careful sources end at this shape. Microsoft treats an AI centre of excellence as a stage that hands delivery to platform teams (26 June 2026) [vendor]. AWS ends its cloud centre of excellence phases in a supporting role [vendor]. BCG keeps a central hub that monitors, enables and governs (25 August 2026). DORA ties results to platform quality, not to a team label. No study shows that any team structure causes better results.
+
+| Unit | What it owns | Size |
+|---|---|---|
+| Technology Office | Policy, standards, risk tiering, funding, the portfolio and vendor deals | 4 to 6 people |
+| Platform team, run as a product | Landing zones, pipeline gates, the model and tool <Term k="gateway">gateway</Term>, the <Term k="policy decision point">policy decision point</Term>, the agent <Term k="registry">registry</Term>, agent identities, the evidence store and cost metering | 2 to 4 squads of 6 to 10 |
+| AI, cloud and integration lanes | Patterns, reusable assets, the delivery and estimation method, coaching, and the first build of each new pattern | 3 to 6 people each |
+| Delivery teams in the business | Their own use cases, interfaces, workloads and agents. Agent sponsors sit here | Funded by the business |
+
+The sizes are this guide's judgement. Squad size follows Microsoft's guidance of product teams of six to ten [vendor]. People approve only three things: actions in the four <Term k="deterministic zone">deterministic zones</Term>, new patterns, and steps up in autonomy. Everything else passes on pipeline evidence.
+
+Gartner predicts 70 percent of enterprises will abandon agentic AI built by a vendor's engineers by 2028 (29 September 2026). Clients cannot run or change it alone. So the lanes coach and hand over. Delivery teams own what they build, agents included.
+
+| Role | Duty |
+|---|---|
+| Executive sponsor | Accountable for the whole model. Chairs the investment board |
+| Head of platform and lanes | Runs the office, the platform and the lanes as one unit. Owns the metrics |
+| Lane lead, one per lane | Owns the lane's patterns, assets and estimation model |
+| Policy owner | Writes and versions policy as code in the policy decision point, with risk, legal and security |
+| Agent registry owner | Owns the record of every agent and tool: sponsor, owner, risk tier, autonomy level, scopes, data class and budget. Runs a quarterly check and retires orphans |
+| Agent sponsor | The named business person accountable for an agent's purpose, results and budget. Sponsorship transfers automatically when the person leaves |
+| Agent owner | The technical owner. Runs the agent's configuration, credentials, evals and incidents |
+| Tool owner | Owns each API or tool: its contract, its description and its data class |
+| Eval owner and corpus owner | Domain experts who own a workload's pass bar and each curated source collection |
+| FinOps and agent economics lead | Allocates cloud and token spend. Owns budget envelopes and circuit breakers. EY proposes a similar "Head of Agent Economics" (1 June 2026) |
+| Exception supervisors | Existing staff who work agent exception queues as part of their jobs |
+
+That follows the field evidence in this layer: integrated supervisors outperformed specialists. Size their capacity with [the queueing calculation](#capacity-is-a-queueing-calculation-and-wait-time-is-the-term-everyone-drops), as a [burst rate](#load-is-budgeted-as-a-burst-rate-never-a-daily-average).
+
+**Four governance bodies.**
+
+| Body | Meets | Decides | Does not decide |
+|---|---|---|---|
+| Investment board | Monthly | Funding, portfolio order, lane capacity, and when a lane winds down | Designs |
+| Architecture advice forum | Weekly | New patterns, exceptions to the standard path, decision records | Routine designs |
+| AI and agent risk council | Weekly | High-impact cases only: the four zones, promotion to A3 or above, customer-facing agents | Risks that privacy, cyber and legal already cover |
+| Platform product council | Monthly | The platform roadmap | Policy |
+
+The risk council copies Telstra's. It meets weekly and covers only AI-specific risk (UTS Human Technology Institute, May 2026). The advice forum uses the advice process. Anyone may decide after seeking advice, and the decision is logged. Standard changes pass on pipeline evidence, with no change board. DORA links heavyweight change approval to worse delivery.
+
+**Funding.** The office, the platform base and the lanes get a central budget. Charging for the base pushes teams to go around it. That grows shadow AI (Tian Pan, 2 July 2026). Tokens, compute and gateway calls are shown back by business unit and agent from day one. Chargeback starts in year two. Each agent has a <Term k="budget envelope">budget envelope</Term> owned by its sponsor, with hard caps per run. Circuit breakers stop spending at set limits, as EY recommends. Lane help is free for six weeks, then the business unit pays. First savings fund the next use cases and the platform, as BCG describes. No firm publishes a chargeback model, so these terms are this guide's judgement.
+
+**One front door, three tiers of help.** All work enters one intake and one register. Triage asks five yes-or-no questions. Does it touch a zone? Does an agent write, not just advise? Is it customer-facing or on regulated data? Is it off the standard path? Is it a new pattern? Risk stays binary. Telstra triages with yes-or-no questions and removed its medium risk tier. The three tiers measure how much help a team needs, not how risky the work is.
+
+| Tier | When | What happens |
+|---|---|---|
+| 0 Self-serve | Every answer is no | The team uses a standard template. The registry entry and the eval gate are automatic |
+| 1 Assisted | A new use of a known pattern | The lane pairs with the team for up to six weeks and builds the first eval set |
+| 2 Reviewed | Any answer is yes | The risk council or the advice forum reviews it. A named approver releases zone work. If no test exists, domain experts write the pass-or-fail tests first |
+
+**When a lane steps back.** The failure to avoid is a central team that becomes a queue. Tian Pan's warning signs are rising approval times, frequent exceptions, stale standards, growing shadow use and senior staff leaving. No major firm publishes a test for when a central team should end. This guide sets five. A lane hands a pattern to self-serve when all five hold for two quarters.
+
+1. At least 70 percent of the lane's new work goes through Tier 0.
+2. Reviews find a material issue in under 1 in 20 cases. Blind samples confirm it, because a falling find rate can mean reviewer fatigue.
+3. Every business team has one person who passed the lane's practical test.
+4. No severity 1 or 2 incident is traced to a lane pattern.
+5. The median wait at the lane's gates is under two business days.
+
+If a test fails for a quarter after handover, the pattern returns to the lane. Gregor Hohpe calls this work bouncing back to the centre. Cloud likely steps back first. Its move to a platform is the most mature. AI goes second, once evals and gateways are platform features. Integration goes last. With agents, it becomes the governance of tools. The office, the policy owner, the registry owner, the platform team and the zone review never dissolve. This is [the autonomy contract](/architecture/autonomy-contract) applied to the organisation.
+
+**Centre of excellence or enterprise architecture.** The evidence shows no move back to heavy architecture methods such as TOGAF. The Open Group's recent output is an AI assistant and a conference, not operating-model guidance. Centres of excellence survive too, as a stage. The label is fading into studio, factory, hub and platform team. Analysts want a lighter architecture function that governs AI. Forrester calls the architect "the control plane for bounded autonomy" (18 September 2026).
+
+This guide's position is neither label. Architecture moves from reviewing designs to owning the rules and the record of what runs. That record includes the agent registry. In the seven <Term k="planes">planes</Term>, architecture owns policy in the control plane and context in the knowledge plane. The platform owns enforcement and evidence. Start with a central team if you need one. Write its exit tests on the first day.
+
 ## Design decisions
 
 - **Agents as workforce vs agents as tools** ([CD-22](/decisions#cd-22), whether to treat agents like staff members or like tools): keep the accountability, drop the personnel metaphor. The strongest field deployment achieves per-agent named accountability with no org-chart presence. Integrated supervisors outperformed specialists.
 - The oversight gate for autonomy levels A4 and A5 is this layer's output. A4 and A5 are the two highest levels of independent operation, defined on [the autonomy contract](/architecture/autonomy-contract). The output is capacity calculated with wait time, expressed as a burst rate, and instrumented in production.
+- **Centre of excellence vs enterprise architecture**: neither label. This guide's position is [one platform and three lanes](#one-platform-three-lanes-how-the-work-is-organised). A thin office owns the rules and the money, a platform enforces them, and lanes step back against five exit tests.
 
 ## Cross-cutting concerns
 
@@ -82,14 +151,16 @@ This is <Term k="calibrated oversight">calibrated oversight</Term>: trust does n
 | C6 | Sovereignty | Workforce data in supervision telemetry carries employment-law obligations |
 | C7 | Privacy | Supervisor performance data is worker data; monitoring the monitors carries its own duties |
 | C8 | Safety and oversight | The whole layer: prevention and legibility, verification cheap by construction, rotation against erosion |
-| C9 | Cost | Supervision labour counted in the unit economics; oversight workload is not free |
+| C9 | Cost | Supervision labour counted in the unit economics; oversight workload is not free; central base funding, show-back from day one, chargeback in year two |
 | C10 | Resilience | Skill maintenance including deliberate unassisted practice; succession for sponsors |
 
-**Next step:** see the operate, change and review stages on [the agent lifecycle](/architecture/agent-lifecycle#the-nine-stages). Reading the layers in order? The next one is [R14 Agent data engineering](/layers/r14-agent-data-engineering).
+**Next step:** see the operate, change and review stages on [the agent lifecycle](/architecture/agent-lifecycle#the-nine-stages), and the weekly checks on [Operate](/operate). Reading the layers in order? The next one is [R14 Agent data engineering](/layers/r14-agent-data-engineering).
 
 ## Evidence and limits
 
 The fan-out measurements, the alarm-standard bands, the code-review study, and the cognitive-forcing results are peer-reviewed or standards-published. The auto-approval and interrupt trends come from platform telemetry [vendor]. **The central refusal**: no credible published human-to-agent supervision ratio exists from any source. A major vendor introduced the metric as a management concept and published no figure in either of two annual editions. Every number in circulation is an extrapolation. Several widely repeated figures were traced to untraceable or misquoted origins and are excluded from this guide entirely. Design to the burst-rate bands and your own measured wait times instead. Two items to re-verify. First, whether any credible measurement of agent-supervision capacity is published. Second, whether the 2026 finding holds that the vigilance decrement (the fall in attention over a long watch) is a bias shift rather than a sensitivity loss. If it holds, it would redirect interventions aimed at improving detection.
+
+The one platform, three lanes structure is this guide's position. Its shape is well supported: Microsoft, AWS and BCG all describe a central team as a stage. Every size, threshold, time period and funding term in it is this guide's judgement. No firm publishes a chargeback model or exit criteria for a central AI team. No controlled study links any team structure to results. The strongest published link to results is platform quality (DORA). Most outcome figures in this field are self-reported by firms that sell the service. The Gartner figure is a prediction, not a measurement. The Telstra case is one organisation's account. Re-verify the Microsoft centre of excellence guidance each quarter, because it changes often.
 
 <details>
 <summary>The research behind this page</summary>
@@ -97,6 +168,25 @@ The fan-out measurements, the alarm-standard bands, the code-review study, and t
 - [Operating model findings](/library/layers/r13-operating-model/findings)
 - [Sources](/library/layers/r13-operating-model/sources)
 - [Products named for orientation](/architecture), on the one-page wall chart
+
+**Sources added October 2026, for one platform and three lanes**
+
+- Microsoft Cloud Adoption Framework, [AI centre of excellence](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/ai/center-of-excellence), updated 26 June 2026 [vendor]
+- Microsoft Cloud Adoption Framework, [Shared management operating model](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/plan/shared-management-operating-model), read October 2026 [vendor]
+- AWS Prescriptive Guidance, [Cloud centre of excellence phases](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-center-of-excellence/ccoe-phases.html), read October 2026 [vendor]
+- AWS Well-Architected, [Cloud operations and platform enablement](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/cloud-operations-and-platform-enablement.html), read October 2026 [vendor]
+- BCG, [Why companies need a centralised AI hub](https://www.bcg.com/publications/2026/why-companies-need-centralized-ai-hub), 25 August 2026
+- BCG, [Design your company for AI](https://www.bcg.com/publications/2026/design-your-company-for-ai-not-ai-for-your-company), 23 April 2026, and [How tech leaders must reinvent for the AI era](https://www.bcg.com/publications/2026/how-tech-leaders-must-reinvent-for-the-ai-era), 9 June 2026
+- DORA, [Platform engineering](https://dora.dev/capabilities/platform-engineering/), updated 12 January 2026
+- DORA, [Streamlining change approval](https://dora.dev/capabilities/streamlining-change-approval/), read October 2026
+- UTS Human Technology Institute, [Telstra AI governance case study](https://www.uts.edu.au/research/centres/human-technology-institute/resources/contentassets/hti_aicgp-case-study_telstra-2026_f.pdf), May 2026
+- Tian Pan, [When the AI centre of excellence becomes the bottleneck](https://tianpan.co/blog/2026-07-02-when-the-ai-center-of-excellence-becomes-the-bottleneck), 2 July 2026
+- Gartner, [Prediction on enterprises abandoning vendor-built agentic AI](https://www.gartner.com/en/newsroom/press-releases/2026-09-29-gartner-predicts-70-percent-of-enterprises-will-abandon-agentic-ai-built-by-vendor-forward-deployed-engineering-by-2028), 29 September 2026
+- EY, [Agentic AI token costs and agent economics](https://www.ey.com/en_us/insights/ai/agentic-ai-token-costs), 1 June 2026
+- martinfowler.com, [The advice process at Xapo Bank](https://martinfowler.com/articles/xapo-architecture-experience.html), 18 July 2023
+- Gregor Hohpe, [Organizing architecture](https://architectelevator.com/architecture/organizing-architecture/), 2021
+- Forrester, [Will AI eliminate enterprise architects?](https://www.forrester.com/blogs/will-ai-eliminate-enterprise-architects/), 18 September 2026
+- The Open Group, [Eagle AI assistant](https://blog.opengroup.org/2025/11/26/introducing-the-open-group-eagle-ai-assistant), 26 November 2025
 
 </details>
 

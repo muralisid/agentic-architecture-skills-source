@@ -2,9 +2,9 @@
 title: "Control what memory retains and reveals"
 description: "Make ownership, access, correction, and removal work across derived information."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
 ---
 
 An incident report is restricted, but its old summary remains searchable. The next agent can still disclose information from it. **Controlling the original document is not enough when copies and derivatives remain usable.**
@@ -20,6 +20,19 @@ Do not let text retrieved from a source authorize new access or rewrite an appro
 ## Check access when writing and reading
 
 Write only to the appropriate scope: this thread, this entity, this team, or a permitted shared store. On retrieval, use the current caller and task authority. Recheck changed membership and permissions. Search previews, explanations, logs, and diagnostic traces must respect the same information boundary.
+
+## Govern every write
+
+An attacker does not need write access to poison memory. In the MINJA study, ordinary queries were enough to plant harmful records in an agent's memory ([MINJA, arXiv 2503.03704](https://arxiv.org/abs/2503.03704)). The tests used lab agents. The rate in production is unknown. Microsoft's own documentation gives the reason. The model decides what to save. So bad input can end up in memory ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-memory)) [vendor].
+
+Treat each candidate memory as untrusted until it passes four checks:
+
+- **Check the write.** Screen it for instructions, secrets and claims that conflict with a trusted source.
+- **Record the source.** Keep where it came from, when, and whether a person confirmed it.
+- **Allow rollback.** Keep revisions. Then a bad memory and everything derived from it can be removed.
+- **Expire by type.** AWS suggests about 90 days for episodes and no fixed expiry for procedures ([AWS, 4 September 2026](https://aws.amazon.com/blogs/machine-learning/designing-lifecycle-policies-for-agentcore-memory/)) [vendor]. The same post says AgentCore Memory has no built-in automatic expiry. The team has to build it.
+
+Old memory can do harm without any attacker. AWS gives the example of a support agent treating a billing dispute settled four months earlier as still open. More on poisoning is in [agent data engineering](/layers/r14-agent-data-engineering). Sources read 14 October 2026.
 
 ## Track the derived copies
 

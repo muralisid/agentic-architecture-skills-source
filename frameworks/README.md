@@ -16,7 +16,7 @@ Decision frameworks the guide provides to readers.
 
 | Framework | Phase | What it decides |
 |---|---|---|
-| [readiness-assessments.md](readiness-assessments.md) | 2 | Where you are, across six dimensions, in light or heavy mode; readiness caps the autonomy any workload should attempt |
+| [readiness-assessments.md](readiness-assessments.md) | 2 | Where you are, across seven areas, in light or heavy mode; readiness caps the autonomy any workload should attempt |
 | [use-case-portfolio.md](use-case-portfolio.md) | 5 | Which use cases get budget this quarter. Evaluability is a gate, not a score, and supervision capacity is a portfolio-level constraint |
 
 Run them in order: assess, prioritise, sequence. Platform and vendor choice come last, because the winning use cases determine which platform question is even worth asking.

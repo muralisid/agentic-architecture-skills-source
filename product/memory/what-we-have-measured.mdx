@@ -2,9 +2,9 @@
 title: "Research findings and what remains open"
 description: "Separate author-reported experiments, public evidence, and work still to be reproduced."
 position: "Earlier author-reported experiments. No new experiment was run for this revision; independent replication is not established here."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-13"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
 ---
 
 The useful research question is whether a memory design helps an agent recover the right evidence and finish the task. A headline score is only meaningful when we know what was counted and what was never tested.
@@ -36,6 +36,8 @@ The evidence unit differs between the conversational benchmarks and the reported
 
 </details>
 
+LoCoMo itself needs a warning. An unreviewed audit found about 6.4 percent of its answer key wrong. Its usual judge model accepted about 63 percent of deliberately wrong answers. That puts a perfect score near 93.6 percent. One vendor already reports 92.5 percent ([Penfield Labs audit, 2026](https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg)). The LoCoMo rows above measure retrieval, not judged answers. The judge problem does not apply to them. The other benchmark warnings are on [test memory against the work](/memory/what-the-benchmarks-measure).
+
 ## What would make this work independently checkable?
 
 Publish the precise dataset version and split, corpus preparation, source-unit boundaries, encoder configuration, retrieval code, settings, metric definitions, and per-question outputs. Separate reproduced numbers from configurations that were only read in another party's report.
@@ -47,6 +49,8 @@ Include a simple baseline and representative failures. For a new memory design, 
 How well do these choices transfer to operational records, images, signals, and changing permissions? Can a memory resume work without duplicate actions? Does a retained episode improve a new investigation rather than bias it toward an old conclusion? How much cost and human review does each added mechanism create?
 
 Those are questions for future experiments, not results claimed here. New findings should show methods, limitations, and evidence before changing the design guidance.
+
+Two gaps are wider than this guide's own work. Nobody publishes memory accuracy on live traffic. Every published memory score comes from scripted or synthetic conversations. Nobody publishes the cost of keeping memory healthy either. That cost covers extracting, merging, pruning and reviewing memories for each agent over time. The only figure found is a vendor estimate. Nightly merging at 100,000 memories would cost about USD 50 to 100 a month ([AWS, 4 September 2026](https://aws.amazon.com/blogs/machine-learning/designing-lifecycle-policies-for-agentcore-memory/)) [vendor]. It is a model of the cost, not a measured fleet. Sources read 14 October 2026.
 
 **Next step:** see how memory learnings are promoted under control on [the learning flywheel](/architecture/learning-flywheel). The primary references are in [sources and further reading](/memory/sources).
 

@@ -2,9 +2,9 @@
 title: "Choose how to store memory"
 description: "Compare six implementation choices after deciding what the memory is for."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-13"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
 ---
 
 You know which facts, experiences, and methods should be retained. The next question is how to keep them usable. Saving only a summary is compact, but can omit a detail needed later. Saving every source preserves detail, but still needs a way to find and check it.
@@ -40,6 +40,18 @@ An agent can propose notes or update a structured memory file through tools. Enf
 ## Learned internal memory: assess different limits
 
 Model weights, learned memory modules, and runtime caches are different mechanisms with different update behavior. Do not treat them as one interchangeable persistent store. Ask how a specific fact can be corrected, removed, scoped, and connected to evidence. [Titans](https://arxiv.org/abs/2501.00663), first submitted December 2024, studies neural memory updated at test time. Reviewed 18 September 2026. A research result does not establish an enterprise audit or deletion mechanism.
+
+## Managed memory services, as of October 2026
+
+The three largest clouds now sell managed long-term memory for agents:
+
+- AWS Bedrock AgentCore, including its memory, became generally available on 13 October 2025 ([AWS](https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-bedrock-agentcore-available)) [vendor].
+- Google Vertex AI Memory Bank became generally available on 17 December 2025 ([Google release notes](https://docs.cloud.google.com/agent-builder/release-notes)) [vendor].
+- Microsoft Foundry Agent Service memory is still in preview ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-memory)) [vendor].
+
+All three split memory for one session from memory kept across sessions. The choices on this page still apply inside them. You still decide what to extract, how to keep the source, and when to expire it. Published scores for these services do not always survive a rerun. See [test memory against the work](/memory/what-the-benchmarks-measure).
+
+Gartner wrote in July and August 2026 that production agents need governed memory, not ad hoc builds ([Gartner abstract](https://www.gartner.com/en/documents/8269957)). Only the abstracts were read. No survey measures how many enterprises organise memory on purpose. Treat a managed service as one option to test against the simplest baseline. Sources read 14 October 2026.
 
 ## Decide when to do the work
 

@@ -500,7 +500,7 @@ const metas = {
     // Only the product sections appear in the main tree; the library is its
     // own root and never appears in the product sidebar. 'start' (product/start.mdx)
     // comes first because it is the first entry in content-map.json.
-    pages: [...readerSections.map((section) => section.id), 'layers', 'agentic-os', 'security', 'patterns', 'decisions', 'about'],
+    pages: [...readerSections.map((section) => section.id), 'operate', 'layers', 'agentic-os', 'security', 'patterns', 'decisions', 'about'],
   },
   'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'billing-exceptions', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---Choose and fund---', 'choose-where-to-start', 'packaged-applications', 'value-and-investment', 'enterprise-transformation', '---Blueprints and frameworks---'] },
   research: { title: 'Research', pages: ['index', 'experiments', 'questions', 'what-changed', 'industrial-examples', 'method'] },
@@ -576,7 +576,7 @@ const metas = {
       'vector-spaces', 'text-embeddings', 'image-embeddings', 'video-embeddings',
       'audio-embeddings', 'location-and-satellite-data', 'time-series',
       '---Advanced design and research---',
-      'six-architectures', 'long-context-is-not-memory',
+      'six-architectures', 'long-context-is-not-memory', 'token-efficiency',
       'the-ten-million-token-question', 'what-we-have-measured', 'sources',
     ],
   },

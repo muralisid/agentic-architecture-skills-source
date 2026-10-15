@@ -1,0 +1,71 @@
+---
+title: "Operate: the weekly loop"
+icon: "Activity"
+description: "The four checks to run every week once an agent is live, the measures a weekly operations review reads, and the gate before the agent may do more."
+position: "This guide's weekly routine for station 6. It orders and links existing pages."
+lastReviewed: "2026-10-15"
+datePublished: "2026-10-15"
+dateModified: "2026-10-15"
+---
+
+<PlainTerms>
+This page is about running an <Term k="agent">agent</Term> once it is live. Every week, someone checks four things. What did the agent do? What did each finished piece of work cost? Can the people handling its exceptions keep up? Should it change, or stop? It matters because an agent that passed its tests can still drift, overspend or swamp the people behind it. The one thing to remember: judge oversight by the busiest ten minutes of the week, not by the daily average.
+</PlainTerms>
+
+This is station 6 on [Start here](/start). At station 5 the agent passed its <Term k="eval">evals</Term> and its approvals were signed. Now it runs on real work. This page puts the operating checks into one weekly loop. Each check links to the page with the detail.
+
+<TeachingIllustration src="/figures/start/operate.svg" mobileSrc="/figures/start/operate-mobile.svg" expandable title="Operate, every week" alt="Four panels sit in a loop around the words every week. Observability, from layer R12: traces the agent cannot forge, costs and incidents. Cost: cost per resolved outcome, budgets and circuit breakers. Supervision, from layer R13: exception queues and burst capacity. Lifecycle: change triggers, periodic review and retirement. A line underneath gives the gate for station 6: oversight capacity proven at peak load, not just on an average day." caption="Run the four checks every week. Move on to station 7 only when oversight holds in the busiest ten minutes." />
+
+## The four weekly checks
+
+### 1. Observability: what the agent did
+
+Every run leaves a <Term k="trace">trace</Term>. It records the session, each model call, each tool call and the cost. The trace is collected outside the agent, so the agent cannot forge or hide it. Check that every run has a complete trace. Check costs against the budget. Review each incident and its cause. Watch guardrail block rates in both directions. A spike can mean an attack. A drop can mean a broken setting. [Observability and FinOps](/layers/r12-observability-and-finops) sets out the trace, the budgets and the change gate.
+
+### 2. Cost: what each outcome cost
+
+Track <Term k="cost per resolved outcome">cost per resolved outcome</Term>, not raw spend. It counts model, tool and platform cost, including failed attempts. It adds supervision time and the cost of fixing wrong results. Then it divides by the outcomes the business accepted as resolved. Each agent runs inside a <Term k="budget envelope">budget envelope</Term> that its sponsor owns, with hard caps per run. Circuit breakers stop spending at set limits. When a budget runs out, the work goes to a person. It does not retry on its own. [Measure value and full cost](/use-cases/value-and-investment) gives the formula. [Token efficiency](/memory/token-efficiency) covers where the tokens go and what to meter for each agent.
+
+### 3. Supervision: whether people keep up
+
+Exceptions land in a queue for a person to decide. Capacity depends on how long items wait, not on how many agents there are. Measure wait time per item in the busiest ten minutes, never as a daily average. Track the intervention rate and its trend. A falling rate can mean tired reviewers rather than a better agent. Split escalations by who raised them: a person or the automated monitor. Run blind checks as well. People misjudge their own speed and accuracy. [Operating model and supervision](/layers/r13-operating-model) sets out the queueing calculation and who works the queues.
+
+### 4. Lifecycle: whether the agent should change or stop
+
+Eight kinds of change make an approval out of date, from a new model to a new sponsor. Each one re-runs the evals and the risk profile before release. Check the week's <Term k="change trigger">change triggers</Term> against the <Term k="registry">registry</Term> record. Check which periodic reviews are due. Each quarter, the sponsor confirms purpose, access, budget and need. Retire agents that are no longer needed. Retiring means revoking access and removing memory, not just switching off. [The agent lifecycle](/architecture/agent-lifecycle) sets out the triggers, the review and the five retirement steps.
+
+## What the weekly review reads
+
+| Measure | What it shows | Watch for | Page |
+|---|---|---|---|
+| Trace coverage | Share of runs with a complete trace collected outside the agent | Any gap | [R12](/layers/r12-observability-and-finops) |
+| Cost per resolved outcome | The full cost of each accepted result | A rise, or a fall in the resolution rate | [Value and full cost](/use-cases/value-and-investment) |
+| Budget use and cap hits | Spend against each sponsor's envelope | Runs stopped by caps; unexpected spikes | [R12](/layers/r12-observability-and-finops) |
+| Session success and escalation rate | Quality, per release | Escalation outside the 5 to 15 percent band | [R12](/layers/r12-observability-and-finops) |
+| Guardrail block rate | How often guardrails stop an action | A spike or a sudden drop | [R12](/layers/r12-observability-and-finops) |
+| Wait time per supervised item | How long exceptions wait for a person, at peak | Wait rising in the busiest ten minutes | [R13](/layers/r13-operating-model) |
+| Intervention rate and trend | How often people step in | A fall while autonomy grows | [R13](/layers/r13-operating-model) |
+| Escalation mix by trigger | Who raised each escalation | Fewer escalations raised by people | [R13](/layers/r13-operating-model) |
+| Verification cost per review | The time a person needs to check one item | Checks too slow to actually happen | [R13](/layers/r13-operating-model) |
+| Blind check results | Measured quality against what reviewers report | A gap between the two | [R13](/layers/r13-operating-model) |
+| Change triggers logged | Changes that re-ran the evals and the risk profile | A change released without a re-run | [Lifecycle](/architecture/agent-lifecycle#the-change-triggers) |
+| Reviews due and orphaned agents | Agents past their review, or running without an owner | Any orphan | [Lifecycle](/architecture/agent-lifecycle#retire-and-the-orphan-problem) |
+
+## The gate to station 7
+
+Station 7 lets a proven agent do more. Before that step, oversight capacity must be proven at burst. That means the busiest ten minutes, not an average day. A daily average can look fine while people are swamped in every burst. The alarm-management standards use per-ten-minute rates for this reason. This guide asks for three things from production. Wait time stays inside its limit at peak. The intervention rate is not falling as autonomy grows. Blind checks agree with what reviewers report. Until all three hold, the agent stays at its current <Term k="autonomy level">autonomy level</Term>. [The oversight gate](/architecture/autonomy-contract#the-oversight-gate-as-a-burst-rate) sets out the calculation.
+
+## Who runs the loop
+
+The programme lead owns station 6 and runs the weekly review. The agent sponsor answers for purpose, results and budget. The agent owner runs the configuration, evals and incidents. The FinOps and agent economics lead reads the cost lines. Exception supervisors work the queues as part of their jobs. [One platform, three lanes](/layers/r13-operating-model#one-platform-three-lanes-how-the-work-is-organised) sets out these roles.
+
+**Next step:** before the agent does more, read [the autonomy contract](/architecture/autonomy-contract), or return to [Start here](/start).
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Operating model findings](/library/layers/r13-operating-model/findings)
+- [The economics model](/library/architecture/economics-model)
+- [Observability and FinOps findings](/library/layers/r12-observability-and-finops/findings)
+
+</details>

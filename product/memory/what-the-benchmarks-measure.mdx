@@ -2,9 +2,9 @@
 title: "Test memory against the work"
 description: "Distinguish finding evidence, answering correctly, and completing a task."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-13"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
 ---
 
 A search returns a document containing the answer. The agent then quotes an outdated section and creates the wrong follow-up task. A retrieval test may call that a success even though the business outcome failed. **Memory needs more than one checkpoint.**
@@ -32,6 +32,18 @@ For an enterprise agent, test the actual outcome: a justified inspection request
 [LoCoMo](https://arxiv.org/abs/2402.17753), 2024, studies long-term conversational memory. [LongMemEval](https://arxiv.org/abs/2410.10813), first published 2024, evaluates abilities including information extraction, reasoning across sessions, temporal reasoning, knowledge updates, and abstention. [BEAM](https://arxiv.org/abs/2510.27246), 2025 with a 2026 revision, extends testing to much longer generated conversations. Reviewed 18 September 2026.
 
 These benchmarks can expose useful weaknesses. They do not establish that a system correctly handles your source permissions, operational tools, or business process. The underlying papers and released evaluation code matter more than a leaderboard headline.
+
+## Read published memory scores with care
+
+Most published memory scores come from the vendors that sell the memory product. Three findings show how far a headline can sit from a fair test. Sources read 14 October 2026.
+
+**LoCoMo has errors in its answer key.** An audit found about 6.4 percent of LoCoMo's scored answers wrong: 99 of 1,540 questions. Its usual judge model accepted about 63 percent of deliberately wrong answers that stayed close to the topic. So a perfect system would score about 93.6 percent. One vendor already reports 92.5 percent. The audit is a single blog post, not peer reviewed ([Penfield Labs audit, 2026](https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg)). Mem0, a memory vendor, repeats its figures ([Mem0](https://mem0.ai/library/agent-memory/how-to-read-memory-benchmarks)) [vendor].
+
+**LongMemEval scores are vendor-reported.** Published scores cluster at 91 to 96 percent, and every one comes from a vendor. One rerun put several products through one harness with the same judge. The published scores differed from the rerun by +3 to -28 points. Google's Vertex AI Memory Bank scored 42.4 percent, against about 70 percent in the paper behind its design ([Redis, 21 September 2026](https://redis.io/resources/agent-memory-benchmark-report/)). Redis ran the rerun and sells a competing product [vendor].
+
+**A harder test scores memory products low.** On MemoryAgentBench, three commercial memory agents (Mem0, Zep and MIRIX) scored 21.1 to 26.2 overall. Plain long context scored about 49 with GPT-4o or Claude 3.7 Sonnet. Every method scored at most 7 percent on multi-step forgetting. That task asks the agent to drop a fact that a later fact replaced. The answer needs several linked facts ([arXiv 2507.05257, version of 17 March 2026](https://arxiv.org/html/2507.05257v3)). The models tested date from 2025.
+
+Treat a memory leaderboard as a claim until it is rerun with the same answer model, judge and retrieval depth.
 
 ## Build a small acceptance suite around the memory story
 

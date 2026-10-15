@@ -10,7 +10,7 @@
 <text x="52" y="170" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">A5 Governed lights-out</text>
 <text x="52" y="197.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Sets policy, audits outcomes</text>
 <rect x="372" y="142" width="658" height="94" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="386" y="172" font-family="Arial,sans-serif" font-size="18" fill="#465958">All six readiness areas at 3, plus</text>
+<text x="386" y="172" font-family="Arial,sans-serif" font-size="18" fill="#465958">All seven readiness areas at 3, plus</text>
 <text x="386" y="195" font-family="Arial,sans-serif" font-size="18" fill="#465958">regulator-ready evidence. Oversight capacity</text>
 <text x="386" y="218" font-family="Arial,sans-serif" font-size="18" fill="#465958">measured in production. Per domain only.</text>
 <rect x="875.2" y="154" width="142.8" height="30" rx="15" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
@@ -20,7 +20,7 @@
 <text x="52" y="301.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Works exception queues</text>
 <rect x="372" y="246" width="658" height="94" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="386" y="276" font-family="Arial,sans-serif" font-size="18" fill="#465958">L2 governed learning. Pass the oversight gate</text>
-<text x="386" y="299" font-family="Arial,sans-serif" font-size="18" fill="#465958">below. All six areas at 2 or more, operations</text>
+<text x="386" y="299" font-family="Arial,sans-serif" font-size="18" fill="#465958">below. All seven areas at 2 or more, controls,</text>
 <text x="386" y="322" font-family="Arial,sans-serif" font-size="18" fill="#465958">and governance at 3.</text>
 <rect x="875.2" y="258" width="142.8" height="30" rx="15" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
 <text x="946.6" y="279.3" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#0f172a">Tier 3 floor</text>
@@ -28,7 +28,7 @@
 <text x="52" y="414" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">A3 Supervised autonomy</text>
 <text x="52" y="441.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Approves irreversible actions</text>
 <rect x="372" y="386" width="658" height="94" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="386" y="416" font-family="Arial,sans-serif" font-size="18" fill="#465958">Data, integration, identity and operations at 2</text>
+<text x="386" y="416" font-family="Arial,sans-serif" font-size="18" fill="#465958">Data, integration, identity, controls and testing at 2</text>
 <text x="386" y="439" font-family="Arial,sans-serif" font-size="18" fill="#465958">or more. Approval gates, budgets, a kill switch,</text>
 <text x="386" y="462" font-family="Arial,sans-serif" font-size="18" fill="#465958">and evals against a human baseline.</text>
 <rect x="875.2" y="398" width="142.8" height="30" rx="15" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>

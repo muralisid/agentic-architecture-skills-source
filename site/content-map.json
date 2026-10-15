@@ -5,7 +5,8 @@
     "url": "/start",
     "description": "The road to an agentic enterprise, in order",
     "prefixes": [
-      "/start"
+      "/start",
+      "/operate"
     ]
   },
   {

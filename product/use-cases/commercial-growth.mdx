@@ -58,4 +58,15 @@ Continue with [knowledge and memory](/memory), [value and investment](/use-cases
 
 Return to [Energy](/use-cases/energy) or [explore the agent types](/architecture/agent-types).
 
+## Where this sits
+
+This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+
+- **Role:** create. Domain: sales proposals.
+- **Capability surface:** reads account records, public customer information and approved delivery evidence. Drafts briefs and proposal outlines. Sends nothing to customers. Untrusted input: public material about the customer. Highest data class: confidential.
+- **Placement:** A2, L1 on the [autonomy contract](/architecture/autonomy-contract). The commercial owner reviews every draft. People choose the delivery evidence it may use. Customer messages, prices and contract terms drop to A1. A person decides.
+- **Zone:** none while it only drafts. A change to a price, discount or contract is in the [money zone](/architecture/deterministic-zones#movement-of-money). A binding message to a customer is an external commitment. Both need a person's approval.
+- **Tier:** Tier 2. Confidential data and untrusted input score Medium. A price, discount or contract change makes it Tier 3.
+- **Control:** no send path to customers and no write access to prices or contracts.
+
 **Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).

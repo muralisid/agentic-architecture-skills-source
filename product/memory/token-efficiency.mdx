@@ -1,0 +1,142 @@
+---
+title: "Token efficiency: spend tokens on outcomes"
+description: "Why agents use many times the tokens of chat, the one unit to measure them by, what to meter for each agent, and which savings have been measured."
+position: "Design guidance with dated evidence. Most figures are vendor tests on their own tasks. Measure your own workload before relying on any saving."
+lastReviewed: "2026-10-15"
+datePublished: "2026-10-15"
+dateModified: "2026-10-15"
+---
+
+<PlainTerms>
+AI models are billed by the <Term k="token">token</Term>, a piece of text about three quarters of a word long. An agent uses far more tokens than a chat. At every step it sends its whole history back to the model. The one thing to remember: count tokens and cost per resolved outcome, not per call or per seat. Stop the spend before the next call, not with an alert after it.
+</PlainTerms>
+
+## Why agents burn tokens
+
+A chat is one question and one answer. An agent works in a loop. It reads the task, calls a tool, reads the result and decides the next step. Each step is a new call to the model. Each call carries the instructions, the tool descriptions and everything that has happened so far. So the model reads the same context many times. You pay for every reading.
+
+The published multiples come from vendors measuring their own products:
+
+- A single agent used about 4 times the tokens of a chat. A <Term k="multi-agent">multi-agent</Term> system used about 15 times ([Anthropic, 13 June 2025](https://www.anthropic.com/engineering/multi-agent-research-system)) [vendor]. Anthropic says multi-agent work pays only when the task is worth a lot.
+- Claude Code agent teams use about 7 times the tokens of a standard session. Claude Code costs about USD 13 per developer per active day on average ([Claude Code docs](https://code.claude.com/docs/en/costs), read 14 October 2026) [vendor]. That is a cost per seat, not per outcome.
+- One production agent reads about 100 input tokens for every token it writes ([Manus, 18 July 2025](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)) [vendor]. Manus calls the cache hit rate the most important number for a production agent.
+
+The last figure explains the bill. The output is small. Most of the cost is context read again on every step. Two levers matter most. One is how much context each step carries. The other is how much of it comes from a cache.
+
+## The unit: cost per resolved outcome
+
+A cost per call hides retries and failed runs. A cost per seat hides how much work got done. Neither says whether the agent was worth running. This guide uses one unit for that decision, the <Term k="cost per resolved outcome">cost per resolved outcome</Term>. It has one definition across the guide ([decision D051](/library/decisions)). [Measure value and full cost](/use-cases/value-and-investment) states it:
+
+> Cost per resolved outcome: all model, tool and platform cost for the period, failed and retried attempts included, plus supervision time at a loaded rate, plus the cost of fixing wrong outcomes, divided by the outcomes accepted as resolved under the agreed quality standard.
+
+Report the resolution rate, failure rate, serious errors and repeat contacts beside it. Divide by resolution, never by <Term k="containment">containment</Term>. A conversation that never reached a person is not always a problem solved.
+
+Keep two levels, as the [economics model](/library/architecture/economics-model) does. Cost per run reconciles to the invoice. Cost per resolved outcome decides the business case.
+
+Tokens follow the same rule. **Tokens per resolved outcome** counts every token in the period, failed and retried runs included. It divides by the same resolved outcomes. This guide's position is to make it the main engineering meter for each agent. An engineer can change it directly. The cost figure also depends on prices and on people's time.
+
+## What to meter for each agent
+
+Meter four numbers for every agent. Key each one to the agent's <Term k="registry">registry</Term> entry and its identity. Then the cost lands with the right owner. The traces they come from are covered in [Observability and FinOps](/layers/r12-observability-and-finops).
+
+| Meter | What it counts | What it tells you |
+|---|---|---|
+| Tokens per resolved outcome | As defined above | Whether each useful result is getting cheaper or dearer |
+| Cache hit rate | The share of input tokens served from the provider's cache | How much re-read context is billed at the cheaper cached price |
+| Input-to-output ratio | Input tokens for each output token | How much of the bill is re-read context |
+| Retries | Repeated model calls, repeated tool calls and re-run tasks | Spend that adds no outcome. A rise often points to a broken tool, a rate limit or a loop. |
+
+Watch the trend for each agent, not a single reading. A new model, a new tool or a longer prompt can move all four. Treat that as a <Term k="change trigger">change trigger</Term> and measure again before release.
+
+## Techniques with a measured effect
+
+Each row is one team's test on a task it chose. The first three are vendors testing their own features. Read them as direction. None gives a percentage you can carry to your own workload.
+
+| Technique | What it does | Measured effect | Source |
+|---|---|---|---|
+| Prompt caching | The provider stores the processed start of a prompt. A repeat with the same start is billed at a lower rate. | Cached reads at about 0.1 times the base input price on most models. Writing to the cache costs 1.25 to 2 times the base price at Anthropic. | [Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) and [OpenAI](https://developers.openai.com/api/docs/guides/prompt-caching) docs, read 14 October 2026 [vendor] |
+| Clearing old tool results | Old tool outputs are removed from the context as the task goes on. | 84 percent fewer tokens in a 100-turn test | [Anthropic, 29 September 2025](https://claude.com/blog/context-management) [vendor] |
+| Loading tool definitions on demand | The agent loads a tool's description only when it needs that tool. | About 85 percent less context before work starts | [Anthropic, 24 November 2025](https://www.anthropic.com/engineering/advanced-tool-use) [vendor] |
+| Routing between a strong and a weak model | A router sends easier requests to a cheaper model. | Cost down by over 2 times in some cases, without lower quality | [RouteLLM, 2024](https://arxiv.org/abs/2406.18665) |
+| Less reasoning effort | The model gets a smaller thinking budget. | More reasoning effort lowered accuracy in most of 21,730 runs | [HAL paper, Princeton, ICLR 2026](https://arxiv.org/abs/2510.11977) |
+| A cheaper model of equal accuracy | Choose on cost among models with the same score. | The same score at USD 1.74 and at USD 111.11 for one full benchmark run | [HAL leaderboard](https://hal.cs.princeton.edu/), entries mostly April to September 2025 |
+
+Caching lowers the price of re-read context. It does not remove context the step does not need. Cut that first. Then cache the part that stays the same, such as instructions and tool descriptions. Keep it at the start of the prompt. A cache only matches the start of a prompt. In Claude Code, a cache entry lasts 5 minutes by default on an API key ([Claude Code docs](https://code.claude.com/docs/en/costs)) [vendor]. After a longer pause, the whole context is billed at the full price again.
+
+Check quality on the same test set after every saving. A saving that lowers the resolution rate can raise the cost per resolved outcome.
+
+## Budgets tied to the registry
+
+An alert after the call is not a stop. The money is already spent. A budget has to stop the next call before it is made.
+
+EY calls these "agentic circuit breakers" ([EY, 1 June 2026](https://ey.com/en_us/insights/ai/agentic-ai-token-costs)). They are spend ceilings, call caps and automatic shut-offs. They work at agent, workflow and business-unit level. EY says to measure the cost per task first, then set the limits.
+
+Model <Term k="gateway">gateways</Term> set budgets per key, per user and per team. They have no built-in budget per agent. So teams issue one key per agent ([LiteLLM docs](https://docs.litellm.ai/docs/proxy/users), read 14 October 2026) [vendor]. LiteLLM also needs its database running before it enforces any budget. Test that the limit really stops a call.
+
+This guide's position is to tie each key to one registry entry:
+
+- No key without a registry entry and a named <Term k="sponsor">sponsor</Term>.
+- The key carries the agent's <Term k="budget envelope">budget envelope</Term>, with a hard cap per run and per period.
+- The gateway checks the cap before each call. When the budget runs out, the work goes to a human queue. It does not retry quietly.
+- Retiring the agent revokes its key. See [the agent lifecycle](/architecture/agent-lifecycle).
+
+Every token then traces to one agent, one owner and one purpose.
+
+## What nobody has measured
+
+No independent source publishes cost per resolved outcome across real enterprises. Nobody publishes how many tokens a typical enterprise task uses either. The public numbers are vendor tests, benchmark runs and surveys.
+
+The surveys measure confidence, not cost. In one survey, 39 percent of firms could not tie AI spend to an outcome their finance head would accept ([State of Tokenomics, 23 September 2026](https://www.tokeneconomics.com/state-of-tokenomics/)). The answers are self-reported. LangChain's survey of 1,340 people ranks quality ahead of cost as a barrier ([LangChain, 12 June 2026](https://www.langchain.com/state-of-agent-engineering)) [vendor].
+
+Gartner forecasts that the inference cost of an agentic workflow will rise more than fivefold through 2028 ([Gartner, 17 August 2026](https://www.gartner.com/en/newsroom/press-releases/2026-08-17-gartner-predicts-ai-inference-costs-per-agentic-workflow-will-increase-more-than-fivefold-through-2028)). The release could not be opened for this page. It was read through search excerpts that quote it. Both trends can hold at once. The price per token falls while the tokens per workflow rise.
+
+HAL reports totals for full benchmark runs, not a cost per task. EY's example of USD 0.04 rising to USD 1.20 per customer interaction is an illustration, not a measurement. So there is no published figure for what good looks like. Set your own baseline from your own traces.
+
+## The incidents, corrected
+
+Two cost incidents are quoted often. Both are often told wrongly.
+
+**The USD 1.3 million bill.** A three-person team ran a fleet of about 100 coding-agent instances on purpose. Over 30 days the dashboard showed USD 1,305,088.81 and 603 billion tokens. Most of the cost came from the premium Codex Fast Mode price. The project's maintainer said the raw cost would be about USD 300,000 without it. His employer, OpenAI, covers the bill ([Tom's Hardware](https://www.tomshardware.com/tech-industry/artificial-intelligence/openclaw-creator-burns-through-1-3-million-in-openai-api-tokens-in-a-single-month)). It was not a runaway loop. An earlier edition of this guide called it a multi-agent loop, which was wrong. The lesson is about a pricing choice and a missing per-agent budget.
+
+**The USD 47K loop.** In the story, four agents were built with LangChain. Two of them, an analyser and a verifier, passed requests back and forth for about 11 days. They produced nothing usable. No agent had its own budget cap. The whole story traces to one first-person account. An incident catalogue marks it as only partly verified. The weekly figures in circulation do not add up ([dev.to analysis](https://dev.to/waxell/the-47000-agent-loop-why-token-budget-alerts-arent-budget-enforcement-389i)). Treat it as low confidence. If it happened as told, the lesson is the same: an alert is not a stop.
+
+## Evidence and limits
+
+The multiples, prices and technique savings on this page are vendor-published and marked [vendor]. RouteLLM and HAL are research results on public benchmarks. The surveys are self-reported. The Gartner forecast was read through search excerpts. Prices and cache rules change often. Each one carries the date it was read.
+
+Three items are this guide's position, not published practice:
+
+- the single definition of cost per resolved outcome ([decision D051](/library/decisions));
+- tokens per resolved outcome as the main meter;
+- one gateway key per registry entry.
+
+No enterprise has published per-agent budgets running in production. The four meters have no published benchmark for a good value.
+
+**Next step:** see how measured results feed back into the design on [the learning flywheel](/architecture/learning-flywheel), or return to [Start here](/start).
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Observability and FinOps findings](/library/layers/r12-observability-and-finops/findings)
+- [The economics model](/library/architecture/economics-model)
+
+**Sources added October 2026**
+
+- Anthropic, [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system), 13 June 2025 [vendor]
+- Anthropic, [Claude Code: manage costs](https://code.claude.com/docs/en/costs), read 14 October 2026 [vendor]
+- Manus, [Context engineering for AI agents: lessons from building Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus), 18 July 2025 [vendor]
+- Anthropic, [Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), read 14 October 2026 [vendor]
+- OpenAI, [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching), read 14 October 2026 [vendor]
+- Anthropic, [Context management](https://claude.com/blog/context-management), 29 September 2025 [vendor]
+- Anthropic, [Advanced tool use](https://www.anthropic.com/engineering/advanced-tool-use), 24 November 2025 [vendor]
+- [RouteLLM](https://arxiv.org/abs/2406.18665), arXiv 2406.18665, 2024
+- Princeton, [Holistic Agent Leaderboard (HAL) paper](https://arxiv.org/abs/2510.11977), ICLR 2026, and the [HAL leaderboard](https://hal.cs.princeton.edu/)
+- EY, [Agentic AI token costs](https://ey.com/en_us/insights/ai/agentic-ai-token-costs), 1 June 2026
+- LiteLLM, [Budgets and rate limits](https://docs.litellm.ai/docs/proxy/users), read 14 October 2026 [vendor]
+- Tokenomics Foundation, [State of Tokenomics](https://www.tokeneconomics.com/state-of-tokenomics/), 23 September 2026
+- LangChain, [State of Agent Engineering](https://www.langchain.com/state-of-agent-engineering), 12 June 2026 [vendor]
+- Gartner, [press release on inference cost per agentic workflow](https://www.gartner.com/en/newsroom/press-releases/2026-08-17-gartner-predicts-ai-inference-costs-per-agentic-workflow-will-increase-more-than-fivefold-through-2028), 17 August 2026, read through search excerpts
+- Tom's Hardware, [OpenClaw creator's USD 1.3 million token bill](https://www.tomshardware.com/tech-industry/artificial-intelligence/openclaw-creator-burns-through-1-3-million-in-openai-api-tokens-in-a-single-month), 2026
+- Waxell on dev.to, [The USD 47,000 agent loop](https://dev.to/waxell/the-47000-agent-loop-why-token-budget-alerts-arent-budget-enforcement-389i)
+
+</details>
