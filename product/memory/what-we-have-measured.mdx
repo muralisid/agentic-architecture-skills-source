@@ -37,6 +37,8 @@ The evidence unit differs between the conversational benchmarks and the reported
 
 </details>
 
+Later runs, from September to October 2026, measured answer accuracy and model tokens per question on LoCoMo, LongMemEval, EnronQA and BEAM, with every model call counted. Their write-up is in preparation. The numbers will be added here when it is public.
+
 LoCoMo itself needs a warning. An unreviewed audit found about 6.4 percent of its answer key wrong. Its usual judge model accepted about 63 percent of deliberately wrong answers. That puts a perfect score near 93.6 percent. One vendor already reports 92.5 percent ([Penfield Labs audit, 2026](https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg)). The LoCoMo rows above measure retrieval, not judged answers. The judge problem does not apply to them. The other benchmark warnings are on [test memory against the work](/memory/what-the-benchmarks-measure).
 
 ## What would make this work independently checkable?

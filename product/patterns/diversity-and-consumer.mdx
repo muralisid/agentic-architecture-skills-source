@@ -57,7 +57,7 @@ We tested seven rules.
 | Harvest, 20 percent quota | 0.567 | 0.619 | 0.808 | 0.198 |
 | Harvest, 40 percent quota | 0.686 | 0.677 | 0.781 | 0.236 |
 
-Alpha-nDCG is a ranking score that rewards coverage and discounts repeats. Read along the rows. The 40 percent harvest and MMR at lambda 0.3 reach the same coverage, 0.686. The harvest pays 0.046 of relevance for it. MMR pays 0.098. The harvest also lets in fewer distractors: 0.236, against 0.285 for MMR and 0.328 for the DPP.
+Alpha-nDCG is a ranking score that rewards coverage and discounts repeats. Read along the rows. The 40 percent harvest and MMR at lambda 0.3 reach the same coverage, 0.686. Against relevance-only ranking that is a gain of 0.315 for the harvest and 0.314 for MMR, from the unrounded scores. The table shows rounded values. The harvest pays 0.046 of relevance for it. MMR pays 0.098. The harvest also lets in fewer distractors: 0.236, against 0.285 for MMR and 0.328 for the DPP.
 
 The reason shows in how the rules work. MMR and the DPP spread out the whole list, so even the top drifts away from relevance. The harvest keeps a relevant top and spends only the tail. All coverage gains over relevance-only ranking are significant at p=0.0001 after Holm correction. So are all the relevance costs.
 
