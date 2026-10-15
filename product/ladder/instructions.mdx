@@ -1,83 +1,86 @@
 ---
 title: "Step 1: Instructions"
 icon: "MessageSquare"
-description: "What a prompt is actually made of, why examples work better than adjectives, how automated optimisation beats hand-tuning, and the exact signal that says you have run out of room here."
+description: "What a prompt is made of, why examples beat adjectives, how a search beats hand-tuning, and when to move on."
+position: "Teaching guidance. The two prompt-search results are peer-reviewed. The industrial example is a proposed design."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-29"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [ladder, flywheel, lifecycle, memory, r12]
 ---
 
-<PlainTerms>
-This is prompt writing, and everyone has done some. What most people have not done is treat it as engineering: pinning the output shape so it cannot drift, teaching by example rather than by adjective, and letting a machine search for a better prompt than a person would write. This page covers the mechanics, then applies them to a utility inspection brief. The one thing to remember: you have not exhausted this step until a matched evaluation shows that instruction changes no longer address the observed failure.
-</PlainTerms>
+An agent returns a wrong or badly shaped answer, and the team wants a stronger model. **Can better instructions fix it first?** Often they can, and instructions are the cheapest thing to change. This is the first step on [the intelligence ladder](/ladder). Treat the prompt as engineering. Fix the output shape so it cannot drift. Teach by example rather than by adjective. Let a search method find a better prompt than a person would write. This step is done only when a fixed test set shows that instruction changes no longer help.
 
-## What a prompt is actually made of
+## The five parts of a prompt
 
-A prompt is not one blob of text. It has parts, and each does a different job.
+A prompt is not one block of text. It has parts, and each does a different job.
 
-**The system instruction** sets standing rules: who the agent is, what it may and may not do, how it should behave when unsure. It is the same on every call, which matters for cost, as we will see.
+**The system instruction** sets standing rules. It says who the agent is, what it may and may not do, and how it behaves when unsure. It is the same on every call. That matters for cost, as the next section shows.
 
-**The task instruction** describes this specific piece of work.
+**The task instruction** describes this piece of work.
 
-**The examples** show completed instances of the task. This is the highest-leverage part and the most underused. A model infers a pattern from two or three good examples far more reliably than from a paragraph describing the pattern. "Write formally" is an adjective and every model interprets it differently. Three samples of your actual house style are unambiguous.
+**The examples** show completed instances of the task. This part does the most and gets used the least. A model infers a pattern from two or three good examples far more reliably than from a paragraph describing it. "Write formally" is an adjective, and every model reads it differently. Three samples of your actual house style leave no doubt.
 
 **The input** is the material for this instance.
 
-**The output contract** states the shape you want back, and it should be enforced rather than requested. Modern APIs accept a schema and constrain generation to match it, so the model cannot return prose where you expected fields. Asking politely in the prompt for JSON produces JSON most of the time, which is the worst possible reliability: frequent enough to build on, rare enough to break in production.
+**The output contract** states the shape you want back. Enforce it rather than ask for it. Modern APIs accept a schema and force the model's output to match it. The model then cannot return prose where you expected fields. Asking politely for JSON in the prompt gets JSON most of the time. That is a trap. It works often enough that you build on it, and fails often enough to break in production.
 
 <GuideFigure id="prompt-anatomy" fullWidth />
 
-<TeachingIllustration src="/images/ladder/instructions-mechanism-labeled-v3.webp" alt="A rulebook, task card, worked examples, case file and output form flow in order through a reasoning model." title="The prompt is an assembled system" caption="Standing rules, the task, worked examples, the changing input and the enforced output shape do different jobs. Treating them as separate parts makes the prompt testable and keeps its stable prefix cacheable." />
+<TeachingIllustration src="/images/ladder/instructions-mechanism-labeled-v3.webp" alt="A rulebook, task card, worked examples, case file and output form flow in order through a reasoning model." title="The prompt is an assembled system" caption="Standing rules, the task, worked examples, the changing input and the enforced output shape do different jobs. Treating them as separate parts makes the prompt testable and keeps its stable start cacheable." />
 
-## Order matters more than people expect
+## Put the stable parts first
 
-Put the stable parts first and the varying parts last. Providers cache the unchanging prefix of a prompt, and a cache hit is billed at a fraction of fresh input. Any change anywhere in that prefix invalidates everything after it, so a timestamp near the top of a system instruction quietly destroys the saving on every call.
+Put the parts that never change first and the parts that vary last. Providers cache the unchanging start of a prompt. A cache hit is billed at a fraction of the price of fresh input. Any change in that start invalidates everything after it. So a timestamp near the top of a system instruction quietly destroys the saving on every call.
 
-That single ordering decision is often the difference between an agent that is affordable at volume and one that is not, and it costs nothing to get right.
+That one ordering choice often decides whether an agent is affordable at volume. It costs nothing to get right. Each agent's spending is tracked in [the observability and FinOps layer (R12)](/layers/r12-observability-and-finops).
 
-## Automated optimisation beats hand-tuning
+## Let a search method improve the prompt
 
-The instinct is to write a prompt, read the failures, and rewrite it. That is a search process run by hand, slowly and with a small sample.
+The usual habit is to write a prompt, read the failures and rewrite it. That is a search, run by hand, slowly, on a small sample.
 
-Run it as a search instead. A published method treats prompts as candidates to be mutated and selected: the system reads its own failures, proposes revisions, and keeps a diverse frontier of candidates rather than hill-climbing on one. It beat a reinforcement-learning baseline by six points on average and up to twenty, using up to 35 times fewer rollouts, with gains appearing from as few as ten training examples (GEPA, arXiv 2507.19457, ICLR 2026).
+Run it as a search instead. One published method, GEPA, treats prompts as candidates to change and select. The system reads its own failures and proposes revisions. It keeps a varied set of candidates rather than improving just one. It beat a reinforcement-learning baseline by six points on average, and by up to twenty. It needed up to 35 times fewer trial runs. Gains appeared from as few as ten training examples (GEPA, arXiv 2507.19457, ICLR 2026).
 
-Two things follow. Teams that hand-tune and then conclude the model is the limit have usually not run this, so their ceiling is not the model's ceiling. And ten examples is a low bar, which means this is available long before you have enough data for anything in Model adaptation.
+Two things follow. Teams that hand-tune and then blame the model have usually not tried this. Their limit is not the model's limit. And ten examples is a low bar. You can do this long before you have enough data to change the model itself.
 
-A related result treats context as something that accumulates: rather than one prompt being rewritten, a playbook is grown and curated across many runs. It improved agent benchmarks by 10.6 points and finance tasks by 8.6, with no weight updates and no labelled supervision (ACE, arXiv 2510.04618, ICLR 2026).
+A related method, ACE, treats context as something that builds up. Rather than rewriting one prompt, it grows and curates a playbook across many runs. It improved agent benchmarks by 10.6 points and finance tasks by 8.6. It needed no weight updates and no labelled training data (ACE, arXiv 2510.04618, ICLR 2026).
 
-A playbook that grows across runs is memory, and it changes how the agent behaves. So each addition passes the same tested gate as any other change before it takes effect. Nothing is kept just because it piled up. [The learning flywheel](/architecture/learning-flywheel) sets out that gate.
+A playbook that grows across runs is a form of [memory](/memory), and it changes how the agent behaves. So each addition must pass the same tests as any other change before it takes effect. Nothing is kept just because it piled up. [The learning flywheel](/architecture/learning-flywheel) sets out those tests and how a change is promoted. A prompt change also re-runs the evals at the change stage of [the agent lifecycle](/architecture/agent-lifecycle).
 
-## In utilities and mining
+## Worked example: a utility inspection brief
 
-<TeachingIllustration src="/figures/ladder/industrial-instructions.svg" mobileSrc="/figures/ladder/industrial-instructions-mobile.svg" title="Prepare an inspection brief" alt="Task: Investigate this asset. Evidence: Use dated observations. Output: Findings, gaps, next check. Boundary: No unsupported conclusion" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
+<TeachingIllustration src="/figures/ladder/industrial-instructions.svg" mobileSrc="/figures/ladder/industrial-instructions-mobile.svg" title="Prepare an inspection brief" alt="Four boxes in order. Task: investigate this asset. Evidence: use dated observations. Output: findings, gaps and the next check. Boundary: no unsupported conclusion." caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-Consider a utility inspection assistant. A vague instruction to “summarize the issue” may produce readable prose that leaves out the asset, observation date, source, or unresolved question.
+Consider a utility inspection assistant. A vague instruction to "summarize the issue" may produce readable prose. That prose can leave out the asset, the observation date, the source or the open question.
 
-Specify the output: asset identifier, observed condition, evidence references, uncertainty, and recommended next check. Include approved examples of good briefs and counterexamples showing unsupported conclusions. Validate required fields outside the model.
+Specify the output: asset identifier, observed condition, evidence references, uncertainty, and recommended next check. Include approved examples of good briefs. Add counterexamples that show unsupported conclusions. Check the required fields outside the model.
 
-The task remains evidence preparation. A clear instruction does not authorize the agent to operate equipment or certify a condition. Evaluate the brief against representative cases and reviewer effort. The example is a proposed design, not a measured deployment.
+The task stays evidence preparation. A clear instruction does not let the agent operate equipment or certify a condition. Evaluate the brief against representative cases and reviewer effort. The example is a proposed design, not a measured deployment.
 
 ## What this step does not fix
 
+Missing knowledge. If the asset history is not in the context, no instruction recovers it. A model asked to summarise evidence it cannot see will still write a fluent story. That is the failure to watch for here. It is a [step 2](/ladder/context) problem.
 
+## When this step is done
 
-Missing knowledge. If the asset history is not in the context, no instruction recovers it, and a model asked to summarise evidence it cannot see will produce a fluent narrative anyway. That is the failure mode to fear here, and it is a [step 2](/ladder/context) problem.
+**Compare instruction changes against a fixed <Term k="eval">eval</Term> suite, and inspect the failures that remain.** An eval suite is a set of test tasks with known right answers.
 
-## The test for moving on
+Move on when the scores on that suite stop improving. Without a fixed suite, you cannot tell a real limit from a bad day. That difference decides whether you are about to spend a quarter's budget for nothing. Use a fixed set of representative inspection cases, including missing and conflicting evidence.
 
-**Compare instruction changes against a fixed <Term k="eval">eval</Term> suite and inspect the failures that remain.**
+## Evidence and limits
 
-Flat is the signal. Frustration is not. Without a fixed eval you cannot tell a real ceiling from a bad afternoon, and the difference decides whether you are about to spend a quarter's budget for nothing. Use a fixed evaluation set of representative inspection cases, including missing and conflicting evidence.
+<EvidenceBadge status="independently-measured" /> Both published results above are peer-reviewed and independent of this guide. GEPA and ACE were both presented at ICLR 2026. Their gains were measured on public benchmarks and finance tasks, not on utility work. The inspection example is a proposed design.
 
-<EvidenceBadge status="independently-measured" /> Both published results above are peer-reviewed and independent of this guide.
+## Next step
 
-**Next step:** when instructions stop helping, go to [step 2: context](/ladder/context).
+When instructions stop helping, go to [step 2: context](/ladder/context).
 
 <details>
 <summary>The research behind this page</summary>
 
 - GEPA, reflective prompt evolution, arXiv 2507.19457, ICLR 2026.
 - ACE, context as an evolving playbook, arXiv 2510.04618, ICLR 2026.
-- A growing playbook as memory that passes a tested gate: [the learning flywheel](/architecture/learning-flywheel).
+- A growing playbook as memory that must pass the same tests as any change: [the learning flywheel](/architecture/learning-flywheel).
 - Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

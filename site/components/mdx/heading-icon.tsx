@@ -24,6 +24,7 @@ const EXACT: Record<string, ArticleIconName> = {
   'the two-estate reality': 'building',
   'the two rules that make it governance, not plumbing': 'scale',
   'three builds of the same planes': 'layers',
+  'three kinds of enterprise': 'layers',
   'how the pages are built': 'wrench',
   'how to read it': 'book',
   'where to go deep': 'search',

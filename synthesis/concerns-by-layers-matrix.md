@@ -29,7 +29,7 @@ The distinction used throughout:
 | # | Concern | Owned at | Enforced at | The failure that follows from getting it wrong |
 |---|---|---|---|---|
 | C1 | Identity and access | R10 security and identity | R03 gateway (tool calls), R04 record systems (entitlement), R01 (workload identity) | Identity is asserted but never checked at the point of action, so audit shows an agent name against actions no policy ever authorised |
-| C2 | Observability | R12 observability and FinOps | Emitted by every layer, aggregated at R12 | Coverage looks complete because the platform emits, while the licensed estate (R08) and the record systems (R04) emit into their own consoles |
+| C2 | Observability | R12 observability and FinOps | Emitted by every layer, aggregated at R12 | Coverage looks complete because the platform emits, while vendor-embedded agents (R08) and the record systems (R04) emit into their own consoles |
 | C3 | Traceability and audit | R11 governance | R12 (collection), R14 (provenance at parse time) | Evidence is reconstructed after an incident rather than produced as a byproduct, which is the difference between an audit answer and an argument |
 | C4 | Grounding in reality | R02 data platform and R14 data engineering | R09 (hardest external bar), R05 (digital-twin validation before display) | The model answers over weak evidence instead of refusing, and the failure is invisible until it is external |
 | C5 | Impersonation and authenticity | R10 | R03 (server identity), R08 and R09 (disclosure in shared and public surfaces) | Agent-to-human trust exploitation, which the threat taxonomies now list explicitly and which no technical control at the model layer addresses |
@@ -51,7 +51,7 @@ These emerged from the roll-up rather than being imposed on it. Each appears ind
 
 **4. Telemetry is collected outside the agent's control.** An agent cannot be trusted to report on itself, and self-assessment is treated as unreliable by default. R12 states it for traces, R07 for verification separated from generation, R13 for blind checks against self-report.
 
-**5. The kill switch is multi-point, and observability failure must not blind it.** Cutting an agent off is available at the runtime (R01), the gateway (R03), the harness (R07), and the identity plane (R10) because each covers what the others cannot. R12 adds the constraint that an observability outage must not disable it.
+**5. The kill switch is multi-point, and observability failure must not blind it.** Cutting an agent off is available at the runtime (R01), the gateway (R03), the harness (R07), and identity (R10) because each covers what the others cannot. R12 adds the constraint that an observability outage must not disable it.
 
 **6. Enforcement is deterministic and sits outside the model.** The four irreversible zones are the strict form, but the general form recurs everywhere: approval rules may be held in the harness, they are enforced at the gateway; entitlement may be described in a prompt, it is decided in the record system.
 

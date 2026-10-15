@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Production measurement with an agent: who does what</title>
+<desc id="desc">Swimlane of the proposed production investigation, in nine steps across six lanes. The agent detects the gap when the daily report publishes. It checks timing, instruments and material. The metal accounting tool runs a statistical mass balance. The agent drafts a measurement check or survey request, which the instrument supervisor or surveyor accepts. The agent prepares a case with ranked explanations, or marks it unresolved. The owner, a metallurgist or accountant, accepts any adjustment in the metal accounting system, which is an approval. Finance and the competent person sign the formal reports, which is an approval. The case store keeps every source, the original image and the calibration.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Production measurement with an agent: who does what</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Proposed design. The agent explains the gap. A named owner changes the record.</text>
+<rect x="32" y="108.0" width="1536" height="124.6" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 232.6 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="357.2" width="1536" height="124.6" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 357.2 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 481.8 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="606.4" width="1536" height="124.6" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 606.4 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 731.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 812.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="146.0" height="112.6" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="42.0" y="176.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Agent</text>
+<rect x="32.0" y="238.6" width="146.0" height="112.6" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="289.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Accounting</text>
+<text x="42.0" y="311.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">tool</text>
+<rect x="32.0" y="363.2" width="146.0" height="112.6" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="425.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Field checks</text>
+<rect x="32.0" y="487.8" width="146.0" height="112.6" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="550.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Owner</text>
+<rect x="32.0" y="612.4" width="146.0" height="112.6" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="674.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Sign-off</text>
+<rect x="32.0" y="737.0" width="146.0" height="69.0" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="42.0" y="777.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Case store</text>
+<rect x="196.0" y="115.0" width="200.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="220.0" cy="140.0" r="16" fill="#7c3aed"/><text x="220.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="242.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Detect</text>
+<text x="208.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">When the daily</text>
+<text x="208.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">report publishes</text>
+<rect x="422.0" y="115.0" width="240.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="444.0" cy="137.0" r="13" fill="#7c3aed"/><text x="444.0" y="143.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="464.0" y="143.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Check timing</text>
+<circle cx="444.0" cy="165.0" r="13" fill="#7c3aed"/><text x="444.0" y="171.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="464.0" y="171.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Check instruments</text>
+<circle cx="444.0" cy="193.0" r="13" fill="#7c3aed"/><text x="444.0" y="199.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="464.0" y="199.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Check material</text>
+<rect x="566.0" y="239.6" width="200.0" height="110.6" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="590.0" cy="264.6" r="16" fill="#2563eb"/><text x="590.0" y="271.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="612.0" y="270.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Mass balance</text>
+<text x="578.0" y="295.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">Statistical,</text>
+<text x="578.0" y="317.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">AMIRA P754 style</text>
+<rect x="688.0" y="115.0" width="200.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="712.0" cy="140.0" r="16" fill="#7c3aed"/><text x="712.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="734.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Ask to measure</text>
+<text x="700.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Draft scale check</text>
+<text x="700.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">or survey</text>
+<rect x="914.0" y="115.0" width="200.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="938.0" cy="140.0" r="16" fill="#7c3aed"/><text x="938.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="960.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Prepare case</text>
+<text x="926.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Ranked causes, or</text>
+<text x="926.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">unresolved</text>
+<rect x="1018.0" y="488.8" width="200.0" height="110.6" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1042.0" cy="513.8" r="16" fill="#d97706"/><text x="1042.0" y="520.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="1064.0" y="519.8" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Accept</text>
+<path d="M1196.0 500.8 L1208.0 512.8 L1196.0 524.8 L1184.0 512.8 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1030.0" y="544.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">Any change, with</text>
+<text x="1030.0" y="566.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">the case ID</text>
+<rect x="1122.0" y="613.4" width="200.0" height="110.6" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1146.0" cy="638.4" r="16" fill="#d97706"/><text x="1146.0" y="644.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="1168.0" y="644.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Formal</text>
+<text x="1168.0" y="666.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">reports</text>
+<path d="M1300.0 625.4 L1312.0 637.4 L1300.0 649.4 L1288.0 637.4 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1134.0" y="690.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Named signatories</text>
+<rect x="196.0" y="738.0" width="1372.0" height="67.0" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="212.0" y="777.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Case store: every source, the original image and the calibration. The agent cannot change it.</text>
+<path d="M864.0 225.6 L864.0 403.5" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M864.0 404.5 L879.0 419.5 L864.0 434.5 L849.0 419.5 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="888.0" y="425.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Accepts request</text>
+<path d="M398.0 170.3 L419.0 170.3" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M648.0 225.6 L648.0 236.6" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M752.0 239.6 L752.0 228.6" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M890.0 170.3 L911.0 170.3" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1100.0 225.6 L1100.0 485.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1168.0 599.4 L1168.0 610.4" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="32.0" y="834.0" width="24.0" height="22.0" rx="5" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="64.0" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Agent step</text>
+<rect x="193.0" y="834.0" width="24.0" height="22.0" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="225.0" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Person</text>
+<rect x="314.4" y="834.0" width="24.0" height="22.0" rx="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="346.4" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">System</text>
+<rect x="435.8" y="834.0" width="24.0" height="22.0" rx="5" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="467.8" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Evidence store</text>
+<path d="M648.4 834.0 L659.4 845.0 L648.4 856.0 L637.4 845.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="668.4" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Approval</text>
+<text x="32.0" y="884.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">The agent has no write path to the metal accounting system or the formal reports.</text>
+</svg>

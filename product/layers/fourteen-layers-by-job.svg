@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" width="1600" height="898" role="img" aria-labelledby="title desc">
+<title id="title">The fourteen layers, grouped by the job they do</title>
+<desc id="desc">Six groups of layers. Run the agents: infrastructure and compute (R01) and the agent platform (R07). Let them act: integration fabric (R03), systems of record (R04), and line of business and OT (R05). Give them knowledge: data platform (R02) and agent data engineering (R14). Control and check them: security and identity (R10), governance, risk and sovereignty (R11), and observability and FinOps (R12). Improve them: intelligence and learning (R06). Work with people: productivity and collaboration (R08), experience and channels (R09), and operating model and supervision (R13). Every agent touches several layers at once.</desc>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="60" y="64" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">The fourteen layers, grouped by the job they do</text>
+<rect x="40" y="100" width="380" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="78" cy="154.0" r="22" fill="#475569"/>
+<text x="78" y="162.0" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+<text x="116" y="148" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Run the agents</text>
+<text x="116" y="180" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Where agents run</text>
+<rect x="440" y="100" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="460" y="132" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R01</text>
+<text x="460" y="162" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Infrastructure and compute</text>
+<rect x="819" y="100" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="839" y="132" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R07</text>
+<text x="839" y="162" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Agent platform</text>
+<rect x="40" y="220" width="380" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="78" cy="274.0" r="22" fill="#475569"/>
+<text x="78" y="282.0" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+<text x="116" y="268" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Let them act</text>
+<text x="116" y="300" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">How agents reach systems</text>
+<rect x="440" y="220" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="460" y="252" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R03</text>
+<text x="460" y="282" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Integration fabric</text>
+<rect x="819" y="220" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="839" y="252" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R04</text>
+<text x="839" y="282" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Systems of record</text>
+<rect x="1198" y="220" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1218" y="252" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R05</text>
+<text x="1218" y="282" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Line of business and OT</text>
+<rect x="40" y="340" width="380" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="78" cy="394.0" r="22" fill="#475569"/>
+<text x="78" y="402.0" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+<text x="116" y="388" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Give them knowledge</text>
+<text x="116" y="420" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">What agents may read</text>
+<rect x="440" y="340" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="460" y="372" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R02</text>
+<text x="460" y="402" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Data platform</text>
+<rect x="819" y="340" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="839" y="372" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R14</text>
+<text x="839" y="402" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Agent data engineering</text>
+<rect x="40" y="460" width="380" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="78" cy="514.0" r="22" fill="#475569"/>
+<text x="78" y="522.0" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+<text x="116" y="508" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Control and check them</text>
+<text x="116" y="540" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Identity, rules, traces</text>
+<rect x="440" y="460" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="460" y="492" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R10</text>
+<text x="460" y="522" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Security and identity</text>
+<rect x="819" y="460" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="839" y="492" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R11</text>
+<text x="839" y="522" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Governance, risk and</text>
+<text x="839" y="549" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">sovereignty</text>
+<rect x="1198" y="460" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1218" y="492" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R12</text>
+<text x="1218" y="522" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Observability and FinOps</text>
+<rect x="40" y="580" width="380" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="78" cy="634.0" r="22" fill="#475569"/>
+<text x="78" y="642.0" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+<text x="116" y="628" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Improve them</text>
+<text x="116" y="660" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Tests and safe change</text>
+<rect x="440" y="580" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="460" y="612" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R06</text>
+<text x="460" y="642" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Intelligence and learning</text>
+<rect x="40" y="700" width="380" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="78" cy="754.0" r="22" fill="#475569"/>
+<text x="78" y="762.0" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+<text x="116" y="748" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#0f172a">Work with people</text>
+<text x="116" y="780" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">Where people meet agents</text>
+<rect x="440" y="700" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="460" y="732" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R08</text>
+<text x="460" y="762" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Productivity and</text>
+<text x="460" y="789" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">collaboration</text>
+<rect x="819" y="700" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="839" y="732" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R09</text>
+<text x="839" y="762" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Experience and channels</text>
+<rect x="1198" y="700" width="362" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1218" y="732" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1e3a8a">R13</text>
+<text x="1218" y="762" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">Operating model and</text>
+<text x="1218" y="789" font-family="Arial,sans-serif" font-size="22" fill="#1e3a8a">supervision</text>
+<text x="800" y="862" font-family="Arial,sans-serif" font-size="20" fill="#0f172a" text-anchor="middle">Every agent touches several layers at once. Each layer has its own page.</text>
+</svg>

@@ -28,7 +28,7 @@ Instrument from the first agent using OpenTelemetry GenAI conventions, with eyes
 
 ### 4. Economics
 
-The FinOps model the evidence supports (H26, refined): **a sponsor-owned budget envelope per agent with unit-economics targets and variance alerting**; FinOps provides metering, showback maturing to chargeback, and anomaly detection; central funding stays on the shared platform layer. The Sponsor construct is productized (identity platforms carry a literal sponsor role; workforce systems budget agents; control planes ship per-agent billing policies with limits and alerts; CRM platforms meter to the agent-action level at $0.10 per action [vendor]), but no enterprise has published running per-agent budgets yet, so the guide labels this recommended design, not established practice. "Salary-like" is deliberately avoided: consumption is volatile, and the working analogy is a budget envelope with alarms. Unit economics get real anchors: outcome-priced agents exist ($0.99 to $2.00 per automated resolution [vendor pricing] against a $6-12 human-handled comparator), and where outcomes are not priced, action/credit metering supplies the unit.
+The FinOps model the evidence supports (H26, refined): **a sponsor-owned agent budget with unit-economics targets and variance alerting**; FinOps provides metering, showback maturing to chargeback, and anomaly detection; central funding stays on the shared platform. The Sponsor construct is productized (identity platforms carry a literal sponsor role; workforce systems budget agents; agent management platforms ship per-agent billing policies with limits and alerts; CRM platforms meter to the agent-action level at $0.10 per action [vendor]), but no enterprise has published running per-agent budgets yet, so the guide labels this recommended design, not established practice. "Salary-like" is deliberately avoided: consumption is volatile, and the working analogy is a budget with alarms. Unit economics get real anchors: outcome-priced agents exist ($0.99 to $2.00 per automated resolution [vendor pricing] against a $6-12 human-handled comparator), and where outcomes are not priced, action/credit metering supplies the unit.
 
 ### 5. Learning
 
@@ -52,15 +52,15 @@ Summary; map below. The category consolidated dramatically in twelve months: mos
 
 ### 10. Target state
 
-Every agent traced end to end (session, model calls, tool calls, cost) on standards-based vocabulary with a translation layer; offline and online evals with calibrated judges gating all behavior changes through staged rollouts; per-agent budget envelopes with sponsor ownership, hard caps, and anomaly alerting; quality SLOs (session success, containment, escalation) tracked per release; two-estate visibility bridged (licensed platform analytics APIs plus metered-estate telemetry in one view).
+Every agent traced end to end (session, model calls, tool calls, cost) on standards-based vocabulary with a mapping to other vocabularies; offline and online evals with calibrated judges gating all behavior changes through staged rollouts; per-agent budgets with sponsor ownership, hard caps, and anomaly alerting; quality SLOs (session success, containment, escalation) tracked per release; visibility of your own agents and vendor-embedded agents bridged (vendor platform analytics APIs plus telemetry from your own gateways in one view).
 
 ### 11. Migration path
 
-Instrument first agents (OTel vocabulary, translation layer); stand up eval discipline (offline, then online, then judge calibration); wire budget caps and anomaly alerts; establish sponsor-owned envelopes with showback; bridge licensed-estate analytics; mature to chargeback where allocation is clean. Stop buying: observability that cannot ingest or export standard telemetry; eval tooling with no path from production traces to datasets.
+Instrument first agents (OTel vocabulary, a mapping to other vocabularies); stand up eval discipline (offline, then online, then judge calibration); wire budget caps and anomaly alerts; establish sponsor-owned budgets with showback; bridge vendor-embedded agent analytics; mature to chargeback where allocation is clean. Stop buying: observability that cannot ingest or export standard telemetry; eval tooling with no path from production traces to datasets.
 
 ### 12. Metrics
 
-Trace coverage (agents, sessions, tool calls); online-eval coverage and judge-calibration currency; canary gate pass rates; cost per session and per outcome; budget-cap trips and anomaly detections; time-to-explain a spend spike (the 20%-can-explain-overnight-doubling stat is the baseline to beat); licensed-estate visibility lag.
+Trace coverage (agents, sessions, tool calls); online-eval coverage and judge-calibration currency; canary gate pass rates; cost per session and per outcome; budget-cap trips and anomaly detections; time-to-explain a spend spike (the 20%-can-explain-overnight-doubling stat is the baseline to beat); vendor-embedded agent visibility lag.
 
 ### 13. Data readiness and curation
 
@@ -75,7 +75,7 @@ Traces are a curated corpus: retention, redaction, and provenance rules apply; e
 | # | Concern | Treatment at this layer |
 |---|---|---|
 | C1 | Identity & access | Trace access controlled (traces contain prompts and data); per-agent cost attribution keyed to agent identity |
-| C2 | Observability | The track itself; coverage metrics; two-estate bridging |
+| C2 | Observability | The track itself; coverage metrics; bridging your own and vendor-embedded agents |
 | C3 | Traceability & audit | Traces as evidence artifacts (R11); retention and integrity; span-level linkage answer-to-source |
 | C4 | Grounding in reality | Eval datasets curated from production; judge calibration against human labels |
 | C5 | Impersonation & authenticity | Telemetry authenticity (agents cannot forge their own traces; collection outside the agent's control) |

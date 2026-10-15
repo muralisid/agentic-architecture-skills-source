@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2912" role="img" aria-labelledby="title desc">
+<title id="title">Billing exceptions with agents: who does what</title>
+<desc id="desc">Swimlane of the billing exception process with an agent. Three lanes are people: operations manager and QA lead, hardship or complaints officer, and specialist and team lead. Four lanes are the billing system, fixed rules, the B2B gateway and the evidence store. The agent has its own lane. A read or bill fails a check in the billing system. Step 1: the agent notices the case. Step 2: a fixed rule checks for protected customers. Step 3: if protected, a hardship or complaints officer decides. Steps 4 and 5: the agent gathers evidence and proposes a resolution. Step 6: the agent drafts a market request into the B2B gateway queue. A fixed rule approves fee-free requests and a specialist approves fee-bearing orders. Step 7: a fixed rule releases plausible cases. Step 8: a specialist approves the rest. Step 9: the agent drafts the customer message, and a person or template rule sends it. Step 10: a QA lead checks a sample. Step 11: the agent drafts the report and the manager signs. The evidence store sits outside the agent. It holds traces, case history, the B2B message log and QA results.</desc>
+<rect x="0" y="0" width="720" height="2912" fill="#f8f5ef"/>
+<text x="24.0" y="48.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Billing exceptions with agents: who</text>
+<text x="24.0" y="88.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">does what</text>
+<text x="24.0" y="138.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The model never releases a bill. A fixed rule or a</text>
+<text x="24.0" y="170.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">person approves every change.</text>
+<rect x="24" y="204" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<rect x="44" y="222" width="44" height="44" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="112.0" y="250.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Billing system (CIS)</text>
+<text x="112.0" y="284.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">A read or a bill fails a check. A case is</text>
+<text x="112.0" y="316.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">created.</text>
+<path d="M66 344 V366" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,374 58,362 74,362" fill="#475569"/>
+<rect x="24" y="378" width="672" height="136" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="418" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="427.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">1</text>
+<text x="112.0" y="424.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="458.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Notices the new case from an event or the</text>
+<text x="112.0" y="490.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">worklist.</text>
+<path d="M66 518 V540" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,548 58,536 74,536" fill="#475569"/>
+<rect x="24" y="552" width="672" height="136" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<circle cx="66" cy="592" r="24" fill="#ffffff" stroke="#475569" stroke-width="3"/>
+<text x="66.0" y="601.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle">2</text>
+<text x="112.0" y="598.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Fixed rule</text>
+<text x="112.0" y="632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks for hardship, a payment plan, life</text>
+<text x="112.0" y="664.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">support, a complaint or a disconnection.</text>
+<path d="M66 692 V714" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,722 58,710 74,710" fill="#475569"/>
+<rect x="24" y="726" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="766" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="775.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">3</text>
+<text x="112.0" y="772.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Hardship or complaints officer</text>
+<text x="112.0" y="806.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">If any flag is set, a person decides</text>
+<text x="112.0" y="838.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">everything.</text>
+<polygon points="124,851 135,862 124,873 113,862" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="870.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The officer decides</text>
+<path d="M66 904 V926" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,934 58,922 74,922" fill="#475569"/>
+<rect x="24" y="938" width="672" height="168" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="978" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="987.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">4</text>
+<text x="112.0" y="984.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="1018.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Gathers reads, meter events, bills and</text>
+<text x="112.0" y="1050.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">notes. Starts from the release confidence</text>
+<text x="112.0" y="1082.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">score.</text>
+<path d="M66 1110 V1132" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1140 58,1128 74,1128" fill="#475569"/>
+<rect x="24" y="1144" width="672" height="136" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="1184" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="1193.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">5</text>
+<text x="112.0" y="1190.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="1224.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Proposes a resolution with its evidence and</text>
+<text x="112.0" y="1256.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">a confidence level.</text>
+<path d="M66 1284 V1306" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1314 58,1302 74,1302" fill="#475569"/>
+<rect x="24" y="1318" width="672" height="212" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="1358" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="1367.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">6</text>
+<text x="112.0" y="1364.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="1398.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Drafts a market request into the B2B</text>
+<text x="112.0" y="1430.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">gateway queue.</text>
+<polygon points="124,1443 135,1454 124,1465 113,1454" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="148.0" y="1462.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">A fixed rule approves fee-free requests</text>
+<polygon points="124,1481 135,1492 124,1503 113,1492" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1500.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A specialist approves fee-bearing orders</text>
+<path d="M66 1534 V1556" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1564 58,1552 74,1552" fill="#475569"/>
+<rect x="24" y="1568" width="672" height="174" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<circle cx="66" cy="1608" r="24" fill="#ffffff" stroke="#475569" stroke-width="3"/>
+<text x="66.0" y="1617.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle">7</text>
+<text x="112.0" y="1614.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Fixed rule in the billing system</text>
+<text x="112.0" y="1648.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Releases plausible cases inside hard</text>
+<text x="112.0" y="1680.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">limits.</text>
+<polygon points="124,1693 135,1704 124,1715 113,1704" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="148.0" y="1712.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">The rule approves. A sample is checked.</text>
+<path d="M66 1746 V1768" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1776 58,1764 74,1764" fill="#475569"/>
+<rect x="24" y="1780" width="672" height="142" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1820" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1829.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">8</text>
+<text x="112.0" y="1826.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Specialist</text>
+<text x="112.0" y="1860.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Approves the rest in the worklist.</text>
+<polygon points="124,1873 135,1884 124,1895 113,1884" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1892.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Team lead above a money limit</text>
+<path d="M66 1926 V1948" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1956 58,1944 74,1944" fill="#475569"/>
+<rect x="24" y="1960" width="672" height="142" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="2000" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="2009.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">9</text>
+<text x="112.0" y="2006.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="2040.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Drafts the customer message.</text>
+<polygon points="124,2053 135,2064 124,2075 113,2064" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="2072.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A person or a template rule sends it</text>
+<path d="M66 2106 V2128" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2136 58,2124 74,2124" fill="#475569"/>
+<rect x="24" y="2140" width="672" height="104" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="2180" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="2189.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">10</text>
+<text x="112.0" y="2186.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">QA lead</text>
+<text x="112.0" y="2220.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks a sample of released cases.</text>
+<path d="M66 2248 V2270" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2278 58,2266 74,2266" fill="#475569"/>
+<rect x="24" y="2282" width="672" height="142" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="2322" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="2331.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">11</text>
+<text x="112.0" y="2328.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="2362.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Drafts the backlog report.</text>
+<polygon points="124,2375 135,2386 124,2397 113,2386" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="2394.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The operations manager signs it</text>
+<path d="M66 2428 V2450" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2458 58,2446 74,2446" fill="#475569"/>
+<rect x="24" y="2462" width="672" height="168" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<rect x="44" y="2480" width="44" height="44" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="112.0" y="2508.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Evidence store, outside the agent</text>
+<text x="112.0" y="2542.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Traces, case history, the B2B message log</text>
+<text x="112.0" y="2574.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">and QA results. The agent cannot change</text>
+<text x="112.0" y="2606.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">them.</text>
+<circle cx="40" cy="2672" r="12" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="64.0" y="2680.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<circle cx="40" cy="2708" r="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="3"/>
+<text x="64.0" y="2716.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Agent</text>
+<circle cx="40" cy="2744" r="12" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="64.0" y="2752.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<circle cx="40" cy="2780" r="12" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
+<text x="64.0" y="2788.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Fixed rule</text>
+<circle cx="40" cy="2816" r="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="3"/>
+<text x="64.0" y="2824.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Evidence store</text>
+<polygon points="40,2840 52,2852 40,2864 28,2852" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<text x="64.0" y="2860.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval, by the person or rule named</text>
+</svg>

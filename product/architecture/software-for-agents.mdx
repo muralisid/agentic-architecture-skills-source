@@ -1,36 +1,49 @@
 ---
 title: "Make software that agents can use"
-description: "Give external agents clear capabilities, bounded authority, and reliable business operations."
-position: "Recommended design questions. These patterns require implementation and testing within each product."
-lastReviewed: "2026-09-17"
+description: "Give outside agents clear operations, bounded authority and reliable results, so they can use your product without you losing control."
+position: "Recommended design questions. These patterns need implementation and testing within each product."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [delegation, enforcement, r03, decisions, zones]
 ---
 
-An agent using your product needs to discover what it can do, invoke a well-defined operation, and understand the result. Design that experience alongside the human interface.
+An outside agent wants to use your product for a customer. How do you let it work without losing control of what it does? Let it discover what it may do. Check who is asking at the moment it acts. Preview a consequential change, commit it once, and report what actually happened. Design this beside the human interface.
 
-<TeachingIllustration src="/figures/architecture/software-transactions.svg" mobileSrc="/figures/architecture/software-transactions-mobile.svg" title="An agent requests; the product controls the transaction" alt="Discover: Read tools and limits. Authorize: User, tenant, purpose. Preview: Validate the intended change. Commit: Execute once, record receipt. Confirm: Read status or hand over" caption="A proposed interface pattern. A preview is useful when a change is consequential; not every read needs one." />
+<TeachingIllustration src="/figures/architecture/software-transactions.svg" mobileSrc="/figures/architecture/software-transactions-mobile.svg" title="An agent requests; the product controls the transaction" alt="Discover: Read tools and limits. Authorize: User, tenant, purpose. Preview: Validate the intended change. Commit: Execute once, record receipt. Confirm: Read status or hand over" caption="A proposed interface pattern. A preview is useful when a change is consequential. Not every read needs one." />
 
-## Offer capabilities with clear boundaries
+## Discover: offer operations with clear limits
 
-Document inputs, required permissions, side effects, limits, and error behavior. Expose a business operation such as “create inspection request” instead of allowing arbitrary database changes. Explain which operations only read and which make commitments.
+Document inputs, required permissions, side effects, limits and error behaviour. Offer a business operation such as "create inspection request", not open access to the database. Say which operations only read and which make commitments.
 
-## Carry identity through the operation
+## Authorize: check who is asking, when it acts
 
-Keep the customer, user, agent, and task identifiable. The product checks the delegated permission at execution time. A tenant identifier provided by the caller is not proof that the caller may access that tenant. Keep sensitive content out of error messages and diagnostic traces.
+Keep the customer, the user, the agent and the task identifiable. The product checks the delegated permission at the moment the operation runs. A tenant is one customer organisation's separate space in your product. A tenant identifier sent by the caller is not proof that the caller may access that tenant. Keep sensitive content out of error messages and diagnostic traces. [The delegation chain](/architecture/delegation-chain) shows how the person's identity travels with the request.
 
-## Support work that takes time
+## Preview: validate a consequential change
 
-Return an operation identifier for a long-running job. Provide a documented status check, cancellation rules, and a resumable handover. Make retry behavior explicit: a repeated request must not silently create another purchase, payment, or inspection.
+For a change that commits money, data or work, offer a preview first. The preview checks the change without making it. Changes that move money or create a formal record sit in [the deterministic zones](/architecture/deterministic-zones). There a fixed rule or a named person decides, not the agent.
 
-## Report what actually happened
+## Commit: run it once, even on a retry
 
-Return a receipt containing the operation, affected record identifiers, status, and any remaining conditions. Separate acceptance of a job from its completion. Let people see the evidence, current state, unresolved questions, and choices when a task is handed over.
+Return an operation identifier for a long-running job. Provide a documented status check, rules for cancelling, and a way to hand the work over and resume it. Make retry behaviour explicit. A repeated request must not quietly create another purchase, payment or inspection.
+
+## Confirm: report what actually happened
+
+Return a receipt with the operation, the affected record identifiers, the status and any remaining conditions. Keep accepting a job separate from completing it. When a task is handed to a person, show the evidence, the current state, the open questions and the choices.
 
 ## Make agent use operable
 
-Publish limits and metering semantics. Test incorrect inputs, expired permissions, partial failures, duplicate requests, and cross-customer access. Include example integrations and a small skill only when it helps agents use the product correctly.
+Publish limits and how use is counted and billed. Test wrong inputs, expired permissions, partial failures, duplicate requests and access across customers. Include example integrations. Add a skill, a small package of instructions for agents, only when it helps them use the product correctly.
 
 ## Choose the simplest interface that works
 
-A clear existing API may be sufficient. A tool protocol helps discovery and invocation but does not replace authorization, transaction design, or support ownership. See [tool gateway decisions](/decisions), [integration](/layers/r03-integration-fabric), and [identity](/architecture/identity-chain).
+A clear existing API may be enough. A tool protocol is a standard way for agents to find and call operations. It helps discovery and calling, but it does not replace authorization, transaction design or support ownership. Your own agents reach products like yours through a tool gateway, where [enforcement outside the model](/architecture/enforcement) happens. See the [tool gateway decisions](/decisions) and the [integration fabric layer (R03)](/layers/r03-integration-fabric).
+
+## Evidence and limits
+
+These are design questions, not measured results. Test each pattern within your own product. Tool protocols for agents are still changing.
+
+## Next step
+
+Follow one agent task from request to confirmed result on [follow one inspection task](/architecture/task-walkthrough).

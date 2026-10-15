@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2531" role="img" aria-labelledby="title desc">
+<title id="title">Production measurement with an agent: who does what</title>
+<desc id="desc">Swimlane of the proposed production investigation, in nine steps across six lanes. The agent detects the gap when the daily report publishes. It checks timing, instruments and material. The metal accounting tool runs a statistical mass balance. The agent drafts a measurement check or survey request, which the instrument supervisor or surveyor accepts. The agent prepares a case with ranked explanations, or marks it unresolved. The owner, a metallurgist or accountant, accepts any adjustment in the metal accounting system, which is an approval. Finance and the competent person sign the formal reports, which is an approval. The case store keeps every source, the original image and the calibration.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2531" fill="#f8f5ef"/>
+<text x="28.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Production measurement with an agent:</text>
+<text x="28.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">who does what</text>
+<text x="28.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Proposed design. The agent explains the gap. A</text>
+<text x="28.0" y="179.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">named owner changes the record.</text>
+<rect x="28.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="68.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Agent step</text>
+<rect x="358.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="398.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<rect x="28.0" y="236.0" width="28.0" height="26.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="68.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<rect x="358.0" y="236.0" width="28.0" height="26.0" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="398.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Evidence store</text>
+<path d="M42.0 276.0 L54.0 288.0 L42.0 300.0 L30.0 288.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="296.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval</text>
+<rect x="28.0" y="348.0" width="664.0" height="213.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="374.0" r="21" fill="#7c3aed"/><text x="68.0" y="382.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="100.0" y="354.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="381.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="428.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Detect</text>
+<text x="48.0" y="464.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">When the daily report publishes, the agent</text>
+<text x="48.0" y="495.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">reads the fleet database copy, belt-scale</text>
+<text x="48.0" y="526.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">totals and camera estimates.</text>
+<path d="M360.0 563.0 L360.0 595.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="601.0" width="664.0" height="224.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<rect x="48.0" y="607.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="62.0" y="634.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<circle cx="68.0" cy="672.0" r="19" fill="#7c3aed"/><text x="68.0" y="680.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="98.0" y="681.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Check timing</text>
+<circle cx="68.0" cy="718.0" r="19" fill="#7c3aed"/><text x="68.0" y="726.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="98.0" y="727.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Check instruments</text>
+<circle cx="68.0" cy="764.0" r="19" fill="#7c3aed"/><text x="68.0" y="772.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="98.0" y="773.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Check material</text>
+<path d="M360.0 827.0 L360.0 859.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="865.0" width="664.0" height="213.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="891.0" r="21" fill="#2563eb"/><text x="68.0" y="899.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="100.0" y="871.0" width="229.6" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="898.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Accounting tool</text>
+<text x="48.0" y="945.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Mass balance</text>
+<text x="48.0" y="981.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The metal accounting tool runs a statistical</text>
+<text x="48.0" y="1012.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">mass balance, in the style of the AMIRA P754</text>
+<text x="48.0" y="1043.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">code.</text>
+<path d="M360.0 1080.0 L360.0 1112.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1118.0" width="664.0" height="274.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1144.0" r="21" fill="#7c3aed"/><text x="68.0" y="1152.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="100.0" y="1124.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="1151.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="1198.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Ask to measure</text>
+<text x="48.0" y="1234.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent drafts an EAM "measurement check" for</text>
+<text x="48.0" y="1265.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">a belt scale, or a survey request for a</text>
+<text x="48.0" y="1296.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">stockpile.</text>
+<path d="M64.0 1327.0 L78.0 1341.0 L64.0 1355.0 L50.0 1341.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="90.0" y="1349.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The instrument supervisor or surveyor</text>
+<text x="90.0" y="1380.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">accepts the request.</text>
+<path d="M360.0 1394.0 L360.0 1426.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1432.0" width="664.0" height="213.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1458.0" r="21" fill="#7c3aed"/><text x="68.0" y="1466.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="100.0" y="1438.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="1465.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="1512.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Prepare case</text>
+<text x="48.0" y="1548.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Size, timing, ranked explanations, evidence and</text>
+<text x="48.0" y="1579.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">uncertainty. "Unresolved" when evidence is</text>
+<text x="48.0" y="1610.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">missing.</text>
+<path d="M360.0 1647.0 L360.0 1679.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1685.0" width="664.0" height="244.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1711.0" r="21" fill="#d97706"/><text x="68.0" y="1719.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="100.0" y="1691.0" width="95.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1718.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Owner</text>
+<path d="M658.0 1695.0 L673.0 1710.0 L658.0 1725.0 L643.0 1710.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="1765.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Accept</text>
+<text x="48.0" y="1801.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The metallurgist or production accountant</text>
+<text x="48.0" y="1832.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">accepts any adjustment in the metal accounting</text>
+<text x="48.0" y="1863.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">system, with the case ID. A manager approves</text>
+<text x="48.0" y="1894.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">above a set size.</text>
+<path d="M360.0 1931.0 L360.0 1963.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1969.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1995.0" r="21" fill="#d97706"/><text x="68.0" y="2003.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<rect x="100.0" y="1975.0" width="135.5" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2002.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Sign-off</text>
+<path d="M658.0 1979.0 L673.0 1994.0 L658.0 2009.0 L643.0 1994.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="2049.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Formal reports</text>
+<text x="48.0" y="2085.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Finance and the competent person sign the</text>
+<text x="48.0" y="2116.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">royalty return, the market report and the</text>
+<text x="48.0" y="2147.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">reserve statement.</text>
+<path d="M360.0 2184.0 L360.0 2216.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2222.0" width="664.0" height="173.0" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="48.0" y="2262.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#134e4a">Case store</text>
+<text x="48.0" y="2298.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every source reference, the original camera</text>
+<text x="48.0" y="2329.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">image and its calibration. The adjustment</text>
+<text x="48.0" y="2360.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">carries the case ID and the approver.</text>
+<text x="28.0" y="2439.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent has no write path to the metal</text>
+<text x="28.0" y="2470.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">accounting system or the formal reports.</text>
+</svg>

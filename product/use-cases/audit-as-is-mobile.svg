@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2404" role="img" aria-labelledby="title desc">
+<title id="title">Recurring audit issues today: who does what</title>
+<desc id="desc">Swimlane of how recurring audit findings are handled today, in nine steps across five lanes. The assurance manager plans the annual program. Auditors audit and write a report. Findings are copied into the audit system by hand. Site owners are assigned actions and close them, often without a check. An assurance analyst groups findings by their words. The head of assurance reports repeats to the board. The executive decides on a systemic fix, which is an approval. Assurance checks it at the next audit, months later.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2404" fill="#f8f5ef"/>
+<text x="28.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Recurring audit issues today: who</text>
+<text x="28.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">does what</text>
+<text x="28.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Typical practice. Findings are grouped by their</text>
+<text x="28.0" y="179.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">words, and the check comes a year later.</text>
+<rect x="28.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="68.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<rect x="358.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="398.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<path d="M42.0 238.0 L54.0 250.0 L42.0 262.0 L30.0 250.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval</text>
+<rect x="28.0" y="310.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="336.0" r="21" fill="#d97706"/><text x="68.0" y="344.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="100.0" y="316.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="343.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Assurance</text>
+<text x="48.0" y="390.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Plan</text>
+<text x="48.0" y="426.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The assurance manager plans the annual audit</text>
+<text x="48.0" y="457.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">program by site and topic.</text>
+<path d="M360.0 494.0 L360.0 526.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="532.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="558.0" r="21" fill="#d97706"/><text x="68.0" y="566.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="100.0" y="538.0" width="135.5" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="565.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Auditors</text>
+<text x="48.0" y="612.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Audit</text>
+<text x="48.0" y="648.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Internal or third-party auditors visit the site</text>
+<text x="48.0" y="679.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">and write findings in a Word or PDF report.</text>
+<path d="M360.0 716.0 L360.0 748.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="754.0" width="664.0" height="182.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="780.0" r="21" fill="#2563eb"/><text x="68.0" y="788.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="100.0" y="760.0" width="189.3" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="787.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Audit system</text>
+<text x="48.0" y="834.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Enter findings</text>
+<text x="48.0" y="870.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Findings are copied into the audit system.</text>
+<text x="48.0" y="901.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Severity and category are set by hand.</text>
+<path d="M360.0 938.0 L360.0 970.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="976.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1002.0" r="21" fill="#d97706"/><text x="68.0" y="1010.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="100.0" y="982.0" width="175.8" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1009.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Site owners</text>
+<text x="48.0" y="1056.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Assign actions</text>
+<text x="48.0" y="1092.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each action gets a site owner and a due date in</text>
+<text x="48.0" y="1123.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">the HSE action module.</text>
+<path d="M360.0 1160.0 L360.0 1192.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1198.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1224.0" r="21" fill="#d97706"/><text x="68.0" y="1232.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="100.0" y="1204.0" width="175.8" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1231.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Site owners</text>
+<text x="48.0" y="1278.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Close actions</text>
+<text x="48.0" y="1314.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Site owners upload a document or a note.</text>
+<text x="48.0" y="1345.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Actions are often closed without a check.</text>
+<path d="M360.0 1382.0 L360.0 1414.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1420.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1446.0" r="21" fill="#d97706"/><text x="68.0" y="1454.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="100.0" y="1426.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1453.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Assurance</text>
+<text x="48.0" y="1500.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Find patterns</text>
+<text x="48.0" y="1536.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">An assurance analyst groups findings by their</text>
+<text x="48.0" y="1567.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">words, with keyword search or topic models.</text>
+<path d="M360.0 1604.0 L360.0 1636.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1642.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1668.0" r="21" fill="#d97706"/><text x="68.0" y="1676.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="100.0" y="1648.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1675.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Assurance</text>
+<text x="48.0" y="1722.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Report</text>
+<text x="48.0" y="1758.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The head of assurance reports repeat findings</text>
+<text x="48.0" y="1789.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">and overdue actions to the board committee.</text>
+<path d="M360.0 1826.0 L360.0 1858.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1864.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1890.0" r="21" fill="#d97706"/><text x="68.0" y="1898.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="100.0" y="1870.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1897.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Executive</text>
+<path d="M658.0 1874.0 L673.0 1889.0 L658.0 1904.0 L643.0 1889.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="1944.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Decide fix</text>
+<text x="48.0" y="1980.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The executive or standard owner changes a</text>
+<text x="48.0" y="2011.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">standard or funds a program.</text>
+<path d="M360.0 2048.0 L360.0 2080.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2086.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2112.0" r="21" fill="#d97706"/><text x="68.0" y="2120.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<rect x="100.0" y="2092.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2119.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Assurance</text>
+<text x="48.0" y="2166.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Check</text>
+<text x="48.0" y="2202.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Assurance checks whether the fix worked at the</text>
+<text x="48.0" y="2233.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">next audit cycle, months later.</text>
+<text x="28.0" y="2312.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Annual program. Actions due in 30 to 90 days</text>
+<text x="28.0" y="2343.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">(typical, unsourced).</text>
+</svg>

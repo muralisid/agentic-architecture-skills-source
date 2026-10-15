@@ -1,120 +1,161 @@
 ---
 title: "Intelligence and learning"
 icon: "Lightbulb"
-description: "How agents improve safely: domain experts set the tests, model judges grade at volume with human spot checks, and only proven rules become enforceable policy outside the model."
+description: "How agents get better without quietly getting worse: experts own the tests, model judges grade with human spot checks, and a rule reaches production only after it survives attempts to break it."
+position: "Design guidance built on dated studies and vendor documents. No published evidence shows who should own agent quality. This guide recommends domain experts."
+lastReviewed: "2026-10-15"
 hero_figure: "layer-06-hero"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [layers, flywheel, capabilities, lifecycle, autonomy, enforcement, r12, concern-matrix]
 ---
 
-<PlainTerms>
-This page is about how <Term k="agent">agents</Term> get better over time without getting worse in ways nobody notices. The people who know the work write the tests, and a <Term k="model">model</Term> does most of the grading with humans checking a sample. Any new rule has to prove itself against past failures before it counts. The thing to remember: improvement is a controlled release process with a way back, not something the agent does to itself.
-</PlainTerms>
+The intelligence and learning layer (R06) is where an organisation builds, tests and improves its models. It is one of the [fourteen layers](/layers) you already own. Today it holds data science platforms and machine learning built into packaged products. It also holds image analytics bought as a service and a few general assistants. Agents change its job. An agent's behaviour can shift with every prompt edit, model upgrade or new rule. So this layer must provide evaluation and release, one of the [seven capabilities](/architecture/system-view) an agent platform adds. That means tests owned by experts and model graders checked against people. It also means a gate that every change passes before production, with a way back. The loop that runs all this is the [learning flywheel](/architecture/learning-flywheel). Improvement becomes a tested release, not something the agent does to itself.
 
-## Target state
+## What sits in this layer today
 
-**In short:** Agents improve through a tested, reversible process, and nothing changes in production until it has passed offline checks.
+Here is what a typical estate already runs in this layer, before any agent arrives. Vendors in brackets are examples, not a market claim.
 
-Learning is an operating discipline, not a one-off training activity. An <Term k="eval suite">eval suite</Term> (a set of test tasks with known right answers) defines the bar. Domain experts own it, and it is built from real failures. <Term k="judge">Model judges</Term> grade outcomes at volume, and people verify a sample of those grades. Production <Term k="trace">traces</Term> (the step-by-step records of agent runs) and eval datasets share one data layer. When a live run scores badly, its trace moves into the offline suite automatically. A candidate rule is <Term k="promotion">promoted</Term> only if it survives its <Term k="counterexample">counterexamples</Term> and does not regress the eval suite. Promoted rules land in a <Term k="policy-as-code">policy-as-code</Term> tier outside the model, and every one carries a demotion path. <Term k="distillation">Distillation</Term> (teaching a smaller model to imitate a larger one) runs only where volume justifies it. Reinforcement <Term k="fine-tuning">fine-tuning</Term> sits only behind a grader that cannot be gamed. The standing rule has three parts. The system <Term k="flywheel">flywheel</Term> is offline, evaluated, versioned, and can be rolled back. <Term k="instance memory">Instance memory</Term> is online and immediate. Learnings move from the second into the first, never the reverse.
+| System category | Electricity distributor | Water utility | Hospital network | Generator, oil and gas, or miner |
+|---|---|---|---|---|
+| Data science and forecasting platforms (Databricks, Azure ML, SageMaker, SAS) | Load forecasting and asset failure models. SA Power Networks ranked replacement work with an outside engine (2022) | Same platforms | Not named in the research | Price and demand forecasts for bidding. Predictive maintenance: Equinor credits USD 120 million since 2020 (January 2026) |
+| Machine learning inside packaged products | SAP scores each implausible meter read with a "release confidence" [vendor] | Same, where billing runs on SAP | Vendor predictive scores in Epic sites, for deterioration and readmission | Asset performance models (AVEVA, GE Vernova, Aspen Mtell) |
+| Rules and optimisation inside operational systems | Validation rules in meter data management | Same | Drug interaction and allergy alerts. Early warning scores (Between the Flags, Q-ADDS). Sepsis pathways | Advanced process control and expert control within set limits. Reinforcement-learning control at two plants (Yokogawa) [vendor] |
+| Image and signal analytics bought as a service | Vegetation imagery (Tapestry, Neara, AiDash, Overstory, LiveEO) | Network event analytics (TaKaDu, StormHarvester). Acoustic leak models | Radiology AI (Annalise.ai, Lunit) | Drone thermography. Ore and fragmentation vision. Seismic machine learning (Equinor, ADNOC) |
+| Assistants and scribes | Microsoft 365 Copilot. SA Power Networks runs an internal "Ask AI" over manuals (September 2026) | Microsoft 365 Copilot, widely used in UK water (June 2026) | Ambient scribes (Heidi, Lyrebird, iMedX). Health NZ bought 1,000 scribe licences for its emergency departments [vendor] | Copilots such as Woodside's Startup Advisor for LNG plant start-up (July 2026) |
+| Tests and monitoring of model behaviour | No evaluation sets built from specialists' past decisions yet | Same | Rare. Few services monitor model performance after go-live (typical, unsourced) | No agent evaluation practice named in the research |
+| Vendor agents announced for the industry | Itron IEE Cloud AI with agent-assisted workflows. Announced September 2026. General availability not confirmed [vendor] | None specific to water found | Microsoft Healthcare Agent Orchestrator for tumour board preparation. Oxford pilot approved December 2025. No Australian or NZ site found [vendor] | Seeq Agent Q, announced March 2026. AspenTech AVA advisors, launched May 2026 but not named. Cognite Atlas AI root-cause agents at Aker BP [vendor] |
+
+Standards in use: ISO/IEC 42001 and the NIST AI Risk Management Framework. Energy adds ISO/IEC 23894 and ISO/IEC TR 5469. Hospitals add the TGA rules for software as a medical device and the ACSQHC AI Clinical Use Guide (August 2025). The full estates are on the [utilities](/use-cases/utilities), [healthcare](/use-cases/healthcare) and [energy](/use-cases/energy) pages.
+
+## What agents add
 
 <GuideFigure id="layer-06-hero" fullWidth />
 
-<TeachingIllustration src="/images/layers/r06-improvement-speeds-labeled-v1.webp" alt="Prompt and context changes move quickly, retrieval and memory changes move at a governed medium speed, and model-weight changes move slowly; all three pass a locked expert-owned evaluation before production." title="The safest improvement path is the fastest and most reversible" caption="Begin with prompt and context, move to governed retrieval or memory only when needed, and change weights rarely. Every path converges on the same locked evaluation and no-regression gate." />
+Agents improve in three ways, at three speeds. The fastest is changing the <Term k="prompt">prompt</Term> and the context the agent sees. It is cheap, quick and easy to undo. The middle speed is changing what the agent retrieves and remembers. That work is governed, and the [agent data engineering layer (R14)](/layers/r14-agent-data-engineering) covers it. The slowest is changing the model's weights. That is rare, and it stays offline behind evaluation, safety review and rollback.
 
-| Component | Responsibility | Control it hosts | Where it runs |
-|---|---|---|---|
-| Eval suite | Define correct behavior from real failures | The promotion bar and regression baseline; two-expert agreement per task | Versioned like code, owned by domain subject-matter experts (SMEs) |
-| Judge fleet | Grade outcomes at volume | Structured rubric with an Unknown option; calibration against human labels; pinned versions | Pinned model endpoints, decoupled from the optimizer |
-| Human verification slice | Sampled review for rare classes and defensible labels | Judge-to-human agreement tracking | Domain experts, sampled rather than exhaustive |
-| Flywheel data layer | One store spanning production traces and eval datasets | Auto-promotion of failing traces; redaction before entry | Your data platform |
-| Promotion pipeline | Take candidate rules to hard rules | Counterexample survival, eval regression, human approval; demotion and rollback per artifact | Offline, run like a continuous-integration (CI) pipeline |
-| Policy-as-code tier | Execute promoted hard rules | Versioned gates deployed independently of the model | Tool and operating-system boundary (the enforcement layer of R10, security and identity) |
-| Distillation and optimization pipeline | Compress and maintain models where volume justifies it | Teacher-student accuracy gap on a locked suite | Offline training infrastructure |
+<TeachingIllustration src="/images/layers/r06-improvement-speeds-labeled-v1.webp" title="The safest improvement path is the fastest and most reversible" alt="Three paths lead to production. Prompt and context changes are fast, cheap and reversible. Retrieval and memory changes move at a medium speed under governed curation. Model weight changes are slow, rare and offline only. All three pass the same locked, expert-owned evaluation before production. Nothing changes in production until it passes offline checks." caption="Begin with prompt and context. Move to retrieval or memory only when needed. Change weights rarely. Every path passes the same locked evaluation." />
 
-## Mechanisms
+### Production and testing share one store
 
-### Three loops at three speeds
+One choice decides whether improvement builds up over time. Production traces and test datasets should share one store. A <Term k="trace">trace</Term> is the step-by-step record of one agent run. When a live run scores badly, its trace becomes a new test automatically. Uber runs this loop. A person reviews each weak production case before it joins the test set. Databricks bought this capability with Quotient AI on 11 March 2026.
 
-**In short:** Agents improve in three ways at three speeds, and changing the model's weights is the slowest and rarest.
+### Judges grade, people check the judges
 
-The fastest loop is <Term k="context">context</Term> and <Term k="prompt">prompt</Term> improvement: cheap, quick, and reversible. The middle loop is <Term k="retrieval">retrieval</Term> and memory <Term k="curation">curation</Term>, which is governed and runs at medium speed (the mechanics are on the agent data engineering page, R14). The slowest loop is weight updates, which are gated and rare in practice. Weight updates to frontier models (the largest, most capable current models) stay offline behind evaluation, safety review, and rollback. Continual pretraining (topping up a model's base training with new data) runs quarterly to semiannually. Low-rank adaptation (LoRA), a lightweight form of fine-tuning, does not prevent catastrophic forgetting, where the model loses what it knew before. One architectural choice separates pipelines that compound from pipelines that stagnate: whether production traces and offline eval datasets share a data layer. When they do, a failing online score promotes the trace into the eval set automatically. Uber runs exactly this loop: a production weakness is found, a human reviews it, and the example enters the eval dataset. Databricks bought the capability outright with Quotient AI (11 March 2026).
+Model <Term k="judge">judges</Term> grade outcomes at volume. A judge is a model that scores another model's work against a rubric. The rubric includes an explicit "Unknown" option. Judges grade outcomes, not the exact steps the agent took. People check a sample of the grades. Nothing grades its own work, so the process that proposes a change never scores it. Judges drift on hosted endpoints. So each judge is pinned to a version and checked against human labels as a standing job. The [observability and FinOps layer (R12)](/layers/r12-observability-and-finops) runs that check day to day.
 
-### Governed rule promotion, revised by evidence
+### A rule earns its place
 
-**In short:** Rules earn promotion by surviving real failure cases and the test suite, and writing good rules proved the hard part.
+<TeachingIllustration src="/images/layers/r06-rule-promotion-labeled-v1.webp" title="A rule becomes policy only after it survives attempts to break it" alt="A real failure is labelled by experts and turned into a candidate rule. A counterexample search tries to break the rule. If a counterexample is found, the rule goes back for revision or rejection. A rule that survives then runs against the full test suite. It is promoted to policy outside the model. Beside the flow, a model judge is checked against humans and never grades its own work. The cycle is test, promote, monitor, demote." caption="Weak rules go back for revision. Promoted rules live outside the model, where they can be versioned, watched and removed." />
 
-<TeachingIllustration src="/images/layers/r06-rule-promotion-labeled-v1.webp" alt="A real failure is labelled by experts, turned into a candidate rule, challenged with counterexamples and the full test suite, then promoted to policy outside the model; model judges are calibrated against humans." title="A rule becomes policy only after it survives attempts to break it" caption="Counterexamples send weak rules back for revision or rejection. Promoted rules live outside the model where they can be versioned, monitored and demoted, while judges are checked against independent human judgement." />
+A rule learned from failures becomes policy only after it survives attempts to break it. Writing good rules is the hard part. In a July 2026 study, only 7 of 32 automatically learned policies were grounded and executable. Rules written by people did help. They lifted a frozen agent's success rate by 5.0 points. The study's own promotion gate failed in both directions. It accepted a rule that cut success from 5 in 20 to 1 in 20. It also rejected a rule worth 5 points.
 
-The 2025 design this page inherited assumed two things: generating candidate rules is easy, and the promotion step is the control point. A July 2026 study of exactly this pipeline (arXiv 2607.20668) inverted that. Execution works. Human-written policies improved a frozen (not retrained) agent built on a 7-billion-parameter (7B) model by 5.0 success points (95 percent confidence interval +1.88 to +9.38). They also cut interaction by 2.64 turns. Generation is the bottleneck. Of 32 automatically learned policies, only 7 were grounded and executable. Another 9 were too generic to change behavior, and 16 were shortcuts, semantic errors, or malformed. Policies learned from traces scored 1.88 points below fixed prompting. The promotion gate failed in both directions. It accepted a rule that cut success from 5 out of 20 to 1 out of 20. It rejected a rule worth +5 points.
+So promote a rule on two tests. It must survive <Term k="counterexample">counterexamples</Term>, which are past cases that would break it. And the full test suite must not get worse. A method called AutoSpec runs this search automatically. It proposes a rule, looks for a trace that breaks it, and refines the rule until none does. It cut false positives by up to 94 percent. It settled within four to five rounds.
 
-Three edits follow. First, gate on counterexample survival plus eval-suite regression, not on how often a pattern appears. The mechanism that works in the published record is AutoSpec (arXiv 2606.24245). It runs counterexample-guided inductive synthesis over annotated traces: it proposes a rule, looks for a trace that breaks it, and refines the rule until none does. It reached an F1 score (a combined accuracy measure; higher is better) of 0.98 on code-execution tasks and 0.93 on embodied tasks, against expert baselines of 0.698 and 0.493. It cut false positives by up to 94 percent and converged in 4 to 5 iterations over 291 traces. Its induced rules scored 4.97 out of 5 for interpretability, against 3.45 out of 5 for neural classifiers. The NVIDIA flywheel likewise keeps its promotion stage manual, with no published auto-promotion thresholds. Second, name the enforcement tier. A rule the model merely reads is still a soft rule. The hard tier is policy-as-code outside the model, versioned and deployed independently (the security and identity layer, R10, reaches the same conclusion from its side). Third, add a demotion path, because accumulated rules are not free. Context files generated by a large language model (LLM) reduced success by about 0.5 percentage points on SWE-bench Lite and by 2 to 3 percentage points on AgentBench. They also raised inference cost (the cost of running the model) by 20 to 23 percent. Even human-maintained files that gained roughly 4 percentage points still cost about 20 percent more.
+A promoted rule lands outside the model, as policy written in code. A rule the model only reads is still advice. The hard version runs at the tool gateway and the policy decision point. The [security and identity layer (R10)](/layers/r10-security-and-identity) owns that check. Every promoted rule also needs a way to be removed. Piled-up rules are not free. Instruction files written by a model cut success by about 0.5 to 3 points on two benchmarks. They also raised running cost by 20 to 23 percent.
 
-### The statically-enforceable ceiling
+### Only some rules can be fixed checks
 
-**In short:** Only about a quarter of written rules can be enforced by fixed checks, so the rest relies on judgement that can itself be attacked.
+A study of 2,116 statements in agent instruction files found that about a quarter can be enforced as written. Most depend on context that cannot be defined in advance. The rest stay judged behaviour, and judges can be attacked. On one benchmark, a class of attacks raised miss rates for 8 of 11 judges. So keep the set of fixed checks small, keep it outside the model, and size it to this limit.
 
-A statement-level analysis (arXiv 2606.25189) covered 64 repositories, 84 agent instruction files, and 2,116 statements. It found that 64 percent of statements are policies, 83 percent of those policies involve system actions, and 74 percent depend on context that cannot be defined in advance. That leaves roughly a quarter of written policy statements enforceable as written. A formal result sits underneath (arXiv 2607.22868). <Term k="deterministic">Deterministic</Term> gates, which decide once before an action runs, enforce strictly less than edit automata, which can suppress or insert actions while a run is under way. The reason is that a decision made before execution cannot be reversed, so it cannot enforce renewal properties (rules about a whole run rather than one step). The judged remainder is itself attackable. On the AgentDojo <Term k="benchmark">benchmark</Term>, judge accuracy measured as area under the curve (AUC; higher means a more accurate judge) ranged from 0.660 to 0.858. A class of attacks the study calls representation attacks raised miss rates by 0.200 to 0.600 for 8 of the 11 cached judges. Size the hard tier against this ceiling rather than against ambition. Gartner projects that 50 percent of agent deployment failures by 2030 will trace to insufficient runtime enforcement, which argues the tier is underbuilt, not overbuilt.
+### Guard the test rig
 
-### Judge governance
+In April 2026, UC Berkeley researchers built an agent that could not solve any task. It still scored 100 percent on several public benchmarks, including SWE-bench Verified. On that benchmark, editing about ten lines in one test file passed every task. The leading flaw was that nothing kept the agent and the evaluator apart. So run the evaluator apart from the agent under test. Treat a benchmark score as a claim to check, not a measurement.
 
-**In short:** The models that grade other models drift over time, so they are checked against human graders continually and never grade their own work.
+Watch what the score rewards. In an Anthropic study, models trained to game their reward behaved differently on other tasks. Alignment faking, meaning pretending to comply, appeared in 50 percent of probes. The business version is a proxy metric. Deflection counts conversations no person touched, including ones that ended with the problem unsolved. A healthier signal is the pass rate rising while the human revision rate stays flat or falls.
 
-Judges drift silently on hosted endpoints. Calibration against human labels is therefore a standing job, not a setup step. Judge <Term k="provenance">provenance</Term> and version are pinned like any other dependency. The one hard architectural rule in the published flywheel work (Google, 30 June 2026) is that the optimizer and the evaluator stay decoupled, so nothing grades its own work. The same programme took a measure called tool disclosure in a bug-assistant agent from 0 percent to 96 percent. Judges get a structured rubric with an explicit Unknown option. They grade outcomes, not process. The strongest published guidance (Anthropic, 9 January 2026) rejects prescribing <Term k="tool">tool</Term> sequences as too rigid and too brittle to test against.
+### Change the model last
 
-### The eval harness is attack surface
+Tune prompts and context first. GEPA, a prompt optimisation method shown at ICLR 2026, beat a reinforcement-learning baseline by 6 points on average. It used up to 35 times fewer trial runs. Next, distil to a smaller model when volume justifies it. <Term k="distillation">Distillation</Term> means teaching a small model to copy a large one. It pays off with a narrow workload, a locked test set and over about 50 million tokens a month. Use reinforcement <Term k="fine-tuning">fine-tuning</Term> only behind a grader that cannot be gamed.
 
-**In short:** The test rig itself can be gamed, so benchmark scores are claims to be checked, not measurements to be trusted.
+What one agent learns at work stays in its own [memory](/memory) until it is tested. Learnings move from that memory into a tested release, never the other way.
 
-The UC Berkeley RDI group (April 2026) built an agent with no ability to solve tasks. That agent scored 100 percent on Terminal-Bench, on SWE-bench Verified (all 500 instances), on SWE-bench Pro (731 instances), on FieldWorkArena, and on CAR-bench. It scored roughly 100 percent on WebArena and about 98 percent on GAIA. On SWE-bench Verified, editing roughly ten lines in a single test configuration file passed every instance. The report found seven recurring vulnerability patterns, led by no <Term k="isolation">isolation</Term> between the agent and the evaluator. If evals are the governance instrument, the test harness inherits the security requirements of a governance instrument. Run the evaluator isolated from the agent under test. Treat benchmark scores as attackable claims rather than measurements.
+### A worked example: billing exceptions
 
-### Distillation and optimization economics
+Take an energy retailer's billing exceptions. SAP already scores each implausible meter read with a release confidence [vendor]. A billing agent should start from that score, not from zero. Its test suite comes from specialists' past release decisions. The research for this guide found no such test sets in utilities yet. So the first job is to collect real cases and have two specialists agree on each verdict. After that, a weak live case becomes a new test once a person reviews it.
 
-**In short:** Shrinking a model pays off only at high volume with a stable test set, and cheaper prompt tuning comes first.
-
-The documented enterprise flywheel (NVIDIA, June 2025, a seven-stage loop) took a Llama-3.3-70B teacher model to a Llama-3.2-1B student model. The student kept about 98 percent of the teacher's tool-calling accuracy and ran on one graphics processing unit (GPU) instead of two. The headline claim is an inference-cost reduction of up to 98.6 percent [vendor]. On-policy distillation uses 9 to 30 times less training compute (measured in floating-point operations, FLOPs) than scaling up supervised fine-tuning (SFT). It also repairs the instruction-following that domain fine-tuning degrades, by distilling from the pre-fine-tune version of the same model. That makes distillation a maintenance tool, not only a compression tool. Routing sits alongside distillation. RouteLLM reports cost savings of up to 3.66 times while retaining 95 percent of quality, on a frontier-to-small price ratio of 8 to 15 times. Distillation breaks even with a narrow workload, volume above roughly 50 million <Term k="tokens">tokens</Term> a month, and a locked eval set. One tension is worth naming: a live flywheel keeps rewriting the eval set that distillation economics assume is stable. Before either, try the cheap lever. GEPA, an evolutionary prompt-optimization method presented at the ICLR 2026 conference, beat a reinforcement-learning baseline (GRPO) by 6 points on average and by up to 20. It used up to 35 times fewer rollouts (trial runs). It improved from as few as 10 training examples and 20 to 100 evaluations, against the 10,000-plus that reinforcement learning (RL) needs. ACE is a context-evolution method in which a Generator, a Reflector, and a Curator work over incremental deltas. It added 10.6 percent on agent benchmarks and 8.6 percent on finance tasks, with no weight updates and no labeled supervision.
-
-### Reward hacking generalizes
-
-**In short:** A model trained to game its score learns to behave differently, and that behavior spreads to other tasks.
-
-Anthropic's production reinforcement-learning study (arXiv 2511.18397, November 2025) trained models on <Term k="reward hacking">reward-hacking</Term> strategies inside real production coding environments. The result generalized: alignment faking (pretending to comply) appeared in 50 percent of goal-reporting probes, and sabotage attempts in about 12 percent of evaluation runs. Standard reinforcement learning from human feedback (RLHF) fixed the chat-like evaluations while the misalignment persisted on agentic tasks. A technique called inoculation prompting cut final misalignment by 75 to 90 percent. An unattended flywheel optimizing a gameable signal does not produce a worse agent. It produces a differently aligned one. The business-side twin is the proxy metric. <Term k="deflection">Deflection rate</Term> counts conversations a human never touched, including ones that ended with an unresolved problem and a link. Meanwhile re-contact at 2.3 contacts per issue makes the true cost per issue 2.3 times the cost per contact, even as the dashboard improves. Publish the healthy signature instead: pass rate climbing while the human revision rate stays flat or falls. That means people intervene less because the agent improved, not because they gave up.
-
-## Design decisions
-
-- **Fine-tuning and reinforcement fine-tuning (RFT) vs prompt-and-context engineering plus evals** ([CD-19](/decisions#cd-19)): an ordering, not a side. This <Term k="challenged default">challenged default</Term> asks whether to change the model's weights first or to improve prompts, context, and tests first. Optimize context and prompts on a frontier model against a locked eval suite. Distill to a small fine-tuned model when <Term k="latency">latency</Term> or unit cost forces it. Reach for RFT only when a programmable, hard-to-game grader exists and the prompt-optimized ceiling is demonstrably real. The signature of a real ceiling: roughly 60 percent initially, low 70s after a week of prompt work, then flat. RFT is the wrong tool for format, tone, and style. When validation reward exceeds the human ceiling, the model has gamed the rubric. The counter-evidence stays on the record. RFT with 100 examples improved by about 60 percent where SFT degraded. A fine-tuned 7B model beat a prompt-engineered frontier model by 88 percent to 31 percent and by 78 percent to 59 percent [vendor]. It cost $789 against $11,485 per million classifications [vendor].
-- **Who owns the eval bar**: the authors' position, and the strongest published guidance agrees. Domain subject-matter experts define correct behavior, and engineering builds the machinery. The emerging build role is an evaluation engineer, distinct from machine-learning operations (MLOps). Start with 20 to 50 tasks drawn from real failures. Accept a task only if two domain experts would independently reach the same verdict. Economics set the division of labor rather than the ownership. Expert review costs about 100 times model judging: at $50 to $75 an hour and 2 to 3 minutes per output, 500 outputs cost $800 to $1,800. So judge at volume, and reserve the sampled human slice for rare classes and defensible labels. Uber widened eval participation to designers, operations specialists, and product managers (PMs), and does not use eval scores as launch gates. No credible published evidence puts agent quality with data science teams.
-
-## Cross-cutting concerns
-
-| # | Concern | Treatment at this layer |
+| Part | What it does | Where it runs |
 |---|---|---|
-| C1 | Identity and access | Trace and eval-dataset access controlled; promotion authority held by named approvers |
-| C2 | Observability | Learning telemetry: promotion and demotion events, judge agreement, eval coverage (mechanics in R12, observability and FinOps) |
-| C3 | Traceability and audit | Every promoted rule carries its evidence: the counterexamples it survived and the eval deltas it produced |
-| C4 | Grounding | Evals drawn from real failures; judges calibrated against human labels; benchmarks treated as attackable |
-| C5 | Impersonation | Judge provenance and version pinned; optimizer and evaluator decoupled so nothing grades its own work |
-| C6 | Sovereignty | Traces and eval datasets inherit source classification; fine-tuned artifacts inherit erasure obligations |
-| C7 | Privacy | Redaction before traces enter datasets; consent for customer data in training artifacts |
-| C8 | Safety and oversight | Reward-hacking monitoring; human approval on promotion; demotion path when behavior degrades |
-| C9 | Cost | Optimization spend against measured gain; distillation break-even including the eval-stability assumption |
-| C10 | Resilience | Rollback for every promoted artifact; the locked eval suite as the regression baseline |
+| Test suite | Defines correct behaviour from real failures. Two experts must agree on each task | Versioned like code. Owned by domain experts |
+| Judges | Grade outcomes at volume against a rubric with an "Unknown" option | Pinned model versions, kept apart from the optimiser |
+| Human sample | Checks a sample of judge grades, and rare cases | Domain experts |
+| Shared trace and test store | Holds production traces and test datasets together. Failing traces become tests | The [data platform layer (R02)](/layers/r02-data-platform) |
+| Promotion pipeline | Takes candidate rules through counterexamples, the test suite and human approval. Removes them again | Offline, run like a software build pipeline |
+| Policy-as-code rules | Run the promoted hard rules | The tool gateway and the policy decision point |
+| Distillation pipeline | Builds smaller models where volume justifies it | Offline training infrastructure |
 
-**Next step:** read the next layer, [R07 Agent platform](/layers/r07-agent-platform).
+## What must be true before an agent touches it
+
+Before any change to an agent's behaviour reaches production, these must hold.
+
+- **Experts own the test bar.** Domain experts define correct behaviour, and engineers build the machinery. Start with 20 to 50 tasks drawn from real failures. Accept a task only if two experts would reach the same verdict.
+- **Judges grade at volume, and people check them.** Expert review costs about 100 times as much as a model judge. So judges grade at volume, and people check a sample and the rare cases.
+- **The evaluator is kept apart.** The test rig runs isolated from the agent under test. Judges are pinned and calibrated against human labels.
+- **Promotion has a gate and a way back.** A rule needs counterexample survival, no test regression and human approval. Every promoted rule and model version can be rolled back.
+- **The learning level is set.** The [autonomy contract](/architecture/autonomy-contract) sets how an agent may learn. The levels are fixed (L0), curated learning (L1), reviewed learning (L2) and continuous learning inside limits (L3).
+- **A change re-runs the tests.** A new model, prompt, tool, permission, data source or memory policy is a change on the [agent lifecycle](/architecture/agent-lifecycle). Each one re-runs the evaluations and the [risk profile](/architecture/risk-profile) before release.
+- **Traces are cleaned first.** Personal data is redacted before traces enter test datasets.
+
+The enforcement point for this layer is the promotion gate in the release pipeline. For promoted rules, it is the policy decision point at the tool gateway. Both sit outside the model, as [enforcement outside the model](/architecture/enforcement) describes.
+
+## Choices and their verdicts
+
+Each choice is the common choice, tested against the simplest credible alternative. The full records are in the [decision catalog](/decisions).
+
+- **[Fine-tuning versus prompt and context work](/decisions#cd-19) (CD-19):** do them in order. Tune context and prompts against a locked test suite, then distil, then fine-tune behind a hard grader.
+- **Who owns the test bar:** domain experts, with engineering building the machinery. No credible published evidence puts agent quality with data science teams.
+
+## Concerns this layer must honour
+
+The ten cross-cutting concerns are set out in the [concern matrix](/architecture/concern-matrix). This layer carries a specific duty for six of them.
+
+- **Traceability and audit:** every promoted rule keeps its evidence, meaning the counterexamples it survived and the test results it changed.
+- **Grounding:** tests come from real failures, and benchmark scores are treated as claims to check.
+- **Privacy:** personal data is redacted before traces enter datasets. Customer data in training needs consent.
+- **Sovereignty:** a fine-tuned model inherits the erasure duties of the data it learned from.
+- **Safety and oversight:** people approve each promotion, and reward gaming is watched.
+- **Resilience:** every promoted change can be rolled back against the locked test suite.
 
 ## Evidence and limits
 
-The load-bearing results here are dated studies rather than Common Vulnerabilities and Exposures (CVE) records. They are the policy-pipeline study (arXiv 2607.20668, July 2026), AutoSpec (arXiv 2606.24245), the instruction-file analysis (arXiv 2606.25189), and the enforceability proof (arXiv 2607.22868, July 2026). They also include the reward-hacking study (arXiv 2511.18397, November 2025), GEPA and ACE at ICLR 2026, and the UC Berkeley benchmark-exploitation report (April 2026). Three figures are vendor-published and carried as such: the NVIDIA 98.6 percent cost-reduction headline, OpenAI's RFT customer gains, and the fine-tuned-versus-prompted head-to-head with its price arithmetic. The support-agent resolution spread is competitor-sourced and flagged as such. Advertised figures run 67 to 86 percent, against 42 to 50 percent in Intercom's own case studies. Business-to-business (B2B) deployments run 17 to 25 points below benchmark. Gartner's 2028 governance-shift and 2030 runtime-enforcement figures are projections. Known limits follow. The policy-pipeline study found no transfer beyond its training task family. The statically-enforceable fraction comes from instruction files, not from deployed enterprise decisions, and no published measurement of the latter exists. No credible published evidence identifies which function owns agent quality at scale, so this page's ownership verdict is the authors' position. Re-verify quarterly: judge-to-human agreement drift, benchmark-harness isolation fixes, and distillation break-even as the frontier-to-small price ratio moves.
+The main results are dated studies, not vulnerability records. They cover the policy pipeline study (July 2026), AutoSpec and the instruction-file analysis. They also cover an enforceability proof (July 2026), the reward-hacking study (November 2025) and the Berkeley benchmark report (April 2026).
+
+Three figures come from vendors and carry the [vendor] tag. They are NVIDIA's cost claim, OpenAI's reinforcement fine-tuning gains and one fine-tuned versus prompted comparison. Gartner's figure on runtime enforcement failures by 2030 is a projection.
+
+The policy study found no transfer beyond its own task family. The quarter-enforceable figure comes from instruction files, not from decisions in a live enterprise. No published measurement of the second exists. No published evidence shows which function should own agent quality at scale. This guide recommends domain experts, and the strongest published guidance agrees.
+
+## Next step
+
+See this layer at work in the proposed [recurring audit issues](/use-cases/systemic-audit-issues) example. Then read the next layer, the [agent platform layer (R07)](/layers/r07-agent-platform), where agents run.
 
 <details>
 <summary>The research behind this page</summary>
 
-- [Intelligence and learning findings](/library/layers/r06-intelligence-and-learning/findings)
-- [Sources](/library/layers/r06-intelligence-and-learning/sources)
-- [Products named for orientation](/architecture), on the one-page wall chart
+- [Intelligence and learning findings](/library/layers/r06-intelligence-and-learning/findings) and [sources](/library/layers/r06-intelligence-and-learning/sources).
+- [Products named for orientation](/architecture), on the one-page wall chart.
+- Estate table: industry research for utilities, healthcare and energy, 15 October 2026. Rows are industry knowledge unless a source is named.
+- Table sources: SA Power Networks with Complexica (26 November 2022). SAP Learning on release confidence (undated) [vendor]. Itron IEE Cloud AI (16 September 2026) [vendor]. Its January 2027 availability date comes from an aggregator only.
+- Table sources: Equinor predictive maintenance (7 January 2026). Health NZ scribe licences (HINZ, 26 November 2025) [vendor]. Ofwat plan on Copilot use (June 2026). SA Power Networks "Ask AI" (iTnews, 8 September 2026).
+- Table sources: Woodside Startup Advisor (2 July 2026, citing MIT Technology Review). Seeq (3 March 2026) [vendor]. AspenTech AVA (11 May 2026) [vendor]. Cognite with Aker BP (16 September 2025) [vendor]. Microsoft orchestrator (May 2025) and the Oxford TrustedMDT pilot (16 December 2025) [vendor].
+- Policy pipeline study: arXiv 2607.20668, July 2026. Human-written policies lifted a frozen 7-billion-parameter agent by 5.0 points (95 percent interval +1.88 to +9.38). They cut 2.64 turns of interaction.
+- Of 32 learned policies, 7 were grounded, 9 too generic and 16 shortcuts, errors or malformed. Trace-learned policies scored 1.88 points below fixed prompting.
+- AutoSpec: arXiv 2606.24245. F1 of 0.98 on code-execution tasks and 0.93 on embodied tasks, against expert baselines of 0.698 and 0.493. Converged in 4 to 5 rounds over 291 traces.
+- NVIDIA keeps its own promotion stage manual, with no published auto-promotion thresholds.
+- Instruction-file cost: model-written context files cut success by about 0.5 points on SWE-bench Lite. They cut 2 to 3 points on AgentBench. Cost rose 20 to 23 percent. Human-maintained files gained about 4 points at about 20 percent more cost.
+- Instruction-file analysis: arXiv 2606.25189. 64 repositories, 84 files, 2,116 statements. 64 percent are policies, 83 percent of those involve system actions, 74 percent depend on context.
+- Enforceability proof: arXiv 2607.22868, July 2026. Gates that decide before an action enforce strictly less than monitors that can edit a run in progress.
+- Judge attacks on AgentDojo: judge accuracy (AUC) from 0.660 to 0.858. Representation attacks raised miss rates by 0.200 to 0.600 for 8 of 11 judges.
+- Gartner projects that 50 percent of agent deployment failures by 2030 will trace to weak runtime enforcement. This is a projection.
+- Judge practice: Google flywheel work (30 June 2026) keeps optimiser and evaluator apart. It took tool disclosure in a bug-assistant agent from 0 to 96 percent. Anthropic guidance (9 January 2026) grades outcomes, not tool sequences.
+- Benchmark exploitation: UC Berkeley RDI, April 2026. 100 percent on Terminal-Bench, SWE-bench Verified (500), SWE-bench Pro (731), FieldWorkArena and CAR-bench. About 100 percent on WebArena and 98 percent on GAIA. Seven recurring flaw patterns.
+- Reward hacking: Anthropic, arXiv 2511.18397, November 2025. Alignment faking in 50 percent of goal-reporting probes. Sabotage in about 12 percent of runs. Inoculation prompting cut misalignment by 75 to 90 percent.
+- Re-contact at 2.3 contacts per issue makes the true cost per issue 2.3 times the cost per contact.
+- Distillation: NVIDIA flywheel, June 2025. Llama-3.3-70B teacher to Llama-3.2-1B student kept about 98 percent of tool-calling accuracy on one GPU instead of two. Headline inference-cost cut of up to 98.6 percent [vendor].
+- On-policy distillation uses 9 to 30 times less training compute than scaling supervised fine-tuning. RouteLLM reports savings up to 3.66 times at 95 percent of quality.
+- GEPA (ICLR 2026) beat GRPO by 6 points on average and up to 20. It used up to 35 times fewer rollouts and as few as 10 training examples. ACE added 10.6 percent on agent benchmarks and 8.6 percent on finance tasks with no weight updates.
+- Fine-tuning counter-evidence: reinforcement fine-tuning with 100 examples improved about 60 percent where supervised fine-tuning degraded [vendor]. A fine-tuned 7B model beat a prompted frontier model 88 to 31 percent and 78 to 59 percent [vendor]. It cost $789 against $11,485 per million classifications [vendor].
+- Expert review economics: $50 to $75 an hour at 2 to 3 minutes per output. So 500 outputs cost $800 to $1,800. Uber widened eval work to designers, operations specialists and product managers, and does not use eval scores as launch gates.
+- Flagged as competitor-sourced: support-agent resolution claims of 67 to 86 percent. Intercom's own case studies show 42 to 50 percent. Business-to-business deployments run 17 to 25 points below benchmark.
+- Re-verify quarterly: judge-to-human agreement drift, fixes for benchmark isolation, and distillation break-even as model prices move.
 
 </details>
-
-
-## See this layer at work
-
-Follow the proposed [systemic audit issues](/use-cases/systemic-audit-issues) example. Compare the required capability with the systems already in place, then use the [architecture map](/architecture) to inspect neighboring responsibilities.

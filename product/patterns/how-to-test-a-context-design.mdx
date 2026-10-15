@@ -1,86 +1,125 @@
 ---
 title: "How to test a context design"
 icon: "SearchCheck"
-description: "The evidence behind pattern 9: three arms per experiment, a matched control, a ladder of corpora, rules fixed before any number is read, and an adversarial review. Five of our own headlines reversed at least once, and the two causes behind all five are the checks worth copying."
+description: "Give the plain method the same budget as the clever one, and make sure the test can fail. Then write the rules first, let someone try to break the result, and rerun it on a second machine. Five of our own headline results reversed, and two causes explain all five."
+concepts: [patterns, memory, data-to-memory, r14, ladder]
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-23"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
 ---
 
-<PlainTerms>
-Experiments that confirm what their authors hoped for are cheap to produce and worthless to rely on. This page describes the discipline used to make the results on the other pages hard to fool: a control arm that always gets the same budget as the method, corpora of increasing realism, rules written down before any number was read, a reviewer whose job was to break the results, and a rerun on a second computer. It also lists, without softening, the five times a headline turned out to be wrong and what caught it. The one thing to remember: a control that is not matched is not a control, and a measurement that cannot come out negative is not a measurement.
-</PlainTerms>
+Experiments that confirm what their authors hoped for are easy to produce and unsafe to rely on. We wanted to know how to make a search result hard to fool. Five of our own headline results reversed at least once. Two causes explain all five. Either the control did not get the same budget as the method, or the measurement could not come out negative. So give the plain method the same budget, and make sure the test can fail. The steps below show how we did both, and what they caught.
 
-## Problem and solution
+Use this method before you change how documents are prepared for [knowledge and memory](/memory). It covers the chunk, embed and retrieve stages of the [data-to-memory pipeline](/architecture/data-to-memory). That work belongs to the [agent data engineering layer (R14)](/layers/r14-agent-data-engineering). It is the evidence for pattern 9 of the [context patterns](/patterns). The general approach behind it is on [how we evaluate evidence](/research/method).
 
-**Problem:** Retrieval experiments are easy to make look positive when the proposed method gets more capacity, more source text, fewer distractors, or a metric that cannot expose failure.
+## Step 1: give the control the same budget
 
-**Solution:** Match the control's budget, make failure possible, fix decision rules before reading results, test on progressively more realistic corpora, ask an adversarial reviewer to break the experiment, and rerun on a second machine.
+Search tools turn text into vectors, lists of numbers that stand for meaning. Every test compares three setups.
 
-**Evidence:** Five headline results in this programme reversed at least once. The recurring causes were unmatched controls and measurements that could not meaningfully go negative.
+- One pooled vector per document, a single vector for the whole text.
+- The same text cut into blind fixed-size windows. The window width is set so each document gets as many windows as it gets cards.
+- The same text split by purpose into cards, one searchable piece per topic.
 
-![Visual guide to matched controls, a ladder of corpora, adversarial review, and replication.](/figures/patterns/how-to-test-a-context-design.webp)
+The gap between the first two shows what more vectors buy. The gap between the last two is the idea under test. Matching the number of pieces per document between chunks and cards is what makes the comparison fair. Getting that wrong was our single largest error.
 
-## The design
+## Step 2: test on data from made-up to real
 
-**In short:** Separate what more vectors buy from what purposes buy, and make the corpus able to disagree.
+We used five test sets, in rising order of realism.
 
-Every experiment carries three arms: one pooled vector; the same text cut into blind fixed-size windows, with the width chosen so that windows per document match cards per document; and the same text split by purpose. The gap between the first two is capacity. The gap between the last two is the hypothesis. Matching the number of units per document between the chunk and card arms is what makes the comparison mean anything, and getting that wrong was the single largest error in the programme.
+- A synthetic collection. The number of topics per document is a dial, and relevance comes from how the data was built.
+- LIMIT, a published stress test that gives a perfect split for free.
+- SciFact, real scientific abstracts with human judgements.
+- Enron, real company email.
+- FollowIR, real news with two sets of human judgements per query.
 
-The corpora form a ladder of realism: a synthetic corpus where the number of aspects is a dial and relevance comes from the generative process; LIMIT, a published stress test with a perfect free decomposition; SciFact, real abstracts with human judgements; Enron, real corporate email; and FollowIR, real news with two sets of human judgements per query. The point of the ladder is that a technique which only works on the top rung is an artefact of the test.
+A technique that works only on made-up data has not been shown to work.
 
-Measurement is paired. Every delta is a per-query paired difference with a 95 percent bootstrap interval, a two-sided <Term k="paired permutation test">paired permutation p-value</Term>, Holm step-down correction wherever several comparisons run together, and wins, ties, and losses recorded beside it. The statistical core was checked by the adversarial reviewer against textbook definitions over 2,000 randomised comparisons; nDCG, recall, MRR, reciprocal rank fusion, alpha-nDCG and subtopic recall all match their standard definitions on hand-worked cases, and maximal marginal relevance at lambda 1 reduces exactly to relevance ranking.
+## Step 3: measure in pairs
 
-## Rules before results
+Every comparison is made question by question. Each gap comes with a 95 percent bootstrap interval. That is the range the true gap most likely sits in. Each also comes with a two-sided <Term k="paired permutation test">paired permutation p-value</Term>, the chance a gap this size appears by luck. Where several comparisons run together, we apply Holm step-down correction, which raises the bar. Wins, ties and losses are recorded beside each result.
 
-**In short:** Rounds 1 to 4 were preregistered with frozen decision rules; round 5 replaced the ceremony with rules fixed in code and verdicts required across seeds.
+The reviewer checked the statistics code against textbook definitions over 2,000 random comparisons. The scoring code matches the standard definitions on hand-worked cases. That covers <Term k="ndcg">nDCG</Term>, recall, MRR, reciprocal rank fusion, alpha-nDCG and subtopic recall. Maximal marginal relevance at lambda 1 reduces exactly to plain relevance ranking, as it should.
 
-The dynamic rounds were run against a frozen preregistration: hypotheses, decision rules, the fallback when a baseline could not load, and a stopping rule, all written before implementation. Round 4's rule read, in substance, that if business context plus schema metadata did not beat the corpus sample alone, the conditioning claim did not survive at any level and the programme would stop pursuing it. It did not beat it; the programme stopped.
+## Step 4: write the rules before the results
 
-For round 5 the maintainer waived preregistration and directed the programme to run to a conclusion. The cost of that choice was named at the time: without a frozen rule set, a positive result is weaker against the objection that four architectures were tried until one worked. Rigour was held in the form that survives without the ceremony: each experiment's decision rules were fixed in code before any number was read, every synthetic verdict was computed across several topic-model seeds and reported as a fraction rather than from one run, and every arm was reported, including the arms that beat the method. This is recorded so a future reader knows which discipline applied to which result.
+Our tests of shaping the index with a goal ran in [five rounds](/patterns/why-not-to-condition-on-the-objective). Rounds 1 to 4 had their rules frozen in writing before any work began. This is called preregistration. The rules covered the hypotheses, the decision rules, the fallback if a baseline would not load, and a stopping rule.
 
-## The adversarial review
+Round 4's rule said, in substance, the following. If business context plus schema metadata did not beat the document sample alone, the claim failed at every level. We would then stop pursuing it. It did not beat it. We stopped.
 
-**In short:** The first sprint was rejected at 1.5 out of 5 by a reviewer who re-ran the experiments rather than reading the code, and was right on every fatal finding.
+For round 5, we chose not to preregister, and ran the work to a conclusion. We named the cost at the time. Without frozen rules, a positive result is weaker. Someone could say we tried four designs until one worked.
 
-An adversarial reviewer was run against the experimental material at the end of the first sprint with one instruction: try to reject. The reviewer found that the benefit attributed to purpose-aligned cards was, on the evidence then in the experimental material, mostly the benefit of having more embeddings per document, and that three of the four experiments had construction defects that made their headline numbers wrong. The review is the most valuable single artifact the programme produced, and it is the best argument for the process. Two of its findings the programme had found independently in the same hours; four it had missed, and those were the ones that mattered most.
+We kept what discipline we could. Each test's decision rules were fixed in code before any number was read. Every synthetic verdict was computed across several topic-model seeds and reported as a fraction, not from one run. Every setup was reported, including those that beat the method. We record this so readers know which discipline applied to which result.
 
-| Reported first | What was wrong | How it was caught |
+## Step 5: ask someone to break it
+
+After our first batch of experiments, we ran a reviewer against the material with one instruction: try to reject it. It scored the batch 1.5 out of 5. It reran the experiments rather than only reading the code. It was right on every fatal finding.
+
+The reviewer found that the benefit credited to purpose cards was mostly the benefit of more vectors per document. It also found construction defects in three of the four experiments. Those defects made the headline numbers wrong. The review was the most valuable single output of the work. We had found two of its findings ourselves in the same hours. We had missed four, and those mattered most.
+
+| What we reported first | What was wrong | How we caught it |
 |---|---|---|
-| Cards beat chunks nine to one on LIMIT | The chunk control had 4 units per document against the cards' 44 | The reviewer re-ran it with matched counts; nDCG@10 was a smooth function of units per document |
-| Aspect dilution followed the theory on synthetic data | The "cards" were the exact passages the queries were generated from, so the experiment could not have come out negative; and 81 percent of true positives were unlabelled because filler sentences realised real facts | The reviewer read the generator |
-| Multi-card was catastrophic on SciFact (−0.193) | The card builder kept only the top two spans per aspect, so cards held 44.6 percent of each document against the chunks' 100 percent | The text coverage was measured after the result looked too extreme |
-| Diversity coverage was nearly free | An integer-division bug gave 2 distractors per task instead of 40, so nothing could be lost and every relevance metric sat at its ceiling | The reviewer |
-| The consumer interaction was significant | One judge, from the same family as the generator | A cross-family judge, at the maintainer's suggestion |
+| Cards beat chunks nine to one on LIMIT. | The chunk control had 4 pieces per document against the cards' 44. | The reviewer reran it with matched counts. nDCG@10 rose smoothly with pieces per document. |
+| Topic dilution followed the theory on synthetic data. | The cards were the exact passages the queries were made from. So the test could not have come out negative. Also, 81 percent of true matches were unlabelled, because filler sentences stated real facts. | The reviewer read the data generator. |
+| Cards were a disaster on SciFact (-0.193). | The card builder kept only the top two passages per topic. Cards held 44.6 percent of each document. Chunks held 100 percent. | We measured text coverage after the result looked too extreme. |
+| Coverage from varied results was nearly free. | A coding bug gave 2 distractors per task instead of 40. Nothing could be lost, and every relevance score sat at its maximum. | The reviewer. |
+| Model readers need more variety than people, and the effect was significant. | It rested on one judge, from the same company as the writing model. | A judge from a different company, at the author's suggestion. |
 
-Two patterns run through all five. **A control that is not matched is not a control**: three of the five came from an arm that was quietly weaker than its comparison (fewer units, less text, no distractors), so the comparison measured the handicap rather than the hypothesis. **A measurement that cannot be wrong is usually not measuring**: the first synthetic experiment could not have produced a negative result because the cards were the ground truth, and the first coverage metric fired on shared vocabulary, so outputs "covered" 4.3 sub-topics from selections containing 1.8, which is arithmetically impossible and is exactly the check that caught it. The question to ask of any experiment is what result would falsify it; if there is none, the experiment is decoration.
+Two causes run through all five.
 
-What held up under the same review: the statistical machinery, the absence of any test-set leakage (anchors never see queries or judgements), and the chunk windows covering 100 percent of tokens, so the control was never disadvantaged in that way.
+**Give the control the same budget.** Three of the five came from a setup quietly weaker than the one it was compared with. It had fewer pieces, less text or no distractors. So the comparison measured the handicap, not the idea.
 
-## The second machine
+**Make sure the test can fail.** The first synthetic test could not have produced a negative result, because the cards were the answer key. The first coverage score fired on shared words. Outputs "covered" 4.3 sub-topics from selections that held only 1.8. That is impossible, and spotting it is the check that caught the fault. Ask of any test what result would prove it wrong. If there is none, the test proves nothing.
 
-**In short:** Rerunning everything on a different processor architecture found two harness defects and showed which results are robust to the machine.
+Some things held up under the same review. The statistics code was sound. Nothing leaked from the test set, since the anchor phrases that build cards never see queries or judgements. And the chunk windows covered 100 percent of the text, so the control never lacked text.
 
-The committed results were produced on an Intel Mac. Rebuilding the embeddings cache on an Apple Silicon Mac, with every reproducible experiment re-run from its recorded invocation and every regenerated file compared with the committed one, surfaced two defects. The sentence-encoder library selected the Apple GPU by default, and under the pinned framework version that path returned vectors differing from the CPU's by up to 0.19 (mean cosine 0.993), shifted one pooled baseline by 0.13, and once hung permanently inside a device-to-host copy; the embedding cache key carried no device, so GPU vectors would have silently served every later CPU run. The fix makes the CPU the default and the GPU an explicit opt-in. Separately, the hash seed was written into the environment after the interpreter had started, where it could not take effect, and one experiment sampled its training queries from a set's iteration order; every process therefore showed the designer a different sample, and each run designed a different taxonomy. The fix sorts the set and re-executes the entrypoint with the seed fixed. The committed numbers for that experiment are one random draw; the disposition held on every draw.
+## Step 6: rerun on a second machine
 
-With both fixes, the pure encoder and retrieval experiments reproduced byte-for-byte across architectures (LIMIT, the anchor sensitivity run, both SciFact runs, the round-1 ladder and cross-over, and the two additional consumer judges; 26 committed files). The dilution, diversity and gate experiments reproduced to floating-point precision (largest difference 4.8e-8; the gate's ROC-AUC moved from 0.933 to 0.936). Everything downstream of dimensionality reduction and density clustering diverged: the topic models differed, so the designer prompts differed, which forced 27 live design calls costing about one US cent in total, and the economics exponents moved again (the finding that they are a clustering artefact, observed a second time). The round-3 cross-over, which depends on those topic models, did not replicate; round 4, the sampler, and the ladder's null all did. One committed pooled baseline on SciFact under a second encoder was found to be wrong on the Intel machine (0.550 against 0.6875 here and 0.689 on the model card), which marks that machine's long-text encodings under that encoder as suspect; the result that depended on it had already been recorded as unusable.
+We first produced the results on an Intel Mac. We then rebuilt everything on an Apple Silicon Mac and compared every regenerated file with the original. This found two defects in our test code. Both are now fixed.
 
-## What would falsify the remaining claims
+With the fixes, the pure search experiments reproduced byte for byte across the two machines. The dilution, diversity and filter experiments matched to floating-point precision. Results that depend on clustering did not repeat, because the topics came out differently. That includes the round 3 cross-over. Round 4, the sampler test and the null result for the conditioning levels did repeat. The details are in the collapsed note below.
 
-**In short:** Each claim that survived names the result that would overturn it.
+## What would prove the remaining claims wrong
 
-- *Several vectors beat one on aspect-rich material.* A real corpus with aspect-targeted queries and human judgements where matched chunks do not beat the pooled vector.
-- *Purpose alignment helps when the taxonomy matches the query distribution.* A real aspect-targeted corpus where hand-written or model-designed cards fail to beat matched chunks; the synthetic +0.188 is the only positive so far.
-- *A constant-factor saving of roughly two hundred times.* A cost model that prices encoder compute and the different deliverables honestly and finds the ratio below ten.
-- *The harvest is on the efficient frontier.* A corpus with natural sub-topic labels where MMR or a DPP reaches the harvest's coverage at equal or lower relevance cost.
-- *Harvesting reduces unsupported content.* A replication with a different generator where the effect disappears.
+Each claim that survived names the result that would overturn it.
 
-**Next step:** see which predictions held and which did not on [what we got wrong](/patterns/what-we-got-wrong).
+- *Several vectors beat one on documents about many topics.* Overturned by a real collection with single-topic questions and human judgements, where matched chunks do not beat the pooled vector.
+- *Purpose cards help when the card types match the questions.* Overturned by a real collection of that kind, where hand-written or model-designed cards fail to beat matched chunks. The synthetic +0.188 is the only positive so far.
+- *A constant saving of about two hundred times.* Overturned by a cost model that prices encoder compute and the different outputs fairly, and finds the ratio below ten.
+- *The harvest gives the best coverage for its relevance cost.* Overturned by a collection with natural sub-topic labels, where MMR or a DPP matches its coverage. It would have to do so at equal or lower relevance cost.
+- *Harvesting reduces unsupported content.* Overturned by a repeat with a different writing model, where the effect disappears.
+
+## A worked example
+
+A hospital wants to switch its clinical-guideline search to purpose cards. First it runs the three setups from step 1 on its own clinicians' questions. The plain chunks get the same number of pieces as the cards. It writes down in advance what gap would count as a win. It keeps keyword search in every setup. Only then does it read the scores.
+
+## Evidence and limits
+
+This method is our own, built while running these tests. The statistics are standard. The reviewer had one instruction, to reject. We ran both machines ourselves, and nobody else has repeated the tests yet.
+
+## Next step
+
+See which predictions held and which did not, in [what we got wrong](/patterns/what-we-got-wrong). Or go back to the [nine context patterns](/patterns).
+
+<details>
+<summary>The second-machine rerun in detail</summary>
+
+The sentence-encoder library picked the Apple GPU by default. Under the pinned framework version, that path returned vectors unlike the CPU's. They differed by up to 0.19 (mean cosine 0.993). It shifted one pooled baseline by 0.13. Once it hung for good inside a copy from the GPU back to main memory. The vector cache key did not record the device. So GPU vectors would have silently served every later CPU run. The fix makes the CPU the default and the GPU an explicit choice.
+
+Separately, the hash seed was set after the interpreter had started, where it has no effect. One experiment also sampled its training queries in a set's iteration order. So every process showed the designer a different sample, and each run designed different card types. The fix sorts the set and restarts the entry point with the seed fixed. The committed numbers for that experiment are one random draw. The result held on every draw.
+
+With both fixes, the pure encoder and search experiments reproduced byte for byte across processor types. These were LIMIT, the anchor test and both SciFact runs. They also include the round 1 levels and cross-over, and the two extra reader judges. That is 26 committed files. The dilution, diversity and filter experiments matched to floating-point precision. The largest difference was 4.8e-8. The filter's ROC-AUC moved from 0.933 to 0.936.
+
+Everything after the steps that shrink and cluster the vectors diverged. The topics differed, so the designer prompts differed. That forced 27 new design calls, costing about one US cent in total. The cost exponents moved again. That was the second time they showed up as a side effect of clustering.
+
+One committed pooled baseline on SciFact, under a second encoder, was wrong on the Intel machine. It read 0.550, against 0.6875 here and 0.689 on the model card. So that machine's long-text vectors under that encoder are suspect. The result that depended on it had already been marked unusable.
+
+</details>
 
 <details>
 <summary>The research behind this page</summary>
 
-
-- The programme's findings summary and worklog entries of 2026-08-20 to 2026-08-22, including the second-machine replication record.
-
+- [How we evaluate evidence](/research/method), the general method this page applies.
+- [What we got wrong](/patterns/what-we-got-wrong), the full scorecard of predictions.
+- The findings and the second-machine rerun were recorded from 2026-08-20 to 2026-08-22.
 
 </details>

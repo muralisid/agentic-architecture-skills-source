@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2488" role="img" aria-labelledby="title desc">
+<title id="title">Follow-up after discharge with an agent</title>
+<desc id="desc">Swimlanes for the agent, the care coordinator, the responsible team, fixed rules, the systems and the evidence store. Step 1: the agent pulls the agreed actions from the discharge summary, and the coordinator confirms the list. Step 2: it opens one task per action, and the coordinator approves. Step 3: it watches events for completion and links the evidence. Step 4: it flags overdue tasks. Step 5: it asks the owner team, and the coordinator approves anything off-template. Step 6: it reminds the patient within fixed contact limits. Step 7: it escalates pending results under fixed rules. Step 8: the responsible team closes clinical tasks, and a rule closes admin tasks. Step 9: the agent reports counts, and the coordinator reviews them. The evidence store keeps task history, the EMR audit log, traces and message receipts. A diamond marks each approval.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2488" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Follow-up after discharge with an</text>
+<text x="32.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">agent</text>
+<text x="32.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Proposed design. The agent tracks evidence. Only</text>
+<text x="32.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">the responsible team closes a clinical task.</text>
+<rect x="32.0" y="228.0" width="656.0" height="264.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="268.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="276.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="308.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reads the discharge summary and orders.</text>
+<text x="104.0" y="340.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Drafts a list with an owner, a due date and</text>
+<text x="104.0" y="372.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">what counts as done.</text>
+<path d="M116.0 393.0 L127.0 404.0 L116.0 415.0 L105.0 404.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="412.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The coordinator or clinician confirms.</text>
+<text x="138.0" y="444.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The agent cannot add an action that is</text>
+<text x="138.0" y="476.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">not in the source.</text>
+<path d="M68.0 496.0 L68.0 518.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="526.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="566.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="574.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="574.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="606.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Opens one task per action, with its owner,</text>
+<text x="104.0" y="638.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">due date and completion rule.</text>
+<path d="M116.0 659.0 L127.0 670.0 L116.0 681.0 L105.0 670.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="678.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The coordinator approves.</text>
+<path d="M68.0 698.0 L68.0 720.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="728.0" width="656.0" height="160.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="768.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="776.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="776.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="808.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Listens for results, bookings, attendances,</text>
+<text x="104.0" y="840.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">acceptances and delivery receipts. Links</text>
+<text x="104.0" y="872.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">each one to its task.</text>
+<path d="M68.0 892.0 L68.0 914.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="922.0" width="656.0" height="128.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="962.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="970.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="970.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1002.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Marks a task overdue on its due date, with</text>
+<text x="104.0" y="1034.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">the reason.</text>
+<path d="M68.0 1054.0 L68.0 1076.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1084.0" width="656.0" height="200.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1124.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1132.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1132.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1164.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Asks the responsible team through the EMR</text>
+<text x="104.0" y="1196.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">in-basket, Teams or email.</text>
+<path d="M116.0 1217.0 L127.0 1228.0 L116.0 1239.0 L105.0 1228.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1236.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The coordinator approves anything</text>
+<text x="138.0" y="1268.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">outside the templates.</text>
+<path d="M68.0 1288.0 L68.0 1310.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1318.0" width="656.0" height="200.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1358.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1366.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1366.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1398.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Sends an SMS from an approved template,</text>
+<text x="104.0" y="1430.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">within contact limits and consent.</text>
+<path d="M116.0 1451.0 L127.0 1462.0 L116.0 1473.0 L105.0 1462.0 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="138.0" y="1470.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Clinical governance sets the limits and</text>
+<text x="138.0" y="1502.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">templates.</text>
+<path d="M68.0 1522.0 L68.0 1544.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1552.0" width="656.0" height="200.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1592.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1600.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1600.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Escalates a result not acknowledged in the</text>
+<text x="104.0" y="1664.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">set time. It does not read the result.</text>
+<path d="M116.0 1685.0 L127.0 1696.0 L116.0 1707.0 L105.0 1696.0 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="138.0" y="1704.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Clinical governance sets the escalation</text>
+<text x="138.0" y="1736.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">rules.</text>
+<path d="M68.0 1756.0 L68.0 1778.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1786.0" width="656.0" height="232.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1826.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1834.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1834.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Responsible team</text>
+<text x="104.0" y="1866.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">The team closes clinical tasks in the EMR.</text>
+<text x="104.0" y="1898.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">A fixed rule closes admin tasks, such as an</text>
+<text x="104.0" y="1930.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">attended visit.</text>
+<path d="M116.0 1951.0 L127.0 1962.0 L116.0 1973.0 L105.0 1962.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1970.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Only the team closes a clinical task.</text>
+<path d="M116.0 1991.0 L127.0 2002.0 L116.0 2013.0 L105.0 2002.0 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="138.0" y="2010.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">A rule closes admin tasks.</text>
+<path d="M68.0 2022.0 L68.0 2044.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="2052.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="2092.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="2100.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="104.0" y="2100.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="2132.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Counts open tasks, overdue tasks and tasks</text>
+<text x="104.0" y="2164.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">closed with evidence.</text>
+<path d="M116.0 2185.0 L127.0 2196.0 L116.0 2207.0 L105.0 2196.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="2204.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The coordinator reviews.</text>
+<rect x="32.0" y="2244.0" width="656.0" height="164.0" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="52.0" y="2292.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Evidence store, out of the agent&#x27;s reach.</text>
+<text x="52.0" y="2324.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">Task history with who changed what. The EMR</text>
+<text x="52.0" y="2356.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">audit log. Traces outside the agent. Message</text>
+<text x="52.0" y="2388.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">receipts.</text>
+<path d="M46.0 2429.0 L57.0 2440.0 L46.0 2451.0 L35.0 2440.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="70.0" y="2448.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A diamond marks an approval.</text>
+</svg>

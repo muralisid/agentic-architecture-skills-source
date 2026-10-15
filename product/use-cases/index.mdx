@@ -1,53 +1,73 @@
 ---
 title: "Explore business opportunities"
-description: "A visual guide to agents in Healthcare, Energy, and Utilities: choose the work, understand the opportunity, and test the result."
-position: "Proposed use-case designs. Outcomes require local evaluation; the maps are learning aids, not formal standards mappings."
-lastReviewed: "2026-09-18"
+description: "Pick an industry and see its estate and use cases. Then follow one worked example from today's process to the process with agents."
+position: "Proposed use-case designs. Outcomes need local evaluation. The maps are teaching aids, not formal standards mappings."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [start, layers, agent-types, risk, autonomy, choose, packaged, value]
 ---
 
-For the whole route in order, read [Start here](/start) first.
+An enterprise that wants to use agents asks two questions first. Where can an agent do useful work? And how does a process change when it does? This section answers both in the same way for three industries. Pick an industry and see its estate: the systems it runs in each of the [fourteen layers](/layers). See the use cases that sit on that estate. Then follow one worked example. It walks through the process as it runs today, step by step. Then it walks through the same process with agents.
 
-Start with the work people need to complete. Find your industry below, follow its work map, and open a specific example. Each example shows where intelligence and memory could help, what people still own, and how to judge the result.
+<TeachingIllustration src="/images/use-cases/opportunity-map-v1.webp" expandable title="Choose the work that matters" alt="Three industry entrances. Healthcare covers access, care support and operations. Energy covers production, assets and planning. Utilities covers networks, water and customers. Then find a problem, design the agent role, check evidence and authority, and measure the result." caption="Industry first, then the business process, then one use case with clear limits." />
 
-<TeachingIllustration src="/images/use-cases/opportunity-map-v1.webp" expandable title="Choose the work that matters" alt="Three industry entrances: Healthcare for access, care support and operations; Energy for production, assets and planning; Utilities for networks, water and customers. Then find a problem, design the agent role, check evidence and authority, and measure the result." caption="Industry first, business process next, then one bounded use case." />
-
-## Choose your industry
+## Pick an industry
 
 <Cards>
-<Card title="Healthcare" href="/use-cases/healthcare">Follow the patient journey: access, care-team support, follow-up, and service operations.</Card>
-<Card title="Energy" href="/use-cases/energy">Explore planning, production, asset performance, and supply commitments.</Card>
-<Card title="Utilities" href="/use-cases/utilities">Explore electricity networks, water and wastewater, customer service, and assurance.</Card>
+<Card title="Healthcare" href="/use-cases/healthcare">A hospital network. Referrals, follow-up, consult preparation and assurance. Clinical decisions stay with clinicians.</Card>
+<Card title="Energy" href="/use-cases/energy">Power generators, oil and gas operators and miners. Asset, production, safety and audit work. Agents never act on control systems.</Card>
+<Card title="Utilities" href="/use-cases/utilities">An electricity distributor and a water utility. Billing, vegetation, water networks and AI governance.</Card>
 </Cards>
 
-Energy and Utilities overlap. Here, Energy starts with producing and supplying energy; Utilities starts with operating networks and delivering essential services. An integrated company can use both paths.
+Each industry page is built the same way. It starts with the estate per layer: the systems a typical organisation runs in each layer. It then places the use cases on that estate. It ends with the rules that bind the industry. In healthcare, clinical decisions stay with clinicians. In energy, agents read plant data but never act on control or safety systems. In utilities, a trained person decides anything about hardship, disconnection or a payment plan.
 
-## Describe each agent
+Energy and utilities overlap. Here, energy starts with producing energy and resources. Utilities starts with running networks and essential services. An integrated company can use both pages.
 
-Describe every agent with the same four questions. What does it do for people? What do its own credentials let it do? How freely does it act? What can it damage? [Agent types](/architecture/agent-types) explains each question. A role is a label, not a permission.
+## Follow a worked example
 
-## How this map is organized
+Each worked example follows the same order. It names the systems the work touches, layer by layer. It shows today's process as numbered steps, then the process with agents. It says what each agent reads and writes, and who approves in which system. It ends with where the agent sits. That means its answers to [the four questions](/architecture/agent-types) and its tier on [the risk profile](/architecture/risk-profile). It also means how freely it may act under [the autonomy contract](/architecture/autonomy-contract).
 
-Established frameworks help describe the work before choosing AI. APQC publishes industry process frameworks for [healthcare providers](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-healthcare-provider-pdf) and [utilities](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-utilities-pdf-version). WHO's [digital-health classification](https://www.who.int/publications/i/item/9789240081949) organizes uses of digital technology around health needs. EPA's [Effective Utility Management guidance](https://www.epa.gov/sustainable-water-infrastructure/things-local-officials-should-know-about-effective-water) helps utilities examine outcomes across their service. Sources reviewed 18 September 2026.
+| Worked example | Industry | The work |
+|---|---|---|
+| [Referral coordination](/use-cases/referral-coordination) | Healthcare | Turn a referral into a confirmed appointment |
+| [Care follow-up](/use-cases/care-follow-up) | Healthcare | Keep agreed follow-up actions from getting lost |
+| [Consult briefing](/use-cases/consult-briefing) | Healthcare | Prepare the evidence before a consult or a care team meeting |
+| [Energy asset investigation](/use-cases/energy-asset-investigation) | Energy | Investigate an asset before planning work on it |
+| [Production measurement](/use-cases/production-measurement) | Energy | Find and explain gaps between measured and recorded production |
+| [Safety coaching](/use-cases/safety-coaching) | Energy | Help crews learn from risky events caught on camera |
+| [Systemic audit issues](/use-cases/systemic-audit-issues) | Energy | Find the cause of audit issues that recur across sites |
+| [Compliance evidence](/use-cases/compliance-evidence) | Energy and healthcare | Collect and check the evidence a standard asks for |
+| [Vegetation inspection](/use-cases/vegetation-inspection) | Utilities | Turn image-based risk near power lines into field work |
+| [Water operations](/use-cases/water-operations) | Utilities | Investigate an anomaly in the water network |
+| [Billing exceptions](/use-cases/billing-exceptions) | Utilities | Clear failed bills and meter reads that look wrong |
+| [AI use inventory](/use-cases/ai-use-inventory) | Utilities | List every use of AI for a regulator |
 
-The visual maps here simplify the journey for readers. They are original teaching maps informed by those references, not reproductions of a standard or certification of an agent design. A working process still needs named owners, local requirements, and an evaluation.
+## Take an idea to a decision
 
-## Turn an idea into a business decision
+The first three pages below are step 3 of the seven steps on [Start here](/start). The fourth belongs to step 7, when one working agent grows into many.
 
 <Cards>
-<Card title="Choose a first task" href="/use-cases/choose-where-to-start">Check the outcome, evidence, permissions, and readiness for a bounded trial.</Card>
-<Card title="Wait, buy or build" href="/use-cases/packaged-applications">For packaged software, decide whether to wait for the vendor's agent, buy it, or build a thin one.</Card>
-<Card title="Measure the result and full cost" href="/use-cases/value-and-investment">Compare with the current process, including human review and rework.</Card>
-<Card title="Build across the enterprise" href="/use-cases/enterprise-transformation">Share useful capabilities and expand where the measured results justify it.</Card>
+<Card title="Choose where to start" href="/use-cases/choose-where-to-start">Five checks a first task must pass before a trial.</Card>
+<Card title="Wait, buy or build" href="/use-cases/packaged-applications">Two tests decide whether to wait for a vendor's agent, buy it, or build a thin one.</Card>
+<Card title="Measure value and full cost" href="/use-cases/value-and-investment">What one resolved outcome costs, with review and rework counted.</Card>
+<Card title="Build an agentic enterprise" href="/use-cases/enterprise-transformation">Grow from one working agent to shared capability across the company.</Card>
 </Cards>
+
+## Evidence and limits
+
+The work maps lean on frameworks that describe work before any AI. APQC publishes process frameworks for [healthcare providers](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-healthcare-provider-pdf) and [utilities](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-utilities-pdf-version). WHO's [digital-health classification](https://www.who.int/publications/i/item/9789240081949) sorts digital uses by health need. EPA's [Effective Utility Management guidance](https://www.epa.gov/sustainable-water-infrastructure/things-local-officials-should-know-about-effective-water) helps utilities review outcomes across their service. Sources reviewed 18 September 2026.
+
+The maps are original teaching aids. They do not reproduce a standard or certify an agent design. A working process still needs named owners, local requirements and an evaluation.
+
+## Next step
+
+Pick a first task with the five checks on [choose where to start](/use-cases/choose-where-to-start).
 
 <details>
 <summary>More industries and shared business functions</summary>
 
 The wider library remains available: [mining and resources](/library/blueprints/verticals/mining-and-resources), [manufacturing](/library/blueprints/verticals/manufacturing-and-supply-chain), [financial services](/library/blueprints/verticals/banking-and-financial-services), and [public services](/library/blueprints/verticals/public-sector).
-
-Worked examples include [billing exceptions](/use-cases/billing-exceptions), [an AI use inventory](/use-cases/ai-use-inventory), [safety coaching](/use-cases/safety-coaching), [production discrepancies](/use-cases/production-measurement), [compliance evidence](/use-cases/compliance-evidence), [recurring audit issues](/use-cases/systemic-audit-issues), and [commercial growth](/use-cases/commercial-growth).
 
 Explore supporting functions: [IT](/library/blueprints/departments/it-and-service-desk), [customer service](/library/blueprints/departments/customer-service), [finance](/library/blueprints/departments/finance), [HR](/library/blueprints/departments/hr), [sales](/library/blueprints/departments/sales), [marketing](/library/blueprints/departments/marketing), and [supply chain](/library/blueprints/departments/supply-chain).
 

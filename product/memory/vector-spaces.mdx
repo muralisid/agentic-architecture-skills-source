@@ -2,16 +2,17 @@
 title: "Explore memory in vector space"
 description: "A visual tour of text, image, video, audio, geospatial, and time-series representations."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [memory, data-to-memory, r02, r14]
 ---
 
 You have chosen what the agent should remember. Now choose what a search should treat as similar. These pictures explain the intuition; they are optional deeper reading after the memory foundations.
 
 ## Different information needs different representations
 
-An enterprise holds words, photographs, recordings, maps, and readings over time. Turning all of them into short text summaries is convenient, but can lose precisely what a later question needs: a visual feature, a sequence of events, a surface pattern, or a changing signal.
+An enterprise holds words, photographs, recordings, maps, and readings over time. Turning all of them into short text summaries is convenient. But a summary can lose what a later question needs. That may be a visual feature, a sequence of events, a surface pattern, or a changing signal.
 
 The illustrations are **conceptual maps, not measured embeddings**. Start with text, then look at what changes for other forms of information.
 
@@ -19,11 +20,11 @@ The illustrations are **conceptual maps, not measured embeddings**. Start with t
 
 <TeachingIllustration src="/images/memory/text-space-v1.webp" title="Text: find related meaning" alt="Text encoder maps two differently worded pump-pressure passages near each other and a leave-policy passage elsewhere. A query retrieves nearby passages while retaining the original source, version, and permissions." caption="Text similarity helps locate a passage. It does not establish whether that passage is current or applicable." expandable />
 
-An embedding represents selected features as numbers so a search can find useful similarities. Picture a space in which related examples lie near each other. What counts as related depends on the model and its training. Actual spaces have many dimensions; a two-dimensional illustration cannot show every relationship.
+An embedding represents selected features as numbers so a search can find useful similarities. Picture a space in which related examples lie near each other. What counts as related depends on the model and its training. Real spaces use many numbers for each item. A flat picture cannot show every relationship.
 
 A representation is not the whole memory. Keep the original sources, exact records, dates, and access rules alongside it. Start with the kind of question the agent will ask.
 
-“Pump pressure is falling” and “low discharge pressure” may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
+"Pump pressure is falling" and "low discharge pressure" may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
 
 [Explore this memory type](/memory/text-embeddings).
 
@@ -31,7 +32,7 @@ A representation is not the whole memory. Keep the original sources, exact recor
 
 <TeachingIllustration src="/images/memory/image-space-v1.webp" title="Images: find visual resemblance" alt="Two inspection photographs of corroded pipe joints map to nearby points while clean-valve images form a different group. An aligned text-image model can connect a phrase to visual results. Each result links back to the original image." caption="Inspect the original image, date, and asset. Visual resemblance is not a diagnosis." expandable />
 
-A model can place visually related inspection images near each other, making it possible to look for earlier examples of corrosion or damage. With a suitably aligned text-image model, a written query can also find images. What counts as similar depends on training.
+A model can place visually related inspection images near each other. Then you can look for earlier examples of corrosion or damage. With a suitably aligned text-image model, a written query can also find images. What counts as similar depends on training.
 
 [Explore this memory type](/memory/image-embeddings).
 
@@ -63,7 +64,7 @@ A place can be represented by learned surface characteristics and, in some model
 
 <TeachingIllustration src="/images/memory/time-series-space-v1.webp" title="Time-series data: find similar behavior" alt="Operating windows with growing oscillations and a spike form a different group from steady signals. A query finds comparable historical windows and returns original readings and confirmed outcomes, with units, duration, and operating state." caption="A similar operating pattern suggests an investigation. It does not establish the same underlying cause." expandable />
 
-The useful resemblance may be a developing oscillation, a spike, or a sequence of changes across pressure and vibration. This lets an agent ask, “What behaved like this before?” Decide whether shape, magnitude, duration, or operating state should matter.
+The useful resemblance may be a developing oscillation, a spike, or a sequence of changes across pressure and vibration. This lets an agent ask, "What behaved like this before?" Decide whether shape, magnitude, duration, or operating state should matter.
 
 [Explore this memory type](/memory/time-series).
 

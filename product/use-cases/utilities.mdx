@@ -1,111 +1,169 @@
 ---
 title: "Utilities: keep essential services working"
-description: "Named, dated AI deployments at utilities in electricity networks, water, customer service and assurance, with who reported each result, where each sits on autonomy, and the control it needs."
-position: "Deployments are as reported by the party named, and almost none is independently audited. Autonomy placements, zones and controls are this guide's position. Proposed designs are labelled as proposals."
-lastReviewed: "2026-10-14"
+description: "The estate of an electricity distributor and a water utility on the fourteen layers. Four worked examples placed on it, who uses AI today, and the rules that bind the work."
+position: "The estate is typical industry practice, not a survey of one utility. Deployments are as reported by the party named, and almost none is independently audited. Autonomy placements are proposals."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-10-14"
+dateModified: "2026-10-15"
+concepts: [layers, lifecycle, capabilities, autonomy, zones, r05, use-cases, packaged]
 ---
 
-An unusual reading, an image alert or a customer call is only the start of utility work. Someone must check the asset or account, test the signal, and decide who acts. Each area below starts with named deployments: the utility, the date, who reported the result, and the stage. Vendor results are marked [vendor]. This guide's proposed designs follow, labelled as proposals.
+Utilities keep power and water reaching homes and businesses. They run networks, read meters, bill customers, fix faults and answer to regulators. This page maps that work onto the guide's frame. The frame is the [layers you own](/layers), a [lifecycle you run](/architecture/agent-lifecycle), and the [capabilities you add](/architecture/system-view). It shows the fourteen layers of a typical utility estate and the systems in each. It places four worked examples on those layers. The short answer: agents fit around the systems utilities already run. In the deployments found, language-model systems advise and people decide.
 
-Each entry says whether the system advises or acts. It gives the <Term k="autonomy level">autonomy level</Term>, from A0 manual to A5 governed lights-out. It gives the <Term k="learning level">learning level</Term>, from L0 fixed to L3 continuous. It names the [zone or floor](/architecture/deterministic-zones) the work touches. In the deployments found, language-model systems advise. The few that act alone run fixed rules.
+## Who owns which work
 
-<TeachingIllustration src="/images/use-cases/utilities-map-v1.webp" expandable title="Keep essential services working" alt="Four areas: electricity networks, water and wastewater, customer service, and assurance and resilience. Shared outcomes include service quality, reliability and affordability." caption="Choose a service problem. Keep the investigation separate from authorization to change physical operations." />
+Ownership decides which use case belongs to whom. It is not the same in electricity and water.
 
-<TeachingIllustration src="/figures/use-cases/utilities-deployments-map.svg" mobileSrc="/figures/use-cases/utilities-deployments-map-mobile.svg" expandable title="Named utility deployments by autonomy level" alt="Four columns: electricity networks, water and wastewater, customer service, and assurance and resilience. Vector, Watercare, Sydney Water, AGL and PG&E sit at A2. Kraken with Sierra sits at A3. Essential Energy sits at A1. Nothing sits at A4. A line at A2 reads: in the deployments found, language-model systems advise. Hollow dots mark this guide's proposed designs. Badges name the zone or floor each area touches." caption="Placements are this guide's position. Results are as reported by the party named, and almost none is independently audited." />
+- **Electricity retailers bill households.** In Australia, an electricity distributor does not bill households. Retailers do. Billing exceptions, payment plans and hardship belong to the retailer.
+- **Distributors run the network.** A distributor owns poles, wires, substations and transformers. It runs the control room, connects customers and restores supply. It bills retailers for use of its network.
+- **Meters are split too.** In most Australian states, household smart meters belong to competing metering coordinators. Victoria is the exception. Its distributors own the household smart meters, so they run the meter head-end and meter data.
+- **New Zealand has the same split.** Retailers, called traders, bill customers. Distributors bill retailers for network use. Market parties exchange standard files called EIEPs through the Electricity Authority's registry.
+- **Water utilities bill households directly.** A water utility treats and delivers water and collects wastewater. It bills households itself, usually every quarter. There is no wholesale market in between.
 
-## Electricity networks
+| Work | Electricity in Australia and New Zealand | Water |
+|---|---|---|
+| Customer bills, payment plans, hardship | The retailer | The water utility |
+| Network, outages, connections | The distributor | The water utility |
+| Household meters | A metering coordinator. The distributor in Victoria | The water utility. Most meters are still read by a person |
+| Market messages | AEMO's B2B e-Hub and MSATS in Australia. The registry and EIEP files in New Zealand | None |
 
-**Vector, New Zealand: pole inspection (production).** Vector works with Tapestry on aerial images of its network. Roadside pole checks fell from 30 to 45 minutes to 5 to 7 minutes. Tapestry reported this from Vector's data on 20 August 2025 [vendor]. The tool advises. A detection triggers an inspection. A field crew confirms it.
+AEMO is the Australian Energy Market Operator. Its business-to-business (B2B) e-Hub carries service orders, meter data and notices between market parties. Its market settlement and transfer system (MSATS) holds the standing data for each meter. The Australian Energy Regulator (AER) enforces the retail rules.
 
-**Essential Energy, New South Wales: safety signals in crew notes (preparing to deploy).** An AI reads the free-text notes crews record on iPads. The utility projects it will find safety signals in 76 percent of cases. Its current rules find 59 percent (iTnews, 16 April 2026). That is a projection, not a measurement. The tool advises only.
+## The estate
 
-**Proposed design.** Use dated imagery and an asset map to find inspection candidates. The agent checks location, previous work, evidence quality and duplicates before it prepares an inspection request. Field evidence confirms what the image cannot establish.
+These are the systems a distributor of about one million customers and a metropolitan water utility typically run. Vendors in brackets are examples, not a claim about any named utility. <Term k="ot">OT</Term> means operational technology: the control systems that run the physical network. SCADA is the main one. It is the control-room system that monitors and operates field equipment.
 
-**Where these sit on the architecture.** Vector's tool is A2, L1. Essential Energy's is A1, L1. The risk to watch is staff trusting it too much. The proposed vegetation agent is A2, L1. It creates inspection requests. That puts it at Tier 2 on the [risk profile](/architecture/risk-profile). None of these touches [safety actuation](/architecture/deterministic-zones#safety-actuation). No utility was found letting an AI agent operate switching or protection. The control that must exist: a detection triggers an inspection. The field confirms it.
+| Layer | Electricity distributor | Water utility |
+|---|---|---|
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | Two data centres plus public cloud. A separate OT network for the control centre and substations. Mesh radio or cellular for smart meters | The same pattern. Telemetry to pumps, reservoirs and plants. Low-power networks for sensors and digital meters |
+| [Data platform (R02)](/layers/r02-data-platform) | Warehouse or lakehouse (Snowflake, Databricks, Fabric, SAP Datasphere). BI (Power BI). A historian copy. Data marts for reports to the AER | The same, plus lab data and hydraulic model outputs |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | Integration bus or platform (SAP Integration Suite, MuleSoft, Boomi). API gateway. File transfer. A market gateway to the B2B e-Hub. A one-way OT to IT path through a buffer zone (DMZ) | The same, without the market gateway. An IoT platform for sensors |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Network billing to retailers. Meter data management where it owns meters (Itron, Oracle, Siemens). Asset system (SAP PM, IBM Maximo, Oracle WAM). GIS, the network map (Esri, GE Smallworld). ERP. Records. Outside records: MSATS or the NZ registry | Customer billing system, the CIS (SAP, Hansen, Oracle, TechnologyOne). Asset system. GIS. ERP. Records. Lab system (LIMS) |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | SCADA, distribution management (ADMS) and outage management (OMS) (GE Vernova, Schneider, Siemens, Oracle). Smart meter head-end (Itron, Landis+Gyr). Historian (AVEVA PI). Field mobility. Vegetation platforms. Contact centre telephony | SCADA (Schneider, AVEVA, Citect). Treatment plant control. Historian. Event analytics (TaKaDu, StormHarvester). Hydraulic models. Leak sensors. Digital meter head-end. Field mobility |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Data science platforms (Databricks, Azure ML). Models inside packages, such as SAP's release confidence on held reads. Load forecasting. Image analytics as a service (Tapestry, Neara, AiDash, LiveEO). Microsoft 365 Copilot | The same, plus anomaly detection on telemetry and acoustic leak models |
+| [Agent platform (R07)](/layers/r07-agent-platform) | Mostly new. Today: robotic process automation (UiPath, Power Automate) and rule engines (SAP BPEM, ServiceNow, Pega). Emerging: SAP Joule Studio, Copilot Studio, Agentforce, the Maximo <Term k="mcp">MCP</Term> server | The same, plus customer chatbots |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Microsoft 365. Spreadsheets hold many exception trackers. Tablets in the field | The same |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | Outage map and SMS alerts. Connections portal. Fault and life support lines. Retailers run the bill portal, app and chat | Customer portal and app. Contact centre. SMS and web notices for outages |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | Workforce identity (Entra ID, Okta). Privileged access (CyberArk). Security monitoring (Splunk, Sentinel). OT monitoring (Claroty, Dragos, Nozomi) | The same, plus customer identity |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Risk and compliance tool (ServiceNow IRM, Archer, Protecht). Obligations register. Reports to the AER, or the Commerce Commission and Electricity Authority in New Zealand | Risk and compliance tool and obligations register. Reports to the economic, health and environment regulators. Taumata Arowai in New Zealand |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | Application and interface monitoring (Dynatrace, Splunk, SAP Cloud ALM). Market message monitoring. Cloud cost tools. Almost no tracing of model calls | The same |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | IT service management (ServiceNow). Control room shifts with authorisation levels. Contractor management. No agent supervisor role yet | The same, plus treatment plant operators and quality assurance (QA) in billing and the contact centre |
+| [Agent data engineering (R14)](/layers/r14-agent-data-engineering) | Mostly new. Data catalogs (Purview, Collibra). Master data governance (SAP MDG). BI semantic models. A few retrieval pilots over manuals | The same, plus contact centre knowledge bases |
 
-<Cards>
-<Card title="Prioritize vegetation inspections" href="/use-cases/vegetation-inspection">Follow a candidate from observation to a confirmed field finding.</Card>
-</Cards>
+<TeachingIllustration src="/figures/use-cases/utilities-estate.svg" mobileSrc="/figures/use-cases/utilities-estate-mobile.svg" expandable title="A utility estate on the fourteen layers" alt="The fourteen layers drawn as a building. Infrastructure and compute is at the bottom and agent data engineering is at the top. Each layer lists the main systems at an electricity distributor and a water utility. Infrastructure: data centres, public cloud, a separate OT network, and radio networks for meters and sensors. Data platform: warehouse or lakehouse, BI, a historian copy and regulatory data marts. Integration fabric: integration bus, API gateway, file transfer and a one-way OT to IT path. Electricity adds a market gateway. Systems of record: billing, meter data, asset system, GIS, ERP and, for water, a lab system. Line of business and OT: SCADA, outage and distribution management, meter head-ends, historian, event analytics and hydraulic models. A red band on this layer says control systems act on the network. Agents read the historian copy and never write there. Intelligence and learning: data science, models inside packages and image or event analytics. Agent platform: RPA and rule engines today, with new agent builders and the Maximo MCP server. Productivity: Microsoft 365, spreadsheets and email. Experience and channels: outage maps, portals and the contact centre. Security and identity: workforce identity, privileged access, security and OT monitoring. Governance: a risk and compliance tool, an obligations register and regulators. Observability: interface monitoring, with almost no model tracing. Operating model: service management, control room shifts and QA sampling. Agent data engineering: catalogs and knowledge bases, with reference sets still missing. At the right edge sits the market boundary, outside the utility. AEMO MSATS and the NZ registry link to systems of record. The AEMO B2B e-Hub and the NZ EIEP file hub link to the integration fabric. Water has no market." caption="Agents arrive on top of systems utilities already run. The market boundary sits outside the utility, and control systems stay out of reach." />
 
-## Water and wastewater
+Five points on this estate matter most for agents.
 
-**Watercare, Auckland: wastewater sensors (production rollout).** Watercare is installing 5,000 sensors in its wastewater network after a 135-sensor trial. An AI layer learns normal behaviour. It alerts staff to inflow, blockages and pump-station problems. Staff decide on maintenance (Watercare, 18 August 2025).
+- **The OT network stays apart.** Control-system data usually may not leave it. That decides where an agent runs and what it reads. The historian is the safe copy for an agent to read.
+- **Three records must agree.** In electricity they are the GIS network model, the asset register and the market's standing data. They often do not, and that gap drives exceptions in every use case below.
+- **The warehouse is a good source for history.** It is a poor source for the current state, because it loads overnight (typical, unsourced).
+- **Interface monitoring shows that a message moved.** It does not show that the business outcome happened. Tracing of model and tool calls is mostly absent.
+- **Supervision already exists.** Billing teams sample released work. Contact centres score calls. Control rooms have authorisation levels. The missing role is a person who owns an agent's results and its changes.
 
-**Sydney Water with UTS: leak detection (production).** Acoustic sensors in water mains feed an AI that ranks the risk of leaks and breaks. Its developers report 80 percent accuracy at locating likely failures within 200 metres (Trenchless Australasia, February 2023). It advises crews.
+## The use cases on this estate
 
-No language-model triage of SCADA alarms was found at any utility. SCADA is the control-room system that monitors and operates pumps and valves.
+Four worked examples sit on this estate. Each one names its systems by layer, the process today, the process with agents, and who approves where.
 
-**Proposed design.** Bring telemetry, operating history and field observations together. The agent tests whether a signal fits a sensor problem, planned work, or an issue needing investigation. Treatment and network control stay in approved operating processes.
-
-**Where these sit on the architecture.** Both named systems and the proposed agent advise, at A2, L1. None of them writes to SCADA. That keeps them out of the [safety actuation zone](/architecture/deterministic-zones#safety-actuation). The control that must exist: no write path from the agent to <Term k="ot">operational technology</Term>. See [business and industrial systems](/layers/r05-lob-and-ot).
-
-<Cards>
-<Card title="Investigate a network anomaly" href="/use-cases/water-operations">See how a bounded investigation uses time-series evidence and asset memory.</Card>
-</Cards>
-
-## Customer service
-
-**AGL, Australia: chat (production).** AGL's assistant on IBM watsonx contains 36 percent of about 125,000 monthly chats (IBM case study, undated) [vendor]. Its one journey that acts alone adds a concession card. That journey is a fixed rule-based flow.
-
-**PG&E, California: voice (production).** PG&E's voice agent, built by PolyAI, answers outage and billing calls and routes the rest. PolyAI reports 67 percent containment and 35,000 labour hours saved (customer page, 2026) [vendor].
-
-The AGL and PG&E figures count different things: chats against calls. They are not comparable. <Term k="containment">Containment</Term> counts contacts that never reached a person. It does not count problems solved.
-
-**Kraken with Sierra: account journeys (production at one utility).** Kraken launched agents with Sierra in June 2026. They run set journeys such as identity checks, home moves and meter reads. One unnamed utility went live in four weeks on about 1.3 million accounts. No results are published (Pulse2, 12 June 2026) [vendor].
-
-An independent trade analysis looked at these agents (CX Today, 12 August 2026). It says anything that changes a balance, payment, tariff or debt should be a hard stop. No named utility says a language-model agent changes a payment plan on its own.
-
-Prefer the utility's own filing over the vendor's. Kraken claims A$170 million saved at Origin [vendor]. Origin's half-year deck says A$100 to 150 million. That deck was seen only in a search excerpt.
-
-**The hardship precedent.** In AER v Origin (Federal Court, 6 July 2022), automated processes changed payment plans without checking capacity to pay. Origin admitted over 100,000 breaches affecting over 90,000 customers. It paid an A$17 million penalty. The regulator warned that automation must not replace human contact for customers in hardship. This was automation, not AI. Ofgem and the UK Energy Ombudsman set out two expectations on 5 February 2026. Firms should make it easy to reach a person. They should say when AI is in use.
-
-**Proposed design.** An assistant explains an approved bill or outage update, gathers details, and routes the unresolved case. A coordinating extension tracks the request to a confirmed response. Start with the [customer-service blueprint](/library/blueprints/departments/customer-service).
-
-**Where these sit on the architecture.** AGL's and PG&E's assistants are A2, L1. Kraken's set journeys are A3, L1. Any change to a balance, payment or tariff is in the [money zone](/architecture/deterministic-zones#movement-of-money). The control that must exist is approval on account changes. Measure the resolution rate, not containment. Hardship, disconnection and payment plans sit under the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). There the agent only flags, at A1. A trained person decides and checks capacity to pay for each case. The four questions on [agent types](/architecture/agent-types) score a customer chat agent this way.
-
-<Cards>
-<Card title="Resolve billing exceptions without deciding hardship" href="/use-cases/billing-exceptions">Clear implausible meter reads with rules and a specialist, and hand hardship to a person.</Card>
-<Card title="Wait for the vendor's agent, or build one" href="/use-cases/packaged-applications">Billing and customer systems are packaged software. Decide process by process whether a vendor agent will do the job.</Card>
-</Cards>
-
-## Assurance and resilience
-
-No utility was found using agents for regulatory reporting or compliance evidence. The search was not complete. Ofwat says regulatory reporting is one area where UK water companies report some AI use. It names no case (Kurrant, 18 June 2026).
-
-**Proposed design.** Collect maintenance, inspection, training and incident evidence with clear dates and ownership. Compare recurring findings across sites without treating similar text as proof of a shared cause.
-
-**Where these sit on the architecture.** The proposed evidence and audit agents advise, at A2, L1. A filing to a regulator is a [formal regulatory record](/architecture/deterministic-zones#formal-regulatory-records). A named person signs it. The control that must exist: every finding links to its source record.
+| Worked example | Who owns it | Main layers | What the agent writes | Who approves |
+|---|---|---|---|---|
+| Billing exceptions | An energy retailer or a water utility | Systems of record, integration fabric, intelligence and learning | Proposals, case notes, draft market requests and messages | A fixed rule or a specialist. A trained person for hardship |
+| Vegetation inspection | An electricity distributor | Line of business and OT, systems of record, integration fabric | A notification marked "agent proposed" | A planner, then a field assessor |
+| Water network anomaly | A water utility | Line of business and OT, integration fabric, systems of record | An advisory view and draft notifications | The operator, the engineer, a named officer |
+| AI use inventory | Any utility, for a regulator | Governance, risk and sovereignty, agent platform, observability | Draft inventory rows from the registry | A named person attests |
 
 <Cards>
-<Card title="Prepare evidence for review" href="/use-cases/compliance-evidence">Link obligations, checks, source records, and unresolved gaps.</Card>
-<Card title="Build an AI use inventory" href="/use-cases/ai-use-inventory">List every AI use, the decision it influences, and the tested safeguards around it.</Card>
-<Card title="Investigate recurring issues" href="/use-cases/systemic-audit-issues">Ask targeted questions and seek counterexamples before proposing a common cause.</Card>
+<Card title="Resolve billing exceptions without deciding hardship" href="/use-cases/billing-exceptions">An energy retailer clears held reads and bills. A fixed rule or a specialist approves every change.</Card>
+<Card title="Prioritize vegetation inspections" href="/use-cases/vegetation-inspection">A distributor turns an image finding into a proposed notification that a planner approves.</Card>
+<Card title="Investigate a water-network anomaly" href="/use-cases/water-operations">An agent reads a copy of the alarm data and proposes a view. The operator decides.</Card>
+<Card title="Build an AI use inventory a regulator can read" href="/use-cases/ai-use-inventory">List every AI use, the decision it shapes, and the safeguards around it.</Card>
 </Cards>
 
-## Connect the examples to established frameworks
+### Customer journeys
 
-APQC's [Utilities process framework](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-utilities-pdf-version) provides an industry process structure. EPA's [Effective Utility Management guidance](https://www.epa.gov/sustainable-water-infrastructure/things-local-officials-should-know-about-effective-water) provides a wider view of water-utility performance. Our four areas are a simplified navigation aid, not the complete taxonomy of either reference. Reviewed 18 September 2026.
+The customer account belongs to the retailer in electricity and to the utility in water. A customer calls, chats or uses the app. Common reasons are a home move, a meter read, a bill question, a payment plan, or trouble paying. Today a service representative works across the CIS, the CRM and the market gateway.
 
-Select measures for the actual task: confirmed findings per inspection, duplicate work, investigation time, unresolved service requests, and total cost. Broader reliability and quality outcomes need evaluation over an appropriate period.
+With agents, the agent says it is AI and offers a person. It checks identity, with a one-time code before any change. It drafts home moves through the existing market gateway. A fixed rule records life support at once. The agent explains bills without changing the account. It drafts payment plans within policy, and a trained person approves each one. It flags hardship and hands the customer over warm, with a summary.
 
-## Sources added October 2026
+<Term k="containment">Containment</Term> counts contacts that never reached a person. It does not count problems solved. AGL's assistant on IBM watsonx contains 36 percent of about 125,000 chats a month (IBM, undated) [vendor]. PolyAI reports 67 percent containment for PG&E's voice agent (2026) [vendor]. The two count different things and are not comparable.
 
-Checked 14 October 2026 unless noted.
+Kraken launched agents with Sierra in June 2026. They run set journeys such as identity checks, home moves and meter reads. One unnamed utility went live on about 1.3 million accounts [vendor]. No results are published, and nothing was found on hardship or payment plans. Origin says its voice agent serves over 100,000 customers (12 February 2026, search excerpt). Hansen claims its AI agent can arrange payment plans [vendor]. That is a product claim, not a named utility letting an agent change a plan alone.
 
-- [Tapestry on Vector](https://x.company/blog/posts/tapestry-vector/), 20 August 2025, using Vector's data [vendor].
+## Named deployments
+
+The map places each named deployment by area and by autonomy level. The levels come from the [autonomy contract](/architecture/autonomy-contract). They run from assisted (A1) through delegated tasks (A2) to supervised autonomy (A3). Most deployments advise at delegated tasks (A2). Kraken's set journeys act at one utility. Nothing was found at managed autonomy (A4).
+
+<TeachingIllustration src="/figures/use-cases/utilities-deployments-map.svg" mobileSrc="/figures/use-cases/utilities-deployments-map-mobile.svg" expandable title="Named utility deployments by autonomy level" alt="Four columns: electricity networks, water and wastewater, customer service, and assurance and resilience. Rows run from assisted (A1) up to managed autonomy (A4). Vector, Watercare, Sydney Water, AGL and PG&E sit at delegated tasks (A2). Essential Energy sits at assisted (A1). Kraken with Sierra sits at supervised autonomy (A3), with set account journeys at one utility. Nothing sits at A4. A line between A2 and A3 reads: below this line, the systems advise. Hollow dots mark proposed designs. Badges name the zone or rule each area touches. Electricity and water touch safety actuation. Customer service touches the money zone and decisions about people. Assurance touches formal regulatory records." caption="Results are as reported by the party named, and almost none is independently audited. Placements are proposals." />
+
+Essential Energy in New South Wales was preparing an AI that reads crew notes for safety signals. It projects finding signals in 76 percent of cases, against 59 percent for its current rules (iTnews, 16 April 2026). That is a projection, not a measurement. Prefer a utility's own filing to a vendor's claim. Kraken claims A$170 million saved at Origin [vendor]. Origin's half-year deck says A$100 to 150 million, seen only in a search excerpt.
+
+No utility was found using agents for regulatory reporting or compliance evidence. Ofwat says regulatory reporting is one area where UK water companies report some AI use. It names no case (Kurrant, 18 June 2026).
+
+## The rules that bind the industry
+
+**The hardship precedent.** In AER v Origin (Federal Court, 6 July 2022), automated processes changed payment plans without checking capacity to pay. Origin admitted over 100,000 breaches affecting over 90,000 customers. It paid an A$17 million penalty. This was automation, not AI. It still sets the line: a trained person decides any change to a payment plan. That is <Term k="decisions about people">the rule for decisions about people</Term>. Red Energy paid A$474,600 in February 2025 over alleged failures to help customers in payment difficulty (search excerpt).
+
+**The AEMC rule change of 10 September 2026.** The Australian Energy Market Commission (AEMC) made a final rule on that date. It strengthens payment difficulty and disconnection protections from 30 March 2027. It covers four of the five requests the AER lodged on 19 December 2025. A second rule, on payment plan standards, was still open on 15 October 2026. It would make retailers weigh what customers say they can afford before asking for documents. Feedback on a draft rule was due by 22 October 2026.
+
+**The information path rule for SCADA.** Control systems act on the network. Agents stay on the information path around them. They read the historian copy, not the control system, and have no write path to OT. No utility was found letting an AI agent operate switching or protection (October 2026). This puts control actions in the [safety actuation zone](/architecture/deterministic-zones#safety-actuation). Joint government guidance on AI in operational technology says the same (NSA, CISA and others, December 2025).
+
+**Telling customers about AI.** Ofgem and the UK Energy Ombudsman set out two expectations on 5 February 2026. Firms should say when AI is in use. They should make it easy to reach a person.
+
+**Regulators asking for an AI list.** The New York Public Service Commission opened Case 26-M-0552 on 17 September 2026. It asks named utilities to file an inventory of their AI uses. The Arizona Corporation Commission opened a similar inquiry on 24 March 2026. The [AI use inventory](/use-cases/ai-use-inventory) shows how to build one.
+
+## Evidence and limits
+
+The estate tables are industry knowledge, not a survey. No Australian or New Zealand utility publishes its full system estate. AEMO's pages returned errors, so market procedure details come from search excerpts.
+
+Almost every result on this page is reported by the vendor or the operator. Few are independently audited. Containment figures count different things and should not be compared across utilities.
+
+The named deployments that act alone run fixed rules or set journeys. No language-model agent was found changing a bill, a payment plan or a control system on its own. This guide recommends keeping it that way until a utility can measure the result and recover from a wrong action.
+
+## Next step
+
+Start with the worked example closest to your work, such as [billing exceptions](/use-cases/billing-exceptions). Then [choose a first task](/use-cases/choose-where-to-start).
+
+<details>
+<summary>The research behind this page</summary>
+
+All sources checked on 15 October 2026 unless a date says otherwise. "Search excerpt" means the page itself could not be opened.
+
+**Estate and market.** The estate tables follow industry practice, cross-checked against these references.
+
+- [IEC TR 62357-1, reference architecture for power system information exchange](https://webstore.iec.ch/en/publication/6918), 25 October 2012.
+- [CEN-CENELEC-ETSI Smart Grid Reference Architecture](https://www.cencenelec.eu/media/CEN-CENELEC/AreasOfWork/CEN-CENELEC_Topics/Smart%20Grids%20and%20Meters/Smart%20Grids/reference_architecture_smartgrids.pdf), November 2012.
+- [ISA-95 standard page](https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard).
+- [AEMO B2B procedures](https://www.aemo.com.au/energy-systems/electricity/national-electricity-market-nem/market-operations/retail-and-metering/business-to-business-procedures). Search excerpt.
+- [Electricity Authority on EIEPs](https://ea.govt.nz/industry/retail/eieps). Search excerpt.
+- [AEMC, accelerating smart meter deployment](https://aemc.gov.au/rule-changes/accelerating-smart-meter-deployment), final rule 28 November 2024. Legacy meters replaced by 1 December 2030. Search excerpt.
+- [APQC Process Classification Framework for Utilities](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-utilities-pdf-version) and [EPA Effective Utility Management](https://www.epa.gov/sustainable-water-infrastructure/things-local-officials-should-know-about-effective-water). Reviewed 18 September 2026.
+
+**Rules and regulators.**
+
+- [AER release on Origin](https://www.aer.gov.au/news-release/origin-penalised-17-million-for-customer-hardship-breaches), 6 July 2022, as reported by [Region](https://region.com.au/origin-fined-17-million-admits-breaching-hardship-obligations-100000-times/572811).
+- [AEMC final determination on payment difficulty protections](https://www.aemc.gov.au/sites/default/files/2026-09/final_determination_-_streamlining_payment_difficulty_protections_rrc0075.pdf), 10 September 2026. Search excerpt.
+- [AEMC rule change on payment difficulty assistance standards](https://www.aemc.gov.au/rule-changes/strengthening-standards-payment-difficulty-assistance), consultation paper 18 June 2026. Search excerpt.
+- [Ofgem and the Energy Ombudsman on AI](https://www.ofgem.gov.uk/blog/understanding-ai-energy-sector-benefits-risks-and-your-rights), 5 February 2026.
+- [Government guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/), December 2025.
+- [New York PSC inquiry into AI at utilities](https://dps.ny.gov/news/psc-launches-inquiry-use-artificial-intelligence-new-yorks-utilities), 17 September 2026.
+- The Red Energy penalty of February 2025 was read on an AEMC page as a search excerpt.
+
+**Deployments.**
+
+- [Tapestry on Vector](https://x.company/blog/posts/tapestry-vector/), 20 August 2025 [vendor].
 - [iTnews on Essential Energy](http://www.itnews.com.au/news/essential-energy-turns-to-ai-for-safety-inspections-625091), 16 April 2026.
 - [Watercare sensor rollout](https://www.watercare.co.nz/home/about-us/latest-news-and-media/watercare-s-wastewater-network-smartens-up-with-rollout-of-5000-sensors), 18 August 2025.
-- [Trenchless Australasia on Sydney Water](https://www.trenchless-australasia.com/2023/02/22/sydney-water-takes-on-more-tech/), 22 February 2023. Read through a search summary.
+- [Trenchless Australasia on Sydney Water](https://www.trenchless-australasia.com/2023/02/22/sydney-water-takes-on-more-tech/), 22 February 2023. Search excerpt.
 - [IBM case study on AGL](https://www.ibm.com/case-studies/agl-energy), undated [vendor].
 - [PolyAI on PG&E](https://poly.ai/customers/pge), 2026 [vendor].
-- [Pulse2 on Kraken and Sierra](https://pulse2.com/kraken-launches-autonomous-agents-with-sierra-to-transform-utility-customer-service/), 12 June 2026 [vendor].
-- [CX Today on Kraken's agents](https://cxtoday.com/kraken-autonomous-agents), 12 August 2026. Independent trade analysis.
+- [Pulse2 on Kraken and Sierra](https://pulse2.com/kraken-launches-autonomous-agents-with-sierra-to-transform-utility-customer-service/), 12 June 2026 [vendor], and [Sierra on Kraken](https://sierra.ai/customers/kraken), 2026 [vendor].
+- [CX Today on Kraken's agents](https://cxtoday.com/kraken-autonomous-agents), 12 August 2026. Independent trade analysis. It says anything that changes a balance, payment, tariff or debt should be a hard stop.
 - [Kraken case study on Origin](https://www.kraken.tech/case-studies/origin), undated [vendor].
-- [Origin half-year 2026 presentation](https://www.originenergy.com.au/wp-content/uploads/65/Origin-Energy-HY26-Investor-Presentation.pdf), 12 February 2026. Seen only in a search excerpt.
-- [AER release on Origin](https://www.aer.gov.au/news-release/origin-penalised-17-million-for-customer-hardship-breaches), 6 July 2022, as reported by [Region](https://region.com.au/origin-fined-17-million-admits-breaching-hardship-obligations-100000-times/572811).
-- [Ofgem and the Energy Ombudsman on AI](https://www.ofgem.gov.uk/blog/understanding-ai-energy-sector-benefits-risks-and-your-rights), 5 February 2026.
+- [Origin half-year 2026 presentation](https://www.originenergy.com.au/wp-content/uploads/65/Origin-Energy-HY26-Investor-Presentation.pdf), 12 February 2026. Search excerpt.
+- [Kraken and Snowy Hydro partnership](https://www.kraken.tech/press-releases/snowy-secures-kraken-partnership), 15 July 2026. More than 1.6 million customers. No mention of AI agents.
+- [Hansen AI Virtual Agent](https://www.financialcontent.com/article/gnwcq-2025-2-18-hansen-launches-ai-powered-virtual-agent-to-enhance-customer-experience), 18 February 2025 [vendor]. Hansen's FY26 results of 19 August 2026 name City of Kingsport (US) as a deployment.
+- [Salesforce Agentforce for Energy and Utilities](https://salesforce.com/agentforce/use-cases/energy-utilities/customer-service), 2026 [vendor]. Pre-built subagents. Salesforce warns features may change.
 - [Kurrant on Ofwat's AI plan](https://kurrant.com/kurrantly-news/ofwat-backs-ai-for-the-water-sector-as-data-centre-demand-strains-supply/), 18 June 2026.
 
-Continue with the [water blueprint](/library/blueprints/verticals/water-utilities), [electricity blueprint](/library/blueprints/verticals/utilities-and-energy), or [choose a first task](/use-cases/choose-where-to-start).
+**Gaps.** No volumes or cycle times were found for Australian billing exceptions, water alarms or contact centre journeys. Esri's agent products from the July 2026 conference need Esri's own announcement before they are named.
+
+</details>

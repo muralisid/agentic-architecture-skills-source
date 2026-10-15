@@ -1,72 +1,175 @@
 ---
-title: "Safety coaching from CCTV events"
-description: "Help people learn from risky situations while keeping incident evidence and teaching material distinct."
-position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
-lastReviewed: "2026-09-18"
+title: "Safety coaching from CCTV, incident and observation data"
+description: "Turn a risky moment caught on camera, or logged as an observation, into coaching the safety owner approves. Real-time interventions, discipline and any decision about a person stay with people."
+position: "Proposed agent design, built on the author's earlier CCTV risk work. No named mining or oil and gas deployment was found. The as-is is typical practice. The placements and controls are this guide's recommendation."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [r04, r05, r10, r11, zones, risk, autonomy, agent-types]
 ---
 
-A detected event still needs review, context, and an appropriate lesson. In this proposed workflow, the agent helps turn a supported finding into coaching that a safety owner can approve.
+On a mine site, a camera catches a worker walking behind a reversing truck. Or a supervisor logs an observation, or someone reports an incident. Someone must check the event, then turn it into a lesson for the right person. Today a supervisor or a safety advisor does this by hand. They use the health, safety and environment (HSE) system and a toolbox talk. In this design an agent checks the event against the clip and the site rules, and drafts the coaching. The safety owner approves every item before it goes out. Real-time interventions, discipline and any decision about a person stay with people.
 
-## See the work first
-
-<TeachingIllustration src="/images/use-cases/safety-coaching-v1.webp" expandable title="Safety coaching from CCTV events" alt="Detect a candidate CCTV event, verify context and procedure, draft a clearly labeled teaching video, approve identity and delivery, then track learning and recurrence. Original incident evidence remains separate." caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+<TeachingIllustration src="/images/use-cases/safety-coaching-v1.webp" expandable title="Turn a verified event into a coaching moment" alt="Five steps, left to right. Detect: a candidate CCTV event. Verify: check the context and the procedure. Create: draft a teaching video, clearly labelled as generated. Approve: check the right person, accurate content and readiness to deliver. Follow up: track the lesson and watch for the same behaviour again. A banner says keep the original incident evidence separate from generated teaching material." caption="The original clip stays untouched. The teaching video is a separate, labelled item." />
 
 <details>
 <summary>Experience behind this example</summary>
 
-The earlier risk-bot work described by the author processed CCTV streams to find at-risk behavior and create a coaching opportunity. The extension below adds an agent-assisted coaching process; it is not a claim that this complete process was deployed.
+The design builds on the author's earlier risk-bot work, which found at-risk behaviour in CCTV streams.
 
 </details>
 
-## Start with evidence
+## The systems involved
 
-A detector or vision model identifies a candidate event and returns a timestamp, clip reference, and uncertainty. The agent retrieves the applicable safety procedure and checks whether the evidence actually supports the event label. If it does not, the case remains unconfirmed.
+The work touches seven of the fourteen layers. The full estate is on the [energy and resources](/use-cases/energy) page.
 
-## What the agent adds
+| Layer | Systems in this use case |
+|---|---|
+| [Data platform (R02)](/layers/r02-data-platform) | Video management system (Milestone, Genetec) and its video store |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | HSE system (Cority, Enablon, Intelex): observations, incidents and actions. Permit to work. HR system and roster. Learning system |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Video analytics (Protex AI, Intenseye). In-cab fatigue monitoring (Seeing Machines Guardian). Collision avoidance (Hexagon). The agent reads these only as events, if at all |
+| [Agent platform (R07)](/layers/r07-agent-platform) | New: the agent, a restricted video tool, and an approved lesson library |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | Pre-start meetings, toolbox talks, crib-room screens, mobile apps |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | Worker identity, access to clips, contractor induction records |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Workplace surveillance law, privacy rules, regulator notification |
 
-For a confirmed case, prepare a short explanation of the safer action and a coaching-video draft. Keep any generated teaching video clearly labeled and separate from the unmodified incident evidence. Verify the recipient through an approved identity process. Route uncertain identity or sensitive content to the responsible safety team before delivery.
+## How it runs today
 
-## How the investigation proceeds
+The trigger is a video analytics event, an in-cab fatigue or proximity alert, a supervisor's observation, or an incident report. The work then runs in eleven steps.
 
-The loop asks whether the event is supported, whether the correct procedure is available, and whether the recipient is verified. Each missing answer triggers a specific lookup or human review. Stop when the coaching item is ready for its permitted delivery step, or when evidence cannot support it.
+| Step | Who | System | How the data moves |
+|---|---|---|---|
+| 1. Event happens | Worker. Camera. In-cab system | Video management. Fatigue monitoring. Collision avoidance | Video is stored. In-cab alerts go live to the driver and a monitoring centre |
+| 2. Real-time response | Monitoring centre or dispatcher | Radio | Calls the driver, and stands the driver down if needed. This is a safety intervention |
+| 3. Detection, where analytics exist | Video analytics | Video system plus analytics | A candidate event with a clip, a time and a label |
+| 4. Review | Supervisor or safety advisor | Video system, analytics screen | Watches the clip and decides if the event is real |
+| 5. Record | Supervisor | HSE system | An observation, hazard or incident is logged. Potential severity is rated |
+| 6. Investigate, for incidents | Investigation team | HSE system, with a set investigation method (ICAM or TapRooT) | Interviews, timeline, causes and actions |
+| 7. Notify the regulator, for serious incidents | Site senior executive or delegate | Regulator form or portal | Sent within the time state law sets |
+| 8. Coach | Supervisor | Pre-start meeting, toolbox talk | Face to face. Sometimes a slide or a short clip |
+| 9. Share the lesson | Safety team | Safety alert as a PDF or slides, by email and intranet | Sent to other sites |
+| 10. Train | Training coordinator | Learning system, HR system | Retraining is recorded |
+| 11. Report | HSE manager | HSE dashboards | A monthly safety report and a board safety committee pack |
 
-## Measure the business result
+<TeachingIllustration src="/figures/use-cases/safety-as-is.svg" mobileSrc="/figures/use-cases/safety-as-is-mobile.svg" expandable title="Safety coaching today: who does what" alt="A swimlane with six lanes: site systems, monitoring centre, supervisor, investigation, safety team, and training. Step 1: an event happens and the camera or in-cab system records it. Step 2: the monitoring centre calls the driver by radio. This is a real-time safety intervention. Step 3: video analytics flags a candidate event. Step 4: the supervisor watches the clip. Step 5: the supervisor records it in the HSE system. Step 6: the investigation team investigates serious incidents. Step 7: the site senior executive notifies the regulator. This is an approval. Step 8: the supervisor coaches at a pre-start meeting. Step 9: the safety team shares a safety alert with other sites. Step 10: the training coordinator records retraining. Step 11: the safety team reports monthly." caption="Today coaching is generic, and lessons reach other sites in days to weeks." />
 
-Measure detection precision, missed events in a reviewed sample, review effort, coaching relevance, delivery errors, and recurrence over a suitable period. Compare with the existing detection-plus-manual-coaching process. Coaching completion alone does not prove a reduction in injury risk.
+### Handoffs
 
-## Responsibility and failure handling
+The event passes from the monitoring centre to the supervisor and the safety advisor. Serious incidents go to an investigation team. HR and employee relations come in if conduct is involved. Then training, site leadership and the regulator.
 
-The safety owner approves the operating policy. The agent cannot determine disciplinary action. Access to clips and recipient data is restricted. A failed delivery stays visible as incomplete; it is not reported as completed coaching.
+### Where reporting comes in
 
-## Start with a bounded trial
+HSE dashboards and the monthly safety report count injuries, high-potential incidents and critical control checks. The board safety committee reads the same report. Serious incidents go to the regulator.
 
-Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+### Cycle time and volumes
 
-## Explore the architecture
+- A large site logs thousands of observations a month (typical, unsourced).
+- A safety alert reaches other sites in days to weeks (typical, unsourced).
 
-- [Business & industrial systems](/layers/r05-lob-and-ot).
-- [Experiences & channels](/layers/r09-experience-and-channels).
-- [Security & identity](/layers/r10-security-and-identity).
+### Pain points
 
-Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+- There is far more video than anyone can watch.
+- Detectors raise false events.
+- Coaching is generic.
+- Lessons spread slowly between sites.
+- Workplace surveillance law applies. New South Wales has the Workplace Surveillance Act 2005. Workers and unions expect consultation.
+- Coaching gets mixed up with discipline. That kills trust.
+- Completing a lesson is counted as learning.
 
-## External sources
+## How agents run it
 
-- [NVIDIA video search and summarization blueprint, vendor documentation](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard). Accessed 17 September 2026.
+The agent checks events and drafts coaching. It reads clips by ID only, through a restricted video tool. It writes draft coaching items to a review queue in the HSE system. It has no path to any machine, alarm, in-cab system or permit.
 
-Return to [Energy](/use-cases/energy) or [explore the agent types](/architecture/agent-types).
+| Step | Agent or person | Reads from, and how | Writes to | Who approves, and where |
+|---|---|---|---|---|
+| 1. Take the event | Agent | The detector event (clip ID, time, label, score), by event subscription | Case store | No one |
+| 2. Check the label | The agent calls a vision tool | The clip, by ID only, through a restricted video interface | The case: supported, not supported, or unclear | No one |
+| 3. Check the context | Agent | Permit system: was work permitted here? Roster. Site procedure and hazard plan in the document store | Case store | No one |
+| 4. Draft coaching | Agent | The approved procedure. The approved lesson library | A draft coaching note. A labelled teaching video with faces blurred, kept apart from the evidence | Not yet |
+| 5. Approve | Safety owner | The draft | A coaching item in the HSE system | The safety owner, for every item, in the HSE review queue |
+| 6. Confirm the recipient | The agent proposes. The identity process checks | HR worker ID. Roster | The recipient on the coaching item | The identity process. Unclear cases go to the safety team |
+| 7. Deliver | Supervisor, or an approved channel | The coaching item | Status "delivered" | The supervisor |
+| 8. Track recurrence | Agent | HSE records. Later detector events | The case, and a periodic report | The safety owner reviews it |
+
+If the clip does not support the label, the case stays unconfirmed and nothing is drafted. A failed delivery stays visible as incomplete. It is never reported as completed coaching.
+
+<TeachingIllustration src="/figures/use-cases/safety-to-be.svg" mobileSrc="/figures/use-cases/safety-to-be-mobile.svg" expandable title="Safety coaching with an agent: who does what" alt="A swimlane with six lanes: agent, vision tool, safety owner, identity check, supervisor, and the evidence store. Step 1: the agent takes the detector event. Step 2: a vision tool checks the label against the clip, read by ID only. Step 3: the agent checks the permit, the roster and the site procedure. Step 4: the agent drafts a coaching note and a labelled teaching video with faces blurred. Step 5: the safety owner approves every item in the HSE system. This is an approval. Step 6: the identity check confirms the recipient. This is an approval. Step 7: the supervisor delivers the coaching. Step 8: the agent tracks whether the behaviour comes back. The evidence store keeps the original clip unchanged, the coaching item, its approver and the agent's log. Real-time interventions and discipline stay outside this flow." caption="The agent drafts. The safety owner approves every item. Discipline is never part of the flow." />
+
+### What stays with a person
+
+- Real-time interventions for fatigue or proximity. They are safety actuation, a [deterministic zone](/architecture/deterministic-zones#safety-actuation).
+- Anything about discipline or a person's performance. The [rule for decisions about people](/architecture/deterministic-zones) applies. A named person decides any significant decision about a person.
+- Incident classification and regulator notification. They are legal records.
+- Investigation findings. They are legal records too.
+- Stopping work. That is a safety authority.
+
+### Where the evidence is kept
+
+The original clip stays unchanged, under the video system's retention rules. The coaching item sits in the HSE system, with its approver and its links. The agent's log sits with the operator, and the agent cannot change it. Teaching videos are kept apart from the evidence, under their own retention rule.
+
+### What changes in the systems
+
+- A new HSE record type, "coaching item", with a status and a link to the clip ID.
+- A review queue for the safety owner.
+- A video interface limited to fetching a clip by its ID.
+- A retention rule for teaching videos.
+- Notice and consultation under surveillance law, before the trial starts.
+
+### What does not change
+
+In-cab alerts, fatigue monitoring and collision avoidance stay as they are. Incident notification and the investigation method do not change. The discipline process does not change, and the agent has no part in it.
+
+## Who does this today
+
+No named mining or oil and gas deployment of a coaching agent was found by 15 October 2026.
+
+- **Protex AI with Bendix**, a vehicle parts factory. Protex reports 84 percent fewer targeted at-risk behaviours within 60 days (GlobeNewswire, 14 January 2026) [vendor]. It is a factory, not a mine.
+- **Intenseye** lists mining as a target market. It names no mining customer.
+- **HSE vendors** have added AI features: Cority Cortex AI, Enablon incident management, and Intelex with COMET (27 October 2025) [vendor]. They are features, not agents.
+- **Forwood** calls its critical risk management "AI-driven", across more than 800 sites [vendor]. The profile's sources date from October 2023. It gives no AI detail.
+- **DataRobot with Chevron** (2 June 2026) is the nearest case of an agent entering the permit process. Its "Safe Start" agent aims to replace mission permit approval with continuous checks [vendor]. This design keeps control of work with a person.
 
 ## Where this sits
 
-This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+The [four questions](/architecture/agent-types) place this agent as follows. Its role is create: it drafts coaching material. Its permissions are read only on detector events, clips by ID, the permit system, the roster and procedures. It writes draft coaching items to the review queue and nothing else. It has no path to any machine, alarm or control system. It runs at delegated tasks (A2) on the [autonomy contract](/architecture/autonomy-contract), as designed and as permitted. The safety owner approves every item. Its impact is on people. Footage shows identifiable workers, and coaching goes to a named person.
 
-- **Role:** create. Domain: workplace safety.
-- **Capability surface:** reads detector events, CCTV clips and safety procedures. Drafts coaching notes and labeled teaching videos. Sends approved items to verified workers. Untrusted input: none. Highest data class: personal, since workers can be identified.
-- **Placement:** A2, L1 on the [autonomy contract](/architecture/autonomy-contract). The safety owner approves each item before delivery. People choose the reviewed events it learns from. Discipline stays with people.
-- **Zone:** none. It has no path to any machine, alarm or control system. That keeps it out of the [safety actuation zone](/architecture/deterministic-zones#safety-actuation). Watch for automation bias. People stop checking a detector that is usually right.
-- **Tier:** Tier 2. Footage of identifiable workers is personal data. That scores Medium. If coaching records ever feed discipline, the <Term k="people-decisions floor">people-decisions floor</Term> applies. It is then Tier 3.
-- **Control:** a person checks each event against the clip before any coaching goes out.
+On the [risk profile](/architecture/risk-profile) it is Tier 2 (enhanced). Personal data scores Medium. If coaching records ever feed discipline, the rule for decisions about people applies, and it becomes Tier 3 (strict). This design keeps them apart. It touches no [deterministic zone](/architecture/deterministic-zones). It starts at curated learning (L1). People choose the reviewed events it learns from.
 
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+Watch for automation bias. People stop checking a detector that is usually right. The safety owner's review must stay a real check.
+
+## Measure the result
+
+Measure how often the detector is right, and missed events in a reviewed sample. Measure review effort, coaching relevance and delivery errors. Then measure whether the same behaviour comes back. Completing a lesson does not prove less risk.
+
+## Start with a trial
+
+Consult workers and unions first, and give notice under surveillance law. Then take a month of past clips from one site. Run the agent on them, with nothing sent. Ask the safety owner to grade every draft. Then go live with one crew. Register the agent through the [agent lifecycle](/architecture/agent-lifecycle), with a named sponsor.
+
+## Evidence and limits
+
+No mining or oil and gas deployment of this agent was found. The best measured case is a factory, and its figure is the vendor's own.
+
+The as-is is typical practice. The volumes are typical and unsourced. The surveillance law named here was not re-checked in this round.
+
+The detector work comes from the author's own experience. The agent extension is a proposal.
+
+## Next step
+
+Score this agent on the [risk profile](/architecture/risk-profile). Then read how the rule for decisions about people works on the [deterministic zones](/architecture/deterministic-zones) page.
+
+<details>
+<summary>The research behind this page</summary>
+
+Sources were read on 15 October 2026 unless a line says otherwise. [vendor] marks a vendor's claim about its own product or customer.
+
+- [GlobeNewswire, Protex AI and Bendix](https://www.globenewswire.com/news-release/2026/01/14/3219041/0/en/Protex-AI-Celebrates-Safety-Achievement-with-Bendix-Commercial-Vehicle-Systems-After-84-Reduction-in-At-Risk-Behaviors.html), 14 January 2026 [vendor].
+- [Protex Intelligence assistant](https://www.protex.ai/news/protex-unveils-protex-intelligence-the-ai-assistant-turning-safety-and-operational-data-into-actionable-foresight), undated [vendor].
+- [Cority incident management, Cortex AI](https://www.cority.com/solutions/incident-management), undated [vendor].
+- [Enablon incident management](https://wolterskluwer.com/en/solutions/enablon/incident-management-software), undated [vendor].
+- [Business Wire, Intelex and COMET](https://www.businesswire.com/news/home/20251027770847/en/Intelex-and-COMET-Partner-to-Deliver-New-Investigation-RCA-Standard-That-Transforms-Incident-Data-Into-Prevention-Intelligence), 27 October 2025 [vendor].
+- [Macquarie, investing in workplace fatality prevention software](https://www.macquarie.com/au/en/insights/investing-in-workplace-fatality-prevention-software.html). A profile of Forwood. Its sources date from October 2023 [vendor].
+- [DataRobot and Chevron, agents for autonomous inspections](https://www.datarobot.com/newsroom/press/datarobot-and-chevron-collaborate-to-advance-agentic-ai-for-autonomous-inspections/), 2 June 2026 [vendor].
+- [NVIDIA video search and summarization blueprint](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard), vendor documentation. Accessed 17 September 2026.
+- Workplace Surveillance Act 2005 (NSW). Known from background, not re-checked in this round.
+
+</details>

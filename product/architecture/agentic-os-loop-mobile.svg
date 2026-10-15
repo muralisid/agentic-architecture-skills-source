@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2907.7" role="img" aria-labelledby="title desc">
 <title id="title">The Agentic OS: one agent loop, five parts</title>
-<desc id="desc">One turn of an agent loop runs in seven steps: context assembly, the model call, tool routing, a policy check outside the model, the result, evidence written where the agent cannot write, and termination and budget checks. Each step is tagged with the part that owns it. You buy the runtime and build the harness, the context layer, the deterministic boundary and the adaptation ladder. An eval suite you own binds all five.</desc>
+<desc id="desc">One turn of an agent loop runs in seven steps. The first three are context assembly, the model call, and tool routing. Next come a policy check outside the model, the result, and evidence written where the agent cannot write. Last come termination and budget checks. Each step is tagged with the part that owns it. You buy the runtime. You build the harness, the context, the enforcement and the order of the intelligence ladder. An eval suite you own binds all five.</desc>
 <defs>
 <marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
 </defs>
@@ -13,16 +13,16 @@
 <text x="112" y="262.8" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">1. Context assembly</text>
 <text x="112" y="298.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">The harness assembles context from</text>
 <text x="112" y="329.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">retrieval.</text>
-<rect x="112" y="347.5" width="199.6" height="40" rx="20" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
-<text x="211.8" y="375.9" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#78350f">Context layer</text>
-<rect x="319.6" y="347.5" width="120.4" height="40" rx="20" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
-<text x="379.8" y="375.9" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#4c1d95">Harness</text>
+<rect x="112" y="347.5" width="120.4" height="40" rx="20" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="172.2" y="375.9" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#78350f">Context</text>
+<rect x="240.4" y="347.5" width="120.4" height="40" rx="20" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="300.6" y="375.9" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#4c1d95">Harness</text>
 <path d="M394.0 403.5 L394.0 441.5" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <rect x="96" y="443.5" width="596" height="146.5" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="112" y="480.3" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">2. Model call</text>
 <text x="112" y="516" font-family="Arial,sans-serif" font-size="24" fill="#465958">The model answers, or asks for a tool.</text>
-<rect x="112" y="534" width="252.4" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
-<text x="238.2" y="562.4" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Adaptation ladder</text>
+<rect x="112" y="534" width="278.8" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="251.4" y="562.4" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Intelligence ladder</text>
 <path d="M394.0 590.0 L394.0 628.0" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <rect x="96" y="630" width="596" height="177.5" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="112" y="666.8" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">3. Tool routing</text>
@@ -35,8 +35,8 @@
 <text x="112" y="884.3" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">4. Policy check outside the model</text>
 <text x="112" y="920" font-family="Arial,sans-serif" font-size="24" fill="#465958">Checked by a separate system, not by the</text>
 <text x="112" y="951" font-family="Arial,sans-serif" font-size="24" fill="#465958">model.</text>
-<rect x="112" y="969" width="318.4" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
-<text x="271.2" y="997.4" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Deterministic boundary</text>
+<rect x="112" y="969" width="173.2" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="198.6" y="997.4" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Enforcement</text>
 <path d="M394.0 1025.0 L394.0 1063.0" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <rect x="96" y="1065" width="596" height="177.5" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="112" y="1101.8" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">5. Result</text>
@@ -48,8 +48,8 @@
 <rect x="96" y="1282.5" width="596" height="146.5" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="112" y="1319.3" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">6. Evidence written</text>
 <text x="112" y="1355" font-family="Arial,sans-serif" font-size="24" fill="#465958">Traces go where the agent cannot write.</text>
-<rect x="112" y="1373" width="318.4" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
-<text x="271.2" y="1401.4" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Deterministic boundary</text>
+<rect x="112" y="1373" width="173.2" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="198.6" y="1401.4" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Enforcement</text>
 <path d="M394.0 1429.0 L394.0 1467.0" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <rect x="96" y="1469" width="596" height="177.5" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="112" y="1505.8" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">7. Termination and budget checks</text>
@@ -60,8 +60,8 @@
 <path d="M394.0 1646.5 L394.0 1680.5 L52 1680.5 L52 314.75 L94 314.75" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <text x="60" y="1716.5" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Repeat from step 1</text>
 <rect x="28" y="1776.5" width="664" height="88.2" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="2" stroke-dasharray="7 5"/>
-<text x="44" y="1811.7" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Rules an agent reads are advice.</text>
-<text x="44" y="1842.7" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Rules a separate system checks are controls.</text>
+<text x="44" y="1811.7" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">A rule the model only reads is advice.</text>
+<text x="44" y="1842.7" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">A separate system must check every action.</text>
 <text x="28" y="1912.7" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#182e31">The five parts</text>
 <rect x="28" y="1934.7" width="664" height="125.5" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <text x="44" y="1971.5" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">1. Runtime</text>
@@ -76,20 +76,20 @@
 <rect x="580" y="2088.2" width="94" height="40" rx="20" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
 <text x="627" y="2116.6" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#4c1d95">Build</text>
 <rect x="28" y="2213.7" width="664" height="125.5" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
-<text x="44" y="2250.5" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#78350f">3. Context layer</text>
+<text x="44" y="2250.5" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#78350f">3. Context</text>
 <text x="44" y="2286.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">Nobody sells it. Chunking, versioned</text>
 <text x="44" y="2317.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">embeddings, retrieval that can refuse.</text>
 <rect x="580" y="2227.7" width="94" height="40" rx="20" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
 <text x="627" y="2256.1" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#78350f">Build</text>
 <rect x="28" y="2353.2" width="664" height="125.5" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="44" y="2390" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">4. Deterministic boundary</text>
-<text x="44" y="2425.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">Models may take permission away, never grant</text>
-<text x="44" y="2456.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">it. Plus the evidence channel.</text>
+<text x="44" y="2390" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">4. Enforcement</text>
+<text x="44" y="2425.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">Policy checked outside the model, and an</text>
+<text x="44" y="2456.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">audit trail the agent cannot touch.</text>
 <rect x="580" y="2367.2" width="94" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
 <text x="627" y="2395.6" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#0f172a">Build</text>
 <rect x="28" y="2492.7" width="664" height="125.5" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
-<text x="44" y="2529.5" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">5. Adaptation ladder</text>
-<text x="44" y="2565.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">The ordering: engineer context first, then</text>
+<text x="44" y="2529.5" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">5. Intelligence ladder</text>
+<text x="44" y="2565.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">The order: improve context first, then</text>
 <text x="44" y="2596.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">distil, then fine-tune.</text>
 <rect x="580" y="2506.7" width="94" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
 <text x="627" y="2535.1" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#1e293b">Build</text>

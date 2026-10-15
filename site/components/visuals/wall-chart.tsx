@@ -1,14 +1,14 @@
 /**
  * The single-picture target-state wall chart.
  *
- * Deliberately not a manifest figure: it is one large authored SVG committed at
+ * Deliberately not a manifest figure: it is one large SVG committed at
  * public/diagrams/target-state.svg, shown in a pan container because it is
  * wider than any content column and is meant to be zoomed, printed, and taken
  * away.
  *
- * The chart is a designed artefact, not a generated one. scripts/build-wall-chart.mjs
- * produced the earlier version and is kept as `npm run diagrams:legacy` for
- * reference, but it is out of the build: running it would overwrite the design.
+ * scripts/build-wall-chart.mjs generates it (`npm run diagrams:legacy`). The
+ * script is out of the build on purpose: the SVG is committed and regenerated
+ * only when its words or data change.
  */
 import { wallChartAsOf } from '@/lib/shared';
 
@@ -21,7 +21,7 @@ export interface WallChartProps {
 export function WallChart({
   src = '/diagrams/target-state.svg',
   title = 'The agentic enterprise, on one page',
-  caption = 'Fourteen layers with their control point, key mechanisms, and the products that serve them, grouped into the seven planes. The ten cross-cutting concerns run as columns across every layer, marked where each layer owns or enforces them, with their own product categories below. The four deterministic zones sit underneath as boundaries no model decision crosses. Products are named for orientation as of ' +
+  caption = 'Fourteen layers with their control point, key mechanisms, and the products that serve them, grouped into the seven capabilities. The ten cross-cutting concerns run as columns across every layer, marked where each layer owns or enforces them, with their own product categories below. The four deterministic zones sit underneath as boundaries no model decision crosses. Products are named for orientation as of ' +
     wallChartAsOf +
     ': representative, not exhaustive, and not endorsements.',
 }: WallChartProps) {

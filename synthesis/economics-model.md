@@ -1,7 +1,7 @@
 ---
 reader_summary: "Translate token and run costs into the decision unit that matters: cost per resolved outcome, including supervision and failure."
 audience: ["CIO/CTO", "Enterprise architect", "FinOps and portfolio lead"]
-decision_or_output: "Define the unit economics, budget envelope, and stop conditions for a workload."
+decision_or_output: "Define the unit economics, agent budget, and stop conditions for a workload."
 prerequisites: ["/docs/architecture/memory-pipeline-architecture"]
 reading_time: "8 minutes"
 evidence_status: "Evidence-informed economic model; volatile prices and vendor-reported multipliers are dated and should be re-verified."
@@ -27,9 +27,9 @@ The unit the platform charges for. It exists to reconcile with finance, to attri
 | Component | What drives it | Where it is controlled |
 |---|---|---|
 | Model tokens | Input plus output, multiplied by the loop | Harness budgets and iteration caps (R07); prompt caching |
-| The loop multiplier | Agentic work costs several times plain chat: roughly 4x for single agents and 15x for multi-agent systems, both vendor-published | The orchestration decision. Chosen deliberately per task class, not adopted as a default |
-| Tool and retrieval calls | Fan-out per run, retry behaviour | Gateway rate limits as budget controls (R03); retry-storm alerts |
-| Runtime | Sandbox time, cold starts, idle share | Capability-tiered isolation and utilisation telemetry (R01) |
+| The cost of looping | Agentic work costs several times plain chat: roughly 4x for single agents and 15x for multi-agent systems, both vendor-published | The orchestration decision. Chosen deliberately per task class, not adopted as a default |
+| Tool and retrieval calls | Number of calls per run, retry behaviour | Gateway rate limits as budget controls (R03); retry-storm alerts |
+| Runtime | Sandbox time, cold starts, idle share | Isolation levels matched to what the agent can do, and utilisation telemetry (R01) |
 | Platform seats | Per-user or per-agent licences amortised over actual use | Utilisation measurement, which is where the mid-market failure appears |
 | Pipeline amortisation | Parsing, embedding, and the re-embed on model upgrade | Migrate only above a stated eval-gain threshold; blue and green index swaps (R14) |
 
@@ -41,9 +41,9 @@ The unit the platform charges for. It exists to reconcile with finance, to attri
 |---|---|---|---|
 | Human seat | The vendor | Heavy use by every licensed user | Paying per employee for 1.14 assistant actions per user per day, which one evaluation actually recorded against 64% weekly active users |
 | Agent seat | The vendor, per agent | Few durable agents, treated as pets | Agent proliferation under a per-agent meter, or presence granted because the licence no longer prices it |
-| Metered API | You | Ephemeral fleets, treated as cattle | Discovering the loop multiplier in production, which is how the digital-native archetype usually learns it |
+| Metered API | You | Ephemeral fleets, treated as cattle | Finding out in production how fast looping multiplies cost, which is how the digital-native archetype usually learns it |
 
-Most enterprises run all three at once. That is the two-estate problem expressed in money: your gateway meters only what flows through it.
+Most enterprises run all three at once. That is the problem of governing your own agents and vendor-embedded agents together, expressed in money. Your gateway meters only what flows through it.
 
 ## Level 2: cost per resolved outcome
 
@@ -57,7 +57,7 @@ Cost per resolved outcome
       / outcomes accepted as resolved under the agreed quality standard
 ```
 
-This is the one definition the guide uses from October 2026 (D051). An earlier form divided only the run cost by the resolution rate and added the other two terms per attempt, which understated cost whenever resolution was below 100 percent. The three terms below are the three lines of the numerator.
+This is the one definition the guide uses from October 2026 (D051).The three terms below are the three lines of the numerator.
 
 **Term 1: divide by resolution, never by containment.** Containment counts conversations that never reached a human, whether or not the customer was helped. Resolution counts problems actually solved. Every documented reversal of an AI-first service programme set a containment or headcount target. Track repeat-contact rate alongside it, because re-contact multiplies true cost per issue while the containment dashboard improves.
 
@@ -72,13 +72,13 @@ Six questions, answered per workload rather than per enterprise. The answers det
 1. **How many runs per unit of business value?** High ratio favours metered with hard caps. Low ratio favours seats.
 2. **Is the work bursty or steady?** Bursty work under a seat regime pays for idle capacity. Steady work under metering is predictable and often cheaper.
 3. **Does the agent need to persist?** Durable agents with accumulated memory fit agent-seat pricing. Ephemeral fleets do not, and treating them as pets is how the meter runs away.
-4. **Which estate does it run in?** Licensed platform work is not metered by you and not visible to your gateway. Budget for it separately and extract its telemetry deliberately.
-5. **Who is the sponsor?** Every agent needs a named business sponsor holding the envelope. This is recommended design rather than established practice: the construct is productised across identity, workforce and control-plane products, and no enterprise has yet published running per-agent budgets.
+4. **Is it your own agent or a vendor-embedded agent?** Vendor-embedded agents are not metered by you and not visible to your gateway. Budget for them separately and extract their telemetry deliberately.
+5. **Who is the sponsor?** Every agent needs a named business sponsor holding the agent budget. This is recommended design rather than established practice: the construct is productised across identity, workforce and agent management products, and no enterprise has yet published running per-agent budgets.
 6. **What does a wrong answer cost here?** This sets term 3, and it decides whether the workload belongs in a customer-facing lane at all.
 
-## Budget envelopes, not salaries
+## Agent budgets, not salaries
 
-The control is a sponsor-owned envelope with unit-economics targets, hard per-run caps and variance alerting, backed by anomaly detection and showback maturing to chargeback. It is deliberately not framed as a salary: agent consumption is volatile in a way payroll is not, so the useful analogy is a budget with alarms rather than a fixed cost per head. Central funding stays on the shared platform layer; per-agent envelopes sit with sponsors.
+The control is a sponsor-owned agent budget with unit-economics targets, hard per-run caps and variance alerting, backed by anomaly detection and showback maturing to chargeback. It is deliberately not framed as a salary: agent consumption is volatile in a way payroll is not, so the useful analogy is a budget with alarms rather than a fixed cost per head. Central funding stays on the shared platform. Per-agent budgets sit with sponsors.
 
 ## Where tokens are the wrong unit entirely
 
@@ -86,8 +86,8 @@ R05 supplies the corrective. In line-of-business and operational-technology sett
 
 ## What the guide will not claim
 
-There is no peer-reviewed unit-economics comparison of self-hosted model serving against metered APIs; the ranges in circulation come with heavy caveats and are published as such in R01. There is no published head-to-head cost comparison of embedded versus external agents on identical tasks. And no enterprise has published running per-agent budget envelopes. Where an economics claim in this guide rests on vendor pricing pages rather than on outcomes, the text says so.
+There is no peer-reviewed unit-economics comparison of self-hosted model serving against metered APIs; the ranges in circulation come with heavy caveats and are published as such in R01. There is no published head-to-head cost comparison of embedded versus external agents on identical tasks. And no enterprise has published running per-agent budgets. Where an economics claim in this guide rests on vendor pricing pages rather than on outcomes, the text says so.
 
 ## Sources
 
-research/R12-observability-and-finops/, research/R09-experience-and-channels/, research/R08-productivity-and-collaboration/, research/R13-operating-model/, research/R14-agent-data-engineering/, research/R01-infrastructure/, research/R05-lob-and-ot/. Loop multiplier figures are vendor-published (2025). Outcome and action pricing are vendor list prices as of mid-2026 and sit on the quarterly re-verification list.
+research/R12-observability-and-finops/, research/R09-experience-and-channels/, research/R08-productivity-and-collaboration/, research/R13-operating-model/, research/R14-agent-data-engineering/, research/R01-infrastructure/, research/R05-lob-and-ot/. Figures for how much looping multiplies cost are vendor-published (2025). Outcome and action pricing are vendor list prices as of mid-2026 and sit on the quarterly re-verification list.

@@ -24,7 +24,7 @@ The order matters: admit on evaluability, refuse on zone violations, then shape 
 
 Evaluability is a gate, not a weighted criterion, and the reason is structural: the eval suite is what every later promotion, autonomy increase and reliability claim rests on. A use case whose success cannot be stated as a pass or fail on a known set of cases cannot earn autonomy, no matter how valuable it is.
 
-Ask for three things before admitting a candidate: a definition of a resolved outcome, twenty to fifty pass-or-fail tasks drawn from real work, and a human baseline on the same tasks. If they do not exist, the candidate goes to a make-it-evaluable queue with an owner and a date. It does not go into the build queue, and it is not rejected either. `references/use-case-portfolio.md` has the intake form and the kill criteria.
+Ask for three things before admitting a candidate: a definition of a resolved outcome, twenty to fifty pass-or-fail tasks drawn from real work, and a human baseline on the same tasks. If they do not exist, the candidate goes on a waiting list for use cases that cannot yet be measured, with an owner and a date. It does not go into the build queue, and it is not rejected either. `references/use-case-portfolio.md` has the intake form and the kill criteria.
 
 ## Gate 2: does it decide inside a deterministic zone?
 
@@ -52,7 +52,7 @@ For each candidate: the resolved outcome and its value, the evaluability verdict
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
 
 ## Additional task references
 

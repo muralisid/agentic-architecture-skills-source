@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2426" role="img" aria-labelledby="title desc">
+<title id="title">Preparing for a multidisciplinary meeting with an agent</title>
+<desc id="desc">Swimlanes for the agent, the MDT coordinator, the registrar, the specialists and MDT, the systems and the evidence store. Step 1: the agent builds the list, and the coordinator confirms. Step 2: it gathers records for listed patients only. Step 3: it drafts requests for outside reports, and the coordinator approves. Step 4: it drafts the brief, with a source and date on every fact. Step 5: it refreshes the brief when a new result arrives. Step 6: the registrar reviews and signs the brief. Step 7: the radiologist and pathologist review images and slides. Step 8: the MDT decides and the chair signs. Step 9: the agent drafts the outcome note, and the chair signs it. Step 10: it hands over follow-up tasks, and the coordinator confirms. The evidence store keeps the source list, every brief version, the EMR audit log and traces. A diamond marks each approval.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2426" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Preparing for a multidisciplinary</text>
+<text x="32.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">meeting with an agent</text>
+<text x="32.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Proposed design. The agent gathers and drafts.</text>
+<text x="32.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Clinicians sign. The MDT decides.</text>
+<rect x="32.0" y="228.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="268.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="276.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="308.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Proposes the list from MDT referrals, with</text>
+<text x="104.0" y="340.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">the reason each patient is listed.</text>
+<path d="M116.0 361.0 L127.0 372.0 L116.0 383.0 L105.0 372.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="380.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The coordinator confirms.</text>
+<path d="M68.0 400.0 L68.0 422.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="430.0" width="656.0" height="232.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="470.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="478.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="478.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="510.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reads results, reports and documents</text>
+<text x="104.0" y="542.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">through the FHIR interface and the PACS</text>
+<text x="104.0" y="574.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">study list. Records each source.</text>
+<path d="M116.0 595.0 L127.0 606.0 L116.0 617.0 L105.0 606.0 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="138.0" y="614.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Read access for listed patients only,</text>
+<text x="138.0" y="646.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">for the named MDT lead.</text>
+<path d="M68.0 666.0 L68.0 688.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="696.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="736.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="744.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="744.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="776.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Drafts a secure message to the outside lab</text>
+<text x="104.0" y="808.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">or provider.</text>
+<path d="M116.0 829.0 L127.0 840.0 L116.0 851.0 L105.0 840.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="848.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The coordinator approves.</text>
+<path d="M68.0 868.0 L68.0 890.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="898.0" width="656.0" height="160.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="938.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="946.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="946.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="978.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Writes the brief in a fixed template. Every</text>
+<text x="104.0" y="1010.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">fact links to its source and date. No</text>
+<text x="104.0" y="1042.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">treatment advice.</text>
+<path d="M68.0 1062.0 L68.0 1084.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1092.0" width="656.0" height="128.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1132.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1140.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1140.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1172.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Updates the brief when a new result</text>
+<text x="104.0" y="1204.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">arrives, and marks the change.</text>
+<path d="M68.0 1224.0 L68.0 1246.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1254.0" width="656.0" height="200.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1294.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1302.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1302.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Registrar or presenting clinician</text>
+<text x="104.0" y="1334.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks the brief against the sources and</text>
+<text x="104.0" y="1366.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">signs it. An unsigned brief is never shown</text>
+<text x="104.0" y="1398.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">as final.</text>
+<path d="M116.0 1419.0 L127.0 1430.0 L116.0 1441.0 L105.0 1430.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1438.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The clinician signs.</text>
+<path d="M68.0 1458.0 L68.0 1480.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1488.0" width="656.0" height="96.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1528.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1536.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1536.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Radiologist and pathologist</text>
+<text x="104.0" y="1568.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Review the images and slides themselves.</text>
+<path d="M68.0 1588.0 L68.0 1610.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1618.0" width="656.0" height="136.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1658.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1666.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1666.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The MDT and chair</text>
+<text x="104.0" y="1698.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">The MDT makes the recommendation.</text>
+<path d="M116.0 1719.0 L127.0 1730.0 L116.0 1741.0 L105.0 1730.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1738.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The chair signs the outcome.</text>
+<path d="M68.0 1758.0 L68.0 1780.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1788.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1828.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1836.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="104.0" y="1836.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1868.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Drafts the outcome note and the GP letter</text>
+<text x="104.0" y="1900.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">from the coordinator&#x27;s notes.</text>
+<path d="M116.0 1921.0 L127.0 1932.0 L116.0 1943.0 L105.0 1932.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1940.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The chair signs. The coordinator sends.</text>
+<path d="M68.0 1960.0 L68.0 1982.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1990.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="2030.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="2038.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<text x="104.0" y="2038.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="2070.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Opens follow-up tasks from the signed</text>
+<text x="104.0" y="2102.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">outcome.</text>
+<path d="M116.0 2123.0 L127.0 2134.0 L116.0 2145.0 L105.0 2134.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="2142.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The coordinator confirms.</text>
+<rect x="32.0" y="2182.0" width="656.0" height="164.0" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="52.0" y="2230.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Evidence store, out of the agent&#x27;s reach.</text>
+<text x="52.0" y="2262.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">The source list saved with each brief. Every</text>
+<text x="52.0" y="2294.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">brief version. The EMR audit log of each read.</text>
+<text x="52.0" y="2326.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">Traces.</text>
+<path d="M46.0 2367.0 L57.0 2378.0 L46.0 2389.0 L35.0 2378.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="70.0" y="2386.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A diamond marks an approval.</text>
+</svg>

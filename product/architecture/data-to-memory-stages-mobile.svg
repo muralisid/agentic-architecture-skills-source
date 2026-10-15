@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2556" role="img" aria-labelledby="title desc">
+<title id="title">From company data to a cited answer</title>
+<desc id="desc">Company data reaches a cited answer in nine stages, in three groups. Get the data ready: parse with provenance, chunk and add context, embed with versions, index with permissions. Answer from it: retrieve or refuse, cite every passage. Afterwards: write memory through quarantine, refresh on source change, erase in cascade. Every copy keeps the original's access rules, privacy duties, location limits and deletion duty. Working memory serves one step, thread memory one case, and long-term memory later tasks, where it becomes a record.</desc>
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="28" y="64" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">From company data</text>
+<text x="28" y="104" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">to a cited answer</text>
+<text x="28" y="146" font-family="Arial,sans-serif" font-size="24" fill="#465958">Nine stages. Every copy keeps the original's</text>
+<text x="28" y="178" font-family="Arial,sans-serif" font-size="24" fill="#465958">access, privacy and deletion duties.</text>
+<text x="28" y="230" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#182e31">Get the data ready</text>
+<rect x="28" y="248" width="664" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="62" cy="286" r="18" fill="#2563eb"/>
+<text x="62" y="294" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">1</text>
+<text x="94" y="295" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">Parse with provenance</text>
+<text x="48" y="336" font-family="Arial,sans-serif" font-size="24" fill="#465958">Keep the source page and cell of every piece.</text>
+<path d="M360 358 L360 380" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="28" y="384" width="664" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="62" cy="422" r="18" fill="#2563eb"/>
+<text x="62" y="430" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">2</text>
+<text x="94" y="431" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">Chunk and add context</text>
+<text x="48" y="472" font-family="Arial,sans-serif" font-size="24" fill="#465958">Split into small pieces. Test each source.</text>
+<path d="M360 494 L360 516" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="28" y="520" width="664" height="108" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="62" cy="558" r="18" fill="#2563eb"/>
+<text x="62" y="566" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">3</text>
+<text x="94" y="567" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">Embed with versions</text>
+<text x="48" y="608" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each embedding records its model version.</text>
+<path d="M360 630 L360 652" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="28" y="656" width="664" height="140" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="62" cy="694" r="18" fill="#2563eb"/>
+<text x="62" y="702" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">4</text>
+<text x="94" y="703" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">Index with permissions</text>
+<text x="48" y="744" font-family="Arial,sans-serif" font-size="24" fill="#465958">Access lists go into the index. Filter</text>
+<text x="48" y="776" font-family="Arial,sans-serif" font-size="24" fill="#465958">before searching.</text>
+<path d="M360 830 L360 856" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<text x="28" y="880" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#182e31">Answer from it</text>
+<rect x="28" y="898" width="664" height="140" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="62" cy="936" r="18" fill="#7c3aed"/>
+<text x="62" y="944" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">5</text>
+<text x="94" y="945" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#4c1d95">Retrieve or refuse</text>
+<text x="48" y="986" font-family="Arial,sans-serif" font-size="24" fill="#465958">Key numbers come from a fixed calculation,</text>
+<text x="48" y="1018" font-family="Arial,sans-serif" font-size="24" fill="#465958">or the agent refuses.</text>
+<path d="M360 1040 L360 1062" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="28" y="1066" width="664" height="108" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="62" cy="1104" r="18" fill="#7c3aed"/>
+<text x="62" y="1112" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">6</text>
+<text x="94" y="1113" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#4c1d95">Cite every passage</text>
+<text x="48" y="1154" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each answer links to the exact text it used.</text>
+<path d="M360 1208 L360 1234" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<text x="28" y="1258" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#182e31">Afterwards</text>
+<rect x="28" y="1276" width="664" height="108" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<circle cx="62" cy="1314" r="18" fill="#0f766e"/>
+<text x="62" y="1322" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">7</text>
+<text x="94" y="1323" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#134e4a">Write memory through quarantine</text>
+<text x="48" y="1364" font-family="Arial,sans-serif" font-size="24" fill="#465958">New memories wait until they are promoted.</text>
+<path d="M360 1386 L360 1408" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="28" y="1412" width="664" height="108" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<circle cx="62" cy="1450" r="18" fill="#0f766e"/>
+<text x="62" y="1458" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">8</text>
+<text x="94" y="1459" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#134e4a">Refresh on source change</text>
+<text x="48" y="1500" font-family="Arial,sans-serif" font-size="24" fill="#465958">Change data capture keeps the index fresh.</text>
+<path d="M360 1522 L360 1544" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah)"/>
+<rect x="28" y="1548" width="664" height="108" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<circle cx="62" cy="1586" r="18" fill="#0f766e"/>
+<text x="62" y="1594" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">9</text>
+<text x="94" y="1595" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#134e4a">Erase in cascade</text>
+<text x="48" y="1636" font-family="Arial,sans-serif" font-size="24" fill="#465958">A delete reaches every copy and memory.</text>
+<rect x="28" y="1700" width="664" height="326" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
+<text x="48" y="1744" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0f172a">The rule behind all nine</text>
+<text x="48" y="1786" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every copy keeps the original's access,</text>
+<text x="48" y="1818" font-family="Arial,sans-serif" font-size="24" fill="#465958">privacy and deletion duties.</text>
+<text x="48" y="1850" font-family="Arial,sans-serif" font-size="24" fill="#465958">Embeddings count as data. Short texts can</text>
+<text x="48" y="1882" font-family="Arial,sans-serif" font-size="24" fill="#465958">be rebuilt from them.</text>
+<text x="48" y="1914" font-family="Arial,sans-serif" font-size="24" fill="#465958">A copy from several sources takes the</text>
+<text x="48" y="1946" font-family="Arial,sans-serif" font-size="24" fill="#465958">strictest label.</text>
+<text x="48" y="1978" font-family="Arial,sans-serif" font-size="24" fill="#465958">Open gap: summaries of many documents</text>
+<text x="48" y="2010" font-family="Arial,sans-serif" font-size="24" fill="#465958">have no complete permissions answer yet.</text>
+<text x="28" y="2082" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#182e31">What the agent keeps</text>
+<rect x="28" y="2100" width="664" height="128" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="48" y="2142" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Working memory</text>
+<text x="48" y="2180" font-family="Arial,sans-serif" font-size="24" fill="#465958">What the model has in front of it now.</text>
+<text x="48" y="2212" font-family="Arial,sans-serif" font-size="24" fill="#465958">Engineering, not a record.</text>
+<rect x="28" y="2244" width="664" height="128" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="48" y="2286" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Thread memory</text>
+<text x="48" y="2324" font-family="Arial,sans-serif" font-size="24" fill="#465958">One case or conversation, kept across</text>
+<text x="48" y="2356" font-family="Arial,sans-serif" font-size="24" fill="#465958">a pause. It resumes where it stopped.</text>
+<rect x="28" y="2388" width="664" height="128" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="48" y="2430" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#881337">Long-term memory</text>
+<text x="48" y="2468" font-family="Arial,sans-serif" font-size="24" fill="#465958">Kept for later tasks. A record: ownership,</text>
+<text x="48" y="2500" font-family="Arial,sans-serif" font-size="24" fill="#465958">consent, retention and deletion apply.</text>
+</svg>

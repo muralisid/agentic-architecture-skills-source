@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3365.9" role="img" aria-labelledby="title desc">
 <title id="title">The use-case portfolio: gates to funding</title>
-<desc id="desc">Every idea passes three admission gates: evaluability, a deterministic-zone check and reliable evidence. Ideas that fail go to a make-it-evaluable queue, a redesign or grounding preparation. Two packaged-application tests decide whether to wait for a vendor agent or build thin, and what survives is scored, checked against portfolio constraints such as shared supervision capacity, and funded with kill criteria written at funding time. The portfolio is re-ranked every quarter with measured inputs.</desc>
+<desc id="desc">Every idea passes three admission gates: evaluability, a deterministic-zone check and reliable evidence. Ideas that fail go to a waiting list, a redesign, or preparing the evidence. Two packaged-application tests decide whether to wait for a vendor agent or build thin. What survives is scored and checked against constraints across the whole set, such as shared supervision capacity. Each funded use case carries stop criteria written at funding time. The portfolio is ranked again every quarter with measured inputs.</desc>
 <defs>
 <marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
 <marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
@@ -9,7 +9,7 @@
 <text x="28" y="64" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">The use-case portfolio: gates</text>
 <text x="28" y="108" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">to funding</text>
 <text x="28" y="154" font-family="Arial,sans-serif" font-size="24" fill="#465958">Gate first, then test, then score. Fund with the</text>
-<text x="28" y="186" font-family="Arial,sans-serif" font-size="24" fill="#465958">kill criteria already written.</text>
+<text x="28" y="186" font-family="Arial,sans-serif" font-size="24" fill="#465958">stop criteria already written.</text>
 <rect x="28" y="230" width="664" height="94.5" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
 <text x="44" y="266.8" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Ideas</text>
 <text x="44" y="302.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every candidate use case</text>
@@ -21,9 +21,9 @@
 <text x="44" y="507.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">tasks from real failures. A baseline exists or</text>
 <text x="44" y="538.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">can be measured.</text>
 <rect x="300" y="606.2" width="392" height="125.5" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
-<text x="316" y="643" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Make-it-evaluable queue</text>
-<text x="316" y="678.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">Fund the definition, not</text>
-<text x="316" y="709.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">the agent.</text>
+<text x="316" y="643" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Waiting list</text>
+<text x="316" y="678.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">Fund the definition of</text>
+<text x="316" y="709.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">success, not the agent.</text>
 <path d="M340 560.2 L340 604.2" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
 <text x="356" y="592.2" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">Fail</text>
 <path d="M80 560.2 L80 779.7" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
@@ -47,22 +47,22 @@
 <rect x="28" y="1248.9" width="664" height="152.7" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="44" y="1284.1" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#475569">Gate 3</text>
 <text x="44" y="1312.9" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">Reliable evidence</text>
-<text x="44" y="1348.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">A curated corpus with a named owner exists, or</text>
+<text x="44" y="1348.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Curated sources with a named owner exist, or</text>
 <text x="44" y="1379.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">can within the funding period.</text>
 <rect x="300" y="1447.6" width="392" height="125.5" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
-<text x="316" y="1484.4" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Grounding preparation</text>
-<text x="316" y="1520.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">Curate the corpus and name</text>
-<text x="316" y="1551.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">its owner.</text>
+<text x="316" y="1484.4" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Prepare the evidence</text>
+<text x="316" y="1520.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">Curate the sources and name</text>
+<text x="316" y="1551.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">their owner.</text>
 <path d="M340 1401.6000000000001 L340 1445.6000000000001" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
 <text x="356" y="1433.6" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">Fail</text>
 <path d="M80 1401.6000000000001 L80 1621.1000000000001" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <text x="96" y="1433.6" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Pass</text>
 <rect x="28" y="1623.1" width="664" height="351.1" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <text x="44" y="1659.9" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">Packaged-application tests</text>
-<text x="44" y="1695.6" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Test 4. One package or several?</text>
-<text x="44" y="1730.8" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Test 5. Is a vendor agent generally</text>
-<text x="44" y="1761.8" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">available on this edition, or dated within</text>
-<text x="44" y="1792.8" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">two quarters?</text>
+<text x="44" y="1695.6" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">One package or several?</text>
+<text x="44" y="1730.8" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Is a vendor agent generally available on</text>
+<text x="44" y="1761.8" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">this edition, or dated within two</text>
+<text x="44" y="1792.8" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">quarters?</text>
 <text x="66" y="1828" font-family="Arial,sans-serif" font-size="24" fill="#465958">One package, vendor agent available or dated:</text>
 <text x="66" y="1859" font-family="Arial,sans-serif" font-size="24" fill="#465958">wait or buy. It stays on the portfolio.</text>
 <text x="66" y="1890" font-family="Arial,sans-serif" font-size="24" fill="#465958">Re-check the date each quarter.</text>
@@ -88,16 +88,16 @@
 <text x="66" y="2473.9" font-family="Arial,sans-serif" font-size="24" fill="#465958">burst load of every approved agent, vendor</text>
 <text x="66" y="2504.9" font-family="Arial,sans-serif" font-size="24" fill="#465958">agents too, against the people who hold it.</text>
 <circle cx="49" cy="2435.2" r="3.5" fill="#465958"/>
-<text x="66" y="2536.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">Do not fund a portfolio that sits in one</text>
-<text x="66" y="2567.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">plane.</text>
+<text x="66" y="2536.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">Do not let the set lean on one</text>
+<text x="66" y="2567.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">capability.</text>
 <circle cx="49" cy="2528.4" r="3.5" fill="#465958"/>
-<text x="66" y="2598.3" font-family="Arial,sans-serif" font-size="24" fill="#465958">Balance blast radius.</text>
+<text x="66" y="2598.3" font-family="Arial,sans-serif" font-size="24" fill="#465958">Balance low-impact and high-impact work.</text>
 <circle cx="49" cy="2590.6" r="3.5" fill="#465958"/>
 <text x="44" y="2633.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">Pressure from sponsors or vendors goes here,</text>
 <text x="44" y="2664.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">where the trade is visible.</text>
 <path d="M360 2686.4999999999995 L360 2736.4999999999995" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <rect x="28" y="2738.5" width="664" height="320.7" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
-<text x="44" y="2775.3" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#134e4a">Fund it, with kill criteria written now</text>
+<text x="44" y="2775.3" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#134e4a">Fund it, with stop criteria written now</text>
 <text x="44" y="2811" font-family="Arial,sans-serif" font-size="24" fill="#465958">Stop if:</text>
 <text x="66" y="2842.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">the eval pass rate misses the agreed bar</text>
 <circle cx="49" cy="2834.5" r="3.5" fill="#465958"/>
@@ -105,7 +105,7 @@
 <circle cx="49" cy="2865.7" r="3.5" fill="#465958"/>
 <text x="66" y="2904.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">supervision load per item does not fall</text>
 <circle cx="49" cy="2896.9" r="3.5" fill="#465958"/>
-<text x="66" y="2935.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">the corpus owner role goes unfilled</text>
+<text x="66" y="2935.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">the evidence owner role goes unfilled</text>
 <circle cx="49" cy="2928.1" r="3.5" fill="#465958"/>
 <text x="44" y="2971" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every funded use case carries them before work</text>
 <text x="44" y="3002" font-family="Arial,sans-serif" font-size="24" fill="#465958">starts.</text>
@@ -116,7 +116,7 @@
 <text x="44" y="3148" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#1e293b">Cadence</text>
 <text x="44" y="3183.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">Run the portfolio every quarter. Re-rank with</text>
 <text x="44" y="3214.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">measured inputs, not estimates. Re-check vendor</text>
-<text x="44" y="3245.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">dates. Keep the make-it-evaluable queue funded</text>
-<text x="44" y="3276.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">all the time.</text>
+<text x="44" y="3245.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">dates. Keep the work of defining success</text>
+<text x="44" y="3276.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">funded all the time.</text>
 <text x="44" y="3311.9" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">Then start again with the next ideas.</text>
 </svg>

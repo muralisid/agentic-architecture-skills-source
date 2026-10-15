@@ -8,7 +8,7 @@ const SRC = '/diagrams/target-state.svg';
 /** What the chart actually contains, which is the reason to open it. */
 const CONTENTS = [
   { count: '14', label: 'estate layers', detail: 'each with its control point and key mechanisms' },
-  { count: '7', label: 'planes', detail: 'the agent system built across the estate' },
+  { count: '7', label: 'capabilities', detail: 'what an agent platform adds across the estate' },
   { count: '10', label: 'cross-cutting concerns', detail: 'as columns, marked where each is owned and enforced' },
   { count: '4', label: 'deterministic zones', detail: 'underneath, as boundaries no model decision crosses' },
 ];
@@ -32,7 +32,7 @@ export function WallChartPreview({ className }: { className?: string }) {
             The agentic enterprise, as one chart
           </h2>
           <p className="mb-0 mt-2 text-[14.5px] leading-[1.6] text-fd-muted-foreground">
-            Every layer, plane, control point and boundary in a single reference you can zoom, print, and put on a
+            Every layer, capability, control point and boundary in a single reference you can zoom, print, and put on a
             wall. Products are named for orientation as of {wallChartAsOf}: representative, not exhaustive, and not
             endorsements.
           </p>
@@ -68,7 +68,7 @@ export function WallChartPreview({ className }: { className?: string }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={SRC}
-          alt="The agentic enterprise target-state architecture on one page: fourteen estate layers with their control points and mechanisms, grouped into seven planes, with ten cross-cutting concerns as columns and four deterministic zones beneath."
+          alt="The agentic enterprise target-state architecture on one page: fourteen estate layers with their control points and mechanisms, grouped into the seven capabilities, with ten cross-cutting concerns as columns and four deterministic zones beneath."
           className="block h-auto w-full"
           loading="eager"
         />

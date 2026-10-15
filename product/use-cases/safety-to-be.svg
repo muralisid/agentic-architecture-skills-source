@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Safety coaching with an agent: who does what</title>
+<desc id="desc">Swimlane of the proposed safety coaching flow, in eight steps across six lanes. The agent takes the detector event. A vision tool checks the label against the clip, read by ID only. The agent checks the permit, the roster and the site procedure, then drafts a coaching note and a labelled teaching video with faces blurred. The safety owner approves every item in the HSE system, which is an approval. The identity check confirms the recipient, which is an approval. The supervisor delivers the coaching. The agent tracks whether the behaviour comes back. The evidence store keeps the original clip unchanged, the coaching item, its approver and the agent log.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Safety coaching with an agent: who does what</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Proposed design. The agent drafts. The safety owner approves every item. Discipline is never part of it.</text>
+<rect x="32" y="108.0" width="1536" height="124.6" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 232.6 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="357.2" width="1536" height="124.6" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 357.2 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 481.8 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="606.4" width="1536" height="124.6" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 606.4 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 731.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 812.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="146.0" height="112.6" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="42.0" y="176.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Agent</text>
+<rect x="32.0" y="238.6" width="146.0" height="112.6" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="300.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Vision tool</text>
+<rect x="32.0" y="363.2" width="146.0" height="112.6" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="425.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Safety owner</text>
+<rect x="32.0" y="487.8" width="146.0" height="112.6" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="42.0" y="539.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Identity</text>
+<text x="42.0" y="561.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">check</text>
+<rect x="32.0" y="612.4" width="146.0" height="112.6" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="674.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Supervisor</text>
+<rect x="32.0" y="737.0" width="146.0" height="69.0" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="42.0" y="766.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence</text>
+<text x="42.0" y="788.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">store</text>
+<rect x="196.0" y="115.0" width="240.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="220.0" cy="140.0" r="16" fill="#7c3aed"/><text x="220.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="242.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Take the event</text>
+<text x="208.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Clip ID, time, label,</text>
+<text x="208.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">score</text>
+<rect x="332.0" y="239.6" width="240.0" height="110.6" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="356.0" cy="264.6" r="16" fill="#2563eb"/><text x="356.0" y="271.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="378.0" y="270.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Check the label</text>
+<text x="344.0" y="295.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">Reads the clip by ID</text>
+<text x="344.0" y="317.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">only</text>
+<rect x="468.0" y="115.0" width="240.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="492.0" cy="140.0" r="16" fill="#7c3aed"/><text x="492.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="514.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Check context</text>
+<text x="480.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Permit, roster,</text>
+<text x="480.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">procedure</text>
+<rect x="734.0" y="115.0" width="240.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="758.0" cy="140.0" r="16" fill="#7c3aed"/><text x="758.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="780.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Draft coaching</text>
+<text x="746.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Note, and a blurred</text>
+<text x="746.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">teaching video</text>
+<rect x="870.0" y="364.2" width="240.0" height="110.6" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="894.0" cy="389.2" r="16" fill="#d97706"/><text x="894.0" y="395.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="916.0" y="395.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Approve</text>
+<path d="M1088.0 376.2 L1100.0 388.2 L1088.0 400.2 L1076.0 388.2 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="882.0" y="420.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Every item, in HSE</text>
+<rect x="1006.0" y="488.8" width="240.0" height="110.6" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="1030.0" cy="513.8" r="16" fill="#475569"/><text x="1030.0" y="520.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="1052.0" y="519.8" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Confirm person</text>
+<path d="M1224.0 500.8 L1236.0 512.8 L1224.0 524.8 L1212.0 512.8 Z" fill="#475569" stroke="#ffffff" stroke-width="2"/>
+<text x="1018.0" y="544.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">Unclear cases go to</text>
+<text x="1018.0" y="566.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">safety team</text>
+<rect x="1142.0" y="613.4" width="240.0" height="110.6" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1166.0" cy="638.4" r="16" fill="#d97706"/><text x="1166.0" y="644.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="1188.0" y="644.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Deliver</text>
+<text x="1154.0" y="669.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Status set to</text>
+<text x="1154.0" y="691.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">delivered</text>
+<rect x="1278.0" y="115.0" width="240.0" height="110.6" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="1302.0" cy="140.0" r="16" fill="#7c3aed"/><text x="1302.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="1324.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Track</text>
+<text x="1290.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Does the behaviour</text>
+<text x="1290.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">come back?</text>
+<rect x="196.0" y="738.0" width="1372.0" height="67.0" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="212.0" y="777.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence store: the original clip stays unchanged. The coaching item, its approver and the agent log.</text>
+<path d="M422.0 225.6 L422.0 236.6" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M558.0 239.6 L558.0 228.6" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M710.0 170.3 L731.0 170.3" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M960.0 225.6 L960.0 361.2" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1060.0 474.8 L1060.0 485.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1196.0 599.4 L1196.0 610.4" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1368.0 613.4 L1368.0 228.6" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="32.0" y="834.0" width="24.0" height="22.0" rx="5" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="64.0" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Agent step</text>
+<rect x="193.0" y="834.0" width="24.0" height="22.0" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="225.0" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Person</text>
+<rect x="314.4" y="834.0" width="24.0" height="22.0" rx="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="346.4" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">System</text>
+<rect x="435.8" y="834.0" width="24.0" height="22.0" rx="5" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="467.8" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Fixed rule</text>
+<rect x="596.8" y="834.0" width="24.0" height="22.0" rx="5" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="628.8" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Evidence store</text>
+<path d="M809.4 834.0 L820.4 845.0 L809.4 856.0 L798.4 845.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="829.4" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Approval</text>
+<text x="32.0" y="884.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Real-time interventions, incident notification and discipline stay with people, outside this flow.</text>
+</svg>

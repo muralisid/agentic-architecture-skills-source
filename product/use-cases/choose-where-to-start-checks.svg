@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
 <title id="title">Apply five checks</title>
-<desc id="desc">Five checks in order: can we evaluate it, can we protect its actions, and can we supply reliable evidence. Then two new checks for packaged applications: is the process inside one package, and is a vendor agent GA or dated within two quarters. An idea that fails a check goes into a preparation list.</desc>
+<desc id="desc">Five checks in order. Can we evaluate it? Can we protect its actions? Can we supply reliable evidence? Then two checks for packaged software. Is the process inside one package or across several? Is a vendor agent generally available on your edition, or dated within two quarters? An idea that fails one of the first three checks goes into a preparation list.</desc>
 <defs>
 <marker id="ah9a4c2d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker>
 </defs>
 <rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
 <text x="32" y="58" font-family="Arial,sans-serif" font-size="34" font-weight="bold" fill="#182e31">Apply five checks</text>
-<text x="32" y="98" font-family="Arial,sans-serif" font-size="22" fill="#465958">Run them on each idea, in order. Checks 4 and 5 are new.</text>
+<text x="32" y="98" font-family="Arial,sans-serif" font-size="22" fill="#465958">Run them on each idea, in order. GA means generally available: any customer can buy it and run it in production.</text>
 <rect x="32" y="162" width="275.2" height="430" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
 <text x="52" y="200" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#9a4c2d">Check 1</text>
 <text x="52" y="241.4" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">Can we evaluate</text>
@@ -49,8 +49,6 @@
 <text x="997.6" y="412.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">system hold all the</text>
 <text x="997.6" y="441.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">data and</text>
 <text x="997.6" y="470.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">permissions?</text>
-<rect x="1185.8" y="176" width="53" height="34" rx="17" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
-<text x="1195.8" y="200.2" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#78350f">new</text>
 <path d="M1258.8 377 H1284.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
 <rect x="1292.8" y="162" width="275.2" height="430" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
 <text x="1312.8" y="200" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#9a4c2d">Check 5</text>
@@ -65,15 +63,12 @@
 <text x="1312.8" y="504.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">Treat announced</text>
 <text x="1312.8" y="533.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">ones as</text>
 <text x="1312.8" y="562.8" font-family="Arial,sans-serif" font-size="22" fill="#465958">unavailable.</text>
-<rect x="1501" y="176" width="53" height="34" rx="17" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
-<text x="1511" y="200.2" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#78350f">new</text>
 <path d="M32 616 V634 H937.6 V616" fill="none" stroke="#465958" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M484.8 634 V650" fill="none" stroke="#465958" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="484.8" y="680" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31" text-anchor="middle">The three gates in the use-case portfolio</text>
+<text x="484.8" y="680" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31" text-anchor="middle">The three gates of the use-case portfolio</text>
 <path d="M977.6 616 V634 H1568 V616" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M1272.8 634 V650" fill="none" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="1272.8" y="680" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">New for packaged applications. They decide</text>
-<text x="1272.8" y="709" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">whether to wait for a vendor's agent or build</text>
-<text x="1272.8" y="738" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">your own.</text>
-<text x="32" y="807" font-family="Arial,sans-serif" font-size="20" fill="#465958">An idea that fails a check goes into a preparation list. It may need clearer outcomes, better interfaces or better data.</text>
+<text x="1272.8" y="680" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">For packaged software. They decide whether</text>
+<text x="1272.8" y="709" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#78350f" text-anchor="middle">to wait for a vendor's agent or build your own.</text>
+<text x="32" y="807" font-family="Arial,sans-serif" font-size="20" fill="#465958">An idea that fails one of the first three checks goes into a preparation list. It may need clearer outcomes, better interfaces or better data.</text>
 </svg>

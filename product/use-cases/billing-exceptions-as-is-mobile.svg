@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2710" role="img" aria-labelledby="title desc">
+<title id="title">Billing exceptions today: who does what</title>
+<desc id="desc">Swimlane of the billing exception process at an energy retailer today. Three lanes are systems: the metering provider, the market and the billing system. Four lanes are people: a team lead, the hardship or complaints team, the specialist and the operations manager. Steps 1 and 2 sit with the metering provider: reads are collected and gaps estimated. Step 3 sends a NEM12 file through the market. Steps 4 and 5 sit in the billing system: reads are checked and the bill run holds a bill. Steps 6 to 12 sit with the specialist. The specialist picks up the case, checks several screens, requests data or a read, and fixes standing data. Requests and data changes go out through the market. At step 10 the specialist releases, corrects or holds the bill. A team lead approves above a set amount. At step 11 the specialist checks for hardship. The hardship or complaints team decides those cases. At step 12 the customer is told. At step 13 the operations manager reports the backlog.</desc>
+<rect x="0" y="0" width="720" height="2710" fill="#f8f5ef"/>
+<text x="24.0" y="48.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Billing exceptions today: who does</text>
+<text x="24.0" y="88.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">what</text>
+<text x="24.0" y="138.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">An energy retailer on smart meters in Australia.</text>
+<text x="24.0" y="170.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Typical practice, not a survey of one retailer.</text>
+<rect x="24" y="204" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="66" cy="244" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="66.0" y="253.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">1</text>
+<text x="112.0" y="250.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Metering provider</text>
+<text x="112.0" y="284.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">The smart meter head-end collects 5 or 30</text>
+<text x="112.0" y="316.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">minute reads.</text>
+<path d="M66 344 V366" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,374 58,362 74,362" fill="#475569"/>
+<rect x="24" y="378" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="66" cy="418" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="66.0" y="427.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">2</text>
+<text x="112.0" y="424.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Meter data provider</text>
+<text x="112.0" y="458.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Its meter data system checks the reads and</text>
+<text x="112.0" y="490.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">estimates any gaps.</text>
+<path d="M66 518 V540" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,548 58,536 74,536" fill="#475569"/>
+<rect x="24" y="552" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="66" cy="592" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="66.0" y="601.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">3</text>
+<text x="112.0" y="598.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Market: B2B e-Hub</text>
+<text x="112.0" y="632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">It sends a NEM12 meter data file to the</text>
+<text x="112.0" y="664.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">retailer, usually daily.</text>
+<path d="M66 692 V714" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,722 58,710 74,710" fill="#475569"/>
+<rect x="24" y="726" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="66" cy="766" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="66.0" y="775.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">4</text>
+<text x="112.0" y="772.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Billing system (CIS)</text>
+<text x="112.0" y="806.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">A batch job loads the reads. Reads outside</text>
+<text x="112.0" y="838.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">set limits are held.</text>
+<path d="M66 866 V888" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,896 58,884 74,884" fill="#475569"/>
+<rect x="24" y="900" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="66" cy="940" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="66.0" y="949.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">5</text>
+<text x="112.0" y="946.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Billing system (CIS)</text>
+<text x="112.0" y="980.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">The overnight bill run holds bills that</text>
+<text x="112.0" y="1012.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">fail a check. A case is created.</text>
+<path d="M66 1040 V1062" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1070 58,1058 74,1058" fill="#475569"/>
+<rect x="24" y="1074" width="672" height="104" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1114" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1123.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">6</text>
+<text x="112.0" y="1120.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Billing exception specialist</text>
+<text x="112.0" y="1154.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Picks up the case from the worklist.</text>
+<path d="M66 1182 V1204" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1212 58,1200 74,1200" fill="#475569"/>
+<rect x="24" y="1216" width="672" height="168" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1256" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1265.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">7</text>
+<text x="112.0" y="1262.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Billing exception specialist</text>
+<text x="112.0" y="1296.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks billing, meter data, MSATS and CRM</text>
+<text x="112.0" y="1328.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">screens. Tracks open queries in a</text>
+<text x="112.0" y="1360.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">spreadsheet.</text>
+<path d="M66 1388 V1410" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1418 58,1406 74,1406" fill="#475569"/>
+<rect x="24" y="1422" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1462" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1471.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">8</text>
+<text x="112.0" y="1468.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Billing exception specialist</text>
+<text x="112.0" y="1502.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Asks for data or a special read through the</text>
+<text x="112.0" y="1534.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">B2B gateway. Waits days for the answer.</text>
+<path d="M66 1562 V1584" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1592 58,1580 74,1580" fill="#475569"/>
+<rect x="24" y="1596" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1636" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1645.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">9</text>
+<text x="112.0" y="1642.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Billing exception specialist</text>
+<text x="112.0" y="1676.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Asks the party that owns wrong standing</text>
+<text x="112.0" y="1708.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">data to fix it.</text>
+<path d="M66 1736 V1758" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1766 58,1754 74,1754" fill="#475569"/>
+<rect x="24" y="1770" width="672" height="142" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1810" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1819.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">10</text>
+<text x="112.0" y="1816.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Billing exception specialist</text>
+<text x="112.0" y="1850.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Releases, corrects or holds the bill.</text>
+<polygon points="124,1863 135,1874 124,1885 113,1874" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1882.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Team lead approves above a set amount</text>
+<path d="M66 1916 V1938" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1946 58,1934 74,1934" fill="#475569"/>
+<rect x="24" y="1950" width="672" height="238" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1990" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1999.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">11</text>
+<text x="112.0" y="1996.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Billing exception specialist</text>
+<text x="112.0" y="2030.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks for hardship, a payment plan, life</text>
+<text x="112.0" y="2062.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">support or a complaint before a high bill</text>
+<text x="112.0" y="2094.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">goes out.</text>
+<polygon points="124,2107 135,2118 124,2129 113,2118" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="2126.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The hardship or complaints team decides</text>
+<text x="148.0" y="2158.0" font-family="Arial,sans-serif" font-size="24" fill="#78350f">those cases</text>
+<path d="M66 2192 V2214" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2222 58,2210 74,2210" fill="#475569"/>
+<rect x="24" y="2226" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="2266" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="2275.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">12</text>
+<text x="112.0" y="2272.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Specialist or contact centre</text>
+<text x="112.0" y="2306.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Tells the customer by letter, SMS or a</text>
+<text x="112.0" y="2338.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">call.</text>
+<path d="M66 2366 V2388" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2396 58,2384 74,2384" fill="#475569"/>
+<rect x="24" y="2400" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="2440" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="2449.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">13</text>
+<text x="112.0" y="2446.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Operations manager</text>
+<text x="112.0" y="2480.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reports the backlog by age and the unbilled</text>
+<text x="112.0" y="2512.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">revenue at month end.</text>
+<circle cx="40" cy="2578" r="12" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="64.0" y="2586.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<circle cx="40" cy="2614" r="12" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="64.0" y="2622.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<polygon points="40,2638 52,2650 40,2662 28,2650" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<text x="64.0" y="2658.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval, by the person named</text>
+</svg>

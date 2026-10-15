@@ -1,78 +1,80 @@
 ---
 title: "Intelligence ladder"
-description: "How intelligent should an agent be, and what should that intelligence cost?"
-position: "Teaching guidance and illustrative designs. Evaluate the proposed approach on representative tasks before adoption."
-lastReviewed: "2026-09-18"
+description: "How much intelligence does an agent need for its job, and what should that intelligence cost?"
+position: "Teaching guidance and illustrative designs. Test each choice on representative tasks before adopting it."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-29"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [start, memory, agentic-os, autonomy, flywheel, lifecycle, value, r06]
 ---
 
-To turn an enterprise into an agentic enterprise, we need agents that can do useful work at an acceptable cost. The intelligence question is simple: **what must this agent understand, decide, and do to complete its job well?**
+A team wants an agent to do a job. Before anyone picks a model, one question comes first. **What must this agent understand, decide and do to finish the job well, and at what cost?** The answer is to change the cheap things first. Those are the instructions, the context, and the tools and loop around the model. Change the model itself only when a measured limit remains. The intelligence ladder is the order in which to try those changes. It belongs to [the build step](/start#5-build) on the Start page.
 
-<TeachingIllustration src="/images/ladder/enterprise-pillars-v1.webp" title="Two pillars within the enterprise architecture" alt="Enterprise systems, people, tools, and controls support intelligence and memory. Intelligence enables understanding, investigation, and permitted action. Memory supplies discoverable, verifiable, cited evidence. Together they support useful work and verified results." caption="Architecture provides the whole system. Intelligence and memory deserve a closer look because they shape what an agent can do and what supports its decisions." expandable />
+<TeachingIllustration src="/images/ladder/enterprise-pillars-v1.webp" title="Two pillars within the enterprise architecture" alt="Enterprise architecture is the base: systems, people, tools, controls, data, integrations, policies and governance. Two pillars stand on it. Intelligence: understand, investigate and act within limits. Memory: find, verify and cite. Together they hold up useful work and verified results." caption="The architecture provides the whole system. Intelligence and memory shape what an agent can do and what supports its decisions." expandable />
 
-## Architecture gives us the whole system; now we examine intelligence
+## Two pillars: intelligence and memory
 
-The [enterprise architecture](/architecture) explains the layers that connect models, data, business systems, people, and controls. Within that system, we now look closely at two pillars. **Intelligence** determines how the agent handles the task. **Memory** supplies information the agent can find, check, and use as evidence.
+An agent needs two things. **Intelligence** decides how it handles the task. **Memory** gives it information it can find, check and use as evidence. This page covers intelligence. [Knowledge and memory](/memory) covers the other pillar. Models and their training sit in [the intelligence and learning layer (R06)](/layers/r06-intelligence-and-learning), one of [the fourteen layers](/layers) of the estate.
 
-A powerful model is a useful starting point, but its general capability is not yet an enterprise capability. We have to shape it around the work: the goal, the available evidence, the tools, the limits, and the measure of success. That is what this guide means by distilling model intelligence into an enterprise agent.
+## Match intelligence to the work
 
-## How much intelligence does the job need?
+Using one capable model for every task makes trials easy. It does not show where reasoning adds value, or whether a complex agent pays for itself. Compare three kinds of work instead. These are choices to test, not a fixed order.
 
-A natural starting point is to use one capable model for every task and give it broad instructions. That makes experimentation easy, but it does not tell us where reasoning adds value, where a known workflow is enough, or whether a complex agent pays for its extra effort.
+<TeachingIllustration src="/images/ladder/intelligence-budget-v1.webp" title="Match intelligence to the work and its full cost" alt="Three kinds of task. Known steps need rules or a fixed workflow, a small effort. Choosing the next check needs a bounded agent, a medium effort. Specialist judgement may justify testing a trained model, a larger effort with expert review. The cost elements are models, tools, data, review and errors. A testing gate compares the cost per successful task." caption="These are task choices, not maturity levels or measured cost rankings." expandable />
 
-Compare three kinds of work. These are design choices to test, not a mandatory progression.
+**Known steps.** Checking required fields before an inspection request goes in has known steps. Ordinary software or a fixed workflow may do it.
 
-<TeachingIllustration src="/images/ladder/intelligence-budget-v1.webp" title="Match intelligence to the work and its full cost" alt="Compare known steps handled by a workflow, choosing the next check in a bounded investigation, and specialist judgment that may justify adaptation. Count models, tools, data, review, and errors, then evaluate cost per successful task (the guide's cost per resolved outcome)." caption="These are task choices, not universal maturity levels or measured cost rankings." expandable />
+**Steps that depend on what is found.** Investigating an unexplained gap in production figures changes as it goes. The agent finds missing evidence, picks a tool, reads the result and decides what to check next.
 
-**When the steps are known**, such as checking required fields before submitting an inspection request, ordinary software or a fixed workflow may do the job. A model might help interpret free text without choosing the whole process.
+**Specialist judgement.** Spotting a particular defect pattern needs expert judgement. Compare better inputs, specialist models and training. Train only when it fixes a demonstrated limit you can maintain.
 
-**When the next step depends on what is discovered**, such as investigating an unexplained production discrepancy, an agent may need to identify missing evidence, select a tool, examine its result, and decide what to check next. Its useful intelligence lies in managing that bounded investigation.
+A capable agent does not need broad authority. Set how freely it acts in [the autonomy contract](/architecture/autonomy-contract), apart from the model's capability.
 
-**When specialist behavior remains difficult**, such as recognizing a particular defect pattern or consistently applying a domain classification, compare better inputs, specialist models, and adaptation. Training becomes a candidate when it addresses a demonstrated limitation and the enterprise can maintain the result.
+## Change the cheap things first
 
-A capable agent does not automatically need broad authority. An excellent analysis may still require a person to approve an action. Choose [autonomy and supervision](/architecture/autonomy-contract) separately from the model's capability.
-
-## The Intelligence ladder helps us build the capability deliberately
-
-Begin with an outcome the business can recognize. Then examine the choices that make the agent capable of achieving it.
+Try the three changes that cost least first.
 
 <Cards>
-<Card title="Instructions: define good work" href="/ladder/instructions">Tell the agent the goal, constraints, and required result. Otherwise capability may be spent on the wrong task.</Card>
-<Card title="Context: supply what matters now" href="/ladder/context">Give it relevant evidence and current task state. General knowledge does not establish the current condition of a particular asset.</Card>
-<Card title="Tools and the loop: investigate and act" href="/ladder/tools-and-the-loop">Let it fill a specific information gap or perform an allowed operation, then check what happened.</Card>
+<Card title="Instructions: define good work" href="/ladder/instructions">Tell the agent the goal, the limits and the result you need. Otherwise its effort goes to the wrong task.</Card>
+<Card title="Context: supply what matters now" href="/ladder/context">Give it the relevant evidence and the current state of the task. General knowledge cannot tell it the condition of one asset.</Card>
+<Card title="Tools and the loop: investigate and act" href="/ladder/tools-and-the-loop">Let it fill a specific gap or perform an allowed operation. Then check what happened.</Card>
 </Cards>
 
-If those are sufficient, stop there. If a measured limitation remains, the model-adaptation methods below explain additional options. Improving the system and adapting the model can be combined; the names do not prescribe a shopping list.
+If those are enough, stop there. [The Agentic OS](/agentic-os) sets out the harness you build around the model and the runtime you buy.
 
-## What should that intelligence cost?
+## Count the full cost
 
-Judge cost against the business outcome, not just one model call. An investigation can involve many calls, data retrieval, external tools, retries, and expert review. A cheaper answer that creates more rework may be the more expensive way to finish the job.
+Judge cost against the business outcome, not one model call. An investigation can involve many calls, tools, retries and expert review. A cheaper answer that creates rework can cost more in the end.
 
-For a trial, record the total cost of the evaluated cases, including unsuccessful attempts, add the supervision time at a loaded rate and the cost of fixing wrong outcomes, and divide the sum by the number of outcomes accepted as resolved under the agreed quality standard (the guide's cost per resolved outcome). Also report the failure rate and serious errors separately, so a favorable average cannot hide them.
+For a trial, add up the full cost of the evaluated cases, failed attempts included. Add supervision time at the full hourly cost of the people doing it. Add the cost of fixing wrong outcomes. Divide the total by the outcomes accepted as resolved to the agreed standard. That is the <Term k="cost per resolved outcome">cost per resolved outcome</Term>. Report failures and serious errors separately, so a good average cannot hide them.
 
-Compare configurations on the same representative cases. For example, test a rules-based workflow, a smaller model with retrieval, and a more capable model allowed to investigate. Route difficult cases to additional capability only if you can reliably recognize those cases and measure the improvement. Count the cost of building and maintaining that routing too.
+Compare designs on the same cases. For example, test a rules-based workflow, a smaller model with retrieval, and a stronger model allowed to investigate. Route hard cases to a stronger model only if you can reliably spot them. Spread build and upkeep costs over realistic volumes. Each agent has a budget with hard caps, tracked in [the observability and FinOps layer (R12)](/layers/r12-observability-and-finops). [Value and full cost](/use-cases/value-and-investment) builds the business case.
 
-For a production decision, spread build and integration costs over realistic task volumes and include recurring evaluation, monitoring, and maintenance. Training may add preparation cost while reducing effort per task; an investigation loop may add calls while avoiding expensive errors. Measure those tradeoffs rather than assuming that one arrangement is always cheaper.
+## Change the model only when a measured limit remains
 
-Ask whether more capability improves correctness, time to completion, or the human effort required enough to justify its full cost. The [value and investment guide](/use-cases/value-and-investment) develops this business comparison.
-
-## When changing the model is justified
+When the cheap changes stop helping, five options change the model itself. They can be combined. Use only the ones the failure calls for.
 
 <Cards>
-<Card title="Adapters and fine-tuning" href="/ladder/adapters-and-fine-tuning">Teach a repeatable behavior from examples when current behavior is the limitation.</Card>
-<Card title="Distillation" href="/ladder/distillation">Test whether a demonstrated capability can run on a smaller model at acceptable quality.</Card>
-<Card title="Reinforcement fine-tuning" href="/ladder/reinforcement-fine-tuning">Use outcome feedback where the quality of a decision can be graded reliably.</Card>
-<Card title="Continued pretraining" href="/ladder/continued-pretraining">Investigate additional domain training when the evidence supports that investment.</Card>
+<Card title="Adapters and fine-tuning" href="/ladder/adapters-and-fine-tuning">Teach a repeatable behaviour from examples when the current behaviour is the limit.</Card>
+<Card title="Distillation" href="/ladder/distillation">Test whether a proven capability can run on a smaller model at acceptable quality.</Card>
+<Card title="Reinforcement fine-tuning" href="/ladder/reinforcement-fine-tuning">Use feedback on outcomes where the quality of a decision can be graded reliably.</Card>
+<Card title="Continued pretraining" href="/ladder/continued-pretraining">Train on your own raw text when the evidence supports that investment.</Card>
 <Card title="Custom pretraining" href="/ladder/custom-pretraining">Consider a specialist model when the task and data justify its full development cost.</Card>
 </Cards>
 
-Model distillation is one specific training technique. The broader goal of distilling intelligence into enterprise work includes all the system choices above.
+Any model change re-runs the evals and the risk check at the change stage of [the agent lifecycle](/architecture/agent-lifecycle). [The learning flywheel](/architecture/learning-flywheel) sets out how it is tested and promoted.
 
-## Continue into the other pillar: memory
+## More help while you build
 
-An agent's judgment is useful only if we can examine what supported it. [Knowledge and memory](/memory) starts with what an agent should remember during a task and across future tasks. It then explains how to represent enterprise information, keep it current, and recover referenceable evidence for decisions.
+- [Diagnose a failed task](/ladder/choosing-an-approach) before changing anything.
+- Choose between [a workflow, one agent or several](/ladder/single-and-multiple-agents).
+- [Combine specialist models](/ladder/combining-models) around one task.
+- Give the agent evidence it can check, in [knowledge and memory](/memory).
 
-For implementation choices, [diagnose a failed task](/ladder/choosing-an-approach), compare [one agent with several](/ladder/single-and-multiple-agents), or explore [combining specialist models](/ladder/combining-models).
+## Evidence and limits
 
-**Next step:** diagnose a failed task before changing anything on [choose what to change](/ladder/choosing-an-approach).
+The three kinds of work and the order of changes are teaching designs, not measured rankings. Each step page carries its own sources, dates and limits.
+
+## Next step
+
+Diagnose a failed task before changing anything, on [choose what to change](/ladder/choosing-an-approach).

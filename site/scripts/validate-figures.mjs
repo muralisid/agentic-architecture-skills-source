@@ -97,17 +97,17 @@ expectLabels('autonomy-learning-matrix', 'rows', [
   'A5 Governed lights-out',
 ]);
 expectLabels('autonomy-learning-matrix', 'axisColumns', [
-  'L0 Fixed policy',
+  'L0 Fixed',
   'L1 Curated learning',
-  'L2 Governed learning',
-  'L3 Continuous learning',
+  'L2 Reviewed learning',
+  'L3 Continuous learning inside limits',
 ]);
 expectLabels('memory-obligation-tiers', 'stages', [
-  'M1 Thread',
-  'M2 Retrieved knowledge',
-  'M3 Session',
-  'M4 Entity memory',
-  'M5 Cross-domain',
+  'Thread',
+  'Retrieved knowledge',
+  'Session',
+  'Entity memory',
+  'Cross-domain',
 ]);
 expectLabels('sovereignty-spectrum-router', 'stages', [
   'SV0 Managed API',
@@ -147,22 +147,22 @@ expectLabels('roadmap-six-stages', 'stages', [
   'Stage 5 · Extend',
 ]);
 expectLabels('seven-plane-architecture', 'nodes', [
-  'Execution plane',
-  'Action plane',
-  'Knowledge plane',
-  'Control plane',
-  'Improvement plane',
-  'Evidence plane',
-  'Human plane',
+  'Runtime',
+  'Tool gateway',
+  'Knowledge and memory',
+  'Identity and policy',
+  'Evaluation and release',
+  'Observability and audit trail',
+  'Human oversight',
 ]);
 expectLabels('layers-planes-crosswalk', 'axisColumns', [
-  'Execution',
-  'Action',
-  'Knowledge',
-  'Control',
-  'Improvement',
-  'Evidence',
-  'Human',
+  'Runtime',
+  'Tool gateway',
+  'Knowledge and memory',
+  'Identity and policy',
+  'Evaluation and release',
+  'Observability and audit trail',
+  'Human oversight',
 ]);
 
 const outputDirectory = path.join(siteDirectory, 'public', 'figures');

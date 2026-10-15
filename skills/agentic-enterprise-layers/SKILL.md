@@ -20,7 +20,7 @@ metadata:
 
 # The fourteen layers
 
-`references/00-the-fourteen-layers.md` is the map: which layer owns what, and how the layers group into the seven planes. Then one file per layer.
+`references/00-the-fourteen-layers.md` is the map: which layer owns what, and how the layers relate to the seven capabilities of an agent platform. Then one file per layer.
 
 | Layer | File | Owns |
 |---|---|---|
@@ -31,11 +31,11 @@ metadata:
 | R05 | `references/r05-lob-and-ot.md` | The operational-technology boundary, where agents stay off the control path |
 | R06 | `references/r06-intelligence-and-learning.md` | Evals, judges, promotion gates, distillation, fine-tuning verdicts |
 | R07 | `references/r07-agent-platform.md` | The harness, the runtime, the registry, skills, durable execution |
-| R08 | `references/r08-productivity-and-collaboration.md` | Assistants in the productivity suite, presence identity, consent |
+| R08 | `references/r08-productivity-and-collaboration.md` | Assistants in the productivity suite, agent user accounts, consent |
 | R09 | `references/r09-experience-and-channels.md` | Customer-facing agents, disclosure, machine-readability, liability |
 | R10 | `references/r10-security-and-identity.md` | Agent identity, credentials, guardrails against gates, kill switches |
-| R11 | `references/r11-governance-risk-sovereignty.md` | The evidence floor, risk tiers, residency, the AI Act |
-| R12 | `references/r12-observability-and-finops.md` | Traces, unit economics, budget envelopes, rollout |
+| R11 | `references/r11-governance-risk-sovereignty.md` | The audit trail baseline, risk tiers, residency, the AI Act |
+| R12 | `references/r12-observability-and-finops.md` | Traces, unit economics, agent budgets, rollout |
 | R13 | `references/r13-operating-model.md` | Supervision capacity, oversight design, accountability |
 | R14 | `references/r14-agent-data-engineering.md` | Parsing, chunking, embeddings, memory governance, erasure |
 
@@ -59,4 +59,4 @@ Layer pages describe what an enterprise owns; they are not product recommendatio
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

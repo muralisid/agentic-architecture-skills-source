@@ -16,7 +16,7 @@ As of August 2026. Phase 2 deliverable: the personas every later chapter referen
 
 ## Two axes, not three personas
 
-Enterprises differ along two dimensions that predict their agent journey better than any flat segmentation:
+Enterprises differ along two axes that predict their agent journey better than any flat segmentation:
 
 **Axis 1: Size and regulatory intensity.** This axis predicts the estate. SaaS portfolios run about 152 applications at firms under 500 employees and 660 to 900 at large enterprises (Zylo Jan 2025 [vendor]; MuleSoft Feb 2025 [vendor]: 897 apps, 29% integrated). ERP product lines are explicitly segmented by size (NetSuite's 44,000 midmarket customers vs Oracle Fusion's 12,000 enterprises; SAP's ~141,000-customer installed base skews large). Regulation compounds size: it decides whether formal frameworks are operated or merely cited (see the readiness assessment).
 
@@ -30,7 +30,7 @@ Rows: size/regulation. Columns: dominant gravity. Not every cell is common; thes
 
 ### Cell 1: Global regulated enterprise, Microsoft plus SAP gravity
 
-The most common large-enterprise shape. Estate: 700-900 applications, M365 everywhere, SAP (or Oracle) core with heavy customization, ServiceNow ITSM, mainframe still load-bearing, formal frameworks genuinely operated. Default shortlist: M365 Copilot and Agent 365 class for productivity, embedded suite agents (Joule class) for ERP workflows, plus at least one independent platform (the 66% multivendor finding applies most here). Integration surface: mature but partial API management; the R03 gateway-first pattern lands naturally on existing APIM investment. Watchouts: two-estate governance from day one (licensed platforms plus metered APIs); sovereignty routing; works-council and model-risk processes gate autonomy levels.
+The most common large-enterprise shape. Estate: 700-900 applications, M365 everywhere, SAP (or Oracle) core with heavy customization, ServiceNow ITSM, mainframe still load-bearing, formal frameworks genuinely operated. Default shortlist: M365 Copilot and Agent 365 class for productivity, embedded suite agents (Joule class) for ERP workflows, plus at least one independent platform (the 66% multivendor finding applies most here). Integration surface: mature but partial API management; the gateway-first pattern from the integration fabric track (R03) lands naturally on existing APIM investment. Watchouts: governing both your own agents and vendor-embedded agents from day one; sovereignty routing; works-council and model-risk processes gate autonomy levels.
 
 ### Cell 2: Large enterprise, Salesforce gravity
 
@@ -42,7 +42,7 @@ The most numerous cell. Estate: roughly 150-300 SaaS apps, M365 plus Business Ce
 
 ### Cell 4: Digital native, cloud-native gravity
 
-Estate: best-of-breed SaaS, strong engineering culture, high API coverage, weak formal governance. Default shortlist: build on primitives (SDKs, MCP, open components) with selective embedded agents; adoption starts in engineering (matching the observed first-mover data). Integration surface: already API-first; the gateway pattern is an afternoon, the governance culture is the gap. Watchouts: eval and audit discipline lag capability; the A x L model's rule (A4 requires L2 governed learning) is the check against shipping autonomy ahead of governance.
+Estate: best-of-breed SaaS, strong engineering culture, high API coverage, weak formal governance. Default shortlist: build on primitives (SDKs, MCP, open components) with selective embedded agents; adoption starts in engineering (matching the observed first-mover data). Integration surface: already API-first; the gateway pattern is an afternoon, the governance culture is the gap. Watchouts: eval and audit discipline lag capability; the rule that managed autonomy (A4) requires reviewed learning (L2) is the check against shipping autonomy ahead of governance.
 
 ## How the grid is used
 

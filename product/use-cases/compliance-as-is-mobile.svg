@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1938" role="img" aria-labelledby="title desc">
+<title id="title">Hospital accreditation evidence today</title>
+<desc id="desc">Swimlanes for the quality team, the evidence owners, the accrediting agency and the systems. Step 1: the quality manager keeps the evidence register by hand. Step 2: owners are assigned for each standard. Step 3: owners export records from the learning, maintenance and incident systems, audits, policies and indicators. Step 4: the quality team checks by eye and chases gaps by email. Step 5: the quality manager uploads the self-assessment. Step 6: assessors visit and judge Met or Not Met. Step 7: owners fix gaps. Step 8: the quality unit reports to the board. Each step names the system it uses.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="1938" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Hospital accreditation evidence</text>
+<text x="32.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">today</text>
+<text x="32.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Evidence is gathered by hand before each visit.</text>
+<text x="32.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each card names the system the step uses.</text>
+<rect x="32.0" y="228.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="268.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="276.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Quality manager</text>
+<text x="104.0" y="308.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Maps each requirement to evidence items and</text>
+<text x="104.0" y="340.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">owners, by hand.</text>
+<text x="104.0" y="372.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: spreadsheet, SharePoint list or</text>
+<text x="104.0" y="404.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">accreditation software</text>
+<path d="M68.0 424.0 L68.0 446.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="454.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="494.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="502.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="502.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Quality team</text>
+<text x="104.0" y="534.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Each standard gets a committee and an</text>
+<text x="104.0" y="566.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">executive sponsor (typical, unsourced).</text>
+<text x="104.0" y="598.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: email, committee minutes</text>
+<path d="M68.0 618.0 L68.0 640.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="648.0" width="656.0" height="256.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="688.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="696.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="696.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Evidence owners</text>
+<text x="104.0" y="728.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Each team exports its report: training,</text>
+<text x="104.0" y="760.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">maintenance, incidents, audits, policies</text>
+<text x="104.0" y="792.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">and indicators.</text>
+<text x="104.0" y="824.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: learning, maintenance and incident</text>
+<text x="104.0" y="856.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">systems, audit tools, policy library, data</text>
+<text x="104.0" y="888.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">warehouse</text>
+<path d="M68.0 908.0 L68.0 930.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="938.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="978.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="986.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="986.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Quality team</text>
+<text x="104.0" y="1018.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks dates and scope by eye. Chases gaps</text>
+<text x="104.0" y="1050.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">by email.</text>
+<text x="104.0" y="1082.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: email, spreadsheets</text>
+<path d="M68.0 1102.0 L68.0 1124.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1132.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1172.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1180.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1180.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Quality manager</text>
+<text x="104.0" y="1212.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Uploads the self-assessment and evidence</text>
+<text x="104.0" y="1244.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">lists.</text>
+<text x="104.0" y="1276.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: accrediting agency portal</text>
+<path d="M68.0 1296.0 L68.0 1318.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1326.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1366.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1374.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1374.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Assessors</text>
+<text x="104.0" y="1406.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Ask for evidence on the spot, watch</text>
+<text x="104.0" y="1438.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">practice and talk to staff. They judge Met</text>
+<text x="104.0" y="1470.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">or Not Met.</text>
+<text x="104.0" y="1502.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: on site</text>
+<path d="M68.0 1522.0 L68.0 1544.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1552.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1592.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1600.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1600.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Action owners</text>
+<text x="104.0" y="1632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Fix Not Met actions within the period the</text>
+<text x="104.0" y="1664.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">scheme sets.</text>
+<text x="104.0" y="1696.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: spreadsheet action plan</text>
+<path d="M68.0 1716.0 L68.0 1738.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1746.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1786.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1794.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1794.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Quality and safety unit</text>
+<text x="104.0" y="1826.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reports status to the clinical governance</text>
+<text x="104.0" y="1858.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">committee and the board.</text>
+<text x="104.0" y="1890.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: board papers</text>
+</svg>

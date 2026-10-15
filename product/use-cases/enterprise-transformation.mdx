@@ -1,38 +1,78 @@
 ---
 title: "Build an agentic enterprise"
-description: "Connect successful use cases through shared capabilities, clear ownership, and measured expansion."
-position: "Suggested transformation approach. The sequence should follow the organization\u2019s actual constraints and measured outcomes."
-lastReviewed: "2026-09-18"
+description: "One agent works. Grow to many by sharing what repeats, naming owners, counting the agents you buy, and expanding only on measured results."
+position: "Suggested approach with an illustrative example. The order should follow the organisation's real constraints and measured results."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [start, capabilities, layers, lifecycle, autonomy, operate, flywheel, packaged]
 ---
 
-<TeachingIllustration src="/images/use-cases/enterprise-transformation-v1.webp" expandable title="Grow from one useful task to shared capability" alt="Prove one bounded task, reuse suitable capabilities in related workflows, and expand the portfolio on measured value. Identity, evidence, tools, evaluation and human ownership support all three." caption="Expansion is a decision based on results, not an automatic next step." />
+A water utility has one agent working. It investigates network anomalies, and the engineers trust its findings. Now the sponsors ask how to get from one agent to many without losing control. The answer has six steps. Prove one task first. Share what every agent needs. Name the owners and change how the teams work. Count the agents you buy inside vendor products. Expand only where measured results justify it. Keep improving, with a way back. This is step 7 of the seven steps on [Start here](/start).
 
-## Begin with useful work
+<TeachingIllustration src="/images/use-cases/enterprise-transformation-v1.webp" expandable title="Grow from one useful task to shared capability" alt="Prove one task with clear limits. Reuse suitable capabilities in related workflows. Expand the portfolio on measured value. Identity, evidence, tools, evaluation and human ownership support all three." caption="Expansion is a decision based on results, not an automatic next step." />
 
-Select a bounded use case and demonstrate the outcome. Use the trial to discover the real information, interface, and supervision needs. Avoid building a general platform before those needs are understood.
+## 1. Prove one task
 
-## Share the capabilities that repeat
+Pick one use case with clear limits and show the result. Use the trial to learn what information, interfaces and supervision the work really needs. Do not build a general platform before you know those needs. [Choose where to start](/use-cases/choose-where-to-start) has the checks for the first task.
 
-Identity, permission checks, tool access, evidence collection, task recovery, and evaluation may serve several use cases. Share them where their requirements match. Keep a specialist model or domain-specific knowledge collection separate where its task requires it.
+## 2. Share what every agent needs
 
-## Change the operating practices
+An agent platform provides [seven capabilities](/architecture/system-view). Five of them repeat from the first agent to the second. Build them once and share them where the needs match.
 
-Assign a business owner for outcomes, a technical owner for service, data owners for evidence, and people responsible for exceptions. Define how incidents are reported, changes released, and work returned to a person. Autonomy and learning are separate choices for each task. [The autonomy contract](/architecture/autonomy-contract) sets them, and [the maturity model](/library/architecture/maturity-model) has the research behind it. [The agent lifecycle](/architecture/agent-lifecycle) gives each agent a sponsor and a path from registration to retirement.
+| What every agent needs | The capability | Where it sits in the estate |
+|---|---|---|
+| Its own identity, and a check on every action | Identity and policy | [Security and identity (R10)](/layers/r10-security-and-identity) |
+| Governed access to business systems | Tool gateway | [Integration fabric (R03)](/layers/r03-integration-fabric) |
+| A record of what it did that it cannot change | Observability and audit trail | [Observability and FinOps (R12)](/layers/r12-observability-and-finops) |
+| A way to pause and resume long tasks | Runtime | [Agent platform (R07)](/layers/r07-agent-platform) |
+| Tests that every change must pass | Evaluation and release | [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) |
 
-## Account for purchased agents
+The last column names the main layer for each capability. The [fourteen layers](/layers) page shows the rest. Two rules hold for every agent you add. Policy is [enforced outside the model](/architecture/enforcement). The audit trail is written where the agent cannot touch it.
 
-Some work runs inside applications the enterprise buys. Check what permissions, logs, cost data, and controls those products actually expose. Do not assume all their behavior passes through the platform you build. [Agents and packaged applications](/use-cases/packaged-applications) sets out when to wait for a vendor's agent and when to build your own.
+Keep a specialist model or a specialist knowledge source separate where its task needs it.
 
-## Expand by demonstrated value
+## 3. Name the owners and change how the teams work
 
-Move from a successful task to related tasks, then to a department or cross-department process. Recheck shared supervision capacity and cost. A successful pilot does not automatically prove that a larger or more consequential scope is ready.
+Name a business owner for results and a technical owner for the service. Name data owners for the evidence, and the people who handle exceptions. Agree how incidents are reported, how changes are released and how work goes back to a person.
 
-## Keep improving
+[The agent lifecycle](/architecture/agent-lifecycle) gives each agent a sponsor and an owner. It also gives each agent a path from registration to retirement. Autonomy and learning are separate choices for each task. [The autonomy contract](/architecture/autonomy-contract) sets both.
 
-Use production evidence to identify whether to change information, instructions, tools, workflow, or models. Evaluate each change and keep rollback available. [Research](/research) explains current questions and findings that may change the design.
+As the number of agents grows, the teams need a shape. [How the teams are organised](/operate/organisation) sets out one design. A small office writes the rules and holds the money. One platform team turns the rules into automatic checks. Three small lanes build each new pattern once, then step back.
 
-Explore the [fourteen architecture layers](/layers), [platform responsibilities](/agentic-os), and [skills for applying the guide](/skills).
+## 4. Count the agents you buy
 
-**Next step:** describe each agent with four questions on [agent types](/architecture/agent-types), or return to [Start here](/start).
+Some agents arrive inside products the enterprise buys. These are <Term k="vendor-embedded agent">vendor-embedded agents</Term>. Agents you build run through your own gateway. Vendor-embedded agents run on the vendor's platform, and you govern them through its settings. Check what permissions, logs, cost data and controls each product exposes. Put every agent in one <Term k="registry">registry</Term>, bought or built. [Agents and packaged applications](/use-cases/packaged-applications) sets out when to wait for a vendor's agent and when to build your own.
+
+## 5. Expand only on measured results
+
+Move from one working task to related tasks. Then move to a department, then to work that crosses departments. A good pilot does not prove that a larger or riskier scope is ready.
+
+Each step up needs the same evidence as the first. Recheck the shared supervision capacity and the [cost per resolved outcome](/use-cases/value-and-investment). Vendor agents draw on the same reviewers as your own. Run [the use-case portfolio](/library/frameworks/use-case-portfolio) every quarter, with measured inputs.
+
+<TeachingIllustration src="/figures/use-cases/portfolio-gates-to-funding.svg" mobileSrc="/figures/use-cases/portfolio-gates-to-funding-mobile.svg" expandable title="The use-case portfolio: gates to funding" alt="Ideas pass three gates in order. Gate 1 is evaluability: a domain expert can write 20 to 50 pass-or-fail tasks from real failures. Gate 2 is the deterministic-zone check. For a decision on access, money, safety actuation or a formal record, the model may only analyse, draft and flag. Gate 3 is reliable evidence: curated sources with a named owner. A fail at gate 1 goes to a waiting list, where the definition of success is funded. A fail at gate 2 means redesign or reject. A fail at gate 3 means preparing the evidence. Two packaged-application tests follow. One package with a vendor agent available or dated means wait or buy. Across packages, or on an excluded edition, the agent is built thin. What survives is scored. The score is value per resolved outcome times outcomes per quarter. It is divided by cost per resolved outcome, then multiplied by a reversibility factor. Three constraints apply across the whole set. Supervision capacity is shared. The set should not lean on one capability. Low-impact and high-impact work are balanced. Each funded use case carries stop criteria written at funding time. The portfolio is ranked again every quarter with measured inputs." caption="Gate first, then test, then score. A set of good cases can still need more reviewers than the team has." />
+
+## 6. Keep improving, with a way back
+
+Use production evidence to decide what to change: information, instructions, tools, workflow or model. Test each change before release and keep a way to roll it back. [The learning flywheel](/architecture/learning-flywheel) shows how. [Research](/research) covers open questions that may change the design.
+
+## A worked example: the utility's second agent
+
+The utility's second agent handles billing exceptions. It reuses the identity, the tool gateway and the audit trail built for the first agent. Its tests are new, written by billing specialists. Its risk is higher, because a bill change moves money. So a person approves every bill change in the billing system. A trained person decides anything about hardship or a payment plan. The reviewers come from the billing team, so supervision capacity is counted again for them.
+
+## Evidence and limits
+
+This order is a suggested approach. It has not been tested as a whole programme. Each step rests on the evidence in the pages it links. The portfolio's gates, scoring and stop criteria are practitioner rules, not validated thresholds. The team design on the organisation page is a proposal. The utility in the example is illustrative, not a named deployment.
+
+## Next step
+
+Describe each new agent with [the four questions](/architecture/agent-types), or run the weekly checks on [Operate](/operate).
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The use-case portfolio](/library/frameworks/use-case-portfolio): the gates, the scoring, the constraints across the set, the stop criteria and the quarterly cadence.
+- [The economics model](/library/architecture/economics-model): cost per resolved outcome and who pays when an agent loops.
+- [Vision and target state](/library/architecture/vision-and-target-state): the full research view of the agentic enterprise.
+
+</details>

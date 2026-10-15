@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
 <title id="title">Build and release an agent</title>
-<desc id="desc">Evals are written first, from real failures, and act as the acceptance criteria. The agent is built, then passes an eval gate, security tests scaled to its autonomy and sign-off by risk tier. It is released through the existing pipeline, runs in shadow, then as a canary on 1 to 5 percent of traffic, then for everyone, with rollback on any regression. Promoted rules land as policy-as-code outside the model, and every change re-runs the evals.</desc>
+<desc id="desc">Evals are written first, from real failures, and act as the acceptance criteria. The agent is built, then passes an eval gate, security tests set by its autonomy level and sign-off by its risk tier. It is released through the existing pipeline, runs in shadow, then as a canary on 1 to 5 percent of traffic, then for everyone, with rollback on any regression. Promoted rules land as policy-as-code outside the model, and every change re-runs the evals.</desc>
 <defs>
 <marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
 <marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
@@ -28,14 +28,14 @@
 <text x="836" y="282.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">never promotes it.</text>
 <rect x="1210" y="150" width="350" height="194.6" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="1226" y="182" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">4. Security tests</text>
-<text x="1226" y="209.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Autonomy sets the lowest tier.</text>
-<text x="1226" y="232.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">The tier sets the tests.</text>
-<text x="1242" y="255.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">A1, A2: a security scan</text>
-<circle cx="1231" cy="249.5" r="3.5" fill="#465958"/>
-<text x="1242" y="278.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">A3: adds red-team results</text>
+<text x="1226" y="209.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Autonomy level sets the tests.</text>
+<text x="1242" y="232.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Assisted, delegated (A1, A2):</text>
+<circle cx="1231" cy="226.6" r="3.5" fill="#465958"/>
+<text x="1242" y="255.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">a security scan</text>
+<text x="1242" y="278.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Supervised (A3): red-team tests</text>
 <circle cx="1231" cy="272.4" r="3.5" fill="#465958"/>
-<text x="1242" y="301.1" font-family="Arial,sans-serif" font-size="18" fill="#465958">A4, A5: adds independent</text>
-<text x="1242" y="324.1" font-family="Arial,sans-serif" font-size="18" fill="#465958">validation</text>
+<text x="1242" y="301.1" font-family="Arial,sans-serif" font-size="18" fill="#465958">Managed, lights-out (A4, A5):</text>
+<text x="1242" y="324.1" font-family="Arial,sans-serif" font-size="18" fill="#465958">adds independent validation</text>
 <circle cx="1231" cy="295.3" r="3.5" fill="#465958"/>
 <path d="M390 247.3 L428 247.3" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <path d="M780 247.3 L818 247.3" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
@@ -47,15 +47,15 @@
 <text x="1373" y="367.6" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#182e31">Passed</text>
 <rect x="40" y="406.6" width="350" height="213.7" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
 <text x="56" y="438.6" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#78350f">5. Sign-off by risk tier</text>
-<text x="72" y="462" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 1: owner and sponsor</text>
+<text x="72" y="462" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 1 (basic): owner, sponsor</text>
 <circle cx="61" cy="456.2" r="3.5" fill="#465958"/>
-<text x="72" y="484.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 2: adds a security</text>
-<text x="72" y="507.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">architect and the AI risk</text>
-<text x="72" y="530.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">council</text>
+<text x="72" y="484.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 2 (enhanced): adds a</text>
+<text x="72" y="507.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">security architect and the AI</text>
+<text x="72" y="530.9" font-family="Arial,sans-serif" font-size="18" fill="#465958">risk council</text>
 <circle cx="61" cy="479.1" r="3.5" fill="#465958"/>
-<text x="72" y="553.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 3: adds architecture</text>
-<text x="72" y="576.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">review, second-line risk and</text>
-<text x="72" y="599.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">an executive</text>
+<text x="72" y="553.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 3 (strict): adds</text>
+<text x="72" y="576.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">architecture review, the risk</text>
+<text x="72" y="599.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">function and an executive</text>
 <circle cx="61" cy="548" r="3.5" fill="#465958"/>
 <rect x="430" y="406.6" width="350" height="213.7" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <text x="446" y="438.6" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">6. Release through your</text>

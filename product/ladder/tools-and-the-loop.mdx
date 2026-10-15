@@ -1,74 +1,77 @@
 ---
 title: "Step 3: Tools and the loop"
 icon: "Repeat"
-description: "How an agent loop actually runs, what a harness controls, why the same model in a different harness makes different decisions, and the only published threshold for going multi-agent."
+description: "How the agent loop runs, what the harness controls, and when several agents are worth their cost."
+position: "Teaching guidance. The harness and multi-agent findings are published research by others. The vegetation example is a proposed design."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-29"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [ladder, agentic-os, r07, capabilities, enforcement, autonomy, memory, decisions]
 ---
 
-<PlainTerms>
-An agent is not one call to a model. It is a loop: the model asks for something, the system fetches it, the model reads the result and decides what to do next. Everything that governs that loop is the harness, and it is the part teams skip on the way from "the context is fine" to "we need to train a model". The evidence says it is usually the thing that was actually missing.
-</PlainTerms>
+The agent finds the right evidence and still goes wrong. It calls the wrong tool, repeats itself or stops too early. **What controls how the agent acts, if the model is not the problem?** The answer is the loop around the model. An agent is not one call to a model. The model asks for something and the system fetches it. The model reads the result and decides what to do next. Everything that runs that loop is the <Term k="harness">harness</Term>. Teams often skip it on the way from "the context is fine" to "we need to train a model". The evidence says the harness is usually what was missing. This is the third step on [the intelligence ladder](/ladder).
 
-## How the loop actually runs
+## How the loop runs
 
-The model is stateless. Every turn, the whole conversation is sent again, the model replies either with an answer or with a request to use a tool, and if it is a tool request your code executes it and appends the result. Repeat until the model answers or you stop it.
+The model is stateless. It remembers nothing between calls. Every turn, your code sends the whole conversation again. The model replies with either an answer or a request to use a tool. If it is a tool request, your code runs the tool and appends the result. This repeats until the model answers or you stop it.
 
-Three consequences follow, and they are the whole of harness design.
+Four design choices follow, and together they are harness design.
 
-**The context grows every turn.** Each tool result is appended, so a long investigation fills the <Term k="context window">context window</Term> with old evidence. You must decide what to do about that, and the choice is not neutral. **Compaction** summarises the history, which is lossy and can quietly drop the detail the model needed. **Reset** starts fresh with a stated goal and a short handover, keeping durable state in files or a record rather than in the conversation. Reset is harder to build and generally more reliable, because a summary of a summary degrades while a written record does not.
+**The context grows every turn.** Each tool result is appended, so a long investigation fills the <Term k="context window">context window</Term> with old evidence. The context window is the model's working memory for one task. You must decide what to do about that, and the choice matters. **Compaction** summarises the history. It loses detail and can quietly drop what the model needed. **Reset** starts fresh with a stated goal and a short handover. It keeps lasting state in files or a record, not in the conversation. Reset is harder to build and generally more reliable. A summary of a summary degrades, while a written record does not.
 
-**What outlives the run is memory.** A record kept only for the task is engineering. Once it is kept for later runs, it becomes memory. It then needs a named owner, carries its source, waits in quarantine before later runs trust it, and is reached by deletion. [Step 2](/ladder/context#memory-is-context-that-lasts) sets out those rules.
+**What outlives the run is memory.** A record kept only for the task is working data. Once it is kept for later runs, it becomes [memory](/memory). It then needs a named owner and must carry its source. It waits in quarantine before later runs trust it, and deletion must reach it. [Step 2](/ladder/context#what-the-agent-remembers) sets out those rules.
 
-**Nothing stops the loop unless you stop it.** A model can call a tool that returns an unhelpful result, decide to try again, and do that indefinitely. Real harnesses cap iterations, cap wall-clock time, check for cancellation between turns, and expose a stop hook. These are not edge cases, they are the normal path.
+**Nothing stops the loop unless you stop it.** A model can call a tool that returns an unhelpful result, decide to try again, and do that forever. Real harnesses cap the number of turns and the elapsed time. Each run also has a cost cap within the <Term k="agent budget">agent budget</Term>. Harnesses check for cancellation between turns and offer a stop hook, a point where code can end the run. These are not edge cases. They are the normal path.
 
-**Tools are an interface you are designing.** A tool with a vague description gets called at the wrong times. A tool returning ten thousand tokens of JSON burns the context window that the reasoning needs. Tools are designed for a reader with no memory of your system, because that is what they have.
+**Tools are an interface you design.** A tool with a vague description gets called at the wrong times. A tool that returns ten thousand tokens of JSON fills the context window the reasoning needs. Design tools for a reader with no memory of your system, because that is what the model is. Every tool call also passes the tool gateway. The gateway checks that the agent may make the call. The gateway is one of [the seven capabilities an agent platform provides](/architecture/system-view).
 
 <GuideFigure id="agent-loop-anatomy" fullWidth />
 
-<TeachingIllustration src="/images/ladder/tools-loop-labeled-v4.webp" alt="A clockwise loop runs from the model to a gateway, then a toolbox, then a record of results and a limits gauge, and back to the model." title="The harness owns the loop around the model" caption="The model proposes. The harness authorises, executes, records and decides whether another turn is allowed. Durable state and hard stops sit outside the model because they must survive and remain enforceable." />
+<TeachingIllustration src="/images/ladder/tools-loop-labeled-v4.webp" alt="A clockwise loop in six steps. The model decides to answer or to ask for a tool. The gateway checks whether this caller may do this now. The tool runs while the model waits. The result is added, so the context grows every turn. Caps on turns, time and cost are checked. The loop repeats or stops. In the centre: the model proposes, the harness controls." title="The harness owns the loop around the model" caption="The model proposes. The harness authorises, executes, records and decides whether another turn is allowed. Lasting state and hard stops sit outside the model because they must survive and stay enforceable." />
 
-## Why the harness is not plumbing
+## The harness changes what the agent does
 
-Holding task, environment and model constant, harness choices measurably change the beliefs that drive an agent's later decisions, even where the final success rate looks the same (arXiv 2607.04528, July 2026). In retrieval-heavy work the harness choice can outweigh the retrieval architecture itself (arXiv 2605.15184, May 2026).
+Hold the task, the environment and the model constant. Harness choices still measurably change the beliefs that drive the agent's later decisions. This holds even where the final success rate looks the same (arXiv 2607.04528, July 2026). In retrieval-heavy work, the harness can matter more than the retrieval design itself (arXiv 2605.15184, May 2026).
 
-Two things follow. Published benchmark comparisons run across different harnesses are confounded, so a claim that model A beats model B may be a claim about the scaffolding. And your own agent's behaviour is a property of your loop, not only of the model you licensed.
+Two things follow. Published comparisons of models run in different harnesses are confounded. A claim that model A beats model B may really be a claim about the harness around each. And your own agent's behaviour depends on your loop, not only on the model you licensed.
 
-A third finding is worth carrying: multi-agent failures are design failures rather than model failures. A taxonomy built from 150 traces and validated on more than 1,600 across seven frameworks identifies fourteen failure modes in three categories, and that is its central conclusion. A stronger model in a badly designed loop is still a badly designed loop.
+A third finding is worth carrying. When several agents fail together, the cause is usually the design, not the model. One study built a list of failure types from 150 traces of agent runs. It checked the list on more than 1,600 traces across seven frameworks. It found fourteen failure modes in three groups, and design failure is its central conclusion. A stronger model does not fix a badly designed loop.
 
-## The multi-agent question, with the one published number
+## When several agents pay off
 
-Splitting work across several agents buys parallel breadth and context isolation, at a cost multiplier of roughly 1.4 to 20 times. It does not buy reasoning quality per token.
+Splitting work across several agents buys breadth in parallel and keeps each agent's context separate. It costs roughly 1.4 to 20 times as much. It does not buy better reasoning per token.
 
-On 10,000 SEC filings across 25 field types, five models and four coordination patterns, a hierarchical supervisor-worker design reached 0.921 F1 at 1.4 times the cost and was the best point on the cost-accuracy frontier. A reflexive self-correcting pattern reached 0.943 at 2.3 times. A hybrid captured 89 percent of the accuracy gain at 1.15 times (arXiv 2603.22651, March 2026).
+One study tested 10,000 SEC filings across 25 field types. It compared five models and four ways of coordinating agents. A supervisor directing worker agents reached 0.921 F1 at 1.4 times the cost. F1 is a 0 to 1 score that balances missed answers against wrong ones. That design gave the best accuracy for its cost. A pattern where agents check and correct their own work reached 0.943 at 2.3 times the cost. A hybrid got 89 percent of the accuracy gain at 1.15 times the cost (arXiv 2603.22651, March 2026).
 
-The threshold that follows is the only published one: **multi-agent is justified when the accuracy requirement exceeds about 0.92 F1.** Below that you are paying a multiplier for something a single well-built loop delivers.
+The threshold that follows is the only published one. **Several agents are justified when the accuracy you need is above about 0.92 F1.** Below that, you pay a multiplier for what a single well-built loop delivers.
 
-## In utilities and mining
+## Worked example: a vegetation candidate at a utility
 
-<TeachingIllustration src="/figures/ladder/industrial-tools-and-the-loop.svg" mobileSrc="/figures/ladder/industrial-tools-and-the-loop-mobile.svg" title="Investigate a vegetation candidate" alt="Candidate: Image near an asset. Tool call: Check map and work orders. Observation: Read evidence and gaps. Next step: Inspect, request, or stop" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
+<TeachingIllustration src="/figures/ladder/industrial-tools-and-the-loop.svg" mobileSrc="/figures/ladder/industrial-tools-and-the-loop-mobile.svg" title="Investigate a vegetation candidate" alt="Four boxes in order. Candidate: an image near an asset. Tool call: check the map and work orders. Observation: read the evidence and the gaps. Next step: inspect, request or stop." caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-A vegetation candidate arrives with a location and observation date. The agent checks the asset map, recent inspections, and existing work orders. If the image cannot establish the required detail, it prepares a field-inspection request rather than inferring exact clearance.
+A vegetation candidate arrives with a location and an observation date. The agent checks the asset map, recent inspections and existing work orders. If the image cannot show the required detail, the agent prepares a field-inspection request. It does not guess the exact clearance.
 
-Each tool returns a bounded result with source references. The loop has a deadline, a cost limit, and a stopping rule. Permission checks remain outside the model. Creating a request is distinct from completing the inspection.
+Each tool returns a bounded result with source references. The loop has a deadline, a cost limit and a stopping rule. Permission checks stay outside the model, as set out in [enforcement outside the model](/architecture/enforcement). How far the agent may act on its own is set in [the autonomy contract](/architecture/autonomy-contract). Creating a request is not the same as completing the inspection.
 
-Begin with one agent or a fixed workflow. Add specialists only when they improve outcome quality or useful concurrency enough to justify coordination. See [vegetation inspection](/use-cases/vegetation-inspection).
+Begin with one agent or a fixed workflow. Add specialist agents only when they improve the result, or useful parallel work, enough to justify the coordination. See [vegetation inspection](/use-cases/vegetation-inspection).
 
-## Where the depth is
+## Where to go deeper
 
+[The agent platform layer (R07)](/layers/r07-agent-platform) covers the harness, recovery after a crash, portability and what to build or buy. [The Agentic OS](/agentic-os) sets out the parts of an agent platform, which you buy and which you build. Its harness section covers what a platform provides here and what stays yours.
 
+## When this step is done
 
-[The agent platform layer](/layers/r07-agent-platform) covers the harness, durability, portability and the build-versus-buy split. The harness section of [the vendor-neutral Agentic OS](/agentic-os) covers what a platform provides here and what stays yours.
+**The loop is instrumented, and failures are traced to a specific cause. What remains is the model not knowing your domain.**
 
-## The test for moving on
+"Traced" is the test. If you cannot say which turn failed and why, you cannot know the model is at fault. Every option that changes the model costs more than finding out. For an inspection, a <Term k="trace">trace</Term> should show the sources consulted, the tool responses, the checks made and the confirmed action.
 
-**The loop is instrumented, failures are traced to a specific cause, and what remains is the model not knowing your domain.**
+## Evidence and limits
 
-That word "traced" is the gate. If you cannot say which turn failed and why, you cannot know the model is at fault, and every option in Model adaptation costs more than finding out. For an inspection, a trace should show the sources consulted, tool responses, checks made, and the confirmed action.
+<EvidenceBadge status="independently-measured" /> The harness and multi-agent findings are independent published work, not ours. They are arXiv papers from 2025 and 2026. The 0.92 threshold comes from one study on one task, extracting fields from filings. Treat it as a guide and test on your own work.
 
-<EvidenceBadge status="independently-measured" /> The harness and multi-agent findings are independent published work, not ours.
+## Next step
 
-**Next step:** decide whether the task needs a workflow, one agent or several on [workflow, one agent, or several](/ladder/single-and-multiple-agents).
+Decide whether the task needs a workflow, one agent or several, on [workflow, one agent, or several](/ladder/single-and-multiple-agents).
 
 <details>
 <summary>The research behind this page</summary>
@@ -76,8 +79,9 @@ That word "traced" is the gate. If you cannot say which turn failed and why, you
 - Harness choice changing downstream decisions: arXiv 2607.04528, July 2026.
 - Harness outweighing retrieval architecture: arXiv 2605.15184, May 2026.
 - The multi-agent cost-accuracy frontier: arXiv 2603.22651, March 2026.
-- What a record kept past the run becomes: [the data-to-memory pipeline](/architecture/data-to-memory) and [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture).
-- Depth on [the agent platform layer](/layers/r07-agent-platform).
+- Fourteen multi-agent failure modes in three groups (MAST): Cemri et al., arXiv 2503.13657, first posted March 2025. Title: "Why Do Multi-Agent LLM Systems Fail?"
+- What a record kept past the run becomes: [from data to memory](/architecture/data-to-memory) and [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture).
+- Depth on [the agent platform layer (R07)](/layers/r07-agent-platform).
 - Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 
 </details>

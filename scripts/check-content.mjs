@@ -72,8 +72,8 @@ for (const rel of files) {
   if (RATIO_PATTERN.test(text)) denyHits.push(`${rel}: numeric supervision ratio`);
 }
 
-// Every deep layer page carries the five mandatory sections.
-const REQUIRED_H2 = ['## Target state', '## Mechanisms', '## Design decisions', '## Cross-cutting concerns', '## Evidence and limits'];
+// Every deep layer page carries the six sections of the layer story (audit round 3, October 2026).
+const REQUIRED_H2 = ['## What sits in this layer today', '## What agents add', '## What must be true before an agent touches it', '## Choices and their verdicts', '## Concerns this layer must honour', '## Evidence and limits'];
 const templateMisses = [];
 for (const rel of files) {
   if (!/^product\/layers\/r\d{2}-/.test(rel)) continue;

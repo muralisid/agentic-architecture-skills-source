@@ -1,53 +1,198 @@
 ---
 title: "From referral to a confirmed appointment"
-description: "See how an agent could resolve missing information and coordinate a booking within an approved care process."
-position: "Proposed administrative workflow. Clinical decisions remain with the care team. No clinical or financial benefit is assumed."
-lastReviewed: "2026-09-18"
+description: "A referral to a public hospital clinic, step by step. The systems by layer, the work today, the same work with one agent, and who runs it."
+position: "Proposed design for a public hospital network in Australia or New Zealand. The agent prepares and chases. It never sets urgency, and it never creates or merges a patient record. Deployments are as reported, with dates."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [r03, r04, r14, agent-types, autonomy, risk, zones, delegation]
 ---
 
-Consider a clinic receiving a referral with an incomplete attachment. A shared inbox and checklist can track the request, but someone still has to identify the missing detail, contact its owner, and check the response. This proposed agent helps resolve those exceptions.
+A GP sends a referral to a hospital clinic. It arrives by fax, secure message or e-referral form. The result should be a confirmed appointment, or a clear decline back to the GP. Today a referral clerk in the central referral hub carries the work. A clinician triages each referral. With an agent, the clerk's typing and chasing move to the agent. The clinician still triages, and the clerk still decides any doubt about who the patient is.
 
-<TeachingIllustration src="/images/use-cases/referral-coordination-v1.webp" expandable title="From referral to a confirmed appointment" alt="Receive an approved referral, check identity and completeness, request specific missing information, check booking permission and preferences, then record the accepted booking. Clinical urgency stays with the care team." caption="The outcome is a confirmed booking or a visible unresolved case. A suggested time is not a booking." />
+## The systems involved
 
-## Follow the work
+The referral touches these layers. The [healthcare page](/use-cases/healthcare) shows the full hospital estate.
 
-**Receive and check.** Use an approved referral, verified identity, required administrative fields, and the current service directory. Flag inconsistent identifiers for a person. The agent must not infer missing clinical facts or independently assign clinical urgency.
+| Layer | Systems in this use case |
+|---|---|
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | Hosting for the agent in an Australian or New Zealand region. A text recognition (OCR) service. |
+| [Data platform (R02)](/layers/r02-data-platform) | Clinical data repository for recent results. Data warehouse for waiting list reports. |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | Integration engine for inbound messages and the fax route. FHIR server for the referral task. Secure messaging. Healthcare Identifiers Service (AU) or the NHI interface (NZ). |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Patient administration system, PAS, for the referral, the waiting list and bookings. Patient index. Scanned medical record. |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Clinic templates. Community health intake, where a referral goes there. |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Document reading and field extraction. A triage suggestion model only if the service has validated one. |
+| [Agent platform (R07)](/layers/r07-agent-platform) | The agent and its fixed steps. Today, robotic process automation bots may register referrals. |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Shared inbox. Teams for clerk escalations. |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | SMS, letters, and a patient portal where one exists. GP portal for referral status. |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | The agent's own service account. NASH certificate use. Role-based access. Security monitoring. |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Referral criteria owned by clinical leads. Privacy impact assessment. AI governance sign-off. |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | Traces per referral. Integration error queue. Cost per referral. |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | The referral hub team leader supervises. Clerks handle exceptions. |
+| [Agent data engineering (R14)](/layers/r14-agent-data-engineering) | Extraction that keeps the page and position of each field. Versioned referral criteria as reference data. Memory per referral thread. |
 
-**Resolve one gap at a time.** Identify the specific missing item and request it through an approved channel. Check the response against the request. Thread memory records what has already been asked and received, so the patient and staff are not sent repeated requests.
+## How it runs today
 
-**Prepare and confirm.** Retrieve permitted appointment options and recorded communication preferences. Check authority before booking. Read back the scheduling-system result, preserve its identifier, and handle concurrent booking changes or failed writes explicitly.
+| # | Step | Role | System | How the data moves |
+|---|---|---|---|---|
+| 1 | Receive | Referral clerk in the central referral hub | Fax server, secure messaging inbox, e-referral worklist, shared email | A fax image, an HL7 version 2 message carrying a PDF letter, or form fields. The clerk opens each one on screen. |
+| 2 | Find or create the patient | Referral clerk | PAS and patient index. Healthcare Identifiers Service (AU) or NHI (NZ). | Name, date of birth, and Medicare number or NHI keyed from the letter. A new record if there is no match. |
+| 3 | Register the referral | Referral clerk | PAS referral module. Scanned medical record. | Date, referrer and specialty keyed in. The letter is scanned or attached. The waiting time clock starts under state rules. |
+| 4 | Check completeness | Clerk for admin fields. Clinical nurse for clinical minimums. | PAS. Referral criteria such as Queensland's Clinical Prioritisation Criteria, Victoria's Statewide Referral Criteria, or HealthPathways. | A checklist on screen or paper. Missing items go in PAS comments. |
+| 5 | Chase missing information | Referral clerk | Fax, phone, secure message, letter | A letter or fax to the GP. The referral goes on hold. The reply comes by fax and starts again at step 1. |
+| 6 | Clinical triage | Consultant, registrar or clinical nurse consultant | Paper triage folder, PAS e-triage worklist, or the EMR | Reads the letter and attachments. In Australia, writes an urgency category of 1, 2 or 3. In New Zealand, accepts with a priority or declines with advice. Often done in weekly batches. |
+| 7 | Enter the triage outcome | Referral clerk | PAS | Category and clinic keyed from the triage sheet. The patient joins the outpatient waiting list. |
+| 8 | Acknowledge | Referral clerk | PAS letter templates, mail house, SMS gateway | Printed letters to the patient and the GP. SMS where set up. |
+| 9 | Book and remind | Booking clerk, with automated SMS | PAS clinic templates, phone, SMS gateway | Picks patients by category and time waited. Phones the patient and books a slot. Arranges an interpreter and transport. An SMS reminder goes a few days before. |
+| 10 | Report | Data and performance team | Data warehouse, state collections, dashboards | A nightly PAS extract. Monthly waiting list reports to the state health department or Health NZ. |
 
-## Where intelligence and memory help
+<TeachingIllustration src="/figures/use-cases/referral-as-is.svg" mobileSrc="/figures/use-cases/referral-as-is-mobile.svg" expandable title="Referral to appointment today" alt="Swimlanes for the GP and patient, the referral clerk, the clinician, the booking clerk and the systems. Step 1: the referral clerk receives a fax, secure message or e-referral. Step 2: the clerk finds the patient in the patient administration system (PAS). Step 3: the clerk registers the referral. Step 4: the clerk checks it is complete. Step 5: the clerk chases missing items, and the GP's reply by fax goes back to step 1. Step 6: a clinician triages it. Step 7: the clerk keys in the triage result. Step 8: letters go to the patient and the GP. Step 9: the booking clerk phones the patient, books and sends an SMS reminder. Step 10: the data warehouse reports the waiting list. A blue box under each step names the system it uses." caption="Most steps are keyed by hand. Missing information sends the referral round the loop again." />
 
-Document extraction can locate fields and attachments; the agent checks which administrative question remains unresolved. Reference memory supplies current process rules. Task memory tracks the request, owner, deadline, and responses. Keep original documents available as evidence and patient-specific information within its authorized scope.
+**Handoffs.** The clerk hands to the clinician for triage, then gets it back. The referral hub hands to the clinic. The hospital writes to the GP to ask for information, to acknowledge, or to decline. The clinic books interpreters and patient transport.
 
-Use a fixed workflow for routine completeness checks. Add adaptive reasoning only if variable documents and exceptions justify its extra cost. This does not require several agents.
+**Where reporting comes in.** PAS data reaches the data warehouse every night. The measures are time to triage, the number waiting, and the share seen within the recommended time. Queensland publishes specialist outpatient performance by category. Category 1 should be seen within 30 days and Category 2 within 90 days. Category 3 should be seen within 365 days (Queensland Health, accessed 15 October 2026). New Zealand reports Elective Services Patient Flow Indicators to Health NZ. One counts referrals processed within 10 working days. These rules were not checked in this research.
 
-## Keep the boundary clear
+**Volumes and cycle time.**
 
-A care coordinator owns exceptions. Clinical eligibility, urgency, and changes to treatment return to qualified professionals. Define approved contact channels, consent requirements, deadlines, and escalation before a trial. A request that cannot be resolved stays open with a reason.
+- In May 2026, 362,886 people in Queensland were waiting for a first specialist appointment. That was 15 percent more than a year earlier (AMA Queensland, August 2026, citing Queensland Health).
+- AMA Queensland calls the people waiting to get onto the list a "hidden waiting list".
+- One ENT service at Logan gets about 700 referrals a month. Sorting them takes about 12 clinical hours (Metro South Health research abstract, undated).
+- Waikato dermatologists handled more than 8,000 e-referrals in 2023 (Health Research Council, 2024).
+- Receipt to triage takes a few working days, and longer when clinicians are busy (typical, unsourced).
+- No current figure was found for the share of referrals that still arrive by fax.
 
-## Test the business result
+**Pain points.**
 
-Compare with a checklist and scheduling team on a representative historical sample, then a narrow supervised trial. Measure completeness errors, incorrect patient matches, duplicate bookings, resolution time, staff effort, and patient experience. Do not infer clinical benefit from booking speed.
+- Fax and re-keying.
+- The same referral arrives twice, by two channels.
+- The wrong patient is matched, or a duplicate record is created.
+- Incomplete referrals bounce back and forth.
+- Triage backs up when consultants are in theatre or on leave.
+- The GP and the patient do not know the status.
+- Long waiters lose touch, and phone numbers go stale.
+- Referral criteria differ by state and by clinic.
 
-## Standards connection
+## How agents run it
 
-HL7 FHIR distinguishes the service request, task progress, and appointment. Its [R4 Task resource](https://hl7.org/fhir/R4/task.html) tracks activity completion; its [R4 Appointment resource](https://hl7.org/fhir/R4/appointment.html) describes scheduling. These are integration references, not evidence that an agent is safe or effective. Confirm the version and local profiles your systems support. Reviewed 18 September 2026.
+One agent runs fixed steps. Model calls only read documents and draft messages. Fixed rules decide order, limits and status. The agent writes nothing to the PAS until a clinician has triaged.
 
-Continue with [Healthcare](/use-cases/healthcare), [follow-up coordination](/use-cases/care-follow-up), or [the architecture](/architecture).
+| # | Step | Agent or person | Reads, and from where | Writes | Who approves, and where |
+|---|---|---|---|---|---|
+| 1 | Take in the referral | Agent | The fax image through the document capture service. The HL7 message from the integration engine. The e-referral as a FHIR ServiceRequest or form data. | A new FHIR Task with status "received", linked to the original document. Each field keeps its page and position. | No one. Nothing goes to the PAS yet. |
+| 2 | Propose the patient match and check for duplicates | Agent | The PAS or patient index through a FHIR Patient search. The IHI from the HI Service (AU) or the NHI FHIR interface (NZ). Open referrals for the same patient and specialty. | A proposed match on the task. A duplicate flag, with both documents side by side. | The clerk confirms any doubt in the referral worklist. The agent never creates or merges a patient record. |
+| 3 | Check completeness | Fixed rules, run by the agent | Versioned referral criteria for the clinic, held as reference data. The extracted fields. | A list of missing items on the task. Status "awaiting information". | The clinic's clinical lead approves the rules before go-live. |
+| 4 | Ask for missing items and match replies | Agent | Referrer details from the provider directory. Inbound secure messages and faxes, as events. | A secure message from an approved template, with a copy kept with the referral. The updated task. Step 3 runs again. | The clerk approves each message at first. The clerk sees any reply that does not answer the request. |
+| 5 | Prepare the triage view | Agent | The referral. Recent results from the clinical data repository (FHIR Observation and DiagnosticReport). Imaging reports. Prior letters. My Health Record documents where policy allows. | A triage view. Each item shows its source and date. Gaps are listed. | No one. It is a draft for the clinician. |
+| 6 | Clinical triage | Consultant or clinical nurse consultant | The triage view and the original documents | The urgency category or decision, in the PAS or EMR triage worklist | This is the clinical decision. The agent records it as given. |
+| 7 | Put on the waiting list | Agent | The triage outcome | The waiting list entry in the PAS, through its interface or an HL7 message. Fixed checks run first. | The clerk approves at first. Later, a fixed rule does. |
+| 8 | Offer appointments | Agent | Clinic slots from the PAS interface or FHIR Slot. Booking order rules. Contact and interpreter preferences. | An SMS or portal message offering slots. The patient chooses. | The booking order is a fixed rule. The clerk approves any booking out of order. |
+| 9 | Book and read back | Agent | The patient's choice | A booking through the PAS interface or a FHIR Appointment. The agent reads back the booking number and status. | The clerk handles any failed or clashing write. |
+| 10 | Report | Existing data team | The PAS as today. Agent traces. | Waiting list reports, unchanged. New measures: time per step, requests sent, clerk overrides. | The performance manager |
+
+<TeachingIllustration src="/figures/use-cases/referral-to-be.svg" mobileSrc="/figures/use-cases/referral-to-be-mobile.svg" expandable title="Referral to appointment with an agent" alt="Swimlanes for the agent, the referral clerk, the clinician, fixed rules, the systems and the evidence store. Step 1: the agent takes in the referral and opens a referral task. Step 2: it proposes the patient match, and the clerk confirms. Step 3: fixed rules check completeness, and the clinical lead approves the rules. Step 4: the agent asks the referrer for missing items, and the clerk approves. Step 5: it prepares the triage view. Step 6: a clinician triages, which is the clinical decision. Step 7: the agent adds the patient to the waiting list in the PAS, and the clerk approves. Step 8: it offers slots in a fixed booking order, and the clerk approves any exception. Step 9: it books and reads back the result. Step 10: waiting list reports run as today. The evidence store keeps traces, the PAS audit log, message logs and the original documents. A diamond marks each approval." caption="A diamond marks each approval. Triage stays with the clinician." />
+
+**What stays with a person, and why.**
+
+- The urgency category, and accepting or declining the referral. That is a clinical decision.
+- Any doubt about who the patient is. A wrong match exposes one patient's record to another.
+- Booking out of category order. That is a fairness decision about a person.
+- Declining a referral and telling the GP. It is a clinical decision and a legal record.
+- Using My Health Record. Access rules and the patient's own controls apply.
+
+At Logan, a model called ReferralAI suggests an urgency category to clinicians. A suggestion model like this is a separate tool. It needs its own testing and a TGA check. The agent shows such a suggestion only if the service has validated it. The agent still does not set urgency.
+
+**Where the evidence is kept.** Every agent step is a <Term k="trace">trace</Term>, stored outside the agent and keyed to the task. Every write to the PAS shows in the PAS audit log, under the agent's own account. Every message stays in the secure messaging log. The original documents stay unchanged in the document store.
+
+**What changes in the systems.**
+
+- A referral staging worklist built on FHIR Task, in front of the PAS.
+- New statuses: received, matched, awaiting information, ready for triage, triaged, offered, booked, closed.
+- Event subscriptions for a new inbound document, a reply received and a slot released.
+- An agent service account in the PAS. It can write only referral status, waiting list entries and bookings.
+- HI Service calls use the organisation's existing NASH certificate and are logged per call. Check the HI Service rules if a vendor hosts the agent.
+
+**What does not change.** The PAS stays the record of the waiting list. State waiting time rules and reporting definitions stay. The specialist team still triages. GP software and the secure messaging networks stay as they are.
+
+## Who does this today
+
+| Who | What | Status and date |
+|---|---|---|
+| ReferralAI, Logan ENT, Metro South Health | Suggests an urgency category for ENT referrals. Clinicians decide. | Development and prospective validation. Date not confirmed. A 2023 study of 17,378 referrals found 53.8 percent agreement with the category given. |
+| Austin Hospital, Melbourne, with the University of Melbourne | AI-supported triage for long gynaecology waits | Pilot. Undated. |
+| Te Whatu Ora Waitemata | AI decision support for GP referrals to cardiology | Proposed approach, NZMJ viewpoint, 2025 |
+| Auckland researchers | AI-assisted triage of colonoscopy referrals. Clinicians keep control. | National validation study, invitation July 2026 |
+| East Suffolk and North Essex NHS, England | Three robotic process automation bots watch incoming e-Referral Service referrals | Live. Date not confirmed. |
+| Allina Health with Qventus, US | A joint agent build, with specialty referrals as the first focus | Plan announced December 2025 [vendor] |
+| Hyro at Tampa General, Intermountain Health and Sutter Health, US | Phone and chat agents for scheduling and routing | Live. Tampa General reports call abandonment down from 34 percent to 14.9 percent [vendor]. |
+| Epic agents, US | Art for clinicians and Emmie for patients | Live at US sites in 2026 [vendor]. Not confirmed in Australia. |
+| Heidi II, Australia and New Zealand | Drafts referrals and follow-ups. A clinician reviews before anything is sent. Uses read-only screen control where there is no EMR connector. | Launched 28 September 2026. Primary care first. No Australian public hospital site found [vendor]. |
+
+No Australian or New Zealand public hospital was found running an agent that takes in, chases and books referrals.
 
 ## Where this sits
 
-This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+The [four questions](/architecture/agent-types) place this agent.
 
-- **Role:** coordinate. Domain: healthcare referrals and booking.
-- **Capability surface:** reads referrals, identity details and appointment options. Writes bookings. Requests missing details. Untrusted input: attachments and replies from outside the clinic. Highest data class: regulated health records.
-- **Placement:** A2, L0 on the [autonomy contract](/architecture/autonomy-contract). A care coordinator reviews its output. It runs a fixed workflow and does not learn from cases. Eligibility, urgency and treatment changes drop to A1. Qualified professionals decide.
-- **Floor:** the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). It applies where eligibility or urgency is shaped. This design keeps those with the care team. No zone applies.
-- **Tier:** Tier 3. Health records count as regulated data. That scores High. Outside attachments, health data and outgoing requests are all three parts of the <Term k="rule of two">Rule of Two</Term>. So autonomy stays at A2 or below.
-- **Control:** its credential cannot set clinical urgency or eligibility.
+- **Role.** It coordinates. The domain is health referrals.
+- **Permissions.** These are what its own credentials let it do. It reads referrals, identity details, results and clinic slots. It writes referral tasks, waiting list entries and bookings. It sends secure messages and SMS from templates. It cannot set urgency, decline a referral, or create or merge a patient.
+- **Autonomy.** It is designed and permitted for delegated tasks (A2) on the [autonomy contract](/architecture/autonomy-contract). A clerk reviews its output, and fixed rules release routine steps. Urgency and eligibility drop to assisted (A1), where the clinician decides.
+- **Impact.** It touches none of the four [deterministic zones](/architecture/deterministic-zones). The rule for decisions about people applies. Urgency, decline and booking out of order shape a decision about a person's health. A named person makes each one. A wrong patient match cannot be undone once the data is seen.
 
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+It is [Tier 3 (strict)](/architecture/risk-profile), because it reaches regulated health data. It reads untrusted input from outside faxes and messages. It reaches health data, and it sends messages out. That is all three parts of the <Term k="rule of two">Rule of Two</Term>. So it stays at A2, and it sends only approved templates. Letting templates go without review is a change, so the risk profile is scored again.
+
+Its learning level is fixed (L0). It does not learn from cases. People change its rules and templates at the change stage of the [agent lifecycle](/architecture/agent-lifecycle).
+
+Two of the [seven capabilities](/architecture/system-view) carry most of the control. Identity and policy gives the agent its own identity (ID2) on the [delegation chain](/architecture/delegation-chain). [Policy is enforced outside the model](/architecture/enforcement): the PAS account refuses any write beyond status, waiting list and bookings. Observability and audit trail keeps every step where the agent cannot touch it.
+
+## Measure the result
+
+Compare with the current hub on past referrals first, then in a live trial. Measure these:
+
+- Time from receipt to ready for triage.
+- Requests sent per referral, and replies that answered them.
+- Wrong patient matches and duplicate bookings. The target is none.
+- Clerk overrides.
+- Cost per referral that reaches a booking or a clear decline. The [value and investment](/use-cases/value-and-investment) page sets out that cost.
+
+Report patient and GP complaints separately. Do not read clinical benefit into booking speed.
+
+## Start with a trial
+
+Pick one clinic and one channel, such as the e-referral form. Run the agent on past referrals and compare with what the clerks did. Then run it live with a clerk approving every step. Register the agent with a named sponsor and owner before go-live. Move a step to a fixed rule only when its error rate is known.
+
+## Evidence and limits
+
+The steps come from known practice in Australian and New Zealand referral hubs. Step times are typical, unsourced. Volumes exist only as a state total and for single services.
+
+Triage suggestion models are at validation stage. The ReferralAI agreement figure comes from a 2023 study. Vendor results are as the vendor reported them.
+
+Two checks come before a build. Confirm the TGA position before showing any model-suggested category. Confirm the HI Service rules before a vendor hosts an agent that looks up identifiers.
+
+## Next step
+
+Follow the patient after discharge on [care follow-up](/use-cases/care-follow-up). Or go back to the [hospital estate](/use-cases/healthcare).
+
+<details>
+<summary>The research behind this page</summary>
+
+Research for this page was done on 15 October 2026.
+
+**Standards.** HL7 FHIR separates the request, the work and the booking. The [R4 ServiceRequest resource](https://hl7.org/fhir/R4/servicerequest.html) holds the request. The [R4 Task resource](https://hl7.org/fhir/R4/task.html) tracks the work. The [R4 Appointment resource](https://hl7.org/fhir/R4/appointment.html) holds the booking. [IHE 360X closed-loop referral](https://wiki.ihe.net/index.php/360_Exchange_Closed_Loop_Referral) closes the loop back to the referrer. These are integration references, not evidence that an agent is safe. Confirm the version and local profiles your systems support.
+
+**Sources.**
+
+- AMA Queensland, [public outpatients working group](https://amaq.com.au/Web/News/Media-releases/2026-Media-Releases/Public-Outpatients-Working-Group-to-shine-a-light-on-Queensland%E2%80%99s-hidden-waiting-list.aspx), August 2026.
+- Queensland Health, [specialist appointments performance](https://performance.health.qld.gov.au/statewide-performance/planned-care/specialist-appointments-performance), accessed 15 October 2026.
+- PMC10642163, [AI in referral triage on Clinical Prioritisation Criteria](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10642163/), 2023.
+- Metro South Health, [ReferralAI abstract](https://www.metrosouth.health.qld.gov.au/__data/assets/pdf_file/0028/471349/abstract-whitfield.pdf), undated. The PDF refused the fetch. Figures come from the search summary.
+- Health Research Council, [Waikato dermatology e-referrals](https://www.hrc.govt.nz/node/46249), 2024.
+- University of Melbourne, [AI in the waitlist](https://mdhs.unimelb.edu.au/impact/transforming-healthcare/future-projects/ai-in-waitlist), undated.
+- NZMJ, [making GP referrals suitable for AI](https://www.nzmj.org.nz/journal/vol-138-no-1627/an-approach-to-make-general-practitioner-referrals-suitable-for-artificial-intelligence-deployment), volume 138, 2025.
+- NZSG, [national validation study of AI-assisted colonoscopy triage](https://nzsg.org.nz/news-and-events/news/article/MnuyGzE/invitation-to-participate-in-a-national-validation-study-of-aiassisted-colonoscopy-triage), July 2026.
+- digitalhealth.net, East Suffolk and North Essex virtual workers, undated. Not opened.
+- HC Innovation Group, [Allina Health and Qventus](https://www.hcinnovationgroup.com/analytics-ai/generative-ai/article/55339327/allina-health-qventus-co-developing-custom-ai-agent-solutions), December 2025 [vendor].
+- Becker's, [health systems expanding agentic AI](https://www.beckershospitalreview.com/healthcare-information-technology/ai/12-health-systems-expanding-their-use-of-agentic-ai/), undated. MedCity News, [Sutter Health AI agent](https://medcitynews.com/2025/09/sutter-health-ai-agent), September 2025.
+- HIT Consultant, [Epic at HIMSS 2026](https://hitconsultant.net/2026/03/10/epic-ai-himss-2026-agent-factory-curiosity-foundation-models/), 10 March 2026.
+- The Medical Republic, [Heidi II agents](https://www.medicalrepublic.com.au/?p=129487), 30 September 2026.
+
+</details>

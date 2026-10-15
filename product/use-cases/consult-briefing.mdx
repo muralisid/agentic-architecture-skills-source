@@ -1,0 +1,177 @@
+---
+title: "Prepare the evidence before a consult or multidisciplinary meeting"
+description: "Before a cancer meeting or a clinic, gather results, reports and outside records into one brief. Every fact shows its source and date. The systems by layer, the work today, the same work with one agent, and who signs."
+position: "Proposed design for a public hospital network in Australia or New Zealand. The agent reads and drafts. Clinicians sign the brief, specialists read the images and slides, and the meeting decides. No Australian or New Zealand deployment was found."
+lastReviewed: "2026-10-15"
+datePublished: "2026-10-15"
+dateModified: "2026-10-15"
+concepts: [r02, r03, r04, r14, agent-types, autonomy, risk, delegation]
+---
+
+A patient is listed for a weekly multidisciplinary meeting (MDT), such as a lung cancer meeting. Or the patient is on tomorrow's clinic list. Before the meeting, someone must gather results, imaging and pathology reports, and outside records. Today an MDT coordinator and a registrar do this by copy and paste across many screens. The result should be one brief where every fact shows its source and date. With an agent, the gathering and drafting move to the agent. A clinician signs the brief. Specialists still read the images and slides, and the MDT still decides.
+
+## The systems involved
+
+MDT preparation touches these layers. The [healthcare page](/use-cases/healthcare) shows the full hospital estate.
+
+| Layer | Systems in this use case |
+|---|---|
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | Hosting in an Australian or New Zealand region. No special compute is needed. |
+| [Data platform (R02)](/layers/r02-data-platform) | Clinical data repository. Cancer registry feeds. |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | The FHIR interface. Image study search through DICOMweb, the web standard for medical images. My Health Record gateway. Secure messaging to outside labs and imaging providers. |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Electronic medical record, EMR. Laboratory system, LIS. Radiology system and image archive, RIS and PACS. Scanned medical record. |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | The MDT module. Oncology systems (ARIA, MOSAIQ, CHARM). Digital pathology where present. |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Summary drafting. Image AI only if separately validated. |
+| [Agent platform (R07)](/layers/r07-agent-platform) | The agent. |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | The Teams meeting. A Word or PowerPoint MDT packet. |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | Clinician-facing only. The outcome letter to the GP. |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | The agent acts for a named clinician. Read access only for listed patients. No emergency override access. |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Policy on outside records and My Health Record use. TGA status for any recommendation feature. |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | Traces. A source list per brief. |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | The MDT coordinator supervises. The chair signs the outcome. |
+| [Agent data engineering (R14)](/layers/r14-agent-data-engineering) | The source list. Documents read with page and position. Checks for stale items. |
+
+## How it runs today
+
+| # | Step | Role | System | How the data moves |
+|---|---|---|---|---|
+| 1 | List the patients | MDT coordinator | Email, phone, EMR referral form, spreadsheet, MDT module | Referrals to the MDT come by email or form. The coordinator keeps a spreadsheet. The cut-off is a few days before (typical, unsourced). |
+| 2 | Gather results | Coordinator and registrar | EMR, LIS, clinical data repository, scanned record | Screens, copy and paste, and printouts. |
+| 3 | Get imaging ready | Radiologist, at the coordinator's request | RIS and PACS | The radiologist reviews and sets up key images. Outside images may need importing from a CD or another archive. |
+| 4 | Get pathology ready | Pathologist | LIS. Glass slides. Digital pathology where present. | The pathologist reviews before the meeting. |
+| 5 | Get outside records | Coordinator | Phone, fax, secure message, My Health Record, GP portal | Asks private labs, imaging providers and GPs for reports. Waits. |
+| 6 | Write the case summary | Registrar or clinical nurse | Word template, or the MDT form in the EMR or oncology system | Copy and paste from several screens. There is no standard way to show source or date. |
+| 7 | Meet | The MDT: surgeon, oncologists, radiologist, pathologist, nurse, allied health | Teams or video. PACS screen share. | Discussion. The coordinator or registrar types the outcome. |
+| 8 | Record and send the outcome | The chair signs. The coordinator sends. | EMR or MDT module. Secure messaging. | An outcome note in the EMR. A letter to the GP. Registry data where required. |
+| 9 | Report | Cancer services | Data warehouse. Registry. | MDT counts. Time from diagnosis to treatment against the Optimal Care Pathways. |
+
+Clinic preparation is the same pattern, smaller. A clerk checks the results are back. A nurse prints them. A registrar reads them before the clinic.
+
+<TeachingIllustration src="/figures/use-cases/consult-as-is.svg" mobileSrc="/figures/use-cases/consult-as-is-mobile.svg" expandable title="Preparing for a multidisciplinary meeting today" alt="Swimlanes for outside providers, the MDT coordinator, the registrar, radiology and pathology, the MDT and chair, and the systems. Step 1: the coordinator lists the patients in a spreadsheet. Step 2: the coordinator gathers results from several screens. Step 3: the radiologist sets up images. Step 4: the pathologist reviews slides. Step 5: the coordinator chases outside reports, which often arrive late. Step 6: the registrar writes the case summary by copy and paste. Step 7: the MDT meets and discusses. Step 8: the chair signs the outcome, and it goes to the EMR and the GP. Step 9: the data warehouse reports activity. A blue box under each step names the system it uses." caption="The case summary is copied from many screens, with no source or date on each fact." />
+
+**Handoffs.** The referring team hands to the MDT coordinator. The coordinator asks radiology, pathology and outside providers for what is needed. The MDT hands its outcome to the treating team and the GP.
+
+**Where reporting comes in.** Cancer services count MDT activity. They track time to treatment against the Optimal Care Pathways. Some outcomes must be notified to the cancer registry.
+
+**Volumes and cycle time.** An MDT may discuss 10 to 30 patients a session (typical, unsourced). Preparation takes several hours of coordinator and registrar time per meeting (typical, unsourced). No Australian or New Zealand figure was found for MDT preparation time.
+
+**Pain points.**
+
+- Outside reports are missing on the day.
+- Data is stale, because the latest result came after the summary was written.
+- Images are not available, so the case is deferred.
+- Summaries show no source or date.
+- The same patient comes back next week because something was missing.
+- No record exists of what the MDT actually saw.
+
+Since 1 July 2026, outside pathology and imaging reports go to My Health Record by default (Australian Digital Health Agency). Outside reports are now easier to find, where the service's policy allows their use.
+
+## How agents run it
+
+One agent runs fixed steps. It reads and drafts. It gives no treatment advice.
+
+| # | Step | Agent or person | Reads, and from where | Writes | Who approves, and where |
+|---|---|---|---|---|---|
+| 1 | Build the list | Agent proposes | MDT referrals as EMR orders (FHIR ServiceRequest). The MDT module. | A draft list, with the reason each patient is listed | The coordinator confirms in the MDT module. |
+| 2 | Gather records | Agent | The FHIR interface for results, reports, documents, conditions and medicines. The clinical data repository. RIS reports. The PACS study list through DICOMweb. My Health Record documents where allowed. | A source list per patient. It holds each document's number, date, author and version. | Read access only for listed patients, on behalf of the named MDT lead. |
+| 3 | Ask for missing outside reports | Agent drafts | The provider directory | A secure message to the outside lab or provider | The coordinator approves each message. |
+| 4 | Draft the brief | Agent | The source list | A brief in a fixed template. Every fact links to its source and date. Gaps, conflicts and stale items are listed. No treatment advice. | No one at the draft stage |
+| 5 | Refresh before the meeting | Agent | An event when a new result arrives for a listed patient | The updated brief, with the change marked | No one |
+| 6 | Review and sign the brief | Registrar or presenting clinician | The brief and its sources | The edited brief, saved in the MDT module or as an EMR draft note | The clinician signs. An unsigned brief is never shown as final. |
+| 7 | Review images and slides | Radiologist and pathologist | PACS and LIS | Their own review notes | Specialist judgement |
+| 8 | Decide | The MDT | The brief, the images and the slides | A recommendation | The MDT decides. The chair signs the outcome. |
+| 9 | Draft the outcome note and GP letter | Agent drafts | The coordinator's notes, or an approved meeting capture | A draft outcome note and GP letter | The chair signs. The coordinator sends. |
+| 10 | Hand over follow-up | Agent | The signed outcome | Follow-up tasks, as on [care follow-up](/use-cases/care-follow-up) | The coordinator confirms. |
+
+<TeachingIllustration src="/figures/use-cases/consult-to-be.svg" mobileSrc="/figures/use-cases/consult-to-be-mobile.svg" expandable title="Preparing for a multidisciplinary meeting with an agent" alt="Swimlanes for the agent, the MDT coordinator, the registrar, the specialists and MDT, the systems and the evidence store. Step 1: the agent builds the list, and the coordinator confirms. Step 2: it gathers records for listed patients only. Step 3: it drafts requests for outside reports, and the coordinator approves. Step 4: it drafts the brief, with a source and date on every fact. Step 5: it refreshes the brief when a new result arrives. Step 6: the registrar reviews and signs the brief. Step 7: the radiologist and pathologist review images and slides. Step 8: the MDT decides and the chair signs. Step 9: the agent drafts the outcome note, and the chair signs it. Step 10: it hands over follow-up tasks, and the coordinator confirms. The evidence store keeps the source list, every brief version, the EMR audit log and traces. A diamond marks each approval." caption="A diamond marks each approval. The agent drafts. Clinicians sign and decide." />
+
+**What stays with a person, and why.**
+
+- Reading images and slides. That is specialist clinical judgement.
+- Staging and the treatment recommendation. That is a clinical decision.
+- Signing the outcome. It is the legal record.
+- Using outside records beyond the service's policy. That is a matter of consent and privacy.
+
+**Where the evidence is kept.** The source list is saved with the brief. It shows exactly what the MDT saw. The EMR audit log records each read under the agent's identity, on behalf of the named clinician. Each version of the brief is kept. Agent <Term k="trace">traces</Term> sit outside the agent.
+
+**What changes in the systems.**
+
+- The MDT module gets "brief drafted" and "brief reviewed" statuses, and a place for the source list.
+- An agent identity with read access limited to the patients on the list.
+- An event for a new result on a listed patient, so the brief stays current.
+- A written policy on using My Health Record documents for MDT preparation.
+
+**What does not change.** PACS and the LIS stay the sources. The MDT makes the recommendation. The signed outcome stays the legal record. Registry reporting stays as it is.
+
+## Who does this today
+
+| Who | What | Status and date |
+|---|---|---|
+| Oxford University Hospitals, TrustedMDT, England | Three agents for the clinical summary, cancer staging and treatment planning. Runs in Teams through Microsoft's orchestrator. Clinicians decide. | Two-phase pilot approved, announced 16 December 2025. Oxford says more evaluation is needed before clinical use. Start date not confirmed. |
+| Microsoft Healthcare Agent Orchestrator | Ready-made agents for tumour board preparation, inside Teams, Word and PowerPoint | Launched May 2025. Stanford, Johns Hopkins and others are exploring it. No general release for tumour boards found [vendor]. |
+| Epic Art, The Christ Hospital, US | Pulls incidental findings out of radiology reports so they get followed up | Live. Epic reports a 69 percent early lung cancer detection rate against a 46 percent national average [vendor]. HIT Consultant, 10 March 2026. |
+| Epic Art chart summaries, US | Clinician-facing chart summaries and ambient notes | Rolled out in stages through 2026. Live in bedside nursing at Houston Methodist [vendor]. |
+| Oracle Health Clinical AI Agent, US | A nursing version writes shift handoff summaries from notes, medicines, labs and orders | US commercial. No Australian listing found [vendor]. HLTH, 15 September 2026. |
+| Ambience Chart Awareness, US | Reads the full record: notes, labs, imaging, medicines, pathology and problems | Enterprise-wide at Houston Methodist in 2026 [vendor] |
+| Heidi II chart preparation, Australia and New Zealand | Routines pre-chart a day's patients and search records. Screen control is read-only. | Launched 28 September 2026. Primary care first [vendor]. |
+| Microsoft Dragon Copilot | Ambient notes with plug-ins and agents | Not offered in Australia or New Zealand on 15 October 2026 [vendor] |
+
+No Australian or New Zealand public hospital was found using an agent to prepare MDT briefs.
+
+## Where this sits
+
+The [four questions](/architecture/agent-types) place this agent.
+
+- **Role.** It creates: it writes a brief. The domain is health records.
+- **Permissions.** These are what its own credentials let it do. It reads records for listed patients only, on behalf of the named MDT lead. It writes draft briefs, draft notes and follow-up tasks. It drafts outside requests that the coordinator approves. It has no emergency override access.
+- **Autonomy.** It is designed and permitted for delegated tasks (A2) on the [autonomy contract](/architecture/autonomy-contract). Every brief is reviewed and signed by a clinician. Anything that looks like advice drops to assisted (A1), where clinicians decide.
+- **Impact.** It touches none of the four [deterministic zones](/architecture/deterministic-zones). The rule for decisions about people applies to staging and treatment. The MDT makes them, and the chair signs. A wrong or stale fact in a signed brief could shape care, so every fact carries its source.
+
+It is [Tier 3 (strict)](/architecture/risk-profile), because it reaches regulated health data. Outside reports are untrusted input. It reaches health data, and it sends requests to outside providers. That is all three parts of the <Term k="rule of two">Rule of Two</Term>. So it stays at A2, and the coordinator approves every outgoing message.
+
+Its learning level is fixed (L0). It follows a fixed template and does not learn from cases. A recommendation feature would be a separate tool, with its own TGA check, added only through the [agent lifecycle](/architecture/agent-lifecycle).
+
+It has its own identity (ID2). The [delegation chain](/architecture/delegation-chain) records the named MDT lead it acts for. [Policy is enforced outside the model](/architecture/enforcement): the EMR grants read access only for listed patients. Of the [seven capabilities](/architecture/system-view), [knowledge and memory](/memory) holds the source list, and observability and audit trail keeps every brief version.
+
+## Measure the result
+
+Compare briefs from past meetings with the summaries people wrote. Measure these:
+
+- Missing items on the day, and cases deferred because of them.
+- Stale items caught by the refresh step.
+- Corrections the clinician makes before signing.
+- Facts in the brief with no source. The target is none.
+- Coordinator and registrar hours per meeting.
+
+## Start with a trial
+
+Pick one MDT, such as the lung cancer meeting. Draft briefs for past meetings and compare them with what was presented. Then run it live, with every brief signed before it is shown. Register the agent with a named sponsor and owner, and agree the My Health Record policy first.
+
+## Evidence and limits
+
+No Australian or New Zealand figure was found for MDT preparation time. The volumes here are typical, unsourced.
+
+The closest named case, Oxford's TrustedMDT, is an approved pilot. Oxford says it needs more evaluation before clinical use. Microsoft's orchestrator is at research stage for tumour boards.
+
+The design gives no treatment advice. A tool that suggests a diagnosis or treatment may need TGA listing. Check the TGA position before adding any such feature.
+
+## Next step
+
+Hand the signed outcome to [care follow-up](/use-cases/care-follow-up). Or go back to the [hospital estate](/use-cases/healthcare).
+
+<details>
+<summary>The research behind this page</summary>
+
+Research for this page was done on 15 October 2026.
+
+- University of Oxford, [TrustedMDT pilot with Microsoft](https://www.ox.ac.uk/news/2025-12-16-oxford-built-multi-agent-assistant-cancer-care-be-piloted-collaboration-microsoft), 16 December 2025. The page refused the fetch. Status comes from the search summary.
+- Fierce Healthcare, [Microsoft agent orchestrator for cancer care](https://www.fiercehealthcare.com/ai-and-machine-learning/microsoft-rolls-out-agentic-ai-orchestrator-begins-cancer-care), May 2025. The page refused the fetch.
+- HIT Consultant, [Epic at HIMSS 2026](https://hitconsultant.net/2026/03/10/epic-ai-himss-2026-agent-factory-curiosity-foundation-models/), 10 March 2026.
+- HLTH, [Oracle Clinical AI Agent for nursing](https://hlth.com/insights/news/oracle-health-expands-ai-agent-for-inpatient-nursing-workflows), 15 September 2026.
+- The Medical Republic, [Heidi II agents](https://www.medicalrepublic.com.au/?p=129487), 30 September 2026.
+- Microsoft, [Dragon Copilot availability](https://www.microsoft.com/en-ca/health-solutions/clinical-workflow/dragon-copilot), accessed 15 October 2026.
+- Australian Digital Health Agency, [sharing by default](https://www.digitalhealth.gov.au/healthcare-providers/initiatives-and-programs/better-access-to-health-information), in force 1 July 2026.
+- ACSQHC, [ambient scribe safety scenario](https://www.safetyandquality.gov.au/resources/ai-safety-scenario-ambient-scribe), August 2025.
+- Ambience Chart Awareness, from aggregator summaries, 2026 [vendor]. The Ambience newsroom was not opened.
+
+</details>

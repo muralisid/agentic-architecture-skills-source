@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Preparing for a multidisciplinary meeting today</title>
+<desc id="desc">Swimlanes for outside providers, the MDT coordinator, the registrar, radiology and pathology, the MDT and chair, and the systems. Step 1: the coordinator lists the patients in a spreadsheet. Step 2: the coordinator gathers results from several screens. Step 3: the radiologist sets up images. Step 4: the pathologist reviews slides. Step 5: the coordinator chases outside reports, which often arrive late. Step 6: the registrar writes the case summary by copy and paste. Step 7: the MDT meets and discusses. Step 8: the chair signs the outcome, and it goes to the EMR and the GP. Step 9: the data warehouse reports activity. A blue box under each step names the system it uses.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Preparing for a multidisciplinary meeting today</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Copy and paste across many screens. A blue box names the system each step uses.</text>
+<rect x="32" y="108.0" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="165.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Outside</text>
+<text x="42.0" y="187.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">providers</text>
+<path d="M32 234.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="240.7" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="292.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">MDT</text>
+<text x="42.0" y="314.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">coordinator</text>
+<rect x="32" y="361.3" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 361.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="367.3" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="429.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Registrar</text>
+<path d="M32 488.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="494.0" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="545.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Radiology,</text>
+<text x="42.0" y="567.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">pathology</text>
+<rect x="32" y="614.7" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 614.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="620.7" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="672.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">MDT and</text>
+<text x="42.0" y="694.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">chair</text>
+<path d="M32 741.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="747.3" width="150.0" height="114.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="809.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Systems</text>
+<path d="M32 868.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="813.8" y="128.0" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="882.0" y="169.3" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#78350f">Reports</text>
+<text x="882.0" y="191.3" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#78350f">arrive late</text>
+<rect x="1271.1" y="128.0" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="1339.3" y="169.3" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#78350f">GP gets</text>
+<text x="1339.3" y="191.3" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#78350f">letter</text>
+<rect x="204.0" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="272.2" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Spreadsheet</text>
+<rect x="356.4" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="424.7" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">EMR, lab</text>
+<rect x="508.9" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="577.1" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">RIS, PACS</text>
+<rect x="661.3" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="729.6" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Lab system</text>
+<rect x="813.8" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="882.0" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Fax, phone</text>
+<rect x="966.2" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1034.4" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Word form</text>
+<rect x="1118.7" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1186.9" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Teams</text>
+<rect x="1271.1" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1339.3" y="813.7" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">EMR</text>
+<rect x="204.0" y="254.7" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="272.2" y="301.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">List the</text>
+<text x="272.2" y="323.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">patients</text>
+<circle cx="322.4" cy="254.7" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="322.4" y="261.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="356.4" y="254.7" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="424.7" y="301.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Gather</text>
+<text x="424.7" y="323.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">results</text>
+<circle cx="474.9" cy="254.7" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="474.9" y="261.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="508.9" y="508.0" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="577.1" y="554.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Set up</text>
+<text x="577.1" y="576.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">images</text>
+<circle cx="627.3" cy="508.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="627.3" y="514.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="661.3" y="508.0" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="729.6" y="554.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Review</text>
+<text x="729.6" y="576.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">pathology</text>
+<circle cx="779.8" cy="508.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="779.8" y="514.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="813.8" y="254.7" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="882.0" y="290.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Chase</text>
+<text x="882.0" y="312.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">outside</text>
+<text x="882.0" y="334.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">reports</text>
+<circle cx="932.2" cy="254.7" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="932.2" y="261.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="966.2" y="381.3" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1034.4" y="427.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Write case</text>
+<text x="1034.4" y="449.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">summary</text>
+<circle cx="1084.7" cy="381.3" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1084.7" y="387.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="1118.7" y="634.7" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1186.9" y="681.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Meet and</text>
+<text x="1186.9" y="703.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">discuss</text>
+<circle cx="1237.1" cy="634.7" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1237.1" y="641.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="1271.1" y="634.7" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1339.3" y="670.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Sign,</text>
+<text x="1339.3" y="692.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">send</text>
+<text x="1339.3" y="714.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">outcome</text>
+<circle cx="1389.6" cy="634.7" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1389.6" y="641.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="1423.6" y="761.3" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1491.8" y="818.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Report</text>
+<circle cx="1542.0" cy="761.3" r="15" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<text x="1542.0" y="767.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<path d="M340.4 302.0 L355.4 302.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M492.9 302.0 L524.9 302.0 L524.9 507.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M645.3 555.3 L660.3 555.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M797.8 555.3 L829.8 555.3 L829.8 350.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M950.2 302.0 L982.2 302.0 L982.2 380.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1102.7 428.7 L1134.7 428.7 L1134.7 633.7" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1255.1 682.0 L1270.1 682.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1407.6 682.0 L1439.6 682.0 L1439.6 760.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M882.0 254.7 L882.0 223.7" fill="none" stroke="#9a4c2d" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1339.3 634.7 L1339.3 223.7" fill="none" stroke="#9a4c2d" stroke-width="2" stroke-dasharray="3 5" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1385.6 716.3 L1398.6 729.3 L1385.6 742.3 L1372.6 729.3 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+</svg>

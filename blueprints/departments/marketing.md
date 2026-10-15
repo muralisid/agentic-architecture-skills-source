@@ -24,7 +24,7 @@ Compare the agent with templates, approved copy, and a conventional campaign exp
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Content drafting agent | Produces drafts against brief, brand corpus and prior performance | A2, L1 | Human edit before publication is the control, not a courtesy |
 | Campaign operations agent | Assembles, schedules and QAs campaign mechanics across platforms | A3, L1 | The best-evidenced win: mechanical, bounded, verifiable |
@@ -35,7 +35,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Knowledge (**direct**: brand and claims corpus with an owner), Human (**direct**: publication approval), Evidence (**direct**: synthetic-content labelling), Improvement (**direct**), Action, Control, Execution (supporting).
+Knowledge and memory (**direct**: brand and claims corpus with an owner), human oversight (**direct**: publication approval), observability and audit trail (**direct**: synthetic-content labelling), evaluation and release (**direct**), tool gateway, identity and policy, runtime (supporting).
 
 ## Controls and human decisions
 

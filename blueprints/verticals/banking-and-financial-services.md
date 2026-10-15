@@ -24,7 +24,7 @@ Compare the agent with existing case-management rules and analyst search tools. 
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Servicing agent | Handles narrow, recoverable customer intents within the customer's own scope | A3, L2 | Customer-facing lane, full control set |
 | Financial crime investigation agent | Assembles alert context, retrieves history, drafts the narrative, proposes disposition | A3 on disposition proposal, L2 | The strongest internal case in the vertical: alert volume is high, the labels are real, and the analyst stays the decider |
@@ -36,7 +36,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Control (**direct**: two deterministic zones plus model risk management), Evidence (**direct**: several regimes at once), Knowledge (**direct**), Action (**direct**), Human (**direct**), Improvement (**direct**), Execution (**direct**: sovereignty and classification routing).
+Identity and policy (**direct**: two deterministic zones plus model risk management), observability and audit trail (**direct**: several regimes at once), knowledge and memory (**direct**), tool gateway (**direct**), human oversight (**direct**), evaluation and release (**direct**), runtime (**direct**: sovereignty and classification routing).
 
 ## Controls and human decisions
 

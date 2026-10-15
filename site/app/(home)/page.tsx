@@ -14,7 +14,7 @@ export default function HomePage() {
           <Compass className="size-7 text-ember-deep" aria-hidden="true" />
           <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-fd-muted-foreground">Start with the route</p>
           <h2 className="mt-2 font-serif text-3xl">Where do we start?</h2>
-          <p className="mt-4 leading-7 text-fd-muted-foreground">The road to an agentic enterprise, in seven stations.</p>
+          <p className="mt-4 leading-7 text-fd-muted-foreground">The road to an agentic enterprise, in seven steps.</p>
           <span className="mt-7 inline-flex items-center gap-2 font-semibold text-ember-deep">Start here <ArrowUpRight className="size-4" /></span>
         </Link>
         <Link href="/use-cases" className="group rounded-2xl border border-fd-border bg-fd-card p-7 transition-colors hover:border-ember focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember">

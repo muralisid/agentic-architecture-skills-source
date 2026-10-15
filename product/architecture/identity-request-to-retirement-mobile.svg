@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2624" role="img" aria-labelledby="title desc">
-<title id="title">Identity, request to retirement</title>
-<desc id="desc">Every request runs one chain, from the requesting user and sponsor to the evidence record. The agent uses its own ID2 identity through a gateway, a policy check and the system of record. Kill switches sit at the identity, gateway, runtime and harness. Over its life the agent is registered, entitled, operated, changed, reviewed and retired.</desc>
+<title id="title">The delegation chain, request to retirement</title>
+<desc id="desc">Every request runs one chain, from the requesting user and sponsor to the audit trail. The agent uses its own identity (ID2) through a gateway, a policy check and the system of record. Kill switches sit at the identity, gateway, runtime and harness. Over its life the agent is registered, entitled, operated, changed, reviewed and retired.</desc>
 <defs>
 <marker id="ah-agent" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#7c3aed"/></marker>
 <marker id="ah-brown" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#9a4c2d"/></marker>
@@ -8,8 +8,8 @@
 <marker id="ah-human" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#d97706"/></marker>
 </defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
-<text x="28" y="64" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">Identity, request</text>
-<text x="28" y="108" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">to retirement</text>
+<text x="28" y="64" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">The delegation chain,</text>
+<text x="28" y="108" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">request to retirement</text>
 <text x="28" y="152" font-family="Arial,sans-serif" font-size="24" fill="#465958">An agent should never be able to do anything its</text>
 <text x="28" y="184" font-family="Arial,sans-serif" font-size="24" fill="#465958">requesting user could not do themselves.</text>
 <text x="28" y="238" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#182e31">Every request</text>
@@ -61,7 +61,7 @@
 <text x="42" y="1278" font-family="Arial,sans-serif" font-size="24" fill="#465958">Audit log names that person</text>
 <path d="M200 1296 L200 1340" fill="none" stroke="#9a4c2d" stroke-width="3" marker-end="url(#ah-brown)"/>
 <rect x="28" y="1344" width="664" height="132" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
-<text x="42" y="1380" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#134e4a">Evidence record</text>
+<text x="42" y="1380" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#134e4a">Audit trail</text>
 <text x="42" y="1422" font-family="Arial,sans-serif" font-size="24" fill="#465958">Each decision lands here</text>
 <text x="42" y="1458" font-family="Arial,sans-serif" font-size="24" fill="#465958">Traceable to the person who asked</text>
 <rect x="28" y="1506" width="664" height="126" rx="18" fill="#fff" stroke="#e11d48" stroke-width="2"/>
@@ -73,7 +73,7 @@
 <text x="28" y="1692" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#182e31">Every agent, over its life</text>
 <rect x="28" y="1710" width="664" height="100" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="44" y="1750" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">Register</text>
-<text x="44" y="1788" font-family="Arial,sans-serif" font-size="24" fill="#465958">ID2 identity and a named sponsor</text>
+<text x="44" y="1788" font-family="Arial,sans-serif" font-size="24" fill="#465958">Own identity (ID2), a named sponsor</text>
 <path d="M200 1810 L200 1840" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
 <rect x="28" y="1844" width="664" height="100" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="44" y="1884" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">Entitle (grant expires)</text>

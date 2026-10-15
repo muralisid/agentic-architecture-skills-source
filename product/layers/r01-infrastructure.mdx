@@ -1,115 +1,227 @@
 ---
 title: "Infrastructure and compute"
 icon: "Server"
-description: "Where agents run: each session isolated, risky work in locked-down sandboxes, every agent with its own identity, and model access metered and routed by data sensitivity."
+description: "Where agents run: a sealed workspace for each session, one guarded exit to the network, an identity for each agent, sessions that survive a crash, and rented model capacity placed by data sensitivity."
+position: "Recommended design, built from vendor documents, incident reports and practitioner cost analyses. The cost crossover figures are ranges, not peer-reviewed results."
+lastReviewed: "2026-10-15"
 hero_figure: "layer-01-hero"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [layers, capabilities, r07, r03, delegation, risk, enforcement, concern-matrix]
 ---
 
-<PlainTerms>
-This page covers the computers and networks that <Term k="agent">agents</Term> run on. Each agent gets its own sealed workspace, its own identity, and a single guarded exit to the outside world. A mistake or an attack stays contained. Agents spend much of their time waiting on other systems, so the platform should charge for work done, not for waiting. The one thing to remember: rent model capacity by default, and run your own only when the data is too sensitive to leave your control.
-</PlainTerms>
+The infrastructure and compute layer (R01) is the servers, networks and cloud accounts that every system runs on. It is the base of the [fourteen layers](/layers). Today it holds data centres, public cloud, and a plant network kept apart from the office network. For agents it must provide five things. Each agent session runs in its own sealed workspace. Its only way out is a guarded exit to named destinations. Each agent holds its own identity, never a person's login. Sessions survive a crash and sleep while they wait. Model capacity is rented by default, and data sensitivity decides where a model runs.
 
-## Target state
+## What sits in this layer today
 
-**In short:** Every agent runs in its own isolated session, with its own identity, behind a controlled exit, on rented capacity by default.
+| System category | Electricity distributor | Water utility | Hospital network | Generator, oil and gas, or miner |
+|---|---|---|---|---|
+| Data centres and private cloud | Two data centres | Same pattern as the distributor | State or shared-services data centres. Private cloud (VMware) | Corporate data centre. Servers in each plant's control building, often supported by the control system vendor |
+| Public cloud | AWS, Azure | AWS, Azure | Australian regions of Azure, AWS and Oracle Cloud. Vendor-hosted medical record (Epic, Oracle Health) | Azure, AWS |
+| Operational technology (OT) network, kept apart from the office | Control centre and substations | Pump stations, reservoirs and treatment plants | Medical device network segments | Plant control networks, joined to the business network only through a buffer zone (DMZ) |
+| Wide-area and field links | Private radio and fibre. Mesh radio or cellular to smart meters | Radio or cellular telemetry. Low-power networks to sensors and digital meters (LoRaWAN, NB-IoT) | Clinical Wi-Fi | Fibre, microwave or satellite to remote sites. Private LTE or Wi-Fi mesh for autonomous fleets (Nokia, Rajant) |
+| Devices at the edge | iPads in the field | iPads in the field | Virtual desktops (Citrix, VMware Horizon). Workstations on wheels | Rugged computers on trucks and drills. Tablets rated for hazardous areas |
+| Where AI models run today | Mostly cloud services (typical, unsourced). Control-system data usually may not leave the OT network | Same as the distributor | Cloud pilots such as Copilot Studio and Azure OpenAI (typical, unsourced). Onshore data residency rules apply | Mostly cloud. Plant data often may not leave the site or the country |
 
-Agents run on managed or platform-provided <Term k="runtime">runtimes</Term>, and each session is isolated from every other. Work that can act on the world (running code, browsing, using a computer) executes in a <Term k="sandbox">sandbox</Term> of the micro virtual machine (microVM) class. Each sandbox sits behind an egress proxy, which enforces <Term k="egress control">egress control</Term>: rules on what may leave. Every agent holds a first-class <Term k="workload identity">workload identity</Term>, the machine equivalent of an ID badge. No agent shares a human's credentials. Sessions are event-logged, so they can resume after a crash, and they hibernate when idle. That matters because <Term k="orchestration">orchestration</Term> work comes in bursts and is bound by input and output (I/O). It sits idle for 30 to 70 percent of elapsed time, waiting on <Term k="model">model</Term> and <Term k="tool">tool</Term> calls. Model access is metered (paid per use) by default. It is routed to <Term k="sovereignty">sovereign</Term> or self-hosted serving only when the data <Term k="classification">classification</Term> requires it. Capacity and cost are managed per agent class, with idle time priced in. Three kinds of infrastructure carry all of this, and none existed in the pre-agent estate: execution sandboxes, durable session infrastructure, and egress-controlled networking.
+The rules between these systems: IEC 62443 zones and conduits, and the Purdue levels for plant networks. Australia's Security of Critical Infrastructure Act 2018 covers utilities and energy. Hospitals add the Essential Eight and the ISM in Australia, and NZISM and HISO 10029 in New Zealand. Vendor names are examples from industry knowledge (typical, unsourced). The full estates are on the [utilities](/use-cases/utilities), [healthcare](/use-cases/healthcare) and [energy](/use-cases/energy) pages.
+
+## What agents add
+
+Three kinds of infrastructure are new with agents: sandboxes, durable sessions, and a controlled exit to the network. None of them existed in the estate before agents. Together with model serving, they make up the runtime, one of [the seven capabilities an agent platform provides](/architecture/system-view).
 
 <GuideFigure id="layer-01-hero" fullWidth />
 
-<TeachingIllustration src="/images/layers/r01-safe-session-labeled-v1.webp" alt="A task enters through a dedicated workload identity and isolated microVM session, reaches approved destinations only through an egress proxy, and records durable state for pause, crash and resume." title="The safe session is the unit of agent infrastructure" caption="Isolation, identity, egress control, durable state and a kill switch form one runtime boundary. If any one is missing, a capable agent can escape the assumptions made about the others." />
+### A sealed workspace for each session
 
-| Component | Responsibility | Control it hosts | Where it runs |
-|---|---|---|---|
-| Managed agent runtime | Run orchestration sessions with per-session isolation | Session policies, idle-friendly billing, budget caps, kill switch | Hyperscaler runtime (AgentCore-class) or edge platform (Durable Objects) |
-| Execution sandbox | Isolated, short-lived environment for code execution, browsing, computer use | Hypervisor-class isolation (a microVM such as Firecracker or Kata, or Hyper-V) for untrusted code that touches sensitive data; gVisor as a middle tier; never a plain container; snapshot and restore; memory wiped on termination | Per session, provisioned by the runtime |
-| Egress proxy | The only network path out of sandboxes and agents | Domain allowlists; metadata-endpoint and private-range blocks; egress logging | Network edge of the runtime or virtual private cloud (VPC) |
-| Workload identity provider | Issue and attest first-class agent identity | ID2 floor (one first-class identity per agent); credential lifecycle; attestation | Directory (Entra Agent ID class), SPIFFE/WIMSE infrastructure, or identity provider (IdP) via Cross App Access (XAA) |
-| Durable session layer | Keep sessions alive across crashes, pauses, restarts | Event log; checkpoint and replay; hibernation | Runtime-native, or a durable-execution engine (Temporal class) |
-| Model serving path | Deliver inference at the right sovereignty tier | Metering; classification routing; utilisation telemetry | Metered API by default; sovereign region; air-gapped or self-hosted Kubernetes |
+Every agent session is isolated from every other session. An agent that can act needs a sandbox: a sealed workspace where its code, browsing or computer use runs. Agents that only chat and look things up do not need one. They still need the exit controls below.
 
-## Mechanisms
+For untrusted code that touches sensitive data, the sandbox is a micro virtual machine (microVM) or a Hyper-V boundary. A microVM is a small virtual computer with its own operating system kernel, such as Firecracker or Kata. gVisor runs a kernel in ordinary user space, so it is a middle level of isolation. Run it with non-default features off and patch it promptly. A plain container is never the boundary. In a 2026 benchmark, frontier models escaped misconfigured containers about half the time. The three largest cloud providers and the two major AI labs now isolate agent sessions this way [vendor]. The cost is start time: containers start in under 90 milliseconds, microVMs in seconds [vendor].
 
-### Isolation classes and the capability-set gate
+Choose the isolation level by what the agent can do, not by the product's name. Its permissions are what its own credentials let it do. The test is under what must be true, below.
 
-**In short:** Agents that can act need the strongest sandbox class, judged by what they can do, not by product name.
+<TeachingIllustration src="/images/layers/r01-safe-session-labeled-v1.webp" alt="A task enters through a workload identity and an isolated session. Its work runs in a microVM sandbox. The only way out is an egress proxy that reaches approved destinations. A durable event log lets the session pause, crash and resume. A kill switch connects to every stage. The footer reads: one agent, one identity, one isolated session." title="A safe agent session" caption="Isolation, identity, a guarded exit, durable state and a kill switch form one boundary. If one is missing, a capable agent can get around the others." expandable />
 
-Agents that can act require hypervisor-class isolation, and the tiers are not interchangeable. A microVM (Firecracker, Kata) or a Hyper-V boundary is the floor for untrusted code that touches sensitive data; the authors of SANDBOXESCAPEBENCH call hypervisor isolation a bare minimum. gVisor is a user-space kernel, not a microVM. It is a middle tier, run with non-default features off and a patch commitment, because a host code-execution flaw in a non-default gVisor configuration was reported in 2026 (on one aggregator page only; confirm against the project's advisories before relying on it). Firecracker also carried a 2026 flaw in a non-default configuration (CVE-2026-5747). Plain containers are never the boundary. Practice has converged on this across all three hyperscalers (the largest cloud providers) and both major labs. Bedrock AgentCore runs per-session microVMs (generally available October 2025, sessions up to 8 hours, with virtual private cloud (VPC) and PrivateLink connectivity) [vendor]. Azure Container Apps dynamic sessions are Hyper-V isolated, with egress off by default [vendor]. OpenAI gives each session its own virtual computer (July 2025) [vendor]. Anthropic open-sourced its sandbox-runtime, which enforces domain allowlists at a proxy (October 2025; 84 percent fewer permission prompts, self-reported) [vendor]. The Cloud Native Computing Foundation (CNCF) Agent Sandbox project brings gVisor with Kata support to Kubernetes. It was announced in November 2025 and was not production-ready as of April 2026. The OWASP (Open Worldwide Application Security Project) Agentic Top 10 (December 2025) and Unit 42 guidance concur. Plain containers are not a sufficient boundary. Frontier models (the most capable current models) exploit container weaknesses when those weaknesses are present (SANDBOXESCAPEBENCH, arXiv 2603.02277): they escaped misconfigured containers about half the time, and one 2026 model saturated the benchmark. No confirmed in-the-wild escape from a production microVM, gVisor or Hyper-V agent sandbox had been found as of October 2026. That is absence of evidence, not proof of safety. Start time separates the classes: containers start in under 90 milliseconds (Daytona [vendor]), while microVMs take seconds. The gating rule: decide by the agent's <Term k="capability surface">capability set</Term> (what it can actually do), not by product category. Apply the "lethal trifecta" or "Rule of Two" frame. It asks whether the agent has private data, reads untrusted content, and can communicate externally or change state. Re-evaluate it on every tool grant, because agents accumulate tools over time, and that erodes whatever category an agent was assigned at launch.
+### One guarded exit to the network
 
-Two rules follow from the 2026 incident record. First, everything a sandbox produces is untrusted input to the host. Files, configuration and tool settings pass the same checks as content from the internet before any host tool loads, parses or runs them, and there are no read-write host mounts. Anthropic's containment write-up (May 2026) records project-local configuration being parsed before the trust prompt, and agents writing files that trusted host tools later ran [vendor]. Second, no credential inside the sandbox is worth stealing. A proxy token inside the sandbox is still readable, so tokens are session-bound, short-lived and useless outside the egress proxy. Local MCP servers are the managed exception: the MCP specification tells local (STDIO) servers to read credentials from the environment, so each one is registered and its reach is scoped.
+All traffic out of a sandbox passes through an egress proxy. Egress means traffic leaving the workspace. The proxy allows named destinations only, and there is no other route out. Allowing a domain allows everything that domain can do. So the strongest allowlists name operations, such as "upload only to our own tenant". Egress control matters even for agents with no sandbox. EchoLeak, a 2025 attack on Microsoft 365 Copilot, stole data with no user action. No compute control would have stopped it. Egress and output controls are the ones that answer it.
 
-### Egress control
+### An identity for each agent
 
-**In short:** Nothing leaves a sandbox except through a proxy that allows only named destinations.
+Each agent gets its own identity, the machine version of an ID badge. This guide calls that minimum the agent's own identity (ID2). Shared credentials (ID1), where an agent uses a person's login, are the pattern to remove. Three kinds of agent identity ship today. One is a directory account, such as Microsoft Entra Agent ID [vendor]. One is the IETF's WIMSE standard with SPIFFE, run in production at Block. One is Okta's Cross App Access, now part of the MCP standard. This layer issues the identity. The [integration fabric (R03)](/layers/r03-integration-fabric) checks it on every tool call. [Security and identity (R10)](/layers/r10-security-and-identity) sets the rules for it. The [delegation chain](/architecture/delegation-chain) traces every action back to the person who asked.
 
-All outbound traffic from sandboxes and agents passes through allowlisting proxies. There is no default route out. Block cloud metadata endpoints and private address ranges from inside sandboxes (Unit 42 guidance). The metadata endpoint is how a sandboxed process turns into your cloud credentials. Shipped defaults confirm the posture. Azure dynamic sessions arrive with egress off [vendor]. Anthropic's sandbox-runtime enforces domain allowlists at a proxy [vendor]. AgentCore added VPC and PrivateLink connectivity in September 2025, and VPC egress for its <Term k="gateway">gateway</Term> and identity components in April 2026 [vendor]. Private connectivity to model providers (the PrivateLink class) exists on every hyperscaler, and it is opt-in, never the default. Egress is a first-order control, not hygiene. An allowlisted domain is a capability grant, not a trusted destination: allowing a domain allows everything that domain can do. Two 2026 cases show the leak paths. Files were exfiltrated through a domain on the sandbox operator's own allowlist (Anthropic, May 2026 [vendor]), and Unit 42 moved data out of a hyperscaler sandbox's network-isolation mode through DNS lookups (April 2026). The controls that answer them: an authenticating egress proxy with per-session tokens, DNS filtering, and allowlists that name operations (upload only to our tenant), not just domains. The headline exploit of 2025 (EchoLeak, below) was stopped by nothing in the compute stack. Egress and output restriction were the decisive controls.
+### Sessions that survive a crash
 
-### Workload identity: three families
+Agents run for minutes or hours, and they get interrupted. The runtime keeps an event log of each step, so a session resumes after a crash. It can also snapshot a session and restore it, which is the undo after a bad action. Idle sessions sleep and cost nothing while they wait [vendor]. That matters, because agents spend 30 to 70 percent of their time waiting on models and tools. How the agent's own work is checkpointed is a choice for the [agent platform (R07)](/layers/r07-agent-platform). This layer supplies the event log, the snapshots and the sleep.
 
-**In short:** An agent gets its own identity in one of three ways, and sharing a person's login is the failure to avoid.
+### Where models run
 
-First-class <Term k="agent identity">agent identity</Term> ships in three families. Directory-based: the Entra Agent ID class (preview May 2025) [vendor], where agents become principals (accounts) in the directory. Standards-track: the WIMSE architecture (Workload Identity in Multi System Environments) from the Internet Engineering Task Force (IETF). It has an AI-agent applicability draft (October 2025), and the architecture document went to the Internet Engineering Steering Group (IESG) in July 2026. SPIFFE (the Secure Production Identity Framework for Everyone) runs in production for agents at Block, which operates SPIFFE, WIMSE, and OAuth (the open authorisation standard) together. OAuth-extension: Okta's Cross App Access (XAA, June 2025). It was adopted as the Enterprise Managed Authorization extension of the <Term k="mcp">Model Context Protocol (MCP)</Term>, the open standard for connecting agents to tools. More than 25 independent software vendors (ISVs) had committed to it by June 2026. The floor is ID2: one first-class identity and access management (IAM) principal per agent. Sharing human credentials is the ID1 anti-pattern, and it remains common. Only 23 percent of organisations have a formal agent identity strategy (Cloud Security Alliance, CSA 2025). This <Term k="layer">layer</Term> issues the identity. The [integration fabric](/layers/r03-integration-fabric) enforces it on every tool call.
+<TeachingIllustration src="/images/layers/r01-model-location-labeled-v1.webp" alt="Three lanes for model serving. Lower-sensitivity work goes to a metered API, the default choice. Restricted data goes to a sovereign region, chosen by data classification. The most sensitive data goes to air-gapped or self-hosted serving, only when required. Data sensitivity decides the location. High, steady use decides whether to own capacity. The footer reads: rent by default, own only when the evidence says so." title="Where should the model run?" caption="Rented, metered access is the default. A sovereign region or an air-gapped site is chosen by data classification. Owning capacity pays only under high, steady use or a control requirement." expandable />
 
-### Durable sessions
+Rent model access by default and pay per use. Running your own models pays only above roughly 100 to 250 million tokens a month, per workload. Tokens are the small units of text a model reads and bills by. The volume must be sustained, and the hardware must be busy 60 percent of the time or more. At 10 percent use, the cost per token rises about tenfold. These figures are ranges from four practitioner analyses, none peer reviewed.
 
-**In short:** Agent sessions are built to survive crashes and pauses and to pick up where they left off.
+Open-weight models publish their trained weights, so anyone can run them. Many services sell them per use at low prices. So the cheap path is an open-weight model through a metered service, not your own hardware.
 
-Agents are long-running processes that get interrupted. Their state must survive crashes and pauses. The distinction that matters is checkpointing versus <Term k="durable execution">durable execution</Term>. Checkpointing (LangGraph 1.0, October 2025) saves graph state at step boundaries and leaves recovery to the application. Durable-execution engines (Temporal, Restate, DBOS, Inngest) record every step in an event log and replay it, so the process itself survives failure. The durable-execution camp states that critique of checkpointing directly (Diagrid [vendor]). Event-sourced sessions are the same idea built into the runtime (Google Agent Development Kit, ADK). AgentCore holds sessions for up to 8 hours and charges no processor (CPU) time while a session waits on I/O [vendor]. Cloudflare Durable Objects hibernate idle agents at no cost [vendor]. Both matter for a workload that is idle 30 to 70 percent of elapsed time. Snapshot and restore is the undo button after a bad action. It is also what makes replaying <Term k="evals">evals</Term> (test runs with known right answers) cheap. Session memory is wiped when the session ends (the microVM pattern). The market treats durable execution as agent infrastructure. Temporal raised a $300M Series D at a $5B valuation (February 2026) and integrated with the OpenAI software development kit (SDK) in September 2025.
+Data sensitivity decides where a model runs. Most work goes to a metered service. Restricted data goes to a sovereign region, a cloud region run under local law. The most sensitive data goes to air-gapped or self-hosted serving, cut off from outside networks. Do not assume the newest chips will get cheaper. Reserved prices for one common chip rose about 40 percent between October 2025 and March 2026.
 
-### Serving economics and classification routing
+### The parts and where they run
 
-**In short:** Pay-per-use access beats running your own models unless volume is high and steady; data sensitivity decides where a model runs.
-
-<TeachingIllustration src="/images/layers/r01-model-location-labeled-v1.webp" alt="Three model-serving lanes route lower-sensitivity work to metered APIs, restricted work to sovereign regions, and the highest-sensitivity work to air-gapped or self-hosted infrastructure." title="Sensitivity chooses the location; utilisation chooses the economics" caption="Managed metered access is the default. Sovereign or air-gapped serving is earned by classification, while owning model capacity is justified only by sustained utilisation or a control requirement." />
-
-Self-hosting beats metered frontier <Term k="apis">APIs</Term> (application programming interfaces) only above roughly 100 to 250 million <Term k="tokens">tokens</Term> per month, sustained, per workload. It also needs utilisation of 60 percent or more, and an honest operations multiplier of 1.3 to 2 times in the cost model. At 10 percent utilisation, cost per token rises roughly tenfold. These figures come from four mutually consistent practitioner analyses (2025 to 2026), none peer-reviewed, and utilisation is the pivotal assumption. Open-weight models are models whose trained weights are published for anyone to run. Against budget APIs serving them at roughly $0.14 per million input tokens, break-even recedes to billions of tokens per month. So the cost path is open-weight models through metered APIs, not self-hosting. Open-weight models lag the frontier by about 4 months (Epoch AI, May 2026). OpenRouter <Term k="telemetry">telemetry</Term> (June 2026) shows US closed models falling from about 70 percent to about 30 percent of token share in twelve months. Chinese open-weight models stand at about 61 percent of tokens. Enterprises meanwhile still run 81 percent of large language model (LLM) workloads on closed models (Menlo, December 2025, a venture capital source [VC]). Cold starts (the delay when a model server starts from nothing) have stopped being the objection. Graphics processing unit (GPU) memory snapshots cut cold starts about tenfold (Modal, 118 seconds down to 12 [vendor]; Cerebrium, 71 percent average reduction [vendor]). Cloud Run GPUs (generally available June 2025) start a GPU instance in under 5 seconds, with about 19 seconds to first token on gemma3:4b [vendor]. Also, vLLM ships a sleep mode. Scale-to-zero (shutting capacity down entirely when idle) is viable for bursty agent serving.
-
-Routing is by classification, not by preference. Metered managed serving is the default. A sovereign region is used where residency rules and operator control demand it (AWS European Sovereign Cloud, generally available 15 January 2026, with Bedrock [vendor]). Air-gapped managed AI (disconnected from any outside network) is used where classification demands it. Gemini became generally available on Google Distributed Cloud air-gapped in August 2025, authorised to US Secret and Top Secret [vendor]. The GPU market in mid-2026: reserved H100 capacity bottomed at $1.70 per GPU-hour in October 2025 and rebounded about 40 percent to $2.35 by March 2026 (SemiAnalysis). Spot prices run $2.19 to $3.50. Blackwell-class chips are scarce and reserved through 2026 to 2027, amid a squeeze on high-bandwidth memory (HBM). Roughly 20 percent of the supply of DRAM (dynamic random-access memory) now goes to AI. The assumption that compute always gets cheaper is not safe for the newest silicon.
-
-### The incident record
-
-**In short:** Every control on this page answers a real incident, not a hypothetical.
-
-Replit's agent deleted a production database during an explicit code freeze (July 2025). The answer: environment separation and snapshots. A compromised Amazon Q extension for the integrated development environment (IDE) carried a data-wiping <Term k="prompt">prompt</Term> to roughly 950,000 installs (July 2025, extension version 1.84.0). The injected code failed to run because of a syntax error, and it entered through an over-scoped GitHub token (AWS security bulletin AWS-2025-015). The answer: supply-chain review, scoped tokens and egress control. SANDBOXESCAPEBENCH (arXiv 2603.02277) showed frontier models exploiting container weaknesses when present. The answer: hypervisor-class isolation. EchoLeak (June 2025) is vulnerability record CVE-2025-32711 (Common Vulnerabilities and Exposures), with a severity of 9.3 on the Common Vulnerability Scoring System (CVSS). It was a zero-click exfiltration (data theft without any user action) from a chat-and-retrieve agent (Microsoft 365 Copilot), carried out entirely in natural language. The compute sandbox was irrelevant; egress control and output sanitisation were decisive. Chat-and-retrieve agents are exempt from compute sandboxes, not from controls. NIST (the US National Institute of Standards and Technology) and the UK AI Security Institute (UK-AISI) ran joint agent-hijack evaluations. Attack success reached 81 percent once the attacks were optimised. The answer: capability-set gating, re-checked on every grant.
-
-## Design decisions
-
-- **Self-hosted GPU estates vs metered APIs** ([CD-6](/decisions#cd-6)): metered by default. The one correction: the cost path is open-weight models through metered APIs, not self-hosting. Self-hosting earns its place for air-gap and classification requirements, rarely on cost alone. Below roughly 100 to 250 million sustained tokens per month per workload, or below 60 percent utilisation, the numbers do not close. The Airbnb counter-example marks the boundary. Its public commitment to Qwen for cost and speed (October 2025) shows that cost-driven open-weight adoption is real at hyperscale consumer volume. And it runs through APIs.
-- **Kubernetes everywhere vs managed agent runtimes** ([CD-7](/decisions#cd-7)): split by layer. Model serving is where Kubernetes standardised, and that matters only if you self-host models at all. Dynamic Resource Allocation became generally available in v1.34 (September 2025). The llm-d project was donated to the CNCF in March 2026. CNCF AI Conformance v1.0 arrived in November 2025. The stack is vLLM and KServe. Agent orchestration fits managed runtimes. Per-session isolation is native there, billing matches the idle-heavy profile, and Kubernetes needed a new project just to match the isolation primitive. Lock-in is symmetric. Managed runtimes are proprietary control planes, and the portability camp sells its own ecosystem. Over half of surveyed Kubernetes shops admit to one-off, hand-maintained ("snowflake") clusters (Spectro Cloud 2025 [vendor]).
-
-## Cross-cutting concerns
-
-| # | Concern | Treatment at this layer |
+| Part | What it does | Where it runs |
 |---|---|---|
-| C1 | Identity and access | First-class workload identity per agent (directory, WIMSE/SPIFFE, or OAuth-extension); no shared human credentials; ID2 floor |
-| C2 | Observability | Session traces, sandbox lifecycle events, egress logs; idle-time and utilisation telemetry |
-| C3 | Traceability and audit | Event-logged sessions; sandbox snapshots as forensic artifacts; egress decisions logged |
-| C4 | Grounding | Sandbox and session artifacts carry provenance before promotion to grounding |
-| C5 | Impersonation | Workload identity attestation (WIMSE-class); no ambient credentials in sandboxes |
-| C6 | Sovereignty | Classification-routed serving (managed, sovereign region, air-gapped); session and sandbox data residency explicit |
-| C7 | Privacy | Session memory wiped on termination (microVM pattern); redaction in session logs |
-| C8 | Safety and oversight | Environment separation as hard policy; capability-set gating; kill switch at the runtime |
-| C9 | Cost | Per-session cost, idle-share, and utilisation metrics; budget caps at the runtime |
-| C10 | Resilience | Durable, resumable sessions (event log or durable-execution engine); snapshot and restore; degraded mode to human queues |
+| Agent runtime | Runs each session apart from the others, with budget caps and a kill switch | A cloud provider's agent runtime, or an edge platform |
+| Sandbox | Runs code, browsing and computer use in a sealed, short-lived workspace | Per session, started by the runtime |
+| Egress proxy | The only network path out, with allowlists and logs | The network edge of the runtime |
+| Identity provider | Issues and proves each agent's identity | Your directory, a workload identity service, or your identity provider |
+| Session store | Keeps the event log, snapshots and sleeping sessions | Built into the runtime, or a durable execution engine |
+| Model serving | Delivers model calls at the right sensitivity level | Metered service by default, then a sovereign region, then air-gapped or self-hosted |
 
-**Next step:** read the next layer, [R02 Data platform](/layers/r02-data-platform).
+## What must be true before an agent touches it
+
+**The sandbox matches what the agent can do.** Use Meta's Rule of Two. Does the agent hold private data? Does it read untrusted content? Can it send data out or change things? An agent with all three needs the strongest isolation. A new tool grant changes its permissions, so the [risk profile](/architecture/risk-profile) is scored again. Agents gather tools over time, so check on every grant, not only at launch.
+
+**Everything a sandbox produces is untrusted.** Files, settings and tool configuration from the sandbox pass the same checks as content from the internet. They are checked before any host tool loads or runs them. There are no read-write mounts to the host. In 2026, agents wrote files that trusted host tools later ran [vendor].
+
+**No credential inside a sandbox is worth stealing.** Tokens are tied to the session, short-lived, and useless outside the egress proxy. Local MCP servers read credentials from their environment by design. Register each one and limit what it can reach.
+
+**The exit is locked down.** Block the cloud metadata address and private network ranges from inside sandboxes. The metadata address is how a sandboxed process gets your cloud credentials. Filter DNS lookups too, because data has left a sandbox through them.
+
+**Environments are separate, and snapshots exist.** An agent deleted a production database during a code freeze in July 2025. Separate environments and snapshots answer that.
+
+**There is a kill switch at the runtime.** It stops a session at once, whatever the model is doing.
+
+**Credentials follow the lifecycle.** Credentials are issued at the entitle stage and removed at retirement, two stages of the [agent lifecycle](/architecture/agent-lifecycle).
+
+The enforcement points here are the sandbox boundary and the egress proxy. Both sit outside the model, so the model cannot argue its way past them. This is [enforcement outside the model](/architecture/enforcement).
+
+## Choices and their verdicts
+
+Each entry is the common choice, tested against the simplest credible alternative. The full records are in the [decision catalog](/decisions).
+
+- [Run your own models or pay per use](/decisions#cd-6): pay per use by default. Run your own only for air-gapped or classified data, rarely for cost alone.
+- [Kubernetes everywhere or managed agent runtimes](/decisions#cd-7): split them. Use Kubernetes for model serving if you host models. Use managed runtimes for agent sessions.
+
+## Concerns this layer must honour
+
+A concern is a requirement every layer must honour. This layer carries a specific duty for six of the ten.
+
+- **Identity and access.** It issues one identity per agent. No agent uses a person's login.
+- **Sovereignty and residency.** Data sensitivity decides the serving location. Session and sandbox data stay in the region.
+- **Privacy.** Session memory is wiped when the session ends. Session logs are redacted.
+- **Safety and oversight.** Environments are separate by hard policy. The runtime holds a kill switch.
+- **Cost.** It measures cost per session, idle time and hardware use, and enforces budget caps.
+- **Resilience.** This layer owns it. Sessions resume after a crash, snapshots restore, and work falls back to human queues.
+
+The full grid of concerns against layers is the [concern matrix](/architecture/concern-matrix).
 
 ## Evidence and limits
 
-Incidents carry CVE identifiers and CVSS scores where they exist. EchoLeak is CVE-2025-32711 at CVSS 9.3. The Replit and Amazon Q incidents are dated but carry no CVE. The 2026 sandbox flaws are graded: the Firecracker flaw (CVE-2026-5747) is in the US National Vulnerability Database, while the gVisor host code-execution flaw was found on one aggregator page only and needs confirming against the project's advisories. No confirmed in-the-wild escape from a production agent sandbox was found. Isolation, billing, cold-start, and sovereign-serving claims are vendor-published [vendor] (AWS, Microsoft, OpenAI, Anthropic, Cloudflare, Modal, Cerebrium, Daytona, Google). Anthropic's figure of 84 percent fewer permission prompts is self-reported. The figure of 81 percent of workloads on closed models comes from a venture capital firm (Menlo). The snowflake-cluster survey is vendor-published (Spectro Cloud). One refusal: no peer-reviewed unit economics for self-hosted serving exist. The crossover figures here are ranges from four mutually consistent practitioner analyses, and this guide publishes them only as ranges, with the utilisation caveat. The strongest independent sources at this layer are Epoch AI, NIST and UK-AISI, OWASP, CNCF, IETF, SemiAnalysis, and SANDBOXESCAPEBENCH. Re-verify: CNCF Agent Sandbox production readiness (fourth quarter of 2026); WIMSE progress at the IESG (from July 2026); GPU pricing quarterly (SemiAnalysis); OpenRouter token-share drift.
+The isolation, billing, start-time and sovereign-serving claims come from vendor documents. They are marked [vendor]. The strongest independent sources are NIST, the UK AI Security Institute, OWASP, the CNCF and the IETF. Epoch AI, SemiAnalysis and the SANDBOXESCAPEBENCH paper add more.
+
+No confirmed escape from a production microVM, gVisor or Hyper-V agent sandbox had been found as of October 2026. That is an absence of evidence, not proof of safety. One reported gVisor flaw appeared on a single aggregator page only. It needs checking against the project's own advisories.
+
+No peer-reviewed study of self-hosted serving costs exists. The crossover figures above are ranges from four practitioner analyses that agree with each other. Utilisation is the assumption that moves them most. This guide recommends treating them as ranges and measuring your own utilisation.
+
+## Next step
+
+See this layer at work in [investigating production discrepancies](/use-cases/production-measurement), where plant data must stay on site. Then read the next layer, the [data platform (R02)](/layers/r02-data-platform).
 
 <details>
 <summary>The research behind this page</summary>
 
-- [Infrastructure and compute findings](/library/layers/r01-infrastructure/findings)
-- [Sources](/library/layers/r01-infrastructure/sources)
-- [Products named for orientation](/architecture), on the one-page wall chart
+- [Infrastructure and compute findings](/library/layers/r01-infrastructure/findings) and [sources](/library/layers/r01-infrastructure/sources).
+
+**Sandboxes**
+
+- AWS Bedrock AgentCore runs per-session microVMs. Generally available October 2025, sessions up to 8 hours [vendor].
+- Azure Container Apps dynamic sessions use Hyper-V isolation, with egress off by default [vendor].
+- OpenAI gives each session its own virtual computer (July 2025) [vendor].
+- Anthropic open-sourced its sandbox runtime in October 2025. It enforces domain allowlists at a proxy [vendor].
+- Anthropic reports 84 percent fewer permission prompts with it. The figure is self-reported [vendor].
+- The CNCF Agent Sandbox project brings gVisor, with Kata support, to Kubernetes. Announced November 2025.
+- CNCF Agent Sandbox was not production-ready as of April 2026.
+- OWASP Agentic Top 10 (December 2025) and Unit 42 guidance agree that plain containers are not a boundary.
+- SANDBOXESCAPEBENCH (arXiv 2603.02277): frontier models escaped misconfigured containers about half the time.
+- One 2026 model saturated that benchmark.
+- Firecracker carried a 2026 flaw in a non-default configuration, CVE-2026-5747, listed in the US National Vulnerability Database.
+- A gVisor host code-execution flaw in a non-default configuration was reported in 2026, on one aggregator page only.
+- Daytona reports container start times under 90 milliseconds [vendor].
+- Anthropic's containment write-up (May 2026) records project files parsed before the trust prompt [vendor].
+- The same write-up records agents writing files that trusted host tools later ran [vendor].
+- The MCP specification tells local (STDIO) servers to read credentials from the environment.
+
+**Egress**
+
+- Unit 42 guidance: block cloud metadata endpoints and private address ranges inside sandboxes.
+- AgentCore added private network connectivity (VPC and PrivateLink) in September 2025 [vendor].
+- AgentCore added private egress for its gateway and identity components in April 2026 [vendor].
+- Private connectivity to model providers exists on every large cloud. It is opt-in, never the default.
+- Files left a sandbox through a domain on the operator's own allowlist (Anthropic, May 2026) [vendor].
+- Unit 42 moved data out of a cloud sandbox's network-isolation mode through DNS lookups (April 2026).
+- EchoLeak (June 2025) is CVE-2025-32711, scored 9.3 on CVSS. It was a zero-click theft from Microsoft 365 Copilot.
+
+**Agent identity**
+
+- Microsoft Entra Agent ID entered preview in May 2025 [vendor].
+- The IETF WIMSE AI-agent applicability draft dates from October 2025.
+- The WIMSE architecture document went to the IETF's steering group (IESG) in July 2026.
+- Block runs SPIFFE, WIMSE and OAuth together for agents in production.
+- Okta's Cross App Access launched in June 2025. MCP adopted it as Enterprise Managed Authorization.
+- More than 25 software vendors had committed to Cross App Access by June 2026.
+- Only 23 percent of organisations have a formal agent identity strategy (Cloud Security Alliance, 2025).
+
+**Durable sessions**
+
+- LangGraph 1.0 (October 2025) saves state at step boundaries and leaves recovery to the application.
+- Durable execution engines (Temporal, Restate, DBOS, Inngest) log every step and replay it after a failure.
+- Diagrid, a durable execution vendor, states the critique of checkpointing directly [vendor].
+- Google's Agent Development Kit builds event-sourced sessions into the runtime.
+- AgentCore charges no processor time while a session waits on input or output [vendor].
+- Cloudflare Durable Objects hibernate idle agents at no cost [vendor].
+- Temporal raised a $300M Series D at a $5B valuation in February 2026.
+- Temporal integrated with the OpenAI agents SDK in September 2025.
+
+**Model serving and cost**
+
+- The self-hosting crossover comes from four practitioner analyses, 2025 to 2026. None is peer reviewed.
+- Budget services sell open-weight models at roughly $0.14 per million input tokens.
+- Open-weight models lag the frontier by about 4 months (Epoch AI, May 2026).
+- On OpenRouter, US closed models fell from about 70 to about 30 percent of tokens in a year (June 2026).
+- On OpenRouter, Chinese open-weight models stood at about 61 percent of tokens (June 2026).
+- Enterprises still run 81 percent of language model workloads on closed models (Menlo Ventures, December 2025).
+- Modal cut a GPU cold start from 118 seconds to 12 with memory snapshots [vendor].
+- Cerebrium reports a 71 percent average cold-start reduction [vendor].
+- Cloud Run GPUs became generally available in June 2025. They start in under 5 seconds [vendor].
+- Cloud Run reports about 19 seconds to the first token on gemma3:4b [vendor].
+- vLLM ships a sleep mode, so serving can scale to zero when idle.
+- AWS European Sovereign Cloud became generally available on 15 January 2026, with Bedrock [vendor].
+- Gemini became available on Google Distributed Cloud air-gapped in August 2025 [vendor].
+- That air-gapped service is authorised to US Secret and Top Secret [vendor].
+- Reserved H100 prices bottomed at $1.70 per GPU-hour in October 2025 (SemiAnalysis).
+- Reserved H100 prices reached $2.35 by March 2026 (SemiAnalysis). Spot prices ran $2.19 to $3.50.
+- Blackwell-class chips are scarce and reserved through 2026 to 2027.
+- Roughly 20 percent of the world's DRAM memory supply now goes to AI.
+- Airbnb publicly committed to Qwen, an open-weight model, for cost and speed in October 2025. It runs through APIs.
+
+**Kubernetes and managed runtimes**
+
+- Kubernetes Dynamic Resource Allocation became generally available in v1.34 (September 2025).
+- The llm-d project was donated to the CNCF in March 2026.
+- CNCF AI Conformance v1.0 arrived in November 2025. The common serving stack is vLLM and KServe.
+- Over half of surveyed Kubernetes shops run hand-maintained clusters (Spectro Cloud, 2025) [vendor].
+
+**Incidents and the control that answers each**
+
+- Replit's agent deleted a production database during a code freeze (July 2025). Answer: separate environments and snapshots.
+- A compromised Amazon Q extension (version 1.84.0, July 2025) carried a data-wiping prompt to about 950,000 installs.
+- The Amazon Q code failed on a syntax error. It entered through an over-scoped GitHub token (AWS-2025-015).
+- The answer to Amazon Q: supply-chain review, scoped tokens and egress control.
+- NIST and the UK AI Security Institute ran joint agent-hijack tests. Optimised attacks succeeded 81 percent of the time.
+- The answer to agent hijacking: check permissions again on every tool grant.
+
+**Refusals and checks**
+
+- Refused: any precise unit cost for self-hosted serving. No peer-reviewed figure exists.
+- Re-verify: CNCF Agent Sandbox production readiness (fourth quarter of 2026).
+- Re-verify: WIMSE progress at the IESG (from July 2026).
+- Re-verify: GPU pricing each quarter (SemiAnalysis), and OpenRouter token-share drift.
 
 </details>
-
-
-## See this layer at work
-
-Follow the proposed [production measurement](/use-cases/production-measurement) example. Compare the required capability with the systems already in place, then use the [architecture map](/architecture) to inspect neighboring responsibilities.

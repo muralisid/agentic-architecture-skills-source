@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
-<title id="title">Autonomy and learning: floors, ceiling and gate</title>
-<desc id="desc">Autonomy levels A0 to A5 run across, and learning levels L0 to L3 run down. A1 and A2 carry a Tier 1 floor, A3 Tier 2, and A4 and A5 Tier 3. A4 and above need L2 and proven oversight capacity at burst. Exercised autonomy above permitted autonomy is an incident.</desc>
+<title id="title">The autonomy and learning scales: lowest tier, ceiling and gate</title>
+<desc id="desc">Six autonomy levels run across, from manual (A0) to governed lights-out (A5). Four learning levels run down, from fixed (L0) to continuous learning inside limits (L3). Assisted (A1) and delegated tasks (A2) need at least Tier 1. Supervised autonomy (A3) needs at least Tier 2. Managed autonomy (A4) and governed lights-out (A5) need Tier 3. A4 and above need reviewed learning (L2) and proven supervision capacity at peak load. The readiness ceiling sits at the weakest area. Exercised autonomy above permitted is an incident, and controls follow the higher of the two.</desc>
 <defs>
 <marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
 <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="14" height="14" fill="#fde8ec"/><path d="M0 0 V14" stroke="#e11d48" stroke-width="3" stroke-opacity="0.55"/></pattern>
 </defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
-<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">Autonomy and learning: floors, ceiling and gate</text>
-<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">Each workload gets an autonomy level and a learning level. Both are earned and reversible.</text>
+<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">The autonomy and learning scales: lowest tier, ceiling and gate</text>
+<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">Each piece of work gets an autonomy level and a learning level. Both are earned and can be reversed.</text>
 <rect x="231" y="146" width="216" height="112" rx="10" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="244" y="176" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#182e31">A0</text>
 <text x="244" y="200" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Manual</text>
@@ -38,11 +38,11 @@
 <text x="1354" y="248" font-family="Arial,sans-serif" font-size="18" font-style="italic" fill="#465958">audits outcomes</text>
 <rect x="40" y="146" width="178" height="112" rx="10" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="56" y="176" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Autonomy:</text>
-<text x="56" y="200" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">the human's</text>
+<text x="56" y="200" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">the person's</text>
 <text x="56" y="224" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">job</text>
 <rect x="40" y="266" width="178" height="74" rx="10" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="56" y="290" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">L0</text>
-<text x="56" y="312" font-family="Arial,sans-serif" font-size="18" fill="#465958">Fixed policy</text>
+<text x="56" y="312" font-family="Arial,sans-serif" font-size="18" fill="#465958">Fixed</text>
 <rect x="231" y="266" width="216" height="74" rx="8" fill="#ffffff" stroke="#c4ccd4" stroke-width="1"/>
 <rect x="453" y="266" width="216" height="74" rx="8" fill="#eef2f6" stroke="#c4ccd4" stroke-width="1"/>
 <rect x="675" y="266" width="216" height="74" rx="8" fill="#eef2f6" stroke="#c4ccd4" stroke-width="1"/>
@@ -61,7 +61,7 @@
 <rect x="1341" y="344" width="216" height="74" rx="8" fill="#c9d2dc" stroke="#c4ccd4" stroke-width="1"/>
 <rect x="40" y="422" width="178" height="74" rx="10" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="56" y="446" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">L2</text>
-<text x="56" y="468" font-family="Arial,sans-serif" font-size="18" fill="#465958">Governed</text>
+<text x="56" y="468" font-family="Arial,sans-serif" font-size="18" fill="#465958">Reviewed</text>
 <text x="56" y="488" font-family="Arial,sans-serif" font-size="18" fill="#465958">learning</text>
 <rect x="231" y="422" width="216" height="74" rx="8" fill="#ffffff" stroke="#c4ccd4" stroke-width="1"/>
 <rect x="453" y="422" width="216" height="74" rx="8" fill="#eef2f6" stroke="#c4ccd4" stroke-width="1"/>
@@ -72,7 +72,7 @@
 <rect x="40" y="500" width="178" height="74" rx="10" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="56" y="524" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">L3</text>
 <text x="56" y="546" font-family="Arial,sans-serif" font-size="18" fill="#465958">Continuous</text>
-<text x="56" y="566" font-family="Arial,sans-serif" font-size="18" fill="#465958">learning</text>
+<text x="56" y="566" font-family="Arial,sans-serif" font-size="18" fill="#465958">inside limits</text>
 <rect x="231" y="500" width="216" height="74" rx="8" fill="#ffffff" stroke="#c4ccd4" stroke-width="1"/>
 <rect x="453" y="500" width="216" height="74" rx="8" fill="#eef2f6" stroke="#c4ccd4" stroke-width="1"/>
 <rect x="675" y="500" width="216" height="74" rx="8" fill="#eef2f6" stroke="#c4ccd4" stroke-width="1"/>
@@ -88,17 +88,17 @@
 <path d="M894 112 L894 580" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="9 6"/>
 <text x="884" y="128" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#1e3a8a">Readiness ceiling: weakest area</text>
 <path d="M1116 112 L1116 580" fill="none" stroke="#475569" stroke-width="5"/>
-<text x="1128" y="128" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#0f172a">Oversight gate: burst capacity proven</text>
+<text x="1128" y="128" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#0f172a">Supervision gate: peak capacity proven</text>
 <rect x="40" y="586" width="178" height="38" rx="10" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="56" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Tier floor</text>
+<text x="56" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Lowest tier</text>
 <rect x="231" y="586" width="216" height="38" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
-<text x="339" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">Floor n/a</text>
+<text x="339" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">No minimum</text>
 <rect x="453" y="586" width="438" height="38" rx="10" fill="#eef2f6" stroke="#475569" stroke-width="1.5"/>
-<text x="672" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">Tier 1 floor</text>
+<text x="672" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">At least Tier 1</text>
 <rect x="897" y="586" width="216" height="38" rx="10" fill="#dde3ea" stroke="#475569" stroke-width="1.5"/>
-<text x="1005" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">Tier 2 floor</text>
+<text x="1005" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">At least Tier 2</text>
 <rect x="1119" y="586" width="438" height="38" rx="10" fill="#c9d2dc" stroke="#475569" stroke-width="1.5"/>
-<text x="1338" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">Tier 3 floor</text>
+<text x="1338" y="611" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">Tier 3</text>
 <rect x="40" y="634" width="178" height="78" rx="10" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
 <text x="56" y="666" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Worked</text>
 <text x="56" y="690" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">examples</text>
@@ -121,6 +121,6 @@
 <rect x="1171.8" y="734" width="110.4" height="34" rx="17" fill="#fff" stroke="#94a3b8" stroke-width="2"/>
 <text x="1227" y="757.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e293b">Designed</text>
 <path d="M845.6 751 L940.4 751" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
-<text x="894" y="800" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#881337">Exercised above permitted = incident</text>
+<text x="894" y="800" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#881337">Exercised above permitted is an incident</text>
 <text x="40" y="854" font-family="Arial,sans-serif" font-size="18" fill="#465958">Controls follow the higher of permitted and exercised. The ceiling line shows one example: it sits at the weakest readiness area.</text>
 </svg>

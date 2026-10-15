@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2484" role="img" aria-labelledby="title desc">
+<title id="title">Water network anomaly with agents: who does what</title>
+<desc id="desc">Swimlane of a water network anomaly with an agent. Four lanes are people: the team that owns the agent, water quality officer, engineer and crews, and control room operator. Two lanes are systems: the asset system and event console, and SCADA and the historian. The agent and the evidence store have their own lanes. A red dashed line separates the agent from SCADA. The agent reads a one-way copy through the DMZ and has no write path back. Steps 1 to 4: the agent receives the alarm copy, pulls trends, checks the sensor, and checks work and calls. Step 5: the agent proposes a view in the console, and the operator decides. Step 6: for a sensor fault, the agent drafts work and the operator or planner approves. Step 7: for a real issue, the engineer leads and approves. Step 8: the agent gathers lab results, and a named officer decides notices. Step 9: the owning team updates the reference set, with each change approved. The evidence store holds traces, the alarm journal and historian, the asset system audit trail and the logbook.</desc>
+<rect x="0" y="0" width="720" height="2484" fill="#f8f5ef"/>
+<text x="24.0" y="48.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Water network anomaly with agents: who</text>
+<text x="24.0" y="88.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">does what</text>
+<text x="24.0" y="138.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent reads a one-way copy of OT data. It</text>
+<text x="24.0" y="170.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">never writes to SCADA, pumps, valves or treatment.</text>
+<rect x="24" y="204" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<rect x="44" y="222" width="44" height="44" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="112.0" y="250.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">SCADA and historian</text>
+<text x="112.0" y="284.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">A one-way copy of the alarm leaves the</text>
+<text x="112.0" y="316.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">control network through the DMZ.</text>
+<path d="M66 344 V366" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,374 58,362 74,362" fill="#475569"/>
+<rect x="24" y="378" width="672" height="104" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="418" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="427.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">1</text>
+<text x="112.0" y="424.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="458.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Receives the alarm copy.</text>
+<path d="M66 486 V508" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,516 58,504 74,504" fill="#475569"/>
+<rect x="24" y="520" width="672" height="136" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="560" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="569.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">2</text>
+<text x="112.0" y="566.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="600.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Pulls trends for the tag and its neighbours</text>
+<text x="112.0" y="632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">from the historian, read-only.</text>
+<path d="M66 660 V682" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,690 58,678 74,678" fill="#475569"/>
+<rect x="24" y="694" width="672" height="136" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="734" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="743.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">3</text>
+<text x="112.0" y="740.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="774.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks communications status, data quality</text>
+<text x="112.0" y="806.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">flags and calibration dates.</text>
+<path d="M66 834 V856" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,864 58,852 74,852" fill="#475569"/>
+<rect x="24" y="868" width="672" height="136" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="908" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="917.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">4</text>
+<text x="112.0" y="914.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="948.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks planned work, the digital logbook</text>
+<text x="112.0" y="980.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">and customer calls.</text>
+<path d="M66 1008 V1030" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1038 58,1026 74,1026" fill="#475569"/>
+<rect x="24" y="1042" width="672" height="174" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="1082" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="1091.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">5</text>
+<text x="112.0" y="1088.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="1122.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Proposes a view in the event console, apart</text>
+<text x="112.0" y="1154.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">from real alarms.</text>
+<polygon points="124,1167 135,1178 124,1189 113,1178" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1186.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The operator decides</text>
+<path d="M66 1220 V1242" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1250 58,1238 74,1238" fill="#475569"/>
+<rect x="24" y="1254" width="672" height="174" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="1294" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="1303.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">6</text>
+<text x="112.0" y="1300.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="1334.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">For a sensor fault, drafts a notification</text>
+<text x="112.0" y="1366.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">in the asset system.</text>
+<polygon points="124,1379 135,1390 124,1401 113,1390" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1398.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The operator or planner approves</text>
+<path d="M66 1432 V1454" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1462 58,1450 74,1450" fill="#475569"/>
+<rect x="24" y="1466" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1506" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1515.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">7</text>
+<text x="112.0" y="1512.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Network engineer</text>
+<text x="112.0" y="1546.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">For a real issue, leads. The agent drafts</text>
+<text x="112.0" y="1578.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">the work order and the customer notice.</text>
+<polygon points="124,1591 135,1602 124,1613 113,1602" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1610.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The engineer approves. Crews isolate.</text>
+<path d="M66 1644 V1666" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1674 58,1662 74,1662" fill="#475569"/>
+<rect x="24" y="1678" width="672" height="142" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<circle cx="66" cy="1718" r="24" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+<text x="66.0" y="1727.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95" text-anchor="middle">8</text>
+<text x="112.0" y="1724.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="112.0" y="1758.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Gathers lab results into a draft summary.</text>
+<polygon points="124,1771 135,1782 124,1793 113,1782" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1790.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A named officer decides notices</text>
+<path d="M66 1824 V1846" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1854 58,1842 74,1842" fill="#475569"/>
+<rect x="24" y="1858" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1898" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1907.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">9</text>
+<text x="112.0" y="1904.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Team that owns the agent</text>
+<text x="112.0" y="1938.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Updates the reference set offline from case</text>
+<text x="112.0" y="1970.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">outcomes.</text>
+<polygon points="124,1983 135,1994 124,2005 113,1994" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="2002.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Each change is approved first</text>
+<path d="M66 2036 V2058" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2066 58,2054 74,2054" fill="#475569"/>
+<rect x="24" y="2070" width="672" height="168" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<rect x="44" y="2088" width="44" height="44" rx="8" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+<text x="112.0" y="2116.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Evidence store, outside the agent</text>
+<text x="112.0" y="2150.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Traces, the SCADA alarm journal and</text>
+<text x="112.0" y="2182.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">historian, the asset system audit trail and</text>
+<text x="112.0" y="2214.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">the logbook.</text>
+<circle cx="40" cy="2280" r="12" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="64.0" y="2288.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<circle cx="40" cy="2316" r="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="3"/>
+<text x="64.0" y="2324.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Agent</text>
+<circle cx="40" cy="2352" r="12" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="64.0" y="2360.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<circle cx="40" cy="2388" r="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="3"/>
+<text x="64.0" y="2396.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Evidence store</text>
+<polygon points="40,2412 52,2424 40,2436 28,2424" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<text x="64.0" y="2432.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval, by the person named</text>
+</svg>

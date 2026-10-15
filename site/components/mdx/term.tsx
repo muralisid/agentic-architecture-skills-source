@@ -8,7 +8,7 @@ export function Term({ k, children }: { k: string; children?: ReactNode }) {
   const entry = findTerm(k);
   if (!entry) return <>{children ?? k}</>;
   return (
-    <GlossaryTerm term={entry.term} definition={entry.plain}>
+    <GlossaryTerm term={entry.term} definition={entry.plain} href={entry.page}>
       {children ?? k}
     </GlossaryTerm>
   );

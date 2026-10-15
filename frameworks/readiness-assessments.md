@@ -50,14 +50,14 @@ Each area scores 0 to 3 (absent, ad hoc, managed, operated). The profile, not th
 
 ## Readiness gates autonomy
 
-The assessment connects directly to the A x L maturity model. Readiness caps the autonomy level any workload should attempt. Read the profile in this order: data, integration, identity, controls, testing, cost, people.
+The assessment connects directly to the autonomy and learning scales. Readiness caps the autonomy level any workload should attempt. Read the profile in this order: data, integration, identity, controls, testing, cost, people.
 
 | Profile | Highest autonomy |
 |---|---|
 | Any area at 0 for the target workload | A1 (assisted) only |
 | Data and integration at 2 or more, all others at 1 or more | A2 (delegated tasks) |
 | Data, integration, identity, controls and testing at 2 or more, others at 1 or more | A3 (supervised autonomy) |
-| All seven at 2 or more, with controls, testing and cost at 3 | A4 (managed autonomy), with L2 governed learning and the [oversight-capacity gate](/architecture/autonomy-contract#the-oversight-gate-as-a-burst-rate) |
+| All seven at 2 or more, with controls, testing and cost at 3 | A4 (managed autonomy), with L2 governed learning and the [oversight-capacity gate](/architecture/autonomy-contract#check-that-people-can-keep-up) |
 | All seven at 3, plus regulator-ready evidence | A5 candidacy, per domain only |
 
 ![Seven bars score Northstar's readiness areas from 0 to 3: data 2, integration 2, identity 1, controls 1, testing 2, cost 1, people 2. A dashed line runs from the lowest score, 1, to the ceiling table, where the row for data and integration at 2 or more, all others at 1 or more, gives A2.](/figures/architecture/readiness-profile-to-ceiling.svg)
@@ -92,7 +92,7 @@ Twenty-eight questions, four per area. Each is answered **yes**, **partly** or *
 #### Area 3: Identity and registry
 
 9. Is every agent in one registry, with its own identity, a named business sponsor and a technical owner, reviewed at least quarterly?
-10. Does the registry also list agents inside vendor products, so both estates are visible?
+10. Does the registry list vendor-embedded agents as well as your own agents?
 11. Are credentials short-lived, injected at execution, never held by the agent, and no wider than the data class allows?
 12. Has switching the agent off been tested end to end, with the time measured?
 
@@ -124,7 +124,7 @@ Twenty-eight questions, four per area. Each is answered **yes**, **partly** or *
 27. Is burst supervision capacity calculated across the whole approved portfolio?
 28. Are role, skill, works-council where relevant, and unassisted-practice effects planned?
 
-A few terms. A policy decision point allows or denies each action by fixed rules, outside the model. A zone action is an action inside one of the [deterministic zones](/architecture/deterministic-zones). Plan-then-apply means the agent proposes a change and a deterministic system applies it after approval. The two estates are agents behind your own gateway and agents inside vendor products.
+A few terms. A policy decision point allows or denies each action by fixed rules, outside the model. A zone action is an action inside one of the [deterministic zones](/architecture/deterministic-zones). Plan-then-apply means the agent proposes a change and a deterministic system applies it after approval. Your own agents run behind your gateway. Vendor-embedded agents run on the vendor's platform.
 
 ### Scoring the light instrument
 

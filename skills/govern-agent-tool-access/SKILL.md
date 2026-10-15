@@ -43,7 +43,7 @@ Write access follows a trust progression rather than a policy switch: review eve
 
 ## 5. Choose embedded or external on the right axis
 
-`references/systems-of-record.md` sets out the decision. Both paths now run through the same permission plane, so the old "embedded means governed" assumption is gone. What still differs is model control, the cost meter, and the customisation ceiling. If the authority boundary sits inside one system, choose on those three; if the work crosses systems, external orchestration is a requirement rather than a preference.
+`references/systems-of-record.md` sets out the decision. Both paths now run through the same permission boundary, so the old "embedded means governed" assumption is gone. What still differs is model control, the cost meter, and the customisation ceiling. If the authority boundary sits inside one system, choose on those three; if the work crosses systems, external orchestration is a requirement rather than a preference.
 
 ## What to check before signing off
 
@@ -52,4 +52,4 @@ The caller's identity survives every hop; credentials are short-lived and inject
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

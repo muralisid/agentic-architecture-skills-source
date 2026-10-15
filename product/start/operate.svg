@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
 <title id="title">Operate, every week</title>
-<desc id="desc">Four jobs run in a loop every week. Observability watches traces the agent cannot forge, costs and incidents, in layer R12. Cost tracks cost per resolved outcome, budgets and circuit breakers. Supervision runs the exception queues and checks capacity at burst, in layer R13, and Lifecycle handles change triggers, periodic review and retirement before the loop starts again.</desc>
+<desc id="desc">Four checks run in a loop every week. Observability watches traces the agent cannot forge, costs and incidents. It sits in the observability and FinOps layer (R12). Cost tracks cost per resolved outcome, budgets and circuit breakers. Supervision runs the exception queues and checks capacity at burst. It sits in the operating model and supervision layer (R13). Lifecycle handles change triggers, periodic review and retirement. Then the loop starts again. The gate for step 6 is that oversight capacity holds at peak load, not just on an average day.</desc>
 <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#475569"/></marker></defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
 <text x="33" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">Operate, every week</text>
 <text x="33" y="86" font-family="Arial,sans-serif" font-size="20" fill="#465958">Run the agent, watch it, and count what it costs.</text>
 <rect x="100" y="120" width="620" height="280" rx="16" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
 <text x="132" y="170" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#134e4a">Observability</text>
-<rect x="623.7" y="140" width="64.3" height="40" rx="20" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
-<text x="655.9" y="165" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#134e4a">R12</text>
+<rect x="555" y="140" width="133" height="40" rx="20" fill="#ffffff" stroke="#0f766e" stroke-width="2"/>
+<text x="621.5" y="165" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#134e4a">Layer R12</text>
 <rect x="132" y="209.9" width="10" height="10" rx="2" fill="#0f766e"/>
 <text x="154" y="222" font-family="Arial,sans-serif" font-size="22" fill="#134e4a">Traces the agent cannot forge</text>
 <rect x="132" y="247.9" width="10" height="10" rx="2" fill="#0f766e"/>
@@ -29,8 +29,8 @@
 <text x="912" y="378" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">/use-cases/value-and-investment</text>
 <rect x="880" y="500" width="620" height="280" rx="16" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
 <text x="912" y="550" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#78350f">Supervision</text>
-<rect x="1403.7" y="520" width="64.3" height="40" rx="20" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
-<text x="1435.8" y="545" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#78350f">R13</text>
+<rect x="1335" y="520" width="133" height="40" rx="20" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+<text x="1401.5" y="545" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#78350f">Layer R13</text>
 <rect x="912" y="589.9" width="10" height="10" rx="2" fill="#d97706"/>
 <text x="934" y="602" font-family="Arial,sans-serif" font-size="22" fill="#78350f">Exception queues</text>
 <rect x="912" y="627.9" width="10" height="10" rx="2" fill="#d97706"/>
@@ -54,5 +54,5 @@
 <circle cx="800" cy="450" r="80" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
 <text x="800" y="444" font-family="Arial,sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#0f172a">Every</text>
 <text x="800" y="478" font-family="Arial,sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#0f172a">week</text>
-<text x="33" y="852" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Gate for station 6: oversight capacity is proven at peak load, not just on an average day.</text>
+<text x="33" y="852" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Gate for step 6: oversight capacity holds at peak load, not just on an average day.</text>
 </svg>

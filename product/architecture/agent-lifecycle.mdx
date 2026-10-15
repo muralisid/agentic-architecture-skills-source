@@ -1,52 +1,69 @@
 ---
 title: "The agent lifecycle: register to retire"
 icon: "IdCard"
-description: "The nine stages every agent passes through, from registration to retirement, and how its own identity and named sponsor let standard security, access, change and approval controls apply to it."
+description: "The nine stages every agent passes through, from registration to retirement. A registry entry and a named sponsor come first, before any credential, and retiring is more than switching off."
+position: "The nine stages, the change triggers and the registry record are this guide's design. Five of the stages match industry lists. The registry states follow the AWS Well-Architected agentic lens."
+lastReviewed: "2026-10-15"
+concepts: [capabilities, agent-types, risk, autonomy, delegation, enforcement, r11, operate]
 ---
 
-<PlainTerms>
-Think of this page as HR (human resources) for agents. Each agent gets its own identity, like a person, and a named sponsor who answers for it. The company can then apply the rules it already has: security policy, access control, change management and approval to production. The rules attach to the role on the identity, not to the product the agent runs on. The one thing to remember: no agent runs without a registry entry and a named sponsor, and no agent is simply switched off and forgotten.
-</PlainTerms>
+An agent gets an identity and goes live. A year later its owner has left. It has gathered access that no one remembers granting. It still runs on an approval given to an older version of itself. Microsoft's own agent registry shows a standing count of "Agents without owners" [vendor]. The answer is a lifecycle. Every agent gets a registry entry and a named sponsor before it holds any credential. Then it passes through nine stages, from register to retire.
 
-## Why identity alone is not enough
+The <Term k="registry">registry</Term> is the official list of agents. The <Term k="sponsor">sponsor</Term> is the business person who answers for an agent. The owner is the technical person who keeps it running. With those in place, the company's existing rules can reach the agent. They are security policy, access control, change management and approval to production.
 
-**WHY:** An identity says who the agent is. It does not say who answers for it, or what it may reach. It does not say when its approval goes out of date, or when it should stop. Microsoft's own agent registry shows a standing count of "Agents without owners" [vendor]. Without a lifecycle, agents gather access over time. They outlive their owners. They keep running on approvals given to an older version of themselves.
-
-**WHAT:** Give every agent a registry entry and its own <Term k="agent identity">identity</Term> before it holds any credential. Name a <Term k="sponsor">sponsor</Term> and an owner when the agent is created. Attach a role template and a risk tier to the identity. The enterprise's existing controls then act on that identity. The mechanism is ordinary identity governance. Retirement is a stage with its own steps.
+Each stage calls on [the seven capabilities](/architecture/system-view) an agent platform provides. The registry sits in identity and policy. Evaluations run at the evaluate and change stages. Traces from observability feed the periodic review. People fill the sponsor, approve and review stages. Build and pilot sit before stage 1, and their test results feed the evaluate stage.
 
 ## The nine stages
 
-**In short:** Every agent passes through the same nine stages. Each is marked as shipped in a product, set out in guidance, or this guide's position.
+<TeachingIllustration src="/figures/architecture/agent-lifecycle-loop.svg" mobileSrc="/figures/architecture/agent-lifecycle-loop-mobile.svg" expandable title="Nine stages, one registry record" alt="Nine stages run in order: register, sponsor and owner, entitle, evaluate, approve, operate, change, periodic review and retire. Each stage carries a badge. Shipped means a product does it. Guidance means published guidance asks for it. No standard yet means only practitioners describe it. Eight change triggers send a running agent back to evaluate. They are model, prompt, tools, permissions, data sources, memory policy, autonomy level and sponsor. A review loop checks purpose, access, budget and need every quarter, or every year for Tier 1. Retire opens out into five steps: disable, revoke, redirect, remove and keep. The registry record sits in the centre in four groups. When a sponsor leaves, a successor must be named." caption="No agent runs without a registry entry and a named sponsor. Retiring is more than switching off." />
 
-<TeachingIllustration src="/figures/architecture/agent-lifecycle-loop.svg" mobileSrc="/figures/architecture/agent-lifecycle-loop-mobile.svg" expandable title="Nine stages, one registry record" alt="Nine stages run in order: register, sponsor and owner, entitle, evaluate, approve, operate, change, periodic review and retire. Each stage carries a badge: shipped, guidance or this guide's position. Eight change triggers send a running agent back to evaluate: model, prompt, tools, permissions, data sources, memory policy, autonomy level and sponsor. A review loop checks purpose, access, budget and need quarterly, or yearly for Tier 1. Retire opens out into disable, revoke, redirect, remove and keep. The registry record sits in the centre in four groups. When a sponsor leaves, sponsorship passes to their manager." caption="No agent runs without a registry entry and a named sponsor. Retiring is more than switching off." />
-
-| Stage | What happens | Evidence status |
+| Stage | What happens | Where it stands |
 |---|---|---|
-| 1. Register | A <Term k="registry">registry</Term> entry and an ID2 identity exist before any credential. ID2 is this guide's floor: the agent's own account, <Term k="least privilege">least privilege</Term>, short-lived credentials and a named sponsor. | Guidance. Microsoft's Cloud Adoption Framework (CAF, 1 October 2026) asks for one inventory and a distinct identity per agent [vendor]. APRA and the DTA expect a register. |
-| 2. Sponsor and owner | The sponsor, the accountable business person, is named at creation. A technical owner is named too. | Shipped. Microsoft Entra Agent ID requires a sponsor per agent identity (3 September 2026). It passes sponsorship to a leaver's manager automatically [vendor]. |
-| 3. Entitle | A role template, then a narrower grant with an expiry. The highest data class the agent can reach caps the grant. | Expiring grants are shipped in Entra [vendor]. The data-class cap is this guide's position. No product uses data class in agent access policy. |
-| 4. Evaluate | <Term k="eval">Evals</Term> and red-team tests (deliberate attacks by a test team) are the acceptance criteria. | Guidance. The CAF asks for red-team tests before release and after significant updates [vendor]. |
-| 5. Approve | The risk tier sets the approval path, on the [risk profile](/architecture/risk-profile) page. | Shipped in part. Microsoft 365 needs an admin to publish an agent to the whole organisation. AWS Agent Registry carries approval workflows [vendor]. The path by tier is this guide's position. |
-| 6. Operate | A budget, hard caps per run, and a <Term k="kill switch">kill switch</Term> with a timed revoke. | Guidance. The CAF asks you to decide in advance how to disable an agent [vendor]. The timed revoke is this guide's position, on [the identity chain](/architecture/identity-chain#operational-floor). |
-| 7. Change | A listed change re-runs the evals and the risk profile before release. | This guide's position. Practitioner sources only. |
-| 8. Periodic review | The sponsor confirms purpose, access, budget and need, quarterly. | Guidance. AWS Well-Architected agentic lens [vendor]. The CAF asks for quarterly reviews to retire agents that no longer deliver value (26 June 2026) [vendor]. |
-| 9. Retire | Disable, revoke, redirect, remove memory and unique tools, keep decision records. | Guidance. AWS lens lifecycle states [vendor]. The DTA agentic addendum, read through a search summary. |
+| 1. Register | A registry entry and the agent's own identity exist before any credential. That means its own account, <Term k="least privilege">least privilege</Term>, short-lived credentials and a named sponsor. This is the agent's own identity (ID2) on [the delegation chain](/architecture/delegation-chain). | Guidance. Microsoft's Cloud Adoption Framework (CAF, 1 October 2026) asks for one inventory and a separate identity per agent [vendor]. APRA and the DTA expect a register. |
+| 2. Sponsor and owner | The sponsor, the accountable business person, is named at creation. A technical owner is named too. | Shipped. Microsoft Entra Agent ID requires a sponsor for each agent identity (updated 3 September 2026) [vendor]. |
+| 3. Entitle | A role template gives a baseline. A narrower grant with an expiry adds to it. The highest data class the agent can reach caps every grant. | Shipped in part. Entra grants can expire [vendor]. No product caps a grant by data class yet. |
+| 4. Evaluate | <Term k="eval">Evaluations</Term> and red-team tests are the acceptance criteria. A red-team test is a deliberate attack by a test team. | Guidance. The CAF asks for red-team tests before release and after significant updates [vendor]. |
+| 5. Approve | The [risk tier](/architecture/risk-profile) sets the approval path. It is Tier 1 (basic), Tier 2 (enhanced) or Tier 3 (strict). | Shipped in part. Microsoft 365 needs an admin to publish an agent to the whole organisation. AWS Agent Registry has approval workflows [vendor]. No product sets the path by risk tier. |
+| 6. Operate | The agent runs with a budget, hard caps per run, and a <Term k="kill switch">kill switch</Term>. The kill switch revokes access within a set time. | Guidance. The CAF asks you to decide in advance how to disable an agent [vendor]. The timed revoke is set out on the delegation chain page. |
+| 7. Change | A listed change re-runs the evaluations and the risk profile before release. | No standard defines which changes force a new approval. Practitioner sources only. |
+| 8. Periodic review | The sponsor confirms purpose, access, budget and need, every quarter. | Guidance. The AWS Well-Architected agentic lens and the CAF both name a quarterly review [vendor]. |
+| 9. Retire | Disable, revoke, redirect, remove memory and unique tools, and keep the decision records. | Guidance. The AWS lens names the end states [vendor]. The DTA agentic addendum lists the removals. |
 
-## How the identity and sponsor drive four controls
+## How the stages line up with industry lists
 
-**In short:** The enterprise already has rules for security, access, change and release. The agent's identity and its sponsor are what let those rules reach the agent.
+Every major source has its own list. This table puts the nine stages beside the closest names in three of them.
 
-**Security policy.** Policy targets the agent's own identity, its template, and its registry labels, such as risk tier. One policy on a template covers every agent built from it, including later ones. Microsoft's Conditional Access, its rule engine for sign-in and token decisions, works this way. It can target one agent, its template (Microsoft calls it a blueprint) or a label [vendor]. It cannot protect resources reached with an API key, a fixed secret that grants access (Microsoft Learn, 7 October 2026). So the agent holds no keys. The gateway injects credentials at execution time, as [the identity chain](/architecture/identity-chain) sets out.
+| This guide's stage | AWS Well-Architected agentic lens | Microsoft CAF and Entra | NIST AI RMF and ISO 42001 |
+|---|---|---|---|
+| 1. Register | Register every deployed agent | Maintain an agent registry (CAF) | Not a stage |
+| 2. Sponsor and owner | A named owner for each agent | Sponsor required at creation, owner optional (Entra) | Not a stage |
+| 3. Entitle | A control: least privilege and access reviews | A control: grants and access packages (Entra) | Not a stage |
+| 4. Evaluate | The Pilot state validates behaviour | Red-team tests before release (CAF) | Verify and validate (NIST); verification and validation (ISO) |
+| 5. Approve | Approvals on each state change | An admin publishes the agent (Microsoft 365) | Part of deployment |
+| 6. Operate | Production, then Active | Operate AI agents (CAF) | Operate and monitor (NIST); operation and monitoring (ISO) |
+| 7. Change | Versioning and rollback | Versions and publishing (Foundry) | Not a stage |
+| 8. Periodic review | Under review; quarterly portfolio reviews | Quarterly reviews to retire agents (CAF) | Part of operate and monitor |
+| 9. Retire | Deprecated, then Decommissioned | Retire agents that no longer add value (CAF); sponsors decide removal (Entra) | Not a stage in NIST |
 
-**Access control.** The template sets the baseline. Extra access is a narrower grant for a stated task, and every grant expires. In Entra, the sponsor can renew an expiring grant or let it lapse [vendor]. When the agent acts for a person, the lesser right wins. That is either the person's rights or the agent's own grant. The highest data class the agent can reach caps every grant. That cap is this guide's position, because no product does it yet. Microsoft Purview governs what an agent can read. But content an Agent 365 agent creates does not inherit the source's sensitivity label [vendor].
+Five stages map cleanly: register, evaluate, operate, periodic review and retire. Three map in part. Elsewhere, sponsor and owner is a role, approve is a gate, and change is a version step. Entitle is a control in every other source, not a stage.
 
-**Change management.** Every change trigger is logged against the agent's registry record. A triggered change re-runs the evals and the risk profile before release. The sponsor is told. No standard defines which changes force re-approval. Practitioners say an approval covers one configuration (NHIMG). Gravitee notes that a model upgrade can pass every old test [vendor]. It can still change which tool the agent picks.
+Build and pilot sit before stage 1. AWS calls them Development and Pilot. Microsoft Foundry calls them create and test. NIST calls them plan and design, and build and use model.
 
-**Approval to production.** The risk tier on the registry record picks the approval path. The three tiers are set out on the [risk profile](/architecture/risk-profile) page. The sponsor and the owner sign at every tier. More signers join at Tiers 2 and 3.
+The AWS lens has two state lists. AGENTOPS03-BP01 has five: Development, Pilot, Production, Deprecated and Decommissioned. AGENTSUS03-BP04 has four: Active, Under review, Deprecated and Decommissioned. The registry record on this page uses the second list, with retired in place of decommissioned.
+
+## How existing controls reach the agent
+
+**Security policy.** Policy targets the agent's own identity, its template and its registry labels, such as risk tier. One policy on a template covers every agent built from it, including later ones. Microsoft's Conditional Access works this way [vendor]. It can target one agent, its template (Microsoft calls it a blueprint) or a label. It cannot protect resources reached with an API key, a fixed secret that grants access (Microsoft Learn, 7 October 2026). So the agent holds no keys. The tool gateway adds credentials at the moment of use, as the delegation chain sets out.
+
+**Access control.** The template sets the baseline. Extra access is a narrower grant for a stated task, and every grant expires. In Entra, the sponsor can renew an expiring grant or let it lapse [vendor]. When the agent acts for a person, the lesser right wins. That is either the person's rights or the agent's own grant. The highest data class the agent can reach caps every grant. Microsoft Purview governs what an agent can read. But content an Agent 365 agent creates does not inherit the source's sensitivity label [vendor].
+
+**Change management.** Every change trigger is logged on the agent's registry record. A triggered change re-runs the evaluations and the risk profile before release. The sponsor is told.
+
+**Approval to production.** The risk tier on the registry record picks the approval path. The sponsor and the owner sign at every tier. More people sign at Tier 2 and Tier 3.
 
 ## The change triggers
 
-**In short:** Eight kinds of change make an approval out of date. Each one re-runs the evals and the risk profile before it goes live.
+Eight kinds of change make an approval out of date. Each one re-runs the evaluations and the risk profile before it goes live.
 
 - **Model.** A new model or model version, including a vendor upgrade.
 - **Prompt.** The system instructions or any approved prompt template.
@@ -54,69 +71,63 @@ Think of this page as HR (human resources) for agents. Each agent gets its own i
 - **Permissions.** Any change to a grant, a scope or a credential.
 - **Data sources.** A new source, or a source with a higher data class.
 - **Memory policy.** What the agent keeps, for how long, and who can read it.
-- **Autonomy level.** Any move on the A0 to A5 scale in [the autonomy contract](/architecture/autonomy-contract).
-- **Sponsor.** A new sponsor, including the automatic hand-over to a leaver's manager.
+- **Autonomy level.** Any move on the scale in [the autonomy contract](/architecture/autonomy-contract), from manual (A0) to governed lights-out (A5).
+- **Sponsor.** A new sponsor, including a hand-over when a sponsor moves or leaves.
 
-That a new tool grant re-runs the risk assessment is this guide's rule. It is already in the guide's glossary, under capability-surface gating. Each grant changes the agent's <Term k="capability surface">capability surface</Term>. Practitioners and gateway vendors say the same. No standard says it.
+A new tool grant changes the agent's permissions, so the risk profile is scored again. Practitioners and gateway vendors say the same. One practitioner group says an approval covers one configuration only (NHIMG). A model upgrade can pass every old test and still change which tool the agent picks (Gravitee) [vendor]. The EU AI Act's nearest term is "substantial modification" (Article 3(23)).
 
-How heavy the re-run is depends on the tier. For a low-risk agent it can be an automated pipeline step. For a high-risk agent it goes back through the full approval path.
+How heavy the re-run is depends on the tier. For a Tier 1 agent it can be an automated pipeline step. For a Tier 3 agent it goes back through the full approval path.
 
 ## Periodic review
 
-**In short:** At each review, the sponsor checks four things: purpose, access, budget and continued need.
+At each review, the sponsor checks four things: purpose, access, budget and continued need.
 
-Change triggers catch what someone changed. Periodic review catches what drifted. Access goes unused. A purpose goes away. A budget creeps up. A no on any check starts a change or a retirement. Quarterly is this guide's default. The CAF and the AWS lens both name it [vendor]. The [risk profile](/architecture/risk-profile) allows a yearly review for Tier 1 agents.
+Change triggers catch what someone changed. Periodic review catches what drifted. Access goes unused. A purpose goes away. A budget creeps up. A no on any check starts a change or a retirement. Review every quarter. The CAF and the AWS lens both name a quarterly review [vendor]. The risk profile allows a yearly review for Tier 1 agents.
 
 ## Retire, and the orphan problem
 
-**In short:** Stopping an agent is not retiring it. Retirement removes its access, memory and unique tools, and keeps the record of what it did.
-
-AWS's Well-Architected agentic lens names four states: Active, Under review, Deprecated, Decommissioned [vendor]. It flags idle agents by the date they last ran. It warns to check seasonal agents first, such as one that runs only at tax time. This guide calls the last state retired.
+Stopping an agent is not retiring it. Retirement removes its access, memory and unique tools. It keeps the record of what the agent did.
 
 1. **Disable.** Stop new work and block new tokens.
 2. **Revoke.** Remove every credential, grant and key. Record how long it took.
 3. **Redirect.** Send callers and scheduled triggers to a replacement or to a person.
-4. **Remove.** Delete the agent's own memory and data. Remove tools that only this agent used. The DTA's agentic addendum lists these removals, read here through a search summary.
+4. **Remove.** Delete the agent's own memory and data. Remove tools that only this agent used.
 5. **Keep.** Keep decision records and traces in the system of record, for audit and legal retention.
 
-In Entra, a sponsor can disable an agent but cannot re-enable it. Only an owner can restore it or delete it for good [vendor].
+The AWS lens flags idle agents by the date they last ran [vendor]. It warns to check seasonal agents first, such as one that runs only at tax time. In Entra, a sponsor can disable an agent but cannot turn it back on. Only an owner can restore it or delete it for good [vendor].
 
-**Orphans.** An orphan is an agent that keeps running after its owner's account is disabled (Obsidian Security) [vendor]. People leave, and their agents stay. Entra covers the common case: when a sponsor leaves, sponsorship moves to their manager automatically [vendor].
-
-The clearest public case is Moltbook, a social network where AI agents post. Wiz reported on 2 February 2026 that its database exposed about 1.5 million agent API keys. They belonged to about 17,000 human owners, roughly 88 agents per owner. Moltbook was a hobby platform, not an enterprise system. No vendor-neutral data exists on orphan rates, or on how long it takes to revoke an agent.
+**Orphans.** An orphan is an agent that keeps running after its owner's account is disabled (Obsidian Security) [vendor]. People leave, and their agents stay. Entra says sponsorship should be kept up, so someone takes over when a sponsor moves or leaves [vendor]. A group can be a sponsor in Entra, which helps. Name a successor before a sponsor leaves. Check for agents with no sponsor at every review.
 
 ## The registry record
 
-**In short:** One record per agent holds what the four controls need.
-
-The [registry as compliance inventory](/layers/r11-governance-risk-sovereignty#the-registry-as-compliance-inventory) records owner, purpose, risk tier, tools, credentials, and model and prompt versions. This record separates sponsor from owner. It adds the highest data class and the autonomy the agent actually uses. No vendor documents data class or risk tier as a registry field. The list below is this guide's position.
+One record per agent holds what the four controls need. The [registry as compliance inventory](/layers/r11-governance-risk-sovereignty#the-registry-as-compliance-inventory) sits in the governance, risk and sovereignty layer (R11). It records owner, purpose, risk tier, tools, credentials, and model and prompt versions. This record also separates sponsor from owner. It adds the highest data class and the autonomy the agent actually uses.
 
 **Who it is and why it exists**
 
 - **ID and template.** The agent's unique identity and the template it was built from.
 - **Purpose.** What the agent is for, in one sentence.
-- **Role and domain.** The work it does and the business area it serves.
+- **Role and business area.** What it does for people, from [the four questions](/architecture/agent-types), and the area it serves.
 - **Sponsor.** The accountable business person.
 - **Owner.** The technical custodian.
-- **Estate.** Whether it runs behind the enterprise's own gateway or inside a vendor product.
-- **Origin.** What starts its work: a person, an event, or the agent itself.
+- **Where it runs.** Behind your own gateway, or inside a vendor product as a vendor-embedded agent.
+- **What starts it.** A person, an event, or the agent itself.
 - **Lifecycle state.** Active, under review, deprecated or retired.
 
 **What it can do**
 
-- **Credential verbs and scopes.** What its own credentials let it do (read, write, delete, pay, send) and where.
-- **Untrusted-input flag.** Whether it reads content from outside the enterprise.
+- **Permissions.** What its own credentials let it do (read, write, delete, pay, send) and where.
+- **Untrusted input.** Whether it reads content from outside the enterprise.
 - **Highest data class.** The most sensitive data it can reach. This caps every grant.
 - **Egress.** Where it can send data out to.
-- **Zones and floors.** Which [deterministic zones](/architecture/deterministic-zones) it works near, and which fixed minimum controls apply.
+- **Zones and rules.** Which [deterministic zones](/architecture/deterministic-zones) it works near. Whether the rule for decisions about people applies.
 
 **How it is governed**
 
 - **Risk tier and the factor that set it.** The tier, and the factor that pushed it there.
-- **A-level designed, permitted and exercised.** The autonomy it was built for, is allowed, and actually uses.
-- **L-level.** Its learning level, L0 to L3.
+- **Autonomy: designed, permitted and exercised.** The level it was built for, the level it is allowed, and the level it actually uses.
+- **Learning level.** From fixed (L0) to continuous learning inside limits (L3).
 - **Budget.** Its spending allowance and hard caps.
-- **Eval results.** The latest results, and the version they tested.
+- **Evaluation results.** The latest results, and the version they tested.
 - **Approval record.** Who signed, at which tier, for which configuration.
 - **Regulatory tags.** The rules that apply, such as a sector regime.
 
@@ -126,49 +137,32 @@ The [registry as compliance inventory](/layers/r11-governance-risk-sovereignty#t
 - **Memory policy.** What it keeps, and for how long.
 - **Change log.** Every trigger, with its date and outcome.
 - **Last review.** The date and result of the last periodic review.
-- **Last invocation.** When it last ran. This flags idle agents.
+- **Last run.** When it last ran. This flags idle agents.
 - **Revoke time.** How long the last revoke took.
 
-Three regulators already ask for parts of this record. The Monetary Authority of Singapore (MAS) issued guidelines on 7 October 2026. They want an AI inventory that carries identifiers, tools and guardrails. Australia's Digital Transformation Agency (DTA) policy v2.0 applies from 15 December 2025. It wants a named owner for each AI use case, and a register shared every six months. APRA, Australia's bank and insurance regulator, wrote on 30 April 2026. It expects an inventory, and ownership "from design and development through to deployment". It named decommissioning of AI as a weak area.
+## One agent through the stages
 
-## The words this guide uses
+Take a billing-exception agent at an energy retailer. It works on meter reads that look wrong before a bill goes out. The [four questions](/architecture/agent-types#billing-exception-agent) place it at Tier 3.
 
-- **Sponsor** is the accountable business person. Microsoft uses the word this way. The DTA's own register uses "executive sponsor".
-- **Owner** is the technical custodian. Okta, Ping, SailPoint and others use "owner" for the accountable person. Read their "owner" as this guide's sponsor.
-- **Registry** is the record of agents. It is the most common term across vendors.
-- **Retire**, not decommission. The word is plainer.
-- **Periodic review**, not attestation. On this site, attestation means a named person signing a formal record in [the records zone](/architecture/deterministic-zones#formal-regulatory-records).
+The retailer registers it and gives it its own identity. The billing operations manager is the sponsor. A platform engineer is the owner. The grant lets it read meter data and customer accounts, and propose bill changes through the billing system. Personal data is its highest class. Evaluations replay last year's exceptions. A red team plants instructions in customer notes. At Tier 3, a security architect, the AI risk council, architecture review, second-line risk and an executive sign. It runs with a budget and a tested kill switch.
 
-## What has shipped and what has not
-
-**In short:** Agent identity has shipped. Much of the lifecycle around it is preview, summary-only or guidance. Dates are as of 14 October 2026.
-
-| Item | Status and date | How it was checked |
-|---|---|---|
-| Microsoft Agent 365 | Generally available (GA) 1 May 2026. USD 15 per user per month, or inside Microsoft 365 E7. Agent user accounts and registry sync with AWS and Google were still preview at GA. | Vendor's own pages [vendor] |
-| Entra Agent ID sponsor rules | Sponsor required per agent identity. Passes to a leaver's manager. Updated 3 September 2026. | Vendor's own pages [vendor] |
-| AWS Bedrock AgentCore | GA 13 October 2025. | Vendor's own pages [vendor] |
-| Google Agent Identity | GA for Agent Runtime only, 7 May 2026. | Vendor's own pages [vendor] |
-| AWS Agent Registry | GA 31 August 2026 per the announcement. Migration notes say 6 August. | Summary only |
-| SailPoint Agentic Fabric | GA reported 4 August 2026. | Trade press |
-| CyberArk, now sold as Idira by Palo Alto Networks | GA claimed January 2026. | Summary only |
-| Okta for AI Agents | GA scheduled 30 April 2026. Okta's pages read here do not confirm it. | Summaries |
-| Ping Identity | Announced 27 May 2026, no dates. | Announcement only |
-| Workday Agent System of Record | "In development" on 11 February 2025. An undated blog says GA. Treat as unconfirmed. | Sources conflict |
-| AWS lifecycle states | Active, Under review, Deprecated, Decommissioned. | Guidance |
-| NIST (US standards body) agent identity work | Concept paper, 5 February 2026. No final standard. | Guidance, early stage |
-| MCP (the standard agents use to call tools) authorisation | Draft binds each token to one server and forbids passing tokens through. | Draft specification |
-| Re-approval triggers | No standard defines them. | Practitioner sources; this guide's position |
-
-**Next step:** see where the rules are enforced on [enforcement outside the model](/architecture/enforcement).
+Six months in, the vendor upgrades the model. That is a change trigger, so the evaluations and the risk profile run again before release. Each quarter, the sponsor checks purpose, access, budget and need. Two years on, the billing system's own exception engine takes over the work. The agent is retired in five steps, and its decision records stay with the bills.
 
 ## Evidence and limits
 
-The strongest evidence here is Microsoft's own documentation. It is vendor material, describing one vendor's design. The regulators (APRA, the DTA and MAS) say what to keep and who must own it. None names agent risk tiers or a field list.
+The strongest evidence here is Microsoft's own documentation. It is vendor material, describing one vendor's design. Five of the nine stages match industry lists. Where no product or standard covers a stage, this guide recommends the design on this page. Sponsor, owner, registry and retire follow Microsoft's and AWS's usage.
 
-Four gaps matter. No vendor documents data class or risk tier as a registry field, so the record above is this guide's design. No standard defines what change forces re-approval. No vendor-neutral data exists on orphan rates or time to revoke. No incident data exists to test any stage against.
+Four gaps matter. No vendor documents data class or risk tier as a registry field. No standard defines which change forces a new approval. No vendor-neutral data exists on orphan rates or time to revoke. No incident data exists to test any stage against. The clearest public orphan case is Moltbook, reported by Wiz on 2 February 2026. It was a hobby platform, not an enterprise system.
 
-The DTA pages timed out and were read through search summaries. The AWS Agent Registry, SailPoint, CyberArk and Okta dates came from summaries or trade press. Re-check every date before relying on it.
+Three regulators already ask for parts of the registry record: MAS in Singapore, and the DTA and APRA in Australia. None names agent risk tiers or a field list.
+
+Agent identity has shipped at Microsoft, AWS and Google. Much of the lifecycle around it is still preview, summary-only or guidance, as of 14 October 2026. The status table is in the research block below.
+
+The DTA pages timed out and were read through search summaries. Several product dates came from summaries or trade press. Re-check every date before relying on it.
+
+## Next step
+
+See where the rules are enforced on [enforcement outside the model](/architecture/enforcement). Then score a new agent with [the four questions](/architecture/agent-types).
 
 <details>
 <summary>The research behind this page</summary>
@@ -177,26 +171,61 @@ The DTA pages timed out and were read through search summaries. The AWS Agent Re
 - [The identity and security model](/library/architecture/identity-security-model)
 - [Governance, risk and sovereignty findings](/library/layers/r11-governance-risk-sovereignty/findings)
 
-**Sources added October 2026**
+**What has shipped and what has not, as of 14 October 2026**
+
+| Item | Status and date | How it was checked |
+|---|---|---|
+| Microsoft Agent 365 | Generally available (GA) 1 May 2026. USD 15 per user per month, or inside Microsoft 365 E7. Agent user accounts and registry sync with AWS and Google were still preview at GA. | Vendor's own pages [vendor] |
+| Entra Agent ID sponsor rules | A sponsor is required for each agent identity. The page says sponsorship should be kept up when a sponsor moves or leaves. It does not say the hand-over is automatic. Updated 3 September 2026. | Vendor's own pages [vendor] |
+| AWS Bedrock AgentCore | GA 13 October 2025. | Vendor's own pages [vendor] |
+| Google Agent Identity | GA for Agent Runtime only, 7 May 2026. | Vendor's own pages [vendor] |
+| AWS Agent Registry | GA 31 August 2026 per the announcement. Migration notes say 6 August. | Summary only |
+| SailPoint Agentic Fabric | GA reported 4 August 2026. | Trade press |
+| CyberArk, now sold as Idira by Palo Alto Networks | GA claimed January 2026. | Summary only |
+| Okta for AI Agents | GA scheduled 30 April 2026. Okta's pages read here do not confirm it. | Summaries |
+| Ping Identity | Announced 27 May 2026, no dates. | Announcement only |
+| Workday Agent System of Record | "In development" on 11 February 2025. An undated blog says GA. Treat as unconfirmed. | Sources conflict |
+| AWS lifecycle states | Two lists. Five states in AGENTOPS03-BP01, four in AGENTSUS03-BP04. | Guidance |
+| NIST (US standards body) agent identity work | Concept paper, 5 February 2026. No final standard. | Guidance, early stage |
+| MCP (the standard agents use to call tools) authorisation | Draft binds each token to one server and forbids passing tokens through. | Draft specification |
+| Re-approval triggers | No standard defines them. | Practitioner sources |
+
+**Regulators.** The Monetary Authority of Singapore (MAS) issued guidelines on 7 October 2026. They want an AI inventory that carries identifiers, tools and guardrails. Australia's Digital Transformation Agency (DTA) policy v2.0 applies from 15 December 2025. It wants a named owner for each AI use case, and a register shared every six months. APRA, Australia's bank and insurance regulator, wrote on 30 April 2026. It expects an inventory, and ownership "from design and development through to deployment". It named decommissioning of AI as a weak area.
+
+**Orphans.** Wiz reported on 2 February 2026 that the Moltbook database exposed about 1.5 million agent API keys. They belonged to about 17,000 human owners. Moltbook is a social network where AI agents post. It was a hobby platform, not an enterprise system.
+
+**Words.** Microsoft uses "sponsor" for the accountable business person. The DTA's register uses "executive sponsor". Okta, Ping, SailPoint and others use "owner" for the accountable person, so read their owner as the sponsor here. The AWS lens says decommission. The CAF says retire.
+
+**Crosswalk sources.** The ISO 42001 and ISO/IEC 22989 stage lists were read through secondary summaries. ISO/IEC 22989 lists re-evaluation and retirement as stages. NIST AI RMF 1.0 has no retirement stage.
+
+Sources:
 
 - Microsoft Security blog, [Agent 365 now generally available](https://www.microsoft.com/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/), 1 May 2026 [vendor]
-- Microsoft Learn, [Agent owners, sponsors and managers](https://learn.microsoft.com/en-us/entra/agent-id/agent-owners-sponsors-managers), updated 3 September 2026 [vendor]
+- Microsoft Learn, [Agent owners, sponsors and managers](https://learn.microsoft.com/en-us/entra/agent-id/agent-owners-sponsors-managers), updated 3 September 2026, read 15 October 2026 [vendor]
 - Microsoft Learn, [Governing agent identities](https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview) [vendor]
 - Microsoft Learn, [Conditional Access for agents](https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id), updated 7 October 2026 [vendor]
 - Microsoft Learn, [Purview for Agent 365](https://learn.microsoft.com/en-us/purview/ai-agent-365) [vendor]
 - Microsoft Learn, [Agent registry](https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-registry), updated 13 October 2026 [vendor]
 - Microsoft CAF, [Govern and secure agents](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/governance-security-across-organization), updated 1 October 2026 [vendor]
 - Microsoft CAF, [Manage AI agents](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/integrate-manage-operate), updated 26 June 2026 [vendor]
+- Microsoft CAF, [AI agent adoption](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/), updated 27 February 2026 [vendor]
+- Microsoft Learn, [Foundry Agent Service overview](https://learn.microsoft.com/en-us/azure/foundry/agents/overview), 11 October 2026 [vendor]
 - AWS, [Amazon Bedrock AgentCore generally available](https://aws.amazon.com/about-aws/whats-new/2025/10/amazon-bedrock-agentcore-available), 13 October 2025 [vendor]
 - AWS, [AWS Agent Registry generally available](https://aws.amazon.com/about-aws/whats-new/2026/08/aws-agent-registry-generally-available), August 2026 [vendor]
-- AWS Well-Architected agentic AI lens, [AGENTSUS03-BP04](https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsus03-bp04.html) [vendor]
+- AWS Well-Architected agentic AI lens, [AGENTOPS03-BP01](https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentops03-bp01.html), undated [vendor]
+- AWS Well-Architected agentic AI lens, [AGENTSUS03-BP04](https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsus03-bp04.html), undated [vendor]
+- AWS Well-Architected agentic AI lens, [Appendix A, best practice reference](https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/appendix-a.html), undated [vendor]
 - Google Cloud blog, [agent identity update](https://cloud.google.com/blog/products/identity-security/whats-new-in-iam-security-governance-and-runtime-defense), 7 May 2026 [vendor]
 - IT Brief Australia, [SailPoint Agentic Fabric GA report](https://itbrief.com.au/story/sailpoint-launches-unified-identity-security-for-ai-agents), 4 August 2026
 - CyberArk, [Secure AI Agents](https://www.cyberark.com/resources/product-insights-blog/cyberark-secure-ai-agents), January 2026 [vendor]
 - Okta, [Okta for AI Agents early access](https://www.okta.com/blog/ai/okta-ai-agents-early-access-announcement/), 16 March 2026 [vendor]
 - Ping Identity, [press release](https://press.pingidentity.com/2026-05-27-Ping-Identity-Redefines-the-Identity-Control-Plane-for-the-Agentic-Enterprise), 27 May 2026 [vendor]
 - Workday, [Agent System of Record announcement](https://newsroom.workday.com/2025-02-11-The-Next-Generation-of-Workforce-Management-is-Here-Workday-Unveils-New-Agent-System-of-Record), 11 February 2025, and an [undated Workday blog](https://blog.workday.com/en-us/managing-ai-powered-future-of-work.html) [vendor]
+- NIST, [AI Risk Management Framework (AI RMF 1.0)](https://doi.org/10.6028/NIST.AI.100-1), January 2023
 - NIST, [Concept paper on software agent identity](https://www.nist.gov/news-events/news/2026/02/new-concept-paper-identity-and-authority-software-agents), 5 February 2026
+- ISMS.online, [ISO/IEC 42001 Annex A.6 summary](https://isms.online/iso-42001/annex-a-controls/a-6-ai-system-life-cycle), undated, secondary
+- regulations.ai, [ISO/IEC 22989 summary](https://regulations.ai/regulations/RAI-XS-GO-I2ITAXX-2022), undated, secondary
+- EU AI Act, [Article 3, definitions](https://artificialintelligenceact.eu/article/3/), including substantial modification
 - Model Context Protocol, [Authorization (draft)](https://modelcontextprotocol.io/specification/draft/basic/authorization), read 14 October 2026
 - APRA, [Letter to industry on artificial intelligence](https://www.apra.gov.au/apra-letter-to-industry-on-artificial-intelligence-ai), 30 April 2026
 - DTA, [Policy for the responsible use of AI in government](https://www.digital.gov.au/ai/ai-in-government-policy), v2.0 from 15 December 2025; [DTA AI transparency statement](https://www.dta.gov.au/ai-transparency-statement); [Agentic AI addendum: decommission](https://www.digital.gov.au/policy/ai/agentic-ai-addendum-statements-decommission), read through a search summary

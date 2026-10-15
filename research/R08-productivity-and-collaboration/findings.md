@@ -52,7 +52,7 @@ Two mechanisms decide whether collaboration agents improve or ossify work. First
 
 ### 7. Security and determinism
 
-The identity model in this surface is the practical expression of the guide's ID1 to ID3 distinction, and the vendor's own architecture encodes it: the agent identity is a service principal, while the user account carrying a mailbox and meeting presence is a **separate, optional child object** created only where the agent must act as a user. The permission asymmetry is deliberate: creating agent identities uses a permission granted automatically and not revocable, while creating the user account requires an administrator grant that can be revoked. As of July 2026, new agents must have agent identities with no opt-out, and no user account is created automatically. ID2 is mandatory; ID3 is a decision.
+The identity model in this surface is the practical expression of the guide's ID1 to ID3 distinction, and the vendor's own architecture encodes it: the agent identity is a service principal, while the agent user account carrying a mailbox and meeting presence is a **separate, optional child object** created only where the agent must act as a user. The permission asymmetry is deliberate: creating agent identities uses a permission granted automatically and not revocable, while creating the agent user account requires an administrator grant that can be revoked. As of July 2026, new agents must have agent identities with no opt-out, and no agent user account is created automatically. ID2 is mandatory; ID3 is a decision.
 
 Consent is the live compliance failure. A survey of 500 workers found a third had encountered an AI notetaker, and among those, only about a third were always asked permission while a quarter reported the bot simply appearing. Two US class actions over meeting recording are active as of this month, one filed three weeks ago, with statutory damages claimed per violation.
 
@@ -66,15 +66,15 @@ Summary; map below. Two suites dominate, both bundling assistants into existing 
 
 ### 10. Target state
 
-Assistants deployed broadly for solitary work, with access identity as the universal default and presence granted rarely and deliberately. Coordinated workflows changed on purpose, with norms agreed rather than assumed. Meeting agents deployed with consent handled explicitly and disclosure by default. Reflective rather than model-led interaction patterns where idea diversity matters. Sanctioned paths made easy enough that shadow usage has no reason to exist, since the evidence says blocking moves usage rather than stopping it.
+Assistants deployed broadly for solitary work, with an agent identity as the universal default and an agent user account granted rarely and deliberately. Coordinated workflows changed on purpose, with norms agreed rather than assumed. Meeting agents deployed with consent handled explicitly and disclosure by default. Reflective rather than model-led interaction patterns where idea diversity matters. Sanctioned paths made easy enough that shadow usage has no reason to exist, since the evidence says blocking moves usage rather than stopping it.
 
 ### 11. Migration path
 
-Roll out for the email-shaped wins; instrument actual usage rather than licence counts; fix consent and disclosure before notetakers proliferate; pick two coordinated workflows and redesign them properly; grant presence only where an agent genuinely needs a mailbox or a calendar. Stop buying: seats you cannot show are used, and notetaking products with no consent mechanics.
+Roll out for the email-shaped wins; instrument actual usage rather than licence counts; fix consent and disclosure before notetakers proliferate; pick two coordinated workflows and redesign them properly; grant an agent user account only where an agent genuinely needs a mailbox or a calendar. Stop buying: seats you cannot show are used, and notetaking products with no consent mechanics.
 
 ### 12. Metrics
 
-Actions per active user per day, not licences issued; task-level time and quality by work type, since the sign varies; consent-capture rate for recorded meetings; share of agents at each ID1 to ID3 identity tier with a justification for every presence grant; shadow-usage indicators (personal-account traffic, sensitive-data events); and, where idea diversity matters, a diversity measure alongside quality.
+Actions per active user per day, not licences issued; task-level time and quality by work type, since the sign varies; consent-capture rate for recorded meetings; share of agents at each identity level (ID1 to ID3) with a justification for every agent user account; shadow-usage indicators (personal-account traffic, sensitive-data events); and, where idea diversity matters, a diversity measure alongside quality.
 
 ### 13. Data readiness and curation
 
@@ -86,15 +86,15 @@ Collaboration content is the grounding corpus here, and it inherits every permis
 
 There is a third answer with more deployment evidence than either camp argues for. Give a horizontal assistant with a building surface to everyone and you get a long tail of narrow, specialised agents built by employees inside the horizontal platform: one organisation generated roughly 15,000 of them after a company-wide rollout. That is neither one assistant nor a curated portfolio, and it is what actually happens.
 
-**On presence identity, from this surface.** The guide's position that presence is reserved for a few durable teammates is supported, and two refinements follow from the collaboration evidence. First, **the accountable-human attribute belongs at ID2 access identity, not ID3 presence identity**: the platform already carries a sponsor field on the agent identity itself, so requiring a mailbox to obtain accountability is backwards. Second, **nameability is not presence**: agents are named, mentionable, and visible in chat surfaces without a user account, so the presence tier should be defined by mailbox, calendar, licence consumption, HR-system participation, and a meeting-roster seat.
+**On agent user accounts, from this surface.** The guide's position that an agent user account is reserved for a few durable teammates is supported, and two refinements follow from the collaboration evidence. First, **the accountable-human attribute belongs at ID2 (agent identity), not ID3 (agent user account)**: the platform already carries a sponsor field on the agent identity itself, so requiring a mailbox to obtain accountability is backwards. Second, **nameability is not an agent user account**: agents are named, mentionable, and visible in chat surfaces without a user account, so the agent user account level should be defined by mailbox, calendar, licence consumption, HR-system participation, and a meeting-roster seat.
 
-The strongest argument against presence is not governance cost. It is that presence does not buy the thing it appears to buy. The only controlled study manipulating whether AI was invoked or ambient found the architecture did not substantially redistribute trust; accountability stayed anchored to the human. And the only study measuring what an AI participant does to human-to-human relations found the AI was the most talkative and self-cohesive member of every team while carrying the least new information, with human teammates showing lower responsivity toward one another and reporting lower belonging and status.
+The strongest argument against giving agents user accounts is not governance cost. It is that an agent user account does not buy the thing it appears to buy. The only controlled study manipulating whether AI was invoked or ambient found the architecture did not substantially redistribute trust; accountability stayed anchored to the human. And the only study measuring what an AI participant does to human-to-human relations found the AI was the most talkative and self-cohesive member of every team while carrying the least new information, with human teammates showing lower responsivity toward one another and reporting lower belonging and status.
 
 ### Cross-cutting concerns
 
 | # | Concern | Treatment at this layer |
 |---|---|---|
-| C1 | Identity & access | Access identity mandatory and automatic; presence granted per capability with justification; sponsor recorded at access level |
+| C1 | Identity & access | Agent identity mandatory and automatic; agent user account granted case by case with justification; sponsor recorded on the agent identity |
 | C2 | Observability | Actions per active user; task-type outcomes; shadow-usage indicators |
 | C3 | Traceability & audit | Meeting artifacts and their consent records; retention aligned to recording law |
 | C4 | Grounding in reality | Collaboration corpus permissions remediated before deployment, not after |
@@ -108,7 +108,7 @@ The strongest argument against presence is not governance cost. It is that prese
 ### Open questions
 
 - No independent field measurement of production meeting-summary accuracy in enterprises, and no rigorous study of how notetakers change what participants say. The most widely deployed collaboration agent has the thinnest independent evidence base about its effect on the collaboration.
-- No comparative outcome study of presence-grade versus invoked agents at organisational scale.
+- No comparative outcome study of agents with user accounts versus invoked agents at organisational scale.
 - Whether the homogenisation effect observed at output level aggregates to population level is unresolved, with credible studies on both sides.
 
 ---

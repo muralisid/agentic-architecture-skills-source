@@ -20,17 +20,21 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 **Agentic enterprise.** An enterprise where routine knowledge work executes through governed agents while humans set intent, supervise, manage exceptions, and hold accountability. A useful evidence-informed design pattern is a trust progression: agents operate under their own identity with a named accountable human, and autonomy expands with demonstrated reliability. This is not a universal classification test. The Autonomy-Learning maturity model (A x L) makes the progression explicit per workload.
 
-**Autonomy-Learning maturity model (A x L).** The guide's two-axis model, applied per workload. Autonomy A0 to A5: A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, A5 governed lights-out. Learning L0 to L3: L0 fixed policy, L1 curated learning, L2 governed learning (the flywheel), L3 continuous learning inside guardrails. The learning axis is this guide's contribution; A4 and above should require L2 or better. See synthesis/maturity-model.md.
+**The autonomy and learning scales.** Two scales, applied per task. Autonomy A0 to A5: A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, A5 governed lights-out. Learning L0 to L3: L0 fixed, L1 curated learning, L2 reviewed learning (the flywheel), L3 continuous learning inside limits. A4 and above require L2 or better. See product/architecture/autonomy-contract.mdx.
 
 **Fixed-policy agent.** An agent that acts autonomously but does not learn; behavior changes only by redeployment. Still an agent by every mainstream definition, and the right choice for many workloads. This guide's position: without a learning loop you have a fixed-policy agent, not a teammate.
 
 **Harness.** The engineering shell around the model: context assembly, tool routing, termination conditions, budgets, checkpoints, recovery.
 
-**Agent identity (ID1 to ID3).** ID1: credential-only (shared keys, service accounts); ungoverned, the anti-pattern. ID2: first-class IAM principal with task-scoped permissions, audit, and a named accountable sponsor (access identity). ID3: organizational presence (directory entry, mailbox, calendar, manager, licenses) (presence identity).
+**Agent identity (ID1 to ID3).** ID1: shared credentials (shared keys, service accounts); ungoverned, the anti-pattern. ID2: the agent's own identity, with task-scoped permissions, audit and a named sponsor. ID3: the agent's own identity plus an agent user account (directory entry, mailbox, calendar, manager, licences).
 
-**Access identity vs presence identity.** Access identity lets an agent act on systems under governance (ID2). Presence identity makes the agent addressable as a colleague: email, meetings, org chart (ID3). The trade-off is collaboration ergonomics vs attack and compliance surface.
+**Agent identity vs agent user account.** An agent identity lets an agent act on systems under governance (ID2). An agent user account makes it addressable as a colleague: email, meetings, org chart (ID3). The trade-off is collaboration against attack and compliance surface. Microsoft Entra Agent ID uses this pair.
 
 **Sponsor and owner.** The sponsor is the business person accountable for why an agent exists, what it may do and whether it should keep running; named at creation and recorded on the ID2 identity. The owner is the technical custodian who runs its configuration, credentials, evals and incidents. Some vendors use "owner" for the accountable person; this guide does not.
+
+**Delegation chain.** The record that traces every agent action back to the person who asked: who delegated, to which agent, with which permissions, for which task. Built from the agent's own identity and short-lived tokens exchanged at the gateway. The industry's term; this guide once called it the identity chain. See product/architecture/delegation-chain.mdx.
+
+**Span of control.** How many agents or tasks one person can supervise at once. It shrinks as waiting times grow. Used in place of the engineering word fan-out.
 
 **Agent lifecycle.** The nine stages every agent passes through: register, sponsor and owner, entitle, evaluate, approve, operate, change, periodic review, retire. The registry record carries the stage, the risk tier and the autonomy levels. See product/architecture/agent-lifecycle.mdx.
 
@@ -54,71 +58,55 @@ Canonical definitions used across the guide. Terms are defined once here and use
 
 These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs/2309.02427) (2023, revised 2024) and the implementation-oriented [LangGraph memory overview](https://docs.langchain.com/oss/python/concepts/memory), reviewed 18 September 2026. The enterprise approval and lifecycle requirements are this guide's design guidance. Purpose, retention scope, information form, and storage implementation are separate dimensions.
 
-**Memory tiers (M1 to M5).** M1 thread (current conversation), M2 retrieved knowledge (evidence for the current turn), M3 session, M4 entity memory (long-term profiles of customers, assets, cases), M5 cross-domain organizational memory. These are legacy scope labels, not an ordered taxonomy of memory kinds or retention duration. Apply ownership, access, retention, and erasure rules at every scope.
-
-**Memory planes.** Working context (engineering discipline), the agent's persistent store (governance-heavy), and organizational memory (shared substrate). Distinct from memory roles (episodic, semantic, procedural) and from the legacy scope labels M1 to M5.
-
 **Two learning loops.** The system flywheel (offline, evaluated, versioned, gated: trace, eval, curate, improve, staged rollout) and instance memory (online, immediate, exposed to drift and poisoning). They must be governed separately; memory learnings are promoted through the flywheel, never allowed to silently reshape behavior.
 
 **Learning flywheel.** The offline improvement loop above. Includes distillation: replacing large models with fine-tuned small ones once labeled traces exist.
 
 **Pricing regimes.** Human seat (per-employee subscription), agent seat (per-agent license), metered API (per token). Determines who absorbs the loop multiplier and shapes architecture: seat pricing favors few durable agents, metering favors ephemeral fleets.
 
-**Loop multiplier.** Token cost of agentic work relative to plain chat (published vendor figures: roughly 4x for single agents, 15x for multi-agent systems; vendor-published, as of 2025).
-
-**Two-estate problem.** An enterprise's own gateway can only govern the metered estate (API traffic it proxies). Licensed platforms (Copilot, Agentforce, Frontier) run outside it. Architecture, audit, and cost control must span both estates.
+**Your own agents and vendor-embedded agents.** Agents you build run through your own gateway, so every action can be governed, budgeted and traced on your terms. Agents embedded in vendor products (suite copilots, agents inside record systems) run on the vendor's platform; you govern them through tenant settings and the records the vendor exports. Architecture, audit and cost control must cover both.
 
 **Packaged application (COTS).** Commercial off-the-shelf software run largely as the vendor ships it, such as billing, finance, customer or workforce systems. The enterprise cannot rewrite it, so the use-case question becomes: is the process inside one package or across several, and does the vendor have a generally available agent on this edition within two quarters. See product/use-cases/packaged-applications.mdx.
 
-**Deterministic boundary principle (models may take permission away, never grant it).** Identity, entitlements, access control, and audit are always enforced by deterministic systems outside the model. Probabilistic components (a model, a classifier, a model-based reviewer) may deny, escalate or quarantine; they may never grant a permission outside the deterministic envelope; in the four zones (access control, movement of money, safety actuation, formal regulatory records) they may not approve at all. Probabilistic signals inside those zones are normal and useful; probabilistic decisions are not. First written as "models may inform, never decide" and restated in October 2026 after shipped products let models approve some actions inside sandboxes. See product/architecture/deterministic-zones.mdx and research/R10-security-and-identity/findings.md.
+**Models may take permission away, never grant it.** Identity, entitlements, access control and audit are always enforced by deterministic systems outside the model. Probabilistic components (a model, a classifier, a model-based reviewer) may deny, escalate or quarantine; they may never grant a permission outside the deterministic envelope. In the four zones (access control, movement of money, safety actuation, formal regulatory records) they may not approve at all. Probabilistic signals inside those zones are normal and useful; probabilistic decisions are not. See product/architecture/deterministic-zones.mdx.
 
 **Destruction rule.** Any delete, drop, destroy or reset on production data or environments is its own rule in the policy decision point, never folded into a broader permission. It runs plan-then-apply, with a named person approving that exact action once, two signatures for production deletion, deletion protection on the target, and backups outside the agent's reach. Sits beside the four zones; added October 2026.
 
-**People-decisions floor.** Where an agent makes or shapes a significant decision about a person (credit, employment, insurance, health, housing, education, benefits, utility hardship or disconnection), a named person with authority to change the outcome decides, the model may score and draft, the person affected receives the notice the law requires, and the decision is logged with the model's inputs. A rule of accountability, notice and audit rather than a deterministic rule; it never lowers the risk tier. Added October 2026.
+**The rule for decisions about people.** Where an agent makes or shapes a significant decision about a person (credit, employment, insurance, health, housing, education, benefits, utility hardship or disconnection), a named person with authority to change the outcome decides. The model may score and draft. The person affected receives the notice the law requires, and the decision is logged with the model's inputs. A rule of accountability, notice and audit; it never lowers the risk tier. Anchors: GDPR Article 22, EU AI Act Annex III.
 
 **Plan-then-apply.** The agent proposes a plan; a deterministic system applies it after approval. The pattern for any agent that changes production, and the mechanism behind the destruction rule.
 
-**Risk tier (Basic, Enhanced, Strict).** One of three levels set by the worst of nine factors: autonomy, the verb the agent's credential holds, system reach, reversibility of the consequence, blast radius, highest data class and egress, untrusted input, decision consequence for people, and oversight strength as a modifier. The tier picks the controls, the sign-off and the review cadence, and travels on the registry record. Five conditions are always High. See product/architecture/risk-profile.mdx.
+**Risk tier (Tier 1 basic, Tier 2 enhanced, Tier 3 strict).** One of three levels set by the worst of nine factors: autonomy, the verb the agent's credential holds, system reach, reversibility of the consequence, blast radius, highest data class and egress, untrusted input, decision consequence for people, and oversight strength as a modifier. The tier picks the controls, the sign-off and the review cadence, and travels on the registry record. Five conditions are always High. See product/architecture/risk-profile.mdx.
 
 **Rule of Two.** One agent session holds at most two of: untrusted input, sensitive data, and the power to change state or communicate out. All three together caps autonomy at A2 and puts a person on every action. From Meta's agent security guidance (October 2025) and the "lethal trifecta" (June 2025).
 
-**Consequence class.** The fourth classification question for an agent: the zones it touches, its destruction risk, whether it shapes decisions about people, and the reversibility and reach of its actions. With the capability surface, it sets the risk tier.
-
-**Curation before context.** Data is prepared for agents per purpose and use case. The LLM guides (taxonomy, topics, judgment) while cheaper deterministic machinery executes at scale (embeddings, topic modelling, classifiers). Production-grade agents stand on curated data, not raw corpora pushed through the model.
+**Impact.** The fourth classification question for an agent: the zones it touches, whether it can delete anything, whether it shapes decisions about people, and the reversibility and reach of its actions. With its permissions, impact sets the risk tier.
 
 **Multi-view (multi-card) embeddings.** A pattern that represents the same content through several purpose-specific embeddings (for example problem, entity, intent views), each indexed separately, so a question about one aspect matches that aspect rather than a blurred average. Tested by the guide on public corpora in August 2026: several vectors per document beat one decisively; purpose-specific views beat matched fixed-window chunks only where queries target one aspect, and lose where queries concern whole documents; conditioning the view design on the objective did not help in any form tested. The evidence and the recommended design are on the site's research pages.
 
 **Sovereignty tiers (SV0 to SV4).** Deployment postures selected per workload and classification: SV0 managed API without a locality guarantee; SV1 region-pinned managed API; SV2 managed sovereign offering; SV3 self-hosted open-weight model in the enterprise tenancy; SV4 air-gapped or isolated on premises. A higher number is a stricter deployment constraint, not greater maturity.
 
-**Roadmap stages (Stage 0 to Stage 5).** The guide's delivery sequence: Stage 0 Ground, Stage 1 First value, Stage 2 Platform, Stage 3 Scale, Stage 4 Autonomy, and Stage 5 Extend. A stage is exited by evidence, not by elapsed time.
-
 **MCP (Model Context Protocol).** The open standard for connecting agents to tools and data. An MCP gateway governs tool access (RBAC, allowlists, credential injection, audit); distinct from an LLM gateway, which governs model calls (routing, caching, budgets).
 
 **Grounding (evidence before answer).** Responses trace to trusted enterprise sources with provenance; weak evidence is excluded, flagged, or escalated rather than answered over.
 
-**Challenged default.** A technology treated as the obvious choice at some layer (often by hype), which this guide re-examines against the simplest credible alternative on evidence and economics.
-
 **Agent washing.** Marketing existing automation or chat products as "agents" without autonomous tool-using behavior. Named by analysts as widespread; the reason every claim on this site carries its evidence status.
 
-**Sponsor / Owner.** The accountability pattern for agents: a required business Sponsor accountable for the agent's purpose and lifecycle, and a technical Owner managing configuration and credentials.
+**Permissions (what its credentials let it do).** Controls are chosen by what an agent's own credentials let it do (read, write, delete, run code or SQL, browse, send externally, pay, change access, actuate), plus three flags: whether it takes untrusted input, the highest data class it can reach, and whether it writes long-term memory. Not by its product category. Isolation follows code, browsing and computer use; the agent user account follows mailboxes, meeting seats and directory visibility; the assessment is repeated on every tool grant, because agents gather permissions over time.
 
-**Capability-surface gating.** Controls are chosen by what an agent's own credentials let it do (read, write, delete, run code or SQL, browse, send externally, pay, change access, actuate), plus three flags: whether it takes untrusted input, the highest data class it can reach, and whether it writes long-term memory. Not by its product category. Execution isolation follows code, browsing, and computer use; presence controls follow mailboxes, meeting seats, and directory visibility; the assessment is repeated on every tool grant, because agents accrete capability over time.
-
-**Agent role.** What an agent does for people: converse, create, assist or coordinate, with a business-domain tag. A label that implies no authority and sets no controls; the domain tag can trigger the people-decisions floor. Replaces the earlier contribution roles, and the four types before them (October 2026).
+**Role (what the agent does for people).** Converse, create, assist or coordinate, with a business-domain tag. A label that implies no authority and sets no controls; the domain tag can trigger the rule for decisions about people.
 
 **Interface a model builds.** A screen, card or form assembled by a model at run time. A display rule in the experience layer, not an agent type: validated before display, every fact shows its source, action buttons come only from a fixed catalogue, and personalising by behaviour or emotion needs consent.
 
-**Evidence floor / Article-12-grade instrumentation.** The guide's two-level compliance posture. An evidence floor applies to every production agent: registry entry, retained action logs, named oversight, and provenance-carrying grounding. Article-12-grade instrumentation (EU AI Act logging depth, oversight capture, technical documentation) applies to the tier that could plausibly classify high-risk. Proportionality replaces blanket compliance.
+**Audit trail baseline and EU AI Act record keeping.** Two levels of records. The audit trail baseline applies to every production agent: a registry entry, retained action logs collected where the agent cannot write, named oversight, and grounding that carries its sources. EU AI Act record keeping (Article 12 logging depth, oversight capture, technical documentation) applies to the tier that could plausibly classify as high-risk. Proportionality replaces blanket compliance.
 
 **Provenance-carrying grounding.** Retrieval that stores source chunks and identifiers alongside embeddings so every answer is citable to its sources by construction. The guide's position: the highest-leverage single component of an evidence architecture, necessary but not sufficient for audit evidence.
 
-**Budget envelope (agent).** Sponsor-owned spending allowance for an agent, with unit-economics targets, hard per-run caps, and variance alerting. Deliberately not framed as a salary: agent consumption is volatile, so the control is an envelope with alarms rather than a fixed cost.
+**Agent budget.** A sponsor-owned spending allowance for an agent, with unit-economics targets, hard per-run caps and variance alerts. Not a salary: agent consumption is volatile, so the control is an allowance with alarms rather than a fixed cost.
 
 **Validation loop (agent output before an operator).** The pattern published in control-room research: the model's raw response is never displayed; candidate actions are simulated against a digital twin or checked against rules, filtered, and only surviving options are shown for a human decision. The model proposes, physics or policy disposes.
 
 **Governed rule promotion.** Moving learned agent behavior into fixed policy. Evidence-revised form: gate on counterexample survival and eval regression rather than frequency; land the promoted artifact in an enforcement layer outside the model (a rule the model merely reads is still a soft rule); and keep a demotion path, since most agent decisions cannot be converted to static rules at all.
-
-**Wrap, do not reinvent.** Agents reach enterprise systems through tool servers that wrap already-governed APIs, carrying the caller's identity so entitlement, validation, and audit stay where they already work. The tool layer is a wrapper, not a second policy engine.
 
 **Solitary versus coordinated work.** The variable that predicts whether an assistant delivers measured value. Individually provisioned AI reliably improves solitary work such as email, and reliably fails to change coordinated work such as meetings and shared documents, because changing those requires agreeing new norms with colleagues. Deployment decisions should follow this distinction rather than the horizontal-versus-specialised framing.
 
@@ -126,15 +114,11 @@ These memory-role terms follow the distinctions in [CoALA](https://arxiv.org/abs
 
 **Calibrated oversight.** The evidenced shape of trust progression: as operators gain experience they grant broader standing permission AND intervene more often, rather than supervising less. Oversight capacity is designed for prevention and legibility, not interception, and verification is made cheap by construction.
 
-**Oversight-capacity gate.** The precondition on A4 and above in the A x L model: capacity calculated from the fan-out relation with wait time included, expressed as a burst rate rather than a daily or hourly average, instrumented in production, and resting on verification that is cheap by construction. Added because no credible human-to-agent supervision ratio has ever been published.
+**Oversight-capacity gate.** The precondition on A4 and above: supervision capacity calculated from the span of control with wait time included, expressed as a burst rate rather than a daily or hourly average, instrumented in production, and resting on verification that is cheap by construction. Added because no credible human-to-agent supervision ratio has ever been published.
 
-**The seven planes.** The planes of the agentic system built across the enterprise estate, distinct from the 14 layers of the estate itself: execution, action, knowledge, control, improvement, evidence, and human. Enforcement lives in the control plane, never in the execution plane, and the evidence plane is fed by collection the agent cannot influence.
+**The seven capabilities.** What an agent platform provides and every lifecycle stage calls on, distinct from the fourteen layers of the estate itself: a runtime, a tool gateway, knowledge and memory, identity and policy, evaluation and release, observability and an audit trail, and human oversight. Two rules bind them: policy is enforced outside the model, and the audit trail is written where the agent cannot touch it. Named after the components AWS, Microsoft and Google ship.
 
 **Cost per resolved outcome.** The decision-level unit in the economics model: all model, tool and platform cost for the period, failed and retried attempts included, plus supervision time at a loaded rate, plus the cost of fixing wrong outcomes, divided by the outcomes accepted as resolved under the agreed quality standard. Report the resolution rate, failure rate, serious errors and repeat contacts beside it, and divide by resolution, never by containment. Distinct from cost per run, which is the unit platforms meter. One definition since October 2026 (D051); earlier pages carried three.
-
-**Make-it-evaluable queue.** Where a valuable use case goes when a domain expert cannot yet write pass-or-fail tasks for it. The funded work is defining success (writing the tasks, measuring the human baseline, finding the real failures), not building the agent. The highest-return spend in an immature programme.
-
-**Portfolio supervision constraint.** Oversight capacity applied across the whole approved use-case set rather than per workload, because workloads are approved individually and supervised collectively.
 
 **Evals.** Systematic, versioned tests of agent quality, safety, grounding, and regressions: golden datasets, scenario tests, adversarial prompts, LLM-as-judge with human review. A production gate, not an afterthought.
 

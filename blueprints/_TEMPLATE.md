@@ -8,11 +8,11 @@ One concrete situation, specific enough that a practitioner recognises it. Not a
 
 ## 2. Agent team design
 
-Which agents, what each does, and where each sits on the A x L grid. Named by function, never by product.
+Which agents, what each does, and where each sits on the autonomy and learning scales. Named by function, never by product.
 
-## 3. Planes activated
+## 3. Capabilities used
 
-Which of the seven planes do real work here, marked direct or supporting. A blueprint that activates only the knowledge plane is a demo.
+Which of the seven capabilities do real work here, marked direct or supporting. A blueprint that uses only knowledge and memory is a demo.
 
 ## 4. Controls
 

@@ -17,7 +17,7 @@ import { ogFonts } from '@/app/og/card';
 import { appName } from '@/lib/shared';
 
 export const alt =
-  'The agentic enterprise on one page: fourteen estate layers with their control points, seven planes, ten cross-cutting concerns, and four deterministic zones.';
+  'The agentic enterprise on one page: fourteen estate layers with their control points, seven capabilities, ten cross-cutting concerns, and four deterministic zones.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -92,7 +92,7 @@ export default async function Image() {
                 marginTop: 22,
               }}
             >
-              Fourteen layers, seven planes, ten concerns, and four boundaries no model decision crosses.
+              Fourteen layers, seven capabilities, ten concerns, and four boundaries no model decision crosses.
             </div>
           </div>
 

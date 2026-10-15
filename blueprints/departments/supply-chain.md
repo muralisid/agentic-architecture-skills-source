@@ -24,7 +24,7 @@ Compare the agent with eRP exception reports, reorder rules, and established pla
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Exception resolution agent | Investigates supply and order exceptions, gathers evidence across systems, proposes disposition | A3, L2 | The core of the department's value |
 | Supplier communication agent | Chases, confirms and reconciles with suppliers across email and portals | A3, L1 | External-facing. Disclosure applies |
@@ -35,7 +35,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Action (**direct**: ERP, WMS and EDI through wrapped APIs), Knowledge (**direct**: parsing fidelity caps everything), Improvement (**direct**), Human, Control, Evidence, Execution (supporting).
+Tool gateway (**direct**: ERP, WMS and EDI through wrapped APIs), knowledge and memory (**direct**: parsing fidelity caps everything), evaluation and release (**direct**), human oversight, identity and policy, observability and audit trail, runtime (supporting).
 
 ## Controls and human decisions
 

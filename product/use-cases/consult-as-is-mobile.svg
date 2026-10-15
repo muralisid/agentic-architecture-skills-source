@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2068" role="img" aria-labelledby="title desc">
+<title id="title">Preparing for a multidisciplinary meeting today</title>
+<desc id="desc">Swimlanes for outside providers, the MDT coordinator, the registrar, radiology and pathology, the MDT and chair, and the systems. Step 1: the coordinator lists the patients in a spreadsheet. Step 2: the coordinator gathers results from several screens. Step 3: the radiologist sets up images. Step 4: the pathologist reviews slides. Step 5: the coordinator chases outside reports, which often arrive late. Step 6: the registrar writes the case summary by copy and paste. Step 7: the MDT meets and discusses. Step 8: the chair signs the outcome, and it goes to the EMR and the GP. Step 9: the data warehouse reports activity. Each step names the system it uses.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2068" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Preparing for a multidisciplinary</text>
+<text x="32.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">meeting today</text>
+<text x="32.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Copy and paste across many screens. Each card</text>
+<text x="32.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">names the system the step uses.</text>
+<rect x="32.0" y="228.0" width="656.0" height="224.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="268.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="276.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">MDT coordinator</text>
+<text x="104.0" y="308.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Keeps the list in a spreadsheet from emails</text>
+<text x="104.0" y="340.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">and forms. The cut-off is a few days before</text>
+<text x="104.0" y="372.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">(typical, unsourced).</text>
+<text x="104.0" y="404.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: email, EMR form, spreadsheet, MDT</text>
+<text x="104.0" y="436.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">module</text>
+<path d="M68.0 456.0 L68.0 478.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="486.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="526.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="534.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="534.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Coordinator and registrar</text>
+<text x="104.0" y="566.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Copies results from several screens. Prints</text>
+<text x="104.0" y="598.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">some.</text>
+<text x="104.0" y="630.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: EMR, laboratory system, data</text>
+<text x="104.0" y="662.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">repository</text>
+<path d="M68.0 682.0 L68.0 704.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="712.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="752.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="760.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="760.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Radiologist</text>
+<text x="104.0" y="792.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reviews the scans and sets up key images.</text>
+<text x="104.0" y="824.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Outside images may need importing.</text>
+<text x="104.0" y="856.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: RIS and PACS</text>
+<path d="M68.0 876.0 L68.0 898.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="906.0" width="656.0" height="128.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="946.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="954.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="954.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Pathologist</text>
+<text x="104.0" y="986.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reviews the slides before the meeting.</text>
+<text x="104.0" y="1018.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: laboratory system, glass slides</text>
+<path d="M68.0 1038.0 L68.0 1060.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1068.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1108.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1116.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1116.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">MDT coordinator</text>
+<text x="104.0" y="1148.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Asks private labs, imaging providers and</text>
+<text x="104.0" y="1180.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">GPs for reports. Waits.</text>
+<text x="104.0" y="1212.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: phone, fax, secure message, My</text>
+<text x="104.0" y="1244.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Health Record</text>
+<path d="M68.0 1264.0 L68.0 1286.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1294.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1334.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1342.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1342.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Registrar or clinical nurse</text>
+<text x="104.0" y="1374.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Copies and pastes from several screens.</text>
+<text x="104.0" y="1406.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">There is no standard way to show source or</text>
+<text x="104.0" y="1438.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">date.</text>
+<text x="104.0" y="1470.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: Word template or MDT form</text>
+<path d="M68.0 1490.0 L68.0 1512.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1520.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1560.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1568.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1568.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The MDT</text>
+<text x="104.0" y="1600.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Discusses each patient. Someone types the</text>
+<text x="104.0" y="1632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">outcome.</text>
+<text x="104.0" y="1664.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: Teams or video, PACS screen share</text>
+<path d="M68.0 1684.0 L68.0 1706.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1714.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1754.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1762.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1762.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Chair signs, coordinator sends</text>
+<text x="104.0" y="1794.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">The chair signs the outcome. It goes to the</text>
+<text x="104.0" y="1826.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">EMR and a letter goes to the GP.</text>
+<text x="104.0" y="1858.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: EMR or MDT module, secure messaging</text>
+<path d="M68.0 1878.0 L68.0 1900.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1908.0" width="656.0" height="128.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="1948.0" r="20" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1956.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="104.0" y="1956.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Data warehouse (cancer services)</text>
+<text x="104.0" y="1988.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Counts MDT activity and time to treatment</text>
+<text x="104.0" y="2020.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">against the Optimal Care Pathways.</text>
+</svg>

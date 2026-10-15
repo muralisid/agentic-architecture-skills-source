@@ -74,6 +74,10 @@ const config = {
       { source: '/docs/:path*', destination: '/library/:path*', permanent: false },
       // Agent types are an architecture concept, so the page moved out of Use cases.
       { source: '/use-cases/agent-roles', destination: '/architecture/agent-types', permanent: false },
+      // The identity chain was renamed to the industry's term, the delegation chain.
+      { source: '/architecture/identity-chain', destination: '/architecture/delegation-chain', permanent: false },
+      // Commercial growth was folded into the energy page: it is a sales-desk aid, not an operations workflow.
+      { source: '/use-cases/commercial-growth', destination: '/use-cases/energy', permanent: false },
       // The research section became the patterns section: the experiments are
       // the evidence for a pattern rather than the point in themselves.
       { source: '/research/recommended-approach', destination: '/patterns', permanent: false },

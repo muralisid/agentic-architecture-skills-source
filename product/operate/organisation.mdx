@@ -1,0 +1,163 @@
+---
+title: "How to organise the teams: One Platform, Three Lanes"
+icon: "Users"
+description: "Who owns the agent platform, who owns each agent and who supervises it: a thin technology office, one platform team, three lanes that build each pattern once and step back, and business teams that own their agents."
+position: "This guide's proposal for organising AI, cloud and integration work. The shape follows Microsoft, AWS, BCG and DORA guidance. Every size, threshold, time period and funding term is this guide's judgement."
+lastReviewed: "2026-10-15"
+datePublished: "2026-10-15"
+dateModified: "2026-10-15"
+concepts: [operate, r13, lifecycle, readiness, capabilities, zones, autonomy, risk, enforcement]
+---
+
+Once agents move past a pilot, three questions come up. Who owns the platform the agents run on? Who owns each agent? Who supervises its work? This guide's answer is one platform and three lanes. A thin technology office writes the rules and holds the money. One platform team turns the rules into automatic checks. Three small lanes, for AI, cloud and integration, build each new pattern once and then step back. Business teams own their agents, and their own staff supervise them. Almost every agent needs AI, cloud and integration. So one model covers all three.
+
+## The four units
+
+The structure has four units. Each owns a clear part of the work.
+
+| Unit | What it owns | Size |
+|---|---|---|
+| Technology office | Policy, standards, the rules for setting [risk tiers](/architecture/risk-profile), funding, the portfolio and vendor deals | 4 to 6 people |
+| Platform team, run as a product | Landing zones and pipeline gates. The model and tool gateway, the policy decision point and the agent registry. Agent identities, the audit trail store and cost metering | 2 to 4 squads of 6 to 10 people |
+| AI, cloud and integration lanes | Patterns, reusable assets, the delivery and estimation method, coaching, and the first build of each new pattern | 3 to 6 people each |
+| Delivery teams in the business | Their own use cases, interfaces, workloads and agents. Agent sponsors sit here | Funded by the business |
+
+The sizes are this guide's judgement. Squad size follows Microsoft's guidance of product teams of six to ten [vendor].
+
+Each part the platform owns is defined on the layer that holds it:
+
+- the model and tool gateway, on [integration fabric (R03)](/layers/r03-integration-fabric);
+- the policy decision point and agent identities, on [security and identity (R10)](/layers/r10-security-and-identity);
+- the agent registry, on [agent platform (R07)](/layers/r07-agent-platform) and [governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty);
+- the audit trail store, on R11 and [observability and FinOps (R12)](/layers/r12-observability-and-finops);
+- cost metering, on R12.
+
+Among [the seven capabilities](/architecture/system-view), these are the tool gateway, identity and policy, and observability and audit trail. The registry record itself is set out on [the agent lifecycle](/architecture/agent-lifecycle#the-registry-record).
+
+People approve only three things. They approve actions in the four [deterministic zones](/architecture/deterministic-zones), new patterns, and steps up in autonomy. Everything else passes on evidence from the pipeline.
+
+The lanes coach and hand over. Gartner predicts 70 percent of enterprises will abandon agentic AI built by a vendor's engineers by 2028 (29 September 2026). The clients cannot run or change it alone. So delivery teams own what they build, agents included.
+
+## Who does what
+
+| Role | Duty |
+|---|---|
+| Executive sponsor | Accountable for the whole model. Chairs the investment board |
+| Head of platform and lanes | Runs the office, the platform and the lanes as one unit. Owns the measures |
+| Lane lead, one per lane | Owns the lane's patterns, assets and estimation model |
+| Policy owner | Writes and versions policy as code in the policy decision point, with risk, legal and security |
+| Agent registry owner | Owns the record of every agent and tool: sponsor, owner, risk tier, autonomy level, scopes, data class and budget. Runs a quarterly check. Retires orphans, the agents left running without an owner |
+| Agent sponsor | The named business person who answers for an agent's purpose, results and budget. Sponsorship moves automatically when the person leaves |
+| Agent owner | The technical owner. Runs the agent's configuration, credentials, evaluations and incidents |
+| Tool owner | Owns each API or tool: its contract, its description and its data class |
+| Evaluation owner and corpus owner | Domain experts. One owns a workload's pass mark. The other owns each curated source collection |
+| FinOps and agent economics lead | Allocates cloud and token spend. Owns agent budgets and circuit breakers. EY proposes a similar "Head of Agent Economics" (1 June 2026) |
+| Exception supervisors | Existing staff who work agent exception queues as part of their jobs |
+
+## Who supervises the agents
+
+Exception supervisors are existing staff, not a new specialist team. In field evidence, supervisors who work inside the team did better than specialists. Size their capacity with the queueing calculation on [operating model and supervision (R13)](/layers/r13-operating-model). Plan for the busiest ten minutes, never a daily average.
+
+The sponsor answers for the agent's results. The supervisor decides each case that reaches the queue. Neither role is a new job title. Both sit in the business team that owns the work.
+
+## Four governing bodies
+
+| Body | Meets | Decides | Does not decide |
+|---|---|---|---|
+| Investment board | Monthly | Funding, portfolio order, lane capacity, and when a lane winds down | Designs |
+| Architecture advice forum | Weekly | New patterns, exceptions to the standard path, decision records | Routine designs |
+| AI and agent risk council | Weekly | High-impact cases only: the four zones, promotion to [supervised autonomy (A3)](/architecture/autonomy-contract) or above, customer-facing agents | Risks that privacy, cyber and legal already cover |
+| Platform product council | Monthly | The platform roadmap | Policy |
+
+The risk council copies Telstra's. It meets weekly and covers only risk that is specific to AI (UTS Human Technology Institute, May 2026). The advice forum uses the advice process. Anyone may decide after seeking advice, and the decision is logged. Standard changes pass on pipeline evidence, with no change board. DORA links heavy change approval to worse delivery.
+
+## Funding
+
+The office, the platform base and the lanes get a central budget. Charging for the base pushes teams to go around it. That grows shadow AI: AI used outside the governed path (Tian Pan, 2 July 2026).
+
+Tokens, compute and gateway calls are shown back to each business unit and agent from the first day. Chargeback starts in year two. Each agent has an <Term k="agent budget">agent budget</Term> owned by its sponsor, with hard caps per run. Circuit breakers stop spending at set limits, as EY recommends. Lane help is free for six weeks. After that, the business unit pays. First savings fund the next use cases and the platform, as BCG describes. No firm publishes a chargeback model, so these terms are this guide's judgement.
+
+## One front door and three support levels
+
+All work enters one intake and one register. Triage asks five yes-or-no questions.
+
+1. Does it touch a deterministic zone?
+2. Does an agent write, not just advise?
+3. Is it customer-facing, or on regulated data?
+4. Is it off the standard path?
+5. Is it a new pattern?
+
+The answers set the support level. A support level is how much help a team gets. It is separate from the agent's risk tier. The risk profile sets that tier. Triage stays yes or no. Telstra triages with yes-or-no questions and removed its medium risk tier.
+
+| Support level | When | What happens |
+|---|---|---|
+| Self-serve | Every answer is no | The team uses a standard template. The registry entry and the evaluation gate are automatic |
+| Assisted | A new use of a known pattern | The lane pairs with the team for up to six weeks and builds the first evaluation set |
+| Reviewed | Any answer is yes | The risk council or the advice forum reviews it. A named approver releases zone work. If no test exists, domain experts write the pass-or-fail tests first |
+
+## When a lane steps back
+
+The failure to avoid is a central team that becomes a queue. Tian Pan's warning signs are rising approval times and frequent exceptions. Others are stale standards, growing shadow use and senior staff leaving. No major firm publishes a test for when a central team should end. This guide sets five. A lane hands a pattern to self-serve when all five hold for two quarters.
+
+1. At least 70 percent of the lane's new work goes through self-serve.
+2. Reviews find a material issue in under 1 in 20 cases. Blind samples confirm it. A falling find rate can mean tired reviewers.
+3. Every business team has one person who passed the lane's practical test.
+4. No serious incident, graded severity 1 or 2, is traced to a lane pattern.
+5. The median wait at the lane's gates is under two business days.
+
+If a test fails for a quarter after handover, the pattern returns to the lane. Gregor Hohpe calls this work bouncing back to the centre.
+
+Cloud likely steps back first. Its move to a platform is the most mature. AI goes second, once evaluations and gateways are platform features. Integration goes last. With agents, integration becomes the governance of tools.
+
+Some parts never dissolve. They are the office, the policy owner, the registry owner, the platform team and the zone review. This is [the autonomy contract](/architecture/autonomy-contract) applied to the organisation.
+
+## Centre of excellence or enterprise architecture
+
+The evidence shows no move back to heavy architecture methods such as TOGAF. The Open Group's recent output is an AI assistant and a conference, not guidance on operating models. Centres of excellence survive, but as a stage. The label is fading into studio, factory, hub and platform team. Analysts want a lighter architecture function that governs AI. Forrester describes the architect as the one who sets the bounds for autonomous AI (18 September 2026).
+
+The verdict is neither label. Architecture moves from reviewing designs to owning the rules and the record of what runs. That record includes the agent registry. Architecture owns the policy within identity and policy. It owns the context within knowledge and memory. The platform owns enforcement and the audit trail. Start with a central team if you need one. Write its exit tests on the first day.
+
+## A worked example: billing exceptions at a water utility
+
+Take a water utility that adds an agent to clear billing exceptions. Today, billing operations runs this work with team leads and QA sampling. The billing operations manager becomes the agent's sponsor. The billing team owns the agent and its evaluation set. Team leads already sample released bills. They work the agent's exception queue.
+
+Releasing a bill is a zone action. So triage answers yes. The support level is reviewed, and the risk council looks at the zone work. A named approver signs off the rule that releases bills. The platform supplies the gateway, the registry record, the agent's identity and the cost meter. The design is on [resolve billing exceptions](/use-cases/billing-exceptions).
+
+The same change in a hospital network can trigger consultation duties under enterprise agreements. Those duties apply when admin roles change. Plan that time before the agent goes live.
+
+## Evidence and limits
+
+The shape is well supported. Microsoft treats an AI centre of excellence as a stage that hands delivery to platform teams (26 June 2026) [vendor]. AWS ends its cloud centre of excellence phases in a supporting role [vendor]. BCG keeps a central hub that monitors, enables and governs (25 August 2026). DORA ties results to platform quality, not to a team label.
+
+Every size, threshold, time period and funding term here is this guide's judgement. No firm publishes a chargeback model or exit tests for a central AI team. No controlled study links any team structure to results. Most outcome figures in this field are self-reported by firms that sell the service. The Gartner figure is a prediction, not a measurement. The Telstra case is one organisation's account.
+
+Microsoft's centre of excellence guidance changes often. Check it again each quarter.
+
+## Next step
+
+Check where you stand with [the readiness assessment](/library/frameworks/readiness-assessments). Then run the weekly loop on [Operate](/operate).
+
+<details>
+<summary>The research behind this page</summary>
+
+- Microsoft Cloud Adoption Framework, [AI centre of excellence](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/ai/center-of-excellence), updated 26 June 2026 [vendor]
+- Microsoft Cloud Adoption Framework, [Shared management operating model](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/plan/shared-management-operating-model), read October 2026 [vendor]
+- AWS Prescriptive Guidance, [Cloud centre of excellence phases](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-center-of-excellence/ccoe-phases.html), read October 2026 [vendor]
+- AWS Well-Architected, [Cloud operations and platform enablement](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/cloud-operations-and-platform-enablement.html), read October 2026 [vendor]
+- BCG, [Why companies need a centralised AI hub](https://www.bcg.com/publications/2026/why-companies-need-centralized-ai-hub), 25 August 2026
+- BCG, [Design your company for AI](https://www.bcg.com/publications/2026/design-your-company-for-ai-not-ai-for-your-company), 23 April 2026
+- BCG, [How tech leaders must reinvent for the AI era](https://www.bcg.com/publications/2026/how-tech-leaders-must-reinvent-for-the-ai-era), 9 June 2026
+- DORA, [Platform engineering](https://dora.dev/capabilities/platform-engineering/), updated 12 January 2026
+- DORA, [Streamlining change approval](https://dora.dev/capabilities/streamlining-change-approval/), read October 2026
+- UTS Human Technology Institute, [Telstra AI governance case study](https://www.uts.edu.au/research/centres/human-technology-institute/resources/contentassets/hti_aicgp-case-study_telstra-2026_f.pdf), May 2026
+- Tian Pan, [When the AI centre of excellence becomes the bottleneck](https://tianpan.co/blog/2026-07-02-when-the-ai-center-of-excellence-becomes-the-bottleneck), 2 July 2026
+- Gartner, [Prediction on enterprises abandoning vendor-built agentic AI](https://www.gartner.com/en/newsroom/press-releases/2026-09-29-gartner-predicts-70-percent-of-enterprises-will-abandon-agentic-ai-built-by-vendor-forward-deployed-engineering-by-2028), 29 September 2026
+- EY, [Agentic AI token costs and agent economics](https://www.ey.com/en_us/insights/ai/agentic-ai-token-costs), 1 June 2026
+- martinfowler.com, [The advice process at Xapo Bank](https://martinfowler.com/articles/xapo-architecture-experience.html), 18 July 2023
+- Gregor Hohpe, [Organizing architecture](https://architectelevator.com/architecture/organizing-architecture/), 2021
+- Forrester, [Will AI eliminate enterprise architects?](https://www.forrester.com/blogs/will-ai-eliminate-enterprise-architects/), 18 September 2026
+- The Open Group, [Eagle AI assistant](https://blog.opengroup.org/2025/11/26/introducing-the-open-group-eagle-ai-assistant), 26 November 2025
+- [Operating model findings](/library/layers/r13-operating-model/findings), the layer research behind the supervision numbers
+- Healthcare estate research, 15 October 2026: consultation duties under enterprise agreements when admin roles change. Utilities estate research, 15 October 2026: billing operations with team leads and QA sampling.
+
+</details>

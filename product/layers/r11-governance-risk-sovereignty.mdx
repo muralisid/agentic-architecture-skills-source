@@ -1,102 +1,126 @@
 ---
 title: "Governance, risk and sovereignty"
 icon: "Landmark"
-description: "Every agent sits on an official register with a named owner and a risk tier, the records kept grow with the risk, and any agent can be stopped fast."
+description: "What the governance layer must provide for agents: one official register with a named sponsor and risk tier for every agent, records that grow with risk, a tested stop, and data that runs only where it may."
+position: "Reference design for this layer, built from dated public sources. Regulatory dates move often. Check them against the primary texts before relying on them."
 hero_figure: "layer-11-hero"
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [layers, lifecycle, risk, autonomy, enforcement, zones, r12, concern-matrix]
 ---
 
-<PlainTerms>
-This page covers how the organisation stays accountable for its <Term k="agent">agents</Term>. That means who owns each one, how risky it is, what records are kept, and how fast it can be stopped. New laws in Europe, India, the United States and China set the deadlines, and several of those deadlines have moved recently. The approach: keep a basic set of records for every agent. Keep a much deeper set for the few that could fall under the strictest rules. The one thing to remember: an agent with nobody accountable for it and no records is a liability, whatever the law says this year.
-</PlainTerms>
+The governance, risk and sovereignty layer (R11) is one of [the fourteen layers](/layers) you already own. It is where the organisation answers for what it runs. Today it holds risk tools, obligations registers, regulator reporting and safety governance. When agents arrive, the organisation must answer for them too. So this layer must provide four things for every agent. Each agent sits on [one official register](/architecture/agent-lifecycle#the-registry-record), with a named sponsor, a named owner and a [risk tier](/architecture/risk-profile). Each agent keeps an audit trail, and agents that could count as high-risk keep fuller records. Any agent can be stopped fast, and a serious incident is reported on time. Each agent runs only where its data may be processed.
 
-## Target state
+## What sits in this layer today
 
-**In short:** Every agent is on an official register with a named <Term k="owner">owner</Term> and a risk tier, and the records kept grow with the risk.
+Every organisation in the site's industries already runs this layer for its people and its plant. The table shows what the research found in four typical estates. Vendors in brackets are examples, not a claim about any named organisation.
 
-A governed agent estate. The <Term k="agent registry">agent registry</Term> (the official list of agents) is the compliance inventory, aligned with the registration machinery of the <Term k="eu ai act">EU AI Act</Term>. Every agent carries two ratings. The <Term k="autonomy">autonomy</Term> level says how much it may do without a person. The classification-plausibility tier says how likely it is to count as high-risk under the Act. The evidence kept follows the tier. There is an <Term k="evidence floor">evidence floor</Term> for all production agents. Agents that could plausibly classify as high-risk get instrumentation at the level Article 12 of the Act requires. <Term k="kill switch">Kill switches</Term> and incident runbooks are wired before autonomy expands. <Term k="provenance">Provenance</Term>-carrying <Term k="grounding">grounding</Term> makes answers citable by construction: each answer carries the record of where its information came from. Board reporting is fed from the registry and live <Term k="telemetry">telemetry</Term>, not bespoke decks. <Term k="sovereignty">Sovereignty</Term> (where data may be stored and processed) is satisfied by routing each deployment by its <Term k="classification">data classification</Term>. This <Term k="layer">layer</Term> is where accountability for the whole agent estate sits.
+| System category | Electricity distributor | Water utility | Hospital network | Generator, oil and gas, or miner |
+|---|---|---|---|---|
+| Risk and compliance tool (GRC) | A GRC tool (ServiceNow IRM, Archer, Protecht) | A GRC tool | A GRC tool or risk register (Camms, ServiceNow IRM, RiskMan) | A risk register and GRC tool (ServiceNow IRM, SAI360, Archer) |
+| Obligations register | Billing, life support, hardship, service payment and vegetation clearance duties | Billing, service and drinking water quality duties | Accreditation duties against the national standards | Market rules, emissions reporting, joint venture duties, and royalties for miners |
+| Regulator reporting | The AER (Australia), or the Commerce Commission and Electricity Authority (New Zealand) | The economic regulator (ESC in Victoria, IPART in NSW), the health regulator and the environment regulator. Taumata Arowai in New Zealand | Accreditation against the NSQHS Standards (Australia) or Nga Paerewa (New Zealand) | Market compliance (AER, AEMO). Emissions reporting (NGER). JORC Code and stock exchange disclosure for miners |
+| Safety governance | Electricity safety management scheme and bushfire mitigation plan (Victoria) | Drinking water quality duties, reported to the health regulator | Clinical governance committees and a quality and safety unit | Process safety, safety cases and management of change. Critical control management and tailings governance for miners |
+| Privacy and data custody | Privacy Act | Privacy Act (typical, unsourced) | A privacy officer and data custodians. Maori data sovereignty (Te Mana Raraunga) and Aboriginal and Torres Strait Islander data sovereignty (Maiam nayri Wingara) | Not in the research |
+| AI governance | An AI policy or committee in some | An AI policy or committee in some | An AI governance group. State AI assurance frameworks (NSW, Queensland). The NZ Algorithm Charter | Regulator guidance: the AER bulletin on automated bidding (5 August 2026) and Ofgem's ethical AI guidance (13 May 2026) |
+
+Standards and interfaces: ISO 31000 for risk and ISO 37301 for compliance. AS/NZS 10002:2022 covers complaints, and ISO/IEC 42001 covers AI management. Hospitals add the NSQHS Standards and Nga Paerewa NZS 8134:2021. Energy and mining add ISO 45001, the ICMM critical control guide, GISTM and IOGP 510. The full estates are on the [utilities](/use-cases/utilities), [healthcare](/use-cases/healthcare) and [energy](/use-cases/energy) pages.
+
+Two gaps stand out. The hospital research looked for an agent register and found none. In utilities, most duties sit in the obligations register. Few are linked to the system steps that meet them.
+
+## What agents add
+
+Agents need the same accountability as people, recorded in one place. This layer adds a register, two levels of evidence, answers that carry their sources, and placement by data sensitivity. Board reports draw on the register and on live data from [observability and FinOps (R12)](/layers/r12-observability-and-finops).
 
 <GuideFigure id="layer-11-hero" fullWidth />
 
-<TeachingIllustration src="/images/layers/r11-register-labeled-v1.webp" alt="An official agent register records each agent's owner, purpose, risk tier, data classification, deployment location, model version, evidence bundle and kill switch before approval, monitoring or stopping." title="The agent register is the operational compliance inventory" caption="Registration binds an agent to a human owner, a declared purpose, a risk posture, evidence and a tested stop mechanism. An unregistered agent has no authorised route into production." />
-
-| Component | Responsibility | Control it hosts | Where it runs |
-|---|---|---|---|
-| Agent registry | Compliance inventory: owner, purpose, risk tier, tools and credentials, model and prompt versions | Alignment with Article 49/71 registration; named accountable owner; tier assignment | Governance platform or the catalogue estate you already run |
-| Tiering and gates | Assign an autonomy level and a classification-plausibility tier per agent | Observe, Advise, Act-with-approval and Autonomous gates; documented Article 6(4) self-assessments | Governance workflow tooling |
-| Evidence store | Retain per-action logs, oversight records, documentation | Six-month log retention floor (Article 26); tamper-evident storage; Annex IV documentation for the plausible tier | SIEM (security information and event management) and log estate plus GRC (governance, risk and compliance) evidence storage |
-| Provenance-carrying retrieval | Store chunks and sources alongside embeddings | Citation by construction; source provenance on every grounded claim | The retrieval estate |
-| Kill switch and incident machinery | Stop agents fast; report serious incidents | Article 14(4)(e) stop capability; Article 73 timelines; tested runbooks | Agent platform and control-tower tooling |
-| Regulatory watch | Track milestones; re-verify dated facts | Quarterly re-verification rhythm; board reporting from live data | Compliance function, fed from registry telemetry |
-
-## Mechanisms
-
 ### The registry as compliance inventory
 
-**In short:** The agent list doubles as the compliance inventory the law expects, with a named owner for every entry.
+Every agent has one entry on the agent register. The entry records the sponsor, the owner, the purpose and the risk tier. It also records the tools, the credentials, and the model and prompt versions. [The agent lifecycle](/architecture/agent-lifecycle) keeps the entry current, from register to retire. Its [registry record](/architecture/agent-lifecycle#the-registry-record) lists every field.
 
-Each registry entry records owner, purpose, risk tier, <Term k="tools">tools</Term> and credentials, and <Term k="model">model</Term> and <Term k="prompt">prompt</Term> versions. This is a filing duty, not hygiene. The Digital Omnibus kept registration (in simplified form) even for systems self-assessed out of high-risk under **Article 6(3)**, and the registry aligns with the Act's **Article 49/71** registration machinery. Around the registry sits the minimum viable agent governance pattern. It has a registry, a named accountable owner, autonomy labels, approval gates, per-action audit, a kill switch, and an incident runbook. The pattern converges across sources. The autonomy labels often used, **Observe, Advise, Act-with-approval and Autonomous**, are Gartner's agent autonomy levels ([Gartner, 26 May 2026](https://gcom.pdo.aws.gartner.com/en/newsroom/press-releases/2026-05-26-gartner-says-applying-uniform-governance-across-ai-agents-will-lead-to-enterprise-ai-agent-failure)), not risk tiers. They mix a read-or-write line with an approval line. This guide maps them to A0 to A5 on [the risk profile](/architecture/risk-profile). The standards scaffolding is young but real. **ISO 42001**, the International Organization for Standardization's AI management standard, has about 350 certified organisations; no official register exists, so that count is flagged. **ISO 42005** covers impact assessment (May 2025). **ISO 42006** sets requirements for certification bodies (Jul 2025). The Cloud Security Alliance (CSA) has published an agentic AI profile of the NIST AI Risk Management Framework (AI RMF), from the US National Institute of Standards and Technology.
+The register is also a filing duty. It lines up with the EU AI Act's registration articles (49 and 71). The Digital Omnibus kept a simpler registration for systems self-assessed out of high-risk under Article 6(3). Australia's federal policy asks for an internal register shared every six months.
 
-### The two-tier evidence posture
+Sources agree on a small set of controls around the register. They are a named owner, autonomy labels and approval gates. They also include a log of every action, a <Term k="kill switch">kill switch</Term> and an incident runbook. The autonomy labels follow [the autonomy contract](/architecture/autonomy-contract), from manual (A0) to governed lights-out (A5).
 
-**In short:** There are two levels of records (evidence tiers, not risk tiers). Every production agent keeps a basic set of records, and agents that might count as high-risk under EU law keep much more.
+<TeachingIllustration src="/images/layers/r11-register-labeled-v1.webp" alt="An official agent register records each agent's named owner, purpose, risk tier, data classification, deployment location, model and version, evidence bundle and kill switch. A registered agent moves on to approve, monitor and stop. An agent that is not on the register does not run." title="If an agent is not on the register, it does not run" caption="Registration binds an agent to a named owner, a purpose, a risk tier, evidence and a tested stop. An agent that is not registered has no route into production." />
 
-<TeachingIllustration src="/images/layers/r11-risk-evidence-labeled-v1.webp" alt="Every production agent keeps owner, purpose, sources, actions and incident records; potentially high-risk agents add technical, data-governance, oversight, robustness and post-market evidence, while classification routes deployment." title="Evidence and deployment controls grow with impact" caption="Baseline records apply to every production agent. Higher-risk or higher-autonomy use adds a much stronger evidence file, and data classification independently determines whether deployment is public, restricted, sovereign or air-gapped." />
+### Two evidence levels
 
-The floor applies to **all** production agents: a registry entry, **per-action audit logs retained for at least six months**, named oversight, and provenance-carrying grounding. The six-month retention is the deployer duty in Article 26, which also requires competent oversight and informing workers. **Instrumentation at the level Article 12 requires applies to the tier that could plausibly classify as high-risk.** That tier includes systems that touch employment, credit, or essential services, and Copilot-class multi-purpose systems under the draft presumption. The honest line, stated plainly: no regulator or auditor has endorsed <Term k="retrieval">retrieval</Term> provenance, the source trail kept by retrieval, as satisfying Article 12. The demand side is already institutional. Forty percent of boards assign AI oversight to a committee, up from 11 percent a year earlier (ISS, Institutional Shareholder Services, 2026). Sixty-two percent reserve agenda time (NACD, the National Association of Corporate Directors, 2026). Only 28 percent of internal-audit leaders are confident they can audit AI risks, and only 21 percent of organisations report a mature agentic governance model (Deloitte). Gartner finds that organisations which operationalise AI TRiSM (trust, risk and security management) are 3.4 times as likely to report high governance effectiveness.
+Records grow with risk, in two evidence levels. The first level is the <Term k="audit trail baseline">audit trail baseline</Term>. It applies to every production agent and has four parts:
 
-### Provenance-carrying grounding, mechanically
+- a register entry;
+- a log of every action, kept for at least six months;
+- a named person who oversees the agent;
+- answers that carry their sources.
 
-**In short:** Store each retrieved passage with its source, so every answer can show where it came from without detective work afterwards.
+The six-month retention is the deployer duty in Article 26 of the EU AI Act. That article also asks for competent oversight and for workers to be told.
 
-Retrieval stores <Term k="chunks">chunks</Term> (the pieces documents are split into) and their sources alongside the <Term k="embeddings">embeddings</Term> (the numeric fingerprints used for search). The chain then holds by construction rather than by reconstruction: source, chunk with its source pointer, embedding, retrieval, claim, citation. It is **necessary, not sufficient**. Action and decision logs, capture of oversight interventions, retention and integrity controls, and Annex IV technical documentation are deliberate additions, not by-products. Evidence from 2026 converges. Compliance-by-construction argument graphs pair grounded retrieval with a provenance ledger in the W3C PROV standard, from the World Wide Web Consortium (arXiv 2604.04103, Apr 2026). Explicit-provenance agent architectures are linked to AI Act accountability (arXiv 2605.17169, May 2026). <Term k="harness">Harness</Term>-engineering work addresses auditability (arXiv 2607.08028, Jul 2026). NIST AI 600-1, the US standards body's profile for generative AI, centres provenance. Auditor-side demand has an incident behind it: a Big Four firm partially refunded the Australian government over fabricated citations (Oct 2025). Calling this the highest-leverage single evidence component is the authors' position.
+The second level adds EU AI Act record keeping (Article 12). It applies to agents that could count as high-risk. That includes agents that touch employment, credit or essential services. Under the draft guidelines, it also includes broad multi-purpose assistants.
 
-### Regulatory geometry, with dates
+No regulator or auditor has yet said that a retrieval source trail meets Article 12. So the second level adds more on purpose. It keeps logs of actions and decisions, and records of each time a person stepped in. It also protects those records from change and keeps the technical documentation the Act describes (Annex IV).
 
-**In short:** The EU moved its high-risk AI deadlines back, but transparency duties already apply and the draft high-risk rules read broadly.
+<TeachingIllustration src="/images/layers/r11-risk-evidence-labeled-v1.webp" alt="Every production agent keeps owner, purpose, sources, actions and incident records. Agents that could be high-risk add a technical file, data governance, human oversight, accuracy and robustness, and post-market monitoring. In the middle, data classification decides whether the agent runs in a public, restricted, sovereign or air-gapped estate. Higher autonomy and higher impact require stronger evidence." title="Evidence grows with risk" caption="The audit trail baseline applies to every production agent. Agents that could be high-risk also keep EU AI Act records. Data classification decides, separately, where the agent runs." />
 
-The Digital Omnibus moved the high-risk regime. The Council gave final approval on 29 Jun 2026, and publication in the Official Journal (OJ) was reported on 24 Jul 2026; verify against EUR-Lex. **Annex III stand-alone systems moved from 2 Aug 2026 to 2 Dec 2027. Annex I embedded systems moved to 2 Aug 2028.** Two things are live since **2 Aug 2026** regardless. The first is **Article 50** transparency: disclosing AI interaction and marking synthetic content, with a grace period to 2 Dec 2026 for pre-existing systems. The second is the Commission's full enforcement powers over general-purpose AI (GPAI) models: documentation requests, model evaluation, and fines. The cause of the delay was standards slip. The European standards bodies' joint committee, CEN-CENELEC JTC 21, missed its deadline. Prioritised deliverables are promised for Q4 2026, and industry estimates more than 12 months of compliance work per standard. The draft classification guidelines (19 May 2026; consultation closed 23 Jul 2026; not final) tilt broad. They set a **materially-influence** test for employment tools. They add an **anti-splitting** rule: spreading functions across several tools does not evade classification. **Profiling is always high-risk.** Broadly marketed multi-purpose systems are **presumed** to encompass high-risk uses unless clearly excluded everywhere. **Article 25 flips deployers to providers** on rebranding, substantial modification, or repurposing. Customising and rebranding a general-purpose chatbot as an internal assistant likely triggers provider status (Freshfields). Enforcement capacity is thin: **9 of 27 member states** had fully designated authorities as of 17 Jun 2026 (sources disagree between 8 and 9). Finland was first with full powers (1 Jan 2026). No AI-Act-specific enforcement action against an enterprise is publicly reported as of Aug 2026.
+### Answers that carry their sources
 
-**Australia and Singapore, with dates.** Queensland's AI governance policy v2.0.0 has been mandatory for departments since August 2026. It requires AI governance based on ISO 38507 inside existing ICT, risk and security governance, and a Foundational AI Risk Assessment (FAIRA, Queensland's risk template) or an agreed equivalent across the lifecycle. The FAIRA framework page itself says non-mandated, an inconsistency to raise with the agency. The federal policy for responsible use of AI in government, version 2.0, took effect on 15 December 2025: an accountable official, a named owner per use case, an internal register shared with the Digital Transformation Agency every six months, and use-case impact assessments due by 15 December 2026 (the policy pages timed out for this guide and were read through search summaries). The Office of the Australian Information Commissioner's automated-decision transparency rule starts on **10 December 2026**: privacy policies must disclose computer programs that make, or substantially help make, significant decisions using personal information, and a human sign-off does not take a system out of scope when the program's output is a key factor. The Australian Prudential Regulation Authority's letter of 30 April 2026 adds no new rules; it points to its standards CPS 230 and CPS 234 and expects an AI inventory and ownership across the lifecycle. The Monetary Authority of Singapore issued final AI risk management guidelines on 7 October 2026, with 12 months to stand up governance, inventory and risk rating and 24 months for full implementation. It sets no agent-specific controls yet and points to Singapore's agentic AI framework (IMDA, version 1.5, 20 May 2026).
+<Term k="retrieval">Retrieval</Term> stores each passage with its source, next to its embedding. An embedding is the numeric fingerprint used for search. The chain then holds by design: source, passage, embedding, retrieval, claim and citation. Nobody has to rebuild it after an incident. The parsing and indexing work behind it sits in [agent data engineering (R14)](/layers/r14-agent-data-engineering).
 
-### The sovereignty map, dated
+A source trail is needed for audit, but it is not enough on its own. Action logs, oversight records and technical documentation still have to be added.
 
-**In short:** Data-location rules keep changing in the EU, India, the US and China, so the data's sensitivity decides where it runs.
+### Where the agent runs follows the data
 
-**EU Data Act**, applicable since 12 Sep 2025: cloud switching charges are cost-based now and **banned from 12 Jan 2027**. Audit contracts for auto-renewal traps. The proposed **Cloud and AI Development Act (CADA)** of 3 Jun 2026 introduces a **four-level cloud sovereignty framework** tied to public procurement. The EU provider share fell from roughly 29 percent to 15 percent across 2017 to 2022. EUCS (the EU cybersecurity certification scheme for cloud services) remains unresolved and may be superseded. **India**: the Digital Personal Data Protection (DPDP) Rules were notified on 13 Nov 2025 and are phased. Consent managers and enforcement start from 13 Nov 2026, with full effect on 13 May 2027. The Reserve Bank of India (RBI) runs ahead of the horizontal law with two documents. They are its FREE-AI report (Framework for Responsible and Ethical Enablement of AI, Aug 2025) and its draft Model Risk Management guidance (24 Jun 2026). **US state churn**: Colorado's act was repealed and replaced (Senate Bill 26-189 signed 14 May 2026, obligations from 1 Jan 2027). California's Senate Bill 53 (SB 53) and Assembly Bill 2013 (AB 2013) and Texas's TRAIGA (Texas Responsible Artificial Intelligence Governance Act) took effect on 1 Jan 2026. Federal pre-emption pressure comes via executive order. **China**: labelling rules for AI-generated content (AIGC) took effect 1 Sep 2025. The Anthropomorphic Interactive Services Measures took effect 15 Jul 2026. Draft agent-specific rules have circulated since May 2026. The architecture answer is **classification-routed deployment**: data classification determines region and estate, and sovereignty is increasingly satisfiable inside managed sovereign offerings.
+Sovereignty means rules on where data may be stored and processed. Those rules keep changing in the EU, India, the US and China. So the data's classification decides where each agent runs. The options are public, restricted, sovereign or air-gapped. [Infrastructure and compute (R01)](/layers/r01-infrastructure) builds the routing. Managed sovereign cloud offerings now cover more of these cases.
 
-### Kill switches and incident machinery
+## What must be true before an agent touches it
 
-**In short:** You must be able to stop any agent instantly and report serious incidents on time; test both before widening autonomy.
+An agent may not touch a live system until these hold. The register holds the facts. The checks run outside the model, at the tool gateway and the policy decision point. [Enforcement outside the model](/architecture/enforcement) shows where.
 
-The stop capability now exists in three forms. First, a product feature: **ServiceNow AI Control Tower** added real-time agent kill switches at Knowledge 2026 (May 2026) [vendor]. They cover Amazon Web Services (AWS), Azure, Google Cloud Platform (GCP), and Microsoft 365 (M365). Second, a draft regulatory mandate: **RBI's draft Model Risk Management guidance (24 Jun 2026)** asks for kill switches, human oversight, and risk-based model tiering across regulated entities; verify against rbi.org.in. Third, the EU hook: **Article 14(4)(e)**, the stop button. A capability gap stands. Governance platforms (OneTrust continuous monitoring and agent detection, Mar 2026 [vendor]; Credo AI, Holistic AI, and watsonx.governance [vendor]) govern inventory, risk workflow, policy mapping, and evidence storage. **Enforcement at runtime is still mostly a separate product.** Incident machinery is wired before autonomy expands: runbooks, drills, and reporting against the Article 73 timeline. The draft serious-incident guidance (Sep 2025) is oriented to single systems. The gap in <Term k="multi-agent">multi-agent</Term> incident reporting is a documented hole: emergent cross-agent incidents have no reporting frame (TechPolicy.Press, Jan 2026).
+- **Registered, with a sponsor and an owner.** The register entry and the agent's own identity exist before any credential. [The delegation chain](/architecture/delegation-chain) then traces each action to the person who asked.
+- **Scored and approved.** The risk tier comes from [the risk profile](/architecture/risk-profile). It sets who signs before release.
+- **An audit trail the agent cannot touch.** Logs are collected outside the agent and kept for at least six months.
+- **A tested stop.** A kill switch can stop the agent at once. It is wired and tested before autonomy grows. The EU AI Act asks for this stop (Article 14(4)(e)). [Agent platform (R07)](/layers/r07-agent-platform) and [security and identity (R10)](/layers/r10-security-and-identity) build it at several points.
+- **A drilled incident runbook.** Serious incidents are reported on the Article 73 timeline. Incidents that arise between several agents have no reporting frame yet.
+- **Placement by classification.** The region and estate follow the data's classification before go-live.
+- **Disclosure, and the rule for decisions about people.** People are told when they deal with AI (Article 50). [Experience and channels (R09)](/layers/r09-experience-and-channels) designs that notice. A named person decides any significant decision about a person. [The deterministic zones](/architecture/deterministic-zones) set out that rule and the formal records zone.
 
-## Design decisions
+### The dates that set the pace
 
-- **Broad vs narrow AI Act classification** ([CD-14](/decisions#cd-14)), a <Term k="cd">challenged default</Term> about how widely to assume the Act's high-risk rules apply. The answer is neither pole but a **risk-tiered evidence posture**. The legal current tilted narrow: the omnibus delivered what the Jul 2025 "Stop the Clock" letter from about 50 chief executives asked for, and the Commission had first refused. The interpretive current in practice tilts broad: materially-influence, anti-splitting, and the multi-purpose presumption. Enforcement is thin either way. So: the floor for all, and Article-12-grade records for the plausible tier. Re-verify on every regulatory milestone: final classification guidelines, first harmonised standards citations, first enforcement actions.
-- **Evidence-first, repositioned**: the argument no longer rests on the moved deadline. It stands on four legs. Lead time: more than 12 months of compliance work per standard, with standards landing in Q4 2026. Obligations already live: Article 50 and GPAI enforcement since Aug 2026. Sectoral regulators moving faster: RBI. And board expectations. Classification risk is a slow fuse with broad interpretation. That is the condition under which early evidence is cheap insurance rather than panic spend.
+In the EU, the Digital Omnibus moved the high-risk dates. Stand-alone high-risk systems (Annex III) now start on 2 December 2027. High-risk systems built into regulated products (Annex I) start on 2 August 2028. Two duties have applied since 2 August 2026. People must be told when they deal with AI, and synthetic content must be marked (Article 50). The Commission can also enforce the rules for general-purpose AI models. The draft classification guidelines read broadly. Rebranding or substantially changing a general-purpose tool can make you its provider (Article 25).
 
-## Cross-cutting concerns
+In Australia, the federal policy for AI in government has applied since 15 December 2025. It asks for an accountable official, a named owner per use case and a shared register. Use-case impact assessments are due by 15 December 2026. Queensland's AI governance policy has been mandatory for departments since August 2026. From 10 December 2026, privacy policies must disclose programs that make, or substantially help make, significant decisions about people. APRA expects an AI inventory and named ownership under its existing standards (30 April 2026). In Singapore, the Monetary Authority issued final AI risk guidelines on 7 October 2026. Firms have 12 months for governance, an inventory and risk ratings, and 24 months for the rest.
 
-| # | Concern | Treatment at this layer |
-|---|---|---|
-| C1 | Identity and access | Registry binds identity to owner, tier, and permitted scope; sponsor accountability |
-| C2 | Observability | Evidence telemetry (logs, oversight events) as a governance product; board reporting from live data |
-| C3 | Traceability and audit | The layer's core: retained logs, tamper-evident evidence, Annex IV-shaped documentation for the plausible tier |
-| C4 | Grounding | Provenance-carrying grounding as the citable-answer mechanism |
-| C5 | Impersonation | Article 50 disclosure duties, live now: humans know when they interact with AI; synthetic content marked |
-| C6 | Sovereignty | The dated map (Data Act, CADA, DPDP, US states, China); classification-routed deployment |
-| C7 | Privacy | GDPR (General Data Protection Regulation) and DPDP alignment of memory and evidence retention; worker-information duties |
-| C8 | Safety and oversight | Article 14 oversight design; kill switches (product, draft mandate, Act hook); fundamental rights impact assessment (FRIA) where applicable |
-| C9 | Cost | Compliance cost tiered to classification plausibility; provider-flip avoidance as a design constraint |
-| C10 | Resilience | Incident reporting machinery on the Article 73 timeline; multi-agent incident gap acknowledged |
+India, several US states and China set their own dates. The research block below lists every date in one table.
 
-**Next step:** read the next layer, [R12 Observability and FinOps](/layers/r12-observability-and-finops).
+## Choices and their verdicts
+
+Each choice below is the common choice, tested against the simplest credible alternative. The full records are in [the decision catalog](/decisions).
+
+- **How widely the EU AI Act's high-risk rules apply** ([decision record CD-14](/decisions#cd-14)). Do not bet on a broad or a narrow reading. Keep the audit trail baseline for every agent, and EU AI Act record keeping for agents that could be high-risk.
+- **Wait for the moved deadlines, or start the records now.** Start now. Each standard needs more than a year of work, some duties already apply, and boards already ask.
+
+## Concerns this layer must honour
+
+This layer owns three of [the ten cross-cutting concerns](/architecture/concern-matrix) and carries duties for three more.
+
+- **Traceability and audit (owned here).** Records are kept, protected from change, and shaped for EU AI Act documentation where needed.
+- **Sovereignty and residency (owned here).** Data classification sets the region and the estate for every agent.
+- **Privacy (owned here).** Memory and record retention follow privacy law. Workers are told when agents are used.
+- **Impersonation and authenticity.** People know when they deal with AI, and synthetic content is marked.
+- **Safety and oversight.** Every agent has a tested stop and a design for human oversight.
+- **Resilience.** Incident reporting meets the Article 73 timeline.
 
 ## Evidence and limits
 
-This layer's incident record is regulatory rather than a list of software vulnerabilities (CVEs). The operative facts are two. A Big Four firm gave a partial refund over fabricated citations (Oct 2025). No AI-Act-specific enforcement action against an enterprise has been publicly reported as of Aug 2026. The Australian and Singapore items added in October 2026 were read through search summaries where the government pages timed out (the federal policy, the FAIRA conflict) and through law-firm summaries (the automated-decision rule); verify against the primary texts before relying on them. Dates in flux carry flags. The omnibus OJ publication (reported 24 Jul 2026) and the provisional-agreement date show discrepancies across sources, as does the 8-versus-9 count of ready member states; verify against EUR-Lex. Vendor-published capability claims (ServiceNow, OneTrust, Credo AI, Holistic AI, watsonx.governance) carry [vendor] status. So do the analyst figures (Gartner: the governance-platform market passing $1 billion by 2030; the 3.4 times effectiveness multiple). Board and audit percentages are survey-based (ISS, NACD, Deloitte). The ISO 42001 count has no official register behind it. Compliance-cost figures are held to order of magnitude (tens of thousands for a deployer versus hundreds of thousands for a provider) because sourcing is weak. The guide declines to publish exact ranges. The provenance thesis is the authors' position, with converging support and no auditor or regulator endorsement. Re-verify before relying on this page: the final omnibus text, final classification guidelines, final Article 73 guidance, and the first JTC 21 standards citations in the OJ (the event that starts the compliance clock). Also re-verify first enforcement actions (checked quarterly), RBI model risk management finalisation, CADA's legislative progress, and China's agent-rules finalisation.
+The EU dates and article numbers come from the Act, the Digital Omnibus and dated legal commentary. Some dates still differ between sources. Check the final texts on EUR-Lex before relying on them. Some Australian items were read through search summaries or law-firm notes. The government pages timed out.
+
+No regulator or auditor has endorsed a retrieval source trail as meeting EU AI Act record keeping. This guide recommends it as the most useful single piece of evidence. Recent research points the same way, but it remains a recommendation.
+
+Vendor capability claims carry [vendor]. Board and audit figures come from surveys. The sources on compliance costs are weak. So costs are given only as orders of magnitude. No enforcement action under the AI Act against an enterprise had been made public as of August 2026.
+
+## Next step
+
+See this layer at work in [collecting and checking compliance evidence](/use-cases/compliance-evidence). Reading the layers in order? The next one is [observability and FinOps (R12)](/layers/r12-observability-and-finops).
 
 <details>
 <summary>The research behind this page</summary>
@@ -105,9 +129,48 @@ This layer's incident record is regulatory rather than a list of software vulner
 - [Sources](/library/layers/r11-governance-risk-sovereignty/sources)
 - [Products named for orientation](/architecture), on the one-page wall chart
 
+**Dates by place.** Status as of 15 October 2026. Check each against the primary text.
+
+| Place | Date | What applies |
+|---|---|---|
+| EU | 29 June 2026 | The Council gave final approval to the Digital Omnibus. Publication in the Official Journal was reported on 24 July 2026. Sources disagree on this and on the provisional-agreement date. Verify on EUR-Lex. |
+| EU | 2 August 2026 | Article 50 transparency applies. Systems already on the market have until 2 December 2026. The Commission's enforcement powers over general-purpose AI models apply: documentation requests, model evaluation and fines. |
+| EU | 2 December 2027 | Stand-alone high-risk systems (Annex III). Moved from 2 August 2026. |
+| EU | 2 August 2028 | High-risk systems built into regulated products (Annex I). |
+| EU | 19 May 2026 | Draft classification guidelines. Consultation closed 23 July 2026. Not final. They add a materially-influence test for employment tools and an anti-splitting rule. Profiling is always high-risk. Broadly marketed multi-purpose systems are presumed to include high-risk uses. |
+| EU | 17 June 2026 | 9 of 27 member states had fully designated authorities. Sources disagree between 8 and 9. Finland was first with full powers, on 1 January 2026. |
+| EU | Q4 2026 | Priority standards from CEN-CENELEC JTC 21 are promised, after a missed deadline. Industry expects more than 12 months of compliance work per standard. |
+| EU | 12 September 2025 | The Data Act applies. Cloud switching charges are cost-based now and banned from 12 January 2027. Audit contracts for auto-renewal traps. |
+| EU | 3 June 2026 | The proposed Cloud and AI Development Act (CADA) sets four cloud sovereignty levels, tied to public procurement. EUCS, the EU cloud certification scheme, is unresolved and may be superseded. |
+| Australia | 15 December 2025 | Federal policy for responsible use of AI in government, version 2.0. An accountable official and a named owner per use case. An internal register, shared with the Digital Transformation Agency every six months. |
+| Australia | 15 December 2026 | Use-case impact assessments due under the federal policy. |
+| Australia (Queensland) | August 2026 | AI governance policy v2.0.0, mandatory for departments. Governance based on ISO 38507, and a Foundational AI Risk Assessment (FAIRA) or an agreed equivalent across the lifecycle. The FAIRA framework page itself says non-mandated. Raise that with the agency. |
+| Australia | 30 April 2026 | APRA letter. No new rules. It points to CPS 230 and CPS 234 and expects an AI inventory and ownership across the lifecycle. |
+| Australia | 10 December 2026 | OAIC automated-decision transparency rule. Privacy policies must disclose programs that make, or substantially help make, significant decisions using personal information. A human sign-off does not take a system out of scope when the program's output is a key factor. |
+| Singapore | 7 October 2026 | MAS final AI risk management guidelines. 12 months for governance, inventory and risk rating. 24 months for full implementation. No agent-specific controls yet. It points to the IMDA agentic AI framework, version 1.5 (20 May 2026). |
+| India | 13 November 2025 | DPDP Rules notified, in phases. Consent managers and enforcement from 13 November 2026. Full effect on 13 May 2027. |
+| India | August 2025 and 24 June 2026 | The RBI's FREE-AI report (Framework for Responsible and Ethical Enablement of AI, August 2025). Its draft Model Risk Management guidance (24 June 2026) asks for kill switches, human oversight and risk-based grading of models. Verify on rbi.org.in. |
+| US states | 1 January 2026 | California SB 53 and AB 2013, and Texas TRAIGA, took effect. Pressure for federal pre-emption comes through an executive order. |
+| US (Colorado) | 14 May 2026 | Colorado's act repealed and replaced (Senate Bill 26-189). Obligations from 1 January 2027. |
+| China | 1 September 2025 | Labelling rules for AI-generated content took effect. |
+| China | 15 July 2026 | The Anthropomorphic Interactive Services Measures took effect. Draft agent-specific rules have circulated since May 2026. |
+
+**More on the EU AI Act.** Article 25 turns a deployer into a provider on rebranding, substantial modification or repurposing. Rebranding a general-purpose chatbot as an internal assistant likely triggers provider status (Freshfields). The Omnibus delivered what the July 2025 "Stop the Clock" letter from about 50 chief executives asked for. The Commission had first refused. The delay came from standards slipping. The draft serious-incident guidance (September 2025) is written for single systems. The gap for incidents between agents is documented (TechPolicy.Press, January 2026).
+
+**Standards.** ISO/IEC 42001, the AI management standard, has about 350 certified organisations. No official register exists. Treat that count with care. ISO/IEC 42005 covers impact assessment (May 2025). ISO/IEC 42006 sets requirements for certification bodies (July 2025). The Cloud Security Alliance has published an agentic AI profile of the NIST AI Risk Management Framework.
+
+**Board and audit surveys.** 40 percent of boards assign AI oversight to a committee, up from 11 percent a year earlier (ISS, 2026). 62 percent reserve agenda time (NACD, 2026). Only 28 percent of internal-audit leaders are confident they can audit AI risks (Deloitte). Only 21 percent of organisations report a mature agentic governance model (Deloitte). Organisations that run AI trust, risk and security management are 3.4 times as likely to report effective governance (Gartner) [vendor]. Gartner expects the governance-platform market to pass $1 billion by 2030 [vendor].
+
+**Autonomy labels.** Gartner names four agent autonomy levels: observe, advise, act with approval, and autonomous (26 May 2026, [press release](https://gcom.pdo.aws.gartner.com/en/newsroom/press-releases/2026-05-26-gartner-says-applying-uniform-governance-across-ai-agents-will-lead-to-enterprise-ai-agent-failure)). They mix a read-or-write line with an approval line. [The risk profile](/architecture/risk-profile) maps them to the autonomy levels A0 to A5.
+
+**Provenance research.** Compliance-by-construction argument graphs pair grounded retrieval with a provenance ledger in the W3C PROV standard (arXiv 2604.04103, April 2026). Explicit-provenance agent designs are linked to AI Act accountability (arXiv 2605.17169, May 2026). Harness-engineering work addresses auditability (arXiv 2607.08028, July 2026). NIST AI 600-1, the US profile for generative AI, centres provenance. A Big Four firm partly refunded the Australian government over fabricated citations (October 2025).
+
+**Stop and governance products.** ServiceNow AI Control Tower added real-time agent kill switches at Knowledge 2026 (May 2026) [vendor]. They cover AWS, Azure, Google Cloud and Microsoft 365. OneTrust added continuous monitoring and agent detection (March 2026) [vendor]. Credo AI, Holistic AI and watsonx.governance govern inventory, risk workflow, policy mapping and evidence storage [vendor]. Enforcement at runtime is still mostly a separate product.
+
+**Sovereignty.** The EU provider share of cloud fell from roughly 29 percent to 15 percent between 2017 and 2022.
+
+**Refusals.** Compliance-cost figures are held to orders of magnitude: tens of thousands for a deployer, hundreds of thousands for a provider. Sourcing is weak. The guide publishes no exact ranges.
+
+**Re-verify.** The final Omnibus text. The final classification guidelines. The final Article 73 guidance. The first JTC 21 standards cited in the Official Journal. That citation starts the compliance clock. The first enforcement actions, checked quarterly. The RBI's final model risk guidance. CADA's progress. China's final agent rules.
+
 </details>
-
-
-## See this layer at work
-
-Follow the proposed [compliance evidence](/use-cases/compliance-evidence) example. Compare the required capability with the systems already in place, then use the [architecture map](/architecture) to inspect neighboring responsibilities.

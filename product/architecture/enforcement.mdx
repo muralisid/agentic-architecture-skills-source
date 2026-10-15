@@ -1,114 +1,113 @@
 ---
 title: "Enforcement outside the model"
 icon: "ShieldCheck"
-description: "Why the rules that bind an agent are enforced outside the AI model, where those controls sit, what they cost, and the measured limits of softer filters."
+description: "A rule written in a prompt is a request. The same rule checked by a separate system is a control. Three places enforce outside the model: the gateway, the policy decision point, and fixed rules promoted from what the agent learned."
+position: "The three enforcement points follow 2026 guidance from regulators and security agencies. The ten categories and the tier matrix are expert judgement. No study links them to incident rates."
+lastReviewed: "2026-10-15"
+concepts: [capabilities, zones, delegation, flywheel, risk, r03, lifecycle]
 ---
 
-<PlainTerms>
-An AI model can be talked into things, because the instructions it follows and the content it reads arrive through the same channel. So the rules that matter, such as who may access what and which actions need approval, are enforced by separate components that the model cannot argue with. This page shows the three places those controls live, and why AI-based filters are an early warning rather than the lock on the door. The one thing to remember: a rule the model merely reads is advice; a rule enforced outside the model is a control.
-</PlainTerms>
+A rule written in a prompt is a request. The model may follow it, or a crafted document may talk it out of it. The same rule, checked by a separate system the model cannot argue with, is a control. So the rules that bind an agent are enforced outside the model, in three places. The first is the gateway that every tool call passes through. The second is the policy decision point, which says yes or no to each consequential action. The third is a set of fixed rules promoted from what the agent learned, after testing and approval. Two of [the seven capabilities](/architecture/system-view) an agent platform provides do this work: the tool gateway, and identity and policy.
 
-## Why enforcement must sit outside the model
+<TeachingIllustration src="/figures/architecture/enforcement-points-and-guardrails.svg" mobileSrc="/figures/architecture/enforcement-points-and-guardrails-mobile.svg" expandable title="Enforcement points and guardrails" alt="A tool call passes from the agent through the gateway, which is enforcement point 1. It then passes the policy decision point, enforcement point 2, and reaches the tool. Enforcement point 3 is a learned rule. It lands as policy-as-code only after tests and human approval. A ring shows the ten guardrail categories, marked D for deterministic, M for model-based and H for hybrid. Seven are deterministic. Input, output and monitoring also use model checks. A strip shows what Tier 1 (basic), Tier 2 (enhanced) and Tier 3 (strict) add. It also shows what the agent can do that switches categories on." caption="The three enforcement points are places on the path, not risk tiers. A model-based check may warn or block. It never stands alone between an agent and an irreversible effect." />
 
-**WHY:** The model receives instructions and untrusted content through the same language channel, so its behaviour can be manipulated by what it reads. A prompt can express intent, but it cannot guarantee authorization. AI guardrails remain useful detectors, but measured bypass rates and their latency make them the wrong final decision-maker for consequential actions.
+## What a model can be talked into
 
-**WHAT:** Enforce at three points outside the model. **Enforcement point 1: the gateway** controls tool reachability, identity exchange, credentials, rate limits and logging. **Enforcement point 2: a deterministic policy decision point** says yes or no to consequential actions. **Enforcement point 3: learned rules become real only after testing, human approval and promotion into policy-as-code outside the model.** Keep guardrails as advisory detection and content-policy components.
-
-<TeachingIllustration src="/figures/architecture/enforcement-points-and-guardrails.svg" mobileSrc="/figures/architecture/enforcement-points-and-guardrails-mobile.svg" expandable title="Enforcement points and guardrails" alt="A tool call passes from the agent through the gateway, enforcement point 1, and the policy decision point, enforcement point 2, to the tool. Enforcement point 3 is a learned rule that lands as policy-as-code after tests and human approval. A ring shows the ten guardrail categories marked D, M or H. Seven are deterministic. Input, output and monitoring also use model checks. A strip shows what Tier 1, Tier 2 and Tier 3 add, and which capabilities switch categories on." caption="The three enforcement points are places on the path, not risk tiers. A model-based check may warn or block. It never stands alone between an agent and an irreversible effect." />
-
-## The premise
-
-**In short:** The model's behaviour can be manipulated through what it reads, so behaviour cannot be the foundation of a control.
-
-An <Term k="agent">agent</Term>'s behaviour is the output of a <Term k="model">model</Term>, and the model's inputs can manipulate it. That makes behaviour the wrong foundation for a control. A model processes commands and content as one undifferentiated stream of text (token-uniform processing), so training alone cannot teach it to keep the two apart. Without a control that sits outside the model, authorization turns into a hunt for the next exploit. EchoLeak proved the class. It is catalogued as CVE-2025-32711 (Common Vulnerabilities and Exposures) and scored 9.3 on the 10-point Common Vulnerability Scoring System (CVSS). It exfiltrated data, pulling it out of the organisation through a <Term k="retrieval">retrieval</Term> agent without the user clicking anything, working entirely in natural language. So enforcement lives outside the model, at three enforcement points.
+A <Term k="model">model</Term> reads its instructions and the content it works on as one stream of text. Training alone cannot teach it to keep the two apart. So text inside an email, a web page or a ticket can steer it. EchoLeak showed this in 2025. A crafted email made a <Term k="retrieval">retrieval</Term> agent send company data out, with no click from the user. It scored 9.3 out of 10 on the standard severity scale (CVE-2025-32711). So the checks that matter sit outside the model.
 
 ## Enforcement point 1: the gateway
 
-**In short:** Every request an agent makes to a tool goes through one door, and that door does the checking.
+Every <Term k="tool">tool</Term> call passes through the <Term k="gateway">tool gateway</Term>. It is the single door between agents and the systems they touch. It keeps a list of allowed tools and checks that no tool's description has changed. It swaps in the identity of the person who asked, using <Term k="token exchange">token exchange</Term>. It adds credentials at the last moment, so the agent never holds secrets. It limits how often each tool is called, and it records every call.
 
-Every <Term k="tool">tool</Term> call passes through the <Term k="gateway">gateway</Term>, the single door between agents and the systems they touch. The gateway applies an allowlist of permitted tools, exchanges the caller's identity (<Term k="token exchange">token exchange</Term>), and injects credentials. It also checks that each tool's description has not changed, applies rate limits, and records every call for audit. Approval rules may be held in the <Term k="harness">harness</Term>, the engineering shell around the model, because only the harness sees the whole loop. They are enforced at the gateway, because only the gateway cannot be talked out of them. Full detail is on [the R03 page](/layers/r03-integration-fabric), which covers the integration fabric.
+Approval rules may be written in the <Term k="harness">harness</Term>, the engineering shell around the model. Only the harness sees the whole task. But the rules are enforced at the gateway, because the gateway cannot be talked out of them. The gateway is built in the [integration fabric layer (R03)](/layers/r03-integration-fabric).
 
 ## Enforcement point 2: the policy decision point
 
-**In short:** A fixed-rules component says yes or no to every consequential action, about a thousand times faster than an AI filter.
+The <Term k="policy decision point">policy decision point</Term> sits in the path of every tool call. It checks fixed rules against who is asking and what they want to do. Then it says yes or no. It checks every consequential action, and it fails closed: if it is down, the answer is no.
 
-A <Term k="deterministic">deterministic</Term> <Term k="pdp">policy decision point (PDP)</Term> sits in the tool-call path. It is the component that says yes or no to an action by checking rules against who is asking, and it is evaluated on every consequential action. Two engine families offer a real trade-off. Cedar-class engines answer in under a millisecond and are formally verified, but they are stateless. Open Policy Agent (OPA) class engines handle richer joins across data. Two complements apply where the workload warrants them, and they differ in maturity. The first is deterministic information-flow control: FIDES, in a major agent framework, scored zero policy-violating <Term k="injection">injections</Term> on the AgentDojo <Term k="benchmark">benchmark</Term>, against 20 to 152 without it [vendor]. Its own documentation (October 2026) marks it experimental and Python-only, not supported where code executes, and silent on file and network capabilities. Where code runs, the sandbox, egress and credential layers carry the load. The second is formal output verification: Automated Reasoning checks, generally available (GA) since August 2025 [vendor].
+Two kinds of rules engine are common. Cedar-style engines answer in under a millisecond, and their logic is formally verified. They hold no state between calls. Open Policy Agent style engines handle rules that join data from several sources.
 
-The cost argument is decisive on its own. A policy-engine evaluation takes under a millisecond to a few milliseconds. A <Term k="guardrail">guardrail</Term> call that uses a large language model (LLM) takes around 1.5 seconds. That is a difference of roughly a thousand times (three orders of magnitude), paid on every action, forever.
+Speed matters here. A policy engine answers in a millisecond or a few. A guardrail that calls a large language model takes about 1.5 seconds. That is about a thousand times slower, on every action, for as long as the agent runs.
+
+Two newer checks can sit beside it. The first tracks data from untrusted sources and blocks any flow the policy forbids. One such tool, FIDES, stopped every policy-breaking injection on a standard test set [vendor]. Its own documentation still calls it experimental (October 2026). The second verifies outputs with formal logic. AWS Automated Reasoning checks have been generally available since August 2025 [vendor].
 
 ## Enforcement point 3: promoted rules, landed outside the model
 
-**In short:** A rule an agent learns only counts once it has passed testing and been written into policy outside the model.
+An agent can learn a rule from its own work. That rule counts only after it passes [the learning flywheel](/architecture/learning-flywheel). It must survive <Term k="counterexample">counterexamples</Term>, which are test cases built from real failures. It must not make any existing <Term k="eval">eval</Term> worse. A person must approve it. Then it is written as <Term k="policy-as-code">policy-as-code</Term>, versioned and deployed apart from the model. A rule the model only reads is still a request.
 
-Learned behaviour graduates into enforcement only through the <Term k="flywheel">learning flywheel</Term> gate. The rule must survive <Term k="counterexample">counterexamples</Term> (test cases built from real failures), pass <Term k="eval">eval</Term> regression (the standing test suite), and receive human approval. The <Term k="promotion">promoted</Term> artifact then lands in <Term k="policy-as-code">policy-as-code</Term>, versioned and deployed independently of the model. A rule the model merely reads is still a soft rule. The ceiling on such rules is measured. A statement-by-statement analysis of real agent instruction files found roughly a quarter of statements enforceable by a fixed check as written. It found 74 percent depending on context that cannot be defined in advance. Formal work adds a second limit. Deterministic gates can enforce strictly less than edit automata, a more powerful class of enforcement monitor, so some rules about behaviour over time (renewal properties) stay out of reach. That ceiling is why enforcement points 1 and 2 exist.
+This has a ceiling. One study read real agent instruction files statement by statement. About a quarter of the statements could be checked by a fixed rule as written. The other 74 percent depended on context nobody can define in advance. That is why the gateway and the policy decision point carry most of the load.
 
 ## What guardrails are for
 
-**In short:** AI-based filters are a useful early warning, but attackers get past them most of the time, so they decide nothing that matters.
+A <Term k="guardrail">guardrail</Term> is a filter, often a model itself, that screens what goes into or comes out of an agent. Guardrails are an early warning. They are never the lock. Attackers get past them often, and attacks tuned to a defence get past more. Guardrails still help with content policy, spotting personal data, and monitoring, where a miss can be tolerated.
 
-Guardrails are the advisory layer, never the boundary. In published tests, roughly 72 percent, 77 percent, and 72.5 percent of attacks got past three named commercial guardrail products, and up to 100 percent got past some configurations. Adaptive attacks do worse to them. An October 2025 study (arXiv 2510.09023) broke 12 published defences, most at above 90 percent, and human red-teamers beat every one. NIST's agent-hijacking evaluations rose from 11 percent to 81 percent success once the attacks were tuned to the defence (January 2025). Vendor figures on fixed benchmarks run far lower, and both kinds of number are reported here so the gap is visible. The only configuration with a measured 0 percent bypass rate paid for it with 16.22 percent false positives and about 1.5 seconds of added <Term k="latency">latency</Term> (delay) per call. A guardrail can also be made to deny service, and that denial is itself exploitable. Guardrails retain genuine value for content policy, detection of personally identifiable information (PII), and <Term k="telemetry">telemetry</Term>, where a miss is tolerable. Their block rate is monitored in both directions: a spike signals an attack, a drop signals misconfiguration.
+Watch a guardrail's block rate in both directions. A spike suggests an attack. A drop suggests a broken setting. The measured bypass rates are in Evidence and limits below.
 
-## The guardrail list, in ten categories
+## The ten guardrail categories
 
-**In short:** There is no single industry list, but 2026 guidance shares one shape, and seven of its ten categories are fixed rules.
+No single industry list of guardrails exists. But the 2026 guidance from regulators and security agencies shares one shape. Bound the agent by design. Enforce approval and limits outside the model. Isolate where code runs. Monitor, and keep a stop switch. This guide groups the controls they name into ten categories. Seven are fixed rules. Input, output and monitoring also use model checks.
 
-**WHY:** No industry-wide guardrail list exists. The 2026 guidance shares a shape instead: bound the agent by design, enforce approval and limits outside the model, isolate execution, monitor, and keep a stop switch.
+1. **Input.** Treat outside content as untrusted. Keep instructions apart from data. Use typed formats between agents. Injection classifiers add a model check.
+2. **Output.** Mask known patterns, such as card numbers. Use data loss prevention. Check that answers are grounded and citations resolve. An output takes the highest data class of its inputs. Validate before display. Grounding checks use a model.
+3. **Tool and action.** Allow only listed tools, with pinned versions. Use strict input formats. Put a policy decision point on each call, failing closed. Write destructive actions as separate rules. Keep reading and acting roles apart.
+4. **Identity and access.** Give each agent its own identity. Use short-lived, scoped credentials. Use <Term k="just-in-time access">just-in-time access</Term> for high-impact actions. The agent gets the lesser of its own rights and the user's. It never grants itself access. A proxy injects credentials.
+5. **Data and egress.** Deny network access by default. Allowlists name operations, not just domains. An outbound proxy checks identity. Public-facing agents stay away from internal data. Data is routed by its class.
+6. **Spend and rate.** Set caps per run and per agent. Limit rates and retries. Add circuit breakers at agent, workflow and business-unit level. Cap payment mandates.
+7. **Runtime isolation.** Run any code in a <Term k="sandbox">sandbox</Term>. Untrusted code that touches sensitive data gets stronger, hypervisor-level isolation. Allow no network by default and no production credentials.
+8. **Monitoring and kill switch.** Keep logs the agent cannot change. Add anomaly detection and watcher agents, which use models. Place a <Term k="kill switch">kill switch</Term> in identity, gateway, runtime and harness. Keep a way back to manual operation.
+9. **Change control.** Version and approve prompts, tools, policies, models and memory rules. Red-team after a major change. A listed change re-runs the tests.
+10. **Human oversight.** Designers, not the agent, set checkpoints for high-stakes, irreversible and unusual actions. Approval is bound to the exact action. If the approval system fails, the answer is no. One approval covers one bounded action. [The deterministic zones](/architecture/deterministic-zones), the destruction rule and the rule for decisions about people sit here.
 
-**WHAT:** This guide groups the controls those sources name into ten categories. In the type column, D means deterministic, M means model-based, and H means hybrid.
+A model-based check may warn or take permission away. It never stands alone between an agent and an irreversible effect.
 
-| Category | Guardrails | Type | Sources |
-|---|---|---|---|
-| 1. Input | Outside content treated as untrusted; instructions kept apart from data; typed formats between agents; injection classifiers | D; classifiers M | OWASP cheat sheet; IMDA; Microsoft CAF [vendor]; ASD ISM (secondary) |
-| 2. Output | Pattern-based masking; data loss prevention (DLP); grounding checks; citations must resolve; outputs inherit the highest input data class; validation before display | D; grounding M; validation H | AWS Bedrock Guardrails [vendor]; Microsoft CAF [vendor] |
-| 3. Tool and action | Allowlisted tools with pinned versions; strict input formats; a policy decision point on each call, failing closed; destructive verbs as separate rules; separate reading and acting roles | D | AWS AgentCore Policy [vendor]; OWASP; Five Eyes |
-| 4. Identity and access | One identity per agent; short-lived scoped credentials; just-in-time access for high-impact actions; the lesser of user and agent rights; no self-granting; credentials injected by a proxy | D | Five Eyes; UK NCSC; ASD ISM (secondary) |
-| 5. Data and egress | Default-deny network; allowlists that name operations, not just domains; an authenticating egress proxy; public agents kept away from internal data; routing by data class | D | UK NCSC; Microsoft CAF [vendor]; MAS |
-| 6. Spend and rate | Per-run and per-agent caps; rate and retry limits; circuit breakers at agent, workflow and business-unit level; payment mandate caps | D | EY (1 June 2026); AWS AgentCore Policy [vendor]; Stripe [vendor] |
-| 7. Runtime isolation | A sandbox for any code; hypervisor-class isolation for untrusted code with sensitive data; no network by default; no production credentials | D | UK NCSC; Claude Code and Codex docs [vendor] |
-| 8. Monitoring and kill switch | Logs the agent cannot change; anomaly detection; watcher agents; a kill switch in identity, gateway, runtime and harness; return to manual operation | D; anomaly and watchers M | UK NCSC; MAS; NIST AI 600-1; Five Eyes |
-| 9. Change control | Versioned, approved prompts, tools, policies, models and memory policy; red-team after a major change; change triggers | D, with a human gate | MAS; Microsoft CAF [vendor] |
-| 10. Human oversight | Checkpoints for high-stakes, irreversible and outlier actions, set by designers, not the agent; approval bound to the exact action; deny if the approval system fails; one bounded action per approval; the people-decisions floor | D gate, human judgement | IMDA section 2.2.2; Five Eyes |
+## Which categories apply at each risk tier
 
-This guide's position: seven of the ten categories are deterministic. They are tool and action, identity and access, data and egress, spend and rate, runtime isolation, change control, and human oversight. Input, output and monitoring mix fixed rules with model checks. **A model-based layer may inform or take permission away, but it never stands alone between an agent and an irreversible effect.**
+How much of each category an agent needs depends on its risk tier, set on [the risk profile](/architecture/risk-profile). The tier is fixed when the agent is approved in [the agent lifecycle](/architecture/agent-lifecycle). There are three tiers: Tier 1 (basic), Tier 2 (enhanced) and Tier 3 (strict). Each keeps everything in the tier below and adds to it. What the agent can do also switches categories on. The last column names those triggers.
 
-Six sources say model-based guardrails reduce risk but do not authorise. They are IMDA (20 May 2026), the UK NCSC (20 August 2026), the Five Eyes agencies (1 May 2026), AWS AgentCore Policy [vendor], OWASP's AI agent security cheat sheet, and Anthropic's Claude Code documentation [vendor]. There are honest counterpoints. IMDA and Google keep model checks where fixed rules cannot define the risk, such as harmful content. AWS lets a guardrail score feed a policy decision. OpenAI's Agents SDK guardrails do not cover its built-in shell, computer and patch tools [vendor]. That shows why a guardrail inside a software development kit is not a boundary. The destruction rule and the people-decisions floor are set out on [the deterministic zones page](/architecture/deterministic-zones).
+Three terms appear in the table. The agent's own identity (ID2) means its own account, least privilege, short-lived credentials and a named sponsor. [The delegation chain](/architecture/delegation-chain) sets out that scale. The Rule of Two is Meta's test (31 October 2025). An agent should combine at most two of three things. They are untrusted input, sensitive data, and the power to change something or send data out. Plan-then-apply means the agent proposes a change, and a fixed system applies it after approval.
 
-## Which guardrails apply, by tier and by capability
-
-**In short:** The risk tier sets how much of each category an agent needs, and what the agent can do switches categories on.
-
-The three tiers come from [the risk profile](/architecture/risk-profile): Tier 1 Basic, Tier 2 Enhanced and Tier 3 Strict. Each tier keeps everything in the tier below and adds to it. The last column names the capabilities that make a category apply.
-
-| Category | Tier 1 Basic | Tier 2 Enhanced adds | Tier 3 Strict adds | Switched on by |
+| Category | Tier 1 (basic) | Tier 2 (enhanced) adds | Tier 3 (strict) adds | Switched on by |
 |---|---|---|---|---|
 | Input | Untrusted content marked | Injection classifier as a signal | Rule of Two check at session start | Untrusted input; browsing |
-| Output | DLP; data class inheritance | Grounding; citations resolve | Validation before display | Sensitive data; external messages |
-| Tool and action | Allowlist with versions | Policy decision point on every write | Policy decision point on every action; plan-then-apply | Writes; deletes; zone actions |
-| Identity and access | Own identity (ID2); short-lived credentials | User identity carried through | Just-in-time access per high-impact action | Access changes; sub-agents |
-| Data and egress | Default-deny network | Authenticating proxy | Sovereign routing where the data class needs it | Browsing; external messages |
-| Spend and rate | Per-run cap | Per-agent budget | Circuit breakers by business unit | Payments; long loops |
-| Runtime isolation | Sandbox if code runs | Same | Hypervisor-class isolation | Code or SQL |
-| Monitoring and kill switch | Logs; kill switch | Kill switch drilled and timed | Continuous monitoring | Self-started agents |
-| Change control | Change triggers re-run evals | Red-team on major change | Independent validation | Memory writes |
-| Human oversight | Sampled review | Approval for irreversible actions | A named person approves each floor action | Payments; actuation; people decisions |
-
-A few terms. ID2 is this guide's identity floor: the agent has its own account, least privilege, short-lived credentials and a named sponsor ([the identity chain](/architecture/identity-chain)). The Rule of Two is Meta's test (31 October 2025): an agent should combine at most two of untrusted input, access to sensitive data, and the ability to change state or send data out. Floor actions are those covered on [the deterministic zones page](/architecture/deterministic-zones): zone actions, production deletions under the destruction rule, and significant decisions about a person. Plan-then-apply means the agent proposes and a deterministic system applies after approval.
-
-This matrix is this guide's position. It is expert judgement: no study links any tier or capability to incident rates.
+| Output | Data loss prevention; data class carried to outputs | Grounding check; citations resolve | Validation before display | Sensitive data; external messages |
+| Tool and action | Allowlist with versions | Policy decision point on every write | Policy decision point on every action; plan-then-apply | Writes; deletes; actions in a zone |
+| Identity and access | The agent's own identity (ID2); short-lived credentials | The user's identity carried through | Just-in-time access per high-impact action | Access changes; sub-agents |
+| Data and egress | Network denied by default | Outbound proxy that checks identity | Routing by country where the data class needs it | Browsing; external messages |
+| Spend and rate | Cap per run | Budget per agent | Circuit breakers by business unit | Payments; long loops |
+| Runtime isolation | Sandbox if code runs | Same | Hypervisor-level isolation | Code or database queries |
+| Monitoring and kill switch | Logs; kill switch | Kill switch drilled and timed | Continuous monitoring | Agents that start on their own |
+| Change control | Listed changes re-run the evals | Red team after a major change | Independent validation | Memory writes |
+| Human oversight | Sampled review | Approval for irreversible actions | A named person approves each zone action, production delete and decision about a person | Payments; equipment; decisions about people |
 
 ## The map
 
-**In short:** Each kind of rule has one place where it is enforced, and a place where people wrongly assume it is.
+Each kind of rule has one place where it is enforced. Each also has a place where people wrongly assume it is.
 
-| What | Where enforced | Where it is not |
+| What | Where it is enforced | Where it is not |
 |---|---|---|
-| Tool access, credentials | Gateway | Prompt instructions |
-| Authorization of consequential actions | PDP in the tool-call path | Model judgment, guardrails |
-| Promoted behavioural rules | Policy-as-code, out of model | Instruction files the model reads |
-| Iteration count, cost, wall-clock time | Harness caps plus platform hard caps (429 too-many-requests on exhaustion) | Model self-restraint |
-| Content policy, PII screening | Guardrails, advisory | Anything consequential |
+| Tool access and credentials | The gateway | Prompt instructions |
+| Approval of consequential actions | The policy decision point, in the tool-call path | The model's judgement, or guardrails |
+| Promoted rules about behaviour | Policy-as-code, outside the model | Instruction files the model reads |
+| Number of steps, cost and running time | Harness caps plus platform hard caps that stop the run | The model holding itself back |
+| Content policy and personal data screening | Guardrails, as advice | Anything consequential |
 
-**Next step:** follow company data into a cited answer on [the data-to-memory pipeline](/architecture/data-to-memory).
+## A worked example: a billing correction at a utility
+
+A utility's billing agent proposes a corrected bill after a wrong meter read. The call goes to the billing system through the gateway. The gateway checks that this tool is on the agent's list. It adds a short-lived credential tied to the agent's identity, and it logs the call. The policy decision point then applies the rule. Is the confidence above the agreed level, and is the change under the hard limit? If yes, the bill is released, and a sample is checked later. If no, a specialist decides.
+
+Suppose the agent notices that estimated reads after a meter swap are often wrong. That lesson does not change the agent's behaviour on its own. It becomes a fixed rule only after it passes the tests and a person approves it. The full design is on [billing exceptions](/use-cases/billing-exceptions).
+
+## Evidence and limits
+
+The three enforcement points follow 2026 guidance from regulators and security agencies. Six sources say model-based guardrails reduce risk but do not authorise anything. They are IMDA, the UK NCSC, the Five Eyes agencies, AWS, OWASP and Anthropic.
+
+In published tests, about three in four attacks got past three named commercial guardrail products. One October 2025 study broke 12 published defences, most at above 90 percent, once attacks adapted.
+
+There are fair counterpoints. IMDA and Google keep model checks where fixed rules cannot define the risk, such as harmful content. AWS lets a guardrail score feed a policy decision [vendor]. The ten categories and the tier matrix are expert judgement. No study links any tier or category to incident rates.
+
+## Next step
+
+Follow company data into a cited answer on [the data-to-memory pipeline](/architecture/data-to-memory).
 
 <details>
 <summary>The research behind this page</summary>
@@ -117,7 +116,15 @@ This matrix is this guide's position. It is expert judgement: no study links any
 - [Intelligence and learning findings](/library/layers/r06-intelligence-and-learning/findings)
 - [Integration fabric findings](/library/layers/r03-integration-fabric/findings)
 
-Sources added October 2026:
+**Bypass rates in full.** In published tests, about 72 percent, 77 percent and 72.5 percent of attacks got past three named commercial guardrail products. Up to 100 percent got past some configurations. An October 2025 study (arXiv 2510.09023) broke 12 published defences, most at above 90 percent. Human red-teamers beat every one. NIST's agent-hijacking tests rose from 11 percent to 81 percent success once attacks were tuned to the defence (January 2025). Vendor figures on fixed benchmarks run far lower. The only setup with a measured 0 percent bypass rate paid for it. It had 16.22 percent false positives and about 1.5 seconds of added delay per call. A guardrail can also be made to refuse service, and that refusal can itself be exploited.
+
+**Newer checks.** FIDES, in a major agent framework, scored zero policy-breaking injections on the AgentDojo benchmark, against 20 to 152 without it [vendor]. Its documentation (October 2026) marks it experimental and Python-only. It is not supported where code executes, and it is silent on file and network access. Where code runs, the sandbox, egress and credential controls carry the load.
+
+**The ceiling on promoted rules.** Formal work shows fixed gates can enforce strictly less than edit automata, a stronger class of monitor. So some rules about behaviour over time, called renewal properties, stay out of reach.
+
+**Counterpoints.** OpenAI's Agents SDK guardrails do not cover its built-in shell, computer and patch tools [vendor]. A guardrail inside a software development kit is not a boundary.
+
+**Sources by category.** Input: OWASP cheat sheet; IMDA; Microsoft CAF [vendor]; ASD ISM (secondary). Output: AWS Bedrock Guardrails [vendor]; Microsoft CAF [vendor]. Tool and action: AWS AgentCore Policy [vendor]; OWASP; Five Eyes. Identity and access: Five Eyes; UK NCSC; ASD ISM (secondary). Data and egress: UK NCSC; Microsoft CAF [vendor]; MAS. Spend and rate: EY (1 June 2026); AWS AgentCore Policy [vendor]; Stripe [vendor]. Runtime isolation: UK NCSC; Claude Code and Codex docs [vendor]. Monitoring and kill switch: UK NCSC; MAS; NIST AI 600-1; Five Eyes. Change control: MAS; Microsoft CAF [vendor]. Human oversight: IMDA section 2.2.2; Five Eyes.
 
 - [IMDA agentic framework v1.5, 20 May 2026](https://www.imda.gov.sg/assets/63438074-73f6-4dcc-a281-030f42642cf4.pdf)
 - [Five Eyes, Careful adoption of agentic AI services, 1 May 2026](https://www.ncsc.govt.nz/assets/guidance/Documents/Careful-adoption-of-agentic-AI-services_FINAL.pdf)

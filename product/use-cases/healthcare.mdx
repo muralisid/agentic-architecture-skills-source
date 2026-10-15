@@ -1,46 +1,143 @@
 ---
 title: "Healthcare: follow the work around the patient"
-description: "Explore access, care-team support, follow-up, and operations through illustrated agent opportunities."
-position: "Proposed use-case designs. Outcomes require local evaluation; the maps are learning aids, not formal standards mappings."
-lastReviewed: "2026-09-18"
+description: "The fourteen layers of a public hospital network and the systems in each. Four agent use cases, the rules that bind them, and what runs today."
+position: "The estate is a composite, not one real health service. Deployments are as reported by the party named, with dates. The four agent designs are proposals. In every design, clinical decisions stay with clinicians."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [layers, lifecycle, capabilities, zones, packaged, use-cases]
 ---
 
-For this proposed design, consider a referral that reaches a clinic with a missing attachment. A person must find the gap, contact the right team, and check what came back. A useful agent helps carry that work to a visible conclusion while the care team owns clinical decisions.
+A referral arrives by fax. A discharge leaves actions in free text. A cancer meeting needs results from six screens. Each piece of work moves around the patient through many systems, and people carry it by hand. Agents can prepare, chase and track this work. Clinicians keep every clinical decision. The frame is the guide's own: [layers you own](/layers), [a lifecycle you run](/architecture/agent-lifecycle), and [capabilities you add](/architecture/system-view).
 
-<TeachingIllustration src="/images/use-cases/healthcare-map-v1.webp" expandable title="Follow the work around the patient" alt="Access care through referrals and appointments; support care teams with evidence; coordinate agreed follow-up; run the service through capacity, supplies and assurance. Clinical decisions remain with qualified professionals." caption="Choose a part of the service, then follow one specific task. These opportunities are proposed designs, not claims of deployed clinical performance." />
+## The estate
 
-## Access care
+The estate below is a typical public hospital network. It has one tertiary hospital, two district hospitals and one rural hospital (typical, unsourced). In Australia this is a local health district or a hospital and health service. A state body such as eHealth NSW or eHealth Queensland runs the statewide systems. In New Zealand it is a district of Health New Zealand (Te Whatu Ora). Metro South Health in Brisbane has five hospitals and over 10,000 staff (Heidi Health, 31 August 2026 [vendor]).
 
-Start with referral completeness and appointment coordination. The agent can identify missing administrative details, request them through an approved channel, and prepare booking options. Clinical urgency and eligibility questions go to the responsible team.
+<TeachingIllustration src="/figures/use-cases/healthcare-estate.svg" mobileSrc="/figures/use-cases/healthcare-estate-mobile.svg" expandable title="A public hospital network: the fourteen layers" alt="A building with fourteen floors, one per layer, naming the main systems of a public hospital network. The ground floor is infrastructure and compute (R01): data centres, private cloud, Australian cloud regions and vendor-hosted EMR. The data platform (R02) holds the clinical data repository, the data warehouse, state collections and registries. The integration fabric (R03) holds the integration engine, the FHIR server, secure messaging and the My Health Record gateway. Systems of record (R04) hold the EMR, the PAS, the laboratory system (LIS), and radiology (RIS and PACS). Line of business (R05) holds emergency, theatres, maternity, ICU, oncology, bed flow and medical devices. Intelligence and learning (R06) holds EMR alerts, early warning scores, radiology AI, speech recognition and ambient scribes. The agent platform (R07) is mostly absent today. Productivity (R08) holds Microsoft 365, Teams for MDTs, fax servers and the policy library. Experience and channels (R09) holds SMS and letters, the booking centre, telehealth and portals. Security and identity (R10) holds Entra ID, tap-badge sign-on and NASH certificates. Governance (R11) holds clinical governance, NSQHS accreditation and the AI governance group. Observability (R12) holds monitoring, integration error queues and IT service management. The operating model (R13) holds the digital health division, the referral hub and the quality unit. The top floor, agent data engineering (R14), holds document capture, patient index stewardship and terminology mapping. Bold boxes mark the systems the four use cases lean on most." caption="A composite network. Vendor names in the table below are examples, not a market share claim." />
+
+The table names the systems on each floor. Generic names come first. Vendors are in brackets where they help recognition.
+
+| Layer | Systems today | Standards between them |
+|---|---|---|
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | State or shared-services data centres. Private cloud. Public cloud regions in Australia. Vendor-hosted EMR (Epic, Oracle Health). Virtual desktops. | Essential Eight and the Information Security Manual (AU). NZISM and HISO 10029 (NZ). Onshore data rules. |
+| [Data platform (R02)](/layers/r02-data-platform) | Clinical data repository (InterSystems HealthShare, Orion Health). Data warehouse, with newer builds on Snowflake, Databricks or Microsoft Fabric. State data collections. Dashboards (Power BI, Qlik). Clinical registries. | SNOMED CT-AU and the Australian Medicines Terminology. ICD-10-AM coding. LOINC for pathology. |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | Integration engine (Rhapsody, InterSystems, Mirth). API gateway. FHIR server. Secure messaging (HealthLink, Medical-Objects, Argus). My Health Record gateway. Healthcare Identifiers Service. Terminology server (Ontoserver). | HL7 version 2 messages. FHIR R4 with AU Core and NZ Base. DICOM for images. Secure Message Delivery. NASH certificates. |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Electronic medical record, EMR (Epic, Oracle Health, TrakCare). Patient administration system, PAS (iPM, webPAS, TrakCare). Laboratory system, LIS. Radiology system and image archive, RIS and PACS (Sectra, Agfa). Pharmacy. Patient index. HR, rostering and finance. Incident system (RiskMan, ims+, VHIMS, Datix). | IHI for patients, HPI-I and HPI-O for providers (AU). NHI and HPI (NZ). |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Emergency, theatre, maternity, ICU and oncology systems (ARIA, MOSAIQ). Community health (CHIME in NSW). Bed and patient flow. Nurse call. Medical devices. Biomedical maintenance system. | AS/NZS 3551 for medical equipment. TGA listing (AU). Medsafe (NZ). |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Alerts inside the EMR. Early warning scores (Between the Flags, Q-ADDS). Radiology AI (Annalise.ai). Speech recognition. Ambient scribes (Heidi, Lyrebird, iMedX). Local referral guidance (HealthPathways). | TGA rules for software as a medical device. The Commission's AI Clinical Use Guide, August 2025. |
+| [Agent platform (R07)](/layers/r07-agent-platform) | Mostly absent. Robotic process automation bots (UiPath, Blue Prism, Power Automate). Website chatbots. Virtual triage (Healthdirect). Copilot Studio pilots. Agents inside vendor products (Heidi II). | Nothing agent-specific. State AI assurance frameworks apply. |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Microsoft 365 with Teams and SharePoint. Copilot pilots. Fax servers. Policy library. Teams or video for multidisciplinary meetings (MDTs). | State records law and retention schedules. |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | SMS reminders. Letters through a mail house. Booking and contact centre (Genesys, Amazon Connect). Telehealth. Patient portal where the EMR has one (MyChart). GP portals (The Viewer, HealtheNet, Concerto). Interpreters. | WCAG 2.2. Recorded contact preferences and consent. |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | Entra ID and Active Directory. Tap-badge sign-on (Imprivata). Privileged access. NASH certificates. Security monitoring (Sentinel, Splunk). Medical device security (Claroty). | Essential Eight. Privacy Act 1988 and state health records laws. NZ Health Information Privacy Code 2020. |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Clinical governance committees. Quality and safety unit. Accreditation. Privacy officer. AI governance group. Risk register (Camms, ServiceNow, RiskMan). | NSQHS Standards (AU). Nga Paerewa, NZS 8134:2021 (NZ). NZ Algorithm Charter. Maori and Aboriginal and Torres Strait Islander data sovereignty principles. |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | Application and infrastructure monitoring (Dynatrace, SolarWinds). Integration error queues. IT service management (ServiceNow). Cloud cost tools. Downtime procedures on paper. | Service levels in vendor contracts. |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | Digital health division. Chief clinical information officer. Central referral hub and booking centre. Health information management. Quality and safety unit. Virtual care centre. | Clinical governance framework. Consultation duties when admin roles change. |
+| [Agent data engineering (R14)](/layers/r14-agent-data-engineering) | Document capture and text recognition (OCR) for fax and paper (Tungsten, ABBYY). Scanning bureaus. Patient index stewardship. Terminology mapping. Data quality team. | FHIR DocumentReference. IHE document metadata. Retention and disposal authorities. |
+
+Three layers are new ground for agents. The intelligence and learning layer (R06) holds rules and a few vendor models. Few services check a model's performance after go-live (typical, unsourced). The agent platform layer (R07) is mostly absent. No Australian or New Zealand public health service was found running its own agent runtime. None had an agent registry or an identity per agent. The agent data engineering layer (R14) reads fax for indexing, not for workflow fields. It lacks extraction that keeps the page and position of each field. It also lacks indexes that respect who may see what.
+
+The EMR and the PAS are packaged systems of record. The general pattern for agents around them is on [agents and packaged applications](/use-cases/packaged-applications).
+
+## The use cases on this estate
+
+Four worked examples sit on this estate. Each uses one agent on fixed steps. Model calls only read documents and draft text. Fixed rules, not the model, decide order, limits and status.
+
+| Use case | Layers it leans on | What the agent does | What stays with a person |
+|---|---|---|---|
+| Referral to appointment | Integration fabric (R03), systems of record (R04), agent data engineering (R14), experience and channels (R09) | Takes in referrals, checks them, chases gaps, offers slots and books | Clinical triage. Any doubt about who the patient is. Booking out of order. |
+| Follow-up after discharge | Integration fabric (R03), systems of record (R04), line of business (R05) | Tracks agreed actions and links the evidence that each was done | The plan. Reading results. Closing clinical tasks. |
+| Evidence before a consult or MDT | Data platform (R02), integration fabric (R03), systems of record (R04), agent data engineering (R14) | Gathers records and drafts a brief with a source on every fact | Images and slides. Staging. The recommendation. |
+| Accreditation evidence | Governance, risk and sovereignty (R11), productivity and collaboration (R08), systems of record (R04) | Collects and checks evidence and builds packs | Met or Not Met. Attestation. Submission. |
+
+<TeachingIllustration src="/images/use-cases/healthcare-map-v1.webp" expandable title="Follow the work around the patient" alt="Four areas of a care service. Access care covers referrals and appointments. Support care teams covers preparing evidence: history, tests, imaging, medicines and notes. Coordinate follow-up tracks agreed next steps. Run the service covers capacity, supplies, quality and compliance. A banner says clinical decisions remain with qualified professionals." caption="The four worked examples sit in these four areas. Each one is a proposed design." />
 
 <Cards>
-<Card title="From referral to appointment" href="/use-cases/referral-coordination">Follow the evidence, missing-information requests, booking permission, and confirmation.</Card>
+<Card title="From referral to appointment" href="/use-cases/referral-coordination">Take in, check, chase and book. Clinicians triage.</Card>
+<Card title="Keep agreed follow-up from getting lost" href="/use-cases/care-follow-up">Track each agreed action until there is evidence it was done.</Card>
+<Card title="Prepare the evidence before a consult or MDT" href="/use-cases/consult-briefing">One brief, every fact with its source and date. Clinicians sign.</Card>
+<Card title="Collect and check compliance evidence" href="/use-cases/compliance-evidence">Accreditation packs kept current. A named person attests.</Card>
 </Cards>
 
-## Support care teams
+## The rules that bind the work
 
-A possible evidence-preparation assistant can organize approved records for a clinician, with source links and dates. Document extraction or specialist image analysis, where validated for the intended task, could supply inputs. An LLM summary must preserve uncertainty and cannot turn an unreviewed model output into a diagnosis. Evaluate omissions and misleading summaries, not just reading speed.
+**Clinical decisions stay with clinicians.** The Australian Commission on Safety and Quality in Health Care published its AI Clinical Use Guide in August 2025. Clinicians stay accountable for AI output that enters the record. The Commission's ambient scribe scenario adds a warning. A tool that suggests a diagnosis or treatment may need listing with the Therapeutic Goods Administration (TGA). So no agent on these pages sets urgency, reads a result, or recommends treatment.
 
-## Coordinate follow-up
+**The rule for decisions about people.** A named person decides any significant decision about a person, and health is one of them. Here that covers clinical triage, declining a referral, booking out of order, and sending a patient back to the GP. The rule sits beside the [deterministic zones](/architecture/deterministic-zones).
 
-A proposed follow-up agent tracks actions already agreed by the care team. It checks ownership, completion records, and unanswered requests. Unresolved tasks remain visible to a coordinator.
+**Consent and privacy.** The Privacy Act 1988 and state health records laws apply in Australia. The Health Information Privacy Code 2020 applies in New Zealand. Contact preferences and consent are recorded, and an agent checks them before any message. Two sets of data sovereignty principles also shape what data may be used. They are Te Mana Raraunga for Maori data, and Maiam nayri Wingara for Aboriginal and Torres Strait Islander data.
 
-<Cards>
-<Card title="Keep agreed follow-up visible" href="/use-cases/care-follow-up">Separate a sent reminder from evidence that the agreed work was completed.</Card>
-</Cards>
+**My Health Record.** Since 1 July 2026, pathology and imaging reports go to My Health Record by default. They must be uploaded within 24 hours of release. The rule covers written reports, not the images (Australian Digital Health Agency, accessed 15 October 2026). An agent may use these documents only where the service's access policy and the patient's own controls allow.
 
-## Run the service
+**Patient identifiers.** In Australia, the Individual Healthcare Identifier (IHI) comes from the Healthcare Identifiers Service. The service is called with the organisation's NASH certificate. Check its rules before a vendor hosts an agent that looks up identifiers. In New Zealand, the National Health Index (NHI) has a live FHIR interface (Health New Zealand, accessed 15 October 2026).
 
-Other starting points include evidence collection for internal assurance, checking supply exceptions, and preparing staffing or capacity briefs. Assess access and patient confidentiality for each workflow. The shared [compliance-evidence example](/use-cases/compliance-evidence) explains the collection pattern; apply it to the local healthcare requirements with a qualified owner.
+**Accreditation.** Australian hospitals are assessed against the eight National Safety and Quality Health Service (NSQHS) Standards. Since 1 July 2023, assessments come at short notice, with at least 24 hours' warning (the Commission). A service can exclude up to 20 business days per cycle, according to a search summary of the Commission's page. A secondary summary says hospitals are reaccredited at least every three years. In New Zealand, services are audited against Nga Paerewa, NZS 8134:2021.
 
-## What to measure first
+## What runs in Australia and New Zealand today
 
-For these coordination examples, compare completion time, missing-information resolution, incorrect routing, duplicate bookings, staff review effort, and patient experience with the current workflow. Define accessibility and communication preferences before a live trial. Faster processing alone does not demonstrate better clinical outcomes.
+Results are as reported by the party named. None is independently audited.
 
-## Frameworks behind the map
+- **Ambient scribes are live.** Health New Zealand bought 1,000 Heidi scribe licences for every public emergency department (HINZ, 26 November 2025 [vendor]). It added 100 for mental health crisis teams. The minister later put use at about 1,250 staff, so the reports conflict. Metro South Health announced Heidi across five hospitals on 31 August 2026. In its trial, 92 percent of clinicians reported less admin time (Heidi Health [vendor]).
+- **Referral triage is at validation.** At Logan, a model called ReferralAI suggests an urgency category for ENT referrals. Clinicians decide. A national study of AI-assisted colonoscopy triage invited sites in July 2026. A pelvic pain triage pilot runs at the Austin in Melbourne (undated).
+- **Public symptom triage is live.** Healthdirect's virtual triage handled about 1.55 million encounters from April 2023 to March 2025 (Medical Republic, 2025).
+- **Vendor agents are arriving in primary care first.** Heidi II launched on 28 September 2026. Its agents prepare charts and draft referrals, follow-ups and recalls. A clinician reviews before anything is sent. No Australian public hospital site was found (Medical Republic, 30 September 2026 [vendor]).
+- **One statewide EMR is coming.** NSW is moving every district to one Epic record. The first go-live was in March 2026 (NSW Health, 27 March 2026). All districts are due by the end of 2028. It is not an agent. It brings a platform with vendor agents into Australian public health.
+- **Nothing found on follow-up or accreditation.** No Australian or New Zealand public health service was found using an agent to check that follow-up was done. None was found collecting accreditation evidence with an agent.
+- **Not confirmed here.** Epic's agents are not confirmed in Australia. Microsoft Dragon Copilot is not offered in Australia or New Zealand. Oracle's clinical agent has no Australian listing. All three were checked on 15 October 2026.
 
-WHO's [2023 digital-health classification](https://www.who.int/publications/i/item/9789240081949) provides a common language for digital interventions. Its primary-user groups cover persons, healthcare providers, health management and support personnel, and data services. The [WHO classification listing](https://smart.who.int/base/CodeSystem-CDHIv2.html) includes referral coordination and scheduling. APQC's [Healthcare Provider process framework](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-healthcare-provider-pdf) offers a process view. This page uses an original patient-service journey to introduce opportunities, not a formal mapping to either framework. Reviewed 18 September 2026.
+## Evidence and limits
 
-Next: [choose a bounded first task](/use-cases/choose-where-to-start) or [see the architecture](/architecture).
+The estate is a composite. No Australian or New Zealand health service publishes its full system estate. The table is industry knowledge, not a survey.
+
+Most deployment figures come from vendors or their releases. Four sources refused the fetch during research, so their status lines come from search summaries. Scribe numbers for New Zealand conflict between sources.
+
+The four agent designs are proposals. Two of them have no published precedent in Australia or New Zealand: checking follow-up completion and collecting accreditation evidence.
+
+Three accreditation facts were not verified. They are the current NSQHS version, its number of actions, and the period to fix a Not Met action. The Commission's site timed out during research. Check them before relying on them.
+
+## Next step
+
+Start with [referral to appointment](/use-cases/referral-coordination), the fullest worked example. The [healthcare blueprint](/library/blueprints/verticals/healthcare) sets out the four agents as one design.
+
+<details>
+<summary>The research behind this page</summary>
+
+Research for this page was done on 15 October 2026. The estate is a composite of a public hospital network in Australia or New Zealand.
+
+**Where the work sits in established frameworks.** WHO's [2023 classification of digital interventions](https://www.who.int/publications/i/item/9789240081949) gives common names, including referral coordination and scheduling ([WHO listing](https://smart.who.int/base/CodeSystem-CDHIv2.html)). APQC's [Healthcare Provider process framework](https://www.apqc.org/resource-library/resource-listing/apqc-process-classification-framework-pcf-healthcare-provider-pdf) offers a process view. This page uses its own patient-service journey, not a formal mapping to either.
+
+**Vendor agents, status on 15 October 2026.**
+
+| Vendor and agent | What it does | Status | In Australia or New Zealand |
+|---|---|---|---|
+| Epic Art | Clinician agent: notes, chart summaries, incidental findings follow-up | Live in US outpatient specialties from early 2026 [vendor] | Not confirmed. NSW, the ACT and Parkville run Epic. |
+| Epic Emmie | Patient agent inside MyChart | First live at Sutter Health, March 2026 [vendor] | Not confirmed |
+| Epic Agent Factory | Build and run custom agents | Previewed March 2026 | No |
+| Oracle Health Clinical AI Agent | Notes, orders, coding, chart review. Nursing version from September 2026. | US commercial. UK note agent from February 2026 [vendor] | No Australian listing found |
+| Microsoft Dragon Copilot | Ambient notes with plug-ins and agents | Available in the US, Canada, UK, Ireland and parts of Europe [vendor] | No |
+| Microsoft Healthcare Agent Orchestrator | Agents for tumour board preparation | Launched May 2025. Research partners exploring [vendor] | No deployment found |
+| Heidi II | Chart preparation, referrals, follow-ups, recalls | Launched 28 September 2026 [vendor] | Yes, primary care first |
+| Hyro | Voice and chat agents for scheduling | Live at more than 45 US health systems [vendor] | No site found |
+
+**Sources.**
+
+- Australian Digital Health Agency, [My Health Record sharing by default](https://www.digitalhealth.gov.au/healthcare-providers/initiatives-and-programs/better-access-to-health-information), in force 1 July 2026, accessed 15 October 2026.
+- Australian Digital Health Agency, [National Healthcare Interoperability Plan 2023-2028](https://www.digitalhealth.gov.au/about-us/strategies-and-plans/national-healthcare-interoperability-plan), published 11 July 2023. 33 of 44 actions were complete in the January to March 2026 report.
+- ACSQHC, [short notice assessments](https://www.safetyandquality.gov.au/accreditation/accreditation-national-safety-and-quality-standards/short-notice-assessments), from 1 July 2023.
+- ACSQHC, [AI Clinical Use Guide](https://www.safetyandquality.gov.au/resources/ai-clinical-use-guide) and [ambient scribe scenario](https://www.safetyandquality.gov.au/resources/ai-safety-scenario-ambient-scribe), August 2025.
+- ACSQHC, [NSQHS Standards](https://www.safetyandquality.gov.au/standards/nsqhs-standards). The site timed out on 15 October 2026. The eight standard names were checked against a secondary summary.
+- Victorian Department of Health, [ambient AI scribes advisory](https://www.health.vic.gov.au/sites/default/files/2026-06/ambient-ai-scribes-advisory.docx), June 2026.
+- HL7 Australia, [AU Core](https://hl7.org.au/fhir/core) and [AU eRequesting](https://hl7.org.au/fhir/ereq), accessed 15 October 2026.
+- Health New Zealand, [NHI FHIR API](https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/digital-services-hub/explore-apis/national-health-index-fhir-api) and [NZ FHIR Registry](https://www.tewhatuora.govt.nz/health-services-and-programmes/digital-health/data-and-digital-standards/new-zealand-fhir-registry), accessed 15 October 2026.
+- NSW Health, [Single Digital Patient Record now live](https://www.health.nsw.gov.au/single-digital-patient-record/Pages/sdpr-now-live.aspx), 27 March 2026. TechPartner News reported Hunter New England live on 3 June 2026.
+- HINZ, [Heidi scribe in New Zealand emergency departments](https://www.hinz.org.nz/news/715374/Heidis-AI-Scribe-to-be-rolled-out-across-New-Zealands-Emergency-Departments.htm), 26 November 2025 [vendor release].
+- Heidi Health, [Metro South rollout](https://www.heidihealth.com/blog/heidi-rolls-out-across-metro-south-health), 31 August 2026 [vendor].
+- The Medical Republic, [Heidi II agents](https://www.medicalrepublic.com.au/?p=129487), 30 September 2026.
+- The Medical Republic, [Healthdirect virtual triage](https://www.medicalrepublic.com.au/ai-triage-works-sending-people-to-the-right-care-healthdirect-finds/123169), 2025.
+- HIT Consultant, [Epic at HIMSS 2026](https://hitconsultant.net/2026/03/10/epic-ai-himss-2026-agent-factory-curiosity-foundation-models/), 10 March 2026.
+- HLTH, [Oracle Clinical AI Agent for nursing](https://hlth.com/insights/news/oracle-health-expands-ai-agent-for-inpatient-nursing-workflows), 15 September 2026.
+- Microsoft, [Dragon Copilot availability](https://www.microsoft.com/en-ca/health-solutions/clinical-workflow/dragon-copilot), accessed 15 October 2026.
+- NZSG, [national validation study of AI-assisted colonoscopy triage](https://nzsg.org.nz/news-and-events/news/article/MnuyGzE/invitation-to-participate-in-a-national-validation-study-of-aiassisted-colonoscopy-triage), July 2026.
+- University of Melbourne, [AI in the gynaecology waitlist](https://mdhs.unimelb.edu.au/impact/transforming-healthcare/future-projects/ai-in-waitlist), undated.
+
+</details>

@@ -2,25 +2,25 @@
 title: "Installing the skills"
 icon: "Terminal"
 description: "One section per agent: Claude Code, claude.ai, Codex and ChatGPT, Cursor, Gemini CLI, GitHub Copilot, and installing by hand. All of them install the same bundles."
+lastReviewed: "2026-10-15"
+concepts: [skills, r07, zones]
 ---
 
-<PlainTerms>
-Agent Skills are a shared format, so the same folder works in most agents; what differs is where each one looks for it and how it is installed. This page gives the command or the steps for each, and a way to check afterwards that the agent can actually see the skill. The one thing to remember: the fastest route for almost everyone is the single `npx skills add` command at the top.
-</PlainTerms>
+Agent Skills are a shared format, so the same folder works in most agents. What differs is where each agent looks for it and how it is installed. This page gives the command or the steps for each agent. It also shows how to check that the agent can see the skill. For almost everyone, the fastest route is the single `npx skills add` command below.
 
 ## The one command
 
 <CopyLine command="npx skills add muralisid/agentic-architecture-skills" />
 
-It detects the agents installed on the machine and writes the skills where each expects them. Add `--skill <name>` for one skill, `--global` to install for your user rather than the current project, and `--copy` if you would rather have real files than symlinks.
+It detects the agents installed on the machine and writes the skills where each expects them. Add `--skill <name>` to install one skill. Add `--global` to install for your user rather than the current project. Add `--copy` to get real files instead of symlinks. A symlink is a link to one shared copy.
 
 ### Installing from this site's index
 
-This site also publishes a discovery index at [`/.well-known/agent-skills/index.json`](/.well-known/agent-skills/index.json), in the shape the draft discovery convention describes, with a `sha256` digest for every bundle.
+This site also publishes a discovery index at [`/.well-known/agent-skills/index.json`](/.well-known/agent-skills/index.json). It follows a draft convention that lets agents find skills on a website. It carries a `sha256` digest, a fingerprint, for every bundle.
 
-Tested against the `skills` CLI at version 1.5.23 in August 2026, `npx skills add https://www.agenticarchitectureskills.com` does not work: given a bare domain the CLI downloads that URL directly rather than probing the endpoint, and then reports that the download is not a skill. Its own error message suggests that command, so the recommendation and the behaviour disagree. Use the repository form above until that is fixed.
+One command does not work yet: `npx skills add https://www.agenticarchitectureskills.com`. Given a bare domain, the CLI downloads that URL instead of looking for the index. It then reports that the download is not a skill. This was tested against the `skills` CLI at version 1.5.23 in August 2026. Its own error message suggests that command, so the recommendation and the behaviour disagree. Use the repository form above until that is fixed.
 
-The index itself is worth having regardless: it is how an agent that implements discovery finds these skills without being told where they are, and the digests let any client verify a bundle before trusting it.
+The index is still worth having. An agent that supports discovery uses it to find these skills without being told where they are. The digests let any client check a bundle before trusting it.
 
 ## Claude Code
 
@@ -31,15 +31,15 @@ The whole catalogue is also a plugin, which keeps it updatable in one step:
 
 Skills installed this way are namespaced, so they never collide with your own. To install without the plugin, put a bundle in `~/.claude/skills/<name>/` for yourself or `.claude/skills/<name>/` inside a project. Claude Code watches those directories, so a new skill is available without a restart.
 
-Check it worked by asking for something the skill covers, for example: review this architecture against the deterministic zones.
+Check it worked by asking for something the skill covers, for example: review this architecture against the [deterministic zones](/architecture/deterministic-zones).
 
 ## claude.ai and Claude Desktop
 
-Download a `.zip` from [the catalogue](/skills) and upload it under Settings, in the features section that manages skills. Uploaded skills stay with your account. Note that a skill uploaded here does not appear in Claude Code or the API: those are three separate installs of the same file.
+Download a `.zip` from [the catalogue](/skills) and upload it under Settings, in the features section that manages skills. Uploaded skills stay with your account. A skill uploaded here does not appear in Claude Code or the API. Those are three separate installs of the same file.
 
 ## Codex and ChatGPT
 
-Codex reads `.agents/skills/` in the working directory and up to the repository root, and `~/.agents/skills/` for your user. The `npx skills add` command writes both. Codex can also install directly from a repository with its own skill installer, naming this repository and the skill you want.
+Codex reads `.agents/skills/` in the working directory and up to the repository root, and `~/.agents/skills/` for your user. The `npx skills add` command writes both. Codex can also install from a repository with its own skill installer. Name this repository and the skill you want.
 
 ## Cursor
 
@@ -57,15 +57,19 @@ Copilot reads `.github/skills`, `.claude/skills` and `.agents/skills` in a proje
 
 ## By hand, anywhere
 
-Download and unzip a bundle from [the catalogue](/skills), then copy the folder into your agent's skills directory. `~/.agents/skills/` is the location most agents now honour. The folder name has to stay the same as the skill's name, because that is how the format identifies it.
+Download and unzip a bundle from [the catalogue](/skills), then copy the folder into your agent's skills directory. Most agents now honour `~/.agents/skills/`. The folder name has to stay the same as the skill's name, because that is how the format identifies it.
 
 ## Checking an install
 
-Ask the agent something the skill's description covers and see whether it reaches for it. If it does not, three things are worth checking: the folder name matches the skill name, the `SKILL.md` is at the top of the folder rather than one level down, and the agent was restarted if it does not watch its skills directory.
+Ask the agent something the skill's description covers and see whether it reaches for it. If it does not, check three things:
+
+- The folder name matches the skill name.
+- The `SKILL.md` file is at the top of the folder, not one level down.
+- The agent was restarted, if it does not watch its skills directory.
 
 ## Keeping them current
 
-`npx skills add` again updates in place, and the Claude Code plugin updates when its version changes. Each bundle records the date of its newest input, and the site's [re-verification list](/library/re-verification) says which underlying facts are volatile and when they are next checked.
+Running `npx skills add` again updates in place. The Claude Code plugin updates when its version changes. Each bundle records the date of its newest input. The site's [re-verification list](/library/re-verification) says which facts change often and when they are next checked.
 
 <details>
 <summary>A note on these instructions</summary>

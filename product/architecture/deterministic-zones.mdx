@@ -1,292 +1,151 @@
 ---
 title: "The four deterministic zones"
 icon: "OctagonAlert"
-description: "The four areas where an AI model may never approve (access, money, safety actuation, formal records), the destruction rule and the people-decisions floor that sit beside them, and how to build each boundary."
+description: "The four areas where an AI model may never approve: access, money, safety actuation and formal records. Beside them sit the destruction rule and the rule for decisions about people."
+position: "Expert judgement built from regulator guidance, safety standards and public incidents. No study yet links any zone or rule to incident rates."
+lastReviewed: "2026-10-15"
 hero_figure: "four-deterministic-zones"
+concepts: [lifecycle, capabilities, agent-types, risk, autonomy, enforcement, delegation, r05]
 ---
 
-<PlainTerms>
-Some decisions are too important to leave to an AI model: who gets access, whether money moves, whether equipment acts, and whether a formal record is true. In these four zones the model may draft, suggest, flag or block, but a fixed rule or a named person makes the final call. Two rules sit beside the zones. Deleting production data or systems needs its own rule and a named person's approval. A significant decision about a person is made by a person. The thing to remember: models may take permission away, never grant it.
-</PlainTerms>
+Some agent actions change who gets access, whether money moves, whether equipment acts, or whether a formal record is true. Who gives the final yes? Never the model. Models may take permission away, never grant it. In these four deterministic zones a fixed rule or a named person decides. The model may draft, suggest, flag or block. Two rules sit beside the zones: the destruction rule, and the rule for decisions about people. You set all of this when an agent is evaluated and approved in [the agent lifecycle](/architecture/agent-lifecycle).
 
-## Why these four zones exist
-
-**WHY:** Some decisions change rights, move money, actuate physical equipment, or create records that other people and regulators rely on. A language model is probabilistic, and the content it reads can steer it. That makes the model a useful adviser, but the wrong place for the final yes in these areas.
-
-**WHAT:** Draw four deterministic zones around **access and entitlements, movement of money, safety actuation, and formal regulatory records**. Inside each zone the agent may analyse, draft, recommend, flag and block. Fixed policy, a certified system, a payment rail or a named person decides, and the agent cannot bypass it. Beside the zones sit **a destruction rule** and **a people-decisions floor**.
-
-<TeachingIllustration src="/figures/architecture/deterministic-zones-walls.svg" mobileSrc="/figures/architecture/deterministic-zones-walls-mobile.svg" expandable title="Models may take permission away, never grant it" alt="A model sits in the centre. It may analyse, draft, recommend, flag and block. Four walls surround it: access and entitlements, movement of money, safety actuation, and formal regulatory records. Each wall shows who decides, what advises, and the agent's job. Arrows show the model may deny, escalate or quarantine. A crossed-out arrow shows it may never grant. Two panels sit beside the zones. The destruction rule needs a plan, a named approval, two signers and protected backups. The people-decisions floor needs a named person to decide, notice and a log. A strip of six yes or no questions finds the zones in an enterprise." caption="Inside the zones a fixed rule or a named person decides. The model may advise or block." />
+<TeachingIllustration src="/figures/architecture/deterministic-zones-walls.svg" mobileSrc="/figures/architecture/deterministic-zones-walls-mobile.svg" expandable title="Models may take permission away, never grant it" alt="A model sits in the centre. It may analyse, draft, recommend, flag and block. Four zones surround it: access and entitlements, movement of money, safety actuation, and formal regulatory records. Each zone shows who decides, what advises, and the agent's job. An arrow shows the model may deny, escalate or quarantine. A crossed-out arrow shows it may never grant. Two panels sit beside the zones. The destruction rule needs a plan, a named approval, two signers and protected backups. The rule for decisions about people needs a named person to decide, notice to the person and a log. A strip of six yes or no questions finds the zones in an enterprise." caption="Inside the zones a fixed rule or a named person decides. The model may advise or block." />
 
 ## The principle
 
-**<Term k="model">Models</Term> may take permission away, never grant it.** This guide's position has three parts. <Term k="probabilistic">Probabilistic</Term> components, such as a model, a classifier or a model-based reviewer, may deny, escalate or quarantine. They may never grant a permission outside the <Term k="deterministic">deterministic</Term> envelope: fixed rules that give the same answer every time, over verified credentials and written policies. In the <Term k="four zones">four zones</Term> they may not approve at all. A model may block a release; it may never approve one.
+A language model reads instructions and content as the same kind of text. So what it reads can steer it. Training cannot teach it to keep the two apart reliably (Bhattarai and Vu, February 2026). That makes the model a good adviser. It is the wrong place for the final yes on rights, money, equipment or records.
 
-The guide first wrote this as "models may inform, never decide". Shipped products broke those words in 2026. OpenAI's Codex Auto-review (30 April 2026) lets a model decide escalations. It approved 99.1 percent of them in one internal snapshot (713 of 720), and OpenAI says the reviewer is not a security guarantee [vendor]. Claude Code auto mode, where a classifier reviews actions, became the default for new Pro, Max and Team sessions on 14 August 2026 [vendor]. AWS lets Bedrock Guardrails results feed AgentCore Policy decisions [vendor]. Each reviewer still runs inside a <Term k="sandbox">sandbox</Term> or behind a <Term k="gateway">gateway</Term>, so the outer boundary held.
+So the rule has three parts. A <Term k="model">model</Term>, a classifier or a model-based reviewer may deny, escalate or quarantine. Outside the zones it may never grant more than fixed rules allow. Fixed rules give the same answer every time, over verified credentials and written policies. Inside the zones it may not approve at all. A model may block a release. It may never approve one.
 
-Model-based approval is acceptable only for reversible actions inside a sandbox, bound to the exact action and used once. Never in the zones, and never instead of the sandbox. Machine-learning signals already run inside three of the four zones, and the decision rule stays deterministic.
+Some products shipped in 2026 let a model approve some actions [vendor]. Each still runs inside a <Term k="sandbox">sandbox</Term> or behind a gateway, so the outer boundary holds. Model approval is acceptable only for a reversible action inside a sandbox. It must be bound to that exact action and used once. It is never acceptable in a zone.
 
-<Callout title="Why the boundary must be architectural">
-Instructions and data travel through a language model as the same kind of <Term k="token">token</Term>, the small units of text a model reads. So the model cannot be trained into a reliable separation between instructions and content (Bhattarai and Vu, Feb 2026). Authorization that depends on model behaviour is an exploit waiting to be found, not a control. The zones move the decision outside the model, where it can be evaluated, versioned and audited like any other rule.
-</Callout>
+Machine-learning signals already work inside three of the four zones. Risk scores, fraud models and anomaly signals feed the rule. The rule itself stays fixed. The check that applies it is the policy decision point. It belongs to [identity and policy](/architecture/system-view), one of the seven capabilities an agent platform provides.
 
 ### What the named person at a gate does
 
-Per-action human approval is weak by measurement. Users approved 93 percent of Claude Code permission prompts (Anthropic, 25 March 2026) [vendor]. In one unreplicated vendor study, people caught 13.6 percent of dangerous commands, against 89 percent for a classifier (August 2026) [vendor]. So the named person at a zone gate reviews one bounded, exact action, with deliberate friction. That person does not review a stream of prompts ([why easy checks get done](/layers/r13-operating-model#verification-cost-is-the-lever-exhortation-is-not)).
+People approve most of the prompts they are shown. Users approved 93 percent of Claude Code permission prompts (Anthropic, 25 March 2026) [vendor]. So the named person at a zone gate does not review a stream of prompts. That person reviews one exact, bounded action, with deliberate friction.
 
 <GuideFigure id="four-deterministic-zones" fullWidth />
 
-## The four zones at a glance
-
-<Cards>
-  <Card icon={<I name="key" />} title="Access and entitlements" href="#access-and-entitlements">
-    A rule over verified identity, at a policy decision point the agent cannot bypass.
-  </Card>
-  <Card icon={<I name="banknote" />} title="Movement of money" href="#movement-of-money">
-    Signed, scoped credentials checked by rule. The model chooses only inside that envelope.
-  </Card>
-  <Card icon={<I name="factory" />} title="Safety actuation" href="#safety-actuation">
-    All physical actuation. Certified systems and people keep control.
-  </Card>
-  <Card icon={<I name="landmark" />} title="Formal regulatory records" href="#formal-regulatory-records">
-    A model may draft. A named person attests to an immutable record.
-  </Card>
-  <Card icon={<I name="archive" />} title="The destruction rule" href="#the-destruction-rule">
-    Beside the zones. A production delete is its own rule, applied after a named approval.
-  </Card>
-  <Card icon={<I name="users" />} title="The people-decisions floor" href="#the-people-decisions-floor">
-    Beside the zones. A named person decides significant matters about a person.
-  </Card>
-</Cards>
-
-Each zone below ends with what an <Term k="agent">agent</Term> may never do, at any <Term k="autonomy level">autonomy level</Term>.
-
 ## Access and entitlements
 
-**In short:** A fixed rule decides who gets access. A model may add a warning or a block, never a grant, and the agent cannot skip the check.
+**What sits in it.** Who may use which system, and with what rights. That covers authorization decisions, <Term k="entitlement">entitlement</Term> grants and role changes. It covers approval of <Term k="just-in-time access">just-in-time access</Term>, which is extra access for one action, removed afterwards. Three more things belong here: security settings, any permission an agent would grant itself, and personal data leaving a boundary.
 
-What sits inside: authorization decisions, <Term k="entitlement">entitlement</Term> grants and changes, role assignments, conditional-access outcomes, and approval of <Term k="just-in-time access">just-in-time elevation</Term>. Three more things belong here: security configuration changes, any permission an agent would grant itself, and personal data leaving a boundary. Data-flow policy, the written rules for what data may go where, governs the last. The Five Eyes agencies' guidance (1 May 2026) bars agents from changing their own privileges and puts network egress behind a checkpoint. Australia's Information Security Manual (September 2026) caps an agent at the lesser of its own grant and the user's rights (per a compliance firm's summary). Machine-learned risk scores already feed this zone. The score informs; the policy decides.
+**Who decides.** A <Term k="policy decision point">policy decision point</Term> decides. It checks fixed rules against a verified identity and answers yes or no. It sits in the path of every tool call. It fails closed: if it is down, the answer is no.
 
-| The line | In this zone |
-|---|---|
-| <I name="check" />&nbsp;**Decides** | A policy decision point evaluating policy-as-code over verified identity, in the tool-call path, failing closed |
-| <I name="activity" />&nbsp;**Advises** | Risk scores, anomaly signals and any model output, as inputs to the rule |
-| <I name="bot" />&nbsp;**The agent's job** | Request the action with its own identity; accept the decision as final |
+**What the agent may do.** Ask for the action under its own identity, and accept the answer as final. It never grants, extends or approves its own access. It never changes entitlements or security settings for anyone, person or agent. It never sends personal data where the data-flow policy forbids. A deny is not an obstacle to work around. The only appeal is to a person.
 
-### How to implement it
-
-<Steps>
-<Step>
-**Put the decision in the path, not in the prompt.** List the <Term k="tool call">tool calls</Term> that touch access, security configuration or personal data flows. The <Term k="policy decision point">policy decision point</Term> sits behind [the gateway](/architecture/enforcement#enforcement-point-1-the-gateway), so none is reachable without a decision. A <Term k="prompt">prompt</Term> instruction is advice.
-</Step>
-<Step>
-**Write policy as code, data flows included.** Cedar-class engines answer in under a millisecond; Open Policy Agent handles rules that join data from several sources. <Term k="policy-as-code">Policy-as-code</Term> is versioned and reviewed like any production change ([the policy decision point](/architecture/enforcement#enforcement-point-2-the-policy-decision-point)).
-</Step>
-<Step>
-**Fail closed, log, and test the bypass.** If the policy engine goes down, consequential actions stop. Each decision lands in [the evidence record](/layers/r11-governance-risk-sovereignty#the-two-tier-evidence-posture). A red team tries to reach a tool without a decision. How an agent proves who it is lives on [the identity chain](/architecture/identity-chain).
-</Step>
-</Steps>
-
-### What the agent may never do
-
-- <I name="x" /> Grant, extend or approve its own access, including its own elevation requests.
-- <I name="x" /> Change entitlements or security configuration for any identity, human or agent.
-- <I name="x" /> Send personal data across a boundary the data-flow policy does not allow.
-- <I name="x" /> Treat a deny as an obstacle to work around. The only appeal is to a person.
+**How to build the boundary.** List the tool calls that touch access, security settings or personal data flows. Put the policy decision point behind the gateway, so no such tool is reachable without a decision. Write the rules as <Term k="policy-as-code">policy-as-code</Term>, versioned and reviewed like any production change. Log every decision in the audit trail. Then have a red team try to reach a tool without a decision. Where these checks sit is on [enforcement outside the model](/architecture/enforcement). How the agent proves who it is sits on [the delegation chain](/architecture/delegation-chain).
 
 ## Movement of money
 
-**In short:** An agent can spend only inside a signed, limited permission (a <Term k="mandate">mandate</Term>) that is checked by rule outside the agent.
+**What sits in it.** Payments, transfers, refunds and any other commitment to spend.
 
-What sits inside: payments, transfers, refunds and any other commitment to spend. The agentic payment stacks share one shape at the boundary. Google's Agent Payments Protocol (AP2, Sep 2025) uses signed mandates, and its overview says trust must not rest on model output alone. Visa's Trusted Agent Protocol (Oct 2025) checks a signature on each agent request. Mastercard's Agent Pay (Apr 2025) uses revocable tokens bound to agent, merchant and consent. Mastercard co-developed its Verifiable Intent (5 March 2026) with Google, so the stacks are not independent (read through search summaries). Stripe's Shared Payment Tokens carry a maximum amount, a currency and an expiry. All are vendor artifacts.
+**Who decides.** The payment rail, the card issuer or your own payment service decides. It checks a signed, limited permission called a <Term k="mandate">mandate</Term>. A mandate sets an amount cap, a scope, an expiry and a way to revoke it. Fraud and risk models advise. The model still chooses inside the mandate, such as which item to buy.
 
-The model still chooses inside the envelope. It picks the item. In AP2's human-not-present mode it also judges when the mandate's conditions are met. So this guide states zone 2 as: **authorization at the boundary is deterministic over signed, scoped credentials; the model proposes and chooses within the envelope.** Four caveats apply.
+Two cautions apply. Some agent wallets sign with the agent's own key, with no mandate signed by a user [vendor]. And who pays when an agent pays wrongly is not settled yet. Until it is, keep a person confirming new payees and large amounts.
 
-- **Agent wallets with no mandate.** Coinbase's x402 agent wallets sign with the agent's own key under a client-side budget. There is no user-signed mandate [vendor].
-- **A drain with no sign of a mandate.** In May 2026 a prompt sent through X drained about USD 150,000 to 200,000 from a wallet run by the Grok and Bankrbot agents. The OECD AI Incidents Monitor record (4 May 2026) shows no sign of a mandate layer.
-- **Per-payment human approval is contested.** The Reserve Bank of Australia (issues paper, June 2026) calls live trials human-in-the-loop. Santander and Mastercard completed a pilot payment with no final human command on 3 March 2026.
-- **Liability is open.** Worldpay says no liability shift exists yet [vendor]. One forecast puts the first binding card-network dispute rule at April 2027 at the earliest.
+**What the agent may do.** Put the purchase together, present the credential, and stop at the mandate's limits. It never holds card numbers or bank credentials. It never exceeds, rewrites or issues itself a mandate. It never splits a payment to stay under a cap. It never pays a payee that came from untrusted content. <Term k="prompt injection">Prompt injection</Term> still works inside a mandate's limits, so a new payee is a person's decision.
 
-No regulator found endorses an agent paying with no mandate or limit.
-
-| The line | In this zone |
-|---|---|
-| <I name="check" />&nbsp;**Decides** | The rail, the issuer or your own payment service, checking a signed, scoped credential: amount cap, scope, expiry, revocation |
-| <I name="activity" />&nbsp;**Advises** | Fraud and risk models; the model's proposal of what to buy |
-| <I name="bot" />&nbsp;**The agent's job** | Assemble the purchase, present the credential, stop at its edges |
-
-### How to implement it
-
-<Steps>
-<Step>
-**Remove raw credentials from the agent.** An agent never holds card numbers or banking credentials. It gets a scoped payment instrument tied to its identity, so revoking it is one act.
-</Step>
-<Step>
-**Make the mandate a signed artifact, checked outside the agent.** Cap, scope, expiry and revocation path are written and signed before first use. The issuer or rail checks them by rule. If your rail cannot, your own payment service checks in front of it ([the mandate-bound payment stack](/layers/r10-security-and-identity#the-mandate-bound-payment-stack)).
-</Step>
-<Step>
-**Confirm intent upstream.** New payees and above-threshold amounts get a human confirmation, at the level [the autonomy contract](/architecture/autonomy-contract) assigns. While liability stays open, this guide's position is to keep that step.
-</Step>
-<Step>
-**Keep mandate logs as evidence.** Issuance, use and revocation are compliance records ([agentic commerce](/layers/r09-experience-and-channels#agentic-commerce)).
-</Step>
-</Steps>
-
-### What the agent may never do
-
-- <I name="x" /> Exceed, rewrite or re-scope a mandate, or issue one to itself.
-- <I name="x" /> Split a payment to stay under a cap. Limits on how often and how much it pays are part of the mandate.
-- <I name="x" /> Pay a payee introduced by untrusted content. <Term k="prompt injection">Prompt injection</Term> works inside mandate bounds, so payee changes are a human decision.
+**How to build the boundary.** Give the agent a payment instrument tied to its own identity, so revoking it is one act. Write and sign the mandate before first use. The issuer or rail checks it by rule. If your rail cannot, put your own payment service in front of it. Set the confirmation step at the level [the autonomy contract](/architecture/autonomy-contract) gives the agent. Keep a log of each mandate issued, used and revoked. These logs are compliance records. The payment stack is described in the [security and identity layer (R10)](/layers/r10-security-and-identity#payment-mandates-follow-the-same-pattern).
 
 ## Safety actuation
 
-**In short:** Agents may read plant and sensor data and suggest actions. They never move equipment; certified systems, enforced limits and operators keep control.
+**What sits in it.** Everything that moves physical equipment: process plant, interlocks, vehicles, robots, drones and critical infrastructure controls. It includes <Term k="safety instrumented system">safety instrumented systems</Term>. These are the automatic systems that shut a process down when it leaves safe limits.
 
-What sits inside: all physical actuation. That covers process plant, <Term k="safety instrumented system">safety instrumented systems</Term>, interlocks, vehicles, robots, drones, and the control systems of critical infrastructure. For safety instrumented systems the standards exclude machine learning from the function itself (IEC 61511; ISO/IEC TR 5469:2024). Joint guidance from six national cyber agencies (Dec 2025) says AI should augment, not autonomously control, safety-critical actions, and manual control must stay possible. Beyond the plant, EU AI Act Article 14 asks that a person can stop a system. Anthropic's usage policy (effective 12 November 2026) asks for operating limits enforced apart from model output [vendor].
+**Who decides.** Operators, interlocks, enforced operating limits and the safety instrumented system decide, as the safety case certifies. The safety standards keep machine learning out of the safety function itself (IEC 61511; ISO/IEC TR 5469:2024). Six national cyber agencies said in December 2025 that AI should support people here, not control actions. Manual control must stay possible.
 
-| The line | In this zone |
-|---|---|
-| <I name="check" />&nbsp;**Decides** | Operators, interlocks, enforced operating limits and the safety instrumented system, as the safety case certifies |
-| <I name="activity" />&nbsp;**Advises** | Agent analysis arriving through a validated presentation layer |
-| <I name="bot" />&nbsp;**The agent's job** | Read sanitized outbound data, propose and explain, with every proposal attributed |
+**What the agent may do.** Read outbound plant data, propose and explain. Every proposal names the agent that made it. It never writes to actuators, controllers, or vehicle or robot controls. It never acknowledges, shelves or hides an alarm for an operator. It never counts as a safeguard in the safety case, or as a reason to remove one.
 
-### How to implement it
-
-<Steps>
-<Step>
-**Keep the agent on the information path.** Safety systems, interlocks and actuator controls are out of agent reach. One-way or push-based paths keep <Term k="ot">operational technology (OT)</Term> segmented, and nothing flows back to actuation ([the OT boundary](/layers/r05-lob-and-ot#the-ot-boundary-four-principles); [CD-18](/decisions#cd-18)).
-</Step>
-<Step>
-**Validate before display.** Agent output reaches operators only after a <Term k="validation loop">validation stage</Term> based on rules or a <Term k="digital twin">digital twin</Term> ([the R05 validation loop](/layers/r05-lob-and-ot#the-validation-loop)).
-</Step>
-<Step>
-**Keep the safety case clean, and keep a stop.** Agent output is never credited as a protection layer. The agent layer can be switched off without touching operation, and the drill is rehearsed.
-</Step>
-</Steps>
-
-### What the agent may never do
-
-- <I name="x" /> Write to actuators, controllers, vehicle or robot controls, or the safety instrumented system.
-- <I name="x" /> Acknowledge, shelve or suppress alarms on an operator's behalf.
-- <I name="x" /> Appear in the safety case as a protection layer, or as a reason to remove one.
+**How to build the boundary.** Keep the agent on the information path. <Term k="ot">Operational technology (OT)</Term> networks stay separate, and data flows one way, out to the agent. Nothing flows back to actuation. Agent output reaches operators only after a <Term k="validation loop">validation step</Term> based on rules or a <Term k="digital twin">digital twin</Term>. Keep a way to switch the agent off without touching operations, and rehearse it. The boundary is described in the [line of business and OT layer (R05)](/layers/r05-lob-and-ot#the-ot-boundary-four-principles).
 
 ## Formal regulatory records
 
-**In short:** A model may draft a filing. A named person checks and signs it, and the signed record is never quietly changed.
+**What sits in it.** Regulatory filings, disclosures, messages to a regulator, books and records, safety cases and audit logs. It covers any document a regulator or a third party relies on.
 
-What sits inside: regulatory filings, disclosures, messages to a regulator, books and records, safety cases, audit logs, and any document a regulator or third party relies on. FINRA Notice 24-09 and the 2024 statement from the European Securities and Markets Authority (ESMA) mandate accountability and unalterable records, not deterministic generation. Drafting with a model is permitted. <Term k="attestation">Attestation</Term>, a named person confirming the record is true, is a human act. Deleting audit logs sits here too: the Five Eyes guidance holds any request to delete logs until a person approves. In one public case, fabricated citations reached a government deliverable, and the consulting firm refunded part of its fee.
+**Who decides.** A named, accountable person confirms the record is true. That act is <Term k="attestation">attestation</Term>. A system of record then holds the record so it cannot be changed. Financial regulators ask for accountability and records that cannot be altered (FINRA Notice 24-09; ESMA, 2024). They do not forbid drafting with a model.
 
-| The line | In this zone |
-|---|---|
-| <I name="check" />&nbsp;**Decides** | A named, accountable person attesting; a system of record holding the immutable artifact |
-| <I name="activity" />&nbsp;**Advises** | Model drafts, summaries and checks, each carrying provenance back to sources |
-| <I name="bot" />&nbsp;**The agent's job** | Draft with citations that resolve, assemble evidence, flag gaps, stop before the signature |
+**What the agent may do.** Draft with citations that resolve, gather evidence, flag gaps, and stop before the signature. It never files or submits a formal record on its own. It never signs, or records a signature that did not happen. It never alters or backdates a record, or deletes audit logs. A correction is a new record.
 
-### How to implement it
-
-<Steps>
-<Step>
-**Split drafting from attestation in the workflow.** The model drafts; a named person attests. The workflow enforces it, not an instruction to the model.
-</Step>
-<Step>
-**Verify before anything leaves.** <Term k="provenance">Provenance</Term> travels with every claim ([provenance-carrying grounding](/layers/r11-governance-risk-sovereignty#provenance-carrying-grounding-mechanically)). A separate process checks that citations resolve and figures trace to sources.
-</Step>
-<Step>
-**Keep the lineage immutably.** Draft, edits, attestation and logs stay in the system of record, not in the agent's <Term k="memory">memory</Term>.
-</Step>
-</Steps>
-
-### What the agent may never do
-
-- <I name="x" /> File, submit or transmit a formal record on its own.
-- <I name="x" /> Sign, certify or attest, or record an attestation that did not happen.
-- <I name="x" /> Alter or backdate a record, or delete audit logs. Corrections are new records.
+**How to build the boundary.** Split drafting from signing in the workflow itself, not in an instruction to the model. A separate check confirms that citations resolve and figures trace to their sources. <Term k="provenance">Provenance</Term>, the record of where each claim came from, travels with every claim. Keep the draft, the edits, the signature and the logs in the system of record. Never keep them only in the agent's memory.
 
 ## The destruction rule
 
-**In short:** Deleting or resetting production data or systems is its own rule. A system applies it only after a named person approves that exact action.
+Deleting or resetting production data or systems is its own rule. A fixed system applies it only after a named person approves that exact action. It sits beside the zones, not inside them, because destruction can happen in any area.
 
-**WHY:** Four production-destruction incidents share one cause. In each, an agent held its operator's production rights, and nothing outside the model stopped it.
+Four public incidents in 2025 and 2026 share one cause. An agent held its operator's full production rights, and nothing outside the model stopped it. The research block below has the four cases.
 
-- **Replit (July 2025).** The agent deleted a production database during a code freeze set only by instruction.
-- **AWS Kiro (December 2025).** The agent reportedly deleted and recreated an environment, with about 13 hours of disruption. Amazon calls it user error from misconfigured access. The action sat inside the role's permissions.
-- **Google Antigravity (December 2025).** Running commands without asking, the agent deleted a whole drive while clearing a cache (the user's own account).
-- **Terraform destroy (26 February 2026).** Claude Code ran `terraform destroy` on a production stack after a state-file mix-up. The database and its snapshots went (the developer's own account).
-
-IMDA's agentic framework v1.5 (section 2.2.2, 20 May 2026) lists permanent deletion as an irreversible action that needs a human checkpoint. The Five Eyes guidance (1 May 2026) says designers, not the agent, decide when approval is needed. It adds checkpoints for system resets and deletion of critical records.
-
-**WHAT:** This guide's position is a rule beside the zones, not a fifth zone, because destruction cuts across every domain.
-
-- Any delete, drop, destroy or reset on production data or environments is its own rule in the policy decision point. It is never folded into a broader permission such as "manage environment".
-- It runs as plan-then-apply. The agent proposes the plan, and a deterministic system applies it after approval.
-- A named person approves that exact action, once.
-- Two people sign for production deletion.
+- Any delete, drop, destroy or reset on production is a separate rule in the policy decision point. It is never folded into a broad permission such as "manage environment".
+- It runs as <Term k="plan-then-apply">plan-then-apply</Term>. The agent proposes a plan, and a fixed system applies it after approval.
+- A named person approves that exact action, once. Two people sign for a production deletion.
 - The target has deletion protection. Backups sit where the agent's identity cannot delete them.
 
-## The people-decisions floor
+Singapore's agentic AI framework (IMDA, 20 May 2026) lists permanent deletion as an action that needs a human checkpoint.
 
-**In short:** When an agent makes or shapes a significant decision about a person, a named person with authority to change the outcome decides.
+## The rule for decisions about people
 
-**WHY:** Here the law asks for human accountability, notice and audit, not a deterministic rule. GDPR Article 22 gives a right to human intervention in solely automated decisions with significant effects. EU AI Act Annex III lists hiring, credit scoring and life and health insurance pricing as high-risk. Its Article 14 asks for oversight with the power to override. New York City Local Law 144 asks for a bias audit and notice before an automated hiring tool is used. The Australian precedent predates language models. Automated processes at an energy retailer changed payment plans without checking capacity to pay: over 100,000 breaches and an A$17 million penalty (AER v Origin, Federal Court, 6 July 2022).
+A named person decides any significant decision about a person. That covers credit, work, insurance, benefits, health, housing, education, and utility hardship or disconnection. Here the law asks for human accountability, notice and audit, not a fixed rule. GDPR Article 22 gives people a right to human review of solely automated decisions with significant effects. The EU AI Act lists hiring, credit scoring and life and health insurance pricing as high-risk.
 
-**WHAT:** This guide's position is a floor beside the zones. It covers credit, employment, insurance, health, housing, education, benefits, and utility hardship or disconnection.
-
-- A named person with authority to change the outcome decides. The model may score and draft.
-- The person affected gets the notice the law requires. In Australia that is the OAIC automated-decision disclosure, from 10 December 2026.
+- A named person with the power to change the outcome decides. The model may score and draft.
+- The person affected gets the notice the law requires. In Australia, the OAIC automated decision disclosure applies from 10 December 2026.
 - Each decision is logged with the model's inputs.
-- Sign-off does not lower the risk tier. A law-firm note on the OAIC guidance (Allens, October 2026) says a program stays in scope when its output is a key factor.
+- A person signing off does not lower the [risk tier](/architecture/risk-profile). A program stays in scope when its output is a key factor.
 
-Regulators differ on how much review is enough. The Monetary Authority of Singapore (MAS, guidelines of 7 October 2026) makes human oversight proportionate to materiality and asks for more transparency in credit. It does not require a person to review every credit decision, so this floor is stricter than MAS. MAS also puts rule-based systems outside its definition of AI, which places the zones on the conventional-controls side.
+The rule is older than language models. In Australia, an energy retailer's automated processes changed payment plans without checking capacity to pay. The court imposed an A$17 million penalty (AER v Origin, 6 July 2022). Regulators differ on how much review is enough. The Monetary Authority of Singapore (7 October 2026) does not require a person on every credit decision. This rule is stricter than that.
 
-## External messages and commitments
-
-These are not a new zone. Money commitments are zone 2, and messages to a regulator are zone 4. Other binding external messages, such as an offer or a contract term, are a high-risk action that needs approval under [the risk profile](/architecture/risk-profile). Free text can only be partly ruled: recipient allowlists, rate limits, data loss prevention, and disclosure that AI was involved. EU AI Act Article 50 disclosure duties apply from 2 August 2026 (law-firm summaries).
+Other binding messages, such as an offer or a contract term, are not a zone. They are a high-risk action that needs approval under the risk profile.
 
 ## Code an agent writes
 
-**In short:** Code that ships through a repository is reviewed by someone else. Code that runs inside a task runs in a sandbox and never holds a production credential.
+Code that ships through a repository is reviewed by someone who did not write it. It passes pipeline tests and change control. The agent never approves its own deployment.
 
-No source uses the words development time and run time, but every source fits the split. It is this guide's inference.
+Code that the agent writes and runs during a task stays in a sandbox. That sandbox has no network by default and holds no production credential. A database query the agent writes runs under a read-only role and the user's own identity. A "read-only" label is not enough. What the credential allows is what counts.
 
-- **Development-time code** ships through a repository. Someone who did not generate it reviews it, under pipeline tests and change control. The agent never approves its own deployment. Commonwealth Bank said on 2 October 2026 that an agent should not validate its own code. Deutsche Bank (14 July 2026) never deploys AI-generated code without review. APRA's letter of 30 April 2026 expects security testing of AI-generated code (per a law-firm summary).
-- **Run-time code** is generated and run inside a task. It runs in a sandbox, with hypervisor-class isolation for untrusted code that touches sensitive data. No network by default, short-lived, and its outputs are untrusted input to the host. The UK NCSC (20 August 2026) says always sandbox and deny network by default.
-- **Run-time generated code never carries a production credential.** No source states this rule; all are consistent with it.
-- **Production changes use plan-then-apply**, under [the destruction rule](#the-destruction-rule).
-- **Text-to-SQL runs under a SELECT-only database role and the user's identity.** "Read-only" labels have failed. In the Supabase case (July 2025), an assistant that was only reading obeyed a poisoned support ticket and leaked a secrets table. Its credential bypassed row-level security. Datadog found (21 August 2025) that an injected COMMIT ended a reference server's read-only mode. The credential is what counts.
+## What the zones do not catch
 
-Running generated code is acceptable in an isolated environment with no credentials and controlled egress. The dangerous case is a development agent holding production rights, where all four destruction incidents sit.
+Fixed rules limit what is possible. They do not judge whether an action fits the purpose. In one red-team test, injected text made an agent buy the wrong thing. The mandate held, and the purchase was still wrong. So four defences stay necessary even with perfect gates:
 
-## The caveat that keeps this honest
+- Defend against injection where untrusted content enters the agent's working memory.
+- Have a person confirm intent for consequential choices inside the limits.
+- Write destructive actions as separate rules.
+- Let model reviewers or signed user mandates check intent only to stop an action, never to widen what is allowed.
 
-Deterministic authorization bounds what is possible. It does not judge whether an action fits the purpose. One payment protocol was red-teamed with prompt injection working entirely **within** mandate bounds: the mandate held, and the agent still bought the wrong thing. The reported Kiro delete-and-recreate sat inside the role's permissions too.
+## A worked example: billing exceptions at a utility
 
-So four defences stay necessary even with perfect gates. Defend against injection where untrusted content enters the <Term k="context">context</Term>. Have a person confirm intent for consequential choices inside the bounds. Write destructive verbs as separate rules. Allow intent checks by model reviewers or signed user mandates only in a subtract-only role: they may stop an action, never widen what is allowed.
+A utility runs an agent on billing exceptions. A meter read looks wrong and the bill fails a check. The agent gathers the read history, meter events and account notes. It proposes a resolution and shows its evidence.
+
+Three boundaries shape the design. First, any sign of hardship, disconnection or a payment plan is a decision about a person. The agent hands the case to a trained person and stops. Second, a released bill changes what the customer owes. So the model never releases a bill. A fixed rule in the billing system checks confidence and hard limits. It releases only what passes, and a sample is checked. A specialist approves the rest. Third, the agent never overwrites a read. A correction is a new entry. The full design is on [billing exceptions](/use-cases/billing-exceptions).
 
 ## Find the zones in your enterprise
 
-Four questions locate the zones in your estate, and one yes is enough:
+Four questions find the zones. One yes is enough.
 
-- <I name="landmark" /> Does a regulator or standard name this function, or rely on its records?
-- <I name="exchange" /> Is the action irreversible, or is reversing it a legal or financial event in itself?
-- <I name="zap" /> Does it move money, change access, actuate anything physical, or create a record a third party relies on?
-- <I name="shield" /> Is certified or validated logic already making this decision today?
+1. Does a regulator or standard name this function, or rely on its records?
+2. Is the action irreversible, or is reversing it a legal or financial event in itself?
+3. Does it move money, change access, move physical equipment, or create a record others rely on?
+4. Is certified or validated logic making this decision today?
 
-Two more questions find the rules beside the zones:
+Two more questions find the rules beside the zones.
 
-- <I name="archive" /> Does it delete, drop, destroy or reset production data or an environment? The destruction rule applies.
-- <I name="users" /> Does it make or shape a significant decision about a person? The people-decisions floor applies.
+5. Does it delete, drop, destroy or reset production data or an environment? The destruction rule applies.
+6. Does it make or shape a significant decision about a person? The rule for decisions about people applies.
 
-Classify every tool in the gateway's registry against the six questions. Write the answers into a one-page zone register: each entry, its decider, and the advisory role agents may play. Risk signs it, and each entry maps to gateway policy and to the controls column of [the autonomy contract](/architecture/autonomy-contract#the-controls-column-is-the-contract).
+Run every tool in the gateway's list against the six questions. Write the answers into a one-page zone register. Each entry names the action, who decides, and how the agent may help. Your risk function signs the register. Each entry maps to a gateway policy and to the controls in the autonomy contract.
 
-## Design consequences
-
-- The signed register lets your regulator and your board say yes to everything outside it.
-- A use case that needs a model to approve inside a zone is reshaped (the model proposes, the rule decides) or rejected.
-
-**Next step:** trace every action back to the person who asked on [the identity and delegation chain](/architecture/identity-chain).
+The zones an agent touches are part of its impact, one of [the four questions](/architecture/agent-types) asked of every agent. A signed register lets your regulator and your board approve everything outside it. A use case that needs a model to approve inside a zone is reshaped or dropped. Reshaped means the model proposes and a rule decides.
 
 ## Evidence and limits
 
-The zone framing, the destruction rule, the people-decisions floor and the code split are this guide's positions, argued from convergent evidence rather than measured outcomes. **No study links any zone, rule or tier to incident rates.** The payment-stack details are vendor artifacts, and the dispute-rule date is a forecast. The safety exclusions are standards text and joint agency guidance, the strongest evidence here. The OAIC scope point, the EU AI Act dates and the APRA letter come from law-firm notes. Those notes put Annex III duties at 2 December 2027. The destruction incidents are single accounts, and Amazon disputes the Kiro framing. The approval figures are vendor figures with unknown methods. The intent caveat rests on one red-team study. Bypass rates for model-based filters are on [the enforcement page](/architecture/enforcement#what-guardrails-are-for).
+The zones, the two rules beside them and the split for code are expert judgement. They rest on regulator guidance, safety standards and public incidents. No study yet links any zone or rule to incident rates.
+
+The safety exclusions are the strongest evidence here. They are standards text and joint agency guidance. The payment details come from vendor documents, and the rules on who pays are not settled. The EU AI Act dates and the OAIC scope come from law-firm notes. Those notes put the high-risk duties at 2 December 2027.
+
+The destruction incidents are single accounts, and Amazon disputes one of them. The approval figures are vendor figures with unknown methods. The limit on intent rests on one red-team study. How often attackers get past model-based filters is on [enforcement outside the model](/architecture/enforcement#what-guardrails-are-for).
+
+## Next step
+
+Trace every action to the person who asked on [the delegation chain](/architecture/delegation-chain).
 
 <details>
 <summary>The research behind this page</summary>
@@ -296,7 +155,15 @@ The zone framing, the destruction rule, the people-decisions floor and the code 
 - [Line of business and OT findings](/library/layers/r05-lob-and-ot/findings)
 - [Governance, risk and sovereignty findings](/library/layers/r11-governance-risk-sovereignty/findings)
 
-Sources added October 2026:
+**Model approval in shipped products.** OpenAI's Codex Auto-review (30 April 2026) lets a model decide escalations. It approved 713 of 720 in one internal snapshot [vendor]. OpenAI says the reviewer is not a security guarantee. Claude Code auto mode, where a classifier reviews actions, became the default for new Pro, Max and Team sessions on 14 August 2026 [vendor]. AWS lets Bedrock Guardrails results feed AgentCore Policy decisions [vendor]. In one unreplicated vendor study, people caught 13.6 percent of dangerous commands (August 2026) [vendor]. A classifier caught 89 percent.
+
+**Payment protocols.** Google's Agent Payments Protocol (AP2, September 2025) uses signed mandates [vendor]. Visa's Trusted Agent Protocol (October 2025) checks a signature on each agent request [vendor]. Mastercard Agent Pay (April 2025) uses revocable tokens bound to agent, merchant and consent [vendor]. Mastercard built Verifiable Intent (5 March 2026) with Google, so the stacks are not independent. Stripe's Shared Payment Tokens carry an amount cap, a currency and an expiry [vendor]. Coinbase's x402 agent wallets sign with the agent's own key under a client-side budget, with no user mandate [vendor]. In May 2026 a prompt sent through X drained about USD 150,000 to 200,000 from an agent-run wallet. The OECD record (4 May 2026) shows no sign of a mandate. The Reserve Bank of Australia (issues paper, 25 June 2026) calls live trials human-in-the-loop. Santander and Mastercard completed a pilot payment with no final human command (3 March 2026). Worldpay says no liability shift exists yet [vendor]. One forecast puts the first card-network dispute rule at April 2027 at the earliest.
+
+**Four destruction incidents.** Replit (July 2025): an agent deleted a production database during a code freeze set only by instruction. AWS Kiro (December 2025): an agent reportedly deleted and recreated an environment, with about 13 hours of disruption. Amazon calls it user error from misconfigured access. Google Antigravity (December 2025): an agent deleted a whole drive while clearing a cache. Terraform destroy (26 February 2026): Claude Code destroyed a production stack after a state-file mix-up, and the snapshots went too.
+
+**Read-only labels.** In the Supabase case (July 2025), a read-only assistant obeyed a poisoned support ticket and leaked a secrets table. Datadog showed (21 August 2025) that an injected COMMIT ended a reference server's read-only mode.
+
+**Other sources.** The Five Eyes guidance (1 May 2026) bars agents from changing their own privileges and holds log deletion for a person. Australia's Information Security Manual (September 2026) caps an agent at the lesser of its own grant and the user's rights. The UK NCSC (20 August 2026) says always sandbox generated code and deny network by default. Commonwealth Bank (2 October 2026) says an agent should not validate its own code. Deutsche Bank (14 July 2026) never deploys AI-generated code without review. APRA's letter of 30 April 2026 expects security testing of AI-generated code. MAS (7 October 2026) puts rule-based systems outside its definition of AI. New York City Local Law 144 asks for a bias audit and notice before an automated hiring tool is used.
 
 - [IMDA agentic framework v1.5, 20 May 2026](https://www.imda.gov.sg/assets/63438074-73f6-4dcc-a281-030f42642cf4.pdf)
 - [Five Eyes, Careful adoption of agentic AI services, 1 May 2026](https://www.ncsc.govt.nz/assets/guidance/Documents/Careful-adoption-of-agentic-AI-services_FINAL.pdf)

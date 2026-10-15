@@ -1,14 +1,14 @@
 ---
 reader_summary: "Place each workload on separate autonomy and learning axes, then use oversight capacity and evidence to decide whether it may advance."
 audience: ["CIO/CTO", "Enterprise architect", "Risk and operations lead"]
-decision_or_output: "Assign a current and next safe A x L position to one workload, with the evidence required for promotion."
+decision_or_output: "Assign a current and next safe position on the autonomy and learning scales to one workload, with the evidence required for promotion."
 prerequisites: ["/docs/architecture/vision-and-target-state"]
 reading_time: "9 minutes"
 evidence_status: "Author model built on published autonomy ladders and human-factors evidence; thresholds and unresolved supervision ratios are stated explicitly."
 next: "/docs/architecture/archetype-grid"
 ---
 
-# The Autonomy-Learning Maturity Model (A x L)
+# The Autonomy and Learning Scales
 
 As of August 2026.
 
@@ -18,7 +18,7 @@ As of August 2026.
 
 Ladders for agent autonomy already exist, and this guide builds on them rather than pretending otherwise. Google DeepMind published autonomy levels 0-5 framed as a human-interaction paradigm and a deliberate deployment choice (Morris et al., arXiv Nov 2023, ICML 2024). Feng, McDonald, and Zhang published L1-L5 defined by the user's role, from operator to observer, with a proposal for autonomy certificates (arXiv Jun 2025). Hugging Face researchers published levels of agency defined by who controls program flow, with an argument against the fully autonomous top level (Mitchell et al., arXiv Feb 2025). Salesforce ships an L0-L4 agentic maturity model keyed to orchestration scope (Apr 2025 [vendor]). All descend from Sheridan and Verplank's ten levels of automation (1978) and the SAE driving levels.
 
-What none of these models carries is a learning axis: across the field we surveyed, learning capability appears in almost no maturity model at all. Yet in enterprise practice, whether an agent can improve, and under what governance, determines the operating model around it more than its autonomy does: a fixed-policy agent is configured; a learning agent is managed. This model therefore has two dimensions.
+What none of these models carries is a learning axis: across the field we surveyed, learning capability appears in almost no maturity model at all. Yet in enterprise practice, whether an agent can improve, and under what governance, determines the operating model around it more than its autonomy does: a fixed-policy agent is configured; a learning agent is managed. This model therefore has two axes.
 
 ## Axis 1: Autonomy (A0 to A5)
 
@@ -62,7 +62,7 @@ This gate exists because of the single strongest negative finding in the guide.
 
 What the adjacent measurement does support:
 
-- Supervisory capacity follows the fan-out relation: capacity is neglect time divided by the sum of interaction time and **wait time**, plus one. Wait time is the term architects forget and the one that usually binds, because it is set by queueing and escalation design rather than by the agent.
+- Supervisory capacity follows a span of control relation: capacity is neglect time divided by the sum of interaction time and **wait time**, plus one. Wait time is the term architects forget and the one that usually binds, because it is set by queueing and escalation design rather than by the agent.
 - The only directly measured capacity in a comparable supervisory task fell between four and six units, in a low-stakes simulation. It is a floor for intuition, not a target.
 - Published ratios across domains span a thirty- to fiftyfold range, driven entirely by task, autonomy level, and consequence. There is no domain-independent number to find.
 - Consequence-weighted domains regulate **below** one to one. Nuclear control rooms require multiple licensed operators per unit with continuous presence at the controls.
@@ -70,7 +70,7 @@ What the adjacent measurement does support:
 
 **The gate, stated operationally.** A workload may be claimed at A4 or above only when all four hold:
 
-1. The oversight capacity is calculated from the fan-out relation with wait time included, using measured interaction and wait times from the workload itself.
+1. The oversight capacity is calculated from the span of control relation with wait time included, using measured interaction and wait times from the workload itself.
 2. The capacity target is expressed as a **burst rate**, never as a daily or hourly average. The standards committee that governs alarm load holds that a per-ten-minute rate cannot validly be converted into a longer-window figure, and removed its per-day metric precisely because averaging destroys the meaning. Any "N agents per reviewer" target set as a daily average will be met on the dashboard and violated in every burst.
 3. Supervision load, intervention rate, escalation mix by trigger, and wait time per item are instrumented in production (R12 carries the mechanics).
 4. Verification is cheap by construction. If checking the agent's work costs a meaningful fraction of doing the work, the capacity calculation is fiction regardless of what the telemetry says.
@@ -97,6 +97,6 @@ What the adjacent measurement does support:
 - MIT AI Agent Index, 2025 edition. https://aiagentindex.mit.edu/
 - Sheridan and Verplank (1978); Parasuraman, Sheridan, Wickens (2000); SAE J3016 (lineage)
 - Gartner, agentic AI maturity and adoption commentary, 2025-2026 (via press releases and licensed reprints)
-- Olsen and Wood, fan-out and neglect-time formulation of supervisory capacity (2004 onward); human-supervisory-control literature
+- Olsen and Wood, neglect-time formulation of supervisory capacity and span of control (2004 onward); human-supervisory-control literature
 - EEMUA 191 and IEC 62682 alarm-management practice, including the removal of the per-day metric and the ten-minute burst rate
 - Full evidence base and the span-of-control finding: research/R13-operating-model/findings.md and sources.md

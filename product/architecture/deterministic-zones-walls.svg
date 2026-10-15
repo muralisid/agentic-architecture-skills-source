@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
 <title id="title">The four deterministic zones</title>
-<desc id="desc">A model sits in the centre and may analyse, draft, recommend, flag and block. Four zones surround it: access, money, safety actuation and formal records. In each zone a fixed rule or a named person decides. The model may deny, escalate or quarantine, but it may never grant.</desc>
+<desc id="desc">A model sits in the centre and may analyse, draft, recommend, flag and block. Four zones surround it: access, money, safety actuation and formal records. In each zone a fixed rule or a named person decides. The model may deny, escalate or quarantine, but it may never grant. Beside the zones sit the destruction rule and the rule for decisions about people.</desc>
 <defs>
 <marker id="ah-evidence" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#0f766e"/></marker>
 <marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
@@ -72,15 +72,16 @@
 <text x="1216" y="238" font-family="Arial,sans-serif" font-size="20" fill="#881337">Named approval, once</text>
 <text x="1216" y="268" font-family="Arial,sans-serif" font-size="20" fill="#881337">Two signers in production</text>
 <text x="1216" y="298" font-family="Arial,sans-serif" font-size="20" fill="#881337">Protected backups</text>
-<rect x="1200" y="330" width="360" height="144" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
-<text x="1216" y="364" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#881337">People-decisions floor</text>
-<text x="1216" y="398" font-family="Arial,sans-serif" font-size="20" fill="#881337">A named person decides</text>
-<text x="1216" y="428" font-family="Arial,sans-serif" font-size="20" fill="#881337">Notice to the person</text>
-<text x="1216" y="458" font-family="Arial,sans-serif" font-size="20" fill="#881337">Each decision logged</text>
-<text x="1200" y="514" font-family="Arial,sans-serif" font-size="18" fill="#465958">In the zones the model may draft,</text>
-<text x="1200" y="538" font-family="Arial,sans-serif" font-size="18" fill="#465958">suggest, flag or block. A fixed rule</text>
-<text x="1200" y="562" font-family="Arial,sans-serif" font-size="18" fill="#465958">or a named person makes the final</text>
-<text x="1200" y="586" font-family="Arial,sans-serif" font-size="18" fill="#465958">call.</text>
+<rect x="1200" y="330" width="360" height="172" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="1216" y="362" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#881337">Rule for decisions</text>
+<text x="1216" y="390" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#881337">about people</text>
+<text x="1216" y="424" font-family="Arial,sans-serif" font-size="20" fill="#881337">A named person decides</text>
+<text x="1216" y="454" font-family="Arial,sans-serif" font-size="20" fill="#881337">Notice to the person</text>
+<text x="1216" y="484" font-family="Arial,sans-serif" font-size="20" fill="#881337">Each decision logged</text>
+<text x="1200" y="538" font-family="Arial,sans-serif" font-size="18" fill="#465958">In the zones the model may draft,</text>
+<text x="1200" y="562" font-family="Arial,sans-serif" font-size="18" fill="#465958">suggest, flag or block. A fixed rule</text>
+<text x="1200" y="586" font-family="Arial,sans-serif" font-size="18" fill="#465958">or a named person makes the final</text>
+<text x="1200" y="610" font-family="Arial,sans-serif" font-size="18" fill="#465958">call.</text>
 <text x="40" y="680" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">Find the zones in your enterprise: one yes is enough</text>
 <rect x="40" y="692" width="241.7" height="188" rx="12" fill="#fff" stroke="#475569" stroke-width="1.5"/>
 <text x="52" y="718" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#475569">1</text>
@@ -122,6 +123,6 @@
 <text x="1330.3" y="764" font-family="Arial,sans-serif" font-size="18" fill="#465958">a significant</text>
 <text x="1330.3" y="786" font-family="Arial,sans-serif" font-size="18" fill="#465958">decision about a</text>
 <text x="1330.3" y="808" font-family="Arial,sans-serif" font-size="18" fill="#465958">person?</text>
-<text x="1330.3" y="844" font-family="Arial,sans-serif" font-size="18" fill="#881337">Yes: people-decisions</text>
-<text x="1330.3" y="866" font-family="Arial,sans-serif" font-size="18" fill="#881337">floor</text>
+<text x="1330.3" y="844" font-family="Arial,sans-serif" font-size="18" fill="#881337">Yes: the rule for</text>
+<text x="1330.3" y="866" font-family="Arial,sans-serif" font-size="18" fill="#881337">decisions about people</text>
 </svg>

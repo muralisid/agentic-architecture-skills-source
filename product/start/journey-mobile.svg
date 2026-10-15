@@ -1,111 +1,112 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2694" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2728" role="img" aria-labelledby="title desc">
 <title id="title">The road to an agentic enterprise</title>
-<desc id="desc">Seven stations run in order: 1 Understand, 2 Assess readiness, 3 Choose use cases, 4 Design, 5 Build, 6 Operate and 7 Scale autonomy. Each station lists the pages to read. A gate sits between stations: sponsors can say what changes and what stays; readiness profile and ceiling; use case admitted, risk tier set; zone register signed, controls chosen; evals pass, approvals signed; oversight capacity proven at burst. An evidence rail runs under every station, and an arrow from station 7 back to station 3 marks the next use case.</desc>
+<desc id="desc">Seven steps run in order. They are understand, assess readiness, choose use cases, design, build, operate and scale autonomy. Each step lists the pages to read. A gate sits between each pair of steps. Gate 1: sponsors can say what changes and what stays. Gate 2: a readiness profile and ceiling. Gate 3: the use case is admitted and its risk tier set. Gate 4: the zone register is signed and controls chosen. Gate 5: evals pass and approvals are signed. Gate 6: oversight capacity holds at peak load. A rail under every step reads evidence and limits on every page. An arrow from step 7 back to step 3 marks the next use case.</desc>
 <defs><marker id="ah-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#475569"/></marker><marker id="ah-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="22" markerHeight="22" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#7c3aed"/></marker></defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
 <text x="32" y="64" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">The road to an agentic enterprise</text>
-<text x="32" y="104" font-family="Arial,sans-serif" font-size="24" fill="#465958">Seven stations, with a gate between each.</text>
-<path d="M48 180 V2470" fill="none" stroke="#0f766e" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
-<path d="M500 2404 H684 V790 H643" fill="none" stroke="#7c3aed" stroke-width="3" marker-end="url(#ah-violet)"/>
-<path d="M360.0 350 V477" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-slate)"/>
+<text x="32" y="104" font-family="Arial,sans-serif" font-size="24" fill="#465958">Seven steps, with a gate between each.</text>
+<path d="M48 180 V2504" fill="none" stroke="#0f766e" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+<path d="M500 2438 H684 V824 H643" fill="none" stroke="#7c3aed" stroke-width="3" marker-end=""/>
+<path d="M360 350 V511" fill="none" stroke="#475569" stroke-width="3" marker-end=""/>
 <path d="M48 180 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
 <circle cx="48" cy="180" r="7" fill="#0f766e"/>
-<rect x="80" y="140" width="560" height="210" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<rect x="80" y="140" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <circle cx="120" cy="180" r="24" fill="#2563eb"/>
 <text x="120" y="189" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">1</text>
 <text x="160" y="191" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Understand</text>
 <path d="M96 218 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
 <text x="104" y="252" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Architecture of the agentic enterprise</text>
-<text x="104" y="286" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The seven responsibilities</text>
-<text x="104" y="320" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Follow one inspection task</text>
-<path d="M360.0 654 V749" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-slate)"/>
-<path d="M48 518 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
-<circle cx="48" cy="518" r="7" fill="#0f766e"/>
-<rect x="80" y="478" width="560" height="176" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<circle cx="120" cy="518" r="24" fill="#2563eb"/>
-<text x="120" y="527" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">2</text>
-<text x="160" y="529" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Assess readiness</text>
-<path d="M96 556 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="104" y="590" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The readiness assessment</text>
-<text x="104" y="624" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The ceiling table</text>
-<path d="M360.0 994 V1089" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-slate)"/>
-<path d="M48 790 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
-<circle cx="48" cy="790" r="7" fill="#0f766e"/>
-<rect x="80" y="750" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<circle cx="120" cy="790" r="24" fill="#2563eb"/>
-<text x="120" y="799" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">3</text>
-<text x="160" y="801" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Choose use cases</text>
-<path d="M96 828 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="104" y="862" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Choose where to start</text>
-<text x="104" y="896" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Agents and packaged applications</text>
-<text x="104" y="930" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Measure value and full cost</text>
-<text x="104" y="964" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The use-case portfolio</text>
-<path d="M360.0 1334 V1429" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-slate)"/>
-<path d="M48 1130 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
-<circle cx="48" cy="1130" r="7" fill="#0f766e"/>
-<rect x="80" y="1090" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<circle cx="120" cy="1130" r="24" fill="#2563eb"/>
-<text x="120" y="1139" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">4</text>
-<text x="160" y="1141" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Design</text>
-<path d="M96 1168 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="104" y="1202" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Agent types</text>
-<text x="104" y="1236" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The risk profile</text>
-<text x="104" y="1270" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The deterministic zones</text>
-<text x="104" y="1304" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Enforcement outside the model</text>
-<path d="M360.0 1674 V1769" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-slate)"/>
-<path d="M48 1470 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
-<circle cx="48" cy="1470" r="7" fill="#0f766e"/>
-<rect x="80" y="1430" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<circle cx="120" cy="1470" r="24" fill="#2563eb"/>
-<text x="120" y="1479" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">5</text>
-<text x="160" y="1481" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Build</text>
-<path d="M96 1508 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="104" y="1542" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The intelligence ladder</text>
-<text x="104" y="1576" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Knowledge and memory</text>
-<text x="104" y="1610" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The Agentic OS</text>
-<text x="104" y="1644" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The learning flywheel</text>
-<path d="M360.0 2014 V2109" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-slate)"/>
-<path d="M48 1810 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
-<circle cx="48" cy="1810" r="7" fill="#0f766e"/>
-<rect x="80" y="1770" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<circle cx="120" cy="1810" r="24" fill="#2563eb"/>
-<text x="120" y="1819" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">6</text>
-<text x="160" y="1821" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Operate</text>
-<path d="M96 1848 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="104" y="1882" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Observability and FinOps</text>
-<text x="104" y="1916" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Operating model and supervision</text>
-<text x="104" y="1950" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The agent lifecycle</text>
-<text x="104" y="1984" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The economics model</text>
-<path d="M48 2150 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
-<circle cx="48" cy="2150" r="7" fill="#0f766e"/>
-<rect x="80" y="2110" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<circle cx="120" cy="2150" r="24" fill="#2563eb"/>
-<text x="120" y="2159" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">7</text>
-<text x="160" y="2161" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Scale autonomy</text>
-<path d="M96 2188 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="104" y="2222" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The autonomy contract</text>
-<text x="104" y="2256" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The learning flywheel</text>
-<text x="104" y="2290" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The autonomy crosswalk</text>
-<text x="104" y="2324" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Build an agentic enterprise</text>
-<rect x="96" y="372" width="528" height="84" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="360" y="406" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Sponsors can say what changes and</text>
-<text x="360" y="438" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">what stays</text>
-<rect x="96" y="676" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="360" y="710" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Readiness profile and ceiling</text>
-<rect x="96" y="1016" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="360" y="1050" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Use case admitted, risk tier set</text>
-<rect x="96" y="1356" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="360" y="1390" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Zone register signed, controls chosen</text>
-<rect x="96" y="1696" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="360" y="1730" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Evals pass, approvals signed</text>
-<rect x="96" y="2036" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="360" y="2070" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Oversight capacity proven at burst</text>
-<path d="M360.0 2354 V2378" fill="none" stroke="#7c3aed" stroke-width="3"/>
-<rect x="220" y="2378" width="280" height="52" rx="26" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-<text x="360" y="2412" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#4c1d95">Next use case</text>
-<rect x="32" y="2470" width="656" height="64" rx="32" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
-<text x="360" y="2510" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#134e4a">Evidence: sources and limits on every page</text>
-<rect x="32" y="2570" width="26" height="26" rx="6" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="72" y="2590" font-family="Arial,sans-serif" font-size="24" fill="#465958">Slate boxes are gates: what must be true</text>
-<text x="72" y="2622" font-family="Arial,sans-serif" font-size="24" fill="#465958">before you move on.</text>
+<text x="104" y="286" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">What an agent platform provides</text>
+<text x="104" y="320" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The agent lifecycle</text>
+<text x="104" y="354" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Follow one inspection task</text>
+<path d="M360 688 V783" fill="none" stroke="#475569" stroke-width="3" marker-end=""/>
+<path d="M48 552 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
+<circle cx="48" cy="552" r="7" fill="#0f766e"/>
+<rect x="80" y="512" width="560" height="176" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="120" cy="552" r="24" fill="#2563eb"/>
+<text x="120" y="561" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">2</text>
+<text x="160" y="563" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Assess readiness</text>
+<path d="M96 590 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
+<text x="104" y="624" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The readiness assessment</text>
+<text x="104" y="658" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The autonomy contract</text>
+<path d="M360 1028 V1123" fill="none" stroke="#475569" stroke-width="3" marker-end=""/>
+<path d="M48 824 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
+<circle cx="48" cy="824" r="7" fill="#0f766e"/>
+<rect x="80" y="784" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="120" cy="824" r="24" fill="#2563eb"/>
+<text x="120" y="833" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">3</text>
+<text x="160" y="835" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Choose use cases</text>
+<path d="M96 862 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
+<text x="104" y="896" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Choose where to start</text>
+<text x="104" y="930" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Agents and packaged applications</text>
+<text x="104" y="964" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Measure value and full cost</text>
+<text x="104" y="998" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The use-case portfolio</text>
+<path d="M360 1368 V1463" fill="none" stroke="#475569" stroke-width="3" marker-end=""/>
+<path d="M48 1164 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
+<circle cx="48" cy="1164" r="7" fill="#0f766e"/>
+<rect x="80" y="1124" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="120" cy="1164" r="24" fill="#2563eb"/>
+<text x="120" y="1173" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">4</text>
+<text x="160" y="1175" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Design</text>
+<path d="M96 1202 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
+<text x="104" y="1236" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Four questions for any agent</text>
+<text x="104" y="1270" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The risk profile</text>
+<text x="104" y="1304" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The deterministic zones</text>
+<text x="104" y="1338" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Enforcement outside the model</text>
+<path d="M360 1708 V1803" fill="none" stroke="#475569" stroke-width="3" marker-end=""/>
+<path d="M48 1504 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
+<circle cx="48" cy="1504" r="7" fill="#0f766e"/>
+<rect x="80" y="1464" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="120" cy="1504" r="24" fill="#2563eb"/>
+<text x="120" y="1513" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">5</text>
+<text x="160" y="1515" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Build</text>
+<path d="M96 1542 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
+<text x="104" y="1576" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The intelligence ladder</text>
+<text x="104" y="1610" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Knowledge and memory</text>
+<text x="104" y="1644" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The Agentic OS</text>
+<text x="104" y="1678" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The learning flywheel</text>
+<path d="M360 2048 V2143" fill="none" stroke="#475569" stroke-width="3" marker-end=""/>
+<path d="M48 1844 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
+<circle cx="48" cy="1844" r="7" fill="#0f766e"/>
+<rect x="80" y="1804" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="120" cy="1844" r="24" fill="#2563eb"/>
+<text x="120" y="1853" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">6</text>
+<text x="160" y="1855" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Operate</text>
+<path d="M96 1882 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
+<text x="104" y="1916" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Operate: the weekly loop</text>
+<text x="104" y="1950" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Observability and FinOps</text>
+<text x="104" y="1984" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Operating model and supervision</text>
+<text x="104" y="2018" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The agent lifecycle</text>
+<path d="M48 2184 H80" fill="none" stroke="#0f766e" stroke-width="2"/>
+<circle cx="48" cy="2184" r="7" fill="#0f766e"/>
+<rect x="80" y="2144" width="560" height="244" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="120" cy="2184" r="24" fill="#2563eb"/>
+<text x="120" y="2193" font-family="Arial,sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#ffffff">7</text>
+<text x="160" y="2195" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Scale autonomy</text>
+<path d="M96 2222 H624" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
+<text x="104" y="2256" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The autonomy contract</text>
+<text x="104" y="2290" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The learning flywheel</text>
+<text x="104" y="2324" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">The risk profile</text>
+<text x="104" y="2358" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Build an agentic enterprise</text>
+<rect x="96" y="406" width="528" height="84" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="360" y="440" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Sponsors can say what changes and</text>
+<text x="360" y="472" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">what stays</text>
+<rect x="96" y="710" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="360" y="744" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Readiness profile and ceiling</text>
+<rect x="96" y="1050" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="360" y="1084" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Use case admitted, risk tier set</text>
+<rect x="96" y="1390" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="360" y="1424" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Zone register signed, controls chosen</text>
+<rect x="96" y="1730" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="360" y="1764" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Evals pass, approvals signed</text>
+<rect x="96" y="2070" width="528" height="52" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="360" y="2104" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Oversight capacity holds at peak load</text>
+<path d="M360 2388 V2412" fill="none" stroke="#7c3aed" stroke-width="3"/>
+<rect x="220" y="2412" width="280" height="52" rx="26" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="360" y="2446" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#4c1d95">Next use case</text>
+<rect x="32" y="2504" width="656" height="64" rx="32" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="360" y="2544" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#134e4a">Evidence and limits on every page</text>
+<rect x="32" y="2604" width="26" height="26" rx="6" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="72" y="2624" font-family="Arial,sans-serif" font-size="24" fill="#465958">Slate boxes are gates: what must be true</text>
+<text x="72" y="2656" font-family="Arial,sans-serif" font-size="24" fill="#465958">before you move on.</text>
 </svg>

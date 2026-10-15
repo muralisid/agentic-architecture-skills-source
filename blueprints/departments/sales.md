@@ -24,7 +24,7 @@ Compare the agent with cRM reports, renewal alerts, and a structured account rev
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Account research agent | Assembles account context from CRM, news, product usage and past interactions with provenance | A2, L1 | The unglamorous winner. Solitary work, measurable, contained |
 | CRM hygiene agent | Proposes and applies structured updates from call notes and email | A3 on structured fields, A2 on narrative, L1 | Where the administrative time actually goes |
@@ -35,7 +35,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Action (**direct**: CRM gravity is strongest here, and agents reach records through wrapped governed APIs), Knowledge (**direct**), Improvement (**direct**), Control (**direct** for the inbound agent, which sits in the customer-facing lane), Human, Evidence, Execution (supporting).
+Tool gateway (**direct**: CRM gravity is strongest here, and agents reach records through wrapped governed APIs), knowledge and memory (**direct**), evaluation and release (**direct**), identity and policy (**direct** for the inbound agent, which sits in the customer-facing lane), human oversight, observability and audit trail, runtime (supporting).
 
 ## Controls and human decisions
 

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2650" role="img" aria-labelledby="title desc">
+<title id="title">Water network anomaly today: who does what</title>
+<desc id="desc">Swimlane of a water network anomaly at a water utility today. Six lanes are people: compliance, water quality, contact centre, control room operator, engineer on call, and field crew. One lane is SCADA and event analytics. Step 1: SCADA raises an alarm. Steps 2 to 4: the operator acknowledges it, checks the sensor and checks planned work. Step 5: the contact centre checks customer calls. Step 6: the operator forms a first view and decides. A sensor fault ends here with an instrument work order. Steps 7 and 8: the engineer investigates and approves emergency work. Step 9: the crew isolates and repairs under procedure. Step 10: customers are told. Step 11: a named officer decides the water quality response. Step 12: compliance closes and reports.</desc>
+<rect x="0" y="0" width="720" height="2650" fill="#f8f5ef"/>
+<text x="24.0" y="48.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Water network anomaly today: who does</text>
+<text x="24.0" y="88.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">what</text>
+<text x="24.0" y="138.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A metropolitan water utility. Typical practice,</text>
+<text x="24.0" y="170.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">not a survey of one utility.</text>
+<rect x="24" y="204" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="66" cy="244" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="66.0" y="253.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">1</text>
+<text x="112.0" y="250.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">SCADA or event analytics</text>
+<text x="112.0" y="284.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Raises an alarm: pressure, flow, a</text>
+<text x="112.0" y="316.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">reservoir level, a pump trip or chlorine.</text>
+<path d="M66 344 V366" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,374 58,362 74,362" fill="#475569"/>
+<rect x="24" y="378" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="418" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="427.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">2</text>
+<text x="112.0" y="424.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Control room operator</text>
+<text x="112.0" y="458.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Acknowledges the alarm and looks at the</text>
+<text x="112.0" y="490.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">trends.</text>
+<path d="M66 518 V540" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,548 58,536 74,536" fill="#475569"/>
+<rect x="24" y="552" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="592" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="601.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">3</text>
+<text x="112.0" y="598.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Control room operator</text>
+<text x="112.0" y="632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks the sensor. Often phones the</text>
+<text x="112.0" y="664.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">instrument technician.</text>
+<path d="M66 692 V714" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,722 58,710 74,710" fill="#475569"/>
+<rect x="24" y="726" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="766" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="775.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">4</text>
+<text x="112.0" y="772.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Control room operator</text>
+<text x="112.0" y="806.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks open work orders, planned</text>
+<text x="112.0" y="838.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">interruptions and the shift log.</text>
+<path d="M66 866 V888" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,896 58,884 74,884" fill="#475569"/>
+<rect x="24" y="900" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="940" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="949.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">5</text>
+<text x="112.0" y="946.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Operator or contact centre</text>
+<text x="112.0" y="980.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks the CRM for customer calls about no</text>
+<text x="112.0" y="1012.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">water or low pressure.</text>
+<path d="M66 1040 V1062" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1070 58,1058 74,1058" fill="#475569"/>
+<rect x="24" y="1074" width="672" height="238" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1114" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1123.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">6</text>
+<text x="112.0" y="1120.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Control room operator</text>
+<text x="112.0" y="1154.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Forms a first view: sensor fault, planned</text>
+<text x="112.0" y="1186.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">work, or a possible real issue. A sensor</text>
+<text x="112.0" y="1218.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">fault ends here with an instrument work</text>
+<text x="112.0" y="1250.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">order.</text>
+<polygon points="124,1263 135,1274 124,1285 113,1274" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1282.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The operator decides</text>
+<path d="M66 1316 V1338" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1346 58,1334 74,1334" fill="#475569"/>
+<rect x="24" y="1350" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1390" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1399.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">7</text>
+<text x="112.0" y="1396.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Network engineer on call</text>
+<text x="112.0" y="1430.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Investigates with GIS, the hydraulic model</text>
+<text x="112.0" y="1462.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">and the historian.</text>
+<path d="M66 1490 V1512" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1520 58,1508 74,1508" fill="#475569"/>
+<rect x="24" y="1524" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1564" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1573.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">8</text>
+<text x="112.0" y="1570.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Network engineer on call</text>
+<text x="112.0" y="1604.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Raises emergency work and dispatches a</text>
+<text x="112.0" y="1636.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">crew.</text>
+<polygon points="124,1649 135,1660 124,1671 113,1660" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1668.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The engineer approves the work</text>
+<path d="M66 1702 V1724" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1732 58,1720 74,1720" fill="#475569"/>
+<rect x="24" y="1736" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1776" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1785.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">9</text>
+<text x="112.0" y="1782.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Field crew</text>
+<text x="112.0" y="1816.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Isolates and repairs. Valves are operated</text>
+<text x="112.0" y="1848.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">under procedure.</text>
+<polygon points="124,1861 135,1872 124,1883 113,1872" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1880.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The crew acts under procedure</text>
+<path d="M66 1914 V1936" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1944 58,1932 74,1932" fill="#475569"/>
+<rect x="24" y="1948" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1988" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1997.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">10</text>
+<text x="112.0" y="1994.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Contact centre and communications</text>
+<text x="112.0" y="2028.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Tells customers by SMS and web. Tracks</text>
+<text x="112.0" y="2060.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">service level payments.</text>
+<path d="M66 2088 V2110" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2118 58,2106 74,2106" fill="#475569"/>
+<rect x="24" y="2122" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="2162" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="2171.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">11</text>
+<text x="112.0" y="2168.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Water quality team</text>
+<text x="112.0" y="2202.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Samples the water. Notifies the health</text>
+<text x="112.0" y="2234.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">regulator where required.</text>
+<polygon points="124,2247 135,2258 124,2269 113,2258" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="2266.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A named officer decides</text>
+<path d="M66 2300 V2322" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,2330 58,2318 74,2318" fill="#475569"/>
+<rect x="24" y="2334" width="672" height="142" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="2374" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="2383.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">12</text>
+<text x="112.0" y="2380.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Engineer and compliance</text>
+<text x="112.0" y="2414.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Close the incident and report performance.</text>
+<polygon points="124,2427 135,2438 124,2449 113,2438" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="2446.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Compliance signs the report</text>
+<circle cx="40" cy="2518" r="12" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="64.0" y="2526.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<circle cx="40" cy="2554" r="12" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="64.0" y="2562.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<polygon points="40,2578 52,2590 40,2602 28,2590" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<text x="64.0" y="2598.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval or decision by the person named</text>
+</svg>

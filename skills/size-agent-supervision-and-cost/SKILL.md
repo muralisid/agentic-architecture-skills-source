@@ -5,7 +5,7 @@ description: >-
   it costs per resolved outcome. Covers supervision as a burst-rate capacity
   constraint across the whole portfolio rather than per workload, the oversight
   gate above A3, cost per run against cost per resolved outcome including
-  supervision labour and wrong outcomes, and budget envelopes. Use whenever
+  supervision labour and wrong outcomes, and agent budgets. Use whenever
   building a business case for agents, sizing an oversight or approval team,
   answering how many agents one person can supervise, or reviewing an agent
   programme whose economics assume the supervision is free.
@@ -41,16 +41,16 @@ Watch the shape, not only the level. Auto-approval rises with experience, and so
 - **Cost per run** reconciles to the invoice. It is what platforms meter and what your finance team will see.
 - **Cost per resolved outcome** decides the business case. It includes the runs that did not resolve anything, the supervision labour, and the cost of wrong outcomes.
 
-A cost model that prices agent actions but not the governance plane is wrong by a variable amount, and in one vendor stack the governance plane is a separately priced per-user item. Budget envelopes per workload, enforced in the harness and at the gateway, are what stops a runaway loop from becoming an invoice.
+A cost model that prices agent actions but not governance is wrong by a variable amount, and in one vendor stack governance is a separately priced per-user item. Agent budgets per workload, enforced in the harness and at the gateway, are what stops a runaway loop from becoming an invoice.
 
 ## 4. What to measure
 
-Exceptions per hour at peak; minutes per exception; auto-approval share and interrupt rate over time; resolved outcomes; cost per resolved outcome including supervision; the rate of wrong outcomes and what each costs; and the budget envelope against actual spend. `references/observability-and-finops.md` has the instrumentation and the traps, including the metrics that flatter a programme without measuring it.
+Exceptions per hour at peak; minutes per exception; auto-approval share and interrupt rate over time; resolved outcomes; cost per resolved outcome including supervision; the rate of wrong outcomes and what each costs; and the agent budget against actual spend. `references/observability-and-finops.md` has the instrumentation and the traps, including the metrics that flatter a programme without measuring it.
 
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
 
 ## Additional task references
 

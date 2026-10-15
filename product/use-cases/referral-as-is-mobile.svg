@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2318" role="img" aria-labelledby="title desc">
+<title id="title">Referral to appointment today</title>
+<desc id="desc">Swimlanes for the GP and patient, the referral clerk, the clinician, the booking clerk and the systems. Step 1: the referral clerk receives a fax, secure message or e-referral. Step 2: the clerk finds the patient in the patient administration system (PAS). Step 3: the clerk registers the referral. Step 4: the clerk checks it is complete. Step 5: the clerk chases missing items, and the GP&#x27;s reply by fax goes back to step 1. Step 6: a clinician triages it. Step 7: the clerk keys in the triage result. Step 8: letters go to the patient and the GP. Step 9: the booking clerk phones the patient, books and sends an SMS reminder. Step 10: the data warehouse reports the waiting list. Each step names the system it uses.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2318" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Referral to appointment today</text>
+<text x="32.0" y="108.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Most steps are keyed by hand. Each card names the</text>
+<text x="32.0" y="140.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">system the step uses.</text>
+<rect x="32.0" y="188.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="228.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="236.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="236.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Referral clerk</text>
+<text x="104.0" y="268.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Receives the fax, secure message or</text>
+<text x="104.0" y="300.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">e-referral. Opens each one on screen.</text>
+<text x="104.0" y="332.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: fax inbox, secure messaging,</text>
+<text x="104.0" y="364.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">e-referral worklist, shared email</text>
+<path d="M68.0 384.0 L68.0 406.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="414.0" width="656.0" height="224.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="454.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="462.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="462.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Referral clerk</text>
+<text x="104.0" y="494.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Finds the patient, or creates a new record.</text>
+<text x="104.0" y="526.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Keys the name, date of birth and Medicare</text>
+<text x="104.0" y="558.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">number or NHI.</text>
+<text x="104.0" y="590.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: PAS and patient index, HI Service</text>
+<text x="104.0" y="622.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">or NHI</text>
+<path d="M68.0 642.0 L68.0 664.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="672.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="712.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="720.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="720.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Referral clerk</text>
+<text x="104.0" y="752.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Registers the referral and attaches the</text>
+<text x="104.0" y="784.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">letter. The waiting time clock starts.</text>
+<text x="104.0" y="816.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: PAS referral module, scanned record</text>
+<path d="M68.0 836.0 L68.0 858.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="866.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="906.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="914.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="914.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Referral clerk</text>
+<text x="104.0" y="946.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks the referral against the clinic&#x27;s</text>
+<text x="104.0" y="978.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">criteria. A clinical nurse checks the</text>
+<text x="104.0" y="1010.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">clinical minimums.</text>
+<text x="104.0" y="1042.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: PAS, referral criteria</text>
+<path d="M68.0 1062.0 L68.0 1084.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1092.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1132.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1140.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1140.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Referral clerk</text>
+<text x="104.0" y="1172.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Writes to the GP for missing items. The</text>
+<text x="104.0" y="1204.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">reply comes by fax and starts again at step</text>
+<text x="104.0" y="1236.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">1.</text>
+<text x="104.0" y="1268.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: fax, phone, secure message, letter</text>
+<path d="M68.0 1288.0 L68.0 1310.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1318.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1358.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1366.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1366.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Consultant or clinical nurse</text>
+<text x="104.0" y="1398.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reads the letter and sets an urgency</text>
+<text x="104.0" y="1430.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">category, often in weekly batches.</text>
+<text x="104.0" y="1462.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: paper folder, PAS e-triage or EMR</text>
+<path d="M68.0 1482.0 L68.0 1504.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1512.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1552.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1560.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1560.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Referral clerk</text>
+<text x="104.0" y="1592.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Keys the category from the triage sheet.</text>
+<text x="104.0" y="1624.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">The patient joins the waiting list.</text>
+<text x="104.0" y="1656.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: PAS</text>
+<path d="M68.0 1676.0 L68.0 1698.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1706.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1746.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1754.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1754.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Referral clerk</text>
+<text x="104.0" y="1786.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Sends letters to the patient and the GP.</text>
+<text x="104.0" y="1818.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">SMS where set up.</text>
+<text x="104.0" y="1850.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: PAS letters, mail house, SMS</text>
+<text x="104.0" y="1882.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">gateway</text>
+<path d="M68.0 1902.0 L68.0 1924.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1932.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1972.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1980.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="104.0" y="1980.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Booking clerk</text>
+<text x="104.0" y="2012.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Picks patients by category and time waited.</text>
+<text x="104.0" y="2044.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Phones and books. An SMS reminder follows.</text>
+<text x="104.0" y="2076.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: PAS clinic templates, phone, SMS</text>
+<text x="104.0" y="2108.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">gateway</text>
+<path d="M68.0 2128.0 L68.0 2150.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="2158.0" width="656.0" height="128.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="2198.0" r="20" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="2206.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<text x="104.0" y="2206.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Data warehouse (data team)</text>
+<text x="104.0" y="2238.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">A nightly extract feeds monthly waiting</text>
+<text x="104.0" y="2270.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">list reports to the state or Health NZ.</text>
+</svg>

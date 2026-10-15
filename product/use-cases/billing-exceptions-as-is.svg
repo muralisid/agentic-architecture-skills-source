@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Billing exceptions today: who does what</title>
+<desc id="desc">Swimlane of the billing exception process at an energy retailer today. Three lanes are systems: the metering provider, the market and the billing system. Four lanes are people: a team lead, the hardship or complaints team, the specialist and the operations manager. Steps 1 and 2 sit with the metering provider: reads are collected and gaps estimated. Step 3 sends a NEM12 file through the market. Steps 4 and 5 sit in the billing system: reads are checked and the bill run holds a bill. Steps 6 to 12 sit with the specialist. The specialist picks up the case, checks several screens, requests data or a read, and fixes standing data. Requests and data changes go out through the market. At step 10 the specialist releases, corrects or holds the bill. A team lead approves above a set amount. At step 11 the specialist checks for hardship. The hardship or complaints team decides those cases. At step 12 the customer is told. At step 13 the operations manager reports the backlog.</desc>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="50.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Billing exceptions today: who does what</text>
+<text x="1568.0" y="50.0" font-family="Arial,sans-serif" font-size="20" fill="#465958" text-anchor="end">An energy retailer on smart meters, Australia</text>
+<rect x="32" y="74" width="1536" height="112.14285714285714" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="74" width="200" height="112.14285714285714" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="125.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Metering</text>
+<text x="46.0" y="147.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">provider</text>
+<rect x="32" y="186.14285714285714" width="1536" height="112.14285714285714" fill="#fbf9f4" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="186.14285714285714" width="200" height="112.14285714285714" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="237.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Market: B2B</text>
+<text x="46.0" y="259.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">e-Hub, MSATS</text>
+<rect x="32" y="298.2857142857143" width="1536" height="112.14285714285717" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="298.2857142857143" width="200" height="112.14285714285717" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="349.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Billing system</text>
+<text x="46.0" y="371.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">(CIS)</text>
+<rect x="32" y="410.42857142857144" width="1536" height="92.14285714285711" fill="#fbf9f4" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="410.42857142857144" width="200" height="92.14285714285711" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="46.0" y="462.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Team lead</text>
+<rect x="32" y="502.57142857142856" width="1536" height="92.14285714285711" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="502.57142857142856" width="200" height="92.14285714285711" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="46.0" y="543.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Hardship or</text>
+<text x="46.0" y="565.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">complaints team</text>
+<rect x="32" y="594.7142857142857" width="1536" height="133.1428571428571" fill="#fbf9f4" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="594.7142857142857" width="200" height="133.1428571428571" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="46.0" y="645.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Billing</text>
+<text x="46.0" y="667.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">exception</text>
+<text x="46.0" y="689.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">specialist</text>
+<rect x="32" y="727.8571428571428" width="1536" height="112.14285714285711" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="727.8571428571428" width="200" height="112.14285714285711" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="46.0" y="778.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Operations</text>
+<text x="46.0" y="800.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">manager</text>
+<path d="M316.0 110.1 L394.0 110.1" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="394.0,110.1 381.4,103.3 381.4,116.8" fill="#475569"/>
+<path d="M426.0 110.1 L485.0 110.1 L485.0 206.2" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="485.0,206.2 478.2,193.6 491.8,193.6" fill="#475569"/>
+<path d="M501.0 222.2 L560.0 222.2 L560.0 318.4" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="560.0,318.4 553.2,305.8 566.8,305.8" fill="#475569"/>
+<path d="M576.0 334.4 L654.0 334.4" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="654.0,334.4 641.4,327.6 641.4,341.1" fill="#475569"/>
+<path d="M686.0 334.4 L745.0 334.4 L745.0 614.8" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="745.0,614.8 738.2,602.2 751.8,602.2" fill="#475569"/>
+<path d="M761.0 630.8 L839.0 630.8" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="839.0,630.8 826.4,624.0 826.4,637.5" fill="#475569"/>
+<path d="M871.0 630.8 L949.0 630.8" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="949.0,630.8 936.4,624.0 936.4,637.5" fill="#475569"/>
+<path d="M981.0 630.8 L1059.0 630.8" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1059.0,630.8 1046.4,624.0 1046.4,637.5" fill="#475569"/>
+<path d="M1091.0 630.8 L1169.0 630.8" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1169.0,630.8 1156.4,624.0 1156.4,637.5" fill="#475569"/>
+<path d="M1201.0 630.8 L1279.0 630.8" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1279.0,630.8 1266.4,624.0 1266.4,637.5" fill="#475569"/>
+<path d="M1311.0 630.8 L1389.0 630.8" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1389.0,630.8 1376.4,624.0 1376.4,637.5" fill="#475569"/>
+<path d="M1421.0 630.8 L1485.0 630.8 L1485.0 747.9" fill="none" stroke="#475569" stroke-width="2.5" stroke-linejoin="round"/>
+<polygon points="1485.0,747.9 1478.2,735.3 1491.8,735.3" fill="#475569"/>
+<path d="M965.0 614.8 L965.0 222.2 L948.6 222.2" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="7 6"/>
+<path d="M1075.0 614.8 L1075.0 222.2 L1091.4 222.2" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="7 6"/>
+<path d="M1185.0 614.8 L1185.0 459.5" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="7 6"/>
+<path d="M1295.0 614.8 L1295.0 551.6" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="7 6"/>
+<circle cx="300.0" cy="110.1" r="16" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="300.0" y="116.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a" text-anchor="middle">1</text>
+<text x="300.0" y="147.1" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Reads</text>
+<text x="300.0" y="168.1" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">collected</text>
+<circle cx="410.0" cy="110.1" r="16" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="410.0" y="116.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a" text-anchor="middle">2</text>
+<text x="410.0" y="147.1" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Gaps</text>
+<text x="410.0" y="168.1" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">estimated</text>
+<circle cx="485.0" cy="222.2" r="16" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="485.0" y="228.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a" text-anchor="middle">3</text>
+<text x="485.0" y="259.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">NEM12 file</text>
+<text x="485.0" y="280.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">sent</text>
+<circle cx="560.0" cy="334.4" r="16" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="560.0" y="340.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a" text-anchor="middle">4</text>
+<text x="560.0" y="371.4" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Reads</text>
+<text x="560.0" y="392.4" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">checked</text>
+<circle cx="670.0" cy="334.4" r="16" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="670.0" y="340.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a" text-anchor="middle">5</text>
+<text x="670.0" y="371.4" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Bill run</text>
+<text x="670.0" y="392.4" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">holds bill</text>
+<circle cx="745.0" cy="630.8" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="745.0" y="637.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">6</text>
+<text x="745.0" y="667.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Case</text>
+<text x="745.0" y="688.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">picked up</text>
+<circle cx="855.0" cy="630.8" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="855.0" y="637.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">7</text>
+<text x="855.0" y="667.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Checked</text>
+<text x="855.0" y="688.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">across</text>
+<text x="855.0" y="709.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">screens</text>
+<circle cx="965.0" cy="630.8" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="965.0" y="637.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">8</text>
+<text x="965.0" y="667.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Data or</text>
+<text x="965.0" y="688.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">read</text>
+<text x="965.0" y="709.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">requested</text>
+<circle cx="1075.0" cy="630.8" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="1075.0" y="637.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">9</text>
+<text x="1075.0" y="667.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Standing</text>
+<text x="1075.0" y="688.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">data fixed</text>
+<circle cx="1185.0" cy="630.8" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="1185.0" y="637.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">10</text>
+<text x="1185.0" y="667.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Released,</text>
+<text x="1185.0" y="688.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">corrected</text>
+<text x="1185.0" y="709.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">or held</text>
+<polygon points="1203,607.7857142857142 1212,616.7857142857142 1203,625.7857142857142 1194,616.7857142857142" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="1295.0" cy="630.8" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="1295.0" y="637.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">11</text>
+<text x="1295.0" y="667.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Hardship</text>
+<text x="1295.0" y="688.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">checked</text>
+<circle cx="1405.0" cy="630.8" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="1405.0" y="637.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">12</text>
+<text x="1405.0" y="667.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Customer</text>
+<text x="1405.0" y="688.8" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">told</text>
+<circle cx="1485.0" cy="763.9" r="16" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="1485.0" y="770.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f" text-anchor="middle">13</text>
+<text x="1485.0" y="800.9" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">Backlog</text>
+<text x="1485.0" y="821.9" font-family="Arial,sans-serif" font-size="18" fill="#182e31" text-anchor="middle">reported</text>
+<rect x="948.6" y="193.2" width="142.8" height="58.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1020.0" y="217.7" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a" text-anchor="middle">Requests and</text>
+<text x="1020.0" y="238.7" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a" text-anchor="middle">data changes</text>
+<polygon points="1185,433.5 1198,446.5 1185,459.5 1172,446.5" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="1206.0" y="452.5" font-family="Arial,sans-serif" font-size="18" fill="#78350f">Approves above a set amount</text>
+<polygon points="1295,525.6428571428571 1308,538.6428571428571 1295,551.6428571428571 1282,538.6428571428571" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="1316.0" y="544.6" font-family="Arial,sans-serif" font-size="18" fill="#78350f">Decides those cases</text>
+<circle cx="50" cy="870" r="10" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="68.0" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Person</text>
+<circle cx="171.4" cy="870" r="10" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="189.4" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">System</text>
+<polygon points="292.8,860 302.8,870 292.8,880 282.8,870" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<text x="310.8" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Approval, in the lane of whoever approves</text>
+<text x="1568.0" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958" text-anchor="end">Typical industry practice, not a survey of one retailer</text>
+</svg>

@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3049" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3085" role="img" aria-labelledby="title desc">
 <title id="title">Where agents land in a packaged-application estate</title>
-<desc id="desc">Seven packaged systems in a utility estate, badged with what vendors ship as of 14 October 2026. Some have vendor agents that are GA, some have planned ones, and GIS has none found. The strongest place to build is the join across billing, outage, GIS and field. Four things stay yours: interface inventory, semantic layer, agent registry and gateway policy.</desc>
+<desc id="desc">Seven packaged systems in a utility estate, badged with what vendors ship as of 14 October 2026. Some have vendor agents that are generally available, some have planned ones, and GIS has none found. The strongest place to build is the join across billing, outage, GIS and field. Four things stay yours: interface inventory, business definitions, agent registry and gateway policy.</desc>
 <defs>
 </defs>
-<rect x="0" y="0" width="720" height="3049" fill="#f8f5ef"/>
+<rect x="0" y="0" width="720" height="3085" fill="#f8f5ef"/>
 <text x="28" y="62" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">Where agents land in a</text>
 <text x="28" y="109" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">packaged-application estate</text>
 <rect x="28" y="132" width="321.2" height="54" rx="6" fill="#ffffff" stroke="#9a4c2d" stroke-width="2.5"/>
@@ -79,12 +79,13 @@
 <rect x="48" y="2593" width="222" height="38" rx="19" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
 <text x="60" y="2620.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Vendor agent GA</text>
 <text x="48" y="2662.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Databricks Genie GA, 12 June 2025</text>
-<rect x="28" y="2718" width="664" height="184" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
-<text x="48" y="2763.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#0f172a">Own: interface inventory, semantic</text>
-<text x="48" y="2799.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#0f172a">layer, agent registry, gateway policy</text>
-<text x="48" y="2841.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">These stay yours, whichever agents you run,</text>
-<text x="48" y="2872.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">bought or built.</text>
-<text x="28" y="2946" font-family="Arial,sans-serif" font-size="24" fill="#465958">Badges follow the utility estate table on this</text>
-<text x="28" y="2977" font-family="Arial,sans-serif" font-size="24" fill="#465958">page. Vendor claims are vendor-published and</text>
-<text x="28" y="3008" font-family="Arial,sans-serif" font-size="24" fill="#465958">re-checked each quarter.</text>
+<rect x="28" y="2718" width="664" height="220" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="48" y="2763.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#0f172a">Own: interface inventory, business</text>
+<text x="48" y="2799.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#0f172a">definitions, agent registry and</text>
+<text x="48" y="2835.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#0f172a">gateway policy</text>
+<text x="48" y="2877.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">These stay yours, whichever agents you run,</text>
+<text x="48" y="2908.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">bought or built.</text>
+<text x="28" y="2982" font-family="Arial,sans-serif" font-size="24" fill="#465958">Badges follow the utility estate table on this</text>
+<text x="28" y="3013" font-family="Arial,sans-serif" font-size="24" fill="#465958">page. Vendor claims are vendor-published and</text>
+<text x="28" y="3044" font-family="Arial,sans-serif" font-size="24" fill="#465958">re-checked each quarter.</text>
 </svg>

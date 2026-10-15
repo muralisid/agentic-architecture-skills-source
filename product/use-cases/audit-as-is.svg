@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Recurring audit issues today: who does what</title>
+<desc id="desc">Swimlane of how recurring audit findings are handled today, in nine steps across five lanes. The assurance manager plans the annual program. Auditors audit and write a report. Findings are copied into the audit system by hand. Site owners are assigned actions and close them, often without a check. An assurance analyst groups findings by their words. The head of assurance reports repeats to the board. The executive decides on a systemic fix, which is an approval. Assurance checks it at the next audit, months later.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Recurring audit issues today: who does what</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Typical practice. Findings are grouped by their words, and the check comes a year later.</text>
+<rect x="32" y="108.0" width="1536" height="140.8" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 248.8 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="389.6" width="1536" height="140.8" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 389.6 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 530.4 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="671.2" width="1536" height="140.8" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 671.2 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 812.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="130.0" height="128.8" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="184.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Assurance</text>
+<rect x="32.0" y="254.8" width="130.0" height="128.8" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="325.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Auditors</text>
+<rect x="32.0" y="395.6" width="130.0" height="128.8" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="455.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Audit</text>
+<text x="42.0" y="477.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">system</text>
+<rect x="32.0" y="536.4" width="130.0" height="128.8" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="606.8" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Site owners</text>
+<rect x="32.0" y="677.2" width="130.0" height="128.8" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="747.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Executive</text>
+<rect x="180.0" y="115.0" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="204.0" cy="140.0" r="16" fill="#d97706"/><text x="204.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="226.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Plan</text>
+<text x="192.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Annual program by</text>
+<text x="192.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">site and topic</text>
+<rect x="295.0" y="255.8" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="319.0" cy="280.8" r="16" fill="#d97706"/><text x="319.0" y="287.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="341.0" y="286.8" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Audit</text>
+<text x="307.0" y="311.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">Findings in a Word</text>
+<text x="307.0" y="333.8" font-family="Arial,sans-serif" font-size="18" fill="#465958">or PDF report</text>
+<rect x="410.0" y="396.6" width="205.0" height="126.8" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="434.0" cy="421.6" r="16" fill="#2563eb"/><text x="434.0" y="428.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="456.0" y="427.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Enter findings</text>
+<text x="422.0" y="452.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">Copied in by hand.</text>
+<text x="422.0" y="474.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">Category set by</text>
+<text x="422.0" y="496.6" font-family="Arial,sans-serif" font-size="18" fill="#465958">hand</text>
+<rect x="525.0" y="537.4" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="549.0" cy="562.4" r="16" fill="#d97706"/><text x="549.0" y="568.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="571.0" y="568.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Assign actions</text>
+<text x="537.0" y="593.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Owner and due date</text>
+<rect x="750.0" y="537.4" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="774.0" cy="562.4" r="16" fill="#d97706"/><text x="774.0" y="568.9" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="796.0" y="568.4" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Close actions</text>
+<text x="762.0" y="593.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">Often without a</text>
+<text x="762.0" y="615.4" font-family="Arial,sans-serif" font-size="18" fill="#465958">check</text>
+<rect x="865.0" y="115.0" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="889.0" cy="140.0" r="16" fill="#d97706"/><text x="889.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="911.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Find patterns</text>
+<text x="877.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Grouped by their</text>
+<text x="877.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">words</text>
+<rect x="1090.0" y="115.0" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1114.0" cy="140.0" r="16" fill="#d97706"/><text x="1114.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="1136.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Report</text>
+<text x="1102.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Board committee</text>
+<text x="1102.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">pack</text>
+<rect x="1205.0" y="678.2" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1229.0" cy="703.2" r="16" fill="#d97706"/><text x="1229.0" y="709.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="1251.0" y="709.2" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Decide fix</text>
+<path d="M1388.0 690.2 L1400.0 702.2 L1388.0 714.2 L1376.0 702.2 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1217.0" y="734.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">Change a standard,</text>
+<text x="1217.0" y="756.2" font-family="Arial,sans-serif" font-size="18" fill="#465958">or fund it</text>
+<rect x="1320.0" y="115.0" width="205.0" height="126.8" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1344.0" cy="140.0" r="16" fill="#d97706"/><text x="1344.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="1366.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Check</text>
+<text x="1332.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Next audit, months</text>
+<text x="1332.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">later</text>
+<path d="M371.0 241.8 L371.0 252.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M486.0 382.6 L486.0 393.6" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M601.0 523.4 L601.0 534.4" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M732.0 600.8 L747.0 600.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M941.0 537.4 L941.0 244.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1072.0 178.4 L1087.0 178.4" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1281.0 241.8 L1281.0 675.2" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1360.0 678.2 L1360.0 244.8" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="32.0" y="834.0" width="24.0" height="22.0" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="64.0" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Person</text>
+<rect x="153.4" y="834.0" width="24.0" height="22.0" rx="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="185.4" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">System</text>
+<path d="M286.8 834.0 L297.8 845.0 L286.8 856.0 L275.8 845.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="306.8" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Approval</text>
+<text x="32.0" y="884.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Annual program. Actions due in 30 to 90 days (typical, unsourced).</text>
+</svg>

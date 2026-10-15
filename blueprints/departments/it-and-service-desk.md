@@ -24,7 +24,7 @@ Compare the agent with a current knowledge article and a rules-based request for
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Why here |
+| Agent | What it does | Autonomy and learning position | Why here |
 |---|---|---|---|
 | Triage agent | Classifies, enriches with asset and entitlement context, routes | A3, L2 | Highest volume, cheapest failure, cleanest labels. This is the eval-suite factory for everything else |
 | Knowledge agent | Answers from a curated, owned corpus; refuses and escalates on weak evidence | A2 to A3, L1 to L2 | The corpus is the product. Refusal behaviour is the quality signal |
@@ -35,15 +35,15 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-| Plane | Role |
+| Capability | Role |
 |---|---|
-| Knowledge | **Direct.** Curated per-intent corpora with named owners. The whole quality story |
-| Action | **Direct.** Tool servers wrapping the ITSM platform's governed APIs and the identity platform's provisioning APIs |
-| Control | **Direct.** Registry, agent identity, the deterministic gate on provisioning |
-| Improvement | **Direct.** Ticket outcomes are labelled by resolution, which makes this the best-instrumented learning loop in the enterprise |
-| Evidence | Supporting. Standard evidence floor |
-| Execution | Supporting. Retrieval-grade isolation is sufficient; no code execution needed |
-| Human | **Direct.** Tier 2 becomes the exception queue, and its shape changes |
+| Knowledge and memory | **Direct.** Curated per-intent corpora with named owners. The whole quality story |
+| Tool gateway | **Direct.** Tool servers wrapping the ITSM platform's governed APIs and the identity platform's provisioning APIs |
+| Identity and policy | **Direct.** Registry, agent identity, the deterministic gate on provisioning |
+| Evaluation and release | **Direct.** Ticket outcomes are labelled by resolution, which makes this the best-instrumented learning loop in the enterprise |
+| Observability and audit trail | Supporting. Standard audit trail baseline |
+| Runtime | Supporting. Retrieval-grade isolation is sufficient; no code execution needed |
+| Human oversight | **Direct.** Tier 2 becomes the exception queue, and its shape changes |
 
 ## Controls and human decisions
 

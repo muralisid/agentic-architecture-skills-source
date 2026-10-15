@@ -2,20 +2,21 @@
 title: "When memory spans years and sites"
 description: "Scale the search, updates, and evidence checks without losing the question."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-13"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [memory, data-to-memory, r02, r14]
 ---
 
-An investigation asks whether the same audit issue has appeared across several sites over years. Reading only the latest report misses the pattern. Sending the entire archive into every call creates a different problem: how will the agent locate all the relevant evidence, recognize corrections, and keep the search affordable?
+An investigation asks whether the same audit issue has appeared across several sites over years. Reading only the latest report misses the pattern. Sending the entire archive into every call creates a different problem. How will the agent find all the relevant evidence and spot corrections? And how will it keep the search affordable?
 
 <TeachingIllustration src="/images/memory/memory-at-scale-v1.webp" title="Narrow the question without hiding the evidence" alt="Records from years and sites are scoped by the question, searched through suitable stores, read as selected sources, checked for gaps and conflicts, and assembled into a cited result. Unresolved gaps lead to further search." caption="Teaching illustration. The example is a proposed design, not a measured deployment." expandable />
 
 ## Size is only one part of difficulty
 
-Ten million tokens is an example scale, not a threshold at which one architecture becomes mandatory. The number of similar records, the need to join events across time, permission boundaries, and the consequences of missing one source can matter as much as total length.
+Ten million tokens is an example scale, not a threshold at which one architecture becomes mandatory. Several other things can matter as much as total length. These include the number of similar records and the need to join events across time. They also include permission boundaries and the harm of missing one source.
 
-[BEAM](https://arxiv.org/abs/2510.27246), first published in 2025 and revised in February 2026, evaluates generated conversations extending to ten million tokens with multiple memory abilities. It is evidence that long histories deserve explicit testing, not proof of performance on a company's operational archive. Reviewed 18 September 2026.
+[BEAM](https://arxiv.org/abs/2510.27246) was first published in 2025 and revised in February 2026. It tests several memory abilities on generated conversations of up to ten million tokens. It is evidence that long histories deserve explicit testing, not proof of performance on a company's operational archive. Reviewed 18 September 2026.
 
 ## Scope the search, then challenge the scope
 
@@ -33,7 +34,7 @@ Use exact queries when an official count or status is requested. Approximate sim
 
 New reports arrive, identifiers merge, permissions change, and old sources are corrected. Measure the work of refreshing indexes and derivatives, not just the cost of one query against a frozen archive.
 
-Partitioning by team or site can help scope retrieval, but a cross-site investigation needs an explicit authorized path across those boundaries. Avoid assuming a single global index solves access.
+Partitioning by team or site can help scope retrieval. A cross-site investigation then needs an explicit, authorized path across those boundaries. Avoid assuming a single global index solves access.
 
 ## Grow the test before growing the design
 

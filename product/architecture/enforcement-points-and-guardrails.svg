@@ -125,7 +125,7 @@
 <text x="768" y="469" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#182e31">Which apply, by tier and capability</text>
 <text x="768" y="495" font-family="Arial,sans-serif" font-size="18" fill="#465958">Each tier keeps everything in the tier below.</text>
 <rect x="768" y="511" width="192.5" height="344" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
-<text x="780" y="541.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#1e293b">Tier 1 Basic</text>
+<text x="780" y="541.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#1e293b">Tier 1 (basic)</text>
 <text x="780" y="575.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Allowlist with</text>
 <text x="780" y="598.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">versions</text>
 <text x="780" y="630.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Own identity,</text>
@@ -138,7 +138,7 @@
 <text x="780" y="818.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Sampled review</text>
 <rect x="970.5" y="511" width="192.5" height="344" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="982.5" y="541.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#0f172a">Tier 2</text>
-<text x="982.5" y="568.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#0f172a">Enhanced adds</text>
+<text x="982.5" y="568.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#0f172a">(enhanced) adds</text>
 <text x="982.5" y="602.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Policy decision</text>
 <text x="982.5" y="625.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">point on every</text>
 <text x="982.5" y="648.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">write</text>
@@ -150,17 +150,19 @@
 <text x="982.5" y="813.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">irreversible</text>
 <text x="982.5" y="836.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">actions</text>
 <rect x="1173" y="511" width="192.5" height="344" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
-<text x="1185" y="541.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#881337">Tier 3 Strict</text>
+<text x="1185" y="541.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#881337">Tier 3 (strict)</text>
 <text x="1185" y="568.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#881337">adds</text>
-<text x="1185" y="602.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Policy decision</text>
-<text x="1185" y="625.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">point on every</text>
-<text x="1185" y="648.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">action</text>
-<text x="1185" y="680.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Plan-then-apply</text>
-<text x="1185" y="712.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Hypervisor-class</text>
-<text x="1185" y="735.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">isolation</text>
-<text x="1185" y="767.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">A named person</text>
-<text x="1185" y="790.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">approves each</text>
-<text x="1185" y="813.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">floor action</text>
+<text x="1185" y="598.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Policy decision</text>
+<text x="1185" y="621.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">point on every</text>
+<text x="1185" y="644.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">action</text>
+<text x="1185" y="672.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Plan-then-apply</text>
+<text x="1185" y="700.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Hypervisor-level</text>
+<text x="1185" y="723.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">isolation</text>
+<text x="1185" y="751.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">A named person</text>
+<text x="1185" y="774.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">approves zone</text>
+<text x="1185" y="797.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">actions, deletes</text>
+<text x="1185" y="820.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">and decisions</text>
+<text x="1185" y="843.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">about people</text>
 <rect x="1375.5" y="511" width="192.5" height="344" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <text x="1387.5" y="541.9" font-family="Arial,sans-serif" font-size="21" font-weight="bold" fill="#1e3a8a">Switched on by</text>
 <text x="1387.5" y="575.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Writes, deletes,</text>
@@ -172,5 +174,5 @@
 <text x="1387.5" y="740.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Browsing,</text>
 <text x="1387.5" y="763.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">external messages</text>
 <text x="1387.5" y="795.2" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Memory writes</text>
-<text x="32" y="886" font-family="Arial,sans-serif" font-size="18" fill="#465958">The categories and the matrix are this guide's position. No study links a tier to incident rates.</text>
+<text x="32" y="886" font-family="Arial,sans-serif" font-size="18" fill="#465958">The categories and the matrix are expert judgement. No study links a tier to incident rates.</text>
 </svg>

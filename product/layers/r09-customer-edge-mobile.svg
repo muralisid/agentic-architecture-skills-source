@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1470" role="img" aria-labelledby="title desc">
+<title id="title">A customer edge on shared platform capabilities</title>
+<desc id="desc">Customers reach the organisation by phone, chat, app and web. They meet the customer edge, which is built separately. The edge holds five parts. They are voice and chat channels, AI disclosure and consent, and hand-over with the conversation's state. The last two are hardening against anonymous attackers and a record of what was said. Arrows lead from each part to one shared box, the shared platform capabilities. They are knowledge, identity, tools, evaluations, monitoring and model access. Every other agent uses the same shared capabilities. The line underneath says separate what customer exposure makes different, and share the rest.</desc>
+<defs><marker id="ah-system" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker><marker id="ah-control" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="ah-human" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="ah-agent" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+
+<text x="30" y="60" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">A customer edge on shared</text>
+<text x="30" y="100" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">platform capabilities</text>
+<text x="30" y="144" font-family="Arial,sans-serif" font-size="24" fill="#182e31">What the agent says is the company</text>
+<text x="30" y="176" font-family="Arial,sans-serif" font-size="24" fill="#182e31">speaking, so the customer-facing</text>
+<text x="30" y="208" font-family="Arial,sans-serif" font-size="24" fill="#182e31">parts are built separately.</text>
+<rect x="30" y="240" width="660" height="70" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="56" y="284" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#78350f">Customers: phone, chat, app and web</text>
+<line x1="360" y1="312" x2="360" y2="344" stroke="#d97706" stroke-width="3" marker-end="url(#ah-human)"/>
+<rect x="30" y="350" width="660" height="508" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="56" y="396" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">Customer edge</text>
+<text x="56" y="428" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Built separately</text>
+<rect x="56" y="450" width="608" height="64" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="80" y="491" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Voice and chat channels</text>
+<rect x="56" y="530" width="608" height="64" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="80" y="571" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">AI disclosure and consent</text>
+<rect x="56" y="610" width="608" height="64" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="80" y="651" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Hand-over with the conversation's state</text>
+<rect x="56" y="690" width="608" height="64" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="80" y="731" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Hardening against anonymous attackers</text>
+<rect x="56" y="770" width="608" height="64" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="80" y="811" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">A record of what was said</text>
+<line x1="360" y1="860" x2="360" y2="904" stroke="#2563eb" stroke-width="3" marker-end="url(#ah-system)"/>
+<text x="390" y="890" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">All of it uses</text>
+<rect x="30" y="910" width="660" height="322" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
+<text x="56" y="956" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0f172a">Shared platform capabilities</text>
+<rect x="56" y="980" width="292" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="80" y="1021" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Knowledge</text>
+<rect x="372" y="980" width="292" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="396" y="1021" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Identity</text>
+<rect x="56" y="1060" width="292" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="80" y="1101" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Tools</text>
+<rect x="372" y="1060" width="292" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="396" y="1101" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Evaluations</text>
+<rect x="56" y="1140" width="292" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="80" y="1181" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Monitoring</text>
+<rect x="372" y="1140" width="292" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="396" y="1181" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Model access</text>
+<rect x="30" y="1276" width="660" height="70" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="3"/>
+<text x="56" y="1320" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#4c1d95">Every other agent uses them too</text>
+<line x1="360" y1="1274" x2="360" y2="1238" stroke="#7c3aed" stroke-width="3" marker-end="url(#ah-agent)"/>
+<text x="30" y="1400" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">Separate what customer exposure</text>
+<text x="30" y="1434" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">makes different. Share the rest.</text>
+</svg>

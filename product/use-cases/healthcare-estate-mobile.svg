@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3200" role="img" aria-labelledby="title desc">
+<title id="title">A public hospital network: the fourteen layers</title>
+<desc id="desc">A building with fourteen floors, one per layer, naming the main systems of a public hospital network. The ground floor is infrastructure and compute (R01): state data centres, private cloud, Australian cloud regions and vendor-hosted EMR. The data platform (R02) holds the clinical data repository, the data warehouse, state collections and registries. The integration fabric (R03) holds the integration engine, the FHIR server, secure messaging and the My Health Record gateway. Systems of record (R04) hold the EMR, the PAS, the laboratory system (LIS), and radiology (RIS and PACS). They also hold pharmacy, the patient index, incidents, and HR and rostering. Line of business (R05) holds emergency, theatres, maternity, ICU, oncology, bed flow and medical devices. Intelligence and learning (R06) holds EMR alerts, early warning scores, radiology AI, speech recognition and ambient scribes. The agent platform (R07) is mostly absent today: RPA bots, chatbots, virtual triage and vendor agents. Productivity (R08) holds Microsoft 365, Teams for MDTs, fax servers and the policy library. Experience and channels (R09) holds SMS and letters, the booking centre, telehealth, the patient portal and GP portals. Security and identity (R10) holds Entra ID, tap-badge sign-on, NASH certificates and security monitoring. Governance (R11) holds clinical governance, NSQHS accreditation, the privacy officer and the AI governance group. Observability (R12) holds application monitoring, integration error queues and IT service management. The operating model (R13) holds the digital health division, the referral hub and the quality and safety unit. The top floor, agent data engineering (R14), holds document capture, patient index stewardship and terminology mapping. Bold boxes mark the main systems the four use cases lean on most.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="3200" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">A public hospital network: the</text>
+<text x="32.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">fourteen layers</text>
+<text x="32.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Main systems on each floor. Bold boxes are the</text>
+<text x="32.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">systems the four use cases lean on most.</text>
+<path d="M24 264.0 L80 236.0 L640 236.0 L696 264.0 Z" fill="#e7e2d8" stroke="#475569" stroke-width="2"/>
+<rect x="32" y="264.0" width="656" height="2896.0" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<text x="48.0" y="306.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Agent data engineering (R14)</text>
+<rect x="48.0" y="322.0" width="340.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="218.4" y="352.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Document capture and OCR</text>
+<rect x="48.0" y="376.0" width="354.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="225.0" y="406.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Patient index stewardship</text>
+<rect x="48.0" y="430.0" width="274.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="185.4" y="460.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Terminology mapping</text>
+<rect x="332.8" y="430.0" width="248.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="457.0" y="460.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Data quality team</text>
+<path d="M32 494.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="536.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Operating model and supervision (R13)</text>
+<rect x="48.0" y="552.0" width="327.6" height="44.0" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="211.8" y="582.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#78350f">Digital health division</text>
+<rect x="48.0" y="606.0" width="288.0" height="44.0" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="192.0" y="636.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#78350f">Central referral hub</text>
+<rect x="48.0" y="660.0" width="327.6" height="44.0" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="211.8" y="690.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#78350f">Quality and safety unit</text>
+<rect x="385.6" y="660.0" width="274.8" height="44.0" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+<text x="523.0" y="690.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#78350f">Virtual care centre</text>
+<path d="M32 724.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="766.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Observability and FinOps (R12)</text>
+<rect x="48.0" y="782.0" width="314.4" height="44.0" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="205.2" y="812.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#134e4a">Application monitoring</text>
+<rect x="48.0" y="836.0" width="340.8" height="44.0" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="218.4" y="866.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#134e4a">Integration error queues</text>
+<rect x="48.0" y="890.0" width="301.2" height="44.0" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="198.6" y="920.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#134e4a">IT service management</text>
+<rect x="359.2" y="890.0" width="235.2" height="44.0" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+<text x="476.8" y="920.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#134e4a">Cloud cost tools</text>
+<path d="M32 954.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="996.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Governance, risk and sovereignty (R11)</text>
+<rect x="48.0" y="1012.0" width="274.8" height="44.0" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="185.4" y="1042.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Clinical governance</text>
+<rect x="332.8" y="1012.0" width="301.2" height="44.0" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="483.4" y="1042.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Accreditation (NSQHS)</text>
+<rect x="48.0" y="1066.0" width="222.0" height="44.0" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="159.0" y="1096.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Privacy officer</text>
+<rect x="280.0" y="1066.0" width="274.8" height="44.0" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="417.4" y="1096.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">AI governance group</text>
+<rect x="48.0" y="1120.0" width="195.6" height="44.0" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="145.8" y="1150.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Risk register</text>
+<path d="M32 1184.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="1226.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Security and identity (R10)</text>
+<rect x="48.0" y="1242.0" width="129.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="112.8" y="1272.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Entra ID</text>
+<rect x="187.6" y="1242.0" width="248.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="311.8" y="1272.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Tap-badge sign-on</text>
+<rect x="48.0" y="1296.0" width="248.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="172.2" y="1326.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">NASH certificates</text>
+<rect x="306.4" y="1296.0" width="274.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="443.8" y="1326.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Security monitoring</text>
+<rect x="48.0" y="1350.0" width="222.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="159.0" y="1380.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Device security</text>
+<path d="M32 1414.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="1456.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Experience and channels (R09)</text>
+<rect x="48.0" y="1472.0" width="222.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="159.0" y="1502.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">SMS and letters</text>
+<rect x="280.0" y="1472.0" width="208.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="384.4" y="1502.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Booking centre</text>
+<rect x="498.8" y="1472.0" width="156.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="576.8" y="1502.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Telehealth</text>
+<rect x="48.0" y="1526.0" width="208.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="152.4" y="1556.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Patient portal</text>
+<rect x="266.8" y="1526.0" width="156.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="344.8" y="1556.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">GP portals</text>
+<path d="M32 1590.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="1632.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Productivity and collaboration (R08)</text>
+<rect x="48.0" y="1648.0" width="195.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="145.8" y="1678.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Microsoft 365</text>
+<rect x="253.6" y="1648.0" width="208.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="358.0" y="1678.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Teams for MDTs</text>
+<rect x="472.4" y="1648.0" width="169.2" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="557.0" y="1678.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Fax servers</text>
+<rect x="48.0" y="1702.0" width="208.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="152.4" y="1732.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Policy library</text>
+<path d="M32 1766.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="1808.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Agent platform (R07)</text>
+<rect x="48.0" y="1824.0" width="274.8" height="44.0" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="185.4" y="1854.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">Mostly absent today</text>
+<rect x="332.8" y="1824.0" width="129.6" height="44.0" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="397.6" y="1854.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#4c1d95">RPA bots</text>
+<rect x="472.4" y="1824.0" width="129.6" height="44.0" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="537.2" y="1854.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#4c1d95">Chatbots</text>
+<rect x="48.0" y="1878.0" width="208.8" height="44.0" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="152.4" y="1908.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#4c1d95">Virtual triage</text>
+<rect x="266.8" y="1878.0" width="340.8" height="44.0" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="437.2" y="1908.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#4c1d95">Vendor agents (Heidi II)</text>
+<path d="M32 1942.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="1984.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Intelligence and learning (R06)</text>
+<rect x="48.0" y="2000.0" width="156.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="126.0" y="2030.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">EMR alerts</text>
+<rect x="214.0" y="2000.0" width="288.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="358.0" y="2030.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Early warning scores</text>
+<rect x="48.0" y="2054.0" width="182.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="139.2" y="2084.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Radiology AI</text>
+<rect x="240.4" y="2054.0" width="261.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="371.2" y="2084.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Speech recognition</text>
+<rect x="48.0" y="2108.0" width="222.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="159.0" y="2138.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Ambient scribes</text>
+<path d="M32 2172.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="2214.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Line of business and OT (R05)</text>
+<rect x="48.0" y="2230.0" width="142.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="119.4" y="2260.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Emergency</text>
+<rect x="200.8" y="2230.0" width="129.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="265.6" y="2260.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Theatres</text>
+<rect x="340.4" y="2230.0" width="142.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="411.8" y="2260.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Maternity</text>
+<rect x="493.2" y="2230.0" width="63.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="525.0" y="2260.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">ICU</text>
+<rect x="48.0" y="2284.0" width="129.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="112.8" y="2314.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Oncology</text>
+<rect x="187.6" y="2284.0" width="129.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="252.4" y="2314.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Bed flow</text>
+<rect x="327.2" y="2284.0" width="222.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="438.2" y="2314.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Medical devices</text>
+<path d="M32 2348.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="2390.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Systems of record (R04)</text>
+<rect x="48.0" y="2406.0" width="67.2" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="81.6" y="2436.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">EMR</text>
+<rect x="125.2" y="2406.0" width="67.2" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="158.8" y="2436.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">PAS</text>
+<rect x="202.4" y="2406.0" width="67.2" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="236.0" y="2436.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">LIS</text>
+<rect x="279.6" y="2406.0" width="196.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="378.0" y="2436.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">RIS and PACS</text>
+<rect x="486.4" y="2406.0" width="129.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="551.2" y="2436.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Pharmacy</text>
+<rect x="48.0" y="2460.0" width="195.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="145.8" y="2490.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Patient index</text>
+<rect x="253.6" y="2460.0" width="142.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="325.0" y="2490.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Incidents</text>
+<rect x="406.4" y="2460.0" width="235.2" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="524.0" y="2490.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">HR and rostering</text>
+<path d="M32 2524.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="2566.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Integration fabric (R03)</text>
+<rect x="48.0" y="2582.0" width="283.2" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="189.6" y="2612.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Integration engine</text>
+<rect x="341.2" y="2582.0" width="182.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="432.4" y="2612.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">FHIR server</text>
+<rect x="48.0" y="2636.0" width="254.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="175.2" y="2666.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Secure messaging</text>
+<rect x="48.0" y="2690.0" width="369.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="232.8" y="2720.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">My Health Record gateway</text>
+<rect x="427.6" y="2690.0" width="156.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="505.6" y="2720.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">HI Service</text>
+<path d="M32 2754.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="2796.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Data platform (R02)</text>
+<rect x="48.0" y="2812.0" width="340.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="218.4" y="2842.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Clinical data repository</text>
+<rect x="398.8" y="2812.0" width="225.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="511.6" y="2842.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3a8a">Data warehouse</text>
+<rect x="48.0" y="2866.0" width="248.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="172.2" y="2896.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">State collections</text>
+<rect x="306.4" y="2866.0" width="195.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="404.2" y="2896.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">BI dashboards</text>
+<rect x="512.0" y="2866.0" width="156.0" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="590.0" y="2896.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Registries</text>
+<path d="M32 2930.0 H688" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="48.0" y="2972.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Infrastructure and compute (R01)</text>
+<rect x="48.0" y="2988.0" width="261.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="178.8" y="3018.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">State data centres</text>
+<rect x="319.6" y="2988.0" width="195.6" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="417.4" y="3018.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Private cloud</text>
+<rect x="48.0" y="3042.0" width="340.8" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="218.4" y="3072.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Australian cloud regions</text>
+<rect x="398.8" y="3042.0" width="248.4" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="523.0" y="3072.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Vendor-hosted EMR</text>
+<rect x="48.0" y="3096.0" width="235.2" height="44.0" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="165.6" y="3126.0" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e3a8a">Virtual desktops</text>
+<path d="M16 3162.0 H704" stroke="#475569" stroke-width="4"/>
+</svg>

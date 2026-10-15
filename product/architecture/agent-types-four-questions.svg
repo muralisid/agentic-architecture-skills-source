@@ -1,83 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
-<title id="title">Agent types: four questions for any agent</title>
-<desc id="desc">Four questions classify any agent: role, capability surface, autonomy and consequence class. Capability surface and consequence set the risk tier and so the controls. Autonomy sets the human's job and can raise the tier floor. The role is a label and sets no controls.</desc>
+<title id="title">What kind of agent is this? Four questions</title>
+<desc id="desc">Four questions describe any agent: role, permissions, autonomy and impact. Permissions and impact set the risk tier: Tier 1 (basic), Tier 2 (enhanced) or Tier 3 (strict), where the worst factor wins. The tier sets the controls. Autonomy sets the person's job, readiness caps it, and it can raise the tier. The role is a label and sets no controls. Its business area can bring in the rule for decisions about people, which adds to the controls. Record all four answers in the registry entry and score them again on every change.</desc>
 <defs>
 <marker id="ah-agent" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#7c3aed"/></marker>
-<marker id="ah-brown" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#9a4c2d"/></marker>
 <marker id="ah-control" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker>
 <marker id="ah-neutral" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#94a3b8"/></marker>
 <marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
 <marker id="ah-system" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#2563eb"/></marker>
 </defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
-<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">Agent types: four questions for any agent</text>
-<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">A role is a label, not a permission.</text>
-<rect x="40" y="104" width="362" height="186" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
-<text x="56" y="140" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e293b">1. Role</text>
-<text x="56" y="171" font-family="Arial,sans-serif" font-size="19" fill="#1e293b">What the agent does for people</text>
-<text x="56" y="202" font-family="Arial,sans-serif" font-size="18" fill="#465958">Converse, create, assist or</text>
-<text x="56" y="225" font-family="Arial,sans-serif" font-size="18" fill="#465958">coordinate</text>
-<text x="56" y="254" font-family="Arial,sans-serif" font-size="18" fill="#465958">Plus a business-domain tag</text>
-<rect x="426" y="104" width="362" height="186" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<text x="442" y="140" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">2. Capability surface</text>
-<text x="442" y="171" font-family="Arial,sans-serif" font-size="19" fill="#1e3a8a">What its own credentials allow</text>
-<text x="442" y="202" font-family="Arial,sans-serif" font-size="18" fill="#465958">Verbs: read, write, delete, run</text>
-<text x="442" y="225" font-family="Arial,sans-serif" font-size="18" fill="#465958">code or SQL, send, pay</text>
-<text x="442" y="254" font-family="Arial,sans-serif" font-size="18" fill="#465958">Flags: untrusted input, data</text>
-<text x="442" y="277" font-family="Arial,sans-serif" font-size="18" fill="#465958">class, memory writes</text>
-<rect x="812" y="104" width="362" height="186" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-<text x="828" y="140" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#4c1d95">3. Autonomy</text>
-<text x="828" y="171" font-family="Arial,sans-serif" font-size="19" fill="#4c1d95">How freely it acts</text>
-<text x="828" y="202" font-family="Arial,sans-serif" font-size="18" fill="#465958">A0 to A5, recorded as designed,</text>
-<text x="828" y="225" font-family="Arial,sans-serif" font-size="18" fill="#465958">permitted and exercised</text>
-<text x="828" y="254" font-family="Arial,sans-serif" font-size="18" fill="#465958">Plus what starts it: a person, an</text>
-<text x="828" y="277" font-family="Arial,sans-serif" font-size="18" fill="#465958">event or the agent itself</text>
-<rect x="1198" y="104" width="362" height="186" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
-<text x="1214" y="140" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">4. Consequence class</text>
-<text x="1214" y="171" font-family="Arial,sans-serif" font-size="19" fill="#881337">What it can damage</text>
-<text x="1214" y="202" font-family="Arial,sans-serif" font-size="18" fill="#465958">Zones, destruction, decisions</text>
-<text x="1214" y="225" font-family="Arial,sans-serif" font-size="18" fill="#465958">about people, reversibility,</text>
-<text x="1214" y="248" font-family="Arial,sans-serif" font-size="18" fill="#465958">reach</text>
-<rect x="40" y="344" width="250" height="80" rx="12" fill="#fff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
-<text x="56" y="378" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1e293b">Label only</text>
-<text x="56" y="406" font-family="Arial,sans-serif" font-size="18" fill="#465958">Sets no controls</text>
-<path d="M165 290 L165 342" fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#ah-neutral)"/>
-<rect x="812" y="344" width="250" height="80" rx="12" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
-<text x="828" y="378" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#4c1d95">Human's job</text>
-<text x="828" y="406" font-family="Arial,sans-serif" font-size="18" fill="#465958">Readiness caps it</text>
-<path d="M937 290 L937 342" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#ah-agent)"/>
-<rect x="426" y="494" width="1134" height="80" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="442" y="530" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Risk tier</text>
-<text x="442" y="559" font-family="Arial,sans-serif" font-size="19" fill="#465958">Tier 1, 2 or 3. The worst factor wins.</text>
-<path d="M607 290 L607 492" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#ah-system)"/>
-<path d="M1448 290 L1448 492" fill="none" stroke="#e11d48" stroke-width="3" marker-end="url(#ah-risk)"/>
-<path d="M1102 290 L1102 492" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#ah-agent)"/>
-<text x="1114" y="446" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#4c1d95">raises the tier floor</text>
-<path d="M330 290 L330 638" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
-<text x="318" y="470" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#881337">domain tag</text>
-<rect x="40" y="640" width="340" height="84" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
-<text x="56" y="672" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#881337">People-decisions floor</text>
-<text x="56" y="700" font-family="Arial,sans-serif" font-size="18" fill="#465958">A named person decides</text>
-<rect x="426" y="640" width="1134" height="84" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="442" y="676" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Controls</text>
-<text x="442" y="705" font-family="Arial,sans-serif" font-size="19" fill="#465958">The tier sets the controls.</text>
-<path d="M1089 574 L1089 638" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
-<path d="M380 682 L424 682" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
-<text x="40" y="768" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#182e31">Each old word becomes a role label. None of them implies authority.</text>
-<rect x="40" y="784" width="362" height="64" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="58" y="824" font-family="Arial,sans-serif" font-size="20" fill="#465958">Conversational</text>
-<path d="M226 817 L270 817" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
-<text x="286" y="824" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e293b">Converse</text>
-<rect x="426" y="784" width="362" height="64" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="444" y="824" font-family="Arial,sans-serif" font-size="20" fill="#465958">Creative</text>
-<path d="M612 817 L656 817" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
-<text x="672" y="824" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e293b">Create</text>
-<rect x="812" y="784" width="362" height="64" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="830" y="824" font-family="Arial,sans-serif" font-size="20" fill="#465958">Passive</text>
-<path d="M998 817 L1042 817" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
-<text x="1058" y="824" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e293b">Assist</text>
-<rect x="1198" y="784" width="362" height="64" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="1216" y="824" font-family="Arial,sans-serif" font-size="20" fill="#465958">Active</text>
-<path d="M1384 817 L1428 817" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
-<text x="1444" y="824" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e293b">Coordinate</text>
+<text x="40" y="54" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">What kind of agent is this? Four questions</text>
+<text x="40" y="88" font-family="Arial,sans-serif" font-size="20" fill="#465958">A role is a label, not a permission. Permissions and impact set the tier.</text>
+
+<rect x="40" y="112" width="362" height="214" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="56" y="148" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e293b">1. Role</text>
+<text x="56" y="179" font-family="Arial,sans-serif" font-size="19" fill="#1e293b">What it does for people</text>
+<text x="56" y="212" font-family="Arial,sans-serif" font-size="18" fill="#465958">Converse, create, assist or</text>
+<text x="56" y="235" font-family="Arial,sans-serif" font-size="18" fill="#465958">coordinate</text>
+<text x="56" y="266" font-family="Arial,sans-serif" font-size="18" fill="#465958">Plus a business area, such as</text>
+<text x="56" y="289" font-family="Arial,sans-serif" font-size="18" fill="#465958">billing or hiring</text>
+
+<rect x="426" y="112" width="362" height="214" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="442" y="148" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">2. Permissions</text>
+<text x="442" y="179" font-family="Arial,sans-serif" font-size="19" fill="#1e3a8a">What its own credentials</text>
+<text x="442" y="202" font-family="Arial,sans-serif" font-size="19" fill="#1e3a8a">let it do</text>
+<text x="442" y="235" font-family="Arial,sans-serif" font-size="18" fill="#465958">Read, write, delete, run code,</text>
+<text x="442" y="258" font-family="Arial,sans-serif" font-size="18" fill="#465958">send, pay, change access</text>
+<text x="442" y="289" font-family="Arial,sans-serif" font-size="18" fill="#465958">Flags: untrusted input, data</text>
+<text x="442" y="312" font-family="Arial,sans-serif" font-size="18" fill="#465958">class, memory writes</text>
+
+<rect x="812" y="112" width="362" height="214" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="828" y="148" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#4c1d95">3. Autonomy</text>
+<text x="828" y="179" font-family="Arial,sans-serif" font-size="19" fill="#4c1d95">How freely it acts</text>
+<text x="828" y="212" font-family="Arial,sans-serif" font-size="18" fill="#465958">Manual (A0) to governed</text>
+<text x="828" y="235" font-family="Arial,sans-serif" font-size="18" fill="#465958">lights-out (A5)</text>
+<text x="828" y="266" font-family="Arial,sans-serif" font-size="18" fill="#465958">Recorded as designed,</text>
+<text x="828" y="289" font-family="Arial,sans-serif" font-size="18" fill="#465958">permitted and exercised</text>
+
+<rect x="1198" y="112" width="362" height="214" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="1214" y="148" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">4. Impact</text>
+<text x="1214" y="179" font-family="Arial,sans-serif" font-size="19" fill="#881337">What it can damage</text>
+<text x="1214" y="212" font-family="Arial,sans-serif" font-size="18" fill="#465958">Zones touched, deletion,</text>
+<text x="1214" y="235" font-family="Arial,sans-serif" font-size="18" fill="#465958">decisions about people</text>
+<text x="1214" y="266" font-family="Arial,sans-serif" font-size="18" fill="#465958">Can it be undone? How far</text>
+<text x="1214" y="289" font-family="Arial,sans-serif" font-size="18" fill="#465958">does it reach?</text>
+
+<path d="M165 326 L165 374" fill="none" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#ah-neutral)"/>
+<rect x="40" y="376" width="250" height="80" rx="12" fill="#fff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="56" y="410" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1e293b">Label only</text>
+<text x="56" y="438" font-family="Arial,sans-serif" font-size="18" fill="#465958">Sets no controls</text>
+
+<path d="M937 326 L937 374" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#ah-agent)"/>
+<rect x="812" y="376" width="260" height="80" rx="12" fill="#fff" stroke="#7c3aed" stroke-width="2"/>
+<text x="828" y="410" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#4c1d95">The person's job</text>
+<text x="828" y="438" font-family="Arial,sans-serif" font-size="18" fill="#465958">Readiness caps it</text>
+
+<path d="M607 326 L607 522" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#ah-system)"/>
+<path d="M1448 326 L1448 522" fill="none" stroke="#e11d48" stroke-width="3" marker-end="url(#ah-risk)"/>
+<path d="M1110 326 L1110 522" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#ah-agent)"/>
+<text x="1124" y="480" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#4c1d95">can raise the tier</text>
+
+<rect x="426" y="524" width="1134" height="84" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="442" y="560" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Risk tier</text>
+<text x="442" y="590" font-family="Arial,sans-serif" font-size="19" fill="#465958">Tier 1 (basic), Tier 2 (enhanced) or Tier 3 (strict). The worst factor wins.</text>
+
+<path d="M330 326 L330 672" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
+<text x="318" y="504" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#881337">business area</text>
+
+<path d="M993 608 L993 672" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-control)"/>
+
+<rect x="40" y="674" width="350" height="96" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="56" y="708" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#881337">Decisions about people</text>
+<text x="56" y="736" font-family="Arial,sans-serif" font-size="18" fill="#465958">A named person decides credit,</text>
+<text x="56" y="759" font-family="Arial,sans-serif" font-size="18" fill="#465958">work, benefits, health, housing</text>
+<path d="M390 722 L424 722" fill="none" stroke="#e11d48" stroke-width="2.5" marker-end="url(#ah-risk)"/>
+
+<rect x="426" y="674" width="1134" height="96" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="442" y="710" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Controls</text>
+<text x="442" y="742" font-family="Arial,sans-serif" font-size="19" fill="#465958">The tier sets the controls, who signs, and how often the agent is reviewed.</text>
+
+<rect x="40" y="800" width="1520" height="76" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="56" y="832" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#134e4a">Record all four answers in the agent's registry entry.</text>
+<text x="56" y="860" font-family="Arial,sans-serif" font-size="19" fill="#134e4a">A new tool, permission or autonomy level means the answers are scored again.</text>
 </svg>

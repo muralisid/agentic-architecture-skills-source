@@ -56,15 +56,15 @@ Summary; map below. Camps: identity incumbents shipping agent identity (as of Oc
 
 ### 10. Target state
 
-Every agent holds a registered, least-privileged, short-lived identity with a named owner and risk tier; presence-grade capability (mailbox, meeting seat, directory visibility) is granted per capability surface to a small set of durable teammates whose Sponsors accept the discoverability and phishing surface; all consequential actions pass a deterministic policy decision point; probabilistic detection feeds the SOC through the SIEM with agent-specific runbooks; the four zones stay deterministic at the decision.
+Every agent holds a registered, least-privileged, short-lived identity with a named owner and risk tier; an agent user account (mailbox, meeting seat, directory visibility) is granted after a permissions review to a small set of durable teammates whose Sponsors accept the discoverability and phishing surface; all consequential actions pass a deterministic policy decision point; probabilistic detection feeds the SOC through the SIEM with agent-specific runbooks; the four zones stay deterministic at the decision.
 
 ### 11. Migration path
 
-Inventory and register agents; kill shared credentials; JIT least privilege; SIEM ingestion and runbook rebuild; policy-as-code at the tool path (with R03's gateway as the enforcement point); guardrails as advisory; capability-surface review for anything approaching presence. Stop buying: standalone AI-security point tools without checking the incumbent platform's roadmap; guardrail products positioned as the security boundary.
+Inventory and register agents; kill shared credentials; JIT least privilege; SIEM ingestion and runbook rebuild; policy-as-code at the tool path (with R03's gateway as the enforcement point); guardrails as advisory; permissions review for anything approaching an agent user account. Stop buying: standalone AI-security point tools without checking the incumbent platform's roadmap; guardrail products positioned as the security boundary.
 
 ### 12. Metrics
 
-Agent identity coverage (no shared credentials); percentage of consequential actions behind a deterministic PDP; time-to-revoke an agent credential; agent-specific SOC detections and mean time to respond; guardrail false-positive cost; presence-surface inventory (which agents hold which ID3 capabilities and why).
+Agent identity coverage (no shared credentials); percentage of consequential actions behind a deterministic PDP; time-to-revoke an agent credential; agent-specific SOC detections and mean time to respond; guardrail false-positive cost; agent user account inventory (which agents hold one, and why).
 
 ### 13. Data readiness and curation
 

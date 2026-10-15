@@ -24,7 +24,7 @@ Compare the agent with deterministic three-way matching and a well-designed exce
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Invoice exception agent | Investigates match failures, gathers evidence, proposes disposition | A3, L2 | Start where exception records and reviewer decisions are available |
 | Reconciliation agent | Explains variances across ledgers and subledgers with provenance | A2 to A3, L2 | Explains; the accountant disposes |
@@ -35,7 +35,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Knowledge (**direct**: semantic contracts on every numeric answer), Action (**direct**: wrapped ERP and banking APIs), Control (**direct**: the two deterministic zones), Evidence (**direct**: records regimes), Human (**direct**), Improvement (supporting), Execution (supporting).
+Knowledge and memory (**direct**: semantic contracts on every numeric answer), tool gateway (**direct**: wrapped ERP and banking APIs), identity and policy (**direct**: the two deterministic zones), observability and audit trail (**direct**: records regimes), human oversight (**direct**), evaluation and release (supporting), runtime (supporting).
 
 ## Controls and human decisions
 

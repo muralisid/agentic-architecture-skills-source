@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2340" role="img" aria-labelledby="title desc">
+<title id="title">Vegetation inspection today: who does what</title>
+<desc id="desc">Swimlane of vegetation inspection at an electricity distributor today. Five lanes are people: compliance, network operations, programme manager and planner, capture contractor, and field assessor and crew. One lane is the imagery vendor platform. Step 1: the programme manager plans the cycle. Step 2: the contractor captures imagery. Step 3: the vendor platform measures clearance. Steps 4 and 5: the planner reviews at the desk and types in work orders, which the planner approves. Step 6: a field assessor confirms the finding. Step 7: network operations arranges an outage, and the operator approves switching. Step 8: the crew cuts, and a supervisor signs off. Step 9: the work is closed and the contract manager approves payment. Step 10: compliance audits and reports, and a named officer signs.</desc>
+<rect x="0" y="0" width="720" height="2340" fill="#f8f5ef"/>
+<text x="24.0" y="48.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Vegetation inspection today: who does</text>
+<text x="24.0" y="88.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">what</text>
+<text x="24.0" y="138.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">An electricity distributor. Typical practice, not</text>
+<text x="24.0" y="170.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">a survey of one utility.</text>
+<rect x="24" y="204" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="244" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="253.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">1</text>
+<text x="112.0" y="250.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Programme manager</text>
+<text x="112.0" y="284.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Plans the cycle from GIS, the asset system</text>
+<text x="112.0" y="316.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">and a spreadsheet of spans by risk area.</text>
+<path d="M66 344 V366" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,374 58,362 74,362" fill="#475569"/>
+<rect x="24" y="378" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="418" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="427.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">2</text>
+<text x="112.0" y="424.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Capture contractor</text>
+<text x="112.0" y="458.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Flies aerial LiDAR and imagery, or patrols</text>
+<text x="112.0" y="490.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">on foot with a tablet.</text>
+<path d="M66 518 V540" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,548 58,536 74,536" fill="#475569"/>
+<rect x="24" y="552" width="672" height="136" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<circle cx="66" cy="592" r="24" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+<text x="66.0" y="601.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a" text-anchor="middle">3</text>
+<text x="112.0" y="598.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Imagery vendor platform</text>
+<text x="112.0" y="632.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Measures clearance and ranks spans. Exports</text>
+<text x="112.0" y="664.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">a list as CSV or a shapefile.</text>
+<path d="M66 692 V714" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,722 58,710 74,710" fill="#475569"/>
+<rect x="24" y="726" width="672" height="136" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="766" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="775.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">4</text>
+<text x="112.0" y="772.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Vegetation planner</text>
+<text x="112.0" y="806.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks asset IDs, duplicates and open work</text>
+<text x="112.0" y="838.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">across three screens.</text>
+<path d="M66 866 V888" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,896 58,884 74,884" fill="#475569"/>
+<rect x="24" y="900" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="940" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="949.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">5</text>
+<text x="112.0" y="946.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Vegetation planner</text>
+<text x="112.0" y="980.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Types in or uploads work orders and assigns</text>
+<text x="112.0" y="1012.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">a cutting contractor.</text>
+<polygon points="124,1025 135,1036 124,1047 113,1036" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1044.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The planner approves the work</text>
+<path d="M66 1078 V1100" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1108 58,1096 74,1096" fill="#475569"/>
+<rect x="24" y="1112" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1152" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1161.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">6</text>
+<text x="112.0" y="1158.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Field assessor</text>
+<text x="112.0" y="1192.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Confirms the finding with photos. Sends</text>
+<text x="112.0" y="1224.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">owner notices where needed.</text>
+<polygon points="124,1237 135,1248 124,1259 113,1248" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1256.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The assessor confirms</text>
+<path d="M66 1290 V1312" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1320 58,1308 74,1308" fill="#475569"/>
+<rect x="24" y="1324" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1364" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1373.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">7</text>
+<text x="112.0" y="1370.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Network operations</text>
+<text x="112.0" y="1404.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Arranges an outage and switching if needed.</text>
+<text x="112.0" y="1436.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Notifies retailers.</text>
+<polygon points="124,1449 135,1460 124,1471 113,1460" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1468.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The operator approves switching</text>
+<path d="M66 1502 V1524" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1532 58,1520 74,1520" fill="#475569"/>
+<rect x="24" y="1536" width="672" height="142" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1576" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1585.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">8</text>
+<text x="112.0" y="1582.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Cutting crew</text>
+<text x="112.0" y="1616.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Cuts and records completion with photos.</text>
+<polygon points="124,1629 135,1640 124,1651 113,1640" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1648.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A supervisor signs off</text>
+<path d="M66 1682 V1704" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1712 58,1700 74,1700" fill="#475569"/>
+<rect x="24" y="1716" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1756" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1765.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">9</text>
+<text x="112.0" y="1762.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Planner and contract manager</text>
+<text x="112.0" y="1796.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Closes the work order and matches the</text>
+<text x="112.0" y="1828.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">invoice.</text>
+<polygon points="124,1841 135,1852 124,1863 113,1852" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="1860.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The contract manager approves payment</text>
+<path d="M66 1894 V1916" fill="none" stroke="#475569" stroke-width="3"/>
+<polygon points="66,1924 58,1912 74,1912" fill="#475569"/>
+<rect x="24" y="1928" width="672" height="174" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<circle cx="66" cy="1968" r="24" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+<text x="66.0" y="1977.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f" text-anchor="middle">10</text>
+<text x="112.0" y="1974.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Compliance</text>
+<text x="112.0" y="2008.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Prepares the clearance plan, bushfire</text>
+<text x="112.0" y="2040.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">reports and audit answers.</text>
+<polygon points="124,2053 135,2064 124,2075 113,2064" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="148.0" y="2072.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A named officer signs</text>
+<circle cx="40" cy="2144" r="12" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="64.0" y="2152.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<circle cx="40" cy="2180" r="12" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+<text x="64.0" y="2188.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<polygon points="40,2204 52,2216 40,2228 28,2216" fill="#ffffff" stroke="#475569" stroke-width="2.5"/>
+<text x="64.0" y="2224.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval or sign-off by the person named</text>
+<text x="24.0" y="2266.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Capture to cut takes weeks for non-urgent spans</text>
+<text x="24.0" y="2298.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">(typical, unsourced).</text>
+</svg>

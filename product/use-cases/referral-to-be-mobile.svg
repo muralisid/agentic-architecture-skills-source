@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2738" role="img" aria-labelledby="title desc">
+<title id="title">Referral to appointment with an agent</title>
+<desc id="desc">Swimlanes for the agent, the referral clerk, the clinician, fixed rules, the systems and the evidence store. Step 1: the agent takes in the referral and opens a referral task. Step 2: it proposes the patient match, and the clerk confirms. Step 3: fixed rules check completeness, and the clinical lead approves the rules. Step 4: the agent asks the referrer for missing items, and the clerk approves. Step 5: it prepares the triage view. Step 6: a clinician triages, which is the clinical decision. Step 7: the agent adds the patient to the waiting list in the PAS, and the clerk approves. Step 8: it offers slots in a fixed booking order, and the clerk approves any exception. Step 9: it books and reads back the result. Step 10: waiting list reports run as today. The evidence store keeps traces, the PAS audit log, message logs and the original documents. A diamond marks each approval.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2738" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Referral to appointment with an</text>
+<text x="32.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">agent</text>
+<text x="32.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Proposed design. The agent prepares and chases.</text>
+<text x="32.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">People confirm, triage and approve.</text>
+<rect x="32.0" y="228.0" width="656.0" height="160.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="268.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="276.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="308.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reads the fax through text recognition, the</text>
+<text x="104.0" y="340.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">HL7 message or the e-referral. Opens a</text>
+<text x="104.0" y="372.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">referral task linked to the original.</text>
+<path d="M68.0 392.0 L68.0 414.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="422.0" width="656.0" height="232.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="462.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="470.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="470.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="502.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Proposes the patient match from the PAS and</text>
+<text x="104.0" y="534.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">the IHI or NHI. Flags any duplicate</text>
+<text x="104.0" y="566.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">referral.</text>
+<path d="M116.0 587.0 L127.0 598.0 L116.0 609.0 L105.0 598.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="606.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The clerk confirms any doubt. The agent</text>
+<text x="138.0" y="638.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">never creates or merges a patient.</text>
+<path d="M68.0 658.0 L68.0 680.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="688.0" width="656.0" height="232.0" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="68.0" cy="728.0" r="20" fill="#475569" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="736.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="736.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Fixed rules, run by the agent</text>
+<text x="104.0" y="768.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Checks the fields against the clinic&#x27;s</text>
+<text x="104.0" y="800.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">versioned referral criteria. Lists missing</text>
+<text x="104.0" y="832.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">items.</text>
+<path d="M116.0 853.0 L127.0 864.0 L116.0 875.0 L105.0 864.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="872.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The clinical lead approves the rules</text>
+<text x="138.0" y="904.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">before go-live.</text>
+<path d="M68.0 924.0 L68.0 946.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="954.0" width="656.0" height="232.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="994.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1002.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="1002.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1034.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Sends a secure message to the referrer from</text>
+<text x="104.0" y="1066.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">an approved template. Matches the reply and</text>
+<text x="104.0" y="1098.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">checks again.</text>
+<path d="M116.0 1119.0 L127.0 1130.0 L116.0 1141.0 L105.0 1130.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1138.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The clerk approves each message at</text>
+<text x="138.0" y="1170.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">first.</text>
+<path d="M68.0 1190.0 L68.0 1212.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1220.0" width="656.0" height="160.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1260.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1268.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1268.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1300.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Gathers recent results, imaging reports and</text>
+<text x="104.0" y="1332.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">prior letters. Shows each item with its</text>
+<text x="104.0" y="1364.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">source and date.</text>
+<path d="M68.0 1384.0 L68.0 1406.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1414.0" width="656.0" height="168.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1454.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1462.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1462.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Consultant or clinical nurse</text>
+<text x="104.0" y="1494.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Sets the urgency category, or declines with</text>
+<text x="104.0" y="1526.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">advice. The agent records it as given.</text>
+<path d="M116.0 1547.0 L127.0 1558.0 L116.0 1569.0 L105.0 1558.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1566.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">This is the clinical decision.</text>
+<path d="M68.0 1586.0 L68.0 1608.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1616.0" width="656.0" height="200.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1656.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1664.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1664.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1696.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Writes the waiting list entry to the PAS</text>
+<text x="104.0" y="1728.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">through its interface, after fixed checks.</text>
+<path d="M116.0 1749.0 L127.0 1760.0 L116.0 1771.0 L105.0 1760.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1768.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The clerk approves at first. Later, a</text>
+<text x="138.0" y="1800.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">fixed rule does.</text>
+<path d="M68.0 1820.0 L68.0 1842.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1850.0" width="656.0" height="232.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1890.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1898.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1898.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1930.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Offers slots by SMS or portal in booking</text>
+<text x="104.0" y="1962.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">order. The patient chooses.</text>
+<path d="M116.0 1983.0 L127.0 1994.0 L116.0 2005.0 L105.0 1994.0 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="138.0" y="2002.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">The booking order is a fixed rule.</text>
+<path d="M116.0 2023.0 L127.0 2034.0 L116.0 2045.0 L105.0 2034.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="2042.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The clerk approves any booking out of</text>
+<text x="138.0" y="2074.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">order.</text>
+<path d="M68.0 2086.0 L68.0 2108.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="2116.0" width="656.0" height="160.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="2156.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="2164.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="104.0" y="2164.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="2196.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Books through the PAS and reads back the</text>
+<text x="104.0" y="2228.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">booking number and status. A clerk handles</text>
+<text x="104.0" y="2260.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">any failed write.</text>
+<path d="M68.0 2280.0 L68.0 2302.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="2310.0" width="656.0" height="160.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="2350.0" r="20" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="2358.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<text x="104.0" y="2358.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Data warehouse (data team)</text>
+<text x="104.0" y="2390.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Waiting list reports run as today. New</text>
+<text x="104.0" y="2422.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">measures: time per step, requests sent,</text>
+<text x="104.0" y="2454.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">clerk overrides.</text>
+<rect x="32.0" y="2494.0" width="656.0" height="164.0" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="52.0" y="2542.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Evidence store, out of the agent&#x27;s reach.</text>
+<text x="52.0" y="2574.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">Traces keyed to the referral task. The PAS</text>
+<text x="52.0" y="2606.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">audit log. Message logs. The original</text>
+<text x="52.0" y="2638.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">documents, unchanged.</text>
+<path d="M46.0 2679.0 L57.0 2690.0 L46.0 2701.0 L35.0 2690.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="70.0" y="2698.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A diamond marks an approval.</text>
+</svg>

@@ -24,7 +24,7 @@ The platform stops serving dashboards and starts serving *actors*. Three consequ
 
 ### 3. Introduction options and sequencing
 
-Ground the first agents on the best-modeled data you have; add governed semantics where answers carry financial or regulatory weight; sync ACLs into every index from the first connector, not retroactively; adopt CDC-fed incremental freshness when decision cadence demands it. Sequencing rule: the readiness assessment's data dimension gates which workloads may proceed.
+Ground the first agents on the best-modeled data you have; add governed semantics where answers carry financial or regulatory weight; sync ACLs into every index from the first connector, not retroactively; adopt CDC-fed incremental freshness when decision cadence demands it. Sequencing rule: the readiness assessment's data area gates which workloads may proceed.
 
 ### 4. Economics
 
@@ -48,7 +48,7 @@ Indexes and embeddings are data: they carry residency obligations of their sourc
 
 ### 9. Vendor landscape
 
-Summary; map below. Camps: platforms with bundled vector and semantics (now table stakes), semantic-layer specialists converging via the Open Semantic Interchange, dedicated vector databases retreating to verticals, catalogs repositioning as agent context layers, and permission-aware enterprise search.
+Summary; map below. Camps: platforms with bundled vector and semantics (now table stakes), semantic-layer specialists converging via the Open Semantic Interchange, dedicated vector databases retreating to verticals, catalogs repositioning as sources of agent context, and permission-aware enterprise search.
 
 ### 10. Target state
 

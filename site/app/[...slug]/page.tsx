@@ -16,6 +16,7 @@ import { articleSchema, jsonLd } from '@/lib/structured-data';
 import { getProvidedFigure } from '@/lib/share-image';
 import { Byline } from '@/components/site/byline';
 import { CiteThisPage } from '@/components/site/cite-this-page';
+import { RelatedConcepts } from '@/components/site/related-concepts';
 
 export default async function Page(props: PageProps<'/[...slug]'>) {
   const params = await props.params;
@@ -78,6 +79,7 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
         <p className="text-fd-muted-foreground">{page.data.position}</p>
         {page.data.lastReviewed ? <p className="mt-1 text-xs text-fd-muted-foreground">Reviewed {page.data.lastReviewed}</p> : null}
       </aside> : null}
+      <RelatedConcepts keys={page.data.concepts} current={page.url} className="mt-6" />
       <DocsBody className="mt-8">
         <MDX
           components={getMDXComponents({
@@ -86,6 +88,7 @@ export default async function Page(props: PageProps<'/[...slug]'>) {
           })}
         />
       </DocsBody>
+      <RelatedConcepts keys={page.data.concepts} current={page.url} className="mt-10 border-t pt-6" />
       <CiteThisPage title={page.data.title} path={page.url} dateModified={page.data.dateModified} />
     </DocsPage>
   );

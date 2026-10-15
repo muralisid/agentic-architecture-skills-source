@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2901" role="img" aria-labelledby="title desc">
+<title id="title">Safety coaching today: who does what</title>
+<desc id="desc">Swimlane of how safety coaching runs today, in eleven steps across six lanes. An event happens and a camera or in-cab system records it. The monitoring centre radios the driver, a real-time safety intervention. Video analytics flags a candidate clip. The supervisor watches it and records it in the HSE system. The investigation team investigates serious incidents, and the site senior executive notifies the regulator, which is an approval. The supervisor coaches at a pre-start meeting. The safety team shares an alert with other sites. The training coordinator records retraining. The safety team reports monthly.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2901" fill="#f8f5ef"/>
+<text x="28.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Safety coaching today: who does what</text>
+<text x="28.0" y="108.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Typical practice at a mine site. Coaching is done</text>
+<text x="28.0" y="139.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">by hand, and lessons spread slowly.</text>
+<rect x="28.0" y="158.0" width="28.0" height="26.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="68.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<rect x="358.0" y="158.0" width="28.0" height="26.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="398.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<path d="M42.0 198.0 L54.0 210.0 L42.0 222.0 L30.0 210.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="218.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval</text>
+<rect x="28.0" y="270.0" width="664.0" height="213.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="296.0" r="21" fill="#2563eb"/><text x="68.0" y="304.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="100.0" y="276.0" width="189.3" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="303.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Site systems</text>
+<text x="48.0" y="350.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Event</text>
+<text x="48.0" y="386.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A camera stores the video. In-cab fatigue or</text>
+<text x="48.0" y="417.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">proximity alerts go live to the driver and the</text>
+<text x="48.0" y="448.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">monitoring centre.</text>
+<path d="M360.0 485.0 L360.0 517.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="523.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="549.0" r="21" fill="#d97706"/><text x="68.0" y="557.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="100.0" y="529.0" width="256.5" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="556.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Monitoring centre</text>
+<text x="48.0" y="603.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Respond</text>
+<text x="48.0" y="639.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The monitoring centre radios the driver, and</text>
+<text x="48.0" y="670.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">stands the driver down if needed. This is a</text>
+<text x="48.0" y="701.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">safety intervention.</text>
+<path d="M360.0 738.0 L360.0 770.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="776.0" width="664.0" height="182.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="802.0" r="21" fill="#2563eb"/><text x="68.0" y="810.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="100.0" y="782.0" width="189.3" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="809.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Site systems</text>
+<text x="48.0" y="856.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Detect</text>
+<text x="48.0" y="892.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Where analytics exist, they flag a candidate</text>
+<text x="48.0" y="923.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">event with a clip, a time and a label.</text>
+<path d="M360.0 960.0 L360.0 992.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="998.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1024.0" r="21" fill="#d97706"/><text x="68.0" y="1032.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="100.0" y="1004.0" width="162.4" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1031.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Supervisor</text>
+<text x="48.0" y="1078.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Review</text>
+<text x="48.0" y="1114.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The supervisor or safety advisor watches the</text>
+<text x="48.0" y="1145.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">clip and decides if the event is real.</text>
+<path d="M360.0 1182.0 L360.0 1214.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1220.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1246.0" r="21" fill="#d97706"/><text x="68.0" y="1254.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="100.0" y="1226.0" width="162.4" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1253.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Supervisor</text>
+<text x="48.0" y="1300.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Record</text>
+<text x="48.0" y="1336.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The observation, hazard or incident is logged</text>
+<text x="48.0" y="1367.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">in the HSE system, with its potential severity.</text>
+<path d="M360.0 1404.0 L360.0 1436.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1442.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1468.0" r="21" fill="#d97706"/><text x="68.0" y="1476.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="100.0" y="1448.0" width="202.7" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1475.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Investigation</text>
+<text x="48.0" y="1522.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Investigate</text>
+<text x="48.0" y="1558.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">For incidents, the investigation team works out</text>
+<text x="48.0" y="1589.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">the timeline, causes and actions.</text>
+<path d="M360.0 1626.0 L360.0 1658.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1664.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1690.0" r="21" fill="#d97706"/><text x="68.0" y="1698.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="100.0" y="1670.0" width="202.7" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1697.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Investigation</text>
+<path d="M658.0 1674.0 L673.0 1689.0 L658.0 1704.0 L643.0 1689.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="1744.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Notify</text>
+<text x="48.0" y="1780.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">For serious incidents, the site senior</text>
+<text x="48.0" y="1811.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">executive notifies the regulator within the</text>
+<text x="48.0" y="1842.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">legal time.</text>
+<path d="M360.0 1879.0 L360.0 1911.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1917.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1943.0" r="21" fill="#d97706"/><text x="68.0" y="1951.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="100.0" y="1923.0" width="162.4" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1950.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Supervisor</text>
+<text x="48.0" y="1997.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Coach</text>
+<text x="48.0" y="2033.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The supervisor coaches face to face, sometimes</text>
+<text x="48.0" y="2064.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">with a slide or a short clip.</text>
+<path d="M360.0 2101.0 L360.0 2133.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2139.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2165.0" r="21" fill="#d97706"/><text x="68.0" y="2173.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<rect x="100.0" y="2145.0" width="175.8" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2172.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Safety team</text>
+<text x="48.0" y="2219.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Share</text>
+<text x="48.0" y="2255.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The safety team sends a safety alert to other</text>
+<text x="48.0" y="2286.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">sites by email and intranet.</text>
+<path d="M360.0 2323.0 L360.0 2355.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2361.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2387.0" r="21" fill="#d97706"/><text x="68.0" y="2395.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<rect x="100.0" y="2367.0" width="135.5" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2394.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Training</text>
+<text x="48.0" y="2441.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Train</text>
+<text x="48.0" y="2477.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The training coordinator records retraining in</text>
+<text x="48.0" y="2508.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">the learning system.</text>
+<path d="M360.0 2545.0 L360.0 2577.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2583.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2609.0" r="21" fill="#d97706"/><text x="68.0" y="2617.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">11</text>
+<rect x="100.0" y="2589.0" width="175.8" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2616.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Safety team</text>
+<text x="48.0" y="2663.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Report</text>
+<text x="48.0" y="2699.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The HSE manager reports monthly to site leaders</text>
+<text x="48.0" y="2730.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">and the board safety committee.</text>
+<text x="28.0" y="2809.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A safety alert reaches other sites in days to</text>
+<text x="28.0" y="2840.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">weeks (typical, unsourced).</text>
+</svg>

@@ -40,7 +40,7 @@ The assumption was that generating candidate rules is easy and promoting them is
 
 So: **gate on counterexample survival and eval-suite regression, not on frequency.** The mechanism that does work in the published record uses counterexample-guided induction over annotated traces with human review, reaching high accuracy in narrow domains and converging in a handful of iterations; the reference enterprise flywheel likewise keeps promotion manual with no published automatic thresholds.
 
-**Name the enforcement tier.** A rule the model merely reads is still a soft rule. The hard tier is policy-as-code outside the model, versioned and deployed independently, which is the same conclusion R10 reached from the security side. This matters because it bounds the ambition: a statement-level analysis of real agent instruction files found roughly three-quarters of policy statements depend on context that cannot be predefined, leaving about a quarter statically enforceable as written, and formal work shows deterministic gates cannot express renewal properties at all.
+**Name the enforcement point.** A rule the model merely reads is still a soft rule. The hard rule is policy-as-code outside the model, versioned and deployed independently, which is the same conclusion R10 reached from the security side. This matters because it bounds the ambition: a statement-level analysis of real agent instruction files found roughly three-quarters of policy statements depend on context that cannot be predefined, leaving about a quarter statically enforceable as written, and formal work shows deterministic gates cannot express renewal properties at all.
 
 **Add a demotion path.** Accumulated context is not free: studies of repository context files found machine-generated ones slightly *reduced* success while raising inference cost by a fifth. A promotion-only pipeline compounds cost and never sheds dead rules.
 
@@ -68,7 +68,7 @@ Summary; map below. Data platforms are absorbing the flywheel (one acquired a co
 
 ### 10. Target state
 
-An eval suite owned by domain experts and built from real failures; automated judging at volume with sampled human verification; a flywheel where production traces and eval datasets share a data layer so a failing online score promotes the trace automatically; rule promotion gated on counterexample survival with a demotion path; distillation where volume justifies it; and reinforcement fine-tuning only behind a grader that cannot be gamed.
+An eval suite owned by domain experts and built from real failures; automated judging at volume with sampled human verification; a flywheel where production traces and eval datasets share one data store so a failing online score promotes the trace automatically; rule promotion gated on counterexample survival with a demotion path; distillation where volume justifies it; and reinforcement fine-tuning only behind a grader that cannot be gamed.
 
 ### 11. Migration path
 

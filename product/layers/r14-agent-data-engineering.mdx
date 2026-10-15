@@ -1,108 +1,153 @@
 ---
 title: "Agent data engineering"
 icon: "FunnelPlus"
-description: "How the data behind agents is prepared: documents read with their source attached, permissions that travel with every copy, governed memory, and deletion that reaches every derivative."
+description: "What the data engineering layer must provide for agents: curated collections with named owners, documents read with their source attached, access rules that travel with every copy, checked memory, and deletion that reaches every copy."
+position: "Reference design for this layer. The parsing, poisoning, reconstruction and curation results are peer-reviewed. Chunking, enrichment and storage figures are vendor-published and marked [vendor]."
 hero_figure: "layer-14-hero"
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [layers, data-to-memory, memory, r02, delegation, lifecycle, patterns, concern-matrix]
 ---
 
-<PlainTerms>
-This page covers the data work that decides whether <Term k="agent">agents</Term> answer well. Documents must be read accurately and keep a record of where they came from. Anything copied or derived from a document must carry that document's access rules and be deleted when the original is deleted. What an agent remembers must be checked before it becomes permanent, because a small amount of poisoned input can hijack it. The one thing to remember: carefully chosen data with a named <Term k="owner">owner</Term> beats a large pile of data.
-</PlainTerms>
+The agent data engineering layer (R14) is one of [the fourteen layers](/layers) you already own. It prepares the data that agents read and remember. Little of it exists today. Organisations have data catalogs, master data tools, document capture and a few retrieval pilots. For agents, this layer must provide data that is right, permissioned and deletable. Well-chosen data with a named owner beats a larger pile of data. Each document is read well and keeps its source. Every copy carries the original's access rules. What an agent remembers is checked before it is kept. And deleting a record reaches every copy made from it.
 
-## Target state
+## What sits in this layer today
 
-**In short:** Agents answer only as well as their data, so every data set gets a named owner, a traceable source, and a working delete.
+This layer is mostly new for agents. The table shows what four typical estates already have, and what is missing. Vendors in brackets are examples, not a claim about any named organisation.
 
-A <Term k="curation">curation</Term> pipeline (data prepared for a purpose, with someone responsible for its quality) with named ownership per corpus, meaning each collection of documents. Layout-aware parsing attaches <Term k="provenance">provenance</Term>, the record of where each piece came from, at parse time. <Term k="chunking">Chunking</Term>, the splitting of documents into retrievable pieces, is evaluated per corpus rather than adopted as a universal recipe. Contextual enrichment is added where <Term k="retrieval">retrieval</Term> quality matters. <Term k="embeddings">Embeddings</Term> (the numeric fingerprints that make text searchable by meaning) are versioned and monitored for drift. <Term k="index">Indexes</Term> carry permissions. <Term k="memory tiers">Memory tiers</Term> have write governance, time-to-live, and <Term k="erasure">erasure</Term>. Freshness is fed by <Term k="change data capture">change data capture</Term>, which streams each database change as it happens. Span-level <Term k="lineage">lineage</Term> runs from every answer to its source. Curation labour is sized to risk. It is automated, with calibrated <Term k="judges">judges</Term> and sampled audits, where volume demands it. It is human where liability demands it. It always sits under a named accountable owner.
+| System category | Electricity distributor | Water utility | Hospital network | Generator, oil and gas, or miner |
+|---|---|---|---|---|
+| Data catalogs and data quality | Data catalogs and lineage tools (Microsoft Purview, Collibra, Unity Catalog) | Same as electricity | A data quality team | Not in the research |
+| Master data | Master data governance (SAP MDG) | Master data governance (SAP MDG) | Master patient index stewardship. A team fixes duplicate patient records every day (typical, unsourced) | Master data tools (SAP MDG). Equipment master data for miners |
+| Document capture | Not in the research | Not in the research | Capture and OCR for fax and paper (Tungsten, formerly Kofax; ABBYY). Scanning bureaus. OCR indexes scanned records but does not pull out fields for a workflow (typical, unsourced) | Document capture and P&ID digitising (ABBYY, Azure Document Intelligence, Cognite). Permits and assays for miners |
+| Shared vocabularies and hierarchies | BI semantic models. CIM as a shared vocabulary where used | BI semantic models. Asset information work (WSAA with BIM4Water) | Terminology services (CSIRO Ontoserver, the National Clinical Terminology Service) | Asset hierarchies (PI AF, SAP functional locations, KKS codes). Cognite knowledge graphs |
+| Pipelines into the lake | Meter data copied from the MDM into the lakehouse. A copy of the OT historian | A copy of the OT historian, plus lab data and hydraulic model outputs | Nightly batch extracts from the PAS and EMR to the warehouse | Historian-to-lake pipelines (PI Integrator, AVEVA CONNECT, Cognite extractors, HighByte) |
+| Knowledge bases and retrieval pilots | A few retrieval pilots over manuals. SA Power Networks runs an internal "Ask AI" over manuals (iTnews, 8 September 2026) | Contact centre knowledge bases (ServiceNow, Salesforce Knowledge) | A few document search pilots | Aker BP lists document processing among its current agent uses (World Oil, 16 September 2025) [vendor] |
+| What is missing | Evaluation sets built from specialists' past decisions. Tool catalogues with scopes. Agent memory with retention rules. Links from each obligation to its evidence | Same as electricity | Extraction that keeps the page and position of each field. Indexes that respect who may see what. Governed memory. Deletion that reaches every copy (typical, unsourced) | Retrieval over procedures, OEM manuals and past work orders. Case memory. Provenance on every source. Sensitivity labels for OT data and personal data |
+
+Standards and interfaces: CIM, and ISO 19650 for asset information, in utilities. FHIR DocumentReference, IHE XDS metadata, CDA, and retention and disposal authorities in hospitals. KKS and RDS-PP (IEC 81346), ISA-5.1 tags, ISO 8000 and ISO 15926 in energy and mining. The full estates are on the [utilities](/use-cases/utilities), [healthcare](/use-cases/healthcare) and [energy](/use-cases/energy) pages.
+
+Some vendors are filling the gap from their side. SAP says its utilities data products are in its Business Data Cloud from Q1 2026 [vendor]. It says meter reading and billing coverage follows by Q4 2026 (ASUG, 27 May 2026) [vendor].
+
+## What agents add
+
+This layer turns raw records into data an agent can use safely. The source records sit on [the data platform (R02)](/layers/r02-data-platform). [From data to memory](/architecture/data-to-memory) traces the whole path. [Knowledge and memory](/memory) covers what an agent should remember. Freshness comes from <Term k="cdc">change data capture</Term>. It streams each database change as it happens. <Term k="lineage">Lineage</Term> runs from every answer back to its source passage.
 
 <GuideFigure id="layer-14-hero" fullWidth />
 
-<TeachingIllustration src="/images/layers/r14-data-pipeline-labeled-v1.webp" alt="A source document passes through layout-aware parsing, meaningful chunking, versioned embeddings and a permission-aware index to a cited answer, while provenance, access, residency and freshness travel throughout and memory writes are quarantined for review." title="The data pipeline determines the ceiling of agent quality" caption="Structure lost during parsing cannot be recovered downstream. Every transformation carries governance metadata, and proposed durable memories take a separate quarantine-and-review path before they can influence future runs." />
+<TeachingIllustration src="/images/layers/r14-data-pipeline-labeled-v1.webp" alt="A source document passes through a layout-aware parse, meaningful chunks, versioned embeddings and a permission-aware index to a cited answer. Provenance, access rules, residency and freshness travel along the whole path. A proposed memory goes through quarantine and review before it becomes durable memory. Bad parsing cannot be repaired later." title="The agent data pipeline" caption="Structure lost during parsing cannot be recovered later. Every step carries its governance data. A proposed memory takes a separate quarantine and review path before it can shape later runs." />
 
-| Component | Responsibility | Control it hosts | Where it runs |
-|---|---|---|---|
-| Layout-aware parser | Extract structure and attach page and cell provenance | Parsing fidelity spot checks | Ingestion |
-| Chunker and enricher | Produce retrievable units with surrounding context | Per-corpus evaluation, not a global recipe | Ingestion |
-| Embedding service | Produce version-stamped vectors | Blue/green migration; drift alerts | Batch and incremental |
-| Permission-carrying index | Serve retrieval with access control lists (ACLs) in metadata | Pre-filter on live identity; exclusion sets before approximate nearest neighbour (ANN) search | Search substrate |
-| Memory store | Hold durable agent memory | Provenance on every write; quarantine before promotion | Platform or dedicated service |
-| Erasure controller | Execute deletion across every derivative | Deletion as an audited callable operation | Cross-cutting |
+### Chosen data beats more data
 
-## Mechanisms
+A curated domain knowledge base cut <Term k="hallucination">hallucination</Term>, confident false statements, from 35 percent to 6 percent. In another study, a collection grew from 54 to 1,128 uncurated documents. Accuracy fell from 75 percent to under 40 percent. Narrowing the collection to the domain fixed it. More data made the system worse.
 
-### Parsing caps everything downstream
+So every collection an agent depends on has a named owner. <Term k="curation">Curation</Term> means preparing data for a purpose, with someone answerable for its quality. Curation work is sized to risk. Automated checks, with calibrated judges and sampled audits, cover volume. People cover the cases where liability demands it.
 
-**In short:** If a document is read badly at the start, nothing later can recover what was lost.
+Some content covers many aspects. An item can then be stored as several purpose-specific embeddings. Each is indexed apart and queried by the view that matches the question. [Context patterns](/patterns) tests when this helps and when it does not. Measure with metrics that reward coverage, such as alpha-nDCG or sub-question coverage. Never use plain recall.
 
-Even the best document parsers lose at least 14 percent of retrieval performance compared with ground-truth structure (OHR-Bench, ICCV 2025, the International Conference on Computer Vision). Nothing downstream recovers what parsing dropped. That makes layout-aware parsing with provenance the floor rather than an optimisation. It also makes parsing fidelity a permanent sampled metric rather than a one-time acceptance test. Where data cannot leave the perimeter, the neutral default is a provenance-preserving open-source parser under a permissive licence.
+### Read each document well and keep its source
 
-### Chunking is evaluated, never inherited
+Even the best document parsers lose at least 14 percent of retrieval performance against the true structure (OHR-Bench, ICCV 2025). Nothing later recovers what parsing dropped. So parse with the page layout in view. Attach <Term k="provenance">provenance</Term>, the record of where each piece came from, at that moment. Check parsing quality by sampling, for as long as the collection is in use. Where data cannot leave your network, use an open-source parser that keeps provenance, under a permissive licence.
 
-**In short:** There is no universal best way to split documents; test each collection against its own real questions.
+### Test the split for each collection
 
-Gains from semantic chunking are inconsistent across corpora. Fixed-size chunking frequently matches it. Page-level chunking was best on average in one vendor <Term k="benchmark">benchmark</Term> [vendor]. The rule that survives: evaluate per corpus, against that corpus's real questions. The best-evidenced upgrade is contextual enrichment. It reduced retrieval failures by 49 percent, and by 67 percent when combined with reranking [vendor]. The published cost floor is about $1.02 per million document <Term k="tokens">tokens</Term> with caching, where a token is the unit AI usage is billed in.
+<Term k="chunking">Chunking</Term> splits documents into pieces an agent can retrieve. Gains from splitting by meaning vary across collections. Fixed-size pieces often match them. Page-level pieces did best on average in one vendor test [vendor]. So test each collection against its own real questions.
 
-### Embedding operations and the re-embed budget
+Contextual enrichment adds the surrounding context to each piece. It is the best-evidenced upgrade. It cut retrieval failures by 49 percent, and by 67 percent with reranking [vendor]. The published cost floor is about $1.02 per million document tokens, with caching.
 
-**In short:** Changing how text is turned into searchable numbers is costly, so version everything and switch only for proven gains.
+### Re-embedding discipline
 
-Select an embedding model on a public multilingual benchmark rather than on vendor claims. Use dimension-truncation techniques where storage is the constraint. Upgrading the embedding model forces a full re-embed of the corpus. Reference costs run from more than ten hours on eight high-end graphics processing units (GPUs) to roughly $166 to $1,079 through an <Term k="api">application programming interface (API)</Term> for a standard corpus. The discipline has five parts. Version-stamp every vector. Run blue/green index migrations. Evaluate embedding models quarterly. Migrate only for <Term k="evaluation">evaluation (eval)</Term> gains above a stated threshold, meaning gains on a test set with known right answers. Test cross-model conversion, published at roughly 100 times cheaper, before committing to a full re-embed. Object-store vector storage at up to 90 percent lower cost [vendor] favours more, smaller, purpose-scoped indexes.
+An <Term k="embedding">embedding</Term> is the numeric fingerprint that makes text searchable by meaning. Choose an embedding model on a public multilingual benchmark, not on vendor claims. Where storage is the limit, use techniques that shorten the vectors.
 
-### Memory is an attack surface with quantified exposure
+Upgrading the embedding model forces a full re-embed of the collection. For a standard collection, that takes more than ten hours on eight high-end GPUs. Through an API, it costs roughly $166 to $1,079. The discipline has five parts.
 
-**In short:** Very little poisoned data can hijack an agent's memory, so each write is checked before it sticks.
+1. Stamp every vector with its model version.
+2. Migrate indexes blue/green. Build the new index beside the old one, then switch.
+3. Evaluate embedding models every quarter.
+4. Migrate only when the evaluation gain passes a stated threshold.
+5. Test cross-model conversion first. It is published as roughly 100 times cheaper than a full re-embed.
 
-Poisoning under 0.1 percent of a memory or knowledge base achieved over 80 percent attack success (AgentPoison, NeurIPS 2024, the Conference on Neural Information Processing Systems). Query-only memory <Term k="injection">injection</Term> reached 98.2 percent success without any write access (MINJA, 2025). Memory poisoning is named as a first-class failure mode in the current vendor failure-mode taxonomy. The controls follow directly. Provenance goes on every write. Memories are quarantined before <Term k="promotion">promotion</Term> to durable tiers, with human or eval gates on that promotion. Poisoning is monitored, and memory-write quarantine rates are a standing metric. The functional tiers are working, episodic, semantic, and procedural. Hot-path writes happen during sessions and background consolidation happens between them. Treat any vendor's tier naming as a product detail rather than an architecture.
+Storing vectors in object storage costs up to 90 percent less [vendor]. That favours more, smaller indexes, each scoped to one purpose.
 
-### Permissions must travel with derivations
+### Every copy carries the source's access rules
 
-**In short:** Anything made from a document inherits that document's access rules, because the copies can be turned back into the original.
+Access control lists go into the metadata of every piece and every vector. Retrieval filters on the caller's live identity before it searches. Embeddings can be turned back into text. Exact reconstruction of 92 percent of short inputs has been shown and reproduced. So vectors inherit their sources' classification, access rules and privacy duties.
 
-<Term k="acl">Access control lists (ACLs)</Term> go into chunk and vector metadata, and retrieval pre-filters on the caller's live <Term k="identity">identity</Term>. This is non-negotiable because embeddings are recoverable text: 92 percent exact reconstruction of short inputs has been demonstrated and reproduced. So vectors inherit their sources' <Term k="classification">classification</Term> (sensitivity label), ACLs, and privacy obligations. **The open gap, stated rather than solved**: many-to-one derived artifacts (cross-document summaries, extracted memories, cluster labels) have no fully published permissions solution. Current practice stamps the intersection, meaning the most restrictive combination of the source permissions, and re-derives when an ACL changes. That is emerging practitioner-grade work, not a settled pattern.
+[The delegation chain](/architecture/delegation-chain) decides whose rights apply. When the agent acts for a person, the lesser right wins.
 
-### Erasure cascades or it did not happen
+One gap is still open. A summary across several documents, an extracted memory or a cluster label draws on many sources. No full published answer exists for its permissions. Current practice stamps the most restrictive mix of the source permissions. It derives the item again when an access rule changes. This is emerging practice, not a settled pattern.
 
-**In short:** Deleting a record must also delete every copy made from it, or the deletion did not really happen.
+### Check every write to memory
 
-<TeachingIllustration src="/images/layers/r14-deletion-cascade-labeled-v1.webp" alt="An erasure request deletes the source record and cascades across parsed text, chunks, vectors, search indexes, agent memory, logs and exclusion sets, producing deletion receipts for audit." title="Deletion is a cross-system operation with proof" caption="Every derivative inherits the source's obligations. The erasure controller must reach every copy and emit receipts; if one derived artifact survives, the deletion has not completed." />
+Memory is an attack surface. Poisoning under 0.1 percent of a memory or knowledge base achieved over 80 percent attack success (AgentPoison, NeurIPS 2024). Memory injection through queries alone reached 98.2 percent success, with no write access (MINJA, 2025). The current vendor taxonomy of failure modes names memory poisoning.
 
-Deletion must reach raw logs, derived memories, and vectors. The published mechanics have three parts. Deleted-vector exclusion sets are consulted before approximate nearest neighbour (ANN) queries, the fast similarity search behind retrieval. Purpose-scoped namespaces give deletion a bounded blast radius. Deletion is exposed as an audited callable operation rather than a manual runbook. Derived artifacts inherit <Term k="residency">residency</Term>: embeddings, memories, and summaries built from in-region data are in-region data. Bitemporal facts separate event time from ingestion time. They let a superseded fact be invalidated without destroying the history that explains an earlier decision.
+So provenance goes on every write. A proposed memory waits in quarantine before it is <Term k="promotion">promoted</Term> to durable memory. People or evaluations approve that promotion. The quarantine rate is a standing measure.
 
-### Curation is the accuracy lever, and it is measurable
+Agents use working, episodic, semantic and procedural memory. [What an agent should remember](/memory/memory-types) explains each kind. Writes happen during sessions, and consolidation happens between them. Treat any vendor's names for kinds of memory as a product detail.
 
-**In short:** Well-chosen data beats more data, and the gain shows up in how often the agent is wrong.
+### Deleting a record reaches every copy
 
-A curated domain knowledge base cut <Term k="hallucination">hallucination</Term> (confident false statements) from 35 percent to 6 percent. Growing a corpus from 54 to 1,128 uncurated documents dropped accuracy from 75 percent to under 40 percent until domain scoping fixed it: more data made the system worse. The trade is formalised as coverage versus trust. Where content is aspect-rich, an item can be represented through several purpose-specific embeddings, each indexed separately and queried by the view that matches the question. That improves precision per question type, at embedding cost rather than <Term k="model">model</Term> cost. The taxonomy of views is designed with a model from the corpus and hardened by a human; classical machinery executes at scale, and a model names the discovered clusters. The guide tested this pattern in five rounds on public corpora ([the research pages](/patterns)): several vectors per document beat one decisively, purpose views beat matched chunks only where queries target one aspect and lose where they concern whole documents, and conditioning the views on the objective made retrieval worse in every form tested. The design that survived is [the recommended approach](/patterns). Measure with coverage-aware metrics such as alpha-nDCG (normalised discounted cumulative gain, coverage-aware form) or sub-question coverage, never plain recall.
+Deletion must reach raw logs, derived memories and vectors. The published mechanics have three parts. Deleted vectors go on an exclusion list, checked before every similarity search. Purpose-scoped namespaces limit how far a deletion must reach. And deletion is an audited operation that systems call, not a manual runbook.
 
-## Design decisions
+Copies inherit residency. Embeddings, memories and summaries built from in-region data are in-region data. Bitemporal facts record when an event happened and when it was recorded. A replaced fact can then be retired without losing the history behind an earlier decision.
 
-- **One universal index vs use-case-scoped** ([CD-11](/decisions#cd-11)), a <Term k="cd">challenged default</Term> about whether to build one big search index or several. The answer is two layers. A permission-aware universal index serves discovery and cross-silo questions. Purpose-scoped curated indexes serve high-stakes tasks.
-- **Graph database vs embedding retrieval** ([CD-1](/decisions#cd-1)), a challenged default about whether a knowledge graph should replace vector search. The answer is a routed hybrid, vector-first, with a selective provenance-linked graph only for <Term k="deterministic">deterministic</Term> traversal (fixed-rule, repeatable lookups). If you add a graph, every generated edge carries a source-span identifier (ID), the extraction model and its version, a confidence value, and a validity interval.
-- **Purpose-specific embedding views vs matched chunking** ([CD-25](/decisions#cd-25)), a challenged default about whether to split documents by purpose or by fixed windows. The answer is chunks first, views only on a measured win against a control with the same embedding budget, and never a view taxonomy conditioned on the objective.
-- **Corpus ownership**: every corpus an agent depends on has a named accountable owner. Curation labour is sized to risk. The dedicated-curator-per-domain form is not supported as published fact, and accountability cannot be automated.
+<TeachingIllustration src="/images/layers/r14-deletion-cascade-labeled-v1.webp" alt="An erasure request deletes the source record. The deletion cascades to parsed text, chunks, vectors, the search index, agent memory, logs and exclusion sets. Deletion receipts are checked and the audit completes. If one copy remains, the deletion failed. Every derivative inherits the source's obligations." title="Delete the source, delete every derivative" caption="Every copy inherits the source's obligations. The erasure controller must reach every copy and issue receipts. If one derived item survives, the deletion is not complete." />
 
-## Cross-cutting concerns
-
-| # | Concern | Treatment at this layer |
+| Part | What it does | Where it runs |
 |---|---|---|
-| C1 | Identity and access | ACLs propagated into chunks, vectors, and derived artifacts; pre-filtered retrieval; intersection-stamping for many-to-one derivations |
-| C2 | Observability | Pipeline telemetry: parsing fidelity, embedding drift, freshness lag, memory-write rates |
-| C3 | Traceability and audit | Provenance from parse time through chunk, embedding version, retrieval, and claim; memory writes audited |
-| C4 | Grounding | Curated corpora with owners; contextual enrichment; freshness discipline; bitemporal fact handling |
-| C5 | Impersonation | Source authenticity at ingestion; no unattributed content into grounding or memory |
-| C6 | Sovereignty | Derived artifacts inherit source residency; region-scoped pipelines and indexes |
-| C7 | Privacy | Embeddings as recoverable personal data; erasure cascades across logs, memories, vectors, exclusion sets; time-to-live (TTL) limits; consent at ingestion |
-| C8 | Safety and oversight | Memory write governance with quarantine; poisoning monitoring; human gates on promotion to durable tiers |
-| C9 | Cost | Re-embedding budgets; curation labour accounting; per-corpus index costs |
-| C10 | Resilience | Everything regenerable from raw; blue/green migrations; full re-index as the recovery baseline |
+| Layout-aware parser | Extracts structure and attaches page and cell provenance | Ingestion |
+| Chunker and enricher | Produces retrievable pieces with their surrounding context | Ingestion |
+| Embedding service | Produces vectors stamped with their model version | Batch and incremental runs |
+| Permission-carrying index | Serves retrieval with access rules in the metadata | The search store |
+| Memory store | Holds durable agent memory, with provenance and quarantine | The agent platform or a dedicated service |
+| Erasure controller | Deletes across every copy and issues receipts | Across every store above |
 
-**Next step:** this is the last of the fourteen layers. Start building with [the intelligence ladder](/ladder).
+## What must be true before an agent touches it
+
+Before an agent reads or writes this data, these hold. Each check sits in the data path or the tool gateway, not in the prompt. [Enforcement outside the model](/architecture/enforcement) explains the points.
+
+- **Every collection has a named owner.** The owner holds a test set of real questions with known answers.
+- **Retrieval filters on live identity.** The filter runs before the search. The agent never sees what the caller may not see.
+- **Provenance runs from parse to answer.** Every answer can show the page and passage it came from.
+- **Memory writes are quarantined.** Promotion to durable memory needs a person or an evaluation gate.
+- **Deletion is tested.** An erasure request reaches every copy and returns receipts before go-live.
+- **Classification and residency travel with every copy.** [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) sets the classes.
+- **Changes re-run the checks.** A new data source or a new memory policy is a [change trigger on the agent lifecycle](/architecture/agent-lifecycle#the-change-triggers). It re-runs the evaluations and the risk profile.
+- **You run your own acceptance suite.** Cover local facts, semantic recall, exact identifiers and multi-hop questions. Add facts that change over time, whole-collection synthesis, unanswerable questions, deletions and access rules. Measure correctness, evidence recall, faithfulness and 95th-percentile latency. Also measure cost, ingestion lag and permission leakage.
+
+## Choices and their verdicts
+
+Each choice below is the common choice, tested against the simplest credible alternative. The full records are in [the decision catalog](/decisions).
+
+- **One universal index, or indexes scoped to each use case** ([decision record CD-11](/decisions#cd-11)). Both. A permission-aware universal index serves discovery and questions across silos. Curated, purpose-scoped indexes serve high-stakes tasks.
+- **A graph database, or embedding retrieval** ([decision record CD-1](/decisions#cd-1)). A routed hybrid, vector-first. Add a graph only for fixed, repeatable lookups. Every generated edge then carries its source passage, the extraction model and version, a confidence value and a validity period.
+- **Purpose-specific embedding views, or matched chunking** ([decision record CD-25](/decisions#cd-25)). Chunks first. Use views only on a measured win against a control with the same embedding budget. Never shape the views around the objective.
+- **Who curates.** Every collection has a named accountable owner. A dedicated curator per domain is not supported as published fact. Accountability cannot be automated.
+
+## Concerns this layer must honour
+
+This layer shares ownership of one of [the ten cross-cutting concerns](/architecture/concern-matrix) with the data platform. It carries duties for six more.
+
+- **Grounding (owned here, with the data platform).** Curated collections with owners, contextual enrichment and fresh data.
+- **Traceability and audit.** Provenance runs from parse time to the claim. Memory writes are audited.
+- **Privacy.** Embeddings count as recoverable personal data. Deletion reaches logs, memories, vectors and exclusion lists.
+- **Sovereignty and residency.** Copies inherit the residency of their source.
+- **Identity and access.** Access rules travel into pieces, vectors and derived items.
+- **Safety and oversight.** Memory writes are quarantined, and promotion is gated.
+- **Resilience.** Everything can be rebuilt from the raw source. A full re-index is the recovery baseline.
 
 ## Evidence and limits
 
-The parsing loss, the poisoning success rates, the embedding reconstruction, and the corpus-curation accuracy results are peer-reviewed. The contextual-enrichment improvements, the chunking comparisons, and the storage economics are vendor-published and flagged. One standing refusal: every memory-service benchmark now in circulation is vendor-authored and publicly disputed between vendors, so this guide cites none of them. Run your own acceptance suite instead. Build that suite to cover local facts, semantic recall, exact identifiers, multi-hop questions, temporal contradictions, corpus-global synthesis, unanswerable questions, deletions, and ACL enforcement. Measure correctness, evidence recall, faithfulness, 95th-percentile (p95) <Term k="latency">latency</Term>, cost, ingestion lag, and permission leakage. Re-verify two things: whether any complete solution to many-to-one derived-artifact permissions is published, and whether independent memory benchmarks emerge.
+The parsing loss, the poisoning rates, the embedding reconstruction and the curation results are peer-reviewed. The enrichment gains, the chunking comparisons and the storage costs are vendor-published and marked.
+
+Every memory-service benchmark in circulation is written by a vendor and disputed by other vendors. This page cites none of them. Run your own acceptance suite instead.
+
+Permissions for items drawn from many sources remain an open problem. Current practice is emerging, not settled.
+
+## Next step
+
+See this layer at work in [investigating recurring audit issues](/use-cases/systemic-audit-issues). This is the last of the fourteen layers. To start building, go to [the intelligence ladder](/ladder).
 
 <details>
 <summary>The research behind this page</summary>
@@ -111,9 +156,10 @@ The parsing loss, the poisoning success rates, the embedding reconstruction, and
 - [Sources](/library/layers/r14-agent-data-engineering/sources)
 - [Products named for orientation](/architecture), on the one-page wall chart
 
+**Sources named on this page.** OHR-Bench, ICCV 2025, the International Conference on Computer Vision. AgentPoison, NeurIPS 2024, the Conference on Neural Information Processing Systems. MINJA, 2025. The enrichment, page-level chunking and object-storage figures are vendor-published [vendor]. The metric alpha-nDCG is a coverage-aware form of normalised discounted cumulative gain.
+
+**Refusals.** Every memory-service benchmark now in circulation is vendor-authored and publicly disputed between vendors. This guide cites none of them.
+
+**Re-verify.** Whether any complete solution is published for the permissions of items derived from many sources. Whether independent memory benchmarks emerge.
+
 </details>
-
-
-## See this layer at work
-
-Follow the proposed [systemic audit issues](/use-cases/systemic-audit-issues) example. Compare the required capability with the systems already in place, then use the [architecture map](/architecture) to inspect neighboring responsibilities.

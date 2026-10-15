@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
 <title id="title">The weakest area sets the ceiling</title>
-<desc id="desc">Seven bars score Northstar, a fictional example, from 0 to 3. Data, integration, testing and people score 2, and identity, controls and cost score 1. A dashed line carries the lowest score, 1, to the ceiling table. There, data and integration at 2 or more, with all others at 1 or more, gives A2.</desc>
+<desc id="desc">Seven bars score Northstar, a fictional example, from 0 to 3. Data, integration, testing and people score 2. Identity, controls and cost score 1. A dashed line carries the lowest score, 1, to the ceiling table. There, data and integration at 2 or more, with all others at 1 or more, gives delegated tasks (A2). Two overrides can only lower the ceiling: a Tier 3 workload needs controls at 3 for A3 or above, and the Rule of Two caps autonomy at A2.</desc>
 <defs>
 <marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
 </defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
-<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">The weakest area sets the ceiling</text>
-<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">Northstar Components, a fictional teaching example. Profile 2, 2, 1, 1, 2, 1, 2. Ceiling A2.</text>
+<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">The weakest area sets the ceiling</text>
+<text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">Northstar Components, a fictional teaching example. Profile 2, 2, 1, 1, 2, 1, 2. Ceiling: delegated tasks (A2).</text>
 <text x="956" y="136" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">The ceiling table</text>
 <rect x="956" y="152" width="604" height="38" rx="12" fill="#efe8da" stroke="none" stroke-width="0"/>
 <text x="970" y="178" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Profile</text>
@@ -56,37 +56,37 @@
 <rect x="956" y="198" width="604" height="69" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
 <path d="M1296 204 V261" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="970" y="226" font-family="Arial,sans-serif" font-size="18" fill="#465958">All seven at 3, plus</text>
-<text x="970" y="249" font-family="Arial,sans-serif" font-size="18" fill="#465958">regulator-ready evidence</text>
-<text x="1310" y="226" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">A5 candidacy,</text>
-<text x="1310" y="249" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">per domain only</text>
+<text x="970" y="249" font-family="Arial,sans-serif" font-size="18" fill="#465958">evidence a regulator accepts</text>
+<text x="1310" y="226" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Governed lights-out (A5)</text>
+<text x="1310" y="249" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">considered per domain</text>
 <rect x="956" y="275" width="604" height="92" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
 <path d="M1296 281 V361" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="970" y="303" font-family="Arial,sans-serif" font-size="18" fill="#465958">All seven at 2 or more, with</text>
 <text x="970" y="326" font-family="Arial,sans-serif" font-size="18" fill="#465958">controls, testing and cost at 3</text>
-<text x="1310" y="303" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">A4, with L2 governed</text>
-<text x="1310" y="326" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">learning and the</text>
-<text x="1310" y="349" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">oversight-capacity gate</text>
+<text x="1310" y="303" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Managed autonomy (A4),</text>
+<text x="1310" y="326" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">with reviewed learning</text>
+<text x="1310" y="349" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">and supervision proven</text>
 <rect x="956" y="375" width="604" height="92" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
 <path d="M1296 381 V461" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="970" y="403" font-family="Arial,sans-serif" font-size="18" fill="#465958">Data, integration, identity,</text>
 <text x="970" y="426" font-family="Arial,sans-serif" font-size="18" fill="#465958">controls and testing at 2 or</text>
 <text x="970" y="449" font-family="Arial,sans-serif" font-size="18" fill="#465958">more, others at 1 or more</text>
-<text x="1310" y="403" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">A3</text>
+<text x="1310" y="403" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Supervised autonomy (A3)</text>
 <rect x="956" y="475" width="604" height="69" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="3"/>
 <path d="M1296 481 V538" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="970" y="503" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Data and integration at 2 or</text>
 <text x="970" y="526" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">more, all others at 1 or more</text>
-<text x="1310" y="503" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#881337">A2</text>
+<text x="1310" y="503" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#881337">Delegated tasks (A2)</text>
 <rect x="956" y="552" width="604" height="46" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="1.5"/>
 <path d="M1296 558 V592" fill="none" stroke="#d5d9d4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="970" y="580" font-family="Arial,sans-serif" font-size="18" fill="#465958">Any area at 0</text>
-<text x="1310" y="580" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">A1</text>
+<text x="1310" y="580" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Assisted (A1)</text>
 <text x="40" y="778" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#182e31">Data and integration are at 2. Every other area is at least 1. So the A2 row applies.</text>
 <text x="40" y="807" font-family="Arial,sans-serif" font-size="18" fill="#465958">To reach A3, identity and controls must also reach 2.</text>
 <rect x="956" y="622" width="604" height="141" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 5"/>
 <text x="972" y="652" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#1e293b">Overrides</text>
 <text x="972" y="680" font-family="Arial,sans-serif" font-size="18" fill="#465958">Tier 3 workload: controls at 3 for A3 or above</text>
 <text x="972" y="709" font-family="Arial,sans-serif" font-size="18" fill="#465958">Untrusted input + sensitive data + external action:</text>
-<text x="972" y="732" font-family="Arial,sans-serif" font-size="18" fill="#465958">capped at A2</text>
+<text x="972" y="732" font-family="Arial,sans-serif" font-size="18" fill="#465958">capped at delegated tasks (A2)</text>
 <text x="40" y="874" font-family="Arial,sans-serif" font-size="18" fill="#465958">Northstar is a fictional teaching example. Read the profile, not the total.</text>
 </svg>

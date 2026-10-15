@@ -2,9 +2,10 @@
 title: "What an agent should remember"
 description: "Working context, thread memory, and durable experiences, facts, and methods."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [memory, data-to-memory, r14, r02]
 ---
 
 Imagine an inspection investigation paused while waiting for a photograph. When it resumes, the agent needs the open question and what it already checked. When a new investigation begins, it may need lessons from the finished case. Those are different memory needs.
@@ -21,27 +22,27 @@ If everything is copied into every call, old assumptions and irrelevant material
 
 The inspection case should retain its messages, tool results, outstanding questions, and operation identifiers. A checkpoint allows work to resume, but a saved intention is not proof that an external operation completed. Check the work-order system before retrying a request.
 
-“Short term” often describes the scope of a conversation, not a promise that its records disappear quickly. A thread can be stored for weeks under a retention policy. A login session may end while the case continues. LangGraph's [memory overview](https://docs.langchain.com/oss/python/concepts/memory) documents thread-scoped state and cross-thread storage. Reviewed 18 September 2026.
+"Short term" often describes the scope of a conversation, not a promise that its records disappear quickly. A thread can be stored for weeks under a retention policy. A login session may end while the case continues. LangGraph's [memory overview](https://docs.langchain.com/oss/python/concepts/memory) documents thread-scoped state and cross-thread storage. Reviewed 18 September 2026.
 
 ## What is worth keeping for future tasks?
 
 Long-term memory needs a purpose and a permitted audience. Within it, three useful roles are:
 
-- **Episodic:** the completed inspection, the checks performed, evidence used, decision, and observed outcome. This answers “What happened in that case?”
-- **Semantic:** supported facts, such as which site owns an asset or which standard applies, with source and validity information. This answers “What do we know?” It is not the same thing as semantic search.
-- **Procedural:** the approved inspection method and escalation rules. This answers “How should this work be done?” A successful past run may suggest a revision, but cannot approve its own new procedure.
+- **Episodic:** the completed inspection, the checks performed, evidence used, decision, and observed outcome. This answers "What happened in that case?"
+- **Semantic:** supported facts, such as which site owns an asset or which standard applies, with source and validity information. This answers "What do we know?" It is not the same thing as semantic search.
+- **Procedural:** the approved inspection method and escalation rules. This answers "How should this work be done?" A successful past run may suggest a revision, but cannot approve its own new procedure.
 
 These roles follow the distinctions discussed in [CoALA](https://arxiv.org/abs/2309.02427), published in 2023 and revised in 2024. They are useful design categories, not a universally fixed product taxonomy. Reviewed 18 September 2026.
 
 <TeachingIllustration src="/images/memory/memory-lifecycle-v1.webp" title="A task can produce several different kinds of memory" alt="An investigation collects observations, works with evidence, reviews candidate memories, retains an episode or supported fact or approved method, and retrieves useful material for a future task. Corrections can update or remove retained information." caption="Teaching illustration. The example is a proposed design, not a measured deployment." expandable />
 
-## Other names describe other dimensions
+## Other names answer other questions
 
 An **entity profile** groups information around a person, asset, site, or case. **Shared organizational memory** describes who may reuse it. A **reflection** is a derived interpretation to check, not a new source of truth. A **summary** compresses information. A **vector index** helps find similar items. These are not additional mutually exclusive categories beside episodic memory.
 
 For example, one inspection episode can include text and photographs, be indexed by embeddings, belong to an asset profile, and be visible only to an authorized team. Its scope, purpose, and representation each answer a different question.
 
-Model weights and internal caches are another design dimension. They can influence behavior, but they are not a substitute for source references and explicit operational records.
+Model weights and internal caches are another design choice. They can influence behavior, but they are not a substitute for source references and explicit operational records.
 
 ## Decide what not to retain
 

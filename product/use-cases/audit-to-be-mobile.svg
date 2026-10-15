@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2587" role="img" aria-labelledby="title desc">
+<title id="title">Recurring audit issues with an agent: who does what</title>
+<desc id="desc">Swimlane of the proposed audit investigation, in seven steps across five lanes. The topic model groups findings from the audit system. The agent states competing explanations and what would disprove each. It checks for false patterns such as copied wording or changed scope. It drafts evidence requests. The assurance owner approves the request list, which is an approval. The owning teams reply with EAM, inspection and procedure records. The agent looks at sites without the finding, then reports support, uncertainty and gaps. The assurance owner decides and records any systemic issue in the audit system, which is an approval. The case store links every statement to its source.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2587" fill="#f8f5ef"/>
+<text x="28.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Recurring audit issues with an agent:</text>
+<text x="28.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">who does what</text>
+<text x="28.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Proposed design. The agent tests explanations</text>
+<text x="28.0" y="179.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">against records. A person writes the audit record.</text>
+<rect x="28.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="68.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Agent step</text>
+<rect x="358.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="398.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<rect x="28.0" y="236.0" width="28.0" height="26.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="68.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<rect x="358.0" y="236.0" width="28.0" height="26.0" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="398.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Evidence store</text>
+<path d="M42.0 276.0 L54.0 288.0 L42.0 300.0 L30.0 288.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="296.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval</text>
+<rect x="28.0" y="348.0" width="664.0" height="182.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="374.0" r="21" fill="#2563eb"/><text x="68.0" y="382.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="100.0" y="354.0" width="175.8" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="381.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Topic model</text>
+<text x="48.0" y="428.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Group</text>
+<text x="48.0" y="464.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A topic model groups findings exported from the</text>
+<text x="48.0" y="495.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">audit system.</text>
+<path d="M360.0 532.0 L360.0 564.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="570.0" width="664.0" height="182.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="596.0" r="21" fill="#7c3aed"/><text x="68.0" y="604.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="100.0" y="576.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="603.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="650.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Explain</text>
+<text x="48.0" y="686.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent states competing explanations, each</text>
+<text x="48.0" y="717.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">with what would disprove it.</text>
+<path d="M360.0 754.0 L360.0 786.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="792.0" width="664.0" height="213.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="818.0" r="21" fill="#7c3aed"/><text x="68.0" y="826.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="100.0" y="798.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="825.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="872.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Check patterns</text>
+<text x="48.0" y="908.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">It checks audit dates, auditors and template</text>
+<text x="48.0" y="939.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">versions for copied wording or changed</text>
+<text x="48.0" y="970.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">coverage.</text>
+<path d="M360.0 1007.0 L360.0 1039.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1045.0" width="664.0" height="274.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1071.0" r="21" fill="#7c3aed"/><text x="68.0" y="1079.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="100.0" y="1051.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="1078.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="1125.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Ask for evidence</text>
+<text x="48.0" y="1161.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">It drafts requests for EAM history, inspection</text>
+<text x="48.0" y="1192.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">records, procedure versions and closure</text>
+<text x="48.0" y="1223.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">evidence.</text>
+<path d="M64.0 1254.0 L78.0 1268.0 L64.0 1282.0 L50.0 1268.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="90.0" y="1276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The assurance owner approves the request</text>
+<text x="90.0" y="1307.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">list, or a rule allows internal requests.</text>
+<path d="M360.0 1321.0 L360.0 1353.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1359.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<rect x="48.0" y="1365.0" width="189.3" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="62.0" y="1392.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Owning teams</text>
+<text x="48.0" y="1439.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Teams reply</text>
+<text x="48.0" y="1475.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The owning teams reply with the records,</text>
+<text x="48.0" y="1506.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">through the request queue.</text>
+<path d="M360.0 1543.0 L360.0 1575.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1581.0" width="664.0" height="182.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1607.0" r="21" fill="#7c3aed"/><text x="68.0" y="1615.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="100.0" y="1587.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="1614.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="1661.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Other sites</text>
+<text x="48.0" y="1697.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent checks the same records at sites that</text>
+<text x="48.0" y="1728.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">did not have the finding.</text>
+<path d="M360.0 1765.0 L360.0 1797.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1803.0" width="664.0" height="182.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1829.0" r="21" fill="#7c3aed"/><text x="68.0" y="1837.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="100.0" y="1809.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="1836.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="1883.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Report</text>
+<text x="48.0" y="1919.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A report on support, uncertainty and gaps. Each</text>
+<text x="48.0" y="1950.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">statement links to its source.</text>
+<path d="M360.0 1987.0 L360.0 2019.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2025.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2051.0" r="21" fill="#d97706"/><text x="68.0" y="2059.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="100.0" y="2031.0" width="229.6" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2058.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Assurance owner</text>
+<path d="M658.0 2035.0 L673.0 2050.0 L658.0 2065.0 L643.0 2050.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="2105.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Decide</text>
+<text x="48.0" y="2141.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The assurance or engineering owner decides, and</text>
+<text x="48.0" y="2172.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">records any systemic issue and its actions in</text>
+<text x="48.0" y="2203.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">the audit system.</text>
+<path d="M360.0 2240.0 L360.0 2272.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2278.0" width="664.0" height="173.0" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="48.0" y="2318.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#134e4a">Case store</text>
+<text x="48.0" y="2354.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every statement links to its source record.</text>
+<text x="48.0" y="2385.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Requests and replies are kept. The agent never</text>
+<text x="48.0" y="2416.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">writes the audit record.</text>
+<text x="28.0" y="2495.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The audit opinion, closing actions and anything</text>
+<text x="28.0" y="2526.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">sent to the board stay with people.</text>
+</svg>

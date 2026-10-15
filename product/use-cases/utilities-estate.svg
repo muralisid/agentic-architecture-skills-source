@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">A utility estate on the fourteen layers</title>
+<desc id="desc">The fourteen layers drawn as a building. Infrastructure and compute is at the bottom and agent data engineering is at the top. Each layer lists the main systems at an electricity distributor and a water utility. Infrastructure: data centres, public cloud, a separate OT network, and radio networks for meters and sensors. Data platform: warehouse or lakehouse, BI, a historian copy and regulatory data marts. Integration fabric: integration bus, API gateway, file transfer and a one-way OT to IT path. Electricity adds a market gateway. Systems of record: billing, meter data, asset system, GIS, ERP and, for water, a lab system. Line of business and OT: SCADA, outage and distribution management, meter head-ends, historian, event analytics and hydraulic models. A red band on this layer says control systems act on the network. Agents read the historian copy and never write there. Intelligence and learning: data science, models inside packages and image or event analytics. Agent platform: RPA and rule engines today, with new agent builders and the Maximo MCP server. Productivity: Microsoft 365, spreadsheets and email. Experience and channels: outage maps, portals and the contact centre. Security and identity: workforce identity, privileged access, security and OT monitoring. Governance: a risk and compliance tool, an obligations register and regulators. Observability: interface monitoring, with almost no model tracing. Operating model: service management, control room shifts and QA sampling. Agent data engineering: catalogs and knowledge bases, with reference sets still missing. At the right edge sits the market boundary, outside the utility. AEMO MSATS and the NZ registry link to systems of record. The AEMO B2B e-Hub and the NZ EIEP file hub link to the integration fabric. Water has no market.</desc>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="50.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">A utility estate on the fourteen layers</text>
+<text x="1568.0" y="50.0" font-family="Arial,sans-serif" font-size="20" fill="#465958" text-anchor="end">An electricity distributor and a water utility, vendors as examples</text>
+<rect x="32" y="82" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="82" width="320" height="52" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="46.0" y="114.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Agent data engineering (R14)</text>
+<text x="368.0" y="103.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: data catalogs (Purview, Collibra), master data governance (SAP MDG), knowledge bases</text>
+<text x="368.0" y="125.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Missing for agents: reference sets of past decisions, tool catalogues, memory rules</text>
+<rect x="32" y="134" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="134" width="320" height="52" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="46.0" y="155.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Operating model and</text>
+<text x="46.0" y="176.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">supervision (R13)</text>
+<text x="368.0" y="155.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: IT service management (ServiceNow), control room shifts, contractor management</text>
+<text x="368.0" y="177.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Billing and contact centre QA sampling. No agent supervisor role yet</text>
+<rect x="32" y="186" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="186" width="320" height="52" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="46.0" y="207.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Observability and FinOps</text>
+<text x="46.0" y="228.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">(R12)</text>
+<text x="368.0" y="207.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: application and interface monitoring (Dynatrace, SAP Cloud ALM), cloud cost tools</text>
+<text x="368.0" y="229.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Shows that a message moved, not that the outcome happened. Almost no model tracing</text>
+<rect x="32" y="238" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="238" width="320" height="52" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="46.0" y="259.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Governance, risk and</text>
+<text x="46.0" y="280.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">sovereignty (R11)</text>
+<text x="368.0" y="259.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: risk and compliance tool (ServiceNow IRM, Archer) and an obligations register</text>
+<text x="368.0" y="281.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Electricity: AER or NZ regulators. Water: economic, health and environment regulators</text>
+<rect x="32" y="290" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="290" width="320" height="52" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="46.0" y="322.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Security and identity (R10)</text>
+<text x="368.0" y="311.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: workforce identity (Entra ID, Okta), privileged access, SIEM, OT monitoring (Dragos)</text>
+<text x="368.0" y="333.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Water adds customer identity. The SOCI Act applies to both in Australia</text>
+<rect x="32" y="342" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="342" width="320" height="52" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="374.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Experience and channels (R09)</text>
+<text x="368.0" y="363.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Distributor: outage map, SMS alerts, connections portal, fault and life support lines</text>
+<text x="368.0" y="385.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Water: customer portal and app, contact centre. Energy retailers run their own channels</text>
+<rect x="32" y="394" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="394" width="320" height="52" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="415.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Productivity and</text>
+<text x="46.0" y="436.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">collaboration (R08)</text>
+<text x="368.0" y="415.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: Microsoft 365 (Teams, SharePoint, Outlook, Excel). Tablets in the field</text>
+<text x="368.0" y="437.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Many exception trackers and handoffs live in spreadsheets and email</text>
+<rect x="32" y="446" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="446" width="320" height="52" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="46.0" y="478.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Agent platform (R07)</text>
+<text x="368.0" y="467.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Today: robotic process automation (UiPath, Power Automate), rule engines (SAP BPEM)</text>
+<text x="368.0" y="489.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Emerging: SAP Joule Studio, Copilot Studio, Agentforce, the Maximo MCP server</text>
+<rect x="32" y="498" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="498" width="320" height="52" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="519.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Intelligence and learning</text>
+<text x="46.0" y="540.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">(R06)</text>
+<text x="368.0" y="519.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: data science (Databricks, Azure ML), models inside packages (SAP release confidence)</text>
+<text x="368.0" y="541.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Electricity: image analytics (Tapestry, Neara). Water: event analytics (TaKaDu)</text>
+<rect x="32" y="550" width="1268" height="76" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="550" width="320" height="76" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="594.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Line of business and OT (R05)</text>
+<text x="368.0" y="572.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Electricity: SCADA, ADMS and OMS, smart meter head-end, historian (AVEVA PI), field mobility</text>
+<text x="368.0" y="594.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Water: SCADA, treatment control, historian, event analytics, hydraulic models, leak sensors</text>
+<rect x="360" y="599.0" width="932" height="23" rx="4" fill="#fff1f2" stroke="#e11d48" stroke-width="1.5"/>
+<text x="368.0" y="616.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#881337">Control systems act on the network. Agents read the historian copy and never write here</text>
+<rect x="32" y="626" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="626" width="320" height="52" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="658.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Systems of record (R04)</text>
+<text x="368.0" y="647.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Electricity: network billing, meter data, asset system (SAP PM, Maximo), GIS (Esri), ERP</text>
+<text x="368.0" y="669.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Water: customer billing system (SAP, Hansen), asset system, GIS, ERP, lab system (LIMS)</text>
+<rect x="32" y="678" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="678" width="320" height="52" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="710.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Integration fabric (R03)</text>
+<text x="368.0" y="699.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: integration bus (SAP Integration Suite, MuleSoft), API gateway, file transfer</text>
+<text x="368.0" y="721.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">One-way OT to IT data path through a DMZ. Electricity adds a market gateway</text>
+<rect x="32" y="730" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="730" width="320" height="52" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="762.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Data platform (R02)</text>
+<text x="368.0" y="751.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: warehouse or lakehouse (Snowflake, Databricks, Fabric), BI (Power BI), historian copy</text>
+<text x="368.0" y="773.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Regulatory data marts. Loaded overnight, so a poor source for the current state</text>
+<rect x="32" y="782" width="1268" height="52" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<rect x="32" y="782" width="320" height="52" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="46.0" y="803.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Infrastructure and compute</text>
+<text x="46.0" y="824.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">(R01)</text>
+<text x="368.0" y="803.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Both: two data centres plus public cloud, and a separate OT network for control systems</text>
+<text x="368.0" y="825.0" font-family="Arial,sans-serif" font-size="18" fill="#182e31">Private radio, cellular and low-power networks for meters and sensors</text>
+<rect x="1326" y="550" width="242" height="284" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="1340.0" y="578.0" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#182e31">Market boundary</text>
+<text x="1340.0" y="602.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Outside the utility</text>
+<rect x="1336" y="629.0" width="222" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1346.0" y="647.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">AEMO MSATS and</text>
+<text x="1346.0" y="668.5" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">NZ registry records</text>
+<path d="M1336 652.0 H1312" fill="none" stroke="#475569" stroke-width="2.5"/>
+<polygon points="1302,652.0 1314,645.0 1314,659.0" fill="#475569"/>
+<rect x="1336" y="681.0" width="222" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1346.0" y="699.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">AEMO B2B e-Hub, NZ</text>
+<text x="1346.0" y="720.5" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">EIEP file hub (SFTP)</text>
+<path d="M1336 704.0 H1312" fill="none" stroke="#475569" stroke-width="2.5"/>
+<polygon points="1302,704.0 1314,697.0 1314,711.0" fill="#475569"/>
+<rect x="1336" y="785.0" width="222" height="46" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="1346.0" y="803.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e293b">Water: no market.</text>
+<text x="1346.0" y="824.5" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">It bills households.</text>
+<rect x="40" y="860" width="22" height="20" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+<text x="70.0" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Systems</text>
+<rect x="169.3" y="860" width="22" height="20" rx="4" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5"/>
+<text x="199.3" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">New for agents</text>
+<rect x="367.90000000000003" y="860" width="22" height="20" rx="4" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="397.9" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Controls</text>
+<rect x="507.1" y="860" width="22" height="20" rx="4" fill="#f0fdfa" stroke="#0f766e" stroke-width="2.5"/>
+<text x="537.1" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Evidence</text>
+<rect x="646.3" y="860" width="22" height="20" rx="4" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5"/>
+<text x="676.3" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">No agent write path</text>
+<text x="1568.0" y="876.0" font-family="Arial,sans-serif" font-size="18" fill="#465958" text-anchor="end">Typical estate, not a survey of one utility</text>
+</svg>

@@ -1,94 +1,99 @@
 ---
 title: "Step 2: Context"
 icon: "Library"
-description: "The pipeline from a document to a retrieved answer, why one embedding per document collapses on real material, the measurement that moved retrieval from 0.294 to 0.803 on one corpus with one encoder, and the rules for what an agent remembers."
+description: "How documents become retrieved evidence, why one vector per document fails, a measured fix, and what an agent should remember."
+position: "Our own retrieval measurements on one collection and one embedding model, plus published memory research. The audit example is a proposed design."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-29"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [ladder, memory, data-to-memory, patterns, r02, r14, decisions]
 ---
 
-<PlainTerms>
-This step decides what the model gets to see. Documents are cut up, turned into numbers, stored, and searched. Every one of those choices changes the answer, and on our own measurements they change it more than anything else available. This page explains the pipeline, the failure that catches almost everyone, what changes when the agent keeps memory, and how it supports an industrial investigation. The one thing to remember: a document about several things gets one average summary, and a question about one of those things then matches it only weakly.
-</PlainTerms>
+An agent misses a document you know is in the store. **Why does the model not see the evidence it needs?** Often the cause is how the documents were prepared for search. Documents are cut into pieces, turned into numbers, stored and searched. Each of those choices changes the answer. On our own measurements, they change it more than anything else available. The most common failure is simple. A document about several things gets one averaged summary, so a question about one of them matches it weakly. This is the second step on [the intelligence ladder](/ladder).
 
 ## The pipeline, in order
 
-**Parse.** Turn the source file into text while keeping its structure. A table that becomes a run-on sentence has lost the relationship between a figure and its label, and no later stage recovers it. Parsing quality sets the ceiling for everything downstream, so it gets spot-checked forever rather than assumed.
+**Parse.** Turn the source file into text and keep its structure. A table that becomes a run-on sentence has lost the link between each figure and its label. No later stage recovers it. Parsing quality sets the ceiling for every later stage. So it is spot-checked for as long as the system runs, never assumed.
 
-**Chunk.** Split into retrievable pieces. Too large and one piece covers several topics. Too small and a piece loses the context that made it meaningful. No single recipe survives across corpora, which is why this is evaluated rather than configured.
+**Chunk.** Split the text into pieces that can be retrieved. Too large, and one piece covers several topics. Too small, and a piece loses the context that gave it meaning. No single recipe works across every collection of documents. So the split is tested, not just configured.
 
-**Embed.** Turn each piece into a vector: a list of numbers positioning it in a space where nearby means similar in meaning. Every vector carries the version of the model that produced it, because changing encoder invalidates the whole index.
+**Embed.** Turn each piece into a vector, also called an <Term k="embedding">embedding</Term>. A vector is a list of numbers. It places the piece in a space where nearby means similar in meaning. Every vector records the version of the model that produced it. Changing that model invalidates the whole index.
 
-**Index.** Store the vectors for fast nearest-neighbour search, and store the source's access rights alongside them.
+**Index.** Store the vectors for fast nearest-neighbour search. Store the source's access rights alongside them. Indexes that respect who may see what belong to [the data platform layer (R02)](/layers/r02-data-platform).
 
-**Retrieve.** Turn the question into a vector the same way, find the nearest pieces, and pass them to the model.
+**Retrieve.** Turn the question into a vector the same way. Find the nearest pieces and pass them to the model.
 
 <GuideFigure id="context-pipeline-ladder" fullWidth />
 
-<TeachingIllustration src="/images/ladder/context-pipeline-labeled-v3.webp" alt="A structured document becomes permission-carrying pieces, then vectors, and only the most relevant pieces reach the model." title="Retrieval is a chain of transformations" caption="The answer can only be as good as the structure preserved during parsing, the boundaries chosen during chunking, the permissions carried into the index and the evidence selected at retrieval time." />
+<TeachingIllustration src="/images/ladder/context-pipeline-labeled-v3.webp" alt="A structured document becomes permission-carrying pieces, then vectors, and only the most relevant pieces reach the model." title="Retrieval is a chain of transformations" caption="The answer depends on four things. Parsing keeps the structure. Chunking sets the boundaries. The index carries the permissions. Retrieval selects the evidence." />
 
-## The failure that catches almost everyone
+## One vector per document averages away the topic
 
-Embedding a whole document produces roughly the average of everything in it. That is fine when a document is about one thing. Enterprise documents are rarely about one thing.
+Embedding a whole document gives roughly the average of everything in it. That is fine when a document is about one thing. Company documents are rarely about one thing.
 
-Picture a customer file holding identity details, two years of transactions, a prior alert and a complaint. One vector for that file sits at the centre of all four topics, and is a close match for none of them. Ask about the complaint and the file is a weak match, because three quarters of its representation is about something else.
+Picture a customer file holding identity details, two years of transactions, a prior alert and a complaint. One vector for that file sits at the centre of all four topics. It is a close match for none of them. Ask about the complaint, and the file matches weakly. Three quarters of its vector is about something else.
 
-We measured it. Growing documents from one topic to ten, holding corpus, encoder and scoring fixed, <Term k="ndcg">nDCG@10</Term> fell from **0.815 to 0.294**. Giving each document several vectors instead of one recovered it to **0.803**. Same corpus, same encoder, only the representation changed.
+We measured it. We grew documents from one topic to ten, with the collection, the embedding model and the scoring held fixed. Search quality fell from **0.815 to 0.294**. The score used is <Term k="ndcg">nDCG@10</Term>. It rates the first ten results from 0 to 1. Giving each document several vectors instead of one brought it back to **0.803**. The documents and the model were the same. Only the representation changed.
 
-The mechanism behaves as theory predicts. The similarity between a question and its target document's best individual piece stayed flat as topics accumulated, 0.476 to 0.466, while the pooled vector's similarity decayed from 0.476 to 0.225. The signal was never lost. It was averaged away.
+The cause is what theory predicts. Take a question and the best single piece of its target document. Their similarity stayed flat as topics were added, from 0.476 to 0.466. The whole-document vector, called a <Term k="pooled embedding">pooled vector</Term>, fell from 0.476 to 0.225. The signal was still there in the pieces. Averaging hid it.
 
-## The correction that matters more than the finding
+## Test the fix against a fair control
 
 <TeachingIllustration src="/images/ladder/context-aspect-dilution-labeled-v2.webp" alt="One customer dossier becomes a blurry blended representation in one path and four distinct topic representations in another." title="One blended vector hides the part you asked for" caption="Identity, transactions, alerts and correspondence pull a pooled representation in different directions. Keeping several searchable units preserves the signal that averaging would weaken." />
 
-Splitting a document into several pieces gives it more vectors, and more vectors means more chances to match. So the honest question is not "do several vectors beat one" but "do purpose-shaped pieces beat the same number of arbitrary pieces".
+Splitting a document into several pieces gives it more vectors. More vectors means more chances to match. So the fair question is not whether several vectors beat one. It is whether pieces built around one purpose each beat the same number of plain pieces.
 
-We ran that control, and on real prose our clever version lost: purpose-shaped cards scored 0.635 against plain chunking's 0.667. We published it. The lesson is the method rather than the result. Anything you adopt here has to beat a <Term k="matched control">matched control</Term> at equal capacity on your own queries, or you have measured the extra capacity and called it insight.
+We ran that control. On real prose, the pieces built around one purpose each did worse. They scored 0.635 against 0.667 for plain chunks. We published that result. The method matters more than the result. Any design you adopt must beat a <Term k="matched control">matched control</Term> on your own queries. A matched control has the same number of pieces per document. Without it, you have measured the effect of more pieces, not of the design.
 
-## Keyword search is not optional
+## Add keyword search
 
-Meaning-based search is poor at exact strings. On queries naming a specific attribute, keyword search scored **0.997 against 0.314** for the dense index on identical queries. Running both and fusing the rankings costs almost nothing and removes a silent failure: a dense-only system does not return an error when it misses an account number, it returns something plausible instead.
+Meaning-based search is poor at exact strings, such as an account number. On queries naming a specific attribute, keyword search scored **0.997**. Meaning-based search scored **0.314** on the same queries. Run both and merge the two rankings. This is called <Term k="hybrid retrieval">hybrid retrieval</Term>. It costs almost nothing, and it removes a silent failure. A meaning-only system does not return an error when it misses an account number. It returns something plausible instead.
 
-## Memory is context that lasts
+## What the agent remembers
 
-**In short:** What an agent keeps from earlier work reaches the model like any document. It also carries duties a document does not.
+What an agent keeps from earlier work reaches the model like any document. It also carries duties a document does not. Memory is graded here by how long it lasts.
 
-The guide grades memory by how long it lasts. The current conversation and the evidence fetched for this turn are engineering. So is a working session of hours or days, within limits on where it is held and for how long. Memory that outlives the session is different. A durable profile of a customer or a case is a record, with an owner, consent, retention and deletion duties.
+The current conversation and the evidence fetched for this turn are working data. So is a working session of hours or days, within limits on where and how long it is held. Memory that outlives the session is different. A lasting profile of a customer or a case is a record. It has an owner, and duties for consent, retention and deletion. Governed memory is built in [the agent data engineering layer (R14)](/layers/r14-agent-data-engineering). [Knowledge and memory](/memory) covers it in depth.
 
 Four rules follow, and each rests on published evidence.
 
-**Keep the source text.** Store the original and add search keys to it. On a published long-term memory benchmark, keeping raw text and adding derived keys improved recall by 9.4 percent and answers by 5.4 percent. Replacing the text with extracted facts or summaries made results worse (LongMemEval, ICLR 2025).
+**Keep the source text.** Store the original and add search keys to it. On a published long-term memory benchmark, this improved recall by 9.4 percent and answers by 5.4 percent. Replacing the text with extracted facts or summaries made results worse (LongMemEval, ICLR 2025).
 
-**Record when a fact was true.** Keep the time something happened apart from the time it was stored. A fact that has been replaced is then marked out of date, and the history behind an earlier decision survives. Stale grounding is a named production failure.
+**Record when a fact was true.** Keep the time something happened apart from the time it was stored. A fact that has been replaced is then marked out of date. The history behind an earlier decision survives. Acting on an out-of-date fact is a known production failure.
 
-**Check a memory before it is kept.** Every write carries its source and waits in quarantine until it is promoted. The reason is measured: poisoning under 0.1 percent of a memory store achieved over 80 percent attack success (AgentPoison, NeurIPS 2024).
+**Check a memory before it is kept.** Every write carries its source. It waits in quarantine, a holding area, until it is checked and promoted. The reason is measured. Planting false entries in under 0.1 percent of a memory store gave attacks over 80 percent success (AgentPoison, NeurIPS 2024).
 
-**Topics help search. They are not memory.** Topics are labels, stored so they can be rebuilt. A graph is added only where questions follow exact relationships, such as ownership or dependency. [CD-1](/decisions#cd-1) records that verdict.
+**Topics help search. They are not memory.** Topics are labels, stored so they can be rebuilt. A graph is added only where questions follow exact relationships, such as ownership or dependency. [The decision on graphs and embedding search](/decisions#cd-1) records that verdict.
 
-<TeachingIllustration src="/images/ladder/context-memory-labeled-v1.webp" alt="Working notes in a tray pass through a checkpoint before reaching a filing cabinet of dated record cards, which a thread ties to their original document, with an eraser beside the cabinet." title="What the agent remembers" caption="Working notes last only for the session. Anything kept beyond it passes a check first. A kept memory holds its source and its date, and deletion reaches it like every other copy." />
+<TeachingIllustration src="/images/ladder/context-memory-labeled-v1.webp" alt="Working notes in a tray pass through a checkpoint. Then they reach a filing cabinet of dated record cards. A thread ties each card to its original document. An eraser sits beside the cabinet." title="What the agent remembers" caption="Working notes last only for the session. Anything kept beyond it passes a check first. A kept memory holds its source and its date, and deletion reaches it like every other copy." />
 
-## In utilities and mining
+## Worked example: an audit investigation
 
-<TeachingIllustration src="/figures/ladder/industrial-context.svg" mobileSrc="/figures/ladder/industrial-context-mobile.svg" title="Supply evidence for an audit investigation" alt="Question: Which issue recurs?. Sources: Findings and action records. Context: Site, dates, and procedure. Answer: Supported pattern and gaps" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
+<TeachingIllustration src="/figures/ladder/industrial-context.svg" mobileSrc="/figures/ladder/industrial-context-mobile.svg" title="Supply evidence for an audit investigation" alt="Four boxes in order. Question: which issue recurs? Sources: findings and action records. Context: site, dates and procedure. Answer: the supported pattern and the gaps." caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-An audit investigation needs the original finding, its site and date, the applicable procedure, action history, and closure evidence. A collection of similar sentences can suggest a topic while missing the context needed to explain it.
+An audit investigation at a utility or energy company needs the original finding and its site and date. It also needs the applicable procedure, the action history and the closure evidence. A set of similar sentences can suggest a topic. It can still miss the context needed to explain it.
 
-Retrieve the relevant passages and records using the investigator’s current permissions. Preserve source identifiers and time. Compare matched chunks and keyword search before adding multiple representations. A graph or specialist embedding is useful only if it improves the actual questions.
+Retrieve the relevant passages and records using the investigator's current permissions. Keep source identifiers and times. Compare plain chunks and keyword search before adding several representations per document. A graph or specialist embedding is useful only if it improves the actual questions.
 
-A reviewer should be able to inspect why the evidence supports the proposed pattern. Missing evidence remains a gap. It must not become a confident systemic conclusion. See [systemic audit issues](/use-cases/systemic-audit-issues).
+A reviewer should be able to see why the evidence supports the proposed pattern. Missing evidence stays a gap. It must not become a confident conclusion about a systemic issue. See [systemic audit issues](/use-cases/systemic-audit-issues).
 
-## Where the depth is
+## Where to go deeper
 
-[Context patterns for agents](/patterns) carries nine patterns, each with its measurement and the conditions under which it fails. [The data-to-memory pipeline](/architecture/data-to-memory) covers the engineering, and [how to test a context design](/patterns/how-to-test-a-context-design) is the method. [The memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) sets out the memory tiers, and [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) covers topics, graphs and memory.
+[Context patterns for agents](/patterns) has nine patterns. Each has its measurement and the conditions under which it fails. [From data to memory](/architecture/data-to-memory) covers the engineering. [How to test a context design](/patterns/how-to-test-a-context-design) is the method. [The memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) sets out how memory is kept and checked. [When a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) covers topics, graphs and memory.
 
-## The test for moving on
+## When this step is done
 
-**Your representation beats a matched control on your own queries, anything the agent keeps is sourced, dated and checked, and what still fails is about acting rather than knowing.**
+**Your representation beats a matched control on your own queries. Anything the agent keeps is sourced, dated and checked. What still fails is about acting, not knowing.**
 
-An agent that retrieves the right documents and then draws the wrong conclusion, calls the wrong tool, or stops too early does not have a context problem. That is [step 3](/ladder/tools-and-the-loop).
+An agent may find the right documents and still draw the wrong conclusion. It may call the wrong tool or stop too early. That is not a context problem. It is [step 3](/ladder/tools-and-the-loop).
 
-<EvidenceBadge status="mixed-evidence" /> The retrieval figures are our own, reproducible from the published benchmark and reproduced across two machines and two processor architectures. The memory findings are published work by others, cited where they appear.
+## Evidence and limits
 
-**Next step:** when the agent knows enough but acts badly, go to [step 3: tools and the loop](/ladder/tools-and-the-loop).
+<EvidenceBadge status="mixed-evidence" /> The retrieval figures are our own. They can be reproduced from the published benchmark. They were reproduced on two machines with two processor architectures. They come from one collection of documents and one embedding model, so test on your own material. The memory findings are published work by others, cited where they appear.
+
+## Next step
+
+When the agent knows enough but acts badly, go to [step 3: tools and the loop](/ladder/tools-and-the-loop).
 
 <details>
 <summary>The research behind this page</summary>
@@ -97,8 +102,8 @@ An agent that retrieves the right documents and then draws the wrong conclusion,
 - Added documents reducing accuracy until curation: arXiv 2606.11350.
 - Keeping raw text and adding derived keys, against replacing it with facts or summaries: LongMemEval, ICLR 2025.
 - Poisoning under 0.1 percent of a memory store: AgentPoison, NeurIPS 2024.
-- Memory tiers, dated facts and quarantine: [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) and [the data-to-memory pipeline](/architecture/data-to-memory).
-- Topics and graphs as derived indexes, not memory: [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) and [CD-1](/decisions#cd-1).
+- How memory is kept, dated and quarantined: [the memory-pipeline architecture](/library/architecture/memory-pipeline-architecture) and [from data to memory](/architecture/data-to-memory).
+- Topics and graphs as derived indexes, not memory: [when a knowledge graph earns its keep](/library/techniques/when-a-knowledge-graph-earns-its-keep) and [the graph decision](/decisions#cd-1).
 - *Moffatt v. Air Canada*, BC Civil Resolution Tribunal, 14 February 2024.
 - Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 

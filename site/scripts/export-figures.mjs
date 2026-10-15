@@ -225,7 +225,7 @@ function architectureLayout(figure) {
     return `<g data-plane="${index}" data-node-id="${escapeXml(node.id)}">
       <rect x="${canvasMargin}" y="${y}" width="${planeWidth}" height="${planeHeight}" rx="14" fill="${color.fill}" stroke="${color.stroke}" stroke-width="2"/>
       <rect x="${canvasMargin}" y="${y}" width="128" height="${planeHeight}" rx="14" fill="${color.stroke}" fill-opacity="0.13"/>
-      ${textBlock(node.group ?? 'Plane', canvasMargin + 16, y + 31, { width: 14, lineHeight: 16, className: 'plane-group', maxLines: 2 })}
+      ${textBlock(node.group ?? 'Capability', canvasMargin + 16, y + 31, { width: 14, lineHeight: 16, className: 'plane-group', maxLines: 2 })}
       ${textBlock(node.label, canvasMargin + 152, y + 31, { width: 27, lineHeight: 18, className: 'card-title', maxLines: 2 })}
       ${textBlock(node.detail ?? '', canvasMargin + 375, y + 31, { width: 42, lineHeight: 17, className: 'body', maxLines: 2 })}
     </g>`;
@@ -260,7 +260,7 @@ function architectureLayout(figure) {
       ${planes}
       ${edgePaths}
       <rect x="${edgePanelX}" y="0" width="${edgePanelWidth}" height="${height}" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
-      <text x="${edgePanelX + 18}" y="30" class="eyebrow">CROSS-PLANE FLOWS</text>
+      <text x="${edgePanelX + 18}" y="30" class="eyebrow">FLOWS BETWEEN CAPABILITIES</text>
       ${edgeItems}
     </g>`,
   };

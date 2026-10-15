@@ -2,18 +2,19 @@
 title: "From information to usable memory"
 description: "Preserve the evidence while making it easier to find and use."
 position: "Design guidance. Validate the representation and lifecycle behavior against the actual task and sources."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [memory, data-to-memory, r02, r14]
 ---
 
 ## A useful fact can lose its meaning on the way into memory
 
-An inspection assistant reads a report and saves “inspection complete”. That short note does not tell the next investigation which site or case it concerns, when the work happened, or what findings remain open. The short note preserved a topic while losing the facts needed to use it.
+An inspection assistant reads a report and saves "inspection complete". That short note does not tell the next investigation which site or case it concerns, when the work happened, or what findings remain open. The short note preserved a topic while losing the facts needed to use it.
 
 <TeachingIllustration src="/images/memory/evidence-organization-v1.webp" title="Organize memory so a decision can be checked" alt="Original records and media feed separate representations. Retrieval checks asset identity, time, access, and version. An evidence folder keeps citations and unresolved contradictions. A decision record retains the evidence used, rationale, approval, and outcome. Corrections propagate to derived information." caption="A vector helps locate evidence. The decision must remain traceable to the original sources and the versions used." expandable />
 
-The design below keeps enough context to verify the statement later. Its preparation steps matter because identity, time, units, and source references are easier to preserve during ingestion than to reconstruct after a detail has been dropped.
+The design below keeps enough context to verify the statement later. Its preparation steps matter because identity, time, units, and source references are easier to preserve during [ingestion](/architecture/data-to-memory) than to reconstruct after a detail has been dropped.
 
 ## Connect the decision back to its evidence
 
@@ -39,8 +40,8 @@ Task context is temporary working material. Information retained for future task
 
 Test a question whose answer changed, a record the user cannot access, a deleted source, and a question the evidence cannot answer. The result should respect the source state, not simply return the closest match.
 
-**Continue the story:** [Choose how memory is represented](/memory/choosing-representations).
-
 ## External sources
 
 - [LandingAI document grounding, vendor documentation](https://landing.ai/llms/visual-grounding-and-auditability-how-landingai-ade-makes-every-extraction-defensible). Accessed 17 September 2026.
+
+**Continue the story:** [Choose how memory is represented](/memory/choosing-representations).

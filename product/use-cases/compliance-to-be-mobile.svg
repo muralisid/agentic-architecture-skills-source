@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2336" role="img" aria-labelledby="title desc">
+<title id="title">Hospital accreditation evidence with an agent</title>
+<desc id="desc">Swimlanes for the agent, the quality manager, the standard leads, fixed rules, the systems and the evidence store. Step 1: the quality manager maps the register, with agent help, and approves every mapping. Step 2: the agent collects evidence on a schedule with read-only access. Step 3: fixed rules check each item, and the quality manager approves the rules. Step 4: the agent asks owners for gaps from approved templates. Step 5: it builds the pack. Step 6: the standard lead and executive sponsor review and attest. Step 7: the quality manager submits to the agency. Step 8: the agent builds a short notice evidence index, and the quality manager reviews it. Step 9: it tracks fixes, and action owners close their own actions. The evidence store keeps each pack, register history, request history and traces. A diamond marks each approval.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2336" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Hospital accreditation evidence</text>
+<text x="32.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">with an agent</text>
+<text x="32.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Proposed design. The agent collects and checks. A</text>
+<text x="32.0" y="180.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">named person attests. People submit.</text>
+<rect x="32.0" y="228.0" width="656.0" height="200.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="268.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="276.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Quality manager, with agent help</text>
+<text x="104.0" y="308.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Maps each requirement, with its version, to</text>
+<text x="104.0" y="340.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">its checks and its owner.</text>
+<path d="M116.0 361.0 L127.0 372.0 L116.0 383.0 L105.0 372.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="380.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The quality manager approves every</text>
+<text x="138.0" y="412.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">mapping.</text>
+<path d="M68.0 432.0 L68.0 454.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="462.0" width="656.0" height="232.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="502.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="510.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="510.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="542.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reads reports from the learning,</text>
+<text x="104.0" y="574.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">maintenance and incident systems, and the</text>
+<text x="104.0" y="606.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">policy library. Records source, date and</text>
+<text x="104.0" y="638.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">scope.</text>
+<path d="M116.0 659.0 L127.0 670.0 L116.0 681.0 L105.0 670.0 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="138.0" y="678.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Read-only access.</text>
+<path d="M68.0 698.0 L68.0 720.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="728.0" width="656.0" height="168.0" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="68.0" cy="768.0" r="20" fill="#475569" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="776.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="776.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Fixed rules, run by the agent</text>
+<text x="104.0" y="808.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Marks each item present, stale, wrong scope</text>
+<text x="104.0" y="840.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">or missing. Never Met.</text>
+<path d="M116.0 861.0 L127.0 872.0 L116.0 883.0 L105.0 872.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="880.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The quality manager approves the rules.</text>
+<path d="M68.0 900.0 L68.0 922.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="930.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="970.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="978.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="978.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1010.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Sends one specific request as a ServiceNow</text>
+<text x="104.0" y="1042.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">task, Teams message or email.</text>
+<path d="M116.0 1063.0 L127.0 1074.0 L116.0 1085.0 L105.0 1074.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1082.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The quality team approves the templates.</text>
+<path d="M68.0 1102.0 L68.0 1124.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1132.0" width="656.0" height="128.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1172.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1180.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1180.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1212.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Builds a pack per requirement, with a link</text>
+<text x="104.0" y="1244.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">to each source.</text>
+<path d="M68.0 1264.0 L68.0 1286.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1294.0" width="656.0" height="168.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1334.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1342.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1342.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Standard lead and executive sponsor</text>
+<text x="104.0" y="1374.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Review the pack and record the attestation</text>
+<text x="104.0" y="1406.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">in the register.</text>
+<path d="M116.0 1427.0 L127.0 1438.0 L116.0 1449.0 L105.0 1438.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1446.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A named person attests.</text>
+<path d="M68.0 1466.0 L68.0 1488.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1496.0" width="656.0" height="168.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1536.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1544.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1544.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Quality manager</text>
+<text x="104.0" y="1576.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Submits the self-assessment in the</text>
+<text x="104.0" y="1608.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">accrediting agency portal.</text>
+<path d="M116.0 1629.0 L127.0 1640.0 L116.0 1651.0 L105.0 1640.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1648.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">A person only.</text>
+<path d="M68.0 1668.0 L68.0 1690.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1698.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1738.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1746.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1746.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1778.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Produces a current evidence index within</text>
+<text x="104.0" y="1810.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">hours of a short notice.</text>
+<path d="M116.0 1831.0 L127.0 1842.0 L116.0 1853.0 L105.0 1842.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="1850.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The quality manager reviews it.</text>
+<path d="M68.0 1870.0 L68.0 1892.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1900.0" width="656.0" height="168.0" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1940.0" r="20" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1948.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="104.0" y="1948.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="104.0" y="1980.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Opens tasks with due dates for each action</text>
+<text x="104.0" y="2012.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">from the assessment. Sends reminders.</text>
+<path d="M116.0 2033.0 L127.0 2044.0 L116.0 2055.0 L105.0 2044.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="138.0" y="2052.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Action owners close their own actions.</text>
+<rect x="32.0" y="2092.0" width="656.0" height="164.0" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="52.0" y="2140.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#134e4a">Evidence store, out of the agent&#x27;s reach.</text>
+<text x="52.0" y="2172.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">Each pack with a link to every source.</text>
+<text x="52.0" y="2204.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">Register history. Request history. Traces</text>
+<text x="52.0" y="2236.0" font-family="Arial,sans-serif" font-size="24" fill="#134e4a">outside the agent.</text>
+<path d="M46.0 2277.0 L57.0 2288.0 L46.0 2299.0 L35.0 2288.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="70.0" y="2296.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A diamond marks an approval.</text>
+</svg>

@@ -1,82 +1,189 @@
 ---
 title: "Investigate a water-network anomaly"
-description: "Bring telemetry, asset history, and field evidence into one bounded investigation."
-position: "Proposed agent extension. Named deployments are as reported by the party named. Historical experience is described separately. Benefits require evaluation on the actual workload."
-lastReviewed: "2026-10-14"
+description: "How a water utility's control room investigates an alarm today. How an agent can gather the evidence from a read-only copy of the data while people decide and act."
+position: "Proposed agent design. The current process is typical industry practice, not a survey of one utility. The named deployments advise. No language-model triage of SCADA alarms was found at a named utility on 15 October 2026."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-10-14"
+dateModified: "2026-10-15"
+concepts: [r05, r03, r04, agent-types, autonomy, risk, zones, flywheel]
 ---
 
-An alarm identifies unusual behavior, but an operator must still distinguish a faulty sensor, planned work, and a possible network issue. The proposed agent gathers the evidence needed for that decision.
+An alarm fires on a water network. The control room operator must work out what it is. It could be a sensor fault, planned work, or a real issue such as a burst main. The water utility owns this work. Its control room watches the network, an engineer investigates, and field crews isolate and repair. An agent can gather the evidence from a read-only copy of the data and propose a view. The operator decides. The agent has no write path to any control system.
 
-## See the work first
+<TeachingIllustration src="/images/use-cases/water-operations-v1.webp" expandable title="Investigate a water-network anomaly" alt="Four panels from left to right. Observe: unusual pressure or flow on a pipe gauge. Compare: a chart of normal and recent readings, with maintenance work, pipe work and planned changes listed. Investigate: three questions, sensor issue, planned change or leak. Request: a field investigation and a create work order button, with a field worker. A banner reads: operators retain control of valves and treatment." caption="The agent gathers evidence and proposes a view. Operators keep control of valves and treatment." />
 
-<TeachingIllustration src="/images/use-cases/water-operations-v1.webp" expandable title="Investigate a water-network anomaly" alt="Observe unusual pressure or flow, compare normal operation and recent work, investigate sensor issues, planned changes or leaks, and prepare a reviewed field request." caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+## The systems involved
 
-<details>
-<summary>Experience behind this example</summary>
+This work touches eight of the [fourteen layers](/layers). The table names the systems at a metropolitan water utility. Vendors in brackets are examples, not a claim about any one company. The [utilities page](/use-cases/utilities) shows the full estate.
 
-This is a proposed application informed by utility integration experience. It is not presented as a personally delivered autonomous water-operations system.
+| Layer | Systems at a water utility |
+|---|---|
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | SCADA, the control-room system that monitors and operates pumps, valves and treatment (Schneider Geo SCADA Expert, AVEVA, Citect). Remote terminal units and PLCs. The historian (AVEVA PI). Network event analytics (TaKaDu, StormHarvester). Hydraulic models (InfoWorks WS Pro, WaterGEMS). Field mobility |
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | A separate <Term k="ot">operational technology</Term> (OT) network for control systems. Telemetry radio or cellular to pumps, reservoirs and plants. Low-power networks for sensors |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | A one-way OT to IT data path through a buffer zone, or DMZ. An IoT platform for sensors. The integration bus |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | The asset system (IBM Maximo, SAP PM): work orders and calibration records. GIS (Esri). The customer billing system (CIS). The lab system (LIMS) |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | The CRM and contact centre. SMS and web notices for outages |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | The shift log, email and Teams. A paper logbook in some control rooms |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Guaranteed service levels, drinking water obligations, and reports to the economic, health and environment regulators |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | Control room shifts with operator authorisation levels. Alarm roles under the ISA-18.2 alarm management standard |
 
-</details>
+## How it runs today
+
+This is the process at a metropolitan water utility in Australia or New Zealand. It is typical practice, not a survey of one utility. Work starts from a SCADA alarm, an analytics alert, or customer calls. A SCADA alarm can flag pressure, unusual flow, a reservoir level, a pump trip or a chlorine reading.
+
+1. **A signal appears.** SCADA raises an alarm on the operator's screen. It arrives over telemetry, often using the DNP3 protocol. An event analytics platform can also raise an alert built from historian data.
+2. **Acknowledge and look.** The control room operator acknowledges the alarm and reads the SCADA screens and historian trends.
+3. **Check the sensor.** The operator checks SCADA communications status and calibration records in the asset system. Often this means a phone call to the instrument technician.
+4. **Check planned work.** The operator checks open work orders, the planned interruption list and the shift log. This means screens, email, Teams and a logbook.
+5. **Check customer contacts.** The operator or the contact centre looks in the CRM for calls about no water or low pressure.
+6. **Form a first view.** The operator decides: sensor fault, planned work, or a possible real issue. No system holds this step.
+7. **Investigate a real issue.** The network engineer on call uses GIS, the hydraulic model and the historian. The engineer runs the model for the zone.
+8. **Raise work.** The operator or engineer raises an emergency work order in the asset system. Field mobility sends it to a crew.
+9. **Isolate and repair.** The field crew operates valves on site, under procedure.
+10. **Tell customers.** The contact centre or communications team sends SMS and web notices. Guaranteed service levels are tracked in the CIS.
+11. **Respond on water quality.** The water quality team samples the water and records results in the LIMS. It notifies the health regulator where required.
+12. **Close and report.** The engineer and compliance write the incident report. Service level payments are credited through the CIS. Performance is reported from the warehouse.
+
+For a sensor fault, steps 7 to 11 do not happen. The operator raises an instrument maintenance work order instead.
+
+<TeachingIllustration src="/figures/use-cases/water-anomaly-as-is.svg" mobileSrc="/figures/use-cases/water-anomaly-as-is-mobile.svg" expandable title="Water network anomaly today: who does what" alt="Swimlane of a water network anomaly at a water utility today. Six lanes are people: compliance, water quality, contact centre, control room operator, engineer on call, and field crew. One lane is SCADA and event analytics. Step 1: SCADA raises an alarm. Steps 2 to 4: the operator acknowledges it, checks the sensor and checks planned work. Step 5: the contact centre checks customer calls. Step 6: the operator forms a first view and decides. A sensor fault ends here with an instrument work order. Steps 7 and 8: the engineer investigates and approves emergency work. Step 9: the crew isolates and repairs under procedure. Step 10: customers are told. Step 11: a named officer decides the water quality response. Step 12: compliance closes and reports." caption="Today the operator gathers context from four or five systems, often alone on a night shift." />
+
+### Handoffs
+
+The control room hands to the instrument technician, and to the network engineer. The engineer hands to the field crew. The control room hands to the contact centre and communications. Any of them can hand to the water quality team. Operations hands to compliance.
+
+### Reporting
+
+- Guaranteed service levels. In Victoria, an unplanned interruption not restored within five hours is a common payment trigger. The obligations sit in the Essential Services Commission's Water Industry Standard. Clause 18 covers interruptions and clause 20 the payments.
+- Performance reporting to the state regulator, and national benchmarking of urban water utilities.
+- Drinking water quality reporting to the health regulator.
+- Internal dashboards on bursts, leaks, response times and water lost from the network.
+
+### Cycle time and volumes
+
+- A metro network raises hundreds to thousands of alarms a day. Many are nuisance alarms (typical, unsourced).
+- AWS says finding a root cause typically takes 25 to 40 minutes when an engineer queries three or four systems. It gave no source (AWS, 1 September 2026) [vendor].
+- Unitywater reported a 66 percent cut in the time to detect and repair network events with TaKaDu. The article is older and undated, and was read as a search excerpt [vendor].
+- No Australian or New Zealand utility was found that publishes alarm counts or investigation times.
+
+### Pain points
+
+- Alarm floods and nuisance alarms.
+- Context spread across four or five systems.
+- Planned work is not linked to the sensor tags it affects.
+- Sensor health is often unknown until someone checks.
+- A single operator on a night shift.
+- Know-how sits in experienced operators' heads.
+- False leak alerts wear down trust in analytics.
+
+## How agents run it
+
+The design keeps the agent on the information path. It reads a one-way copy of alarms and trends, outside the control network. The closest published pattern is an AWS reference design of 1 September 2026 [vendor]. It reads work orders, historian trends, a ticket database and manuals, all read-only. It does not write to control systems.
+
+1. **Receive the signal.** Agent. It reads a copy of alarms and events from the historian or event analytics. The copy is one-way and sits outside the control network. It writes nothing.
+2. **Pull the trends.** Agent. It reads the historian through its API or an <Term k="mcp">MCP</Term> connector, read-only. It pulls the tag, its neighbours and similar past periods. It writes evidence.
+3. **Check the sensor.** Agent. It reads communications status, data quality flags and calibration dates from the asset system. It writes evidence.
+4. **Check planned work and contacts.** Agent. It reads open work and planned interruptions from the asset system, the digital logbook and the CRM. It writes evidence.
+5. **Propose a view.** Agent. It writes an advisory assessment in the event console, shown apart from real alarms. The view is sensor fault, planned work, or a possible real issue. It lists the checks that would tell them apart. The operator decides.
+6. **Draft sensor work.** Agent. For a sensor fault, it writes a draft notification in the asset system. The operator or a planner approves it there.
+7. **Handle a real issue.** The engineer leads. The agent drafts the work order and the customer notice from the model and GIS. The engineer or operator approves. Crews isolate.
+8. **Support a water quality response.** Agent. It reads lab results from the LIMS and writes a draft summary. A named officer decides notices and any regulator notification.
+9. **Learn.** The team that owns the agent updates the reference set offline from case outcomes. Each change is approved before release. The [learning flywheel](/architecture/learning-flywheel) describes this loop.
+
+<TeachingIllustration src="/figures/use-cases/water-anomaly-to-be.svg" mobileSrc="/figures/use-cases/water-anomaly-to-be-mobile.svg" expandable title="Water network anomaly with agents: who does what" alt="Swimlane of a water network anomaly with an agent. Four lanes are people: the team that owns the agent, water quality officer, engineer and crews, and control room operator. Two lanes are systems: the asset system and event console, and SCADA and the historian. The agent and the evidence store have their own lanes. A red dashed line separates the agent from SCADA. The agent reads a one-way copy through the DMZ and has no write path back. Steps 1 to 4: the agent receives the alarm copy, pulls trends, checks the sensor, and checks work and calls. Step 5: the agent proposes a view in the console, and the operator decides. Step 6: for a sensor fault, the agent drafts work and the operator or planner approves. Step 7: for a real issue, the engineer leads and approves. Step 8: the agent gathers lab results, and a named officer decides notices. Step 9: the owning team updates the reference set, with each change approved. The evidence store holds traces, the alarm journal and historian, the asset system audit trail and the logbook." caption="The agent reads a copy of OT data and writes only advice and drafts. People decide every action." />
+
+### What stays with a person, and why
+
+- **Any control action on pumps, valves or treatment.** This is the [safety actuation zone](/architecture/deterministic-zones#safety-actuation).
+- **Isolating mains.** Crews act under procedure.
+- **Boil water notices and other public health advice.** These are regulated decisions.
+- **Notifying the health or environment regulator.** It is a formal record.
+- **Sending an emergency crew.** It commits people to a site at any hour.
+
+### Where the evidence is kept
+
+- Agent traces, in a store outside the agent.
+- The SCADA alarm journal and the historian. They stay the operational record, and the agent does not change them.
+- The asset system's audit trail for any work the agent drafted.
+- The control room logbook.
+
+### What changes in the systems
+
+- A one-way feed of alarms and trends to the agent, through the DMZ.
+- An advisory field or panel in the event console or the asset system notification.
+- A work queue for "agent assessed" events.
+- A read-only identity on the historian and a create-notification identity in the asset system. Both sit in the [security and identity layer (R10)](/layers/r10-security-and-identity).
+- An OT security review of the new zone and conduit, under IEC 62443.
+- A digital logbook, where the log is still on paper.
+
+### What does not change
+
+- SCADA.
+- Alarm configuration and alarm management under ISA-18.2.
+- PLC logic and treatment control.
+- Drinking water obligations.
 
 ## Who does this today
 
-Water AI at named utilities reads sensor data and advises. In every case found, people decide what to do.
+Water AI at named utilities reads sensor data and advises. In every case found, people decide what to do. No named utility was found using a language model to triage SCADA alarms. Status is as of 15 October 2026.
 
-- **Watercare, Auckland.** Watercare is installing 5,000 sensors in its wastewater network after a 135-sensor trial. An AI layer learns normal behaviour. It alerts staff to inflow, blockages and pump-station problems. Staff decide on maintenance and renewals. Watercare reported this on 18 August 2025. Stage: production rollout.
-- **Sydney Water with UTS.** Acoustic sensors in water mains feed an AI that ranks the risk of leaks and breaks. Its developers report 80 percent accuracy at locating likely failures within 200 metres. Trenchless Australasia reported this in February 2023. Stage: production.
-
-No language-model triage of SCADA alarms was found at any utility. SCADA is the control-room system that monitors and operates pumps and valves. The language-model investigation on this page is a proposal with no named precedent.
-
-## Start with evidence
-
-Begin with a defined zone, observation period, sensor quality, and operating conditions. Keep units, sampling interval, missing values, maintenance events, and planned operations with the readings. Compare against an appropriate operating baseline.
-
-## What the agent adds
-
-An agent can retrieve similar historical periods, inspect work orders, and request a sensor check or field investigation. A time-series representation may help find related behavior; it does not establish a leak or equipment fault by itself.
-
-## How the investigation proceeds
-
-Consider competing explanations such as a bad sensor, a planned operating change, or a genuine operational issue. Choose the next check by whether it distinguishes those possibilities. Stop at a justified work request, an unresolved evidence gap, or required operator intervention.
-
-## Measure the business result
-
-Measure confirmed issues, false alarms, missed-event samples, investigation time, and full cost. Compare with existing alarms and an operator's current workflow before adding a more complex model.
-
-## Responsibility and failure handling
-
-The agent does not change treatment parameters, operate valves, or issue public safety advice. Those actions remain in the utility's approved engineering and operating processes. A missing reading is not silently converted into a normal state.
+| Who | Date and source | Stage | Status |
+|---|---|---|---|
+| Watercare (Auckland): 5,000 wastewater sensors with an AI layer that learns normal behaviour | 18 August 2025, Watercare | Production rollout | Advises. Staff decide on maintenance. A search excerpt names StormHarvester and Kallipr |
+| Sydney Water with UTS: acoustic leak AI, 80 percent accuracy within 200 metres | 22 February 2023, Trenchless Australasia, search excerpt | Production | Advises. Developer-reported figures |
+| Sydney Water: TaKaDu event management since 2015 | WaterWorld, undated, search excerpt | Production | Advises. Contract extended, date not seen |
+| Hunter Water, Unitywater, TasWater, Gold Coast, Gympie: TaKaDu event management | 2017 to 2018 articles, some undated, search excerpts | Production then | No 2025 or 2026 update found |
+| Yarra Valley Water with Aqua Analytics: AI data loggers for leak detection | August 2024 contract extension, search excerpt | Production | No figures |
+| AWS reference design for alarm management on Bedrock AgentCore | 1 September 2026, AWS [vendor] | Reference design at an unnamed North American utility | Read-only. Work order creation is a possible extension |
+| AVEVA PI and CONNECT | 20 May 2026, AVEVA [vendor] | Announced | MCP integrations described as coming. A major CONNECT release is planned for Q1 2027 |
+| Oracle Work and Asset Cloud Service: risk signals for water pipe failures | 13 April 2026, Oracle [vendor], search excerpt | Announced | Page returned an error |
+| Xylem: "AI recommends, humans decide, always" | 2026, Xylem blog [vendor] | Statement | Advocacy, not a deployment |
 
 ## Where this sits
 
-The four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile) place this agent as follows. The placements are this guide's position.
+Answer the [four questions](/architecture/agent-types) for this agent. Its role is assist: it prepares evidence for an operator. Its permissions are what its own credentials let it do. It can read a copy of alarms and trends, the asset system, the logbook, the CRM and the LIMS. It can write an advisory view and draft notifications. It has no write path to SCADA or any other control system.
 
-- **Advises or acts:** advises. It prepares a work request or names an evidence gap.
-- **Placement:** A2, L1 on the [autonomy contract](/architecture/autonomy-contract). It does a set task and a person decides. People choose the past cases it learns from.
-- **Zone:** none. The agent never writes to SCADA or any other control system. That keeps it out of the [safety actuation zone](/architecture/deterministic-zones#safety-actuation).
-- **Control:** no write path from the agent to <Term k="ot">operational technology</Term>. It reads telemetry from a copy, such as the historian, not from the control system itself.
-- **Tier:** Tier 2. It writes work requests into a production system. It is Tier 3 if your data classification treats the telemetry as control-system data.
+On the [autonomy contract](/architecture/autonomy-contract), it is designed and permitted for delegated tasks (A2). It does a set task and a person decides. Its learning is curated learning (L1). People choose the past cases it learns from, offline, and approve each change.
 
-## Start with a bounded trial
+Its impact sits next to the safety actuation zone, one of the [deterministic zones](/architecture/deterministic-zones). It never acts inside it. Its advice can still send a crew out, so people decide every action.
 
-Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+On the [risk profile](/architecture/risk-profile), it is Tier 2 (enhanced), because it writes drafts into a production system. It is Tier 3 (strict) if your data classification treats the telemetry copy as control-system data. Register it through the [agent lifecycle](/architecture/agent-lifecycle), with a sponsor in network operations.
 
-## Explore the architecture
+## Measure the result
 
-- [Business & industrial systems](/layers/r05-lob-and-ot).
-- [Data engineering for agents](/layers/r14-agent-data-engineering).
-- [Operating model](/layers/r13-operating-model).
+Measure confirmed issues, false alarms, and misses found in a sampled check. Track investigation time and full cost. Compare with the current alarms and the operator's current workflow before adding a more complex model.
 
-Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+## Start with a trial
 
-## External sources
+Take a historical set of alarms with the operators' conclusions as the reference. Run the agent in <Term k="shadow mode">shadow mode</Term>, with its views hidden from the live console. Review its views with the control room. Then show views for one zone, with the operator deciding every case.
 
-- [TS2Vec: representation learning for time series](https://arxiv.org/abs/2106.10466). Accessed 17 September 2026.
-- [Watercare's wastewater network smartens up with rollout of 5,000 sensors](https://www.watercare.co.nz/home/about-us/latest-news-and-media/watercare-s-wastewater-network-smartens-up-with-rollout-of-5000-sensors), Watercare, 18 August 2025. Operator-reported. Accessed 14 October 2026.
-- [Sydney Water takes on more tech](https://www.trenchless-australasia.com/2023/02/22/sydney-water-takes-on-more-tech/), Trenchless Australasia, 22 February 2023. Developer-reported figures, read through a search summary on 14 October 2026.
+## Evidence and limits
 
-Return to [Utilities](/use-cases/utilities) or [explore the agent types](/architecture/agent-types).
+The current process is written from industry knowledge, not a survey of one utility. No Australian or New Zealand utility publishes alarm counts or investigation times. The only time figures come from vendors.
 
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+The named water deployments use statistics and machine learning, and they advise. The language-model investigation on this page has no named precedent. The AWS design is a reference, not a production result.
+
+The national benchmarking point under Reporting was not checked against its source for this page. This guide recommends a one-way copy of OT data and no write path back, whatever the vendor offers.
+
+## Next step
+
+Score this agent on [the risk profile](/architecture/risk-profile). Then return to [utilities](/use-cases/utilities) for the other worked examples.
+
+<details>
+<summary>The research behind this page</summary>
+
+All sources checked on 15 October 2026 unless a date says otherwise. "Search excerpt" means the page itself could not be opened.
+
+- [Watercare's wastewater network smartens up with rollout of 5,000 sensors](https://www.watercare.co.nz/home/about-us/latest-news-and-media/watercare-s-wastewater-network-smartens-up-with-rollout-of-5000-sensors), 18 August 2025. Operator-reported.
+- [Trenchless Australasia, Sydney Water takes on more tech](https://www.trenchless-australasia.com/2023/02/22/sydney-water-takes-on-more-tech/), 22 February 2023. Developer-reported figures. Search excerpt.
+- [WaterWorld on Sydney Water and TaKaDu](https://www.waterworld.com/water-utility-management/article/14180906/sydney-water-extends-contract-with-takadu-for-central-event-management), undated. Search excerpt.
+- [Water Online on Hunter Water and TaKaDu](https://www.wateronline.com/doc/hunter-water-to-pilot-takadu-as-part-of-its-drive-towards-total-efficiency-0001), 2018. Search excerpt.
+- [Smart Water Magazine on Yarra Valley Water and Aqua Analytics](https://smartwatermagazine.com/news/aqua-analytics/aqua-analytics-signs-a-multi-year-asset-maintenance-contract-yarra-valley-water), August 2024. Search excerpt.
+- [AWS on intelligent alarm management with Bedrock AgentCore](https://aws.amazon.com/blogs/industries/intelligent-alarm-management-for-power-and-utilities-using-amazon-bedrock-agentcore/), 1 September 2026 [vendor].
+- [AVEVA World 2026 announcements](https://www.aveva.com/en/about/news/press-releases/2026/aveva-announces-new-capabilities-to-embed-ai-across-industrial-organizations-and-data-infrastructure-at-aveva-world-2026/), 20 May 2026 [vendor].
+- [Oracle on AI for utilities](https://www.oracle.com/news/announcement/oracle-helps-utilities-reduce-costs-and-deliver-measurable-impact-with-ai-2026-04-13/), 13 April 2026 [vendor]. Search excerpt; the page returned an error.
+- [Xylem on AI in water utilities](https://www.xylem.com/en-uz/resources/blog-posts/making-waves/water-utilities-arent-just-adopting-ai/), 2026 [vendor].
+- [Essential Services Commission, water industry standards](https://www.esc.vic.gov.au/water/industry-standards-codes-and-guidelines/water-industry-standards). Search excerpt. Clauses 18 and 20.
+- The Unitywater figure was read as a search excerpt. So was the Victorian five-hour trigger, from Greater Western Water and South East Water pages. No link was kept.
+
+</details>

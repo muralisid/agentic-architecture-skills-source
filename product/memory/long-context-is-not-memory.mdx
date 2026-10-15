@@ -5,6 +5,7 @@ position: "Design guidance with illustrative examples. Validate the design on th
 lastReviewed: "2026-10-15"
 datePublished: "2026-09-13"
 dateModified: "2026-10-15"
+concepts: [memory, data-to-memory, r14, r12]
 ---
 
 If a model can read a long history, why build a memory system? For a bounded case with a manageable set of documents, supplying the complete relevant material may be a good baseline. The difficulty begins when that history changes, contains restricted information, or must serve many different tasks.
@@ -19,7 +20,7 @@ A stated input limit is not a guarantee that all details will be used correctly.
 
 ## What it does not manage for you
 
-A context window does not assign ownership, enforce source access, remove stale summaries, or resume a task after a tool failed. Those are application responsibilities even if every relevant token fits in a single request.
+A context window does not assign ownership or enforce source access. It does not remove stale summaries or resume a task after a tool failed. Those are application responsibilities even if every relevant token fits in a single request.
 
 A saved transcript is not automatically all present in the next call. A checkpoint is not proof that an external action succeeded. Keep thread state and operation records explicit, then select the material the next decision requires.
 
@@ -27,19 +28,19 @@ A saved transcript is not automatically all present in the next call. A checkpoi
 
 Use retrieval to locate a relevant case, then give the model enough surrounding context to reason about it. Where precise wording matters, include the source passage rather than only a generated summary. Where the question spans a case, retrieve the connected records rather than one isolated snippet.
 
-[MemGPT](https://arxiv.org/abs/2310.08560), 2023, explores moving information between memory levels as context is needed. Reviewed 18 September 2026. Its design motivates a distinction between retained information and material in the active context, not a universal recommendation to use one framework.
+[MemGPT](https://arxiv.org/abs/2310.08560), 2023, explores moving information between memory levels as context is needed. Reviewed 18 September 2026. Its design separates retained information from material in the active context. It is not a reason to use one framework everywhere.
 
 ## Compare the full cost
 
 Count source preparation, retrieval, input and output processing, repeated calls, cache behavior, latency, and human review. A cached input can change pricing without fixing relevance or access. A cheap lookup can still be expensive if it misses evidence and creates rework.
 
-Memory buys cost and speed. It does not buy free accuracy. Mem0's own paper shows the trade on LoCoMo with gpt-4o-mini. Its memory used about 15 times fewer tokens per query than the full conversation: 1,764 against 26,031. The slowest answers (95th percentile) took 1.4 seconds against 17.1 seconds. Accuracy was about 6 points lower: 66.88 against 72.90 for full context ([Mem0 paper, arXiv 2504.19413, 28 April 2025](https://arxiv.org/html/2504.19413)) [vendor]. On the harder MemoryAgentBench, plain long context also beat three commercial memory agents overall. See [test memory against the work](/memory/what-the-benchmarks-measure). Sources read 14 October 2026.
+Memory buys cost and speed. It does not buy free accuracy. Mem0's own paper shows the trade on LoCoMo, a public test of long conversations, using gpt-4o-mini. Its memory used about 15 times fewer tokens per query than the full conversation: 1,764 against 26,031. The slowest answers (95th percentile) took 1.4 seconds against 17.1 seconds. Accuracy was about 6 points lower: 66.88 against 72.90 for full context ([Mem0 paper, arXiv 2504.19413, 28 April 2025](https://arxiv.org/html/2504.19413)) [vendor]. On the harder MemoryAgentBench, plain long context also beat three commercial memory agents overall. See [test memory against the work](/memory/what-the-benchmarks-measure). Sources read 14 October 2026.
 
-Use current provider prices when doing an actual business comparison. There is no fixed price table here because the result depends on the selected models, request sizes, reuse pattern, and deployment. For how agents spend tokens on context, and how to meter that per resolved outcome, see [token efficiency](/memory/token-efficiency).
+Use current provider prices when doing an actual business comparison. There is no fixed price table here. The result depends on the selected models, request sizes, reuse pattern, and deployment. For how agents spend tokens on context, and how to meter that per resolved outcome, see [token efficiency](/memory/token-efficiency).
 
 ## Test against the question
 
-Compare relevant full context, simple retrieval, and the proposed memory design on the same cases. Include a fact in the middle of a long history, a correction late in the record, a question with no answer, and revoked access. Score the answer and the accepted task outcome, not just whether a passage was present.
+Compare relevant full context, simple retrieval, and the proposed memory design on the same cases. Include a fact in the middle of a long history and a correction late in the record. Add a question with no answer and a case of revoked access. Score the answer and the accepted task outcome, not just whether a passage was present.
 
 
 **Continue the story:** [Extend the design across large histories](/memory/the-ten-million-token-question).

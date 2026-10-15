@@ -24,7 +24,7 @@ Compare the agent with statistical process control, inspection rules, and establ
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Maintenance planning agent | Correlates condition data, history and work backlog; proposes and schedules maintenance | A3, L2 | The best internal case. Failures cost a rescheduled job |
 | Quality investigation agent | Assembles process, batch and inspection evidence for a deviation; proposes root cause | A2 to A3, L2 | Proposes. Quality releases |
@@ -36,7 +36,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Knowledge (**direct**: historian, asset register, procedures, batch records), Human (**direct**: the floor crew is the point), Action (**direct** on the information path), Improvement (**direct**), Evidence, Control, Execution (supporting, with the OT boundary from R05).
+Knowledge and memory (**direct**: historian, asset register, procedures, batch records), human oversight (**direct**: the floor crew is the point), tool gateway (**direct** on the information path), evaluation and release (**direct**), observability and audit trail, identity and policy, runtime (supporting, with the OT boundary from the line of business and OT layer (R05)).
 
 ## Controls and human decisions
 

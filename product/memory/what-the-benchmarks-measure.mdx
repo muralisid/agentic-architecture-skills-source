@@ -5,6 +5,7 @@ position: "Design guidance with illustrative examples. Validate the design on th
 lastReviewed: "2026-10-15"
 datePublished: "2026-09-13"
 dateModified: "2026-10-15"
+concepts: [memory, flywheel, data-to-memory, r14]
 ---
 
 A search returns a document containing the answer. The agent then quotes an outdated section and creates the wrong follow-up task. A retrieval test may call that a success even though the business outcome failed. **Memory needs more than one checkpoint.**
@@ -21,11 +22,11 @@ Returning every candidate can include every required item without demonstrating 
 
 Score the generated answer separately. Check supported facts, citations, applicable versions, uncertainty, and refusal when evidence is absent. If an automated judge is used, record its model, prompt, rubric, and agreement with human reviewers on a sample.
 
-Do not compare an any-hit retrieval percentage with an answer-accuracy percentage. The systems did different jobs even if both numbers were called “memory performance”.
+Do not compare an any-hit retrieval percentage with an answer-accuracy percentage. The systems did different jobs even if both numbers were called "memory performance".
 
 ## Did the task finish correctly?
 
-For an enterprise agent, test the actual outcome: a justified inspection request, an accurately resumed case, or a supported audit finding. Include duplicate requests, failed tools, missing approvals, and human review. Cost per completed task must include failed attempts and rework.
+For an enterprise agent, test the actual outcome. Examples are a justified inspection request, an accurately resumed case, or a supported audit finding. Include duplicate requests, failed tools, missing approvals, and human review. Cost per completed task must include failed attempts and rework.
 
 ## Use public benchmarks for the abilities they test
 
@@ -39,7 +40,7 @@ Most published memory scores come from the vendors that sell the memory product.
 
 **LoCoMo has errors in its answer key.** An audit found about 6.4 percent of LoCoMo's scored answers wrong: 99 of 1,540 questions. Its usual judge model accepted about 63 percent of deliberately wrong answers that stayed close to the topic. So a perfect system would score about 93.6 percent. One vendor already reports 92.5 percent. The audit is a single blog post, not peer reviewed ([Penfield Labs audit, 2026](https://dev.to/penfieldlabs/we-audited-locomo-64-of-the-answer-key-is-wrong-and-the-judge-accepts-up-to-63-of-intentionally-33lg)). Mem0, a memory vendor, repeats its figures ([Mem0](https://mem0.ai/library/agent-memory/how-to-read-memory-benchmarks)) [vendor].
 
-**LongMemEval scores are vendor-reported.** Published scores cluster at 91 to 96 percent, and every one comes from a vendor. One rerun put several products through one harness with the same judge. The published scores differed from the rerun by +3 to -28 points. Google's Vertex AI Memory Bank scored 42.4 percent, against about 70 percent in the paper behind its design ([Redis, 21 September 2026](https://redis.io/resources/agent-memory-benchmark-report/)). Redis ran the rerun and sells a competing product [vendor].
+**LongMemEval scores are vendor-reported.** Published scores cluster at 91 to 96 percent, and every one comes from a vendor. One rerun put several products through the same test setup and the same judge. The published scores differed from the rerun by +3 to -28 points. Google's Vertex AI Memory Bank scored 42.4 percent. The paper behind its design reported about 70 percent ([Redis, 21 September 2026](https://redis.io/resources/agent-memory-benchmark-report/)). Redis ran the rerun and sells a competing product [vendor].
 
 **A harder test scores memory products low.** On MemoryAgentBench, three commercial memory agents (Mem0, Zep and MIRIX) scored 21.1 to 26.2 overall. Plain long context scored about 49 with GPT-4o or Claude 3.7 Sonnet. Every method scored at most 7 percent on multi-step forgetting. That task asks the agent to drop a fact that a later fact replaced. The answer needs several linked facts ([arXiv 2507.05257, version of 17 March 2026](https://arxiv.org/html/2507.05257v3)). The models tested date from 2025.
 
@@ -47,7 +48,13 @@ Treat a memory leaderboard as a claim until it is rerun with the same answer mod
 
 ## Build a small acceptance suite around the memory story
 
-Include a paused thread that must resume without repeating work; a prior episode that offers useful evidence; a current fact corrected by a later source; an approved procedure that must not be rewritten from one example; and a relevant record the caller is not allowed to see.
+Include these cases:
+
+- A paused thread that must resume without repeating work.
+- A prior episode that offers useful evidence.
+- A current fact corrected by a later source.
+- An approved procedure that must not be rewritten from one example.
+- A relevant record the caller is not allowed to see.
 
 Add questions the memory cannot answer. Keep test cases separate from development examples. Compare a simple baseline with each proposed addition on the same task set.
 

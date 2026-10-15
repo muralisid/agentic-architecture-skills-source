@@ -10,7 +10,7 @@ The mental model comes from a modern bottling plant: the floor runs without huma
 
 A complete published guide (docs site, built from this repo) covering:
 
-1. **Vision and target state**: the Autonomy-Learning maturity model (A x L) and a layered master architecture
+1. **Vision and target state**: the autonomy and learning scales and a layered master architecture
 2. **Current state baselines**: enterprise archetypes and maturity readiness assessments (data, security)
 3. **14 research tracks**: one per enterprise landscape layer, from infrastructure to operating model
 4. **Production techniques library**: use-case-driven data curation and cost engineering patterns with real economics
@@ -20,7 +20,7 @@ A complete published guide (docs site, built from this repo) covering:
 ## Editorial stance
 
 - **Evidence over buzz.** Nothing is recommended on adoption momentum or vendor narrative. Every recommended component must beat the simplest credible alternative on technical merit and enterprise economics (the "simplest credible alternative test").
-- **Challenged defaults.** Every research track names the hyped or default choices at its layer and analyzes them honestly against cheaper, simpler alternatives.
+- **The common choice, tested.** Every research track names the hyped or default choices at its layer and tests them against cheaper, simpler alternatives.
 - **Deterministic boundaries.** Security, identity, and access control are always deterministic; probabilistic reasoning runs inside them, never instead of them.
 - **Sources are dated and flagged.** Vendor-published numbers are labeled as such. Volatile facts carry as-of dates and sit on a re-verification list.
 
@@ -48,7 +48,7 @@ A complete published guide (docs site, built from this repo) covering:
 | Phase | State |
 |---|---|
 | 0. Scaffolding | Complete |
-| 1. Vision and target state | Baseline published: vision essay and the A x L maturity model |
+| 1. Vision and target state | Baseline published: vision essay and the autonomy and learning scales |
 | 2. Current state and maturity references | Baseline published: size-by-gravity archetype grid and light/heavy readiness assessment |
 | 3. Layer research (pilot: R03 Integration fabric) | Complete: all 14 tracks published |
 | 4. Synthesis + techniques library | Synthesis complete: master target state, concerns matrix, memory pipelines, economics, sovereignty, identity and security, learning loops. Techniques library open and growing |

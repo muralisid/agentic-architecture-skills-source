@@ -5,6 +5,7 @@ position: "Design guidance with illustrative examples. Validate the design on th
 lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
 dateModified: "2026-10-15"
+concepts: [memory, data-to-memory, lifecycle, r14, r10, security]
 ---
 
 An incident report is restricted, but its old summary remains searchable. The next agent can still disclose information from it. **Controlling the original document is not enough when copies and derivatives remain usable.**
@@ -32,7 +33,7 @@ Treat each candidate memory as untrusted until it passes four checks:
 - **Allow rollback.** Keep revisions. Then a bad memory and everything derived from it can be removed.
 - **Expire by type.** AWS suggests about 90 days for episodes and no fixed expiry for procedures ([AWS, 4 September 2026](https://aws.amazon.com/blogs/machine-learning/designing-lifecycle-policies-for-agentcore-memory/)) [vendor]. The same post says AgentCore Memory has no built-in automatic expiry. The team has to build it.
 
-Old memory can do harm without any attacker. AWS gives the example of a support agent treating a billing dispute settled four months earlier as still open. More on poisoning is in [agent data engineering](/layers/r14-agent-data-engineering). Sources read 14 October 2026.
+Old memory can do harm without any attacker. AWS gives the example of a support agent treating a billing dispute settled four months earlier as still open. More on poisoning is in the [agent data engineering layer (R14)](/layers/r14-agent-data-engineering). Sources read 14 October 2026.
 
 ## Track the derived copies
 
@@ -43,6 +44,8 @@ Test the whole path, including backups and caches under their approved lifecycle
 ## Make forgetting observable
 
 A successful deletion call is not sufficient evidence that a later query cannot retrieve the content. Test the original question, paraphrases, related entity lookups, and already-open tasks. Verify that stale context is invalidated or safely rebuilt before reuse.
+
+The same test applies when an agent is retired. The retire stage of [the agent lifecycle](/architecture/agent-lifecycle) deletes the agent's own memory. A change to its memory policy sends the agent back to evaluation before release.
 
 ## Review before changing shared knowledge
 

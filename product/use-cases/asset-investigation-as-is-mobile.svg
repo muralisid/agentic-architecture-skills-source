@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2972" role="img" aria-labelledby="title desc">
+<title id="title">Asset investigation today: who does what</title>
+<desc id="desc">Swimlane of how an asset investigation runs today, in eleven steps across six lanes. An APM alert or DCS alarm starts it. The control room takes a first look and types a notification into EAM. An engineer reviews trends, manuals and past work in Excel and email. A technician or oil lab returns results days later. The engineers decide at the morning meeting, which is an approval. The planner builds the work order. The trading desk rebids or the planner updates the forecast. The area authority issues the permit and isolation, which is an approval. The technician does and closes the work, often with thin findings. The engineer reports monthly. Alert to decision takes one to ten working days, typical and unsourced.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2972" fill="#f8f5ef"/>
+<text x="28.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Asset investigation today: who does</text>
+<text x="28.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">what</text>
+<text x="28.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Typical practice. The evidence moves between five</text>
+<text x="28.0" y="179.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">or more systems by export and email.</text>
+<rect x="28.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="68.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<rect x="358.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="398.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<path d="M42.0 238.0 L54.0 250.0 L42.0 262.0 L30.0 250.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval</text>
+<rect x="28.0" y="310.0" width="664.0" height="213.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="336.0" r="21" fill="#2563eb"/><text x="68.0" y="344.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="100.0" y="316.0" width="202.7" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="343.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Plant systems</text>
+<text x="48.0" y="390.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Alert</text>
+<text x="48.0" y="426.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">APM raises an alert when a reading leaves its</text>
+<text x="48.0" y="457.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">normal band. Or a DCS alarm shows on the</text>
+<text x="48.0" y="488.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">console.</text>
+<path d="M360.0 525.0 L360.0 557.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="563.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="589.0" r="21" fill="#d97706"/><text x="68.0" y="597.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="100.0" y="569.0" width="189.3" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="596.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Control room</text>
+<text x="48.0" y="643.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">First look</text>
+<text x="48.0" y="679.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The operator checks the trend, the load and the</text>
+<text x="48.0" y="710.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">air temperature. A line goes in the shift log.</text>
+<path d="M360.0 747.0 L360.0 779.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="785.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="811.0" r="21" fill="#d97706"/><text x="68.0" y="819.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="100.0" y="791.0" width="189.3" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="818.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Control room</text>
+<text x="48.0" y="865.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Notification</text>
+<text x="48.0" y="901.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Typed into EAM by hand: free text, equipment</text>
+<text x="48.0" y="932.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">number, priority.</text>
+<path d="M360.0 969.0 L360.0 1001.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1007.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1033.0" r="21" fill="#d97706"/><text x="68.0" y="1041.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="100.0" y="1013.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1040.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Engineers</text>
+<text x="48.0" y="1087.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Review</text>
+<text x="48.0" y="1123.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The engineer exports trends to Excel, reads</text>
+<text x="48.0" y="1154.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">past work orders and emails the equipment</text>
+<text x="48.0" y="1185.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">maker.</text>
+<path d="M360.0 1222.0 L360.0 1254.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1260.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1286.0" r="21" fill="#d97706"/><text x="68.0" y="1294.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="100.0" y="1266.0" width="175.8" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1293.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Maintenance</text>
+<text x="48.0" y="1340.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Get evidence</text>
+<text x="48.0" y="1376.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A condition monitoring technician or an oil lab</text>
+<text x="48.0" y="1407.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">sends results as PDF reports, often days later.</text>
+<path d="M360.0 1444.0 L360.0 1476.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1482.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1508.0" r="21" fill="#d97706"/><text x="68.0" y="1516.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="100.0" y="1488.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1515.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Engineers</text>
+<path d="M658.0 1492.0 L673.0 1507.0 L658.0 1522.0 L643.0 1507.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="1562.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Decide</text>
+<text x="48.0" y="1598.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Engineers and superintendents decide at the</text>
+<text x="48.0" y="1629.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">morning meeting: watch, change how it runs, or</text>
+<text x="48.0" y="1660.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">fix.</text>
+<path d="M360.0 1697.0 L360.0 1729.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1735.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1761.0" r="21" fill="#d97706"/><text x="68.0" y="1769.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="100.0" y="1741.0" width="175.8" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1768.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Maintenance</text>
+<text x="48.0" y="1815.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Plan work</text>
+<text x="48.0" y="1851.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The planner turns the notification into an EAM</text>
+<text x="48.0" y="1882.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">work order with tasks, parts and labour.</text>
+<path d="M360.0 1919.0 L360.0 1951.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1957.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1983.0" r="21" fill="#d97706"/><text x="68.0" y="1991.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="100.0" y="1963.0" width="283.4" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1990.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Trading or planning</text>
+<text x="48.0" y="2037.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Replan</text>
+<text x="48.0" y="2073.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A generator rebids its availability with a</text>
+<text x="48.0" y="2104.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">reason. An oil and gas operator books the lost</text>
+<text x="48.0" y="2135.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">volume.</text>
+<path d="M360.0 2172.0 L360.0 2204.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2210.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2236.0" r="21" fill="#d97706"/><text x="68.0" y="2244.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<rect x="100.0" y="2216.0" width="216.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2243.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Area authority</text>
+<path d="M658.0 2220.0 L673.0 2235.0 L658.0 2250.0 L643.0 2235.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="2290.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Permit</text>
+<text x="48.0" y="2326.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The area authority issues the permit. The</text>
+<text x="48.0" y="2357.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">equipment is isolated and locked.</text>
+<path d="M360.0 2394.0 L360.0 2426.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2432.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2458.0" r="21" fill="#d97706"/><text x="68.0" y="2466.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<rect x="100.0" y="2438.0" width="175.8" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2465.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Maintenance</text>
+<text x="48.0" y="2512.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Do and close</text>
+<text x="48.0" y="2548.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The technician records hours, parts and</text>
+<text x="48.0" y="2579.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">findings. Failure codes are often left blank.</text>
+<path d="M360.0 2616.0 L360.0 2648.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2654.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2680.0" r="21" fill="#d97706"/><text x="68.0" y="2688.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">11</text>
+<rect x="100.0" y="2660.0" width="149.0" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2687.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Engineers</text>
+<text x="48.0" y="2734.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Report</text>
+<text x="48.0" y="2770.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The reliability engineer reports availability</text>
+<text x="48.0" y="2801.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">and failures each month.</text>
+<text x="28.0" y="2880.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Alert to decision: one to ten working days</text>
+<text x="28.0" y="2911.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">(typical, unsourced).</text>
+</svg>

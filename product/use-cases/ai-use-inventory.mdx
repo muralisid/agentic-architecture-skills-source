@@ -1,168 +1,119 @@
 ---
 title: "Build an AI use inventory a regulator can read"
-description: "A template for listing every AI use in a utility, the decision it influences, the safeguards around it, and the evidence that the safeguards work."
+description: "How a utility builds a list of every AI use that a regulator can read. One row per use, with the decision it shapes, its safeguards and the evidence that they work."
 position: "Proposed template. It is not legal advice and not an official form of any commission. Check the filing requirements in the order that applies to you."
-lastReviewed: "2026-09-19"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-19"
-dateModified: "2026-09-19"
+dateModified: "2026-10-15"
+concepts: [r11, lifecycle, zones, autonomy, risk, r12, r07]
 ---
 
-A regulator asks a utility to list every place it uses AI and to show how each use is governed. Most utilities can name their headline projects. Few can list the AI already inside vendor products, office tools, and analytics that predate the word "AI". This page gives a template for the inventory and for the policies that sit beside it.
+A regulator asks a utility to list every place it uses AI, and to show how each use is governed. Most utilities can name their headline projects. Few can list the AI inside vendor products, office tools and older analytics. This page gives a template for the list and the policies beside it. The short answer: build the list from the agent registry, not from a survey. A named person signs it, because it is a formal regulatory record.
 
-## Why this matters now
+## What regulators have asked
 
-On 17 September 2026 the New York Public Service Commission opened Case 26-M-0552. Within 60 days, twelve named gas, electric, and water utilities must file a complete inventory of AI system use cases in their operations, together with the policies, procedures, and protocols that govern AI use. The commission states that it will evaluate the filings against commonly accepted AI governance frameworks. It names seven risks: hallucinations, algorithmic biases, transparency issues, data privacy concerns, misconfiguration errors, cybersecurity attacks, and functional brittleness. Reporting reviewed on 19 September 2026 says semiannual reports follow the first filing.
+On 17 September 2026 the New York Public Service Commission opened Case 26-M-0552. Twelve named utilities must file an inventory of their AI uses within 60 days, with the policies that govern them. The commission names seven risks: hallucinations, algorithmic biases, transparency, data privacy, misconfiguration, cybersecurity attacks and functional brittleness. Reports every six months follow, according to coverage that day. Arizona opened Docket AU-00000A-26-0060 on AI at energy and water utilities on 24 March 2026. A utility elsewhere can use the same list for its board and auditors.
 
-The Arizona Corporation Commission opened Docket AU-00000A-26-0060 on the use of AI by energy and water utilities on 24 March 2026. A utility outside both states can still use the same inventory for its board, its auditors, and its insurers.
+## The systems involved
+
+The list lives in the [governance, risk and sovereignty layer (R11)](/layers/r11-governance-risk-sovereignty). It draws on four other [layers](/layers).
+
+| Layer | Systems |
+|---|---|
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | The risk and compliance tool, or GRC tool (ServiceNow IRM, Archer, Protecht). The obligations register of rules the utility must meet. The agent registry |
+| [Agent platform (R07)](/layers/r07-agent-platform) | Admin consoles of vendor products with AI built in. Agent builders |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | Traces and logs that show each safeguard working. Software and cloud invoices |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Supplier contracts in the ERP. The records system that keeps each filing |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Spreadsheets and email used today. Office assistants such as Microsoft 365 Copilot |
+
+## How it runs today
+
+Today the list is built by hand (typical, unsourced).
+
+1. A risk lead emails a survey to each business unit.
+2. Units answer in spreadsheets, naming their headline projects.
+3. The lead emails suppliers to ask which products contain AI.
+4. The lead merges the answers and checks them against the obligations register by hand.
+5. A named executive signs the filing.
+
+AI inside vendor products is often missed. Few rows link to evidence that a safeguard works. Each filing starts again from a stale spreadsheet.
+
+## How agents run it
+
+The registry record feeds the inventory. Each agent gets one record in the registry at the register stage of the [agent lifecycle](/architecture/agent-lifecycle). The [registry record](/architecture/agent-lifecycle#the-registry-record) holds the owner, purpose, tools, [risk tier](/architecture/risk-profile), autonomy and highest data class. Most inventory columns are fields in that record.
+
+1. **Draft one row per record.** Agent. It reads the registry and writes draft rows in the GRC tool.
+2. **Find AI the registry misses.** Agent. It reads invoices, supplier contracts and network traffic to known AI services. It writes candidate rows marked "not registered".
+3. **Confirm each candidate.** The owning team confirms or rejects it. A confirmed use gets a registry record first.
+4. **Collect the evidence.** Agent. It asks the owning team for the record behind each safeguard. It checks the date and scope, and passes gaps to a reviewer.
+5. **Review.** The compliance lead reviews the draft in the GRC tool.
+6. **Attest.** A named person signs the filing. The inventory is a [formal regulatory record](/architecture/deterministic-zones#formal-regulatory-records), so the agent never files or signs.
+
+The pattern is the same as [collecting compliance evidence](/use-cases/compliance-evidence).
 
 ## What counts as an AI use
 
-Set the boundary before counting. A narrow boundary produces a short list that a later audit contradicts. We propose that an entry is any system where a learned or generative model influences a decision, a record, a customer interaction, or a physical action. That includes four groups that are easy to miss.
+We propose one test. Does a learned or generative model shape a decision, record, customer contact or physical action? Four groups are easy to miss. They are AI inside purchased products, older machine learning, staff use of assistants, and AI used by contractors. Fixed rules and thresholds are not AI uses.
 
-- **AI inside purchased products.** Meter data analytics, outage prediction, security monitoring, customer contact platforms, and enterprise software assistants.
-- **Older machine learning.** Load forecasting, theft detection, credit and collections scoring, and image-based inspection that went live before generative AI.
-- **Staff use of general assistants.** Drafting, summarising, and coding tools used with company information.
-- **Contractor and vendor use on your behalf.** Vegetation analytics, call handling, and engineering studies performed by a third party using AI.
+## One row per use
 
-Fixed rules, thresholds, and conventional optimisation are not AI uses. List them only where a model supplies an input to them.
+Each row answers six questions. The [CSV template](/figures/use-cases/ai-use-inventory-template.csv) has every column.
 
-## The inventory, one row per use
-
-Each row answers six questions. The columns below are the template. A spreadsheet version is available as a [CSV file](/figures/use-cases/ai-use-inventory-template.csv).
-
-### 1. What is it and who owns it
-
-| Column | What to record |
+| Question | What to record |
 |---|---|
-| Use ID and name | A stable identifier and a plain name a commissioner would understand |
-| Business function | Customer service, network operations, asset management, field work, planning, finance, safety, corporate |
-| Accountable owner | A named role in the business, not the IT team and not the vendor |
-| Status | Proposed, trial, production, suspended, retired, with the date of the last change |
-| Source | Built in house, purchased product, feature inside a purchased product, third-party service |
+| 1. What is it, and who owns it | A plain name, the business function, a named owner in the business, the status and its date, and the source |
+| 2. What kind of AI is it | The technique, the model and supplier, where it runs, its learning level, and who approves changes |
+| 3. What does it touch | The information it reads, the systems it writes, any path to control systems, and where data is kept |
+| 4. What decision does it shape | The decision, the role of the output, the autonomy level, any zone touched, and the final decision maker |
+| 5. How is each risk handled | A tested safeguard for each named risk, with the test and its date |
+| 6. Where is the evidence | The evaluation, the logs, incidents since the last report, and the next review |
 
-### 2. What kind of AI is it
+A regulator reads question 4 most closely, so record the decision, not the technology. Record the autonomy level as the use runs today, on the [autonomy contract](/architecture/autonomy-contract). The levels run from manual (A0) and assisted (A1) to delegated tasks (A2). Above those sit supervised autonomy (A3), managed autonomy (A4) and governed lights-out (A5). Learning runs from fixed (L0) through curated (L1) and reviewed (L2) to continuous learning inside limits (L3).
 
-| Column | What to record |
-|---|---|
-| Technique | Statistical or machine learning model, computer vision, generative model, agent that uses tools |
-| Model and supplier | Model family, supplier, version or release date, and where it runs |
-| Learning level | L0 fixed, L1 curated updates, L2 governed learning, L3 continuous learning inside limits. See the [autonomy contract](/architecture/autonomy-contract) |
-| Change control | Who approves a model, prompt, or configuration change, and how it is tested first |
+Note any of the four [deterministic zones](/architecture/deterministic-zones) the use touches: access, money, safety actuation or formal records. Say where each boundary is enforced. "The prompt tells the model not to" is not a control. A control is a rule, an approval step, or a system outside the model.
 
-### 3. What does it touch
+## Safeguards for the seven risks
 
-| Column | What to record |
-|---|---|
-| Information read | Customer personal information, usage data, asset records, operational telemetry, critical infrastructure information, employee records |
-| Systems written | Every system where the AI use can create or change a record, or "none" |
-| Operational technology | Whether any output can reach a control system, and by what path. See [business and industrial systems](/layers/r05-lob-and-ot) |
-| Data location | Where information is processed and stored, and whether the supplier may retain or train on it |
+For each named risk, record a safeguard that can be tested, the test and its date. Good examples are answers from approved sources only, and outcomes compared across customer groups. Others are a tested rollback, and a manual fallback with the date it last ran. The [security practices](/security) cover prompt injection.
 
-### 4. What decision does it influence
+## The policies beside the list
 
-This is the section a regulator will read most closely. Record the decision, not the technology.
-
-| Column | What to record |
-|---|---|
-| Decision or action | The specific decision the output feeds, for example "which spans to inspect first" |
-| Role of the output | Informs a person, drafts for review, acts within a limit, acts without review |
-| Autonomy level | A0 manual to A5 governed lights-out, set for this task. See the [autonomy contract](/architecture/autonomy-contract) |
-| Deterministic zone | Whether the use touches access, movement of money, safety actuation, or formal records. See [the four deterministic zones](/architecture/deterministic-zones) |
-| Final decision maker | The named role, fixed rule, or certified system that makes the final call |
-| Customer effect | Whether a customer is affected, and whether the customer is told AI was involved |
-
-A use that touches a deterministic zone needs one more statement: where the boundary is enforced. "The prompt tells the model not to" is not a control. The control is a rule, an approval step, or a system outside the model that the model cannot bypass.
-
-### 5. How is each named risk handled
-
-Map safeguards to the seven risks the New York commission names. A safeguard is something that can be tested. For each one, record the test and its date.
-
-| Risk named by the commission | Safeguards to record |
-|---|---|
-| Hallucinations | Answers restricted to approved sources, source shown with each answer, human review before anything is sent or filed, sampled accuracy checks |
-| Algorithmic biases | Outcome comparison across customer groups and areas, review of training data, a route for a customer to contest a result |
-| Transparency issues | Plain description of how the output is produced, disclosure to customers and staff, record of which output led to which action |
-| Data privacy concerns | Data minimisation, supplier retention terms, access limits, privacy assessment date |
-| Misconfiguration errors | Change approval, test environment, configuration held under version control, rollback tested |
-| Cybersecurity attacks | Threat model that covers prompt injection and supplier access, least-privilege credentials for the AI use, monitoring, ability to cut access quickly. See [security practices](/security) |
-| Functional brittleness | Performance monitoring, defined operating range, documented manual fallback, and the date the fallback was last exercised |
-
-### 6. Where is the evidence
-
-| Column | What to record |
-|---|---|
-| Evaluation | The test set or sample used, the measure, the last result, and the date |
-| Logs | What is logged, who holds the logs, and how long they are kept. Logs of operational uses should be held by the utility, not only by the supplier |
-| Incidents | Count and summary since the last report, including near misses and customer complaints |
-| Next review | Date and owner |
-
-## The policies that sit beside the inventory
-
-The order asks for policies, procedures, and protocols as well as the list. We propose that a filing covers at least these eight. Each should name an owner and a review date.
-
-1. **Acceptable use.** What staff may and may not do with general AI assistants and company information.
-2. **Intake and approval.** How a new AI use is proposed, assessed, and entered in the inventory before it goes live.
-3. **Procurement.** What suppliers must disclose about AI inside their products, including data retention, model changes, and subcontractors.
-4. **Human oversight.** How autonomy levels are assigned, who may raise one, and how review capacity is sized for peak periods such as storms.
-5. **Deterministic boundaries.** The rule that models may take permission away, never grant it. A model may not approve anything about access, movement of money, safety actuation, or formal regulatory records. The policy also says how each boundary is enforced.
-6. **Change control.** Testing and approval for model, prompt, data, and configuration changes.
-7. **Incident response.** How an AI failure is detected, contained, reported, and reviewed, and when the regulator is told.
-8. **Records.** What is retained, for how long, and who can retrieve it for an audit or a rate case.
-
-The commission has not named the frameworks it will use. The [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) and ISO/IEC 42001 are two widely used references, and the joint government [guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/) applies to uses near control systems. Mapping the policy set to one of them makes the filing easier to evaluate. This template is not a formal mapping to any of them.
+The order asks for policies as well as the list. We propose eight, each with an owner and a review date. They cover acceptable use, intake and approval, procurement, and human oversight. They also cover deterministic boundaries, change control, incident response and records. The boundaries policy says models may take permission away, never grant it.
 
 ## Three worked rows
 
-These are illustrative entries for proposed uses described elsewhere in this guide. They are not descriptions of deployed systems.
+These rows illustrate proposed uses elsewhere in this guide. They are not deployed systems.
 
-| | Vegetation inspection candidates | Customer bill explanation | Staff drafting assistant |
-|---|---|---|---|
-| Decision influenced | Which spans a planner inspects first | What a customer is told about an approved bill | Wording of internal documents |
-| Role of the output | Drafts an inspection request for review | Answers from approved bill data, routes the rest | Drafts for the author to edit |
-| Autonomy level | A2 | A2 for answers, A1 for anything unresolved | A1 |
-| Deterministic zone | None. Does not approve clearing or switching | Money and formal records. Cannot change an account, a bill, or a payment plan | Formal records if used for regulatory filings. Sign-off stays with a named person |
-| Final decision maker | Vegetation planner | Billing system rules and a service agent | The author |
-| Main risks | Brittleness, misconfiguration | Hallucinations, privacy, biases | Privacy, hallucinations |
-| Key safeguard | Field inspection confirms every finding | Answers limited to the customer's own approved records | No customer or critical infrastructure information in the tool |
-| Evidence | Confirmed findings per inspection, missed-risk sample | Sampled answer accuracy, complaint rate | Usage policy acknowledgement, periodic audit |
+| | Vegetation inspection | Customer bill explanation |
+|---|---|---|
+| Decision shaped | Which spans a planner inspects first | What a customer is told about an approved bill |
+| Autonomy | Delegated tasks (A2) | Delegated tasks (A2) for answers, assisted (A1) for the rest |
+| Zone | None. It does not approve cutting or switching | Money and formal records. It cannot change an account, bill or payment plan |
+| Key safeguard | Field inspection confirms every finding | Answers limited to the customer's own records |
 
-The first row follows the [vegetation inspection example](/use-cases/vegetation-inspection). The second follows the [customer-service blueprint](/library/blueprints/departments/customer-service).
+They follow the [vegetation inspection example](/use-cases/vegetation-inspection) and the [customer-service blueprint](/library/blueprints/departments/customer-service).
 
-## How to fill it in
+## Measure whether it works
 
-1. **Start from systems, not from a survey.** Ask each supplier in writing which products in use contain AI features. Review software and cloud invoices. Then ask the business units.
-2. **Record the decision first.** If nobody can say which decision an AI use influences, it is not ready to be reported as governed.
-3. **Assign the autonomy level as it operates today.** Do not record the level in the design document if people have stopped reviewing the output.
-4. **Mark the gaps.** An honest row with a missing safeguard and a date to close it is stronger than a complete-looking row that fails an audit.
-5. **Put an owner on the list itself.** Semiannual reporting means the inventory is a process with an owner, a change trigger, and a review cycle.
+Check coverage against an independent sample, such as supplier contracts. Track the share of rows with a tested safeguard, and the age of the oldest evaluation. Count the uses an audit finds that were not on the list.
 
-An agent can help with the collection. The pattern is the same as [collecting compliance evidence](/use-cases/compliance-evidence): request a specific record from the team that owns it, check date and scope, and pass gaps to a reviewer. The inventory itself is a formal record. A named person attests to it.
+## Evidence and limits
 
-## Measure whether the inventory works
+This template follows the press release for Case 26-M-0552 and general governance practice. It was written before any utility filed. The order itself governs what a New York utility must file, and other commissions may ask different questions.
 
-Measure coverage against an independent check, such as a sample of supplier contracts or network traffic to known AI services. Track the share of rows with a tested safeguard for each applicable risk, the age of the oldest evaluation, the time from a new AI use to its row, and the number of uses found by audit that were not on the list.
+The autonomy levels and the deterministic zones are this guide's own terms. Explain them in plain words in a filing. The commission has not named its frameworks. The NIST AI Risk Management Framework and ISO/IEC 42001 are two common ones.
 
-## Limits
+## Next step
 
-This template reflects the press release for Case 26-M-0552 and general governance practice. It was written before any utility filed and before the commission published an evaluation method. The order itself governs what a New York utility must file. Other commissions may ask different questions. The autonomy levels and deterministic zones are this guide's own constructs. Explain them in a filing in plain words, or translate them to the terms your commission uses.
+Score each agent on [the risk profile](/architecture/risk-profile). Return to [utilities](/use-cases/utilities) for the worked examples.
 
-## Explore the architecture
+<details>
+<summary>The research behind this page</summary>
 
-- [Governance, risk and sovereignty](/layers/r11-governance-risk-sovereignty).
-- [The four deterministic zones](/architecture/deterministic-zones).
-- [The autonomy contract](/architecture/autonomy-contract).
-- [Observability and FinOps](/layers/r12-observability-and-finops).
-
-Continue with [choose where to start](/use-cases/choose-where-to-start) or the [electricity](/library/blueprints/verticals/utilities-and-energy) and [water](/library/blueprints/verticals/water-utilities) blueprints.
-
-## External sources
-
-- [PSC Launches Inquiry into the Use of Artificial Intelligence by New York's Utilities](https://dps.ny.gov/news/psc-launches-inquiry-use-artificial-intelligence-new-yorks-utilities), New York Department of Public Service press release, 17 September 2026, Case 26-M-0552. Accessed 19 September 2026.
-- [New York to begin monitoring utilities' use of AI](https://www.wskg.org/2026-09-17/new-york-to-begin-monitoring-utilities-use-of-ai), WSKG, 17 September 2026. Source for the semiannual reporting cycle. Accessed 19 September 2026.
-- [Commissioner Lea Márquez Peterson opens formal inquiry into potential use of AI in utilities' operations](https://azcc.gov/lmarquezpeterson/news/2026/03/27/commissioner-lea-m%C3%A1rquez-peterson-opens-formal-inquiry-into-potential-use-of-artificial-intelligence-in-utilities--operations), Arizona Corporation Commission, 27 March 2026, Docket AU-00000A-26-0060. Accessed 19 September 2026.
+- [New York PSC launches inquiry into AI at utilities](https://dps.ny.gov/news/psc-launches-inquiry-use-artificial-intelligence-new-yorks-utilities), 17 September 2026, Case 26-M-0552. Accessed 19 September 2026.
+- [New York to begin monitoring utilities' use of AI](https://www.wskg.org/2026-09-17/new-york-to-begin-monitoring-utilities-use-of-ai), WSKG, 17 September 2026. The source for reports every six months. Accessed 19 September 2026.
+- [Arizona Corporation Commission opens an inquiry into AI at utilities](https://azcc.gov/lmarquezpeterson/news/2026/03/27/commissioner-lea-m%C3%A1rquez-peterson-opens-formal-inquiry-into-potential-use-of-artificial-intelligence-in-utilities--operations), 27 March 2026, Docket AU-00000A-26-0060. Accessed 19 September 2026.
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), 2023.
 - [Government guidance on integrating AI in operational technology](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4347041/nsa-cisa-and-others-release-guidance-on-integrating-ai-in-operational-technology/), December 2025.
 
-Return to [Utilities](/use-cases/utilities) or [explore the agent types](/architecture/agent-types).
-
-**Next step:** score each agent in the inventory on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+</details>

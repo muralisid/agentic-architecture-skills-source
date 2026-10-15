@@ -2,18 +2,19 @@
 title: "Choose how memory is represented"
 description: "Use exact records, similarity, or relationships according to the question."
 position: "Design guidance with illustrative examples. Validate the design on the work it will support."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [memory, data-to-memory, r02, r14]
 ---
 
 The agent has retained an inspection case. A later question could ask for its official completion date, a similar incident, or all sites affected by the same requirement. **The same stored case needs different ways of being found.**
 
 <TeachingIllustration src="/images/memory/representation-choices-v1.webp" title="Start with the question, then choose the representation" alt="Exact questions use records, related meaning uses text embeddings, similar observations use suitable media representations, and connected facts use relationships. Original sources and metadata support every choice." caption="Teaching illustration. The example is a proposed design, not a measured deployment." expandable />
 
-## Why one search method is not enough
+## One search method will not do
 
-Putting everything into embeddings makes related material easy to look for. It does not make a nearby result the official record for a particular asset. Conversely, an exact identifier lookup will not discover differently worded incidents with a related pattern.
+Putting everything into [embeddings](/memory/vector-spaces) makes related material easy to look for. It does not make a nearby result the official record for a particular asset. Conversely, an exact identifier lookup will not discover differently worded incidents with a related pattern.
 
 The memory's role stays the same. An episode is still a past event whether you retrieve it through a database key, keywords, an embedding, or a relationship.
 
@@ -29,7 +30,7 @@ Ask which differences must remain visible: magnitude, duration, order, location,
 
 ## Use relationships when the answer depends on connections
 
-“Which sites share this control and have overdue evidence?” involves relationships between sites, controls, and records. Start with existing identifiers and joins. A graph becomes a candidate when its traversal and maintenance needs justify it. A graph link still needs an origin and a valid period.
+"Which sites share this control and have overdue evidence?" involves relationships between sites, controls, and records. Start with existing identifiers and joins. A graph becomes a candidate when its traversal and maintenance needs justify it. A graph link still needs an origin and a valid period.
 
 ## Compare before combining
 

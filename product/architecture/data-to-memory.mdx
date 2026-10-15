@@ -1,57 +1,70 @@
 ---
 title: "The data-to-memory pipeline"
 icon: "Workflow"
-description: "The nine-stage path from company data to a cited answer, with the source trail intact, and the two rules that make it a governed record rather than plumbing."
+description: "How company data becomes a cited answer and an agent memory in nine stages, and the rule that every copy keeps the original's access, privacy and deletion duties."
+position: "The nine stages and their failure modes come from measured studies and practitioner reports. Several figures are vendor figures. The permissions answer for summaries built from many sources is still emerging."
+lastReviewed: "2026-10-15"
 hero_figure: "data-to-memory-pipeline"
+concepts: [r02, r14, r11, memory, flywheel, patterns, concern-matrix]
 ---
 
-<PlainTerms>
-An AI agent is only as trustworthy as the information put in front of it. This page follows company data through nine stages, from the original document to an answer that cites its sources, and on into what the agent remembers afterwards. Each stage has a known way of failing, and each failure has a control. The one thing to remember: anything derived from your data carries the same access rules, privacy duties, and deletion duties as the original. That includes the searchable copies agents use and the memories they keep.
-</PlainTerms>
+An agent answers a question from company documents. Can you show where each part of the answer came from? And will a deleted record stay deleted in everything built from it? Company data reaches a cited answer in nine stages, in three groups. First, get the data ready: parse, chunk, embed and index it. Then answer from it: retrieve with the right to refuse, and cite. Afterwards, write memory through quarantine, refresh when sources change, and erase in cascade. Every copy made on the way keeps the original's access, privacy and deletion duties.
 
-## Why the data-to-memory pipeline needs governance
+<TeachingIllustration src="/figures/architecture/data-to-memory-stages.svg" mobileSrc="/figures/architecture/data-to-memory-stages-mobile.svg" expandable title="From company data to a cited answer" alt="Nine stages in three groups. Get the data ready: parse with provenance, chunk and add context, embed with versions, and index with permissions. Answer from it: retrieve or refuse, and cite every passage. Afterwards: write memory through quarantine, refresh on source change, and erase in cascade. A panel states the rule behind all nine. Every copy keeps the original's access rules, privacy duties, location limits and deletion duty. Embeddings count as data. A copy built from several sources takes the strictest label. A summary of many documents has no complete permissions answer yet. A strip shows what the agent keeps. Working memory is what the model has in front of it now. Thread memory keeps one case across a pause. Long-term memory is kept for later tasks and is a record." caption="Each stage has a known way to fail and a control for it. The deep detail is in the data platform and agent data engineering layers." />
 
-**WHY:** Retrieval and memory create new copies and derivatives of company data. Permissions can disappear during indexing, provenance can be lost during transformation, poisoned memory can persist beyond the task, and deletion can succeed in the source while leaving vectors, traces or memories behind. These are governance failures, not merely retrieval-quality issues.
+The deep detail sits in two of [the fourteen layers](/layers): [the data platform (R02)](/layers/r02-data-platform) and [agent data engineering (R14)](/layers/r14-agent-data-engineering).
 
-**WHAT:** Govern the full nine-stage path from source to answer to memory: **parse with provenance, chunk and enrich, embed with versions, index with permissions, retrieve with refusal, cite by construction, quarantine durable memory, refresh from source changes, and erase in cascade**. Every derived artifact inherits the access, privacy, residency, classification and deletion duties of its sources.
+## Get the data ready
 
-![Visual summary of the governed data-to-memory pipeline](/figures/architecture/data-to-memory.jpg)
+**1. Parse with provenance.** Parsing reads each document and keeps its source trail. <Term k="provenance">Provenance</Term> is a record of exactly where each piece came from, down to the page and table cell. Even the best parsers lose some search quality against the true document structure. So check parsing quality on a sample, for as long as the pipeline runs.
 
-## The pipeline
+**2. Chunk and add context.** Documents are split into <Term k="chunks">chunks</Term> small enough to find and use. No single way of splitting works for every collection, so test each one. Adding a short note of context to each chunk is the best-tested improvement [vendor].
 
-**In short:** Data passes through nine steps on its way to an agent's answer, and every step keeps a record of where the information came from.
+**3. Embed with versions.** An <Term k="embedding">embedding</Term> is a list of numbers that captures meaning, used to find similar text. Each embedding records which model version made it. An upgrade runs the new version beside the old one. Switch only when a stated <Term k="eval">eval</Term> gain is met. Re-embedding everything takes hours and real money.
 
-<GuideFigure id="data-to-memory-pipeline" fullWidth />
+**4. Index with permissions inside.** Each source's access list is copied into the <Term k="vector index">search index</Term>. Every search is filtered on the caller's live identity before it runs. If the permission sync fails, the search returns nothing rather than too much. Filtering after the search is a mistake. It leaks counts and starves the results.
 
-There are nine stages, each with a measured failure mode. The deep treatment is on [R02](/layers/r02-data-platform), the data platform layer, and [R14](/layers/r14-agent-data-engineering), the agent data engineering layer. The architectural spine:
+## Answer from it
 
-1. **Parse with provenance.** Parsing that understands page layout attaches <Term k="provenance">provenance</Term>, a record of exactly where each piece came from, at page and cell level as it reads. Even the best parsers lose at least 14 percent of <Term k="retrieval">retrieval</Term> performance compared with the true document structure, so parsing fidelity is spot-checked forever.
-2. **Chunk per corpus, enrich contextually.** Documents are split into <Term k="chunks">chunks</Term> small enough to retrieve, and no single splitting recipe survives evaluation across every collection. Enriching each chunk with context is the best-evidenced upgrade: 49 percent fewer retrieval failures, and 67 percent fewer with reranking [vendor].
-3. **Embed versioned.** Every <Term k="embedding">embedding</Term> (a numeric fingerprint used to find similar meaning) carries the version of the model that produced it. Upgrades run blue/green, with the new version alongside the old, and migrate only when a stated <Term k="eval">eval</Term> gain is met. The reason for caution is cost: re-embedding everything takes hours on serious hardware, or a four-figure sum through a paid <Term k="api">application programming interface (API)</Term>.
-4. **Index with permissions inside.** The access control lists (<Term k="acl">ACLs</Term>) of each source are carried into the <Term k="vector index">vector index</Term> as metadata. Retrieval is filtered on the caller's live identity before the search runs, and a failed permissions sync <Term k="fail closed">fails closed</Term>, returning nothing rather than too much. Filtering after the search is the anti-pattern: it leaks counts and starves results.
-5. **Retrieve with refusal available.** A <Term k="semantic contract">semantic contract</Term>, an agreed business definition of each measure, routes high-stakes numbers either to a <Term k="deterministic">deterministic</Term> answer computed by fixed rules or to a refusal. That turns silent wrong answers into visible ones.
-6. **Cite by construction.** Answers carry <Term k="lineage">lineage</Term> back to their sources at the level of individual text spans. This is also the single most valuable component of the evidence posture, as [R11](/layers/r11-governance-risk-sovereignty), the governance, risk, and sovereignty layer, sets out.
-7. **Write memory through quarantine.** Anything written to durable <Term k="memory">agent memory</Term> carries provenance and waits in quarantine until it is <Term k="promotion">promoted</Term>. The reason is measured. Poisoning less than 0.1 percent of a memory store has achieved more than 80 percent attack success. <Term k="injection">Injection</Term> through queries alone has reached 98.2 percent.
-8. **Refresh by CDC.** <Term k="cdc">Change data capture (CDC)</Term>, which streams each database change as it happens, keeps indexes fresh to within minutes at close to batch cost. Full streaming has to be earned by how often decisions are made, not chosen by default. In one documented case the two approaches cost $400 versus $7,600 per month for the same stated requirement.
-9. **Erase in cascade.** Deleting a record triggers an <Term k="erasure cascade">erasure cascade</Term>: the deletion reaches raw stores, embeddings, memories, <Term k="traces">traces</Term>, and every derived artifact. Search consults a list of deleted embeddings before any approximate-nearest-neighbour query (the fast similarity search), so deleted items cannot resurface. Deletion itself is exposed as an audited operation.
+**5. Retrieve with the right to refuse.** Some numbers are too important to guess. An agreed business definition of each measure, called a <Term k="semantic contract">semantic contract</Term>, decides how they are answered. Either a fixed calculation gives the number, or the agent refuses. A silent wrong answer becomes a visible refusal.
 
-## The two rules that make it governance, not plumbing
+**6. Cite by construction.** Each answer carries links back to the exact passages it used. This is also the most valuable part of the audit trail. The [governance, risk and sovereignty layer (R11)](/layers/r11-governance-risk-sovereignty) sets out how it is kept.
 
-**In short:** Searchable copies of your data are still your data, and multi-document summaries have no complete permissions answer yet.
+## Afterwards
 
-**Embeddings are recoverable data.** Exact reconstruction of short inputs from their embeddings has been demonstrated at a 92 percent rate. So embeddings inherit everything from their sources, in full. That means the sensitivity <Term k="classification">classification</Term>, the access control lists, the <Term k="residency">data residency</Term> rules (which country or region the data may sit in), and the erasure obligations. Any derived artifact inherits the strictest classification among its sources.
+**7. Write memory through quarantine.** Anything the agent writes to long-term <Term k="memory">memory</Term> carries its source. It waits in quarantine until a rule or a person promotes it. The reason is measured. Poisoning a tiny share of a memory store has taken over most of an agent's answers in tests.
 
-**The open gap, stated rather than papered over:** artifacts built from many sources at once (cross-document summaries, extracted memories) have no complete published permissions solution. Current practice gives such an artifact only the permissions that all of its sources share (the intersection), and rebuilds it whenever a source's access list changes. This is emerging, practitioner-grade practice, and it is flagged as such.
+**8. Refresh when sources change.** <Term k="cdc">Change data capture</Term> streams each database change as it happens. It keeps indexes fresh to within minutes, at close to batch cost. Full real-time streaming must be justified by how often decisions are made. In one documented case, the two approaches cost $400 and $7,600 a month for the same need.
 
-## Memory tiers
+**9. Erase in cascade.** Deleting a record deletes every copy made from it. That means raw stores, embeddings, memories, <Term k="traces">traces</Term> and summaries. Search checks a list of deleted items first, so nothing deleted can come back. Each deletion is itself logged.
 
-**In short:** What an agent holds during one task is an engineering matter; what it keeps afterwards is a record with ownership and privacy duties attached.
+## The rule behind all nine
 
-Working <Term k="context">context</Term>, the model's working memory for one task, is engineering. Durable memory is a record. The line sits where information persists past the end of a session. From that point, ownership, consent, retention, and erasure obligations attach. Promotion into a durable tier is a gated act, never an accumulation.
+Every copy carries the original's duties. That covers its access rules and its privacy duties. It covers the country or region it must stay in, its sensitivity label and its deletion duty. Embeddings count as data too. Short texts have been rebuilt from their embeddings 92 percent of the time. A copy built from several sources takes the strictest label among them. These duties are the sovereignty and privacy concerns on [the concern matrix](/architecture/concern-matrix).
 
-<GuideFigure id="memory-obligation-tiers" fullWidth />
+One gap is still open. A summary built from many documents has no complete permissions answer yet. Current practice gives it only the permissions that all its sources share. It is rebuilt whenever a source's access list changes. This practice is emerging, not settled.
 
-**Next step:** see how agent behaviour improves without losing control on [the learning flywheel](/architecture/learning-flywheel).
+## Working, thread and long-term memory
+
+Working memory is what the model has in front of it for the current step. It is engineering. Thread memory keeps one case or conversation going across a pause. Long-term memory keeps what is worth reusing in later tasks.
+
+Once information outlives the task, it is a record. Ownership, consent, retention and deletion duties attach to it. So moving anything into long-term memory is a gated step, never a slow pile-up. What is worth keeping is covered on [knowledge and memory](/memory).
+
+## A worked example: overdue inspections at a utility
+
+A field supervisor asks an agent which inspections are overdue on one circuit. The agent searches asset records, inspection reports and work orders. Each report was parsed with its source page, split, embedded, and indexed with its access list. So the agent sees only what that supervisor may see.
+
+Its answer names each report and the passage it used. The overdue count goes into a report to the regulator, so the semantic contract sends it to a fixed calculation. When a crew closes a work order, change data capture refreshes the index within minutes. More on the systems involved is on [utilities](/use-cases/utilities).
+
+## Evidence and limits
+
+The nine stages and their failure modes come from measured studies and practitioner reports. The result for adding context to chunks is a vendor figure. The results on memory poisoning and rebuilding text from embeddings come from research papers, under test conditions.
+
+The cost comparison for change data capture is one documented case. The permissions answer for summaries built from many sources is emerging practice, not a standard.
+
+## Next step
+
+See how an agent's behaviour improves without losing control on [the learning flywheel](/architecture/learning-flywheel).
 
 <details>
 <summary>The research behind this page</summary>
@@ -59,6 +72,8 @@ Working <Term k="context">context</Term>, the model's working memory for one tas
 - [The memory-pipeline architecture](/library/architecture/memory-pipeline-architecture)
 - [Agent data engineering findings](/library/layers/r14-agent-data-engineering/findings)
 - [Data platform findings](/library/layers/r02-data-platform/findings)
-- [The multi-card retrieval experiments](/patterns), the measured evidence behind the purpose-scoped curation step
+- [Context patterns](/patterns): the measured experiments on how to represent documents and choose what reaches the agent. They inform the chunk, embed and retrieve stages.
+
+**Figures behind the stages.** Even the best parsers lose at least 14 percent of retrieval performance against the true document structure. Adding context to each chunk cut retrieval failures by 49 percent, and by 67 percent with reranking [vendor]. Reranking means sorting the first results again with a second, slower model. Poisoning less than 0.1 percent of a memory store has achieved more than 80 percent attack success. Injection through queries alone has reached 98.2 percent. Exact reconstruction of short inputs from their embeddings has been shown at a 92 percent rate. Search consults a list of deleted embeddings before any approximate nearest-neighbour query, the fast similarity search.
 
 </details>

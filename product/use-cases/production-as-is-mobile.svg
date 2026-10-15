@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2910" role="img" aria-labelledby="title desc">
+<title id="title">Production measurement today: who does what</title>
+<desc id="desc">Swimlane of how a production gap is handled today, in eleven steps across six lanes. The fleet system logs every truck load. Belt scales record plant tonnes in the historian, and the lab assays grade and moisture. Cameras and surveyors estimate volumes. The mine engineer builds the daily report in Excel and spots a gap above the tolerance. The metallurgist chases the cause by email and phone, and proposes an adjustment. The manager approves it. Month end runs a survey and a mass balance. Finance and the competent person sign the formal reports, which is an approval.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2910" fill="#f8f5ef"/>
+<text x="28.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Production measurement today: who</text>
+<text x="28.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">does what</text>
+<text x="28.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Typical practice at a mine. Each person checks</text>
+<text x="28.0" y="179.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">their own system, by email and spreadsheet.</text>
+<rect x="28.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="68.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<rect x="358.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="398.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<path d="M42.0 238.0 L54.0 250.0 L42.0 262.0 L30.0 250.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval</text>
+<rect x="28.0" y="310.0" width="664.0" height="182.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="336.0" r="21" fill="#2563eb"/><text x="68.0" y="344.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="100.0" y="316.0" width="189.3" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="343.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Mine systems</text>
+<text x="48.0" y="390.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Count loads</text>
+<text x="48.0" y="426.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The fleet system logs every truck load: truck,</text>
+<text x="48.0" y="457.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">shovel, material, destination and payload.</text>
+<path d="M360.0 494.0 L360.0 526.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="532.0" width="664.0" height="182.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="558.0" r="21" fill="#2563eb"/><text x="68.0" y="566.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="100.0" y="538.0" width="202.7" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="565.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Plant and lab</text>
+<text x="48.0" y="612.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Weigh</text>
+<text x="48.0" y="648.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Belt scales at the plant record tonnes per</text>
+<text x="48.0" y="679.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">hour. Shift totals go to the historian.</text>
+<path d="M360.0 716.0 L360.0 748.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="754.0" width="664.0" height="182.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="780.0" r="21" fill="#2563eb"/><text x="68.0" y="788.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="100.0" y="760.0" width="202.7" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="787.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Plant and lab</text>
+<text x="48.0" y="834.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Assay</text>
+<text x="48.0" y="870.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The lab system records grade and moisture from</text>
+<text x="48.0" y="901.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">samples.</text>
+<path d="M360.0 938.0 L360.0 970.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="976.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1002.0" r="21" fill="#d97706"/><text x="68.0" y="1010.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="100.0" y="982.0" width="216.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1009.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Mine technical</text>
+<text x="48.0" y="1056.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Estimate</text>
+<text x="48.0" y="1092.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Cameras and surveyors estimate volumes. Monthly</text>
+<text x="48.0" y="1123.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">stockpile surveys arrive as files.</text>
+<path d="M360.0 1160.0 L360.0 1192.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1198.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1224.0" r="21" fill="#d97706"/><text x="68.0" y="1232.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="100.0" y="1204.0" width="216.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1231.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Mine technical</text>
+<text x="48.0" y="1278.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Daily report</text>
+<text x="48.0" y="1314.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The mine engineer builds the daily report in</text>
+<text x="48.0" y="1345.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Excel and emails it before the morning meeting.</text>
+<path d="M360.0 1382.0 L360.0 1414.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1420.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1446.0" r="21" fill="#d97706"/><text x="68.0" y="1454.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="100.0" y="1426.0" width="216.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1453.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Mine technical</text>
+<text x="48.0" y="1500.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Spot the gap</text>
+<text x="48.0" y="1536.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Mine tonnes and plant tonnes differ by more</text>
+<text x="48.0" y="1567.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">than the tolerance.</text>
+<path d="M360.0 1604.0 L360.0 1636.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1642.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1668.0" r="21" fill="#d97706"/><text x="68.0" y="1676.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="100.0" y="1648.0" width="162.4" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1675.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Metallurgy</text>
+<text x="48.0" y="1722.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Chase cause</text>
+<text x="48.0" y="1758.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The metallurgist and instrument technician</text>
+<text x="48.0" y="1789.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">check calibration, scale faults, payloads and</text>
+<text x="48.0" y="1820.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">moisture by email and phone.</text>
+<path d="M360.0 1857.0 L360.0 1889.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1895.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1921.0" r="21" fill="#d97706"/><text x="68.0" y="1929.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="100.0" y="1901.0" width="162.4" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1928.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Metallurgy</text>
+<text x="48.0" y="1975.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Propose</text>
+<text x="48.0" y="2011.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The metallurgist or production accountant</text>
+<text x="48.0" y="2042.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">proposes an adjustment with a comment.</text>
+<path d="M360.0 2079.0 L360.0 2111.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2117.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2143.0" r="21" fill="#d97706"/><text x="68.0" y="2151.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<rect x="100.0" y="2123.0" width="122.1" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2150.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Manager</text>
+<path d="M658.0 2127.0 L673.0 2142.0 L658.0 2157.0 L643.0 2142.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="2197.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Approve</text>
+<text x="48.0" y="2233.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The processing or mine manager signs off, by</text>
+<text x="48.0" y="2264.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">email or in the system.</text>
+<path d="M360.0 2301.0 L360.0 2333.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2339.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2365.0" r="21" fill="#d97706"/><text x="68.0" y="2373.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<rect x="100.0" y="2345.0" width="216.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2372.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Mine technical</text>
+<text x="48.0" y="2419.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Month end</text>
+<text x="48.0" y="2455.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Survey, geology, planning and metallurgy run</text>
+<text x="48.0" y="2486.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">the stockpile survey and the mass balance.</text>
+<path d="M360.0 2523.0 L360.0 2555.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2561.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2587.0" r="21" fill="#d97706"/><text x="68.0" y="2595.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">11</text>
+<rect x="100.0" y="2567.0" width="310.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2594.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Finance and reporting</text>
+<path d="M658.0 2571.0 L673.0 2586.0 L658.0 2601.0 L643.0 2586.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="2641.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Sign off</text>
+<text x="48.0" y="2677.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Finance and the competent person sign the</text>
+<text x="48.0" y="2708.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">royalty return, the market report and the</text>
+<text x="48.0" y="2739.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">reserve statement.</text>
+<text x="28.0" y="2818.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Daily report every morning. Monthly close in the</text>
+<text x="28.0" y="2849.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">first one to two weeks (typical, unsourced).</text>
+</svg>

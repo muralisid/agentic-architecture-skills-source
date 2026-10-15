@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3152" role="img" aria-labelledby="title desc">
+<title id="title">The energy and resources estate</title>
+<desc id="desc">A fourteen-floor building, one floor per layer, with the main systems named on each floor. The agent platform floor is where agents run, on the business side or in the cloud. Below the building is a wall, the OT boundary, where plant and business networks meet. A historian replica in the wall copies plant data out, one way. A read broker serves that copy to agents, read only. Below the wall is the control side of line of business and OT: DCS, PLC, the safety instrumented system, protection relays, turbine control, collision avoidance and fatigue monitoring. No agent writes below the wall. People and certified systems make every physical change there.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="3152" fill="#f8f5ef"/>
+<text x="28.0" y="62.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">The energy and resources estate</text>
+<text x="28.0" y="102.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Fourteen layers you own, with the main systems at</text>
+<text x="28.0" y="133.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">a generator, an oil and gas operator and a miner.</text>
+<path d="M28 194 L360.0 170 L692 194 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<rect x="28.0" y="198.0" width="664.0" height="154.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="232.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Agent data engineering (R14)</text>
+<text x="44.0" y="263.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Mostly new. Historian-to-lakehouse pipelines,</text>
+<text x="44.0" y="294.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">equipment hierarchies and tag names, document</text>
+<text x="44.0" y="325.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">capture</text>
+<rect x="28.0" y="356.0" width="664.0" height="154.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="44.0" y="390.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Operating model and supervision (R13)</text>
+<text x="44.0" y="421.0" font-family="Arial,sans-serif" font-size="24" fill="#78350f">Control room, reliability engineers, planners,</text>
+<text x="44.0" y="452.0" font-family="Arial,sans-serif" font-size="24" fill="#78350f">metallurgists, dispatchers, remote operations</text>
+<text x="44.0" y="483.0" font-family="Arial,sans-serif" font-size="24" fill="#78350f">centre</text>
+<rect x="28.0" y="514.0" width="664.0" height="123.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="548.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Observability and FinOps (R12)</text>
+<text x="44.0" y="579.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">IT monitoring, historian interface health, OT</text>
+<text x="44.0" y="610.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">asset inventory, service management</text>
+<rect x="28.0" y="641.0" width="664.0" height="154.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="675.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Governance, risk and sovereignty (R11)</text>
+<text x="44.0" y="706.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Process safety, management of change, critical</text>
+<text x="44.0" y="737.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">controls, tailings, market and emissions</text>
+<text x="44.0" y="768.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">reporting</text>
+<rect x="28.0" y="799.0" width="664.0" height="123.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="833.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Security and identity (R10)</text>
+<text x="44.0" y="864.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Corporate directory, a separate OT directory,</text>
+<text x="44.0" y="895.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">privileged access, OT network monitoring</text>
+<rect x="28.0" y="926.0" width="664.0" height="123.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="960.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Experience and channels (R09)</text>
+<text x="44.0" y="991.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Control consoles, historian screens, mobile</text>
+<text x="44.0" y="1022.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">work apps, in-cab displays, trading screens</text>
+<rect x="28.0" y="1053.0" width="664.0" height="123.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="1087.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Productivity and collaboration (R08)</text>
+<text x="44.0" y="1118.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Email, Teams, SharePoint, Excel, shift handover</text>
+<text x="44.0" y="1149.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">logs, radio</text>
+<rect x="28.0" y="1180.0" width="664.0" height="123.0" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="44.0" y="1214.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent platform (R07)</text>
+<text x="44.0" y="1245.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agents run here, on the business side or in the</text>
+<text x="44.0" y="1276.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">cloud. Copilots and vendor agent builders today</text>
+<rect x="28.0" y="1307.0" width="664.0" height="123.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="1341.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Intelligence and learning (R06)</text>
+<text x="44.0" y="1372.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Advanced process control, anomaly models, price</text>
+<text x="44.0" y="1403.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">forecasts, expert control on mills, ore vision</text>
+<rect x="28.0" y="1434.0" width="664.0" height="154.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="44.0" y="1468.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Line of business and OT (R05)</text>
+<text x="44.0" y="1499.0" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">Information side: asset performance, condition</text>
+<text x="44.0" y="1530.0" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">monitoring, alarm management, fleet management,</text>
+<text x="44.0" y="1561.0" font-family="Arial,sans-serif" font-size="24" fill="#1e3a8a">mine planning</text>
+<rect x="28.0" y="1592.0" width="664.0" height="154.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="1626.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Systems of record (R04)</text>
+<text x="44.0" y="1657.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">ERP, asset management (EAM), production and</text>
+<text x="44.0" y="1688.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">metal accounting, trading and bidding, HSE,</text>
+<text x="44.0" y="1719.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">permit to work</text>
+<rect x="28.0" y="1750.0" width="664.0" height="154.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="1784.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Integration fabric (R03)</text>
+<text x="44.0" y="1815.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">OPC servers, MQTT broker, integration platform,</text>
+<text x="44.0" y="1846.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">market links (AEMO bidding), fleet and</text>
+<text x="44.0" y="1877.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">telematics adapters</text>
+<rect x="28.0" y="1908.0" width="664.0" height="154.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="1942.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Data platform (R02)</text>
+<text x="44.0" y="1973.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Process historian, lab system (LIMS), fleet</text>
+<text x="44.0" y="2004.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">database, geology and block models, lakehouse,</text>
+<text x="44.0" y="2035.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">dashboards</text>
+<rect x="28.0" y="2066.0" width="664.0" height="154.0" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="44.0" y="2100.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#182e31">Infrastructure and compute (R01)</text>
+<text x="44.0" y="2131.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Control-building servers, rugged computers on</text>
+<text x="44.0" y="2162.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">trucks, private wireless, remote operations</text>
+<text x="44.0" y="2193.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">centre, cloud</text>
+<rect x="28" y="2234" width="664" height="454" rx="6" fill="#475569"/>
+<text x="48.0" y="2276.0" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#ffffff">OT boundary</text>
+<text x="48.0" y="2312.0" font-family="Arial,sans-serif" font-size="24" fill="#ffffff">Plant and business networks meet only here, in</text>
+<text x="48.0" y="2343.0" font-family="Arial,sans-serif" font-size="24" fill="#ffffff">a buffer network.</text>
+<rect x="48.0" y="2380.0" width="624.0" height="92.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="64.0" y="2416.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Read broker</text>
+<text x="64.0" y="2450.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Serves the copy to agents, read only</text>
+<rect x="48.0" y="2508.0" width="624.0" height="92.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="64.0" y="2544.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Historian replica</text>
+<text x="64.0" y="2578.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Copies plant data out, one way</text>
+<rect x="48.0" y="2616.0" width="400.0" height="52.0" rx="26" fill="#fff1f2" stroke="#e11d48" stroke-width="2.5"/>
+<text x="248.0" y="2651.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#881337">No agent writes below here</text>
+<path d="M612.0 2506.0 L612.0 2475.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M612.0 2378.0 L612.0 2222.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2698.0" width="664.0" height="424.0" rx="6" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="48.0" y="2738.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#881337">Line of business and OT (R05), control</text>
+<text x="48.0" y="2772.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#881337">side</text>
+<rect x="48.0" y="2810.0" width="70.3" height="44.0" rx="22" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+<text x="63.0" y="2840.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">DCS</text>
+<rect x="130.3" y="2810.0" width="70.3" height="44.0" rx="22" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+<text x="145.3" y="2840.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">PLC</text>
+<rect x="48.0" y="2864.0" width="460.1" height="44.0" rx="22" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+<text x="63.0" y="2894.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Safety instrumented system (SIS)</text>
+<rect x="48.0" y="2918.0" width="258.5" height="44.0" rx="22" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+<text x="63.0" y="2948.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Protection relays</text>
+<rect x="318.5" y="2918.0" width="231.6" height="44.0" rx="22" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+<text x="333.5" y="2948.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Turbine control</text>
+<rect x="48.0" y="2972.0" width="285.4" height="44.0" rx="22" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+<text x="63.0" y="3002.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Collision avoidance</text>
+<rect x="345.4" y="2972.0" width="271.9" height="44.0" rx="22" fill="#ffffff" stroke="#e11d48" stroke-width="2"/>
+<text x="360.4" y="3002.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Fatigue monitoring</text>
+<text x="48.0" y="3056.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">People and certified systems make every</text>
+<text x="48.0" y="3087.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">physical change here.</text>
+<path d="M612.0 2696.0 L612.0 2603.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+</svg>

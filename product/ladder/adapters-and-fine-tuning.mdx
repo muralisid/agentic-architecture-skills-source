@@ -1,79 +1,88 @@
 ---
 title: "Adapters and supervised fine-tuning"
 icon: "SlidersHorizontal"
-description: "How training on examples actually changes a model, what LoRA and QLoRA really are, why fine-tuning cannot add knowledge, the forgetting it causes, and the narrowing of the managed options in 2026."
+description: "How training on examples changes a model, what LoRA and QLoRA are, what it cannot teach, and what it breaks."
+position: "Teaching guidance. The forgetting and retrieval findings are published research. The OpenAI schedule is as of August 2026. The mining example is a proposed design."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-29"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [ladder, r06, flywheel, lifecycle, concern-matrix, decisions]
 ---
 
-<PlainTerms>
-This is the first change that touches the model itself. You show it a few thousand examples of the task done correctly and its weights shift towards producing answers in that shape. It is the right tool for making behaviour consistent and for moving work to a smaller, cheaper model. It is the wrong tool for teaching the model facts, and the reason why sits in how the training actually works. It also has a side effect nobody advertises: models forget things they used to be good at.
-</PlainTerms>
+Instructions, context and tools are tuned, and the agent still gets the format or behaviour wrong. **When does training the model on examples help, and what does it break?** This is the first change that touches the model itself. You show it a few thousand examples of the task done well. Its weights shift towards answers in that shape. It is the right tool for consistent behaviour, and for moving work to a smaller, cheaper model. It is the wrong tool for teaching facts. It also has a side effect: models forget things they used to do well. This is one of the model-change options on [the intelligence ladder](/ladder).
 
-## What training on examples actually does
+## What training on examples does
 
-A model is a very large set of numbers, its weights, and generation is those weights transforming your input into a distribution over possible next <Term k="token">tokens</Term>. Supervised <Term k="fine-tuning">fine-tuning</Term> shows the model an input and the output you wanted, measures how far the model's distribution is from producing that output, and nudges every relevant weight slightly in the direction that closes the gap. Repeat over thousands of pairs and the model's default behaviour moves towards the pattern the pairs share.
+A model is a very large set of numbers called weights. Generating text means those weights turn your input into odds for each possible next <Term k="token">token</Term>. A token is a word or part of a word.
 
-Read that mechanism closely and the two big facts about fine-tuning fall out of it.
+Supervised <Term k="fine-tuning">fine-tuning</Term> shows the model an input and the output you wanted. It measures how far the model is from producing that output. Then it nudges every relevant weight slightly in the direction that closes the gap. Repeat over thousands of pairs, and the model's default behaviour moves towards the pattern the pairs share.
 
-**It learns the pattern, not the content.** The gradient rewards producing outputs shaped like your examples. If your examples are good answers about your product catalogue, the shape includes fluent, confident catalogue answers. It does not include the catalogue, because a few thousand pairs cannot carry a million facts, and nothing in the process stores them. This is why a fine-tuned model answers questions about your business in a perfect house style and gets the details wrong: you taught it the style, and the confidence, without the substance.
+Two facts about fine-tuning follow from that mechanism.
 
-**It moves weights that were doing other jobs.** The weights being nudged are the same ones that encode general capability. Push them hard enough towards your task and they drift away from things the model could previously do. That is catastrophic forgetting, and it is a property of the mechanism, not of sloppy execution.
+**It learns the pattern, not the content.** The training rewards outputs shaped like your examples. If your examples are good answers about your product catalogue, the shape includes fluent, confident catalogue answers. It does not include the catalogue. A few thousand pairs cannot carry a million facts, and nothing in the process stores them. So a fine-tuned model can answer questions about your business in a perfect house style and get the details wrong. You taught it the style and the confidence, without the substance.
 
-## Full fine-tuning, LoRA, and QLoRA
+**It moves weights that were doing other jobs.** The weights being nudged are the same ones that hold general skill. Push them hard enough towards your task, and they drift away from things the model could do before. That is called catastrophic forgetting. It comes from the mechanism itself, not from sloppy work.
 
-**Full fine-tuning** updates all the weights. Maximum capacity to change behaviour, maximum compute, and the output is an entire model you must store and host.
+## Full fine-tuning, LoRA and QLoRA
 
-**LoRA** starts from an observation: the change a fine-tune makes to a weight matrix is usually low-rank, meaning it can be well approximated by two much smaller matrices multiplied together. So instead of updating a large matrix, LoRA freezes it and trains the two small ones alongside, adding their product at inference. The trainable parameter count drops by orders of magnitude, and the artifact you produce is an adapter of megabytes rather than a model of gigabytes. Adapters can be swapped per task over one shared base, which is operationally the most attractive property: one hosted model, many behaviours.
+**Full fine-tuning** updates all the weights. It has the most power to change behaviour and needs the most computing. The output is a whole model you must store and host.
 
-**QLoRA** adds one more move: the frozen base is quantised to 4-bit precision during training, so the memory footprint drops far enough to adapt a large model on a single serious GPU. The adapter itself trains in normal precision. Quality is close to LoRA at a fraction of the hardware.
+**LoRA** starts from an observation. A fine-tune changes a large table of weights. That change can usually be approximated by two much smaller tables multiplied together. This is what "low-rank" means. So LoRA freezes the large table and trains the two small ones alongside it. Their product is added when the model runs. The number of weights trained drops by orders of magnitude. The result is an adapter of megabytes, not a model of gigabytes. Adapters can be swapped per task over one shared base model. That is their most useful property in operation: one hosted model, many behaviours.
 
-One belief needs correcting because it drives bad decisions: **adapters do not prevent forgetting.** Touching fewer weights sounds safer, and the published finding is that LoRA does not protect the model's general capability. If forgetting matters for your use, measure it, and see the repair on [distillation](/ladder/distillation).
+**QLoRA** adds one more move. The frozen base model is compressed to 4-bit precision during training. That cuts the memory needed far enough to adapt a large model on a single serious GPU. The adapter itself trains at normal precision. Quality is close to LoRA, on a fraction of the hardware.
+
+One belief needs correcting because it drives bad decisions. **Adapters do not prevent forgetting.** Touching fewer weights sounds safer. The published finding is that LoRA does not protect the model's general skill. If forgetting matters for your use, measure it. The repair is on [distillation](/ladder/distillation).
 
 <GuideFigure id="tuning-methods" fullWidth />
 
-<TeachingIllustration src="/images/ladder/fine-tuning-methods-labeled-v2.webp" alt="Three model stacks compare rewriting every layer, attaching small adapters to frozen layers, and attaching adapters to a compressed frozen model." title="The footprint changes; the learning mechanism does not" caption="Full fine-tuning rewrites the model. LoRA learns small detachable changes while the base stays frozen. QLoRA compresses that frozen base during training. All three learn behaviour from examples, and all can damage capabilities not rehearsed." />
+<TeachingIllustration src="/images/ladder/fine-tuning-methods-labeled-v2.webp" alt="Three model stacks side by side. Full fine-tuning rewrites every weight and produces a whole model. LoRA freezes the base and trains small adapters. QLoRA uses a 4-bit frozen base and trains small adapters. All three teach behaviour, do not add knowledge and can cause forgetting." title="The footprint changes; the learning mechanism does not" caption="Full fine-tuning rewrites the model. LoRA learns small detachable changes while the base stays frozen. QLoRA compresses that frozen base during training. All three learn behaviour from examples, and all can damage skills the examples leave out." />
 
 ## What you need before starting
 
-**Examples in the low thousands, and their quality is the whole game.** The model will learn exactly what the pairs teach, including their errors, their biases and their shortcuts. A hundred meticulous examples beat ten thousand scraped ones.
+**Examples in the low thousands, and their quality decides everything.** The model learns exactly what the pairs teach, including their errors, biases and shortcuts. A hundred careful examples beat ten thousand scraped ones.
 
-**A locked <Term k="eval">eval</Term> suite that existed before training**, including tests for what should not change. Measuring only the target task is how forgetting ships to production unnoticed.
+**A locked <Term k="eval">eval</Term> suite that existed before training.** An eval suite is a set of test tasks with known right answers. Include tests for what should not change. Measuring only the target task is how forgetting reaches production unnoticed.
 
-**A hosting plan.** An adapter needs a base model to run against; a full fine-tune needs serving infrastructure of its own. Either way you now own an artifact with a lifecycle: when the base model generation moves, your work needs re-doing and re-evaluating.
+**A hosting plan.** An adapter needs a base model to run against. A full fine-tune needs its own serving setup. Either way, you now own a trained model that has to be maintained. When the base model generation moves on, your work must be redone and re-tested.
+
+A new or retrained model re-runs the evals at the change stage of [the agent lifecycle](/architecture/agent-lifecycle). [The learning flywheel](/architecture/learning-flywheel) sets out how it is tested and promoted. Models and their training sit in [the intelligence and learning layer (R06)](/layers/r06-intelligence-and-learning).
 
 ## The managed options narrowed in 2026
 
-**As of August 2026.** OpenAI is withdrawing self-serve fine-tuning in phases, announced 7 May 2026 on its deprecations page. Organisations that had not previously fine-tuned lost access that day; organisations without recent fine-tuned inference lost it on 2 July 2026; remaining customers can create no new jobs after **6 January 2027**. Inference on existing fine-tuned models continues until their base models retire.
+**As of August 2026.** OpenAI is withdrawing self-serve fine-tuning in phases. It announced this on its deprecations page on 7 May 2026. Organisations that had never fine-tuned lost access that day. Organisations with no recent use of a fine-tuned model lost it on 2 July 2026. Remaining customers can create no new jobs after **6 January 2027**. Existing fine-tuned models keep running until their base models retire.
 
-For most enterprises reading this, that route is already closed. What remains: managed fine-tuning through the major cloud platforms, and parameter-efficient methods on open-weight models you host or rent, which are unaffected. This is a volatile product fact and sits on the re-verification list.
+For most enterprises, that route is already closed. Two routes remain. One is managed fine-tuning through the major cloud platforms. The other is adapter methods on open-weight models you host or rent. Those are unaffected. This product fact changes often, so check it before you rely on it.
 
-## In utilities and mining
+## Worked example: inspection reports at a mine
 
-<TeachingIllustration src="/figures/ladder/industrial-adapters-and-fine-tuning.svg" mobileSrc="/figures/ladder/industrial-adapters-and-fine-tuning-mobile.svg" title="Teach a consistent inspection report" alt="Examples: Reviewed evidence and reports. Training: Learn the report behavior. Evaluation: Hold out sites and cases. Runtime: Retrieve current facts" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
+<TeachingIllustration src="/figures/ladder/industrial-adapters-and-fine-tuning.svg" mobileSrc="/figures/ladder/industrial-adapters-and-fine-tuning-mobile.svg" title="Teach a consistent inspection report" alt="Four boxes in order. Examples: reviewed evidence and reports. Training: learn the report behaviour. Evaluation: hold out sites and cases. Runtime: retrieve current facts." caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-A mining team may have reviewed examples showing how an inspection report should distinguish observations, uncertainty, and required follow-up. These pairs can be candidates for teaching consistent report behavior when instructions alone are insufficient.
+A mining team may have reviewed examples of good inspection reports. These show how a report should separate observations, uncertainty and required follow-up. When instructions alone are not enough, these pairs are candidates for teaching consistent report behaviour.
 
-Keep current standards, asset condition, and individual incidents in retrievable evidence. Evaluate on held-out sites and unusual cases, not just reports similar to the training examples. Check that improved formatting does not conceal unsupported claims.
+Keep current standards, asset condition and individual incidents in retrievable evidence. Evaluate on held-out sites and unusual cases, not just reports like the training examples. Check that better formatting does not hide unsupported claims.
 
-Compare against a prompt-and-examples baseline and include preparation, hosting, review, and maintenance cost. No particular model size, volume, or saving is assumed in this proposed example.
+Compare against a baseline of a prompt with examples. Include preparation, hosting, review and maintenance cost. This proposed example assumes no particular model size, volume or saving.
 
-## The test for moving on
+## When adapters are not enough
 
+**Adapters have closed the format and behaviour gap. What remains wrong is judgement or knowledge.**
 
+If the shape is right but the reasoning is wrong on outcomes a program can grade, go to [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning). If the model still misreads your domain's language and documents, go to [continued pretraining](/ladder/continued-pretraining). If quality is right and cost or speed is the complaint, go to [distillation](/ladder/distillation).
 
-**Adapters have closed the format and behaviour gap, and what remains wrong is judgement or knowledge.** If the shape is right and the reasoning is wrong on outcomes you can grade programmatically, go to [reinforcement fine-tuning](/ladder/reinforcement-fine-tuning). If the model still misreads your domain's language and documents, go to [continued pretraining](/ladder/continued-pretraining). If quality is right and cost or latency is the complaint, go to [distillation](/ladder/distillation).
+## Evidence and limits
 
-<EvidenceBadge status="mixed-evidence" /> The deprecation schedule is from OpenAI's own documentation, as of August 2026. The 7B-versus-frontier comparison is a single published head-to-head. The forgetting finding and the LoRA correction are published research.
+<EvidenceBadge status="mixed-evidence" /> The deprecation schedule is from OpenAI's own documentation, as of August 2026. The forgetting finding and the LoRA correction are published research. The finding that retrieval beats fine-tuning for adding new facts was published at EMNLP 2024. The mining example is a proposed design.
 
-**Next step:** read the next option on the ladder, [distillation](/ladder/distillation).
+## Next step
+
+Read the next option, [distillation](/ladder/distillation).
 
 <details>
 <summary>The research behind this page</summary>
 
 - OpenAI deprecations page, self-serve fine-tuning wind-down, announced 7 May 2026: https://developers.openai.com/api/docs/deprecations
-- LoRA not preventing catastrophic forgetting, and the adaptation ordering: [intelligence and learning](/layers/r06-intelligence-and-learning) and [the decision catalog](/decisions).
-- Why baked-in facts fail governance: [the concern matrix](/architecture/concern-matrix) on derived artifacts inheriting obligations.
+- LoRA not preventing forgetting, and the order in which to try model changes: [intelligence and learning](/layers/r06-intelligence-and-learning) and [the decision catalog](/decisions).
+- Why facts baked into a model fail governance: [the concern matrix](/architecture/concern-matrix) on derived artifacts inheriting obligations.
 - Retrieval over fine-tuning for adding new facts: Fine-Tuning or Retrieval?, EMNLP 2024, https://aclanthology.org/2024.emnlp-main.15/
 - Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
 

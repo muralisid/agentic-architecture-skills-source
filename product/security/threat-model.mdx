@@ -1,234 +1,235 @@
 ---
 title: "Threat-model an agentic workflow"
 icon: "Map"
-description: "A practical method for mapping an agent's intent, trust boundaries, authority, mutable state and external effects before selecting controls or writing red-team tests."
+description: "How to threat-model an agent: add intent, trust, authority, mutable state and effects to the data-flow diagram, derive abuse cases, then bind each one to controls outside the model and a test."
+position: "A method that applies standard threat modelling to the ways agents fail. The examples are illustrative designs, not measured deployments."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-31"
-dateModified: "2026-09-04"
+dateModified: "2026-10-15"
+concepts: [zones, delegation, enforcement, agent-types, risk, lifecycle, r03, r10]
 ---
 
-<PlainTerms>
-A threat model is a map of how an agent could be made to do the wrong thing and what would stop it. For an ordinary application, teams map users, services and data flows. For an agent, they must also map the instructions it follows, the untrusted material it reads, the tools it can choose, the state it can change and the authority it carries from one step to the next. The thing to remember: begin with what the agent can cause in the world, then work backward to every input that might steer it there.
-</PlainTerms>
+Teams usually threat-model software with a data-flow diagram: users, services, data stores and the arrows between them. For an <Term k="agent">agent</Term>, that diagram misses the main risk. Instructions and data travel through the <Term k="model">model</Term> as the same kind of <Term k="token">token</Term>. An email is data to the application, but its text can become an instruction to the model. An agent threat model adds five overlays to that diagram: intent, trust, authority, mutable state and effects. An overlay is a set of marks drawn on top of the same diagram. From the overlays you write abuse cases. Each abuse case then gets controls outside the model and a test.
 
-## Why the ordinary data-flow diagram is not enough
+The same mix of instruction and data shows up elsewhere. A tool description is configuration, but a compromised server can change it while the agent runs. A memory item is stored state, but it can steer later plans. A message from another agent can be both a claim and a request to act. The usual boxes and arrows do not show how text changes intent, or how authority builds up across a plan.
 
-**WHY:** A tool-using agent combines control flow and data flow inside a probabilistic model. An email is data to the application, but its text may become an instruction to the model. A tool description is configuration, but a compromised server can change it at runtime. A memory item is state, but it can redirect future plans. A message from another agent may be both a claim and a request for delegated action. The usual boxes and arrows remain necessary, but they do not show how text changes intent or how authority accumulates across a plan.
+![The agent threat-modelling method. User intent flows through the agent and the tool gateway to a real-world effect. Five overlays each ask a question. Intent: who may set or change the objective? Trust: which inputs are trusted, untrusted or attacker-writable? Authority: which identities, tools, resources and permissions are available? Mutable state: what can persist into later runs? Effects: what can the agent change in the world? An abuse case is an attacker-controlled source plus an available capability, giving a material effect. The response chain is prevent, contain, detect, recover and prove. The banner reads: write the failure as an effect, then enforce the invariant outside the model.](/figures/security/threat-model.webp)
 
-**WHAT:** Add five overlays to the workflow diagram: **intent, trust, authority, mutable state and effects**. Use them to derive abuse cases. Then bind every material abuse case to prevention, containment, detection, recovery and an executable test.
+## Start with what must stay true
 
-![Visual summary of the agentic threat-modelling method: trace user intent through the agent and tool gateway to a real-world effect; inspect intent, trust, authority, mutable state and effects; derive abuse cases by combining an attacker-controlled source with an available capability; then prevent, contain, detect, recover and prove.](/figures/security/threat-model.webp)
-
-## Start with the security objective
-
-**In short:** State what must remain true even when the model follows an attacker's instruction.
-
-“Prevent prompt injection” is not a useful security objective. It names an attack technique, promises more than current systems can establish, and says nothing about consequence. Write invariants instead:
+Write down what must stay true even when the model follows an attacker's instruction. "Prevent <Term k="prompt injection">prompt injection</Term>" is not a useful objective. It names an attack technique. It promises more than current systems can deliver, and it says nothing about harm. Write invariants instead. An invariant is a rule that must hold whatever the model does:
 
 - Untrusted content cannot add a payee or change a payment destination.
 - Retrieved documents cannot grant the agent access to another repository.
-- A tool result cannot cause data to leave an approved destination set.
-- One agent cannot delegate authority it did not receive to another agent.
-- A memory item cannot become trusted instruction without an authenticated promotion step.
-- The agent cannot call a consequential tool without a policy decision and an attributable identity.
+- A tool result cannot cause data to leave an approved set of destinations.
+- One agent cannot pass to another agent authority it did not receive.
+- A memory item cannot become a trusted instruction without an authenticated promotion step.
+- The agent cannot call a consequential tool without a policy decision and an identity that traces to a person.
 
-An invariant remains meaningful whether the failure begins with prompt injection, a poisoned package, a stolen credential, model error or a malicious insider. It also tells the red team what observable outcome counts as failure.
+A consequential tool is one that changes money, access, records or equipment, or sends something to people. An invariant holds whatever starts the failure. It could be prompt injection, a poisoned package, a stolen credential, a model error or a malicious insider. It also tells the red team, the people who attack the system on purpose, which outcome counts as failure.
 
 <Callout title="Write the failure as an effect">
-Prefer “the agent sent customer data to an unapproved domain” over “the agent was jailbroken.” The first can be enforced, observed and tested. The second describes an uncertain internal condition and can exist without harm, or be absent while harm still occurs.
+Write "the agent sent customer data to an unapproved domain", not "the agent was jailbroken" (talked out of its rules). The first can be enforced, observed and tested. The second describes a state inside the model that is hard to check. It can exist without harm, and harm can happen without it.
 </Callout>
 
-## The five-overlay model
+## Add five overlays to the diagram
 
 ### 1. Intent
 
-Record who may set or change the objective and how the objective is authenticated. Separate:
+Record who may set or change the goal, and how that person or system is authenticated. Keep these apart:
 
-- the user's requested outcome;
-- developer and organizational constraints;
-- plans proposed by the model;
-- instructions encountered in retrieved or tool-returned content;
-- approvals that authorize a specific consequential step.
+- the outcome the user asked for;
+- rules set by developers and the organisation;
+- plans the model proposes;
+- instructions found in retrieved or tool-returned content;
+- approvals for one specific consequential step.
 
-The important question is not “which prompt has priority?” It is **which channel is allowed to create intent or authorization**. A document may supply facts. It does not gain the right to redefine the task because the model interpreted its prose as an instruction.
+Do not ask which prompt has priority. Ask **which channel is allowed to create a goal or an approval**. A document may supply facts. It does not gain the right to change the task because the model read its text as an instruction.
 
 ### 2. Trust
 
-Classify every source that can reach the model or an action argument:
+Sort every source that can reach the model, or the arguments of an action, into one of five trust classes:
 
-- **Verified control input:** authenticated policy, signed configuration, approved tool schema.
-- **Authenticated but untrusted content:** a known employee's email, a customer record, an internal document. Authentication proves origin, not safety.
-- **Externally controlled content:** websites, inbound email, shared documents, third-party APIs and public repositories.
-- **Derived content:** summaries, embeddings, model-generated memory and another agent's output. Derivation does not make it trusted.
-- **Unknown provenance:** content whose source or transformation chain cannot be established.
+- **Verified control input:** authenticated policy, signed configuration, an approved tool schema.
+- **Authenticated but untrusted content:** a known employee's email, a customer record, an internal document. Authentication proves where it came from. It does not prove it is safe.
+- **Externally controlled content:** websites, inbound email, shared documents, third-party APIs and public code repositories.
+- **Derived content:** summaries, <Term k="embedding">embeddings</Term>, memory the model wrote and another agent's output. Being derived does not make it trusted.
+- **Unknown provenance:** content whose source, or chain of changes, cannot be established.
 
-Mark where several trust classes are collapsed into the same model context. Those junctions are the primary hijacking surface. NIST frames indirect prompt injection in the same terms: trusted developer instructions and untrusted external data are combined into a unified input, allowing attacker-written data to behave like instructions ([NIST CAISI, January 2025](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)).
+Mark every place where several trust classes are mixed into the same model context. Those junctions are where hijacking happens. NIST frames indirect prompt injection in the same terms. Trusted developer instructions and untrusted outside data are joined into one input. So data an attacker wrote can act like an instruction ([NIST CAISI, January 2025](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)).
 
-![Five trust classes converging into one model context: verified control input; authenticated but untrusted content; externally controlled content; derived content; and unknown provenance. Authentication proves origin, but it does not prove that content is safe to follow.](/figures/security/trust-classes.webp)
+![Five trust classes converging into one model context: verified control input; authenticated but untrusted content; externally controlled content; derived content; and unknown provenance. Many trust classes in one model context make a hijacking surface. Authentication proves origin, but it does not prove that content is safe to follow.](/figures/security/trust-classes.webp)
 
 ### 3. Authority
 
-Inventory what the agent can exercise, not merely which tools appear in its prompt:
+List what the agent can actually do, not only which tools appear in its prompt. These are its permissions, one of [the four questions](/architecture/agent-types) for any agent: what its own credentials let it do.
 
-- the agent identity and the human or service that delegated to it;
-- token scopes, roles, resource filters and expiry;
-- tools available at each workflow state;
-- network destinations and data stores reachable from the runtime;
-- approval thresholds and who may approve;
-- authority that a downstream tool inherits from its host service;
-- credentials or ambient permissions exposed to generated code.
+- the agent's identity, and the person or service that delegated to it;
+- access-token scopes, roles, resource filters and expiry;
+- the tools available at each step of the workflow;
+- network destinations and data stores the runtime can reach;
+- approval limits, and who may approve;
+- authority a downstream tool inherits from the service that hosts it;
+- credentials or standing permissions that generated code can reach.
 
-Then ask which combinations create a dangerous capability. Read access to confidential data and permission to send email may be acceptable separately but form an exfiltration path together. File write plus code execution creates persistence. Calendar read plus external messaging creates a social-engineering surface. Threat-model **capability composition**, not only individual tools.
+Then ask which combinations are dangerous. Reading confidential data and sending email may each be fine alone. Together they are a path for data theft. Writing files plus running code lets an attack persist. Reading calendars plus messaging people opens a path for social engineering. Threat-model **combinations of permissions**, not only single tools.
 
-![Three dangerous capability combinations: confidential-data access plus external messaging enables exfiltration; file writing plus code execution enables persistence; and calendar access plus contacting people enables social engineering. Review combinations, not only individual tools.](/figures/security/capability-composition.webp)
+![Three dangerous combinations of permissions: reading confidential data plus sending an external message enables data theft; writing files plus executing code enables persistence; reading a calendar plus contacting people enables social engineering. The review question asks what harmful effect becomes possible when two allowed permissions are combined. Remove or check the dangerous pair.](/figures/security/capability-composition.webp)
 
-The governing rule from [the identity chain](/architecture/identity-chain) is that delegation may narrow authority but never enlarge it. Text in context is not a delegation mechanism.
+The rule of [the delegation chain](/architecture/delegation-chain) applies. Delegation may narrow authority but never enlarge it. Text in the context is not a way to delegate. A new tool grant changes the agent's permissions, so [the risk profile](/architecture/risk-profile) is scored again.
 
 ### 4. Mutable state
 
-List every place one run can influence another:
+Mutable state is anything one run can change and a later run will read. List every such place:
 
-- short- and long-term memory;
+- short-term and long-term [memory](/memory);
 - conversation history;
 - retrieval indexes and source documents;
 - task queues, scratchpads and checkpoints;
-- tool registry and tool descriptions;
-- agent configuration and policy caches;
-- generated code, packages and runtime artifacts;
+- the tool registry and tool descriptions;
+- agent configuration and cached policy;
+- generated code, packages and runtime files;
 - messages sent to other agents.
 
-For each store, identify who can write, who can read, whether provenance survives transformation, how trust changes, how long the state persists, and how it is revoked or repaired. A persistent attack is often more serious than a single bad response: one poisoned memory can redirect later work for different users.
+For each store, write down who can write to it and who can read it. Note whether <Term k="provenance">provenance</Term> survives each change, and how trust changes. Note how long the state lasts, and how it is revoked or repaired. A persistent attack is often worse than one bad answer. One poisoned memory can steer later work for other users.
 
 ### 5. Effects
 
-Enumerate external changes in business language:
+List the changes the agent can make in the world, in business words:
 
-- data disclosed, copied, altered or deleted;
-- messages sent and representations made to people;
+- data disclosed, copied, changed or deleted;
+- messages sent, and statements made to people;
 - money committed, transferred or refunded;
 - access granted or credentials issued;
-- code executed or infrastructure changed;
-- records created, attested or submitted;
+- code run or infrastructure changed;
+- records created, signed off or submitted;
 - physical processes influenced;
 - work delegated to another agent.
 
-Classify each effect by reversibility, detectability, scale, time sensitivity and accountable owner. Put effects involving access, money, safety actuation and formal records inside the [four deterministic zones](/architecture/deterministic-zones). The model may prepare or recommend them; a deterministic rule or named person makes the final decision.
+Rate each effect on five points. Can it be undone? Can it be detected? How far does it reach? How urgent is it? Who owns it? The ratings feed the agent's impact, the fourth of the four questions. Effects on access, money, safety actuation and formal records sit in [the four deterministic zones](/architecture/deterministic-zones). The model may prepare or recommend them. A fixed rule or a named person makes the final decision.
 
 ## Draw the workflow in two passes
 
 <Steps>
 <Step>
-**Draw the success path.** Begin at authenticated user intent. Follow every retrieval, model decision, tool call, approval, side effect and evidence event until the business outcome is complete. Include the systems the agent reaches indirectly through tools.
+**Draw the success path.** Start at the user's authenticated request. Follow every retrieval, model decision, tool call, approval, side effect and evidence event to the business outcome. Include the systems the agent reaches through tools.
 </Step>
 <Step>
-**Label every principal.** Name the user, agent, model service, orchestrator, gateway, policy engine, tool server, target system, memory service, approver and evidence collector. “The AI system” is too coarse to assign trust or authority.
+**Label every principal.** A principal is any actor with its own identity. Name the user, the agent, the model service and the <Term k="orchestration">orchestrator</Term>. Name the <Term k="gateway">tool gateway</Term>, the policy engine, the tool servers and the target systems. Name the memory service, the approver and the evidence collector. "The AI system" is too coarse to assign trust or authority.
 </Step>
 <Step>
-**Mark trust transitions.** Put a boundary wherever content moves between owners, tenants, protection domains or provenance classes. Include the transition from data into model context; it is easy to omit because no network boundary is crossed.
+**Mark trust transitions.** Draw a boundary wherever content moves between owners, between customers on a shared system, or between trust classes. Include the move from data into the model's context. It is easy to miss, because no network boundary is crossed.
 </Step>
 <Step>
-**Attach credentials and policy decisions.** Show which identity acts at every tool call, which resource and action it may reach, which policy decision is required, and where expiry or revocation is checked.
+**Attach credentials and policy decisions.** At every tool call, show which identity acts and which resource and action it may reach. Show which policy decision is required, and where expiry or revocation is checked.
 </Step>
 <Step>
 **Mark persistent writes.** Circle every event that changes memory, an index, configuration, a tool registry, a queue or another agent's state. Write down how that state is reviewed and removed.
 </Step>
 <Step>
-**Walk backward from each material effect.** Ask what action immediately causes it, what authority permits that action, what model output supplies its arguments, and which attacker-controlled inputs can influence that output.
+**Walk backward from each effect that matters.** Ask what action causes it, and what authority permits that action. Ask what model output supplies its arguments, and which inputs an attacker controls can shape that output.
 </Step>
 </Steps>
 
 ## Derive abuse cases
 
-**In short:** Combine an attacker-controlled input with an available capability and a material effect.
+An abuse case combines an input an attacker controls, a permission the agent holds and an effect that matters. Write each one in this pattern:
 
-Use this sentence:
-
-> An attacker who controls **[source]** causes **[agent or component]** to use **[authority or capability]** to produce **[effect]**, while bypassing or exploiting **[control assumption]**.
+> An attacker who controls **[source]** makes **[agent or component]** use **[permission]** to cause **[effect]**, getting past **[control assumption]**.
 
 Examples:
 
-- An external sender places instructions in an email, causing a mailbox agent to use its file-read and outbound-email capabilities to disclose an internal document, while exploiting the assumption that retrieved email is only data.
-- A compromised MCP server changes a tool description, causing the planner to route credentials into a malicious argument, while bypassing review performed only when the server was first installed.
-- A low-privilege user writes a shared memory item, causing a later privileged workflow to approve an unauthorized action, while exploiting trust promotion during summarization.
-- One agent sends a fabricated completion message, causing a coordinating agent to commit a transaction, while exploiting the absence of message authentication and independent result verification.
-- An agent generates code that imports a malicious package, causing execution with ambient cloud credentials, while exploiting an unrestricted runtime and unresolved dependency names.
+- An outside sender hides instructions in an email. The mailbox agent uses its file-read and send-email permissions to leak an internal document. The attack exploits the assumption that email is only data.
+- A compromised <Term k="mcp">MCP</Term> server changes a tool description. MCP is the Model Context Protocol, a common way for agents to reach tools. The planner then routes credentials into a malicious argument. The attack gets past a review done only when the server was first installed.
+- A low-privilege user writes a shared memory item. A later, privileged workflow approves an action it should not. The attack exploits trust being raised when memory is summarised.
+- One agent sends a fake completion message. A coordinating agent commits a transaction. The attack exploits messages that are not authenticated, and results no one checks independently.
+- An agent writes code that imports a malicious package. The code runs with cloud credentials already present in the runtime. The attack exploits an open runtime and unresolved package names.
+- At an energy retailer, a customer writes instructions into a note on their account. A billing agent proposes clearing a hardship flag. The attack exploits the assumption that account notes are only data. The [billing exceptions use case](/use-cases/billing-exceptions) keeps that flag with a fixed rule and a trained person.
 
-Do not stop at prompt injection. The current OWASP agentic list also covers tool misuse, identity and privilege abuse, supply-chain vulnerabilities, unexpected code execution, memory and context poisoning, insecure inter-agent communication, cascading failures, human-agent trust exploitation and rogue-agent behaviour ([OWASP Top 10 for Agentic Applications, December 2025](https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/)). MITRE ATLAS adds adversary paths such as tool-data poisoning, tool poisoning, credential harvesting and exfiltration through tool invocation ([MITRE ATLAS, accessed August 2026](https://atlas.mitre.org/)). Use both as completeness checks after deriving workflow-specific cases.
+Do not stop at prompt injection. The OWASP list for agents covers more ([OWASP Top 10 for Agentic Applications, December 2025](https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/)). It includes tool misuse, identity and privilege abuse, and supply-chain weaknesses. It includes unexpected code execution, memory and context poisoning, and insecure messages between agents. It also includes cascading failures, people trusting agents too much, and rogue agents. OWASP is the Open Worldwide Application Security Project. MITRE ATLAS adds attack paths such as tool-data poisoning, tool poisoning and credential harvesting. It also lists data theft through tool calls ([MITRE ATLAS, accessed August 2026](https://atlas.mitre.org/)). Use both as completeness checks after you derive the cases for your own workflow.
 
 ## Bind controls to failure stages
 
-One control rarely covers an abuse case. Design a chain:
+One control rarely covers an abuse case. Design a chain of five:
 
-1. **Prevent:** reduce attacker influence or remove the dangerous capability combination.
-2. **Contain:** enforce identity, scope, destination, amount, rate, schema and sandbox restrictions outside the model.
+1. **Prevent:** reduce what the attacker can influence, or remove the dangerous combination of permissions.
+2. **Contain:** enforce identity, scope, destination, amount, rate, schema and <Term k="sandbox">sandbox</Term> limits outside the model.
 3. **Detect:** alert on policy denials, unusual tool sequences, provenance changes, memory writes and unexpected destinations.
-4. **Recover:** revoke credentials, stop the agent, reverse effects where possible, quarantine state and restore known-good configuration.
-5. **Prove:** preserve the independent trace, policy decision, approval and target-system receipt.
+4. **Recover:** revoke credentials, stop the agent, reverse effects where possible, quarantine state and restore a known-good configuration.
+5. **Prove:** keep the independent <Term k="trace">trace</Term>, the policy decision, the approval and the target system's receipt.
 
-For the email-exfiltration case, a prompt-injection detector is one preventive signal. The stronger chain removes broad mailbox authority, blocks unapproved outbound destinations at the tool gateway, prevents one run from combining confidential reads with external sends without approval, records the deny outside the agent, and provides a revocation path. If the detector misses, the control objective still holds.
+Take the email case. A prompt-injection detector is one useful signal. The stronger chain removes broad mailbox access. It blocks unapproved outbound destinations at the tool gateway. It stops one run from combining confidential reads with outside sends unless someone approves. It records the denial outside the agent, and it has a way to revoke access. If the detector misses, the invariant still holds.
+
+Where these controls live:
+
+- Containment is [enforcement outside the model](/architecture/enforcement): the tool gateway, the <Term k="policy decision point">policy decision point</Term> and promoted rules.
+- The tool gateway sits in [the integration fabric layer (R03)](/layers/r03-integration-fabric).
+- Agent identity, credentials and the policy engine sit in [the security and identity layer (R10)](/layers/r10-security-and-identity).
+- Sandboxes and outbound network limits sit in [the infrastructure and compute layer (R01)](/layers/r01-infrastructure).
+- Memory write rules and quarantine are covered in [memory permissions and lifecycle](/memory/permissions-and-lifecycle).
+- Traces and the evidence store sit in [the observability and FinOps layer (R12)](/layers/r12-observability-and-finops).
 
 ## Turn the threat model into tests
 
-**In short:** Every material abuse case becomes at least one benign task, one attacker goal and one outcome-level judge.
+Every abuse case that matters becomes at least one normal task, one attacker goal and one check on the outcome.
 
-![How a workflow threat becomes an executable security test: define the benign user task, place hostile content in the normal work path, state the exact attacker goal, and judge both legitimate completion and attack success. Measure the clean baseline, utility under attack and whether the unauthorized effect occurred.](/figures/security/threat-model-to-test.webp)
+![How a workflow threat becomes a security test, in four steps. First, the benign task: what the user legitimately wants. Second, the attack placement: hostile content the agent meets during normal work. Third, the attacker goal: the exact unauthorised effect. Fourth, the outcome judges: check both legitimate completion and attacker success. Three gauges measure the clean baseline, utility under attack and attack success. The banner reads: judge messages sent, payments created, permissions changed, files copied or memory written.](/figures/security/threat-model-to-test.webp)
 
 A useful security test has four parts:
 
-- **Benign task:** what the user legitimately wants completed.
-- **Attack placement:** the untrusted source the agent must encounter during normal work.
-- **Attacker goal:** the specific unauthorized effect the attacker wants.
-- **Judges:** independent checks for both legitimate completion and attacker success.
+- **Benign task:** what the user legitimately wants done.
+- **Attack placement:** the untrusted source the agent meets during normal work.
+- **Attacker goal:** the exact unauthorised effect the attacker wants.
+- **Judges:** independent checks of both the real task and the attack.
 
-Judge the target-system state wherever possible. Check whether the message was sent, payment created, permission changed, file copied or memory written. Do not infer safety only from the model's final answer. Run a clean baseline first; an agent that cannot complete the benign task cannot demonstrate useful robustness.
+Judge the state of the target system wherever you can. Check whether the message was sent, the payment created, the permission changed, the file copied or the memory written. Do not infer safety from the model's final answer alone. Run a clean baseline first. If the agent cannot finish the normal task, a blocked attack proves nothing.
 
-NIST's AgentDojo-based work adds three important practices: analyze task-specific outcomes rather than only an aggregate score, adapt attacks after defenses change, and test multiple attempts because a single deterministic-looking run can understate risk ([NIST CAISI](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)). The later [evaluation and red-teaming chapter](#what-comes-next) will turn this into a complete campaign design.
+NIST's work with AgentDojo adds three practices ([NIST CAISI, January 2025](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)). Look at outcomes per task, not only one total score. Adapt the attacks after the defences change. Run each attack several times, because one run can understate the risk. These tests run at the evaluate stage of [the agent lifecycle](/architecture/agent-lifecycle), before approval.
 
 ## The review record
 
-For each workflow, keep one compact record containing:
+For each workflow, keep one short record:
 
-- business owner and accountable risk owner;
-- allowed intent and explicit prohibited effects;
-- identities and delegation chain;
-- trust-boundary and authority diagram;
-- consequential tools and dangerous capability combinations;
-- mutable state and its write, promotion and deletion policy;
-- abuse cases ranked by effect and plausibility;
-- preventive, containment, detection, recovery and evidence controls;
+- the business owner and the accountable risk owner;
+- the allowed intent, and the effects that are explicitly prohibited;
+- the identities and the delegation chain;
+- the trust-boundary and authority diagram;
+- consequential tools and dangerous combinations of permissions;
+- mutable state, and its rules for writing, promotion and deletion;
+- abuse cases ranked by effect and likelihood;
+- the prevention, containment, detection, recovery and evidence controls;
 - test identifiers and current results;
-- accepted residual risk, approver and expiry date;
-- triggers for re-review.
+- the remaining risk accepted, who approved it, and when the approval expires;
+- the triggers for a new review.
 
-Re-review when the model, system prompt, orchestration framework, tools, permissions, memory design, external data sources, approval policy or deployment environment changes. A model upgrade is a security change even when application code is untouched.
+Review the threat model again when the model, the system prompt or the orchestration framework changes. Do the same when tools, permissions, memory design, outside data sources, approval policy or the deployment environment change. A model upgrade is a security change even when no application code changes. These are the change triggers of the agent lifecycle, and each one re-runs the tests.
 
 ## What to refuse
 
-- A threat model that lists “prompt injection” once but does not name attacker-controlled sources or effects.
+- A threat model that lists "prompt injection" once but names no source an attacker controls, and no effect.
 - A diagram where the agent, model, gateway, policy engine, tools and evidence collector are one box.
-- Controls described only as system-prompt instructions.
-- Shared user credentials or application-wide credentials presented to the agent runtime.
-- Approval that shows a model-generated summary without the exact action, target and material arguments being approved.
-- A security evaluation that reports attack success without clean-task utility.
+- Controls written only as instructions in the system prompt.
+- Shared user credentials, or credentials for the whole application, handed to the agent runtime.
+- An approval screen that shows a summary the model wrote, not the exact action, target and key arguments.
+- A security evaluation that reports attack success without the results on clean tasks.
 - A claim of safety based on one attack string, one seed or one successful run.
-- Persistent memory without provenance, write policy, quarantine and deletion.
-
-## What comes next
-
-The next chapter will cover **retrieved content as a hostile input**: direct and indirect prompt injection, how attacks travel through emails, web pages, tool outputs and memory, which defenses reduce success, and which controls continue to hold after the model is hijacked. The later evaluation chapters will turn this threat model into an AgentDojo campaign and an enterprise regression suite.
+- Persistent memory without provenance, write rules, quarantine and deletion.
 
 ## Evidence and limits
 
-This method synthesizes established security threat modelling with agent-specific failure modes. OWASP and MITRE are coverage aids, not evidence that every listed threat applies equally to every workflow. NIST's AgentDojo work supports adaptive, repeated and task-specific evaluation, but benchmark environments simplify production identity, data and operational dependencies. Threat modelling does not measure model robustness by itself; it identifies the invariants and attack paths that the evaluation must exercise. Volatile taxonomies are accurate as accessed on 31 August 2026 and belong on the guide's re-verification cycle.
+This method applies standard security threat modelling to the ways agents fail. OWASP and MITRE ATLAS are checklists for coverage. They do not show that every listed threat applies equally to every workflow. NIST's AgentDojo work supports testing that adapts, repeats and looks at each task. Benchmark environments still simplify real identity, data and operations. A threat model does not measure how robust a model is. It names the invariants and attack paths that the tests must exercise. The OWASP and ATLAS lists are as accessed on 31 August 2026, and they are on the guide's re-verification list.
+
+## Next step
+
+Take the abuse cases into testing at the evaluate stage of [the agent lifecycle](/architecture/agent-lifecycle). Then place each control with [enforcement outside the model](/architecture/enforcement). The [security practices overview](/security) shows where this method fits.
 
 <details>
-<summary>The sources and architecture behind this chapter</summary>
+<summary>The research behind this page</summary>
 
-- [NIST CAISI: Strengthening AI agent hijacking evaluations](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations)
-- [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/)
-- [MITRE ATLAS matrix](https://atlas.mitre.org/)
-- [AgentDojo paper](https://proceedings.neurips.cc/paper_files/paper/2024/file/97091a5177d8dc64b1da8bf3e1f6fb54-Paper-Datasets_and_Benchmarks_Track.pdf)
-- [The identity and delegation chain](/architecture/identity-chain)
-- [Enforcement outside the model](/architecture/enforcement)
-- [The autonomy contract](/architecture/autonomy-contract)
+- [NIST CAISI: Strengthening AI agent hijacking evaluations](https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations), January 2025
+- [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/), December 2025, accessed 31 August 2026
+- [MITRE ATLAS matrix](https://atlas.mitre.org/), accessed 31 August 2026
+- [AgentDojo paper](https://proceedings.neurips.cc/paper_files/paper/2024/file/97091a5177d8dc64b1da8bf3e1f6fb54-Paper-Datasets_and_Benchmarks_Track.pdf), NeurIPS 2024
+- The architecture this method uses: [the delegation chain](/architecture/delegation-chain), [enforcement outside the model](/architecture/enforcement) and [the autonomy contract](/architecture/autonomy-contract)
 
 </details>

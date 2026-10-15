@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1714" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1744" role="img" aria-labelledby="title desc">
 <title id="title">Apply five checks</title>
-<desc id="desc">Five checks in order: can we evaluate it, can we protect its actions, and can we supply reliable evidence. Then two new checks for packaged applications: is the process inside one package, and is a vendor agent GA or dated within two quarters. An idea that fails a check goes into a preparation list.</desc>
+<desc id="desc">Five checks in order. Can we evaluate it? Can we protect its actions? Can we supply reliable evidence? Then two checks for packaged software. Is the process inside one package or across several? Is a vendor agent generally available on your edition, or dated within two quarters? An idea that fails one of the first three checks goes into a preparation list.</desc>
 <defs>
 <marker id="ah9a4c2d" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker>
 </defs>
-<rect x="0" y="0" width="720" height="1714" fill="#f8f5ef"/>
+<rect x="0" y="0" width="720" height="1744" fill="#f8f5ef"/>
 <text x="28" y="62" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="#182e31">Apply five checks</text>
-<text x="28" y="113" font-family="Arial,sans-serif" font-size="24" fill="#465958">Run them on each idea, in order. Checks 4 and 5</text>
-<text x="28" y="144" font-family="Arial,sans-serif" font-size="24" fill="#465958">are new.</text>
-<text x="28" y="191" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">The three gates in the use-case portfolio</text>
+<text x="28" y="113" font-family="Arial,sans-serif" font-size="24" fill="#465958">Run them on each idea, in order. GA means</text>
+<text x="28" y="144" font-family="Arial,sans-serif" font-size="24" fill="#465958">generally available: any customer can run it.</text>
+<text x="28" y="191" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#182e31">The three gates of the use-case portfolio</text>
 <rect x="28" y="227" width="664" height="189" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
 <text x="48" y="268.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#9a4c2d">Check 1</text>
 <text x="48" y="313.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Can we evaluate it?</text>
@@ -27,17 +27,15 @@
 <text x="48" y="806.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#182e31">Can we supply reliable evidence?</text>
 <text x="48" y="848.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Check access, quality, freshness and ownership</text>
 <text x="48" y="879.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">of the information.</text>
-<text x="28" y="965" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">New for packaged applications. They decide</text>
-<text x="28" y="999" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">whether to wait for a vendor's agent or build</text>
-<text x="28" y="1033" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">your own.</text>
+<text x="28" y="965" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">For packaged software. They decide whether</text>
+<text x="28" y="999" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">to wait for a vendor's agent or build your</text>
+<text x="28" y="1033" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">own.</text>
 <rect x="28" y="1069" width="664" height="225" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
 <text x="48" y="1110.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#9a4c2d">Check 4</text>
 <text x="48" y="1155.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#78350f">Is the process inside one package or</text>
 <text x="48" y="1191.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#78350f">across several?</text>
 <text x="48" y="1233.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Does one packaged system hold all the data and</text>
 <text x="48" y="1264.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">permissions?</text>
-<rect x="612.4" y="1083" width="63.6" height="38" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
-<text x="624.4" y="1110.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">new</text>
 <path d="M360 1298 V1330" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah9a4c2d)"/>
 <rect x="28" y="1336" width="664" height="225" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
 <text x="48" y="1377.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#9a4c2d">Check 5</text>
@@ -45,9 +43,8 @@
 <text x="48" y="1458.2" font-family="Arial,sans-serif" font-size="28" font-weight="bold" fill="#78350f">dated within two quarters?</text>
 <text x="48" y="1500.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Count only agents marked GA in release notes.</text>
 <text x="48" y="1531.6" font-family="Arial,sans-serif" font-size="24" fill="#465958">Treat announced ones as unavailable.</text>
-<rect x="612.4" y="1350" width="63.6" height="38" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
-<text x="624.4" y="1377.64" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">new</text>
-<text x="28" y="1611" font-family="Arial,sans-serif" font-size="24" fill="#465958">An idea that fails a check goes into a preparation</text>
-<text x="28" y="1642" font-family="Arial,sans-serif" font-size="24" fill="#465958">list. It may need clearer outcomes, better</text>
-<text x="28" y="1673" font-family="Arial,sans-serif" font-size="24" fill="#465958">interfaces or better data.</text>
+<text x="28" y="1611" font-family="Arial,sans-serif" font-size="24" fill="#465958">An idea that fails one of the first three</text>
+<text x="28" y="1642" font-family="Arial,sans-serif" font-size="24" fill="#465958">checks goes into a preparation list. It may</text>
+<text x="28" y="1673" font-family="Arial,sans-serif" font-size="24" fill="#465958">need clearer outcomes, better interfaces or</text>
+<text x="28" y="1704" font-family="Arial,sans-serif" font-size="24" fill="#465958">better data.</text>
 </svg>

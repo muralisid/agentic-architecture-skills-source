@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Asset investigation today: who does what</title>
+<desc id="desc">Swimlane of how an asset investigation runs today, in eleven steps across six lanes. An APM alert or DCS alarm starts it. The control room takes a first look and types a notification into EAM. An engineer reviews trends, manuals and past work in Excel and email. A technician or oil lab returns results days later. The engineers decide at the morning meeting, which is an approval. The planner builds the work order. The trading desk rebids or the planner updates the forecast. The area authority issues the permit and isolation, which is an approval. The technician does and closes the work, often with thin findings. The engineer reports monthly. Alert to decision takes one to ten working days, typical and unsourced.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Asset investigation today: who does what</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Typical practice. The evidence moves between five or more systems by export and email.</text>
+<rect x="32" y="108.0" width="1536" height="117.3" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 225.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="342.7" width="1536" height="117.3" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 342.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 460.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32" y="577.3" width="1536" height="117.3" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 577.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 694.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<path d="M32 812.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="146.0" height="105.3" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="161.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Plant</text>
+<text x="42.0" y="183.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">systems</text>
+<rect x="32.0" y="231.3" width="146.0" height="105.3" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="290.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Control room</text>
+<rect x="32.0" y="348.7" width="146.0" height="105.3" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="407.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Engineers</text>
+<rect x="32.0" y="466.0" width="146.0" height="105.3" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="524.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Maintenance</text>
+<rect x="32.0" y="583.3" width="146.0" height="105.3" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="631.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Trading or</text>
+<text x="42.0" y="653.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">planning</text>
+<rect x="32.0" y="700.7" width="146.0" height="105.3" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="748.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Area</text>
+<text x="42.0" y="770.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">authority</text>
+<rect x="196.0" y="115.0" width="190.0" height="103.3" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="220.0" cy="140.0" r="16" fill="#2563eb"/><text x="220.0" y="146.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="242.0" y="146.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Alert</text>
+<text x="208.0" y="171.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">APM alert or DCS</text>
+<text x="208.0" y="193.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">alarm</text>
+<rect x="303.0" y="232.3" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="327.0" cy="257.3" r="16" fill="#d97706"/><text x="327.0" y="263.8" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="349.0" y="263.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">First look</text>
+<text x="315.0" y="288.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">Trend on screen.</text>
+<text x="315.0" y="310.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">Shift log entry.</text>
+<rect x="519.0" y="232.3" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="543.0" cy="257.3" r="16" fill="#d97706"/><text x="543.0" y="263.8" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="565.0" y="263.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Notification</text>
+<text x="531.0" y="288.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">Typed into EAM</text>
+<text x="531.0" y="310.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">by hand</text>
+<rect x="626.0" y="349.7" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="650.0" cy="374.7" r="16" fill="#d97706"/><text x="650.0" y="381.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="672.0" y="380.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Review</text>
+<text x="638.0" y="405.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">Excel exports,</text>
+<text x="638.0" y="427.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">manuals, email</text>
+<rect x="733.0" y="467.0" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="757.0" cy="492.0" r="16" fill="#d97706"/><text x="757.0" y="498.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="779.0" y="498.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Get evidence</text>
+<text x="745.0" y="523.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Oil, vibration.</text>
+<text x="745.0" y="545.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">PDF days later</text>
+<rect x="842.0" y="349.7" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="866.0" cy="374.7" r="16" fill="#d97706"/><text x="866.0" y="381.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="888.0" y="380.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Decide</text>
+<path d="M1010.0 361.7 L1022.0 373.7 L1010.0 385.7 L998.0 373.7 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="854.0" y="405.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">Spoken, at the</text>
+<text x="854.0" y="427.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">morning meeting</text>
+<rect x="949.0" y="467.0" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="973.0" cy="492.0" r="16" fill="#d97706"/><text x="973.0" y="498.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="995.0" y="498.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Plan work</text>
+<text x="961.0" y="523.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">EAM work order</text>
+<text x="961.0" y="545.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">and parts</text>
+<rect x="1056.0" y="584.3" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1080.0" cy="609.3" r="16" fill="#d97706"/><text x="1080.0" y="615.8" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="1102.0" y="615.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Replan</text>
+<text x="1068.0" y="640.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">Rebid, or update</text>
+<text x="1068.0" y="662.3" font-family="Arial,sans-serif" font-size="18" fill="#465958">the forecast</text>
+<rect x="1163.0" y="701.7" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1187.0" cy="726.7" r="16" fill="#d97706"/><text x="1187.0" y="733.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="1209.0" y="732.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Permit</text>
+<path d="M1331.0 713.7 L1343.0 725.7 L1331.0 737.7 L1319.0 725.7 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1175.0" y="757.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">Isolate and lock</text>
+<text x="1175.0" y="779.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">the equipment</text>
+<rect x="1270.0" y="467.0" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1294.0" cy="492.0" r="16" fill="#d97706"/><text x="1294.0" y="498.5" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<text x="1316.0" y="498.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Do and close</text>
+<text x="1282.0" y="523.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Findings often</text>
+<text x="1282.0" y="545.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">thin, no codes</text>
+<rect x="1377.0" y="349.7" width="190.0" height="103.3" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="1401.0" cy="374.7" r="16" fill="#d97706"/><text x="1401.0" y="381.1" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">11</text>
+<text x="1423.0" y="380.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Report</text>
+<text x="1389.0" y="405.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">Monthly report</text>
+<text x="1389.0" y="427.7" font-family="Arial,sans-serif" font-size="18" fill="#465958">in BI</text>
+<path d="M372.0 218.3 L372.0 229.3" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M495.0 284.0 L516.0 284.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M695.0 335.7 L695.0 346.7" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M802.0 453.0 L802.0 464.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M909.0 467.0 L909.0 456.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M982.0 453.0 L982.0 464.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1125.0 570.3 L1125.0 581.3" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1232.0 687.7 L1232.0 698.7" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1303.0 701.7 L1303.0 573.3" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M1446.0 467.0 L1446.0 456.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="32.0" y="834.0" width="24.0" height="22.0" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="64.0" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Person</text>
+<rect x="153.4" y="834.0" width="24.0" height="22.0" rx="5" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="185.4" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">System</text>
+<path d="M286.8 834.0 L297.8 845.0 L286.8 856.0 L275.8 845.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="306.8" y="851.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Approval</text>
+<text x="32.0" y="884.0" font-family="Arial,sans-serif" font-size="18" fill="#465958">Alert to decision: one to ten working days (typical, unsourced).</text>
+</svg>

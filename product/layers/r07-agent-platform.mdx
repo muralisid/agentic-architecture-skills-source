@@ -1,124 +1,172 @@
 ---
 title: "Agent platform"
 icon: "Bot"
-description: "Buy the runtime and build the harness: the loop around the model gets explicit stop rules and budgets, inspectable state, separate checking, tested release gates, and crash survival."
+description: "Where agents run: buy the runtime, build the loop around the model, give every run several ways to stop, keep its state where people can read it, and let only tested versions run."
+position: "Design guidance built on dated studies, vendor documents and one proof of concept. The build-or-buy verdict rests on thin published data, and the page says so."
+lastReviewed: "2026-10-15"
 hero_figure: "layer-07-hero"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [layers, capabilities, lifecycle, enforcement, delegation, autonomy, r03, concern-matrix]
 ---
 
-<PlainTerms>
-This page is about the software that runs an <Term k="agent">agent</Term>: when it stops, what it may spend, where it keeps its work, and what happens if it crashes. Buy the underlying runtime, but build and own the control loop yourself, because that loop is where the risk and the lock-in live. The thing to remember: an agent that never knows when to stop is a design fault, not a <Term k="model">model</Term> fault.
-</PlainTerms>
+The agent platform layer (R07) is where agents run. It is one of the [fourteen layers](/layers) you own, and it is mostly new. Today it holds robotic process automation bots, workflow and rule engines, chatbots and copilots. Agent builders inside vendor products are arriving on top. When agents arrive, this layer becomes the home of the runtime. The runtime is one of the [seven capabilities](/architecture/system-view) an agent platform adds. This layer must provide a loop around the model with several independent ways to stop. It must keep each run's state where a person can read it, and survive a crash. It must also let only tested versions of an agent run. The loop around the model is called the <Term k="harness">harness</Term>. It decides what the model sees, what it may call and when it stops. Buy the runtime from a vendor. Build and own the harness yourself.
 
-## Target state
+## What sits in this layer today
 
-**In short:** Own the control loop around each agent, run it on a bought runtime, and give every run explicit limits and crash survival.
+Here is what a typical estate already runs in this layer. Vendors in brackets are examples, not a market claim.
 
-The <Term k="harness">harness</Term> is the engineering shell around the model: it decides what the model sees, what it may call, and when it stops. The enterprise owns and understands the harness. It runs on a managed <Term k="runtime">runtime</Term> that the enterprise does not own. Termination and budget conditions are explicit and rest on more than one condition, never on "until the model stops". State lives outside the <Term k="context window">context window</Term> (the model's limited working memory) in artifacts a person can inspect. Verification runs as a separate agent or process from generation. An <Term k="agent registry">agent registry</Term> <Term k="promote">promotes</Term> agents through <Term k="evaluation">evaluation</Term> gates, demotes them automatically when they go stale, and exposes only promoted agents to discovery. Routing leans on a <Term k="deterministic">deterministic</Term> first tier (fixed rules that give the same answer every time) rather than on router sophistication. Anything that must survive a process dying runs on <Term k="durable execution">durable execution</Term>. The layer's standing pattern: buy the runtime, build the harness.
+| System category | Electricity distributor | Water utility | Hospital network | Generator, oil and gas, or miner |
+|---|---|---|---|---|
+| Automation: robotic process automation and rule engines (UiPath, Blue Prism, Power Automate, SAP BPEM, Pega) | Bots move data between billing, market and email screens at many retailers (typical, unsourced). SAP's exception queue routes billing exceptions | Same. Oracle CC&B sites route exceptions with configurable algorithms | Bots register referrals, run payroll steps and file results (typical, unsourced) | Bots handle invoices, joint venture statements and regulatory forms (typical, unsourced) |
+| Chatbots and virtual agents | Retailers: AGL's assistant on IBM watsonx [vendor]. Mercury's Hiko in NZ (2019) | Customer chatbots. Hansen's AI Virtual Agent for its own billing system [vendor] | Website chatbots. Healthdirect virtual triage handled about 1.55 million encounters from April 2023 to March 2025 | Cat AI Assistant for mining fleets. Launch window Q1 2026, availability not confirmed [vendor] |
+| Copilots and assistants (Microsoft 365 Copilot, Copilot Studio) | Copilot use and Copilot Studio builds | Same | Copilot Studio and Azure OpenAI pilots (typical, unsourced) | Woodside's Startup Advisor (July 2026). Uniper builds agents in Copilot Studio [vendor] |
+| Agent builders inside vendor products | SAP Joule Studio, generally available Q1 2026 per a roundup. Salesforce Agentforce | Same | Epic Agent Factory, previewed March 2026. Wider release reported for 2027, not verified [vendor] | Cognite Atlas AI, Seeq "Build Your Own Agent", Siemens Intelligence Center X, Emerson AVA [vendor] |
+| Tool servers for agents (Model Context Protocol, MCP) | IBM Maximo MCP server for work orders (August 2026) [vendor]. LiveEO Treeline MCP, in early access [vendor] | AVEVA says MCP links for its historian are coming (May 2026) [vendor] | None found | IBM Maximo MCP server in MAS 9.2 (June 2026) [vendor] |
+| Vendor agents announced for the industry | Retail side: Kraken agents with Sierra, live at one unnamed utility (June 2026) [vendor]. SAP's billing agents not confirmed shipped | Hansen's agent claims it can arrange payment plans. One named US deployment [vendor] | Heidi II, launched 28 September 2026, rolling out in Australia and NZ, primary care first. No public hospital site found [vendor]. Epic, Oracle and Microsoft agents are US-first | Honeywell Experion Operations Assistant, launched March 2026, advises operators [vendor]. Experion Cognition says it will act; availability not confirmed |
+| Own runtime, registry and tracing | AWS published a read-only alarm investigation design on Bedrock AgentCore (September 2026) [vendor] | None found | No Australian or NZ public health service found with its own runtime, registry or per-agent identity | Platform deals: Palantir AIP at Rio Tinto (November 2024). ADNOC's USD 340 million contract for ENERGYai (March 2025) |
+
+Standards: the Model Context Protocol for tools, and agent-to-agent (A2A) messaging in energy. Nothing is specific to any of these industries. Hospitals also apply local AI assurance frameworks, covered on the [governance, risk and sovereignty layer (R11)](/layers/r11-governance-risk-sovereignty). The full estates are on the [utilities](/use-cases/utilities), [healthcare](/use-cases/healthcare) and [energy](/use-cases/energy) pages.
+
+## What agents add
 
 <GuideFigure id="layer-07-hero" fullWidth />
 
-<TeachingIllustration src="/images/layers/r07-harness-labeled-v1.webp" alt="A harness surrounds the model with context assembly, tool calls, inspectable state, separate verification and explicit stopping, while hard limits and a managed runtime provide control and crash survival." title="The model is a component; the harness is the production system" caption="The harness owns the loop, the durable artifacts, independent verification and every stopping condition. A managed runtime supplies isolation and crash survival underneath that organisation-specific control logic." />
-
-| Component | Responsibility | Control it hosts | Where it runs |
-|---|---|---|---|
-| Harness (the loop) | Context assembly and reset, tool loop, termination, recovery | Iteration caps, wall-clock limits, cancellation checks, stop hooks, approval rules, per-run budgets, kill switch | Built in-house, deployed on the managed runtime |
-| Managed runtime | Sandbox, session store, identity, scaling | Isolation boundary; framework-agnostic substrate | Hyperscaler agent runtime or self-hosted equivalent |
-| Verification path | Grade outputs independently of generation | Catch-rate telemetry; the generator never grades itself | Separate evaluator agent or process |
-| Agent registry | Lifecycle states and promotion | Evaluation gates, lineage versioning, staleness demotion, discoverability (search returns only PUBLISHED) | Registry beside the MCP catalog (R03, integration fabric) |
-| Skill library | Curated capabilities under progressive disclosure | Signing, version pinning, scope review before exposure | Internal repository, version-pinned |
-| Model router | Tiered inference across the model estate | Deterministic pre-router, tier boundaries, fallbacks | The model gateway you already run |
-| Durable execution engine | Run survival, human-in-the-loop (HITL) pauses, hibernate-and-wake | Run-survival guarantee; tested crash recovery | Workflow engine, or replaced by artifacts-as-state |
-
-## Mechanisms
-
 ### The harness is the product
 
-**In short:** The loop around the model, not the model, is what separates a working production agent from a demo.
+Everything that separates a working agent from a demo lives in the harness. It assembles and resets the context, calls tools, records state, checks the work and stops the loop. Production practice has settled on four habits. State lives outside the model's working memory, in files a person can read. Stopping rests on more than one condition. A separate agent or process checks the work, because models praise their own weak work. Recovery from failure is a planned path, not an afterthought.
 
-Everything that separates a production agent from a demo lives here. That means how context is assembled and reset, how termination is decided, how state survives a crash, how verification happens, and how a runaway loop is stopped. Production practice has converged on four things. State lives outside the context window in inspectable artifacts. Termination is explicit and rests on more than one condition. Verification is a separate agent or process, because models confidently praise their own mediocre work. Recovery is a first-class path rather than an exception handler. Meta's production harness, known as REA, is the strongest named harness with published outcomes. REA-driven iterations doubled average model accuracy over baseline across six production models. Staffing moved from two engineers per model to three engineers across eight models [vendor]. Nor is the layer neutral plumbing. With task, environment, and model held constant, harness choices often leave the final outcome unchanged while changing the beliefs that drive later decisions (Yi and Song, arXiv 2607.04528, July 2026). On 116 LongMemEval questions run through four harnesses, a plain text search (grep) generally beat vector <Term k="retrieval">retrieval</Term> (search by similarity of meaning). The variation was strongly harness-dependent and independent of the underlying data (Sen et al., arXiv 2605.15184, May 2026). Two consequences follow. Harness choice can outweigh the choice of retrieval architecture. And <Term k="benchmark">benchmark</Term> comparisons across harnesses are confounded: you cannot tell whether the harness or the method made the difference.
+<TeachingIllustration src="/images/layers/r07-harness-labeled-v1.webp" title="The model is a component; the harness is the production system" alt="The model sits in the centre of a loop. The loop has five steps. They are assemble context, call tools, write state a person can inspect, verify separately, and repeat or stop. On the left are the hard controls. They are an iteration cap, a time limit, a cost budget, an approval gate and a kill switch. On the right is the foundation: a managed runtime and crash survival. The line underneath reads: buy the runtime, own the harness." caption="The harness owns the loop, the state files, the separate check and every stop condition. A managed runtime gives isolation and crash survival underneath." />
 
-### Harness limits, enumerated
+Meta's production harness, called REA, has the strongest published results. It doubled average model accuracy across six production models [vendor]. Harness choice can also matter more than the retrieval method. On 116 memory questions run through four harnesses, plain text search generally beat vector search (May 2026). So a benchmark comparison across different harnesses cannot tell you which part made the difference.
 
-**In short:** Every production loop needs several independent ways to stop, and the harness is not where security is enforced.
+### Every run has several ways to stop
 
-The limits are: iteration caps, wall-clock limits (caps on elapsed time), cancellation checks between rounds, and stop hooks. They also include approval gates with standing rules, per-run <Term k="token">token</Term> and cost <Term k="budget">budgets</Term>, and a <Term k="kill switch">kill switch</Term>. These are published concretely. The VS Code Copilot harness (May 2026) states its termination conditions as a <Term k="tool call">tool-call</Term> limit, a cancellation check between rounds, and stop hooks. The Microsoft Agent Framework Harness (July 2026) is the most complete published inventory of what a harness contains. The placement rule: tool approval is decided in the harness, because it is the only component that sees the whole loop. It is enforced at the <Term k="gateway">gateway</Term> (the single door every tool request passes through, covered under the integration fabric, R03), because the harness is not a security boundary.
+A production loop needs several independent ways to stop. The limits are a step cap, a time cap and a cancellation check between rounds. They also include stop hooks, approval rules, a per-run token and cost budget, and a <Term k="kill switch">kill switch</Term>. Each agent has a budget with hard caps. The VS Code Copilot harness (May 2026) publishes its stop conditions. The Microsoft Agent Framework Harness (July 2026) gives the fullest published list of harness parts.
 
-### Artifacts as state
+Tool approval is decided in the harness, because only the harness sees the whole loop. It is enforced at the tool gateway, because the harness is not a security boundary. The gateway sits in the [integration fabric layer (R03)](/layers/r03-integration-fabric).
 
-**In short:** Long-running work keeps its memory in files a person can read, not inside the model's limited working memory.
+### State lives in files a person can read
 
-The published pattern for long-running work keeps state in three artifacts [vendor]. The first is a feature list stored as a JSON file (JavaScript Object Notation, a structured text format) with 200 or more end-to-end descriptions, all marked failing at the start. The second is a progress log. The third is git history (the version-control record). Work runs one feature per session, with a fixed checklist at the start of each session. Context is treated as "a finite resource with diminishing marginal returns" [vendor]. Three practices follow. Prefer resetting the context over compacting it (summarising it to save space). Have sub-agents return summaries of 1,000 to 2,000 tokens rather than full transcripts. Clear stale tool results first, as the easiest saving. Progressive disclosure (loading detail only when it is needed) extends the same economics to the skill library. Each capability costs roughly 100 tokens of always-loaded metadata. Its body, under 5,000 tokens, loads only when triggered. Bundled files cost nothing until read. Scripts execute through the shell (bash), so code never enters the context [vendor].
+Long-running work keeps its state in three files [vendor]. The first is a feature list, with every feature marked failing at the start. The second is a progress log, and the third is the version history in git. Work runs one feature per session, with a fixed checklist at the start of each. Prefer resetting the context to squeezing it into a summary. Sub-agents return short summaries of 1,000 to 2,000 tokens, not full transcripts. Skills load their detail only when needed. Each skill costs about 100 tokens of always-loaded description. Its body, under 5,000 tokens, loads only when the skill is triggered [vendor].
 
-### Durable execution
+### The run survives a crash
 
-**In short:** Saving a run's data is not the same as making the run survive a crash, and day-long approval waits need the second.
+Saving a run's data is not the same as making the run survive. A checkpoint saves data, but a checkpointed run still lives in one process. If that process dies, the run dies with it [vendor]. <Term k="durable execution">Durable execution</Term> makes the run itself survive a crash. A pause for a human approval then uses no resources and survives worker restarts. That makes day-long approval waits affordable. Very long jobs can sleep and wake, as Meta's REA does. The other path avoids the engine entirely. Reset the context and carry state in the files above.
 
-Two layers are commonly conflated. A checkpoint preserves data, not execution. A checkpointed run lives in a single process, and if that process dies the run dies with it. That framing comes from a durable-execution vendor characterising a competing framework's checkpoints, and it is carried as such [vendor]. Durable execution makes the run itself survive. Human-in-the-loop (HITL) pauses consume no resources and survive worker restarts, which is what makes day-long approval waits affordable. Genuinely long jobs hibernate and wake (the Meta REA pattern). Named companies on the leading durable-execution engine include OpenAI, Cursor, Lovable, Block, Abridge, and Hebbia [vendor customer list]. Artifacts-as-state is the architectural fork that avoids the engine entirely: reset the context and carry state in the artifacts described above.
+The [infrastructure and compute layer (R01)](/layers/r01-infrastructure) provides the durable sessions underneath. This layer decides which runs need them.
 
-### The lifecycle state machine
+### Only tested versions run
 
-**In short:** Agents move through named stages with test thresholds at each gate, and one that stops passing drops out of circulation automatically.
+<TeachingIllustration src="/images/layers/r07-lifecycle-labeled-v1.webp" title="A version earns and keeps its release status" alt="A version moves through five release states: draft, approved, published, deprecated and retired. Gates sit between them: offline evaluation, safety review, version and lineage checks, and a freshness check. A version that fails a gate is removed from circulation. A note reads: users can find only published agents. The line underneath reads: promotion is tested, demotion is automatic." caption="One published design for releasing a version. It sits inside the nine-stage agent lifecycle, which tracks the whole agent." />
 
-<TeachingIllustration src="/images/layers/r07-lifecycle-labeled-v1.webp" alt="An agent moves through draft, approved, published, deprecated and retired states, with evaluation, safety, lineage and freshness gates; failed agents are removed from circulation." title="Production status is earned, discoverable and reversible" caption="Only PUBLISHED agents appear in discovery. Promotion requires explicit evidence, while later gate failures automatically demote the version instead of leaving stale or unsafe behaviour in circulation." />
+One published design moves each agent version through five release states (Kang and Wang, July 2026). They are draft, approved, published, deprecated and retired. Each promotion gate has a named threshold. For example, correctness must be at least 0.90 and harm at most 5 percent. Each agent is re-tested every 7 days and demoted if it fails. Search through MCP returns only published agents, so a weaker agent becomes harder to reach. This is a six-agent proof of concept by a cloud consultancy, not observed enterprise practice.
 
-The only fully specified published agent lifecycle (Kang and Wang, arXiv 2607.00345, July 2026) runs through five states: DRAFT, APPROVED, PUBLISHED, DEPRECATED, and RETIRED. Each promotion gate has a named threshold. Faithfulness must be at least 0.80, correctness at least 0.90, and tool accuracy at least 0.90. Helpfulness must be at least 0.70, <Term k="latency">latency</Term> at most 15 seconds, and harm at most 5 percent. Versioning is by lineage, so a failing new version never reaches production. A 7-day staleness policy re-evaluates each agent automatically and demotes it on failure. Measured evaluation overhead is $2.10 per month at 10,000 interactions, about 2.5 percent of model cost. The architecturally interesting move is governance through discoverability. Search through <Term k="mcp">MCP (Model Context Protocol)</Term>, the standard plug that connects agents to tools, returns only PUBLISHED agents. So a drop in quality reduces how reachable an agent is automatically, instead of waiting for a policy engine to step in. One caveat: this is a six-agent proof of concept by a cloud consultancy, not observed enterprise operation. Governance practice adds a complementary rule: an agent's <Term k="autonomy level">autonomy level</Term> (how much it may do without a person in the loop) is itself a versioned, review-gated property. <Term k="prompt">Prompt</Term> refinements take a light path. Model updates and autonomy adjustments take a full review. One pharmaceutical programme, with five published levels of agency, requires a runtime policy enforcement layer at the AI gateway before higher levels are enabled.
+These five states track one version's release inside the nine-stage [agent lifecycle](/architecture/agent-lifecycle), which tracks the whole agent. Draft and approved fall in its evaluate and approve stages, and published means the registry state active.
 
-### Routing
+An agent's autonomy level is itself a versioned setting that needs review to change. Prompt refinements take a light review. Model updates and autonomy changes take a full review. The levels are set out on the [autonomy contract](/architecture/autonomy-contract) page. One pharmaceutical programme publishes five levels of agency. It requires policy enforcement at the AI gateway before the higher levels are switched on.
 
-**In short:** Clever routing between models barely matters; fixed first-tier rules, clear tier boundaries, and fallbacks are what matter.
+### Simple routing beats clever routing
 
-The routing-plateau study (Rice and Amazon, arXiv 2606.07587, May 2026) is the decisive result. It compared 21 routing methods across 5 benchmarks. They converged to nearly identical performance, with the top 5 within 0.22 percentage points of each other. All of them trailed the oracle (a perfect router with hindsight) by 10 to 30 percentage points. Hard queries, 11 to 35 percent of the benchmarks, account for 70 to 91 percent of that gap. A simple k-nearest-neighbour (kNN) method, a basic similarity lookup, achieved lower loss than the trained methods on every benchmark. The best combined intervention closed only 14.6 percent of the gap. Routing-method sophistication is not the lever. Tier boundaries, fallbacks, and a deterministic pre-router are. Roughly 70 percent of instrumented organisations run three or more models [vendor telemetry]. So treat inference (running models to get answers) as a pipeline. Lightweight models handle extraction and tagging, and frontier models (the largest, most capable current models) handle synthesis. Both sit behind a modular routing mechanism whose first tier is deterministic rules.
+A May 2026 study by Rice and Amazon compared 21 routing methods across 5 benchmarks. The top 5 finished within 0.22 points of each other. All of them trailed a perfect router by 10 to 30 points. Hard queries caused most of that gap. A simple nearest-neighbour lookup beat the trained methods on every benchmark. So a cleverer router does not help much. What helps is fixed first-step rules, clear limits on which model handles what, and fallbacks. About 70 percent of instrumented organisations run three or more models [vendor]. Light models handle extraction and tagging, and large models handle synthesis.
 
-### The portability inversion
+### What moves between vendors
 
-**In short:** The runtime has become the part you can move between vendors, and the harness has become the part that locks you in.
+Managed runtimes now accept most agent frameworks. One hyperscaler runtime takes LangChain, the OpenAI Agents SDK, the Claude Agent SDK, Strands or your own code. Harnesses stayed custom. So the runtime is now easier to move between vendors than the harness. Prompts, tool definitions, model choice and Agent Skills move between vendors. Control flow, saved state formats, human-pause handling and approval models do not. Put portability effort into the harness design, not into the choice of framework.
 
-Managed runtimes converged on being framework-agnostic. One hyperscaler runtime (from one of the largest cloud providers) accepts LangChain, the OpenAI Agents software development kit (SDK), the Claude Agent SDK, Strands, or your own framework. Another accepts the Agent Development Kit (ADK), LangGraph, LangChain, AG2, LlamaIndex, the Agent-to-Agent protocol (A2A), and custom code. Harnesses stayed bespoke. The runtime is therefore becoming the portable substrate while the harness is the lock-in, the opposite of what most portability discussion assumes. What ports: prompts, tool definitions, model choice, and Agent Skills. What does not port: <Term k="orchestration">orchestration</Term> and control flow, state and checkpoint schemas (LangGraph, Temporal, DBOS, and Restate are mutually incompatible), HITL interrupt semantics, and approval and permission models. Consequence: put portability investment into the harness abstraction, not into framework selection.
+### A worked example: alarm investigation
 
-## Design decisions
+AWS published a reference design for utility alarm investigation on its agent runtime (September 2026) [vendor]. One agent reads work orders from Maximo, and another reads the PI historian. Both have read-only database access. The utility behind it is not named. In this shape, the runtime is bought and the harness decides what each agent reads and when it stops. Any work order the investigation proposes should stay a draft until a person approves it.
 
-- **Single agent with good tools vs multi-agent orchestration** ([CD-21](/decisions#cd-21)): parallel breadth only, and the decisive variable is whether compute is held constant. This <Term k="challenged default">challenged default</Term> asks whether one agent with good tools beats several agents coordinating. The headline orchestrator-worker result was roughly 90 percent better than a single agent on an internal research eval. It was bought with roughly 15 times chat-level token consumption (single agents run about 4 times). Token usage alone explains about 80 percent of the variance on a related benchmark [vendor]. The same vendor's comparison of a solo agent against a full harness on one task ran 20 minutes and $9 against 6 hours and $200. With reasoning tokens held constant, single agents consistently match or outperform <Term k="multi-agent">multi-agent</Term> systems on multi-hop reasoning (questions that need several linked steps). That held across three model families (Tran and Kiela, arXiv 2604.02460, April 2026). Multi-agent buys parallel breadth and context isolation, not reasoning quality per token. The conditions for paying the multiplier must all hold at once. They are: independent read-heavy strands, total information beyond one context window, an accuracy requirement beyond a single pass, and task value that clears the multiplier. The only published crossover sits above an F1 score (a combined accuracy measure; higher is better) of roughly 0.92 on document extraction. There, a hierarchical supervisor-worker design held the cost-accuracy frontier at 0.921 F1 for 1.4 times the cost, and a hybrid captured most of the gain at 1.15 times (arXiv 2603.22651). Coordination cost is measured. Across 10 topologies (arrangements of agents), the average combined pass rate was 17.2 percent, with average information leakage of 217.9 percent per scenario (arXiv 2606.08878). In production, 59 percent of agentic requests make only a single service call, and only 18 percent make three or more [vendor telemetry]. The leading multi-agent advocate itself states the limits. The approach fits poorly where agents share context or have many dependencies.
-- **Build vs buy at the harness**: no credible published dataset exists at this layer. The guide states the gap rather than citing weak numbers. What observed data supports: about 82 percent of instrumented organisations run agentic workloads with no recognised framework [vendor telemetry, dependency-inspected]. Practitioners call orchestration the most cited gap and the most improvised category. For whole AI solutions, the market swung toward buying at the same time (47 percent built in 2024, against 76 percent purchased in 2025). Framework churn is a real cost of buying in. The year's major framework consolidation reached general availability (GA) at version 1.0 in April 2026, then kept changing its surface for four further months. Verdict: buy the runtime, build the harness, and expect to own the maintenance burden. That burden exists because the managed layer is immature, not because primitives are cheaper.
-
-## Cross-cutting concerns
-
-| # | Concern | Treatment at this layer |
+| Part | What it does | Where it runs |
 |---|---|---|
-| C1 | Identity and access | The harness carries caller identity into every tool call; approval rules held in the harness, enforced at the gateway |
-| C2 | Observability | Loop telemetry: iterations, terminations by type, context resets, subagent fan-out |
-| C3 | Traceability and audit | Session artifacts and event logs are the durable record; promoted versions traceable to their gate evidence |
-| C4 | Grounding | Verification separated from generation; self-assessment treated as unreliable by default |
-| C5 | Impersonation | Skills and instruction files signed and version-pinned; provenance for anything loaded into context |
-| C6 | Sovereignty | Session state and skill libraries inherit the classification of what they contain |
-| C7 | Privacy | Context and artifact retention bounded; memory handled by the agent data engineering layer (R14) |
-| C8 | Safety and oversight | Iteration and wall-clock caps, stop hooks, approval gates with standing rules, kill switch |
-| C9 | Cost | Per-run token and cost budgets enforced in the harness; multiplier chosen deliberately per task class |
-| C10 | Resilience | Durable execution or artifacts-as-state; crash recovery tested; hibernate-and-wake for long waits |
+| Harness | Assembles and resets context, runs the tool loop, stops and recovers. Holds the caps, budgets, approval rules and kill switch | Built in-house, deployed on the managed runtime |
+| Managed runtime | Sandbox, session store, identity, scaling and crash survival | A hyperscaler agent runtime or a self-hosted equivalent |
+| Checking path | Grades outputs apart from generation | A separate evaluator agent or process |
+| Agent registry | Holds each agent's lifecycle state and each version's release state | Beside the tool catalogue in the integration fabric layer (R03) |
+| Skill library | Curated skills, signed and version-pinned | An internal repository |
+| Model router | Sends each request to the right model, with fixed first-step rules and fallbacks | The model gateway you already run |
+| Durable execution engine | Keeps runs alive through crashes and long approval pauses | A workflow engine, or state files instead |
 
-**Next step:** read the next layer, [R08 Productivity and collaboration](/layers/r08-productivity-and-collaboration).
+## What must be true before an agent touches it
+
+Before an agent runs on this platform, these must hold.
+
+- **It is registered.** A registry record holds its lifecycle state, its owner and its sponsor.
+- **It has its own identity.** The [security and identity layer (R10)](/layers/r10-security-and-identity) issues it. The harness carries the caller's identity into every tool call. The [delegation chain](/architecture/delegation-chain) then traces each action to the person who asked.
+- **It has several ways to stop.** Step and time caps, a cancellation check and stop hooks are set. Approval rules, a capped budget and a kill switch are set too.
+- **Checking is separate.** The part that generates the work never grades it.
+- **State is readable.** Long-running work keeps its state outside the context, in files a person can inspect.
+- **Crash recovery is tested.** Runs that wait on people use durable execution or carry their state in files.
+- **Its autonomy is set and versioned.** Changing it needs a full review.
+- **Its skills are signed.** Skills and instruction files are version-pinned and checked for scope before use.
+
+The harness is not the enforcement point. It decides when to ask for approval. The tool gateway and the policy decision point enforce the answer, outside the model. That is [enforcement outside the model](/architecture/enforcement).
+
+## Choices and their verdicts
+
+Each choice is the common choice, tested against the simplest credible alternative. The full records are in the [decision catalog](/decisions).
+
+- **[One agent or many](/decisions#cd-21) (CD-21):** use several agents only for wide work that splits into independent parts. Most famous multi-agent gains came from spending about 15 times the tokens.
+- **[Vendor-embedded agents or your own](/decisions#cd-17) (CD-17):** use the vendor's agent when work stays inside one product. Use your own agents when work spans systems.
+- **[Replace robotic process automation or keep it](/decisions#cd-3) (CD-3):** keep the bots running beside agents, under supervision. Replace one only when a workload earns it.
+- **Build or buy the harness:** buy the runtime, build the harness, and expect to own its upkeep. No credible published dataset exists for this choice.
+
+## Concerns this layer must honour
+
+The ten cross-cutting concerns are set out in the [concern matrix](/architecture/concern-matrix). This layer carries a specific duty for seven of them.
+
+- **Identity and access:** the harness carries caller identity into every tool call. Approval rules live in the harness and are enforced at the gateway.
+- **Observability:** loop telemetry covers steps, stops by type, context resets and how many sub-agents ran.
+- **Traceability and audit:** session files and event logs are the durable record. Each released version traces to its test evidence.
+- **Grounding:** checking is separate from generation. Self-assessment is distrusted by default.
+- **Safety and oversight:** caps, stop hooks, approval rules and the kill switch.
+- **Cost:** per-run budgets are enforced in the harness. The multi-agent token cost is chosen per task.
+- **Resilience:** durable execution or state in files, with crash recovery tested.
 
 ## Evidence and limits
 
-The failure record at this <Term k="layer">layer</Term> is built from <Term k="traces">traces</Term> rather than from Common Vulnerabilities and Exposures (CVE) records. A taxonomy known as MAST (presented at the NeurIPS 2025 conference) was built from 150 traces and validated on more than 1,600 traces across seven frameworks. Inter-rater agreement (kappa) was 0.88. It identifies 14 failure modes in 3 categories. It concludes that multi-agent failures are design failures, not model failures. A benchmark competition across 2,196 execution traces and 149 teams found that token expenditure does not reliably predict task completion. Success correlated negatively with token usage, execution length, and tool entropy (how varied the tool choices were). Winning submissions improved <Term k="guardrails">guardrails</Term> rather than architectures (arXiv 2605.08518).
+The failure record here comes from traces, not vulnerability records. A taxonomy called MAST (NeurIPS 2025) was built from 150 traces and checked on more than 1,600. It names 14 failure modes and finds that multi-agent failures are design failures. A benchmark contest over 2,196 traces found that spending more tokens did not predict success. Winning teams improved their guardrails, not their architectures.
 
-Several figures are vendor-published and carried as such. They are the multi-agent multiplier and variance figures, and the three-artifact pattern with its progressive-disclosure token costs. They also include the checkpoint-versus-durable framing (from a durable-execution vendor) and its customer list. The framework-adoption and single-service-call telemetry is vendor-sourced too, observed through dependency inspection (checking the software actually installed) rather than self-reported. The lifecycle state machine is a six-agent proof of concept. Survey context: in a December 2025 survey (sample size n=495), only 16 percent of enterprise deployments qualified as true agents under a strict test. In a July 2026 survey of more than 100 leaders, 43 percent limit agents to low-risk workflows, 33 percent require human-in-the-loop approval, and 20 percent permit broad autonomy. Skill-library caution: a study collected 775,790 skills from four marketplaces, 11,497 of them unique after deduplication (arXiv 2607.09065). Only 6.3 percent appear on more than one marketplace. Most are single-version and never updated. And 24 percent were rated a concern on instruction scope. The vendor's own documentation states that custom skills do not sync across its surfaces.
+Several figures come from vendors and carry the [vendor] tag. They include the multi-agent token figures, the three-file pattern and the checkpoint framing. The framework and single-call telemetry also comes from vendors, though it was measured, not self-reported. The five-state release design is a six-agent proof of concept.
 
-Authors' position, labelled as such: for passive and embedded agents, the qualification that matters is eval-gated behavior plus exception logging that feeds learning, rather than autonomy. Every published taxonomy surveyed uses autonomy or action scope as its defining axis. That classifies a bank's deliberately bounded advisory agent (task-level autonomy only, no self-initiation, no decision authority) out of "agentic" entirely. The consensus currently runs the other way.
+This guide recommends judging an embedded agent by tested behaviour and logged exceptions, not by its autonomy. Every published taxonomy reviewed uses autonomy or action scope as its defining test. By that test, a deliberately bounded advisory agent would not count as an agent at all.
 
-Refusals. Circulating build-versus-buy figures for time to production, success rate, and maintenance share trace to vendor blogs without methodology, so this guide excludes them. A widely shared single-versus-multi-agent token comparison attributed to AssetOpsBench is a misreading of a domain fingerprint and a sample size. No such comparison exists in that paper. The claim that the leading single-agent essay predates the rival multi-agent post by months is contradicted by the pages themselves, which are dated one day apart. Also unverified and excluded: a compaction token-reduction percentage absent from the vendor's own documentation, and a cost-reduction claim for a popular open router. Likewise excluded: a skills-benchmark effect size, a maintenance-mode end date for the two merged frameworks, and a failure-share percentage attributed to MAST. No agents-per-supervisor ratio appears in this guide, because none has a defensible source. Re-verify quarterly: framework surface change after general availability, the lifecycle pattern beyond proof of concept, routing-plateau replication, and skills-marketplace hygiene.
+## Next step
+
+See this layer at work in the proposed [vegetation inspection](/use-cases/vegetation-inspection) example. Then read the next layer, the [productivity and collaboration layer (R08)](/layers/r08-productivity-and-collaboration).
 
 <details>
 <summary>The research behind this page</summary>
 
-- [Agent platform findings](/library/layers/r07-agent-platform/findings)
-- [Sources](/library/layers/r07-agent-platform/sources)
-- [Products named for orientation](/architecture), on the one-page wall chart
+- [Agent platform findings](/library/layers/r07-agent-platform/findings) and [sources](/library/layers/r07-agent-platform/sources).
+- [Products named for orientation](/architecture), on the one-page wall chart.
+- Estate table: industry research for utilities, healthcare and energy, 15 October 2026. Rows are industry knowledge unless a source is named.
+- Table sources: AGL on IBM watsonx (IBM case study, undated) [vendor]. Hansen AI Virtual Agent (18 February 2025) [vendor]. Mercury Hiko (Datacom, 2019). SAP Joule Studio availability (SAP Community roundup, title only).
+- Table sources: IBM Maximo MCP server (IBM, 12 August 2026; MAS 9.2, 25 June 2026) [vendor]. LiveEO Treeline Agent and MCP (2 July 2026) [vendor]. AVEVA MCP plans (20 May 2026) [vendor]. AWS alarm investigation design (1 September 2026) [vendor].
+- Table sources: Kraken and Sierra (11 to 12 June 2026) [vendor]. SAP billing agents (ASUG, 21 January and 27 May 2026) [vendor]. Healthdirect triage (Medical Republic, 2025). Heidi II (Medical Republic, 30 September 2026). Epic Agent Factory (HIT Consultant, 10 March 2026).
+- Table sources: Woodside Startup Advisor (2 July 2026). Uniper on Copilot Studio (Celonis case study, undated) [vendor]. Cat AI Assistant (6 January 2026) [vendor]. Honeywell Experion (19 March and 9 June 2026) [vendor]. Palantir and Rio Tinto (12 November 2024). ADNOC and AIQ (10 March 2025).
+- Harness results: Meta REA doubled average accuracy across six models. Staffing moved from two engineers per model to three across eight models [vendor].
+- Harness effects: Yi and Song, arXiv 2607.04528, July 2026. Harness choices often left outcomes unchanged while changing the beliefs behind later decisions.
+- Retrieval inside harnesses: Sen et al., arXiv 2605.15184, May 2026. On 116 LongMemEval questions, grep generally beat vector retrieval. The variation depended on the harness.
+- Routing: Rice and Amazon, arXiv 2606.07587, May 2026. Hard queries were 11 to 35 percent of benchmarks and 70 to 91 percent of the gap. The best combined fix closed 14.6 percent.
+- Release states: Kang and Wang, arXiv 2607.00345, July 2026. Thresholds: faithfulness 0.80, correctness 0.90, tool accuracy 0.90, helpfulness 0.70, latency 15 seconds, harm 5 percent. Evaluation cost $2.10 a month at 10,000 interactions.
+- Durable execution customers named by the engine's vendor: OpenAI, Cursor, Lovable, Block, Abridge and Hebbia [vendor].
+- Single or many agents: the orchestrator-worker win of about 90 percent used about 15 times chat-level tokens [vendor]. Token use explains about 80 percent of variance on a related benchmark [vendor].
+- One vendor compared a solo agent with a full harness on one task. It took 20 minutes and $9, against 6 hours and $200 [vendor].
+- Tran and Kiela, arXiv 2604.02460, April 2026. With reasoning tokens held constant, single agents match or beat multi-agent systems on multi-hop reasoning.
+- Crossover: arXiv 2603.22651. A supervisor-worker design held 0.921 F1 at 1.4 times the cost. A hybrid got most of the gain at 1.15 times.
+- Coordination cost: arXiv 2606.08878. Across 10 topologies, the average pass rate was 17.2 percent. Average information leakage was 217.9 percent per scenario.
+- In production, 59 percent of agentic requests make one service call, and 18 percent make three or more [vendor].
+- Build or buy: about 82 percent of instrumented organisations run agent workloads with no recognised framework [vendor]. Whole AI solutions swung from 47 percent built (2024) to 76 percent bought (2025).
+- The year's major framework merger reached version 1.0 in April 2026. Its surface kept changing for four more months.
+- Survey context: in December 2025 (495 respondents), only 16 percent of enterprise deployments passed a strict test for true agents.
+- Survey context: in July 2026 (100+ leaders), 43 percent limit agents to low-risk work. 33 percent require human approval and 20 percent permit broad autonomy.
+- Skills marketplaces: arXiv 2607.09065. Of 775,790 skills, 11,497 were unique. Only 6.3 percent appear on more than one marketplace. 24 percent raised an instruction-scope concern.
+- The vendor's own documentation says custom skills do not sync across its products.
+- MAST: NeurIPS 2025, inter-rater agreement (kappa) 0.88, 14 failure modes in 3 categories. Benchmark contest: arXiv 2605.08518, 149 teams.
+- Excluded: build-or-buy figures from vendor blogs without method. A token comparison wrongly attributed to AssetOpsBench. A claim that one essay predated a rival post by months; the two are dated one day apart.
+- Excluded as unverified: a compaction saving, a cost claim for an open router and a skills effect size. Also excluded: a framework end date and a failure share credited to MAST. No defensible source gives a ratio of agents to supervisors.
+- Re-verify quarterly: framework change after general availability, the release-state design beyond proof of concept, routing replication, and skills-marketplace hygiene.
 
 </details>
-
-
-## See this layer at work
-
-Follow the proposed [vegetation inspection](/use-cases/vegetation-inspection) example. Compare the required capability with the systems already in place, then use the [architecture map](/architecture) to inspect neighboring responsibilities.

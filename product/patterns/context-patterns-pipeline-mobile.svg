@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1746" width="720" height="1746" role="img" aria-labelledby="title desc" font-family="Arial,sans-serif">
+<title id="title">Where the nine context patterns act</title>
+<desc id="desc">Documents flow through four steps to the agent context. Represent holds patterns 1, 2 and 4. Search holds patterns 3 and 5. Filter and group holds patterns 6 and 7. Select holds pattern 8. Pattern 9, measure every step against a matched control, runs under all four. Patterns 1 to 3 give most of the value.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="720" height="1746" fill="#f8f5ef"/>
+<text x="40" y="64" font-size="32" fill="#182e31" font-weight="bold">Where the nine patterns act</text>
+<text x="40" y="108" font-size="24" fill="#1e293b">Each pattern changes one step.</text>
+<text x="40" y="140" font-size="24" fill="#1e293b">Pattern 9 checks all of them.</text>
+<rect x="40" y="176" width="640" height="96" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="70" y="216" font-size="26" fill="#1e3a8a" font-weight="bold">Documents</text>
+<text x="70" y="252" font-size="24" fill="#1e3a8a">Email, reports, work orders</text>
+<line x1="360" y1="276" x2="360" y2="310" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="40" y="316" width="640" height="248" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="70" y="358" font-size="26" fill="#0f172a" font-weight="bold">Represent: split each document</text>
+<circle cx="96" cy="410" r="20" fill="#182e31"/><text x="96" y="418.4" font-size="24" fill="#ffffff" font-weight="bold" text-anchor="middle">1</text>
+<text x="132" y="419" font-size="24" fill="#0f172a">Several vectors per document</text>
+<circle cx="96" cy="466" r="20" fill="#182e31"/><text x="96" y="474.4" font-size="24" fill="#ffffff" font-weight="bold" text-anchor="middle">2</text>
+<text x="132" y="475" font-size="24" fill="#0f172a">Beat plain chunks of the same count</text>
+<circle cx="96" cy="522" r="20" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="96" y="530.4" font-size="24" fill="#0f172a" font-weight="bold" text-anchor="middle">4</text>
+<text x="132" y="531" font-size="24" fill="#0f172a">Card types from the documents</text>
+<line x1="360" y1="568" x2="360" y2="602" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="40" y="608" width="640" height="192" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="70" y="650" font-size="26" fill="#0f172a" font-weight="bold">Search: find candidates</text>
+<circle cx="96" cy="702" r="20" fill="#182e31"/><text x="96" y="710.4" font-size="24" fill="#ffffff" font-weight="bold" text-anchor="middle">3</text>
+<text x="132" y="711" font-size="24" fill="#0f172a">Keep keyword search</text>
+<circle cx="96" cy="758" r="20" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="96" y="766.4" font-size="24" fill="#0f172a" font-weight="bold" text-anchor="middle">5</text>
+<text x="132" y="767" font-size="24" fill="#0f172a">Apply the goal at question time</text>
+<line x1="360" y1="804" x2="360" y2="838" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="40" y="844" width="640" height="192" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="70" y="886" font-size="26" fill="#0f172a" font-weight="bold">Filter and group: cut cost at scale</text>
+<circle cx="96" cy="938" r="20" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="96" y="946.4" font-size="24" fill="#0f172a" font-weight="bold" text-anchor="middle">6</text>
+<text x="132" y="947" font-size="24" fill="#0f172a">Model designs, tools do bulk work</text>
+<circle cx="96" cy="994" r="20" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="96" y="1002.4" font-size="24" fill="#0f172a" font-weight="bold" text-anchor="middle">7</text>
+<text x="132" y="1003" font-size="24" fill="#0f172a">Filter sets aside, does not save</text>
+<line x1="360" y1="1040" x2="360" y2="1074" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="40" y="1080" width="640" height="136" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="70" y="1122" font-size="26" fill="#0f172a" font-weight="bold">Select: pick the final ten</text>
+<circle cx="96" cy="1174" r="20" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="96" y="1182.4" font-size="24" fill="#0f172a" font-weight="bold" text-anchor="middle">8</text>
+<text x="132" y="1183" font-size="24" fill="#0f172a">Varied results in the filtered pool</text>
+<line x1="360" y1="1220" x2="360" y2="1254" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="40" y="1260" width="640" height="96" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="70" y="1300" font-size="26" fill="#4c1d95" font-weight="bold">Agent context</text>
+<text x="70" y="1336" font-size="24" fill="#4c1d95">What the model sees</text>
+<rect x="40" y="1388" width="640" height="132" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<circle cx="96" cy="1454" r="22" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="96" y="1462.4" font-size="24" fill="#134e4a" font-weight="bold" text-anchor="middle">9</text>
+<text x="132" y="1432" font-size="24" fill="#134e4a" font-weight="bold">Measure every step against a</text>
+<text x="132" y="1464" font-size="24" fill="#134e4a" font-weight="bold">matched control, on your own</text>
+<text x="132" y="1496" font-size="24" fill="#134e4a" font-weight="bold">questions</text>
+<circle cx="60" cy="1564" r="14" fill="#182e31"/>
+<text x="86" y="1572" font-size="24" fill="#1e293b">Patterns 1 to 3 give most of the value.</text>
+<circle cx="60" cy="1610" r="14" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<text x="86" y="1618" font-size="24" fill="#1e293b">Patterns 4 to 8 help in narrower cases.</text>
+<text x="40" y="1674" font-size="24" fill="#1e293b">Source: the author's experiments,</text>
+<text x="40" y="1706" font-size="24" fill="#1e293b">August 2026.</text>
+</svg>

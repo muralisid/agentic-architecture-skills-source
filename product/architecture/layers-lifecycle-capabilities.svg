@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Layers you own, a lifecycle you run, capabilities you add</title>
+<desc id="desc">On the left, a building of fourteen floors shows the layers you own. They run from infrastructure and compute (R01) at the bottom to agent data engineering (R14) at the top. In the centre, seven bands show the capabilities you add. Each band names industry products and the layers that build it. Runtime: R01 and R07. Tool gateway: R03, R04 and R05. Knowledge and memory: R02 and R14. Identity and policy: R10, R11 and R07. Evaluation and release: R06 and R12. Observability and audit trail: R12 and R11. Human oversight: R13, R08 and R09. On the right, the nine lifecycle stages run in order, and each change loops back to evaluate. Lines link each stage to the capabilities it calls on. Register, entitle and retire call on identity and policy. Sponsor and owner calls on human oversight. Evaluate and change call on evaluation and release. Approve calls on human oversight and on identity and policy. Operate calls on the runtime, the tool gateway, knowledge and memory, and observability. Periodic review calls on observability and on human oversight. A strip at the bottom gives the two rules. Policy is enforced outside the model. The audit trail is written where the agent cannot touch it.</desc>
+<defs><marker id="ah-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#475569"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+<text x="33" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">Layers you own, a lifecycle you run, capabilities you add</text>
+<text x="33" y="88" font-family="Arial,sans-serif" font-size="20" fill="#465958">The capabilities are built across the layers. Each lifecycle stage calls on the ones it needs.</text>
+<text x="33" y="136" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">Layers you own</text>
+<text x="429" y="136" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">Capabilities you add</text>
+<text x="1063" y="136" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">A lifecycle you run</text>
+<text x="690" y="136" font-family="Arial,sans-serif" font-size="18" fill="#465958">Chips: the layers that build it</text>
+<rect x="33" y="152" width="376" height="586" rx="6" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<text x="47" y="179.4" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R14</text>
+<text x="99" y="179.4" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Agent data engineering</text>
+<path d="M33 193.9 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="221.3" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R13</text>
+<text x="99" y="221.3" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Operating model</text>
+<path d="M33 235.7 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="263.1" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R12</text>
+<text x="99" y="263.1" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Observability and FinOps</text>
+<path d="M33 277.6 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="305.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R11</text>
+<text x="99" y="305.0" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Governance, risk, sovereignty</text>
+<path d="M33 319.4 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="346.9" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R10</text>
+<text x="99" y="346.9" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Security and identity</text>
+<path d="M33 361.3 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="388.7" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R09</text>
+<text x="99" y="388.7" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Experience and channels</text>
+<path d="M33 403.1 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="430.6" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R08</text>
+<text x="99" y="430.6" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Productivity and collaboration</text>
+<path d="M33 445.0 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="472.4" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R07</text>
+<text x="99" y="472.4" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Agent platform</text>
+<path d="M33 486.9 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="514.3" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R06</text>
+<text x="99" y="514.3" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Intelligence and learning</text>
+<path d="M33 528.7 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="556.1" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R05</text>
+<text x="99" y="556.1" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Line of business and OT</text>
+<path d="M33 570.6 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="598.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R04</text>
+<text x="99" y="598.0" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Systems of record</text>
+<path d="M33 612.4 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="639.9" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R03</text>
+<text x="99" y="639.9" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Integration fabric</text>
+<path d="M33 654.3 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="681.7" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R02</text>
+<text x="99" y="681.7" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Data platform</text>
+<path d="M33 696.1 H409" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="47" y="723.6" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#1e293b">R01</text>
+<text x="99" y="723.6" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">Infrastructure and compute</text>
+<path d="M25 739 H417" stroke="#475569" stroke-width="4"/>
+<rect x="429" y="152.0" width="476" height="76" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="443" y="183.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#4c1d95">Runtime</text>
+<text x="443" y="213.0" font-family="Arial,sans-serif" font-size="18" fill="#4c1d95">AWS AgentCore Runtime, Google Agent Runtime</text>
+<rect x="785" y="163.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="810.0" y="183.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#4c1d95">R01</text>
+<rect x="843" y="163.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="868.0" y="183.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#4c1d95">R07</text>
+<rect x="429" y="237.0" width="476" height="76" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="443" y="268.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e3a8a">Tool gateway</text>
+<text x="443" y="298.0" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">AWS AgentCore Gateway, Google Agent Gateway</text>
+<rect x="727" y="248.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="752.0" y="268.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e3a8a">R03</text>
+<rect x="785" y="248.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="810.0" y="268.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e3a8a">R04</text>
+<rect x="843" y="248.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+<text x="868.0" y="268.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e3a8a">R05</text>
+<rect x="429" y="322.0" width="476" height="76" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+<text x="443" y="353.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#1e293b">Knowledge and memory</text>
+<text x="443" y="383.0" font-family="Arial,sans-serif" font-size="18" fill="#1e293b">AWS AgentCore Memory, Google Memory Bank</text>
+<rect x="785" y="333.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="810.0" y="353.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e293b">R02</text>
+<rect x="843" y="333.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="868.0" y="353.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1e293b">R14</text>
+<rect x="429" y="407.0" width="476" height="76" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="443" y="438.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Identity and policy</text>
+<text x="443" y="468.0" font-family="Arial,sans-serif" font-size="18" fill="#0f172a">AgentCore Identity and Policy, Entra Agent ID</text>
+<rect x="727" y="418.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="752.0" y="438.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">R10</text>
+<rect x="785" y="418.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="810.0" y="438.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">R11</text>
+<rect x="843" y="418.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="868.0" y="438.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a">R07</text>
+<rect x="429" y="492.0" width="476" height="76" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="443" y="523.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#4c1d95">Evaluation and release</text>
+<text x="443" y="553.0" font-family="Arial,sans-serif" font-size="18" fill="#4c1d95">AWS AgentCore Evaluations, canary release</text>
+<rect x="785" y="503.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="810.0" y="523.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#4c1d95">R06</text>
+<rect x="843" y="503.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="868.0" y="523.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#4c1d95">R12</text>
+<rect x="429" y="577.0" width="476" height="76" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="443" y="608.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#134e4a">Observability and audit trail</text>
+<text x="443" y="638.0" font-family="Arial,sans-serif" font-size="18" fill="#134e4a">AgentCore Observability, EU AI Act Article 12</text>
+<rect x="785" y="588.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+<text x="810.0" y="608.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#134e4a">R12</text>
+<rect x="843" y="588.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#0f766e" stroke-width="1.5"/>
+<text x="868.0" y="608.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#134e4a">R11</text>
+<rect x="429" y="662.0" width="476" height="76" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="443" y="693.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#78350f">Human oversight</text>
+<text x="443" y="723.0" font-family="Arial,sans-serif" font-size="18" fill="#78350f">EU AI Act Article 14, sponsor and owner</text>
+<rect x="727" y="673.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="1.5"/>
+<text x="752.0" y="693.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#78350f">R13</text>
+<rect x="785" y="673.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="1.5"/>
+<text x="810.0" y="693.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#78350f">R08</text>
+<rect x="843" y="673.0" width="50" height="28" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="1.5"/>
+<text x="868.0" y="693.0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#78350f">R09</text>
+<rect x="1063" y="152.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="181.0" r="17" fill="#475569"/>
+<text x="1093" y="187.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">1</text>
+<text x="1123" y="188.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Register</text>
+<path d="M1093 210.0 V218.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="218.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="247.0" r="17" fill="#475569"/>
+<text x="1093" y="253.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">2</text>
+<text x="1123" y="254.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Sponsor and owner</text>
+<path d="M1093 276.0 V284.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="284.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="313.0" r="17" fill="#475569"/>
+<text x="1093" y="319.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">3</text>
+<text x="1123" y="320.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Entitle</text>
+<path d="M1093 342.0 V350.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="350.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="379.0" r="17" fill="#475569"/>
+<text x="1093" y="385.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">4</text>
+<text x="1123" y="386.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Evaluate</text>
+<path d="M1093 408.0 V416.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="416.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="445.0" r="17" fill="#475569"/>
+<text x="1093" y="451.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">5</text>
+<text x="1123" y="452.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Approve</text>
+<path d="M1093 474.0 V482.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="482.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="511.0" r="17" fill="#475569"/>
+<text x="1093" y="517.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">6</text>
+<text x="1123" y="518.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Operate</text>
+<path d="M1093 540.0 V548.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="548.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="577.0" r="17" fill="#475569"/>
+<text x="1093" y="583.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">7</text>
+<text x="1123" y="584.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Change</text>
+<path d="M1093 606.0 V614.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="614.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="643.0" r="17" fill="#475569"/>
+<text x="1093" y="649.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">8</text>
+<text x="1123" y="650.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Periodic review</text>
+<path d="M1093 672.0 V680.0" stroke="#94a3b8" stroke-width="2"/>
+<rect x="1063" y="680.0" width="400" height="58" rx="12" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<circle cx="1093" cy="709.0" r="17" fill="#475569"/>
+<text x="1093" y="715.5" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">9</text>
+<text x="1123" y="716.0" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Retire</text>
+<path d="M1463 577.0 H1503 V379.0 H1467" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-slate)"/>
+<text x="0" y="0" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#0f172a" transform="translate(1533 478.0) rotate(-90)">Back to evaluate</text>
+<path d="M1063 511.0 C984.0 511.0, 984.0 190.0, 905 190.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="190.0" r="4.5" fill="#7c3aed"/>
+<circle cx="1063" cy="511.0" r="4" fill="#475569"/>
+<path d="M1063 511.0 C984.0 511.0, 984.0 275.0, 905 275.0" fill="none" stroke="#2563eb" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="275.0" r="4.5" fill="#2563eb"/>
+<circle cx="1063" cy="511.0" r="4" fill="#475569"/>
+<path d="M1063 511.0 C984.0 511.0, 984.0 360.0, 905 360.0" fill="none" stroke="#94a3b8" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="360.0" r="4.5" fill="#94a3b8"/>
+<circle cx="1063" cy="511.0" r="4" fill="#475569"/>
+<path d="M1063 181.0 C984.0 181.0, 984.0 423.0, 905 423.0" fill="none" stroke="#475569" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="423.0" r="4.5" fill="#475569"/>
+<circle cx="1063" cy="181.0" r="4" fill="#475569"/>
+<path d="M1063 313.0 C984.0 313.0, 984.0 437.7, 905 437.7" fill="none" stroke="#475569" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="437.7" r="4.5" fill="#475569"/>
+<circle cx="1063" cy="313.0" r="4" fill="#475569"/>
+<path d="M1063 445.0 C984.0 445.0, 984.0 452.3, 905 452.3" fill="none" stroke="#475569" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="452.3" r="4.5" fill="#475569"/>
+<circle cx="1063" cy="445.0" r="4" fill="#475569"/>
+<path d="M1063 709.0 C984.0 709.0, 984.0 467.0, 905 467.0" fill="none" stroke="#475569" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="467.0" r="4.5" fill="#475569"/>
+<circle cx="1063" cy="709.0" r="4" fill="#475569"/>
+<path d="M1063 379.0 C984.0 379.0, 984.0 508.0, 905 508.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="508.0" r="4.5" fill="#7c3aed"/>
+<circle cx="1063" cy="379.0" r="4" fill="#475569"/>
+<path d="M1063 577.0 C984.0 577.0, 984.0 552.0, 905 552.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="552.0" r="4.5" fill="#7c3aed"/>
+<circle cx="1063" cy="577.0" r="4" fill="#475569"/>
+<path d="M1063 511.0 C984.0 511.0, 984.0 593.0, 905 593.0" fill="none" stroke="#0f766e" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="593.0" r="4.5" fill="#0f766e"/>
+<circle cx="1063" cy="511.0" r="4" fill="#475569"/>
+<path d="M1063 643.0 C984.0 643.0, 984.0 637.0, 905 637.0" fill="none" stroke="#0f766e" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="637.0" r="4.5" fill="#0f766e"/>
+<circle cx="1063" cy="643.0" r="4" fill="#475569"/>
+<path d="M1063 247.0 C984.0 247.0, 984.0 678.0, 905 678.0" fill="none" stroke="#d97706" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="678.0" r="4.5" fill="#d97706"/>
+<circle cx="1063" cy="247.0" r="4" fill="#475569"/>
+<path d="M1063 445.0 C984.0 445.0, 984.0 700.0, 905 700.0" fill="none" stroke="#d97706" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="700.0" r="4.5" fill="#d97706"/>
+<circle cx="1063" cy="445.0" r="4" fill="#475569"/>
+<path d="M1063 643.0 C984.0 643.0, 984.0 722.0, 905 722.0" fill="none" stroke="#d97706" stroke-width="2" stroke-opacity="0.85"/>
+<circle cx="905" cy="722.0" r="4.5" fill="#d97706"/>
+<circle cx="1063" cy="643.0" r="4" fill="#475569"/>
+<rect x="33" y="760" width="1534" height="104" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<rect x="53" y="777" width="84" height="30" rx="8" fill="#0f172a"/>
+<text x="95" y="798" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">Rule 1</text>
+<text x="155" y="798" font-family="Arial,sans-serif" font-size="20" fill="#334155"><tspan font-weight="700" fill="#0f172a">Policy is enforced outside the model.</tspan> The gateway and the policy decision point check every action.</text>
+<rect x="53" y="819" width="84" height="30" rx="8" fill="#0f172a"/>
+<text x="95" y="840" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#ffffff">Rule 2</text>
+<text x="155" y="840" font-family="Arial,sans-serif" font-size="20" fill="#334155"><tspan font-weight="700" fill="#0f172a">The audit trail is written where the agent cannot touch it.</tspan> A separate channel collects it as the work happens.</text>
+</svg>

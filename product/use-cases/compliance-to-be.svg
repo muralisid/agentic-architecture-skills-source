@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Hospital accreditation evidence with an agent</title>
+<desc id="desc">Swimlanes for the agent, the quality manager, the standard leads, fixed rules, the systems and the evidence store. Step 1: the quality manager maps the register, with agent help, and approves every mapping. Step 2: the agent collects evidence on a schedule with read-only access. Step 3: fixed rules check each item, and the quality manager approves the rules. Step 4: the agent asks owners for gaps from approved templates. Step 5: it builds the pack. Step 6: the standard lead and executive sponsor review and attest. Step 7: the quality manager submits to the agency. Step 8: the agent builds a short notice evidence index, and the quality manager reviews it. Step 9: it tracks fixes, and action owners close their own actions. The evidence store keeps each pack, register history, request history and traces. A diamond marks each approval.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Hospital accreditation evidence with an agent</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Proposed design. The agent collects and checks. A named person attests. People submit.</text>
+<rect x="32" y="108.0" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="150.0" height="114.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="42.0" y="176.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Agent</text>
+<path d="M32 234.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="240.7" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="292.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Quality</text>
+<text x="42.0" y="314.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">manager</text>
+<rect x="32" y="361.3" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 361.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="367.3" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="418.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Standard</text>
+<text x="42.0" y="440.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">leads</text>
+<path d="M32 488.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="494.0" width="150.0" height="114.7" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="42.0" y="556.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Fixed rules</text>
+<rect x="32" y="614.7" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 614.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="620.7" width="150.0" height="114.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="683.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Systems</text>
+<path d="M32 741.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="747.3" width="150.0" height="114.7" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="42.0" y="798.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence</text>
+<text x="42.0" y="820.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">store</text>
+<path d="M32 868.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="204.0" y="755.3" width="1356.0" height="98.7" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="220.0" y="797.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence store, out of the agent&#x27;s reach</text>
+<text x="220.0" y="821.7" font-family="Arial,sans-serif" font-size="18" fill="#134e4a">Each pack with a link to every source. Register history. Request history. Traces outside the agent.</text>
+<rect x="204.0" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="272.2" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">GRC tool or</text>
+<text x="272.2" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">SharePoint</text>
+<rect x="356.4" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="424.7" y="665.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Learning,</text>
+<text x="424.7" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">maintenance,</text>
+<text x="424.7" y="709.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">incidents</text>
+<rect x="661.3" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="729.6" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">ServiceNow,</text>
+<text x="729.6" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Teams</text>
+<rect x="813.8" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="882.0" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Pack store</text>
+<rect x="966.2" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1034.4" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Register</text>
+<rect x="1118.7" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1186.9" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Agency</text>
+<text x="1186.9" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">portal</text>
+<rect x="1423.6" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1491.8" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Task list</text>
+<rect x="204.0" y="254.7" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="272.2" y="301.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Map the</text>
+<text x="272.2" y="323.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">register</text>
+<circle cx="322.4" cy="254.7" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="322.4" y="261.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="356.4" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="424.7" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Collect on</text>
+<text x="424.7" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">a schedule</text>
+<circle cx="474.9" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="474.9" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="508.9" y="508.0" width="136.4" height="94.7" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="577.1" y="554.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">Check each</text>
+<text x="577.1" y="576.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">item</text>
+<circle cx="627.3" cy="508.0" r="15" fill="#475569" stroke="#ffffff" stroke-width="2"/>
+<text x="627.3" y="514.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="661.3" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="729.6" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Ask for</text>
+<text x="729.6" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">gaps</text>
+<circle cx="779.8" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="779.8" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="813.8" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="882.0" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Build the</text>
+<text x="882.0" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">pack</text>
+<circle cx="932.2" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="932.2" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="966.2" y="381.3" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1034.4" y="427.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Review and</text>
+<text x="1034.4" y="449.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">attest</text>
+<circle cx="1084.7" cy="381.3" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1084.7" y="387.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="1118.7" y="254.7" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1186.9" y="301.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Submit to</text>
+<text x="1186.9" y="323.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">the agency</text>
+<circle cx="1237.1" cy="254.7" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1237.1" y="261.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="1271.1" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1339.3" y="163.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Short</text>
+<text x="1339.3" y="185.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">notice</text>
+<text x="1339.3" y="207.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">index</text>
+<circle cx="1389.6" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="1389.6" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="1423.6" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1491.8" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Track</text>
+<text x="1491.8" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">fixes</text>
+<circle cx="1542.0" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="1542.0" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<path d="M340.4 302.0 L372.4 302.0 L372.4 223.7" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M492.9 175.3 L524.9 175.3 L524.9 507.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M645.3 555.3 L677.3 555.3 L677.3 223.7" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M797.8 175.3 L812.8 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M950.2 175.3 L982.2 175.3 L982.2 380.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1102.7 428.7 L1134.7 428.7 L1134.7 350.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1255.1 302.0 L1287.1 302.0 L1287.1 223.7" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1407.6 175.3 L1422.6 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M318.4 336.3 L331.4 349.3 L318.4 362.3 L305.4 349.3 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<path d="M591.1 508.0 L591.1 300.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M591.1 273.0 L604.1 286.0 L591.1 299.0 L578.1 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="591.1" y="264.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">approves</text>
+<path d="M743.6 222.7 L743.6 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M743.6 273.0 L756.6 286.0 L743.6 299.0 L730.6 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="743.6" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">templates</text>
+<path d="M1080.7 463.0 L1093.7 476.0 L1080.7 489.0 L1067.7 476.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<path d="M1233.1 336.3 L1246.1 349.3 L1233.1 362.3 L1220.1 349.3 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<path d="M1353.3 222.7 L1353.3 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1353.3 273.0 L1366.3 286.0 L1353.3 299.0 L1340.3 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="1353.3" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">reviews</text>
+<path d="M1505.8 222.7 L1505.8 398.7" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1505.8 399.7 L1518.8 412.7 L1505.8 425.7 L1492.8 412.7 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="1505.8" y="450.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">owners close</text>
+</svg>

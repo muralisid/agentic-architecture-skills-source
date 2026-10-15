@@ -2,8 +2,9 @@
 name: review-agent-architecture
 description: >-
   Review an agent architecture, design document, or proposed rollout against a
-  vendor-neutral reference: the seven planes, the two plane rules, the four
-  deterministic zones, the ten cross-cutting concerns, and twenty-five contested
+  vendor-neutral reference: the seven capabilities an agent platform provides,
+  the two rules (policy enforced outside the model; the audit trail written
+  where the agent cannot touch it), the four deterministic zones, the ten cross-cutting concerns, and twenty-five contested
   technology choices with verdicts. Produces findings ordered by severity, each
   naming the rule broken and the evidence behind it. Use whenever someone asks
   for a review or a second opinion on an AI agent design, an architecture
@@ -18,16 +19,16 @@ metadata:
 
 # Review an agent architecture
 
-Read the design under review first. `references/target-state-architecture.md` is the shape to compare it against: seven planes across fourteen layers, what each plane is responsible for, and the two-estate reality every design has to survive. Then work the four passes below in order and stop at the first pass that produces a blocking finding, because a broken boundary makes the later passes moot.
+Read the design under review first. `references/target-state-architecture.md` is the shape to compare it against: the seven capabilities across fourteen layers, what each capability is responsible for, and the mix of your own agents and vendor-embedded agents that every design has to survive. Then work the four passes below in order and stop at the first pass that produces a blocking finding, because a broken boundary makes the later passes moot.
 
-## Pass 1: the two plane rules
+## Pass 1: the two rules
 
 Both rules are violated more often than any other part of the reference. Check each against the design:
 
-1. **Enforcement lives in the control plane, never in the execution plane.** An instruction in a prompt is a preference. The same rule becomes a control when a gateway or a policy decision point evaluates it. Ask: if the model ignored this instruction, what would stop the action? If the answer is "nothing", the design has no control here.
-2. **The evidence plane is fed by collection the agent cannot influence.** Anything an agent reports about itself is testimony. Ask: could a misbehaving agent suppress or alter this record?
+1. **Policy is enforced outside the model.** An instruction in a prompt is a preference. The same rule becomes a control when a gateway or a policy decision point evaluates it. Ask: if the model ignored this instruction, what would stop the action? If the answer is "nothing", the design has no control here.
+2. **The audit trail is written where the agent cannot touch it.** Anything an agent reports about itself does not count as evidence. Ask: could a misbehaving agent suppress or alter this record?
 
-`references/enforcement.md` carries the three enforcement tiers and what belongs in each.
+`references/enforcement.md` carries the three enforcement points and what belongs in each.
 
 ## Pass 2: the four deterministic zones
 
@@ -54,9 +55,9 @@ Product selection, pricing, and sequencing. It names representative products for
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
 
 ## Additional task references
 
-- [The seven responsibilities of an agentic enterprise](references/architecture-system-view.md): consult when this aspect is part of the task.
+- [What an agent platform provides](references/architecture-system-view.md): consult when this aspect is part of the task.
 - [Make software that agents can use](references/architecture-software-for-agents.md): consult when this aspect is part of the task.

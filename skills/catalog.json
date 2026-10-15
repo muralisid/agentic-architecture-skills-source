@@ -52,7 +52,7 @@
           "as": "enforcement.md"
         },
         {
-          "route": "/architecture/identity-chain",
+          "route": "/architecture/delegation-chain",
           "as": "identity-and-delegation.md"
         },
         {
@@ -143,10 +143,6 @@
           "as": "use-cases-systemic-audit-issues.md"
         },
         {
-          "route": "/use-cases/commercial-growth",
-          "as": "use-cases-commercial-growth.md"
-        },
-        {
           "route": "/use-cases/water-operations",
           "as": "use-cases-water-operations.md"
         }
@@ -167,7 +163,7 @@
           "as": "enforcement.md"
         },
         {
-          "route": "/architecture/identity-chain",
+          "route": "/architecture/delegation-chain",
           "as": "identity-and-delegation.md"
         },
         {
@@ -323,7 +319,7 @@
           "as": "03-deterministic-zones.md"
         },
         {
-          "route": "/architecture/identity-chain",
+          "route": "/architecture/delegation-chain",
           "as": "04-identity-and-delegation.md"
         },
         {

@@ -1,44 +1,36 @@
 ---
 title: "Context patterns for agents"
 icon: "Shapes"
-description: "Nine patterns for giving an agent the right context, each with the measurement that supports it and the published work behind it. Derived from our own experiments on public corpora and from the retrieval literature, and written to be applied rather than admired."
+description: "Nine tested ways to put the right material in front of an agent. Each says what to do, when it applies, and the evidence behind it. Patterns one to three give most of the value."
+concepts: [memory, data-to-memory, r14, r02, ladder, agentic-os]
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-23"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
 ---
 
-<PlainTerms>
-An agent is only as good as what reaches its context. These are nine patterns for getting the right material in front of it: how to represent documents so a question finds the part that answers it, how to keep the cost sane, how to choose what to pass on, and how to know whether any of it worked. Each pattern says what to do, what it buys you, when it does not apply, and the evidence behind it. The one thing to remember: patterns one to three cover most of the value, and you can adopt them without adopting the rest.
-</PlainTerms>
+An agent can only reason over what reaches its context. Context is the material placed in front of the model while it works on a task. A context pattern is a tested way to choose and shape that material. We ran our own experiments to get this right for our own agents. Each test compared an idea with a plain alternative on public document collections. Nine patterns came out of that work. Patterns one to three give most of the value, and you can adopt them on their own. The rest help only under narrower conditions.
 
-## Problem and solution
+These patterns sit inside [knowledge and memory](/memory), the part of an agent platform that decides what agents know. The [agent data engineering layer (R14)](/layers/r14-agent-data-engineering) puts them into practice. It works on documents held in the [data platform layer (R02)](/layers/r02-data-platform). The [data-to-memory pipeline](/architecture/data-to-memory) shows the stages they touch. For the wider picture, see [step 2 of the intelligence ladder: context](/ladder/context). A coordination platform does not supply these patterns, as [the Agentic OS page](/agentic-os) explains.
 
-**Problem:** Agents can only reason over what reaches their context. A single document embedding can blur separate topics, dense retrieval can miss exact names and identifiers, and extra retrieval machinery can add complexity without improving results.
+<TeachingIllustration src="/figures/patterns/context-patterns-pipeline.svg" mobileSrc="/figures/patterns/context-patterns-pipeline-mobile.svg" expandable title="Where the nine patterns act" alt="Documents, such as email, reports and work orders, flow left to right through four steps to the agent context. The agent context is what the model sees. The first step is represent, which splits each document. It holds three patterns. Pattern 1 is several vectors per document. Pattern 2 is beat plain chunks of the same count. Pattern 4 is card types from the documents. The second step is search, which finds candidates. It holds two patterns. Pattern 3 is keep keyword search. Pattern 5 is apply the goal at question time. The third step is filter and group, which cuts cost at scale. It holds two patterns. Pattern 6 is the model designs and cheap tools do the bulk work. Pattern 7 is a filter that sets material aside but does not save the money. The fourth step is select, which picks the final ten. It holds pattern 8, varied results inside the filtered pool. A bar under all four steps holds pattern 9, measure every step against a matched control on your own questions. Patterns 1 to 3 are marked as giving most of the value, so adopt them first. Patterns 4 to 8 help only in narrower cases. The source is the author's experiments on public document collections, August 2026." caption="Each pattern changes one step on the way from documents to the agent. Pattern 9 checks all of them." />
 
-**Solution:** Build the retrieval stack in layers. Start with several representations for aspect-rich documents, compare every clever representation with an equally sized plain-chunk baseline, and keep keyword search alongside dense retrieval. Add corpus-derived views, query-time instruction following, gating, diversity and model-assisted taxonomy design only where measurement shows they help.
-
-**Evidence:** The strongest results are in patterns 1 to 3: multi-vector retrieval prevents aspect dilution, matched controls reveal how much of the gain is simply extra capacity, and keyword search wins decisively on exact-attribute lookup. The later patterns are useful under narrower conditions and should earn their complexity on the target workload.
-
-![Visual overview of the nine context patterns, their problem, solution, pipeline, and evidence.](/figures/patterns/index.webp)
-
-## The patterns
-
-**In short:** Nine, in the order you would apply them. Each links to the experiment or the paper that supports it.
+## The nine patterns
 
 | # | Pattern | What it buys | Evidence |
 |---|---|---|---|
-| 1 | [Give a document several vectors](#p1) | A question about one aspect finds that aspect instead of an average | [Measured](/patterns/aspect-dilution) |
-| 2 | [Make every representation beat a matched baseline](#p2) | You adopt complexity only where it pays | [Measured](/patterns/real-prose) |
-| 3 | [Keep keyword search in the loop](#p3) | Names, identifiers and quotations stop going missing | [Measured](/patterns/aspect-dilution) |
-| 4 | [Derive the views from the corpus](#p4) | Views that match what the corpus contains, not what you hoped | [Measured](/patterns/why-not-to-condition-on-the-objective) |
-| 5 | [Condition on the instruction at query time](#p5) | The stated goal changes what is relevant, cheaply | Published work |
-| 6 | [Let the model design, let machinery execute](#p6) | Roughly two hundred times less spend at comparable granularity | [Measured](/patterns/gate-and-economics) |
-| 7 | [Gate as a quarantine, not as a saving](#p7) | Off-purpose material set aside without pretending it is the win | [Measured](/patterns/gate-and-economics) |
-| 8 | [Diversify inside a gated pool](#p8) | Coverage of a topic without dragging in near-miss distractors | [Measured](/patterns/diversity-and-consumer) |
-| 9 | [Measure with a matched control](#p9) | You find out which of the above is actually true for you | [Method](/patterns/how-to-test-a-context-design) |
+| 1 | [Give a document several vectors](#p1) | A question about one topic finds that topic, not an average. | [Measured](/patterns/aspect-dilution) |
+| 2 | [Make every design beat plain chunks of the same count](#p2) | You add complexity only where it pays. | [Measured](/patterns/real-prose) |
+| 3 | [Keep keyword search](#p3) | Names, codes and quotations stop going missing. | [Measured](/patterns/aspect-dilution) |
+| 4 | [Build card types from the documents, not the goal](#p4) | Card types that match what the documents contain. | [Measured](/patterns/why-not-to-condition-on-the-objective) |
+| 5 | [Apply the instruction at question time](#p5) | The stated goal changes what is relevant, cheaply. | Published work |
+| 6 | [Let the model design, and cheap tools do the bulk work](#p6) | About two hundred times less spend at similar detail. | [Measured](/patterns/gate-and-economics) |
+| 7 | [Use a cheap filter to set material aside, not to save money](#p7) | Off-purpose material set aside, without mistaking it for the saving. | [Measured](/patterns/gate-and-economics) |
+| 8 | [Choose varied results inside a filtered pool](#p8) | Coverage of a topic without near-miss distractors. | [Measured](/patterns/diversity-and-consumer) |
+| 9 | [Measure against a matched control](#p9) | You learn which of the above holds for you. | [Method](/patterns/how-to-test-a-context-design) |
 
-Where a pattern is marked measured, we ran it: five rounds on public corpora, with human relevance judgements where they exist, seeded and reproducible. Where it is marked published work, the evidence is someone else's and is cited. The [reading list](/patterns/reading-list) has about thirty-five papers with what each shows.
+Where a pattern is marked measured, we ran it. That means five rounds on public collections, with human relevance judgements where they exist. Every run was seeded and can be reproduced. Where a pattern is marked published work, the evidence is someone else's, and it is cited. The [reading list](/patterns/reading-list) has about thirty-five papers and what each shows.
 
-These pages report the author’s experiments. Read each comparison with its dataset, baseline, and limitations; this revision does not claim independent replication. The [changed findings](/research/what-changed) explain where the results narrowed our advice.
+These pages report our own experiments. Read each comparison with its data, its baseline and its limits. Nobody else has repeated them yet. [What changed our advice](/research/what-changed) shows where the results narrowed what we recommend.
 
 ---
 
@@ -46,142 +38,150 @@ These pages report the author’s experiments. Read each comparison with its dat
 
 ## 1. Give a document several vectors
 
-**In short:** One embedding per document averages everything the document says; several give a question something specific to match.
+One vector per document averages everything the document says. Several vectors give a question something specific to match.
 
-A <Term k="pooled embedding">pooled vector</Term> of a document covering several <Term k="aspect">aspects</Term> is approximately the mean of those aspects, so a question about one of them matches weakly. Splitting the document restores the signal. On a controlled corpus the pooled index fell from 0.815 to 0.294 <Term k="ndcg">nDCG@10</Term> as documents grew from one aspect to ten, while any multi-vector representation held above 0.63. On the LIMIT stress test the pooled vector scored 0.314 against 0.988 for per-attribute cards.
+A vector is a list of numbers that stands for the meaning of a text. An encoder is the model that makes it. A <Term k="pooled embedding">pooled vector</Term> for a document about several <Term k="aspect">topics</Term> is roughly the average of those topics. So a question about one of them matches weakly. Splitting the document restores the signal. A card is one searchable piece of a document, with its own vector.
 
-**Apply it when** items are aspect-rich: emails that carry a request and a complaint, tickets with a symptom and a workaround, contracts with obligations and termination terms.
+We built a test collection where documents grow from one topic to ten. On it, the pooled index fell from 0.815 to 0.294. The score is <Term k="ndcg">nDCG@10</Term>, a 0 to 1 measure of the top ten results. Any multi-vector design held above 0.63. On LIMIT, a public test built to break one-vector search, the pooled vector scored 0.314. Cards with one vector per attribute scored 0.988.
 
-**Do not bother when** items are short and single-topic. There is nothing to dilute.
+**Apply it when** items cover several topics. Examples are emails that carry a request and a complaint, and tickets with a symptom and a workaround. Contracts with obligations and termination terms are another. So is a utility work order that records a fault, the parts used and a safety note.
 
-The representational ceiling behind this is proven rather than empirical folklore: for a fixed embedding dimension some result sets are unreachable by any single-vector index (Weller et al., arXiv:2508.21038, 2025). [The measurement](/patterns/aspect-dilution).
+**Do not bother when** items are short and about one thing. There is nothing to dilute.
+
+The limit behind this is a mathematical proof, not just an observation. For a vector of fixed size, some result sets are out of reach of any one-vector index. The proof is in Weller et al., arXiv:2508.21038, 2025. See [the measurement](/patterns/aspect-dilution).
 
 <a id="p2" />
 
-## 2. Make every representation beat a matched baseline
+## 2. Make every design beat plain chunks of the same count
 
-**In short:** Most of the multi-vector gain is capacity, so compare against the same number of plain chunks before believing a clever design.
+Most of the multi-vector gain comes from having more pieces. So compare any clever design with the same number of plain chunks before believing it.
 
-Splitting by purpose and splitting by fixed windows both multiply the number of embeddings. On LIMIT, a semantically blind three-word window recovered 0.610 of the 0.674 that purpose views gained, so most of the benefit was capacity rather than cleverness. On human-judged scientific abstracts, purpose views scored 0.032 to 0.042 *below* matched chunks, because the queries concerned whole findings rather than one aspect.
+Splitting by purpose and splitting into fixed windows both add vectors. On LIMIT, a three-word window that ignores meaning recovered 0.610 of the 0.674 that purpose cards gained. So most of the benefit was piece count, not cleverness. On scientific abstracts judged by people, purpose cards scored 0.032 to 0.042 *below* matched chunks. The questions there concerned whole findings, not one topic.
 
-**The rule:** start with plain chunks at matched capacity. Promote purpose views only where they beat those chunks on your own queries. Where queries do target one aspect, the gain is real: +0.188 at ten aspects per document, with a quarter fewer embeddings.
+**The rule:** start with plain chunks at the same count. Adopt purpose cards only where they beat those chunks on your own questions. Where questions do target one topic, the gain is real. It was +0.188 at ten topics per document, with a quarter fewer vectors.
 
-**Apply it to every representation decision**, not only this one. A control that is not matched measures the handicap rather than the idea. [Where views win and lose](/patterns/real-prose).
+**Apply it to every design choice**, not only this one. A control that is not matched measures the handicap, not the idea. See [where cards win and lose](/patterns/real-prose).
 
 <a id="p3" />
 
-## 3. Keep keyword search in the loop
+## 3. Keep keyword search
 
-**In short:** Meaning-based search misses exact names, codes and quotations; combining dense and keyword retrieval is cheap and removes a silent failure mode.
+Meaning-based search misses exact names, codes and quotations. Adding keyword search is cheap and removes a silent failure.
 
-On LIMIT, where queries name a specific attribute, BM25 scored 0.997 against 0.314 for the pooled dense vector. On SciFact, a corpus full of gene names and measured quantities, fusing cards with BM25 gave the best arm at 0.685. Reciprocal rank fusion is cheap and order-independent.
+On LIMIT, where queries name a specific attribute, keyword search (<Term k="bm25">BM25</Term>) scored 0.997. The pooled vector scored 0.314. On SciFact, abstracts full of gene names and measured quantities, cards fused with BM25 gave the best result at 0.685. Fusing merges the two ranked lists by rank, using reciprocal rank fusion. It is cheap, and the result does not depend on which list comes first.
 
-**Default to it unless your own evaluation shows no benefit.** Exact names, identifiers and quotations are common enough that dense-only retrieval creates a silent failure mode: the system can return something plausible instead of the record you named.
+**Use it by default unless your own tests show no benefit.** Exact names, IDs and quotations are common. Meaning-only search can return something plausible instead of the record you named. An asset ID on a utility network is a typical case.
 
 <a id="p4" />
 
-## 4. Derive the views from the corpus
+## 4. Build card types from the documents, not the goal
 
-**In short:** Show the model a sample of the corpus, not a statement of your goal.
+Show the designer a sample of the documents, not a statement of your goal.
 
-Letting a model design the view taxonomy works, and what you show it decides whether it helps. Showing it a stratified corpus sample was worth +0.224 over generic views. Adding the research objective cost 0.068. Adding business context cost 0.047, and schema metadata a further 0.068, with the harm growing in proportion to the context supplied. On real human-judged news collections, objective-selected views were the worst arm of five, about 0.06 below a corpus-derived set.
+A card type is one kind of card, such as fault logs or contracts. A model can design the card types well. What you show it decides whether it helps. Showing it a sample of the documents, spread across topics, was worth +0.224 over generic card types. Adding the research goal cost 0.068. Adding business context cost 0.047. Adding schema metadata as well brought the total cost to 0.068. The harm grew with the amount of context supplied. On real news collections judged by people, goal-picked card types were the worst of five setups. They scored about 0.06 below card types built from the documents.
 
-The mechanism is visible in the taxonomies themselves. From the corpus, the designer produced six views that followed the data. Given the business narrative, it produced four elegant views organised around the business, which covered the corpus less well. Elegance is not coverage.
+The card types themselves show why. From the documents, the designer produced six types that followed the data. Given the business story, it produced four tidy types organised around the business. Those covered the documents less well.
 
-**Apply it when** designing any view, facet or label taxonomy over a corpus. [The five rounds behind this](/patterns/why-not-to-condition-on-the-objective).
+**Apply it when** you design any set of card types, facets or labels over a collection. See [the five rounds behind this](/patterns/why-not-to-condition-on-the-objective).
 
 <a id="p5" />
 
-## 5. Condition on the instruction at query time, not in the index
+## 5. Apply the instruction at question time, not in the index
 
-**In short:** When the goal genuinely changes what is relevant, use a retriever trained to follow instructions rather than rebuilding the index.
+When the goal really changes what is relevant, use a retriever trained to follow instructions. Do not rebuild the index.
 
-Pattern 4 says the objective does not belong in the index design. It still belongs somewhere, because the same document can be relevant to one request and not another. The established place is the query side: retrievers trained so that a stated instruction changes their ranking (INSTRUCTOR, ACL Findings 2023; FollowIR, EMNLP 2024; Promptriever, ICLR 2025), and recent work materialises per-instruction views without re-encoding the corpus (GSTransform, 2025).
+Pattern 4 keeps the goal out of the index design. The goal still matters, because one document can be relevant to one request and not another. The established place for it is the question side. Some retrievers are trained so that a stated instruction changes their ranking. Examples are INSTRUCTOR (ACL Findings 2023), FollowIR (EMNLP 2024) and Promptriever (ICLR 2025). Recent work reshapes the vectors per instruction without re-encoding the documents (GSTransform, 2025).
 
-Our own measurement supports the division: re-selecting views per instruction did not follow the instruction at all (p-MRR about zero), while even an untrained encoder with the instruction prepended to the query was the best arm on one collection.
+Our own results support this split. Re-picking card types per instruction did not follow the instruction at all. Its instruction-following score, <Term k="p-mrr">p-MRR</Term>, was about zero. Even an untrained encoder with the instruction added to the query was the best setup on one collection.
 
-**Apply it when** the same corpus serves requests whose relevance genuinely differs, and keep it out of the indexing step.
+**Apply it when** one collection serves requests whose relevance really differs. Keep it out of the indexing step.
 
 <a id="p6" />
 
-## 6. Let the model design, let machinery execute
+## 6. Let the model design, and cheap tools do the bulk work
 
-**In short:** Spend the model on designing the taxonomy and naming the topics; let embeddings, clustering and ranking touch every document.
+Spend the model on designing the topic list and naming the topics. Let vectors, clustering and ranking touch every document.
 
-Generative cost attached to the number of discovered topics rather than the number of documents is roughly two hundred times cheaper at comparable topic granularity. State it as a constant factor, not a widening scaling law: at a fixed useful granularity the advantage shrinks with corpus size, and an earlier claim that it widened turned out to be clusters coarsening as the corpus grew.
+Tie model cost to the number of topics found, not the number of documents. That is about two hundred times cheaper at similar topic detail. Treat it as a constant factor, not a saving that grows with size. At a fixed useful level of detail, the advantage shrinks as the collection grows. We once claimed it widened. That came from clusters getting coarser as the collection grew.
 
-The published economics agree from several directions: taxonomy-then-classifiers matched a frontier model used directly as the classifier (TnT-LLM, KDD 2024), a vector shortlist plus a small model ran at about one hundredth the per-document cost at higher accuracy (Databricks, Jul 2026 [vendor]), and models synthesising extraction functions from a sample cut token cost by two orders of magnitude (EVAPORATE, VLDB 2023).
+Published work agrees from several directions.
 
-**Apply it when** the corpus is larger than your budget for reading it. Use established topic-modelling machinery rather than a home-grown variant. [The measured bill](/patterns/gate-and-economics).
+- A model-designed topic list plus small classifiers matched a frontier model used directly as the classifier (TnT-LLM, KDD 2024).
+- A vector shortlist plus a small model cost about one hundredth per document, with higher accuracy (Databricks, Jul 2026 [vendor]).
+- Models that write extraction code from a sample cut token cost by two orders of magnitude (EVAPORATE, VLDB 2023).
+
+**Apply it when** the collection is bigger than your budget for reading it. Use established topic-modelling tools rather than a home-made version. See [the measured bill](/patterns/gate-and-economics).
 
 <a id="p7" />
 
-## 7. Gate as a quarantine, not as a saving
+## 7. Use a cheap filter to set material aside, not to save money
 
-**In short:** A cheap first pass is worth building, and it is not where the money is saved.
+A cheap first pass is worth building. It is not where the money is saved.
 
-An embedding-space gate separated on-purpose from off-purpose material at ROC-AUC 0.933. But at the recall a production filter must hold it discarded only a third of the corpus, and at 0.99 recall an eighth: a linear factor of one to two, bought with recall. The order of magnitude comes from pattern 6, not from the filter.
+A filter built on vectors separated on-purpose from off-purpose material at ROC-AUC 0.933. It scores each item against a few anchor phrases, short descriptions of the purpose. ROC-AUC is a 0 to 1 score where 0.5 is a coin toss. But at the recall a production filter must hold, it discarded only a third of the documents. Recall is the share of relevant items the filter keeps. At 0.99 recall it discarded an eighth. That is a saving factor of one to two, paid for with recall. The large saving comes from pattern 6, not from the filter.
 
-Two refinements the null controls forced: fitting the anchor weights was worth 0.002 over equal weights, and where a labelled sample exists, plain logistic regression on the same embeddings reached 0.995. If you can label a few thousand items, train a classifier instead of tuning anchors.
+Two refinements came from null controls, versions built so they should not work. Fitting the anchor weights was worth only 0.002 over equal weights. Where a labelled sample exists, plain logistic regression on the same vectors reached 0.995. If you can label a few thousand items, train a classifier instead of tuning anchors.
 
-**Apply it** with a recall target, quarantining rather than deleting.
+**Apply it** with a recall target. Set material aside rather than deleting it.
 
 <a id="p8" />
 
-## 8. Diversify inside a gated pool
+## 8. Choose varied results inside a filtered pool
 
-**In short:** Coverage is worth buying when a question has several answers, and it must be bought inside a relevance-bounded pool.
+Coverage is worth buying when a question has several answers. Buy it inside a pool already filtered for relevance.
 
-Within a gated pool, harvesting the least similar tail bought sub-topic coverage about twice as cheaply as maximal marginal relevance (+0.315 coverage for 0.046 relevance, against MMR's +0.314 for 0.098) and admitted fewer answerless documents than MMR or a determinantal point process. It also reduced unsupported content in generated summaries by 0.067, which was not predicted and needed no judge to measure.
+Within a filtered pool, we kept the most relevant results and filled the rest with the least similar ones. We call this the harvest. It bought sub-topic coverage about twice as cheaply as maximal marginal relevance (MMR), the standard rule. The harvest gained +0.315 coverage for 0.046 relevance. MMR gained +0.314 for 0.098. The harvest also let in fewer answerless documents than MMR or a determinantal point process (DPP). It reduced unsupported content in generated summaries by 0.067. We did not predict that, and it needed no judge to measure.
 
-**Apply it when** the question is coverage-driven and has several answers. Diversity adds nothing on single-answer factual lookup, and topically adjacent answerless passages are the most damaging thing you can add (the Distracting Effect, ACL 2025), which is why the pool is gated first and the distractor rate is measured.
+**Apply it when** the question needs coverage and has several answers. Variety adds nothing to single-answer lookups. Answerless passages close to the topic are the most damaging thing you can add (the Distracting Effect, ACL 2025). That is why the pool is filtered first and the distractor rate is measured.
 
-**Do not** condition the amount on who reads the results. We tested that and the effect vanished under a judge from a different model family. [The frontier, measured](/patterns/diversity-and-consumer).
+**Do not** tune the amount of variety to who reads the results. We tested that, and the effect vanished under a judge from a different company. See [the measured trade-off](/patterns/diversity-and-consumer).
 
 <a id="p9" />
 
-## 9. Measure with a matched control
+## 9. Measure against a matched control
 
-**In short:** The pattern that makes the other eight true for your corpus rather than ours.
+This pattern makes the other eight true for your documents, not just ours.
 
-Use nDCG@10 with paired tests for relevance and coverage-aware metrics for coverage, because plain recall cannot see diversity. Fix the decision rules before reading any number. Require a headline to hold across seeds and machines. Report every arm, including the ones that beat your method.
+Use nDCG@10 with paired tests for relevance. A paired test compares setups question by question. Use coverage scores for coverage, because plain recall cannot see variety. Fix the decision rules before reading any number. Require a headline result to hold across random seeds and machines. Report every setup, including those that beat your method.
 
-This is the pattern we learned the hard way: five headline results in this programme reversed at least once, and every reversal traced to one of two causes. A control that is not matched is not a control. A measurement that cannot come out negative is not measuring. [How to test a context design](/patterns/how-to-test-a-context-design) has the checks and the reversals that produced them.
+We learned this the hard way. Five of our headline results reversed at least once. Every reversal traced to one of two causes. A control did not get the same budget, or a measurement could not come out negative. [How to test a context design](/patterns/how-to-test-a-context-design) has the checks and the reversals behind them.
 
 ---
 
-These patterns are the part of an agent system that a coordination platform does not supply. [What an Agentic OS is, and what it does not solve](/agentic-os) sets out why.
+## The nine patterns as one pipeline
 
-## The reference pipeline
+Put together, the patterns make one design.
 
-**In short:** The nine patterns assembled into one design.
+1. **Parse and chunk per collection.** Test the chunking on that collection's own questions, as the data-to-memory pipeline requires.
+2. **Embed once.** Version the vectors. Cache them by content and by device.
+3. **Index three ways.** Use keyword search and chunk vectors. Add purpose cards only where pattern 2's test shows a win.
+4. **Filter by recall** into one pool per purpose. Train a classifier as soon as a labelled sample exists.
+5. **Find topics once**, with no seeding. A model names and merges them from keyword lists.
+6. **Search by question type.** Use keyword plus meaning search for names and IDs. Use meaning search for open questions. Use an instruction-following retriever where the stated goal changes relevance.
+7. **Select inside the filtered pool** with the variety rule your coverage score favours. Guard against distractors.
+8. **Assign new documents** to existing topics. Find topics again only for what does not fit.
+9. **Evaluate all the time** against a matched control on your own questions. Retire what stops winning.
 
-1. **Parse and chunk per corpus**, evaluated against that corpus's own questions, as the [data-to-memory pipeline](/architecture/data-to-memory) requires.
-2. **Embed once**, versioned, cached by content and by device.
-3. **Index three ways**: keyword; chunk vectors; and purpose views only where pattern 2's evaluation shows a win.
-4. **Gate by recall** into per-purpose pools, training a classifier as soon as a labelled sample exists.
-5. **Discover topics once**, unseeded, with a model naming and merging them from keyword lists.
-6. **Retrieve by query type**: fused keyword and dense for identifiers, dense for semantic questions, an instruction-following retriever where the stated goal changes relevance.
-7. **Select inside the gated pool** with the diversification operator your coverage metric favours, with a distractor guard.
-8. **Assign new documents** to existing topics; re-run discovery only on the residue.
-9. **Evaluate continuously** against a matched control on your own queries, and retire what stops winning.
+## What is still open
 
-## What this catalogue will become
+These nine patterns cover search over text only. The open questions, including other kinds of data and agent loops, are on [questions to investigate](/research/questions).
 
-These nine come from one programme, on retrieval and context assembly. The intent is to keep adding: patterns from the harness work, worked examples with runnable code, and use-case walkthroughs that show a pattern applied end to end rather than stated. Where a pattern here rests on our measurement, it names the experiment; where it rests on published work, it names the paper. Both kinds will grow.
+## Evidence and limits
 
-If a pattern is missing that you needed, that is useful to know: the [skills repository](https://github.com/muralisid/agentic-architecture-skills) takes issues.
+The encoders were small. The collections ran to twenty thousand documents. Everything was in English, and no production data was used. Prices are as of 2026-08-19, and local compute is priced at zero.
 
-## Limits of this evidence
+A larger instruction-tuned encoder would strengthen pattern 5, not weaken it. The next test that matters most is a real collection with single-topic questions judged by people. It would test pattern 1's one positive finding outside synthetic data.
 
-The encoders were small, the corpora ran to twenty thousand documents, everything was in English, and no production data was used. Prices are as of 2026-08-19 and local compute is priced at zero. A larger instruction-tuned encoder would strengthen pattern 5, not weaken it. The obvious next experiment is a real aspect-targeted corpus with human judgements, which would test pattern 1's one positive finding outside synthetic data.
+## Next step
+
+Start with [one vector blurs a document about many topics](/patterns/aspect-dilution), the evidence for pattern 1. Or see [what we got wrong](/patterns/what-we-got-wrong).
 
 <details>
 <summary>The research behind this page</summary>
 
-- The experiment pages linked from each pattern, and the [reading list](/patterns/reading-list)
-
-- [Agent data engineering](/layers/r14-agent-data-engineering) and [the data-to-memory pipeline](/architecture/data-to-memory), where these patterns sit in the architecture
-- [CD-25](/decisions#cd-25) records the decision
+- The experiment pages linked from each pattern, and the [reading list](/patterns/reading-list).
+- The [agent data engineering layer (R14)](/layers/r14-agent-data-engineering) and the [data-to-memory pipeline](/architecture/data-to-memory), where these patterns sit in the architecture.
+- [The decision on purpose cards and chunks](/decisions#cd-25) records the decision.
+- The experiments ran in August 2026. Prices are as of 2026-08-19.
 
 </details>

@@ -1,71 +1,196 @@
 ---
 title: "Investigate an energy asset before planning work"
-description: "Bring readings, inspection images, operating conditions, and maintenance history into a reviewable investigation."
-position: "Proposed agent workflow. Engineering findings and work authorization require local validation and accountable owners."
-lastReviewed: "2026-10-14"
+description: "When plant equipment runs outside its normal range, an agent gathers the evidence from the historian, the asset management system and engineering tools. An engineer decides what work to plan."
+position: "Proposed agent design. The as-is is typical industry practice, and its cycle times are typical and unsourced. Vendor results are the vendors' own. The placements and controls are this guide's recommendation."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-10-14"
+dateModified: "2026-10-15"
+concepts: [r02, r04, r05, zones, autonomy, risk, flywheel, lifecycle]
 ---
 
-Consider equipment at a generation site operating outside its expected temperature range. A dashboard flags the difference. An engineer must still check operating load, sensor quality, recent work, and inspection evidence before deciding whether maintenance is needed. The agent's proposed contribution is to help investigate that difference.
+A gas turbine bearing runs hot, or a feed pump vibrates more than usual. An alarm or an asset performance alert flags it. Before anyone plans work, someone must find out why. Today a reliability engineer owns that investigation, with the control room and the maintenance planners. The evidence sits in five or more systems, and the work takes days. In this design an agent gathers the evidence into one case and drafts a work notification. An engineer decides, in the asset management system. The agent never touches the plant. The same work applies to a gas compressor on a platform, or a mill bearing at a mine.
 
-<TeachingIllustration src="/images/use-cases/energy-asset-investigation-v1.webp" expandable title="Investigate before planning work" alt="Observe an anomaly in readings or images, compare operating history, request missing evidence, and prepare a work proposal for an engineer. No automatic plant control." caption="The useful output is a supported finding or a clear evidence gap, followed by an engineering decision." />
+<TeachingIllustration src="/images/use-cases/energy-asset-investigation-v1.webp" expandable title="Investigate before planning work" alt="Four steps, left to right. Observe: an anomaly in readings or thermal images. Compare: maintenance records and operating conditions such as load, inlet temperature and flow. Investigate: request the missing evidence, such as recent images, inspection reports and operating logs. Prepare work: an engineer reviews the proposal and approves the work order. A banner says there is no automatic plant control." caption="The useful output is a checked finding or a clear evidence gap. An engineer then decides." />
 
-## Establish a trustworthy starting point
+## The systems involved
 
-Keep the asset identifier, measurement interval, units, operating baseline, and sensor quality with the alert. For a thermal or visual inspection, retain the original image, date, location, and inspection conditions. An apparent hotspot or performance difference is a candidate for review, not a completed diagnosis.
+The investigation touches seven of the fourteen layers. The full estate is on the [energy and resources](/use-cases/energy) page.
 
-## Ask the next useful question
+| Layer | Systems in this use case |
+|---|---|
+| [Data platform (R02)](/layers/r02-data-platform) | Process historian (AVEVA PI), which stores every sensor reading over time. Lab system for oil samples. Lakehouse and reports |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | The buffer network between plant and business networks, with a historian copy. A read broker for agents. The EAM programming interface |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Enterprise asset management, or EAM (SAP PM, IBM Maximo): notifications, work orders and history. ERP for parts. Permit to work. Document store with equipment manuals |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Distributed control system (DCS) and its alarms. Asset performance management, or APM (AVEVA, GE Vernova, Aspen Mtell). Condition monitoring (Bently Nevada). For a generator, the bidding link to the market operator |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Anomaly models, performance models, vibration analysis and a digital twin |
+| [Agent platform (R07)](/layers/r07-agent-platform) | New: the agent, its case store, and a search index over manuals and past work orders |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | Control room operator, reliability engineer, maintenance planner, superintendents, trading desk or production planner |
 
-Is the difference explained by operating conditions? Did it begin after maintenance? Is one measurement unreliable? Use approved analysis tools to compare evidence. Request a targeted inspection only if it can distinguish the remaining explanations. Stop when an engineer can assess the case, evidence remains insufficient, or the investigation limit is reached.
+## How it runs today
 
-## Let the agent call engineering tools
+The work starts with an APM alert or a DCS alarm. It can also start with an email from the equipment maker's diagnostics centre, or an operator who notices a trend. It then runs in eleven steps.
 
-The agent does not do the engineering calculation itself. It plans the investigation and calls trusted tools, such as a time-series model, a thermal analysis or a power-flow solver. The tools calculate. The agent organizes their results and proposes the next check.
+| Step | Who | System | How the data moves |
+|---|---|---|---|
+| 1. Alert | APM software, or the control room operator | APM reading the historian. Or a DCS alarm | APM raises an alert when a reading leaves its normal band. It shows on a screen and goes out by email |
+| 2. First look | Control room operator, shift supervisor | DCS trends, historian screen (PI Vision) | The operator looks at the trend and checks load and air temperature. A line goes in the shift log |
+| 3. Raise a notification | Operator, or diagnostics analyst | EAM (SAP PM notification, Maximo service request) | Typed by hand: free text, equipment number, priority |
+| 4. Engineering review | Reliability or plant engineer | Historian, APM, condition monitoring, EAM history, equipment manuals | Exports trends to Excel. Reads past work orders on screen. Emails the equipment maker |
+| 5. Ask for more evidence | Engineer, then a condition monitoring technician or an oil lab | Vibration route, oil sample, thermal camera | Asked by email or notification. Results come back as PDF reports, often days later |
+| 6. Decide | Engineer, maintenance and operations superintendents | Morning meeting, Teams | A spoken decision: keep watching, change how the unit runs, fix at the next outage, or fix now |
+| 7. Plan the work | Maintenance planner | EAM work order. ERP parts reservation | The notification becomes a work order with tasks, parts and labour |
+| 8. Tell the market or production planning | Trading desk, or production planner | Bidding system to the market operator (AEMO). Production forecast | A generator rebids its availability, with a reason. An oil and gas operator books the lost volume |
+| 9. Control of work | Area authority, isolating authority | Permit to work system, or paper permits | A permit is issued. The equipment is isolated and locked |
+| 10. Do and close | Technician, supervisor | Mobile work app (Maximo Mobile, SAP Asset Manager) | Hours, parts and findings recorded. Failure codes are often left blank |
+| 11. Report | Reliability engineer, plant manager | Reports over copies of EAM and historian data | A monthly reliability report. US generators also file event reports to NERC |
 
-Two planning cases use this pattern. AgenticGrid, from Monash University with Transgrid and Essential Energy, lets agents choose which studies to run. A conventional open-source solver does the power-flow calculation. Each action is logged. Its Broken Hill model was checked against a year of measured transformer load (Race for 2030, trial). Duke Energy and AWS run agents on Duke's own simulation software, grid models and engineering standards. AWS says data preparation fell from about two weeks to hours [vendor]. Duke says its engineers make all final engineering decisions (T&D World, 18 September 2026).
+<TeachingIllustration src="/figures/use-cases/asset-investigation-as-is.svg" mobileSrc="/figures/use-cases/asset-investigation-as-is-mobile.svg" expandable title="Asset investigation today: who does what" alt="A swimlane with six lanes: plant systems, control room, engineers, maintenance, trading or planning, and area authority. Step 1: the APM or a DCS alarm raises an alert. Steps 2 and 3: the control room takes a first look at the trend and types a notification into EAM. Step 4: an engineer reviews the evidence in Excel and email. Step 5: a technician or oil lab sends results back days later. Step 6: the engineers decide at the morning meeting. This is an approval. Step 7: the planner builds the work order. Step 8: the trading desk rebids or the planner updates the forecast. Step 9: the area authority issues the permit and isolation. This is an approval. Step 10: the technician does the work and closes it, often with thin findings. Step 11: the engineer reports monthly. From alert to decision takes one to ten working days, typical and unsourced." caption="Today the evidence moves between five or more systems by export and email." />
 
-Both cases are planning work, not asset investigation. The pattern carries over. The language model plans, the engineering tools calculate, and an engineer decides.
+### Handoffs
 
-## Combine models through evidence
+The case passes from the control room to engineering, then to maintenance planning. For a generator it then goes to the trading desk. For an oil and gas operator it goes to production planning. Finance codes the cost as operating or capital spend.
 
-A time-series model can identify unusual behavior. A vision model can locate a candidate feature in inspection imagery. An LLM can organize their outputs alongside work records and propose the next check. Preserve each tool's uncertainty and source references. Do not treat agreement between models as independent proof when they rely on the same observations.
+### Where reporting comes in
 
-Memory connects current task progress, similar past cases, and approved engineering procedures. Similarity retrieval suggests useful comparisons; the engineer checks whether the operating conditions make them relevant.
+APM and historian analytics start the work. Monthly dashboards report availability and the forced outage rate. Board packs carry availability and major failures. Generators also report availability to the market and the regulator.
 
-## Check each suggestion before anyone acts
+### Cycle time and volumes
 
-The agent's suggestion is checked against telemetry and history before anyone acts on it. Does the reading it relies on match the live data? Has the same pattern appeared before? What did it turn out to be? A rule set or a <Term k="digital twin">digital twin</Term> can test a proposed cause against the physics. Only suggestions that pass reach the engineer.
+- From alert to an engineering decision: one to ten working days (typical, unsourced).
+- From notification to scheduled work, when not urgent: one to four weeks (typical, unsourced).
+- A fleet diagnostics centre may review tens to hundreds of alerts a week (typical, unsourced).
 
-This is the <Term k="validation loop">validation loop</Term>. Suggestion tools already ship. So the research behind this guide calls this loop the part worth designing. The [R05 validation loop](/layers/r05-lob-and-ot#the-validation-loop) shows how it works in the control room.
+### Pain points
 
-## Prepare a controlled handover
+- The evidence sits in five or more systems. Engineers move it by Excel export and email.
+- Many alerts are false or already known. So people stop reading them.
+- A failing sensor can look like a failing machine.
+- Work orders close with thin findings and no failure code. The next investigation starts from scratch.
+- Know-how sits with a few experienced engineers.
+- The equipment maker's diagnostics data and the site's data rarely join.
 
-Provide the finding, alternatives considered, supporting sources, unresolved questions, and suggested work scope. The engineering owner approves the response. The agent may create a draft work item through a permitted interface; it does not alter setpoints, isolate equipment, or commit an outage.
+## How agents run it
+
+The agent runs the evidence gathering. People keep every decision. The agent reads plant data only from the historian copy, through a read broker in the buffer network. It never reads from a controller. It writes only to its own case store and to a draft notification in EAM.
+
+| Step | Agent or person | Reads from, and how | Writes to | Who approves, and where |
+|---|---|---|---|---|
+| 1. Open a case | Agent | APM alerts and alarm history, as events through the read broker | Its own case store | No one. Opening a case changes nothing in the plant |
+| 2. Check the reading | Agent | Historian programming interface (PI Web API, Seeq): quality flags, flat lines, drift, nearby sensors | Case store | No one |
+| 3. Check how the unit ran | Agent | Historian: load, air temperature, fuel, recorded setpoints. Shift log. Dispatch targets | Case store | No one |
+| 4. Check recent work | Agent | EAM tool, read only: recent work orders, open notifications. Maximo offers this through an MCP server, a standard way to give agents tools | Case store | No one |
+| 5. Run engineering tools | The agent calls them. The tools calculate | Anomaly model, performance model, vibration analysis, digital twin | Case store, with each output and tool version | No one |
+| 6. Check each finding | Fixed rules | Live data and similar past cases | Drops a claim, or marks it unverified | No one. Only checked findings go on |
+| 7. Ask for evidence | Agent drafts | Gaps in the case | A draft request to the condition monitoring queue | The engineer. Or an agreed rule for internal requests |
+| 8. Propose | Agent | The case | A finding pack, and a draft EAM notification marked "agent draft" | The engineer, in the EAM worklist |
+| 9. Decide and plan | Engineer, superintendents, planner | The finding pack | EAM work order | People, as today |
+| 10. Market or production change | Trading desk, or production planner | The work plan | Rebid with a reason. Outage plan. Production forecast | People. The participant owns every bid |
+| 11. Control of work | Area authority | Permit system | Permit and isolation | People only. The agent has no path to it |
+| 12. Learn | Engineer | Findings on the closed work order | An "accepted" or "rejected" label on the case | The engineer reviews each label |
+
+The finding pack holds the finding, the other explanations considered, the sources, the gaps and a suggested work scope. Step 6 is the validation loop described on the [line of business and OT layer (R05)](/layers/r05-lob-and-ot) page. Suggestion tools already ship, so this check is the part worth designing.
+
+<TeachingIllustration src="/figures/use-cases/asset-investigation-to-be.svg" mobileSrc="/figures/use-cases/asset-investigation-to-be-mobile.svg" expandable title="Asset investigation with an agent: who does what" alt="A swimlane with seven lanes: agent, engineering tools, fixed rules, engineer, trading or planning, area authority, and the case store. Step 1: the agent opens a case from an APM alert, read through the broker. Steps 2 to 4: the agent checks the reading, how the unit ran, and recent work in EAM. Step 5: engineering tools do the calculations. Step 6: fixed rules check each finding against live data and past cases. Step 7: the agent drafts a request for more evidence. The engineer approves the request. Step 8: the agent proposes a finding pack and a draft EAM notification. Step 9: the engineer approves the draft in EAM, which is an approval, and plans the work. Step 10: the trading desk or planner changes the bid or forecast. Step 11: the area authority issues the permit. This is an approval, and the agent has no path to it. Step 12: the engineer labels the finding accepted or rejected. The case store keeps every source, tool output, check and approval." caption="The agent gathers and checks. Engineers decide in EAM. Permits and bids stay with people." />
+
+### What stays with a person
+
+- How the unit runs, and any setpoint change. That is the control path.
+- The safety instrumented system and protection settings. Safety actuation is a [deterministic zone](/architecture/deterministic-zones#safety-actuation).
+- Permits and isolation. Control of work is a legal safety record.
+- Outage commitments and rebids. The market participant owns every bid (Australian Energy Regulator, 5 August 2026).
+- Work priority and spend. These are delegated authorities.
+
+### Where the evidence is kept
+
+The case store keeps each source reference: the tag, the time range and the query. It keeps each tool output with its version, the check result and who approved. The EAM notification carries the case ID. The operator holds the logs, not the vendor, and the agent cannot change them. This is the [observability and audit trail](/architecture/system-view) capability at work.
+
+### What changes in the systems
+
+- A new EAM notification type or status: "agent draft".
+- A case ID field on notifications and work orders.
+- A review queue in the engineer's EAM worklist.
+- An event subscription to APM alerts.
+- A read-only agent identity on the historian and in the buffer network.
+- An EAM tool that can only read history and create a draft notification. It sits behind the [tool gateway](/architecture/system-view).
+- A search index over equipment manuals and past work orders, held in [knowledge and memory](/memory).
+- Model hosting that respects where plant data may go. Plant data often may not leave the site or the country.
+
+### What does not change
+
+The DCS, the SIS, alarm settings and protection settings stay as they are. So do the APM models, unless reviewed. The permit process, the maintenance strategy, the market bidding rules and finance approvals do not change.
+
+## Who does this today
+
+Vendors now ship the part that covers one system. No one was found doing the join across historian, EAM, lab and permits.
+
+- **TotalEnergies and Chevron with Honeywell.** Honeywell's Experion Operations Assistant launched on 19 March 2026. Chevron and TotalEnergies piloted it. It warned operators 5 to 10 minutes before alarms, and operators acted [vendor]. At TotalEnergies' Port Arthur refinery it forecast five events, about 12 minutes ahead (Hydrocarbon Processing, November 2025) [vendor]. Status: launched. It advises.
+- **Aker BP with Cognite.** Aker BP uses Cognite Atlas AI agents for root cause analysis. Cognite says they cut engineering time by more than 70 percent (World Oil, 16 September 2025) [vendor]. The article does not say who measured it. Status: in use, by the release. It advises.
+- **Shell with C3 AI.** C3 AI reliability agents find root causes, draft work orders and check parts, "with human approval or override". The source is one article (Portal Tela, 5 June 2026). Status: unverified. The article is machine-written and cites no source.
+
+Asset system vendors have announced agents too. IBM announced Maximo Condition Insight on 5 December 2025. It says automatic work order creation is coming "soon" [vendor]. SAP planned its Maintenance Planner Agent for late 2025. This research could not confirm it shipped [vendor]. Seeq (3 March 2026) and Emerson (11 May 2026) announced investigation agents and advisors [vendor].
+
+The same pattern runs in network planning. The agent chooses the studies, a solver calculates, and an engineer decides. AgenticGrid and Duke Energy's work with AWS are described on the [energy and resources](/use-cases/energy) page.
 
 ## Where this sits
 
-This is this guide's proposal, not a reported deployment. The four questions on [agent types](/architecture/agent-types) place it as follows.
+The [four questions](/architecture/agent-types) place this agent as follows. Its role is assist: it does work for an engineer. Its permissions are read only on the historian copy, the APM events and the EAM history. It can write only to its own case store and create a draft EAM notification. It has no path to the control system, the permit system or the bidding system. It runs at delegated tasks (A2) on the [autonomy contract](/architecture/autonomy-contract), both as designed and as permitted. It does a set task, and an engineer approves every output. Its impact is small. A draft can be rejected, and nothing physical moves.
 
-- **Advises or acts:** advises. The agent calls engineering tools. A person decides.
-- **Placement:** A2, L1 to L2. It does a set task and an engineer decides. People choose what it learns from (L1). Accepted and rejected findings may feed a reviewed learning loop (L2).
-- **Zone:** none. It never touches [safety actuation](/architecture/deterministic-zones#safety-actuation). It reads plant data and never writes to controls. Work authorization stays with a person.
-- **Control:** the validation loop above, and a draft work item that a named person approves.
-- **Tier:** score it with the [risk profile](/architecture/risk-profile). Control-system data scores High there on its own.
+On the [risk profile](/architecture/risk-profile) it is Tier 2 (enhanced), because it writes drafts into a production EAM. Many operators class historian data as control-system data. If yours does, it is Tier 3 (strict). It touches no deterministic zone. Safety actuation stays out of its reach by design.
 
-## Test whether it earns its place
+It starts at curated learning (L1). People choose the past cases it uses. Accepted and rejected findings can later feed reviewed learning (L2), through the [learning flywheel](/architecture/learning-flywheel).
 
-Compare the agent with existing alarms, fixed checks, and engineer-led investigation. Measure accepted findings, missed issues in reviewed samples, false work requests, review time, investigation cost, and work-package quality. Reduced downtime is a separate outcome requiring a defensible comparison over time.
+## Measure the result
 
-## External context
+Compare the agent with existing alarms, fixed checks and engineer-led investigation. Count accepted findings, missed issues in a reviewed sample, false work requests and review time. Track the time from alert to decision against today's one to ten days. Reduced downtime is a separate result. It needs a fair comparison over a long period.
 
-The IEA's [Energy and AI report, 2025](https://www.iea.org/reports/energy-and-ai/ai-for-energy-optimisation-and-innovation) discusses AI across energy operations, including maintenance. This example extends that application area into a proposed agent workflow; it is not a reported IEA deployment or result. Reviewed 18 September 2026.
+## Start with a trial
 
-Sources added October 2026:
+Take a year of closed investigations on one unit or one class of pump. Run the agent on that history, with no live drafts. Ask two engineers to grade each finding pack against what was actually found. Then allow live drafts at one site. Register the agent through the [agent lifecycle](/architecture/agent-lifecycle), with a named sponsor, before it goes live.
 
-- [Race for 2030, AgenticGrid at Broken Hill](https://www.racefor2030.com.au/ai-model-helps-network-planners-answer-questions-fast/), undated. Accessed 14 October 2026.
-- [T&D World, AWS and Duke Energy agents for interconnection studies](https://www.tdworld.com/smart-utility/news/55406294/aws-duke-energy-use-ai-agents-to-accelerate-interconnection-studies), 18 September 2026. The time saving is AWS's figure [vendor].
+## Evidence and limits
 
-Continue with [Energy](/use-cases/energy), [combining models](/ladder/combining-models), or [combining evidence](/memory/combining-evidence).
+The as-is steps are typical industry practice, not one company's process. No published cycle times or volumes were found, so all of them are marked typical and unsourced.
 
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+The vendor results are the vendors' own. The Aker BP figure does not say who measured it. Shell's story exists only in a machine-written article.
+
+No vendor agent found joins the historian, EAM, lab, permits and production accounting. That join is the part this design adds. It has not been tested.
+
+The IEA's Energy and AI report (2025) discusses AI in maintenance. It does not report a result for this workflow.
+
+## Next step
+
+Score this agent on the [risk profile](/architecture/risk-profile). Then see how the read broker works on the [line of business and OT](/layers/r05-lob-and-ot) page.
+
+<details>
+<summary>The research behind this page</summary>
+
+Sources were read on 15 October 2026 unless a line says otherwise. [vendor] marks a vendor's claim about its own product or customer.
+
+Named deployments:
+
+- [Honeywell, commercial launch of Experion Operations Assistant](https://www.honeywell.com/us/en/press/2026/03/honeywell-unveils-commercial-launch-of-ai-powered-control-room-assistant-following-successful-pilot), 19 March 2026 [vendor].
+- [Hydrocarbon Processing, Honeywell and TotalEnergies pilot](https://www.hydrocarbonprocessing.com/news/2025/11/honeywell-and-totalenergies-pilot-ai-assisted-control-room-to-accelerate-shift-to-industrial-autonomy/), November 2025 [vendor].
+- [World Oil, Aker BP expands its AI-first strategy with Cognite Atlas AI](https://www.worldoil.com/news/2025/9/16/aker-bp-expands-ai-first-strategy-with-cognite-atlas-ai-to-transform-e-p-efficiency/), 16 September 2025 [vendor].
+- [Portal Tela, C3 AI agents at Shell](https://www.portaltela.com/noticias/economia/2026/06/05/agentes-c3-ai-automatizam-manutencao-preditiva-na-shell/), 5 June 2026. Machine-written, no source named. Unverified.
+
+Vendor agents for this process:
+
+| Vendor | Agent or feature | Date | Status as of 15 October 2026 |
+|---|---|---|---|
+| IBM | [Maximo Condition Insight](https://www.ibm.com/new/announcements/maximo-condition-insight) | 5 December 2025 | Announced. Automatic work orders "soon" [vendor] |
+| IBM | [Maximo Application Suite 9.2, MCP server for outside agents](https://www.ibm.com/new/announcements/introducing-maximo-application-suite-9-2) | 25 June 2026 | Announced [vendor] |
+| SAP | [Maintenance Planner Agent](https://www.sap.com/products/erp/maintenance-planner-agent.html) | Planned for Q4 2025 | Not confirmed. SAP pages refused access [vendor] |
+| Seeq | [Agent Q and Build Your Own Agent](https://www.automation.com/article/seeq-intelligence-bridging-industrial-ai-human-expertise-smarter-operational-decisions) | 3 March 2026 | Announced [vendor] |
+| Emerson | [AspenTech AVA, four advisors](https://www.emerson.com/en/corporate/news/2026/new-emerson-industrial-ai-platform-delivers-enterprise-scale-ai) | 11 May 2026 | Launched. Advisors not named [vendor] |
+| Interloc | [Interloc AI agents on Maximo](https://www.goskagit.com/interloc-solutions-launches-interloc-ai-an-enterprise-agentic-ai-platform-built-specifically-for-ibm-maximo/article_9244cd5d-9008-595d-a19b-c17098f3ffe4.html), with approval steps and audit trails | Date not found | Announced [vendor] |
+| Siemens | Senseye maintenance copilot. Pilots reported 25 percent less reactive maintenance time | Date not found | Not confirmed [vendor] |
+
+Context:
+
+- [Equinor, AI saved USD 130 million](https://www.equinor.com/news/20260107-artificial-intelligence-saved-equinor-usd-130-million), 7 January 2026. Equinor monitors over 700 rotating machines with 24,000 sensors, mainly with traditional machine learning.
+- [EDF and Mistral partnership](https://www.edf.fr/en/the-edf-group/dedicated-sections/journalists/all-press-releases/edf-and-mistral-sign-a-partnership-agreement-for-ai-serving-nuclear-power-and-digital-sovereignty), 28 May 2026. Agents to query the technical memory of the nuclear fleet, on sovereign hosting, not for plant control.
+- [K&L Gates on the AER automated bidding bulletin](https://www.klgates.com/thought-leadership/Electricity-Market-Participants-on-Notice-AER-Releases-Guidance-on-Automated-Bidding-and-Third-Party-Services-8-10-2026), 10 August 2026. The participant owns every bid.
+- [IEA, Energy and AI, 2025](https://www.iea.org/reports/energy-and-ai/ai-for-energy-optimisation-and-innovation). Reviewed 18 September 2026.
+- [Race for 2030, AgenticGrid at Broken Hill](https://www.racefor2030.com.au/ai-model-helps-network-planners-answer-questions-fast/), undated, accessed 14 October 2026, and [T&D World, AWS and Duke Energy](https://www.tdworld.com/smart-utility/news/55406294/aws-duke-energy-use-ai-agents-to-accelerate-interconnection-studies), 18 September 2026. Both show the pattern where the agent plans, tools calculate and an engineer decides.
+
+</details>

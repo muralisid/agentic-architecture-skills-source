@@ -56,7 +56,7 @@ Summary; map below. Frameworks consolidated during the year, with one major vend
 
 ### 10. Target state
 
-A harness the enterprise owns and understands, running on a managed runtime it does not: explicit termination and budget conditions; state in inspectable artifacts; a separate verification path; a registry with evaluation-gated promotion and automatic demotion on staleness; a curated skill library with progressive disclosure; routing that leans on a deterministic first tier; and durable execution for anything that must survive a process dying.
+A harness the enterprise owns and understands, running on a managed runtime it does not: explicit termination and budget conditions; state in inspectable artifacts; a separate verification path; a registry with evaluation-gated promotion and automatic demotion on staleness; a curated skill library with progressive disclosure; routing that leans on a deterministic first step; and durable execution for anything that must survive a process dying.
 
 ### 11. Migration path
 
@@ -78,9 +78,9 @@ So multi-agent buys parallel breadth and context isolation. It does not buy reas
 
 Where subagents must share evolving state, coordination cost dominates, and current models are measurably bad at the orchestration prompting that would fix it: a 2026 benchmark across ten topologies found an average combined pass rate of 17.2% with average information leakage over 200% per scenario. Production data agrees with the conservative reading: 59% of agentic application requests make only a single service call. Note also that the two camps disagree less than the framing suggests, since the leading multi-agent advocate states plainly that the approach is a poor fit where agents share context or have many dependencies, and that coding has fewer truly parallelisable parts than research.
 
-### Agent types and the controls they need
+### What kind of agent it is, and the controls it needs
 
-Per-type control differentiation is published practice, with named enterprises. A government framework scales requirements by scope of actions, reversibility, autonomy level and task complexity; one pharmaceutical company runs five levels of agency where lower levels take a lightweight governance path, middle levels an impact assessment, and higher levels enterprise architecture review, with a runtime policy enforcement layer required *before* higher autonomy is enabled; a bank operates a deliberately bounded advisory agent with task-level autonomy only, no self-initiation and no decision authority.
+Controls that differ by kind of agent are published practice, with named enterprises. A government framework scales requirements by scope of actions, reversibility, autonomy level and task complexity; one pharmaceutical company runs five levels of agency where lower levels take a lightweight governance path, middle levels an impact assessment, and higher levels enterprise architecture review, with a runtime policy enforcement layer required *before* higher autonomy is enabled; a bank operates a deliberately bounded advisory agent with task-level autonomy only, no self-initiation and no decision authority.
 
 The guide's own position goes one step further and is labelled as such: **for passive and embedded agents, the qualification that matters is eval-gated behavior plus exception logging that feeds learning, rather than autonomy.** No published taxonomy says this. Every one surveyed uses autonomy or action scope as the definitional axis, which classifies a bounded advisory system out of "agentic" entirely rather than qualifying it in by another route. The ingredients exist separately: evaluation gates already determine an agent's qualified scope of use in the lifecycle work above, and governance frameworks already prescribe feedback loops from monitoring into evaluation, plus immutability so failed trajectories cannot be deleted. Nobody has assembled them into a qualification criterion. We think they should be, and we flag that the consensus currently runs the other way.
 
@@ -89,7 +89,7 @@ The guide's own position goes one step further and is labelled as such: **for pa
 | # | Concern | Treatment at this layer |
 |---|---|---|
 | C1 | Identity & access | Harness carries the caller identity into every tool call; approval rules held in the harness, enforced at the gateway |
-| C2 | Observability | Loop telemetry: iterations, terminations by type, context resets, subagent fan-out |
+| C2 | Observability | Loop telemetry: iterations, terminations by type, context resets, number of subagents spawned |
 | C3 | Traceability & audit | Session artifacts and event logs as the durable record; promoted agent versions traceable to their gate evidence |
 | C4 | Grounding in reality | Verification separated from generation; self-assessment treated as unreliable by default |
 | C5 | Impersonation & authenticity | Skills and instruction files signed and version-pinned; provenance for anything loaded into context |

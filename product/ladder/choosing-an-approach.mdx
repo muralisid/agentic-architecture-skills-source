@@ -2,26 +2,27 @@
 title: "Choose what to change"
 description: "Diagnose the failure before choosing a model or training method."
 position: "Diagnostic guidance. Each proposed change needs a matched evaluation, not an assumed benefit."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [ladder, memory, patterns, lifecycle, flywheel, value]
 ---
 
 An agent schedules an inspection that was completed yesterday. Should we buy a more capable model, rewrite its instructions, or train it? **First find out what prevented it from doing the job correctly.**
 
 <TeachingIllustration src="/images/ladder/diagnosis-software-v1.webp" title="Find what failed before changing the model" alt="An explicitly labelled AI model produces an inspection plan without the completion record. Diagnose unclear instructions, missing evidence, failed tools, or remaining model limitations before selecting a change." caption="Illustrative inspection case. The AI model is software; the inspection is its task. The same wrong answer can have several different causes." expandable />
 
-## Why a stronger model may not fix the problem
+## A stronger model may not fix the problem
 
 It is tempting to treat every wrong answer as insufficient intelligence. In this example, the completion record may never have reached the agent. It may concern a different inspection case. Or a failed tool call may have been mistaken for a successful lookup. Changing the model without checking these possibilities leaves the cause unresolved.
 
-The [Intelligence ladder](/ladder) explains the available ways to build capability. This page helps choose which part to change. The aim is a better completed task at an acceptable full cost.
+The [intelligence ladder](/ladder) explains the available ways to build capability. This page helps choose which part to change. The aim is a better completed task at an acceptable full cost.
 
 ## Start with a failed task
 
-Keep the request, allowed actions, sources available at the time, tool results, and actual outcome. Ask the inspection owner what an acceptable result would have been. A useful expectation might be: identify the completed inspection, check unresolved findings, and request further inspection only if the evidence supports it.
+Keep the request, allowed actions, sources available at the time, tool results, and actual outcome. Ask the inspection owner what an acceptable result would have been. A useful answer might have three parts. Identify the completed inspection. Check unresolved findings. Request a further inspection only if the evidence supports it.
 
-That gives us something concrete to test. “Make the agent more reliable” does not.
+That gives us something concrete to test. "Make the agent more reliable" does not.
 
 ## Run a comparison that separates the causes
 
@@ -43,14 +44,18 @@ If evidence is adequate but the requested result is unclear, try clearer instruc
 
 If the same steps are always required, compare a fixed workflow. If the next check depends on the result of the previous one, compare a bounded investigation. If separate investigations are useful, evaluate [one agent or several](/ladder/single-and-multiple-agents). Changing coordination should address an observed difficulty.
 
-## Then assess model adaptation
+## Then consider changing the model
 
 When the task, evidence, and tools are adequate, compare another model, better examples, or training against the remaining limitation. If capability is already good but expensive, test whether a smaller model or [distillation](/ladder/distillation) can preserve the required quality.
 
-Use tasks held apart from development. Count unsuccessful attempts, expert review, latency, and maintenance alongside model charges. Retain changes that improve the agreed outcome enough to justify their cost. See [business economics](/use-cases/value-and-investment).
+Use tasks held apart from development. Count unsuccessful attempts, expert review, latency, and maintenance alongside model charges. Retain changes that improve the agreed outcome enough to justify their cost. See [value and full cost](/use-cases/value-and-investment).
 
-**Next step:** start with the cheapest change, [step 1: instructions](/ladder/instructions).
+A new model, prompt or tool is a change to a running agent. It re-runs the evals at the change stage of [the agent lifecycle](/architecture/agent-lifecycle). [The learning flywheel](/architecture/learning-flywheel) sets out how the change is tested and promoted.
 
-## Basis for this guidance
+## Evidence and limits
 
-This diagnostic sequence and inspection case example are teaching proposals, not reported experimental results. Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), published 19 December 2024, supports starting simply and evaluating added complexity. Reviewed 18 September 2026.
+This diagnostic order and the inspection case are teaching proposals, not reported experimental results. Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) supports starting simply and testing added complexity (19 December 2024, reviewed 18 September 2026).
+
+## Next step
+
+Start with the cheapest change, [step 1: instructions](/ladder/instructions).

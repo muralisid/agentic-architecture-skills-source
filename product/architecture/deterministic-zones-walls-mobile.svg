@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3486" role="img" aria-labelledby="title desc">
 <title id="title">The four deterministic zones</title>
-<desc id="desc">A model sits in the centre and may analyse, draft, recommend, flag and block. Four zones surround it: access, money, safety actuation and formal records. In each zone a fixed rule or a named person decides. The model may deny, escalate or quarantine, but it may never grant.</desc>
+<desc id="desc">A model sits in the centre and may analyse, draft, recommend, flag and block. Four zones surround it: access, money, safety actuation and formal records. In each zone a fixed rule or a named person decides. The model may deny, escalate or quarantine, but it may never grant. Beside the zones sit the destruction rule and the rule for decisions about people.</desc>
 <defs>
 <marker id="ah-evidence" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#0f766e"/></marker>
 <marker id="ah-risk" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#e11d48"/></marker>
@@ -72,7 +72,7 @@
 <text x="44" y="2122" font-family="Arial,sans-serif" font-size="24" fill="#881337">Two signers in production</text>
 <text x="44" y="2156" font-family="Arial,sans-serif" font-size="24" fill="#881337">Protected backups</text>
 <rect x="28" y="2190" width="664" height="162" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
-<text x="44" y="2230" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#881337">People-decisions floor</text>
+<text x="44" y="2230" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#881337">Rule for decisions about people</text>
 <text x="44" y="2268" font-family="Arial,sans-serif" font-size="24" fill="#881337">A named person decides</text>
 <text x="44" y="2302" font-family="Arial,sans-serif" font-size="24" fill="#881337">Notice to the person</text>
 <text x="44" y="2336" font-family="Arial,sans-serif" font-size="24" fill="#881337">Each decision logged</text>
@@ -110,5 +110,5 @@
 <text x="46" y="3344" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#881337">6</text>
 <text x="84" y="3344" font-family="Arial,sans-serif" font-size="24" fill="#465958">Does it make or shape a significant decision</text>
 <text x="84" y="3376" font-family="Arial,sans-serif" font-size="24" fill="#465958">about a person?</text>
-<text x="84" y="3414" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">Yes: people-decisions floor</text>
+<text x="84" y="3414" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">Yes: the rule for decisions about people</text>
 </svg>

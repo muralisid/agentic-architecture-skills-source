@@ -1,61 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2817.8" role="img" aria-labelledby="title desc">
 <title id="title">Stepping autonomy up and down</title>
-<desc id="desc">Autonomy runs from A0 manual to A5 governed lights-out. Each step up needs the controls in place, eval results and the readiness scores for that level, never a count of clean runs, and A4 and above also need L2 governed learning and an oversight gate proven at burst. An anomaly, a change of scope or exercised autonomy above permitted demotes the agent at once. Each agent carries three readings: designed, permitted and exercised.</desc>
+<desc id="desc">Autonomy runs from manual (A0) to governed lights-out (A5). Each step up needs the controls for that level, evaluation results and the readiness scores, never a count of clean runs. Managed autonomy (A4) and above also need reviewed learning (L2) and a supervision gate proven at peak load. An anomaly, a change of scope or exercised autonomy above permitted moves the agent down at once. Each agent carries three readings: designed, permitted and exercised. Each level shows its lowest risk tier.</desc>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
-<text x="28" y="64" font-family="Arial,sans-serif" font-size="36" font-weight="600" fill="#182e31">Stepping autonomy up and down</text>
-<text x="28" y="110" font-family="Arial,sans-serif" font-size="24" fill="#465958">Step up on controls and eval results, never on a</text>
-<text x="28" y="142" font-family="Arial,sans-serif" font-size="24" fill="#465958">count of clean runs. Step down at once.</text>
+<text x="28" y="64" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">Stepping autonomy up and down</text>
+<text x="28" y="110" font-family="Arial,sans-serif" font-size="24" fill="#465958">Step up on controls and evaluation results,</text>
+<text x="28" y="142" font-family="Arial,sans-serif" font-size="24" fill="#465958">never on clean runs. Step down at once.</text>
 <rect x="28" y="186" width="664" height="247.7" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="44" y="222.8" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">A5 Governed lights-out</text>
+<text x="44" y="222.8" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">Governed lights-out (A5)</text>
 <text x="44" y="258.5" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Sets policy, audits outcomes</text>
-<text x="44" y="299.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">All seven readiness areas at 3, plus</text>
-<text x="44" y="330.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">regulator-ready evidence. Oversight capacity</text>
-<text x="44" y="361.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">measured in production. Per domain only.</text>
-<rect x="46" y="373.7" width="186.4" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
-<text x="139.2" y="402.1" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Tier 3 floor</text>
+<text x="44" y="299.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">All seven readiness areas at 3, plus evidence</text>
+<text x="44" y="330.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">a regulator accepts. Supervision measured</text>
+<text x="44" y="361.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">in production. One domain at a time.</text>
+<rect x="46" y="373.7" width="270" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="181" y="402.1" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Needs Tier 3</text>
 <rect x="28" y="447.7" width="664" height="247.7" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
-<text x="44" y="484.5" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">A4 Managed autonomy</text>
+<text x="44" y="484.5" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">Managed autonomy (A4)</text>
 <text x="44" y="520.2" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Works exception queues</text>
-<text x="44" y="561.4" font-family="Arial,sans-serif" font-size="24" fill="#465958">L2 governed learning. Pass the oversight gate</text>
-<text x="44" y="592.4" font-family="Arial,sans-serif" font-size="24" fill="#465958">below. All seven areas at 2 or more, controls,</text>
-<text x="44" y="623.4" font-family="Arial,sans-serif" font-size="24" fill="#465958">and governance at 3.</text>
-<rect x="46" y="635.4" width="186.4" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
-<text x="139.2" y="663.8" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Tier 3 floor</text>
+<text x="44" y="561.4" font-family="Arial,sans-serif" font-size="24" fill="#465958">Reviewed learning (L2). Pass the gate below.</text>
+<text x="44" y="592.4" font-family="Arial,sans-serif" font-size="24" fill="#465958">All seven areas at 2 or more, with controls,</text>
+<text x="44" y="623.4" font-family="Arial,sans-serif" font-size="24" fill="#465958">testing and cost at 3.</text>
+<rect x="46" y="635.4" width="270" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="181" y="663.8" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Needs Tier 3</text>
 <path d="M24 731.4 L696 731.4" fill="none" stroke="#475569" stroke-width="4"/>
-<rect x="99.8" y="709.4" width="520.4" height="44" rx="22" fill="#f8f5ef" stroke="#475569" stroke-width="2"/>
-<text x="360" y="739.4" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#0f172a">Oversight gate: burst capacity proven</text>
+<rect x="60" y="709.4" width="600" height="44" rx="22" fill="#f8f5ef" stroke="#475569" stroke-width="2"/>
+<text x="360" y="739.4" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#0f172a">Supervision gate: peak capacity proven</text>
 <rect x="28" y="767.4" width="664" height="247.7" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="44" y="804.2" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">A3 Supervised autonomy</text>
+<text x="44" y="804.2" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">Supervised autonomy (A3)</text>
 <text x="44" y="839.9" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Approves irreversible actions</text>
-<text x="44" y="881.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">Data, integration, identity, controls and testing at 2</text>
-<text x="44" y="912.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">or more. Approval gates, budgets, a kill</text>
-<text x="44" y="943.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">switch, and evals against a human baseline.</text>
-<rect x="46" y="955.1" width="186.4" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
-<text x="139.2" y="983.5" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Tier 2 floor</text>
+<text x="44" y="881.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">Data, integration, identity, controls and</text>
+<text x="44" y="912.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">testing at 2. Approval steps, budgets, a kill</text>
+<text x="44" y="943.1" font-family="Arial,sans-serif" font-size="24" fill="#465958">switch, evaluations against a human baseline.</text>
+<rect x="46" y="955.1" width="270" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="181" y="983.5" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Needs Tier 2 or up</text>
 <rect x="28" y="1029.1" width="664" height="247.7" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="44" y="1065.9" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">A2 Delegated tasks</text>
+<text x="44" y="1065.9" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">Delegated tasks (A2)</text>
 <text x="44" y="1101.6" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reviews every output</text>
-<text x="44" y="1142.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Data and integration at 2 or more, the rest at</text>
-<text x="44" y="1173.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">1 or more. Task scoping, output review and</text>
+<text x="44" y="1142.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Data and integration at 2 or more, the rest</text>
+<text x="44" y="1173.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">at 1 or more. Scoped task, review and</text>
 <text x="44" y="1204.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">audit.</text>
-<rect x="46" y="1216.8" width="186.4" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
-<text x="139.2" y="1245.2" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Tier 1 floor</text>
+<rect x="46" y="1216.8" width="270" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="181" y="1245.2" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Needs Tier 1 or up</text>
 <rect x="28" y="1290.8" width="664" height="216.7" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="44" y="1327.6" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">A1 Assisted</text>
+<text x="44" y="1327.6" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">Assisted (A1)</text>
 <text x="44" y="1363.3" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Acts; AI suggests</text>
-<text x="44" y="1404.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">Can start while the identity chain is built.</text>
+<text x="44" y="1404.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">Can start while the delegation chain is built.</text>
 <text x="44" y="1435.5" font-family="Arial,sans-serif" font-size="24" fill="#465958">Any area at 0 keeps the agent here.</text>
-<rect x="46" y="1447.5" width="186.4" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
-<text x="139.2" y="1475.9" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Tier 1 floor</text>
+<rect x="46" y="1447.5" width="270" height="40" rx="20" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+<text x="181" y="1475.9" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#0f172a">Needs Tier 1 or up</text>
 <rect x="28" y="1521.5" width="664" height="185.7" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
-<text x="44" y="1558.3" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">A0 Manual</text>
+<text x="44" y="1558.3" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#182e31">Manual (A0)</text>
 <text x="44" y="1594" font-family="Arial,sans-serif" font-size="24" fill="#182e31">All work, no AI</text>
 <text x="44" y="1635.2" font-family="Arial,sans-serif" font-size="24" fill="#465958">The starting point.</text>
-<rect x="46" y="1647.2" width="133.6" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
-<text x="112.8" y="1675.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">No floor</text>
+<rect x="46" y="1647.2" width="270" height="40" rx="20" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+<text x="181" y="1675.6" font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#1e293b">No minimum tier</text>
 <rect x="28" y="1751.2" width="664" height="188.1" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
 <text x="44" y="1788" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#881337">Step down at once</text>
-<text x="44" y="1823.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">Any one of these demotes the agent:</text>
+<text x="44" y="1823.7" font-family="Arial,sans-serif" font-size="24" fill="#465958">Any one of these moves the agent down:</text>
 <text x="66" y="1854.9" font-family="Arial,sans-serif" font-size="24" fill="#881337">An anomaly</text>
 <circle cx="49" cy="1847.2" r="3.5" fill="#881337"/>
 <text x="66" y="1886.1" font-family="Arial,sans-serif" font-size="24" fill="#881337">A change of scope</text>
@@ -66,9 +66,9 @@
 <path d="M636 1897.3000000000004 L648 1915.3000000000004 L660 1897.3000000000004 Z" fill="#e11d48"/>
 <rect x="28" y="1957.3" width="664" height="156.5" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="44" y="1994.1" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0f172a">Step up on evidence</text>
-<text x="44" y="2029.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Controls in place and eval results. Never a</text>
-<text x="44" y="2060.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">count of clean runs: nineteen passes in twenty</text>
-<text x="44" y="2091.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">fits a true pass rate as low as 78 percent.</text>
+<text x="44" y="2029.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Controls in place and evaluation results.</text>
+<text x="44" y="2060.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Never a count of clean runs. A short run</text>
+<text x="44" y="2091.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">of passes can hide a real failure rate.</text>
 <path d="M648 2089.8 L648 1995.3" fill="none" stroke="#475569" stroke-width="5"/>
 <path d="M636 1999.3000000000004 L648 1981.3000000000004 L660 1999.3000000000004 Z" fill="#475569"/>
 <rect x="28" y="2131.8" width="664" height="456" rx="12" fill="#fff" stroke="#d5d9d4" stroke-width="1.5"/>
@@ -104,9 +104,9 @@
 <circle cx="450.24" cy="2473.6000000000004" r="4" fill="#94a3b8"/>
 <text x="48" y="2530.8" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#881337">Exercised above permitted is an incident.</text>
 <text x="48" y="2561.8" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Controls follow the higher of the two.</text>
-<text x="28" y="2639.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every move on the A0 to A5 scale is a change. It</text>
-<text x="28" y="2671.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">re-runs the evals and the risk profile.</text>
-<text x="28" y="2717.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">The weakest readiness area sets the ceiling. A</text>
-<text x="28" y="2749.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">level you cannot supervise is a level you have not</text>
-<text x="28" y="2781.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">reached.</text>
+<text x="28" y="2639.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every move on the autonomy scale is a change.</text>
+<text x="28" y="2671.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">It re-runs the evaluations and the risk profile.</text>
+<text x="28" y="2717.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">The weakest readiness area sets the ceiling.</text>
+<text x="28" y="2749.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">Do not grant a level that people cannot</text>
+<text x="28" y="2781.8" font-family="Arial,sans-serif" font-size="24" fill="#465958">supervise.</text>
 </svg>

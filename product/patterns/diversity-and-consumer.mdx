@@ -1,35 +1,37 @@
 ---
-title: "Diversity, and who consumes the results"
+title: "Choosing varied results, and whether the reader matters"
 icon: "Shuffle"
-description: "Within a gated pool, harvesting the least similar tail buys sub-topic coverage about twice as cheaply as maximal marginal relevance and admits fewer answerless documents than a determinantal point process. The claim that the right amount of diversity depends on whether a model or a person reads the results did not survive a cross-family judge."
+description: "Keep the most relevant results and fill the rest with the least similar ones. This buys topic coverage at half the relevance cost of the standard method. The idea that a model reader needs more variety than a person did not hold up."
+concepts: [patterns, memory, data-to-memory, ladder, r14]
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-23"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
 ---
 
-<PlainTerms>
-After a search finds candidates, something has to pick the ten that get passed on. Picking the ten most similar repeats the same point; picking deliberately different ones covers more ground but risks including things that do not answer the question. This page measures that trade for several selection rules, then tests the idea the programme was built around: that a model writing a summary wants more variety than a person reading a brief. The one thing to remember: the selection rule proposed here is an efficient one, and the idea that the rule should change with the reader has no evidence behind it yet.
-</PlainTerms>
+After a search finds candidates, something must pick the ten that reach the agent. The ten most similar often repeat the same point. Ten deliberately different ones cover more ground, but may include passages that do not answer the question. We asked which selection rule gives the best trade. The answer: keep the most relevant results at the top, then fill the last places with the least similar candidates. We call this the harvest. It matched the coverage of the standard method, MMR, at half the relevance cost. It also let in fewer junk passages. We also tested whether a model reader needs more variety than a person. That idea did not survive a fair judge.
 
-## Problem and solution
+This choice is the last step before material enters the agent's [context](/ladder/context). It is part of how agents use [knowledge and memory](/memory). It sits at the retrieve stage of the [data-to-memory pipeline](/architecture/data-to-memory), which the [agent data engineering layer (R14)](/layers/r14-agent-data-engineering) builds.
 
-**Problem:** Pure relevance ranking can return ten near-duplicates; aggressive diversity can cover more sub-topics but admit answerless distractors.
+## The test: questions where the sub-topics are known
 
-**Solution:** Gate for relevance first, keep a strong relevance head, and spend only part of the tail on deliberately different candidates. Tune the relevance-diversity balance to the workload, not to whether a human or a model will read the result.
+Each of 120 queries has several distinct facts. Each candidate document states at most one of them. So we can count exactly which sub-topics a selection covers. We did not find sub-topics by clustering. That would have been circular, because one rule under test selects by cluster.
 
-**Evidence:** A 40 percent harvest reaches the same measured sub-topic coverage as aggressive MMR while losing about half as much relevance and admitting fewer distractors. The separate claim that machines need more diversity than humans does not survive a cross-family judge and is not supported.
+First, candidates are cut to the most relevant half, as a first-pass filter would do. Then a pool of answerless documents is mixed in. We call these distractors. Each rule then selects ten.
 
-![Visual comparison of relevance-only, MMR, DPP, and harvest policies inside a gated candidate pool.](/figures/patterns/diversity-and-consumer.webp)
+Three scores tell the rules apart. <Term k="coverage metrics">S-recall</Term> is the share of known sub-topics covered. <Term k="ndcg">nDCG@10</Term> measures relevance. The distractor rate is the share of answerless documents let in.
 
-## The retrieval half: what each policy delivers
+We tested seven rules.
 
-**In short:** Coverage costs relevance. The harvest buys it cheaper than MMR and admits fewer distractors than a DPP.
-
-Ground truth comes from construction rather than from a model. Each of 120 queries is associated with several distinct facts, and each candidate document realises at most one of them, so the sub-topics a selection covers can be counted exactly; deriving sub-topics by clustering would have been circular, since one of the policies under test selects by cluster. Candidates are gated to the upper half by relevance first, as a first pass would do, a distractor pool of answerless documents is mixed in, and each policy then selects ten. <Term k="coverage metrics">S-recall</Term> counts the share of known sub-topics covered; <Term k="ndcg">nDCG@10</Term> measures relevance; the distractor rate counts answerless documents admitted.
+- Relevance only: the ten most relevant.
+- <Term k="diversity selection">MMR</Term> (maximal marginal relevance), at lambda 0.7 and 0.3. It is the standard rule, built into most vector stores. It trades relevance for variety across the whole list. A lower lambda means more variety.
+- DPP (determinantal point process), a maths method that picks a spread-out set.
+- Cluster round-robin: one result from each cluster in turn.
+- The harvest, at 20 and 40 percent. Keep the most relevant results, then fill that share of the ten places with the least similar candidates.
 
 <ResultChart
   kind="scatter"
-  title="The coverage-relevance frontier of seven selection policies"
-  subtitle="120 constructed queries, budget of ten, seed 13. Up is more sub-topic coverage; right is more relevance."
+  title="Coverage against relevance for seven selection rules"
+  subtitle="120 built queries, ten results each, seed 13. Up is more sub-topic coverage. Right is more relevance."
   xLabel="Relevance (nDCG@10)"
   yLabel="Sub-topic coverage (S-recall)"
   points={[
@@ -41,11 +43,11 @@ Ground truth comes from construction rather than from a model. Each of 120 queri
     { label: 'MMR, lambda 0.3', x: 0.729, y: 0.686, anchor: 'end' },
     { label: 'DPP', x: 0.699, y: 0.746, anchor: 'end' },
   ]}
-  caption="The two harvest settings sit above and to the right of the MMR and cluster policies at comparable coverage. The DPP reaches the most coverage and pays the most relevance for it."
+  caption="The two harvest settings sit above and to the right of MMR and cluster round-robin at similar coverage. The DPP reaches the most coverage and pays the most relevance for it."
   source="Author-reported experiment, August 2026. The comparison and limitations are described on this page."
 />
 
-| Policy | S-recall | Alpha-nDCG | nDCG@10 | Distractor rate |
+| Rule | S-recall | Alpha-nDCG | nDCG@10 | Distractor rate |
 |---|---|---|---|---|
 | Relevance only | 0.372 | 0.542 | 0.827 | 0.168 |
 | MMR, lambda 0.7 | 0.405 | 0.566 | 0.802 | 0.197 |
@@ -55,50 +57,71 @@ Ground truth comes from construction rather than from a model. Each of 120 queri
 | Harvest, 20 percent quota | 0.567 | 0.619 | 0.808 | 0.198 |
 | Harvest, 40 percent quota | 0.686 | 0.677 | 0.781 | 0.236 |
 
-Read along the rows: the 40 percent harvest and MMR at lambda 0.3 reach the same coverage (0.686), and the harvest pays 0.046 of relevance for it where MMR pays 0.098. The harvest also admits distractors at 0.236 against MMR's 0.285 and the DPP's 0.328. The mechanism is visible in the construction: <Term k="diversity selection">MMR and the DPP</Term> diversify the whole list, so the top of the list drifts off relevance, while the harvest keeps a relevance head and spends only the tail. All coverage gains over relevance ranking are Holm-significant at p=0.0001; so are all the relevance costs.
+Alpha-nDCG is a ranking score that rewards coverage and discounts repeats. Read along the rows. The 40 percent harvest and MMR at lambda 0.3 reach the same coverage, 0.686. The harvest pays 0.046 of relevance for it. MMR pays 0.098. The harvest also lets in fewer distractors: 0.236, against 0.285 for MMR and 0.328 for the DPP.
 
-An earlier version of this experiment reported coverage as nearly free. It was wrong: an integer-division bug gave two distractors per task instead of forty, so nothing could be lost and every relevance metric sat at its ceiling. The corrected trade is the one above.
+The reason shows in how the rules work. MMR and the DPP spread out the whole list, so even the top drifts away from relevance. The harvest keeps a relevant top and spends only the tail. All coverage gains over relevance-only ranking are significant at p=0.0001 after Holm correction. So are all the relevance costs.
 
-## The consumer half: does the right amount depend on the reader?
+An earlier version of this test reported coverage as nearly free. It was wrong. A coding bug put two distractors in each task instead of forty. So nothing could be lost, and every relevance score sat at its maximum. The corrected trade is the one above.
 
-**In short:** Three judges, three answers that shrink to nothing as the judge moves away from the generator's model family.
+## The reader test: does the right amount of variety depend on who reads?
 
-The same gated pool, the same query, and the same synthesis model were used throughout; only the selection policy and the consumer varied. For the machine consumer the selection is assembled as evidence for a model that must synthesise an account of everything the material covers. For the human consumer the same selection is rendered as a short brief for a person who will read it once and act on it. Sixty tasks, two policies (relevance, harvest) and two consumers give 240 generations. The prediction was an interaction, not a main effect: harvesting should raise coverage for the machine consumer by more than for the human one.
+We expected it would. The effect shrank to nothing under a fair judge.
 
-Coverage of the known sub-topics in the generated text was scored by three judges: a model from the same family as the generator, a larger model from that family, and a model from a different family.
+The pool, the queries and the writing model stayed the same throughout. Only the selection rule and the reader changed. For a model reader, the selection is evidence for a model. It must write an account of everything the material covers. For a person, the same selection becomes a short brief they will read once and act on. Sixty tasks, two rules (relevance and harvest) and two readers give 240 generated texts.
+
+We predicted a difference between readers, not a gain for everyone. The harvest should raise coverage more for the model reader than for the person.
+
+Three judges scored coverage of the known sub-topics in each text. A judge is a model that grades another model's output. One judge came from the same company as the writing model. One was a larger model from that company. One came from a different company.
 
 <ResultChart
   kind="dots"
-  title="The consumer interaction, as each judge measured it"
-  subtitle="Harvest's coverage gain for the machine consumer minus its gain for the human consumer, 60 tasks, with 95 percent bootstrap intervals. A positive value supports the claim."
-  categories={['Same-family judge, small', 'Same-family judge, large', 'Cross-family judge']}
-  series={[{ name: 'Interaction', values: [0.071, 0.047, 0.008] }]}
+  title="The reader effect, as each judge measured it"
+  subtitle="The harvest's coverage gain for the model reader minus its gain for the person. 60 tasks, with 95 percent bootstrap intervals. A positive value supports the claim."
+  categories={['Same-company judge, small', 'Same-company judge, large', 'Different-company judge']}
+  series={[{ name: 'Reader difference', values: [0.071, 0.047, 0.008] }]}
   intervals={[{ low: 0.022, high: 0.125 }, { low: -0.024, high: 0.117 }, { low: -0.039, high: 0.056 }]}
   signed
   baseline={0}
   min={-0.06}
   max={0.14}
   ticks={[-0.05, 0, 0.05, 0.1]}
-  xLabel="Interaction (machine gain minus human gain, judged coverage)"
-  caption="+0.071 (p=0.009), +0.047 (p=0.211), +0.008 (p=0.763). The estimate shrinks monotonically with distance from the generator's own family and vanishes at the cross-family judge, which is the signature of a judging artefact. Not disproved: all three point estimates are positive, and 60 tasks cannot resolve an effect this small. But no evidence may be cited for it."
+  xLabel="Reader difference (model-reader gain minus person gain, judged coverage)"
+  caption="+0.071 (p=0.009), +0.047 (p=0.211), +0.008 (p=0.763). The estimate shrinks as the judge moves away from the writer's own company. It vanishes with the judge from another company. That pattern points to a flaw in the judging, not a real effect. It is not disproved. All three estimates are positive, and 60 tasks cannot resolve an effect this small. But no evidence can be cited for it."
   source="Author-reported experiment, August 2026. The comparison and limitations are described on this page."
 />
 
-One finding from the same study needs no judge and survived every check. Counting words in the output that no selected document supports, harvesting reduces unsupported content: −0.067 for the human-facing brief (p=0.0018) and −0.048 for the machine-facing synthesis (p=0.067). A selection that covers more of the material gives the writer less reason to invent. This was not predicted, it is judge-independent, and it is the most defensible thing the consumer study produced.
+One finding from the same study needs no judge, and it survived every check. We counted words in each output that no selected document supports. Harvesting reduced this unsupported content.
 
-## What this establishes
+- For the brief for a person: -0.067 (p=0.0018).
+- For the account written for a model: -0.048 (p=0.067).
 
-<PrincipleCard eyebrow="Verdict" title="An efficient operator; an unsupported policy" kind="evidence">
-Within a gated pool, the outlier harvest is a more efficient way to buy sub-topic coverage than MMR or a DPP, and it produces better-grounded summaries. That half stands. The consumer-dependent flip, the claim that diversity should be conditioned on who reads the results, has no evidence that survives a cross-family judge and is withdrawn as a claim. A system that already has MMR or a DPP should set its quality-diversity balance per workload on measured coverage, not per consumer on this programme's say-so.
+A selection that covers more of the material gives the writer less reason to invent. We did not predict this. It does not depend on a judge. It is the most solid result of the reader study.
+
+## A worked example
+
+A utility planner asks an agent for every known cause of a substation fault. That question has several answers, so a varied set of ten helps. The harvest keeps the strongest matches at the top and adds different causes below them. A question with one answer, such as the date of the last inspection, gains nothing from variety. This example shows how to apply the rule. We tested it on built questions, not on utility records.
+
+## What we conclude
+
+<PrincipleCard eyebrow="Verdict" title="An efficient selection rule, and an unsupported reader rule" kind="evidence">
+Within a filtered pool, the harvest buys sub-topic coverage more cheaply than MMR or a DPP. Its summaries also contain fewer unsupported statements. That half stands. The reader half does not. No evidence for tuning variety to the reader survives a judge from another company. We withdraw that claim. If you already use MMR or a DPP, set its balance per workload on measured coverage. Do not set it per reader on the strength of these results.
 </PrincipleCard>
 
-<EvidenceBadge status="mixed-evidence" /> The retrieval half is independently measured on constructed ground truth; the consumer half depends on model judges and is reported as unresolved.
+## Evidence and limits
+
+<EvidenceBadge status="mixed-evidence" /> The selection half is measured on built ground truth. The reader half depends on model judges and is unresolved.
+
+The queries were built for the test, not taken from real users. Sixty tasks are too few to detect a small reader effect. We ran this ourselves. Nobody else has repeated it yet.
+
+## Next step
+
+See how all these tests were kept honest, in [how to test a context design](/patterns/how-to-test-a-context-design). Or go back to the [nine context patterns](/patterns).
 
 <details>
 <summary>The research behind this page</summary>
 
-
-- Carbonell and Goldstein, MMR, SIGIR 1998; diverse multi-answer retrieval with determinantal point processes, COLING 2022; DIVA, NAACL 2025; the Distracting Effect, ACL 2025; The Power of Noise (SIGIR 2024) and its retraction (SIGIR 2026). All on the [reading list](/patterns/reading-list).
-- Alpha-nDCG, Clarke et al., SIGIR 2008, and sub-question coverage (Salesforce and Georgia Tech, Oct 2024) for why coverage has to be measured with coverage metrics rather than recall.
+- Carbonell and Goldstein, MMR, SIGIR 1998. Diverse multi-answer retrieval with determinantal point processes, COLING 2022. DIVA, NAACL 2025. The Distracting Effect, ACL 2025. The Power of Noise (SIGIR 2024) and its retraction (SIGIR 2026). All are on the [reading list](/patterns/reading-list).
+- Alpha-nDCG, Clarke et al., SIGIR 2008. Sub-question coverage, Salesforce and Georgia Tech, Oct 2024. Both explain why coverage needs coverage scores, not recall.
+- The experiment ran in August 2026.
 
 </details>

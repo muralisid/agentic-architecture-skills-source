@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
 <title id="title">The road to an agentic enterprise</title>
-<desc id="desc">Seven stations run in order: 1 Understand, 2 Assess readiness, 3 Choose use cases, 4 Design, 5 Build, 6 Operate and 7 Scale autonomy. Each station lists the pages to read. A gate sits between stations: sponsors can say what changes and what stays; readiness profile and ceiling; use case admitted, risk tier set; zone register signed, controls chosen; evals pass, approvals signed; oversight capacity proven at burst. An evidence rail runs under every station, and an arrow from station 7 back to station 3 marks the next use case.</desc>
+<desc id="desc">Seven steps run in order. They are understand, assess readiness, choose use cases, design, build, operate and scale autonomy. Each step lists the pages to read. A gate sits between each pair of steps. Gate 1: sponsors can say what changes and what stays. Gate 2: a readiness profile and ceiling. Gate 3: the use case is admitted and its risk tier set. Gate 4: the zone register is signed and controls chosen. Gate 5: evals pass and approvals are signed. Gate 6: oversight capacity holds at peak load. A rail under every step reads evidence and limits on every page. An arrow from step 7 back to step 3 marks the next use case.</desc>
 <defs><marker id="ah-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#475569"/></marker><marker id="ah-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="18" markerHeight="18" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#7c3aed"/></marker></defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
 <text x="33" y="56" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">The road to an agentic enterprise</text>
@@ -44,7 +44,7 @@
 <path d="M1345 168 H1375" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#ah-slate)"/>
 <rect x="1262" y="572" width="196" height="92" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="1360" y="613" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#0f172a">Oversight capacity</text>
-<text x="1360" y="635" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#0f172a">proven at burst</text>
+<text x="1360" y="635" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#0f172a">holds at peak load</text>
 <rect x="33" y="132" width="190" height="416" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <circle cx="67" cy="168" r="22" fill="#2563eb"/>
 <text x="67" y="176" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">1</text>
@@ -53,10 +53,12 @@
 <text x="43" y="300" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Architecture of</text>
 <text x="43" y="323" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">the agentic</text>
 <text x="43" y="346" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">enterprise</text>
-<text x="43" y="381" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The seven</text>
-<text x="43" y="404" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">responsibilities</text>
-<text x="43" y="439" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Follow one</text>
-<text x="43" y="462" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">inspection task</text>
+<text x="43" y="381" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">What an agent</text>
+<text x="43" y="404" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">platform provides</text>
+<text x="43" y="439" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The agent</text>
+<text x="43" y="462" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">lifecycle</text>
+<text x="43" y="497" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Follow one</text>
+<text x="43" y="520" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">inspection task</text>
 <rect x="257" y="132" width="190" height="416" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <circle cx="291" cy="168" r="22" fill="#2563eb"/>
 <text x="291" y="176" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">2</text>
@@ -65,7 +67,8 @@
 <path d="M269 268 H435" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
 <text x="267" y="300" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The readiness</text>
 <text x="267" y="323" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">assessment</text>
-<text x="267" y="358" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The ceiling table</text>
+<text x="267" y="358" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The autonomy</text>
+<text x="267" y="381" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">contract</text>
 <rect x="481" y="132" width="190" height="416" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <circle cx="515" cy="168" r="22" fill="#2563eb"/>
 <text x="515" y="176" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">3</text>
@@ -86,12 +89,13 @@
 <text x="739" y="176" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">4</text>
 <text x="719" y="224" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">Design</text>
 <path d="M717 268 H883" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="715" y="300" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Agent types</text>
-<text x="715" y="335" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The risk profile</text>
-<text x="715" y="370" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The deterministic</text>
-<text x="715" y="393" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">zones</text>
-<text x="715" y="428" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Enforcement</text>
-<text x="715" y="451" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">outside the model</text>
+<text x="715" y="300" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Four questions</text>
+<text x="715" y="323" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">for any agent</text>
+<text x="715" y="358" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The risk profile</text>
+<text x="715" y="393" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The deterministic</text>
+<text x="715" y="416" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">zones</text>
+<text x="715" y="451" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Enforcement</text>
+<text x="715" y="474" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">outside the model</text>
 <rect x="929" y="132" width="190" height="416" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <circle cx="963" cy="168" r="22" fill="#2563eb"/>
 <text x="963" y="176" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">5</text>
@@ -109,14 +113,14 @@
 <text x="1187" y="176" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">6</text>
 <text x="1167" y="224" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">Operate</text>
 <path d="M1165 268 H1331" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.35"/>
-<text x="1163" y="300" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Observability and</text>
-<text x="1163" y="323" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">FinOps</text>
-<text x="1163" y="358" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Operating model</text>
-<text x="1163" y="381" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">and supervision</text>
-<text x="1163" y="416" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The agent</text>
-<text x="1163" y="439" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">lifecycle</text>
-<text x="1163" y="474" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The economics</text>
-<text x="1163" y="497" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">model</text>
+<text x="1163" y="300" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Operate: the</text>
+<text x="1163" y="323" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">weekly loop</text>
+<text x="1163" y="358" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Observability and</text>
+<text x="1163" y="381" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">FinOps</text>
+<text x="1163" y="416" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Operating model</text>
+<text x="1163" y="439" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">and supervision</text>
+<text x="1163" y="474" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The agent</text>
+<text x="1163" y="497" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">lifecycle</text>
 <rect x="1377" y="132" width="190" height="416" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
 <circle cx="1411" cy="168" r="22" fill="#2563eb"/>
 <text x="1411" y="176" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#ffffff">7</text>
@@ -127,16 +131,16 @@
 <text x="1387" y="323" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">contract</text>
 <text x="1387" y="358" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The learning</text>
 <text x="1387" y="381" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">flywheel</text>
-<text x="1387" y="416" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The autonomy</text>
-<text x="1387" y="439" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">crosswalk</text>
+<text x="1387" y="416" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">The risk</text>
+<text x="1387" y="439" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">profile</text>
 <text x="1387" y="474" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">Build an agentic</text>
 <text x="1387" y="497" font-family="Arial,sans-serif" font-size="18" fill="#1e3a8a">enterprise</text>
 <rect x="33" y="700" width="1534" height="56" rx="28" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
-<text x="800" y="736" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#134e4a">Evidence: sources and limits on every page</text>
+<text x="800" y="736" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#134e4a">Evidence and limits on every page</text>
 <rect x="33" y="802" width="24" height="24" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<text x="67" y="820" font-family="Arial,sans-serif" font-size="18" fill="#465958">Station: the pages to read, in order</text>
+<text x="67" y="820" font-family="Arial,sans-serif" font-size="18" fill="#465958">Step: the pages to read, in order</text>
 <rect x="471.4" y="802" width="24" height="24" rx="6" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="505.4" y="820" font-family="Arial,sans-serif" font-size="18" fill="#465958">Gate: what must be true before you move on</text>
 <path d="M969.2 814 H993.2" fill="none" stroke="#7c3aed" stroke-width="3"/>
-<text x="1003.2" y="820" font-family="Arial,sans-serif" font-size="18" fill="#465958">Next use case: back to station 3</text>
+<text x="1003.2" y="820" font-family="Arial,sans-serif" font-size="18" fill="#465958">Next use case: back to step 3</text>
 </svg>

@@ -22,15 +22,15 @@ Platform selection is downstream of the use-case portfolio and is usually run up
 
 **The primary sort is evaluability: can a domain expert write twenty to fifty pass-or-fail tasks from real failures for this use case?**
 
-This is a gate rather than a weighted criterion, and the distinction is the whole framework. A weighted criterion lets a high-value use case with unmeasurable success outrank a modest one with a clean success definition, and that trade is exactly how programmes end up unable to improve. Without evaluability there is no eval suite; without an eval suite there is no learning loop, no promotion gate, no staged rollout and no honest claim about reliability. Everything the A x L model calls L2 rests on it.
+This is a gate rather than a weighted criterion, and the distinction is the whole framework. A weighted criterion lets a high-value use case with unmeasurable success outrank a modest one with a clean success definition, and that trade is exactly how programmes end up unable to improve. Without evaluability there is no eval suite; without an eval suite there is no learning loop, no promotion gate, no staged rollout and no honest claim about reliability. Everything the autonomy and learning scales call reviewed learning (L2) rests on it.
 
 The supporting evidence is the failure data rather than a preference: only a minority of practitioner teams run online evals at all, the most-cited analysis of AI programme failure attributes it to the learning gap rather than model quality, and the promotion-gate study found automated gates erring in both directions when the eval basis was weak.
 
-**What happens to a valuable use case that fails the gate.** It does not get rejected and it does not get funded. It goes to the *make-it-evaluable queue*, and the funded work is defining success: getting a domain SME to write the tasks, instrumenting the current human process to produce a baseline, and finding the real failures the tasks should encode. That work is cheap relative to building the agent and it is the highest-return spend in an immature programme. Fund the definition, not the agent.
+**What happens to a valuable use case that fails the gate.** It does not get rejected and it does not get funded. It goes on a waiting list of use cases that cannot yet be measured. The funded work is defining success. That means getting a domain SME to write the tasks, instrumenting the current human process to produce a baseline, and finding the real failures the tasks should encode. That work is cheap relative to building the agent and it is the highest-return spend in an immature programme. Fund the definition, not the agent.
 
 ## The three admission gates
 
-![Ideas pass three gates: evaluability, a deterministic-zone check and reliable evidence. A fail goes to the make-it-evaluable queue, a redesign or rejection, or grounding preparation. Two packaged-application tests decide whether to wait or buy, or to build thin. What survives is scored, checked against constraints across the whole set, and funded with kill criteria written now. The portfolio is re-ranked every quarter.](/figures/use-cases/portfolio-gates-to-funding.svg)
+![Ideas pass three gates: evaluability, a deterministic-zone check and reliable evidence. A fail goes to the waiting list for use cases that cannot yet be measured, a redesign or rejection, or evidence preparation. Two packaged-application tests decide whether to wait or buy, or to build thin. What survives is scored, checked against constraints across the whole set, and funded with stop criteria written now. The portfolio is re-ranked every quarter.](/figures/use-cases/portfolio-gates-to-funding.svg)
 
 A use case is fundable this quarter only if it passes all three.
 
@@ -46,13 +46,13 @@ Added October 2026 from this guide's research on packaged, or commercial off-the
 
 Both tests run after the three gates and before scoring. They do not decide whether a use case is worth doing. They decide whether the enterprise should build the agent at all.
 
-**Test 4: One package or several?** Inside one package, the vendor holds the data and the permissions and is likely to ship an agent. Across several packages, no vendor agent covers the whole job, and the join is the strongest build candidate.
+**The package test: one package or several?** Inside one package, the vendor holds the data and the permissions and is likely to ship an agent. Across several packages, no vendor agent covers the whole job, and the join is the strongest build candidate.
 
-**Test 5: Is a vendor agent generally available on this edition, or dated within two quarters?** Count only agents marked generally available in release notes, treat announced agents as unavailable, and check the price after any free period. Vendor agents are tied to editions: Oracle's are not coming to E-Business Suite, JD Edwards, PeopleSoft or Hyperion ([Forrester, 8 May 2026](https://www.forrester.com/blogs/oracle-applications-analyst-summit-fusion-agents-are-shifting-from-assist-to-decide/)), and SAP ties its AI to cloud editions or a committed migration ([SAPinsider, 15 May 2026](https://sapinsider.org/articles/sapphire-2026-your-sap-erp-just-got-an-ai-brain-now-what-seven-questions-every-leader-must-answer/)).
+**The vendor agent test: is a vendor agent generally available on this edition, or dated within two quarters?** Count only agents marked generally available in release notes, treat announced agents as unavailable, and check the price after any free period. Vendor agents are tied to editions: Oracle's are not coming to E-Business Suite, JD Edwards, PeopleSoft or Hyperion ([Forrester, 8 May 2026](https://www.forrester.com/blogs/oracle-applications-analyst-summit-fusion-agents-are-shifting-from-assist-to-decide/)), and SAP ties its AI to cloud editions or a committed migration ([SAPinsider, 15 May 2026](https://sapinsider.org/articles/sapphire-2026-your-sap-erp-just-got-an-ai-brain-now-what-seven-questions-every-leader-must-answer/)).
 
 Inside one package, on a supported edition, with a dated generally available agent, the decision is wait or buy. The use case leaves the build ranking but stays on the portfolio, and its vendor date is re-checked each quarter. Across packages, or on an excluded edition, the agent is built, and built thin so it can be retired when a vendor agent arrives. A vendor agent still takes a registry entry and still draws on the shared supervision capacity in constraint 1 below. The full method and a dated map of a utility estate are in [agents and packaged applications](/use-cases/packaged-applications).
 
-The three gates and the two tests are the five checks on [choose where to start](/use-cases/choose-where-to-start), in the same order and with the same numbers. [Agents and packaged applications](/use-cases/packaged-applications) runs them in the same order as six tests. It adds "does it need an agent?" as test one, so gates 1 and 2 are its tests two and three. Tests 4 and 5 keep their numbers there. Gate 3, grounding readiness, sits in its "Prepare first" outcome. Its test six is the scoring below.
+The three gates and the two tests are the five checks on [choose where to start](/use-cases/choose-where-to-start), in the same order. [Agents and packaged applications](/use-cases/packaged-applications) runs them in the same order as six tests. It adds "does it need an agent?" as test one, so gates 1 and 2 are its tests two and three. Tests 4 and 5 keep their numbers there. Gate 3, grounding readiness, sits in its "Prepare first" outcome. Its test six is the scoring below.
 
 ## Scoring what survives the gates
 
@@ -72,15 +72,15 @@ Rank on the score. Do not adjust the ranking for enthusiasm, executive sponsorsh
 
 Ranking alone produces a portfolio that cannot be run. Three constraints apply across the whole set rather than to any single use case.
 
-**1. Supervision capacity is shared and finite.** This is the constraint most often missed. The oversight-capacity gate applies at portfolio level, not only per workload: five approved A3 workloads each consuming a third of one supervisor's burst capacity do not fit inside one supervisor, and the arithmetic is never done because each workload was approved separately. Calculate the burst-rate load of the whole approved set against the people who will actually hold it.
+**1. Supervision capacity is shared and finite.** This is the constraint most often missed. The oversight-capacity gate applies at portfolio level, not only per workload: five approved supervised-autonomy (A3) workloads each consuming a third of one supervisor's burst capacity do not fit inside one supervisor, and the arithmetic is never done because each workload was approved separately. Calculate the burst-rate load of the whole approved set against the people who will actually hold it.
 
-**2. Do not fund a portfolio that sits in one plane.** A quarter of use cases that all need the knowledge plane and none that exercise the control or evidence planes produces good demos and no platform. Deliberately fund at least one use case that forces the plane you are weakest in.
+**2. Do not fund a portfolio that leans on one capability.** Suppose a quarter of use cases all need knowledge and memory. If none exercise identity and policy or the audit trail, the result is good demos and no platform. Deliberately fund at least one use case that forces the capability you are weakest in.
 
-**3. Balance blast radius.** A portfolio entirely made of low-consequence use cases never builds the controls needed for consequential ones, and a portfolio weighted to high-consequence work outruns the evidence. The internal-first recommendation is this constraint applied over time rather than a claim that internal work is more valuable.
+**3. Balance blast radius.** A portfolio entirely made of low-impact use cases never builds the controls needed for consequential ones, and a portfolio weighted to high-impact work outruns the evidence. The internal-first recommendation is this constraint applied over time rather than a claim that internal work is more valuable.
 
-## Kill criteria, written at funding time
+## Stop criteria, written at funding time
 
-Every funded use case carries its kill criteria before work starts, because kill criteria written after a programme is underway are negotiated rather than applied. The minimum set:
+Every funded use case carries its stop criteria before work starts, because stop criteria written after a programme is underway are negotiated rather than applied. The minimum set:
 
 - Eval pass rate fails to reach the agreed threshold within the funding period.
 - Cost per resolved outcome does not converge toward the target trajectory.
@@ -91,7 +91,7 @@ Stopping is a normal outcome and should be reported as one. Roughly three quarte
 
 ## Cadence
 
-Run the portfolio quarterly. Re-rank every quarter with measured rather than estimated inputs: after one cycle you have real cost per resolved outcome and real supervision load, and the second ranking is worth considerably more than the first. Keep the make-it-evaluable queue funded continuously; it is the pipeline that feeds every later quarter.
+Run the portfolio quarterly. Re-rank every quarter with measured rather than estimated inputs: after one cycle you have real cost per resolved outcome and real supervision load, and the second ranking is worth considerably more than the first. Keep the work of defining success funded continuously. It is the pipeline that feeds every later quarter.
 
 ## Fictional worked example: Northstar's first portfolio round
 
@@ -103,7 +103,7 @@ Northstar considers three candidates. It applies the gates before calculating pr
 |---|---|---|---|---|
 | Supplier-invoice exception evidence pack | Pass: 35 pass/fail cases from prior exceptions | Pass after redesign: the model assembles evidence; ERP rules and an authorized person decide payment | Pass: procurement corpus has an owner | Score it |
 | Maintenance work-order assistant | Pass: 28 historical diagnostic tasks | Pass: recommendations are advisory and cannot actuate equipment | Pass: manuals and asset history can be purpose-scoped | Score it |
-| Customer-renewal negotiation agent | Fail: the team cannot yet define a reliable success baseline beyond revenue | Unchecked | Unchecked | Fund the make-it-evaluable work, not the agent |
+| Customer-renewal negotiation agent | Fail: the team cannot yet define a reliable success baseline beyond revenue | Unchecked | Unchecked | Fund the work of defining success, not the agent |
 
 Only the first two reach the score:
 
@@ -114,9 +114,9 @@ Only the first two reach the score:
 
 For the invoice case, `(45 x 1,200 / 12) x 0.90 = 4,050`. The index is for ranking Northstar's candidates; it has no meaning across enterprises unless the currency, measurement period, and treatment of labour and failure costs are identical.
 
-Northstar then applies the portfolio constraints rather than funding the top row automatically. The invoice case exercises the control and evidence planes; the maintenance case exercises the knowledge and action planes. Peak review demand for both is tested against the same staffed supervision pool. The invoice case is funded first, the maintenance case remains next in sequence, and the renewal idea receives a small definition budget to create real eval tasks and a baseline.
+Northstar then applies the portfolio constraints rather than funding the top row automatically. The invoice case exercises identity and policy and the audit trail. The maintenance case exercises knowledge and memory and the tool gateway. Peak review demand for both is tested against the same staffed supervision pool. The invoice case is funded first, the maintenance case remains next in sequence, and the renewal idea receives a small definition budget to create real eval tasks and a baseline.
 
-The invoice case also receives kill criteria at approval: stop if the eval target is missed during the funding period, measured cost per resolved exception fails to converge toward the approved trajectory, peak review demand exceeds staffed capacity, or corpus ownership lapses. These are fictional decision mechanics, not recommended numeric thresholds.
+The invoice case also receives stop criteria at approval: stop if the eval target is missed during the funding period, measured cost per resolved exception fails to converge toward the approved trajectory, peak review demand exceeds staffed capacity, or corpus ownership lapses. These are fictional decision mechanics, not recommended numeric thresholds.
 
 ## Sources
 

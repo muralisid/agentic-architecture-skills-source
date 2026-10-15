@@ -1,73 +1,82 @@
 ---
 title: "Continued pretraining"
 icon: "BookOpenText"
-description: "How a model learns a domain from raw text, why tokenisation makes specialist language expensive for a general model, what the corpus work really involves, and the budget split the evidence supports."
+description: "How a model learns a domain from raw text, what preparing that text involves, and where the budget should go."
+position: "Teaching guidance. The budget split is one study, read as a direction. The utility example is a proposed design."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-29"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [ladder, r06, r14, r11, concern-matrix, flywheel, lifecycle]
 ---
 
-<PlainTerms>
-This is how you teach a model your world: not from labelled examples but from raw text, the material your organisation already has in bulk. The model keeps doing what pretraining always did, predicting the next word, but now over your contracts, filings, tickets and manuals, and it comes out reading your domain the way your people do. It is the option that suits an organisation with a large corpus, it is routinely confused with fine-tuning, and the corpus preparation is where the project is won or lost.
-</PlainTerms>
+A model still misreads your industry's documents, its terms and its notation. **How do we teach a model the language of our domain?** Continued pretraining teaches it from raw text, not from labelled examples. That is the material your organisation already has in bulk. The model keeps doing what pretraining always did: predicting the next word. Now it does so over your contracts, filings, tickets and manuals. It comes out reading your domain the way your people do. It suits an organisation with a large body of text. It is often confused with fine-tuning. Preparing the text is where the project succeeds or fails. This is one of the model-change options on [the intelligence ladder](/ladder).
 
-## What the model actually learns from raw text
+## What the model learns from raw text
 
-Next-token prediction sounds too simple to teach anything. It is worth seeing why it is not.
+Predicting the next word sounds too simple to teach anything. It is worth seeing why it is not.
 
-To predict the next word in "the beneficial owner of the account is", a model must have absorbed what beneficial ownership is, what kinds of entities own accounts, and what tends to follow in the kind of document this is. Prediction quality is a proxy for understanding, and improving it over billions of tokens of your material forces the model to absorb your domain's concepts, relationships and conventions. Nobody labels anything, because the text itself is the supervision: every next word is a tiny test with a known answer.
+Take the phrase "the beneficial owner of the account is". To predict the next word, a model must know what beneficial ownership is. It must know what kinds of entities own accounts. It must know what tends to follow in this kind of document.
 
-There is also a mechanical reason general models read specialist text badly, and it is visible before any learning happens. Models read in <Term k="token">tokens</Term>, and a tokeniser trained on general text splits unfamiliar vocabulary into fragments: a drug name, a legal term of art, or a SWIFT message type becomes four or five meaningless shards. The model spends capacity reassembling words your industry treats as atoms. Continued pretraining teaches the model your vocabulary's behaviour even through awkward tokenisation, which is part of why fluency in the domain improves so visibly.
+Prediction quality stands in for understanding. Improving it over billions of tokens of your material forces the model to absorb your domain's concepts, relationships and conventions. Nobody labels anything. The text itself is the teacher. Every next word is a small test with a known answer.
 
-## The distinction, one more time
+There is also a mechanical reason general models read specialist text badly. It shows before any learning happens. Models read in <Term k="token">tokens</Term>. A token is a word or part of a word. A tokeniser trained on general text splits unfamiliar words into fragments. A drug name, a legal term or a SWIFT message type becomes four or five meaningless pieces. SWIFT is the messaging standard banks use for payments. The model spends effort putting back together words your industry treats as single units. Continued pretraining teaches the model how your vocabulary behaves, even through awkward splitting. That is part of why its fluency in the domain improves so visibly.
+
+## How this differs from fine-tuning
 
 | | Supervised <Term k="fine-tuning">fine-tuning</Term> | Continued pretraining |
 |---|---|---|
 | Input | Pairs: a question and the wanted answer | Raw text, as it already exists |
 | Volume | Thousands of examples | Billions of tokens |
 | Teaches | How to behave | What the domain is |
-| Preparation | High: someone writes the answers | Different: nobody writes anything, but the corpus must be curated |
+| Preparation | High: someone writes the answers | Different: nobody writes anything, but the text must be curated |
 
-The preparation row deserves expansion, because "you already have the data" is true and misleading.
+The preparation row needs more detail. "You already have the data" is true, and also misleading.
 
 <GuideFigure id="sft-vs-cpt" fullWidth />
 
-<TeachingIllustration src="/images/ladder/continued-pretraining-mechanism-labeled-v2.webp" alt="A huge stream of curated domain documents mixes with general material and repeatedly reshapes a model before a small task-specific layer is added." title="Domain first, task second" caption="Continued pretraining changes how the model represents the domain by learning from raw material at enormous scale. A much smaller supervised set then teaches the particular job the domain-aware model must perform." />
+<TeachingIllustration src="/images/ladder/continued-pretraining-mechanism-labeled-v2.webp" alt="A huge stream of raw domain text is curated and filtered. General material is mixed in. The mix repeatedly reshapes the model as it learns the domain. A small supervised set then teaches the task. Domain first, task second." title="Domain first, task second" caption="Continued pretraining changes how the model represents the domain by learning from raw material at enormous scale. A much smaller supervised set then teaches the particular job the domain-aware model must perform." />
 
-## The corpus work is the project
+## Preparing the text is the project
 
-A model absorbs whatever the corpus contains, indiscriminately. The work is deciding what that should be:
+A model absorbs whatever the text contains, without judgement. The work is deciding what that should be:
 
-- **Deduplication.** Enterprise archives repeat: templates, boilerplate, forwarded chains, near-identical versions. Repetition over-weights whatever repeats.
-- **Quality filtering.** OCR failures, corrupted exports and machine-generated logs teach noise.
-- **Contamination.** Anything you must not retain, and anything you would not want generated back: credentials in old tickets, personal data outside its retention basis, privileged material.
-- **The rights question.** Training on it requires the right to, and obligations follow the weights. A model trained on your corpus is a derived artifact of it, so classification, residency and erasure obligations reach the resulting model. [The concern matrix](/architecture/concern-matrix) sets out that inheritance, and it is sharper here than anywhere else on this ladder, because the artifact is large, expensive, and impossible to selectively forget.
-- **The mix.** Training only on domain text sharpens the domain and dulls everything else. Practice mixes domain material with general text to hold general capability, and the forgetting repair on [distillation](/ladder/distillation) applies here as it did to fine-tuning.
+- **Removing duplicates.** Company archives repeat themselves: templates, boilerplate, forwarded chains and near-identical versions. Repetition gives extra weight to whatever repeats.
+- **Filtering for quality.** Errors from scanned pages, corrupted exports and machine-generated logs teach noise.
+- **Removing what must not be kept.** Take out anything you must not retain, and anything you would not want generated back. Examples are passwords in old tickets, personal data outside its retention basis, and privileged material.
+- **The rights question.** Training on the text requires the right to do so, and obligations follow the weights. A model trained on your text is a derived artifact of it, much like an index or a copy. Classification, residency and erasure duties reach the resulting model. [The concern matrix](/architecture/concern-matrix) sets out that inheritance. It is sharper here than for any other option, because the model is large, expensive and cannot forget selectively. Those duties are governed in [the governance, risk and sovereignty layer (R11)](/layers/r11-governance-risk-sovereignty). The text pipeline belongs to [the agent data engineering layer (R14)](/layers/r14-agent-data-engineering).
+- **The mix.** Training only on domain text sharpens the domain and dulls everything else. In practice, domain text is mixed with general text to hold general skill. The forgetting repair on [distillation](/ladder/distillation) applies here as it does to fine-tuning.
 
-## How much goes where: the budget split
+## Where the budget goes
 
-<TeachingIllustration src="/images/ladder/continued-pretraining-corpus-labeled-v2.webp" alt="A disordered archive passes through rights, duplication, contamination, quality and balance filters while a sealed evaluation collection stays outside training." title="The corpus is the product" caption="Rights, provenance, deduplication, contamination control, quality and balance determine what the model learns. The evaluation set must remain sealed outside that production line or the final score stops meaning anything." />
+<TeachingIllustration src="/images/ladder/continued-pretraining-corpus-labeled-v2.webp" alt="A disordered archive passes through filters for rights, duplication, contamination, quality and balance. A sealed evaluation collection stays outside training." title="The corpus is the product" caption="Rights, provenance, deduplication, contamination control, quality and balance determine what the model learns. The evaluation set must remain sealed outside that production line or the final score stops meaning anything." />
 
-One study modelled the allocation directly: a fixed 30-billion-token budget split between continued pretraining and supervised fine-tuning, 7B-parameter models, across health, chemistry and coding. The optimum in every domain put **roughly 99.99 percent of the budget into continued pretraining** and the small remainder into fine-tuning, and reported an 11.6 percent improvement over a state-of-the-art domain-adapted comparison at up to 95 percent less budget (OpenReview, 8 October 2025).
+One study modelled the split directly. It took a fixed budget of 30 billion tokens and split it between continued pretraining and supervised fine-tuning. It used models with 7 billion parameters across health, chemistry and coding. In every domain, the best split put **roughly 99.99 percent of the budget into continued pretraining**. The small remainder went to fine-tuning. It reported an 11.6 percent improvement over a leading domain-adapted comparison. It used up to 95 percent less budget (OpenReview, 8 October 2025).
 
-Read it as a direction, not a recipe: one study, three domains, one model size. The durable conclusions are the ordering and the proportion. Domain adaptation is the big job and is done on raw text; task behaviour is the small job on top and is done on pairs. Teams that invert this, hand-writing tens of thousands of pairs to inject knowledge, are doing the expensive job with the wrong instrument.
+Read it as a direction, not a recipe. It is one study, three domains and one model size. The lasting conclusions are the order and the proportion. Learning the domain is the big job, done on raw text. Learning the task is the small job on top, done on pairs. Some teams invert this. They hand-write tens of thousands of pairs to inject knowledge. That is the expensive job done with the wrong tool.
 
-## In utilities and mining
+## Worked example: industrial language at a utility
 
-<TeachingIllustration src="/figures/ladder/industrial-continued-pretraining.svg" mobileSrc="/figures/ladder/industrial-continued-pretraining-mobile.svg" title="Evaluate domain adaptation for industrial language" alt="Corpus: Permitted technical material. Adaptation: Learn domain regularities. Task tuning: Shape useful behavior. Evaluation: Check domain and general tasks" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
+<TeachingIllustration src="/figures/ladder/industrial-continued-pretraining.svg" mobileSrc="/figures/ladder/industrial-continued-pretraining-mobile.svg" title="Evaluate domain adaptation for industrial language" alt="Four boxes in order. Corpus: permitted technical material. Adaptation: learn domain regularities. Task tuning: shape useful behaviour. Evaluation: check domain and general tasks." caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-A utility or mining organization may have technical language, notation, and document structures that a general model handles poorly. Domain adaptation is a candidate only after retrieval, a glossary, examples, and model choice have received a fair comparison.
+A utility or mining company may have technical language, notation and document layouts that a general model handles poorly. Domain training is a candidate only after a fair comparison with retrieval, a glossary, examples and a different model.
 
-Review the training material’s rights, sensitivity, quality, and intended use. Keep changing asset facts and requirements available through governed evidence. Training a model on a document is not a substitute for citing the applicable version during a task.
+Review the training material's rights, sensitivity, quality and intended use. Keep changing asset facts and requirements available as governed evidence. Training a model on a document does not replace citing the applicable version during a task.
 
-Measure the specific domain improvement, general-capability regressions, preparation cost, and ongoing update burden. Do not assume that training will shrink every prompt or improve every downstream workflow.
+Measure the domain improvement, any loss of general skill, the preparation cost and the ongoing update burden. Do not assume training will shrink every prompt or improve every later workflow.
 
-## The test for moving on
+## Where continued pretraining stops
 
-There is rarely anywhere further to go. Continued pretraining plus fine-tuning is the end of the road for almost every enterprise. The final chapter, [custom pretraining and architecture](/ladder/custom-pretraining), exists for one specific situation: data that is not text at all.
+For almost every enterprise, continued pretraining plus fine-tuning is as far as model change needs to go. [Custom pretraining and architecture](/ladder/custom-pretraining) is for one specific situation: data that is not text at all.
 
-<EvidenceBadge status="preprint-or-prototype" /> The budget-allocation finding is a single study at 7B scale, and is presented as a direction rather than a recipe. The tokenisation mechanism is standard and uncontroversial.
+A model trained this way re-runs the evals at the change stage of [the agent lifecycle](/architecture/agent-lifecycle). [The learning flywheel](/architecture/learning-flywheel) sets out how it is tested and promoted. The training itself sits in [the intelligence and learning layer (R06)](/layers/r06-intelligence-and-learning).
 
-**Next step:** read the last option, [custom pretraining and architecture](/ladder/custom-pretraining).
+## Evidence and limits
+
+<EvidenceBadge status="preprint-or-prototype" /> The budget finding is a single study at 7B scale. It is presented as a direction, not a recipe. The way tokenisers split words is standard and well understood. The utility example is a proposed design.
+
+## Next step
+
+Read the last option, [custom pretraining and architecture](/ladder/custom-pretraining).
 
 <details>
 <summary>The research behind this page</summary>

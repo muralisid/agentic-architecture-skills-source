@@ -1,7 +1,7 @@
 ---
 reader_summary: "Trace how enterprise content becomes permission-aware context and how durable memory acquires ownership, retention, consent, and erasure obligations."
 audience: ["Enterprise architect", "Data architect", "CIO/CTO"]
-decision_or_output: "Choose the memory tier and governance obligations for each workload, then define the curation pipeline that feeds it."
+decision_or_output: "Choose the kind of memory and the governance obligations for each workload, then define the curation pipeline that feeds it."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "7 minutes"
 evidence_status: "Evidence-informed architecture with measured retrieval findings and clearly identified open governance gaps."
@@ -20,19 +20,19 @@ An agent's quality is set by what reaches its context, and what reaches its cont
 
 The pipeline is therefore not a data-engineering detail underneath the architecture. It is the architecture, for anything an agent knows.
 
-## Five tiers, and what actually feeds each
+## Five kinds of memory, and what actually feeds each
 
-The tiers grade persistence. Governance tightens as persistence rises, because obligations attach to durability rather than to content.
+The kinds are graded by persistence. Governance tightens as persistence rises, because obligations attach to durability rather than to content.
 
-| Tier | What it holds | Fed by | Lifetime | Governance weight |
+| Kind | What it holds | Fed by | Lifetime | Governance weight |
 |---|---|---|---|---|
-| M1 Thread | The current conversation or run | The interaction itself | The run | Engineering discipline: compaction, tool-result clearing, structured notes |
-| M2 Retrieved knowledge | Evidence assembled for the current turn | The curation pipeline below | The turn | Permission-aware retrieval; provenance on every span |
-| M3 Session | State across a working session or long-running task | Session artifacts and durable execution state | Hours to days | Residency and classification inheritance; bounded retention |
-| M4 Entity memory | Durable profiles of customers, assets, cases, employees | Promoted learnings plus governed source syncs | Months to years | Consent, retention, erasure, ownership. Real regulatory weight |
-| M5 Cross-domain memory | Organisational knowledge spanning functions | Curation proposals promoted through the flywheel | Indefinite | Everything M4 carries, plus the widest poisoning blast radius |
+| Thread memory | The current conversation or run | The interaction itself | The run | Engineering discipline: compaction, tool-result clearing, structured notes |
+| Retrieved knowledge | Evidence assembled for the current turn | The curation pipeline below | The turn | Permission-aware retrieval; provenance on every span |
+| Session memory | State across a working session or long-running task | Session artifacts and durable execution state | Hours to days | Residency and classification inheritance; bounded retention |
+| Entity memory | Durable profiles of customers, assets, cases, employees | Promoted learnings plus governed source syncs | Months to years | Consent, retention, erasure, ownership. Real regulatory weight |
+| Cross-domain memory | Organisational knowledge spanning functions | Curation proposals promoted through the flywheel | Indefinite | Everything entity memory carries, plus the widest poisoning blast radius |
 
-The architectural line runs between M3 and M4. Everything at M3 and below is transient enough to be treated as engineering. Everything at M4 and above is a record, and a record has an owner, a retention schedule and an erasure obligation whether or not anyone designed one.
+The architectural line runs between session memory and entity memory. Thread memory, retrieved knowledge and session memory are transient enough to be treated as engineering. Entity memory and cross-domain memory are records. A record has an owner, a retention schedule and an erasure obligation whether or not anyone designed one.
 
 ## The pipeline, stage by stage
 
@@ -54,7 +54,7 @@ Each stage has a published failure mode. They are given here because the stages 
 
 **8. Write back under governance.** Memory writes carry provenance and land in quarantine before promotion. The exposure is quantified: poisoning under 0.1% of a memory or knowledge base achieved over 80% attack success, and query-only memory injection reached 98.2% success. Memory poisoning is named first-class in the current agentic failure-mode taxonomy.
 
-**9. Promote through the flywheel, or not at all.** Movement into M4 and M5 is a gated promotion, never an accumulation. The gate is the one established in R06: counterexample survival and eval regression rather than frequency, the promoted artifact landing outside the model, and a demotion path that is actually exercised.
+**9. Promote through the flywheel, or not at all.** Movement into entity memory and cross-domain memory is a gated promotion, never an accumulation. The gate is the one established in the intelligence and learning track (R06): counterexample survival and eval regression rather than frequency, the promoted artifact landing outside the model, and a demotion path that is actually exercised.
 
 ## Purpose-scoped curation is what makes this affordable
 
@@ -66,7 +66,7 @@ Multi-view embedding is one instance of purpose-scoped curation: representing th
 
 ## Governance that has to be designed, not inherited
 
-**Erasure cascades.** A deletion request must reach raw stores, derived memories, vectors, traces, telemetry and eval datasets. The published mechanics: deleted-vector exclusion sets consulted before approximate-nearest-neighbour queries, purpose-scoped namespaces, and deletion exposed as an audited callable operation. Erasure completion time across tiers is a metric, not an assumption.
+**Erasure cascades.** A deletion request must reach raw stores, derived memories, vectors, traces, telemetry and eval datasets. The published mechanics: deleted-vector exclusion sets consulted before approximate-nearest-neighbour queries, purpose-scoped namespaces, and deletion exposed as an audited callable operation. Erasure completion time across all kinds of memory is a metric, not an assumption.
 
 **Residency inherits.** Embeddings, memories and summaries built from in-region data are in-region data. Region-scoped pipelines and indexes follow.
 
@@ -82,7 +82,7 @@ Multi-view embedding is one instance of purpose-scoped curation: representing th
 
 ## Metrics
 
-Retrieval quality per corpus, with coverage-aware measures where diversity matters. Parsing fidelity spot checks. Hallucination and refusal rates against curated versus uncurated baselines. Permission-propagation coverage across derived artifacts. Erasure completion time across tiers. Memory-write quarantine rates. Embedding drift alerts. Corpus freshness against source change lag.
+Retrieval quality per corpus, with coverage-aware measures where diversity matters. Parsing fidelity spot checks. Hallucination and refusal rates against curated versus uncurated baselines. Permission-propagation coverage across derived artifacts. Erasure completion time across all kinds of memory. Memory-write quarantine rates. Embedding drift alerts. Corpus freshness against source change lag.
 
 ## Migration order
 

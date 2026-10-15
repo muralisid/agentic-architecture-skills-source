@@ -1,73 +1,195 @@
 ---
 title: "Collect and check compliance evidence"
-description: "Connect standards to operational checks, responsible teams, and inspectable evidence."
-position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
-lastReviewed: "2026-09-18"
+description: "The assurance pattern that every regulated industry shares, worked through for hospital accreditation against the NSQHS Standards. The systems by layer, the work today, the same work with one agent, and the utility and energy variants."
+position: "Proposed design. The hospital case is the worked example. The utility and energy variants follow the same steps. The agent collects, checks and assembles. A named person attests and a person submits. No deployment was found in any of the three industries."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [r11, r14, r08, zones, agent-types, autonomy, risk, lifecycle]
 ---
 
-A checklist identifies required evidence, but teams still have to find the right record and prove that it applies. This proposed agent follows up on specific gaps and prepares a traceable package for the reviewer.
+A standard asks for proof by a date. Someone must collect records from many teams, check each one, and show which requirement it meets. Then a named person attests. The pattern is the same in hospitals, water and power utilities, and generators. This page works it through for a hospital network preparing for accreditation. Today a quality manager runs the work with spreadsheets and email. With an agent, collecting and checking move to the agent. A named person still attests, and a person still submits.
 
-## See the work first
+## The pattern in any industry
 
-<TeachingIllustration src="/images/use-cases/compliance-evidence-v1.webp" expandable title="Collect and check compliance evidence" alt="Keep the requirement and version, map shared checks without losing obligations, collect departmental evidence, validate scope and dates, and prepare gaps for a reviewer." caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+Five moves repeat in every industry.
 
-<details>
-<summary>Experience behind this example</summary>
+1. Keep each requirement with its version and its original clause.
+2. Map shared checks, without losing any single obligation.
+3. Ask the team that owns each record for one specific item.
+4. Check the issuer, date, scope and completeness of what comes back.
+5. Give a reviewer a pack with every item linked to its source, and the gaps listed.
 
-The author’s earlier GPT-based work converted standards into operational checklists and identified overlapping requirements. This proposed extension coordinates evidence collection and review across departments.
+<TeachingIllustration src="/images/use-cases/compliance-evidence-v1.webp" expandable title="From a requirement to evidence a reviewer can check" alt="Five stages. Requirement: keep the clause and version. Shared check: preserve each obligation. Collect: ask the responsible teams, such as operations, IT and legal. Validate: check scope, date and source. Review: show coverage and unresolved gaps. A banner says collected documents do not automatically prove compliance." caption="The same five moves apply in every industry. Collecting a document does not show the requirement is met." />
 
-</details>
+## The systems involved
 
-## Start with evidence
+The hospital case touches these layers. The [healthcare page](/use-cases/healthcare) shows the full hospital estate.
 
-Start with a versioned requirement and its original clause. Keep each obligation distinct even when several obligations share an operational check. Record which asset, site, department, and time period the check covers.
+| Layer | Systems in this use case |
+|---|---|
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | Hosting in an Australian or New Zealand region. |
+| [Data platform (R02)](/layers/r02-data-platform) | Clinical indicators in the data warehouse. Dashboards. |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | Interfaces or scheduled reports from the learning system, the maintenance system and the incident system. Microsoft Graph for SharePoint. |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Incident system (RiskMan, ims+, VHIMS, Datix). HR and learning system. Credentialing. Policy library. |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Maintenance management system (CMMS) for biomedical equipment. Sterilisation tracking. Building management. |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Reading documents and matching them to requirements. |
+| [Agent platform (R07)](/layers/r07-agent-platform) | The agent. |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Committee minutes on SharePoint. Teams. Email requests. |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | Little patient contact. The consumer feedback system is a source. |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | Read-only service accounts. Personal data kept to a minimum. |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | The NSQHS Standards and the accreditation scheme. Nga Paerewa in New Zealand. The evidence register. Attestation. |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | Traces. Pack history. |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | The quality manager supervises. Standard leads attest. |
+| [Agent data engineering (R14)](/layers/r14-agent-data-engineering) | Requirement versions. Evidence links. Rules for when evidence goes stale. |
 
-## What the agent adds
+## How it runs today
 
-An agent can request a specific inspection record, training record, approval, or operating log from the department that owns it. Extraction can help locate the relevant passage or field, but a plausible field value does not establish that the requirement is satisfied. Check issuer, date, scope, completeness, and applicable approval.
+Australian hospitals are assessed against the eight National Safety and Quality Health Service (NSQHS) Standards. They cover clinical governance, partnering with consumers, infection control and medication safety. They also cover comprehensive care, communicating for safety, blood management, and acute deterioration. Since 1 July 2023, assessments come at short notice, with at least 24 hours' warning (the Commission). A secondary summary says hospitals are reaccredited at least every three years. Internal audits, mock surveys and board reporting run between visits. In New Zealand, services are audited against Nga Paerewa, NZS 8134:2021.
 
-## How the investigation proceeds
+| # | Step | Role | System | How the data moves |
+|---|---|---|---|---|
+| 1 | Keep the evidence register | Quality manager | Spreadsheet or SharePoint list. Some use accreditation software (Ideagen Healthcare Guardian [vendor]). | Each NSQHS requirement mapped to evidence items and owners, by hand. |
+| 2 | Assign owners | Quality manager and standard committees | Email. Committee minutes. | Each standard has a committee and an executive sponsor (typical, unsourced). |
+| 3 | Collect records from each owner | Education unit, biomedical engineering, patient safety unit, ward managers, policy officer, performance team | Learning system, maintenance system, incident system, audit tools, policy library, data warehouse | Each team exports a report. Training by ward, maintenance done and overdue, incident trends, audit results, policies with review dates, indicator screenshots. |
+| 4 | Check and chase | Quality team | Email, spreadsheets | Dates and scope checked by eye. Gaps chased by email. |
+| 5 | Self-assessment | Quality manager | The accrediting agency portal | The self-assessment and evidence lists are uploaded. |
+| 6 | Assessment visit | Assessors and staff | On site | Assessors ask for evidence on the spot. They watch practice and talk to staff. They judge Met or Not Met. |
+| 7 | Fix gaps | Action owners | Spreadsheet action plan | Not Met actions are fixed within the period the scheme sets. Check the current rule. |
+| 8 | Report | Quality and safety unit | Board papers | Status goes to the clinical governance committee and the board. |
 
-When evidence is incomplete, ask a bounded follow-up: a missing date, the wrong site, or an expired certificate. Avoid repeated requests for an artifact already supplied. Stop when the evidence is ready for review, the deadline expires, or a responsible person must decide how to address a gap.
+<TeachingIllustration src="/figures/use-cases/compliance-as-is.svg" mobileSrc="/figures/use-cases/compliance-as-is-mobile.svg" expandable title="Hospital accreditation evidence today" alt="Swimlanes for the quality team, the evidence owners, the accrediting agency and the systems. Step 1: the quality manager keeps the evidence register by hand. Step 2: owners are assigned for each standard. Step 3: owners export records from the learning, maintenance and incident systems, audits, policies and indicators. Step 4: the quality team checks by eye and chases gaps by email. Step 5: the quality manager uploads the self-assessment. Step 6: assessors visit and judge Met or Not Met. Step 7: owners fix gaps. Step 8: the quality unit reports to the board. A blue box under each step names the system it uses." caption="The register is kept by hand. Short notice means it must always be current." />
 
-## Measure the business result
+**Handoffs.** The quality team hands requests to every evidence owner and gets records back. Committees report to the quality team. The health service deals with the accrediting agency. The agency reports to the state health department and the Commission.
 
-Measure requirement coverage, invalid or stale evidence, reviewer agreement, duplicate requests, collection time, and review effort. Compare with the existing checklist and document-collection process. Do not count a collected document as a passed requirement.
+**Where reporting comes in.** Clinical indicator dashboards come from the data warehouse. Incident and risk reports come from the incident system. Board and committee papers carry the status. The agency reports the accreditation outcome.
 
-## Responsibility and failure handling
+**Volumes and cycle time.** There are eight standards. A large network holds many hundreds of evidence items (typical, unsourced). Before short notice, the big push came in the months before a planned visit. Now readiness must be continuous (typical, unsourced). Recent short notice assessments include Albury Wodonga Health in November 2025 and Cohuna District Hospital on 2 December 2025.
 
-The responsible control owner reviews conclusions. Preserve links from the report to evidence and from every check to the relevant clauses. Consolidating checks must not erase differences between standards. Formal assurance and formal regulatory records remain controlled actions.
+**Pain points.**
 
-## Start with a bounded trial
+- Evidence goes stale, and owners change.
+- One document serves several requirements, but its scope differs for each.
+- Screenshots have no date.
+- A policy on paper does not show the policy was followed.
+- Short notice means the register must always be current.
+- Training records name staff, so they are personal data.
 
-Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+## How agents run it
 
-## Explore the architecture
+One agent runs fixed steps. It collects and checks. It never marks a requirement Met.
 
-- [Governance & risk](/layers/r11-governance-risk-sovereignty).
-- [Data engineering for agents](/layers/r14-agent-data-engineering).
-- [Workplace & collaboration](/layers/r08-productivity-and-collaboration).
+| # | Step | Agent or person | Reads, and from where | Writes | Who approves, and where |
+|---|---|---|---|---|---|
+| 1 | Keep the obligation register | Quality manager, with agent help | The NSQHS Standards, with the version recorded. State directives. Local policies. | A register entry for each requirement, with its version, checks and owner | The quality manager approves every mapping. |
+| 2 | Collect on a schedule | Agent | Learning system report or interface. Maintenance system interface or scheduled report. Incident system report. Policy library and SharePoint through Microsoft Graph. Data warehouse indicators. | Evidence items with source, date and scope: ward, site and period | Read-only access |
+| 3 | Check each item | Fixed rules, run by the agent | The evidence items | A status of present, stale, wrong scope or missing. Never "Met". | The quality manager approves the rules. |
+| 4 | Ask for gaps | Agent drafts | The owner from the register | One specific request as a ServiceNow task, Teams message or email. For example: "Ward 4B hand hygiene audit for Q2 is missing." | The quality team approves the templates. |
+| 5 | Build the pack | Agent | The register and the evidence | A pack per requirement, with a link to each source | No one at the draft stage |
+| 6 | Review and attest | Standard lead and executive sponsor | The pack | The attestation, recorded in the register | A named person attests. |
+| 7 | Submit | Quality manager | The pack | The self-assessment in the accrediting agency portal | A person only |
+| 8 | Support a short notice visit | Agent | The register | A current evidence index within hours of the notice | The quality manager |
+| 9 | Track fixes | Agent | Actions from the assessment report | Tasks with due dates. Reminders. | Action owners close their own actions. |
 
-Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+<TeachingIllustration src="/figures/use-cases/compliance-to-be.svg" mobileSrc="/figures/use-cases/compliance-to-be-mobile.svg" expandable title="Hospital accreditation evidence with an agent" alt="Swimlanes for the agent, the quality manager, the standard leads, fixed rules, the systems and the evidence store. Step 1: the quality manager maps the register, with agent help, and approves every mapping. Step 2: the agent collects evidence on a schedule with read-only access. Step 3: fixed rules check each item, and the quality manager approves the rules. Step 4: the agent asks owners for gaps from approved templates. Step 5: it builds the pack. Step 6: the standard lead and executive sponsor review and attest. Step 7: the quality manager submits to the agency. Step 8: the agent builds a short notice evidence index, and the quality manager reviews it. Step 9: it tracks fixes, and action owners close their own actions. The evidence store keeps each pack, register history, request history and traces. A diamond marks each approval." caption="A diamond marks each approval. A named person attests. The agent never files or signs." />
 
-## External sources
+**What stays with a person, and why.**
 
-- [LandingAI document grounding, vendor documentation](https://landing.ai/llms/visual-grounding-and-auditability-how-landingai-ade-makes-every-extraction-defensible). Accessed 17 September 2026.
-- [NIST AI Risk Management Framework Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook). Accessed 17 September 2026.
+- Met or Not Met. That is the assessor's judgement.
+- Attesting the pack. It is a formal record a regulator relies on.
+- How to fix a gap. That is a management decision.
+- Anything about one staff member's performance. That is a decision about a person.
+- Submitting to the agency. It is a formal regulatory record.
 
-Return to [Utilities](/use-cases/utilities) or [explore the agent types](/architecture/agent-types).
+**Where the evidence is kept.** The pack keeps a link to every source. The register history shows who mapped what, and when. Request history stays in ServiceNow, Teams or email. Agent <Term k="trace">traces</Term> sit outside the agent.
+
+**What changes in the systems.**
+
+- The register becomes a structured store with status fields, in a risk and compliance tool or a SharePoint list.
+- Read-only connectors to the learning system, maintenance system, incident system and policy library.
+- Scheduled collection runs.
+- Requests tracked as tasks.
+- Training data used at ward level, unless a named record is needed.
+
+**What does not change.** The accreditation scheme and its rules stay. The assessor still judges. The incident system stays the record of incidents. The committee structure stays.
+
+## Who does this today
+
+| Who | What | Status and date |
+|---|---|---|
+| Ideagen Healthcare Guardian, accreditation management | Links standards, audits, policies and corrective actions in one place. It is not an agent. | Commercial product in Australia and New Zealand [vendor] |
+| The Joint Commission and the Coalition for Health AI, US | Joint guidance on responsible AI use, and a planned AI certification | Guidance released. Certification planned. Dates not confirmed. |
+| The author's earlier work | Used a GPT model to turn standards into checklists and find overlapping requirements | Past work. Collecting the evidence is the proposed extension on this page. |
+
+No agent was found collecting NSQHS or Nga Paerewa evidence in an Australian or New Zealand health service.
+
+## The utility and energy variants
+
+**Water and power utilities.** The obligations are many and specific. Examples are life support registration, hardship policies, guaranteed service level payments, vegetation clearance and drinking water quality. Most sit in an obligations register in a risk and compliance tool (ServiceNow IRM, Archer, Protecht). Few are linked to the system steps that meet them. Reporting runs from the data warehouse to the regulators. Energy retailers send quarterly data on hardship, payment plans and disconnections to the Australian Energy Regulator. Water utilities report to the state economic regulator, the health regulator and the environment regulator. In Victoria, water service levels sit in the Essential Services Commission's Water Industry Standard. The agent's steps are the same as above, with records from the billing, asset and work systems. No compliance agent was found at any named utility ([line of business and OT findings](/library/layers/r05-lob-and-ot/findings), August 2026). An agent that reads protected system information may itself fall inside critical infrastructure rules. Confirm that before building.
+
+**Generators and resources.** A generator keeps a performance standards compliance program under the National Electricity Rules. It also files environmental licence returns and National Greenhouse and Energy Reporting emissions reports. US generators keep evidence for the NERC reliability standards. Miners have licence conditions, statutory inspections, and tailings conformance under the Global Industry Standard on Tailings Management. A compliance coordinator keeps the obligations in a risk tool (SAI360, Enablon, ServiceNow IRM) or in Excel. Owners email PDFs from the asset system, the laboratory system and emissions monitoring. The coordinator checks dates, scope and signatures by eye. With an agent, the same five moves apply. A named person attests in the risk tool or the regulator portal. No deployment was found. AVEVA's PI Audit Reporter (May 2026) reviews audit trails. It is a report tool, not an agent [vendor].
 
 ## Where this sits
 
-This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+The [four questions](/architecture/agent-types) place this agent.
 
-- **Role:** coordinate. Domain: compliance and assurance.
-- **Capability surface:** reads requirements, inspection and training records, and operating logs. Sends internal requests for evidence. Drafts the evidence package. Untrusted input: certificates from outside issuers. Highest data class: personal, since training records name staff.
-- **Placement:** A2, L1 on the [autonomy contract](/architecture/autonomy-contract). The control owner reviews every package. People choose the past reviews it learns from. Deciding how to close a gap drops to A1. The control owner decides.
-- **Zone:** the [formal regulatory records zone](/architecture/deterministic-zones#formal-regulatory-records). The agent drafts and assembles. A named person attests. The agent never files, signs or alters a record.
-- **Tier:** Tier 3. Its package feeds work that a regulator relies on. The risk profile scores that High.
-- **Control:** every item in the package links to its source record and its clause.
+- **Role.** It coordinates. The domain is compliance and assurance.
+- **Permissions.** These are what its own credentials let it do. It reads, through read-only accounts, from the learning, maintenance and incident systems, the policy library and SharePoint. It writes evidence items, statuses, packs and requests. It sends requests inside the organisation only. Certificates from outside issuers are untrusted input. The highest data class is personal, since training records name staff.
+- **Autonomy.** It is designed and permitted for delegated tasks (A2) on the [autonomy contract](/architecture/autonomy-contract). The quality manager reviews every pack. Deciding how to close a gap drops to assisted (A1), where the owner decides.
+- **Impact.** It sits in the formal regulatory records zone of the [deterministic zones](/architecture/deterministic-zones#formal-regulatory-records). The agent drafts and assembles. A named person attests. The agent never files, signs or alters a record. The rule for decisions about people applies to anything about one staff member's performance.
 
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+It is [Tier 3 (strict)](/architecture/risk-profile), because its pack feeds work a regulator relies on. It sends requests inside the organisation only. So it holds two parts of the <Term k="rule of two">Rule of Two</Term>, not three.
+
+Its learning level is curated learning (L1). People choose which past reviews it learns from, and review each change before release. Changes go through the [agent lifecycle](/architecture/agent-lifecycle).
+
+It has its own identity (ID2) on the [delegation chain](/architecture/delegation-chain). [Policy is enforced outside the model](/architecture/enforcement): its accounts are read-only, and the register refuses an attestation from the agent. Of the [seven capabilities](/architecture/system-view), observability and audit trail does the most work. Every pack links to its sources, and the history sits where the agent cannot touch it.
+
+## Measure the result
+
+Compare with the current register and the last cycle's evidence. Measure these:
+
+- Requirements with current, checked evidence.
+- Stale or wrong-scope evidence caught before review.
+- How often reviewers agree with the agent's status.
+- Duplicate requests to owners.
+- Hours of collection and review.
+- Time to produce the short notice index.
+
+Do not count a collected document as a met requirement.
+
+## Start with a trial
+
+Pick one standard at one hospital, such as medication safety. Use last cycle's register and the reviewers' own findings as the reference. Run the agent with no live requests first. Then let it send requests from approved templates, with the quality manager reviewing every pack. Register the agent with a named sponsor and owner before go-live.
+
+## Evidence and limits
+
+No agent was found collecting compliance evidence in any of the three industries. The design is a proposal.
+
+Three accreditation facts were not verified. They are the current NSQHS version, its number of actions, and the period to fix a Not Met action. The Commission's site timed out during research. The number of days a service can exclude comes from a search summary. Nga Paerewa audits were not checked.
+
+The National Electricity Rules clause for the generator program was not re-checked. The utility obligations are examples from the obligations register, not a full list.
+
+## Next step
+
+See the [hospital estate](/use-cases/healthcare) these systems sit in. Or [choose where to start](/use-cases/choose-where-to-start).
+
+<details>
+<summary>The research behind this page</summary>
+
+Research for this page was done on 15 October 2026.
+
+**Accreditation facts.** The eight NSQHS Standards are Clinical Governance; Partnering with Consumers; Preventing and Controlling Infections; and Medication Safety. The others are Comprehensive Care; Communicating for Safety; Blood Management; and Recognising and Responding to Acute Deterioration. The names were checked against a secondary summary on 15 October 2026. A service can exclude up to 20 business days per cycle from short notice assessment. That figure comes from a search summary of the Commission's page. The Commission lists the [approved accrediting agencies](https://www.safetyandquality.gov.au/accreditation/approved-accrediting-agencies).
+
+**Sources.**
+
+- ACSQHC, [short notice assessments](https://www.safetyandquality.gov.au/accreditation/accreditation-national-safety-and-quality-standards/short-notice-assessments), from 1 July 2023.
+- ACSQHC, [NSQHS Standards](https://www.safetyandquality.gov.au/standards/nsqhs-standards). The site timed out on 15 October 2026.
+- Ideagen, [Healthcare Guardian accreditation management](https://www.ideagen.com/apac/products/ideagen-healthcare-guardian/modules/accreditation-management), product page [vendor].
+- Becker's, [Joint Commission moves](https://www.beckershospitalreview.com/quality/5-joint-commission-moves/), undated.
+- Health service reports of short notice assessments at Albury Wodonga Health and Cohuna District Hospital, 2026.
+- Utility obligations and reporting: research notes on electricity and water utilities, 15 October 2026. Australian Energy Regulator retail performance data, January to March 2026 update. ESC Victoria, [Water Industry Standards](https://www.esc.vic.gov.au/water/industry-standards-codes-and-guidelines/water-industry-standards), versions effective 2024.
+- Generator obligations: research notes on energy producers, 15 October 2026. AVEVA PI Audit Reporter, May 2026 [vendor].
+- [LandingAI document grounding](https://landing.ai/llms/visual-grounding-and-auditability-how-landingai-ade-makes-every-extraction-defensible), vendor documentation, accessed 17 September 2026 [vendor].
+- NIST, [AI Risk Management Framework Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook), accessed 17 September 2026.
+
+</details>

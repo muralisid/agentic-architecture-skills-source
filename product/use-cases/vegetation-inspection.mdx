@@ -1,85 +1,199 @@
 ---
 title: "Prioritize vegetation inspections"
-description: "Turn image-based risk candidates into evidence-backed field work."
-position: "Proposed agent extension. Named deployments are as reported by the party named. Historical experience is described separately. Benefits require evaluation on the actual workload."
-lastReviewed: "2026-10-14"
+description: "How an electricity distributor turns imagery into vegetation work today. How an agent can carry a finding to a proposed work request that a planner approves."
+position: "Proposed agent design. The current process is typical industry practice, not a survey of one distributor. Named deployments are as reported by the party named. No source names the asset system these imagery tools feed at a named utility."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-10-14"
+dateModified: "2026-10-15"
+concepts: [r05, r04, r03, agent-types, autonomy, risk, zones, lifecycle]
 ---
 
-An image can flag a place to look, but a planner still needs the right asset, recent evidence, and a check for existing work. The proposed agent carries those checks into a justified inspection request.
+An electricity distributor must keep trees clear of its power lines. Aerial imagery or a ground patrol flags a span where vegetation is too close. A planner checks the asset, the open work and the image. Then the planner raises work for a field assessor and a cutting crew. The distributor owns this work, and a regulator audits it. An agent can carry a finding from the image to a proposed work request, with its evidence attached. A planner approves the work and the field confirms it. Nothing is cut or switched on an image alone.
 
-## See the work first
+<TeachingIllustration src="/images/use-cases/vegetation-inspection-v1.webp" expandable title="From vegetation signals to field evidence" alt="Five panels from left to right. Observe: dated imagery and an asset map. Locate: a possible issue near a line. Check: past inspection records and the limits of the image. Request: a permitted inspection order. Confirm: a field worker records the findings on a tablet. A banner reads: an image candidate is not a confirmed clearance breach." caption="An image is a reason to inspect. The field confirms what the image cannot." />
 
-<TeachingIllustration src="/images/use-cases/vegetation-inspection-v1.webp" expandable title="Prioritize vegetation inspections" alt="Use dated imagery and an asset map, locate a candidate near a line, check prior work and image limits, request a permitted inspection, and confirm field findings." caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+## The systems involved
 
-<details>
-<summary>Experience behind this example</summary>
+This work touches eight of the [fourteen layers](/layers). The table names the systems at an electricity distributor. Vendors in brackets are examples, not a claim about any one company. The [utilities page](/use-cases/utilities) shows the full estate.
 
-This is a proposed utility workflow informed by the author's electricity-distribution experience. Satellite-assisted vegetation management has vendor-reported precedents; the adaptive investigation and work-order design here must be evaluated separately.
+| Layer | Systems at an electricity distributor |
+|---|---|
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Vegetation and imagery platforms (Neara, AiDash, Overstory, LiveEO, Fugro ROAMES). Field mobility apps. The outage management system (OMS) and distribution management system (ADMS), used when a cut needs an outage |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | GIS as the network record (Esri, GE Smallworld). The enterprise asset management system, or asset system (SAP PM, IBM Maximo, Oracle WAM). ERP for contractor payment. The records system |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | Portal exports as CSV or shapefile. Batch upload of work orders. New: vendor APIs and <Term k="mcp">MCP</Term> connectors, and the Maximo MCP server |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Image analytics bought as a service (Tapestry, Neara, AiDash). Clearance measured from LiDAR point clouds |
+| [Data platform (R02)](/layers/r02-data-platform) | Warehouse and business intelligence (BI): spans compliant before the fire season, vegetation cost |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Spreadsheets and email for contractor scopes and span lists |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | The clearance management plan, the bushfire mitigation plan, and answers to regulator audits |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | Contractor management. Supervisors sign off cuts. Assessors confirm findings |
 
-</details>
+## How it runs today
+
+This is the cycle at an electricity distributor in Australia or New Zealand. It is typical practice, not a survey of one utility. Work starts from any of these triggers:
+
+- The yearly inspection cycle. In Victoria, each responsible person prepares an electric line clearance management plan by 31 March each year.
+- New aerial LiDAR or imagery.
+- The run-up to the bushfire season.
+- Reports from the public, councils or crews, and storm damage.
+
+In Victoria, the clearance needed depends on the bushfire risk area, the voltage, the conductor and the span length. Energy Safe Victoria audits every year. It has been able to issue infringement notices since 27 June 2022. New Zealand has its own tree regulations.
+
+1. **Plan the cycle.** The vegetation programme manager works from GIS, the asset system and a spreadsheet. The output is a list of spans by risk area. Contractor scopes go out in spreadsheets and email.
+2. **Capture.** Contractors fly aerial LiDAR and imagery, or patrol on the ground. Point clouds and images arrive as large files. Patrol findings go in on a tablet.
+3. **Measure clearance.** A vendor analyst or algorithm works on the vendor platform. The output is a list of spans with encroachment and priority. It comes through the portal, or as a CSV or shapefile export.
+4. **Review at the desk.** A vegetation planner uses the vendor portal, GIS and the asset system. The planner checks the asset ID, duplicates and open work by looking across screens.
+5. **Create the work.** The planner types work orders into the asset system, or uploads them in a batch. Each goes to a cutting contractor.
+6. **Assess in the field.** An assessor, often a contractor, confirms the finding with photos on a mobile app. Notices go to owners or councils where required.
+7. **Arrange an outage if needed.** A network planner and the control room use outage or distribution management and a switching programme. Retailers get notice by a B2B one-way notification in Australia, or an EIEP5A file in New Zealand. Customers get notice too.
+8. **Cut.** The contractor crew cuts and records completion with photos on a mobile app.
+9. **Close and pay.** The planner closes the work order in the asset system. A contract manager matches the invoice in the ERP.
+10. **Audit and report.** Compliance works from the warehouse, BI and the records system. It prepares the clearance plan, bushfire reports, audit answers and cost reports to the Australian Energy Regulator (AER).
+
+<TeachingIllustration src="/figures/use-cases/vegetation-as-is.svg" mobileSrc="/figures/use-cases/vegetation-as-is-mobile.svg" expandable title="Vegetation inspection today: who does what" alt="Swimlane of vegetation inspection at an electricity distributor today. Five lanes are people: compliance, network operations, programme manager and planner, capture contractor, and field assessor and crew. One lane is the imagery vendor platform. Step 1: the programme manager plans the cycle. Step 2: the contractor captures imagery. Step 3: the vendor platform measures clearance. Steps 4 and 5: the planner reviews at the desk and types in work orders, which the planner approves. Step 6: a field assessor confirms the finding. Step 7: network operations arranges an outage, and the operator approves switching. Step 8: the crew cuts, and a supervisor signs off. Step 9: the work is closed and the contract manager approves payment. Step 10: compliance audits and reports, and a named officer signs." caption="Today the planner joins the vendor list, GIS and the asset system by hand. Capture to cut takes weeks for non-urgent spans (typical, unsourced)." />
+
+### Handoffs
+
+The capture contractor hands images to the imagery vendor. The vendor hands a span list to the planner. The planner hands work to the cutting contractor. The planner hands outage requests to network operations. Network operations hands customer notices to retailers. Everyone hands records to compliance.
+
+### Reporting
+
+- The share of spans compliant before the fire season, from the warehouse.
+- Regulator audit findings and infringement notices.
+- Vegetation cost, reported to the AER as part of operating spend. This point was not checked against its source for this page.
+- Most analytics sits in the vendor's portal, not the utility's warehouse (typical, unsourced).
+
+### Cycle time and volumes
+
+- Vector in New Zealand works with Tapestry. A roadside pole check fell from 30 to 45 minutes to 5 to 7 minutes. A Kawau Island survey fell from about 320 hours to about 12 hours. Tapestry reported this from Vector's data on 20 August 2025 [vendor].
+- Powercor says it inspects its whole network every year. That is more than 70,000 km of line and about 570,000 spans (Powercor, undated, search excerpt).
+- A Utility Magazine article gives 400,000 spans a year, with cutting at almost one fifth of them (undated, search excerpt). The two Powercor figures likely come from different years.
+- AusNet reported 314,000 spans inspected in high bushfire risk areas over 12 months (local news, January 2023, search excerpt).
+- Capture to cut takes weeks for non-urgent spans and days for urgent ones (typical, unsourced).
+
+### Pain points
+
+- The data is old by the time work is planned.
+- Asset IDs differ between the vendor, GIS and the asset system.
+- Duplicate work orders.
+- Data is held by contractors and vendors, not by the utility.
+- Work orders are typed in by hand.
+- No closed loop proves the clearance was achieved after cutting.
+- A missed span risks an infringement notice.
+
+## How agents run it
+
+The first agent plumbing in this area has shipped in asset and imagery tools, not in billing. IBM Maximo 9.2 exposes work order actions through a Maximo MCP server (12 August 2026) [vendor]. LiveEO's Treeline Agent can raise a work order inside its own app, in early access (2 July 2026) [vendor]. The design below uses that plumbing. The agent writes one thing: a notification marked "agent proposed".
+
+1. **Notice new findings.** Agent. It reads new findings through the vendor platform's API or an MCP connector. LiveEO's Treeline MCP is one, in early access. It writes nothing.
+2. **Match each finding to the asset.** Agent. It reads the GIS feature service and the asset system's location record. It writes any mismatch to the asset data queue. The asset data owner fixes the record in GIS or the asset system.
+3. **Check existing work and context.** Agent. It reads open work orders and recent cuts from the asset system, through the Maximo MCP server or SAP APIs. It reads planned outages from outage management. It reads fire danger and weather forecasts. It writes an evidence pack.
+4. **Rank and propose.** Agent. It reads the evidence pack, the clearance rules held as data, and past field outcomes. It writes a proposed inspection request with its evidence. The evidence shows the image date, the resolution and how clearance was measured.
+5. **Create the request.** Agent. It writes a notification in the asset system with the status "agent proposed". This write is what makes it [Tier 2 (enhanced)](/architecture/risk-profile). The planner approves turning it into a work order, in the asset system.
+6. **Confirm in the field.** Field assessor. The assessor records the field finding on the mobile app and decides.
+7. **Arrange the outage and switching.** Network operations, in outage or distribution management. The operator approves the switching programme. The agent has no path here.
+8. **Cut.** The crew records completion on the mobile app. A supervisor signs off.
+9. **Check the close-out evidence.** Agent. It reads the work order completion, the photos and the next capture. It writes gap flags. The supervisor signs off.
+10. **Draft the compliance evidence.** Agent. It reads the asset system and the clearance plan. It writes a draft report. A named officer signs it.
+
+<TeachingIllustration src="/figures/use-cases/vegetation-to-be.svg" mobileSrc="/figures/use-cases/vegetation-to-be-mobile.svg" expandable title="Vegetation inspection with agents: who does what" alt="Swimlane of vegetation inspection with an agent. Four lanes are people: compliance officer, network operations, field assessor and crew, and planner and asset data owner. Two lanes are systems: GIS and the asset system, and the imagery vendor platform. The agent and the evidence store have their own lanes. The vendor platform has new findings. Steps 1 to 4: the agent notices them, matches each to its asset, checks work and fire risk, and proposes. When an asset does not match, the asset data owner fixes the record. Step 5: the agent creates a notification marked agent proposed in the asset system. The planner approves the work order. Step 6: the field assessor confirms. Step 7: network operations arranges any outage and switching. The agent has no path to outage or switching systems. Step 8: the crew cuts. Steps 9 and 10: the agent checks close-out evidence and drafts the report. A supervisor and a named officer sign. The evidence store holds traces, the asset system audit trail, vendor logs and GIS edit history." caption="The agent writes one thing, a proposed notification. A planner approves the work, and the field confirms it." />
+
+### What stays with a person, and why
+
+- **Cutting on private land or a significant tree, and owner notices.** These are legal and community decisions.
+- **Outages and switching.** This is the [safety actuation zone](/architecture/deterministic-zones#safety-actuation). People run it in approved control systems.
+- **Site safety.** People are on the job.
+- **Attesting compliance.** It is a [formal regulatory record](/architecture/deterministic-zones#formal-regulatory-records).
+- **Paying contractors.** It is money.
+
+### Where the evidence is kept
+
+- Agent traces, in a store outside the agent.
+- The asset system's own audit trail on notifications and work orders.
+- The vendor platform's logs. LiveEO says its tools inherit each user's permissions and stay in the customer's tenant (2 July 2026) [vendor].
+- GIS edit history for any asset correction.
+
+### What changes in the systems
+
+- A new notification type and status in the asset system.
+- A service identity for the agent that can create notifications and nothing else. It sits in the [security and identity layer (R10)](/layers/r10-security-and-identity).
+- An API or MCP connection to the imagery vendor.
+- A queue for asset ID mismatches.
+- A feedback loop from field findings to the ranking. The [learning flywheel](/architecture/learning-flywheel) describes this loop.
+
+### What does not change
+
+- The clearance rules in the Code of Practice.
+- The clearance management plan.
+- Contractor contracts.
+- Outage and distribution management.
+- Switching authority.
+
+**The open gap.** No source names the asset or work system that these imagery tools feed at a named utility. Nothing found on 15 October 2026 closes the gap. Test the write path on its own before any live use.
 
 ## Who does this today
 
-Among grid uses of AI, image-based inspection is the most mature. In every case found, the AI advises. People decide and send the crews.
+Among grid uses of AI, image-based inspection is the most mature. In every case found, the AI advises. People decide and send the crews. Status is as of 15 October 2026.
 
-- **Vector, New Zealand.** Vector works with Tapestry, from Alphabet, on aerial images and its own inspection records. A roadside pole check fell from 30 to 45 minutes to 5 to 7 minutes. One island survey fell from about 320 hours to about 12. Tapestry reported these figures from Vector's data on 20 August 2025 [vendor]. Stage: production for inspection. No outage results were reported.
-- **PG&E, California.** PG&E reports AI-enabled wildfire cameras and AI analysis of its drone inspection images. These are the operator's own claims. No measured result from the current programmes was found.
-
-Most measured results in this area are inspection time per asset. Claims that outages fell come mostly from vendors. No independent evidence for them was found.
-
-## Start with evidence
-
-Use imagery suited to the question and the distribution-network asset map. Record observation date, location, resolution, and quality. A broad vegetation signal can identify an area worth inspecting without proving the clearance of a particular conductor.
-
-## What the agent adds
-
-An agent can compare prior inspections, recent work, weather-related context, and existing requests. It can prepare a prioritized inspection with its supporting evidence and create the request through the permitted work-management interface. A specialist survey or field inspection establishes facts that the image cannot resolve.
-
-## How the investigation proceeds
-
-The repeated investigation asks whether the candidate is near the correct asset, whether evidence is recent enough, and whether work is already planned. Request another observation only when it can change the next decision. Stop with a justified inspection request or an explicit evidence gap.
-
-## Measure the business result
-
-Measure confirmed findings per inspection, missed-risk samples, duplicate work, time from candidate to inspection, and total assessment cost. Compare with the existing patrol and planning process. Do not transfer a vendor's reported benefit to a different network.
-
-## Responsibility and failure handling
-
-The agent proposes or creates an inspection within its authority. It does not approve vegetation removal or switch equipment. Network constraints, environmental requirements, and field safety remain with the responsible operating process.
+| Who | Date and source | Stage | Status |
+|---|---|---|---|
+| Vector (New Zealand) with Tapestry, aerial pole inspection | 20 August 2025, Tapestry using Vector's data [vendor] | Production | Advises |
+| Northpower, Orion, Unison and WEL (New Zealand) consortium with Tapestry | November 2025, Northpower | Just formed | No results found |
+| PG&E (California) with Pano AI, Alchera and Buzz Solutions | Undated coverage, read as a search excerpt | Production | Advises. Operator claims only |
+| Endeavour Energy with a Neara digital twin | December 2021, ESD News | Production then | Advises. Before the 2024 to 2026 window |
+| Essential Energy with Neara for tree management ranking | 11 February 2026, pv magazine, via a search summary | In use | Not confirmed |
+| LiveEO Treeline Agent and Treeline MCP | 2 July 2026, LiveEO [vendor] | Early access | Can raise work orders and reports inside the app. No named utility |
+| IBM Maximo Application Suite 9.2, agentic workflows through the Maximo MCP server | 12 August 2026, IBM [vendor] | Released with 9.2 | Updates work order status and creates follow-up work orders. The article does not say whether the user must confirm |
+| Esri ArcGIS and agents | 13 to 17 July 2026, conference coverage, search excerpt | Direction | Agent access through MCP. Product names and dates not confirmed |
+| Oracle Utilities Work and Asset Cloud Service, AI asset summary | 13 April 2026, Oracle [vendor], search excerpt | Announced | Summarises asset history and suggests next steps |
+| AiDash with Spire weather data | 22 January 2026, BusinessWire [vendor] | Product | Claims more than 140 utilities |
 
 ## Where this sits
 
-The four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile) place this agent as follows.
+Answer the [four questions](/architecture/agent-types) for this agent. Its role is assist: it prepares work for a planner. Its permissions are what its own credentials let it do. It can read vendor findings, GIS, open work, planned outages and forecasts. It can write two things: a notification marked "agent proposed" and a mismatch note. It cannot create a work order, approve a cut, or reach outage and switching systems.
 
-- **Advises or acts:** advises. It flags a place to look.
-- **Placement:** A2, L1. It does a set task and a person decides. People choose the images and past cases it learns from.
-- **Zone:** none. It touches no <Term k="deterministic zone">deterministic zone</Term>.
-- **Control:** a detection triggers an inspection. The field confirms it. Nothing is cut or switched because of an image alone.
-- **Tier:** Tier 1 if it only flags. This version creates inspection requests in the work-management system. That write makes it Tier 2.
+On the [autonomy contract](/architecture/autonomy-contract), it is designed and permitted for delegated tasks (A2). It does a set task and a person decides. Its learning is curated learning (L1). People choose the images and past field outcomes it learns from, and review each change before release.
 
-**The open gap is the link to work management.** No source found names the work-management or asset system these tools feed at any named utility. Writing work orders into the asset system raises the <Term k="risk tier">risk tier</Term> to Tier 2. This guide's position is to test that write path on its own before any live use.
+Its impact is small. A notification can send an assessor to look. It touches none of the [deterministic zones](/architecture/deterministic-zones). Outages and switching stay in the safety actuation zone, with people.
 
-## Start with a bounded trial
+On the risk profile, an agent that only flags is Tier 1 (basic). This version writes to the asset system, so it is Tier 2 (enhanced). Register it through the [agent lifecycle](/architecture/agent-lifecycle), with a sponsor in the vegetation programme.
 
-Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+## Measure the result
 
-## Explore the architecture
+Measure confirmed findings per inspection, and misses found in a sampled check. Count duplicate work orders, time from capture to inspection, and total assessment cost. Compare with the current patrol and planning process on the same spans. Do not carry a vendor's reported benefit to a different network.
 
-- [Business & industrial systems](/layers/r05-lob-and-ot).
-- [Integration & tools](/layers/r03-integration-fabric).
-- [Data engineering for agents](/layers/r14-agent-data-engineering).
+## Start with a trial
 
-Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+Take a historical set of findings with their field outcomes as the reference. Run the agent in <Term k="shadow mode">shadow mode</Term>, writing nothing to the asset system. Review its proposals with the planners. Then allow the notification write for one depot or region. Keep the planner's approval on every work order.
 
-## External sources
+## Evidence and limits
 
-- [AiDASH vegetation management at National Grid, vendor case study](https://www.aidash.com/resource/aidash-transforming-vegetation-management-for-national-grid-using-satellite-analytics-and-ai/) [vendor]. Accessed 17 September 2026.
-- [Google Satellite Embedding dataset documentation](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL). Accessed 17 September 2026.
+The current process is written from industry knowledge, not a survey of one utility. The volume figures come from operators, vendors and search excerpts.
+
+Most measured results in this area are inspection time per asset. Claims that outages fell come mostly from vendors. No independent evidence for them was found.
+
+The write path is the open question. LiveEO and IBM have shipped the plumbing, by their own account. No named utility has said which asset system its imagery tool feeds. This guide recommends testing that write path on its own before any live use.
+
+## Next step
+
+Score this agent on [the risk profile](/architecture/risk-profile). Then return to [utilities](/use-cases/utilities) for the other worked examples.
+
+<details>
+<summary>The research behind this page</summary>
+
+All sources checked on 15 October 2026 unless a date says otherwise. "Search excerpt" means the page itself could not be opened.
+
 - [Tapestry, working with Vector](https://x.company/blog/posts/tapestry-vector/), 20 August 2025. Figures from Vector's data, reported by Tapestry [vendor].
-- [Renewable Energy World, PG&E's wildfire season preparation with AI, automation and drones](https://www.renewableenergyworld.com/power-grid/grid-modernization/california-utility-preparing-for-peak-wildfire-season-with-ai-automation-and-drones), undated. PG&E's own claims, read through a search summary.
+- [Northpower on the Tapestry consortium](https://northpower.nz/news/tapestry-new-zealand-consortium/), November 2025.
+- [Renewable Energy World on PG&E's wildfire preparation](https://www.renewableenergyworld.com/power-grid/grid-modernization/california-utility-preparing-for-peak-wildfire-season-with-ai-automation-and-drones), undated. PG&E's own claims, read through a search summary.
+- [ESD News on Endeavour Energy's digital twin](https://esdnews.com.au/endeavour-energy-pioneers-digital-twin-modelling/), December 2021.
+- [pv magazine on Neara's funding round](https://www.pv-magazine-australia.com/2026/02/11/neara-closes-90-million-series-d-funding-round-reaches-1-1-billion-valuation), 11 February 2026. The Essential Energy attribution comes from a search summary.
+- [LiveEO on Treeline Agent and MCP](https://www.live-eo.com/company/press/liveeo-releases-treeline-agent-mcp-the-first-agentic-vm-intelligence), 2 July 2026 [vendor].
+- [IBM on Maximo agentic workflows](https://www.ibm.com/think/perspectives/working-smarter-agentic-workflows-maximo-assistant), 12 August 2026 [vendor].
+- [Coverage of the 2026 Esri User Conference](https://ucanr.edu/blog/igis/article/2026-esri-user-conference-day-2), July 2026. Search excerpt.
+- [Oracle on AI for utilities](https://www.oracle.com/news/announcement/oracle-helps-utilities-reduce-costs-and-deliver-measurable-impact-with-ai-2026-04-13/), 13 April 2026 [vendor]. Search excerpt; the page returned an error.
+- [BusinessWire on AiDash and Spire](https://www.businesswire.com/news/home/20260122461979/en/), 22 January 2026 [vendor].
+- [Electricity Safety (Electric Line Clearance) Regulations 2020](https://legislation.vic.gov.au/in-force/statutory-rules/electricity-safety-electric-line-clearance-regulations-2020), Victoria. Search excerpt.
+- [Energy Safe Victoria on line clearance](https://esv.vic.gov.au/industry-guidance/electrical/line-clearance/legislation-policies-and-areas). Search excerpt. The source for yearly audits and infringement notices from 27 June 2022.
+- The Powercor, Utility Magazine and AusNet span counts were read as search excerpts. No link was kept.
 
-Return to [Utilities](/use-cases/utilities) or [explore the agent types](/architecture/agent-types).
-
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+</details>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
 <title id="title">What changes</title>
-<desc id="desc">Six rows compare how most companies work today with the agentic way. Routine work moves from people with software as a tool to governed agents, each with its own identity. People move from carrying out each step to setting intent, supervising, handling exceptions and staying accountable. Rules move from the prompt to the gateway and the policy decision point, outside the model. Evidence is collected where the agent cannot write, and learning is promoted through evals, not edited prompts. The same fourteen layers stay, with seven new planes of agent capability across them.</desc>
+<desc id="desc">Six rows compare how most companies work today with the agentic way. Routine work moves from people to governed agents, each with its own identity. People move from carrying out each step to setting intent, supervising, handling exceptions and staying accountable. Rules move from the prompt to the gateway and the policy decision point, outside the model. The audit trail is written where the agent cannot touch it. A change ships only after it passes its evals. The same fourteen layers stay. Seven capabilities are added across them, with a lifecycle for every agent.</desc>
 <defs><marker id="ah-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#94a3b8"/></marker></defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
 <text x="33" y="54" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">What changes</text>
@@ -43,14 +43,14 @@
 <text x="369" y="539" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">Often the agent, in its own log</text>
 <path d="M795 531.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
 <rect x="839" y="482" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-<text x="859" y="539" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">Evidence is collected where the agent cannot write</text>
+<text x="859" y="539" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">An audit trail written where the agent cannot touch it</text>
 <rect x="33" y="592" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
 <text x="49" y="649" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">How behaviour changes</text>
 <rect x="349" y="592" width="440" height="98" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
 <text x="369" y="649" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">Someone edits the prompt</text>
 <path d="M795 641.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
 <rect x="839" y="592" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-<text x="859" y="649" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">Learning is promoted through evals, not edited prompts</text>
+<text x="859" y="649" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">A change ships only after it passes its evals</text>
 <rect x="33" y="702" width="300" height="98" rx="12" fill="#ffffff" stroke="#d5d9d4" stroke-width="2"/>
 <text x="49" y="746" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">What stays and</text>
 <text x="49" y="772" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#182e31">what is new</text>
@@ -58,8 +58,8 @@
 <text x="369" y="759" font-family="Arial,sans-serif" font-size="22" fill="#1e293b">The fourteen layers you own</text>
 <path d="M795 751.0 H833" fill="none" stroke="#94a3b8" stroke-width="3" marker-end="url(#ah-grey)"/>
 <rect x="839" y="702" width="728" height="98" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-<text x="859" y="745" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">The same fourteen layers, with seven new planes</text>
-<text x="859" y="773" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">of agent capability across them</text>
+<text x="859" y="745" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">The same fourteen layers, with seven capabilities added</text>
+<text x="859" y="773" font-family="Arial,sans-serif" font-size="22" fill="#4c1d95">across them and a lifecycle for every agent</text>
 <rect x="33" y="816" width="1534" height="52" rx="26" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-<text x="800" y="850" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#1e3a8a">Same fourteen layers. Seven new planes.</text>
+<text x="800" y="850" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#1e3a8a">Same fourteen layers. Seven capabilities added. A lifecycle for every agent.</text>
 </svg>

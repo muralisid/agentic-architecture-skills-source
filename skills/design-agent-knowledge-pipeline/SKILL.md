@@ -44,9 +44,9 @@ Two rules govern everything below, and both are consequences of one fact: anythi
 - Derive any view taxonomy from the corpus, never from the objective. Conditioning the design on the goal made retrieval worse in every form tested, including on real human-judged data.
 - Let a model design and name; let classical machinery embed, gate, cluster and rank. That is where the constant-factor saving is, and it is roughly two hundred times at comparable topic granularity, not a widening scaling law.
 
-## Memory tiers
+## Durable memory
 
-The architectural line sits where information persists past the end of a session. Below it, engineering. Above it, a record with an owner, a retention schedule and an erasure duty whether or not anyone designed one. Promotion into a durable tier is a gated act, never an accumulation.
+The architectural line sits where information persists past the end of a session. Below it, engineering. Above it, a record with an owner, a retention schedule and an erasure duty whether or not anyone designed one. Promotion into durable memory is a gated act, never an accumulation.
 
 ## The gap to state rather than solve
 
@@ -57,7 +57,7 @@ Artifacts built from many sources at once (cross-document summaries, extracted m
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
 
 ## Additional task references
 

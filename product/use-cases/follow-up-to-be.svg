@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Follow-up after discharge with an agent</title>
+<desc id="desc">Swimlanes for the agent, the care coordinator, the responsible team, fixed rules, the systems and the evidence store. Step 1: the agent pulls the agreed actions from the discharge summary, and the coordinator confirms the list. Step 2: it opens one task per action, and the coordinator approves. Step 3: it watches events for completion and links the evidence. Step 4: it flags overdue tasks. Step 5: it asks the owner team, and the coordinator approves anything off-template. Step 6: it reminds the patient within fixed contact limits. Step 7: it escalates pending results under fixed rules. Step 8: the responsible team closes clinical tasks, and a rule closes admin tasks. Step 9: the agent reports counts, and the coordinator reviews them. The evidence store keeps task history, the EMR audit log, traces and message receipts. A diamond marks each approval.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Follow-up after discharge with an agent</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Proposed design. The agent tracks evidence. Only the responsible team closes a clinical task.</text>
+<rect x="32" y="108.0" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="150.0" height="114.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="42.0" y="176.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Agent</text>
+<path d="M32 234.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="240.7" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="292.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Care</text>
+<text x="42.0" y="314.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">coordinator</text>
+<rect x="32" y="361.3" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 361.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="367.3" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="418.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Responsible</text>
+<text x="42.0" y="440.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">team</text>
+<path d="M32 488.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="494.0" width="150.0" height="114.7" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="42.0" y="556.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#0f172a">Fixed rules</text>
+<rect x="32" y="614.7" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 614.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="620.7" width="150.0" height="114.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="683.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Systems</text>
+<path d="M32 741.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="747.3" width="150.0" height="114.7" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="42.0" y="798.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence</text>
+<text x="42.0" y="820.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">store</text>
+<path d="M32 868.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="204.0" y="755.3" width="1356.0" height="98.7" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="220.0" y="797.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence store, out of the agent&#x27;s reach</text>
+<text x="220.0" y="821.7" font-family="Arial,sans-serif" font-size="18" fill="#134e4a">Task history with who changed what. EMR audit log. Traces outside the agent. Message receipts.</text>
+<rect x="204.0" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="272.2" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Discharge</text>
+<text x="272.2" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">summary</text>
+<rect x="356.4" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="424.7" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">FHIR task</text>
+<rect x="508.9" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="577.1" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Lab, PAS,</text>
+<text x="577.1" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">community</text>
+<rect x="813.8" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="882.0" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">EMR</text>
+<text x="882.0" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">in-basket</text>
+<rect x="966.2" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1034.4" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">SMS</text>
+<rect x="1118.7" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1186.9" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">EMR</text>
+<text x="1186.9" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">results</text>
+<rect x="1271.1" y="634.7" width="136.4" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1339.3" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">EMR</text>
+<rect x="204.0" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="272.2" y="163.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Pull out</text>
+<text x="272.2" y="185.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">agreed</text>
+<text x="272.2" y="207.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">actions</text>
+<circle cx="322.4" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="322.4" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="356.4" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="424.7" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Open one</text>
+<text x="424.7" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">task each</text>
+<circle cx="474.9" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="474.9" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="508.9" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="577.1" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Watch for</text>
+<text x="577.1" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">completion</text>
+<circle cx="627.3" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="627.3" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="661.3" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="729.6" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Flag</text>
+<text x="729.6" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">overdue</text>
+<circle cx="779.8" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="779.8" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="813.8" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="882.0" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Ask the</text>
+<text x="882.0" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">owner</text>
+<circle cx="932.2" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="932.2" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="966.2" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1034.4" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Remind the</text>
+<text x="1034.4" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">patient</text>
+<circle cx="1084.7" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="1084.7" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="1118.7" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1186.9" y="163.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Watch</text>
+<text x="1186.9" y="185.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">pending</text>
+<text x="1186.9" y="207.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">results</text>
+<circle cx="1237.1" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="1237.1" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="1271.1" y="381.3" width="136.4" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1339.3" y="416.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Close</text>
+<text x="1339.3" y="438.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">clinical</text>
+<text x="1339.3" y="460.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">task</text>
+<circle cx="1389.6" cy="381.3" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1389.6" y="387.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="1423.6" y="128.0" width="136.4" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1491.8" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Report</text>
+<text x="1491.8" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">counts</text>
+<circle cx="1542.0" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="1542.0" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<path d="M340.4 175.3 L355.4 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M492.9 175.3 L507.9 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M645.3 175.3 L660.3 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M797.8 175.3 L812.8 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M950.2 175.3 L965.2 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1102.7 175.3 L1117.7 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1255.1 175.3 L1287.1 175.3 L1287.1 380.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1407.6 428.7 L1439.6 428.7 L1439.6 223.7" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M286.2 222.7 L286.2 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M286.2 273.0 L299.2 286.0 L286.2 299.0 L273.2 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="286.2" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">confirms</text>
+<path d="M438.7 222.7 L438.7 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M438.7 273.0 L451.7 286.0 L438.7 299.0 L425.7 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="438.7" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">approves</text>
+<path d="M896.0 222.7 L896.0 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M896.0 273.0 L909.0 286.0 L896.0 299.0 L883.0 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="896.0" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">off-template</text>
+<path d="M1048.4 222.7 L1048.4 525.3" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1048.4 526.3 L1061.4 539.3 L1048.4 552.3 L1035.4 539.3 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="1048.4" y="577.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">limits</text>
+<path d="M1200.9 222.7 L1200.9 525.3" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1200.9 526.3 L1213.9 539.3 L1200.9 552.3 L1187.9 539.3 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="1200.9" y="577.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">escalation</text>
+<path d="M1385.6 463.0 L1398.6 476.0 L1385.6 489.0 L1372.6 476.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<path d="M1353.3 476.0 L1353.3 525.3" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1353.3 526.3 L1366.3 539.3 L1353.3 552.3 L1340.3 539.3 Z" fill="#f8fafc" stroke="#475569" stroke-width="2.5"/>
+<text x="1353.3" y="577.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">admin tasks</text>
+<path d="M1505.8 222.7 L1505.8 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1505.8 273.0 L1518.8 286.0 L1505.8 299.0 L1492.8 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="1505.8" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">reviews</text>
+</svg>

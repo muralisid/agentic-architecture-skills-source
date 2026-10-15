@@ -1,120 +1,165 @@
 ---
 title: "Productivity and collaboration"
 icon: "Users"
-description: "Office assistants and agents: every agent gets a registered identity, a mailbox or meeting seat is a rare separate grant, and rollout follows whether work is solitary or shared."
+description: "What office tools must provide for agents: every agent gets its own identity with a named sponsor, a mailbox or meeting seat is a rare separate grant, and assistants roll out task by task."
+position: "Design guidance built on vendor identity documents and dated field studies. The identity mechanics come from Microsoft's documents and need checking against your own tenant."
+lastReviewed: "2026-10-15"
 hero_figure: "layer-08-hero"
 datePublished: "2026-08-20"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [layers, delegation, lifecycle, risk, enforcement, r10, r02, concern-matrix]
 ---
 
-<PlainTerms>
-This page covers the assistants and small agents that live inside everyday office tools: email, documents, chat, and meetings. It matters because this is where most people meet an agent first, and where the most company data passes through one. Every agent gets its own registered account with a named person responsible for it; a mailbox or a seat in a meeting is a separate and rare grant. The one thing to remember: the measured gains so far come from solitary tasks such as email, not from teamwork, unless the team deliberately changes how it works.
-</PlainTerms>
+The productivity and collaboration layer (R08) is the office suite: email, calendars, documents, chat and meetings. It is one of the [fourteen layers](/layers) you own. Today it holds Microsoft 365 or similar, spreadsheets that track exceptions, and the first assistant pilots. It is where most staff meet an agent first, and where the most company data passes through one. For agents, this layer must provide four things. Every agent gets its own <Term k="agent identity">agent identity</Term> with a named sponsor. A mailbox or meeting seat needs a separate <Term k="agent user account">agent user account</Term>, granted rarely. Shared files and chats are permissioned before an assistant can search them. Staff use of personal AI accounts is governed through identity, not by blocking. Rollout then follows the task, because the measured gains are in work people do alone.
 
-## Target state
+## What sits in this layer today
 
-**In short:** Assistants help with solitary work everywhere, every <Term k="agent">agent</Term> has a registered identity, and a mailbox or meeting seat is rare.
+Here is what a typical estate already runs in this layer. Vendors in brackets are examples, not a market claim.
 
-Assistants run broadly across solitary work. Coordinated work changes only where teams deliberately agree new norms. Every agent carries an <Term k="agent identity">access identity</Term>: a service principal in the enterprise directory (the directory's account type for software rather than people) with a recorded human <Term k="sponsor">sponsor</Term>. It is issued automatically and governed like any <Term k="workload identity">workload identity</Term>, the platform-issued proof of which piece of software is acting. Presence (a mailbox, a calendar, a meeting-roster seat) is a separate, revocable, per-capability grant, and it is rare. Shadow usage (staff using personal AI accounts for work) is governed through identity and conditional access rather than through blocking. Conditional access means the directory's rules on who may reach what, and from where. The sanctioned path is made easier than the personal account. Interaction mode is configured per surface. Where diversity of ideas matters, the assistant draws out the author's own thinking with questions; it rewrites people's contributions only where diversity does not matter. Oversight controls are judged on measured detection accuracy, never on reviewer confidence. This <Term k="layer">layer</Term> is the highest-volume agent surface in the enterprise. It is where identity governance holds or fails first.
+| System category | Electricity distributor | Water utility | Hospital network | Generator, oil and gas, or miner |
+|---|---|---|---|---|
+| Email and calendar (Microsoft 365 Outlook and Exchange) | Many handoffs run on email. They are invisible to the systems of record | Same | Exchange, beside fax servers that still receive referrals | Email carries the daily production report and most evidence requests |
+| Chat and meetings (Microsoft Teams) | Teams carries many handoffs | Same | Teams or video for multidisciplinary meetings | Teams carries the morning meeting |
+| Documents and intranet (SharePoint) | SharePoint sites and libraries | Same | SharePoint, the intranet and a policy library (PROMPT or SharePoint) | SharePoint. Shift handover logs |
+| Spreadsheets as trackers (Excel) | Spreadsheets hold many exception trackers | Same | Not named in the research | Excel is the real integration tool in most plants (typical, unsourced) |
+| Assistants in the suite (Microsoft 365 Copilot) | Copilot. SA Power Networks runs an internal "Ask AI" over manuals (September 2026) | Copilot, widely used in UK water (June 2026) | Copilot pilots | Copilot. Uniper builds agents in Copilot Studio [vendor] |
+| Field and shift communication | iPads in the field | Same | Secure clinical messaging apps | Two-way radio. Tablets for short interval control. Pre-start and toolbox talk material |
+| Agent identity in the directory (Microsoft Entra Agent ID and others) | Not yet in place. An agent needs its own identity in each system it calls | Same | No Australian or NZ public health service found with an identity per agent | Not yet in place. An agent needs its own identity in IT and in the plant network's buffer zone |
+
+Standards: none specific to the suite in utilities. Hospitals follow state records law and retention schedules. Energy and resources companies apply ISO 15489 for records. The full estates are on the [utilities](/use-cases/utilities), [healthcare](/use-cases/healthcare) and [energy](/use-cases/energy) pages.
+
+## What agents add
 
 <GuideFigure id="layer-08-hero" fullWidth />
 
-<TeachingIllustration src="/images/layers/r08-identity-presence-labeled-v1.webp" alt="Every agent receives a service principal, named sponsor, scoped connectors and automatic revocation; only exceptional agents receive a separately approved mailbox, meeting seat or user-like presence." title="Identity is universal; human-like presence is a separate grant" caption="Every agent needs an auditable directory identity, but few need to appear as a user. Mailboxes, meeting seats and other presence surfaces add impersonation and consent risk, so they require explicit justification." />
+### Every agent gets its own identity
 
-| Component | Responsibility | Control it hosts | Where it runs |
-|---|---|---|---|
-| Agent identity plane | One service principal per agent, sponsor recorded | Mandatory issuance (no opt-out from July 2026); 250-per-blueprint creation cap; conditional access over connector permissions; deletion with the agent | Enterprise directory (Microsoft Entra agent identity and equivalents) |
-| Presence tier | Optional one-to-one child user account where an agent must act as a user | Admin-granted, revocable creation permission; justification per capability surface | Directory plus collaboration suite |
-| Horizontal assistant estate | Solitary-task assistance: email, summarisation, drafting | Usage telemetry (actions per user per day); task-type routing by measured effect, positive or negative | Suite seats across the tenant |
-| Agent-building surface | The employee-built long tail of narrow agents | Blueprint caps; automatic identity issuance; connector permission scoping | Low-code builders inside the horizontal platform |
-| Meeting capture | Notes and transcripts over meetings | Consent capture and disclosure by default; retention aligned to recording law | Meeting platforms and specialist notetakers |
-| Shadow-usage telemetry | Detect personal-account generative AI (genAI) traffic and sensitive data leaving the organisation | Personal-account detection; data loss prevention (DLP) incidents routed back to sanctioned paths | Existing security service edge (SSE) and DLP stack |
+In Microsoft's design, an agent identity is a service principal in the enterprise directory. A service principal is the directory's account type for software, not people. It carries a sponsor field: the person or group accountable for the agent. The sponsor is also the contact if a security incident happens. From July 2026, every new agent must have an agent identity, with no opt-out [vendor]. Creating agent identities uses a permission that is granted automatically and cannot be revoked. It is capped at 250 agent identities per blueprint, the template an agent is built from [vendor]. Agent identities are deleted when the agent is deleted, so orphan accounts do not pile up. An agent cannot exist without an identity, so the inventory is complete by design. On the [delegation chain](/architecture/delegation-chain), this is the agent's own identity (ID2).
 
-## Mechanisms
+### A mailbox or meeting seat is a separate grant
 
-### The identity spine: service principal first, user account by exception
+An agent user account is a different object. It is an optional user account tied one to one to the agent. It exists only where the agent needs to act as a user. It brings a mailbox, a calendar, a licence, a place in the HR system or a meeting-roster seat. Creating one needs a permission that an administrator grants and can revoke [vendor]. No user account is created automatically. The agent's own identity plus an agent user account is ID3 on the delegation chain.
 
-**In short:** Every agent gets a directory account with a named sponsor; a mailbox is a separate, rare grant.
+<TeachingIllustration src="/figures/layers/r08-agent-identity.svg" mobileSrc="/figures/layers/r08-agent-identity-mobile.svg" expandable title="Every agent gets an identity. Few get a user account." alt="Two columns. The left column is the agent identity, which every agent gets. It is a service principal in the directory with a named sponsor. Its connector permissions are scoped, and it is created and deleted with the agent. It is the agent's own identity, ID2. An arrow marked only by exception leads to the right column, the agent user account, which few agents get. It brings a mailbox, a calendar and meeting seat, and a licence and HR record. An administrator grants it for a recorded reason and can revoke it. The agent's own identity plus a user account is ID3. A strip along the bottom says never let an agent use a colleague's account." caption="Every agent needs an identity and a sponsor. A user account adds impersonation and consent risk, so it needs a reason." />
 
-The agent identity is a service principal in the enterprise directory. It carries the accountability attribute directly: a **sponsor** field recording "the human user or group that's accountable for an agent". The same field is used, among other purposes, for "contacting a human in case a security incident happens". The object that carries a mailbox and meeting presence is different. It is a **separate, optional one-to-one child user account**, created only "for interactions where the agent needs to act as a user". The asymmetry between the two permissions is the control surface. Creating agent identities uses a permission that is "automatically granted... and can't be revoked", capped at **250 agent identities per blueprint** (the template an agent is created from). Creating the child user account requires an **admin-granted permission that can be revoked**. From **July 2026** every new agent must have an agent identity, with no opt-out, and no user account is created automatically. In the terms of the identity chain, access identity (tier ID2) is mandatory and presence (tier ID3) is a decision. Being nameable is not the same as presence. The display name appears in Teams, Outlook, and admin surfaces at the access tier, and agents can be @mentioned in Teams and Slack without any user account. The presence tier is defined by five <Term k="capability surface">capability surfaces</Term>: **mailbox, calendar, licence consumption, human resources (HR) system participation, meeting-roster seat**. Evidence: Microsoft Entra agent-identity documentation, 2025-2026 [vendor].
+An agent can be named without a user account. Its display name shows in Teams, Outlook and admin screens. It can be @mentioned in Teams and Slack without one. A user account also does not buy accountability, because the sponsor field already carries it. Nor does it change how people work. One study compared an always-present agent with one called on demand (AIES 2026, 157 people). Trust did not shift much, and accountability stayed with the human expert. So grant an agent user account per need, rarely, with a recorded reason.
 
-### Shadow AI: govern through identity, not blocking
+### Shared content is permissioned first
 
-**In short:** Blocking AI apps pushes staff to personal accounts; governing through the directory keeps them on sanctioned paths.
+An assistant can surface any file its user can open. Field evaluations record assistants surfacing files users should never have seen. That is oversharing from the [data platform layer (R02)](/layers/r02-data-platform), showing up here first. So fix permissions on files, sites and chats before deployment, not after. Take a water utility's billing exceptions as an example. The trackers often live in Excel, email and Teams. An agent that reads them needs its own identity and the same access rules as a person.
 
-Blocking moves usage rather than stopping it. Although **90 percent of organisations block at least one generative AI (genAI) app**, **47 percent of genAI users reach tools through personal, unmanaged accounts**. The measured exposure: an average organisation sends **18,000 <Term k="prompt">prompts</Term> per month** to genAI apps. It also records **223 incidents per month of sensitive data sent to AI apps** (2,100 in the top quartile), and **54 percent of violations involve regulated data**. GenAI users grew 200 percent year on year and prompt volume grew 500 percent. These figures are security-vendor <Term k="telemetry">telemetry</Term> (measured traffic, not a survey), Jan 2026 [vendor]. The governance mechanics converge on identity. Connector permissions are surfaced as application programming interface (<Term k="api">API</Term>) permissions that conditional access can target. The policy engine that governs user sign-ins therefore also governs what an agent can reach. Agent identities are **deleted automatically when the agent is deleted**, so orphaned accounts (identities with no live agent behind them) do not accumulate. Mandatory issuance makes the agent inventory complete by construction: an agent cannot exist without an identity. The control point is the directory and its conditional-access policy set, not the proxy blocklist.
+### Personal AI accounts are governed through identity
 
-### The solitary-vs-coordinated gate
+Blocking moves usage rather than stopping it. About 90 percent of organisations block at least one generative AI app [vendor]. Yet 47 percent of users reach AI tools through personal, unmanaged accounts [vendor]. An average organisation records 223 incidents a month of sensitive data sent to AI apps [vendor]. Connector permissions appear as API permissions that conditional access can target. Conditional access is the directory's set of rules on who may reach what, and from where. So the policy engine that governs staff sign-ins also governs what an agent can reach. Make the approved path easier than the personal account.
 
-**In short:** Measured gains appear in solitary tasks such as email; shared work does not change unless the team agrees new norms.
+### Roll out by task
 
-<TeachingIllustration src="/images/layers/r08-task-team-labeled-v1.webp" alt="Assistants show measurable gains on solitary tasks such as drafting, summarising and research, while meetings, decisions and handoffs improve only when team norms change." title="Deploy assistants by task, not by licence availability" caption="Individual acceleration does not automatically change coordinated work. Measure each task's outcome, assume review will be shallow, and retain only the workflows that improve real quality or time." />
+<TeachingIllustration src="/images/layers/r08-task-team-labeled-v1.webp" title="Deploy assistants by task, not by licence count" alt="Two panels. Solitary work covers drafting email, summarising and research, with a measured individual gain. Shared work covers meetings, decisions and handoffs, where team norms must change. Two notes sit underneath. Review is usually shallow. Measure error detection, not confidence. The bottom line reads: roll out by task, and keep what improves the measured outcome." caption="Individual speed does not change shared work on its own. Measure each task's outcome and keep only what improves it." />
 
-The only large randomised field experiment with telemetry outcomes is Dillon, Jaffe, Immorlica and Stanton, National Bureau of Economic Research (NBER) working paper 33795, revised November 2025. It covered **66 firms, 7,137 knowledge workers, and six months**. Users spent **two fewer hours per week on email** and did less out-of-hours work. The study detected no other shift in the quantity or composition of work. Meetings showed no measurable effect: the bounds rule out anything outside **-0.01 to +0.21 hours** against a **5.22 hours-per-week mean**. Document counts also showed no effect. The authors' explanation is that email is solitary, while shifting meetings or document ownership "requires coordinating with colleagues and agreeing on new norms".
+Measured gains so far come from work people do alone, such as email. Meetings and shared documents change only when the team agrees new ways of working. So route solitary, single-author work to the assistant by default. Route shared work there only with a decision to change the team's norms. Drafting and summarising gain time. Data analysis and scheduling lost time in one government evaluation. Measure each task's outcome and keep what improves it.
 
-UK government evaluations of the same product show the same pattern: the more rigorous the method, the smaller the effect. Self-reported savings with no comparison group came to **26 minutes per day**. A quasi-experimental study (a comparison without random assignment) at the Department for Work and Pensions (DWP) found **19**. A randomised study at HM Revenue and Customs (HMRC) found **roughly 12**. The telemetry-measured effect is confined to email alone. Danish administrative data (NBER working paper 33777) shows precisely estimated zero effects on earnings and hours. The statistical bounds rule out effects above 1 percent, beside 3 percent average time savings.
+### Meetings need consent
 
-Observed-task results come from the UK Department for Business and Trade (DBT) evaluation, Aug 2025, with six people per group: small, but the direction is clear. The effect varies by task.
+Notetaking is the most common use of agents in collaboration tools. Capture consent and disclose recording by default. Keep meeting records with their consent records. Align retention with recording law in each place. Two US class actions over meeting recording are active, one filed in July 2026.
 
-| Task | Time with vs without (minutes:seconds) | Accuracy with vs without |
+### The assistant's mode is a setting
+
+An assistant can rewrite people's ideas, or draw them out with questions. Rewriting improved quality but cut the variety of ideas and people's sense of ownership. Asking questions improved quality and kept both (486 participants, checked again with 640). So set the mode per surface and record it as configuration that can be reviewed. Use questions wherever a variety of contributions matters.
+
+### Review is shallow, so controls must not rely on it
+
+In five-hour coding tasks, 94 percent of developers missed deliberate sabotage inserted by an agent. When a safety monitor flagged it, 56 percent still accepted the malicious code. So assume review effort is low when sizing controls. Judge oversight on how many errors people catch, not on their confidence or speed. Treat any control that raises confidence without raising accuracy as a step backwards.
+
+| Part | What it does | Where it runs |
 |---|---|---|
-| Summarising a report | 12:37 vs 41:34 | 4.0 vs 2.5 |
-| Writing email | About equal | Quality better |
-| Building a presentation | Faster | 1.5 vs 5.0 |
-| Excel data analysis | 25:01 vs 20:33 (slower) | 1.5 vs 2.7 (worse) |
+| Agent identity | One service principal per agent, with the sponsor recorded. Deleted with the agent | The enterprise directory (Microsoft Entra Agent ID and similar) |
+| Agent user account | An optional user account where an agent must act as a user. Granted by an administrator and revocable | The directory and the collaboration suite |
+| Suite assistant | Help with solitary tasks: email, summaries, drafts | Licensed seats across the tenant |
+| Agent builder | Narrow agents built by staff, each with an automatic identity and scoped connectors | Low-code builders inside the suite |
+| Meeting capture | Notes and transcripts, with consent captured and recording disclosed | Meeting platforms and specialist notetakers |
+| Personal-account monitoring | Detects personal AI accounts and sensitive data leaving the organisation | The existing security service edge and data loss prevention tools |
 
-Adjusted hours saved per task ran from drafting 1.3 and summarising 0.8 down to presentations 0.0, image generation -0.5, and scheduling **-0.6** (a net loss of time). In **15 percent of data-analysis uses and 36 percent of scheduling uses there was no quality assurance at all**. The design consequence (the authors' position, drawn from the evidence above) is a routing gate. Route solitary, single-author work to the horizontal assistant by default. Route coordinated work there only with an explicit decision to change the team's norms attached, because without one the measured effect is null.
+## What must be true before an agent touches it
 
-### Oversight at realistic effort
+Before an agent reads a mailbox, a file or a meeting, these must hold.
 
-**In short:** Reviewers miss most deliberate errors in agent output, so size controls for low review effort and judge them on detection accuracy.
+- **It has its own identity and a sponsor.** The agent's own identity (ID2) is the minimum. No agent uses a colleague's account.
+- **Its connectors are scoped.** Conditional access targets its connector permissions.
+- **Any user account has a recorded reason.** An administrator grants it per need and can revoke it.
+- **Content permissions are fixed first.** Files, sites and chats are permissioned before the assistant can search them.
+- **Meeting consent is captured.** Recording is disclosed, and retention follows recording law in each place.
+- **Its output is labelled.** No agent presents as a colleague without saying it is an agent.
+- **It is on the lifecycle.** It has a registry record, a sponsor and a periodic review, as the [agent lifecycle](/architecture/agent-lifecycle) sets out. The [governance, risk and sovereignty layer (R11)](/layers/r11-governance-risk-sovereignty) keeps the registry.
+- **A new grant is scored again.** A new tool grant changes its permissions, so its [risk profile](/architecture/risk-profile) is scored again.
 
-In five-hour coding tasks with more than 100 participants, **94 percent of developers failed to detect deliberate sabotage** inserted by an agent. When a safety monitor flagged the malice, **56 percent still accepted the malicious code** (Ye and colleagues, arXiv 2606.05647, Jun 2026; preprint). A redesigned interface for reading agent <Term k="trace">traces</Term> (the step-by-step record of a run) **cut the time to find errors and raised reported confidence**. It did so **without meaningfully improving final accuracy** (three vendor-research studies, Feb 2026 [vendor]). That is the signature of a governance control that adds an over-reliance problem instead of removing one. The baseline is consistent. A meta-analysis (a study that pools other studies) registered in advance covered 106 studies and 370 effect sizes. It found human-AI combinations performing worse than the best of human or AI alone, with an effect size (Hedges g) of **-0.23**. The losses concentrated in decision tasks, and review is a decision task. Three design consequences follow. Assume low review effort when sizing controls. Measure oversight on detection accuracy, not on reviewer confidence or speed. Treat any control that raises confidence without raising accuracy as a regression.
+The enforcement point is the directory and its conditional-access rules, not a proxy blocklist. The [security and identity layer (R10)](/layers/r10-security-and-identity) runs that policy engine. Policy sits outside the model, as [enforcement outside the model](/architecture/enforcement) describes.
 
-### Interaction mode as a control
+## Choices and their verdicts
 
-**In short:** Whether the assistant rewrites people's ideas or draws them out with questions is a setting, and it changes idea diversity.
+Each choice is the common choice, tested against the simplest credible alternative. The full records are in the [decision catalog](/decisions).
 
-Whether assistance costs idea diversity is a configuration choice, not a property of the <Term k="model">model</Term>. In a **model-led mode**, the large language model (LLM) rewrites people's contributions. It improved quality but reduced idea diversity and the authors' sense of ownership. In a **reflective human-led mode**, the LLM draws out elaboration through questions. It improved quality while preserving both (**486 participants, with a validation study of 640**). A related result: LLM rewriting systematically shifted the political values expressed in participants' comments (CHI 2026, the human-computer interaction conference, 465 participants). Default collaborative surfaces to reflective elicitation wherever diversity of contributions matters. Permit model-led rewriting where it does not. Record the mode as reviewable configuration rather than accepting the vendor default.
+- **[One assistant or many specialised agents](/decisions#cd-23) (CD-23):** the wrong question. Ask whether the work is solitary or shared, and whether the team will change how it works.
+- **[One agent or many](/decisions#cd-21) (CD-21):** a separate design choice. Several agents pay off only for wide, independent work.
+- **[Agents as workforce or as tools](/decisions#cd-22) (CD-22):** keep the accountability and drop the personnel metaphor. The sponsor sits on the identity, and agents need no employee records.
 
-## Design decisions
+## Concerns this layer must honour
 
-- **One universal assistant vs many specialised agents** ([CD-23](/decisions#cd-23)): this is the wrong axis to decide on. Keep the architectural question separate: whether to run a single agent or an orchestrated <Term k="multi-agent">multi-agent</Term> system is decided in [CD-21](/decisions#cd-21), which weighs multi-agent orchestration against a single good loop. The deployment question turns on a different variable: whether the target work is **solitary or coordinated**, and whether the organisation will change the norms of the coordinated work. Horizontal copilots scale because they require no process change. They take 86 percent of horizontal application spend against 10 percent for agents, and they reach 64 percent weekly active users but only 1.14 actions per user per day. That is exactly why their measured value is confined to solitary work. Specialised agents stall on coordination. Only coding has broken out ($4.2 billion of $7.3 billion departmental spend), because that workflow was already tool-mediated and its feedback loop already automated. The evidenced third answer, argued by neither camp, is a long tail of narrow agents built by employees inside the horizontal platform. One firm generated roughly **15,000** of them after a company-wide rollout. Only 16 percent of enterprise deployments qualify as true agents.
-- **Presence identity refinement** (see the [identity chain](/architecture/identity-chain)): accountability belongs at the access tier. That is where the sponsor field already lives, and requiring a mailbox in order to obtain accountability is backwards. Presence also does not buy the norm change it appears to buy. The only controlled study that varied invoked (called on demand) against ambient (always present) architecture is from AIES 2026 (the AI, Ethics and Society conference), with 157 participants. It found the change "did not substantially redistribute trust"; accountability stayed anchored to the human expert. The only randomised controlled trial (RCT) of an AI teammate as a participant compared 16 AI teams against 17 all-human teams (Jul 2026 preprint, student sample). It found the AI was the most talkative and least informative member. Human-to-human responsiveness, belonging, and status were all lower. Grant presence per capability surface, rarely, with a recorded justification.
+The ten cross-cutting concerns are set out in the [concern matrix](/architecture/concern-matrix). This layer carries a specific duty for seven of them.
 
-## Cross-cutting concerns
-
-| # | Concern | Treatment at this layer |
-|---|---|---|
-| C1 | Identity and access | Access identity mandatory and automatic; presence granted per capability with justification; sponsor recorded at the access tier |
-| C2 | Observability | Actions per active user per day; task-type outcomes; shadow-usage indicators |
-| C3 | Traceability and audit | Meeting artifacts kept with their consent records; retention aligned to recording law |
-| C4 | Grounding | Permissions on the collaboration content (files, sites, chats) fixed before deployment, not after |
-| C5 | Impersonation | Agent output labelled in shared surfaces; no agent presents as a colleague without disclosure |
-| C6 | Sovereignty | Recording consent depends on jurisdiction; transcripts inherit the classification of their content |
-| C7 | Privacy | Notetaker consent capture; worker-monitoring boundaries; personal-account leakage |
-| C8 | Safety and oversight | Review effort assumed low; controls that raise confidence without raising accuracy treated as harmful |
-| C9 | Cost | Usage measured against licence spend; tasks with negative returns identified and stopped |
-| C10 | Resilience | Sanctioned paths easy enough to displace shadow usage; a defined degraded mode when assistants are unavailable |
-
-**Next step:** read the next layer, [R09 Experience and channels](/layers/r09-experience-and-channels).
+- **Identity and access:** agent identity is mandatory and automatic. User accounts are granted per need, with a reason.
+- **Observability:** actions per active user per day, outcomes by task type, and signs of personal-account use.
+- **Traceability and audit:** meeting records are kept with their consent records.
+- **Grounding:** permissions on files, sites and chats are fixed before deployment.
+- **Impersonation:** agent output is labelled in shared spaces.
+- **Privacy:** notetaker consent, limits on monitoring workers, and leakage through personal accounts.
+- **Cost:** usage is measured against licence spend, and tasks that lose time are stopped.
 
 ## Evidence and limits
 
-No Common Vulnerabilities and Exposures (CVE) records, the public catalogue of software security flaws, attach to this layer's surfaces in the research window. The incident record is legal and exposure-shaped. Two US class actions over meeting recording are active. One is the consolidated Otter.AI action in the Northern District of California. The other is the Granola action filed 30 July 2026 under the California Invasion of Privacy Act (CIPA), which carries $5,000 statutory damages per violation. A July 2026 survey of 500 US workers found 33.4 percent had encountered an AI notetaker. Among those, 34.7 percent were always asked permission and 25.1 percent never were. Across all workers, 18.8 percent had discovered a meeting was recorded without their knowledge. Notetaking is the highest-volume collaboration-agent function: 16.43 percent of all reported uses, and 110 million Meet attendees used automatic notes in a month, 8.5 times the year before [vendor]. No independent field study publishes production accuracy for enterprise meeting summaries. Field evaluations also record assistants surfacing files users should never have had access to. That is the oversharing debt carried over from layer R02, the data platform (content shared more widely than its owners intended), appearing at this layer first.
+The pay-off evidence is consistent: the more rigorous the method, the smaller the effect. The largest field experiment covered 66 firms and 7,137 workers for six months. Users spent two fewer hours a week on email. No other change in the amount or mix of work was detected. Meetings and document counts showed no measurable effect.
 
-Evidence statuses to carry. The identity mechanics and the July 2026 mandate come from vendor documentation [vendor] and should be re-verified against tenant behaviour. Shadow-usage figures are security-vendor telemetry [vendor]. Spend composition comes from a single market survey (Dec 2025). The oversight-sabotage study and the AI-teammate RCT are preprints, the latter with a student sample. Observed-task figures rest on six people per group. One refusal: a widely circulated share of companies said to have delayed or cancelled copilot rollouts traces to a vendor security survey whose stated driver is data-protection risk. This guide excludes it as evidence about worker consultation. Open gaps: there is no comparative outcome study of presence-grade versus invoked agents at organisational scale, and no rigorous study of how notetakers change what participants say. Re-verify quarterly: the identity mandate's scope and caps, conditional-access coverage of connector permissions, and the shadow-telemetry baseline.
+UK government evaluations show the same pattern. Self-reported savings came to 26 minutes a day. A comparison study at the Department for Work and Pensions found 19, and a randomised one at HMRC about 12. Danish data showed no effect on earnings or hours. A Department for Business and Trade evaluation observed tasks with six people per group. Summarising got much faster, while Excel analysis got slower and less accurate.
+
+Reviewers miss most deliberate errors, but the sabotage study is a preprint. A pooled analysis of 106 studies found people and AI together did worse than the better of the two. The losses were largest in decision tasks, and review is a decision task.
+
+The identity mechanics and the July 2026 mandate come from Microsoft's documents [vendor]. Check them against your own tenant. Personal-account figures are security-vendor telemetry [vendor]. No study compares agents with user accounts against agents called on demand at organisational scale. No rigorous study shows how notetakers change what people say.
+
+## Next step
+
+See this layer at work in the proposed [compliance evidence](/use-cases/compliance-evidence) example. Then read the next layer, the [experience and channels layer (R09)](/layers/r09-experience-and-channels).
 
 <details>
 <summary>The research behind this page</summary>
 
-- [Productivity and collaboration findings](/library/layers/r08-productivity-and-collaboration/findings)
-- [Sources](/library/layers/r08-productivity-and-collaboration/sources)
-- [Products named for orientation](/architecture), on the one-page wall chart
+- [Productivity and collaboration findings](/library/layers/r08-productivity-and-collaboration/findings) and [sources](/library/layers/r08-productivity-and-collaboration/sources).
+- [Products named for orientation](/architecture), on the one-page wall chart.
+- Estate table: industry research for utilities, healthcare and energy, 15 October 2026. Rows are industry knowledge unless a source is named.
+- Table sources: SA Power Networks "Ask AI" (iTnews, 8 September 2026). Ofwat plan on Copilot use (June 2026). Uniper on Copilot Studio (Celonis case study, undated) [vendor].
+- Identity mechanics: Microsoft Entra agent identity documentation, 2025 to 2026 [vendor]. The sponsor is "the human user or group that's accountable for an agent".
+- Personal-account telemetry: security vendor, January 2026 [vendor]. 18,000 prompts a month per organisation. 223 sensitive-data incidents a month, 2,100 in the top quartile. 54 percent of violations involve regulated data.
+- The same telemetry shows AI users up 200 percent and prompt volume up 500 percent in a year [vendor].
+- Field experiment: Dillon, Jaffe, Immorlica and Stanton, NBER working paper 33795, revised November 2025. Meeting bounds rule out effects outside -0.01 to +0.21 hours against a 5.22-hour weekly mean.
+- Danish data: NBER working paper 33777. Bounds rule out effects above 1 percent, beside 3 percent average time savings.
+- UK evaluations: 26 minutes a day self-reported. 19 minutes at DWP, quasi-experimental. About 12 minutes at HMRC, randomised.
+- DBT evaluation, August 2025, six people per group. Summarising a report took 12:37 with the assistant against 41:34 without, with accuracy 4.0 against 2.5.
+- DBT task results: email writing about equal in time with better quality. Presentations faster, but accuracy 1.5 against 5.0. Excel analysis 25:01 against 20:33, with accuracy 1.5 against 2.7.
+- DBT adjusted hours saved per task: drafting 1.3, summarising 0.8, presentations 0.0, image generation -0.5, scheduling -0.6.
+- DBT quality checks: none at all in 15 percent of data-analysis uses and 36 percent of scheduling uses.
+- Spend: one market survey, December 2025. Copilots take 86 percent of horizontal application spend, against 10 percent for agents.
+- The same survey: 64 percent weekly active users, but only 1.14 actions per user per day. Coding is the one department to break out, at $4.2 billion of $7.3 billion.
+- One firm generated about 15,000 narrow agents built by staff after a company-wide rollout. Only 16 percent of enterprise deployments qualify as true agents.
+- Always-present versus called on demand: AIES 2026, 157 participants. The change "did not substantially redistribute trust".
+- AI teammate trial: 16 AI teams against 17 all-human teams, July 2026 preprint, student sample. The AI was the most talkative and least informative member. Responsiveness, belonging and status were lower.
+- Sabotage study: Ye and colleagues, arXiv 2606.05647, June 2026, preprint, 100+ participants.
+- Trace-reading interface: three vendor research studies, February 2026 [vendor]. It cut time to find errors and raised confidence without meaningfully improving accuracy.
+- Meta-analysis: 106 studies, 370 effect sizes, registered in advance. Effect size (Hedges g) -0.23.
+- Interaction mode: 486 participants, validation study of 640. LLM rewriting also shifted the political values in people's comments (CHI 2026, 465 participants).
+- Meeting recording: the consolidated Otter.AI action in the Northern District of California. The Granola action, filed 30 July 2026 under the California Invasion of Privacy Act, with $5,000 statutory damages per violation.
+- Notetaker survey, July 2026, 500 US workers: 33.4 percent had met an AI notetaker. Of those, 34.7 percent were always asked permission and 25.1 percent never were.
+- 18.8 percent of all workers had found a meeting recorded without their knowledge.
+- Notetaking is 16.43 percent of all reported collaboration-agent uses. 110 million Meet attendees used automatic notes in a month, 8.5 times the year before [vendor].
+- No independent field study publishes production accuracy for meeting summaries. No vulnerability records attach to this layer in the research window.
+- Excluded: a widely shared share of companies said to have delayed copilot rollouts. It traces to a vendor security survey about data-protection risk, not worker consultation.
+- Re-verify quarterly: the identity mandate's scope and caps, conditional-access coverage of connector permissions, and the personal-account telemetry baseline.
 
 </details>
-
-
-## See this layer at work
-
-Follow the proposed [compliance evidence](/use-cases/compliance-evidence) example. Compare the required capability with the systems already in place, then use the [architecture map](/architecture) to inspect neighboring responsibilities.

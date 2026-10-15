@@ -1,0 +1,80 @@
+---
+title: "Operate: the weekly loop"
+icon: "Activity"
+description: "The four checks to run every week once an agent is live, the measures the weekly review reads, and the gate before the agent may do more."
+position: "This guide's weekly routine for step 6 of Start here. It orders and links existing pages."
+lastReviewed: "2026-10-15"
+datePublished: "2026-10-15"
+dateModified: "2026-10-15"
+concepts: [start, lifecycle, capabilities, r12, r13, value, autonomy, risk]
+---
+
+An agent that passed its tests can still drift, overspend or swamp the people behind it. So once an agent is live, what do you check, and how often? Check four things every week. What did the agent do? What did each finished piece of work cost? Can the people handling its exceptions keep up? Should it change, or stop? This is step 6 on [Start here](/start). It covers the operate, change, periodic review and retire stages of [the agent lifecycle](/architecture/agent-lifecycle). Judge oversight by the busiest ten minutes of the week, not by the daily average.
+
+<TeachingIllustration src="/figures/start/operate.svg" mobileSrc="/figures/start/operate-mobile.svg" expandable title="Operate, every week" alt="Four panels sit in a loop around the words every week. Observability covers traces the agent cannot forge, costs and incidents. It sits in the observability and FinOps layer (R12). Cost covers cost per resolved outcome, budgets and circuit breakers. Supervision covers exception queues and burst capacity. It sits in the operating model and supervision layer (R13). Lifecycle covers change triggers, periodic review and retirement. A line underneath gives the gate for step 6. Oversight capacity must hold at peak load, not just on an average day." caption="Run the four checks every week. Move on to step 7 only when oversight holds in the busiest ten minutes." />
+
+## The four weekly checks
+
+### 1. Observability: what the agent did
+
+Every run leaves a <Term k="trace">trace</Term>. It records the session, each model call, each tool call and the cost. The trace is collected outside the agent. The agent cannot forge or hide it. This is [the observability and audit trail capability](/architecture/system-view) at work. Check that every run has a complete trace. Check costs against the budget. Review each incident and its cause. Watch guardrail block rates in both directions. A <Term k="guardrail">guardrail</Term> is a fixed check that stops an unsafe action. A spike can mean an attack. A drop can mean a broken setting. The [observability and FinOps layer (R12)](/layers/r12-observability-and-finops) sets out the trace, the budgets and the change gate.
+
+### 2. Cost: what each outcome cost
+
+Track <Term k="cost per resolved outcome">cost per resolved outcome</Term>, not raw spend. It counts model, tool and platform cost, including failed attempts. It adds supervision time and the cost of fixing wrong results. Then it divides by the outcomes the business accepted as resolved. Each agent has an <Term k="agent budget">agent budget</Term> with hard caps per run. Its sponsor owns that budget. Circuit breakers stop spending at set limits. When a budget runs out, the work goes to a person. It does not retry on its own. [Measure value and full cost](/use-cases/value-and-investment) gives the formula. [Token efficiency](/memory/token-efficiency) covers where the tokens go and what to meter for each agent.
+
+### 3. Supervision: whether people keep up
+
+Exceptions land in a queue for a person to decide. Capacity depends on how long items wait, not on how many agents there are. <Term k="span of control">Span of control</Term> is how many agents one person can supervise. It shrinks as waiting times grow. Measure wait time per item in the busiest ten minutes, never as a daily average. That peak figure is the <Term k="burst rate">burst rate</Term>. Track the intervention rate and its trend. A falling rate can mean tired reviewers rather than a better agent. Split escalations by who raised them: a person or the automated monitor. Run blind checks as well. People misjudge their own speed and accuracy. The [operating model and supervision layer (R13)](/layers/r13-operating-model) sets out the queueing calculation.
+
+### 4. Lifecycle: whether the agent should change or stop
+
+Eight kinds of change make an approval out of date, from a new model to a new sponsor. Each one re-runs the evals and the [risk profile](/architecture/risk-profile) before release. Check the week's <Term k="change trigger">change triggers</Term> against the <Term k="registry">registry</Term> record. Check which periodic reviews are due. Each quarter, the sponsor confirms purpose, access, budget and need. Retire agents that are no longer needed. Retiring means revoking access and removing memory, not just switching off. [The agent lifecycle](/architecture/agent-lifecycle) sets out the triggers, the review and the retirement steps.
+
+## One week with a billing-exception agent
+
+Take a water utility's billing-exception agent. It drafts fixes for meter reads that fail validation. A billing officer approves each fix. This week, every run has a full trace. Cost per resolved exception rose. The agent re-read more meters than usual. Wait time broke its limit on Monday morning, when a batch of failed reads arrived at once. The daily average looked fine. A model update was logged as a change trigger, and the evals ran again before release. The agent stays at its current [autonomy level](/architecture/autonomy-contract) until Monday's peak is handled. This is an illustrative week, not a measured deployment.
+
+## What the weekly review reads
+
+| Measure | What it shows | Watch for | Page |
+|---|---|---|---|
+| Trace coverage | Share of runs with a complete trace collected outside the agent | Any gap | [Observability and FinOps](/layers/r12-observability-and-finops) |
+| Cost per resolved outcome | The full cost of each accepted result | A rise, or a fall in the resolution rate | [Value and full cost](/use-cases/value-and-investment) |
+| Budget use and cap hits | Spend against each agent's budget | Runs stopped by caps; unexpected spikes | [Observability and FinOps](/layers/r12-observability-and-finops) |
+| Session success and escalation rate | Quality, per release | Escalation outside the 5 to 15 percent band | [Observability and FinOps](/layers/r12-observability-and-finops) |
+| Guardrail block rate | How often guardrails stop an action | A spike or a sudden drop | [Observability and FinOps](/layers/r12-observability-and-finops) |
+| Wait time per supervised item | How long exceptions wait for a person, at peak | Wait rising in the busiest ten minutes | [Operating model and supervision](/layers/r13-operating-model) |
+| Intervention rate and trend | How often people step in | A fall while autonomy grows | [Operating model and supervision](/layers/r13-operating-model) |
+| Escalation mix by trigger | Who raised each escalation | Fewer escalations raised by people | [Operating model and supervision](/layers/r13-operating-model) |
+| Verification cost per review | The time a person needs to check one item | Checks too slow to actually happen | [Operating model and supervision](/layers/r13-operating-model) |
+| Blind check results | Measured quality against what reviewers report | A gap between the two | [Operating model and supervision](/layers/r13-operating-model) |
+| Change triggers logged | Changes that re-ran the evals and the risk profile | A change released without a re-run | [The agent lifecycle](/architecture/agent-lifecycle) |
+| Reviews due and orphaned agents | Agents past their review, or running without an owner | Any orphan | [The agent lifecycle](/architecture/agent-lifecycle) |
+
+## The gate to step 7
+
+Step 7 lets a proven agent do more. Before that, oversight capacity must hold at burst. That means the busiest ten minutes, not an average day. A daily average can look fine while people are swamped in every burst. Alarm standards for control rooms use per-ten-minute rates for this reason. This guide asks for three things from production. Wait time stays inside its limit at peak. The intervention rate is not falling as autonomy grows. Blind checks agree with what reviewers report. Until all three hold, the agent stays at its current <Term k="autonomy level">autonomy level</Term>. [The autonomy contract](/architecture/autonomy-contract) sets out the calculation.
+
+## Who runs the loop
+
+The programme lead owns step 6 and runs the weekly review. The agent sponsor answers for purpose, results and budget. The agent owner runs the configuration, evals and incidents. The FinOps and agent economics lead reads the cost lines. FinOps is the practice of managing cloud and agent spend. Exception supervisors work the queues as part of their jobs.
+
+These roles sit inside a wider design for how the teams are organised. A thin office writes the rules and holds the money. One platform team turns the rules into automatic checks. Three small lanes build each new pattern once, then step back. Business teams own their agents. This guide calls that design One Platform, Three Lanes. [How to organise the teams](/operate/organisation) sets it out.
+
+## Evidence and limits
+
+The span of control relation and the alarm-standard bands are peer-reviewed or published standards. Both come from supervision work outside AI agents. No credible published figure exists for how many agents one person can supervise. Measure your own queues. The quarterly review follows AWS and Microsoft guidance. Both ask for quarterly reviews of live agents. The billing-exception week above is an illustration.
+
+**Next step:** before the agent does more, read [the autonomy contract](/architecture/autonomy-contract). To see who does this work, read [how to organise the teams](/operate/organisation).
+
+<details>
+<summary>The research behind this page</summary>
+
+- [Operating model findings](/library/layers/r13-operating-model/findings)
+- [The economics model](/library/architecture/economics-model)
+- [Observability and FinOps findings](/library/layers/r12-observability-and-finops/findings)
+- AWS Well-Architected agentic AI lens, [AGENTSUS03-BP04](https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentsus03-bp04.html), undated, read 15 October 2026. It names quarterly portfolio reviews.
+- Microsoft Cloud Adoption Framework, [Manage AI agents across your organization](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/integrate-manage-operate), updated 26 June 2026. It asks for quarterly reviews to retire agents that no longer deliver value.
+
+</details>

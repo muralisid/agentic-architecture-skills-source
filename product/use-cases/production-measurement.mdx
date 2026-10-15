@@ -1,72 +1,177 @@
 ---
 title: "Investigate production discrepancies"
-description: "Combine visual measurements with production records to find and explain differences."
-position: "Proposed agent extension. Historical experience is described separately. Benefits require evaluation on the actual workload."
-lastReviewed: "2026-09-18"
+description: "When truck tonnes from the pit and belt-scale tonnes at the plant disagree, an agent checks timing, instruments and material. A named owner accepts any adjustment to the production record."
+position: "Proposed agent design, built on the author's computer-vision work in iron ore. The as-is is typical practice, and its cycle times are typical and unsourced. No named deployment was found. The placements and controls are this guide's recommendation."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [r02, r04, r05, zones, autonomy, risk, lifecycle]
 ---
 
-When production estimates disagree, a dashboard shows the gap without explaining it. This proposed investigation checks the measurements and operating records before a person accepts an adjustment.
+At a mine, trucks carry ore from the pit to the processing plant. The fleet system counts the truck tonnes. Belt scales at the plant weigh the ore again. When the two disagree by more than the agreed tolerance, someone must find out why. The official figure feeds royalties, tax and market reports, so the gap matters. Today a mine engineer or a metallurgist chases the cause by email and spreadsheet. In this design an agent checks timing, instruments and material, and prepares a reconciliation case. A named owner accepts any adjustment. The agent cannot write the accepted production record.
 
-## See the work first
-
-<TeachingIllustration src="/images/use-cases/production-measurement-v1.webp" expandable title="Investigate production discrepancies" alt="Compare calibrated visual measurements with scales and production records, investigate timing and calibration, then reconcile with an accountable owner. Preserve units, uncertainty and source measurements." caption="Proposed agent extension. Each action remains within an explicitly permitted business process." />
+<TeachingIllustration src="/images/use-cases/production-measurement-v1.webp" expandable title="Investigate production discrepancies" alt="Four steps, left to right. Estimate: a camera above a conveyor makes a calibrated visual measurement. Compare: scales and production records. Investigate: timing, calibration and interruptions. Reconcile: an owner accepts the supported result. A banner says keep units, uncertainty and source measurements." caption="An unexplained gap stays open. It never becomes a precise-looking tonnage." />
 
 <details>
 <summary>Experience behind this example</summary>
 
-The author described computer-vision work around iron-ore production measurement. This proposed extension investigates inconsistent measurements rather than treating one model output as the final production figure.
+The design builds on the author's own computer-vision work on iron ore production measurement.
 
 </details>
 
-## Start with evidence
+## The systems involved
 
-Keep the original image, camera calibration, measurement interval, equipment identity, and uncertainty with the visual estimate. Reconcile it with available weighbridge, belt-scale, survey, or production-system evidence. Volume needs an appropriate density assumption before it becomes an estimate of mass.
+The investigation touches seven of the fourteen layers. The full estate is on the [energy and resources](/use-cases/energy) page.
 
-## What the agent adds
+| Layer | Systems in this use case |
+|---|---|
+| [Data platform (R02)](/layers/r02-data-platform) | Historian with belt-scale totals and scale faults. Lab system, or LIMS (CCLAS, LabWare), for grade and moisture. Fleet management database. Block model |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | The buffer network between plant and business networks, with a historian copy. A read-only copy of the fleet database. A read broker for agents |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Metal accounting (ION Algosys, Caspeo), or a spreadsheet. Enterprise asset management (EAM) with calibration records. ERP inventory |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Fleet management (Modular DISPATCH, Cat MineStar, Wenco). Belt scales and plant control. Camera volume system. Survey tools (Maptek). Mine planning (Deswik) |
+| [Agent platform (R07)](/layers/r07-agent-platform) | New: the agent and its case store |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Royalty returns to the state. Stock exchange reports. The annual reserve statement under the JORC Code |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | Dispatcher, mine engineer, surveyor, metallurgist, instrument technician, production accountant, competent person |
 
-When the estimates differ materially, an agent can check maintenance events, sensor health, operating interruptions, and record timing. It can request another measurement or prepare a reconciliation case with competing explanations. The accepted production record remains a controlled business decision.
+## How it runs today
 
-## How the investigation proceeds
+The trigger is the daily production report, or the month-end reconciliation, showing a gap larger than the tolerance. The work then runs in eleven steps.
 
-Use the size and timing of a discrepancy to choose the next evidence request. For example, a difference only during a camera outage suggests a different check from a difference across every shift. Stop when the discrepancy is explained within an agreed tolerance or needs an engineer.
+| Step | Who | System | How the data moves |
+|---|---|---|---|
+| 1. Count loads | Fleet system, dispatcher | Fleet management (Modular DISPATCH, Cat MineStar, Wenco) | Every truck load is logged: truck, shovel, material, destination, payload. The dispatcher fixes wrong tags by hand |
+| 2. Weigh at the plant | Plant control system | Belt scales to the historian | Tonnes per hour. Shift totals stored in the historian |
+| 3. Assay | Lab | LIMS | Grade and moisture from samples |
+| 4. Estimate by camera or survey | Vision system, surveyor | Camera volume model. Drone or laser survey | A volume estimate with its calibration. Monthly stockpile surveys arrive as files |
+| 5. Daily production report | Production clerk or mine engineer | Excel, fed by fleet and historian exports | Built each morning. Emailed to site leaders before the morning meeting |
+| 6. Spot the gap | Mine engineer, metallurgist | Excel, dashboard | Mine tonnes and plant tonnes differ by more than the tolerance |
+| 7. Chase the cause | Mine technical services, metallurgist, instrument technician | EAM calibration records. Historian scale faults. Fleet payload settings. LIMS moisture | Emails and phone calls. Each person checks their own system |
+| 8. Propose an adjustment | Metallurgist or production accountant | Metal accounting system, or Excel | An adjustment with a comment |
+| 9. Approve | Processing or mine manager | Same | Sign-off by email or in the system |
+| 10. Month end | Survey, geology, planning, metallurgy | Metal accounting. Mine planning | Stockpile survey. Mass balance. Mined tonnes and grade checked against the block model |
+| 11. Formal reports | Finance, corporate reporting, competent person | ERP inventory. Royalty return. Stock exchange report. Annual reserve statement | Signed by named people |
 
-## Measure the business result
+<TeachingIllustration src="/figures/use-cases/production-as-is.svg" mobileSrc="/figures/use-cases/production-as-is-mobile.svg" expandable title="Production measurement today: who does what" alt="A swimlane with six lanes: mine systems, plant and lab, mine technical, metallurgy, manager, and finance and reporting. Step 1: the fleet system logs every truck load. Step 2: belt scales record plant tonnes in the historian. Step 3: the lab assays grade and moisture. Step 4: cameras and surveyors estimate volumes. Step 5: the mine engineer builds the daily report in Excel. Step 6: the engineer spots a gap above the tolerance. Step 7: the metallurgist and instrument technician chase the cause by email and phone. Step 8: the metallurgist proposes an adjustment. Step 9: the manager approves it. This is an approval. Step 10: month end runs a survey and mass balance. Step 11: finance and the competent person sign the formal reports. This is an approval." caption="Today each person checks their own system, and the reason for an adjustment is often lost." />
 
-Measure error against an accepted reference, unresolved discrepancy rate, investigation time, and the cost of calibration and review. Compare a fixed reconciliation rule with the adaptive agent. Track the economic effect only after demonstrating that the measurement is reliable.
+### The oil and gas twin
 
-## Responsibility and failure handling
+Oil and gas has the same problem in another form. Well tests, often monthly, estimate each well's flow rate (typical, unsourced). A production data system (Quorum Energy Components, SLB Avocet) builds the daily report. The production accountant then shares the fiscal export volume back to wells and partners. That is called allocation. API's measurement standard, MPMS Chapter 20, sets the method. When the allocation factor leaves its band, a production engineer and a metering technician chase the cause. They check flow computer logs, calibration records and well test validity, by email and spreadsheet. The same agent design applies. The agent reads the allocation system and the calibration records. The accountant re-runs the allocation and signs.
 
-Do not let generated explanations replace measurements. Preserve units, uncertainty, timing, and every adjustment. Missing or uncalibrated evidence should produce an unresolved case rather than an apparently precise tonnage.
+### Handoffs
 
-## Start with a bounded trial
+The case passes between dispatch, mine technical services, plant metallurgy and the lab. Maintenance comes in through the instrument technicians. Finance needs the figure for inventory value and royalties. Corporate reporting needs it for the market.
 
-Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+### Where reporting comes in
 
-## Explore the architecture
+The daily production report starts the work. Monthly reconciliation closes it. The figures then flow into quarterly stock exchange reports, royalty returns and the annual reserve statement. In oil and gas they flow into partner statements and regulator returns.
 
-- [Business & industrial systems](/layers/r05-lob-and-ot).
-- [Systems of record](/layers/r04-systems-of-record).
-- [Data engineering for agents](/layers/r14-agent-data-engineering).
+### Cycle time and volumes
 
-Continue with [knowledge and memory](/memory), [value and investment](/use-cases/value-and-investment), or [practical skills](/skills).
+- The daily report is built every morning (typical, unsourced).
+- The monthly reconciliation closes in the first one to two weeks of the month (typical, unsourced).
+- A large open pit logs thousands of truck loads a day (typical, unsourced).
 
-## External sources
+### Pain points
 
-- [Roboflow Workflows documentation](https://docs.roboflow.com/workflows). Accessed 17 September 2026.
+- Sites rely heavily on spreadsheets with weak governance (AusIMM, 23 April 2026).
+- Many sites spread the error across the inputs but give the final product no error. The reconciliation then becomes a goal seek that can hide losses (AusIMM, 23 April 2026).
+- Belt scales drift. Calibration falls overdue.
+- Shift cut-off times differ between systems.
+- Moisture and density assumptions turn volume into the wrong tonnes.
+- No one owns the gap. Adjustments lose their reasons.
 
-Explore [mining and resources](/library/blueprints/verticals/mining-and-resources) or [explore the agent types](/architecture/agent-types).
+## How agents run it
+
+The agent runs the checks. It reads copies of the fleet database and the historian, never the live systems. It writes a reconciliation case and draft requests. It has no write path to the metal accounting system.
+
+| Step | Agent or person | Reads from, and how | Writes to | Who approves, and where |
+|---|---|---|---|---|
+| 1. Detect | Agent | The daily report data, as an event when the report publishes. Fleet database copy. Historian belt-scale totals. Camera estimates with their uncertainty | Case store | No one |
+| 2. Check timing | Agent | Shift boundaries, record timestamps, train load-out times | Case store | No one |
+| 3. Check the instruments | Agent | Historian: scale faults, zero drift, downtime. EAM: calibration due and done. Camera health and calibration date | Case store | No one |
+| 4. Check the material | Agent | LIMS moisture. Block model density. Material tags in the fleet system | Case store | No one |
+| 5. Run the reconciliation | The metal accounting tool calculates | Statistical mass balance, in the style of the AMIRA P754 code | Case store | No one |
+| 6. Ask for a measurement | Agent drafts | Gaps in the case | A draft EAM notification, "measurement check", for a belt scale. A survey request for a stockpile | The instrument supervisor or surveyor accepts it |
+| 7. Prepare the case | Agent | All of the above | A reconciliation case: size, timing, ranked explanations, evidence, uncertainty. "Unresolved" when evidence is missing | No one. It is advice only |
+| 8. Accept an adjustment | Metallurgist or production accountant | The case | The metal accounting system, with the case ID | The named owner. A manager above a set size |
+| 9. Formal reports | Finance, competent person | The accepted figures | Royalty return, stock exchange report, reserve statement | Named signatories |
+
+A gap only during a camera outage needs a different check from a gap across every shift. The size and timing of the gap choose the next question. Volume becomes mass only with a stated density. If the evidence is missing or uncalibrated, the case stays unresolved.
+
+<TeachingIllustration src="/figures/use-cases/production-to-be.svg" mobileSrc="/figures/use-cases/production-to-be-mobile.svg" expandable title="Production measurement with an agent: who does what" alt="A swimlane with six lanes: agent, accounting tool, field checks, owner, sign-off and case store. Step 1: the agent detects the gap when the daily report publishes. Steps 2 to 4: the agent checks timing, instruments and material. Step 5: the metal accounting tool runs a statistical mass balance. Step 6: the agent drafts a measurement check or a survey request. In the field checks lane, the instrument supervisor or surveyor accepts it. Step 7: the agent prepares a case with ranked explanations, or marks it unresolved. Step 8: the owner, a metallurgist or accountant, accepts any adjustment in the metal accounting system. This is an approval. Step 9: in the sign-off lane, finance and the competent person sign the formal reports. This is an approval. The case store keeps every source, the original image and the calibration." caption="The agent explains the gap. A named owner changes the record." />
+
+### What stays with a person
+
+- Accepting the production figure. It feeds royalties, tax and market disclosure. That record sits in the [formal records zone](/architecture/deterministic-zones#formal-regulatory-records).
+- Every adjustment. It changes a record of value.
+- The calibration work itself. It needs a permit, and often an isolation.
+- Changing the tolerance. That is a policy choice.
+
+### Where the evidence is kept
+
+The case holds every source reference. The adjustment in the metal accounting system carries the case ID and the approver. The camera estimate keeps its original image and calibration. The agent cannot change any of them. That is the [observability and audit trail](/architecture/system-view) capability at work.
+
+### What changes in the systems
+
+- A new "reconciliation case" record.
+- A case ID field on adjustments in the metal accounting system.
+- An event when the daily report publishes.
+- Read access to a copy of the fleet database.
+- An EAM notification type, "measurement check".
+
+### What does not change
+
+The calibration procedure stays. So do the fleet system and the metal accounting method. Fiscal metering in oil and gas does not change. The same people sign.
+
+## Who does this today
+
+No named deployment of an agent in metal accounting or hydrocarbon allocation was found by 15 October 2026.
+
+- **The baseline to beat.** Statistical reconciliation under the AMIRA P754 code of practice. ION Algosys and Caspeo sell it [vendor]. A 2023 study tested it at Samarco in Brazil. It is not an agent.
+- **Groundhog Apps** sells a "Reconciliation Agent" that flags grade and volume variance [vendor]. The product page is undated.
+- **TCS** published an undated white paper on agents for hydrocarbon accounting [vendor].
+- **FlowShare** is a hackathon prototype with "auditor" and "accountant" agents for joint venture allocation. Its accuracy figure is self-reported.
+
+AusIMM summarised expert views on 23 April 2026. AI depends on clean, governed data. Experts must check its outputs. Applying AI to control systems is risky.
 
 ## Where this sits
 
-This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+The [four questions](/architecture/agent-types) place this agent as follows. Its role is assist. Its permissions are read only on the fleet database copy, historian totals, LIMS and EAM calibration records. It writes a reconciliation case and draft measurement requests. It cannot write the metal accounting system. It runs at delegated tasks (A2) on the [autonomy contract](/architecture/autonomy-contract), as designed and as permitted. The owner reviews every case. For the adjustment itself, the agent only assists (A1). A person makes the change. Its impact sits in the figure it informs. That figure is a formal record, and the agent stays outside it.
 
-- **Role:** assist. Domain: mining production.
-- **Capability surface:** reads images, calibration data, scale records and maintenance logs. Writes reconciliation cases and measurement requests. Untrusted input: none. Highest data class: confidential, since production figures are commercially sensitive.
-- **Placement:** A2, L1 on the [autonomy contract](/architecture/autonomy-contract). An accountable owner reviews every case. People choose the reference measurements it learns from. Accepting an adjustment drops to A1. The owner decides.
-- **Zone:** none. The accepted figure can feed royalty and regulator reports. That record sits in the [formal records zone](/architecture/deterministic-zones#formal-regulatory-records). A named owner accepts it.
-- **Tier:** Tier 2. Production systems of record and confidential data score Medium. It is Tier 3 if your classification treats scale and sensor feeds as control-system data.
-- **Control:** the agent cannot write the accepted production record.
+On the [risk profile](/architecture/risk-profile) it is Tier 2 (enhanced). Production systems of record and confidential figures score Medium. It is Tier 3 (strict) if your classification treats scale and sensor feeds as control-system data. It starts at curated learning (L1). People choose the reference measurements it learns from.
 
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+## Measure the result
+
+Measure the error against an accepted reference and the share of gaps left unresolved. Measure investigation time and the cost of calibration and review. Compare against statistical reconciliation alone. Track the money effect only after the measurement proves reliable.
+
+## Start with a trial
+
+Take three months of daily reports with gaps the metallurgist has already explained. Run the agent on them, with no live requests. Check its ranked explanations against what was found. Then go live at one plant, with drafts only. Register the agent through the [agent lifecycle](/architecture/agent-lifecycle), with a named sponsor.
+
+## Evidence and limits
+
+No named deployment of this agent exists. The as-is is typical practice. The cycle times and volumes are typical and unsourced.
+
+AusIMM (23 April 2026) is the only dated source on current practice. It reports heavy use of spreadsheets and error spread that can hide losses. Statistical reconciliation is the proven method. This design adds the evidence gathering around it. That addition has not been tested.
+
+The camera measurement comes from the author's own work. The agent extension is a proposal.
+
+## Next step
+
+Score this agent on the [risk profile](/architecture/risk-profile). Then read the [mining and resources blueprint](/library/blueprints/verticals/mining-and-resources) for the miner's full estate.
+
+<details>
+<summary>The research behind this page</summary>
+
+Sources were read on 15 October 2026 unless a line says otherwise. [vendor] marks a vendor's claim about its own product.
+
+- [AusIMM, how AI is changing metal accounting](https://www.ausimm.com/courses/course-news/how-is-ai-transforming-metal-accounting-for-the-modern-mine/), 23 April 2026.
+- [ION Algosys](https://iongroup.com/products/commodities/algosys/) [vendor]. ION says it goes beyond AMIRA P754.
+- [Samarco reconciliation study, ABM Proceedings](https://abmproceedings.com.br/en/article/contabilidade-metalrgica-em-cadeia-produtiva-de-grande-porte), 2023.
+- [Groundhog Apps, AI agents for mining](https://groundhogapps.com/ai-agents-for-mining/), undated [vendor].
+- [TCS, agents for hydrocarbon accounting and allocation](https://www.tcs.com/what-we-do/industries/energy-resources-utilities/white-paper/agentic-shift-hydrocarbon-accounting-allocation), undated white paper [vendor].
+- [FlowShare prototype on Devpost](https://devpost.com/software/flowshare). Hackathon project. Accuracy self-reported.
+- [Roboflow Workflows documentation](https://docs.roboflow.com/workflows). Accessed 17 September 2026. An example of the tooling for camera measurement.
+- Standards named on this page, known from background and not re-checked: AMIRA P754 (metal accounting code of practice), API MPMS Chapter 20 (production allocation, edition not checked), and the JORC Code (public reporting of resources and reserves).
+
+</details>

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 3228" role="img" aria-labelledby="title desc">
+<title id="title">Asset investigation with an agent: who does what</title>
+<desc id="desc">Swimlane of the proposed asset investigation, in twelve steps across seven lanes. The agent opens a case from an APM alert, read through the read broker. It checks the sensor reading, how the unit ran, and recent work in EAM. Engineering tools do the calculations. Fixed rules check each finding against live data and past cases. The agent drafts a request for more evidence, which the engineer approves. The agent proposes a finding pack and a draft EAM notification. The engineer approves it and plans the work in EAM. The trading desk or planner changes the bid or forecast. The area authority issues the permit, which is an approval the agent has no path to. The engineer labels the finding accepted or rejected. The case store keeps every source, tool output, check and approval.</desc>
+<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="3228" fill="#f8f5ef"/>
+<text x="28.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Asset investigation with an agent:</text>
+<text x="28.0" y="104.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">who does what</text>
+<text x="28.0" y="148.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Proposed design. The agent gathers and checks the</text>
+<text x="28.0" y="179.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">evidence. People decide in their own systems.</text>
+<rect x="28.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="68.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Agent step</text>
+<rect x="358.0" y="198.0" width="28.0" height="26.0" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="398.0" y="220.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Person</text>
+<rect x="28.0" y="236.0" width="28.0" height="26.0" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="68.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System</text>
+<rect x="358.0" y="236.0" width="28.0" height="26.0" rx="6" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="398.0" y="258.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Fixed rule</text>
+<rect x="28.0" y="274.0" width="28.0" height="26.0" rx="6" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="68.0" y="296.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Evidence store</text>
+<path d="M372.0 276.0 L384.0 288.0 L372.0 300.0 L360.0 288.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="398.0" y="296.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Approval</text>
+<rect x="28.0" y="348.0" width="664.0" height="182.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="374.0" r="21" fill="#7c3aed"/><text x="68.0" y="382.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="100.0" y="354.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="381.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="428.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Open a case</text>
+<text x="48.0" y="464.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent opens a case from an APM alert, read</text>
+<text x="48.0" y="495.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">as an event through the read broker.</text>
+<path d="M360.0 532.0 L360.0 564.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="570.0" width="664.0" height="224.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<rect x="48.0" y="576.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="62.0" y="603.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<circle cx="68.0" cy="641.0" r="19" fill="#7c3aed"/><text x="68.0" y="649.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="98.0" y="650.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Check the reading</text>
+<circle cx="68.0" cy="687.0" r="19" fill="#7c3aed"/><text x="68.0" y="695.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="98.0" y="696.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Check how it ran</text>
+<circle cx="68.0" cy="733.0" r="19" fill="#7c3aed"/><text x="68.0" y="741.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="98.0" y="742.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Check recent work</text>
+<path d="M360.0 796.0 L360.0 828.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="834.0" width="664.0" height="213.0" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="860.0" r="21" fill="#2563eb"/><text x="68.0" y="868.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="100.0" y="840.0" width="256.5" height="38.0" rx="19" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="114.0" y="867.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Engineering tools</text>
+<text x="48.0" y="914.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#1e3a8a">Calculate</text>
+<text x="48.0" y="950.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent calls engineering tools. Anomaly,</text>
+<text x="48.0" y="981.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">performance and vibration models and a digital</text>
+<text x="48.0" y="1012.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">twin do the calculations.</text>
+<path d="M360.0 1049.0 L360.0 1081.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1087.0" width="664.0" height="213.0" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<circle cx="68.0" cy="1113.0" r="21" fill="#475569"/><text x="68.0" y="1121.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="100.0" y="1093.0" width="175.8" height="38.0" rx="19" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="114.0" y="1120.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#0f172a">Fixed rules</text>
+<text x="48.0" y="1167.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#0f172a">Check findings</text>
+<text x="48.0" y="1203.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Fixed rules check each finding against live</text>
+<text x="48.0" y="1234.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">data and similar past cases. A claim that fails</text>
+<text x="48.0" y="1265.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">is dropped or marked unverified.</text>
+<path d="M360.0 1302.0 L360.0 1334.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1340.0" width="664.0" height="243.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1366.0" r="21" fill="#7c3aed"/><text x="68.0" y="1374.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="100.0" y="1346.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="1373.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="1420.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Ask for evidence</text>
+<text x="48.0" y="1456.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The agent drafts a request to the condition</text>
+<text x="48.0" y="1487.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">monitoring queue for the missing evidence.</text>
+<path d="M64.0 1518.0 L78.0 1532.0 L64.0 1546.0 L50.0 1532.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="90.0" y="1540.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">The engineer approves the request, or an</text>
+<text x="90.0" y="1571.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">agreed rule does.</text>
+<path d="M360.0 1585.0 L360.0 1617.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1623.0" width="664.0" height="213.0" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="68.0" cy="1649.0" r="21" fill="#7c3aed"/><text x="68.0" y="1657.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="100.0" y="1629.0" width="95.2" height="38.0" rx="19" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="114.0" y="1656.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#4c1d95">Agent</text>
+<text x="48.0" y="1703.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#4c1d95">Propose</text>
+<text x="48.0" y="1739.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">A finding pack with the other explanations,</text>
+<text x="48.0" y="1770.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">sources and gaps. A draft EAM notification</text>
+<text x="48.0" y="1801.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">marked "agent draft".</text>
+<path d="M360.0 1838.0 L360.0 1870.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="1876.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1902.0" r="21" fill="#d97706"/><text x="68.0" y="1910.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<rect x="100.0" y="1882.0" width="135.5" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="1909.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Engineer</text>
+<path d="M658.0 1886.0 L673.0 1901.0 L658.0 1916.0 L643.0 1901.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="1956.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Approve</text>
+<text x="48.0" y="1992.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The engineer approves the draft in the EAM</text>
+<text x="48.0" y="2023.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">worklist. Engineer, superintendents and planner</text>
+<text x="48.0" y="2054.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">plan the work.</text>
+<path d="M360.0 2091.0 L360.0 2123.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2129.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2155.0" r="21" fill="#d97706"/><text x="68.0" y="2163.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<rect x="100.0" y="2135.0" width="283.4" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2162.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Trading or planning</text>
+<text x="48.0" y="2209.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Replan</text>
+<text x="48.0" y="2245.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The trading desk rebids with a reason, or the</text>
+<text x="48.0" y="2276.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">planner updates the forecast. The participant</text>
+<text x="48.0" y="2307.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">owns every bid.</text>
+<path d="M360.0 2344.0 L360.0 2376.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2382.0" width="664.0" height="213.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2408.0" r="21" fill="#d97706"/><text x="68.0" y="2416.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">11</text>
+<rect x="100.0" y="2388.0" width="216.2" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2415.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Area authority</text>
+<path d="M658.0 2392.0 L673.0 2407.0 L658.0 2422.0 L643.0 2407.0 Z" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="48.0" y="2462.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Permit</text>
+<text x="48.0" y="2498.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The area authority issues the permit and the</text>
+<text x="48.0" y="2529.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">isolation. The agent has no path to the permit</text>
+<text x="48.0" y="2560.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">system.</text>
+<path d="M360.0 2597.0 L360.0 2629.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2635.0" width="664.0" height="182.0" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="2661.0" r="21" fill="#d97706"/><text x="68.0" y="2669.6" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">12</text>
+<rect x="100.0" y="2641.0" width="135.5" height="38.0" rx="19" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="114.0" y="2668.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Engineer</text>
+<text x="48.0" y="2715.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#78350f">Learn</text>
+<text x="48.0" y="2751.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">The engineer labels the finding accepted or</text>
+<text x="48.0" y="2782.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">rejected, from the closed work order.</text>
+<path d="M360.0 2819.0 L360.0 2851.0" fill="none" stroke="#9a4c2d" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<rect x="28.0" y="2857.0" width="664.0" height="204.0" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="48.0" y="2897.0" font-family="Arial,sans-serif" font-size="26" font-weight="bold" fill="#134e4a">Case store</text>
+<text x="48.0" y="2933.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Every source reference, tool output and</text>
+<text x="48.0" y="2964.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">version, check result and approval. The EAM</text>
+<text x="48.0" y="2995.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">notification carries the case ID. The agent</text>
+<text x="48.0" y="3026.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">cannot change the log.</text>
+<text x="28.0" y="3105.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Nothing the agent does writes to the control</text>
+<text x="28.0" y="3136.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">system, the SIS, the permit system or the bidding</text>
+<text x="28.0" y="3167.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">system.</text>
+</svg>

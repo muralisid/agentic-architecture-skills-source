@@ -1,87 +1,146 @@
 ---
-title: "The seven responsibilities of an agentic enterprise"
+title: "What an agent platform provides"
 icon: "Compass"
-description: "Seven planes across fourteen layers, two binding rules, and the two-estate reality every design must survive."
+description: "The seven capabilities that must exist before agents can run safely at scale, the layers that build them, and the lifecycle stages that call on them."
+position: "The grouping into seven capabilities is this guide's own. The names follow AWS, Microsoft and Google products as of October 2026."
 hero_figure: "seven-plane-architecture"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [layers, lifecycle, enforcement, zones, memory, delegation, packaged, concern-matrix]
 ---
 
-<PlainTerms>
-This page is the one-page map of how a company runs AI agents safely at scale. It shows the parts of your business that agents touch, the new capabilities you build around them, and where the controls and the evidence live. The thing to remember: an instruction written to an AI model is a request, while a rule checked by a separate system is a control.
-</PlainTerms>
+An agent does not live inside one AI model. To finish a task, it reaches into identity, data, applications, tools, records and people. So what must exist before agents can run safely at scale? Seven capabilities. Three let agents work: a runtime, a tool gateway, and [knowledge and memory](/memory). Four keep them in bounds: identity and policy, evaluation and release, observability and an audit trail, and human oversight. You build them across [the fourteen layers](/layers) you already own. Each stage of [the agent lifecycle](/architecture/agent-lifecycle) calls on some of them. Two rules hold them together. [Policy is enforced outside the model](/architecture/enforcement). The audit trail is written where the agent cannot touch it.
 
-## Why this architecture exists
+<TeachingIllustration src="/figures/architecture/layers-lifecycle-capabilities.svg" mobileSrc="/figures/architecture/layers-lifecycle-capabilities-mobile.svg" expandable title="Layers you own, a lifecycle you run, capabilities you add" alt="On the left, a building of fourteen floors shows the layers you own. They run from infrastructure and compute (R01) at the bottom to agent data engineering (R14) at the top. In the centre, seven bands show the capabilities you add. Each band names the industry products and the layers that build it. The runtime is built from R01 and R07. The tool gateway is built from R03, R04 and R05. Knowledge and memory is built from R02 and R14. Identity and policy is built from R10, R11 and R07. Evaluation and release is built from R06 and R12. Observability and audit trail is built from R12 and R11. Human oversight is built from R13, R08 and R09. On the right, the nine lifecycle stages run in order, and each change loops back to evaluate. Lines link each stage to the capabilities it calls on. Register, entitle and retire call on identity and policy. Sponsor and owner calls on human oversight. Evaluate and change call on evaluation and release. Approve calls on human oversight and on identity and policy. Operate calls on the runtime, the tool gateway, knowledge and memory, and observability. Periodic review calls on observability and on human oversight. A strip at the bottom gives the two rules. Policy is enforced outside the model. The audit trail is written where the agent cannot touch it." caption="The layers are what you own. The capabilities are what you add across them. Each lifecycle stage calls on the capabilities it needs." />
 
-**WHY:** Agents do not live inside one AI model. They reach into identity, data, applications, tools, records, observability, governance and human workflows. If control stays inside the prompt, the agent can influence the rule that is supposed to constrain it. If evidence is collected by the agent itself, the system is asking the actor to certify its own behaviour. And if the design assumes every agent passes through one company gateway, vendor-embedded agents create an immediate blind spot.
+## The seven capabilities
 
-**WHAT:** Build the agentic enterprise as **seven planes across the fourteen layers you already own**: Execution, Action, Knowledge, Control, Improvement, Evidence and Human. Bind them with two non-negotiable rules: **enforcement lives outside execution**, and **evidence is collected through a channel the agent cannot influence**. Apply the same architecture to both the metered estate you control and the licensed estate that runs on vendor control planes.
-
-![Visual summary of the target-state architecture](/figures/architecture/index.jpg)
-
-## The whole thing, on one page
-
-Everything below is in this diagram. It shows the <Term k="fourteen layers">fourteen layers</Term>, each with its control point, key mechanisms, and market products. It shows the <Term k="seven planes">seven planes</Term> that group them. It shows the ten <Term k="cross-cutting concerns">cross-cutting concerns</Term> as columns, marking who owns and who enforces each, plus the products that serve them. Underneath sit the <Term k="deterministic zones">four deterministic zones</Term>. The rule is that models may take permission away, never grant it. Inside the zones a model may not approve at all. Products are named for orientation as of August 2026; they are representative rather than exhaustive, and they are not endorsements. If you read one artifact from this guide, read this one.
-
-<WallChart />
-
-## The shape
-
-**In short:** Agents are built across the systems you already own, with seven new groups of capability around them. Two rules hold: an agent never enforces its own rules and never keeps its own evidence.
-
-An agentic enterprise is fourteen layers of estate with a seven-plane <Term k="agent">agent</Term> system built across them. The layers are what you already own: infrastructure, data, integration, records, line-of-business systems, and the rest. The planes are what you build. There are seven. **Execution** is where agent work runs. **Action** is how agents reach your systems. **Knowledge** is what agents know. **Control** is what is allowed. **Improvement** is how behaviour changes. **Evidence** is what you can prove afterward. **Human** is who decides and answers for it.
+The industry already has names for six of the seven. AWS, Microsoft and Google sell them as separate products. The grouping into seven is this guide's own. It lets you point each capability at a product you may already buy. Human oversight is the one no vendor sells. It comes from regulation and from how you organise people.
 
 <GuideFigure id="seven-plane-architecture" fullWidth />
 
-Two rules bind the planes, and they are the two most often violated:
+### Runtime
 
-1. **Enforcement lives in the control plane, never in the execution plane.** An instruction in a <Term k="prompt">prompt</Term> is a preference. The same rule becomes a control when a <Term k="gateway">gateway</Term> or a <Term k="policy decision point">policy decision point</Term> checks it. A gateway is the single door every agent request passes through; a policy decision point is the component that says yes or no to each action. Every layer page names where its enforcement actually sits.
-2. **The evidence plane is fed by collection the agent cannot influence.** Anything an agent reports about itself is testimony, not evidence. <Term k="traces">Traces</Term> (the step-by-step log of each run), decisions, and <Term k="provenance">provenance</Term> (where each piece of information came from) are collected by a separate channel the agent cannot touch.
+The runtime is where agents run. It holds the <Term k="sandbox">sandboxes</Term>, the sessions that survive a pause, and model serving. A sandbox is an isolated space where an agent's code and tools run. The [infrastructure and compute layer (R01)](/layers/r01-infrastructure) and the [agent platform layer (R07)](/layers/r07-agent-platform) build it. The operate stage calls on it for every run. AWS sells it as AgentCore Runtime. Google calls it Agent Runtime. Microsoft Foundry runs hosted agents on its own Agent Runtime.
 
-<TeachingIllustration src="/figures/architecture/planes-across-layers.svg" mobileSrc="/figures/architecture/planes-across-layers-mobile.svg" expandable title="Seven planes across fourteen layers" alt="A fourteen-floor building shows the layers you own, from R01 Infrastructure at the bottom to R14 Agent data engineering at the top. Seven planes cross it: execution, action, knowledge, control, improvement, evidence and human. A mark shows each layer a plane is mainly built from. Two rules bind them: enforcement lives outside execution, and evidence is collected where the agent cannot write. A dashed outline shows the licensed estate, where agents run on a vendor control plane your gateway does not see." caption="The layers are what you own. The planes are what you build across them. The two rules apply in your own estate and in the licensed estate." />
+### Tool gateway
 
+The tool gateway is how agents reach your systems. Every tool call passes through one gateway, under the agent's own identity. Each tool wraps an existing system behind a governed interface. The gateway also holds the boundary with operational technology (OT), the systems that run physical plant. Agents stay on the information side of that boundary. Three layers build it: [integration fabric (R03)](/layers/r03-integration-fabric), [systems of record (R04)](/layers/r04-systems-of-record), and [line of business and OT (R05)](/layers/r05-lob-and-ot). The operate stage calls on it. AWS sells AgentCore Gateway. It turns existing APIs into <Term k="mcp">Model Context Protocol (MCP)</Term> tools. Google sells Agent Gateway. Microsoft Foundry puts tools in Toolboxes behind one managed endpoint. Analysts call the wider category an AI gateway.
 
-## The crosswalk
+### Knowledge and memory
+
+Knowledge and memory is what agents know. It covers governed indexes, sources curated for a purpose, and memory that lasts beyond one task. Each source keeps its permissions. An agent finds only what its user may see. The [data platform layer (R02)](/layers/r02-data-platform) and the [agent data engineering layer (R14)](/layers/r14-agent-data-engineering) build it. The operate stage calls on it whenever an agent needs context. AWS sells AgentCore Memory. Google offers Sessions and Memory Bank. Microsoft's adoption guidance names retrieval and memory as building blocks. [The data-to-memory pipeline](/architecture/data-to-memory) traces data from its source to a cited answer.
+
+### Identity and policy
+
+Identity and policy decide who the agent is and what it may do. Each agent gets its own identity. A <Term k="registry">registry</Term> lists every agent with its owner, purpose, permissions and live version. A policy decision point says yes or no to each action. Budgets cap what each agent may spend. Three layers build it: [security and identity (R10)](/layers/r10-security-and-identity), [governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty), and the agent platform (R07). The register, entitle and retire stages call on it. So does approve. It sets the permissions the agent goes live with. [The delegation chain](/architecture/delegation-chain) traces each action back to the person who asked. AWS sells AgentCore Identity, AgentCore Policy and AWS Agent Registry. Microsoft Entra Agent ID gives each agent its own identity. Microsoft Agent 365 adds a registry and access control across agents.
+
+### Evaluation and release
+
+Evaluation and release is how behaviour changes safely. Evaluations (<Term k="evals">evals</Term>) test each change against a fixed set of cases. Judges score the answers. A judge is a model or a person that grades output against a rubric. A promotion gate decides whether the change ships. Release is staged: a small share of work first, then more. This is a <Term k="canary">canary release</Term>. The [intelligence and learning layer (R06)](/layers/r06-intelligence-and-learning) and the [observability and FinOps layer (R12)](/layers/r12-observability-and-finops) build it. The evaluate and change stages call on it. AWS sells AgentCore Evaluations and AgentCore Optimization. Google files this work under its Optimize pillar. Microsoft Foundry lists evaluate and optimize steps. [The learning flywheel](/architecture/learning-flywheel) sets out the gates a change must pass.
+
+### Observability and audit trail
+
+Observability and audit trail is what you can prove afterwards. <Term k="traces">Traces</Term> record each model call, tool call and cost. <Term k="provenance">Provenance</Term> records where each piece of information came from. Retention keeps records as long as the law and the business need them. The observability and FinOps layer (R12) and the governance, risk and sovereignty layer (R11) build it. The operate stage writes to it. The periodic review stage reads from it. AWS, Google and Microsoft all ship agent observability. AWS builds its version on OpenTelemetry, the open standard for traces. Every agent keeps an audit trail baseline. High-risk uses also keep the records Article 12 of the EU AI Act asks for.
+
+### Human oversight
+
+Human oversight is who decides and who answers. It covers supervision, the named people accountable for each agent, and the channels people use. Three layers build it: [operating model and supervision (R13)](/layers/r13-operating-model), [productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration), and [experience and channels (R09)](/layers/r09-experience-and-channels). The sponsor and owner, approve and periodic review stages call on it. No vendor sells human oversight as a product. The term comes from Article 14 of the EU AI Act. Microsoft Entra Agent ID requires a <Term k="sponsor">sponsor</Term> when an agent is created. The sponsor answers for the agent's purpose. [Operate](/operate) shows how to check that people can keep up.
+
+## The layers behind each capability
+
+Each capability draws on more than one layer. A layer can serve more than one capability. The grid shows every layer against every capability. The [concern matrix](/architecture/concern-matrix) does the same for the ten cross-cutting concerns. A cross-cutting concern is a need every layer must meet, such as privacy or cost.
 
 <GuideFigure id="layers-planes-crosswalk" fullWidth />
 
-| Plane | Built primarily from | Deep pages |
-|---|---|---|
-| Execution | Sandboxes, runtimes, durable sessions, model serving | [R01](/layers/r01-infrastructure), [R07](/layers/r07-agent-platform) |
-| Action | Tool gateway, wrapped governed APIs (application programming interfaces), OT (operational technology) boundary | [R03](/layers/r03-integration-fabric), [R04](/layers/r04-systems-of-record), [R05](/layers/r05-lob-and-ot) |
-| Knowledge | Governed indexes, curation pipelines, memory tiers | [R02](/layers/r02-data-platform), [R14](/layers/r14-agent-data-engineering) |
-| Control | Identity, policy decision points, registry, budgets | [R10](/layers/r10-security-and-identity), [R11](/layers/r11-governance-risk-sovereignty), [R07](/layers/r07-agent-platform) |
-| Improvement | Evals, judges, promotion gates, staged rollout | [R06](/layers/r06-intelligence-and-learning), [R12](/layers/r12-observability-and-finops) |
-| Evidence | Traces, provenance chains, retention | [R12](/layers/r12-observability-and-finops), [R11](/layers/r11-governance-risk-sovereignty) |
-| Human | Supervision instrumentation, accountability, channels | [R13](/layers/r13-operating-model), [R08](/layers/r08-productivity-and-collaboration), [R09](/layers/r09-experience-and-channels) |
+## The two rules
 
-## The two-estate reality
+Two rules hold the seven capabilities together. They are also the two most often broken.
 
-**In short:** Some agents run through systems you control, where you can see and govern everything. Others run inside vendor products, where you govern only what the vendor's settings allow, so every design has to work for both.
+**Policy is enforced outside the model.** An instruction in a <Term k="prompt">prompt</Term> is a request. A rule becomes a control when a separate system checks it. That system is the <Term k="gateway">gateway</Term> and the <Term k="policy decision point">policy decision point</Term>. Both sit outside the agent's runtime. The agent cannot go around them. Models may take permission away, never grant it. In the four [deterministic zones](/architecture/deterministic-zones), a model may not approve at all. The four are access, money, safety actuation and formal regulatory records. [Enforcement outside the model](/architecture/enforcement) sets out where each check sits.
 
-Agent work runs in <Term k="two estates">two estates</Term>, and every design must survive that fact. The **metered estate** flows through your own gateways. It is fully governable, budget-enforced, and traced on your terms. The **licensed estate** (suite copilots, agents embedded in record systems) runs on vendor control planes your gateway never sees. You can govern it only through tenant policy settings and by extracting <Term k="telemetry">telemetry</Term>, the activity measurements the vendor's system emits. The vendor interfaces (<Term k="apis">APIs</Term>) for doing so have documented gaps. Architectures that assume one gateway governs everything are the most common structural error at enterprise scale. A cost model that prices agent actions but not the governance plane is wrong by a variable amount. Governance is a separately priced per-user item (a SKU, or stock-keeping unit) in one vendor stack and free in another [vendor pricing].
+**The audit trail is written where the agent cannot touch it.** A log the agent can edit is not proof of what it did. Traces, decisions and provenance go to a store the agent cannot write to. A separate channel collects them as the work happens. Every layer page names where its own checks and records sit.
+
+## One inspection task, seven capabilities
+
+Take an agent that checks vegetation near power lines for an electricity distributor. A person sets the goal: find the spans that need trimming before summer.
+
+1. The runtime starts the agent in a sandbox. It keeps the session if the agent pauses for a photograph.
+2. Knowledge and memory supplies the imagery, the asset location and the inspection policy.
+3. The tool gateway lets the agent read the asset record and draft a work order.
+4. Identity and policy checks each call. The agent may draft a work order. It may not dispatch a crew.
+5. Observability and audit trail records each call, each source and each approval.
+6. Human oversight puts the draft in front of a planner, who approves or rejects it.
+7. Evaluation and release tests any change to the agent before the next season.
+
+This is a design example, not a measured deployment. [The task walkthrough](/architecture/task-walkthrough) follows a similar task step by step.
+
+## Your own agents and vendor-embedded agents
+
+Not every agent passes through your gateway. Agents you build run through your own runtime and gateway. You can see, budget and trace everything they do. Agents embedded in vendor products run on the vendor's platform. Suite copilots and agents inside record systems are examples. Your gateway never sees them. You govern them through the vendor's tenant settings and the activity data the vendor exports. Those exports have documented gaps.
+
+So every design must work for both kinds of agent. A design that assumes one gateway sees everything is the most common structural error at scale. Cost models need the same care. One vendor prices governance per user, and another includes it [vendor pricing]. [Agents and packaged applications](/use-cases/packaged-applications) covers when to wait for the vendor's agent, buy it, or build your own.
 
 <GuideFigure id="support-licensed-metered-estates" fullWidth />
 
-## Three builds of the same planes
+## Three kinds of enterprise
 
-**In short:** Large regulated enterprises, mid-sized companies, and digital-native companies build the same seven planes in different ways. The diagram shows what each one builds, rents, or still has to add.
+The same seven capabilities apply to every enterprise. Who builds them, and in what order, differs.
+
+- **A globally regulated enterprise** runs its own agents and vendor-embedded agents side by side. It keeps one knowledge and memory capability, one registry and one audit trail. Only the enforcement points double: its own gateway, and each vendor's settings.
+- **A mid-market company** rents identity and policy from its productivity vendor. It builds knowledge and memory itself. No vendor curates its data for it.
+- **A digital-native company** has the runtime and the tool gateway early. It must add identity and policy and an audit trail before autonomy rises. [The autonomy contract](/architecture/autonomy-contract) holds it to that.
 
 <GuideFigure id="three-target-architectures" fullWidth />
 
-A globally regulated enterprise runs both estates and doubles nothing else: same knowledge plane, same <Term k="registry">registry</Term>, same evidence machinery, two enforcement surfaces. A mid-market estate rents the control plane from its productivity vendor and builds only the knowledge plane, which vendors do not curate for you. A digital-native estate has the execution and action planes early. It must add control and evidence before <Term k="autonomy">autonomy</Term> rises, which is what the [autonomy contract](/architecture/autonomy-contract) enforces.
+## The estate on one chart
 
-## Where to go deep
+The wall chart shows all fourteen layers on one page. Each layer shows its control point, its key mechanisms and representative products. The ten cross-cutting concerns run as columns. Products are named as of August 2026, for orientation only. They are not endorsements.
 
-The cross-layer mechanics live in eight spine pages. They are [the autonomy contract](/architecture/autonomy-contract), [the risk profile](/architecture/risk-profile), [the four deterministic zones](/architecture/deterministic-zones), [the identity and delegation chain](/architecture/identity-chain), [the agent lifecycle](/architecture/agent-lifecycle), [enforcement outside the model](/architecture/enforcement), [the data-to-memory pipeline](/architecture/data-to-memory), and [the learning flywheel](/architecture/learning-flywheel). The full [concern matrix](/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every <Term k="challenged default">contested technology choice</Term> has a verdict in [the decision catalog](/decisions). Where a platform is offered as the whole answer, [what an Agentic OS is, and what it does not solve](/agentic-os) sets out what the term means and what it leaves you to build.
+<WallChart />
 
-**Next step:** follow one task through the whole design on [the task walkthrough](/architecture/task-walkthrough).
+## Evidence and limits
+
+The capability names come from vendor documentation read on 15 October 2026. Six of the seven match products that two or three large cloud vendors share. The match is strong for the runtime, the gateway, memory, evaluation and observability. Human oversight has no vendor product. Its anchors are the EU AI Act and Microsoft's sponsor and owner model.
+
+The vendors draw some lines differently. Google files its gateway under governance. AWS files its gateway as a tool service. Microsoft sells Agent 365 as one product for registry, access, observability and security. It spans several of the seven.
+
+The grouping into seven is this guide's own. No standards body groups agent platforms this way. Most vendors use three or four groups, such as build, run, govern and optimise. Seven smaller groups let you check each one on its own.
+
+The two rules match industry practice. Google describes its gateway as a policy enforcement point. AWS checks policy on every tool call at its gateway. Article 12 of the EU AI Act asks high-risk systems to record events automatically. Product status changes fast. Check the dated sources below before you rely on a product name.
+
+**Next step:** see the stages in order on [the agent lifecycle](/architecture/agent-lifecycle), or follow one task on [the task walkthrough](/architecture/task-walkthrough).
 
 <details>
 <summary>The research behind this page</summary>
 
+**Guide research**
+
 - [Master target-state architecture](/library/architecture/master-target-state)
 - [Vision and target state](/library/architecture/vision-and-target-state)
 - [The concerns-by-layers matrix](/library/architecture/concerns-by-layers-matrix)
+
+**What each vendor calls each capability, checked 15 October 2026** [vendor]
+
+| Capability | AWS (Bedrock AgentCore) | Microsoft | Google (Gemini Enterprise Agent Platform) |
+|---|---|---|---|
+| Runtime | Runtime. Platform generally available October 2025 | Foundry Agent Runtime, hosted agents | Agent Runtime, Sessions, Code Execution |
+| Tool gateway | Gateway, turns APIs into MCP tools | Foundry Toolboxes behind one managed MCP endpoint | Agent Gateway, described as a central policy enforcement point for tool calls |
+| Knowledge and memory | Memory, short-term and long-term | Retrieval and memory in the Cloud Adoption Framework | Memory Bank, RAG Engine, Vector Search |
+| Identity and policy | Identity; Policy (generally available March 2026); Agent Registry (generally available 31 August 2026) | Entra Agent ID; Agent 365 registry and access control (generally available 1 May 2026) | Agent Identity, Agent Registry, Governance Policies |
+| Evaluation and release | Evaluations (generally available March 2026); Optimization (July 2026) | Foundry evaluate and optimize steps | Agent evaluation, under the Optimize pillar |
+| Observability and audit trail | Observability, based on OpenTelemetry | Agent 365 audit and logging | Observability, under the Optimize pillar |
+| Human oversight | No product. The Well-Architected agentic lens asks for human-in-the-loop on critical decisions | Entra sponsors and owners for each agent | No product |
+
+Notes. The AWS per-service dates are the platform date unless a later release note names the service. Google's older Agent Engine overview page now redirects to "Scale your agents". The words "Agent Engine" no longer appear on Google's current pages. Microsoft's five launch functions (registry, access control, visualisation, interoperability, security) come from November 2025 press coverage. Its current pages use three pillars: observe, govern and secure.
+
+**Sources**
+
+- AWS. Amazon Bedrock AgentCore developer guide, [What is Amazon Bedrock AgentCore?](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html), undated, read 15 October 2026. [Release notes](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/release-notes.html), entries July 2025 to October 2026. [Policy and Evaluations preview](https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-bedrock-agentcore-policy-evaluations-preview), 2 December 2025. [AWS Agent Registry generally available](https://aws.amazon.com/about-aws/whats-new/2026/08/aws-agent-registry-generally-available), 31 August 2026. [Well-Architected agentic AI lens, best practice reference](https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/appendix-a.html), undated.
+- Microsoft. [Agent 365 overview](https://learn.microsoft.com/en-us/microsoft-agent-365/overview), updated 19 August 2026. [Agent 365 generally available](https://www.microsoft.com/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/), 1 May 2026. [Entra Agent ID: what are agent identities](https://learn.microsoft.com/en-us/entra/agent-id/what-are-agent-identities), updated 15 June 2026. [Entra Agent ID: owners, sponsors and managers](https://learn.microsoft.com/en-us/entra/agent-id/agent-owners-sponsors-managers), updated 3 September 2026. [Foundry Agent Service overview](https://learn.microsoft.com/en-us/azure/foundry/agents/overview), 11 October 2026. [Cloud Adoption Framework: govern and secure AI agents](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/governance-security-across-organization), updated 1 October 2026. It asks for policies applied across first-party, custom and third-party agents.
+- Google. [Gemini Enterprise Agent Platform overview](https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview), updated 13 October 2026. [Scale your agents](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview), updated 13 October 2026.
+- Analysts. Gartner Market Guide for AI Gateways, 2025, exact date not verified, via the [Peer Insights category](https://www.gartner.com/reviews/market/ai-gateways).
+- Standards and regulation. EU AI Act, Regulation (EU) 2024/1689: [Article 12, record keeping](https://artificialintelligenceact.eu/article/12/) and [Article 14, human oversight](https://artificialintelligenceact.eu/article/14/). OASIS [XACML 3.0](https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html), 22 January 2013, for the policy decision point and the policy enforcement point.
 
 </details>

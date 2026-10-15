@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
-<title id="title">Identity, request to retirement</title>
-<desc id="desc">Every request runs one chain, from the requesting user and sponsor to the evidence record. The agent uses its own ID2 identity through a gateway, a policy check and the system of record. Kill switches sit at the identity, gateway, runtime and harness. Over its life the agent is registered, entitled, operated, changed, reviewed and retired.</desc>
+<title id="title">The delegation chain, request to retirement</title>
+<desc id="desc">Every request runs one chain, from the requesting user and sponsor to the audit trail. The agent uses its own identity (ID2) through a gateway, a policy check and the system of record. Kill switches sit at the identity, gateway, runtime and harness. Over its life the agent is registered, entitled, operated, changed, reviewed and retired.</desc>
 <defs>
 <marker id="ah-agent" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#7c3aed"/></marker>
 <marker id="ah-brown" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#9a4c2d"/></marker>
@@ -8,7 +8,7 @@
 <marker id="ah-human" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#d97706"/></marker>
 </defs>
 <rect width="100%" height="100%" fill="#f8f5ef"/>
-<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">Identity, request to retirement</text>
+<text x="40" y="52" font-family="Arial,sans-serif" font-size="32" font-weight="600" fill="#182e31">The delegation chain, request to retirement</text>
 <text x="40" y="84" font-family="Arial,sans-serif" font-size="20" fill="#465958">An agent should never be able to do anything its requesting user could not do themselves.</text>
 <text x="40" y="136" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">Every request</text>
 <rect x="40" y="150" width="220" height="116" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
@@ -63,7 +63,7 @@
 <text x="1094" y="317" font-family="Arial,sans-serif" font-size="19" fill="#465958">that person</text>
 <path d="M1300 274 L1338 274" fill="none" stroke="#9a4c2d" stroke-width="2.5" marker-end="url(#ah-brown)"/>
 <rect x="1340" y="150" width="220" height="248" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
-<text x="1354" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#134e4a">Evidence record</text>
+<text x="1354" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#134e4a">Audit trail</text>
 <text x="1354" y="214" font-family="Arial,sans-serif" font-size="19" fill="#465958">Each decision</text>
 <text x="1354" y="238" font-family="Arial,sans-serif" font-size="19" fill="#465958">lands here</text>
 <text x="1354" y="266" font-family="Arial,sans-serif" font-size="19" fill="#465958">Traceable to the</text>
@@ -79,8 +79,8 @@
 <text x="40" y="590" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#182e31">Every agent, over its life</text>
 <rect x="40" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="54" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Register</text>
-<text x="54" y="668" font-family="Arial,sans-serif" font-size="19" fill="#465958">ID2 identity and a</text>
-<text x="54" y="692" font-family="Arial,sans-serif" font-size="19" fill="#465958">named sponsor</text>
+<text x="54" y="668" font-family="Arial,sans-serif" font-size="19" fill="#465958">Own identity (ID2),</text>
+<text x="54" y="692" font-family="Arial,sans-serif" font-size="19" fill="#465958">a named sponsor</text>
 <path d="M260 644 L298 644" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#ah-control)"/>
 <rect x="300" y="604" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
 <text x="314" y="634" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Entitle</text>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" width="1600" height="898" role="img" aria-labelledby="title desc" font-family="Arial,sans-serif">
+<title id="title">Where the nine context patterns act</title>
+<desc id="desc">Documents flow through four steps to the agent context. Represent holds patterns 1, 2 and 4. Search holds patterns 3 and 5. Filter and group holds patterns 6 and 7. Select holds pattern 8. Pattern 9, measure every step against a matched control, runs under all four. Patterns 1 to 3 give most of the value.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="40" y="64" font-size="32" fill="#182e31" font-weight="bold">Where the nine context patterns act, from documents to the agent</text>
+<text x="40" y="104" font-size="20" fill="#1e293b">Each pattern changes one step. Pattern 9 checks all of them.</text>
+<rect x="20" y="150" width="140" height="410" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="90" y="320" font-size="20" fill="#1e3a8a" font-weight="bold" text-anchor="middle">Documents</text>
+<text x="90" y="354" font-size="18" fill="#1e3a8a" text-anchor="middle">Email,</text>
+<text x="90" y="378" font-size="18" fill="#1e3a8a" text-anchor="middle">reports,</text>
+<text x="90" y="402" font-size="18" fill="#1e3a8a" text-anchor="middle">work orders</text>
+<rect x="196" y="150" width="275" height="410" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="216" y="196" font-size="22" fill="#0f172a" font-weight="bold">Represent</text>
+<text x="216" y="226" font-size="18" fill="#0f172a">Split each document</text>
+<line x1="216" y1="246" x2="451" y2="246" stroke="#94a3b8" stroke-width="1"/>
+<circle cx="238" cy="298" r="18" fill="#182e31"/><text x="238" y="304.3" font-size="18" fill="#ffffff" font-weight="bold" text-anchor="middle">1</text>
+<text x="268" y="292" font-size="18" fill="#0f172a">Several vectors</text>
+<text x="268" y="316" font-size="18" fill="#0f172a">per document</text>
+<circle cx="238" cy="382" r="18" fill="#182e31"/><text x="238" y="388.3" font-size="18" fill="#ffffff" font-weight="bold" text-anchor="middle">2</text>
+<text x="268" y="376" font-size="18" fill="#0f172a">Beat plain chunks</text>
+<text x="268" y="400" font-size="18" fill="#0f172a">of the same count</text>
+<circle cx="238" cy="466" r="18" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="238" y="472.3" font-size="18" fill="#0f172a" font-weight="bold" text-anchor="middle">4</text>
+<text x="268" y="460" font-size="18" fill="#0f172a">Card types from</text>
+<text x="268" y="484" font-size="18" fill="#0f172a">the documents</text>
+<rect x="507" y="150" width="275" height="410" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="527" y="196" font-size="22" fill="#0f172a" font-weight="bold">Search</text>
+<text x="527" y="226" font-size="18" fill="#0f172a">Find candidates</text>
+<line x1="527" y1="246" x2="762" y2="246" stroke="#94a3b8" stroke-width="1"/>
+<circle cx="549" cy="298" r="18" fill="#182e31"/><text x="549" y="304.3" font-size="18" fill="#ffffff" font-weight="bold" text-anchor="middle">3</text>
+<text x="579" y="292" font-size="18" fill="#0f172a">Keep keyword</text>
+<text x="579" y="316" font-size="18" fill="#0f172a">search</text>
+<circle cx="549" cy="382" r="18" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="549" y="388.3" font-size="18" fill="#0f172a" font-weight="bold" text-anchor="middle">5</text>
+<text x="579" y="376" font-size="18" fill="#0f172a">Apply the goal at</text>
+<text x="579" y="400" font-size="18" fill="#0f172a">question time</text>
+<rect x="818" y="150" width="275" height="410" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="838" y="196" font-size="22" fill="#0f172a" font-weight="bold">Filter and group</text>
+<text x="838" y="226" font-size="18" fill="#0f172a">Cut cost at scale</text>
+<line x1="838" y1="246" x2="1073" y2="246" stroke="#94a3b8" stroke-width="1"/>
+<circle cx="860" cy="298" r="18" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="860" y="304.3" font-size="18" fill="#0f172a" font-weight="bold" text-anchor="middle">6</text>
+<text x="890" y="292" font-size="18" fill="#0f172a">Model designs,</text>
+<text x="890" y="316" font-size="18" fill="#0f172a">tools do bulk work</text>
+<circle cx="860" cy="382" r="18" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="860" y="388.3" font-size="18" fill="#0f172a" font-weight="bold" text-anchor="middle">7</text>
+<text x="890" y="376" font-size="18" fill="#0f172a">Filter sets aside,</text>
+<text x="890" y="400" font-size="18" fill="#0f172a">does not save</text>
+<rect x="1129" y="150" width="275" height="410" rx="14" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="1149" y="196" font-size="22" fill="#0f172a" font-weight="bold">Select</text>
+<text x="1149" y="226" font-size="18" fill="#0f172a">Pick the final ten</text>
+<line x1="1149" y1="246" x2="1384" y2="246" stroke="#94a3b8" stroke-width="1"/>
+<circle cx="1171" cy="298" r="18" fill="#ffffff" stroke="#475569" stroke-width="2"/><text x="1171" y="304.3" font-size="18" fill="#0f172a" font-weight="bold" text-anchor="middle">8</text>
+<text x="1201" y="292" font-size="18" fill="#0f172a">Varied results in</text>
+<text x="1201" y="316" font-size="18" fill="#0f172a">the filtered pool</text>
+<rect x="1440" y="150" width="140" height="410" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1510" y="320" font-size="20" fill="#4c1d95" font-weight="bold" text-anchor="middle">Agent</text>
+<text x="1510" y="346" font-size="20" fill="#4c1d95" font-weight="bold" text-anchor="middle">context</text>
+<text x="1510" y="380" font-size="18" fill="#4c1d95" text-anchor="middle">What the</text>
+<text x="1510" y="404" font-size="18" fill="#4c1d95" text-anchor="middle">model sees</text>
+<line x1="162" y1="355" x2="192" y2="355" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="473" y1="355" x2="503" y2="355" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="784" y1="355" x2="814" y2="355" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1095" y1="355" x2="1125" y2="355" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1406" y1="355" x2="1436" y2="355" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="20" y="596" width="1560" height="80" rx="14" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<circle cx="64" cy="636" r="22" fill="#ffffff" stroke="#0f766e" stroke-width="2"/><text x="64" y="643.0" font-size="20" fill="#134e4a" font-weight="bold" text-anchor="middle">9</text>
+<text x="100" y="643" font-size="22" fill="#134e4a" font-weight="bold">Measure every step against a matched control, on your own questions</text>
+<circle cx="44" cy="725" r="14" fill="#182e31"/>
+<text x="70" y="731" font-size="18" fill="#1e293b">Filled circle: patterns 1 to 3 give most of the value. Adopt them first.</text>
+<circle cx="44" cy="767" r="14" fill="#ffffff" stroke="#475569" stroke-width="2"/>
+<text x="70" y="773" font-size="18" fill="#1e293b">Outline circle: patterns 4 to 8 help only in narrower cases.</text>
+<text x="40" y="850" font-size="18" fill="#1e293b">Source: the author's experiments on public document collections, August 2026.</text>
+</svg>

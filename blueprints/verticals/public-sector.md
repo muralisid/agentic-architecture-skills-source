@@ -24,7 +24,7 @@ Compare the agent with structured forms, document checklists, and case-managemen
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Case preparation agent | Assembles the file, checks completeness, flags missing evidence, drafts the summary | A3, L2 | The strongest case in the vertical. Prepares; the officer decides |
 | Citizen enquiry agent | Answers process and status questions from a governed corpus | A3, L2 | Full customer-facing control set, plus accessibility duties |
@@ -36,7 +36,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Control (**direct**), Evidence (**direct**: appealability makes the evidence plane load-bearing), Execution (**direct**: sovereignty routing), Knowledge (**direct**), Human (**direct**), Action, Improvement (supporting).
+Identity and policy (**direct**), observability and audit trail (**direct**: appealability makes the audit trail load-bearing), runtime (**direct**: sovereignty routing), knowledge and memory (**direct**), human oversight (**direct**), tool gateway and evaluation and release (supporting).
 
 ## Controls and human decisions
 

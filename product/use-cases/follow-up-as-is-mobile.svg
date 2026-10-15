@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 2158" role="img" aria-labelledby="title desc">
+<title id="title">Follow-up after discharge today</title>
+<desc id="desc">Swimlanes for the GP and community services, the treating team, clerks and the systems. Step 1: the treating team agrees actions in free text, and a junior doctor writes the discharge summary. Step 2: the EMR sends it to My Health Record and the GP. Step 3: a clerk requests a review appointment. Step 4: a doctor orders tests that a community lab will do. Step 5: a nurse refers the patient to community services, whose intake keys it in again. Step 6: the responsible doctor watches pending results. Step 7: a nurse phones some patients. Step 8: no one checks the work was done. Step 9: a clerk handles missed appointments. Step 10: the data warehouse reports. Each step names the system it uses.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="720" height="2158" fill="#f8f5ef"/>
+<text x="32.0" y="64.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Follow-up after discharge today</text>
+<text x="32.0" y="108.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">Actions sit in free text. Each card names the</text>
+<text x="32.0" y="140.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">system the step uses.</text>
+<rect x="32.0" y="188.0" width="656.0" height="192.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="228.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="236.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<text x="104.0" y="236.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Treating team and junior doctor</text>
+<text x="104.0" y="268.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">The team agrees actions in free text. A</text>
+<text x="104.0" y="300.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">junior doctor writes and signs the</text>
+<text x="104.0" y="332.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">discharge summary.</text>
+<text x="104.0" y="364.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: EMR notes and discharge template</text>
+<path d="M68.0 384.0 L68.0 406.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="414.0" width="656.0" height="160.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="454.0" r="20" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="462.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<text x="104.0" y="462.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">EMR and integration engine</text>
+<text x="104.0" y="494.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Sends the summary to My Health Record and</text>
+<text x="104.0" y="526.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">to the GP. Some still go by fax or print.</text>
+<text x="104.0" y="558.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: secure messaging, My Health Record</text>
+<path d="M68.0 578.0 L68.0 600.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="608.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="648.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="656.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<text x="104.0" y="656.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Ward or clinic clerk</text>
+<text x="104.0" y="688.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Books a review in the PAS, or adds the</text>
+<text x="104.0" y="720.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">patient to a review list.</text>
+<text x="104.0" y="752.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: outcome form, PAS</text>
+<path d="M68.0 772.0 L68.0 794.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="802.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="842.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="850.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<text x="104.0" y="850.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Doctor</text>
+<text x="104.0" y="882.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Orders tests for later. The patient takes</text>
+<text x="104.0" y="914.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">the request to a community lab.</text>
+<text x="104.0" y="946.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: EMR future order, or paper</text>
+<path d="M68.0 966.0 L68.0 988.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="996.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1036.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1044.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<text x="104.0" y="1044.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Discharge nurse or allied health</text>
+<text x="104.0" y="1076.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Refers the patient to community services.</text>
+<text x="104.0" y="1108.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Their intake team keys it in again.</text>
+<text x="104.0" y="1140.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: EMR referral, fax or email</text>
+<path d="M68.0 1160.0 L68.0 1182.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1190.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1230.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1238.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<text x="104.0" y="1238.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Responsible doctor</text>
+<text x="104.0" y="1270.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Results arrive after discharge. The doctor</text>
+<text x="104.0" y="1302.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">may have moved to another team.</text>
+<text x="104.0" y="1334.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: EMR results inbox</text>
+<path d="M68.0 1354.0 L68.0 1376.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1384.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1424.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1432.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<text x="104.0" y="1432.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Nurse or virtual care team</text>
+<text x="104.0" y="1464.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Calls some patients one to three days after</text>
+<text x="104.0" y="1496.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">discharge (typical, unsourced).</text>
+<text x="104.0" y="1528.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: phone, spreadsheet or EMR note</text>
+<path d="M68.0 1548.0 L68.0 1570.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1578.0" width="656.0" height="192.0" rx="14" fill="#fff1f2" stroke="#e11d48" stroke-width="2" stroke-dasharray="6 4"/>
+<circle cx="68.0" cy="1618.0" r="20" fill="#e11d48" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1626.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<text x="104.0" y="1626.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#881337">Mostly no one</text>
+<text x="104.0" y="1658.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Nobody checks the work was done. It shows</text>
+<text x="104.0" y="1690.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">only when the patient turns up, or does</text>
+<text x="104.0" y="1722.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">not.</text>
+<text x="104.0" y="1754.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: lists kept by some teams</text>
+<path d="M68.0 1774.0 L68.0 1796.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1804.0" width="656.0" height="160.0" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<circle cx="68.0" cy="1844.0" r="20" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="1852.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<text x="104.0" y="1852.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#78350f">Clinic clerk and clinician</text>
+<text x="104.0" y="1884.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">After missed appointments, the patient may</text>
+<text x="104.0" y="1916.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">go back to the GP. A letter goes out.</text>
+<text x="104.0" y="1948.0" font-family="Arial,sans-serif" font-size="24" fill="#465958">System: PAS</text>
+<path d="M68.0 1968.0 L68.0 1990.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<rect x="32.0" y="1998.0" width="656.0" height="128.0" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<circle cx="68.0" cy="2038.0" r="20" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<text x="68.0" y="2046.4" font-family="Arial,sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<text x="104.0" y="2046.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1e3a8a">Data warehouse (performance team)</text>
+<text x="104.0" y="2078.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Reports readmissions, summary timeliness,</text>
+<text x="104.0" y="2110.0" font-family="Arial,sans-serif" font-size="24" fill="#182e31">overdue reviews and missed appointments.</text>
+</svg>

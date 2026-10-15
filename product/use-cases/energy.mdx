@@ -1,112 +1,151 @@
 ---
-title: "Energy: from production to dependable supply"
-description: "Agents in energy markets, network planning, and generation and network assets: who runs them, whether they advise or act, what was measured, and the control each one needs."
-position: "Named deployments carry the date, the stage and who reported the result. Most figures come from the vendor or the operator, and none is independently audited. Proposals are labelled. The map is a learning aid, not a formal standards mapping."
-lastReviewed: "2026-10-14"
+title: "Energy and resources: the estate and where agents fit"
+description: "The systems a generator, an oil and gas operator and a miner run, layer by layer. The rule that keeps agents off the control path. The use cases and named deployments placed on that estate."
+position: "Named deployments carry the date, the stage and who reported the result. Most figures come from the vendor or the operator, and none is independently audited. The worked examples are proposals. The estate is typical practice, not a survey of one company."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-10-14"
+dateModified: "2026-10-15"
+concepts: [layers, r05, r03, lifecycle, capabilities, zones, autonomy, risk]
 ---
 
-This page covers three areas of energy work: markets, planning, and generation and network assets. Each use case says who runs it and whether it advises or acts. It gives the measured result, who reported it, and whether it is in production or a pilot. It places the agent on this guide's two scales. It names the zone it touches and the control that must exist.
+Energy and resources companies do four kinds of work. They trade in markets, plan networks and plants, run generation and network assets, and run mines and processing plants. This page shows the systems they run, layer by layer, and where agents fit. The short answer is this. Agents read plant data through a read-only broker and draft work for people. They never write to a control or safety system. The frame is the same as on every page: [layers you own](/layers), a [lifecycle you run](/architecture/agent-lifecycle), and [capabilities you add](/architecture/system-view).
 
-<Term k="autonomy level">Autonomy</Term> runs from A0, where a person does the work, to A5, where the agent runs alone under governance. <Term k="learning level">Learning</Term> runs from L0, fixed, to L3, learning all the time inside set limits. The [autonomy contract](/architecture/autonomy-contract) defines both. The [deterministic zones](/architecture/deterministic-zones) are the areas where a model may never approve. The [risk profile](/architecture/risk-profile) turns these facts into a tier. The four questions on [agent types](/architecture/agent-types) describe any agent.
+<TeachingIllustration src="/images/use-cases/energy-map-v1.webp" expandable title="From production to dependable supply" alt="Four parts of energy work, left to right. Plan: demand and investment. Produce: generation and operations. Maintain: asset health and work. Deliver value: supply commitments and performance. A banner says agents investigate and prepare work, and operators authorise physical changes." caption="The energy side of the work. A mine runs the same four parts with its own systems." />
 
-<TeachingIllustration src="/images/use-cases/energy-map-v1.webp" expandable title="From production to dependable supply" alt="Plan demand and investment; produce energy; maintain assets; manage supply commitments and performance. Agents investigate and prepare work while operators authorize physical changes." caption="A teaching map spanning renewable generation and other energy operations. Choose the branch that matches the business; a company need not perform every activity." />
+## The estate
+
+Two kinds of producer share most of this estate. The first is a power generator or an upstream oil and gas operator with several sites. It runs plants or wells, with a control room at each site. The second is a miner with pits, a processing plant, rail and a port. It often runs them from a remote operations centre in the city. The two differ most in the [line of business and OT layer (R05)](/layers/r05-lob-and-ot), where the plant and fleet systems sit.
+
+The table names the main systems in each of the [fourteen layers](/layers). Vendor names in brackets are examples, not endorsements.
+
+| Layer | Generator or upstream oil and gas | Miner with a processing plant |
+|---|---|---|
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | Servers in each control building. Fibre, microwave or satellite links. A data centre and public cloud | Site server rooms. Rugged computers on trucks and drills. Private wireless for autonomous haulage. Cloud |
+| [Data platform (R02)](/layers/r02-data-platform) | Process historian (AVEVA PI, AspenTech IP.21). Lab system (LIMS). Lakehouse. Industrial data platform (Cognite). Reports and dashboards | Historian. Fleet management database. Geology database and block models. LIMS. Lakehouse (Palantir Foundry at Rio Tinto) |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | A buffer network between plant and business networks, with historian copies. OPC servers. MQTT broker. Integration platform. Market links (AEMO bidding API) | The same buffer network. Fleet system adapters. Equipment maker telematics (Caterpillar, Komatsu). Rail and port links |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | ERP. Enterprise asset management, or EAM (SAP PM, IBM Maximo). Production accounting. Trading and bidding system. Health, safety and environment (HSE) system. Permit to work. Documents | ERP. EAM (SAP PM, Ellipse). Metal accounting (ION Algosys). HSE and critical control (Forwood). Isolation and permits. Rostering. Tenement register |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Distributed control system, or DCS (Emerson, ABB, Honeywell). Safety instrumented system (SIS). Turbine control. Protection relays. Asset performance management (APM). Condition monitoring. Alarm management | Fleet management (Modular DISPATCH, Cat MineStar). Autonomous haulage. Collision avoidance. Fatigue monitoring. Slope radar. Plant control (PLC and SCADA). Belt scales. Mine planning (Deswik) |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Advanced process control. Anomaly models. Price and demand forecasts for bidding. Seismic models | Expert control on mills. Fleet dispatch optimisation. Predictive maintenance on haul trucks. Ore vision. Drilling optimisation |
+| [Agent platform (R07)](/layers/r07-agent-platform) | Mostly new. Robotic process automation in finance. Copilots. Agent builders inside vendor products (Cognite, Seeq, IBM, SAP) | Mostly new. Robotic process automation in finance and payroll. Palantir AIP at Rio Tinto. Cat AI Assistant |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Email, Teams, SharePoint and Excel. Shift handover logs. Radio | The same, plus pre-start and toolbox talk material |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | Control consoles. Historian screens. Mobile work apps. Tablets rated for hazardous areas. Trading screens | Dispatch consoles. In-cab displays. Remote operations centre screens. Inspection apps |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | Corporate directory. A separate OT directory. Privileged access. OT network monitoring (Claroty, Dragos). Security event monitoring | The same, plus contractor site access and fleet network security |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Risk register. Process safety and the safety case. Management of change. Market compliance (AER, AEMO). Emissions reporting (NGER) | Critical control management. Tailings governance (GISTM). Statutory mine safety. Royalties. Reserve reporting (JORC Code) |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | IT monitoring. Historian interface health. OT asset inventory. Service management (ServiceNow) | The same, plus fleet network health |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | Control room operators. Shift supervisors. Reliability engineers. Maintenance planners. Trading desk. HSE and assurance | Dispatchers. Geology, survey and planning. Metallurgists. Maintenance. Remote operations centre. Statutory roles such as the site senior executive |
+| [Agent data engineering (R14)](/layers/r14-agent-data-engineering) | Mostly new. Pipelines from historian to lakehouse. Equipment hierarchies and tag names (PI AF, KKS codes). Document capture | Mostly new. The same pipelines. Geology and survey files. Document capture for permits and assays |
+
+Three control systems matter most on this page. The distributed control system (DCS) runs the process. Programmable logic controllers (PLC) run machines. The safety instrumented system (SIS) shuts the plant down safely when limits are passed. It is kept separate by design.
+
+<TeachingIllustration src="/figures/use-cases/energy-estate.svg" mobileSrc="/figures/use-cases/energy-estate-mobile.svg" expandable title="The energy and resources estate" alt="A fourteen-floor building, one floor per layer, with the main systems named on each floor. The agent platform floor is marked as the place where agents run, on the business side or in the cloud. Below the building is a wall labelled the OT boundary. Plant networks do not talk straight to business networks. Two boxes sit in the wall. A historian replica copies plant data out, one way. A read broker serves that copy to agents, read only. Below the wall is the control side of line of business and OT. It holds the DCS, PLC, SIS, protection relays, turbine control, collision avoidance and fatigue systems. A red marker says no agent writes below the wall. People and certified systems make every physical change." caption="Agents run above the wall. They read plant data through the replica and the read broker. Nothing they do writes below it." />
+
+Plant networks do not talk straight to business networks. A buffer network, often called the DMZ, sits between them. Historians copy plant data across it. Some sites use a data diode, which lets data flow one way only. Agents run on the business side or in the cloud. A read broker in the buffer network serves them plant data from the copy. That broker is how the [tool gateway](/architecture/system-view) reaches the plant.
+
+Vendors now ship agents for single systems: one control system, one EAM, one historian. This research found no vendor agent that joins the historian, EAM, lab, permits and production accounting for one investigation. That join is where a thin build fits. The method is on [agents and packaged applications](/use-cases/packaged-applications).
+
+## Agents stay on the information path
+
+One rule binds this industry. Agents sit on the information path, never the control path. The information path is reading data, checking it and drafting work. The control path is anything that moves equipment.
+
+Nothing an agent does writes to a DCS, PLC, SIS, protection relay or turbine control. Nothing writes to a collision avoidance or fatigue system. Nothing an agent does issues a permit or applies an isolation. A person, or a certified system, makes every physical change. Safety actuation is one of the four [deterministic zones](/architecture/deterministic-zones#safety-actuation), where a model may never approve.
+
+Three vendor claims made in 2026 cross this line. This guide does not cross it with them.
+
+- **Honeywell Experion Cognition**, announced 9 June 2026. Honeywell says it will "proactively act on behalf of the operator" [vendor]. A proof of concept runs at Borouge in Ruwais. Honeywell promised it for the third quarter of 2026. This research found no confirmation that it shipped.
+- **Cognite with ABB**, announced 21 May 2026. It adds agents to ABB's safety and alarm tools. Aker BP is the first customer. The release says agents can "trigger cross-system actions" and does not say which ones [vendor].
+- **DataRobot with Chevron**, announced 2 June 2026. A "Safe Start" agent checks conditions for robotic inspection missions. It aims to replace the permit approval for each mission with continuous checks [vendor]. The stage is not stated.
+
+None of the three says what its agent may not touch. A control vendor acting inside its own control system needs its own safety case. Yokogawa's reinforcement-learning control at two plants is the same kind of case. It is described on the [line of business and OT](/layers/r05-lob-and-ot) page. It is not an agent on the information path.
+
+## The use cases on this estate
+
+Four worked examples sit on this estate. Each is a proposal from this guide, built for a producer. A fifth, compliance evidence, is shared with utilities. The table shows what each one reads, where it writes and who decides.
+
+| Use case | Reads from | Writes to | Who decides |
+|---|---|---|---|
+| [Asset investigation](/use-cases/energy-asset-investigation) | Historian copy, asset performance alerts, EAM history, equipment manuals | Its own case store. A draft EAM notification | An engineer, in EAM |
+| [Production measurement](/use-cases/production-measurement) | Fleet database copy, belt-scale totals, lab results, calibration records | A reconciliation case. A draft measurement check | A metallurgist or production accountant |
+| [Safety coaching](/use-cases/safety-coaching) | Detector events, clips by ID, permits, roster, procedures | A draft coaching item in the HSE system | The safety owner |
+| [Recurring audit issues](/use-cases/systemic-audit-issues) | Audit findings, EAM history, inspection records, procedures | A case and internal evidence requests | The assurance owner |
+| [Compliance evidence](/use-cases/compliance-evidence) | Obligations register, inspection records, lab and emissions reports | An evidence package | A named person attests |
+
+<Cards>
+<Card title="Investigate an asset before planning work" href="/use-cases/energy-asset-investigation">A turbine bearing runs hot. The agent gathers the evidence from five systems. An engineer decides.</Card>
+<Card title="Investigate production discrepancies" href="/use-cases/production-measurement">Truck tonnes and plant tonnes disagree. The agent checks timing, scales and moisture. An owner accepts any change.</Card>
+<Card title="Safety coaching from CCTV and observations" href="/use-cases/safety-coaching">A risky moment is caught on camera. The agent drafts coaching. The safety owner approves every item.</Card>
+<Card title="Investigate recurring audit issues" href="/use-cases/systemic-audit-issues">The same finding shows up at six sites. The agent tests competing explanations against the records.</Card>
+<Card title="Collect and check compliance evidence" href="/use-cases/compliance-evidence">A requirement needs proof by a date. The agent asks for the records and checks them.</Card>
+</Cards>
+
+The named deployments below sit in three areas of the work: markets, planning, and generation and network assets. Each says who runs it, whether it advises or acts, and who reported the result.
 
 ## Markets
 
 ### Battery bidding
 
-Battery owners in Australia's National Electricity Market use software that bids and rebids without a person signing each bid.
+Battery owners in Australia's National Electricity Market (NEM) use software that bids and rebids. No person signs each bid. Tesla's Autobidder and Fluence's Mosaic are two such bidders. Fluence names Akaysha Energy among its users (pv magazine Australia, 20 November 2024). The vendors say their bidders work inside limits the operator sets, with manual override [vendor]. No measured outcome is published. The bidders are in production.
 
-- **Who:** battery owners using vendor bidders such as Tesla's Autobidder and Fluence's Mosaic. Fluence names Akaysha Energy's batteries among its users (pv magazine Australia, 20 November 2024).
-- **Advises or acts:** acts. The vendors say their bidders work inside limits the operator sets, with manual override [vendor].
-- **Measured outcome:** none published.
-- **Stage:** production.
-- **Placement:** A4, L1 to L2. It acts without approval of each bid, inside limits people set. People choose what it learns from (L1), or its learning runs through a reviewed loop (L2). This guide's autonomy contract asks for L2 at A4.
-- **Zone:** [movement of money](/architecture/deterministic-zones#movement-of-money) and [formal regulatory records](/architecture/deterministic-zones#formal-regulatory-records). A zone action makes it Tier 3 on the [risk profile](/architecture/risk-profile).
-- **Control:** a <Term k="policy decision point">policy check</Term> and an immutable decision log before the market <Term k="gateway">gateway</Term>. The participant must be able to check and adjust bids on that path.
+That is managed autonomy (A4) on the [autonomy contract](/architecture/autonomy-contract). The bidder acts inside limits people set, without approval of each bid. Its learning is curated learning (L1) or reviewed learning (L2). In curated learning, people choose what it learns from. This guide asks for reviewed learning at A4. A bid moves money and creates a formal market record. Both are deterministic zones. A zone action makes the bidder Tier 3 (strict) on the [risk profile](/architecture/risk-profile). The control is a policy check and a log the bidder cannot change, both before the market gateway. That is [enforcement outside the model](/architecture/enforcement).
 
-**What the regulator said.** The Australian Energy Regulator (AER) issued a compliance bulletin on automated bidding on 5 August 2026. It creates no new obligations. The participant owns every bid, however it is made. Bids sent straight to the market operator without a participant check carry higher compliance risk. Participants should record the logic behind each rebid. Third-party providers may be liable too. The update to the AER's rebidding guideline was delayed. So the AER published this guidance on its own. This page read the bulletin through a law firm's alert (K&L Gates, 10 August 2026). The bulletin itself could not be retrieved.
+**What the regulator said.** The Australian Energy Regulator (AER) issued a compliance bulletin on automated bidding on 5 August 2026. It creates no new obligations. The participant owns every bid, however it is made. Bids sent straight to the market operator without a participant check carry higher compliance risk. Participants should record the logic behind each rebid. Third-party providers may be liable too. This page could not retrieve the bulletin itself. It read the bulletin through a law firm's alert (K&L Gates, 10 August 2026).
 
 ## Planning
 
-Planning agents read documents, run studies and build evidence packs. All three cases below advise. Engineers or staff decide.
+Planning agents read documents, run studies and build evidence packs. All three cases below advise. Engineers or staff decide. Each is at delegated tasks (A2): the agent does a set task and a person decides.
 
-### Network models in hours
+**Network models in hours.** AgenticGrid comes from Monash University with Transgrid and Essential Energy. Its agents choose which studies to run. A conventional solver does the calculation. A network model of the Broken Hill area took about two hours, against about three weeks. Race for 2030, an energy research programme, reported the result. It is a trial.
 
-- **Who:** AgenticGrid, from Monash University with Transgrid and Essential Energy.
-- **Advises or acts:** advises. The agents choose which studies to run. A conventional solver does the calculation. Engineers decide.
-- **Measured outcome:** a network model of the Broken Hill area took about two hours, against about three weeks. Reported by Race for 2030, an energy research programme.
-- **Stage:** trial.
+**Interconnection screening.** PJM, the largest US grid operator, works with Tapestry from Alphabet. The partnership was announced in April 2025. Its agents screened 811 generation filings, about 220 gigawatts, for site control in under an hour. That is Tapestry's own count [vendor]. Each finding links to its source pages. PJM staff make the compliance call. That call is a formal queue decision, so it sits in the [formal records zone](/architecture/deterministic-zones#formal-regulatory-records).
 
-### Interconnection screening
-
-- **Who:** PJM, the largest US grid operator, with Tapestry, from Alphabet. The partnership was announced in April 2025.
-- **Advises or acts:** advises. Each finding links to its source pages. PJM staff make the compliance call.
-- **Measured outcome:** 811 generation filings, about 220 gigawatts, screened for site control in under an hour. That is Tapestry's own tally [vendor].
-- **Stage:** production for this screen, by the vendor's account.
-
-### Interconnection study data
-
-- **Who:** Duke Energy with AWS.
-- **Advises or acts:** advises. Agents run parts of the study workflow on Duke's own simulation software and grid models. Duke says its engineers make all final engineering decisions.
-- **Measured outcome:** data preparation cut from about two weeks to hours, by AWS's account (T&D World, 18 September 2026) [vendor].
-- **Stage:** not stated in the report.
-
-**All three:** A2, L1 to L2. The agent does a set task and a person decides. The network studies touch no zone. The PJM screen feeds a formal queue decision in the [formal records zone](/architecture/deterministic-zones#formal-regulatory-records). PJM staff make that decision. The control: conventional solvers do the calculation, every finding links to its source, and engineers decide.
+**Interconnection study data.** Duke Energy runs agents with AWS on parts of its interconnection studies. The agents use Duke's own simulation software and grid models. AWS says data preparation fell from about two weeks to hours (T&D World, 18 September 2026) [vendor]. Duke says its engineers make all final engineering decisions. The stage is not stated.
 
 ## Generation and network assets
 
-### Self-healing grid: the rule-based baseline
+**Self-healing grid, the rule-based baseline.** Duke Energy's self-healing grid isolates faults and restores supply on its own. Duke counts about 2.2 million customer outages avoided in 2025. It also counts 5.2 million outage hours saved. It announced both on 5 February 2026. The announcement does not mention AI. Self-healing usually means fixed switching logic. It is the rule-based autonomy regulators already accept. It is not an agent, and it needs no new control.
 
-- **Who:** Duke Energy, announced 5 February 2026.
-- **Advises or acts:** acts alone. It isolates faults and restores supply.
-- **Measured outcome:** about 2.2 million customer outages avoided and 5.2 million outage hours saved in 2025. That is Duke's own count.
-- **Stage:** production.
-- **Placement:** not an agent. The announcement does not say AI. Self-healing usually means fixed switching logic. It is the rule-based autonomy regulators already accept.
-- **Zone:** [safety actuation](/architecture/deterministic-zones#safety-actuation).
-- **Control:** none new. The existing protection and switching rules apply.
+**Outage request review.** CAISO, the California grid operator, uses review agents built by OATI. OATI says they analyse more than 500 next-day outage requests in under eight minutes a night [vendor]. In July 2025 CAISO reported no results yet and called itself cautiously optimistic (Latitude Media, 28 July 2025). Operators keep final authority. It is delegated tasks (A2) with curated learning (L1). It touches no zone.
 
-### Outage request review
+**Control room assistants.** Honeywell launched its Experion Operations Assistant on 19 March 2026, after pilots at Chevron and TotalEnergies. It warned operators 5 to 10 minutes before alarms, and operators acted [vendor]. It advises. Schneider Electric announced its Grid AI Assistant on 4 June 2026. It says every operational action stays subject to user review [vendor]. It names no utility. This research found no utility letting an agent operate protection or switching.
 
-- **Who:** CAISO, the California grid operator, with review agents built by OATI.
-- **Advises or acts:** advises. Operators keep final authority.
-- **Measured outcome:** more than 500 next-day outage requests analysed in under eight minutes a night, by OATI's account [vendor]. In July 2025 CAISO reported no results yet and called itself cautiously optimistic (Latitude Media, 28 July 2025).
-- **Stage:** production, as stated by the vendor.
-- **Placement:** A2, L1. It does a set task, and people choose what it learns from.
-- **Zone:** none.
-- **Control:** each agent's output is checked on its own, and the operator decides.
+## Proposals and commercial work
 
-### Asset investigation: this guide's proposal
+Commercial work is not an operations workflow, but it runs on the same estate. A generator's sales desk answers a large buyer's request for a power purchase agreement. A mining supplier answers a tender. Today an originator gathers the request, the buyer's meter data and past deals by hand. A structuring analyst prices the deal from forward curves in the trading system and a spreadsheet. Credit, legal and a risk committee then approve under delegated authority. It takes weeks to months (typical, unsourced).
 
-The proposal below sits at A2, L1 to L2. The agent calls engineering tools and an engineer decides. It never touches safety actuation.
+An agent can help with the brief. It reads the CRM, public information about the buyer and approved summaries of past deals. It drafts an opportunity brief that keeps facts apart from guesses. It lists questions for the buyer and outlines the proposal. The originator reviews every draft. Price, credit, terms, every message to the buyer and deal booking stay with people. A price or contract change moves money, so it sits in the [money zone](/architecture/deterministic-zones#movement-of-money). The agent has no write path to the trading system and no send path to the buyer.
 
-<Cards>
-<Card title="Investigate an energy asset" href="/use-cases/energy-asset-investigation">Combine readings, imagery, and maintenance evidence before proposing work.</Card>
-</Cards>
+It sits in the systems of record layer (R04) and the productivity and collaboration layer (R08). It works at delegated tasks (A2) with curated learning (L1). It is Tier 2 (enhanced) while it only drafts. Other customers' terms stay out of its reach. This research found no such deployment in energy or mining.
 
-### Where the line holds
+## Evidence and limits
 
-Schneider Electric announced its Grid AI Assistant on 4 June 2026. It says every operational action stays subject to user review [vendor]. It names no utility. The research behind this page found no utility letting an AI agent operate protection or switching. The main guidance on AI and functional safety is ISO/IEC TR 5469. It is a technical report and is not binding. This guide's position: agents stay on the information path, and people and certified systems keep control.
+Most figures on this page come from the vendor or the operator. None is independently audited. This research found no independent figure showing that AI cut outage time at a named energy company.
 
-## Separate potential value from proof
+The estate is typical practice, not a survey of one company. The vendor lists come from industry knowledge, and most are unsourced. Twenty searches found no agent from Deswik, Komatsu, Modular Mining, Sphera, Quorum or SLB Avocet for these processes. Absence in twenty searches is not proof of absence.
 
-Measure accepted findings, false alerts, investigation time, review cost, and useful work packages. Measure avoided loss only against a defensible comparison. Most figures on this page come from the vendor or the operator. None is independently audited. The research behind this page found no independent figure showing AI cut outage time at a named utility.
+No agent deployment was found at BHP, Rio Tinto or Fortescue by 15 October 2026. They show machine learning, platform deals and job advertisements. Adoption is early in power too. A PwC study reported in April 2026 found 61 percent of utilities still in test or pilot.
 
-Adoption is early. A PwC study reported in April 2026 found 61 percent of utilities still in test or pilot. None called themselves advanced. The study was read through a consultancy summary (innobu, 26 September 2026).
+The main guidance on AI and functional safety is ISO/IEC TR 5469. It is a technical report and is not binding. NAMUR Open Architecture describes a second channel that reads plant data without touching control. That is close to the information-path rule. This round did not check its primary text. The IEA's Energy and AI report (2025) surveys AI across energy. It does not validate the agent workflows proposed here.
 
-The IEA's [Energy and AI report, 2025](https://www.iea.org/reports/energy-and-ai/ai-for-energy-optimisation-and-innovation) surveys AI across energy. It notes how hard it is to generalize benefits beyond single cases. It does not validate the agent workflows proposed here. Reviewed 18 September 2026.
+## Next step
 
-Electricity distribution, vegetation, and customer service continue in [Utilities](/use-cases/utilities). Shared patterns include [safety coaching](/use-cases/safety-coaching), [compliance evidence](/use-cases/compliance-evidence), [recurring audit issues](/use-cases/systemic-audit-issues), and [commercial proposals](/use-cases/commercial-growth). Technical readers can open the [energy and utilities blueprint](/library/blueprints/verticals/utilities-and-energy).
+Pick one worked example and score it on the [risk profile](/architecture/risk-profile). Technical readers can open the [mining and resources blueprint](/library/blueprints/verticals/mining-and-resources) or the [energy and utilities blueprint](/library/blueprints/verticals/utilities-and-energy). Electricity distribution and water continue in [Utilities](/use-cases/utilities).
 
-## Sources added October 2026
+<details>
+<summary>The research behind this page</summary>
+
+Sources were read on 15 October 2026 unless a line says otherwise. [vendor] marks a vendor's claim about its own product or customer.
+
+Markets and the regulator:
 
 - [AER compliance bulletin on automated bidding and third-party services](https://www.aer.gov.au/system/files/2026-08/Automated%20bidding%20and%20utilisation%20of%20third-party%20services%20Compliance%20Bulletin%20-%20August%202026.pdf), 5 August 2026. It could not be retrieved, so it was read through the next item.
 - [K&L Gates, AER guidance on automated bidding and third-party services](https://www.klgates.com/thought-leadership/Electricity-Market-Participants-on-Notice-AER-Releases-Guidance-on-Automated-Bidding-and-Third-Party-Services-8-10-2026), 10 August 2026.
 - [Tesla Autobidder support page](https://www.tesla.com/support/energy/tesla-software/autobidder), undated [vendor]. Read through a search summary.
 - [Fluence Mosaic brochure](https://info.fluenceenergy.com/hubfs/Mosaic%20for%20Ercot%201.12.0/Fluence-Mosaic%20Intelligent%20Bidding%20Software_BR-010-06-EN.pdf?hsLang=en), undated [vendor]. Read through a search summary.
 - [pv magazine Australia, Fluence and Akaysha Energy](https://www.pv-magazine-australia.com/2024/11/20/fluence-to-optimise-akaysha-energys-battery-assets/), 20 November 2024.
+- [AEMO NEM Dispatch Bidding API](https://developer-portal-prd.aemo.com.au/nem-dispatch-bidding), read 15 October 2026.
+- [AEMO Markets Portal bid file format](https://markets-portal-help.docs.public.aemo.com.au/Content/EMMSenergyFCAS/BidFileLayoutExplained.htm), read 15 October 2026.
+
+Planning and network assets:
+
 - [Race for 2030, AgenticGrid at Broken Hill](https://www.racefor2030.com.au/ai-model-helps-network-planners-answer-questions-fast/), undated. Accessed 14 October 2026.
 - [PJM Inside Lines, PJM with Google and Tapestry](https://insidelines.pjm.com/pjm-google-tapestry-join-forces-to-apply-ai-to-enhance-regional-planning-generation-interconnection/), April 2025.
 - [Data Center Dynamics, Tapestry's first PJM deployment](https://www.datacenterdynamics.com/en/news/google-backed-tapestry-completes-first-deployment-of-ai-platform-for-pjm-interconnection-application-process/), reporting Tapestry's figures [vendor].
@@ -115,5 +154,42 @@ Electricity distribution, vegetation, and customer service continue in [Utilitie
 - [Latitude Media, inside CAISO's outage management pilot](https://www.latitudemedia.com/news/under-the-hood-of-caisos-ai-outage-management-pilot/), 28 July 2025.
 - [OATI, AI for energy](https://www.oati.com/ai-for-energy/), 2026 [vendor].
 - [Eurelectric, Schneider Electric Grid AI Assistant](https://www.eurelectric.org/stories/schneider-electric-grid-ai-assistant-for-advanced-distribution-management-system-adms-operations/), 4 June 2026 [vendor].
+
+Control room and the line agents do not cross:
+
+- [Honeywell, commercial launch of Experion Operations Assistant](https://www.honeywell.com/us/en/press/2026/03/honeywell-unveils-commercial-launch-of-ai-powered-control-room-assistant-following-successful-pilot), 19 March 2026 [vendor].
+- [Honeywell, Experion Cognition for Borouge](https://www.honeywell.com/us/en/news/press-releases/2026/06/honeywell-introduces-experion-cognition-to-deliver-autonomous-control-room-operations-for-borouge-international), 9 June 2026 [vendor]. Promised for the third quarter of 2026. Not confirmed shipped by 15 October 2026.
+- [Cognite and ABB release, ANSA copy](https://www.ansa.it/sito/notizie/economia/business_wire/2026/05/21/cognite-and-abb-collaborate-to-integrate-agentic-ai-into-industrial-applications-to-deliver_a850ecc6-a35c-4f7b-9ff6-ca67b4e3ef60.html), 21 May 2026 [vendor]. Aker BP aims for "hundreds of agents by 2026".
+- [DataRobot and Chevron, agents for autonomous inspections](https://www.datarobot.com/newsroom/press/datarobot-and-chevron-collaborate-to-advance-agentic-ai-for-autonomous-inspections/), 2 June 2026 [vendor].
 - [ISO/IEC TR 5469:2024, AI and functional safety](https://www.iso.org/standard/81283.html).
+- [ISA-95 standard page](https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard) and [ISA/IEC 62443 series page](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards), read 15 October 2026. ISA-95 names the plant levels. ISA/IEC 62443 splits a plant into security zones.
+- NAMUR NE 175, NAMUR Open Architecture. Known from background, not re-checked in this round.
+
+Mining and adoption:
+
+- [Business Wire, Rio Tinto renews Palantir](https://www.businesswire.com/news/home/20241112799701/en), 12 November 2024 [vendor].
+- [BHP Insights, AI in mining](https://www.bhp.com/news/bhp-insights/2024/08/artificial-intelligence-is-unearthing-a-smarter-future), August 2024. [Engineering News, BHP AI hub in Singapore](https://www.engineeringnews.co.za/article/bhp-launches-its-first-industry-ai-hub-in-singapore-2025-05-27), 27 May 2025.
+- [Fortescue job advertisement mentioning agentic automation](https://careers.fortescue.com/job/Perth-AI-Operations-Manager-Shutdowns-and-Maintenance-WA/1212902066), undated.
+- [Proactivo, GMG gathering in Lima](https://proactivo.com.pe/?p=770040), September 2026. It discussed why mining AI pilots stall: late data, clashing targets, no change plan, and budgets in the wrong place.
 - [innobu, AI for exception cases in metering](https://www.innobu.com/en/articles/ai-exception-cases-market-communication-metering-2026.html), 26 September 2026, citing the PwC study.
+- [IEA, Energy and AI, 2025](https://www.iea.org/reports/energy-and-ai/ai-for-energy-optimisation-and-innovation). Reviewed 18 September 2026.
+
+Where vendor agents land in this estate, as of 15 October 2026:
+
+| Layer and system | What ships | Advises or acts | Status |
+|---|---|---|---|
+| Control system, Honeywell | Experion Operations Assistant, 19 March 2026 [vendor] | Advises | Launched |
+| Control system, Honeywell | Experion Cognition, 9 June 2026 [vendor] | Acts, by the vendor's words | Not confirmed shipped |
+| Control and models, Emerson | AspenTech AVA, four advisors, 11 May 2026 [vendor] | Advises | Launched. Advisors not named |
+| Control, Yokogawa | Reinforcement-learning control at ENEOS Materials (March 2023) and Aramco Fadhili (October 2025) [vendor] | Acts in closed loop. Not a language model | Production |
+| Historian and models, Seeq | Agent Q and Build Your Own Agent, 3 March 2026 [vendor] | Advises | Announced |
+| Data platform, Cognite | Atlas AI at Aker BP, 16 September 2025 [vendor] | Advises | In use, by the release |
+| EAM, IBM | Maximo Condition Insight, 5 December 2025. Maximo 9.2 with an MCP server for outside agents, 25 June 2026 [vendor] | Recommends | Announced |
+| EAM, SAP | Maintenance Planner Agent, planned for the fourth quarter of 2025 [vendor] | Suggests schedule changes | Not confirmed shipped |
+| EAM, C3 AI | Reliability agents at Shell, 5 June 2026 | Drafts for approval | Unverified |
+| HSE, several vendors | Cority Cortex AI, Enablon, Intelex with COMET (27 October 2025) [vendor] | Advise | Features, not agents |
+| Mining fleet, Caterpillar | Cat AI Assistant, 6 January 2026 [vendor] | Advises | General availability not confirmed |
+| Production accounting | TCS white paper, Groundhog Reconciliation Agent [vendor] | Advises | No named deployment |
+| Batteries and bidding | Tesla Autobidder, Fluence Mosaic [vendor] | Acts inside limits | Production |
+
+</details>

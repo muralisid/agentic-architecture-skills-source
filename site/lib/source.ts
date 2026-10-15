@@ -9,6 +9,8 @@ const readerPageSchema = pageSchema.extend({
   position: pageSchema.shape.title.optional(),
   lastReviewed: pageSchema.shape.title.optional(),
   hero_figure: pageSchema.shape.title.optional(),
+  // Concept pages this page relies on; see lib/concepts.ts.
+  concepts: pageSchema.shape.title.array().optional(),
   // Injected by scripts/sync-content.mjs from the source file's git history.
   datePublished: pageSchema.shape.title.optional(),
   dateModified: pageSchema.shape.title.optional(),

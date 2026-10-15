@@ -27,7 +27,7 @@ The failure mode that makes this distinction load-bearing is silent behaviour ch
 | Layer | System flywheel | Instance memory |
 |---|---|---|
 | R02 Data platform | Retrieval quality evaluated per corpus; index versions promoted blue and green | None. The platform stores; it does not learn |
-| R14 Agent data engineering | Curation proposals: taxonomy updates, ground-truth additions, data corrections, promoted through evals and human gates | Hot-path memory writes during sessions, background consolidation between them, quarantine before promotion to durable tiers |
+| R14 Agent data engineering | Curation proposals: taxonomy updates, ground-truth additions, data corrections, promoted through evals and human gates | Hot-path memory writes during sessions, background consolidation between them, quarantine before promotion to durable memory |
 | R03 Integration fabric | Tool description versions; failure patterns feeding gateway policy | None. The gateway enforces; it does not learn |
 | R04 Systems of record | Override rates per workflow feeding approval-gate tuning | None at the record system. Entity memory about records lives at R14 |
 | R05 Line of business and OT | Recommendation acceptance and override telemetry feeding model and threshold updates | Deliberately absent. Nothing in a control-adjacent loop learns online |
@@ -36,7 +36,7 @@ The failure mode that makes this distinction load-bearing is silent behaviour ch
 | R08 Productivity and collaboration | Task-type outcome data identifying where returns are negative and should be stopped | Personal assistant memory, which is where individual and organisational memory quietly blur |
 | R09 Experience and channels | Escalation-triggered failures into eval datasets; the highest-value trace source in the estate because failures are labelled by real customers | Customer memory, consent-bound and the most regulated instance memory in the guide |
 | R10 Security and identity | Detection content updated from incidents | None. Deterministic by design |
-| R12 Observability and FinOps | The data layer both loops run on: traces to datasets, online scores promoting traces automatically | None |
+| R12 Observability and FinOps | The data both loops run on: traces to datasets, online scores promoting traces automatically | None |
 | R13 Operating model | Runbooks and escalation criteria as curated corpora, revised from real exceptions | Human learning, which is the loop this guide most often forgets to design |
 
 Two patterns are visible reading down the columns. Layers that enforce do not learn. And the highest-value trace source is R09, because customer escalation labels failures for free, which is an argument for instrumenting the customer-facing lane properly even when it is small.
@@ -50,7 +50,7 @@ The assumption was that generating candidate rules is easy and promoting them is
 The three edits, now the guide's position:
 
 1. **Gate on counterexample survival and eval-suite regression, not on frequency.** The mechanism with published success uses counterexample-guided induction over annotated traces with human review, converging in a handful of iterations in narrow domains.
-2. **Name the enforcement tier.** A rule the model merely reads is still a soft rule. The hard tier is policy-as-code outside the model, versioned and deployed independently, which is where R10 arrives from the security side. This also bounds the ambition: statement-level analysis of real agent instruction files found roughly three quarters of policy statements depend on context that cannot be predefined, leaving about a quarter statically enforceable as written.
+2. **Name the enforcement point.** A rule the model merely reads is still a soft rule. The hard rule is policy-as-code outside the model, versioned and deployed independently, which is where R10 arrives from the security side. This also bounds the ambition: statement-level analysis of real agent instruction files found roughly three quarters of policy statements depend on context that cannot be predefined, leaving about a quarter statically enforceable as written.
 3. **Require a demotion path.** Accumulated context is not free. Machine-generated repository context files slightly reduced success while raising inference cost by a fifth. A promotion-only pipeline compounds cost and never sheds dead rules.
 
 ## Governing the judges

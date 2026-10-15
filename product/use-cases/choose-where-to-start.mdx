@@ -1,44 +1,79 @@
 ---
 title: "Choose where to start"
-description: "Select useful work that can be evaluated, supplied with reliable information, and operated responsibly."
-position: "Planning guidance. A readiness assessment supports a decision; it does not certify a deployment."
-lastReviewed: "2026-10-14"
+description: "A programme lead has a shortlist and must pick one task for a first agent. Five checks decide which idea goes first and which goes on a preparation list."
+position: "Planning guidance with an illustrative example. The checks support a decision; they do not certify a deployment."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-10-14"
+dateModified: "2026-10-15"
+concepts: [start, agent-types, zones, risk, readiness, autonomy, packaged, value]
 ---
 
-Start with a process that has a clear owner and a result people can judge. A visible business problem is more useful than a general ambition to "add agents".
+A programme lead at a water utility has three ideas for a first agent. The board wants one trial this year. Which idea should go first? Run five checks on each idea. Can we evaluate its result? Can we protect its actions? Can we supply reliable evidence? An idea that fails one of these is not dropped. It goes on a preparation list until it is ready. Two more checks decide who builds the agent. Is the process inside one package or across several? Is a vendor agent available on our edition, or dated within two quarters? This is step 3 of the seven steps on [Start here](/start).
 
-<TeachingIllustration src="/figures/use-cases/choose-where-to-start-checks.svg" mobileSrc="/figures/use-cases/choose-where-to-start-checks-mobile.svg" expandable title="Apply five checks" alt="Five checks in a row. Can we evaluate it? Can we protect its actions? Can we supply reliable evidence? Is the process inside one package or across several? Is a vendor agent GA on your edition, or dated within two quarters? Checks 4 and 5 are marked new." caption="The first three are the gates in the use-case portfolio. Checks 4 and 5 decide whether to wait for a vendor's agent or build your own." />
+<TeachingIllustration src="/figures/use-cases/choose-where-to-start-checks.svg" mobileSrc="/figures/use-cases/choose-where-to-start-checks-mobile.svg" expandable title="Apply five checks" alt="Five checks in a row, run on each idea in order. Check 1: can we evaluate it? Agree what a correct and useful result looks like, with realistic examples. Check 2: can we protect its actions? Find actions on access, money, safety actuation or formal regulatory records, and place the controls outside the model. Check 3: can we supply reliable evidence? Check the access, quality, freshness and ownership of the information. Check 4: is the process inside one package or across several? Check 5: is a vendor agent generally available on your edition, or dated within two quarters? An idea that fails one of the first three checks goes into a preparation list." caption="The first three checks are the gates of the use-case portfolio. Checks 4 and 5 decide whether to wait for a vendor's agent or build your own." />
 
-## Describe the work
+## The shortlist
 
-Write down the request, the current steps, the information used, the decisions made, and the result. Include exceptions. Identify the part that requires adaptive investigation and the part that can stay a fixed workflow.
+The three ideas on the lead's list are these.
 
-## Apply five checks
+1. **Billing exceptions.** Bills that fail a check, and meter reads that look wrong, wait in a worklist in the customer billing system. A billing specialist clears each one.
+2. **Water network anomalies.** An analytics tool flags an unusual flow or pressure. An engineer then looks for the cause. The engineer pulls data from the historian, the asset system, the network map and past work orders.
+3. **A customer chat agent.** It would answer any customer question on the website, at any hour.
 
-1. **Can we evaluate it?** Agree what a correct and useful result looks like, with realistic examples.
-2. **Can we protect its actions?** Identify actions involving access, money, safety actuation, or formal regulatory records. Place the controls outside the model. Score the agent on [the risk profile](/architecture/risk-profile).
-3. **Can we supply reliable evidence?** Check access, quality, freshness, and ownership of the information.
-4. **Is the process inside one package or across several?** Check whether one packaged system holds all the data and permissions, or whether the work crosses several systems.
-5. **Is a vendor agent generally available on your edition, or dated within two quarters?** Count only agents marked generally available in the vendor's release notes, and treat announced ones as unavailable.
+## Write each idea down as it runs today
 
-An idea that fails a check goes into a preparation list. It may need clearer outcomes, better interfaces, or improved data before an agent is useful.
+Before any check, write each idea down. Note the request, the current steps, the information used, the decisions made and the result. Include the exceptions. Mark the part that needs investigation and the part that can stay a fixed workflow. Name who owns the work today.
 
-Checks four and five decide whether to wait for a vendor's agent or build your own; see [agents and packaged applications](/use-cases/packaged-applications).
+For billing exceptions this is easy. The worklist holds each request, and the billing team lead owns the result. For the chat agent it is hard. "Any customer question" has no single process and no single owner.
 
-These five checks are the three gates and the two packaged-application tests in [the use-case portfolio](/library/frameworks/use-case-portfolio), in the same order and with the same numbers. The six tests on [agents and packaged applications](/use-cases/packaged-applications) run in the same order too. They add "Does it need an agent?" as test one, so checks one and two are tests two and three there. Checks four and five keep their numbers there. Check three, reliable evidence, sits in that page's "Prepare first" outcome. Test six is the scoring that follows.
+Then describe each candidate agent with [the four questions](/architecture/agent-types). What does it do for people? What do its own credentials let it do? How freely does it act? What can it damage?
 
-## Assess the organization
+## Run the five checks
 
-Use the [readiness assessment](/library/frameworks/readiness-assessments). Keep the seven areas separate. A strong score in one area does not make up for a missing control in another. The complete assessment has 28 questions across seven areas, and a deeper evidence-based mode.
+1. **Can we evaluate it?** Agree what a correct and useful result looks like, with real examples. Domain experts should be able to write pass-or-fail tasks from past failures. A billing specialist can say whether a bill came out right. An engineer can say whether the cause was found. Nobody can say what a correct answer to "any question" looks like. The chat agent fails here.
+2. **Can we protect its actions?** List the actions that touch access, money, safety actuation or formal records. These are the four [deterministic zones](/architecture/deterministic-zones). Inside them a fixed rule or a named person makes the final call, never the model. A bill change moves money, so a person approves it in the billing system. The anomaly agent only reads network data. It never operates a pump or a valve. Score each agent on [the risk profile](/architecture/risk-profile). The score sets its risk tier, from Tier 1 (basic) to Tier 3 (strict).
+3. **Can we supply reliable evidence?** Check who owns the information, and its quality, freshness and access. Meter reads and billing history sit in the billing system. Network readings sit in a copy of the historian that the agent can read safely.
+4. **Is the process inside one package or across several?** Billing exceptions sit inside one package, the customer billing system. The anomaly investigation crosses five systems: analytics, historian, asset system, network map and field work.
+5. **Is a vendor agent generally available on our edition, or dated within two quarters?** Generally available means any customer can buy it and run it in production. Count only agents marked that way in release notes. Treat an announced agent as unavailable. SAP has planned billing-exception agents for utilities, but none is confirmed as shipped [vendor]. No vendor covers an investigation across all five network systems.
 
-## Choose a first portfolio
+Checks 4 and 5 are the two tests on [agents and packaged applications](/use-cases/packaged-applications). That page sets out when to wait, buy or build thin.
 
-Use the [use-case portfolio](/library/frameworks/use-case-portfolio) to compare expected value, operating cost, risk, and supervision capacity. A collection of individually attractive cases can still exceed the team's ability to review exceptions.
+## What the checks decide
 
-## Set the trial boundary
+The anomaly investigation passes the first three checks. It crosses several packages, and no vendor covers the whole job. So the utility builds a small agent of its own, easy to retire later.
 
-Choose a narrow scope, representative cases, a responsible owner, and explicit stop conditions. Compare against the current process. Keep a way to return to that process while the proposed system is evaluated.
+Billing exceptions pass the first three checks. On the vendor's cloud edition, with an agent dated within two quarters, the utility waits. On an older edition, it builds a thin agent over the exception worklist. A trained person still decides anything about hardship or a payment plan. That is <Term k="decisions about people">the rule for decisions about people</Term>.
 
-**Next step:** decide whether to wait for a vendor's agent or build your own on [agents and packaged applications](/use-cases/packaged-applications).
+The chat agent goes on the preparation list. It needs a narrower scope and a clear definition of success first. A preparation list is not a rejection. An idea may need clearer outcomes, better interfaces or better data before an agent is useful.
+
+## Assess the organisation
+
+Next, assess the organisation with [the readiness assessment](/library/frameworks/readiness-assessments). It scores seven areas. They are data, integration and tools, identity and registry, controls on actions, testing and operations, cost and value, and people. Keep the seven scores separate. A strong score in one area does not make up for a missing control in another.
+
+The weakest area caps how freely the first agent may act. [The autonomy contract](/architecture/autonomy-contract) sets that cap. If any area scores 0 for this work, the agent may only be assisted (A1). A person does the work with the agent's help. Suppose data and integration score 2 or more, and every other area 1 or more. Then it may take delegated tasks (A2). A person then reviews every output.
+
+## Compare the ideas and set the trial limits
+
+Use [the use-case portfolio](/library/frameworks/use-case-portfolio) to compare value, running cost, risk and supervision load across the ideas that pass. A set of good ideas can still need more reviewers than the team has.
+
+For the trial itself, choose a narrow scope, real cases, a named owner and clear stop conditions. Compare the result with the current process. Keep a way back to that process while the agent is evaluated.
+
+## Evidence and limits
+
+The five checks are a planning method, not a validated benchmark. The first three follow the admission gates of the use-case portfolio. The 20 to 50 pass-or-fail tasks behind the first check are a practitioner rule. Checks 4 and 5 come from this guide's research on packaged software in October 2026. No published selection framework found asks either one. Microsoft's Cloud Adoption Framework comes closest (updated 2 June 2026) [vendor]. It asks whether a software-as-a-service agent already meets the need. It does not ask which edition you run, or when an agent will arrive.
+
+The readiness assessment is a practitioner design. Its scores and thresholds have not been validated against outcomes. The water utility in the example is illustrative, not a named deployment.
+
+## Next step
+
+Decide whether to wait for a vendor's agent or build your own on [agents and packaged applications](/use-cases/packaged-applications).
+
+<details>
+<summary>The research behind this page</summary>
+
+- [The use-case portfolio](/library/frameworks/use-case-portfolio): the three admission gates, the scoring and the stop criteria.
+- [The readiness assessment](/library/frameworks/readiness-assessments), version 2, October 2026: seven areas and 28 questions, with the table that caps autonomy.
+- [Microsoft Cloud Adoption Framework, business plan for AI agents](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/business-strategy-plan), updated 2 June 2026 [vendor].
+- [ASUG, SAP's agents for utilities meter-to-cash](https://www.asug.com/insights/sap-bets-on-ai-agents-to-tame-utilities-most-complex-workflow), 27 May 2026 [vendor]. Not confirmed as shipped on 14 October 2026.
+
+</details>

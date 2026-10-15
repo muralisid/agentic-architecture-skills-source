@@ -59,7 +59,7 @@ A governed agent estate: registry as compliance inventory; autonomy- and classif
 
 ### 11. Migration path
 
-Registry first; tiering second; evidence floor third; Article-12-grade instrumentation for the plausible-high-risk tier; FRIA where applicable; incident machinery; then the re-verification rhythm (this track re-checks quarterly by design). Stop buying: governance tooling that stores policies but cannot inventory agents or capture evidence; compliance projects scoped to the old Aug 2026 deadline.
+Registry first; tiering second; audit trail baseline third; EU AI Act record keeping for the plausible high-risk level; FRIA where applicable; incident machinery; then the re-verification rhythm (this track re-checks quarterly by design). Stop buying: governance tooling that stores policies but cannot inventory agents or capture evidence; compliance projects scoped to the old Aug 2026 deadline.
 
 ### 12. Metrics
 
@@ -67,13 +67,13 @@ Registry coverage (agents with owner, tier, purpose); evidence completeness per 
 
 ### 13. Data readiness and curation
 
-**The evidence posture (H25, revised by evidence):** an evidence floor for *all* production agents: registry entry, per-action audit logs retained at least six months (the deployer duty), named oversight, and provenance-carrying grounding; **Article-12-grade instrumentation for the tier that could plausibly classify high-risk** (employment-touching, credit-touching, essential-services-touching, or Copilot-class multi-purpose under the draft presumption). The argument no longer rests on the moved deadline; it rests on lead time (12+ months per standard, standards landing Q4 2026), obligations already live (Article 50 and GPAI enforcement since Aug 2026), sectoral regulators moving faster, and board expectations.
+**The evidence posture (H25, revised by evidence):** an audit trail baseline for *all* production agents: registry entry, per-action audit logs retained at least six months (the deployer duty), named oversight, and provenance-carrying grounding; **EU AI Act record keeping for the use that could plausibly classify as high-risk** (employment-touching, credit-touching, essential-services-touching, or Copilot-class multi-purpose under the draft presumption). The argument no longer rests on the moved deadline; it rests on lead time (12+ months per standard, standards landing Q4 2026), obligations already live (Article 50 and GPAI enforcement since Aug 2026), sectoral regulators moving faster, and board expectations.
 
 And the author's thesis, published with its evidence status: **provenance-carrying grounding is the highest-leverage single component of the evidence architecture.** Retrieval that stores chunks and sources alongside embeddings makes every answer citable by construction, which converging 2026 research frames as the audit answer (compliance-by-construction argument graphs; explicit-provenance agent architectures), and which the audit profession has fresh institutional reasons to demand (a Big Four firm partially refunded a government for fabricated citations in 2025). It is necessary, not sufficient: action and decision logs, oversight-intervention capture, retention and integrity controls, and technical documentation are deliberate additions. No regulator or auditor has yet endorsed retrieval provenance as satisfying Article 12; the guide says so plainly.
 
 ### Challenged defaults
 
-**CD-14: Broad vs narrow AI Act classification. Verdict: neither pole; a risk-tiered evidence posture.** The de-jure current tilted narrow (the omnibus delivered what the July 2025 "Stop the Clock" letter from ~50 CEOs asked for and the Commission first refused); the de-facto interpretive current tilts broad (the draft classification guidelines' materially-influence test, anti-splitting rule, and multi-purpose presumption); and enforcement capacity is thin either way. Betting narrow saves ceremony now and gambles on final guidelines and the provider-flip; betting broad on everything over-engineers workflow tools against the field's risk-tiering consensus. The tiered posture (floor for all, Article-12-grade for the plausible tier) is what both currents reward. Re-verify on every regulatory milestone: final classification guidelines, first harmonized standards citations, first enforcement actions.
+**CD-14: Broad vs narrow AI Act classification. Verdict: neither pole; a risk-tiered evidence posture.** The de-jure current tilted narrow (the omnibus delivered what the July 2025 "Stop the Clock" letter from ~50 CEOs asked for and the Commission first refused); the de-facto interpretive current tilts broad (the draft classification guidelines' materially-influence test, anti-splitting rule, and multi-purpose presumption); and enforcement capacity is thin either way. Betting narrow saves ceremony now and gambles on final guidelines and the provider-flip; betting broad on everything over-engineers workflow tools against the field's risk-tiering consensus. The graded posture (audit trail baseline for all, EU AI Act record keeping for the plausible high-risk level) is what both currents reward. Re-verify on every regulatory milestone: final classification guidelines, first harmonized standards citations, first enforcement actions.
 
 ### Cross-cutting concerns
 
@@ -81,7 +81,7 @@ And the author's thesis, published with its evidence status: **provenance-carryi
 |---|---|---|
 | C1 | Identity & access | Registry binds identity to owner, tier, and permitted scope; Sponsor accountability |
 | C2 | Observability | Evidence telemetry (logs, oversight events) as a governance product; board reporting from live data |
-| C3 | Traceability & audit | The track's core: retained logs, tamper-evident evidence, Annex IV-shaped documentation for the plausible tier |
+| C3 | Traceability & audit | The track's core: retained logs, tamper-evident evidence, Annex IV-shaped documentation for the plausible high-risk level |
 | C4 | Grounding in reality | Provenance-carrying grounding as the citable-answer mechanism |
 | C5 | Impersonation & authenticity | Article 50 disclosure duties (live now): humans know when they interact with AI; synthetic content marked |
 | C6 | Data sovereignty & residency | The updated sovereignty map (Data Act, CADA, DPDP, state laws, China); classification-routed deployment |

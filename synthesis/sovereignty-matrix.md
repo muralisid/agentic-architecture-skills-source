@@ -1,7 +1,7 @@
 ---
 reader_summary: "Route each workload and every derived artifact to the least restrictive deployment posture its classification and jurisdiction permit."
 audience: ["CIO/CTO", "Enterprise architect", "Security architect"]
-decision_or_output: "Assign a sovereignty tier to each workload and define the routing and derived-artifact controls that enforce it."
+decision_or_output: "Assign a sovereignty level to each workload and define the routing and derived-artifact controls that enforce it."
 prerequisites: ["/docs/architecture/master-target-state"]
 reading_time: "7 minutes"
 evidence_status: "Time-sensitive regulatory synthesis; dated claims require quarterly re-verification and unresolved questions are stated explicitly."
@@ -22,10 +22,10 @@ The expensive error is not choosing the wrong point on the spectrum. It is routi
 
 ## The deployment spectrum
 
-| Tier | What it means | What it costs you | When it is the right answer |
+| Level | What it means | What it costs you | When it is the right answer |
 |---|---|---|---|
 | SV0 Managed API, no locality guarantee | Frontier models on the provider's default footprint | Nothing structural | Public and internal-unclassified data with no residency term in the contract |
-| SV1 Managed API, region-pinned | Provider commitment to a region for processing and retention | Modest premium, narrower model availability | Most regulated internal work. This tier absorbs far more requirements than it is given credit for |
+| SV1 Managed API, region-pinned | Provider commitment to a region for processing and retention | Modest premium, narrower model availability | Most regulated internal work. This level absorbs far more requirements than it is given credit for |
 | SV2 Managed sovereign offering | Provider operating under a sovereignty framework, often with local entity, local operations staff and contractual controls | Higher cost, slower feature arrival | Public-sector procurement and regulated data where a framework names the requirement |
 | SV3 Self-hosted open-weight in your own tenancy | You run the serving stack | Real engineering cost, capacity planning, model currency burden | Data classification that forbids processing outside your control; OT and control-system data |
 | SV4 Air-gapped or on-premises isolated | No egress path at all | The highest cost in the model, and permanent | Classified environments and control-system perimeters where the network boundary is the control |
@@ -34,9 +34,9 @@ The expensive error is not choosing the wrong point on the spectrum. It is routi
 
 ## Classification-routed deployment
 
-Routing is decided at the gateway on data classification, not on user preference or workload owner. The routing table is a control-plane artifact, versioned and audited like policy.
+Routing is decided at the gateway on data classification, not on user preference or workload owner. The routing table belongs to identity and policy and is versioned and audited like policy.
 
-| Classification | Default tier | Escalation trigger |
+| Classification | Default level | Escalation trigger |
 |---|---|---|
 | Public | SV0 | None |
 | Internal | SV1 | Contractual residency term with a customer |

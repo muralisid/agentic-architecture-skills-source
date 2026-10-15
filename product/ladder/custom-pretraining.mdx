@@ -1,74 +1,101 @@
 ---
 title: "Custom pretraining and architecture"
 icon: "Cpu"
-description: "The top of the market, where two different things are sold with similar words: training a foundation model of your own, and designing a different kind of model because your data is a network rather than a document."
+description: "Two meanings of 'our own model': a foundation model built from scratch, or a different model for non-text data."
+position: "Teaching guidance. The pretraining-mix result is vendor research at small scale. The graph failure modes are standard. The worked example is a proposed design."
+lastReviewed: "2026-10-15"
 datePublished: "2026-08-29"
-dateModified: "2026-09-17"
+dateModified: "2026-10-15"
+concepts: [ladder, r06, r11, flywheel, start, use-cases]
 ---
 
-<PlainTerms>
-At the top of the market two very different things get sold in similar language. One is building your own foundation model from scratch, which is a question of economics and almost never the answer. The other is designing a different kind of model because your data is not documents at all but networks, sequences or signals, which is a real discipline with a recognisable use. This page explains both in enough depth that you can tell which one is in front of you, and whether either applies. The one thing to remember: everything below this chapter works around a fixed model; this chapter is about building models, which is a different profession.
-</PlainTerms>
+A vendor or an internal team proposes building "our own model". **Do we need to build a model of our own?** Almost never. Two very different things are sold under similar words. One is training your own foundation model from scratch. A foundation model is a large general model trained on huge amounts of text. That is a question of economics, and it is almost never the answer. The other is designing a different kind of model because your data is not documents. It may be networks, sequences or signals. That is a real discipline with a recognisable use. Every other option on [the intelligence ladder](/ladder) works around a model someone else built. This one builds models. That is a different profession.
 
 ## Path one: a foundation model of your own
 
-**What it is.** Pretraining from scratch: initialise weights randomly, train on trillions of tokens, then align the result into something usable. Everything the base model knows must come from your assembled corpus, because there is no base model.
+### What it is
 
-**What it costs.** Frontier-laboratory economics: compute in the tens of millions and up, a standing research team, and the time between deciding and having something competitive, during which the field moves. And the artifact is perishable: the open and commercial models improve on someone else's budget, while yours improves on yours.
+Pretraining from scratch starts with random weights. The model trains on trillions of tokens. Then it is tuned into something usable. Everything the model knows must come from the text you assembled. There is no base model to start from.
 
-**When it is genuine.** Sovereignty mandates that forbid external weights outright, at national or systemically-regulated scale. Or a corpus so large and so unlike public text that general models are structurally wrong for it, together with the money and the team. If you are reading this page to find out whether you qualify, you do not, and that is most of what the page is for.
+### What it costs
 
-**The question that deflates most proposals.** What would [continued pretraining](/ladder/continued-pretraining) on the same corpus achieve? It delivers most of what people actually want from "our own model", from the same data, at a small fraction of the cost, on an upgrade path someone else maintains.
+It costs what a frontier laboratory spends. Computing costs run to tens of millions and more. It needs a standing research team. It takes time to reach anything competitive, and the field moves on meanwhile. The result also goes stale. Open and commercial models improve on someone else's budget. Yours improves only on yours.
 
-**One published result, with its flags.** If you are on this path, when the domain data enters matters: mixing 0.1 to 10 percent of domain data into pretraining from scratch outperformed the standard general-pretrain-then-adapt pipeline across three domains, cutting the tokens needed for a given domain performance by up to 1.75 times [vendor]. Scope: models of 300M to 3B parameters, a 200B-token budget, published by a company selling data curation. It informs how to run path one, not whether to take it.
+### When it is genuine
+
+One case is a sovereignty rule that forbids outside model weights, for a nation or a systemically important regulated firm. Sovereignty rules are covered in [the governance, risk and sovereignty layer (R11)](/layers/r11-governance-risk-sovereignty). Another case is a body of text so large and so unusual that general models are wrong for it. Even then you need the money and the team. If you are reading this page to find out whether you qualify, you do not.
+
+### The question that ends most proposals
+
+Ask what [continued pretraining](/ladder/continued-pretraining) on the same text would achieve. It delivers most of what people want from "our own model". It uses the same data, at a small fraction of the cost. And someone else maintains the base model and its upgrades.
+
+### One published result
+
+If you do take this path, the timing of domain data matters. One study mixed 0.1 to 10 percent domain data into pretraining from scratch. That beat the standard route of general pretraining followed by adaptation, across three domains. It cut the tokens needed for a given domain performance by up to 1.75 times [vendor]. The study used models of 300M to 3B parameters and a 200B-token budget. It was published by a company that sells data curation. It informs how to run path one, not whether to take it.
 
 <GuideFigure id="top-of-market-paths" fullWidth />
 
-<TeachingIllustration src="/images/ladder/custom-pretraining-paths-labeled-v3.webp" alt="One path sends vast data and compute into a foundation model while another sends a transaction network through a compact graph model and into an agent tool." title="Two expensive-sounding paths solve different problems" caption="Training from random weights is a sovereignty-and-economics decision at frontier scale. Choosing a different architecture is a data-shape decision: a graph model can calculate over relationships that a text model should receive as governed evidence." />
+<TeachingIllustration src="/images/ladder/custom-pretraining-paths-labeled-v3.webp" alt="Two paths. Path 1 is your own foundation model. Random weights, vast data and vast compute make a model. It has extreme cost and goes stale fast. It is only for real sovereignty needs. Path 2 is a different architecture. Network-shaped data goes into a graph model. It produces a risk score and an explanatory subgraph. The agent receives them through a tool. A banner asks first whether continued pretraining would solve this." title="Two expensive-sounding paths solve different problems" caption="Training from random weights is a decision about sovereignty and economics at frontier scale. Choosing a different architecture depends on the shape of the data. A graph model calculates over relationships, and the agent receives its result as governed evidence." />
 
 ## Path two: when your data is not text
 
-A language model is a machine for sequences of tokens. Some enterprise data is not that, and no amount of prompting, retrieval or fine-tuning makes it that. Transaction networks, supply chains, telemetry streams, molecular structures. For these, the model itself is different, most commonly a graph neural network, and the engineering discipline around it is different too.
+A language model is a machine for sequences of tokens. Some company data is not like that. No amount of prompting, retrieval or fine-tuning changes that. Examples are transaction networks, supply chains, sensor streams and molecular structures. For these, the model itself is different. The most common choice is a graph neural network. The engineering around it is different too.
 
-**How a graph model works, in one paragraph.** Each node starts with a vector describing it. In each layer, every node updates its vector using its neighbours' vectors, so after one layer a node knows about its neighbours, after two it knows about their neighbours, and so on outward. Prediction then reads the node vectors: is this account likely part of a ring, is this component about to fail. The structure itself, who connects to whom, is what the model learns from, which is exactly what a document model cannot see.
+### How a graph model works
 
-**The failure modes are structural, and they are the vocabulary to listen for.**
+Each point in the network, called a node, starts with a vector describing it. In each round, every node updates its vector using its neighbours' vectors. After one round, a node knows about its neighbours. After two, it knows about their neighbours, and so on outward. The model then predicts from the node vectors. Is this account likely part of a fraud ring? Is this component about to fail? The structure itself, who connects to whom, is what the model learns from. A document model cannot see that structure.
 
-- **Over-smoothing.** Each layer averages neighbours. Stack enough layers and every node in a connected region converges to the same vector: depth destroys the distinctions the model exists to draw. This is why production graph models are often only two or three layers deep.
-- **Over-squashing.** The opposite pressure. Information from a node several hops away must pass through an exponentially growing neighbourhood compressed into fixed-size vectors, so long-range signal is crushed at bottleneck edges.
-- The two **pull against each other**: layers added to relieve over-squashing worsen over-smoothing. This trade is the tell for genuine expertise. Someone who has really worked here has had to resolve it structurally, with rewiring, attention or hierarchical pooling, not with a bigger setting.
-- **Representation and gradient collapse.** The general deep-learning failures: learned vectors that stop being distinct, and learning signal that dies through depth, so parts of the network silently stop training.
-- **Partitioning and sampling.** A graph with billions of edges does not fit in accelerator memory, and unlike documents it cannot be arbitrarily cut: every cut severs real relationships. Partition into clusters and you train on a graph missing its cross-cluster edges; sample neighbourhoods and you introduce variance and bias in what each node sees. Both change the object being trained on, and managing that gap is where much of the real work lives.
-- **Distributed convergence.** Sharded across many machines, optimisation stops behaving like the single-machine textbook: giant effective batches change the loss landscape, stale gradients arrive from busy workers, and communication cost starts dictating the algorithm.
+### What goes wrong
 
-**When it is genuine.** The thing you are predicting is a property of a structure rather than of a document, at a scale where these failure modes actually bite. That situation is recognisable, and it has little to do with agents.
+Graph models have well-known failure modes. Two matter most. Stack too many rounds and every node in a connected region ends up with the same vector. This is called over-smoothing. It is why production graph models are often only two or three rounds deep. Information from far away must squeeze through a few links into vectors of fixed size. This is called over-squashing. The two pull against each other. Adding rounds to ease over-squashing makes over-smoothing worse.
 
-## In utilities and mining
+Someone who has really worked here has had to resolve that trade in the design itself. Common fixes are rewiring the graph, attention, or pooling in stages, not a bigger setting. Large graphs bring more problems. They must be cut or sampled to fit in memory, and every cut severs real relationships. Training spread across many machines also behaves differently from the textbook. The full list is in the research block at the end of this page.
 
-<TeachingIllustration src="/figures/ladder/industrial-custom-pretraining.svg" mobileSrc="/figures/ladder/industrial-custom-pretraining-mobile.svg" title="Connect a specialist model to the agent" alt="Problem: A defined prediction task. Baseline: Rules or existing model. Specialist: Train only if justified. Tool result: Evidence for the agent" caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
+### When it is genuine
 
-A specialist model could estimate a production quantity, characterize an equipment sequence, or analyze relationships in a network. The agent can use that model through a tool without being the model itself.
+The thing you predict is a property of a structure, not of a document. The scale is large enough for these failure modes to bite. That situation is easy to recognise, and it has little to do with agents.
 
-Start with the measurement or prediction task and a credible reference outcome. Compare conventional features, existing models, and simpler statistical methods before building a new architecture. Include the data, research, deployment, and maintenance effort.
+## Worked example: a specialist model behind an agent
 
-Keep the specialist’s units, uncertainty, calibration, and applicable conditions with its result. An agent’s fluent explanation must not turn an uncertain estimate into an official production record. See [production measurement](/use-cases/production-measurement).
+<TeachingIllustration src="/figures/ladder/industrial-custom-pretraining.svg" mobileSrc="/figures/ladder/industrial-custom-pretraining-mobile.svg" title="Connect a specialist model to the agent" alt="Four boxes in order. Problem: a defined prediction task. Baseline: rules or an existing model. Specialist: train only if justified. Tool result: evidence for the agent." caption="Proposed industrial example. Evaluate against the simpler existing process before adopting it." />
 
-## How this connects back
+At a utility or a mine, a specialist model could estimate a production quantity. It could describe a sequence of equipment readings, or analyse relationships in a network. The agent uses that model through a tool. It does not become the model.
 
-Everything below this chapter works **around a fixed model**. This chapter **builds models**. Different budgets, different staff, different risk lifecycle, meeting at a tool boundary.
+Start with the measurement or prediction task and a credible reference outcome. Compare conventional features, existing models and simpler statistical methods before building a new architecture. Include the data, research, deployment and maintenance effort.
 
-The instinct, though, transfers all the way down, and it is the instinct this whole ladder teaches: diagnose the structural failure before spending, and never assume a bigger version of what you have will fix it.
+Keep the specialist model's units, uncertainty, calibration and conditions of use with its result. An agent's fluent explanation must not turn an uncertain estimate into an official production record. See [production measurement](/use-cases/production-measurement).
 
-<EvidenceBadge status="mixed-evidence" /> The pretraining-mix result is vendor-published research at small model scale, flagged as such. The graph failure modes are standard, well-documented, and not specific to this guide.
+## How this connects to the rest
 
-**Next step:** see how any change to a model is tested and promoted on [the learning flywheel](/architecture/learning-flywheel), or return to [Start here](/start).
+Every other option on the intelligence ladder works around a fixed model. This page is about building models. The two need different budgets, different staff and a different risk lifecycle. They meet at a tool boundary: the agent calls the specialist model as a tool.
+
+A new specialist model is tested and promoted like any other model change, on [the learning flywheel](/architecture/learning-flywheel). Models and their training sit in [the intelligence and learning layer (R06)](/layers/r06-intelligence-and-learning).
+
+One habit carries across every option. Diagnose the structural failure before spending money. Never assume a bigger version of what you have will fix it.
+
+## Evidence and limits
+
+<EvidenceBadge status="mixed-evidence" /> The pretraining-mix result is vendor-published research at small model scale, from 18 March 2026 [vendor]. The graph failure modes are standard and well documented. They are not specific to this guide. The worked example is a proposed design.
+
+## Next step
+
+See how any change to a model is tested and promoted on the learning flywheel. Or return to [the Start page](/start).
 
 <details>
 <summary>The research behind this page</summary>
 
-- The Finetuner's Fallacy, DatologyAI, 18 March 2026 [vendor]: domain mix at 0.1 to 10 percent, models 300M to 3B, 200B-token budget. https://www.datologyai.com/blog/finetuners-fallacy
+- The Finetuner's Fallacy, DatologyAI, 18 March 2026 [vendor]. Domain mix at 0.1 to 10 percent, models of 300M to 3B, a 200B-token budget. https://www.datologyai.com/blog/finetuners-fallacy
 - The alternative for almost all readers: [continued pretraining](/ladder/continued-pretraining).
 - The matched-control discipline: [how to test a context design](/patterns/how-to-test-a-context-design).
 - Industrial scenarios on this page are proposed designs, illustrated in the [use cases](/use-cases).
+
+Graph model failure modes, for practitioners. These are standard in the published literature on graph neural networks.
+
+- **Over-smoothing.** Each round averages neighbours. Stack enough rounds and every node in a connected region converges to the same vector. Depth then destroys the distinctions the model exists to draw.
+- **Over-squashing.** Information from a node several hops away passes through a neighbourhood that grows exponentially. It is compressed into fixed-size vectors, so long-range signal is crushed at bottleneck edges.
+- **The two pull against each other.** Rounds added to relieve over-squashing worsen over-smoothing. Real fixes are structural: rewiring, attention or hierarchical pooling.
+- **Representation and gradient collapse.** Learned vectors stop being distinct. The learning signal dies with depth, so parts of the network silently stop training.
+- **Partitioning and sampling.** A graph with billions of edges does not fit in accelerator memory. Unlike documents, it cannot be cut freely, because every cut severs real relationships. Partitioning into clusters loses the edges between clusters. Sampling neighbourhoods adds variance and bias to what each node sees.
+- **Distributed convergence.** Spread across many machines, training stops behaving like the single-machine textbook. Giant effective batches change the loss landscape. Stale gradients arrive from busy workers. Communication cost starts to dictate the algorithm.
 
 </details>

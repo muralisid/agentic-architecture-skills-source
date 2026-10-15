@@ -1,51 +1,178 @@
 ---
 title: "Keep agreed follow-up from getting lost"
-description: "Track clinician-approved actions, check completion evidence, and bring unresolved work back to a responsible person."
-position: "Proposed coordination workflow. The agent follows an approved plan; it does not decide treatment or establish clinical completion on its own."
-lastReviewed: "2026-09-18"
+description: "Follow-up after a discharge or a clinic visit, step by step. The systems by layer, the work today, the same work with one agent that tracks evidence, and who closes what."
+position: "Proposed design for a public hospital network in Australia or New Zealand. The agent tracks evidence and chases. Its credential cannot close a clinical task. No Australian or New Zealand deployment was found."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [r03, r04, r05, agent-types, autonomy, risk, zones, memory]
 ---
 
-Consider an approved follow-up plan involving more than one team. A reminder may be delivered while the actual task remains unfinished. This design keeps the agreed action, its owner, and its completion evidence together.
+A patient leaves a ward or a clinic with actions the care team agreed. Typical ones are a blood test in a few weeks and a review appointment. Others are a community nursing referral, actions for the GP, and results still pending. The result should be each action done, with evidence that it was done. Today the actions sit in free text and the responsible doctor rotates. Mostly no one checks. With an agent, each action becomes a tracked task with an owner and a due date. Only the responsible team closes a clinical task.
 
-<TeachingIllustration src="/images/use-cases/care-follow-up-v1.webp" expandable title="Keep agreed follow-up from getting lost" alt="Begin with clinician-approved actions. Track owners and due dates. Check completion evidence. Follow up within agreed limits and escalate exceptions to a person. A delivered message does not prove completed care." caption="The agent coordinates an existing plan. The care team defines what completion means and handles clinical exceptions." />
+<TeachingIllustration src="/images/use-cases/care-follow-up-v1.webp" expandable title="Keep agreed follow-up from getting lost" alt="Four stages. Agreed plan: clinician-approved actions. Track: owners and due dates. Check: completion evidence, such as a visit note or a task record. Escalate: a person resolves anything unresolved. A loop shows follow-up within agreed limits. A banner says a delivered message does not prove completed care." caption="The agent tracks a plan the care team agreed. The care team decides what counts as done." />
 
-## Start with an approved task
+## The systems involved
 
-Record the requested action, responsible team, due date, communication permissions, and expected confirmation. An unclear plan goes back to the care team. The agent must not invent a follow-up action to fill a gap.
+Follow-up touches these layers. The [healthcare page](/use-cases/healthcare) shows the full hospital estate.
 
-## Check what actually happened
+| Layer | Systems in this use case |
+|---|---|
+| [Infrastructure and compute (R01)](/layers/r01-infrastructure) | Hosting for the agent in an Australian or New Zealand region. |
+| [Data platform (R02)](/layers/r02-data-platform) | Clinical data repository for results. Data warehouse for readmissions and overdue reviews. |
+| [Integration fabric (R03)](/layers/r03-integration-fabric) | Integration engine for result messages, appointment events, discharge events and delivery receipts. FHIR server and its event subscriptions. |
+| [Systems of record (R04)](/layers/r04-systems-of-record) | Electronic medical record, EMR, for the discharge summary, orders and results acknowledgement. Patient administration system, PAS, for review appointments. Laboratory system, LIS. Radiology system, RIS. |
+| [Line of business and OT (R05)](/layers/r05-lob-and-ot) | Community health system (CHIME and others). Virtual care platform. Hospital in the home. |
+| [Intelligence and learning (R06)](/layers/r06-intelligence-and-learning) | Reading agreed actions out of free text. The lab's own abnormal flag, used as a rule. |
+| [Agent platform (R07)](/layers/r07-agent-platform) | The agent and its task loop. |
+| [Productivity and collaboration (R08)](/layers/r08-productivity-and-collaboration) | Teams and email for requests to teams. |
+| [Experience and channels (R09)](/layers/r09-experience-and-channels) | SMS reminders, phone, and a patient portal where one exists. Secure messages to the GP. |
+| [Security and identity (R10)](/layers/r10-security-and-identity) | The agent's own identity. Access limited to recently discharged patients on the list. |
+| [Governance, risk and sovereignty (R11)](/layers/r11-governance-risk-sovereignty) | Clinical governance owns the follow-up policy, the missed-appointment policy and contact limits. |
+| [Observability and FinOps (R12)](/layers/r12-observability-and-finops) | Traces per task. Overdue counts. |
+| [Operating model and supervision (R13)](/layers/r13-operating-model) | A care coordinator or discharge nurse supervises. The responsible clinician closes clinical tasks. |
+| [Agent data engineering (R14)](/layers/r14-agent-data-engineering) | Task memory. Each action linked to the sentence it came from. |
 
-Look for the agreed completion record in an authorized system. A message receipt, a scheduled appointment, and a completed encounter describe different states. If a record is missing, ask the responsible team for the specific confirmation rather than repeatedly messaging the patient.
+## How it runs today
 
-## Use memory to avoid repeated work
+| # | Step | Role | System | How the data moves |
+|---|---|---|---|---|
+| 1 | Agree actions and write the discharge summary | Treating team and junior doctor | EMR progress notes and discharge summary template, or paper | Actions sit in free text in the notes. The summary is free text plus coded medicines, signed in the EMR. |
+| 2 | Send the summary | EMR and integration engine | Secure messaging. My Health Record. | A clinical document to My Health Record. An HL7 message with a PDF to the GP. Some are still faxed or printed (typical, unsourced). |
+| 3 | Request a review appointment | Ward clerk or clinic clerk | Outcome form. PAS. | The form goes to clinic booking. The clerk books in the PAS, or adds the patient to a review list. |
+| 4 | Order tests after discharge | Doctor | EMR future order, or a paper request slip | The patient takes the request to a community lab. The result comes back by HL7 message to the doctor who asked. |
+| 5 | Refer to community services | Discharge nurse or allied health | EMR referral, fax or email. Community health system. | The community intake team keys it into its own system again. |
+| 6 | Watch pending results | Responsible doctor | EMR results inbox | Results arrive after discharge. The doctor may have moved to another team. Acknowledged by a click. |
+| 7 | Phone after discharge | Nurse or virtual care team | Phone. Spreadsheet or EMR call note. | A call one to three days after discharge, for some patient groups (typical, unsourced). |
+| 8 | Check the work was done | Mostly no one | Lists kept by some teams | Completion shows only when the patient turns up, or does not. |
+| 9 | Handle missed appointments | Clinic clerk and clinician | PAS | After one or two missed appointments, local policy may send the patient back to the GP. A letter goes out. |
+| 10 | Report | Performance team | Data warehouse | Unplanned readmissions. Discharge summary timeliness. Overdue review lists. Missed appointment rates. |
 
-Task memory keeps requests, responses, deadlines, and unresolved reasons together. Reference memory holds the approved operating procedure and communication templates. Restrict access by role and purpose, and apply the organization's retention policy to records and derived summaries.
+<TeachingIllustration src="/figures/use-cases/follow-up-as-is.svg" mobileSrc="/figures/use-cases/follow-up-as-is-mobile.svg" expandable title="Follow-up after discharge today" alt="Swimlanes for the GP and community services, the treating team, clerks and the systems. Step 1: the treating team agrees actions in free text, and a junior doctor writes the discharge summary. Step 2: the EMR sends it to My Health Record and the GP. Step 3: a clerk requests a review appointment. Step 4: a doctor orders tests that a community lab will do. Step 5: a nurse refers the patient to community services, whose intake keys it in again. Step 6: the responsible doctor watches pending results. Step 7: a nurse phones some patients. Step 8: no one checks the work was done. Step 9: a clerk handles missed appointments. Step 10: the data warehouse reports. A blue box under each step names the system it uses." caption="Step 8 is the gap. Nothing checks that the agreed work happened." />
 
-## Stop at the agreed boundary
+**Handoffs.** The ward hands to clinic booking and to community health intake. The hospital hands to the GP through the discharge summary. One rotating junior doctor hands pending results to the next. The hospital sends the patient to a community lab, and the result comes back.
 
-Set contact limits, escalation deadlines, and a named care coordinator. Route symptoms, uncertainty about urgency, and changes to the plan into the care team's approved process. The agent cannot mark a clinical action complete from a plausible summary alone.
+**Where reporting comes in.** Readmission rates and discharge summary timeliness are standard hospital measures. Overdue review lists sit in the PAS and are often not reported upward (typical, unsourced). NSQHS Standards 5 and 6 cover comprehensive care and communicating for safety. Accreditation looks at both.
 
-## Compare with the simpler alternative
+**Volumes and cycle time.** Most follow-up actions fall due between one and twelve weeks after discharge (typical, unsourced). Studies name tests pending at discharge as a patient safety risk. Their figures vary by study and setting. No Australian or New Zealand figure was found for the share of agreed actions completed.
 
-A reminder queue may be sufficient when every task has the same inputs and completion rule. Test whether the agent improves resolution of variable, multi-team exceptions. Measure unresolved tasks, incorrect closure, unnecessary contacts, coordinator workload, and time to verified completion. Keep adverse events and patient complaints visible separately.
+**Pain points.**
 
-## Standards connection
+- Actions sit in free text. There is no single list.
+- There is no single owner, because the responsible doctor rotates.
+- Review requests get lost between the ward and the clinic.
+- Community referrals are sent but not acknowledged.
+- The GP gets the summary late, or not at all.
+- A reminder is sent, but nobody checks the work was done.
+- Results that arrive after discharge sit unacknowledged.
 
-The [HL7 FHIR R4 Task specification](https://hl7.org/fhir/R4/task.html) represents task status, ownership, inputs, and outputs. It can support the distinction between requested work and completed work. Local workflow design and clinical governance remain necessary. Reviewed 18 September 2026.
+## How agents run it
 
-Return to [Healthcare](/use-cases/healthcare), explore [memory organization](/memory), or [evaluate the investment](/use-cases/value-and-investment).
+One agent runs a task loop on fixed steps. It records evidence. It never decides that clinical care happened.
+
+| # | Step | Agent or person | Reads, and from where | Writes | Who approves, and where |
+|---|---|---|---|---|---|
+| 1 | Pull out the agreed actions | Agent | The discharge summary or clinic letter through the FHIR interface. Orders (ServiceRequest). The care plan if one is used. | A draft follow-up list. Each action has an owner, a due date and what counts as done. Each links to the sentence it came from. | The discharging clinician or care coordinator confirms the list. The agent cannot add an action that is not in the source. |
+| 2 | Open tasks | Agent | The confirmed list | One FHIR Task per action, with its owner, due date and completion rule | The coordinator |
+| 3 | Watch for completion | Agent | Events. Results and acknowledgements come from the integration engine. Bookings and attendances come from the PAS. Acceptances come from the community system. Delivery receipts come for the summary. | An evidence link on each task: a result, appointment or encounter number | No one. Recording evidence needs no approval. |
+| 4 | Flag gaps on the due date | Agent | Task due dates | Status "overdue", with the reason | No one |
+| 5 | Ask the owner | Agent drafts | The owner team from the task | A request to the responsible team through the EMR in-basket, Teams or email | The coordinator approves anything outside the templates. |
+| 6 | Remind the patient | Agent, within contact limits | Contact preferences and consent | An SMS from an approved template | Clinical governance approves the limits and templates. |
+| 7 | Watch pending results | Agent | Results that arrive after discharge. Acknowledgement status in the EMR. The lab's abnormal flag. | An escalation to the responsible team if a result is not acknowledged in the set time. The agent does not interpret the result. | Clinical governance sets the escalation rules. |
+| 8 | Close | The responsible team for clinical tasks. A fixed rule for admin tasks. | The task with its evidence | Clinical tasks closed in the EMR by the team. Admin tasks, such as "appointment attended", closed by rule. | The agent's credential cannot close a clinical task. |
+| 9 | Report | Agent and performance team | The tasks | Counts of open tasks, overdue tasks, and tasks closed with evidence | The coordinator |
+
+<TeachingIllustration src="/figures/use-cases/follow-up-to-be.svg" mobileSrc="/figures/use-cases/follow-up-to-be-mobile.svg" expandable title="Follow-up after discharge with an agent" alt="Swimlanes for the agent, the care coordinator, the responsible team, fixed rules, the systems and the evidence store. Step 1: the agent pulls the agreed actions from the discharge summary, and the coordinator confirms the list. Step 2: it opens one task per action, and the coordinator approves. Step 3: it watches events for completion and links the evidence. Step 4: it flags overdue tasks. Step 5: it asks the owner team, and the coordinator approves anything off-template. Step 6: it reminds the patient within fixed contact limits. Step 7: it escalates pending results under fixed rules. Step 8: the responsible team closes clinical tasks, and a rule closes admin tasks. Step 9: the agent reports counts, and the coordinator reviews them. The evidence store keeps task history, the EMR audit log, traces and message receipts. A diamond marks each approval." caption="A diamond marks each approval. Only the responsible team closes a clinical task." />
+
+**What stays with a person, and why.**
+
+- Deciding the follow-up plan. That is a clinical decision.
+- Reading and acting on a result. That is a clinical decision.
+- Closing a clinical action. The team must confirm the care happened.
+- Sending a patient back to the GP after missed appointments. That is a decision about a person.
+- Anything the patient reports about symptoms. It goes to the care team's approved process.
+
+**Where the evidence is kept.** The task history in the FHIR server shows who or what made each change. The EMR audit log records every read and write under the agent's identity. Agent <Term k="trace">traces</Term> sit outside the agent, keyed to the task. Message receipts stay in the secure messaging and SMS systems.
+
+**What changes in the systems.**
+
+- A follow-up worklist for the coordinator, built on FHIR Task.
+- Event subscriptions for results, appointments and discharges.
+- A structured "follow-up actions" section in the discharge summary template. Step 1 is probably not reliable without it.
+- Task statuses: proposed, confirmed, in progress, overdue, done with evidence, closed by team.
+- Task memory keeps requests, replies, due dates and reasons together. Reference memory holds the approved procedure and templates. Both follow the retention policy. [Knowledge and memory](/memory) sets out the kinds.
+
+**What does not change.** The discharge summary stays the legal record. Results acknowledgement stays with the clinician. The missed-appointment policy stays. The GP's own recall system stays.
+
+**The standard behind the task list.** The [HL7 FHIR R4 Task resource](https://hl7.org/fhir/R4/task.html) records a task's status, owner, inputs and outputs. It can hold the difference between requested work and completed work. Local workflow design and clinical governance are still needed (HL7, reviewed 15 October 2026).
+
+## Who does this today
+
+| Who | What | Status and date |
+|---|---|---|
+| Epic Art, The Christ Hospital, US | Pulls incidental findings out of radiology reports to drive follow-up | Live. Epic reports a 69 percent early lung cancer detection rate against a 46 percent national average [vendor]. HIT Consultant, 10 March 2026. |
+| Epic Emmie, Sutter Health, US | A patient assistant inside MyChart that uses the patient's own record | Live at the first site, March 2026 [vendor] |
+| Heidi II, Australia and New Zealand | Finds patients due for recalls, screening and pathology. Drafts follow-ups. A clinician reviews. | Launched 28 September 2026. Primary care first. No Australian public hospital site found [vendor]. |
+| Ambience Kait, US | A patient agent that checks symptoms and care plan follow-through between visits | Previewed 13 April 2026. Not shown as shipping [vendor]. |
+| Hyro, US | Outreach that reminds patients to book screenings and other care | In development [vendor] |
+| SA Virtual Hospital, SA Health | An AI assistant for non-clinical triage. An algorithm across the EMR finds patients suited to virtual care. | Reported at a RACMA conference. Date not confirmed. |
+
+No Australian or New Zealand public health service was found using an agent to check that agreed follow-up was completed.
 
 ## Where this sits
 
-This guide's position, from the four questions on [agent types](/architecture/agent-types) and the [risk profile](/architecture/risk-profile):
+The [four questions](/architecture/agent-types) place this agent.
 
-- **Role:** coordinate. Domain: healthcare follow-up.
-- **Capability surface:** reads the plan and completion records. Writes task status. Messages care teams and patients within set limits. Untrusted input: patient replies. Highest data class: regulated health records.
-- **Placement:** A2, L0 on the [autonomy contract](/architecture/autonomy-contract). The care coordinator reviews its output. It follows the approved procedure and does not learn from cases. Anything clinical drops to A1. The care team decides.
-- **Floor:** the [people-decisions floor](/architecture/deterministic-zones#the-people-decisions-floor). It applies where a clinical decision is shaped. This design sends those to the care team. No zone applies.
-- **Tier:** Tier 3. Health records count as regulated data. That scores High. Patient replies, health data and outgoing messages are all three parts of the <Term k="rule of two">Rule of Two</Term>. So autonomy stays at A2 or below.
-- **Control:** its credential cannot mark a clinical action complete. Only the responsible team closes it.
+- **Role.** It coordinates. The domain is health follow-up.
+- **Permissions.** These are what its own credentials let it do. It reads discharge summaries, orders, result status, appointments and community acceptances. It writes tasks, evidence links and statuses. It sends requests to teams, and SMS within limits. It cannot close a clinical task or interpret a result.
+- **Autonomy.** It is designed and permitted for delegated tasks (A2) on the [autonomy contract](/architecture/autonomy-contract). The care coordinator reviews its output. Anything clinical drops to assisted (A1), where the care team decides.
+- **Impact.** It touches none of the four [deterministic zones](/architecture/deterministic-zones). The rule for decisions about people applies to closing clinical tasks and to sending a patient back to the GP. A named person makes both.
 
-**Next step:** score this agent on [the risk profile](/architecture/risk-profile), then design its controls on [the deterministic zones](/architecture/deterministic-zones).
+It is [Tier 3 (strict)](/architecture/risk-profile), because it reaches regulated health data. Patient replies are untrusted input. It reaches health data, and it sends messages. That is all three parts of the <Term k="rule of two">Rule of Two</Term>. So it stays at A2, with approved templates only.
+
+Its learning level is fixed (L0). It follows the approved procedure and does not learn from cases. Changes go through the [agent lifecycle](/architecture/agent-lifecycle).
+
+It has its own identity (ID2) on the [delegation chain](/architecture/delegation-chain). [Policy is enforced outside the model](/architecture/enforcement): the task server refuses a clinical close from the agent's account. Of the [seven capabilities](/architecture/system-view), observability and audit trail does the most work here. It keeps the task history where the agent cannot touch it.
+
+## Measure the result
+
+Compare with the simplest alternative, a reminder queue. A queue may be enough when every task has the same inputs and the same completion rule. Measure these:
+
+- Tasks closed with evidence, and tasks still unresolved.
+- Wrong closures. The target is none for clinical tasks.
+- Unneeded contacts with patients.
+- Coordinator workload.
+- Time from due date to verified completion.
+
+Keep adverse events and patient complaints visible separately.
+
+## Start with a trial
+
+Pick one ward and one kind of action, such as blood tests after discharge. Run the agent on past discharges first, and check its list against what the team agreed. Then run it live with the coordinator confirming every list. Register the agent with a named sponsor and owner before go-live.
+
+## Evidence and limits
+
+No Australian or New Zealand figure was found for how much agreed follow-up gets done. The size of the gap is not measured here.
+
+No public health service in either country was found using an agent for this. The named cases are US vendors or primary care in Australia and New Zealand.
+
+Step 1 depends on how actions are written. Free-text summaries make it unreliable. A structured follow-up section in the discharge template is probably needed first.
+
+## Next step
+
+See how the same evidence discipline works before a meeting on [consult and MDT preparation](/use-cases/consult-briefing). Or go back to the [hospital estate](/use-cases/healthcare).
+
+<details>
+<summary>The research behind this page</summary>
+
+Research for this page was done on 15 October 2026.
+
+- HL7, [FHIR R4 Task](https://hl7.org/fhir/R4/task.html), reviewed 15 October 2026. [FHIR Subscriptions backport](https://hl7.org/fhir/uv/subscriptions-backport/) gives event notices on R4 servers.
+- ACSQHC, [NSQHS Standards](https://www.safetyandquality.gov.au/standards/nsqhs-standards). Standard names checked. Action numbers not checked.
+- HIT Consultant, [Epic at HIMSS 2026](https://hitconsultant.net/2026/03/10/epic-ai-himss-2026-agent-factory-curiosity-foundation-models/), 10 March 2026.
+- The Medical Republic, [Heidi II agents](https://www.medicalrepublic.com.au/?p=129487), 30 September 2026.
+- Ambience Kait, from aggregator summaries such as [IT Digest](https://itdigest.com/healthtech/ambience-healthcare-charts-ai-driven-future-to-transform-care-delivery/), April 2026 [vendor].
+- Pulse 2.0, [Hyro funding](https://pulse2.com/hyro-45-million-raised-to-advance-ai-agent-adoption-across-healthcare-systems), undated [vendor].
+- RACMA conference, [SA Virtual Hospital](https://racmaconference.com.au/?p=6269), date not confirmed.
+
+</details>

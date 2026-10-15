@@ -1,14 +1,16 @@
 ---
 name: agentic-enterprise-architecture
 description: >-
-  The cross-layer reference for running AI agents inside an enterprise: seven
-  planes across fourteen layers, the two plane rules, the four deterministic
+  The cross-layer reference for running AI agents inside an enterprise: the
+  seven capabilities an agent platform provides across fourteen layers, the two
+  rules (policy enforced outside the model; the audit trail written where the
+  agent cannot touch it), the four deterministic
   zones (models may take permission away, never grant it, and inside the zones
-  may not approve at all), the identity and delegation chain, enforcement outside the model, the data-to-memory pipeline, the
+  may not approve at all), the delegation chain, enforcement outside the model, the data-to-memory pipeline, the
   learning flywheel, the autonomy contract (A0 to A5 by L0 to L3), the
   cross-cutting concern matrix, and a plain-words glossary. Use whenever a
   question concerns how an enterprise should architect, govern, secure or
-  supervise agents, or when a term like A3, ID2, the evidence plane, the
+  supervise agents, or when a term like A3, ID2, the audit trail, the
   oversight gate or a deterministic zone needs its definition.
 license: CC-BY-SA-4.0
 compatibility: Reference material only. No tools, network access, or scripts required; any agent that can read Markdown can use it.
@@ -23,7 +25,7 @@ Twelve pages, ordered so that reading them in sequence builds the argument. Load
 
 | File | What it answers |
 |---|---|
-| `references/01-target-state-architecture.md` | The whole design on one page: seven planes, the two rules that bind them, the two-estate reality, three builds by size and regulatory intensity |
+| `references/01-target-state-architecture.md` | The whole design on one page: seven capabilities, the two rules that bind them, your own agents and vendor-embedded agents, three builds by size and regulatory intensity |
 | `references/02-plain-words-glossary.md` | Every term the other pages use, in plain words |
 | `references/03-deterministic-zones.md` | The rule that models may take permission away, never grant it; the four places a model may not approve at all; and how to build each boundary |
 | `references/04-identity-and-delegation.md` | How an action stays traceable to the person who asked, hop by hop, with the standards |
@@ -40,7 +42,7 @@ Twelve pages, ordered so that reading them in sequence builds the argument. Load
 
 The files are long. Search rather than read end to end:
 
-- A plane's responsibilities: `grep -n "plane" references/01-target-state-architecture.md`
+- A capability's responsibilities: `grep -n "capabilit" references/01-target-state-architecture.md`
 - A specific autonomy level: `grep -n "A3\|A4" references/08-autonomy-contract.md references/11-maturity-model.md`
 - Whether something is a zone: `grep -n "zone" references/03-deterministic-zones.md`
 - Who enforces a concern: `grep -n "C[0-9]" references/09-concern-matrix.md`
@@ -50,9 +52,9 @@ The files are long. Search rather than read end to end:
 
 Two rules travel with every answer drawn from this material.
 
-**Enforcement lives in the control plane, never in the execution plane.** An instruction in a prompt is a preference; the same rule becomes a control when a gateway or policy decision point evaluates it.
+**Policy is enforced outside the model.** An instruction in a prompt is a preference; the same rule becomes a control when a gateway or policy decision point evaluates it.
 
-**The evidence plane is fed by collection the agent cannot influence.** Anything an agent reports about itself is testimony rather than evidence.
+**The audit trail is written where the agent cannot touch it.** Anything an agent reports about itself does not count as evidence.
 
 ## What this reference refuses to say
 
@@ -61,9 +63,9 @@ It publishes no timeline, no human-to-agent supervision ratio, and no build-vers
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
 
 ## Additional task references
 
-- [The seven responsibilities of an agentic enterprise](references/architecture-system-view.md): consult when this aspect is part of the task.
+- [What an agent platform provides](references/architecture-system-view.md): consult when this aspect is part of the task.
 - [Follow one inspection task](references/architecture-task-walkthrough.md): consult when this aspect is part of the task.

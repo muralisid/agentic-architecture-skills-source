@@ -394,11 +394,11 @@ function TopologyMapDiagram({ figure }: { figure: FigureManifestEntry }) {
 function ArchitectureDiagram({ figure }: { figure: FigureManifestEntry }) {
   const nodes = figure.data.nodes ?? [];
   const edges = figure.data.edges ?? [];
-  // The seven-plane figure describes planes; layer diagrams describe the
+  // The seven-capabilities figure describes capabilities; layer diagrams describe the
   // components inside one layer, so the row and flow labels follow the figure.
   const isPlaneFigure = figure.category === 'foundation';
-  const rowNoun = isPlaneFigure ? 'Plane' : 'Component';
-  const flowsLabel = isPlaneFigure ? 'Cross-plane flows' : 'Flows';
+  const rowNoun = isPlaneFigure ? 'Capability' : 'Component';
+  const flowsLabel = isPlaneFigure ? 'Flows between capabilities' : 'Flows';
 
   return (
     <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(15rem,0.42fr)]">

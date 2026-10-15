@@ -1,90 +1,85 @@
 ---
-title: "Agent types: four questions for any agent"
+title: "What kind of agent is this? Four questions"
 icon: "Tags"
-description: "Classify any agent by its role, what its own credentials let it do, how freely it acts, and what it can damage. Role labels imply no authority."
-position: "This guide's classification. Role labels imply no authority; the risk tier sets the controls."
-lastReviewed: "2026-10-14"
+description: "Ask four questions about any agent: what it does for people, what its own credentials let it do, how freely it acts, and what it can damage. The answers set its risk tier and its controls."
+position: "This guide's method. It follows published work that keeps what an agent can do apart from how freely it acts. The tier thresholds are expert judgement, not tested against incident data."
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-18"
-dateModified: "2026-10-14"
+dateModified: "2026-10-15"
+concepts: [risk, autonomy, zones, lifecycle, readiness, use-cases]
 ---
 
-<PlainTerms>
-A label such as "chat agent" or "background agent" says little about what an agent can break. This page classifies any agent with four questions instead. What does it do for people? What do its own credentials let it do? How freely does it act? What can it damage? The answers to the second and fourth questions set its risk tier. The tier sets the controls. The one thing to remember: a role is a label, not a permission.
-</PlainTerms>
+A team wants to put an agent live, and someone asks what controls it needs. A label such as "chat agent" does not answer that. Ask four questions instead. What does it do for people? What do its own credentials let it do? How freely does it act? What can it damage? The answers to the second and fourth questions set its [risk tier](/architecture/risk-profile). The tier sets the controls.
 
-## Why one label fails
+Answer all four for every agent. Record the answers in the agent's <Term k="registry">registry</Term> entry. The registry is the official list of agents, kept as part of [the agent lifecycle](/architecture/agent-lifecycle).
 
-This guide used to sort agents into four types: conversational, creative, passive and active. It later renamed them converse, create, assist and coordinate. The rename kept the problem. The four words describe different things. Conversational is a channel. Creative is an output. Passive is where the agent sits. Active is how much initiative it takes. So one agent can fit two or three types at once.
+## 1. Role: what it does for people
 
-The labels also failed to predict authority. Under the earlier labels, a passive agent could execute trades. An active agent could order medical tests. Neither label said so.
+Give the agent one of four role labels.
 
-No regulator, standards body or analyst found in this guide's research sets controls by agent type. The strongest sources separate what an agent can do from how freely it acts. Singapore's [IMDA framework for agentic AI, version 1.5](https://www.imda.gov.sg/assets/63438074-73f6-4dcc-a281-030f42642cf4.pdf) (20 May 2026) separates the agent's action space from its autonomy. [AWS's agentic AI security scoping matrix](https://aws.amazon.com/blogs/security/the-agentic-ai-security-scoping-matrix-a-framework-for-securing-autonomous-ai-systems/) (21 November 2025) separates agency from autonomy. Three papers make the same split: Feng et al. (June 2025), Safin and Balta (12 May 2026) and Zheng et al. (26 July 2026).
+- **Converse:** it talks with people, such as customers or staff.
+- **Create:** it drafts content, documents or code.
+- **Assist:** it does set tasks for a person or a team.
+- **Coordinate:** it plans work and hands it between people, agents and systems.
 
-Under EU law, the risk class follows the business domain, not the design. A [legal analysis of 6 April 2026](https://arxiv.org/abs/2604.04604) (arXiv 2604.04604) gives an example. The same tool-calling agent is high risk when it screens job applicants. It is low risk when it summarises meetings. The Cloud Security Alliance (CSA) "Agentic Universe" draft of 1 April 2026 lists eleven agent types. One agent can be four of them at once. This guide treats them as tags, not classes.
+Add a tag for the business area, such as billing, hiring or network assets. The role label grants nothing and sets no controls. The business area can. It decides whether [the rule for decisions about people](/architecture/deterministic-zones#the-rule-for-decisions-about-people) applies. Under that rule, a named person makes any significant decision about a person. That covers credit, work, benefits, health, housing and hardship. The model may score and draft. It does not decide.
 
-## The four questions
+## 2. Permissions: what its own credentials let it do
 
-Answer all four for every agent. Record the answers in the agent's <Term k="registry">registry</Term> entry.
+List the verbs the agent's own credentials allow. The verbs are read, write, delete, run code or SQL, browse, send outside, pay, change access and actuate. Actuate means moving physical equipment, such as a valve or a switch. Score the credential, not the tool description. A tool described as read-only can still run on a credential that writes.
 
-### 1. Role: what the agent does for people
-
-Use one of four labels: converse, create, assist or coordinate. Add a business-domain tag, such as billing, hiring or network assets. The domain tag matters. It can trigger the people-decisions floor. That floor applies when an agent shapes a significant decision about a person. Examples are credit, work, benefits, health, housing and utility hardship. A named person with authority to change the outcome then decides. The model may score and draft. The role label itself sets no controls.
-
-### 2. Capability surface: what its own credentials allow
-
-List the verbs the agent's own credentials allow. The verbs are read, write, delete, run code or SQL, browse, send externally, pay, change access and actuate. Then set three flags.
+Then set three flags.
 
 - **Takes untrusted input.** It reads text, files or web pages that an outsider could have written.
 - **Highest data class it can reach.** Public, internal, confidential or personal, regulated, or control-system.
 - **Writes long-term memory.** It stores something that later sessions will read.
 
-The first two flags come from [Meta's Agents Rule of Two](https://ai.meta.com/blog/practical-ai-agent-security/) (31 October 2025). [Simon Willison's lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (16 June 2025) makes the same point. Take an agent that reads untrusted input and reaches sensitive data. If it can also change things or send things out, hidden instructions can make it leak that data. Meta's rule allows at most two of the three in one session. This guide's position: an agent that needs all three stays at A2 or below. A person then approves each action. Reassess the <Term k="capability surface">capability surface</Term> every time the agent gets a new tool.
+The first two flags come from [Meta's Agents Rule of Two](https://ai.meta.com/blog/practical-ai-agent-security/) (31 October 2025). It names three things: untrusted input, sensitive data, and the power to change things or send things out. The verbs show the third. One session should hold at most two of the three. With all three, hidden instructions in the input can make the agent leak the data. [Simon Willison's lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (16 June 2025) makes the same point. An agent that needs all three stays at [delegated tasks (A2)](/architecture/autonomy-contract) or below. A person then approves each action.
 
-### 3. Autonomy: how freely it acts
+A new tool grant changes its permissions, so the risk profile is scored again.
 
-Use the A0 to A5 scale from [the autonomy contract](/architecture/autonomy-contract). Its levels are manual, assisted, delegated tasks, supervised autonomy, managed autonomy and governed lights-out. Record the <Term k="autonomy level">autonomy level</Term> three ways.
+## 3. Autonomy: how freely it acts
+
+[The autonomy contract](/architecture/autonomy-contract) sets six levels.
+
+- **Manual (A0):** a person does the work.
+- **Assisted (A1):** the agent suggests, and a person acts.
+- **Delegated tasks (A2):** the agent does set tasks, and a person reviews every output.
+- **Supervised autonomy (A3):** the agent acts, and a person approves anything that cannot be undone.
+- **Managed autonomy (A4):** the agent runs, and people work a queue of exceptions.
+- **Governed lights-out (A5):** the agent runs alone inside set rules. People set the policy and audit the results.
+
+Record the level three ways.
 
 - **Designed:** what the build allows.
 - **Permitted:** what the autonomy contract allows.
 - **Exercised:** what the logs show the agent actually did.
 
-The [MIT AI Agent Index](https://aiagentindex.mit.edu/) (2025 edition) found enterprise agents configured at low autonomy. Once deployed, they often ran at high autonomy, set off by events. So one number is not enough. Controls follow the higher of permitted and exercised. Exercised above permitted is an incident.
+These three can differ. The [MIT AI Agent Index](https://aiagentindex.mit.edu/) (2025 edition) found enterprise agents set up at low autonomy. Once deployed, many ran at high autonomy, started by events. So controls follow the higher of permitted and exercised. Exercised above permitted is an incident.
 
-Also record what starts the agent: a person, an event, or the agent itself. An agent started by an event or by itself often acts with no person present. Its oversight then happens after the fact.
+Also record what starts the agent: a person, an event, or the agent itself. An agent started by an event often acts with no person present. Its oversight then happens after the fact.
 
-Outside scales, such as Gartner's four autonomy levels (26 May 2026), map onto A0 to A5 only roughly. The crosswalk is on [the risk profile page](/architecture/risk-profile#the-autonomy-crosswalk).
+Other autonomy scales, such as Gartner's four levels (26 May 2026), map onto these six only roughly. The crosswalk is on [the risk profile](/architecture/risk-profile#the-autonomy-crosswalk).
 
-### 4. Consequence class: what it can damage
+## 4. Impact: what it can damage
 
 Record five things.
 
-- **Zones touched.** Does it reach access, money, safety actuation or formal records? These are the four [deterministic zones](/architecture/deterministic-zones).
-- **Destruction risk.** Can it delete data, backups or whole environments?
+- **Zones touched.** Does it act on access, money, safety actuation or formal records? These are the four [deterministic zones](/architecture/deterministic-zones). In them, a fixed system or a named person decides, not the model.
+- **Deletion.** Can it delete data, backups or whole environments?
 - **Decisions about people.** Does it shape a significant decision about a person?
-- **Reversibility.** Can the consequence be undone, and how fast? Score the effect, not the action. Data that has been exposed cannot be taken back.
+- **Reversibility.** Can the effect be undone, and how fast? Score the effect, not the action. Data that has leaked cannot be taken back.
 - **Reach.** One record, one team, many systems, or the public?
 
-## Which question sets controls
+## Which answers set the controls
 
-<TeachingIllustration src="/figures/architecture/agent-types-four-questions.svg" mobileSrc="/figures/architecture/agent-types-four-questions-mobile.svg" expandable title="Four questions for any agent" alt="Four cards ask about role, capability surface, autonomy and consequence class. Capability surface and consequence feed the risk tier. The risk tier sets the controls. Autonomy sets the human's job and can raise the tier floor. Role is a label only and sets no controls. Its domain tag can trigger the people-decisions floor, which adds to the controls. A strip maps old words to role labels: conversational to converse, creative to create, passive to assist, active to coordinate." caption="A role is a label, not a permission. Capability and consequence set the tier." />
+<TeachingIllustration src="/figures/architecture/agent-types-four-questions.svg" mobileSrc="/figures/architecture/agent-types-four-questions-mobile.svg" expandable title="Four questions for any agent" alt="Four cards ask about role, permissions, autonomy and impact. Permissions and impact feed the risk tier. The risk tier is Tier 1 (basic), Tier 2 (enhanced) or Tier 3 (strict), and the worst factor wins. The risk tier sets the controls. Autonomy sets the person's job, and readiness caps it. Autonomy can also raise the tier. The role is a label only and sets no controls. Its business area can bring in the rule for decisions about people, which adds to the controls. A note says to record all four answers in the registry entry and score them again on every change." caption="A role is a label, not a permission. Permissions and impact set the tier." />
 
-This guide's position:
-
-- Capability surface and consequence set the risk tier. The [risk profile](/architecture/risk-profile) scores them into Tier 1, 2 or 3. The worst factor wins.
-- The tier sets the controls.
-- Autonomy sets the human's job. Readiness caps it. Autonomy can also raise the tier. At A3 the tier is at least Tier 2. At A4 and above it is Tier 3. Autonomy never lowers the tier.
-- Role is a label. Only its domain tag can change the controls, through the people-decisions floor.
-
-## Old words to new
-
-Each old word becomes a role label. None of them implies authority.
-
-| Old type | Role label | What it no longer implies |
-|---|---|---|
-| Conversational | Converse | That a chat agent is low risk. A chat agent that changes accounts touches the money zone. |
-| Creative | Create | That content generation is a class of its own. No governance scheme found uses it. |
-| Passive | Assist | That an agent working behind the scenes is safe. The earlier label covered an agent that executed trades. |
-| Active | Coordinate | That initiative sets authority. The earlier label covered an agent that ordered medical tests. |
+- **Permissions and impact set the risk tier.** The risk profile scores nine factors, each Low, Medium or High. The worst factor sets Tier 1 (basic), Tier 2 (enhanced) or Tier 3 (strict).
+- **The tier sets the controls.** It also sets who signs and how often the agent is reviewed.
+- **Autonomy sets the person's job.** How ready the organisation is caps the level. The [readiness assessment](/library/frameworks/readiness-assessments) scores that.
+- **Autonomy can raise the tier.** Supervised autonomy (A3) needs at least Tier 2. Managed autonomy (A4) and above need Tier 3. Autonomy never lowers the tier.
+- **Role sets nothing.** Only its business area can add controls, through the rule for decisions about people.
 
 ## Three examples
 
@@ -92,41 +87,45 @@ Each example is scored with the [risk profile](/architecture/risk-profile). They
 
 ### Utility customer chat agent
 
-It answers questions about a customer's own account.
+A water or energy utility runs it on its website. It answers questions about the signed-in customer's own account.
 
-- **Role:** converse. Domain: customer service.
-- **Capability surface:** reads the signed-in customer's account and drafts replies. It changes nothing. Untrusted input: yes, the customer's text. Highest data class: personal. No long-term memory.
-- **Autonomy:** A2, designed and permitted. A person starts it: the customer. Account changes go to a member of staff. Any account change in the logs would be an incident.
-- **Consequence:** no zone action. One customer's record.
-- **Tier 2.** Personal data, untrusted input and a customer channel each score Medium. It already holds two of the Rule of Two's three. The power to change accounts would add the third.
+- **Role:** converse. Business area: customer service.
+- **Permissions:** it reads the signed-in customer's account and drafts replies. It changes nothing. Untrusted input: yes, the customer's text. Highest data class: personal. No long-term memory.
+- **Autonomy:** delegated tasks (A2), designed and permitted. The customer starts it. Account changes go to a member of staff. An account change in the logs would be an incident.
+- **Impact:** no zone action. One customer's record. A wrong answer can be corrected.
+- **Tier 2 (enhanced).** Personal data, untrusted input and a customer channel each score Medium. It already holds two of the three parts of the Rule of Two. The power to change accounts would add the third.
 
 ### Billing-exception agent
 
-It resolves implausible meter reads.
+An energy retailer runs it. In Australia and New Zealand, retailers bill households, so the exception list is theirs. The agent works on meter reads that look wrong before a bill goes out.
 
-- **Role:** assist. Domain: billing.
-- **Capability surface:** reads meter data and the customer's account. It changes bills. Untrusted input: customer notes on the account. Highest data class: personal.
-- **Autonomy:** A3 for plausible cases, A2 for the rest. An event starts it: an implausible read reaches the exception list.
-- **Consequence:** money zone, since it changes bills. The people-decisions floor applies if hardship is involved.
-- **Tier 3.** A zone action always scores High. It drops to Tier 2 only for a fixed, reversible rule. That rule must be named in the signed zone register and run by a deterministic service, not the model. Hardship cases stay at Tier 3.
+- **Role:** assist. Business area: billing.
+- **Permissions:** it reads meter data and the customer's account. It can change bills. Untrusted input: customer notes on the account. Highest data class: personal.
+- **Autonomy:** supervised autonomy (A3) for clear cases that a fixed rule releases. Delegated tasks (A2) for the rest. Assisted (A1) once hardship is involved. An event starts it: a doubtful read lands on the exception list.
+- **Impact:** it changes bills, so it acts in the money zone. The rule for decisions about people applies when hardship is involved.
+- **Tier 3 (strict).** An action in a zone always scores High. One narrow exception drops it to Tier 2. The release must be a fixed rule whose effect can be undone. It must be named in the zone register, the signed list of every zone action and who decides it. A fixed service runs it, not the model. Hardship cases stay at Tier 3.
+
+The [billing exceptions use case](/use-cases/billing-exceptions) works through this agent step by step.
 
 ### Vegetation inspection agent
 
-It flags defects in aerial images of the network.
+A power distributor runs it. It flags trees and plants growing too close to power lines in aerial images.
 
-- **Role:** assist. Domain: network assets.
-- **Capability surface:** reads imagery and drafts findings. The imagery is curated, so untrusted input scores Low. Highest data class: internal.
-- **Autonomy:** A2. A field crew confirms each finding.
-- **Consequence:** a finding can send a crew to inspect. No zone action.
-- **Tier 1.** Every factor scores Low. It becomes Tier 2 if it writes work orders into the asset system. The [vegetation inspection example](/use-cases/vegetation-inspection) creates inspection requests, so it sits at Tier 2.
+- **Role:** assist. Business area: network assets.
+- **Permissions:** it reads imagery and drafts findings. The imagery is curated, so untrusted input scores Low. Highest data class: internal.
+- **Autonomy:** delegated tasks (A2). A field crew confirms each finding.
+- **Impact:** a finding can send a crew to inspect. No zone action.
+- **Tier 1 (basic).** Every factor scores Low. Writing work orders into the asset system would make it Tier 2. The [vegetation inspection use case](/use-cases/vegetation-inspection) creates inspection requests, so that version sits at Tier 2.
 
 ## Evidence and limits
 
-No study links agent type, autonomy level or capability to incident rates. The tiers and thresholds here are expert judgement. They have not been tested against incidents.
+Published frameworks also keep what an agent can do apart from how freely it acts. Singapore's [IMDA framework for agentic AI](https://www.imda.gov.sg/assets/63438074-73f6-4dcc-a281-030f42642cf4.pdf) does this (version 1.5, 20 May 2026). So does [AWS's agentic AI security scoping matrix](https://aws.amazon.com/blogs/security/the-agentic-ai-security-scoping-matrix-a-framework-for-securing-autonomous-ai-systems/) (21 November 2025). Three research papers from 2025 and 2026 make the same split.
 
-Anthropic scored 998,481 tool calls on its own platform (18 February 2026) [vendor]. Most actions were low risk and reversible. About 0.8 percent appeared irreversible, such as sending an email to a customer. The figure is Anthropic's own estimate from its own data. No one else has checked it. So the risk sits in a thin tail. A tag on irreversible, external and sensitive actions catches that tail better than a role label.
+No regulator or standards body sets controls by a type label. Under EU law, the risk class follows the business area, not the design. A [legal analysis of 6 April 2026](https://arxiv.org/abs/2604.04604) gives an example. The same tool-calling agent is high risk when it screens job applicants. It is low risk when it summarises meetings.
 
-The IMDA framework is voluntary guidance, not law. Gartner's four autonomy levels (26 May 2026) were read through Gartner's mirror site. The main page refused access. The full Gartner report is for clients only. One source reports the CSA draft as AI-assisted. Another found no such note. Treat it as a draft, not a CSA standard. The papers cited here are arXiv preprints. Their peer review status is unknown.
+No study links any of the four answers to incident rates. The tiers and thresholds here are expert judgement. Anthropic scored 998,481 tool calls on its own platform (18 February 2026) [vendor]. About 0.8 percent looked irreversible, such as an email sent to a customer. No one else has checked that figure. It suggests the risk sits in a small share of actions. A flag on irreversible, external and sensitive actions finds them better than a role label does.
+
+The IMDA framework is voluntary guidance, not law. Gartner's full report is for clients only. The papers cited here are arXiv preprints, and their peer review status is unknown.
 
 ## Next step
 
@@ -135,10 +134,10 @@ Set how freely the agent may act with [the autonomy contract](/architecture/auto
 <details>
 <summary>The research behind this page</summary>
 
-**Sources added October 2026**
+Sources, read in October 2026:
 
-- [IMDA, Model AI Governance Framework for Agentic AI, version 1.5](https://www.imda.gov.sg/assets/63438074-73f6-4dcc-a281-030f42642cf4.pdf), 20 May 2026
-- [AWS Security Blog, the agentic AI security scoping matrix](https://aws.amazon.com/blogs/security/the-agentic-ai-security-scoping-matrix-a-framework-for-securing-autonomous-ai-systems/), 21 November 2025
+- [IMDA, Model AI Governance Framework for Agentic AI, version 1.5](https://www.imda.gov.sg/assets/63438074-73f6-4dcc-a281-030f42642cf4.pdf), 20 May 2026. Separates the agent's action space from its autonomy. Voluntary guidance.
+- [AWS Security Blog, the agentic AI security scoping matrix](https://aws.amazon.com/blogs/security/the-agentic-ai-security-scoping-matrix-a-framework-for-securing-autonomous-ai-systems/), 21 November 2025 [vendor]. Separates agency from autonomy.
 - [Feng, McDonald and Zhang, levels of autonomy for AI agents, arXiv 2506.12469](https://arxiv.org/abs/2506.12469), June 2025
 - [Safin and Balta, autonomy and agency in agentic AI, arXiv 2605.12105](https://arxiv.org/abs/2605.12105), 12 May 2026
 - [Zheng et al., separating capability from permission, arXiv 2607.23438](https://arxiv.org/abs/2607.23438), 26 July 2026
@@ -146,8 +145,8 @@ Set how freely the agent may act with [the autonomy contract](/architecture/auto
 - [Meta, Agents Rule of Two](https://ai.meta.com/blog/practical-ai-agent-security/), 31 October 2025
 - [Simon Willison, the lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/), 16 June 2025
 - [MIT AI Agent Index](https://aiagentindex.mit.edu/), 2025 edition
-- [Anthropic, measuring AI agent autonomy in practice](https://www.anthropic.com/research/measuring-agent-autonomy), 18 February 2026 [vendor]
-- [Gartner, uniform governance across AI agents](https://gcom.pdo.aws.gartner.com/en/newsroom/press-releases/2026-05-26-gartner-says-applying-uniform-governance-across-ai-agents-will-lead-to-enterprise-ai-agent-failure), 26 May 2026, read through Gartner's mirror site
-- [CSA, Agentic Universe: April 2026](https://labs.cloudsecurityalliance.org/agentic/agentic-universe-april-2026-v1/), 1 April 2026, draft
+- [Anthropic, measuring AI agent autonomy in practice](https://www.anthropic.com/research/measuring-agent-autonomy), 18 February 2026 [vendor]. The 0.8 percent figure is Anthropic's own estimate from its own data.
+- [Gartner, uniform governance across AI agents](https://gcom.pdo.aws.gartner.com/en/newsroom/press-releases/2026-05-26-gartner-says-applying-uniform-governance-across-ai-agents-will-lead-to-enterprise-ai-agent-failure), 26 May 2026. Read through Gartner's mirror site, because the main page refused access. The four autonomy levels come from this release.
+- [CSA, Agentic Universe: April 2026](https://labs.cloudsecurityalliance.org/agentic/agentic-universe-april-2026-v1/), 1 April 2026, draft. It lists eleven agent types, and one agent can be four of them at once. So they work as tags, not classes. One source reports the draft as AI-assisted. Another found no such note. Treat it as a draft, not a CSA standard.
 
 </details>

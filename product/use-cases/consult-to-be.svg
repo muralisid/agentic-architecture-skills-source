@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Preparing for a multidisciplinary meeting with an agent</title>
+<desc id="desc">Swimlanes for the agent, the MDT coordinator, the registrar, the specialists and MDT, the systems and the evidence store. Step 1: the agent builds the list, and the coordinator confirms. Step 2: it gathers records for listed patients only. Step 3: it drafts requests for outside reports, and the coordinator approves. Step 4: it drafts the brief, with a source and date on every fact. Step 5: it refreshes the brief when a new result arrives. Step 6: the registrar reviews and signs the brief. Step 7: the radiologist and pathologist review images and slides. Step 8: the MDT decides and the chair signs. Step 9: the agent drafts the outcome note, and the chair signs it. Step 10: it hands over follow-up tasks, and the coordinator confirms. The evidence store keeps the source list, every brief version, the EMR audit log and traces. A diamond marks each approval.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Preparing for a multidisciplinary meeting with an agent</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Proposed design. The agent gathers and drafts. Clinicians sign. The MDT decides.</text>
+<rect x="32" y="108.0" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="150.0" height="114.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="42.0" y="176.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#4c1d95">Agent</text>
+<path d="M32 234.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="240.7" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="292.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">MDT</text>
+<text x="42.0" y="314.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">coordinator</text>
+<rect x="32" y="361.3" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 361.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="367.3" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="429.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Registrar</text>
+<path d="M32 488.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="494.0" width="150.0" height="114.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="545.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Specialists</text>
+<text x="42.0" y="567.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">and MDT</text>
+<rect x="32" y="614.7" width="1536" height="126.7" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 614.7 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="620.7" width="150.0" height="114.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="683.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Systems</text>
+<path d="M32 741.3 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="747.3" width="150.0" height="114.7" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="42.0" y="798.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence</text>
+<text x="42.0" y="820.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">store</text>
+<path d="M32 868.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="204.0" y="755.3" width="1356.0" height="98.7" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+<text x="220.0" y="797.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#134e4a">Evidence store, out of the agent&#x27;s reach</text>
+<text x="220.0" y="821.7" font-family="Arial,sans-serif" font-size="18" fill="#134e4a">The source list saved with each brief. Every brief version. EMR audit log of each read. Traces.</text>
+<rect x="204.0" y="634.7" width="121.2" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="264.6" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">MDT</text>
+<text x="264.6" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">module</text>
+<rect x="341.2" y="634.7" width="121.2" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="401.8" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">FHIR API,</text>
+<text x="401.8" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">PACS list</text>
+<rect x="478.4" y="634.7" width="121.2" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="539.0" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Secure</text>
+<text x="539.0" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">message</text>
+<rect x="890.0" y="634.7" width="121.2" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="950.6" y="676.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">MDT</text>
+<text x="950.6" y="698.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">module</text>
+<rect x="1027.2" y="634.7" width="121.2" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1087.8" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">PACS, lab</text>
+<rect x="1301.6" y="634.7" width="121.2" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1362.2" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">EMR draft</text>
+<rect x="1438.8" y="634.7" width="121.2" height="94.7" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1499.4" y="687.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">FHIR task</text>
+<rect x="204.0" y="128.0" width="121.2" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="264.6" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Build the</text>
+<text x="264.6" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">list</text>
+<circle cx="307.2" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="307.2" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="341.2" y="128.0" width="121.2" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="401.8" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Gather</text>
+<text x="401.8" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">records</text>
+<circle cx="444.4" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="444.4" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="478.4" y="128.0" width="121.2" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="539.0" y="163.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Ask for</text>
+<text x="539.0" y="185.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">outside</text>
+<text x="539.0" y="207.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">reports</text>
+<circle cx="581.6" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="581.6" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="615.6" y="128.0" width="121.2" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="676.2" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Draft the</text>
+<text x="676.2" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">brief</text>
+<circle cx="718.8" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="718.8" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="752.8" y="128.0" width="121.2" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="813.4" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Refresh</text>
+<text x="813.4" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">the brief</text>
+<circle cx="856.0" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="856.0" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="890.0" y="381.3" width="121.2" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="950.6" y="416.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Review,</text>
+<text x="950.6" y="438.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">sign the</text>
+<text x="950.6" y="460.7" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">brief</text>
+<circle cx="993.2" cy="381.3" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="993.2" y="387.6" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="1027.2" y="508.0" width="121.2" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1087.8" y="543.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Review</text>
+<text x="1087.8" y="565.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">images,</text>
+<text x="1087.8" y="587.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">slides</text>
+<circle cx="1130.4" cy="508.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1130.4" y="514.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="1164.4" y="508.0" width="121.2" height="94.7" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1225.0" y="554.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">MDT</text>
+<text x="1225.0" y="576.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">decides</text>
+<circle cx="1267.6" cy="508.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1267.6" y="514.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<rect x="1301.6" y="128.0" width="121.2" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1362.2" y="163.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Draft</text>
+<text x="1362.2" y="185.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">outcome</text>
+<text x="1362.2" y="207.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">note</text>
+<circle cx="1404.8" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="1404.8" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">9</text>
+<rect x="1438.8" y="128.0" width="121.2" height="94.7" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1499.4" y="174.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">Hand over</text>
+<text x="1499.4" y="196.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#4c1d95">follow-up</text>
+<circle cx="1542.0" cy="128.0" r="15" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+<text x="1542.0" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">10</text>
+<path d="M325.2 175.3 L340.2 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M462.4 175.3 L477.4 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M599.6 175.3 L614.6 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M736.8 175.3 L751.8 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M874.0 175.3 L906.0 175.3 L906.0 380.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1011.2 428.7 L1043.2 428.7 L1043.2 507.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1148.4 555.3 L1163.4 555.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1285.6 555.3 L1317.6 555.3 L1317.6 223.7" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1422.8 175.3 L1437.8 175.3" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M278.6 222.7 L278.6 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M278.6 273.0 L291.6 286.0 L278.6 299.0 L265.6 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="278.6" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">confirms</text>
+<path d="M553.0 222.7 L553.0 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M553.0 273.0 L566.0 286.0 L553.0 299.0 L540.0 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="553.0" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">approves</text>
+<path d="M989.2 463.0 L1002.2 476.0 L989.2 489.0 L976.2 476.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<path d="M1263.6 589.7 L1276.6 602.7 L1263.6 615.7 L1250.6 602.7 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<path d="M1376.2 222.7 L1376.2 525.3" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1376.2 526.3 L1389.2 539.3 L1376.2 552.3 L1363.2 539.3 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="1376.2" y="577.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">chair signs</text>
+<path d="M1513.4 222.7 L1513.4 272.0" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3 5" stroke-linejoin="round"/>
+<path d="M1513.4 273.0 L1526.4 286.0 L1513.4 299.0 L1500.4 286.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+<text x="1513.4" y="324.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">confirms</text>
+</svg>

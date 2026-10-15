@@ -477,15 +477,14 @@ for (const rel of productFiles) {
   }
   assertProductPage(rel, text);
   const { datePublished, dateModified } = gitDates(`product/${rel}`);
+  // Inject each date only when the page does not already carry it, so a page
+  // that states one of the two never ends up with a duplicate key.
   let withDates = text;
-  if (datePublished && !/^datePublished:/m.test(text)) {
-    const end = text.indexOf('\n---', 4);
-    withDates =
-      text.slice(0, end) +
-      `\ndatePublished: ${yamlValue(datePublished)}` +
-      `\ndateModified: ${yamlValue(dateModified ?? datePublished)}` +
-      text.slice(end);
-  }
+  const end = text.indexOf('\n---', 4);
+  let inject = '';
+  if (datePublished && !/^datePublished:/m.test(text)) inject += `\ndatePublished: ${yamlValue(datePublished)}`;
+  if ((dateModified ?? datePublished) && !/^dateModified:/m.test(text)) inject += `\ndateModified: ${yamlValue(dateModified ?? datePublished)}`;
+  if (inject) withDates = text.slice(0, end) + inject + text.slice(end);
   const outPath = path.join(outDir, rel);
   await mkdir(path.dirname(outPath), { recursive: true });
   await writeFile(outPath, withDates);
@@ -502,8 +501,9 @@ const metas = {
     // comes first because it is the first entry in content-map.json.
     pages: [...readerSections.map((section) => section.id), 'operate', 'layers', 'agentic-os', 'security', 'patterns', 'decisions', 'about'],
   },
-  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'billing-exceptions', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', 'commercial-growth', '---Choose and fund---', 'choose-where-to-start', 'packaged-applications', 'value-and-investment', 'enterprise-transformation', '---Blueprints and frameworks---'] },
+  'use-cases': { title: 'Use cases', pages: ['index', '---Choose an industry---', 'healthcare', 'energy', 'utilities', '---Worked examples---', 'referral-coordination', 'care-follow-up', 'consult-briefing', 'energy-asset-investigation', 'vegetation-inspection', 'water-operations', 'billing-exceptions', 'safety-coaching', 'compliance-evidence', 'ai-use-inventory', 'systemic-audit-issues', 'production-measurement', '---Choose and fund---', 'choose-where-to-start', 'packaged-applications', 'value-and-investment', 'enterprise-transformation', '---Blueprints and frameworks---'] },
   research: { title: 'Research', pages: ['index', 'experiments', 'questions', 'what-changed', 'industrial-examples', 'method'] },
+  operate: { title: 'Operate', icon: 'Activity', description: 'Run agents day to day, and organise the teams that do.', pages: ['index', 'organisation'] },
   architecture: {
     title: 'Architecture',
     icon: 'Compass',
@@ -515,7 +515,7 @@ const metas = {
       '---Classify every agent---',
       'agent-types', 'autonomy-contract', 'risk-profile',
       '---Bound what it can do---',
-      'deterministic-zones', 'identity-chain', 'agent-lifecycle', 'enforcement',
+      'deterministic-zones', 'delegation-chain', 'agent-lifecycle', 'enforcement',
       '---Knowledge, learning and reference---',
       'data-to-memory', 'learning-flywheel', 'concern-matrix', 'software-for-agents', 'plain-words',
     ],
@@ -609,7 +609,7 @@ const metas = {
   },
   'library/blueprints/verticals': {
     title: 'Verticals',
-    pages: ['utilities-and-energy', 'water-utilities', 'mining-and-resources', 'manufacturing-and-supply-chain', 'banking-and-financial-services', 'public-sector'],
+    pages: ['utilities-and-energy', 'water-utilities', 'healthcare', 'mining-and-resources', 'manufacturing-and-supply-chain', 'banking-and-financial-services', 'public-sector'],
   },
 };
 

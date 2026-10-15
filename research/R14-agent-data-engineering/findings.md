@@ -52,7 +52,7 @@ Summary; map below. Camps: parsers (a neutral open-source leader plus commercial
 
 ### 10. Target state
 
-A curation pipeline with named ownership per corpus: layout-aware parsing with provenance; per-corpus-evaluated chunking with contextual enrichment; versioned, drift-monitored embeddings; permission-carrying indexes; memory tiers with write governance, TTLs, and erasure; CDC-fed freshness; span-level lineage from every answer to its source. Curation labor sized to risk: automated with calibrated judges and sampled audits where volume demands, human where liability does, always under a named accountable owner.
+A curation pipeline with named ownership per corpus: layout-aware parsing with provenance; per-corpus-evaluated chunking with contextual enrichment; versioned, drift-monitored embeddings; permission-carrying indexes; memory of five kinds with write governance, TTLs, and erasure; CDC-fed freshness; span-level lineage from every answer to its source. Curation labor sized to risk: automated with calibrated judges and sampled audits where volume demands, human where liability does, always under a named accountable owner.
 
 ### 11. Migration path
 
@@ -60,7 +60,7 @@ Appoint corpus owners; fix parsing; evaluate chunking; version embeddings; wire 
 
 ### 12. Metrics
 
-Retrieval quality per corpus (with coverage-aware metrics where diversity matters); parsing fidelity spot-checks; hallucination/refusal rates against curated vs uncurated baselines; permission-propagation coverage of derived artifacts; erasure completion time across tiers; memory-write quarantine rates; embedding drift alerts; corpus freshness vs source change lag.
+Retrieval quality per corpus (with coverage-aware metrics where diversity matters); parsing fidelity spot-checks; hallucination/refusal rates against curated vs uncurated baselines; permission-propagation coverage of derived artifacts; erasure completion time across all kinds of memory; memory-write quarantine rates; embedding drift alerts; corpus freshness vs source change lag.
 
 ### 13. Data readiness and curation
 
@@ -68,7 +68,7 @@ This track *is* the guide's curation-before-context principle as an engineering 
 
 ### Challenged defaults
 
-**CD-11: One universal enterprise index vs use-case-scoped, purpose-curated indexes. Verdict: two layers, not one pole.** A permission-aware universal index earns its place for discovery and cross-silo questions (the shipped architectures and the published critique of pure federation: live fan-out inherits latency, ranking, and weakest-link search quality). Purpose-scoped, curated indexes (or scoped routing over the universal index) earn theirs for high-stakes agent tasks, on measured evidence: retrieval dilutes as corpora broaden (75% to under 40% in the Wyoming DOT case; passage-count degradation replicated at ICLR 2025; the distracting-effect result), universal indexes inherit oversharing debt at scale, and even the largest universal-index vendor shipped scoping controls as mitigation. The trade is formalized as coverage versus trust (arXiv 2607.05217). The guide's curation-before-context lens predicts exactly this outcome.
+**CD-11: One universal enterprise index vs use-case-scoped, purpose-curated indexes. Verdict: two kinds of index, not one pole.** A permission-aware universal index earns its place for discovery and cross-silo questions (the shipped architectures and the published critique of pure federation: querying every source live inherits latency, ranking, and weakest-link search quality). Purpose-scoped, curated indexes (or scoped routing over the universal index) earn theirs for high-stakes agent tasks, on measured evidence: retrieval dilutes as corpora broaden (75% to under 40% in the Wyoming DOT case; passage-count degradation replicated at ICLR 2025; the distracting-effect result), universal indexes inherit oversharing debt at scale, and even the largest universal-index vendor shipped scoping controls as mitigation. The trade is formalized as coverage versus trust (arXiv 2607.05217). The guide's rule to curate data for the purpose before it reaches the agent predicts exactly this outcome.
 
 **The curator question (from H22, softened by evidence): every corpus an agent depends on needs a named accountable owner; curation labor is sized to risk.** The strong version (a dedicated human curator per domain) is not supported as published fact: automated curation with calibrated LLM judges and sampled human audits is real, growing, and works at scales humans cannot reach (audit-surface reduction of 99% published, with the over-flagging caveat that naive judges flag 37.8% of content). The half that survives everything: accountability cannot be automated (Air Canada), and the knowledge-management lineage (KCS's named Knowledge Domain Expert; three decades of KM failures attributed to unowned content) says ownerless corpora decay. Where liability or regulation binds, the owner is a human doing real curation; elsewhere the owner governs an automated loop.
 
@@ -83,7 +83,7 @@ This track *is* the guide's curation-before-context principle as an engineering 
 | C5 | Impersonation & authenticity | Source authenticity at ingestion; no unattributed content into grounding or memory |
 | C6 | Data sovereignty & residency | Derived artifacts inherit source residency; region-scoped pipelines and indexes |
 | C7 | Data privacy | Embeddings as recoverable personal data; erasure cascades (logs, memories, vectors, exclusion sets); TTLs; consent at ingestion |
-| C8 | Safety & human oversight | Memory write governance with quarantine; poisoning monitoring; human gates on promotion to durable tiers |
+| C8 | Safety & human oversight | Memory write governance with quarantine; poisoning monitoring; human gates on promotion to durable memory |
 | C9 | Cost accountability | Re-embedding budgets; curation labor accounting; per-corpus index costs |
 | C10 | Resilience & continuity | Rebuildable derived artifacts (everything regenerable from raw); blue/green migrations; full re-index as recovery |
 

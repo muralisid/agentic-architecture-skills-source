@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1510" role="img" aria-labelledby="title desc">
+<title id="title">Every agent gets an identity. Few get a user account.</title>
+<desc id="desc">Two columns. The left column is the agent identity, which every agent gets. It is a service principal in the directory with a named sponsor. Its connector permissions are scoped, and it is created and deleted with the agent. It is the agent's own identity, ID2. An arrow marked only by exception leads to the right column, the agent user account, which few agents get. It brings a mailbox, a calendar and meeting seat, and a licence and HR record. An administrator grants it for a recorded reason and can revoke it. The agent's own identity plus a user account is ID3. A strip along the bottom says never let an agent use a colleague's account.</desc>
+<defs><marker id="ah-control" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8f5ef"/>
+
+<text x="30" y="60" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">Every agent gets an identity.</text>
+<text x="30" y="102" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#182e31">Few get a user account.</text>
+<text x="30" y="146" font-family="Arial,sans-serif" font-size="24" fill="#182e31">An agent identity lets it act on systems.</text>
+<text x="30" y="178" font-family="Arial,sans-serif" font-size="24" fill="#182e31">A user account lets it join a meeting.</text>
+<rect x="30" y="210" width="660" height="480" rx="16" fill="#f5f3ff" stroke="#7c3aed" stroke-width="3"/>
+<text x="56" y="262" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#4c1d95">Agent identity</text>
+<rect x="450" y="232" width="214" height="46" rx="22" fill="#7c3aed" stroke="#7c3aed" stroke-width="1"/>
+<text x="557" y="264" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">Every agent</text>
+<rect x="56" y="296" width="608" height="64" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="80" y="337" font-family="Arial,sans-serif" font-size="24" fill="#4c1d95">Service principal in the directory</text>
+<rect x="56" y="372" width="608" height="64" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="80" y="413" font-family="Arial,sans-serif" font-size="24" fill="#4c1d95">Named sponsor who answers for it</text>
+<rect x="56" y="448" width="608" height="64" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="80" y="489" font-family="Arial,sans-serif" font-size="24" fill="#4c1d95">Scoped connector permissions</text>
+<rect x="56" y="524" width="608" height="64" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="80" y="565" font-family="Arial,sans-serif" font-size="24" fill="#4c1d95">Created and deleted with the agent</text>
+<rect x="56" y="600" width="608" height="64" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="80" y="641" font-family="Arial,sans-serif" font-size="24" fill="#4c1d95">ID2: the agent's own identity</text>
+<line x1="200" y1="702" x2="200" y2="782" stroke="#475569" stroke-width="4" marker-end="url(#ah-control)"/>
+<text x="230" y="752" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#0f172a">Only by exception</text>
+<rect x="30" y="796" width="660" height="486" rx="16" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
+<text x="56" y="848" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#0f172a">Agent user account</text>
+<rect x="480" y="818" width="184" height="46" rx="22" fill="#475569" stroke="#475569" stroke-width="1"/>
+<text x="572" y="850" font-family="Arial,sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#ffffff">Few agents</text>
+<rect x="56" y="882" width="608" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="80" y="923" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Mailbox</text>
+<rect x="56" y="958" width="608" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="80" y="999" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Calendar and meeting seat</text>
+<rect x="56" y="1034" width="608" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="80" y="1075" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">Licence and HR record</text>
+<path d="M82,1124 L104,1146 L82,1168 L60,1146 z" fill="#fffbeb" stroke="#d97706" stroke-width="3"/>
+<text x="118" y="1138" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#78350f">An administrator grants it for a</text>
+<text x="118" y="1168" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#78350f">recorded reason, and can revoke it</text>
+<rect x="56" y="1196" width="608" height="64" rx="10" fill="#ffffff" stroke="#475569" stroke-width="1.5"/>
+<text x="80" y="1237" font-family="Arial,sans-serif" font-size="24" fill="#0f172a">ID3: own identity plus a user account</text>
+<rect x="30" y="1304" width="660" height="100" rx="12" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+<text x="56" y="1346" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#881337">Never let an agent use a</text>
+<text x="56" y="1382" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#881337">colleague's account.</text>
+<text x="30" y="1446" font-family="Arial,sans-serif" font-size="24" fill="#182e31">Accountability sits on the agent identity.</text>
+<text x="30" y="1480" font-family="Arial,sans-serif" font-size="24" fill="#182e31">A user account adds impersonation risk.</text>
+</svg>

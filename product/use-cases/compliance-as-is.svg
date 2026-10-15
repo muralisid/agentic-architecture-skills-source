@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 898" role="img" aria-labelledby="title desc">
+<title id="title">Hospital accreditation evidence today</title>
+<desc id="desc">Swimlanes for the quality team, the evidence owners, the accrediting agency and the systems. Step 1: the quality manager keeps the evidence register by hand. Step 2: owners are assigned for each standard. Step 3: owners export records from the learning, maintenance and incident systems, audits, policies and indicators. Step 4: the quality team checks by eye and chases gaps by email. Step 5: the quality manager uploads the self-assessment. Step 6: assessors visit and judge Met or Not Met. Step 7: owners fix gaps. Step 8: the quality unit reports to the board. A blue box under each step names the system it uses.</desc>
+<defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#9a4c2d"/></marker></defs>
+<rect x="0" y="0" width="1600" height="898" fill="#f8f5ef"/>
+<text x="32.0" y="54.0" font-family="Arial,sans-serif" font-size="32" font-weight="bold" fill="#182e31">Hospital accreditation evidence today</text>
+<text x="32.0" y="88.0" font-family="Arial,sans-serif" font-size="20" fill="#465958">Evidence is gathered by hand before each visit. A blue box names the system each step uses.</text>
+<rect x="32" y="108.0" width="1536" height="190.0" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 108.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="114.0" width="150.0" height="178.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="197.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Quality</text>
+<text x="42.0" y="219.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">team</text>
+<path d="M32 298.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="304.0" width="150.0" height="178.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="387.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Evidence</text>
+<text x="42.0" y="409.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">owners</text>
+<rect x="32" y="488.0" width="1536" height="190.0" fill="#ffffff" fill-opacity="0.55"/>
+<path d="M32 488.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="494.0" width="150.0" height="178.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="42.0" y="577.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">Accrediting</text>
+<text x="42.0" y="599.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#78350f">agency</text>
+<path d="M32 678.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="32.0" y="684.0" width="150.0" height="178.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="42.0" y="778.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#1e3a8a">Systems</text>
+<path d="M32 868.0 H1568" stroke="#d5d9d4" stroke-width="1.5"/>
+<rect x="204.0" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="281.8" y="782.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Spreadsheet</text>
+<rect x="375.5" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="453.2" y="771.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Email,</text>
+<text x="453.2" y="793.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">minutes</text>
+<rect x="547.0" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="624.8" y="738.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Learning,</text>
+<text x="624.8" y="760.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">maintenance,</text>
+<text x="624.8" y="782.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">incidents,</text>
+<text x="624.8" y="804.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">audits,</text>
+<text x="624.8" y="826.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">policies</text>
+<rect x="718.5" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="796.2" y="771.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Email,</text>
+<text x="796.2" y="793.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">spreadsheet</text>
+<rect x="890.0" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="967.8" y="771.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Agency</text>
+<text x="967.8" y="793.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">portal</text>
+<rect x="1061.5" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1139.2" y="782.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">On site</text>
+<rect x="1233.0" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1310.8" y="782.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Action plan</text>
+<rect x="1404.5" y="698.0" width="155.5" height="158.0" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="1482.2" y="771.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">Board</text>
+<text x="1482.2" y="793.0" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#1e3a8a">papers</text>
+<rect x="204.0" y="128.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="281.8" y="206.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Keep the</text>
+<text x="281.8" y="228.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">register</text>
+<circle cx="341.5" cy="128.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="341.5" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="375.5" y="128.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="453.2" y="206.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Assign</text>
+<text x="453.2" y="228.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">owners</text>
+<circle cx="513.0" cy="128.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="513.0" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="547.0" y="318.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="624.8" y="396.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Export</text>
+<text x="624.8" y="418.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">records</text>
+<circle cx="684.5" cy="318.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="684.5" y="324.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="718.5" y="128.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="796.2" y="195.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Check by</text>
+<text x="796.2" y="217.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">eye, chase</text>
+<text x="796.2" y="239.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">by email</text>
+<circle cx="856.0" cy="128.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="856.0" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">4</text>
+<rect x="890.0" y="128.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="967.8" y="195.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Upload</text>
+<text x="967.8" y="217.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">self-</text>
+<text x="967.8" y="239.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">assessment</text>
+<circle cx="1027.5" cy="128.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1027.5" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="1061.5" y="508.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1139.2" y="586.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Assessment</text>
+<text x="1139.2" y="608.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">visit</text>
+<circle cx="1199.0" cy="508.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1199.0" y="514.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">6</text>
+<rect x="1233.0" y="318.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1310.8" y="407.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Fix gaps</text>
+<circle cx="1370.5" cy="318.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1370.5" y="324.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">7</text>
+<rect x="1404.5" y="128.0" width="155.5" height="158.0" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+<text x="1482.2" y="206.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">Report to</text>
+<text x="1482.2" y="228.0" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#78350f">the board</text>
+<circle cx="1542.0" cy="128.0" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<text x="1542.0" y="134.3" font-family="Arial,sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#ffffff">8</text>
+<path d="M359.5 207.0 L374.5 207.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M531.0 207.0 L563.0 207.0 L563.0 317.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M702.5 397.0 L734.5 397.0 L734.5 287.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M874.0 207.0 L889.0 207.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1045.5 207.0 L1077.5 207.0 L1077.5 507.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1217.0 587.0 L1249.0 587.0 L1249.0 477.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1388.5 397.0 L1420.5 397.0 L1420.5 287.0" fill="none" stroke="#9a4c2d" stroke-width="2" marker-end="url(#ah)" stroke-linejoin="round"/>
+<path d="M1195.0 653.0 L1208.0 666.0 L1195.0 679.0 L1182.0 666.0 Z" fill="#fffbeb" stroke="#d97706" stroke-width="2.5"/>
+</svg>

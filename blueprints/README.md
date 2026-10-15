@@ -6,6 +6,7 @@ These proposed workflows show how business goals connect to agent responsibiliti
 
 - [Power utilities and energy](verticals/utilities-and-energy.md)
 - [Water utilities](verticals/water-utilities.md)
+- [Healthcare](verticals/healthcare.md)
 - [Mining and resources](verticals/mining-and-resources.md)
 - [Manufacturing and supply chain](verticals/manufacturing-and-supply-chain.md)
 

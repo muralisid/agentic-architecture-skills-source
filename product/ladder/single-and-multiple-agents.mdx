@@ -2,16 +2,17 @@
 title: "Workflow, one agent, or several?"
 description: "Choose coordination that helps the task rather than adding unnecessary moving parts."
 position: "Compare these arrangements on the actual task. More agents do not establish better performance."
-lastReviewed: "2026-09-18"
+lastReviewed: "2026-10-15"
 datePublished: "2026-09-17"
-dateModified: "2026-09-18"
+dateModified: "2026-10-15"
+concepts: [ladder, autonomy, r07, agentic-os, decisions, use-cases]
 ---
 
 An enterprise needs work completed, whether that means preparing an inspection request or investigating repeated audit findings. **Which decisions should be fixed in software, which should one agent make, and which genuinely need separate investigators?**
 
-<TeachingIllustration src="/images/ladder/coordination-software-v1.webp" title="Choose coordination to fit the work" alt="Compare a fixed inspection workflow, one software agent choosing its next evidence check, and separate document, asset, and departmental investigations feeding one reviewed result." caption="These are alternatives to test, not maturity levels. A workflow can use models, and one agent can use several models." expandable />
+<TeachingIllustration src="/images/ladder/coordination-software-v1.webp" title="Choose coordination to fit the work" alt="Three arrangements side by side. A fixed inspection workflow. One software agent choosing its next evidence check. Separate document, asset and departmental investigations feeding one reviewed result." caption="These are alternatives to test, not maturity levels. A workflow can use models, and one agent can use several models." expandable />
 
-## Why adding agents can create more work
+## Adding agents can create more work
 
 A natural design is to assign an agent to every role: planner, researcher, critic, writer, and reviewer. But who owns an unanswered question? What happens when two agents use different versions of the same standard? Who notices that both created the same inspection request?
 
@@ -27,7 +28,7 @@ This gives the business a predictable route through known work. Test exceptions 
 
 Now consider an audit finding whose supporting records disagree. The useful next check depends on what the agent finds. It might inspect the source report, compare its dates with the completion record, then request missing evidence.
 
-Give one agent a clear question, permitted tools, and time and cost limits. Define when the evidence is sufficient, when to stop, and when to ask a person. A repeated unproductive lookup should not become an endless loop. [ReAct](https://arxiv.org/abs/2210.03629), published in 2022, studies interleaving reasoning and action; this industrial example is an illustrative application, not a result from that paper. Reviewed 18 September 2026.
+Give one agent a clear question, permitted tools, and time and cost limits. Define when the evidence is sufficient, when to stop, and when to ask a person. A repeated unproductive lookup should not become an endless loop. [Tools and the loop](/ladder/tools-and-the-loop) explains how the loop is stopped.
 
 ## Several agents when separation helps
 
@@ -37,7 +38,7 @@ Keep one owner for the final result. A document specialist might identify a requ
 
 ## Make the handoff explicit
 
-<TeachingIllustration src="/images/ladder/agent-handoff-v1.webp" title="Pass enough evidence for the next person or agent to check" alt="A specialist passes a folder to the task owner containing question, allowed scope, sources and dates, findings, uncertainty, and expected result. Missing replies, conflicting evidence, and repeated requests each have an explicit recovery path." caption="A handoff passes a claim and its support. It does not grant new permission to act." expandable />
+<TeachingIllustration src="/images/ladder/agent-handoff-v1.webp" title="Pass enough evidence for the next person or agent to check" alt="A specialist passes a folder to the task owner. It holds the question, allowed scope, sources and dates, findings, uncertainty and expected result. Missing replies, conflicting evidence and repeated requests each have an explicit recovery path." caption="A handoff passes a claim and its support. It does not grant new permission to act." expandable />
 
 Pass the question, permitted scope, source references, findings, unresolved issues, and expected result. Identify the asset, site, time period, and source version. Assign ownership of shared state so two agents cannot silently overwrite each other's work.
 
@@ -47,10 +48,12 @@ For a missing reply, set a retry limit and a route to the owner. For conflicting
 
 Compare the simplest credible workflow, one capable agent, and the proposed team on representative tasks. Count duplicated work, coordination calls, expert review, elapsed time, failures, and full cost. Do not select a team solely because individual specialists produce impressive answers.
 
-Test missing responses, conflicting records, changed permissions, and repeated requests. Keep the team only when its contribution justifies the additional coordination. Explore [systemic audit investigation](/use-cases/systemic-audit-issues) and [the architecture decision](/decisions#cd-21-multi-agent-orchestration-vs-a-single-good-loop).
+Test missing responses, conflicting records, changed permissions, and repeated requests. Keep the team only when its contribution justifies the additional coordination. Explore [systemic audit investigation](/use-cases/systemic-audit-issues). The [decision on several agents versus one good loop](/decisions#cd-21) gives the verdict. It sits with [the agent platform layer (R07)](/layers/r07-agent-platform). That layer runs the loop and its limits.
 
-**Next step:** give specialist models clear jobs on [combine models around a useful task](/ladder/combining-models).
+## Evidence and limits
 
-## Further reading
+Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) separates predefined workflows from model-directed work and describes coordination patterns (19 December 2024). [ReAct](https://arxiv.org/abs/2210.03629) studies an agent that alternates reasoning and action (2022). Both were reviewed on 18 September 2026. The industrial arrangements here are design proposals to test, not vendor-validated deployments.
 
-Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), published 19 December 2024, distinguishes predefined workflows from model-directed execution and describes coordination patterns. Reviewed 18 September 2026. The industrial arrangements here are design proposals to evaluate, not vendor-validated deployments.
+## Next step
+
+Give specialist models clear jobs on [combine models around a useful task](/ladder/combining-models).

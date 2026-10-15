@@ -25,7 +25,7 @@ The typical large enterprise runs a four-part composite, and agents will land on
 
 ## 2. What changes with agents
 
-The integration fabric becomes the **enforcement plane of the agentic enterprise**. Three shifts:
+The integration fabric becomes the **enforcement point of the agentic enterprise**. Three shifts:
 
 1. **A tool contract emerges.** MCP standardizes how agents reach systems; as of the 2026-07-28 specification it has neutral governance (Agentic AI Foundation under the Linux Foundation, Dec 2025), a stateless core with header-based routing designed explicitly so gateways can route and authorize without parsing bodies, a formal extensions framework including Enterprise Managed Authorization, and a deprecation policy. Every major platform ships MCP support.
 2. **Every integration becomes an action surface.** Agents consume APIs at machine speed and initiate writes; API design itself is shifting (one in four developers now designs APIs for AI agents, Postman Oct 2025 [vendor]). The estate's governance gaps stop being technical debt and become blast radius.
@@ -41,7 +41,7 @@ Tool calls are the meter: each agent action is an API call plus model tokens, an
 
 ## 5. Learning
 
-The tool layer generates the flywheel's raw material: tool-call traces, failure rates per tool, selection patterns. Learning lands as improved routing (which tool for which intent), improved tool descriptions, and promotion of proven tool chains into deterministic workflows. Gate everything: new tools and changed descriptions pass evals before exposure, because descriptions are prompt surface (see 7).
+The tools generate the flywheel's raw material: tool-call traces, failure rates per tool, selection patterns. Learning lands as improved routing (which tool for which intent), improved tool descriptions, and promotion of proven tool chains into deterministic workflows. Gate everything: new tools and changed descriptions pass evals before exposure, because descriptions are prompt surface (see 7).
 
 ## 6. Risk and groundedness
 
@@ -53,7 +53,7 @@ The failure modes that matter: injection through tool results and descriptions; 
 
 The gateway pattern: no direct model-to-server connections; server allowlisting; credential injection at execution time so agents never hold secrets; per-tool RBAC on the caller's identity (OAuth token exchange per RFC 8693; on-behalf-of flows; the arriving standards, Okta's Cross App Access adopted as MCP's Enterprise Managed Authorization extension, and the IETF ID-JAG draft, make the gateway their enforcement point, not their replacement); tool-description integrity checks (diff and re-approve on change); SIEM-bound audit at action granularity. Two honest caveats: the registry is preview and explicitly not a trust signal; and the gateway layer is itself attackable (a hosting-layer path traversal leaked tokens controlling 3,000+ servers, Oct 2025), so the gateway needs its own hardening story, not a halo.
 
-Identity tier: ID2 (first-class IAM principal) is the floor for any agent touching this layer; deterministic entitlement enforcement stays outside the model, per the guide's standing principle.
+Identity level: ID2 (first-class IAM principal) is the floor for any agent touching this layer; deterministic entitlement enforcement stays outside the model, per the guide's standing principle.
 
 ## 8. Sovereignty
 
@@ -65,7 +65,7 @@ Three converging camps: dedicated MCP gateways (open source under neutral govern
 
 ## 10. Target state
 
-A governed tool plane: MCP as the tool contract; a gateway (dedicated or incumbent-extended) as the single enforcement point for identity, allowlists, credentials, inspection, and audit; a curated internal tool catalog (the public registry is discovery, not trust); events as the trigger fabric for ambient agents; RPA as supervised deterministic execution where APIs don't reach; agent-to-agent adoption deferred to demand (CD-4); the legacy core strangled behind governed APIs rather than modernized as a prerequisite (CD-5).
+A governed tool path: MCP as the tool contract; a gateway (dedicated or incumbent-extended) as the single enforcement point for identity, allowlists, credentials, inspection, and audit; a curated internal tool catalog (the public registry is discovery, not trust); events as the trigger fabric for ambient agents; RPA as supervised deterministic execution where APIs don't reach; agent-to-agent adoption deferred to demand (CD-4); the legacy core strangled behind governed APIs rather than modernized as a prerequisite (CD-5).
 
 ## 11. Migration path
 
@@ -97,7 +97,7 @@ Tool schemas are data contracts; their quality decides agent groundedness at thi
 
 ### CD-5: Legacy ESB: modernize first vs bypass
 
-**Verdict: strangle, don't wait; but govern before you wrap.** Modernization-first fails the base rate (74% of programs fail to complete, and total cost runs multiples of estimates), and the mainframe core is not leaving on agent timelines. The tool layer makes bypass cheap: incumbent gateways expose existing governed APIs as agent tools with zero backend change. The discipline that keeps this from amplifying debt: govern the specific API paths agents will use before exposing them (86% of IT leaders say agents add complexity without proper integration [vendor]; NSA warns that automation over brittle interfaces raises blast radius), and let each strangler increment retire real load rather than adding a parallel estate.
+**Verdict: strangle, don't wait; but govern before you wrap.** Modernization-first fails the base rate (74% of programs fail to complete, and total cost runs multiples of estimates), and the mainframe core is not leaving on agent timelines. Wrapping makes bypass cheap: incumbent gateways expose existing governed APIs as agent tools with zero backend change. The discipline that keeps this from amplifying debt: govern the specific API paths agents will use before exposing them (86% of IT leaders say agents add complexity without proper integration [vendor]; NSA warns that automation over brittle interfaces raises blast radius), and let each strangler increment retire real load rather than adding a parallel estate.
 
 ---
 

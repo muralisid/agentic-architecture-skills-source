@@ -24,7 +24,7 @@ Compare the agent with a maintained policy search and a structured employee-serv
 
 ## Proposed responsibilities
 
-| Agent | What it does | A x L position | Notes |
+| Agent | What it does | Autonomy and learning position | Notes |
 |---|---|---|---|
 | Employee query agent | Answers policy, benefits, leave and payroll questions from a curated corpus | A3, L2 | The clear win. High volume, contained failure, measurable |
 | Onboarding orchestration agent | Coordinates provisioning, scheduling and paperwork across systems | A3, L1 | Deterministic access decisions, as in the IT blueprint |
@@ -35,7 +35,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Knowledge (**direct**), Control (**direct**), Evidence (**direct**: consultation records as well as action logs), Human (**direct**), Action (supporting), Improvement (supporting), Execution (supporting).
+Knowledge and memory (**direct**), identity and policy (**direct**), observability and audit trail (**direct**: consultation records as well as action logs), human oversight (**direct**), tool gateway (supporting), evaluation and release (supporting), runtime (supporting).
 
 ## Controls and human decisions
 
